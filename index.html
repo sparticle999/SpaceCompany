@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Space Company</title>
+	<link rel="shortcut icon" type="image/png" href=""/>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Condensed:300,400,700" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!--  Bar at top of screen -->
+<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand page-title" href="#">
+				<span>
+					Space Company<span></span>
+				</span>
+			</a>
+			<a class="navbar-brand" ng-href="#/changelog" href="#/changelog">
+				<span class="text-muted small ng-binding">
+					v0.0.1 Alpha
+				</span>
+			</a>
+		</div>
+		<div class="navbar-right"><login><!-- ngIf: env.isServerFrontendEnabled --></login></div>
+  </div>
+  <div class="ng-binding"></div>
+</div>
+
+<div class="container">
+
+  <!-- Nav tabs -->
+  		<ul class="nav nav-tabs" role="tablist">
+   			<li role="presentation" class="active"><a href="#mining" aria-controls="mining" role="tab" data-toggle="tab">Mining</a></li>
+   			<li role="presentation" id="publicityTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
+	    	<li role="presentation" id="upgradesTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
+	    	<li role="presentation" id="empireTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
+
+	    	<li role="tab" id="dropdownMenu" class="dropdown" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
+	    		<ul class="dropdown-menu" role="menu">
+	    			<li role="presentation" id="settingsTab">
+	    				<a role="menuitem" tabindex="-1" href="#settings">
+	    					<span class="glyphicon glyphicon-cog"></span>
+	    					Settings [WIP]
+	    				</a>
+	    			</li>
+	    			<li role="presentation" id="statsTab">
+	    				<a role="menuitem" tabindex="-1" href="#stats">
+	    					<span class="glyphicon glyphicon-stats"></span>
+	    					Stats [WIP]
+	    				</a>
+	    			</li>
+	    			<li role="presentation" id="githubTab">
+	    				<a role="menuitem" tabindex="-1" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages/">
+	    					<span class="glyphicon glyphicon-folder-open"></span>
+	    					Source Code - GitHub
+	    				</a>
+	    			</li>
+	    			<li role="presentation" id="achievementsTab">
+	    				<a role="menuitem" tabindex="-1" href="">
+	    					<span class="glyphicon glyphicon-trophy"></span>
+	    					Achievemets [WIP]
+	    				</a>
+	    			</li>
+	    		</ul>
+	    	</li>
+	   		<li role="presentation" id="moneyTab" class="hidden pull-right"><a href="#income" aria-controls="income" role="tab" data-toggle="tab">Income: <span id="income">0</span></a></li>
+	   		<li role="presentation" id="incomeTab" class="hidden pull-right"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money: <span id="money">0</span></a></li>
+		</ul>
+		<div style="height:50px"></div>
+
+
+  <!-- Tab panes -->
+
+  		<div class="tab-content">
+  			<!-- Mining -->
+    		<div role="tabpanel" class="tab-pane fade in active" id="mining">
+    			<div class="container">
+    				<button onclick="gainEarth()">Gain Earth</button>
+					<br>
+					Earth: <span id="earth">0</span>
+					<br>
+					<br>
+					<button onclick="gainStone()">Gain Stone</button>
+					<br>
+					Stone: <span id="stone">0</span>
+					<br>
+					<br>
+					<button onclick="gainMetal()">Gain Metal</button>
+					<br>
+					Metal: <span id="metal">0</span>
+				</div>
+    		</div>
+
+    		<!-- Crafting -->
+    		<div role="tabpanel" class="tab-pane fade in" id="crafting">
+    			<div class="container">
+    				
+				</div>
+    		</div>
+
+
+    		<!-- Space -->
+    		<div role="tabpanel" class="tab-pane fade" id="space">
+    			<div class="container">
+    				
+				</div>
+    		</div>
+
+    		<!-- Prestige -->
+    		<div role="tabpanel" class="tab-pane fade" id="prestige">
+    			<div class="container">
+    				
+				</div>
+    		</div>
+
+    		<!-- Stats -->
+    		<div role="tabpanel" class="tab-pane fade" id="stats">
+    			<div class="container">
+    				
+				</div>
+    		</div>
+
+    		<!-- Settings -->
+    		<div role="tabpanel" class="tab-pane fade" id="settings">
+    			<div class="container">
+    				
+				</div>
+    		</div>
+
+    		<!-- Unused -->
+    		<div role="tabpanel" class="tab-pane fade" id="">
+    			
+    		</div>
+
+    		<!-- Unused -->
+    		<div role="tabpanel" class="tab-pane fade" id="">
+    			
+    		</div>
+
+  		</div>
+
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</html>
