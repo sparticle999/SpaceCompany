@@ -86,19 +86,43 @@
 	    				<td>
 			    			<div class="container" style="width:200px; float:left;">
 			    				<table class="table table-hover text-primary no-select pointer">
-			    					<tr href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
-										<td style="border:none; vertical-align:middle;">
+			    					<tr id="gasNav" class="hidden" href="#gasTab" aria-controls="gasTab" role="tab" data-toggle="tab" style="height:60px;">
+			    						<td style="border:none; vertical-align:middle;">
 											<span>
-												Wood
+												Gas
 											</span>
 										</td>
-										<td style=";border:none; vertical-align:middle;">
-											<span id="wood">
+										<td style="border:none; vertical-align:middle;">
+											<span id="gas">
 												0
 											</span>
 										</td>
 									</tr>
-			    					<tr href="#stoneTab" aria-controls="stoneTab" role="tab" data-toggle="tab" style="height:60px;">
+			    					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
+			    						<td id="oilNav1" style="border:none; vertical-align:middle;">
+											<span>
+												Oil
+											</span>
+										</td>
+										<td id="oilNav2" style="border:none; vertical-align:middle;">
+											<span id="oil">
+												0
+											</span>
+										</td>
+									</tr>
+									<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
+			    						<td id="metalNav1" style="border:none; vertical-align:middle;">
+											<span>
+												Metal
+											</span>
+										</td>
+										<td id="metalNav2" style="border:none; vertical-align:middle;">
+											<span id="metal">
+												0
+											</span>
+										</td>
+									</tr>
+			    					<tr id="stoneNav" href="#stoneTab" aria-controls="stoneTab" role="tab" data-toggle="tab" style="height:60px;">
 										<td style="vertical-align:middle;">
 											<span>
 												Stone
@@ -110,14 +134,14 @@
 											</span>
 										</td>
 									</tr>
-			    					<tr href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-			    						<td style="vertical-align:middle;">
+									<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
+										<td style="vertical-align:middle;">
 											<span>
-												Metal
+												Wood
 											</span>
 										</td>
 										<td style="vertical-align:middle;">
-											<span id="metal">
+											<span id="wood">
 												0
 											</span>
 										</td>
@@ -125,15 +149,15 @@
 								</table>
 							</div>
 						</td>
-						<td style="width:100%">
+						<td style="vertical-align:top; width:100%">
 							<div class="tab-content">
-								<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+								<div id="gasTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 									<div class="container" style="max-width:900px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
 													<h3 class="pointer btn-link">
-														Wood
+														Gas
 													</h3>
 													<span>
 														Some Text
@@ -142,12 +166,54 @@
 											</tr>
 											<tr>
 												<td>
-													<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
+													<button onclick="gainGas()" class="btn btn-default">Gain <span id="gasGain">1</span></button>
 												</td>
 											</tr>
 										</table>
 									</div>
-								</div>
+								</div>	
+								<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+									<div class="container" style="max-width:900px;">
+										<table class="table">
+											<tr>
+												<td style="border:none;">
+													<h3 class="pointer btn-link">
+														Oil
+													</h3>
+													<span>
+														Some Text
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>	
+								<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+									<div class="container" style="max-width:900px;">
+										<table class="table">
+											<tr>
+												<td style="border:none;">
+													<h3 class="pointer btn-link">
+														Metal
+													</h3>
+													<span>
+														Some Text
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>							
 								<div id="stoneTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 									<div class="container" style="max-width:900px;">
 										<table class="table">
@@ -169,13 +235,13 @@
 										</table>
 									</div>
 								</div>
-								<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+								<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 									<div class="container" style="max-width:900px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 onclick="gainMetal()" class="pointer btn-link">
-														Metal
+													<h3 class="pointer btn-link">
+														Wood
 													</h3>
 													<span>
 														Some Text
@@ -184,7 +250,7 @@
 											</tr>
 											<tr>
 												<td>
-													<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
+													<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
 												</td>
 											</tr>
 										</table>
@@ -200,10 +266,10 @@
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
     			<div class="container" style="width:200px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#thing1Tab" aria-controls="thing1Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#unlockResourceTab" aria-controls="unlockResourceTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border:none; vertical-align:middle;">
 								<span>
-									Crafting Thingy #1
+									Unlock Other Resources
 								</span>
 							</td>
 						</tr>
@@ -224,22 +290,57 @@
 					</table>
 				</div>
 				<div class="tab-content">
-					<div id="thing1Tab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
-							<h3 onclick="" class="pointer btn-link">
-								Thing #1
-							</h3>
+					<div id="unlockResourceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
+							<table class="table">
+								<tr id="unlockOil">
+									<td style="border:none;">
+										<h3 class="pointer btn-link">
+											Oil
+										</h3>
+										<span>
+											Oil is used for machines to gather resources.
+											Unlocking Oil gives access to oil wells and fracking.
+											<br>
+											It costs 50 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockGas">
+									<td>
+										<h3 class="pointer btn-link">
+											Gas
+										</h3>
+										<span>
+											Gas is used for quickly processing Metal.
+											Unlocking Gas gives access to land and ocean drilling.
+											<br>
+											It costs 100 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockGas()" class="btn btn-default">Unlock Gas</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<div id="thing2Tab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
+					<div id="thing2Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
 							<h3 onclick="" class="pointer btn-link">
 								Thing #2
 							</h3>
 						</div>
 					</div>
-					<div id="thing3Tab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
+					<div id="thing3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
 							<h3 onclick="" class="pointer btn-link">
 								Thing #3
 							</h3>
