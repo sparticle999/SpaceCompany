@@ -1,15 +1,15 @@
 var stone = 0;
-var earth = 0;
+var wood = 0;
 var metal = 0;
 
 function refresh(){
-	document.getElementById("earth").innerHTML = earth;
+	document.getElementById("wood").innerHTML = wood;
 	document.getElementById("stone").innerHTML = stone;
 	document.getElementById("metal").innerHTML = metal;
 }
 
-function gainEarth(){
-	earth += 1;
+function gainWood(){
+	wood += 1;
 	refresh();
 }
 
