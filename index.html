@@ -5,9 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Space Company</title>
 	<link rel="shortcut icon" type="image/png" href=""/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Condensed:300,400,700" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -63,7 +64,7 @@
 	    			</li>
 	    			<li role="presentation" id="achievementsTab">
 	    				<a role="menuitem" tabindex="-1" href="">
-	    					<span class="glyphicon glyphicon-trophy"></span>
+	    					<span class="glyphicon glyphicon-ok"></span>
 	    					Achievemets [WIP]
 	    				</a>
 	    			</li>
@@ -81,19 +82,38 @@
   			<!-- Mining -->
     		<div role="tabpanel" class="tab-pane fade in active" id="mining">
     			<div class="container">
-    				<button onclick="gainEarth()">Gain Earth</button>
-					<br>
-					Earth: <span id="earth">0</span>
-					<br>
-					<br>
-					<button onclick="gainStone()">Gain Stone</button>
-					<br>
-					Stone: <span id="stone">0</span>
-					<br>
-					<br>
-					<button onclick="gainMetal()">Gain Metal</button>
-					<br>
-					Metal: <span id="metal">0</span>
+    				<table class="table" style="width: 30%">
+    					<tr id="" class="">
+							<td>
+								<span id="earthButton" onclick="gainEarth()" class="btn btn-link">
+									Earth
+								</span>
+								<span id="earth" class="btn pull-right">
+									0
+								</span>
+							</td>
+						</tr>
+    					<tr id="" class="">
+							<td>
+								<span id="stoneButton" onclick="gainStone()" class="btn btn-link">
+									Stone
+								</span>
+								<span id="stone" class="btn pull-right">
+									0
+								</span>
+							</td>
+						</tr>
+    					<tr id="" class="">
+    						<td>
+								<span id="metalButton" onclick="gainMetal()" class="btn btn-link">
+									Metal
+								</span>
+								<span id="metal" class="btn pull-right">
+									0
+								</span>
+							</td>
+						</tr>
+					</table>
 				</div>
     		</div>
 
@@ -152,5 +172,5 @@
 </body>
 <script type="text/javascript" src="main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </html>
