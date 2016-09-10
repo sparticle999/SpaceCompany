@@ -73,7 +73,6 @@
 	   		<li role="presentation" id="moneyTab" class="hidden pull-right"><a href="#income" aria-controls="income" role="tab" data-toggle="tab">Income: <span id="income">0</span></a></li>
 	   		<li role="presentation" id="incomeTab" class="hidden pull-right"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money: <span id="money">0</span></a></li>
 		</ul>
-		<div style="height:50px"></div>
 
 
   <!-- Tab panes -->
@@ -81,10 +80,10 @@
   		<div class="tab-content">
   			<!-- Mining -->
     		<div role="tabpanel" class="tab-pane fade in active" id="mining">
-    			<div class="container">
-    				<table class="table" style="width:200px">
-    					<tr id="" class="">
-							<td>
+    			<div class="container" style="width:200px; float:left;">
+    				<table id="miningTable" class="table table-hover" style="width:200px;">
+    					<tr id="" class="" href="#/unit/earth">
+							<td style="border:none;">
 								<span id="earthButton" onclick="gainEarth()" class="btn btn-link">
 									Earth
 								</span>
@@ -114,6 +113,11 @@
 							</td>
 						</tr>
 					</table>
+				</div>
+				<div class="container" style="padding:50px; float:left;">
+					<h3>
+						
+					</h3>
 				</div>
     		</div>
 
