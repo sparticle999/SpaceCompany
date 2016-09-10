@@ -39,9 +39,10 @@
   <!-- Nav tabs -->
   		<ul class="nav nav-tabs no-select" role="tablist">
    			<li role="presentation" class="active"><a href="#mining" aria-controls="mining" role="tab" data-toggle="tab">Mining</a></li>
-   			<li role="presentation" id="publicityTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
-	    	<li role="presentation" id="upgradesTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
-	    	<li role="presentation" id="empireTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
+   			<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
+   			<li role="presentation" id="researchTab" class=""><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
+	    	<li role="presentation" id="spaceTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
+	    	<li role="presentation" id="prestigeTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
 
 	    	<li role="tab" id="dropdownMenu" class="dropdown" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
 	    		<ul class="dropdown-menu" role="menu">
@@ -350,6 +351,87 @@
     		</div>
 
 
+    		<!-- Research -->
+    		<div role="tabpanel" class="tab-pane fade" id="research">
+    			<div class="container" style="width:200px; float:left;">
+    				<table class="table table-hover text-primary no-select pointer">
+    					<tr href="#research1Tab" aria-controls="research1Tab" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="border:none; vertical-align:middle;">
+								<span>
+									Research #1
+								</span>
+							</td>
+						</tr>
+    					<tr href="#research2Tab" aria-controls="research2Tab" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="vertical-align:middle;">
+								<span>
+									Research #2
+								</span>
+							</td>
+						</tr>
+    					<tr href="#research3Tab" aria-controls="research3Tab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td style="vertical-align:middle;">
+								<span>
+									Research #3
+								</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="tab-content">
+					<div id="research1Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
+										<h3 class="pointer btn-link">
+											Research #1
+										</h3>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="" class="btn btn-default">Button 1</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Research #2
+										</h3>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="" class="btn btn-default">Button 2</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="research2Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
+							<h3 onclick="" class="pointer btn-link">
+								Thing #2
+							</h3>
+						</div>
+					</div>
+					<div id="research3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:900px;">
+							<h3 onclick="" class="pointer btn-link">
+								Thing #3
+							</h3>
+						</div>
+					</div>
+				</div>
+    		</div>
+
     		<!-- Space -->
     		<div role="tabpanel" class="tab-pane fade" id="space">
     			<div class="container">
@@ -376,11 +458,6 @@
     			<div class="container">
     				
 				</div>
-    		</div>
-
-    		<!-- Unused -->
-    		<div role="tabpanel" class="tab-pane fade" id="">
-    			
     		</div>
 
     		<!-- Unused -->
