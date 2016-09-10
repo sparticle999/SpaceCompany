@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="width:90%; margin: auto;">
 
 	<!--  Bar at top of screen -->
 	<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
@@ -81,70 +81,120 @@
   		<div class="tab-content">
   			<!-- Mining -->
     		<div role="tabpanel" class="tab-pane fade in active" id="mining">
-    			<div class="container" style="width:200px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="border:none; vertical-align:middle;">
-								<span>
-									Wood
-								</span>
-							</td>
-							<td style=";border:none; vertical-align:middle;">
-								<span id="wood">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr href="#stoneTab" aria-controls="stoneTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Stone
-								</span>
-							</td>
-							<td style="vertical-align:middle;">
-								<span id="stone">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td style="vertical-align:middle;">
-								<span>
-									Metal
-								</span>
-							</td>
-							<td style="vertical-align:middle;">
-								<span id="metal">
-									0
-								</span>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="tab-content">
-					<div id="woodTab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
-							<h3 onclick="gainWood()" class="pointer btn-link">
-								Wood
-							</h3>
-						</div>
-					</div>
-					<div id="stoneTab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
-							<h3 onclick="gainStone()" class="pointer btn-link">
-								Stone
-							</h3>
-						</div>
-					</div>
-					<div id="metalTab" class="tab-pane fade in" style="margin-left:50px; width:100px; float:left;">
-						<div class="container">
-							<h3 onclick="gainMetal()" class="pointer btn-link">
-								Metal
-							</h3>
-						</div>
-					</div>
-				</div>
-    		</div>
+	    		<table style="max-width:100%">
+	    			<tr>
+	    				<td>
+			    			<div class="container" style="width:200px; float:left;">
+			    				<table class="table table-hover text-primary no-select pointer">
+			    					<tr href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
+										<td style="border:none; vertical-align:middle;">
+											<span>
+												Wood
+											</span>
+										</td>
+										<td style=";border:none; vertical-align:middle;">
+											<span id="wood">
+												0
+											</span>
+										</td>
+									</tr>
+			    					<tr href="#stoneTab" aria-controls="stoneTab" role="tab" data-toggle="tab" style="height:60px;">
+										<td style="vertical-align:middle;">
+											<span>
+												Stone
+											</span>
+										</td>
+										<td style="vertical-align:middle;">
+											<span id="stone">
+												0
+											</span>
+										</td>
+									</tr>
+			    					<tr href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
+			    						<td style="vertical-align:middle;">
+											<span>
+												Metal
+											</span>
+										</td>
+										<td style="vertical-align:middle;">
+											<span id="metal">
+												0
+											</span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td style="width:100%">
+							<div class="tab-content">
+								<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+									<div class="container" style="max-width:900px;">
+										<table class="table">
+											<tr>
+												<td style="border:none;">
+													<h3 onclick="gainWood()" class="pointer btn-link">
+														Wood
+													</h3>
+													<span>
+														Some Text
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button class="btn btn-default">Gain <span id="woodGain">1</span></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="stoneTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+									<div class="container" style="max-width:900px;">
+										<table class="table">
+											<tr>
+												<td style="border:none;">
+													<h3 class="pointer btn-link">
+														Stone
+													</h3>
+													<span>
+														Some Text
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="gainStone()" class="btn btn-default">Gain <span id="stoneGain">1</span></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+									<div class="container" style="max-width:900px;">
+										<table class="table">
+											<tr>
+												<td style="border:none;">
+													<h3 onclick="gainMetal()" class="pointer btn-link">
+														Metal
+													</h3>
+													<span>
+														Some Text
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+			    		</td>
+			    	</tr>
+			    </table>
+			</div>
 
     		<!-- Crafting -->
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
@@ -236,9 +286,7 @@
     		<div role="tabpanel" class="tab-pane fade" id="">
     			
     		</div>
-
   		</div>
-
 </div>
 
 
