@@ -14,7 +14,7 @@
 <body>
 
 <!--  Bar at top of screen -->
-<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
+<div class="navbar navbar-default ng-scope" style="width:90%; margin:auto;" role="navigation" ng-controller="HeaderCtrl">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand page-title" href="#">
@@ -33,10 +33,10 @@
   <div class="ng-binding"></div>
 </div>
 
-<div class="container">
+<div class="container" style="margin-top:30px;">
 
   <!-- Nav tabs -->
-  		<ul class="nav nav-tabs" role="tablist">
+  		<ul class="nav nav-tabs no-select" role="tablist">
    			<li role="presentation" class="active"><a href="#mining" aria-controls="mining" role="tab" data-toggle="tab">Mining</a></li>
    			<li role="presentation" id="publicityTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
 	    	<li role="presentation" id="upgradesTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
@@ -81,33 +81,39 @@
   			<!-- Mining -->
     		<div role="tabpanel" class="tab-pane fade in active" id="mining">
     			<div class="container" style="width:200px; float:left;">
-    				<table id="miningTable" class="table table-hover" style="width:200px;">
-    					<tr id="" class="" href="#/unit/earth">
-							<td style="border:none;">
-								<span id="earthButton" onclick="gainEarth()" class="btn btn-link">
+    				<table id="miningTable" class="table table-hover text-primary no-select" style="width:200px;">
+    					<tr id="" onclick="gainEarth()" class="" href="#/unit/earth" style="height:60px;">
+							<td style="border:none; vertical-align:middle;">
+								<span>
 									Earth
 								</span>
-								<span id="earth" class="btn pull-right">
+							</td>
+							<td style=";border:none; vertical-align:middle;">
+								<span id="earth">
 									0
 								</span>
 							</td>
 						</tr>
-    					<tr id="" class="">
-							<td>
-								<span id="stoneButton" onclick="gainStone()" class="btn btn-link">
+    					<tr id="" onclick="gainStone()" class="" style="height:60px;">
+							<td style="vertical-align:middle;">
+								<span>
 									Stone
 								</span>
-								<span id="stone" class="btn pull-right">
+							</td>
+							<td style="vertical-align:middle;">
+								<span id="stone" class="">
 									0
 								</span>
 							</td>
 						</tr>
-    					<tr id="" class="">
-    						<td>
-								<span id="metalButton" onclick="gainMetal()" class="btn btn-link">
+    					<tr id="" onclick="gainMetal()" class="" style="height:60px;">
+    						<td style="vertical-align:middle;">
+								<span>
 									Metal
 								</span>
-								<span id="metal" class="btn pull-right">
+							</td>
+							<td style="vertical-align:middle;">
+								<span id="metal" class="">
 									0
 								</span>
 							</td>
