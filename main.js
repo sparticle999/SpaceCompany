@@ -1,8 +1,8 @@
-var gas = 0; var gasGain = 1;
-var oil = 0; var oilGain = 1;
-var metal = 0; var metalGain = 1;
-var stone = 0; var stoneGain = 1;
-var wood = 0; var woodGain = 1;
+var gas = 0; var gasStorage = 50; var gasGain = 1;
+var oil = 0; var oilStorage = 50; var oilGain = 1;
+var metal = 0; var metalStorage = 50; var metalGain = 1;
+var stone = 0; var stoneStorage = 50; var stoneGain = 1;
+var wood = 0; var woodStorage = 50; var woodGain = 1;
 var science = 0; var scienceGain = 1;
 
 function refresh(){
@@ -15,28 +15,38 @@ function refresh(){
 }
 
 function gainGas(){
-	gas += gasGain;
-	refresh();
+	if(gas < gasStorage){
+		gas += gasGain;
+		refresh();
+	}
 }
 
 function gainOil(){
-	oil += oilGain;
-	refresh();
+	if(oil < oilStorage){
+		oil += oilGain;
+		refresh();
+	}
 }
 
 function gainMetal(){
-	metal += metalGain;
-	refresh();
+	if(metal < metalStorage){
+		metal += metalGain;
+		refresh();
+	}
 }
 
 function gainStone(){
-	stone += stoneGain;
-	refresh();
+	if(stone < stoneStorage){
+		stone += stoneGain;
+		refresh();
+	}
 }
 
 function gainWood(){
-	wood += woodGain;
-	refresh();
+	if(wood < woodStorage){
+		wood += woodGain;
+		refresh();
+	}
 }
 
 function gainScience(){
@@ -71,6 +81,7 @@ function unlockGas(){
 		document.getElementById("gasNav").className = "";
 		document.getElementById("oilNav1").style.border = "";
 		document.getElementById("oilNav2").style.border = "";
+		refresh();
 	}
 	else{
 		alert("Not enough Science");
@@ -85,6 +96,7 @@ function unlockOil(){
 		document.getElementById("oilNav").className = "";
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
+		refresh();
 	}
 	else{
 		alert("Not enough Science");
