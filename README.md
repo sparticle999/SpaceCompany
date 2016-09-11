@@ -5,6 +5,9 @@ An incremental game about Space Mining
 
 0.0.2 Alpha
 - Added more content to Research
+- Added Resource Tech Tree and Space Tech Tree
+- Changed the crafting tab UI
+- Added descriptions to all items
 
 0.0.1 Alpha
 - Added initial graphics and gameplay
