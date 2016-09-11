@@ -305,6 +305,11 @@
 									Metal
 								</span>
 							</td>
+							<td style="border: none; vertical-align:middle;">
+								<span>
+									<span id="metalps">0</span>/Sec
+								</span>
+							</td>
 						</tr>
     					<tr href="#stoneCraftingTab" aria-controls="stoneCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
@@ -312,11 +317,21 @@
 									Stone
 								</span>
 							</td>
+							<td style="vertical-align:middle;">
+								<span>
+									<span id="stoneps">0</span>/Sec
+								</span>
+							</td>
 						</tr>
     					<tr href="#woodCraftingTab" aria-controls="woodCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td style="vertical-align:middle;">
 								<span>
 									Wood
+								</span>
+							</td>
+							<td style="vertical-align:middle;">
+								<span>
+									<span id="woodps">0</span>/Sec
 								</span>
 							</td>
 						</tr>
@@ -339,11 +354,16 @@
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Miner
+											Miner: <span id="miner">0</span>
 										</h3>
 										<span>
-											Some Text
+											Build a pickaxe for your Miner.
+											<br>
+											Costs 10 Metal, 5 Wood.
 										</span>
+										<br>
+										<br>
+										<button onclick="getMiner()" class="btn btn-default">Button 1</button>
 									</td>
 								</tr>
 							</table>
@@ -365,11 +385,16 @@
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Digger
+											Digger: <span id="digger">0</span>
 										</h3>
 										<span>
-											Some Text
+											Build a pickaxe for your digger.
+											<br>
+											Costs 10 Metal, 5 Wood.
 										</span>
+										<br>
+										<br>
+										<button onclick="getDigger()" class="btn btn-default">Button 1</button>
 									</td>
 								</tr>
 							</table>
@@ -391,11 +416,16 @@
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Woodcutter
+											Woodcutter: <span id="woodcutter">0</span>
 										</h3>
 										<span>
-											Some Text
+											Build an axe for your woodcutter.
+											<br>
+											Costs 10 Metal, 5 Wood.
 										</span>
+										<br>
+										<br>
+										<button onclick="getWoodcutter()" class="btn btn-default">Button 1</button>
 									</td>
 								</tr>
 							</table>
@@ -478,7 +508,7 @@
 										<span>
 											Build a laboratory of your very own to double your Science per click.
 											<br>
-											Costs 20 Science, 20 Metal
+											Costs 20 Science, 20 Metal.
 										</span>
 										<br>
 										<br>
