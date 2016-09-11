@@ -266,7 +266,7 @@
 											</tr>
 											<tr>
 												<td>
-													
+
 												</td>
 											</tr>
 										</table>
@@ -318,7 +318,7 @@
 											Oil is used for machines to gather resources.
 											Unlocking Oil gives access to oil wells and fracking.
 											<br>
-											It costs 50 Science.
+											Costs 50 Science.
 										</span>
 										<br>
 										<br>
@@ -336,7 +336,7 @@
 											Gas is used for quickly processing Metal.
 											Unlocking Gas gives access to land and ocean drilling.
 											<br>
-											It costs 100 Science.
+											Costs 100 Science.
 										</span>
 										<br>
 										<br>
@@ -373,7 +373,12 @@
     					<tr href="#research1Tab" aria-controls="research1Tab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border:none; vertical-align:middle;">
 								<span>
-									Research #1
+									Science
+								</span>
+							</td>
+							<td style="border:none; vertical-align:middle;">
+								<span id="science">
+									0
 								</span>
 							</td>
 						</tr>
@@ -383,12 +388,16 @@
 									Research #2
 								</span>
 							</td>
+							<td>
+							</td>
 						</tr>
     					<tr href="#research3Tab" aria-controls="research3Tab" role="tab" data-toggle="tab" style="height:60px;">
     						<td style="vertical-align:middle;">
 								<span>
 									Research #3
 								</span>
+							</td>
+							<td>
 							</td>
 						</tr>
 					</table>
@@ -400,29 +409,31 @@
 								<tr>
 									<td style="border:none;">
 										<h3 class="pointer btn-link">
-											Research #1,1
+											Science
 										</h3>
 										<span>
-											Some Text
+											Science is used for researching new resources and improving how quickly you get resources. It is fundamental to progressing through the game.
 										</span>
 										<br>
 										<br>
-										<button onclick="" class="btn btn-default">Button 1</button>
+										<button onclick="gainScience()" class="btn btn-default">Gain <span id="scienceGain">1</span></button>
 										<br>
 										<br>
 									</td>
 								</tr>
-								<tr>
+								<tr id="labTab">
 									<td>
 										<h3 class="pointer btn-link">
-											Research #1,2
+											Laboratory
 										</h3>
 										<span>
-											Some Text
+											Build a laboratory of your very own to double your Science per click.
+											<br>
+											Costs 20 Science, 20 Metal
 										</span>
 										<br>
 										<br>
-										<button onclick="" class="btn btn-default">Button 2</button>
+										<button onclick="buildLab()" class="btn btn-default">Build</button>
 										<br>
 										<br>
 									</td>
