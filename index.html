@@ -38,7 +38,7 @@
 
   <!-- Nav tabs -->
   		<ul class="nav nav-tabs no-select" role="tablist">
-   			<li role="presentation" class="active"><a href="#mining" aria-controls="mining" role="tab" data-toggle="tab">Mining</a></li>
+   			<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
    			<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
    			<li role="presentation" id="researchTab" class=""><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
 	    	<li role="presentation" id="spaceTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
@@ -87,8 +87,8 @@
   <!-- Tab panes -->
 
   		<div class="tab-content">
-  			<!-- Mining -->
-    		<div role="tabpanel" class="tab-pane fade in active" id="mining">
+  			<!-- Resources -->
+    		<div role="tabpanel" class="tab-pane fade in active" id="resources">
 	    		<table style="max-width:100%">
 	    			<tr>
 	    				<td>
@@ -289,83 +289,48 @@
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
     			<div class="container" style="width:200px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#unlockResourceTab" aria-controls="unlockResourceTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="border:none; vertical-align:middle;">
+    					<tr href="#thing1Tab" aria-controls="thing1Tab" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="border: none; vertical-align:middle;">
 								<span>
-									Unlock Other Resources
+									Metal
 								</span>
 							</td>
 						</tr>
     					<tr href="#thing2Tab" aria-controls="thing2Tab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
 								<span>
-									Crafting Thingy #2
+									Stone
 								</span>
 							</td>
 						</tr>
     					<tr href="#thing3Tab" aria-controls="thing3Tab" role="tab" data-toggle="tab" style="height:60px;">
     						<td style="vertical-align:middle;">
 								<span>
-									Crafting Thingy #3
+									Wood
 								</span>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="tab-content">
-					<div id="unlockResourceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="thing1Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<table class="table">
-								<tr id="unlockOil">
-									<td style="border:none;">
-										<h3 class="pointer btn-link">
-											Oil
-										</h3>
-										<span>
-											Oil is used for machines to gather resources.
-											Unlocking Oil gives access to oil wells and fracking.
-											<br>
-											Costs 50 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockGas">
-									<td>
-										<h3 class="pointer btn-link">
-											Gas
-										</h3>
-										<span>
-											Gas is used for quickly processing Metal.
-											Unlocking Gas gives access to land and ocean drilling.
-											<br>
-											Costs 100 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockGas()" class="btn btn-default">Unlock Gas</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
+							<h3 onclick="" class="pointer btn-link">
+								Metal
+							</h3>
 						</div>
 					</div>
 					<div id="thing2Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
 							<h3 onclick="" class="pointer btn-link">
-								Thing #2
+								Stone
 							</h3>
 						</div>
 					</div>
 					<div id="thing3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
 							<h3 onclick="" class="pointer btn-link">
-								Thing #3
+								Wood
 							</h3>
 						</div>
 					</div>
@@ -377,7 +342,7 @@
     		<div role="tabpanel" class="tab-pane fade" id="research">
     			<div class="container" style="width:200px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#research1Tab" aria-controls="research1Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border:none; vertical-align:middle;">
 								<span>
 									Science
@@ -389,28 +354,24 @@
 								</span>
 							</td>
 						</tr>
-    					<tr href="#research2Tab" aria-controls="research2Tab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
+    					<tr href="#unlockResourceTab" aria-controls="unlockResourceTab" role="tab" data-toggle="tab" style="height:60px;">
+							<td colspan="2" style="vertical-align:middle;">
 								<span>
-									Research #2
+									Unlock Resources
 								</span>
-							</td>
-							<td>
 							</td>
 						</tr>
     					<tr href="#research3Tab" aria-controls="research3Tab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td style="vertical-align:middle;">
+    						<td colspan="2" style="vertical-align:middle;">
 								<span>
 									Research #3
 								</span>
-							</td>
-							<td>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="tab-content">
-					<div id="research1Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
 							<table class="table">
 								<tr>
@@ -448,11 +409,46 @@
 							</table>
 						</div>
 					</div>
-					<div id="research2Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="unlockResourceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<h3 onclick="" class="pointer btn-link">
-								Research #2
-							</h3>
+							<table class="table">
+								<tr id="unlockOil">
+									<td>
+										<h3 class="pointer btn-link">
+											Oil
+										</h3>
+										<span>
+											Oil is used for machines to gather resources.
+											Unlocking Oil gives access to oil wells and fracking.
+											<br>
+											Costs 50 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockGas">
+									<td>
+										<h3 class="pointer btn-link">
+											Gas
+										</h3>
+										<span>
+											Gas is used for quickly processing Metal.
+											Unlocking Gas gives access to land and ocean drilling.
+											<br>
+											Costs 100 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockGas()" class="btn btn-default">Unlock Gas</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 					<div id="research3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
