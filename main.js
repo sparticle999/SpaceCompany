@@ -152,9 +152,6 @@ function unlockGas(){
 		document.getElementById("oilNav2").style.border = "";
 		refresh();
 	}
-	else{
-		alert("Not enough Science");
-	}
 }
 
 function unlockOil(){
@@ -166,9 +163,6 @@ function unlockOil(){
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
 		refresh();
-	}
-	else{
-		alert("Not enough Science");
 	}
 }
 
