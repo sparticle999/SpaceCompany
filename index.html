@@ -174,9 +174,9 @@
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 class="pointer btn-link">
+													<h2 class="pointer btn-link">
 														Gas
-													</h3>
+													</h2>
 													<span>
 														Some Text
 													</span>
@@ -195,9 +195,9 @@
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 class="pointer btn-link">
+													<h2 class="pointer btn-link">
 														Oil
-													</h3>
+													</h2>
 													<span>
 														Some Text
 													</span>
@@ -216,9 +216,9 @@
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 class="pointer btn-link">
+													<h2 class="pointer btn-link">
 														Metal
-													</h3>
+													</h2>
 													<span>
 														Some Text
 													</span>
@@ -242,9 +242,9 @@
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 class="pointer btn-link">
+													<h2 class="pointer btn-link">
 														Stone
-													</h3>
+													</h2>
 													<span>
 														Some Text
 													</span>
@@ -268,9 +268,9 @@
 										<table class="table">
 											<tr>
 												<td style="border:none;">
-													<h3 class="pointer btn-link">
+													<h2 class="pointer btn-link">
 														Wood
-													</h3>
+													</h2>
 													<span>
 														Some Text
 													</span>
@@ -299,21 +299,21 @@
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
     			<div class="container" style="width:200px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#thing1Tab" aria-controls="thing1Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#metalCraftingTab" aria-controls="metalCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border: none; vertical-align:middle;">
 								<span>
 									Metal
 								</span>
 							</td>
 						</tr>
-    					<tr href="#thing2Tab" aria-controls="thing2Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#stoneCraftingTab" aria-controls="stoneCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
 								<span>
 									Stone
 								</span>
 							</td>
 						</tr>
-    					<tr href="#thing3Tab" aria-controls="thing3Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#woodCraftingTab" aria-controls="woodCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td style="vertical-align:middle;">
 								<span>
 									Wood
@@ -323,25 +323,82 @@
 					</table>
 				</div>
 				<div class="tab-content">
-					<div id="thing1Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="metalCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<h3 onclick="" class="pointer btn-link">
-								Metal
-							</h3>
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Metal
+										</h2>
+										<span>
+											This is where you upgrade your metal production.
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Miner
+										</h3>
+										<span>
+											Some Text
+										</span>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<div id="thing2Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="stoneCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<h3 onclick="" class="pointer btn-link">
-								Stone
-							</h3>
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Stone
+										</h2>
+										<span>
+											This is where you upgrade your stone production.
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Digger
+										</h3>
+										<span>
+											Some Text
+										</span>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<div id="thing3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="woodCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<h3 onclick="" class="pointer btn-link">
-								Wood
-							</h3>
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Wood
+										</h2>
+										<span>
+											This is where you upgrade your wood production.
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Woodcutter
+										</h3>
+										<span>
+											Some Text
+										</span>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -378,17 +435,31 @@
 								</span>
 							</td>
 						</tr>
+						<tr href="#research4Tab" aria-controls="research4Tab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td colspan="2" style="vertical-align:middle;">
+								<span>
+									Research #4
+								</span>
+							</td>
+						</tr>
+						<tr href="#research5Tab" aria-controls="research5Tab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td colspan="2" style="vertical-align:middle;">
+								<span>
+									Research #5
+								</span>
+							</td>
+						</tr>
 					</table>
 				</div>
 				<div class="tab-content">
 					<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
 									<td style="border:none;">
-										<h3 class="pointer btn-link">
+										<h2 class="pointer btn-link">
 											Science
-										</h3>
+										</h2>
 										<span>
 											Science is used for researching new resources and improving how quickly you get resources. It is fundamental to progressing through the game.
 										</span>
@@ -420,8 +491,18 @@
 						</div>
 					</div>
 					<div id="unlockResourceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Unlock Resources
+										</h2>
+										<span>
+											Unlocking allows you to gain different types resources to allow you to progress.
+										</span>
+									</td>
+								</tr>
 								<tr id="unlockOil">
 									<td>
 										<h3 class="pointer btn-link">
@@ -463,9 +544,9 @@
 					</div>
 					<div id="research3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
-							<h3 onclick="" class="pointer btn-link">
+							<h2 class="pointer btn-link">
 								Research #3
-							</h3>
+							</h2>
 						</div>
 					</div>
 				</div>
