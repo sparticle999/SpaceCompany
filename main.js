@@ -65,6 +65,7 @@ function buildLab(){
 
 function unlockGas(){
 	if(science >= 100){
+		science -= 100;
 		gasUnlock = true;
 		document.getElementById("unlockGas").className = "hidden";
 		document.getElementById("gasNav").className = "";
@@ -78,6 +79,7 @@ function unlockGas(){
 
 function unlockOil(){
 	if(science >= 50){
+		science -= 50;
 		oilUnlock = true;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "";
