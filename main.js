@@ -96,6 +96,8 @@ function gainScience(){
 
 function getMiner(){
 	if(metal >= 10 && wood >= 5){
+		metal -= 10;
+		wood -= 5;
 		miner += 1;
 		document.getElementById("miner").innerHTML = miner;
 		refresh();
@@ -105,6 +107,8 @@ function getMiner(){
 
 function getDigger(){
 	if(metal >= 10 && wood >= 5){
+		metal -= 10;
+		wood -= 5;
 		digger += 1;
 		document.getElementById("digger").innerHTML = digger;
 		refresh();
@@ -114,6 +118,8 @@ function getDigger(){
 
 function getWoodcutter(){
 	if(metal >= 10 && wood >= 5){
+		metal -= 10;
+		wood -= 5;
 		woodcutter += 1;
 		document.getElementById("woodcutter").innerHTML = woodcutter;
 		refresh();
