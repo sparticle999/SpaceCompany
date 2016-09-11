@@ -14,6 +14,9 @@ function refresh(){
 	document.getElementById("metal").innerHTML = metal;
 	document.getElementById("stone").innerHTML = stone;
 	document.getElementById("wood").innerHTML = wood;
+	document.getElementById("metal2").innerHTML = metal;
+	document.getElementById("stone2").innerHTML = stone;
+	document.getElementById("wood2").innerHTML = wood;
 	document.getElementById("science").innerHTML = science;
 }
 
@@ -92,24 +95,30 @@ function gainScience(){
 // Crafting Tab
 
 function getMiner(){
-	miner += 1;
-	document.getElementById("miner").innerHTML = miner;
-	refresh();
-	refreshPerSec();
+	if(metal >= 10 && wood >= 5){
+		miner += 1;
+		document.getElementById("miner").innerHTML = miner;
+		refresh();
+		refreshPerSec();
+	}
 }
 
 function getDigger(){
-	digger += 1;
-	document.getElementById("digger").innerHTML = digger;
-	refresh();
-	refreshPerSec();
+	if(metal >= 10 && wood >= 5){
+		digger += 1;
+		document.getElementById("digger").innerHTML = digger;
+		refresh();
+		refreshPerSec();
+	}
 }
 
 function getWoodcutter(){
-	woodcutter += 1;
-	document.getElementById("woodcutter").innerHTML = woodcutter;
-	refresh();
-	refreshPerSec();
+	if(metal >= 10 && wood >= 5){
+		woodcutter += 1;
+		document.getElementById("woodcutter").innerHTML = woodcutter;
+		refresh();
+		refreshPerSec();
+	}
 }
 
 // Research Tab
