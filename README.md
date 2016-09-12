@@ -8,6 +8,7 @@ An incremental game about Space Mining
 - Added Resource Tech Tree and Space Tech Tree
 - Changed the crafting tab UI
 - Added descriptions to all items
+- Added max storage upgrades
 
 0.0.1 Alpha
 - Added initial graphics and gameplay
