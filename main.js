@@ -2,7 +2,7 @@ var gas = 0; var gasStorage = 50; var gasGain = 1;
 var oil = 0; var oilStorage = 50; var oilGain = 1;
 var metal = 0; var metalStorage = 50; var metalGain = 1; var metalps = 0;
 	var miner = 0; var minerGain = 1;
-var stone = 0; var stoneStorage = 50; var stoneGain = 1; var stoneps = 0;
+var gem = 0; var gemStorage = 50; var gemGain = 1; var gemps = 0;
 	var digger = 0; var diggerGain = 1;
 var wood = 0; var woodStorage = 50; var woodGain = 1; var woodps = 0;
 	var woodcutter = 0; var woodcutterGain = 1;
@@ -12,20 +12,20 @@ function refresh(){
 	document.getElementById("gas").innerHTML = gas;
 	document.getElementById("oil").innerHTML = oil;
 	document.getElementById("metal").innerHTML = metal;
-	document.getElementById("stone").innerHTML = stone;
+	document.getElementById("gem").innerHTML = gem;
 	document.getElementById("wood").innerHTML = wood;
 	document.getElementById("metal2").innerHTML = metal;
-	document.getElementById("stone2").innerHTML = stone;
+	document.getElementById("gem2").innerHTML = gem;
 	document.getElementById("wood2").innerHTML = wood;
 	document.getElementById("science").innerHTML = science;
 }
 
 function refreshPerSec(){
 	metalps = (miner * minerGain)+(0 * 0)+(0 * 0);
-	stoneps = (digger * diggerGain)+(0 * 0)+(0 * 0);
+	gemps = (digger * diggerGain)+(0 * 0)+(0 * 0);
 	woodps = (woodcutter * woodcutterGain)+(0 * 0)+(0 * 0);
 	document.getElementById("metalps").innerHTML = metalps;
-	document.getElementById("stoneps").innerHTML = stoneps;
+	document.getElementById("gemps").innerHTML = gemps;
 	document.getElementById("woodps").innerHTML = woodps;
 }
 
@@ -36,11 +36,11 @@ function gainResources(){
 	else{
 		metal = metalStorage;
 	}
-	if(stone + stoneps < stoneStorage){
-		stone += stoneps;
+	if(gem + gemps < gemStorage){
+		gem += gemps;
 	}
 	else{
-		stone = stoneStorage;
+		gem = gemStorage;
 	}
 	if(wood + woodps < woodStorage){
 		wood += woodps;
@@ -73,9 +73,9 @@ function gainMetal(){
 	}
 }
 
-function gainStone(){
-	if(stone < stoneStorage){
-		stone += stoneGain;
+function gainGem(){
+	if(gem < gemStorage){
+		gem += gemGain;
 		refresh();
 	}
 }
@@ -129,6 +129,8 @@ function getWoodcutter(){
 
 // Research Tab
 
+	//Science Tab
+
 function buildLab(){
 	if(science >= 20){
 		if(metal >= 20){
@@ -148,10 +150,11 @@ function buildLab(){
 	}
 }
 
+	//Unlock Resources Tab
+
 function unlockGas(){
 	if(science >= 100){
 		science -= 100;
-		gasUnlock = true;
 		document.getElementById("unlockGas").className = "hidden";
 		document.getElementById("gasNav").className = "";
 		document.getElementById("oilNav1").style.border = "";
@@ -163,7 +166,6 @@ function unlockGas(){
 function unlockOil(){
 	if(science >= 50){
 		science -= 50;
-		oilUnlock = true;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "";
 		document.getElementById("metalNav1").style.border = "";
@@ -171,6 +173,22 @@ function unlockOil(){
 		refresh();
 	}
 }
+
+	//Resource Tech Tree Tab
+
+function unlockStorage(){
+	if(science >= 100){
+		science -= 100;
+		document.getElementById("unlockStorage").className = "hidden";
+		document.getElementById("gasStorageUpgrade").className = "";
+		document.getElementById("oilStorageUpgrade").className = "";
+		document.getElementById("metalStorageUpgrade").className = "";
+		document.getElementById("gemStorageUpgrade").className = "";
+		document.getElementById("woodStorageUpgrade").className = "";
+	}
+}
+
+	//Space Tech Tree Tab
 
 window.setInterval(function(){
 	gainResources();
