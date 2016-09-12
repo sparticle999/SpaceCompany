@@ -324,7 +324,7 @@
     					<tr href="#gemCraftingTab" aria-controls="gemCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
 								<span>
-									Gem
+									Gems
 								</span>
 							</td>
 							<td style="vertical-align:middle;">
@@ -377,13 +377,13 @@
 											Storage Upgrade
 										</h3>
 										<span>
-											Upgrade your metal storage size
+											Upgrade your metal storage size to <span id="metalNextStorage">100</span>
 											<br>
 											Costs 50 metal
 										</span>
 										<br>
 										<br>
-										<button onclick="getMiner()" class="btn btn-default">Button 1</button>
+										<button onclick="upgradeMetalStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
@@ -410,7 +410,7 @@
 								<tr>
 									<td style="border: none;">
 										<h2 class="pointer btn-link">
-											Gem
+											Gems
 										</h2>
 										<span>
 											This is where you upgrade your gem production.
@@ -420,7 +420,7 @@
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Extractor: <span id="digger">0</span>
+											Extractor: <span id="extractor">0</span>
 										</h3>
 										<span>
 											Build an extractor to mine gems.
