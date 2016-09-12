@@ -3,7 +3,7 @@ var oil = 0; var oilStorage = 50; var oilGain = 1;
 var metal = 0; var metalStorage = 50; var metalGain = 1; var metalps = 0;
 	var miner = 0; var minerGain = 1;
 var gem = 0; var gemStorage = 50; var gemGain = 1; var gemps = 0;
-	var digger = 0; var diggerGain = 1;
+	var extractor = 0; var extractorGain = 1;
 var wood = 0; var woodStorage = 50; var woodGain = 1; var woodps = 0;
 	var woodcutter = 0; var woodcutterGain = 1;
 var science = 0; var scienceGain = 1;
@@ -22,7 +22,7 @@ function refresh(){
 
 function refreshPerSec(){
 	metalps = (miner * minerGain)+(0 * 0)+(0 * 0);
-	gemps = (digger * diggerGain)+(0 * 0)+(0 * 0);
+	gemps = (extractor * extractorGain)+(0 * 0)+(0 * 0);
 	woodps = (woodcutter * woodcutterGain)+(0 * 0)+(0 * 0);
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
@@ -105,12 +105,11 @@ function getMiner(){
 	}
 }
 
-function getDigger(){
-	if(metal >= 10 && wood >= 5){
-		metal -= 10;
-		wood -= 5;
-		digger += 1;
-		document.getElementById("digger").innerHTML = digger;
+function getExtractor(){
+	if(metal >= 30){
+		metal -= 30;
+		extractor += 1;
+		document.getElementById("extractor").innerHTML = extractor;
 		refresh();
 		refreshPerSec();
 	}
