@@ -91,7 +91,7 @@
 	    		<table style="max-width:100%">
 	    			<tr>
 	    				<td>
-			    			<div class="container" style="width:200px; float:left;">
+			    			<div class="container" style="width:250px; float:left;">
 			    				<table class="table table-hover text-primary no-select pointer">
 			    					<tr id="gasNav" class="hidden" href="#gasTab" aria-controls="gasTab" role="tab" data-toggle="tab" style="height:60px;">
 			    						<td style="border:none; vertical-align:middle;">
@@ -99,7 +99,7 @@
 												Gas
 											</span>
 										</td>
-										<td style="border:none; vertical-align:middle;">
+										<td style="border:none; vertical-align:middle; text-align:right;">
 											<span id="gas">
 												0
 											</span>
@@ -113,7 +113,7 @@
 												Oil
 											</span>
 										</td>
-										<td id="oilNav2" style="border:none; vertical-align:middle;">
+										<td id="oilNav2" style="border:none; vertical-align:middle; text-align:right;">
 											<span id="oil">
 												0
 											</span>
@@ -127,7 +127,7 @@
 												Metal
 											</span>
 										</td>
-										<td id="metalNav2" style="border:none; vertical-align:middle;">
+										<td id="metalNav2" style="border:none; vertical-align:middle; text-align:right;">
 											<span id="metal">
 												0
 											</span>
@@ -141,7 +141,7 @@
 												Gems
 											</span>
 										</td>
-										<td style="vertical-align:middle;">
+										<td style="vertical-align:middle; text-align:right;">
 											<span id="gem">
 												0
 											</span>
@@ -155,7 +155,7 @@
 												Wood
 											</span>
 										</td>
-										<td style="vertical-align:middle;">
+										<td style="vertical-align:middle; text-align:right;">
 											<span id="wood">
 												0
 											</span>
@@ -169,7 +169,7 @@
 						<td style="vertical-align:top; width:100%">
 							<div class="tab-content">
 								<div id="gasTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:900px;">
+									<div class="container" style="max-width:800px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
@@ -193,7 +193,7 @@
 									</div>
 								</div>	
 								<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:900px;">
+									<div class="container" style="max-width:800px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
@@ -217,7 +217,7 @@
 									</div>
 								</div>	
 								<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:900px;">
+									<div class="container" style="max-width:800px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
@@ -243,7 +243,7 @@
 									</div>
 								</div>							
 								<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:900px;">
+									<div class="container" style="max-width:800px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
@@ -269,7 +269,7 @@
 									</div>
 								</div>
 								<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-									<div class="container" style="max-width:900px;">
+									<div class="container" style="max-width:800px;">
 										<table class="table">
 											<tr>
 												<td style="border:none;">
@@ -302,7 +302,7 @@
 
     		<!-- Crafting -->
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
-    			<div class="container" style="width:200px; float:left;">
+    			<div class="container" style="width:250px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
     					<tr href="#metalCraftingTab" aria-controls="metalCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border: none; vertical-align:middle;">
@@ -310,14 +310,16 @@
 									Metal
 								</span>
 							</td>
-							<td style="border: none; vertical-align:middle;">
+							<td style="border: none; vertical-align:middle; text-align:center;">
 								<span>
 									<span id="metalps">0</span>/Sec
 								</span>
 							</td>
-							<td style="border: none; vertical-align:middle;">
+							<td style="border: none; vertical-align:middle; text-align:right;">
 								<span>
 									<span id="metal2">0</span>
+									/
+									<span id="metalStorage2">50</span>
 								</span>
 							</td>
 						</tr>
@@ -327,14 +329,16 @@
 									Gems
 								</span>
 							</td>
-							<td style="vertical-align:middle;">
+							<td style="vertical-align:middle; text-align:center;">
 								<span>
 									<span id="gemps">0</span>/Sec
 								</span>
 							</td>
-							<td style="vertical-align:middle;">
+							<td style="vertical-align:middle; text-align:right;">
 								<span>
 									<span id="gem2">0</span>
+									/
+									<span id="gemStorage2">50</span>
 								</span>
 							</td>
 						</tr>
@@ -344,14 +348,16 @@
 									Wood
 								</span>
 							</td>
-							<td style="vertical-align:middle;">
+							<td style="vertical-align:middle; text-align:center;">
 								<span>
 									<span id="woodps">0</span>/Sec
 								</span>
 							</td>
-							<td style="vertical-align:middle;">
+							<td style="vertical-align:middle; text-align:right;">
 								<span>
 									<span id="wood2">0</span>
+									/
+									<span id="woodStorage2">50</span>
 								</span>
 							</td>
 						</tr>
@@ -359,7 +365,7 @@
 				</div>
 				<div class="tab-content">
 					<div id="metalCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
 									<td style="border: none;">
@@ -371,15 +377,15 @@
 										</span>
 									</td>
 								</tr>
-								<tr>
+								<tr id="metalStorageUpgrade" class="hidden">
 									<td>
 										<h3 class="pointer btn-link">
 											Storage Upgrade
 										</h3>
 										<span>
-											Upgrade your metal storage size to <span id="metalNextStorage">100</span>
+											Upgrade your metal storage size to <span id="metalNextStorage">100</span>.
 											<br>
-											Costs 50 metal
+											Costs <span id="metalStorageCost">50</span> metal.
 										</span>
 										<br>
 										<br>
@@ -405,7 +411,7 @@
 						</div>
 					</div>
 					<div id="gemCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
 									<td style="border: none;">
@@ -415,6 +421,21 @@
 										<span>
 											This is where you upgrade your gem production.
 										</span>
+									</td>
+								</tr>
+								<tr id="gemStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
+											<br>
+											Costs <span id="gemStorageCost">50</span> gems.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradegemStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
@@ -436,7 +457,7 @@
 						</div>
 					</div>
 					<div id="woodCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
 									<td style="border: none;">
@@ -446,6 +467,21 @@
 										<span>
 											This is where you upgrade your wood production.
 										</span>
+									</td>
+								</tr>
+								<tr id="woodStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
+											<br>
+											Costs <span id="woodStorageCost">50</span> wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradewoodStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
@@ -472,7 +508,7 @@
 
     		<!-- Research -->
     		<div role="tabpanel" class="tab-pane fade" id="research">
-    			<div class="container" style="width:200px; float:left;">
+    			<div class="container" style="width:250px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
     					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border:none; vertical-align:middle;">
@@ -480,7 +516,7 @@
 									Science
 								</span>
 							</td>
-							<td style="border:none; vertical-align:middle;">
+							<td style="border:none; vertical-align:middle; text-align:right;">
 								<span id="science">
 									0
 								</span>
@@ -649,7 +685,7 @@
 						</div>
 					</div>
 					<div id="spaceTechTreeTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:900px;">
+						<div class="container" style="max-width:800px;">
 							<h2 class="pointer btn-link">
 								Space Tech Tree
 							</h2>
