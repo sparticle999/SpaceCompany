@@ -4,11 +4,10 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Space Company</title>
-	<link rel="shortcut icon" type="image/png" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages#changelog"/>
+	<link rel="shortcut icon" type="image/png" href="SpaceCompanyFavicon.png"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Condensed:300,400,700" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -65,13 +64,13 @@
 	    				</a>
 	    			</li>
 	    			<li role="presentation" id="githubTab">
-	    				<a role="menuitem" tabindex="-1" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages/">
+	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages/">
 	    					<span class="glyphicon glyphicon-folder-open"></span>
 	    					Source Code - GitHub
 	    				</a>
 	    			</li>
 	    			<li role="presentation" id="chanelogTab">
-	    				<a role="menuitem" tabindex="-1" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages#changelog">
+	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages#changelog">
 	    					<span class="glyphicon glyphicon-book"></span>
 	    					Changelog
 	    				</a>
@@ -180,11 +179,14 @@
 													<span>
 														Some Text
 													</span>
+													<br>
+													<br>
+													<button onclick="gainGas()" class="btn btn-default">Gain <span id="gasGain">1</span></button>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													<button onclick="gainGas()" class="btn btn-default">Gain <span id="gasGain">1</span></button>
+													
 												</td>
 											</tr>
 										</table>
@@ -201,11 +203,14 @@
 													<span>
 														Some Text
 													</span>
+													<br>
+													<br>
+													<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
+													
 												</td>
 											</tr>
 										</table>
@@ -220,7 +225,7 @@
 														Metal
 													</h2>
 													<span>
-														Some Text
+														Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
 													</span>
 													<br>
 													<br>
@@ -232,7 +237,7 @@
 											<tr>
 												<td>
 													
-												</td>
+												</td>	
 											</tr>
 										</table>
 									</div>
@@ -246,7 +251,7 @@
 														Stone
 													</h2>
 													<span>
-														Some Text
+														Stone is one of the primary resources.
 													</span>
 													<br>
 													<br>
@@ -272,7 +277,7 @@
 														Wood
 													</h2>
 													<span>
-														Some Text
+														Wood is one of the primary resources. It is used more often in early game for tools and buildings.
 													</span>
 													<br>
 													<br>
@@ -473,24 +478,17 @@
 								</span>
 							</td>
 						</tr>
-    					<tr href="#research3Tab" aria-controls="research3Tab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#resourcesTechTreeTab" aria-controls="resourcesTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td colspan="2" style="vertical-align:middle;">
 								<span>
-									Research #3
+									Resources Tech Tree
 								</span>
 							</td>
 						</tr>
-						<tr href="#research4Tab" aria-controls="research4Tab" role="tab" data-toggle="tab" style="height:60px;">
+						<tr href="#spaceTechTreeTab" aria-controls="spaceTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td colspan="2" style="vertical-align:middle;">
 								<span>
-									Research #4
-								</span>
-							</td>
-						</tr>
-						<tr href="#research5Tab" aria-controls="research5Tab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td colspan="2" style="vertical-align:middle;">
-								<span>
-									Research #5
+									Space Tech Tree
 								</span>
 							</td>
 						</tr>
@@ -587,10 +585,58 @@
 							</table>
 						</div>
 					</div>
-					<div id="research3Tab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="resourcesTechTreeTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Resources Tech Tree
+										</h2>
+										<span>
+											This is where you will unlock upgrades for the resources tab.
+										</span>
+									</td>
+								</tr>
+								<tr id="unlockStorage">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrades
+										</h3>
+										<span>
+											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have.
+											<br>
+											Costs 100 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockX">
+									<td>
+										<h3 class="pointer btn-link">
+											Something Else
+										</h3>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockX()" class="btn btn-default">Unlock X</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="spaceTechTreeTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:900px;">
 							<h2 class="pointer btn-link">
-								Research #3
+								Space Tech Tree
 							</h2>
 						</div>
 					</div>
