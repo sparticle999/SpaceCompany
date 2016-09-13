@@ -298,7 +298,7 @@
 			    		</td>
 			    	</tr>
 			    </table>
-			</div>
+				</div>
 
     		<!-- Crafting -->
     		<div role="tabpanel" class="tab-pane fade in" id="crafting">
@@ -692,35 +692,213 @@
 						</div>
 					</div>
 				</div>
-    		</div>
 
     		<!-- Space -->
     		<div role="tabpanel" class="tab-pane fade" id="space">
-    			<div class="container">
-    				
+    			<div role="tabpanel" class="tab-pane fade" id="research">
+    			<div class="container" style="width:250px; float:left;">
+    				<table class="table table-hover text-primary no-select pointer">
+    					<tr href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="border:none; vertical-align:middle;">
+								<span>
+									Science
+								</span>
+							</td>
+							<td style="border:none; vertical-align:middle; text-align:right;">
+								<span id="science">
+									0
+								</span>
+							</td>
+						</tr>
+    					<tr href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
+							<td colspan="2" style="vertical-align:middle;">
+								<span>
+									New Resource Types
+								</span>
+							</td>
+						</tr>
+    					<tr href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
+    						<td colspan="2" style="vertical-align:middle;">
+								<span>
+									Resources Tech Tree
+								</span>
+							</td>
+						</tr>
+						<tr href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
+    						<td colspan="2" style="vertical-align:middle;">
+								<span>
+									Space Tech Tree
+								</span>
+							</td>
+						</tr>
+					</table>
 				</div>
-    		</div>
+				<div class="tab-content">
+					<div id="" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
+										<h2 class="pointer btn-link">
+											Science
+										</h2>
+										<span>
+											Science is used for researching new resources and improving how quickly you get resources. It is fundamental to progressing through the game.
+										</span>
+										<br>
+										<br>
+										<button onclick="gainScience()" class="btn btn-default">Gain <span id="scienceGain">1</span></button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="labTab">
+									<td>
+										<h3 class="pointer btn-link">
+											Laboratory
+										</h3>
+										<span>
+											Build a laboratory of your very own to double your Science per click.
+											<br>
+											Costs 20 Science, 20 Metal.
+										</span>
+										<br>
+										<br>
+										<button onclick="buildLab()" class="btn btn-default">Build</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											New Resources Types
+										</h2>
+										<span>
+											Unlocking new resource types allows you to gain different resources so that you can progress further.
+										</span>
+									</td>
+								</tr>
+								<tr id="unlockOil">
+									<td>
+										<h3 class="pointer btn-link">
+											Oil
+										</h3>
+										<span>
+											Oil is used for machines to gather resources.
+											Unlocking Oil gives access to oil wells and fracking.
+											<br>
+											Costs 50 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockGas">
+									<td>
+										<h3 class="pointer btn-link">
+											Gas
+										</h3>
+										<span>
+											Gas is used for quickly processing Metal.
+											Unlocking Gas gives access to land and ocean drilling.
+											<br>
+											Costs 100 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockGas()" class="btn btn-default">Unlock Gas</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border: none;">
+										<h2 class="pointer btn-link">
+											Resources Tech Tree
+										</h2>
+										<span>
+											This is where you will unlock upgrades for the resources tab.
+										</span>
+									</td>
+								</tr>
+								<tr id="unlockStorage">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrades
+										</h3>
+										<span>
+											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have.
+											<br>
+											Costs 100 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockX">
+									<td>
+										<h3 class="pointer btn-link">
+											Something Else
+										</h3>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockX()" class="btn btn-default">Unlock X</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<h2 class="pointer btn-link">
+								Space Tech Tree
+							</h2>
+						</div>
+					</div>
+				</div>
+				</div>
 
     		<!-- Prestige -->
     		<div role="tabpanel" class="tab-pane fade" id="prestige">
     			<div class="container">
     				
 				</div>
-    		</div>
 
     		<!-- Stats -->
     		<div role="tabpanel" class="tab-pane fade" id="stats">
     			<div class="container">
     				
 				</div>
-    		</div>
 
     		<!-- Settings -->
     		<div role="tabpanel" class="tab-pane fade" id="settings">
     			<div class="container">
     				
 				</div>
-    		</div>
 
     		<!-- Unused -->
     		<div role="tabpanel" class="tab-pane fade" id="">
