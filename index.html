@@ -25,7 +25,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" href="#/changelog">
 					<span class="text-muted small ng-binding">
-						v0.0.2 Alpha
+						v0.0.1 Alpha
 					</span>
 				</a>
 			</div>
@@ -38,7 +38,7 @@
   <!-- Nav tabs -->
   		<ul class="nav nav-tabs no-select" role="tablist">
    			<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-   			<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>
+   			<!--<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>-->
    			<li role="presentation" id="researchTab" class=""><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
 	    	<li role="presentation" id="spaceTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
 	    	<li role="presentation" id="prestigeTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
@@ -88,242 +88,42 @@
   		<div class="tab-content">
   			<!-- Resources -->
     		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-	    		<table style="max-width:100%">
-	    			<tr>
-	    				<td>
-			    			<div class="container" style="width:250px; float:left;">
-			    				<table class="table table-hover text-primary no-select pointer">
-			    					<tr id="gasNav" class="hidden" href="#gasTab" aria-controls="gasTab" role="tab" data-toggle="tab" style="height:60px;">
-			    						<td style="border:none; vertical-align:middle;">
-											<span>
-												Gas
-											</span>
-										</td>
-										<td style="border:none; vertical-align:middle; text-align:right;">
-											<span id="gas">
-												0
-											</span>
-											/
-											<span id="gasStorage">50</span>
-										</td>
-									</tr>
-			    					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
-			    						<td id="oilNav1" style="border:none; vertical-align:middle;">
-											<span>
-												Oil
-											</span>
-										</td>
-										<td id="oilNav2" style="border:none; vertical-align:middle; text-align:right;">
-											<span id="oil">
-												0
-											</span>
-											/
-											<span id="oilStorage">50</span>
-										</td>
-									</tr>
-									<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-			    						<td id="metalNav1" style="border:none; vertical-align:middle;">
-											<span>
-												Metal
-											</span>
-										</td>
-										<td id="metalNav2" style="border:none; vertical-align:middle; text-align:right;">
-											<span id="metal">
-												0
-											</span>
-											/
-											<span id="metalStorage">50</span>
-										</td>
-									</tr>
-			    					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
-										<td style="vertical-align:middle;">
-											<span>
-												Gems
-											</span>
-										</td>
-										<td style="vertical-align:middle; text-align:right;">
-											<span id="gem">
-												0
-											</span>
-											/
-											<span id="gemStorage">50</span>
-										</td>
-									</tr>
-									<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
-										<td style="vertical-align:middle;">
-											<span>
-												Wood
-											</span>
-										</td>
-										<td style="vertical-align:middle; text-align:right;">
-											<span id="wood">
-												0
-											</span>
-											/
-											<span id="woodStorage">50</span>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</td>
-						<td style="vertical-align:top; width:100%">
-							<div class="tab-content">
-								<div id="gasTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:800px;">
-										<table class="table">
-											<tr>
-												<td style="border:none;">
-													<h2 class="pointer btn-link">
-														Gas
-													</h2>
-													<span>
-														Some Text
-													</span>
-													<br>
-													<br>
-													<button onclick="gainGas()" class="btn btn-default">Gain <span id="gasGain">1</span></button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													
-												</td>
-											</tr>
-										</table>
-									</div>
-								</div>	
-								<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:800px;">
-										<table class="table">
-											<tr>
-												<td style="border:none;">
-													<h2 class="pointer btn-link">
-														Oil
-													</h2>
-													<span>
-														Some Text
-													</span>
-													<br>
-													<br>
-													<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													
-												</td>
-											</tr>
-										</table>
-									</div>
-								</div>	
-								<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:800px;">
-										<table class="table">
-											<tr>
-												<td style="border:none;">
-													<h2 class="pointer btn-link">
-														Metal
-													</h2>
-													<span>
-														Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
-													</span>
-													<br>
-													<br>
-													<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
-													<br>
-													<br>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													
-												</td>	
-											</tr>
-										</table>
-									</div>
-								</div>							
-								<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-									<div class="container" style="max-width:800px;">
-										<table class="table">
-											<tr>
-												<td style="border:none;">
-													<h2 class="pointer btn-link">
-														Gems
-													</h2>
-													<span>
-														Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
-													</span>
-													<br>
-													<br>
-													<button onclick="gainGem()" class="btn btn-default">Gain <span id="gemGain">1</span></button>
-													<br>
-													<br>
-												</td>
-											</tr>
-											<tr>
-												<td>
-
-												</td>
-											</tr>
-										</table>
-									</div>
-								</div>
-								<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-									<div class="container" style="max-width:800px;">
-										<table class="table">
-											<tr>
-												<td style="border:none;">
-													<h2 class="pointer btn-link">
-														Wood
-													</h2>
-													<span>
-														Wood is one of the primary resources. It is used more often in early game for tools and buildings.
-													</span>
-													<br>
-													<br>
-													<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
-													<br>
-													<br>
-												</td>
-											</tr>
-											<tr>
-												<td>
-
-												</td>
-											</tr>
-										</table>
-									</div>
-								</div>
-							</div>
-			    		</td>
-			    	</tr>
-			    </table>
-			</div>
-
-    		<!-- Crafting -->
-    		<div role="tabpanel" class="tab-pane fade in" id="crafting">
     			<div class="container" style="width:250px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#metalCraftingTab" aria-controls="metalCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="border: none; vertical-align:middle;">
+    					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td id="oilNav1" style="border:none; vertical-align:middle;">
+								<span>
+									Oil
+								</span>
+							</td>
+							<td id="oilNav2" style="border:none; vertical-align:middle; text-align:right;">
+								<span id="oil">
+									0
+								</span>
+								/
+								<span id="oilStorage">50</span>
+							</td>
+						</tr>
+						<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td id="metalNav1" style="border:none; vertical-align:middle;">
 								<span>
 									Metal
 								</span>
 							</td>
-							<td style="border: none; vertical-align:middle; text-align:center;">
+							<td id="metalNav2" style="border: none; vertical-align:middle; text-align:center;">
 								<span>
 									<span id="metalps">0</span>/Sec
 								</span>
 							</td>
-							<td style="border: none; vertical-align:middle; text-align:right;">
-								<span>
-									<span id="metal2">0</span>
-									/
-									<span id="metalStorage2">50</span>
+							<td id="metalNav3" style="border:none; vertical-align:middle; text-align:right;">
+								<span id="metal">
+									0
 								</span>
+								/
+								<span id="metalStorage">50</span>
 							</td>
 						</tr>
-    					<tr href="#gemCraftingTab" aria-controls="gemCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
 								<span>
 									Gems
@@ -335,15 +135,15 @@
 								</span>
 							</td>
 							<td style="vertical-align:middle; text-align:right;">
-								<span>
-									<span id="gem2">0</span>
-									/
-									<span id="gemStorage2">50</span>
+								<span id="gem">
+									0
 								</span>
+								/
+								<span id="gemStorage">50</span>
 							</td>
 						</tr>
-    					<tr href="#woodCraftingTab" aria-controls="woodCraftingTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td style="vertical-align:middle;">
+						<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="vertical-align:middle;">
 								<span>
 									Wood
 								</span>
@@ -354,27 +154,56 @@
 								</span>
 							</td>
 							<td style="vertical-align:middle; text-align:right;">
-								<span>
-									<span id="wood2">0</span>
-									/
-									<span id="woodStorage2">50</span>
+								<span id="wood">
+									0
 								</span>
+								/
+								<span id="woodStorage">50</span>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="tab-content">
-					<div id="metalCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
-									<td style="border: none;">
+									<td style="border:none;">
+										<h2 class="pointer btn-link">
+											Oil
+										</h2>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>	
+					<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
 										<h2 class="pointer btn-link">
 											Metal
 										</h2>
 										<span>
-											This is where you upgrade your metal production.
+											Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
 										</span>
+										<br>
+										<br>
+										<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
+										<br>
+										<br>
 									</td>
 								</tr>
 								<tr id="metalStorageUpgrade" class="hidden">
@@ -409,18 +238,23 @@
 								</tr>
 							</table>
 						</div>
-					</div>
-					<div id="gemCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					</div>							
+					<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
-									<td style="border: none;">
+									<td style="border:none;">
 										<h2 class="pointer btn-link">
 											Gems
 										</h2>
 										<span>
-											This is where you upgrade your gem production.
+											Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
 										</span>
+										<br>
+										<br>
+										<button onclick="gainGem()" class="btn btn-default">Gain <span id="gemGain">1</span></button>
+										<br>
+										<br>
 									</td>
 								</tr>
 								<tr id="gemStorageUpgrade" class="hidden">
@@ -456,17 +290,22 @@
 							</table>
 						</div>
 					</div>
-					<div id="woodCraftingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
-									<td style="border: none;">
+									<td style="border:none;">
 										<h2 class="pointer btn-link">
 											Wood
 										</h2>
 										<span>
-											This is where you upgrade your wood production.
+											Wood is one of the primary resources. It is used more often in early game for tools and buildings.
 										</span>
+										<br>
+										<br>
+										<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
+										<br>
+										<br>
 									</td>
 								</tr>
 								<tr id="woodStorageUpgrade" class="hidden">
@@ -503,8 +342,20 @@
 						</div>
 					</div>
 				</div>
-    		</div>
+			</div>
 
+    		<!-- Crafting
+    		<div role="tabpanel" class="tab-pane fade in" id="crafting">
+    			<div class="container" style="width:250px; float:left;">
+    				<table class="table table-hover text-primary no-select pointer">
+    					
+					</table>
+				</div>
+				<div class="tab-content">
+					
+				</div>
+    		</div>
+    		-->
 
     		<!-- Research -->
     		<div role="tabpanel" class="tab-pane fade" id="research">
@@ -513,7 +364,7 @@
     					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="border:none; vertical-align:middle;">
 								<span>
-									Science
+									Science Production
 								</span>
 							</td>
 							<td style="border:none; vertical-align:middle; text-align:right;">
@@ -522,14 +373,14 @@
 								</span>
 							</td>
 						</tr>
-    					<tr href="#newResourceTab" aria-controls="newResourceTab" role="tab" data-toggle="tab" style="height:60px;">
+    					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td colspan="2" style="vertical-align:middle;">
 								<span>
-									New Resource Types
+									Technologies
 								</span>
 							</td>
 						</tr>
-    					<tr href="#resourcesTechTreeTab" aria-controls="resourcesTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
+    					<!--<tr href="#resourcesTechTreeTab" aria-controls="resourcesTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td colspan="2" style="vertical-align:middle;">
 								<span>
 									Resources Tech Tree
@@ -542,7 +393,7 @@
 									Space Tech Tree
 								</span>
 							</td>
-						</tr>
+						</tr>-->
 					</table>
 				</div>
 				<div class="tab-content">
@@ -552,14 +403,11 @@
 								<tr>
 									<td style="border:none;">
 										<h2 class="pointer btn-link">
-											Science
+											Science Production
 										</h2>
 										<span>
 											Science is used for researching new resources and improving how quickly you get resources. It is fundamental to progressing through the game.
 										</span>
-										<br>
-										<br>
-										<button onclick="gainScience()" class="btn btn-default">Gain <span id="scienceGain">1</span></button>
 										<br>
 										<br>
 									</td>
@@ -570,9 +418,9 @@
 											Laboratory
 										</h3>
 										<span>
-											Build a laboratory of your very own to double your Science per click.
+											Build a laboratory of your very own to start producing science. Each one produces <span id="laboratoryGain">0.1</span> science per second.
 											<br>
-											Costs 20 Science, 20 Metal.
+											Costs <span id="labWoodCost">10</span> Wood, <span id="labGemCost">15</span> Gems, <span id="labMetalCost">20</span> Metal.
 										</span>
 										<br>
 										<br>
@@ -584,29 +432,46 @@
 							</table>
 						</div>
 					</div>
-					<div id="newResourceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div id="technologiesTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
 								<tr>
 									<td style="border: none;">
 										<h2 class="pointer btn-link">
-											New Resources Types
+											Technologies
 										</h2>
 										<span>
 											Unlocking new resource types allows you to gain different resources so that you can progress further.
 										</span>
 									</td>
 								</tr>
+								<tr id="unlockBasicEnergy">
+									<td>
+										<h3 class="pointer btn-link">
+											Basic Energy Production
+										</h3>
+										<span>
+											You will be able to produce power from steam engines using charcoal made from wood in a furnace.
+											<br>
+											Costs 10 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockBasicEnergy()" class="btn btn-default">Unlock Basic Energy Production</button>
+										<br>
+										<br>
+									</td>
+								</tr>
 								<tr id="unlockOil">
 									<td>
 										<h3 class="pointer btn-link">
-											Oil
+											Oil Processing
 										</h3>
 										<span>
-											Oil is used for machines to gather resources.
-											Unlocking Oil gives access to oil wells and fracking.
+											Oil is used to fuel more advanced machines that gather resources and also to produce more power than basic means.
+											Unlocking Oil Processing allows you to extract it from the ground.
 											<br>
-											Costs 50 Science.
+											Costs 15 Science.
 										</span>
 										<br>
 										<br>
@@ -615,7 +480,7 @@
 										<br>
 									</td>
 								</tr>
-								<tr id="unlockGas">
+								<!--<tr id="unlockGas">
 									<td>
 										<h3 class="pointer btn-link">
 											Gas
@@ -632,7 +497,7 @@
 										<br>
 										<br>
 									</td>
-								</tr>
+								</tr>-->
 							</table>
 						</div>
 					</div>
@@ -647,6 +512,7 @@
 										<span>
 											This is where you will unlock upgrades for the resources tab.
 										</span>
+										<br>
 									</td>
 								</tr>
 								<tr id="unlockStorage">
