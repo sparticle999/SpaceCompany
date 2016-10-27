@@ -1,15 +1,15 @@
 var gas = 0; var gasStorage = 50; var gasGain = 1;
 var oil = 0; var oilStorage = 50; var oilGain = 1;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalGain = 1; var metalps = 0;
-	var miner = 0; var minerGain = 1;
+var miner = 0; var minerGain = 1;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemGain = 1; var gemps = 0;
-	var extractor = 0; var extractorGain = 1;
+var extractor = 0; var extractorGain = 1;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodGain = 1; var woodps = 0;
-	var woodcutter = 0; var woodcutterGain = 1;
-var science = 0; var scienceGain = 1;
+var woodcutter = 0; var woodcutterGain = 1;
+var science = 0; var scienceps = 0;
+var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 
 function refresh(){
-	document.getElementById("gas").innerHTML = gas;
 	document.getElementById("oil").innerHTML = oil;
 	document.getElementById("metal").innerHTML = metal;
 	document.getElementById("gem").innerHTML = gem;
@@ -24,6 +24,7 @@ function refreshPerSec(){
 	metalps = (miner * minerGain)+(0 * 0)+(0 * 0);
 	gemps = (extractor * extractorGain)+(0 * 0)+(0 * 0);
 	woodps = (woodcutter * woodcutterGain)+(0 * 0)+(0 * 0);
+	scienceps = (lab * labGain);
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
 	document.getElementById("woodps").innerHTML = woodps;
@@ -48,6 +49,8 @@ function gainResources(){
 	else{
 		wood = woodStorage;
 	}
+	science += scienceps;
+	science = Math.round(science*10)/10;
 }
 
 // Gain Buttons
@@ -173,21 +176,19 @@ function getWoodcutter(){
 	//Science Tab
 
 function buildLab(){
-	if(science >= 20){
-		if(metal >= 20){
-			science -= 20;
-			metal -= 20;
-			scienceGain *= 2;
-			document.getElementById("scienceGain").innerHTML = scienceGain;
-			refresh();
-			document.getElementById("labTab").className = "hidden";
-		}
-		else{
-			alert("Not Enough Metal");
-		}
-	}
-	else{
-		alert("Not Enough Science");
+	if(wood >= labWoodCost && gem >= labGemCost && metal >= labMetalCost){
+		wood -= labWoodCost;
+		gem -= labGemCost;
+		metal -= labMetalCost;
+		lab += 1;
+		labWoodCost = Math.floor(10 * Math.pow(1.1,lab + 1));
+		labGemCost = Math.floor(15 * Math.pow(1.1,lab + 1));
+		labMetalCost = Math.floor(20 * Math.pow(1.1,lab + 1));
+		document.getElementById("labWoodCost").innerHTML = labWoodCost;
+		document.getElementById("labGemCost").innerHTML = labGemCost;
+		document.getElementById("labMetalCost").innerHTML = labMetalCost;
+		refresh();
+		refreshPerSec();
 	}
 }
 
@@ -211,6 +212,7 @@ function unlockOil(){
 		document.getElementById("oilNav").className = "";
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
+		document.getElementById("metalNav3").style.border = "";
 		refresh();
 	}
 }
