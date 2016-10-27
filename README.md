@@ -24,7 +24,7 @@ v0.0.2
 - GeoStationary satelites give information/second
 - Explore Moon
 - Space elevator
-- 
+
 - [Change UI from bootstrap to my own]
 - [Donations through paypal]
 
