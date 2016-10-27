@@ -1,17 +1,42 @@
 # SpaceCompany
 An incremental game about Space Mining
 
-#Changelog
+# To Do:
 
-0.0.2 Alpha
-- Added more content to Research
-- Added Resource Tech Tree and Space Tech Tree
-- Changed the crafting tab UI
-- Added descriptions to all items
-- Added max storage upgrades
+v0.0.2
 
-0.0.1 Alpha
-- Added initial graphics and gameplay
-- Created the structure for tabs and tabs in tabs
-- Added Research
+Implement Energy With Steam Engines, Charcoal and Solar Panels
+Furnace turns 2 wood into 1 charcoal
+Charcoal is used per tick
+Charcoal gives more energy than coal because it has been processed more.
+Remove crafting tab - move things to resources tab.
+Reimplement Storage and Balance to the new science structure.
 
+# Future Plans:
+
+Oil is used per second for resource machines
+Player can change how much charcoal steam engines are using per second
+Solar panels
+Steam engines
+Rocketfuel
+Rockets into space
+Satelites
+GeoStationary satelites give information/second
+Explore Moon
+Space elevator
+
+[Change UI from bootstrap to my own]
+[Donations through paypal]
+
+
+
+# Changelog:
+
+v0.0.2
+- Not fully implemented yet
+- Removed the ability for science to be clicked - it can only be gained slowly.
+- Merged Crafting and Resources tabs
+
+v0.0.1
+- Basic mechanics and basic Bootstrap theme
+- Initial release
