@@ -90,13 +90,37 @@
     		<div role="tabpanel" class="tab-pane fade in active" id="resources">
     			<div class="container" style="width:250px; float:left;">
     				<table class="table table-hover text-primary no-select pointer">
+    					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
+    						<td style="border:none; vertical-align:middle;">
+								<span>
+									Energy
+								</span>
+							</td>
+							<td style="border: none; vertical-align:middle; text-align:center;">
+								<span>
+									<span id="energyps">0</span>/Sec
+								</span>
+							</td>
+							<td style="border:none; vertical-align:middle; text-align:right;">
+								<span id="energy">
+									0
+								</span>
+								/
+								<span id="energyStorage">50</span>
+							</td>
+						</tr>
     					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
     						<td id="oilNav1" style="border:none; vertical-align:middle;">
 								<span>
 									Oil
 								</span>
 							</td>
-							<td id="oilNav2" style="border:none; vertical-align:middle; text-align:right;">
+							<td id="oilNav2" style="border: none; vertical-align:middle; text-align:center;">
+								<span>
+									<span id="oilps">0</span>/Sec
+								</span>
+							</td>
+							<td id="oilNav3" style="border:none; vertical-align:middle; text-align:right;">
 								<span id="oil">
 									0
 								</span>
@@ -142,6 +166,25 @@
 								<span id="gemStorage">50</span>
 							</td>
 						</tr>
+						<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
+							<td style="vertical-align:middle;">
+								<span>
+									Charcoal
+								</span>
+							</td>
+							<td style="vertical-align:middle; text-align:center;">
+								<span>
+									<span id="charcoalps">0</span>/Sec
+								</span>
+							</td>
+							<td style="vertical-align:middle; text-align:right;">
+								<span id="charcoal">
+									0
+								</span>
+								/
+								<span id="charcoalStorage">50</span>
+							</td>
+						</tr>
 						<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
 							<td style="vertical-align:middle;">
 								<span>
@@ -164,6 +207,30 @@
 					</table>
 				</div>
 				<div class="tab-content">
+					<div id="energyTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
+										<h2 class="pointer btn-link">
+											Energy
+										</h2>
+										<span>
+											Some Text
+										</span>
+										<br>
+										<br>
+										<button onclick="" class="btn btn-default">Gain <span id="energyGain">1</span></button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>	
 					<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
@@ -173,7 +240,7 @@
 											Oil
 										</h2>
 										<span>
-											Some Text
+											Oil is used to fuel most machines that gather resources and also as a way of producing power.
 										</span>
 										<br>
 										<br>
@@ -311,7 +378,7 @@
 								<tr id="woodStorageUpgrade" class="hidden">
 									<td>
 										<h3 class="pointer btn-link">
-											Storage UpgradeF
+											Storage Upgrade
 										</h3>
 										<span>
 											Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
@@ -320,7 +387,58 @@
 										</span>
 										<br>
 										<br>
-										<button onclick="upgradewoodStorage()" class="btn btn-default">Upgrade Storage</button>
+										<button onclick="upgradeWoodStorage()" class="btn btn-default">Upgrade Storage</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Woodcutter: <span id="woodcutter">0</span>
+										</h3>
+										<span>
+											Build an axe for your woodcutter.
+											<br>
+											Costs 10 Metal, 5 Wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
+										<h2 class="pointer btn-link">
+											Charcoal
+										</h2>
+										<span>
+											Charcoal is created by burning 2 wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="woodStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
+											<br>
+											Costs <span id="charcoalStorageCost">50</span> wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
@@ -406,7 +524,7 @@
 											Science Production
 										</h2>
 										<span>
-											Science is used for researching new resources and improving how quickly you get resources. It is fundamental to progressing through the game.
+											Science is used for researching new technologies to further your progress in the game.
 										</span>
 										<br>
 										<br>
@@ -441,8 +559,25 @@
 											Technologies
 										</h2>
 										<span>
-											Unlocking new resource types allows you to gain different resources so that you can progress further.
+											Research new technologies to unlock more mechanics and advance through the game.
 										</span>
+									</td>
+								</tr>
+								<tr id="unlockStorage">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrades
+										</h3>
+										<span>
+											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.
+											<br>
+											Costs 5 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
+										<br>
+										<br>
 									</td>
 								</tr>
 								<tr id="unlockBasicEnergy">
@@ -480,81 +615,7 @@
 										<br>
 									</td>
 								</tr>
-								<!--<tr id="unlockGas">
-									<td>
-										<h3 class="pointer btn-link">
-											Gas
-										</h3>
-										<span>
-											Gas is used for quickly processing Metal.
-											Unlocking Gas gives access to land and ocean drilling.
-											<br>
-											Costs 100 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockGas()" class="btn btn-default">Unlock Gas</button>
-										<br>
-										<br>
-									</td>
-								</tr>-->
 							</table>
-						</div>
-					</div>
-					<div id="resourcesTechTreeTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border: none;">
-										<h2 class="pointer btn-link">
-											Resources Tech Tree
-										</h2>
-										<span>
-											This is where you will unlock upgrades for the resources tab.
-										</span>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockStorage">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrades
-										</h3>
-										<span>
-											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have.
-											<br>
-											Costs 100 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockX">
-									<td>
-										<h3 class="pointer btn-link">
-											Something Else
-										</h3>
-										<span>
-											Some Text
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockX()" class="btn btn-default">Unlock X</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="spaceTechTreeTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<h2 class="pointer btn-link">
-								Space Tech Tree
-							</h2>
 						</div>
 					</div>
 				</div>
