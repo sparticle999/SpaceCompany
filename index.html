@@ -25,7 +25,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" href="#/changelog">
 					<span class="text-muted small ng-binding">
-						v0.0.1 Alpha
+						v0.0.2 Alpha
 					</span>
 				</a>
 			</div>
@@ -64,13 +64,13 @@
 	    				</a>
 	    			</li>
 	    			<li role="presentation" id="githubTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages/">
+	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/">
 	    					<span class="glyphicon glyphicon-folder-open"></span>
 	    					Source Code - GitHub
 	    				</a>
 	    			</li>
 	    			<li role="presentation" id="chanelogTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/tree/gh-pages#changelog">
+	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 	    					<span class="glyphicon glyphicon-book"></span>
 	    					Changelog
 	    				</a>
@@ -216,16 +216,42 @@
 											Energy
 										</h2>
 										<span>
-											Some Text
+											Energy is created by power sources such as steam engines, solar power and burning oil.
 										</span>
 										<br>
 										<br>
-										<button onclick="" class="btn btn-default">Gain <span id="energyGain">1</span></button>
+									</td>
+								</tr>
+								<tr id="energyStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your energy storage size to <span id="energyNextStorage">100</span>.
+											<br>
+											Costs <span id="energyStorageCost">50</span> energy.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradeenergyStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										
+										<h3 class="pointer btn-link">
+											Charcoal Engine: <span id="charcoalEngine">0</span>
+										</h3>
+										<span>
+											Burns charcoal to produce a steady source of energy.
+											<br>
+											Each engine produces <span id="charcoalEngineGain">1</span> energy per second.
+											<br>
+											Costs 50 Metal, 25 Gems.
+										</span>
+										<br>
+										<br>
+										<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
 									</td>
 								</tr>
 							</table>
@@ -247,9 +273,34 @@
 										<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
 									</td>
 								</tr>
+								<tr id="oilStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your oil storage size to <span id="metalNextStorage">100</span>.
+											<br>
+											Costs <span id="metalStorageCost">50</span> oil.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradeOilStorage()" class="btn btn-default">Upgrade Storage</button>
+									</td>
+								</tr>
 								<tr>
 									<td>
-										
+										<h3 class="pointer btn-link">
+											Pump: <span id="pump">0</span>
+										</h3>
+										<span>
+											Build a pump to extract oil from the ground
+											<br>
+											Costs 30 Metal, 10 Gems.
+										</span>
+										<br>
+										<br>
+										<button onclick="getPump()" class="btn btn-default">Get Pump</button>
 									</td>
 								</tr>
 							</table>
@@ -357,6 +408,57 @@
 							</table>
 						</div>
 					</div>
+					<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+						<div class="container" style="max-width:800px;">
+							<table class="table">
+								<tr>
+									<td style="border:none;">
+										<h2 class="pointer btn-link">
+											Charcoal
+										</h2>
+										<span>
+											Charcoal is created by burning 2 wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="charcoalStorageUpgrade" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Storage Upgrade
+										</h3>
+										<span>
+											Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
+											<br>
+											Costs <span id="charcoalStorageCost">50</span> wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3 class="pointer btn-link">
+											Woodburner: <span id="woodburner">0</span>
+										</h3>
+										<span>
+											Build an shovel for your woodburner.
+											<br>
+											Costs 10 Metal, 5 Wood.
+										</span>
+										<br>
+										<br>
+										<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
 					<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 						<div class="container" style="max-width:800px;">
 							<table class="table">
@@ -388,57 +490,6 @@
 										<br>
 										<br>
 										<button onclick="upgradeWoodStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Woodcutter: <span id="woodcutter">0</span>
-										</h3>
-										<span>
-											Build an axe for your woodcutter.
-											<br>
-											Costs 10 Metal, 5 Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Charcoal
-										</h2>
-										<span>
-											Charcoal is created by burning 2 wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="woodStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
-											<br>
-											Costs <span id="charcoalStorageCost">50</span> wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
