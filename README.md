@@ -1,29 +1,31 @@
 # To Do:
 
-v0.0.2
-
-- Completed All Goals
-
-# Future Plans:
+v0.0.4
 
 - Change storage upgrades costs to use more than one resource
-- Oil is used per second for resource machines
-- Player can change how much charcoal steam engines are using per second
-- Solar panels
-- Steam engines
+
+# Future Plans (maybe):
+
 - Rocketfuel
 - Rockets into space
 - Satelites
 - GeoStationary satelites give information/second
 - Explore Moon
 - Space elevator
-
 - [Change UI from bootstrap to my own]
 - [Donations through paypal]
 
 
 
 # Changelog:
+
+v0.0.3
+
+- Removed cap on energy
+- Added Solar Panels
+- Resource Gathering Machine were added that use a constant supply of energy
+- Oil was made a component in building machines
+- Fixed storage costs not changing bug
 
 v0.0.2
 - Merged Crafting and Resources tabs
