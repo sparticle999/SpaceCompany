@@ -1,11 +1,6 @@
 # To Do:
 
-v0.0.4
-
-- Change storage upgrades costs to use more than one resource
-
 # Future Plans (maybe):
-
 - Rocketfuel
 - Rockets into space
 - Satelites
@@ -19,8 +14,14 @@ v0.0.4
 
 # Changelog:
 
-v0.0.3
+v0.0.4
+- Balanced Game More (to not take 2 minutes to complete)
+- Fixed Wood/sec not counting charcoal use bug
+- Made all resource gatherers increase in cost as you buy them
+- Fixed Resource Machines not using energy
+- Changed storage upgrades to cost metal as well
 
+v0.0.3
 - Removed cap on energy
 - Added Solar Panels
 - Resource Gathering Machine were added that use a constant supply of energy
