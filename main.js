@@ -1,15 +1,15 @@
 var energy = 0; var energyGain = 1; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineGain = 1; var solarPanel = 0; var solarPanelGain = 0.5;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilGain = 1; var oilps = 0;
-var pump = 0; var pumpjack = 0;
+var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalGain = 1; var metalps = 0;
-var miner = 0; var heavyDrill = 0;
+var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemGain = 1; var gemps = 0;
-var gemMiner = 0; var advancedDrill = 0;
+var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalGain = 1; var charcoalps = 0;
-var woodburner = 0; var furnace = 0;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodGain = 1; var woodps = 0;
-var woodcutter = 0; var laserCutter = 0;
+var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 
@@ -214,115 +214,165 @@ function getSolarPanel(){
 }
 
 function getPump(){
-	if(metal >= 30 && gem >= 10){
-		metal -= 30;
-		gem -= 10;
+	if(metal >= pumpMetalCost && gem >= pumpGemCost){
+		metal -= pumpMetalCost;
+		gem -= pumpGemCost;
 		pump += 1;
+		pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump + 1));
+		pumpGemCost = Math.floor(20 * Math.pow(1.1,pump + 1));
 		document.getElementById("pump").innerHTML = pump;
+		document.getElementById("pumpMetalCost").innerHTML = pumpMetalCost;
+		document.getElementById("pumpGemCost").innerHTML = pumpGemCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getPumpjack(){
-	if(metal >= 250 && gem >= 80 && oil >= 50){
-		metal -= 250;
-		gem -= 80;
-		oil -= 50;
+	if(metal >= pumpjackMetalCost && gem >= pumpjackGemCost && oil >= pumpjackOilCost){
+		metal -= pumpMetalCost;
+		gem -= pumpjackGemCost;
+		oil -= pumpjackOilCost;
 		pumpjack += 1;
+		pumpjackOilCost = Math.floor(50 * Math.pow(1.1,pumpjack + 1));
+		pumpjackGemCost = Math.floor(85 * Math.pow(1.1,pumpjack + 1));
+		pumpjackMetalCost = Math.floor(250 * Math.pow(1.1,pumpjack + 1));
 		document.getElementById("pumpjack").innerHTML = pumpjack;
+		document.getElementById("pumpjackOilCost").innerHTML = pumpjackOilCost;
+		document.getElementById("pumpjackGemCost").innerHTML = pumpjackGemCost;
+		document.getElementById("pumpjackMetalCost").innerHTML = pumpjackMetalCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getMiner(){
-	if(metal >= 10 && wood >= 5){
-		metal -= 10;
-		wood -= 5;
+	if(metal >= minerMetalCost && wood >= minerWoodCost){
+		metal -= minerMetalCost;
+		wood -= minerWoodCost;
 		miner += 1;
+		minerWoodCost = Math.floor(5 * Math.pow(1.1,miner + 1));
+		minerMetalCost = Math.floor(10 * Math.pow(1.1,miner + 1));
 		document.getElementById("miner").innerHTML = miner;
+		document.getElementById("minerMetalCost").innerHTML = minerMetalCost;
+		document.getElementById("minerWoodCost").innerHTML = minerWoodCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getHeavyDrill(){
-	if(metal >= 160 && gem >= 60 && oil >= 50){
-		metal -= 160;
-		gem -= 60;
-		oil -= 50;
+	if(metal >= heavyDrillMetalCost && gem >= heavyDrillGemCost && oil >= heavyDrillOilCost){
+		metal -= heavyDrillMetalCost;
+		gem -= heavyDrillGemCost;
+		oil -= heavyDrillOilCost;
 		heavyDrill += 1;
+		heavyDrillOilCost = Math.floor(50 * Math.pow(1.1,heavyDrill + 1));
+		heavyDrillGemCost = Math.floor(60 * Math.pow(1.1,heavyDrill + 1));
+		heavyDrillMetalCost = Math.floor(160 * Math.pow(1.1,heavyDrill + 1));
 		document.getElementById("heavyDrill").innerHTML = heavyDrill;
+		document.getElementById("heavyDrillMetalCost").innerHTML = heavyDrillMetalCost;
+		document.getElementById("heavyDrillGemCost").innerHTML = heavyDrillGemCost;
+		document.getElementById("heavyDrillOilCost").innerHTML = heavyDrillOilCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getGemMiner(){
-	if(metal >= 15 && gem >= 10){
-		metal -= 15;
-		gem -= 10;
+	if(metal >= gemMinerMetalCost && gem >= gemMinerGemCost){
+		metal -= gemMinerMetalCost;
+		gem -= gemMinerGemCost;
 		gemMiner += 1;
+		gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner + 1));
+		gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner + 1));
 		document.getElementById("gemMiner").innerHTML = gemMiner;
+		document.getElementById("gemMinerMetalCost").innerHTML = gemMinerMetalCost;
+		document.getElementById("gemMinerGemCost").innerHTML = gemMinerGemCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getAdvancedDrill(){
-	if(metal >= 120 && gem >= 200 && oil >= 60){
-		metal -= 120;
-		gem -= 200;
-		oil -= 60;
+	if(metal >= advancedDrillMetalCost && gem >= advancedDrillGemCost && oil >= advancedDrillOilCost){
+		metal -= advancedDrillMetalCost;
+		gem -= advancedDrillGemCost;
+		oil -= advancedDrillOilCost;
 		advancedDrill += 1;
+		advancedDrillOilCost = Math.floor(60 * Math.pow(1.1,advancedDrill + 1));
+		advancedDrillGemCost = Math.floor(200 * Math.pow(1.1,advancedDrill + 1));
+		advancedDrillMetalCost = Math.floor(120 * Math.pow(1.1,advancedDrill + 1));
 		document.getElementById("advancedDrill").innerHTML = advancedDrill;
+		document.getElementById("advancedDrillMetalCost").innerHTML = advancedDrillMetalCost;
+		document.getElementById("advancedDrillGemCost").innerHTML = advancedDrillGemCost;
+		document.getElementById("advancedDrillOilCost").innerHTML = advancedDrillOilCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getWoodburner(){
-	if(metal >= 10 && wood >= 5){
-		metal -= 10;
-		wood -= 5;
+	if(metal >= woodburnerMetalCost && wood >= woodburnerWoodCost){
+		metal -= woodburnerMetalCost;
+		wood -= woodburnerWoodCost;
 		woodburner += 1;
+		woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner + 1));
+		woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner + 1));
 		document.getElementById("woodburner").innerHTML = woodburner;
+		document.getElementById("woodburnerMetalCost").innerHTML = woodburnerMetalCost;
+		document.getElementById("woodburnerWoodCost").innerHTML = woodburnerWoodCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getFurnace(){
-	if(metal >= 80 && wood >= 40 && oil >= 100){
-		metal -= 80;
-		wood -= 40;
-		oil -= 100;
+	if(metal >= furnaceMetalCost && wood >= furnaceWoodCost && oil >= furnaceOilCost){
+		metal -= furnaceMetalCost;
+		wood -= furnaceWoodCost;
+		oil -= furnaceOilCost;
 		furnace += 1;
+		furnaceWoodCost = Math.floor(40 * Math.pow(1.1,furnace + 1));
+		furnaceOilCost = Math.floor(100 * Math.pow(1.1,furnace + 1));
+		furnaceMetalCost = Math.floor(80 * Math.pow(1.1,furnace + 1));
 		document.getElementById("furnace").innerHTML = furnace;
+		document.getElementById("furnaceMetalCost").innerHTML = furnaceMetalCost;
+		document.getElementById("furnaceWoodCost").innerHTML = furnaceWoodCost;
+		document.getElementById("furnaceOilCost").innerHTML = furnaceOilCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getWoodcutter(){
-	if(metal >= 10 && wood >= 5){
-		metal -= 10;
-		wood -= 5;
+	if(metal >= woodcutterMetalCost && wood >= woodcutterWoodCost){
+		metal -= woodcutterMetalCost;
+		wood -= woodcutterWoodCost;
 		woodcutter += 1;
+		woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter + 1));
+		woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter + 1));
 		document.getElementById("woodcutter").innerHTML = woodcutter;
+		document.getElementById("woodcutterMetalCost").innerHTML = woodcutterMetalCost;
+		document.getElementById("woodcutterWoodCost").innerHTML = woodcutterWoodCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getLaserCutter(){
-	if(metal >= 50 && gem >= 90 && oil >= 40){
-		metal -= 50;
-		gem -= 90;
-		oil -= 40;
+	if(metal >= laserCutterMetalCost && gem >= laserCutterGemCost && oil >= laserCutterOilCost){
+		metal -= laserCutterMetalCost;
+		gem -= laserCutterGemCost;
+		oil -= laserCutterOilCost;
 		laserCutter += 1;
+		laserCutterOilCost = Math.floor(40 * Math.pow(1.1,laserCutter + 1));
+		laserCutterGemCost = Math.floor(90 * Math.pow(1.1,laserCutter + 1));
+		laserCutterMetalCost = Math.floor(50 * Math.pow(1.1,laserCutter + 1));
 		document.getElementById("laserCutter").innerHTML = laserCutter;
+		document.getElementById("laserCutterMetalCost").innerHTML = laserCutterMetalCost;
+		document.getElementById("laserCutterGemCost").innerHTML = laserCutterGemCost;
+		document.getElementById("laserCutterOilCost").innerHTML = laserCutterOilCost;
 		refresh();
 		refreshPerSec();
 	}
