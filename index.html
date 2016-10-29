@@ -1,798 +1,472 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Space Company</title>
-	<link rel="shortcut icon" type="image/png" href="SpaceCompanyFavicon.png"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link href="style.css" rel="stylesheet">
-</head>
-<body>
+var energy = 0; var energyGain = 1; var energyps = 0;
+var charcoalEngine = 0; var charcoalEngineGain = 1; var solarPanel = 0; var solarPanelGain = 0.5;
+var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilGain = 1; var oilps = 0;
+var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50;
+var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalGain = 1; var metalps = 0;
+var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50;
+var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemGain = 1; var gemps = 0;
+var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60;
+var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalGain = 1; var charcoalps = 0;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100;
+var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodGain = 1; var woodps = 0;
+var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
+var science = 0; var scienceps = 0;
+var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 
-<div class="container" style="width:90%; margin: auto;">
+function refresh(){
+	document.getElementById("energy").innerHTML = energy;
+	document.getElementById("oil").innerHTML = oil;
+	document.getElementById("metal").innerHTML = metal;
+	document.getElementById("gem").innerHTML = gem;
+	document.getElementById("charcoal").innerHTML = charcoal;
+	document.getElementById("wood").innerHTML = wood;
+	document.getElementById("science").innerHTML = science;
+}
 
-	<!--  Bar at top of screen -->
-	<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand page-title" href="#">
-					<span>
-						Space Company<span></span>
-					</span>
-				</a>
-				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
-					<span class="text-muted small ng-binding">
-						v0.0.3 Alpha
-					</span>
-				</a>
-			</div>
-			<div class="navbar-right"><login><!-- ngIf: env.isServerFrontendEnabled --></login></div>
-	  </div>
-	  <div class="ng-binding"></div>
-	</div>
-	<div height="30"></div>
+function refreshPerSec(){
+	energyps = (charcoalEngine * charcoalEngineGain) + (solarPanel * solarPanelGain);
+	oilps = pump + (pumpjack * 5);
+	metalps = miner + (heavyDrill * 8);
+	gemps = gemMiner + (advancedDrill * 4);
+	charcoalps = woodburner + (furnace * 3);
+	woodps = woodcutter + (laserCutter * 6);
+	scienceps = (lab * labGain);
+	document.getElementById("energyps").innerHTML = energyps;
+	document.getElementById("oilps").innerHTML = oilps;
+	document.getElementById("metalps").innerHTML = metalps;
+	document.getElementById("gemps").innerHTML = gemps;
+	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine;
+	if(charoal >= charcoalStorage){
+		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+	}
+	else{
+		document.getElementById("woodps").innerHTML = woodps;
+	}
+}
 
-  <!-- Nav tabs -->
-  		<ul class="nav nav-tabs no-select" role="tablist">
-   			<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-   			<!--<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>-->
-   			<li role="presentation" id="researchTab" class=""><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
-	    	<li role="presentation" id="spaceTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
-	    	<li role="presentation" id="prestigeTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
+function gainResources(){
+	if(charcoal + charcoalps >= charcoalEngine){
+		energy += energyps;
+		charcoal -= charcoalEngine;
+	}
+	else{
+		energy += solarPanel * solarPanelGain;
+	}
+	if(oil + oilps < oilStorage){
+		oil += oilps;
+	}
+	else{
+		oil = oilStorage;
+	}
+	if(metal + metalps < metalStorage){
+		metal += metalps;
+	}
+	else{
+		metal = metalStorage;
+	}
+	if(gem + gemps < gemStorage){
+		gem += gemps;
+	}
+	else{
+		gem = gemStorage;
+	}
+	if(charcoal + charcoalps < charcoalStorage && wood + woodps >= charcoalps*2){
+		charcoal += charcoalps;
+		wood -= (charcoalps*2);
+	}
+	else{
+		var difference = charcoalStorage - charcoal;
+		if(wood >= difference*2){
+			charcoal += difference;
+			wood -= difference*2;
+		}	
+	}
+	if(wood + woodps < woodStorage){
+		wood += woodps;
+	}
+	else{
+		wood = woodStorage;
+	}
+	science += scienceps;
+	science = Math.round(science*10)/10;
+}
 
-	    	<li role="tab" id="dropdownMenu" class="dropdown" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
-	    		<ul class="dropdown-menu" role="menu">
-	    			<li role="presentation" id="settingsTab">
-	    				<a role="menuitem" tabindex="-1" href="#settings">
-	    					<span class="glyphicon glyphicon-cog"></span>
-	    					Settings [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="statsTab">
-	    				<a role="menuitem" tabindex="-1" href="#stats">
-	    					<span class="glyphicon glyphicon-stats"></span>
-	    					Stats [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="achievementsTab">
-	    				<a role="menuitem" tabindex="-1" href="">
-	    					<span class="glyphicon glyphicon-ok"></span>
-	    					Achievemets [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="githubTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/">
-	    					<span class="glyphicon glyphicon-folder-open"></span>
-	    					Source Code - GitHub
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="chanelogTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
-	    					<span class="glyphicon glyphicon-book"></span>
-	    					Changelog
-	    				</a>
-	    			</li>
-	    			
-	    		</ul>
-	    	</li>
-	   		<li role="presentation" id="moneyTab" class="hidden pull-right"><a href="#income" aria-controls="income" role="tab" data-toggle="tab">Income: <span id="income">0</span></a></li>
-	   		<li role="presentation" id="incomeTab" class="hidden pull-right"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money: <span id="money">0</span></a></li>
-		</ul>
+// Gain Buttons
 
+function gainOil(){
+	if(oil < oilStorage){
+		oil += oilGain;
+		refresh();
+	}
+}
 
-  <!-- Tab panes -->
+function gainMetal(){
+	if(metal < metalStorage){
+		metal += metalGain;
+		refresh();
+	}
+}
 
-  		<div class="tab-content">
-  			<!-- Resources -->
-    		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-    			<div class="container" style="width:250px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td style="border:none; vertical-align:middle;">
-								<span>
-									Energy
-								</span>
-							</td>
-							<td style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="energyps">0</span>/Sec
-								</span>
-							</td>
-							<td style="border:none; vertical-align:middle; text-align:right;">
-								<span id="energy">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td id="oilNav1" style="border:none; vertical-align:middle;">
-								<span>
-									Oil
-								</span>
-							</td>
-							<td id="oilNav2" style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="oilps">0</span>/Sec
-								</span>
-							</td>
-							<td id="oilNav3" style="border:none; vertical-align:middle; text-align:right;">
-								<span id="oil">
-									0
-								</span>
-								/
-								<span id="oilStorage">50</span>
-							</td>
-						</tr>
-						<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td id="metalNav1" style="border:none; vertical-align:middle;">
-								<span>
-									Metal
-								</span>
-							</td>
-							<td id="metalNav2" style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="metalps">0</span>/Sec
-								</span>
-							</td>
-							<td id="metalNav3" style="border:none; vertical-align:middle; text-align:right;">
-								<span id="metal">
-									0
-								</span>
-								/
-								<span id="metalStorage">50</span>
-							</td>
-						</tr>
-    					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Gems
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="gemps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="gem">
-									0
-								</span>
-								/
-								<span id="gemStorage">50</span>
-							</td>
-						</tr>
-						<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Charcoal
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="charcoalps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="charcoal">
-									0
-								</span>
-								/
-								<span id="charcoalStorage">50</span>
-							</td>
-						</tr>
-						<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Wood
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="woodps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="wood">
-									0
-								</span>
-								/
-								<span id="woodStorage">50</span>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="tab-content">
-					<div id="energyTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Energy
-										</h2>
-										<span>
-											Energy is created by power sources such as steam engines, solar power and burning oil.
-										</span>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Charcoal Engine: <span id="charcoalEngine">0</span>
-										</h3>
-										<span>
-											Burns charcoal to produce a steady source of energy.
-											<br>
-											Each engine produces <span id="charcoalEngineGain">1</span> energy per second.
-											<br>
-											Costs 50 Metal, 25 Gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
-									</td>
-								</tr>
-								<tr id="solarPower" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Solar Panels: <span id="solarPanel">0</span>
-										</h3>
-										<span>
-											Gains energy slowly from the sun without using any resources.
-											<br>
-											Each Solar Panel produces <span id="solarPanelGain">1</span> energy per second.
-											<br>
-											Costs 30 Metal, 35 Gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>	
-					<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Oil
-										</h2>
-										<span>
-											Oil is used to build most machines that gather resources and also as a way of producing power.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
-									</td>
-								</tr>
-								<tr id="oilStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your oil storage size to <span id="oilNextStorage">100</span>.
-											<br>
-											Costs <span id="oilStorageCost">50</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeOilStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Small Pump: <span id="pump">0</span>
-										</h3>
-										<span>
-											Build a small pump to extract oil from the ground
-											<br>
-											Costs <span id="pumpMetalCost">60</span> Metal, <span id="pumpGemCost">20</span> Gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getPump()" class="btn btn-default">Get Pump</button>
-									</td>
-								</tr>
-								<tr id="oilMachine1">
-									<td>
-										<h3 class="pointer btn-link">
-											Pumpjack: <span id="pumpjack">0</span>
-										</h3>
-										<span>
-											Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
-											<br>
-											Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> gems, <span id="pumpjackOilCost">50</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>	
-					<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Metal
-										</h2>
-										<span>
-											Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="metalStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your metal storage size to <span id="metalNextStorage">100</span>.
-											<br>
-											Costs <span id="metalStorageCost">50</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeMetalStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Miner: <span id="miner">0</span>
-										</h3>
-										<span>
-											Build a pickaxe for your Miner.
-											<br>
-											Costs <span id="minerMetalCost">10</span> Metal, <span id="minerWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
-									</td>
-								</tr>
-								<tr id="metalMachine1">
-									<td>
-										<h3 class="pointer btn-link">
-											Heavy Drill: <span id="heavyDrill">0</span>
-										</h3>
-										<span>
-											Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
-											<br>
-											Costs <span id="heavyDrillMetalCost">160</span> metal, <span id="heavyDrillGemCost">60</span> gems, <span id="heavyDrillOilCost">50</span> oil
-										</span>
-										<br>
-										<br>
-										<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>							
-					<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Gems
-										</h2>
-										<span>
-											Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainGem()" class="btn btn-default">Gain <span id="gemGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="gemStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
-											<br>
-											Costs <span id="gemStorageCost">50</span> gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeGemStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Gem Miner: <span id="gemMiner">0</span>
-										</h3>
-										<span>
-											Build an improved pickaxe to mine gems.
-											<br>
-											Costs <span id="gemMinerMetalCost">15</span> metal, <span id="gemMinerGemCost">10</span> gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
-									</td>
-								</tr>
-								<tr id="gemMachine1">
-									<td>
-										<h3 class="pointer btn-link">
-											Advanced Drill: <span id="advancedDrill">0</span>
-										</h3>
-										<span>
-											Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
-											<br>
-											Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Charcoal
-										</h2>
-										<span>
-											Charcoal is created by burning 2 wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="charcoalStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
-											<br>
-											Costs <span id="charcoalStorageCost">50</span> wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Woodburner: <span id="woodburner">0</span>
-										</h3>
-										<span>
-											Build an shovel for your woodburner.
-											<br>
-											Costs <span id="woodburnerMetalCost">10</span> Metal, <span id="woodburnerWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
-									</td>
-								</tr>
-								<tr id="charcoalMachine1">
-									<td>
-										<h3 class="pointer btn-link">
-											Furnace: <span id="furnace">0</span>
-										</h3>
-										<span>
-											Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 5 wood into 3 charcoal for 3 energy every second.
-											<br>
-											Costs <span id="furnaceMetalCost">80</span> metal, <span id="furnaceWoodCost">40</span> wood, <span id="furnaceOilCost">100</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Wood
-										</h2>
-										<span>
-											Wood is one of the primary resources. It is used more often in early game for tools and buildings.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="woodStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
-											<br>
-											Costs <span id="woodStorageCost">50</span> wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeWoodStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Woodcutter: <span id="woodcutter">0</span>
-										</h3>
-										<span>
-											Build an axe for your woodcutter.
-											<br>
-											Costs <span id="woodcutterMetalCost">10</span> Metal, <span id="woodcutterWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
-									</td>
-								</tr>
-								<tr id="woodMachine1">
-									<td>
-										<h3 class="pointer btn-link">
-											Laser Cutter: <span id="laserCutter">0</span>
-										</h3>
-										<span>
-											Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
-											<br>
-											Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
+function gainGem(){
+	if(gem < gemStorage){
+		gem += gemGain;
+		refresh();
+	}
+}
 
-    		<!-- Research -->
-    		<div role="tabpanel" class="tab-pane fade" id="research">
-    			<div class="container" style="width:250px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="border:none; vertical-align:middle;">
-								<span>
-									Science Production
-								</span>
-							</td>
-							<td style="border:none; vertical-align:middle; text-align:right;">
-								<span id="science">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td colspan="2" style="vertical-align:middle;">
-								<span>
-									Technologies
-								</span>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="tab-content">
-					<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Science Production
-										</h2>
-										<span>
-											Science is used for researching new technologies to further your progress in the game.
-										</span>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="labTab">
-									<td>
-										<h3 class="pointer btn-link">
-											Laboratory: <span id="lab">0</span>
-										</h3>
-										<span>
-											Build a laboratory of your very own to start producing science. Each one produces <span id="laboratoryGain">0.1</span> science per second.
-											<br>
-											Costs <span id="labWoodCost">10</span> Wood, <span id="labGemCost">15</span> Gems, <span id="labMetalCost">20</span> Metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="buildLab()" class="btn btn-default">Build</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="technologiesTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border: none;">
-										<h2 class="pointer btn-link">
-											Technologies
-										</h2>
-										<span>
-											Research new technologies to unlock more mechanics and advance through the game.
-										</span>
-									</td>
-								</tr>
-								<tr id="unlockStorage">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrades
-										</h3>
-										<span>
-											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.
-											<br>
-											Costs 5 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockBasicEnergy">
-									<td>
-										<h3 class="pointer btn-link">
-											Basic Energy Production
-										</h3>
-										<span>
-											You will be able to produce power from steam engines using charcoal made from wood in a furnace.
-											<br>
-											Costs 10 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockBasicEnergy()" class="btn btn-default">Unlock Basic Energy Production</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockOil" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Oil Processing
-										</h3>
-										<span>
-											Oil is used to fuel more advanced machines that gather resources and also to produce more power than basic means.
-											Unlocking Oil Processing allows you to extract it from the ground.
-											<br>
-											Costs 15 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockSolar" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Solar Panels
-										</h3>
-										<span>
-											Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
-											<br>
-											Costs 15 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockSolar()" class="btn btn-default">Unlock Solar Panels</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockMachines" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Resource Machines
-										</h3>
-										<span>
-											Resource Machines produce more resources than simple methods but require a constant supply of power to work.
-											<br>
-											Costs 20 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-    		</div>
+function gainCharcoal(){
+	if(charcoal < charcoalStorage && wood >= charcoalGain*2){
+		wood -= (charcoalGain*2);
+		charcoal += charcoalGain;
+		refresh();
+	}
+}
 
-    		<!-- Space -->
-    		<div role="tabpanel" class="tab-pane fade" id="space">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+function gainWood(){
+	if(wood < woodStorage){
+		wood += woodGain;
+		refresh();
+	}
+}
 
-    		<!-- Prestige -->
-    		<div role="tabpanel" class="tab-pane fade" id="prestige">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+// Resources Tab
 
-    		<!-- Stats -->
-    		<div role="tabpanel" class="tab-pane fade" id="stats">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+function upgradeOilStorage(){
+	if(oil >= oilStorageCost){
+		oil -= oilStorageCost;
+		oilStorage = oilNextStorage;
+		oilNextStorage *= 2;
+		oilStorageCost *= 2;
+		refresh();
+		document.getElementById("oilStorage").innerHTML = oilStorage;
+		document.getElementById("oilNextStorage").innerHTML = oilNextStorage;
+		document.getElementById("oilStorageCost").innerHTML = oilStorageCost;
+	}
+}
 
-    		<!-- Settings -->
-    		<div role="tabpanel" class="tab-pane fade" id="settings">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+function upgradeMetalStorage(){
+	if(metal >= metalStorageCost){
+		metal -= metalStorageCost;
+		metalStorage = metalNextStorage;
+		metalNextStorage *= 2;
+		metalStorageCost *= 2;
+		refresh();
+		document.getElementById("metalStorage").innerHTML = metalStorage;
+		document.getElementById("metalNextStorage").innerHTML = metalNextStorage;
+		document.getElementById("metalStorageCost").innerHTML = metalStorageCost;
+	}
+}
 
-    		<!-- Unused -->
-    		<div role="tabpanel" class="tab-pane fade" id="">
-    			
-    		</div>
-  		</div>
-</div>
+function upgradeGemStorage(){
+	if(gem >= gemStorageCost){
+		gem -= gemStorageCost;
+		gemStorage = gemNextStorage;
+		gemNextStorage *= 2;
+		gemStorageCost *= 2;
+		refresh();
+		document.getElementById("gemStorage").innerHTML = gemStorage;
+		document.getElementById("gemNextStorage").innerHTML = gemNextStorage;
+		document.getElementById("gemStorageCost").innerHTML = gemStorageCost;
+	}
+}
+
+function upgradeCharcoalStorage(){
+	if(charcoal >= charcoalStorageCost){
+		charcoal -= charcoalStorageCost;
+		charcoalStorage = charcoalNextStorage;
+		charcoalNextStorage *= 2;
+		charcoalStorageCost *= 2;
+		refresh();
+		document.getElementById("charcoalStorage").innerHTML = charcoalStorage;
+		document.getElementById("charcoalNextStorage").innerHTML = charcoalNextStorage;
+		document.getElementById("charcoalStorageCost").innerHTML = charcoalStorageCost;
+	}
+}
+
+function upgradeWoodStorage(){
+	if(wood >= woodStorageCost){
+		wood -= woodStorageCost;
+		woodStorage = woodNextStorage;
+		woodNextStorage *= 2;
+		woodStorageCost *= 2;
+		refresh();
+		document.getElementById("woodStorage").innerHTML = woodStorage;
+		document.getElementById("woodNextStorage").innerHTML = woodNextStorage;
+		document.getElementById("woodStorageCost").innerHTML = woodStorageCost;
+	}
+}
+
+function getCharcoalEngine(){
+	if(metal >= 50 && gem >= 25){
+		metal -= 50;
+		gem -= 25;
+		charcoalEngine += 1;
+		document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getSolarPanel(){
+	if(metal >= 30 && gem >= 35){
+		metal -= 30;
+		gem -= 35;
+		solarPanel += 1;
+		document.getElementById("solarPanel").innerHTML = solarPanel;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getPump(){
+	if(metal >= pumpMetalCost && gem >= pumpGemCost){
+		metal -= pumpMetalCost;
+		gem -= pumpGemCost;
+		pump += 1;
+		pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump + 1));
+		pumpGemCost = Math.floor(20 * Math.pow(1.1,pump + 1));
+		document.getElementById("pump").innerHTML = pump;
+		document.getElementById("pumpMetalCost").innerHTML = pumpMetalCost;
+		document.getElementById("pumpGemCost").innerHTML = pumpGemCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getPumpjack(){
+	if(metal >= pumpjackMetalCost && gem >= pumpjackGemCost && oil >= pumpjackOilCost){
+		metal -= pumpMetalCost;
+		gem -= pumpjackGemCost;
+		oil -= pumpjackOilCost;
+		pumpjack += 1;
+		pumpjackOilCost = Math.floor(50 * Math.pow(1.1,pumpjack + 1));
+		pumpjackGemCost = Math.floor(85 * Math.pow(1.1,pumpjack + 1));
+		pumpjackMetalCost = Math.floor(250 * Math.pow(1.1,pumpjack + 1));
+		document.getElementById("pumpjack").innerHTML = pumpjack;
+		document.getElementById("pumpjackOilCost").innerHTML = pumpjackOilCost;
+		document.getElementById("pumpjackGemCost").innerHTML = pumpjackGemCost;
+		document.getElementById("pumpjackMetalCost").innerHTML = pumpjackMetalCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getMiner(){
+	if(metal >= minerMetalCost && wood >= minerWoodCost){
+		metal -= minerMetalCost;
+		wood -= minerWoodCost;
+		miner += 1;
+		minerWoodCost = Math.floor(5 * Math.pow(1.1,miner + 1));
+		minerMetalCost = Math.floor(10 * Math.pow(1.1,miner + 1));
+		document.getElementById("miner").innerHTML = miner;
+		document.getElementById("minerMetalCost").innerHTML = minerMetalCost;
+		document.getElementById("minerWoodCost").innerHTML = minerWoodCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getHeavyDrill(){
+	if(metal >= heavyDrillMetalCost && gem >= heavyDrillGemCost && oil >= heavyDrillOilCost){
+		metal -= heavyDrillMetalCost;
+		gem -= heavyDrillGemCost;
+		oil -= heavyDrillOilCost;
+		heavyDrill += 1;
+		heavyDrillOilCost = Math.floor(50 * Math.pow(1.1,heavyDrill + 1));
+		heavyDrillGemCost = Math.floor(60 * Math.pow(1.1,heavyDrill + 1));
+		heavyDrillMetalCost = Math.floor(160 * Math.pow(1.1,heavyDrill + 1));
+		document.getElementById("heavyDrill").innerHTML = heavyDrill;
+		document.getElementById("heavyDrillMetalCost").innerHTML = heavyDrillMetalCost;
+		document.getElementById("heavyDrillGemCost").innerHTML = heavyDrillGemCost;
+		document.getElementById("heavyDrillOilCost").innerHTML = heavyDrillOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getGemMiner(){
+	if(metal >= gemMinerMetalCost && gem >= gemMinerGemCost){
+		metal -= gemMinerMetalCost;
+		gem -= gemMinerGemCost;
+		gemMiner += 1;
+		gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner + 1));
+		gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner + 1));
+		document.getElementById("gemMiner").innerHTML = gemMiner;
+		document.getElementById("gemMinerMetalCost").innerHTML = gemMinerMetalCost;
+		document.getElementById("gemMinerGemCost").innerHTML = gemMinerGemCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getAdvancedDrill(){
+	if(metal >= advancedDrillMetalCost && gem >= advancedDrillGemCost && oil >= advancedDrillOilCost){
+		metal -= advancedDrillMetalCost;
+		gem -= advancedDrillGemCost;
+		oil -= advancedDrillOilCost;
+		advancedDrill += 1;
+		advancedDrillOilCost = Math.floor(60 * Math.pow(1.1,advancedDrill + 1));
+		advancedDrillGemCost = Math.floor(200 * Math.pow(1.1,advancedDrill + 1));
+		advancedDrillMetalCost = Math.floor(120 * Math.pow(1.1,advancedDrill + 1));
+		document.getElementById("advancedDrill").innerHTML = advancedDrill;
+		document.getElementById("advancedDrillMetalCost").innerHTML = advancedDrillMetalCost;
+		document.getElementById("advancedDrillGemCost").innerHTML = advancedDrillGemCost;
+		document.getElementById("advancedDrillOilCost").innerHTML = advancedDrillOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getWoodburner(){
+	if(metal >= woodburnerMetalCost && wood >= woodburnerWoodCost){
+		metal -= woodburnerMetalCost;
+		wood -= woodburnerWoodCost;
+		woodburner += 1;
+		woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner + 1));
+		woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner + 1));
+		document.getElementById("woodburner").innerHTML = woodburner;
+		document.getElementById("woodburnerMetalCost").innerHTML = woodburnerMetalCost;
+		document.getElementById("woodburnerWoodCost").innerHTML = woodburnerWoodCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getFurnace(){
+	if(metal >= furnaceMetalCost && wood >= furnaceWoodCost && oil >= furnaceOilCost){
+		metal -= furnaceMetalCost;
+		wood -= furnaceWoodCost;
+		oil -= furnaceOilCost;
+		furnace += 1;
+		furnaceWoodCost = Math.floor(40 * Math.pow(1.1,furnace + 1));
+		furnaceOilCost = Math.floor(100 * Math.pow(1.1,furnace + 1));
+		furnaceMetalCost = Math.floor(80 * Math.pow(1.1,furnace + 1));
+		document.getElementById("furnace").innerHTML = furnace;
+		document.getElementById("furnaceMetalCost").innerHTML = furnaceMetalCost;
+		document.getElementById("furnaceWoodCost").innerHTML = furnaceWoodCost;
+		document.getElementById("furnaceOilCost").innerHTML = furnaceOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getWoodcutter(){
+	if(metal >= woodcutterMetalCost && wood >= woodcutterWoodCost){
+		metal -= woodcutterMetalCost;
+		wood -= woodcutterWoodCost;
+		woodcutter += 1;
+		woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter + 1));
+		woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter + 1));
+		document.getElementById("woodcutter").innerHTML = woodcutter;
+		document.getElementById("woodcutterMetalCost").innerHTML = woodcutterMetalCost;
+		document.getElementById("woodcutterWoodCost").innerHTML = woodcutterWoodCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function getLaserCutter(){
+	if(metal >= laserCutterMetalCost && gem >= laserCutterGemCost && oil >= laserCutterOilCost){
+		metal -= laserCutterMetalCost;
+		gem -= laserCutterGemCost;
+		oil -= laserCutterOilCost;
+		laserCutter += 1;
+		laserCutterOilCost = Math.floor(40 * Math.pow(1.1,laserCutter + 1));
+		laserCutterGemCost = Math.floor(90 * Math.pow(1.1,laserCutter + 1));
+		laserCutterMetalCost = Math.floor(50 * Math.pow(1.1,laserCutter + 1));
+		document.getElementById("laserCutter").innerHTML = laserCutter;
+		document.getElementById("laserCutterMetalCost").innerHTML = laserCutterMetalCost;
+		document.getElementById("laserCutterGemCost").innerHTML = laserCutterGemCost;
+		document.getElementById("laserCutterOilCost").innerHTML = laserCutterOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+// Research Tab
+
+function buildLab(){
+	if(wood >= labWoodCost && gem >= labGemCost && metal >= labMetalCost){
+		wood -= labWoodCost;
+		gem -= labGemCost;
+		metal -= labMetalCost;
+		lab += 1;
+		labWoodCost = Math.floor(10 * Math.pow(1.1,lab + 1));
+		labGemCost = Math.floor(15 * Math.pow(1.1,lab + 1));
+		labMetalCost = Math.floor(20 * Math.pow(1.1,lab + 1));
+		document.getElementById("lab").innerHTML = lab;
+		document.getElementById("labWoodCost").innerHTML = labWoodCost;
+		document.getElementById("labGemCost").innerHTML = labGemCost;
+		document.getElementById("labMetalCost").innerHTML = labMetalCost;
+		refresh();
+		refreshPerSec();
+	}
+}
 
 
+function unlockStorage(){
+	if(science >= 5){
+		science -= 5;
+		document.getElementById("unlockStorage").className = "hidden";
+		document.getElementById("oilStorageUpgrade").className = "";
+		document.getElementById("metalStorageUpgrade").className = "";
+		document.getElementById("gemStorageUpgrade").className = "";
+		document.getElementById("charcoalStorageUpgrade").className = "";
+		document.getElementById("woodStorageUpgrade").className = "";
+	}
+}
 
-</body>
-<script type="text/javascript" src="main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-</html>
+function unlockBasicEnergy(){
+	if(science >= 10){
+		science -= 10;
+		document.getElementById("charcoalNav").className = "";
+		document.getElementById("energyNav").className = "";
+		document.getElementById("metalNav1").style.border = "";
+		document.getElementById("metalNav2").style.border = "";
+		document.getElementById("metalNav3").style.border = "";
+		document.getElementById("oilNav1").style.border = "";
+		document.getElementById("oilNav2").style.border = "";
+		document.getElementById("oilNav3").style.border = "";
+		document.getElementById("unlockBasicEnergy").className = "hidden";
+		document.getElementById("unlockOil").className = "";
+		document.getElementById("unlockSolar").className = "";
+	}
+}
+
+function unlockOil(){
+	if(science >= 15){
+		science -= 15;
+		document.getElementById("unlockOil").className = "hidden";
+		document.getElementById("oilNav").className = "";
+		document.getElementById("metalNav1").style.border = "";
+		document.getElementById("metalNav2").style.border = "";
+		document.getElementById("metalNav3").style.border = "";
+		refresh();
+	}
+}
+
+function unlockSolar(){
+	if(science >= 15){
+		science -= 15;
+		document.getElementById("unlockSolar").className = "hidden";
+		document.getElementById("solarPower").className = "";
+		document.getElementById("unlockMachines").className = "";
+	}
+}
+
+function unlockMachines(){
+	if(science >= 20){
+		science -= 20;
+		document.getElementById("unlockMachines").className = "hidden";
+		document.getElementById("metalMachine1").className = "";
+		document.getElementById("gemMachine1").className = "";
+		document.getElementById("woodMachine1").className = "";
+		document.getElementById("charcoalMachine1").className = "";
+		document.getElementById("oilMachine1").className = "";
+	}
+}
+
+window.setInterval(function(){
+	gainResources();
+	refresh();
+},1000);
