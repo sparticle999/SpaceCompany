@@ -1,5 +1,5 @@
 var energy = 0; var energyGain = 1; var energyps = 0;
-var charcoalEngine = 0; var charcoalEngineGain = 1; var solarPanel = 0; var solarPanelGain = 0.5;
+var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilGain = 1; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalGain = 1; var metalps = 0;
@@ -12,6 +12,8 @@ var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCo
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
+var rocketFuel = 0;
+var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
 
 function refresh(){
 	document.getElementById("energy").innerHTML = energy;
@@ -21,10 +23,11 @@ function refresh(){
 	document.getElementById("charcoal").innerHTML = charcoal;
 	document.getElementById("wood").innerHTML = wood;
 	document.getElementById("science").innerHTML = science;
+	document.getElementById("rocketFuel").innerHTML = rocketFuel;
 }
 
 function refreshPerSec(){
-	energyps = (charcoalEngine*charcoalEngineGain)+(solarPanel*solarPanelGain)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
+	energyps = charcoalEngine+(solarPanel*0.5)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
 	oilps = pump + (pumpjack*5);
 	metalps = miner + (heavyDrill*8);
 	gemps = gemMiner + (advancedDrill*4);
@@ -36,11 +39,11 @@ function refreshPerSec(){
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
 	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine;
-	if(charoal >= charcoalStorage){
-		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+	if(charcoal >= charcoalStorage){
+		document.getElementById("woodps").innerHTML = woodps;
 	}
 	else{
-		document.getElementById("woodps").innerHTML = woodps;
+		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
 	}
 }
 
@@ -205,22 +208,30 @@ function upgradeWoodStorage(){
 }
 
 function getCharcoalEngine(){
-	if(metal >= 50 && gem >= 25){
-		metal -= 50;
-		gem -= 25;
+	if(metal >= charcoalEngineMetalCost && gem >= charcoalEngineGemCost){
+		metal -= charcoalEngineMetalCost;
+		gem -= charcoalEngineGemCost;
 		charcoalEngine += 1;
+		charcoalEngineMetalCost = Math.floor(60 * Math.pow(1.1,charcoalEngine + 1));
+		charcoalEngineGemCost = Math.floor(20 * Math.pow(1.1,charcoalEngine + 1));
 		document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
+		document.getElementById("charcoalEngineMetalCost").innerHTML = charcoalEngineMetalCost;
+		document.getElementById("charcoalEngineGemCost").innerHTML = charcoalEngineGemCost;
 		refresh();
 		refreshPerSec();
 	}
 }
 
 function getSolarPanel(){
-	if(metal >= 30 && gem >= 35){
-		metal -= 30;
-		gem -= 35;
+	if(metal >= solarPanelMetalCost && gem >= solarPanelGemCost){
+		metal -= solarPanelMetalCost;
+		gem -= solarPanelGemCost;
 		solarPanel += 1;
+		solarPanelMetalCost = Math.floor(60 * Math.pow(1.1,solarPanel + 1));
+		solarPanelGemCost = Math.floor(20 * Math.pow(1.1,solarPanel + 1));
 		document.getElementById("solarPanel").innerHTML = solarPanel;
+		document.getElementById("solarPanelMetalCost").innerHTML = solarPanelMetalCost;
+		document.getElementById("solarPanelGemCost").innerHTML = solarPanelGemCost;
 		refresh();
 		refreshPerSec();
 	}
@@ -269,6 +280,10 @@ function getMiner(){
 		document.getElementById("miner").innerHTML = miner;
 		document.getElementById("minerMetalCost").innerHTML = minerMetalCost;
 		document.getElementById("minerWoodCost").innerHTML = minerWoodCost;
+		if(miner === 1){
+			document.getElementById("researchTab").className = "";
+			document.getElementById("dropdownMenu").className = "dropdown";
+		}
 		refresh();
 		refreshPerSec();
 	}
@@ -471,10 +486,48 @@ function unlockMachines(){
 		document.getElementById("woodMachine1").className = "";
 		document.getElementById("charcoalMachine1").className = "";
 		document.getElementById("oilMachine1").className = "";
+		document.getElementById("unlockSpace").className = "";
 	}
 }
+
+function unlockSpace(){
+	if(science >= 100){
+		document.getElementById("unlockSpace").className = "hidden";
+		document.getElementById("spaceTab").className = "";
+	}
+}
+
+// Space Tab
+
+function getChemicalPlant(){
+	if(metal >= chemicalPlantMetalCost && gem >= chemicalPlantGemCost && oil >= chemicalPlantOilCost){
+		metal -= chemicalPlantMetalCost;
+		gem -= chemicalPlantGemCost;
+		oil -= chemicalPlantOilCost;
+		chemicalPlant += 1;
+		chemicalPlantOilCost = Math.floor(40 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantGemCost = Math.floor(90 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantMetalCost = Math.floor(50 * Math.pow(1.1,chemicalPlant + 1));
+		document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
+		document.getElementById("chemicalPlantrMetalCost").innerHTML = chemicalPlantMetalCost;
+		document.getElementById("chemicalPlantGemCost").innerHTML = chemicalPlantGemCost;
+		document.getElementById("chemicalPlantOilCost").innerHTML = chemicalPlantOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+//Timer
 
 window.setInterval(function(){
 	gainResources();
 	refresh();
+	var timer = 0;
+	if(timer === 5){
+		timer = 0;
+		refreshPerSec();
+	}
+	else{
+		timer += 1;
+	}
 },1000);
