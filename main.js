@@ -24,19 +24,24 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	energyps = (charcoalEngine * charcoalEngineGain) + (solarPanel * solarPanelGain);
-	oilps = pump + (pumpjack * 5);
-	metalps = miner + (heavyDrill * 8);
-	gemps = gemMiner + (advancedDrill * 4);
-	charcoalps = woodburner + (furnace * 3);
-	woodps = woodcutter + (laserCutter * 6);
-	scienceps = (lab * labGain);
+	energyps = (charcoalEngine*charcoalEngineGain)+(solarPanel*solarPanelGain)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
+	oilps = pump + (pumpjack*5);
+	metalps = miner + (heavyDrill*8);
+	gemps = gemMiner + (advancedDrill*4);
+	charcoalps = woodburner + (furnace*3);
+	woodps = woodcutter + (laserCutter*6);
+	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = energyps;
 	document.getElementById("oilps").innerHTML = oilps;
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
 	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine;
-	document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+	if(charoal >= charcoalStorage){
+		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+	}
+	else{
+		document.getElementById("woodps").innerHTML = woodps;
+	}
 }
 
 function gainResources(){
