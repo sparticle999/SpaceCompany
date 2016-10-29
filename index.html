@@ -23,7 +23,7 @@
 						Space Company<span></span>
 					</span>
 				</a>
-				<a class="navbar-brand" ng-href="" href="#/changelog">
+				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
 						v0.0.3 Alpha
 					</span>
@@ -105,8 +105,6 @@
 								<span id="energy">
 									0
 								</span>
-								/
-								<span id="energyStorage">50</span>
 							</td>
 						</tr>
     					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -222,21 +220,6 @@
 										<br>
 									</td>
 								</tr>
-								<tr id="energyStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your energy storage size to <span id="energyNextStorage">100</span>.
-											<br>
-											Costs <span id="energyStorageCost">50</span> energy.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeenergyStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
@@ -254,6 +237,23 @@
 										<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
 									</td>
 								</tr>
+								<tr id="solarPower" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Solar Panels: <span id="solarPanel">0</span>
+										</h3>
+										<span>
+											Gains energy slowly from the sun without using any resources.
+											<br>
+											Each Solar Panel produces <span id="solarPanelGain">1</span> energy per second.
+											<br>
+											Costs 30 Metal, 35 Gems.
+										</span>
+										<br>
+										<br>
+										<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
+									</td>
+								</tr>
 							</table>
 						</div>
 					</div>	
@@ -266,7 +266,7 @@
 											Oil
 										</h2>
 										<span>
-											Oil is used to fuel most machines that gather resources and also as a way of producing power.
+											Oil is used to build most machines that gather resources and also as a way of producing power.
 										</span>
 										<br>
 										<br>
@@ -279,9 +279,9 @@
 											Storage Upgrade
 										</h3>
 										<span>
-											Upgrade your oil storage size to <span id="metalNextStorage">100</span>.
+											Upgrade your oil storage size to <span id="oillNextStorage">100</span>.
 											<br>
-											Costs <span id="metalStorageCost">50</span> oil.
+											Costs <span id="oilStorageCost">50</span> oil.
 										</span>
 										<br>
 										<br>
@@ -291,16 +291,31 @@
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Pump: <span id="pump">0</span>
+											Small Pump: <span id="pump">0</span>
 										</h3>
 										<span>
-											Build a pump to extract oil from the ground
+											Build a small pump to extract oil from the ground
 											<br>
-											Costs 30 Metal, 10 Gems.
+											Costs 60 Metal, 20 Gems.
 										</span>
 										<br>
 										<br>
 										<button onclick="getPump()" class="btn btn-default">Get Pump</button>
+									</td>
+								</tr>
+								<tr id="oilMachine1">
+									<td>
+										<h3 class="pointer btn-link">
+											Pumpjack: <span id="pumpjack">0</span>
+										</h3>
+										<span>
+											Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
+											<br>
+											Costs 250 metal, 80 gems, 50 oil.
+										</span>
+										<br>
+										<br>
+										<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
 									</td>
 								</tr>
 							</table>
@@ -354,6 +369,21 @@
 										<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
 									</td>
 								</tr>
+								<tr id="metalMachine1">
+									<td>
+										<h3 class="pointer btn-link">
+											Heavy Drill: <span id="heavyDrill">0</span>
+										</h3>
+										<span>
+											Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
+											<br>
+											Costs 160 metal, 60 gems, 50 oil
+										</span>
+										<br>
+										<br>
+										<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
+									</td>
+								</tr>
 							</table>
 						</div>
 					</div>							
@@ -387,22 +417,37 @@
 										</span>
 										<br>
 										<br>
-										<button onclick="upgradegemStorage()" class="btn btn-default">Upgrade Storage</button>
+										<button onclick="upgradeGemStorage()" class="btn btn-default">Upgrade Storage</button>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<h3 class="pointer btn-link">
-											Extractor: <span id="extractor">0</span>
+											Gem Miner: <span id="gemMiner">0</span>
 										</h3>
 										<span>
-											Build an extractor to mine gems.
+											Build an improved pickaxe to mine gems.
 											<br>
-											Costs 30 metal.
+											Costs 15 metal, 10 gems.
 										</span>
 										<br>
 										<br>
-										<button onclick="getExtractor()" class="btn btn-default">Build Extractor</button>
+										<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
+									</td>
+								</tr>
+								<tr id="gemMachine1">
+									<td>
+										<h3 class="pointer btn-link">
+											Advanced Drill: <span id="advancedDrill">0</span>
+										</h3>
+										<span>
+											Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
+											<br>
+											Costs 120 metal, 200 gems, 60 oil.
+										</span>
+										<br>
+										<br>
+										<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
 									</td>
 								</tr>
 							</table>
@@ -456,6 +501,21 @@
 										<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
 									</td>
 								</tr>
+								<tr id="charcoalMachine1">
+									<td>
+										<h3 class="pointer btn-link">
+											Furnace: <span id="furnace">0</span>
+										</h3>
+										<span>
+											Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 1 wood into 3 charcoal for 3 energy every second.
+											<br>
+											Costs 80 metal, 40 wood, 100 oil.
+										</span>
+										<br>
+										<br>
+										<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
+									</td>
+								</tr>
 							</table>
 						</div>
 					</div>
@@ -507,24 +567,26 @@
 										<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
 									</td>
 								</tr>
+								<tr id="woodMachine1">
+									<td>
+										<h3 class="pointer btn-link">
+											Laser Cutter: <span id="laserCutter">0</span>
+										</h3>
+										<span>
+											Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
+											<br>
+											Costs 50 metal, 90 gems, 40 oil.
+										</span>
+										<br>
+										<br>
+										<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+									</td>
+								</tr>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
-
-    		<!-- Crafting
-    		<div role="tabpanel" class="tab-pane fade in" id="crafting">
-    			<div class="container" style="width:250px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					
-					</table>
-				</div>
-				<div class="tab-content">
-					
-				</div>
-    		</div>
-    		-->
 
     		<!-- Research -->
     		<div role="tabpanel" class="tab-pane fade" id="research">
@@ -549,20 +611,6 @@
 								</span>
 							</td>
 						</tr>
-    					<!--<tr href="#resourcesTechTreeTab" aria-controls="resourcesTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td colspan="2" style="vertical-align:middle;">
-								<span>
-									Resources Tech Tree
-								</span>
-							</td>
-						</tr>
-						<tr href="#spaceTechTreeTab" aria-controls="spaceTechTreeTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td colspan="2" style="vertical-align:middle;">
-								<span>
-									Space Tech Tree
-								</span>
-							</td>
-						</tr>-->
 					</table>
 				</div>
 				<div class="tab-content">
@@ -648,7 +696,7 @@
 										<br>
 									</td>
 								</tr>
-								<tr id="unlockOil">
+								<tr id="unlockOil" class="hidden">
 									<td>
 										<h3 class="pointer btn-link">
 											Oil Processing
@@ -662,6 +710,40 @@
 										<br>
 										<br>
 										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockSolar" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Solar Panels
+										</h3>
+										<span>
+											Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
+											<br>
+											Costs 15 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockSolar()" class="btn btn-default">Unlock Solar Panels</button>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr id="unlockMachines" class="hidden">
+									<td>
+										<h3 class="pointer btn-link">
+											Resource Machines
+										</h3>
+										<span>
+											Resource Machines produce more resources than simple methods but require a constant supply of power to work.
+											<br>
+											Costs 20 Science.
+										</span>
+										<br>
+										<br>
+										<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
 										<br>
 										<br>
 									</td>
