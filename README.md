@@ -1,6 +1,12 @@
 # To Do:
 
+v0.0.5
+- Rocketfuel made from 100 oil and 100 charcoal over 5 seconds (0.2 per second)
+- Rocket made from 1200 metal, 600 gems, 500 oil
+- To launch rocket uses 20 rocketfuel
+
 # Future Plans (maybe):
+
 - Rocketfuel
 - Rockets into space
 - Satelites
@@ -11,8 +17,12 @@
 - [Donations through paypal]
 
 
-
 # Changelog:
+
+v0.0.5
+- Added content to Space tab
+- Added chemical plants that produce rocket fuel
+- Added rocket that uses rocket fuel to launch into space
 
 v0.0.4
 - Balanced Game More (to not take 2 minutes to complete)
@@ -22,6 +32,7 @@ v0.0.4
 - Changed storage upgrades to cost metal as well
 
 v0.0.3
+
 - Removed cap on energy
 - Added Solar Panels
 - Resource Gathering Machine were added that use a constant supply of energy
