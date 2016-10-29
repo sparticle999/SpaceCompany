@@ -132,8 +132,9 @@ function gainWood(){
 // Resources Tab
 
 function upgradeOilStorage(){
-	if(oil >= oilStorageCost){
+	if(oil >= oilStorageCost && metal >= oilStorageCost/2.5){
 		oil -= oilStorageCost;
+		metal -= oilStorageCost/2.5;
 		oilStorage = oilNextStorage;
 		oilNextStorage *= 2;
 		oilStorageCost *= 2;
@@ -141,6 +142,7 @@ function upgradeOilStorage(){
 		document.getElementById("oilStorage").innerHTML = oilStorage;
 		document.getElementById("oilNextStorage").innerHTML = oilNextStorage;
 		document.getElementById("oilStorageCost").innerHTML = oilStorageCost;
+		document.getElementById("oilStorageMetalCost").innerHTML = oilStorageCost/2.5;
 	}
 }
 
@@ -158,8 +160,9 @@ function upgradeMetalStorage(){
 }
 
 function upgradeGemStorage(){
-	if(gem >= gemStorageCost){
+	if(gem >= gemStorageCost && metal >= gemStorageCost/2.5){
 		gem -= gemStorageCost;
+		metal -= gemStorageCost/2.5;
 		gemStorage = gemNextStorage;
 		gemNextStorage *= 2;
 		gemStorageCost *= 2;
@@ -167,12 +170,14 @@ function upgradeGemStorage(){
 		document.getElementById("gemStorage").innerHTML = gemStorage;
 		document.getElementById("gemNextStorage").innerHTML = gemNextStorage;
 		document.getElementById("gemStorageCost").innerHTML = gemStorageCost;
+		document.getElementById("gemStorageMetalCost").innerHTML = oilStorageCost/2.5;
 	}
 }
 
 function upgradeCharcoalStorage(){
-	if(charcoal >= charcoalStorageCost){
+	if(charcoal >= charcoalStorageCost && metal >= charcoalStorageCost/2.5){
 		charcoal -= charcoalStorageCost;
+		metal -= charcoalStorageCost/2.5;
 		charcoalStorage = charcoalNextStorage;
 		charcoalNextStorage *= 2;
 		charcoalStorageCost *= 2;
@@ -180,12 +185,14 @@ function upgradeCharcoalStorage(){
 		document.getElementById("charcoalStorage").innerHTML = charcoalStorage;
 		document.getElementById("charcoalNextStorage").innerHTML = charcoalNextStorage;
 		document.getElementById("charcoalStorageCost").innerHTML = charcoalStorageCost;
+		document.getElementById("charcoalStorageMetalCost").innerHTML = oilStorageCost/2.5;
 	}
 }
 
 function upgradeWoodStorage(){
-	if(wood >= woodStorageCost){
+	if(wood >= woodStorageCost && metal >= woodStorageCost/2.5){
 		wood -= woodStorageCost;
+		metal -= woodStorageCost/2.5;
 		woodStorage = woodNextStorage;
 		woodNextStorage *= 2;
 		woodStorageCost *= 2;
@@ -193,6 +200,7 @@ function upgradeWoodStorage(){
 		document.getElementById("woodStorage").innerHTML = woodStorage;
 		document.getElementById("woodNextStorage").innerHTML = woodNextStorage;
 		document.getElementById("woodStorageCost").innerHTML = woodStorageCost;
+		document.getElementById("woodStorageMetalCost").innerHTML = oilStorageCost/2.5;
 	}
 }
 
