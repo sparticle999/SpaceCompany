@@ -20,7 +20,7 @@
 			<div class="navbar-header">
 				<a class="navbar-brand page-title" href="#">
 					<span>
-						Space Company<span></span>
+						Space Company
 					</span>
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
@@ -30,763 +30,828 @@
 				</a>
 			</div>
 			<div class="navbar-right"><login><!-- ngIf: env.isServerFrontendEnabled --></login></div>
-	  </div>
-	  <div class="ng-binding"></div>
+		</div>
+		<div class="ng-binding"></div>
 	</div>
 	<div height="30"></div>
 
-  <!-- Nav tabs -->
-  		<ul class="nav nav-tabs no-select" role="tablist">
-   			<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-   			<!--<li role="presentation" id="craftingTab" class=""><a href="#crafting" aria-controls="crafting" role="tab" data-toggle="tab">Crafting</a></li>-->
-   			<li role="presentation" id="researchTab" class=""><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
-	    	<li role="presentation" id="spaceTab" class=""><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
-	    	<li role="presentation" id="prestigeTab" class=""><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
-
-	    	<li role="tab" id="dropdownMenu" class="dropdown" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
-	    		<ul class="dropdown-menu" role="menu">
-	    			<li role="presentation" id="settingsTab">
-	    				<a role="menuitem" tabindex="-1" href="#settings">
-	    					<span class="glyphicon glyphicon-cog"></span>
-	    					Settings [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="statsTab">
-	    				<a role="menuitem" tabindex="-1" href="#stats">
-	    					<span class="glyphicon glyphicon-stats"></span>
-	    					Stats [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="achievementsTab">
-	    				<a role="menuitem" tabindex="-1" href="">
-	    					<span class="glyphicon glyphicon-ok"></span>
-	    					Achievemets [WIP]
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="githubTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/">
-	    					<span class="glyphicon glyphicon-folder-open"></span>
-	    					Source Code - GitHub
-	    				</a>
-	    			</li>
-	    			<li role="presentation" id="chanelogTab">
-	    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
-	    					<span class="glyphicon glyphicon-book"></span>
-	    					Changelog
-	    				</a>
-	    			</li>
-	    			
-	    		</ul>
-	    	</li>
-	   		<li role="presentation" id="moneyTab" class="hidden pull-right"><a href="#income" aria-controls="income" role="tab" data-toggle="tab">Income: <span id="income">0</span></a></li>
-	   		<li role="presentation" id="incomeTab" class="hidden pull-right"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money: <span id="money">0</span></a></li>
-		</ul>
+<!-- Nav tabs -->
+	<ul class="nav nav-tabs no-select" role="tablist">
+		<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
+    	<li role="presentation" id="spaceTab" class="hidden"><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
+    	<li role="presentation" id="prestigeTab" class="hidden"><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
+    	<li role="tab" id="dropdownMenu" class="dropdown hidden" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
+    		<ul class="dropdown-menu" role="menu">
+    			<li role="presentation" id="settingsTab">
+    				<a role="menuitem" tabindex="-1" href="#settings">
+    					<span class="glyphicon glyphicon-cog"></span>
+    					Settings [WIP]
+    				</a>
+    			</li>
+    			<li role="presentation" id="statsTab">
+    				<a role="menuitem" tabindex="-1" href="#stats">
+    					<span class="glyphicon glyphicon-stats"></span>
+    					Stats [WIP]
+    				</a>
+    			</li>
+    			<li role="presentation" id="achievementsTab">
+    				<a role="menuitem" tabindex="-1" href="">
+    					<span class="glyphicon glyphicon-ok"></span>
+    					Achievemets [WIP]
+    				</a>
+    			</li>
+    			<li role="presentation" id="githubTab">
+    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/">
+    					<span class="glyphicon glyphicon-folder-open"></span>
+    					Source Code - GitHub
+    				</a>
+    			</li>
+    			<li role="presentation" id="chanelogTab">
+    				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
+    					<span class="glyphicon glyphicon-book"></span>
+    					Changelog
+    				</a>
+    			</li>
+    			
+    		</ul>
+    	</li>
+   		<li role="presentation" id="moneyTab" class="hidden pull-right"><a href="#income" aria-controls="income" role="tab" data-toggle="tab">Income: <span id="income">0</span></a></li>
+   		<li role="presentation" id="incomeTab" class="hidden pull-right"><a href="#money" aria-controls="money" role="tab" data-toggle="tab">Money: <span id="money">0</span></a></li>
+	</ul>
 
 
-  <!-- Tab panes -->
+<!-- Tab panes -->
 
-  		<div class="tab-content">
-  			<!-- Resources -->
-    		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-    			<div class="container" style="width:250px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td style="border:none; vertical-align:middle;">
-								<span>
-									Energy
-								</span>
-							</td>
-							<td style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="energyps">0</span>/Sec
-								</span>
-							</td>
-							<td style="border:none; vertical-align:middle; text-align:right;">
-								<span id="energy">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td id="oilNav1" style="border:none; vertical-align:middle;">
-								<span>
-									Oil
-								</span>
-							</td>
-							<td id="oilNav2" style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="oilps">0</span>/Sec
-								</span>
-							</td>
-							<td id="oilNav3" style="border:none; vertical-align:middle; text-align:right;">
-								<span id="oil">
-									0
-								</span>
-								/
-								<span id="oilStorage">50</span>
-							</td>
-						</tr>
-						<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-    						<td id="metalNav1" style="border:none; vertical-align:middle;">
-								<span>
-									Metal
-								</span>
-							</td>
-							<td id="metalNav2" style="border: none; vertical-align:middle; text-align:center;">
-								<span>
-									<span id="metalps">0</span>/Sec
-								</span>
-							</td>
-							<td id="metalNav3" style="border:none; vertical-align:middle; text-align:right;">
-								<span id="metal">
-									0
-								</span>
-								/
-								<span id="metalStorage">50</span>
-							</td>
-						</tr>
-    					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Gems
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="gemps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="gem">
-									0
-								</span>
-								/
-								<span id="gemStorage">50</span>
-							</td>
-						</tr>
-						<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Charcoal
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="charcoalps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="charcoal">
-									0
-								</span>
-								/
-								<span id="charcoalStorage">50</span>
-							</td>
-						</tr>
-						<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="vertical-align:middle;">
-								<span>
-									Wood
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:center;">
-								<span>
-									<span id="woodps">0</span>/Sec
-								</span>
-							</td>
-							<td style="vertical-align:middle; text-align:right;">
-								<span id="wood">
-									0
-								</span>
-								/
-								<span id="woodStorage">50</span>
-							</td>
-						</tr>
-					</table>
+	<div class="tab-content">
+			<!-- Resources -->
+		<div role="tabpanel" class="tab-pane fade in active" id="resources">
+			<div class="container" style="width:250px; float:left;">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Energy
+							</span>
+						</td>
+						<td style="border: none; vertical-align:middle; text-align:center;">
+							<span>
+								<span id="energyps">0</span>/Sec
+							</span>
+						</td>
+						<td style="border:none; vertical-align:middle; text-align:right;">
+							<span id="energy">
+								0
+							</span>
+						</td>
+					</tr>
+					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td id="oilNav1" style="border:none; vertical-align:middle;">
+							<span>
+								Oil
+							</span>
+						</td>
+						<td id="oilNav2" style="border: none; vertical-align:middle; text-align:center;">
+							<span>
+								<span id="oilps">0</span>/Sec
+							</span>
+						</td>
+						<td id="oilNav3" style="border:none; vertical-align:middle; text-align:right;">
+							<span id="oil">
+								0
+							</span>
+							/
+							<span id="oilStorage">50</span>
+						</td>
+					</tr>
+					<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td id="metalNav1" style="border:none; vertical-align:middle;">
+							<span>
+								Metal
+							</span>
+						</td>
+						<td id="metalNav2" style="border: none; vertical-align:middle; text-align:center;">
+							<span>
+								<span id="metalps">0</span>/Sec
+							</span>
+						</td>
+						<td id="metalNav3" style="border:none; vertical-align:middle; text-align:right;">
+							<span id="metal">
+								0
+							</span>
+							/
+							<span id="metalStorage">50</span>
+						</td>
+					</tr>
+					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<span>
+								Gems
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="gemps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="gem">
+								0
+							</span>
+							/
+							<span id="gemStorage">50</span>
+						</td>
+					</tr>
+					<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<span>
+								Charcoal
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="charcoalps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="charcoal">
+								0
+							</span>
+							/
+							<span id="charcoalStorage">50</span>
+						</td>
+					</tr>
+					<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<span>
+								Wood
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="woodps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="wood">
+								0
+							</span>
+							/
+							<span id="woodStorage">50</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="energyTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Energy
+									</h2>
+									<span>
+										Energy is created by power sources such as steam engines, solar power and burning oil.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Charcoal Engine: <span id="charcoalEngine">0</span>
+									</h3>
+									<span>
+										Burns charcoal to produce a steady source of energy.
+										<br>
+										Each engine produces <span id="charcoalEngineGain">1</span> energy per second.
+										<br>
+										Costs <span id="charcoalEngineMetalCost">50</span> Metal, <span id="charcoalEngineGemCost">25</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
+								</td>
+							</tr>
+							<tr id="solarPower" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Solar Panels: <span id="solarPanel">0</span>
+									</h3>
+									<span>
+										Gains energy slowly from the sun without using any resources.
+										<br>
+										Each Solar Panel produces <span id="solarPanelGain">1</span> energy per second.
+										<br>
+										Costs <span id="solarPanelMetalCost">30</span> Metal, <span id="solarPanelGemCost">35</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>	
+				<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Oil
+									</h2>
+									<span>
+										Oil is used to build most machines that gather resources and also as a way of producing power.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
+								</td>
+							</tr>
+							<tr id="oilStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your oil storage size to <span id="oilNextStorage">100</span>.
+										<br>
+										Costs <span id="oilStorageCost">50</span> oil, <span id="oilStorageMetalCost">20</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeOilStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Small Pump: <span id="pump">0</span>
+									</h3>
+									<span>
+										Build a small pump to extract oil from the ground
+										<br>
+										Costs <span id="pumpMetalCost">60</span> Metal, <span id="pumpGemCost">20</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPump()" class="btn btn-default">Get Pump</button>
+								</td>
+							</tr>
+							<tr id="oilMachine1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Pumpjack: <span id="pumpjack">0</span>
+									</h3>
+									<span>
+										Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
+										<br>
+										Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> gems, <span id="pumpjackOilCost">50</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>	
+				<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Metal
+									</h2>
+									<span>
+										Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="metalStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your metal storage size to <span id="metalNextStorage">100</span>.
+										<br>
+										Costs <span id="metalStorageCost">50</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeMetalStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Miner: <span id="miner">0</span>
+									</h3>
+									<span>
+										Build a pickaxe for your miner.
+										<br>
+										Costs <span id="minerMetalCost">10</span> Metal, <span id="minerWoodCost">5</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
+								</td>
+							</tr>
+							<tr id="metalMachine1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Heavy Drill: <span id="heavyDrill">0</span>
+									</h3>
+									<span>
+										Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
+										<br>
+										Costs <span id="heavyDrillMetalCost">160</span> metal, <span id="heavyDrillGemCost">60</span> gems, <span id="heavyDrillOilCost">50</span> oil
+									</span>
+									<br>
+									<br>
+									<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>							
+				<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Gems
+									</h2>
+									<span>
+										Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainGem()" class="btn btn-default">Gain <span id="gemGain">1</span></button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="gemStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
+										<br>
+										Costs <span id="gemStorageCost">50</span> gems, <span id="gemStorageMetalCost">20</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeGemStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Gem Miner: <span id="gemMiner">0</span>
+									</h3>
+									<span>
+										Build an improved pickaxe to mine gems.
+										<br>
+										Costs <span id="gemMinerMetalCost">15</span> metal, <span id="gemMinerGemCost">10</span> gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
+								</td>
+							</tr>
+							<tr id="gemMachine1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Advanced Drill: <span id="advancedDrill">0</span>
+									</h3>
+									<span>
+										Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
+										<br>
+										Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<div class="tab-content">
-					<div id="energyTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Energy
-										</h2>
-										<span>
-											Energy is created by power sources such as steam engines, solar power and burning oil.
-										</span>
+				<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Charcoal
+									</h2>
+									<span>
+										Charcoal is created by burning 2 wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="charcoalStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
 										<br>
+										Costs <span id="charcoalStorageCost">50</span> wood, <span id="charcoalStorageMetalCost">20</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Woodburner: <span id="woodburner">0</span>
+									</h3>
+									<span>
+										Build an shovel for your woodburner.
 										<br>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Charcoal Engine: <span id="charcoalEngine">0</span>
-										</h3>
-										<span>
-											Burns charcoal to produce a steady source of energy.
-											<br>
-											Each engine produces <span id="charcoalEngineGain">1</span> energy per second.
-											<br>
-											Costs 50 Metal, 25 Gems.
-										</span>
+										Costs <span id="woodburnerMetalCost">10</span> Metal, <span id="woodburnerWoodCost">5</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
+								</td>
+							</tr>
+							<tr id="charcoalMachine1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Furnace: <span id="furnace">0</span>
+									</h3>
+									<span>
+										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 5 wood into 3 charcoal for 3 energy every second.
 										<br>
-										<br>
-										<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
-									</td>
-								</tr>
-								<tr id="solarPower" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Solar Panels: <span id="solarPanel">0</span>
-										</h3>
-										<span>
-											Gains energy slowly from the sun without using any resources.
-											<br>
-											Each Solar Panel produces <span id="solarPanelGain">1</span> energy per second.
-											<br>
-											Costs 30 Metal, 35 Gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>	
-					<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Oil
-										</h2>
-										<span>
-											Oil is used to build most machines that gather resources and also as a way of producing power.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainOil()" class="btn btn-default">Gain <span id="oilGain">1</span></button>
-									</td>
-								</tr>
-								<tr id="oilStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your oil storage size to <span id="oilNextStorage">100</span>.
-											<br>
-											Costs <span id="oilStorageCost">50</span> oil, <span id="oilStorageMetalCost">20</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeOilStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Small Pump: <span id="pump">0</span>
-										</h3>
-										<span>
-											Build a small pump to extract oil from the ground
-											<br>
-											Costs <span id="pumpMetalCost">60</span> Metal, <span id="pumpGemCost">20</span> Gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getPump()" class="btn btn-default">Get Pump</button>
-									</td>
-								</tr>
-								<tr id="oilMachine1" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Pumpjack: <span id="pumpjack">0</span>
-										</h3>
-										<span>
-											Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
-											<br>
-											Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> gems, <span id="pumpjackOilCost">50</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>	
-					<div id="metalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Metal
-										</h2>
-										<span>
-											Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainMetal()" class="btn btn-default">Gain <span id="metalGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="metalStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your metal storage size to <span id="metalNextStorage">100</span>.
-											<br>
-											Costs <span id="metalStorageCost">50</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeMetalStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Miner: <span id="miner">0</span>
-										</h3>
-										<span>
-											Build a pickaxe for your Miner.
-											<br>
-											Costs <span id="minerMetalCost">10</span> Metal, <span id="minerWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
-									</td>
-								</tr>
-								<tr id="metalMachine1" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Heavy Drill: <span id="heavyDrill">0</span>
-										</h3>
-										<span>
-											Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
-											<br>
-											Costs <span id="heavyDrillMetalCost">160</span> metal, <span id="heavyDrillGemCost">60</span> gems, <span id="heavyDrillOilCost">50</span> oil
-										</span>
-										<br>
-										<br>
-										<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>							
-					<div id="gemTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Gems
-										</h2>
-										<span>
-											Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainGem()" class="btn btn-default">Gain <span id="gemGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="gemStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
-											<br>
-											Costs <span id="gemStorageCost">50</span> gems, <span id="gemStorageMetalCost">20</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeGemStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Gem Miner: <span id="gemMiner">0</span>
-										</h3>
-										<span>
-											Build an improved pickaxe to mine gems.
-											<br>
-											Costs <span id="gemMinerMetalCost">15</span> metal, <span id="gemMinerGemCost">10</span> gems.
-										</span>
-										<br>
-										<br>
-										<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
-									</td>
-								</tr>
-								<tr id="gemMachine1" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Advanced Drill: <span id="advancedDrill">0</span>
-										</h3>
-										<span>
-											Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
-											<br>
-											Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
-									</td>
-								</tr>
-							</table>
-						</div>
+										Costs <span id="furnaceMetalCost">80</span> metal, <span id="furnaceWoodCost">40</span> wood, <span id="furnaceOilCost">100</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
+								</td>
+							</tr>
+						</table>
 					</div>
-					<div id="charcoalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Charcoal
-										</h2>
-										<span>
-											Charcoal is created by burning 2 wood.
-										</span>
+				</div>
+				<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Wood
+									</h2>
+									<span>
+										Wood is one of the primary resources. It is used more often in early game for tools and buildings.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="woodStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
 										<br>
+										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeWoodStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Woodcutter: <span id="woodcutter">0</span>
+									</h3>
+									<span>
+										Build an axe for your woodcutter.
 										<br>
-										<button onclick="gainCharcoal()" class="btn btn-default">Convert <span id="charcoalGain">1</span></button>
+										Costs <span id="woodcutterMetalCost">10</span> Metal, <span id="woodcutterWoodCost">5</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
+								</td>
+							</tr>
+							<tr id="woodMachine1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Laser Cutter: <span id="laserCutter">0</span>
+									</h3>
+									<span>
+										Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
 										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="charcoalStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your charcoal storage size to <span id="charcoalNextStorage">100</span>.
-											<br>
-											Costs <span id="charcoalStorageCost">50</span> wood, <span id="charcoalStorageMetalCost">20</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeCharcoalStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Woodburner: <span id="woodburner">0</span>
-										</h3>
-										<span>
-											Build an shovel for your woodburner.
-											<br>
-											Costs <span id="woodburnerMetalCost">10</span> Metal, <span id="woodburnerWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
-									</td>
-								</tr>
-								<tr id="charcoalMachine1" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Furnace: <span id="furnace">0</span>
-										</h3>
-										<span>
-											Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 5 wood into 3 charcoal for 3 energy every second.
-											<br>
-											Costs <span id="furnaceMetalCost">80</span> metal, <span id="furnaceWoodCost">40</span> wood, <span id="furnaceOilCost">100</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="woodTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Wood
-										</h2>
-										<span>
-											Wood is one of the primary resources. It is used more often in early game for tools and buildings.
-										</span>
-										<br>
-										<br>
-										<button onclick="gainWood()" class="btn btn-default">Gain <span id="woodGain">1</span></button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="woodStorageUpgrade" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrade
-										</h3>
-										<span>
-											Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
-											<br>
-											Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="upgradeWoodStorage()" class="btn btn-default">Upgrade Storage</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h3 class="pointer btn-link">
-											Woodcutter: <span id="woodcutter">0</span>
-										</h3>
-										<span>
-											Build an axe for your woodcutter.
-											<br>
-											Costs <span id="woodcutterMetalCost">10</span> Metal, <span id="woodcutterWoodCost">5</span> Wood.
-										</span>
-										<br>
-										<br>
-										<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
-									</td>
-								</tr>
-								<tr id="woodMachine1" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Laser Cutter: <span id="laserCutter">0</span>
-										</h3>
-										<span>
-											Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
-											<br>
-											Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
-										</span>
-										<br>
-										<br>
-										<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
-									</td>
-								</tr>
-							</table>
-						</div>
+										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
+		</div>
 
-    		<!-- Research -->
-    		<div role="tabpanel" class="tab-pane fade" id="research">
-    			<div class="container" style="width:250px; float:left;">
-    				<table class="table table-hover text-primary no-select pointer">
-    					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td style="border:none; vertical-align:middle;">
-								<span>
-									Science Production
-								</span>
-							</td>
-							<td style="border:none; vertical-align:middle; text-align:right;">
-								<span id="science">
-									0
-								</span>
-							</td>
-						</tr>
-    					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
-							<td colspan="2" style="vertical-align:middle;">
-								<span>
-									Technologies
-								</span>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="tab-content">
-					<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border:none;">
-										<h2 class="pointer btn-link">
-											Science Production
-										</h2>
-										<span>
-											Science is used for researching new technologies to further your progress in the game.
-										</span>
+		<!-- Research -->
+		<div role="tabpanel" class="tab-pane fade" id="research">
+			<div class="container" style="width:250px; float:left;">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Science Production
+							</span>
+						</td>
+						<td style="border:none; vertical-align:middle; text-align:right;">
+							<span id="science">
+								0
+							</span>
+						</td>
+					</tr>
+					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Technologies
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Science Production
+									</h2>
+									<span>
+										Science is used for researching new technologies to further your progress in the game.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Laboratory: <span id="lab">0</span>
+									</h3>
+									<span>
+										Build a laboratory of your very own to start producing science. Each one produces <span id="laboratoryGain">0.1</span> science per second.
 										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="labTab">
-									<td>
-										<h3 class="pointer btn-link">
-											Laboratory: <span id="lab">0</span>
-										</h3>
-										<span>
-											Build a laboratory of your very own to start producing science. Each one produces <span id="laboratoryGain">0.1</span> science per second.
-											<br>
-											Costs <span id="labWoodCost">10</span> Wood, <span id="labGemCost">15</span> Gems, <span id="labMetalCost">20</span> Metal.
-										</span>
-										<br>
-										<br>
-										<button onclick="buildLab()" class="btn btn-default">Build</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div id="technologiesTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-						<div class="container" style="max-width:800px;">
-							<table class="table">
-								<tr>
-									<td style="border: none;">
-										<h2 class="pointer btn-link">
-											Technologies
-										</h2>
-										<span>
-											Research new technologies to unlock more mechanics and advance through the game.
-										</span>
-									</td>
-								</tr>
-								<tr id="unlockStorage">
-									<td>
-										<h3 class="pointer btn-link">
-											Storage Upgrades
-										</h3>
-										<span>
-											This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.
-											<br>
-											Costs 5 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockBasicEnergy">
-									<td>
-										<h3 class="pointer btn-link">
-											Basic Energy Production
-										</h3>
-										<span>
-											You will be able to produce power from steam engines using charcoal made from wood in a furnace.
-											<br>
-											Costs 10 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockBasicEnergy()" class="btn btn-default">Unlock Basic Energy Production</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockOil" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Oil Processing
-										</h3>
-										<span>
-											Oil is used to fuel more advanced machines that gather resources and also to produce more power than basic means.
-											Unlocking Oil Processing allows you to extract it from the ground.
-											<br>
-											Costs 15 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockSolar" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Solar Panels
-										</h3>
-										<span>
-											Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
-											<br>
-											Costs 15 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockSolar()" class="btn btn-default">Unlock Solar Panels</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-								<tr id="unlockMachines" class="hidden">
-									<td>
-										<h3 class="pointer btn-link">
-											Resource Machines
-										</h3>
-										<span>
-											Resource Machines produce more resources than simple methods but require a constant supply of power to work.
-											<br>
-											Costs 20 Science.
-										</span>
-										<br>
-										<br>
-										<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
-										<br>
-										<br>
-									</td>
-								</tr>
-							</table>
-						</div>
+										Costs <span id="labWoodCost">10</span> Wood, <span id="labGemCost">15</span> Gems, <span id="labMetalCost">20</span> Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="buildLab()" class="btn btn-default">Build</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
-    		</div>
-
-    		<!-- Space -->
-    		<div role="tabpanel" class="tab-pane fade" id="space">
-    			<div class="container">
-    				
+				<div id="technologiesTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border: none;">
+									<h2 class="pointer btn-link">
+										Technologies
+									</h2>
+									<span>
+										Research new technologies to unlock more mechanics and advance through the game.
+									</span>
+								</td>
+							</tr>
+							<tr id="unlockStorage">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrades
+									</h3>
+									<span>
+										This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.
+										<br>
+										Costs 5 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockStorage()" class="btn btn-default">Unlock Storage</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockBasicEnergy">
+								<td>
+									<h3 class="pointer btn-link">
+										Basic Energy Production
+									</h3>
+									<span>
+										You will be able to produce power from steam engines using charcoal made from wood in a furnace.
+										<br>
+										Costs 10 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockBasicEnergy()" class="btn btn-default">Unlock Basic Energy Production</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockOil" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Oil Processing
+									</h3>
+									<span>
+										Oil is used to fuel more advanced machines that gather resources and also to produce more power than basic means.
+										Unlocking Oil Processing allows you to extract it from the ground.
+										<br>
+										Costs 15 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockOil()" class="btn btn-default">Unlock Oil</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockSolar" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Solar Panels
+									</h3>
+									<span>
+										Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
+										<br>
+										Costs 15 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockSolar()" class="btn btn-default">Unlock Solar Panels</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockMachines" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Resource Machines
+									</h3>
+									<span>
+										Resource Machines produce more resources than simple methods but require a constant supply of power to work.
+										<br>
+										Costs 20 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockSpace" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Space
+									</h3>
+									<span>
+										Unlocking Space allows for launching of rockets and opens a whole new field of research.
+										<br>
+										Costs 100 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockSpace()" class="btn btn-default">Unlock Space</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-    		</div>
+			</div>
+		</div>
 
-    		<!-- Prestige -->
-    		<div role="tabpanel" class="tab-pane fade" id="prestige">
-    			<div class="container">
-    				
+		<!-- Space -->
+		<div role="tabpanel" class="tab-pane fade" id="space">
+			<div class="container" style="width:250px; float:left;">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#rocketFuelTab" aria-controls="rocketFuelTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Rocket Fuel
+							</span>
+						</td>
+						<td style="border:none; vertical-align:middle; text-align:right;">
+							<span id="rocketFuel">
+								0
+							</span>
+						</td>
+					</tr>
+					<tr href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Space Rockets
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Rocket Fuel
+									</h2>
+									<span>
+										Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Chemical Plant: <span id="chemicalPlant">0</span>
+									</h3>
+									<span>
+										Chemical plants are used to make rocket fuel automatically. They require 100 oil and 100 charcoal to produce 1 rocket fuel. However, this is done slowly in 0.2 increments as the proccess takes 5 seconds for each plant to complete.
+										<br>
+										Costs <span id="chemicalPlantMetalCost">1000</span> Metal, <span id="chemicalPlantGemCost">750</span> Gems, <span id="chemicalPlantOilCost">500</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="buildChemicalPlant()" class="btn btn-default">Build Chemical Plant</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-    		</div>
+		</div>
 
-    		<!-- Stats -->
-    		<div role="tabpanel" class="tab-pane fade" id="stats">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+		<!-- Prestige -->
+		<div role="tabpanel" class="tab-pane fade" id="prestige">
+			<div class="container">
+				
+			</div>
+		</div>
 
-    		<!-- Settings -->
-    		<div role="tabpanel" class="tab-pane fade" id="settings">
-    			<div class="container">
-    				
-				</div>
-    		</div>
+		<!-- Stats -->
+		<div role="tabpanel" class="tab-pane fade" id="stats">
+			<div class="container">
+				
+			</div>
+		</div>
 
-    		<!-- Unused -->
-    		<div role="tabpanel" class="tab-pane fade" id="">
-    			
-    		</div>
-  		</div>
+		<!-- Settings -->
+		<div role="tabpanel" class="tab-pane fade" id="settings">
+			<div class="container">
+				
+			</div>
+		</div>
+	</div>
 </div>
 
 
