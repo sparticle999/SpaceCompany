@@ -6,7 +6,7 @@ var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStora
 var miner = 0; var heavyDrill = 0;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemGain = 1; var gemps = 0;
 var gemMiner = 0; var advancedDrill = 0;
-var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 100; var charcoalGain = 1; var charcoalps = 0;
+var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalGain = 1; var charcoalps = 0;
 var woodburner = 0; var furnace = 0;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodGain = 1; var woodps = 0;
 var woodcutter = 0; var laserCutter = 0;
@@ -162,6 +162,19 @@ function upgradeGemStorage(){
 		document.getElementById("gemStorage").innerHTML = gemStorage;
 		document.getElementById("gemNextStorage").innerHTML = gemNextStorage;
 		document.getElementById("gemStorageCost").innerHTML = gemStorageCost;
+	}
+}
+
+function upgradeCharcoalStorage(){
+	if(charcoal >= charcoalStorageCost){
+		charcoal -= charcoalStorageCost;
+		charcoalStorage = charcoalNextStorage;
+		charcoalNextStorage *= 2;
+		charcoalStorageCost *= 2;
+		refresh();
+		document.getElementById("charcoalStorage").innerHTML = charcoalStorage;
+		document.getElementById("charcoalNextStorage").innerHTML = charcoalNextStorage;
+		document.getElementById("charcoalStorageCost").innerHTML = charcoalStorageCost;
 	}
 }
 
