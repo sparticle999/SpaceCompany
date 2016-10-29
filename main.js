@@ -36,7 +36,7 @@ function refreshPerSec(){
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
 	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine;
-	document.getElementById("woodps").innerHTML = woodps;
+	document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
 }
 
 function gainResources(){
@@ -339,6 +339,7 @@ function buildLab(){
 		labWoodCost = Math.floor(10 * Math.pow(1.1,lab + 1));
 		labGemCost = Math.floor(15 * Math.pow(1.1,lab + 1));
 		labMetalCost = Math.floor(20 * Math.pow(1.1,lab + 1));
+		document.getElementById("lab").innerHTML = lab;
 		document.getElementById("labWoodCost").innerHTML = labWoodCost;
 		document.getElementById("labGemCost").innerHTML = labGemCost;
 		document.getElementById("labMetalCost").innerHTML = labMetalCost;
