@@ -505,9 +505,9 @@ function getChemicalPlant(){
 		gem -= chemicalPlantGemCost;
 		oil -= chemicalPlantOilCost;
 		chemicalPlant += 1;
-		chemicalPlantOilCost = Math.floor(40 * Math.pow(1.1,chemicalPlant + 1));
-		chemicalPlantGemCost = Math.floor(90 * Math.pow(1.1,chemicalPlant + 1));
-		chemicalPlantMetalCost = Math.floor(50 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantOilCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantMetalCost = Math.floor(500 * Math.pow(1.1,chemicalPlant + 1));
 		document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
 		document.getElementById("chemicalPlantrMetalCost").innerHTML = chemicalPlantMetalCost;
 		document.getElementById("chemicalPlantGemCost").innerHTML = chemicalPlantGemCost;
