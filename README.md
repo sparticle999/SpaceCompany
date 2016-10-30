@@ -1,13 +1,7 @@
 # To Do:
 
-v0.0.5
-- Rocketfuel made from 100 oil and 100 charcoal over 5 seconds (0.2 per second)
-- Rocket made from 1200 metal, 600 gems, 500 oil
-- To launch rocket uses 20 rocketfuel
-
 # Future Plans (maybe):
 
-- Rocketfuel
 - Rockets into space
 - Satelites
 - GeoStationary satelites give information/second
