@@ -804,7 +804,8 @@
 					</tr>
 				</table>
 			</div>
-			<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+			<div class="tab-content">
+				<div id="rocketFuelTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
@@ -839,6 +840,59 @@
 						</table>
 					</div>
 				</div>
+				<div id="rocketTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Rocket
+									</h2>
+									<span>
+										Building a rocket will allow for space exploration and will allow you to gather resources in space.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Rocket: <span id="rocket">0</span>
+									</h3>
+									<span>
+										To launch the rocket into space, it must first be built.
+										<br>
+										Costs <span id="rocketMetalCost">1200</span> Metal, <span id="rocketGemCost">900</span> Gems, <span id="rocketOilCost">1000</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getRocket()" class="btn btn-default">Build Rocket</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Launch Rocket
+									</h3>
+									<span>
+										Launching the rocket into space will unlock space mining, exploration and other planets.
+										<br>
+										This requires 1 rocket and 20 rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="launchRocket()" class="btn btn-default">Launch Rocket</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Prestige -->
