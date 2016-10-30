@@ -14,6 +14,7 @@ var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 var rocketFuel = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
+var rocket = 0; var rocketMetalCost = 1200; var rocketGemCost = 900; var rocketOilCost = 1000;
 
 function refresh(){
 	document.getElementById("energy").innerHTML = energy;
@@ -35,10 +36,10 @@ function refreshPerSec(){
 	woodps = woodcutter + (laserCutter*6);
 	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = energyps;
-	document.getElementById("oilps").innerHTML = oilps;
+	document.getElementById("oilps").innerHTML = oilps - (chemicalPlant*20);
 	document.getElementById("metalps").innerHTML = metalps;
 	document.getElementById("gemps").innerHTML = gemps;
-	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine;
+	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine - (chemicalPlant*20);
 	if(charcoal >= charcoalStorage){
 		document.getElementById("woodps").innerHTML = woodps;
 	}
@@ -92,6 +93,11 @@ function gainResources(){
 	}
 	science += scienceps;
 	science = Math.round(science*10)/10;
+	if(oil >= chemicalPlant*20 && charcoal >= chemicalPlant*20){
+		oil -= chemicalPlant*20;
+		charcoal -= chemicalPlant*20
+		rocketFuel += chemicalPlant / 5;
+	}
 }
 
 // Gain Buttons
@@ -514,6 +520,32 @@ function getChemicalPlant(){
 		document.getElementById("chemicalPlantOilCost").innerHTML = chemicalPlantOilCost;
 		refresh();
 		refreshPerSec();
+	}
+}
+
+function getRocket(){
+	if(metal >= rocketMetalCost && gem >= rocketGemCost && oil >= rocketOilCost){
+		metal -= rocketMetalCost;
+		gem -= rocketGemCost;
+		oil -= rocketOilCost;
+		rocket += 1;
+		rocketOilCost = Math.floor(1000 * Math.pow(1.1,rocket + 1));
+		rocketGemCost = Math.floor(900 * Math.pow(1.1,rocket + 1));
+		rocketMetalCost = Math.floor(1200 * Math.pow(1.1,rocket + 1));
+		document.getElementById("rocket").innerHTML = rocket;
+		document.getElementById("rocketMetalCost").innerHTML = rocketMetalCost;
+		document.getElementById("rocketGemCost").innerHTML = rocketGemCost;
+		document.getElementById("rocketOilCost").innerHTML = rocketOilCost;
+		refresh();
+		refreshPerSec();
+	}
+}
+
+function launchRocket(){
+	if(rocket >= 1 && rocketFuel >= 20){
+		rocketFuel -= 20;
+		rocket -= 1;
+		alert("You Win! This is as far as the game goes so far");
 	}
 }
 
