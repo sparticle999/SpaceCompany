@@ -2,6 +2,7 @@
 
 # Future Plans (maybe):
 
+- Nuclear Power
 - Rockets into space
 - Satelites
 - GeoStationary satelites give information/second
@@ -9,6 +10,7 @@
 - Space elevator
 - [Change UI from bootstrap to my own]
 - [Donations through paypal]
+- [Achievements]
 
 
 # Changelog:
@@ -26,7 +28,6 @@ v0.0.4
 - Changed storage upgrades to cost metal as well
 
 v0.0.3
-
 - Removed cap on energy
 - Added Solar Panels
 - Resource Gathering Machine were added that use a constant supply of energy
