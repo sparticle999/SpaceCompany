@@ -450,9 +450,11 @@ function unlockBasicEnergy(){
 		science -= 10;
 		document.getElementById("charcoalNav").className = "";
 		document.getElementById("energyNav").className = "";
+		document.getElementById("metalNav0").style.border = "";
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
 		document.getElementById("metalNav3").style.border = "";
+		document.getElementById("oilNav0").style.border = "";
 		document.getElementById("oilNav1").style.border = "";
 		document.getElementById("oilNav2").style.border = "";
 		document.getElementById("oilNav3").style.border = "";
@@ -467,6 +469,7 @@ function unlockOil(){
 		science -= 15;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "";
+		document.getElementById("metalNav0").style.border = "";
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
 		document.getElementById("metalNav3").style.border = "";
