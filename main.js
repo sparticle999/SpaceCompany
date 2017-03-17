@@ -179,7 +179,7 @@ function upgradeGemStorage(){
 		document.getElementById("gemStorage").innerHTML = gemStorage;
 		document.getElementById("gemNextStorage").innerHTML = gemNextStorage;
 		document.getElementById("gemStorageCost").innerHTML = gemStorageCost;
-		document.getElementById("gemStorageMetalCost").innerHTML = oilStorageCost/2.5;
+		document.getElementById("gemStorageMetalCost").innerHTML = gemStorageCost/2.5;
 	}
 }
 
@@ -194,7 +194,7 @@ function upgradeCharcoalStorage(){
 		document.getElementById("charcoalStorage").innerHTML = charcoalStorage;
 		document.getElementById("charcoalNextStorage").innerHTML = charcoalNextStorage;
 		document.getElementById("charcoalStorageCost").innerHTML = charcoalStorageCost;
-		document.getElementById("charcoalStorageMetalCost").innerHTML = oilStorageCost/2.5;
+		document.getElementById("charcoalStorageMetalCost").innerHTML = charcoalStorageCost/2.5;
 	}
 }
 
@@ -209,7 +209,7 @@ function upgradeWoodStorage(){
 		document.getElementById("woodStorage").innerHTML = woodStorage;
 		document.getElementById("woodNextStorage").innerHTML = woodNextStorage;
 		document.getElementById("woodStorageCost").innerHTML = woodStorageCost;
-		document.getElementById("woodStorageMetalCost").innerHTML = oilStorageCost/2.5;
+		document.getElementById("woodStorageMetalCost").innerHTML = woodStorageCost/2.5;
 	}
 }
 
