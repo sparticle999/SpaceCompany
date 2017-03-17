@@ -1,7 +1,6 @@
 # To Do:
 
 # Future Plans (maybe):
-
 - Nuclear Power
 - Rockets into space
 - Satelites
@@ -14,6 +13,11 @@
 
 
 # Changelog:
+
+v0.0.6
+- Added the other icons for the rest of the resources
+- Added Help / FAQ Tab
+- Added Beginner Guide, FAQ and Credits
 
 v0.0.5
 - Added content to Space tab
