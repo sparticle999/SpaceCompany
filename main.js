@@ -1,102 +1,113 @@
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilps = 0;
-var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50;
+var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalps = 0;
-var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50;
+var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemps = 0;
-var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60;
+var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalps = 0;
-var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 3; var furnaceOutput = 3;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodps = 0;
-var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
+var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
-var rocketFuel = 0;
+var rocketFuel = 0; var rocketFuelps = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
 var rocket = 0; var rocketMetalCost = 1200; var rocketGemCost = 900; var rocketOilCost = 1000;
 
 function refresh(){
-	document.getElementById("energy").innerHTML = energy;
-	document.getElementById("oil").innerHTML = oil;
-	document.getElementById("metal").innerHTML = metal;
-	document.getElementById("gem").innerHTML = gem;
-	document.getElementById("charcoal").innerHTML = charcoal;
-	document.getElementById("wood").innerHTML = wood;
-	document.getElementById("science").innerHTML = science;
-	document.getElementById("rocketFuel").innerHTML = rocketFuel;
+	
+	document.getElementById("energy").innerHTML = Math.floor(energy);
+	document.getElementById("oil").innerHTML = Math.floor(oil);
+	document.getElementById("metal").innerHTML = Math.floor(metal);
+	document.getElementById("gem").innerHTML = Math.floor(gem);
+	document.getElementById("charcoal").innerHTML = Math.floor(charcoal);
+	document.getElementById("wood").innerHTML = Math.floor(wood);
+	document.getElementById("science").innerHTML = Math.floor(science*10)/10;
+	document.getElementById("rocketFuel").innerHTML = Math.floor(rocketFuel);
 }
 
 function refreshPerSec(){
 	energyps = charcoalEngine+(solarPanel*0.5)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
-	oilps = pump + (pumpjack*5);
-	metalps = miner + (heavyDrill*8);
-	gemps = gemMiner + (advancedDrill*4);
-	charcoalps = woodburner + (furnace*3);
-	woodps = woodcutter + (laserCutter*6);
+	oilps = pump + (pumpjack*pumpjackOutput);
+	metalps = miner + (heavyDrill*heavyDrillOutput);
+	gemps = gemMiner + (advancedDrill*advancedDrillOutput);
+	charcoalps = woodburner + (furnace*furnaceOutput);
+	woodps = woodcutter + (laserCutter*laserCutterOutput);
 	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = energyps;
 	document.getElementById("oilps").innerHTML = oilps - (chemicalPlant*20);
+	if(oil >= oilStorage){
+		document.getElementById("oilps").innerHTML = 0;
+	}
 	document.getElementById("metalps").innerHTML = metalps;
+	if(metal >= metalStorage){
+		document.getElementById("metalps").innerHTML = 0;
+	}
 	document.getElementById("gemps").innerHTML = gemps;
+	if(gem >= gemStorage){
+		document.getElementById("gemps").innerHTML = 0;
+	}
 	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine - (chemicalPlant*20);
 	if(charcoal >= charcoalStorage){
 		document.getElementById("woodps").innerHTML = woodps;
+		document.getElementById("charcoalps").innerHTML = 0;
 	}
 	else{
-		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - (furnace*furnaceWoodInput);
 	}
 }
 
 function gainResources(){
-	if(charcoal + charcoalps >= charcoalEngine){
-		energy += energyps;
-		charcoal -= charcoalEngine;
+	if(charcoal + charcoalps/10 >= charcoalEngine/10){
+		energy += energyps/10;
+		charcoal -= charcoalEngine/10;
 	}
 	else{
 		energy += solarPanel * solarPanelGain;
 	}
-	if(oil + oilps < oilStorage){
-		oil += oilps;
+	if(oil + oilps/10 < oilStorage){
+		oil += oilps/10;
 	}
 	else{
 		oil = oilStorage;
 	}
-	if(metal + metalps < metalStorage){
-		metal += metalps;
+	if(metal + metalps/10 < metalStorage){
+		metal += metalps/10;
 	}
 	else{
 		metal = metalStorage;
 	}
-	if(gem + gemps < gemStorage){
-		gem += gemps;
+	if(gem + gemps/10 < gemStorage){
+		gem += gemps/10;
 	}
 	else{
 		gem = gemStorage;
 	}
-	if(charcoal + charcoalps < charcoalStorage && wood + woodps >= charcoalps*2){
-		charcoal += charcoalps;
-		wood -= (charcoalps*2);
+	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= (charcoalps*2/10)){
+		charcoal += charcoalps/10;
+		wood -= (charcoalps*2)/10;
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
-		if(wood >= difference*2){
-			charcoal += difference;
-			wood -= difference*2;
+		if(wood >= difference*2/10){
+			charcoal += difference/10;
+			wood -= difference*2/10;
 		}	
 	}
-	if(wood + woodps < woodStorage){
-		wood += woodps;
+	if(wood + woodps/10 < woodStorage){
+		wood += woodps/10;
 	}
 	else{
 		wood = woodStorage;
 	}
-	science += scienceps;
-	science = Math.round(science*10)/10;
-	if(oil >= chemicalPlant*20 && charcoal >= chemicalPlant*20){
-		oil -= chemicalPlant*20;
-		charcoal -= chemicalPlant*20
-		rocketFuel += chemicalPlant / 5;
+	science += scienceps/10;
+	science = Math.round(science*100)/100;
+	if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
+		oil -= chemicalPlant*20/10;
+		charcoal -= chemicalPlant*20/10
+		rocketFuel += chemicalPlant/5/10;
 	}
 }
 
@@ -442,12 +453,13 @@ function unlockStorage(){
 		document.getElementById("gemStorageUpgrade").className = "";
 		document.getElementById("charcoalStorageUpgrade").className = "";
 		document.getElementById("woodStorageUpgrade").className = "";
+		document.getElementById("unlockOil").className = "";
 	}
 }
 
 function unlockBasicEnergy(){
-	if(science >= 10){
-		science -= 10;
+	if(science >= 20){
+		science -= 20;
 		document.getElementById("charcoalNav").className = "";
 		document.getElementById("energyNav").className = "";
 		document.getElementById("metalNav0").style.border = "";
@@ -459,14 +471,14 @@ function unlockBasicEnergy(){
 		document.getElementById("oilNav2").style.border = "";
 		document.getElementById("oilNav3").style.border = "";
 		document.getElementById("unlockBasicEnergy").className = "hidden";
-		document.getElementById("unlockOil").className = "";
 		document.getElementById("unlockSolar").className = "";
+		document.getElementById("unlockMachines").className = "";
 	}
 }
 
 function unlockOil(){
-	if(science >= 15){
-		science -= 15;
+	if(science >= 30){
+		science -= 30;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "";
 		document.getElementById("metalNav0").style.border = "";
@@ -478,29 +490,49 @@ function unlockOil(){
 }
 
 function unlockSolar(){
-	if(science >= 15){
-		science -= 15;
+	if(science >= 50){
+		science -= 50;
 		document.getElementById("unlockSolar").className = "hidden";
 		document.getElementById("solarPower").className = "";
-		document.getElementById("unlockMachines").className = "";
 	}
 }
 
 function unlockMachines(){
-	if(science >= 20){
-		science -= 20;
+	if(science >= 50){
+		science -= 50;
 		document.getElementById("unlockMachines").className = "hidden";
+		document.getElementById("upgradeResourceTech").className = "";
+		document.getElementById("oilMachine1").className = "";
 		document.getElementById("metalMachine1").className = "";
 		document.getElementById("gemMachine1").className = "";
-		document.getElementById("woodMachine1").className = "";
 		document.getElementById("charcoalMachine1").className = "";
-		document.getElementById("oilMachine1").className = "";
+		document.getElementById("woodMachine1").className = "";	
 		document.getElementById("unlockSpace").className = "";
 	}
 }
 
+function upgradeResourceTech(){
+	if(science >= 200){
+		science -= 200;
+		pumpjackOutput *= 2;
+		heavyDrillOutput *= 2;
+		advancedDrillOutput *= 2;
+		furnaceWoodInput *= 2;
+		furnaceOutput *= 2;
+		laserCutterOutput *= 2;
+		document.getElementById("unlockResourceTech").className = "hidden";
+		document.getElementById("pumpjackOutput").innerHTML = pumpjackOutput;
+		document.getElementById("heavyDrillOutput").innerHTML = heavyDrillOutput;
+		document.getElementById("advancedDrillOutput").innerHTML = advancedDrillOutput;
+		document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
+		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
+		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
+	}
+}
+
 function unlockSpace(){
-	if(science >= 100){
+	if(science >= 500){
+		science -= 500;
 		document.getElementById("unlockSpace").className = "hidden";
 		document.getElementById("spaceTab").className = "";
 	}
@@ -553,16 +585,16 @@ function launchRocket(){
 }
 
 //Timer
+var timer = 0;
 
 window.setInterval(function(){
 	gainResources();
 	refresh();
-	var timer = 0;
-	if(timer === 5){
+	if(timer === 10){
 		timer = 0;
 		refreshPerSec();
 	}
 	else{
 		timer += 1;
 	}
-},1000);
+},100);
