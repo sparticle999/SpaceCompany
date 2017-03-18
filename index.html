@@ -53,6 +53,7 @@
 		<li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
 		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
     	<li role="presentation" id="spaceTab" class="hidden"><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
+    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aira-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
     	<li role="presentation" id="prestigeTab" class="hidden"><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
     	<li role="presentation" class="active pull-right"><a href="#help" aira-control="help" role="tab" data-toggle="tab">Help / FAQ</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
@@ -318,7 +319,7 @@
 							<span id="goldStorage">50</span>
 						</td>
 					</tr>
-					<tr id="Nav" class="silverhidden" href="#silverTab" aria-controls="silverTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="silverNav" class="hidden" href="#silverTab" aria-controls="silverTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/silverIcon.png" style="width:30px; height:auto">
 						</td>
@@ -340,26 +341,26 @@
 							<span id="silverStorage">50</span>
 						</td>
 					</tr>
-					<tr id="platinumNav" class="hidden" href="#platinumTab" aria-controls="platinumTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="siliconNav" class="hidden" href="#siliconTab" aria-controls="siliconTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="Icons/platinumIcon.png" style="width:30px; height:auto">
+							<img src="Icons/siliconIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="vertical-align:middle;">
 							<span>
-								Platinum
+								Silicon
 							</span>
 						</td>
 						<td style="vertical-align:middle; text-align:center;">
 							<span>
-								<span id="platinumps">0</span>/Sec
+								<span id="siliconps">0</span>/Sec
 							</span>
 						</td>
 						<td style="vertical-align:middle; text-align:right;">
-							<span id="platinum">
+							<span id="silicon">
 								0
 							</span>
 							/
-							<span id="platinumStorage">50</span>
+							<span id="siliconStorage">50</span>
 						</td>
 					</tr>
 				</table>
@@ -426,7 +427,7 @@
 										Oil
 									</h2>
 									<span>
-										Oil is used to build most machines that gather resources and also as a way of producing power.
+										Oil is pumped up from the ground and is used to build most machines that gather resources and also as a way of producing power.
 									</span>
 									<br>
 									<br>
@@ -633,7 +634,7 @@
 										Charcoal
 									</h2>
 									<span>
-										1 Charcoal is created by burning 2 wood.
+										Charcoal is a secondary tier resource and is used by Engines to produce power for your company. 1 Charcoal is created by burning 2 wood.
 									</span>
 									<br>
 									<br>
@@ -682,7 +683,7 @@
 										Furnace: <span id="furnace">0</span>
 									</h3>
 									<span>
-										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient.
+										Furnaces use electric heaters to produce heat to turn  wood into charcoal. Because of the increased heat, the process is more efficient.
 										<br>
 										Produces <span id="furnaceOutput">3</span> charcoal per second.
 										<br>
@@ -756,7 +757,7 @@
 										Laser Cutter: <span id="laserCutter">0</span>
 									</h3>
 									<span>
-										Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
+										Laser Cutters slice trees (and fingers) quicker than axes and produce a lot more wood.
 										<br>
 										Produces <span id="laserCutterOutput">6</span> wood per second.
 										<br>
@@ -766,6 +767,438 @@
 									<br>
 									<br>
 									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="spaceMetalTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Space Metal
+									</h2>
+									<span>
+										Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainSpaceMetal()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="spaceMetalStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your space metal storage size to <span id="spaceMetalNextStorage">100</span>.
+										<br>
+										Costs <span id="spaceMetalStorageCost">50</span> space metal, <span id="spaceMetalStorageMetalCost">200</span> metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeSpaceMetalStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Native Moon Worker: <span id="moonWorker">0</span>
+									</h3>
+									<span>
+										Bribe local workers to mine your space metal.
+										<br>
+										Produces 1 space metal per second.
+										<br>
+										Costs <span id="moonWorkerGemCost">500</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMoonWorker()" class="btn btn-default">Get Moon Worker</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Low-Gravity Drill: <span id="moonDrill">0</span>
+									</h3>
+									<span>
+										These drills practically float!
+										<br>
+										Produces <span id="moonDrillOutput">10</span> space metal per second.
+										<br>
+										Uses 20 energy per second.
+										<br>
+										Costs <span id="Cost">1,000</span> metal, <span id="Cost">600</span> gems, <span id="Cost">400</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getmoonDrill()" class="btn btn-default">Get Low-Gravity Drill</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="methaneTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Methane
+									</h2>
+									<span>
+										Methane is a gas found in abundance on Venus. It can be used to power your company much more effectively than solid fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainMethane()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="methaneStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
+										<br>
+										Costs <span id="methaneStorageCost">50</span> methane, <span id="methaneStorageSpaceMetalCost">20</span> space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeMethaneStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Vacuum Cleaner: <span id="vacuum">0</span>
+									</h3>
+									<span>
+										Sucks in methane and cleans the planet at the same time!
+										<br>
+										Produces 1 methane per second.
+										<br>
+										Costs <span id="vacuumSpaceMetalCost">50</span> space metal, <span id="vacuumGemCost">500</span> gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getVacuum()" class="btn btn-default">Get Vacuum Cleaner</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Suction Excavator: <span id="suctionExcavator">0</span>
+									</h3>
+									<span>
+										Strips the atmosphere of methane on an industrial scale.
+										<br>
+										Produces <span id="Output">7</span> methane per second.
+										<br>
+										Uses 16 energy per second.
+										<br>
+										Costs <span id="suctionExcavatorSpaceMetalCost">100</span> space metal, <span id="suctionExcavatorGemCost">800</span> gems, <span id="suctionExcavatorOilCost">600</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSuctionExcavator()" class="btn btn-default">Get Suction Excavator</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="titaniumTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Titanium
+									</h2>
+									<span>
+										Titanium is a metal found mostly on Mars. It is used 
+									</span>
+									<br>
+									<br>
+									<button onclick="gain()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="titaniumStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
+										<br>
+										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageMetalCost">20</span> space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeTitaniumStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Explorers: <span id="explorer">0</span>
+									</h3>
+									<span>
+										Hire explorers to search for titanium on the surface, uncovered by winds on Mars.
+										<br>
+										Produces 1 titanium per second.
+										<br>
+										Costs <span id="explorerGemCost">1,000</span> gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getExplorer()" class="btn btn-default">Get Explorer</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Space Metal Drill: <span id="spaceMetalDrill">0</span>
+									</h3>
+									<span>
+										These space metal drills are extremely powerful, needed to mine out titanium from inside Mars' crust.
+										<br>
+										Produces <span id="spaceMetalDrillOutput">6</span> titanium per second.
+										<br>
+										Uses 13 energy per second.
+										<br>
+										Costs <span id="spaceMetalDrillSpaceMetalCost">200</span> space metal, <span id="spaceMetalDrillGemCost">800</span> gems, <span id="spaceMetalDrillOilCost">1,000</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSpaceMetalDrill()" class="btn btn-default">Get Space Metal Drill</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="goldTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Gold
+									</h2>
+									<span>
+										Gold is a metal found inside asteroids. It is used to build your Wonders.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainGold()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="goldStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
+										<br>
+										Costs <span id="goldStorageCost">50</span> gold, <span id="goldStorageSpaceMetalCost">20</span> space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeGoldStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Rocket Droid: <span id="droid">0</span>
+									</h3>
+									<span>
+										Powered by methane, this droid scouts the asteroids for gold deposits.
+										<br>
+										Produces 1 Gold per second.
+										<br>
+										Costs <span id="droidSpaceMetalCost">200</span> space metal, <span id="droidMethaneCost">50</span> methane.
+									</span>
+									<br>
+									<br>
+									<button onclick="getDroid()" class="btn btn-default">Get Rocket Droid</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Asteroid Destroyer: <span id="destroyer">0</span>
+									</h3>
+									<span>
+										Tears through asteroids to find gold. It is much more effective than the simple droid.
+										<br>
+										Produces <span id="destroyerOutput">8</span> Gold per second.
+										<br>
+										Uses 19 energy per second.
+										<br>
+										Costs <span id="destroyerSpaceMetalCost">500</span> space metal, <span id="destroyerGemCost">1,500</span> gems, <span id="destroyerOilCost">1,000</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getDestroyer()" class="btn btn-default">Get Asteroid Destroyer</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="silverTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Silver
+									</h2>
+									<span>
+										Silver is another metal most commonly found in the asteroid belt.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainSilver()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="silverStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
+										<br>
+										Costs <span id="silverStorageCost">50</span> silver, <span id="silverStorageSpaceMetalCost">20</span> space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeSilverStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Scout Ship: <span id="scout">0</span>
+									</h3>
+									<span>
+										The Scout Ship searches through the asteroid field for pieces of silver embedded in asteroids.
+										<br>
+										Produces 1 silver per second.
+										<br>
+										Costs <span id="scoutSpaceMetalCost">100</span> space metal, <span id="scoutTitaniumCost">20</span> titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getscout()" class="btn btn-default">Get Scout Ship</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Interplanetary Laser: <span id="spaceLaser">0</span>
+									</h3>
+									<span>
+										Cuts through asteroids to find silver deposits in their cores.
+										<br>
+										Produces <span id="spaceLaserOutput">13</span> silver per second.
+										<br>
+										Uses 24 energy per second.
+										<br>
+										Costs <span id="spaceLaserSpaceMetalCost">350</span> space metal, <span id="spaceLaserGemCost">900</span> gems, <span id="spaceLaserOilCost">1,200</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSpaceLaser()" class="btn btn-default">Get Interplanetary Laser</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="siliconTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Silicon
+									</h2>
+									<span>
+										Silicon is useful for automatic mining systems of the highest tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainSilicon()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="siliconStorageUpgrade" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Silicon storage size to <span id="NextStorage">100</span>.
+										<br>
+										Costs <span id="siliconStorageCost">50</span> silicon, <span id="siiconStorageSpaceMetalCost">20</span> space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeSilverStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Empowered Blowtorch: <span id="blowtorch">0</span>
+									</h3>
+									<span>
+										This type of blowtorch instantly turns sand into silicon, but only on a small scale. To make it, extraterrestrial resources are required.
+										<br>
+										Produces 1 silicon per second.
+										<br>
+										Costs <span id="blowtorchSpaceMetalCost">150</span> space metal, <span id="blowtorchTitaniumCost">30</span> titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Seaside Scorcher: <span id="scorcher">0</span>
+									</h3>
+									<span>
+										This tool almost melts parts of beaches to get silicon at a larger scale.
+										<br>
+										Produces <span id="scorcherOutput">9</span> silicon per second.
+										<br>
+										Uses 18 energy per second.
+										<br>
+										Costs <span id="scorcherSpaceMetalCost">500</span> space metal, <span id="scorcherGemCost">1,200</span> gems, <span id="scorcherOilCost">1,600</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
 								</td>
 							</tr>
 						</table>
@@ -894,7 +1327,7 @@
 										Oil Processing
 									</h3>
 									<span>
-										Oil is used to fuel more advanced machines that gather resources and also to produce more power than basic means.
+										Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means.
 										Unlocking Oil Processing allows you to extract it from the ground.
 										<br>
 										Costs 15 Science.
@@ -999,7 +1432,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="spaceRocket" href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/rocketIcon.png" style="width:30px; height:auto">
 						</td>
@@ -1075,7 +1508,7 @@
 									<span>
 										Chemical plants are used to make rocket fuel automatically. They require 100 oil and 100 charcoal to produce 1 rocket fuel. However, this is done slowly in 0.2 increments as the proccess takes 5 seconds for each plant to complete.
 										<br>
-										Costs <span id="chemicalPlantMetalCost">1000</span> Metal, <span id="chemicalPlantGemCost">750</span> Gems, <span id="chemicalPlantOilCost">500</span> Oil.
+										Costs <span id="chemicalPlantMetalCost">1,000</span> Metal, <span id="chemicalPlantGemCost">750</span> Gems, <span id="chemicalPlantOilCost">500</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -1110,7 +1543,7 @@
 									<span>
 										To launch the rocket into space, it must first be built.
 										<br>
-										Costs <span id="rocketMetalCost">1200</span> Metal, <span id="rocketGemCost">900</span> Gems, <span id="rocketOilCost">1000</span> Oil.
+										Costs <span id="rocketMetalCost">1,200</span> Metal, <span id="rocketGemCost">900</span> Gems, <span id="rocketOilCost">1,000</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -1139,6 +1572,153 @@
 						</table>
 					</div>
 				</div>
+				<div id="moonTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Moon
+									</h2>
+									<span>
+										The Moon is our largest satelite, revolving around the Earth once every 27 days. It contains a large quantity of space metal, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="exploreMoon">
+								<td>
+									<h3 class="pointer btn-link">
+										Exploration
+									</h3>
+									<span>
+										Exploring the Moon will unlock the collection of  space metal.
+										<br>
+										Costs <span id="moonRocketFuelCost">20</span> rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="exploreMoon()" class="btn btn-default">Explore Moon</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="venusTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Venus
+									</h2>
+									<span>
+										Venus is the hottest planet in the solar system and the closest one to Earth. It is rich in greenhouse gases, contributing to its extreme heat. You can extract methane from Venus, which allows you to build up a new form of power generation.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="exploreVenus">
+								<td>
+									<h3 class="pointer btn-link">
+										Exploration
+									</h3>
+									<span>
+										Exploring Venus will unlock methane and methane based power.
+										<br>
+										Costs <span id="venusRocketFuelCost">50</span> rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="exploreVenus()" class="btn btn-default">Explore Venus</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="marsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Mars
+									</h2>
+									<span>
+										Mars is the second closest planet to Earth and is covered in red iron oxide, also called rust. You can find titanium on the surface, but it is more common inside the crust.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="exploreMars">
+								<td>
+									<h3 class="pointer btn-link">
+										Exploration
+									</h3>
+									<span>
+										Exploring Mars unlocks titanium production, which allows you to harvest silicon on Earth.
+										<br>
+										Costs <span id="marsRocketFuelCost">80</span> rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="exploreMars()" class="btn btn-default">Explore Mars</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="asteroidBeltTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Asteroid Belt
+									</h2>
+									<span>
+										The asteroid belt is a vast space with nearly 2 million asteroids. There you can harvest rare metals on Earth more easily, such as gold and silver.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="exploreAsteroidBelt">
+								<td>
+									<h3 class="pointer btn-link">
+										Exploration
+									</h3>
+									<span>
+										Exploring the asteroid belt gives you access to gold and silver.
+										<br>
+										Costs <span id="asteroidBeltRocketFuelCost">200</span> rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="exploreAsteroidBelt()" class="btn btn-default">Explore Asteroid Belt</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Wonders -->
+		<div role="tabpanel" class="tab-pane fade" id="wonder">
+			<div class="container">
+				
 			</div>
 		</div>
 
@@ -1308,6 +1888,8 @@
 									</h2>
 									<span>
 										This game made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
+										<br>
+										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I appologise for any infuriation caused.
 									</span>
 								</td>
 							</tr>
