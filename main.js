@@ -1,15 +1,15 @@
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilps = 0;
-var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50;
+var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalps = 0;
-var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50;
+var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemps = 0;
-var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60;
+var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalps = 0;
-var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 3; var furnaceOutput = 3;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodps = 0;
-var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
+var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 var rocketFuel = 0; var rocketFuelps = 0;
@@ -30,11 +30,11 @@ function refresh(){
 
 function refreshPerSec(){
 	energyps = charcoalEngine+(solarPanel*0.5)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
-	oilps = pump + (pumpjack*5);
-	metalps = miner + (heavyDrill*8);
-	gemps = gemMiner + (advancedDrill*4);
-	charcoalps = woodburner + (furnace*3);
-	woodps = woodcutter + (laserCutter*6);
+	oilps = pump + (pumpjack*pumpjackOutput);
+	metalps = miner + (heavyDrill*heavyDrillOutput);
+	gemps = gemMiner + (advancedDrill*advancedDrillOutput);
+	charcoalps = woodburner + (furnace*furnaceOutput);
+	woodps = woodcutter + (laserCutter*laserCutterOutput);
 	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = energyps;
 	document.getElementById("oilps").innerHTML = oilps - (chemicalPlant*20);
@@ -45,7 +45,7 @@ function refreshPerSec(){
 		document.getElementById("woodps").innerHTML = woodps;
 	}
 	else{
-		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - furnace;
+		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - (furnace*furnaceWoodInput);
 	}
 }
 
@@ -491,17 +491,38 @@ function unlockMachines(){
 	if(science >= 20){
 		science -= 20;
 		document.getElementById("unlockMachines").className = "hidden";
+		document.getElementById("unlockResourceTech").className = "";
+		document.getElementById("oilMachine1").className = "";
 		document.getElementById("metalMachine1").className = "";
 		document.getElementById("gemMachine1").className = "";
-		document.getElementById("woodMachine1").className = "";
 		document.getElementById("charcoalMachine1").className = "";
-		document.getElementById("oilMachine1").className = "";
+		document.getElementById("woodMachine1").className = "";	
 		document.getElementById("unlockSpace").className = "";
+	}
+}
+
+function upgradeResourceTech(){
+	if(science >= 100){
+		science -= 100;
+		pumpjackOutput *= 2;
+		heavyDrillOutput *= 2;
+		advancedDrillOutput *= 2;
+		furnaceWoodInput *= 2;
+		furnaceOutput *= 2;
+		laserCutterOutput *= 2;
+		document.getElementById("unlockResourceTech").className = "hidden";
+		document.getElementById("pumpjackOutput").innerHTML = pumpjackOutput;
+		document.getElementById("heavyDrillOutput").innerHTML = heavyDrillOutput;
+		document.getElementById("advancedDrillOutput").innerHTML = advancedDrillOutput;
+		document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
+		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
+		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 	}
 }
 
 function unlockSpace(){
 	if(science >= 100){
+		science -= 100;
 		document.getElementById("unlockSpace").className = "hidden";
 		document.getElementById("spaceTab").className = "";
 	}

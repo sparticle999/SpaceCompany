@@ -15,8 +15,8 @@
 #RoadMap
 
 v0.0.7
-- 
--
+- ~Added Resource Technology Upgrade to double resource machines.~ [Done]
+- Fix negative energy.
 -
 
 v0.0.8

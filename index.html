@@ -337,7 +337,7 @@
 										Pumpjack: <span id="pumpjack">0</span>
 									</h3>
 									<span>
-										Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
+										Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces <span id="pumpjackOutput">5</span> oil for 4 energy every second.
 										<br>
 										Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> gems, <span id="pumpjackOilCost">50</span> oil.
 									</span>
@@ -407,7 +407,7 @@
 									<span>
 										Heavy Drills mine metal at mass.
 										<br>
-										They produce 8 metal per second.
+										They produce <span id="heavyDrillOutput">8</span> metal per second.
 										<br>
 										They use 2 energy per second.
 										<br>
@@ -479,7 +479,7 @@
 									<span>
 										Advanced Drills mine gem at mass. Because of the toughness of the drill needed it is slower than the heavy drill.
 										<br>
-										Produces 4 gems per second.
+										Produces <span id="advancedDrillOutput">4</span> gems per second.
 										<br>
 										Uses 2 energy per secon.
 										Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
@@ -552,9 +552,9 @@
 									<span>
 										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient.
 										<br>
-										Produces 3 charcoal per second.
+										Produces <span id="furnaceOutput">3</span> charcoal per second.
 										<br>
-										Uses 5 wood per second.
+										Uses <span id="furnaceWoodInput">5</span> wood per second.
 										<br>
 										Uses 3 energy per second.
 										<br>
@@ -626,7 +626,7 @@
 									<span>
 										Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
 										<br>
-										Produces 6 wood per second.
+										Produces <span id="laserCutterOutput">6</span> wood per second.
 										<br>
 										Uses 4 energy per second.
 										<br>										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
@@ -804,6 +804,23 @@
 									<br>
 									<br>
 									<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockResourceTech" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrade Resource Technology
+									</h3>
+									<span>
+										Make your resource machines produce even more resources than before. This upgrade doubles the amount they produce for each unit of energy.
+										<br>
+										Costs 100 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeResourceTech()" class="btn btn-default">Upgrade Resource Tech</button>
 									<br>
 									<br>
 								</td>
