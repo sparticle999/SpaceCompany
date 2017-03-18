@@ -38,11 +38,21 @@ function refreshPerSec(){
 	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = energyps;
 	document.getElementById("oilps").innerHTML = oilps - (chemicalPlant*20);
+	if(oil >= oilStorage){
+		document.getElementById("oilps").innerHTML = 0;
+	}
 	document.getElementById("metalps").innerHTML = metalps;
+	if(metal >= metalStorage){
+		document.getElementById("metalps").innerHTML = 0;
+	}
 	document.getElementById("gemps").innerHTML = gemps;
+	if(gem >= gemStorage){
+		document.getElementById("gemps").innerHTML = 0;
+	}
 	document.getElementById("charcoalps").innerHTML = charcoalps - charcoalEngine - (chemicalPlant*20);
 	if(charcoal >= charcoalStorage){
 		document.getElementById("woodps").innerHTML = woodps;
+		document.getElementById("charcoalps").innerHTML = 0;
 	}
 	else{
 		document.getElementById("woodps").innerHTML = woodps - (woodburner*2) - (furnace*furnaceWoodInput);
@@ -50,43 +60,43 @@ function refreshPerSec(){
 }
 
 function gainResources(){
-	if(charcoal + charcoalps >= charcoalEngine){
+	if(charcoal + charcoalps/10 >= charcoalEngine/10){
 		energy += energyps/10;
 		charcoal -= charcoalEngine/10;
 	}
 	else{
 		energy += solarPanel * solarPanelGain;
 	}
-	if(oil + oilps < oilStorage){
+	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
 	else{
 		oil = oilStorage;
 	}
-	if(metal + metalps < metalStorage){
+	if(metal + metalps/10 < metalStorage){
 		metal += metalps/10;
 	}
 	else{
 		metal = metalStorage;
 	}
-	if(gem + gemps < gemStorage){
+	if(gem + gemps/10 < gemStorage){
 		gem += gemps/10;
 	}
 	else{
 		gem = gemStorage;
 	}
-	if(charcoal + charcoalps < charcoalStorage && wood + woodps >= charcoalps*2){
+	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= (charcoalps*2/10)){
 		charcoal += charcoalps/10;
 		wood -= (charcoalps*2)/10;
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
-		if(wood >= difference*2){
+		if(wood >= difference*2/10){
 			charcoal += difference/10;
 			wood -= difference*2/10;
 		}	
 	}
-	if(wood + woodps < woodStorage){
+	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
 	}
 	else{
@@ -94,7 +104,7 @@ function gainResources(){
 	}
 	science += scienceps/10;
 	science = Math.round(science*100)/100;
-	if(oil >= chemicalPlant*20 && charcoal >= chemicalPlant*20){
+	if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
 		oil -= chemicalPlant*20/10;
 		charcoal -= chemicalPlant*20/10
 		rocketFuel += chemicalPlant/5/10;
@@ -443,12 +453,13 @@ function unlockStorage(){
 		document.getElementById("gemStorageUpgrade").className = "";
 		document.getElementById("charcoalStorageUpgrade").className = "";
 		document.getElementById("woodStorageUpgrade").className = "";
+		document.getElementById("unlockOil").className = "";
 	}
 }
 
 function unlockBasicEnergy(){
-	if(science >= 10){
-		science -= 10;
+	if(science >= 20){
+		science -= 20;
 		document.getElementById("charcoalNav").className = "";
 		document.getElementById("energyNav").className = "";
 		document.getElementById("metalNav0").style.border = "";
@@ -460,14 +471,14 @@ function unlockBasicEnergy(){
 		document.getElementById("oilNav2").style.border = "";
 		document.getElementById("oilNav3").style.border = "";
 		document.getElementById("unlockBasicEnergy").className = "hidden";
-		document.getElementById("unlockOil").className = "";
 		document.getElementById("unlockSolar").className = "";
+		document.getElementById("unlockMachines").className = "";
 	}
 }
 
 function unlockOil(){
-	if(science >= 15){
-		science -= 15;
+	if(science >= 30){
+		science -= 30;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "";
 		document.getElementById("metalNav0").style.border = "";
@@ -479,19 +490,18 @@ function unlockOil(){
 }
 
 function unlockSolar(){
-	if(science >= 15){
-		science -= 15;
+	if(science >= 50){
+		science -= 50;
 		document.getElementById("unlockSolar").className = "hidden";
 		document.getElementById("solarPower").className = "";
-		document.getElementById("unlockMachines").className = "";
 	}
 }
 
 function unlockMachines(){
-	if(science >= 20){
-		science -= 20;
+	if(science >= 50){
+		science -= 50;
 		document.getElementById("unlockMachines").className = "hidden";
-		document.getElementById("unlockResourceTech").className = "";
+		document.getElementById("upgradeResourceTech").className = "";
 		document.getElementById("oilMachine1").className = "";
 		document.getElementById("metalMachine1").className = "";
 		document.getElementById("gemMachine1").className = "";
@@ -502,8 +512,8 @@ function unlockMachines(){
 }
 
 function upgradeResourceTech(){
-	if(science >= 100){
-		science -= 100;
+	if(science >= 200){
+		science -= 200;
 		pumpjackOutput *= 2;
 		heavyDrillOutput *= 2;
 		advancedDrillOutput *= 2;
@@ -521,8 +531,8 @@ function upgradeResourceTech(){
 }
 
 function unlockSpace(){
-	if(science >= 100){
-		science -= 100;
+	if(science >= 500){
+		science -= 500;
 		document.getElementById("unlockSpace").className = "hidden";
 		document.getElementById("spaceTab").className = "";
 	}
@@ -580,7 +590,7 @@ var timer = 0;
 window.setInterval(function(){
 	gainResources();
 	refresh();
-	if(timer === 50){
+	if(timer === 10){
 		timer = 0;
 		refreshPerSec();
 	}
