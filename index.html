@@ -28,6 +28,9 @@
 	<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
 		<div class="container">
 			<div class="navbar-header">
+				<a class="navbar-brand">
+					<img src="SpaceCompanyFavicon.png" style="width:40px; height:auto; margin-top:-30%;">
+				</a>
 				<a class="navbar-brand page-title" href="#">
 					<span>
 						Space Company
@@ -99,7 +102,7 @@
 				<table class="table table-hover text-primary no-select pointer">
 					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
-							<img src="icons/EnergyIcon.png" style="width:30px; height:auto">
+							<img src="Icons/EnergyIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="border:none; vertical-align:middle;">
 							<span>
@@ -119,7 +122,7 @@
 					</tr>
 					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td id="oilNav0" style="border:none; vertical-align:middle;">
-							<img src="icons/oilIcon.png" style="width:30px; height:auto">
+							<img src="Icons/oilIcon.png" style="width:30px; height:auto">
 						</td>
 						<td id="oilNav1" style="border:none; vertical-align:middle;">
 							<span>
@@ -141,7 +144,7 @@
 					</tr>
 					<tr id="metalNav" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td id="metalNav0" style="border:none; vertical-align:middle;">
-							<img src="icons/metalIcon.png" style="width:30px; height:auto">
+							<img src="Icons/metalIcon.png" style="width:30px; height:auto">
 						</td>
 						<td id="metalNav1" style="border:none; vertical-align:middle;">
 							<span>
@@ -163,7 +166,7 @@
 					</tr>
 					<tr id="gemNav" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/gemIcon.png" style="width:30px; height:auto">
+							<img src="Icons/gemIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="vertical-align:middle;">
 							<span>
@@ -185,7 +188,7 @@
 					</tr>
 					<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/charcoalIcon.png" style="width:30px; height:auto;">
+							<img src="Icons/charcoalIcon.png" style="width:30px; height:auto;">
 						</td>
 						<td style="vertical-align:middle;">
 							<span>
@@ -207,7 +210,7 @@
 					</tr>
 					<tr id="woodNav" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/woodIcon.png" style="width:30px; height:auto">
+							<img src="Icons/woodIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="vertical-align:middle;">
 							<span>
@@ -387,6 +390,8 @@
 									<span>
 										Build a pickaxe for your miner.
 										<br>
+										Produces 1 metal per second.
+										<br>
 										Costs <span id="minerMetalCost">10</span> Metal, <span id="minerWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -400,7 +405,11 @@
 										Heavy Drill: <span id="heavyDrill">0</span>
 									</h3>
 									<span>
-										Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
+										Heavy Drills mine metal at mass.
+										<br>
+										They produce 8 metal per second.
+										<br>
+										They use 2 energy per second.
 										<br>
 										Costs <span id="heavyDrillMetalCost">160</span> metal, <span id="heavyDrillGemCost">60</span> gems, <span id="heavyDrillOilCost">50</span> oil
 									</span>
@@ -453,6 +462,8 @@
 									<span>
 										Build an improved pickaxe to mine gems.
 										<br>
+										Produces 1 gem per second.
+										<br>
 										Costs <span id="gemMinerMetalCost">15</span> metal, <span id="gemMinerGemCost">10</span> gems.
 									</span>
 									<br>
@@ -466,8 +477,11 @@
 										Advanced Drill: <span id="advancedDrill">0</span>
 									</h3>
 									<span>
-										Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
+										Advanced Drills mine gem at mass. Because of the toughness of the drill needed it is slower than the heavy drill.
 										<br>
+										Produces 4 gems per second.
+										<br>
+										Uses 2 energy per secon.
 										Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
 									</span>
 									<br>
@@ -487,7 +501,7 @@
 										Charcoal
 									</h2>
 									<span>
-										Charcoal is created by burning 2 wood.
+										1 Charcoal is created by burning 2 wood.
 									</span>
 									<br>
 									<br>
@@ -519,6 +533,10 @@
 									<span>
 										Build an shovel for your woodburner.
 										<br>
+										Produces 1 charcoal per second.
+										<br>
+										Uses 2 wood per second.
+										<br>
 										Costs <span id="woodburnerMetalCost">10</span> Metal, <span id="woodburnerWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -532,7 +550,13 @@
 										Furnace: <span id="furnace">0</span>
 									</h3>
 									<span>
-										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 5 wood into 3 charcoal for 3 energy every second.
+										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient.
+										<br>
+										Produces 3 charcoal per second.
+										<br>
+										Uses 5 wood per second.
+										<br>
+										Uses 3 energy per second.
 										<br>
 										Costs <span id="furnaceMetalCost">80</span> metal, <span id="furnaceWoodCost">40</span> wood, <span id="furnaceOilCost">100</span> oil.
 									</span>
@@ -585,6 +609,8 @@
 									<span>
 										Build an axe for your woodcutter.
 										<br>
+										Produces 1 wood per second.
+										<br>
 										Costs <span id="woodcutterMetalCost">10</span> Metal, <span id="woodcutterWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -600,7 +626,10 @@
 									<span>
 										Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
 										<br>
-										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
+										Produces 6 wood per second.
+										<br>
+										Uses 4 energy per second.
+										<br>										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
 									</span>
 									<br>
 									<br>
@@ -619,7 +648,7 @@
 				<table class="table table-hover text-primary no-select pointer">
 					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/scienceIcon.png" style="width:30px; height:auto">
+							<img src="Icons/scienceIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="border:none; vertical-align:middle;">
 							<span>
@@ -634,7 +663,7 @@
 					</tr>
 					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/technologyIcon.png" style="width:30px; height:auto">
+							<img src="Icons/technologyIcon.png" style="width:30px; height:auto">
 						</td>
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -808,7 +837,7 @@
 				<table class="table table-hover text-primary no-select pointer">
 					<tr href="#rocketFuelTab" aria-controls="rocketFuelTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/rocketFuelIcon.png" style="width:30px; height:auto">
+							<img src="Icons/rocketFuelIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="border:none; vertical-align:middle;">
 							<span>
@@ -823,7 +852,7 @@
 					</tr>
 					<tr href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="icons/rocketIcon.png" style="width:30px; height:auto">
+							<img src="Icons/rocketIcon.png" style="width:30px; height:auto">
 						</td>
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -1009,6 +1038,26 @@
 										The first technology you can research is 'Storage Upgrades', which allows you to build storages to hold more of each type of resource. This is necessary when building machines and other tools costs more than 50 of a resource.
 
 										You can also research 'Basic Energy Production', which opens up the world of power and advanced machines to help you get resources even faster.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Balancing Resources
+									</h3>
+									<span>
+										[To Be Filled]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Space
+									</h3>
+									<span>
+										The first thing to get to space exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock space travel and new technologies and ways to get resources.
 									</span>
 								</td>
 							</tr>

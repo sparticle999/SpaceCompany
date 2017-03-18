@@ -12,19 +12,20 @@ var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCo
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
-var rocketFuel = 0;
+var rocketFuel = 0; var rocketFuelps = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
 var rocket = 0; var rocketMetalCost = 1200; var rocketGemCost = 900; var rocketOilCost = 1000;
 
 function refresh(){
-	document.getElementById("energy").innerHTML = energy;
-	document.getElementById("oil").innerHTML = oil;
-	document.getElementById("metal").innerHTML = metal;
-	document.getElementById("gem").innerHTML = gem;
-	document.getElementById("charcoal").innerHTML = charcoal;
-	document.getElementById("wood").innerHTML = wood;
-	document.getElementById("science").innerHTML = science;
-	document.getElementById("rocketFuel").innerHTML = rocketFuel;
+	
+	document.getElementById("energy").innerHTML = Math.floor(energy);
+	document.getElementById("oil").innerHTML = Math.floor(oil);
+	document.getElementById("metal").innerHTML = Math.floor(metal);
+	document.getElementById("gem").innerHTML = Math.floor(gem);
+	document.getElementById("charcoal").innerHTML = Math.floor(charcoal);
+	document.getElementById("wood").innerHTML = Math.floor(wood);
+	document.getElementById("science").innerHTML = Math.floor(science*10)/10;
+	document.getElementById("rocketFuel").innerHTML = Math.floor(rocketFuel);
 }
 
 function refreshPerSec(){
@@ -50,53 +51,53 @@ function refreshPerSec(){
 
 function gainResources(){
 	if(charcoal + charcoalps >= charcoalEngine){
-		energy += energyps;
-		charcoal -= charcoalEngine;
+		energy += energyps/10;
+		charcoal -= charcoalEngine/10;
 	}
 	else{
 		energy += solarPanel * solarPanelGain;
 	}
 	if(oil + oilps < oilStorage){
-		oil += oilps;
+		oil += oilps/10;
 	}
 	else{
 		oil = oilStorage;
 	}
 	if(metal + metalps < metalStorage){
-		metal += metalps;
+		metal += metalps/10;
 	}
 	else{
 		metal = metalStorage;
 	}
 	if(gem + gemps < gemStorage){
-		gem += gemps;
+		gem += gemps/10;
 	}
 	else{
 		gem = gemStorage;
 	}
 	if(charcoal + charcoalps < charcoalStorage && wood + woodps >= charcoalps*2){
-		charcoal += charcoalps;
-		wood -= (charcoalps*2);
+		charcoal += charcoalps/10;
+		wood -= (charcoalps*2)/10;
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
 		if(wood >= difference*2){
-			charcoal += difference;
-			wood -= difference*2;
+			charcoal += difference/10;
+			wood -= difference*2/10;
 		}	
 	}
 	if(wood + woodps < woodStorage){
-		wood += woodps;
+		wood += woodps/10;
 	}
 	else{
 		wood = woodStorage;
 	}
-	science += scienceps;
-	science = Math.round(science*10)/10;
+	science += scienceps/10;
+	science = Math.round(science*100)/100;
 	if(oil >= chemicalPlant*20 && charcoal >= chemicalPlant*20){
-		oil -= chemicalPlant*20;
-		charcoal -= chemicalPlant*20
-		rocketFuel += chemicalPlant / 5;
+		oil -= chemicalPlant*20/10;
+		charcoal -= chemicalPlant*20/10
+		rocketFuel += chemicalPlant/5/10;
 	}
 }
 
@@ -553,16 +554,16 @@ function launchRocket(){
 }
 
 //Timer
+var timer = 0;
 
 window.setInterval(function(){
 	gainResources();
 	refresh();
-	var timer = 0;
-	if(timer === 5){
+	if(timer === 50){
 		timer = 0;
 		refreshPerSec();
 	}
 	else{
 		timer += 1;
 	}
-},1000);
+},100);

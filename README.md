@@ -12,12 +12,25 @@
 - [Achievements]
 
 
+#RoadMap
+
+v0.0.7
+- 
+-
+-
+
+v0.0.8
+-
+-
+-
+
 # Changelog:
 
 v0.0.6
 - Added the other icons for the rest of the resources
 - Added Help / FAQ Tab
 - Added Beginner Guide, FAQ and Credits
+- Made resource numbers scroll up instead of jumping to the current value.
 
 v0.0.5
 - Added content to Space tab
