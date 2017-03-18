@@ -2,30 +2,31 @@
 
 # Plans for the Future
 - Nuclear Power
-- Rockets into space
 - Satelites
 - GeoStationary satelites give information/second
-- Explore Moon
 - Space elevator
 - [Change UI from bootstrap to my own]
-- [Donations through paypal]
 - [Achievements]
 
 
 #RoadMap
 
-v0.0.7
-- ~Added Resource Technology Upgrade to double resource machines.~ [Done]
-- ~Nerfed Science.~ [Done]
-- ~Changed the per second display to be zero if the storage is full.~ [Done]
-- Fix negative energy.
+v0.1.0 The Space Update [Released to the Public]
+- Added space travel to The Moon, Venus, Mars and the Asteroid Belt
+- Added new resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Platinum.
+- Fixed negative energy.
+- Added Saving
+- Added Donations through paypal
 
-v0.0.8
--
--
--
+v0.1.1
+- 
 
 # Changelog:
+
+v0.0.7
+- Added Resource Technology Upgrade to double resource machines.
+- Nerfed Science.
+- Changed the per second display to be zero if the storage is full.
 
 v0.0.6
 - Added the other icons for the rest of the resources
@@ -34,11 +35,11 @@ v0.0.6
 - Made resource numbers scroll up instead of jumping to the current value.
 
 v0.0.5
-- Added content to Space tab
+- Added Space Tab
 - Added chemical plants that produce rocket fuel
 - Added rocket that uses rocket fuel to launch into space
 
-v0.0.4
+v0.0.4 
 - Balanced Game More (to not take 2 minutes to complete)
 - Fixed Wood/sec not counting charcoal use bug
 - Made all resource gatherers increase in cost as you buy them

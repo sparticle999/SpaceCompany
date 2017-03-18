@@ -580,7 +580,17 @@ function launchRocket(){
 	if(rocket >= 1 && rocketFuel >= 20){
 		rocketFuel -= 20;
 		rocket -= 1;
-		alert("You Win! This is as far as the game goes so far");
+		document.getElementById("moon").className = "";
+		document.getElementById("venus").className = "";
+		document.getElementById("mars").className = "";
+		document.getElementById("asteroidBelt").className = "";
+	}
+}
+
+function exploreMoon(){
+	if(rocketFuel >= 20){
+		rocketFuel -=20;
+		document.getElementById("spaceMetal").className = "";
 	}
 }
 
