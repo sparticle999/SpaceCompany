@@ -607,4 +607,8 @@ window.setInterval(function(){
 	else{
 		timer += 1;
 	}
+<<<<<<< HEAD
 },100);
+=======
+},100);
+>>>>>>> e80f4ef3a8c82dcc0be7a77dad72689f5d782552

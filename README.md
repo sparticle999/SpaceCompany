@@ -11,6 +11,7 @@
 
 #RoadMap
 
+<<<<<<< HEAD:README.md
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
 - Added new resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Platinum.
@@ -20,6 +21,18 @@ v0.1.0 The Space Update [Released to the Public]
 
 v0.1.1
 - 
+=======
+v0.0.7
+- ~Added Resource Technology Upgrade to double resource machines.~ [Done]
+- ~Nerfed Science.~ [Done]
+- ~Changed the per second display to be zero if the storage is full.~ [Done]
+- Fix negative energy.
+
+v0.0.8
+- X
+- X
+- X
+>>>>>>> e80f4ef3a8c82dcc0be7a77dad72689f5d782552:README.md
 
 # Changelog:
 
