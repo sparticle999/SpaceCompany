@@ -38,7 +38,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.0.6 Alpha
+						v0.0.7 Alpha
 					</span>
 				</a>
 			</div>
@@ -337,7 +337,7 @@
 										Pumpjack: <span id="pumpjack">0</span>
 									</h3>
 									<span>
-										Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces 5 oil for 4 energy every second.
+										Pumpjacks are much bigger than small pumps and produce oil on an industrial scale but they require a lot of energy. Each one produces <span id="pumpjackOutput">5</span> oil for 4 energy every second.
 										<br>
 										Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> gems, <span id="pumpjackOilCost">50</span> oil.
 									</span>
@@ -390,6 +390,8 @@
 									<span>
 										Build a pickaxe for your miner.
 										<br>
+										Produces 1 metal per second.
+										<br>
 										Costs <span id="minerMetalCost">10</span> Metal, <span id="minerWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -403,7 +405,11 @@
 										Heavy Drill: <span id="heavyDrill">0</span>
 									</h3>
 									<span>
-										Heavy Drills mine metal at mass producing 8 metal per second. They use 2 energy per second.
+										Heavy Drills mine metal at mass.
+										<br>
+										They produce <span id="heavyDrillOutput">8</span> metal per second.
+										<br>
+										They use 2 energy per second.
 										<br>
 										Costs <span id="heavyDrillMetalCost">160</span> metal, <span id="heavyDrillGemCost">60</span> gems, <span id="heavyDrillOilCost">50</span> oil
 									</span>
@@ -456,6 +462,8 @@
 									<span>
 										Build an improved pickaxe to mine gems.
 										<br>
+										Produces 1 gem per second.
+										<br>
 										Costs <span id="gemMinerMetalCost">15</span> metal, <span id="gemMinerGemCost">10</span> gems.
 									</span>
 									<br>
@@ -469,8 +477,11 @@
 										Advanced Drill: <span id="advancedDrill">0</span>
 									</h3>
 									<span>
-										Advanced Drills mine gem at mass producing 4 gems per second. Because of the toughness of the drill needed it is slower than the heavy drill. They use 2 energy per second.
+										Advanced Drills mine gem at mass. Because of the toughness of the drill needed it is slower than the heavy drill.
 										<br>
+										Produces <span id="advancedDrillOutput">4</span> gems per second.
+										<br>
+										Uses 2 energy per secon.
 										Costs <span id="advancedDrillMetalCost">120</span> metal, <span id="advancedDrillGemCost">200</span> gems, <span id="advancedDrillOilCost">60</span> oil.
 									</span>
 									<br>
@@ -490,7 +501,7 @@
 										Charcoal
 									</h2>
 									<span>
-										Charcoal is created by burning 2 wood.
+										1 Charcoal is created by burning 2 wood.
 									</span>
 									<br>
 									<br>
@@ -522,6 +533,10 @@
 									<span>
 										Build an shovel for your woodburner.
 										<br>
+										Produces 1 charcoal per second.
+										<br>
+										Uses 2 wood per second.
+										<br>
 										Costs <span id="woodburnerMetalCost">10</span> Metal, <span id="woodburnerWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -535,7 +550,13 @@
 										Furnace: <span id="furnace">0</span>
 									</h3>
 									<span>
-										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient and each one turns 5 wood into 3 charcoal for 3 energy every second.
+										Furnaces use energy to produce heat to burn the wood into charcoal. Because of the environment the process is more efficient.
+										<br>
+										Produces <span id="furnaceOutput">3</span> charcoal per second.
+										<br>
+										Uses <span id="furnaceWoodInput">5</span> wood per second.
+										<br>
+										Uses 3 energy per second.
 										<br>
 										Costs <span id="furnaceMetalCost">80</span> metal, <span id="furnaceWoodCost">40</span> wood, <span id="furnaceOilCost">100</span> oil.
 									</span>
@@ -588,6 +609,8 @@
 									<span>
 										Build an axe for your woodcutter.
 										<br>
+										Produces 1 wood per second.
+										<br>
 										Costs <span id="woodcutterMetalCost">10</span> Metal, <span id="woodcutterWoodCost">5</span> Wood.
 									</span>
 									<br>
@@ -603,7 +626,10 @@
 									<span>
 										Laser Cutters slice trees quicker than axes and produce a lot more wood. Each one chops 6 wood for 4 energy per second.
 										<br>
-										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
+										Produces <span id="laserCutterOutput">6</span> wood per second.
+										<br>
+										Uses 4 energy per second.
+										<br>										Costs <span id="laserCutterMetalCost">50</span> metal, <span id="laserCutterGemCost">90</span> gems, <span id="laserCutterOilCost">40</span> oil.
 									</span>
 									<br>
 									<br>
@@ -773,11 +799,28 @@
 									<span>
 										Resource Machines produce more resources than simple methods but require a constant supply of power to work.
 										<br>
-										Costs 20 Science.
+										Costs 100 Science.
 									</span>
 									<br>
 									<br>
 									<button onclick="unlockMachines()" class="btn btn-default">Unlock Resource Machines</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockResourceTech" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrade Resource Technology
+									</h3>
+									<span>
+										Make your resource machines produce even more resources than before. This upgrade doubles the amount they produce for each unit of energy.
+										<br>
+										Costs 200 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeResourceTech()" class="btn btn-default">Upgrade Resource Tech</button>
 									<br>
 									<br>
 								</td>
@@ -790,7 +833,7 @@
 									<span>
 										Unlocking Space allows for launching of rockets and opens a whole new field of research.
 										<br>
-										Costs 100 Science.
+										Costs 500 Science.
 									</span>
 									<br>
 									<br>
@@ -1012,6 +1055,26 @@
 										The first technology you can research is 'Storage Upgrades', which allows you to build storages to hold more of each type of resource. This is necessary when building machines and other tools costs more than 50 of a resource.
 
 										You can also research 'Basic Energy Production', which opens up the world of power and advanced machines to help you get resources even faster.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Balancing Resources
+									</h3>
+									<span>
+										[To Be Filled]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Space
+									</h3>
+									<span>
+										The first thing to get to space exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock space travel and new technologies and ways to get resources.
 									</span>
 								</td>
 							</tr>
