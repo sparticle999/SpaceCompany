@@ -1,6 +1,6 @@
 # To Do:
 
-# Future Plans (maybe):
+# Plans for the Future
 - Nuclear Power
 - Rockets into space
 - Satelites
@@ -12,12 +12,26 @@
 - [Achievements]
 
 
+#RoadMap
+
+v0.0.7
+- ~Added Resource Technology Upgrade to double resource machines.~ [Done]
+- ~Nerfed Science.~ [Done]
+- ~Changed the per second display to be zero if the storage is full.~ [Done]
+- Fix negative energy.
+
+v0.0.8
+-
+-
+-
+
 # Changelog:
 
 v0.0.6
 - Added the other icons for the rest of the resources
 - Added Help / FAQ Tab
 - Added Beginner Guide, FAQ and Credits
+- Made resource numbers scroll up instead of jumping to the current value.
 
 v0.0.5
 - Added content to Space tab
