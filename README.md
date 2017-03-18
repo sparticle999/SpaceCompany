@@ -21,9 +21,9 @@ v0.0.7
 - Fix negative energy.
 
 v0.0.8
--
--
--
+- X
+- X
+- X
 
 # Changelog:
 
