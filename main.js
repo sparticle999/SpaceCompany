@@ -670,7 +670,6 @@ function upgradeMetalStorage(){
 		metal -= metalStorage;
 		metalStorage = metalNextStorage;
 		metalNextStorage *= 2;
-		metalStorage *= 2;
 		refresh();
 		document.getElementById("metalStorage").innerHTML = commafy(metalStorage);
 		document.getElementById("metalNextStorage").innerHTML = commafy(metalNextStorage);
@@ -1286,8 +1285,8 @@ function unlockSolar(){
 }
 
 function unlockMachines(){
-	if(science >= 50){
-		science -= 50;
+	if(science >= 100){
+		science -= 100;
 		document.getElementById("unlockMachines").className = "hidden";
 		document.getElementById("upgradeResourceTech").className = "";
 		document.getElementById("oilMachine1").className = "";
