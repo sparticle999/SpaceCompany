@@ -11,6 +11,15 @@
 
 #RoadMap
 
+v0.1.1
+
+- Added Computerized Tier of resource machines
+
+v0.2.0 The Wondrous Update
+- Added Wonders
+
+# Changelog:
+
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
 - Added new resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
@@ -20,11 +29,6 @@ v0.1.0 The Space Update [Released to the Public]
 - Added Saving
 - Added Donations through paypal
 - Updated Beginner's Guide
-
-v0.2.0 The Wondrous Update
-- Added Wonders
-
-# Changelog:
 
 v0.0.7
 - Added Resource Technology Upgrade to double resource machines
