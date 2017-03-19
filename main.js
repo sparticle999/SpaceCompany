@@ -195,7 +195,8 @@ function save(){
 		scorcherOilCost: scorcherOilCost,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
-	alert("Save Successful!");
+	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
+	saved = true;
 }
 
 function load(){
@@ -352,7 +353,8 @@ function load(){
 	if(typeof savegame.scorcherGemCost !== "undefined") scorcherGemCost = savegame.scorcherGemCost;
 	if(typeof savegame.scorcherOilCost !== "undefined") scorcherOilCost = savegame.scorcherOilCost;
 
-	alert("Load Successful!");
+	document.getElementById("loadButton").className = "btn btn-primary pull-right disabled";
+	loaded = true;
 }
 
 function deleteSave(){
@@ -1408,8 +1410,29 @@ window.onload = function(){
 	load();
 };
 
+var timer = 0;
+var timer2 = 0;
+var saved = false;
+var loaded = false;
+
 window.setInterval(function(){
 	refreshPerSec();
 	gainResources();
 	refresh();
+	if(saved === true){
+		timer += 1
+		if(timer >= 20){
+			saved === false;
+			document.getElementById("saveButton").className = "btn btn-primary pull-right";
+			timer = 0;
+		}
+	}
+	if(loaded === true){
+		timer2 += 1
+		if(timer2 >= 20){
+			loaded === false;
+			document.getElementById("loadButton").className = "btn btn-primary pull-right";
+			timer2 = 0;
+		}
+	}
 },100);
