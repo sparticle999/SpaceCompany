@@ -19,6 +19,7 @@ v0.1.0 The Space Update [Released to the Public]
 - Fixed negative energy
 - Added Saving
 - Added Donations through paypal
+- Updated Beginner's Guide
 
 v0.2.0 The Wondrous Update
 - Added Wonders

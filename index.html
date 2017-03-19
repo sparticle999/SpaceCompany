@@ -27,7 +27,7 @@
 	<!--  Bar at top of screen -->
 	<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
 		<div class="container">
-			<div class="navbar-header">
+			<div class="navbar-header" style="width:100%; height:50px">
 				<a class="navbar-brand">
 					<img src="SpaceCompanyFavicon.png" style="width:40px; height:auto; margin-top:-30%;">
 				</a>
@@ -41,6 +41,21 @@
 						v0.0.7 Alpha
 					</span>
 				</a>
+				<button onclick="deleteSave()" class="btn btn-danger pull-right" style="margin-top:5px; margin-left:2px; height:80%; display:inline-block; vertical-align: middle">
+					<span style="color:white;">
+						Hard Reset
+					</span>
+				</button>
+				<button onclick="load()" class="btn btn-primary pull-right" style="margin-top:5px; margin-left:2px; height:80%; display:inline-block; vertical-align: middle">
+					<span style="color:white;">
+						Load
+					</span>
+				</button>
+				<button onclick="save()" class="btn btn-primary pull-right" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
+					<span style="color:white;">
+						Save
+					</span>
+				</button>
 			</div>
 			<div class="navbar-right"><login><!-- ngIf: env.isServerFrontendEnabled --></login></div>
 		</div>
@@ -1329,7 +1344,7 @@
 									<span>
 										You will be able to produce power from steam engines using charcoal made from wood in a furnace.
 										<br>
-										Costs 10 Science.
+										Costs 20 Science.
 									</span>
 									<br>
 									<br>
@@ -1347,7 +1362,7 @@
 										Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means.
 										Unlocking Oil Processing allows you to extract it from the ground.
 										<br>
-										Costs 15 Science.
+										Costs 30 Science.
 									</span>
 									<br>
 									<br>
@@ -1364,7 +1379,7 @@
 									<span>
 										Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
 										<br>
-										Costs 15 Science.
+										Costs 50 Science.
 									</span>
 									<br>
 									<br>
@@ -1381,7 +1396,7 @@
 									<span>
 										Resource Machines produce more resources than simple methods but require a constant supply of power to work.
 										<br>
-										Costs 100 Science.
+										Costs 50 Science.
 									</span>
 									<br>
 									<br>

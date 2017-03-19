@@ -1,27 +1,29 @@
+// Variables in save function
+
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25;
 var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 50; var methaneStationTitaniumCost = 40;
-var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilps = 0;
+var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
-var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalps = 0;
+var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
 var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
-var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemStorageCost = 50; var gemps = 0;
+var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
-var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalStorageCost = 50; var charcoalps = 0;
-var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 3; var furnaceOutput = 3;
-var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodStorageCost = 50; var woodps = 0;
+var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 5; var furnaceOutput = 3;
+var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
-var spaceMetal = 0; var spaceMetalStorage = 50; var spaceMetalNextStorage = 100; var spaceMetalStorageCost = 50; var spaceMetalps = 0;
-var methane = 0; var methaneStorage = 50; var methaneNextStorage = 100; var methaneStorageCost = 50; var methaneps = 0;
-var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumStorageCost = 50; var titaniumps = 0;
-var gold = 0; var goldStorage = 50; var goldNextStorage = 100; var goldStorageCost = 50; var goldps = 0;
-var silver = 0; var silverStorage = 50; var silverNextStorage = 100; var silverStorageCost = 50; var silverps = 0;
-var silicon = 0; var siliconStorage = 50; var siliconNextStorage = 100; var siliconStorageCost = 50; var siliconps = 0;
+var spaceMetal = 0; var spaceMetalStorage = 50; var spaceMetalNextStorage = 100; var spaceMetalps = 0;
+var methane = 0; var methaneStorage = 50; var methaneNextStorage = 100; var methaneps = 0;
+var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumps = 0;
+var gold = 0; var goldStorage = 50; var goldNextStorage = 100; var goldps = 0;
+var silver = 0; var silverStorage = 50; var silverNextStorage = 100; var silverps = 0;
+var silicon = 0; var siliconStorage = 50; var siliconNextStorage = 100; var siliconps = 0;
 var moonWorker = 0; var moonWorkerGemCost = 500;
 var moonDrill = 0; var moonDrillMetalCost = 1000; var moonDrillGemCost = 600; var moonDrillOilCost = 400;
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
@@ -34,6 +36,337 @@ var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;
 var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 900; var spaceLaserOilCost = 1200;
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
+
+// Variables not in save function
+	//Empty
+
+function save(){
+	"use strict";
+	var save = {
+		energy: energy,
+		energyps: energyps,
+		charcoalEngine: charcoalEngine,
+		charcoalEngineMetalCost: charcoalEngineMetalCost,
+		charcoalEngineGemCost: charcoalEngineGemCost,
+		solarPanel: solarPanel,
+		solarPanelMetalCost: solarPanelMetalCost,
+		solarPanelGemCost: solarPanelGemCost,
+		methaneStation: methaneStation,
+		methaneStationSpaceMetalCost: methaneStationSpaceMetalCost,
+		methaneStationTitaniumCost: methaneStationTitaniumCost,
+		oil: oil,
+		oilStorage: oilStorage,
+		oilNextStorage: oilNextStorage,
+		oilps: oilps,
+		pump: pump,
+		pumpMetalCost: pumpMetalCost,
+		pumpGemCost: pumpGemCost,
+		pumpjack: pumpjack,
+		pumpjackMetalCost: pumpjackMetalCost,
+		pumpjackGemCost: pumpjackGemCost,
+		pumpjackOilCost: pumpjackOilCost,
+		pumpjackOutput: pumpjackOutput,
+		metal: metal,
+		metalStorage: metalStorage,
+		metalNextStorage: metalNextStorage,
+		metalps: metalps,
+		miner: miner,
+		minerMetalCost: minerMetalCost,
+		minerWoodCost: minerWoodCost,
+		heavyDrill: heavyDrill,
+		heavyDrillMetalCost: heavyDrillMetalCost,
+		heavyDrillGemCost: heavyDrillGemCost,
+		heavyDrillOilCost: heavyDrillOilCost,
+		heavyDrillOutput: heavyDrillOutput,
+		gem: gem,
+		gemStorage: gemStorage,
+		gemNextStorage: gemNextStorage,
+		gemps: gemps,
+		gemMiner: gemMiner,
+		gemMinerMetalCost: gemMinerMetalCost,
+		gemMinerGemCost: gemMinerGemCost,
+		advancedDrill: advancedDrill,
+		advancedDrillMetalCost: advancedDrillMetalCost,
+		advancedDrillGemCost: advancedDrillGemCost,
+		advancedDrillOilCost: advancedDrillOilCost,
+		advancedDrillOutput: advancedDrillOutput,
+		charcoal: charcoal,
+		charcoalStorage: charcoalStorage,
+		charcoalNextStorage: charcoalNextStorage,
+		charcoalps: charcoalps,
+		woodburner: woodburner,
+		woodburnerMetalCost: woodburnerMetalCost,
+		woodburnerWoodCost: woodburnerWoodCost,
+		furnace: furnace,
+		furnaceMetalCost: furnaceMetalCost,
+		furnaceWoodCost: furnaceWoodCost,
+		furnaceOilCost: furnaceOilCost,
+		furnaceWoodInput: furnaceWoodInput,
+		furnaceOutput: furnaceOutput,
+		wood: wood,
+		woodStorage: woodStorage,
+		woodNextStorage: woodNextStorage,
+		woodps: woodps,
+		woodcutter: woodcutter,
+		woodcutterMetalCost: woodcutterMetalCost,
+		woodcutterWoodCost: woodcutterWoodCost,
+		laserCutter: laserCutter,
+		laserCutterMetalCost: laserCutterMetalCost,
+		laserCutterGemCost: laserCutterGemCost,
+		laserCutterOilCost: laserCutterOilCost,
+		laserCutterOutput: laserCutterOutput,
+		science: science,
+		scienceps: scienceps,
+		lab: lab,
+		labGain: labGain,
+		labWoodCost: labWoodCost,
+		labGemCost: labGemCost,
+		labMetalCost: labMetalCost,
+		rocket: rocket,
+		rocketFuel: rocketFuel,
+		rocketFuelps: rocketFuelps,
+		chemicalPlant: chemicalPlant,
+		chemicalPlantMetalCost: chemicalPlantMetalCost,
+		chemicalPlantGemCost: chemicalPlantGemCost,
+		chemicalPlantOilCost: chemicalPlantOilCost,
+		spaceMetal: spaceMetal,
+		spaceMetalStorage: spaceMetalStorage,
+		spaceMetalNextStorage: spaceMetalNextStorage,
+		spaceMetalps: spaceMetalps,
+		methane: methane,
+		methaneStorage: methaneStorage,
+		methaneNextStorage: methaneNextStorage,
+		methaneps: methaneps,
+		titanium: titanium,
+		titaniumStorage: titaniumStorage,
+		titaniumNextStorage: titaniumNextStorage,
+		titaniumps: titaniumps,
+		gold: gold,
+		goldStorage: goldStorage,
+		goldNextStorage: goldNextStorage,
+		goldps: goldps,
+		silver: silver,
+		silverStorage: silverStorage,
+		silverNextStorage: silverNextStorage,
+		silverps: silverps,
+		silicon: silicon,
+		siliconStorage: siliconStorage,
+		siliconNextStorage: siliconNextStorage,
+		siliconps: siliconps,
+		moonWorker: moonWorker,
+		moonWorkerGemCost: moonWorkerGemCost,
+		moonDrill: moonDrill,
+		moonDrillMetalCost: moonDrillMetalCost,
+		moonDrillGemCost: moonDrillGemCost,
+		moonDrillOilCost: moonDrillOilCost,
+		vacuum: vacuum,
+		vacuumSpaceMetalCost: vacuumSpaceMetalCost,
+		vacuumGemCost: vacuumGemCost,
+		suctionExcavator: suctionExcavator,
+		suctionExcavatorSpaceMetalCost: suctionExcavatorSpaceMetalCost,
+		suctionExcavatorGemCost: suctionExcavatorGemCost,
+		suctionExcavatorOilCost: suctionExcavatorOilCost,
+		explorer: explorer,
+		explorerGemCost: explorerGemCost,
+		spaceMetalDrill: spaceMetalDrill,
+		spaceMetalDrillSpaceMetalCost: spaceMetalDrillSpaceMetalCost,
+		spaceMetalDrillGemCost: spaceMetalDrillGemCost,
+		spaceMetalDrillOilCost: spaceMetalDrillOilCost,
+		droid: droid,
+		droidSpaceMetalCost: droidSpaceMetalCost,
+		droidMethaneCost: droidMethaneCost,
+		destroyer: destroyer,
+		destroyerSpaceMetalCost: destroyerSpaceMetalCost,
+		destroyerGemCost: destroyerGemCost,
+		destroyerOilCost: destroyerOilCost,
+		scout: scout,
+		scoutSpaceMetalCost: scoutSpaceMetalCost,
+		scoutTitaniumCost: scoutTitaniumCost,
+		spaceLaser: spaceLaser,
+		spaceLaserSpaceMetalCost: spaceLaserSpaceMetalCost,
+		spaceLaserGemCost: spaceLaserGemCost,
+		spaceLaserOilCost: spaceLaserOilCost,
+		blowtorch: blowtorch,
+		blowtorchSpaceMetalCost: blowtorchSpaceMetalCost,
+		blowtorchTitaniumCost: blowtorchTitaniumCost,
+		scorcher: scorcher,
+		scorcherSpaceMetalCost: scorcherSpaceMetalCost,
+		scorcherGemCost: scorcherGemCost,
+		scorcherOilCost: scorcherOilCost,
+	};
+	localStorage.setItem("save",JSON.stringify(save));
+	alert("Save Successful!");
+}
+
+function load(){
+	"use strict";
+	var savegame = JSON.parse(localStorage.getItem("save"));
+	if(typeof savegame.energy !== "undefined") energy = savegame.energy;
+	if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
+	if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
+	if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
+	if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
+	if(typeof savegame.solarPanel !== "undefined") solarPanel = savegame.solarPanel;
+	if(typeof savegame.solarPanelMetalCost !== "undefined") solarPanelMetalCost = savegame.solarPanelMetalCost;
+	if(typeof savegame.solarPanelGemCost !== "undefined") solarPanelGemCost = savegame.solarPanelGemCost;
+	if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;
+	if(typeof savegame.methaneStationSpaceMetalCost !== "undefined") methaneStationSpaceMetalCost = savegame.methaneStationSpaceMetalCost;
+	if(typeof savegame.methaneStationTitaniumCost !== "undefined") methaneStationTitaniumCost = savegame.methaneStationTitaniumCost;
+	if(typeof savegame.oil !== "undefined") oil = savegame.oil;
+	if(typeof savegame.oilStorage !== "undefined") oilStorage = savegame.oilStorage;
+	if(typeof savegame.oilNextStorage !== "undefined") oilNextStorage = savegame.oilNextStorage;
+	if(typeof savegame.oilps !== "undefined") oilps = savegame.oilps;
+	if(typeof savegame.pump !== "undefined") pump = savegame.pump;
+	if(typeof savegame.pumpMetalCost !== "undefined") pumpMetalCost = savegame.pumpMetalCost;
+	if(typeof savegame.pumpGemCost !== "undefined") pumpGemCost = savegame.pumpGemCost;
+	if(typeof savegame.pumpjack !== "undefined") pumpjack = savegame.pumpjack;
+	if(typeof savegame.pumpjackMetalCost !== "undefined") pumpjackMetalCost = savegame.pumpjackMetalCost;
+	if(typeof savegame.pumpjackGemCost !== "undefined") pumpjackGemCost = savegame.pumpjackGemCost;
+	if(typeof savegame.pumpjackOilCost !== "undefined") pumpjackOilCost = savegame.pumpjackOilCost;
+	if(typeof savegame.pumpjackOutput !== "undefined") pumpjackOutput = savegame.pumpjackOutput;
+	if(typeof savegame.metal !== "undefined") metal = savegame.metal;
+	if(typeof savegame.metalStorage !== "undefined") metalStorage = savegame.metalStorage;
+	if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;
+	if(typeof savegame.metalps !== "undefined") metalps = savegame.metalps;
+	if(typeof savegame.miner !== "undefined") miner = savegame.miner;
+	if(typeof savegame.minerMetalCost !== "undefined") minerMetalCost = savegame.minerMetalCost;
+	if(typeof savegame.minerWoodCost !== "undefined") minerWoodCost = savegame.minerWoodCost;
+	if(typeof savegame.heavyDrill !== "undefined") heavyDrill = savegame.heavyDrill;
+	if(typeof savegame.heavyDrillMetalCost !== "undefined") heavyDrillMetalCost = savegame.heavyDrillMetalCost;
+	if(typeof savegame.heavyDrillGemCost !== "undefined") heavyDrillGemCost = savegame.heavyDrillGemCost;
+	if(typeof savegame.heavyDrillOilCost !== "undefined") heavyDrillOilCost = savegame.heavyDrillOilCost;
+	if(typeof savegame.heavyDrillOutput !== "undefined") heavyDrillOutput = savegame.heavyDrillOutput;
+	if(typeof savegame.gem !== "undefined") gem = savegame.gem;
+	if(typeof savegame.gemStorage !== "undefined") gemStorage = savegame.gemStorage;
+	if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;
+	if(typeof savegame.gemps !== "undefined") gemps = savegame.gemps;
+	if(typeof savegame.gemMiner !== "undefined") gemMiner = savegame.gemMiner;
+	if(typeof savegame.gemMinerMetalCost !== "undefined") gemMinerMetalCost = savegame.gemMinerMetalCost;
+	if(typeof savegame.gemMinerGemCost !== "undefined") gemMinerGemCost = savegame.gemMinerGemCost;
+	if(typeof savegame.advancedDrill !== "undefined") advancedDrill = savegame.advancedDrill;
+	if(typeof savegame.advancedDrillMetalCost !== "undefined") advancedDrillMetalCost = savegame.advancedDrillMetalCost;
+	if(typeof savegame.advancedDrillGemCost !== "undefined") advancedDrillGemCost = savegame.advancedDrillGemCost;
+	if(typeof savegame.advancedDrillOilCost !== "undefined") advancedDrillOilCost = savegame.advancedDrillOilCost;
+	if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
+	if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
+	if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
+	if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
+	if(typeof savegame.charcoalps !== "undefined") charcoalps = savegame.charcoalps;
+	if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
+	if(typeof savegame.woodburnerMetalCost !== "undefined") woodburnerMetalCost = savegame.woodburnerMetalCost;
+	if(typeof savegame.woodburnerWoodCost !== "undefined") woodburnerWoodCost = savegame.woodburnerWoodCost;
+	if(typeof savegame.furnace !== "undefined") furnace = savegame.furnace;
+	if(typeof savegame.furnaceMetalCost !== "undefined") furnaceMetalCost = savegame.furnaceMetalCost;
+	if(typeof savegame.furnaceWoodCost !== "undefined") furnaceWoodCost = savegame.furnaceWoodCost;
+	if(typeof savegame.furnaceOilCost !== "undefined") furnaceOilCost = savegame.furnaceOilCost;
+	if(typeof savegame.furnaceWoodInput !== "undefined") furnaceWoodInput = savegame.furnaceWoodInput;
+	if(typeof savegame.furnaceOutput !== "undefined") furnaceOutput = savegame.furnaceOutput;
+	if(typeof savegame.wood !== "undefined") wood = savegame.wood;
+	if(typeof savegame.woodStorage !== "undefined") woodStorage = savegame.woodStorage;
+	if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;
+	if(typeof savegame.woodps !== "undefined") woodps = savegame.woodps;
+	if(typeof savegame.woodcutter !== "undefined") woodcutter = savegame.woodcutter;
+	if(typeof savegame.woodcutterMetalCost !== "undefined") woodcutterMetalCost = savegame.woodcutterMetalCost;
+	if(typeof savegame.woodcutterWoodCost !== "undefined") woodcutterWoodCost = savegame.woodcutterWoodCost;
+	if(typeof savegame.laserCutter !== "undefined") laserCutter = savegame.laserCutter;
+	if(typeof savegame.laserCutterMetalCost !== "undefined") laserCutterMetalCost = savegame.laserCutterMetalCost;
+	if(typeof savegame.laserCutterGemCost !== "undefined") laserCutterGemCost = savegame.laserCutterGemCost;
+	if(typeof savegame.laserCutterOilCost !== "undefined") laserCutterOilCost = savegame.laserCutterOilCost;
+	if(typeof savegame.laserCutterOutput !== "undefined") laserCutterOutput = savegame.laserCutterOutput;
+	if(typeof savegame.science !== "undefined") science = savegame.science;
+	if(typeof savegame.scienceps !== "undefined") scienceps = savegame.scienceps;
+	if(typeof savegame.lab !== "undefined") lab = savegame.lab;
+	if(typeof savegame.labGain !== "undefined") labGain = savegame.labGain;
+	if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;
+	if(typeof savegame.labGemCost !== "undefined") labGemCost = savegame.labGemCost;
+	if(typeof savegame.labMetalCost !== "undefined") labMetalCost = savegame.labMetalCost;
+	if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
+	if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
+	if(typeof savegame.rocketFuelps !== "undefined") rocketFuelps = savegame.rocketFuelps;
+	if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
+	if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
+	if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
+	if(typeof savegame.chemicalPlantOilCost !== "undefined") chemicalPlantOilCost = savegame.chemicalPlantOilCost;
+	if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
+	if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
+	if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;
+	if(typeof savegame.spaceMetalps !== "undefined") spaceMetalps = savegame.spaceMetalps;
+	if(typeof savegame.methane !== "undefined") methane = savegame.methane;
+	if(typeof savegame.methaneStorage !== "undefined") methaneStorage = savegame.methaneStorage;
+	if(typeof savegame.methaneNextStorage !== "undefined") methaneNextStorage = savegame.methaneNextStorage;
+	if(typeof savegame.methaneps !== "undefined") methaneps = savegame.methaneps;
+	if(typeof savegame.titanium !== "undefined") titanium = savegame.titanium;
+	if(typeof savegame.titaniumStorage !== "undefined") titaniumStorage = savegame.titaniumStorage;
+	if(typeof savegame.titaniumNextStorage !== "undefined") titaniumNextStorage = savegame.titaniumNextStorage;
+	if(typeof savegame.titaniumps !== "undefined") titaniumps = savegame.titaniumps;
+	if(typeof savegame.gold !== "undefined") gold = savegame.gold;
+	if(typeof savegame.goldStorage !== "undefined") goldStorage = savegame.goldStorage;
+	if(typeof savegame.goldNextStorage !== "undefined") goldNextStorage = savegame.goldNextStorage;
+	if(typeof savegame.goldps !== "undefined") goldps = savegame.goldps;
+	if(typeof savegame.silver !== "undefined") silver = savegame.silver;
+	if(typeof savegame.silverStorage !== "undefined") silverStorage = savegame.silverStorage;
+	if(typeof savegame.silverNextStorage !== "undefined") silverNextStorage = savegame.silverNextStorage;
+	if(typeof savegame.silverps !== "undefined") silverps = savegame.silverps;
+	if(typeof savegame.silicon !== "undefined") silicon = savegame.silicon;
+	if(typeof savegame.siliconStorage !== "undefined") siliconStorage = savegame.siliconStorage;
+	if(typeof savegame.siliconNextStorage !== "undefined") siliconNextStorage = savegame.siliconNextStorage;
+	if(typeof savegame.siliconps !== "undefined") siliconps = savegame.siliconps;
+	if(typeof savegame.moonWorker !== "undefined") moonWorker = savegame.moonWorker;
+	if(typeof savegame.moonWorkerGemCost !== "undefined") moonWorkerGemCost = savegame.moonWorkerGemCost;
+	if(typeof savegame.moonDrill !== "undefined") moonDrill = savegame.moonDrill;
+	if(typeof savegame.moonDrillMetalCost !== "undefined") moonDrillMetalCost = savegame.moonDrillMetalCost;
+	if(typeof savegame.moonDrillGemCost !== "undefined") moonDrillGemCost = savegame.moonDrillGemCost;
+	if(typeof savegame.moonDrillOilCost !== "undefined") moonDrillOilCost = savegame.moonDrillOilCost;
+	if(typeof savegame.vacuum !== "undefined") vacuum = savegame.vacuum;
+	if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumSpaceMetalCost = savegame.vacuumSpaceMetalCost;
+	if(typeof savegame.vacuumGemCost !== "undefined") vacuumGemCost = savegame.vacuumGemCost;
+	if(typeof savegame.suctionExcavator !== "undefined") suctionExcavator = savegame.suctionExcavator;
+	if(typeof savegame.suctionExcavatorSpaceMetalCost !== "undefined") suctionExcavatorSpaceMetalCost = savegame.suctionExcavatorSpaceMetalCost;
+	if(typeof savegame.suctionExcavatorGemCost !== "undefined") suctionExcavatorGemCost = savegame.suctionExcavatorGemCost;
+	if(typeof savegame.suctionExcavatorOilCost !== "undefined") suctionExcavatorOilCost = savegame.suctionExcavatorOilCost;
+	if(typeof savegame.explorer !== "undefined") explorer = savegame.explorer;
+	if(typeof savegame.explorerGemCost !== "undefined") explorerGemCost = savegame.explorerGemCost;
+	if(typeof savegame.spaceMetalDrill !== "undefined") spaceMetalDrill = savegame.spaceMetalDrill;
+	if(typeof savegame.spaceMetalDrillSpaceMetalCost !== "undefined") spaceMetalDrillSpaceMetalCost = savegame.spaceMetalDrillSpaceMetalCost;
+	if(typeof savegame.spaceMetalDrillGemCost !== "undefined") spaceMetalDrillGemCost = savegame.spaceMetalDrillGemCost;
+	if(typeof savegame.spaceMetalDrillOilCost !== "undefined") spaceMetalDrillOilCost = savegame.spaceMetalDrillOilCost;
+	if(typeof savegame.droid !== "undefined") droid = savegame.droid;
+	if(typeof savegame.droidSpaceMetalCost !== "undefined") droidSpaceMetalCost = savegame.droidSpaceMetalCost;
+	if(typeof savegame.droidMethaneCost !== "undefined") droidMethaneCost = savegame.droidMethaneCost;
+	if(typeof savegame.destroyer !== "undefined") destroyer = savegame.destroyer;
+	if(typeof savegame.destroyerSpaceMetalCost !== "undefined") destroyerSpaceMetalCost = savegame.destroyerSpaceMetalCost;
+	if(typeof savegame.destroyerGemCost !== "undefined") destroyerGemCost = savegame.destroyerGemCost;
+	if(typeof savegame.destroyerOilCost !== "undefined") destroyerOilCost = savegame.destroyerOilCost;
+	if(typeof savegame.scout !== "undefined") scout = savegame.scout;
+	if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutSpaceMetalCost = savegame.scoutSpaceMetalCost;
+	if(typeof savegame.scoutTitaniumCost !== "undefined") scoutTitaniumCost = savegame.scoutTitaniumCost;
+	if(typeof savegame.spaceLaser !== "undefined") spaceLaser = savegame.spaceLaser;
+	if(typeof savegame.spaceLaserSpaceMetalCost !== "undefined") spaceLaserSpaceMetalCost = savegame.spaceLaserSpaceMetalCost;
+	if(typeof savegame.spaceLaserGemCost !== "undefined") spaceLaserGemCost = savegame.spaceLaserGemCost;
+	if(typeof savegame.spaceLaserOilCost !== "undefined") spaceLaserOilCost = savegame.spaceLaserOilCost;
+	if(typeof savegame.blowtorch !== "undefined") blowtorch = savegame.blowtorch;
+	if(typeof savegame.blowtorchSpaceMetalCost !== "undefined") blowtorchSpaceMetalCost = savegame.blowtorchSpaceMetalCost;
+	if(typeof savegame.blowtorchTitaniumCost !== "undefined") blowtorchTitaniumCost = savegame.blowtorchTitaniumCost;
+	if(typeof savegame.scorcher !== "undefined") scorcher = savegame.scorcher;
+	if(typeof savegame.scorcherSpaceMetalCost !== "undefined") scorcherSpaceMetalCost = savegame.scorcherSpaceMetalCost;
+	if(typeof savegame.scorcherGemCost !== "undefined") scorcherGemCost = savegame.scorcherGemCost;
+	if(typeof savegame.scorcherOilCost !== "undefined") scorcherOilCost = savegame.scorcherOilCost;
+
+	alert("Load Successful!");
+}
+
+function deleteSave(){
+	"use strict";
+	var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
+	if(deleteSave === "DELETE"){
+		localStorage.removeItem("save");
+		alert("Deleted Save");
+		window.location.reload();
+	}
+	else{
+		alert("Deletion Cancelled");
+	}
+}
 
 function commafy(input){
 	var output = input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -319,75 +652,169 @@ function gainSilicon(){
 // Resources Tab
 
 function upgradeOilStorage(){
-	if(oil >= oilStorageCost && metal >= oilStorageCost/2.5){
-		oil -= oilStorageCost;
-		metal -= oilStorageCost/2.5;
+	if(oil >= oilStorage && metal >= oilStorage/2.5){
+		oil -= oilStorage;
+		metal -= oilStorage/2.5;
 		oilStorage = oilNextStorage;
 		oilNextStorage *= 2;
-		oilStorageCost *= 2;
 		refresh();
 		document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
 		document.getElementById("oilNextStorage").innerHTML = commafy(oilNextStorage);
-		document.getElementById("oilStorageCost").innerHTML = commafy(oilStorageCost);
-		document.getElementById("oilStorageMetalCost").innerHTML = commafy(oilStorageCost/2.5);
+		document.getElementById("oilStorageCost").innerHTML = commafy(oilStorage);
+		document.getElementById("oilStorageMetalCost").innerHTML = commafy(oilStorage/2.5);
 	}
 }
 
 function upgradeMetalStorage(){
-	if(metal >= metalStorageCost){
-		metal -= metalStorageCost;
+	if(metal >= metalStorage){
+		metal -= metalStorage;
 		metalStorage = metalNextStorage;
 		metalNextStorage *= 2;
-		metalStorageCost *= 2;
+		metalStorage *= 2;
 		refresh();
 		document.getElementById("metalStorage").innerHTML = commafy(metalStorage);
 		document.getElementById("metalNextStorage").innerHTML = commafy(metalNextStorage);
-		document.getElementById("metalStorageCost").innerHTML = commafy(metalStorageCost);
+		document.getElementById("metalStorageCost").innerHTML = commafy(metalStorage);
 	}
 }
 
 function upgradeGemStorage(){
-	if(gem >= gemStorageCost && metal >= gemStorageCost/2.5){
-		gem -= gemStorageCost;
-		metal -= gemStorageCost/2.5;
+	if(gem >= gemStorage && metal >= gemStorage/2.5){
+		gem -= gemStorage;
+		metal -= gemStorage/2.5;
 		gemStorage = gemNextStorage;
 		gemNextStorage *= 2;
-		gemStorageCost *= 2;
 		refresh();
 		document.getElementById("gemStorage").innerHTML = commafy(gemStorage);
 		document.getElementById("gemNextStorage").innerHTML = commafy(gemNextStorage);
-		document.getElementById("gemStorageCost").innerHTML = commafy(gemStorageCost);
-		document.getElementById("gemStorageMetalCost").innerHTML = commafy(gemStorageCost/2.5);
+		document.getElementById("gemStorageCost").innerHTML = commafy(gemStorage);
+		document.getElementById("gemStorageMetalCost").innerHTML = commafy(gemStorage/2.5);
 	}
 }
 
 function upgradeCharcoalStorage(){
-	if(charcoal >= charcoalStorageCost && metal >= charcoalStorageCost/2.5){
-		charcoal -= charcoalStorageCost;
-		metal -= charcoalStorageCost/2.5;
+	if(charcoal >= charcoalStorage && metal >= charcoalStorage/2.5){
+		charcoal -= charcoalStorage;
+		metal -= charcoalStorage/2.5;
 		charcoalStorage = charcoalNextStorage;
 		charcoalNextStorage *= 2;
-		charcoalStorageCost *= 2;
 		refresh();
 		document.getElementById("charcoalStorage").innerHTML = commafy(charcoalStorage);
 		document.getElementById("charcoalNextStorage").innerHTML = commafy(charcoalNextStorage);
-		document.getElementById("charcoalStorageCost").innerHTML = commafy(charcoalStorageCost);
-		document.getElementById("charcoalStorageMetalCost").innerHTML = commafy(charcoalStorageCost/2.5);
+		document.getElementById("charcoalStorageCost").innerHTML = commafy(charcoalStorage);
+		document.getElementById("charcoalStorageMetalCost").innerHTML = commafy(charcoalStorage/2.5);
 	}
 }
 
 function upgradeWoodStorage(){
-	if(wood >= woodStorageCost && metal >= woodStorageCost/2.5){
-		wood -= woodStorageCost;
-		metal -= woodStorageCost/2.5;
+	if(wood >= woodStorage && metal >= woodStorage/2.5){
+		wood -= woodStorage;
+		metal -= woodStorage/2.5;
 		woodStorage = woodNextStorage;
 		woodNextStorage *= 2;
-		woodStorageCost *= 2;
 		refresh();
 		document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
 		document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
-		document.getElementById("woodStorageCost").innerHTML = commafy(woodStorageCost);
-		document.getElementById("woodStorageMetalCost").innerHTML = commafy(woodStorageCost/2.5);
+		document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
+		document.getElementById("woodStorageMetalCost").innerHTML = commafy(woodStorage/2.5);
+	}
+}
+
+function upgradeWoodStorage(){
+	if(wood >= woodStorage && metal >= woodStorage/2.5){
+		wood -= woodStorage;
+		metal -= woodStorage/2.5;
+		woodStorage = woodNextStorage;
+		woodNextStorage *= 2;
+		refresh();
+		document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
+		document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
+		document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
+		document.getElementById("woodStorageMetalCost").innerHTML = commafy(woodStorage/2.5);
+	}
+}
+
+function upgradeSpaceMetalStorage(){
+	if(spaceMetal >= spaceMetalStorage && metal >= spaceMetalStorage*4){
+		spaceMetal -= spaceMetalStorage;
+		metal -= metalStorage/2.5;
+		spaceMetalStorage = spaceMetalNextStorage;
+		spaceMetalNextStorage *= 2;
+		refresh();
+		document.getElementById("spaceMetalStorage").innerHTML = commafy(spaceMetalStorage);
+		document.getElementById("spaceMetalNextStorage").innerHTML = commafy(spaceMetalNextStorage);
+		document.getElementById("spaceMetalStorageCost").innerHTML = commafy(spaceMetalStorage);
+		document.getElementById("spaceMetalStorageSpaceMetalCost").innerHTML = commafy(spaceMetalStorage*4);
+	}
+}
+
+function upgradeMethaneStorage(){
+	if(methane >= methaneStorage && spaceMetal >= methaneStorage/2.5){
+		methane -= methaneStorage;
+		spaceMetal -= methaneStorage/2.5;
+		methaneStorage = methaneNextStorage;
+		methaneNextStorage *= 2;
+		refresh();
+		document.getElementById("methaneStorage").innerHTML = commafy(methaneStorage);
+		document.getElementById("methaneNextStorage").innerHTML = commafy(methaneNextStorage);
+		document.getElementById("methaneStorageCost").innerHTML = commafy(methaneStorage);
+		document.getElementById("methaneStorageSpaceMetalCost").innerHTML = commafy(Smethanetorage/2.5);
+	}
+}
+
+function upgradeTitaniumStorage(){
+	if(titanium >= titaniumStorage && Metal >= titaniumStorage/2.5){
+		titanium -= titaniumStorage;
+		spaceMetal -= titaniumStorage/2.5;
+		titaniumStorage = titaniumNextStorage;
+		titaniumNextStorage *= 2;
+		refresh();
+		document.getElementById("titaniumStorage").innerHTML = commafy(titaniumStorage);
+		document.getElementById("titaniumNextStorage").innerHTML = commafy(titaniumNextStorage);
+		document.getElementById("titaniumStorageCost").innerHTML = commafy(titaniumStorage);
+		document.getElementById("titaniumStorageSpaceMetalCost").innerHTML = commafy(titaniumStorage/2.5);
+	}
+}
+
+function upgradeGoldStorage(){
+	if(gold >= Storage && spaceMetal >= goldStorage/2.5){
+		gold -= goldStorage;
+		spaceMetal -= goldStorage/2.5;
+		goldStorage = goldNextStorage;
+		goldNextStorage *= 2;
+		refresh();
+		document.getElementById("goldStorage").innerHTML = commafy(goldStorage);
+		document.getElementById("goldNextStorage").innerHTML = commafy(goldNextStorage);
+		document.getElementById("goldStorageCost").innerHTML = commafy(goldStorage);
+		document.getElementById("goldStorageSpaceMetalCost").innerHTML = commafy(goldStorage/2.5);
+	}
+}
+
+function upgradeSilverStorage(){
+	if(silver >= Storage && spaceMetal >= silverStorage/2.5){
+		silver -= silverStorage;
+		spaceMetal -= silverStorage/2.5;
+		silverStorage = silverNextStorage;
+		silverNextStorage *= 2;
+		refresh();
+		document.getElementById("silverStorage").innerHTML = commafy(silverStorage);
+		document.getElementById("silverNextStorage").innerHTML = commafy(silverNextStorage);
+		document.getElementById("silverStorageCost").innerHTML = commafy(silverStorage);
+		document.getElementById("silverStorageSpaceMetalCost").innerHTML = commafy(silverStorage/2.5);
+	}
+}
+
+function upgradeSiliconStorage(){
+	if(silicon >= siliconStorage && spaceMetal >= siliconStorage/2.5){
+		silicon -= siliconStorage;
+		spaceMetal -= siliconStorage/2.5;
+		siliconStorage = siliconNextStorage;
+		siliconNextStorage *= 2;
+		refresh();
+		document.getElementById("siliconStorage").innerHTML = commafy(siliconStorage);
+		document.getElementById("siliconNextStorage").innerHTML = commafy(siliconNextStorage);
+		document.getElementById("siliconStorageCost").innerHTML = commafy(siliconStorage);
+		document.getElementById("siliconStorageSpaceMetalCost").innerHTML = commafy(siliconStorage/2.5);
 	}
 }
 
@@ -978,8 +1405,9 @@ function exploreAsteroidBelt(){
 	}
 }
 
-//Timer
-var timer = 0;
+window.onload = function(){
+	load();
+};
 
 window.setInterval(function(){
 	refreshPerSec();
