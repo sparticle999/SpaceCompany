@@ -62,7 +62,19 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = charcoalEngine+(solarPanel*0.5);
+	var energyInput = charcoalEngine+(solarPanel*0.5)+(methaneStation*8);
+	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
+		charcoal -= charcoalEngine/10;
+	}
+	else{
+		energyInput -= charcoalEngine;
+	}
+	if(methane + methaneps/10 >= methaneStation*6/10){
+		methane -= methaneStation*6/10;
+	}
+	else{
+		energyInput -= methaneStation*8;
+	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4)+(moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	if(energy <= 1){
 		energyps = energyInput;
@@ -120,7 +132,7 @@ function refreshPerSec(){
 	if(spaceMetal >= spaceMetalStorage){
 		document.getElementById("spaceMetalps").innerHTML = 0;
 	}
-	document.getElementById("methaneps").innerHTML = commafy(methaneps);
+	document.getElementById("methaneps").innerHTML = commafy(methaneps - methaneStation*6);
 	if(methane >= methaneStorage){
 		document.getElementById("methaneps").innerHTML = 0;
 	}
@@ -143,13 +155,7 @@ function refreshPerSec(){
 }
 
 function gainResources(){
-	if(charcoal + charcoalps/10 >= charcoalEngine/10){
-		energy += energyps/10;
-		charcoal -= charcoalEngine/10;
-	}
-	else{
-		energy += solarPanel * solarPanelGain;
-	}
+	energy += energyps/10;
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
