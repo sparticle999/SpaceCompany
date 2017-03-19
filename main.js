@@ -1,5 +1,7 @@
 var energy = 0; var energyps = 0;
-var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
+var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25;
+var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
+var methaneStation = 0; var methaneStationSpaceMetalCost = 50; var methaneStationTitaniumCost = 40;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilStorageCost = 50; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalStorageCost = 50; var metalps = 0;
@@ -51,22 +53,48 @@ function refresh(){
 	document.getElementById("wood").innerHTML = commafy(wood);
 	document.getElementById("science").innerHTML = commafy(science);
 	document.getElementById("rocketFuel").innerHTML = commafy(rocketFuel);
+	document.getElementById("spaceMetal").innerHTML = commafy(spaceMetal);
+	document.getElementById("methane").innerHTML = commafy(methane);
+	document.getElementById("titanium").innerHTML = commafy(titanium);
+	document.getElementById("gold").innerHTML = commafy(gold);
+	document.getElementById("silver").innerHTML = commafy(silver);
+	document.getElementById("silicon").innerHTML = commafy(silicon);
 }
 
 function refreshPerSec(){
-	energyps = charcoalEngine+(solarPanel*0.5)-(pumpjack*4)-(heavyDrill*2)-(advancedDrill*2)-(furnace*3)-(laserCutter*4);
-	oilps = pump + (pumpjack*pumpjackOutput);
-	metalps = miner + (heavyDrill*heavyDrillOutput);
-	gemps = gemMiner + (advancedDrill*advancedDrillOutput);
-	charcoalps = woodburner + (furnace*furnaceOutput);
-	woodps = woodcutter + (laserCutter*laserCutterOutput);
-	scienceps = (lab*labGain);
-	spaceMetalps = moonWorker + (moonDrill * 10);
-	methaneps = vacuum + (suctionExcavator * 7);
-	titaniumps = explorer + (spaceMetalDrill * 6);
-	goldps = droid + (destroyer * 8);
-	silverps = scout + (spaceLaser * 13);
-	siliconps = blowtorch + (scorcher * 9);
+	var energyInput = charcoalEngine+(solarPanel*0.5);
+	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4)+(moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+	if(energy <= 1){
+		energyps = energyInput;
+	}
+	if(energy >= 10 || energyps <= 0){
+		energyps = energyInput-energyOutput;
+		oilps = pump + (pumpjack*pumpjackOutput);
+		metalps = miner + (heavyDrill*heavyDrillOutput);
+		gemps = gemMiner + (advancedDrill*advancedDrillOutput);
+		charcoalps = woodburner + (furnace*furnaceOutput);
+		woodps = woodcutter + (laserCutter*laserCutterOutput);
+		scienceps = (lab*labGain);
+		spaceMetalps = moonWorker + (moonDrill * 10);
+		methaneps = vacuum + (suctionExcavator * 7);
+		titaniumps = explorer + (spaceMetalDrill * 6);
+		goldps = droid + (destroyer * 8);
+		silverps = scout + (spaceLaser * 13);
+		siliconps = blowtorch + (scorcher * 9);
+	}
+	if(energy <= 10){
+		oilps = pump;
+		metalps = miner;
+		gemps = gemMiner;
+		charcoalps = woodburner;
+		woodps = woodcutter;
+		spaceMetalps = moonWorker;
+		methaneps = vacuum;
+		titaniumps = explorer;
+		goldps = droid;
+		silverps = scout;
+		siliconps = blowtorch;
+	}
 	document.getElementById("energyps").innerHTML = commafy(energyps);
 	document.getElementById("oilps").innerHTML = commafy(oilps - (chemicalPlant*20));
 	if(oil >= oilStorage){
@@ -167,20 +195,38 @@ function gainResources(){
 	if(spaceMetal + spaceMetalps/10 < spaceMetalStorage){
 		spaceMetal += spaceMetalps/10;
 	}
+	else{
+		spaceMetal = spaceMetalStorage;
+	}
 	if(methane + methaneps/10 < methaneStorage){
 		methane += methaneps/10;
+	}
+	else{
+		methane = methaneStorage;
 	}
 	if(titanium + titaniumps/10 < titaniumStorage){
 		titanium += titaniumps/10;
 	}
+	else{
+		titanium = titaniumStorage;
+	}
 	if(gold + goldps/10 < goldStorage){
 		gold += goldps/10;
+	}
+	else{
+		gold = goldStorage;
 	}
 	if(silver + silverps/10 < silverStorage){
 		silver += silverps/10;
 	}
+	else{
+		silver = silverStorage;
+	}
 	if(silicon + siliconps/10 < siliconStorage){
 		silicon += siliconps/10;
+	}
+	else{
+		silicon = siliconStorage;
 	}
 }
 
@@ -912,6 +958,7 @@ function exploreMars(){
 		document.getElementById("exploreMars").className = "hidden";
 		document.getElementById("titaniumNav").className = "";
 		document.getElementById("siliconNav").className = "";
+		document.getElementById("methanePower").className = "";
 	}
 }
 
@@ -929,13 +976,7 @@ function exploreAsteroidBelt(){
 var timer = 0;
 
 window.setInterval(function(){
+	refreshPerSec();
 	gainResources();
 	refresh();
-	if(timer === 10){
-		timer = 0;
-		refreshPerSec();
-	}
-	else{
-		timer += 1;
-	}
 },100);

@@ -415,6 +415,23 @@
 									<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
 								</td>
 							</tr>
+							<tr id="methanePower" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Methane Power Stations: <span id="methaneStation">0</span>
+									</h3>
+									<span>
+										Burn powerful methane from Venus to satisfy all your power needs.
+										<br>
+										Each Power Station produces 4 energy per second.
+										<br>
+										Costs <span id="methaneStationSpaceMetalCost">50</span> Space Metal, <span id="methaneStationTitaniumCost">40</span> Titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>	
@@ -925,7 +942,7 @@
 										Titanium
 									</h2>
 									<span>
-										Titanium is a metal found mostly on Mars. It is used 
+										Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants
 									</span>
 									<br>
 									<br>
@@ -1663,7 +1680,7 @@
 										Exploration
 									</h3>
 									<span>
-										Exploring Mars unlocks titanium production, which allows you to harvest silicon on Earth.
+										Exploring Mars unlocks titanium production, which allows you to harvest silicon on Earth and to build methane power plants.
 										<br>
 										Costs <span id="marsRocketFuelCost">80</span> rocket fuel.
 									</span>
