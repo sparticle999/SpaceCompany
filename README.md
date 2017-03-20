@@ -11,7 +11,7 @@
 
 #RoadMap
 
-v0.1.1
+v0.1.2
 
 - Added Computerized Tier of resource machines
 
@@ -19,6 +19,9 @@ v0.2.0 The Wondrous Update
 - Added Wonders
 
 # Changelog:
+
+v0.1.1
+- Fixed many bugs from the 0.1 update
 
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
