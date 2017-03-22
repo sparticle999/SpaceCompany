@@ -37,7 +37,7 @@ var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"];
-var tabsUnlocked = [];
+var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 
 // Variables not in save function
 	//Empty
@@ -199,6 +199,10 @@ function save(){
 		researched: researched,
 		available: available,
 		tabsUnlocked: tabsUnlocked,
+		resourcesUnlocked: resourcesUnlocked,
+		noBorder: noBorder,
+		rocketLaunched: rocketLaunched,
+		buttonsHidden: buttonsHidden,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
 	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
@@ -362,7 +366,12 @@ function load(){
 	if(typeof savegame.researched !== "undefined") researched = savegame.researched;
 	if(typeof savegame.tabsUnlocked !== "undefined") tabsUnlocked = savegame.tabsUnlocked;
 	if(typeof savegame.available !== "undefined") available = savegame.available;
+	if(typeof savegame.resourcesUnlocked !== "undefined") resourcesUnlocked = savegame.resourcesUnlocked;
+	if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
+	if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
+	if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
 
+	refreshResources();
 	refreshStorages();
 	refreshResearches();
 	refreshTabs();
@@ -506,6 +515,17 @@ function refreshPerSec(){
 	}
 }
 
+function refreshResources(){
+	for(i=0; i<resourcesUnlocked.length; i++){
+		document.getElementById(resourcesUnlocked[i]).className = "";
+	}
+	for(i=0; i<noBorder.length; i++){
+		for(j=0; j<4; j++){
+			document.getElementById(noBorder[i] + j).style.border = "";
+		}
+	}
+}
+
 function refreshStorages(){
 	document.getElementById("oilStorage").innerHTML = oilStorage;
 	document.getElementById("metalStorage").innerHTML = metalStorage;
@@ -532,6 +552,16 @@ function refreshResearches(){
 function refreshTabs(){
 	for(i=0; i<tabsUnlocked.length; i++){
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
+ 	}
+ 	if(rocketLaunched === true){
+ 		document.getElementById("spaceRocket").className = "hidden";
+		document.getElementById("moon").className = "";
+		document.getElementById("venus").className = "";
+		document.getElementById("mars").className = "";
+		document.getElementById("asteroidBelt").className = "";
+ 	}
+ 	for(i=0; i<buttonsHidden.length; i++){
+ 		document.getElementById(buttonsHidden[i]).className += "hidden";
  	}
 }
 
@@ -561,9 +591,14 @@ function gainResources(){
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
-		if(wood >= difference*2/10){
-			charcoal += difference/10;
-			wood -= difference*2/10;
+		if(wood >= difference*2){
+			if(charcoal + difference < charcoalStorage){
+				charcoal += difference;
+			}
+			else{
+				charcoal = charcoalStorage;
+			}
+			wood -= difference*2;
 		}	
 	}
 	if(wood + woodps/10 < woodStorage){
@@ -1072,9 +1107,9 @@ function getMoonWorker(){
 	if(gem >= moonWorkerGemCost){
 		gem -= moonWorkerGemCost;
 		moonWorker += 1;
-		GemCost = Math.floor(500 * Math.pow(1.1,XXXX + 1));
+		GemCost = Math.floor(500 * Math.pow(1.1,moonWorker + 1));
 		document.getElementById("moonWorker").innerHTML = moonWorker;
-		document.getElementById("GemCost").innerHTML = commafy(GemCost);
+		document.getElementById("moonWorkerGemCost").innerHTML = commafy(GemCost);
 		refresh();
 		refreshPerSec();
 	}
@@ -1106,7 +1141,7 @@ function getVacuum(){
 		vacuumGemCost = Math.floor(500 * Math.pow(1.1,vacuum + 1));
 		vacuumSpaceMetalCost = Math.floor(50 * Math.pow(1.1,vacuum + 1));
 		document.getElementById("vacuum").innerHTML = vacuum;
-		document.getElementById("vacuumMetalCost").innerHTML = commafy(vacuumMetalCost);
+		document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
 		refreshPerSec();
@@ -1144,7 +1179,7 @@ function getExplorer(){
 }
 
 function getSpaceMetalDrill(){
-	if(spaceMetal >= spaceMetalDrillSpaceMetalCost && gem >= GemCost && oil >= OilCost){
+	if(spaceMetal >= spaceMetalDrillSpaceMetalCost && gem >= spaceMetalDrillGemCost && oil >= spaceMetalDrillOilCost){
 		spaceMetal -= spaceMetalDrillSpaceMetalCost;
 		gem -= spaceMetalDrillGemCost;
 		oil -= spaceMetalDrillOilCost;
@@ -1317,6 +1352,11 @@ function unlockBasicEnergy(){
 		document.getElementById("unlockBasicEnergy").className = "hidden";
 		document.getElementById("unlockSolar").className = "";
 		document.getElementById("unlockMachines").className = "";
+		resourcesUnlocked.push("energyNav");
+		noBorder.push("metalNav");
+		if($.inArray("oilNav", noBorder) === -1){
+			noBorder.push("oilNav");
+		}
 		available.push("unlockSolar", "unlockMachines");
 		researched.push("unlockBasicEnergy");
 		function researchStorage(check){
@@ -1335,6 +1375,8 @@ function unlockOil(){
 		document.getElementById("metalNav2").style.border = "";
 		document.getElementById("metalNav3").style.border = "";
 		refresh();
+		resourcesUnlocked.push("oilNav");
+		noBorder.push("metalNav");
 		researched.push("unlockOil");
 		function researchStorage(check){
 			return check != "unlockOil"
@@ -1401,6 +1443,7 @@ function unlockSpace(){
 		science -= 500;
 		document.getElementById("unlockSpace").className = "hidden";
 		document.getElementById("spaceTab").className = "";
+		tabsUnlocked.push("spaceTab")
 		researched.push("unlockSpace");
 		function researchStorage(check){
 			return check != "unlockSpace"
@@ -1448,6 +1491,7 @@ function launchRocket(){
 		document.getElementById("venus").className = "";
 		document.getElementById("mars").className = "";
 		document.getElementById("asteroidBelt").className = "";
+		rocketLaunched = true;
 	}
 }
 
@@ -1456,6 +1500,8 @@ function exploreMoon(){
 		rocketFuel -=20;
 		document.getElementById("exploreMoon").className = "hidden";
 		document.getElementById("spaceMetalNav").className = "";
+		resourcesUnlocked.push("spaceMetalNav");
+		buttonsHidden.push("exploreMoon");
 	}
 }
 
@@ -1464,6 +1510,8 @@ function exploreVenus(){
 		rocketFuel -=50;
 		document.getElementById("exploreVenus").className = "hidden";
 		document.getElementById("methaneNav").className = "";
+		resourcesUnlocked.push("methaneNav");
+		buttonsHidden.push("exploreVenus");
 	}
 }
 
@@ -1474,6 +1522,9 @@ function exploreMars(){
 		document.getElementById("titaniumNav").className = "";
 		document.getElementById("siliconNav").className = "";
 		document.getElementById("methanePower").className = "";
+		resourcesUnlocked.push("titaniumNav");
+		resourcesUnlocked.push("siliconNav");
+		buttonsHidden.push("exploreMars");
 	}
 }
 
@@ -1483,6 +1534,9 @@ function exploreAsteroidBelt(){
 		document.getElementById("exploreAsteroidBelt").className = "hidden";
 		document.getElementById("goldNav").className = "";
 		document.getElementById("silverNav").className = "";
+		resourcesUnlocked.push("goldNav");
+		resourcesUnlocked.push("silverNav");
+		buttonsHidden.push("exploreAsteroidBelt");
 
 	}
 }

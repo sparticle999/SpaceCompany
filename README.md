@@ -9,19 +9,23 @@
 - [Change UI from bootstrap to my own]
 - [Achievements]
 
-#RoadMap
+# RoadMap
 
-v0.1.2
 
-- Added Computerized Tier of resource machines
+
+
 
 v0.2.0 The Wondrous Update
 - Added Wonders
+- Added Computerized Tier of resource machines
 
 # Changelog:
 
+v0.1.2
+- Fixed residual bugs in the 0.1.0 update
+
 v0.1.1
-- Fixed many bugs from the 0.1 update
+- Fixed many bugs from the 0.1.0 update
 
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
