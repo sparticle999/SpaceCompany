@@ -11,13 +11,10 @@
 
 # RoadMap
 
-
-
-
-
 v0.2.0 The Wondrous Update
 - Added Wonders
 - Added Computerized Tier of resource machines
+- When loading game, the tab you left on is the tab you now start on.
 
 # Changelog:
 

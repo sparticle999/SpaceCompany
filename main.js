@@ -802,20 +802,6 @@ function upgradeWoodStorage(){
 	}
 }
 
-function upgradeWoodStorage(){
-	if(wood >= woodStorage && metal >= woodStorage/2.5){
-		wood -= woodStorage;
-		metal -= woodStorage/2.5;
-		woodStorage = woodNextStorage;
-		woodNextStorage *= 2;
-		refresh();
-		document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
-		document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
-		document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
-		document.getElementById("woodStorageMetalCost").innerHTML = commafy(woodStorage/2.5);
-	}
-}
-
 function upgradeSpaceMetalStorage(){
 	if(spaceMetal >= spaceMetalStorage && metal >= spaceMetalStorage*4){
 		spaceMetal -= spaceMetalStorage;
