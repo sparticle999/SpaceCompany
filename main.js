@@ -664,12 +664,39 @@ function refreshResources(){
 	}
 }
 
+function contains(array, obj) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function refreshResearches(){
 	for(i=0; i<available.length; i++){
 		document.getElementById(available[i]).className = "";
 	}
 	for(i=0; i<researched.length; i++){
 		document.getElementById(researched[i]).className = "hidden";
+	}
+	if(contains(researched, "unlockStorage")){
+		document.getElementById("oilStorageUpgrade").className = "";
+		document.getElementById("metalStorageUpgrade").className = "";
+		document.getElementById("gemStorageUpgrade").className = "";
+		document.getElementById("charcoalStorageUpgrade").className = "";
+		document.getElementById("woodStorageUpgrade").className = "";
+	}
+	if(contains(researched, "unlockSolar")){
+		document.getElementById("solarPower").className = "";
+	}
+	if(contains(researched, "unlockMachines")){
+		document.getElementById("upgradeResourceTech").className = "";
+		document.getElementById("oilMachine1").className = "";
+		document.getElementById("metalMachine1").className = "";
+		document.getElementById("gemMachine1").className = "";
+		document.getElementById("charcoalMachine1").className = "";
+		document.getElementById("woodMachine1").className = "";	
 	}
 }
 
@@ -1455,9 +1482,6 @@ function unlockStorage(){
 		document.getElementById("unlockOil").className = "";
 		available.push("unlockOil");
 		researched.push("unlockStorage");
-		function researchStorage(check){
-			return check != "unlockStorage"
-		}
 	}
 }
 
@@ -1484,9 +1508,6 @@ function unlockBasicEnergy(){
 		}
 		available.push("unlockSolar", "unlockMachines");
 		researched.push("unlockBasicEnergy");
-		function researchStorage(check){
-			return check != "unlockBasicEnergy"
-		}
 	}
 }
 
@@ -1503,9 +1524,6 @@ function unlockOil(){
 		resourcesUnlocked.push("oilNav");
 		noBorder.push("metalNav");
 		researched.push("unlockOil");
-		function researchStorage(check){
-			return check != "unlockOil"
-		}
 	}
 }
 
@@ -1515,9 +1533,6 @@ function unlockSolar(){
 		document.getElementById("unlockSolar").className = "hidden";
 		document.getElementById("solarPower").className = "";
 		researched.push("unlockSolar");
-		function researchStorage(check){
-			return check != "unlockSolar"
-		}
 	}
 }
 
@@ -1531,12 +1546,9 @@ function unlockMachines(){
 		document.getElementById("gemMachine1").className = "";
 		document.getElementById("charcoalMachine1").className = "";
 		document.getElementById("woodMachine1").className = "";	
-		document.getElementById("unlockSpace").className = "";
-		available.push("unlockSpace", "upgradeResourceTech");
+		document.getElementById("unlockSolarSystem").className = "";
+		available.push("unlockSolarSystem", "upgradeResourceTech");
 		researched.push("unlockMachines");
-		function researchStorage(check){
-			return check != "unlockMachines"
-		}
 	}
 }
 
@@ -1557,9 +1569,6 @@ function upgradeResourceTech(){
 		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
 		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 		researched.push("upgradeResourceTech");
-		function researchStorage(check){
-			return check != "upgradeResourceTech"
-		}
 	}
 }
 
@@ -1569,10 +1578,7 @@ function unlockSolarSystem(){
 		document.getElementById("unlockSolarSystem").className = "hidden";
 		document.getElementById("solarSystemTab").className = "";
 		tabsUnlocked.push("solarSystemTab")
-		researched.push("unlockSpace");
-		function researchStorage(check){
-			return check != "unlockSpace"
-		}
+		researched.push("unlockSolarSystem");
 	}
 }
 
