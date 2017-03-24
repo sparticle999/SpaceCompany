@@ -647,8 +647,8 @@ function refreshUI(){
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
 	document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
-
 }
+
 function refreshResources(){
 	for(i=0; i<resourcesUnlocked.length; i++){
 		document.getElementById(resourcesUnlocked[i]).className = "";
