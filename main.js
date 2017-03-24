@@ -519,6 +519,7 @@ function refreshPerSec(){
 
 
 function refreshUI(){
+	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
 	document.getElementById("oilNextStorage").innerHTML = commafy(oilNextStorage);
 	document.getElementById("oilStorageCost").innerHTML = commafy(oilStorage);
@@ -1562,12 +1563,12 @@ function upgradeResourceTech(){
 	}
 }
 
-function unlockSpace(){
+function unlockSolarSystem(){
 	if(science >= 500){
 		science -= 500;
-		document.getElementById("unlockSpace").className = "hidden";
-		document.getElementById("spaceTab").className = "";
-		tabsUnlocked.push("spaceTab")
+		document.getElementById("unlockSolarSystem").className = "hidden";
+		document.getElementById("solarSystemTab").className = "";
+		tabsUnlocked.push("solarSystemTab")
 		researched.push("unlockSpace");
 		function researchStorage(check){
 			return check != "unlockSpace"
@@ -1575,7 +1576,7 @@ function unlockSpace(){
 	}
 }
 
-// Space Tab
+// Solar System Tab
 
 function getChemicalPlant(){
 	if(metal >= chemicalPlantMetalCost && gem >= chemicalPlantGemCost && oil >= chemicalPlantOilCost){
@@ -1621,7 +1622,7 @@ function launchRocket(){
 
 function exploreMoon(){
 	if(rocketFuel >= 20){
-		rocketFuel -=20;
+		rocketFuel -= 20;
 		document.getElementById("exploreMoon").className = "hidden";
 		document.getElementById("spaceMetalNav").className = "";
 		resourcesUnlocked.push("spaceMetalNav");
@@ -1631,7 +1632,7 @@ function exploreMoon(){
 
 function exploreVenus(){
 	if(rocketFuel >= 50){
-		rocketFuel -=50;
+		rocketFuel -= 50;
 		document.getElementById("exploreVenus").className = "hidden";
 		document.getElementById("methaneNav").className = "";
 		resourcesUnlocked.push("methaneNav");
@@ -1641,7 +1642,7 @@ function exploreVenus(){
 
 function exploreMars(){
 	if(rocketFuel >= 80){
-		rocketFuel -=80;
+		rocketFuel -= 80;
 		document.getElementById("exploreMars").className = "hidden";
 		document.getElementById("titaniumNav").className = "";
 		document.getElementById("siliconNav").className = "";
@@ -1654,8 +1655,9 @@ function exploreMars(){
 
 function exploreAsteroidBelt(){
 	if(rocketFuel >= 200){
-		rocketFuel -=200;
+		rocketFuel -= 200;
 		document.getElementById("exploreAsteroidBelt").className = "hidden";
+		document.getElementById("wonderStation").className = "";
 		document.getElementById("goldNav").className = "";
 		document.getElementById("silverNav").className = "";
 		resourcesUnlocked.push("goldNav");
@@ -1665,12 +1667,26 @@ function exploreAsteroidBelt(){
 	}
 }
 
+function exploreWonderStation(){
+	if(rocketFuel >= 500){
+		rocketFuel -= 500;
+		document.getElementById("wonderTab").className = "hidden";
+		document.getElementById("exploreWonderStation").className = "";
+	}
+}
+
+// Wonders Tab
+
+
+
 window.onload = function(){
 	load();
 };
 
 var timer = 0;
 var timer2 = 0;
+var saveTimer = 0;
+var secondsLeft = 0;
 var saved = false;
 var loaded = false;
 
@@ -1693,5 +1709,20 @@ window.setInterval(function(){
 			document.getElementById("loadButton").className = "btn btn-primary pull-right";
 			timer2 = 0;
 		}
+	}
+	if(saveTimer >= 1200){
+		save();
+		saveTimer = 0;
+		document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
+	}
+	else{
+		if(saveTimer === 600){
+			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 1 minute";
+		}
+		if(saveTimer >= 1100){
+			secondsLeft = commafy((1200 - saveTimer)/10);
+			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+		}
+		saveTimer += 1;
 	}
 },100);

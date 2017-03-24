@@ -38,7 +38,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.1.1 Alpha
+						v0.1.2 Alpha
 					</span>
 				</a>
 				<button onclick="deleteSave()" class="btn btn-danger pull-right" style="margin-top:5px; margin-left:2px; height:80%; display:inline-block; vertical-align: middle">
@@ -56,6 +56,13 @@
 						Save
 					</span>
 				</button>
+				<div class="pull-right">
+					<a class="navbar-brand">
+						<span id="autoSaveTimer" class="text-muted small ng-binding">
+							
+						</span>
+					</a>
+				</div>
 			</div>
 			<div class="navbar-right"><login><!-- ngIf: env.isServerFrontendEnabled --></login></div>
 		</div>
@@ -67,9 +74,8 @@
 	<ul class="nav nav-tabs no-select" role="tablist">
 		<li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
 		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
-    	<li role="presentation" id="spaceTab" class="hidden"><a href="#space" aria-controls="space" role="tab" data-toggle="tab">Space</a></li>
+    	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab">Solar System</a></li>
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aira-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
-    	<li role="presentation" id="prestigeTab" class="hidden"><a href="#prestige" aira-control="prestige" role="tab" data-toggle="tab">Prestige</a></li>
     	<li role="presentation" class="active pull-right"><a href="#help" aira-control="help" role="tab" data-toggle="tab">Help / FAQ</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
     		<ul class="dropdown-menu" role="menu">
@@ -1422,19 +1428,19 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="unlockSpace" class="hidden">
+							<tr id="unlockSolarSystem" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
 										Space
 									</h3>
 									<span>
-										Unlocking Space allows for launching of rockets and opens a whole new field of research.
+										Unlocking space-travel allows for launching of rockets and opens a whole new field of research.
 										<br>
 										Costs 500 Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="unlockSpace()" class="btn btn-default">Unlock Space</button>
+									<button onclick="unlockSolarSystem()" class="btn btn-default">Unlock Space Travel</button>
 									<br>
 									<br>
 								</td>
@@ -1445,8 +1451,8 @@
 			</div>
 		</div>
 
-		<!-- Space -->
-		<div role="tabpanel" class="tab-pane fade" id="space">
+		<!-- Solar System -->
+		<div role="tabpanel" class="tab-pane fade" id="solarSystem">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
 					<tr href="#rocketFuelTab" aria-controls="rocketFuelTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -1514,6 +1520,16 @@
 							</span>
 						</td>
 					</tr>
+					<tr class="hidden" id="asteroidBelt" href="#wonderStationTab" aria-controls="wonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/wonderStationIcon.png" style="width:30px; height:auto">
+						</td>
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								The Wonder Station
+							</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -1526,7 +1542,7 @@
 										Rocket Fuel
 									</h2>
 									<span>
-										Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space.
+										Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.
 									</span>
 									<br>
 									<br>
@@ -1561,7 +1577,7 @@
 										Rocket
 									</h2>
 									<span>
-										Building a rocket will allow for space exploration and will allow you to gather resources in space.
+										Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.
 									</span>
 									<br>
 									<br>
@@ -1625,7 +1641,7 @@
 										Exploration
 									</h3>
 									<span>
-										Exploring the Moon will unlock the collection of  space metal.
+										Exploring the Moon will unlock the collection of space metal.
 										<br>
 										Costs <span id="moonRocketFuelCost">20</span> rocket fuel.
 									</span>
@@ -1744,20 +1760,190 @@
 						</table>
 					</div>
 				</div>
+				<div id="wonderStationTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Wonder Station
+									</h2>
+									<span>
+										The Wonder Station is a large, mysterious construct, orbiting further than Pluto. What it contains isn't known exactly, but carvings on ancient artifacts depict something similar. They say that there, you will learn about an almost supernatural, extra-terrestrial overlord, commanding over the galaxy. They say that he will be able to teach you many things on your journey to inter-star and galactic exploration.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="exploreWonderStation">
+								<td>
+									<h3 class="pointer btn-link">
+										Exploration
+									</h3>
+									<span>
+										Exploring the Wonder Station will gives you access to Wonders and allow you to continue your research and travel even further than before.
+										<br>
+										Costs <span id="wonderStationRocketFuelCost">500</span> rocket fuel.
+									</span>
+									<br>
+									<br>
+									<button onclick="exploreWonderStation()" class="btn btn-default">Explore The Wonder Station</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<!-- Wonders -->
 		<div role="tabpanel" class="tab-pane fade" id="wonder">
-			<div class="container">
-				
+			<div class="container" style="width:250px; float:left;">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#startingTab" aria-controls="startingTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Wonder Station
+							</span>
+						</td>
+					</tr>
+					<tr href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Precious Wonder
+							</span>
+						</td>
+					</tr>
+					<tr href="#creditsTab" aria-controls="creditsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Credits
+							</span>
+						</td>
+					</tr>
+				</table>
 			</div>
-		</div>
-
-		<!-- Prestige -->
-		<div role="tabpanel" class="tab-pane fade" id="prestige">
-			<div class="container">
-				
+			<div class="tab-content">
+				<div id="theWonderStationTab" class="tab-pane fade in active" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Inside The Wonder Station
+									</h2>
+									<span>
+										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section.
+									</span>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Precious Metals Wonder
+									</h3>
+									<span>
+										While the alien overlord is rich beyond comparison, he still values adding precious resources to his collection. In return for your gems, silver and gold, he will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored.
+										<br>
+										He requires that you donate 10,000 gems, 7,500 silver and 5,000 gold for this knowledge.
+										<br>
+										<br>
+										<button onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
+										<br>
+										<br>
+										Progress Bar Here of all three metals added together out of total needed.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										TBC
+									</h3>
+									<span>
+										TBC
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										TBC
+									</h3>
+									<span>
+										TBC
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="preciousWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Precious Wonder
+									</h2>
+									<span>
+										
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3>
+										TBC
+									</h3>
+									<span>
+										TBC
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="creditsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										About
+									</h2>
+									<span>
+										
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:none;">
+									<h3 class="pointer btn-link">
+										Tools Used
+									</h3>
+									<span>
+										
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Donating
+									</h2>
+									<span>
+										
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -1845,7 +2031,7 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Balancing Resources
+										Balancing Resources & Energy
 									</h3>
 									<span>
 										This game has different amounts output by each machine. This can make balancing your resources hard, especially your energy, charcoal and wood as they are consumed by other machines. As at tip, prioritise which resources you should build machines for first - in most cases metal - and produce the 2 energy required for a heavy drill. Don't upgrade everything to machines at once as you will end up with an energy deficit (this is bad as the machines won't work without energy). Build up your charcoal to build engines or increase the number of solar panels to counter this.
@@ -1855,10 +2041,10 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Space
+										Solar System
 									</h3>
 									<span>
-										The first thing needed to unlock space exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock space travel and new technologies and ways to get resources.
+										The first thing needed to unlock inter-planetary exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock exploration around the solar system and new technologies and ways to get resources.
 									</span>
 								</td>
 							</tr>

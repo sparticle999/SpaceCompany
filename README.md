@@ -18,11 +18,14 @@ v0.2.0 The Wondrous Update
 
 # Changelog:
 
+v0.1.3
+- 
+
 v0.1.2
-- Fixed residual bugs in the 0.1.0 update
+- Added auto-saving
 
 v0.1.1
-- Fixed many bugs from the 0.1.0 update
+- Fixed all bugs from the 0.1.0 update
 
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
