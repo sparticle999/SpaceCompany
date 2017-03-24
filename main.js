@@ -1501,7 +1501,7 @@ function unlockBasicEnergy(){
 		document.getElementById("unlockBasicEnergy").className = "hidden";
 		document.getElementById("unlockSolar").className = "";
 		document.getElementById("unlockMachines").className = "";
-		resourcesUnlocked.push("energyNav");
+		resourcesUnlocked.push("energyNav", "charcoalNav");
 		noBorder.push("metalNav");
 		if($.inArray("oilNav", noBorder) === -1){
 			noBorder.push("oilNav");
