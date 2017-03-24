@@ -568,6 +568,9 @@ function refreshUI(){
 	document.getElementById("solarPanel").innerHTML = solarPanel;
 	document.getElementById("solarPanelMetalCost").innerHTML = commafy(solarPanelMetalCost);
 	document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
+	document.getElementById("methaneStation").innerHTML = methaneStation;
+	document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
+	document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
 	document.getElementById("pump").innerHTML = pump;
 	document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
 	document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
@@ -1035,6 +1038,22 @@ function getSolarPanel(){
 		refreshPerSec();
 	}
 }
+
+function getMethaneStation(){
+	if(spaceMetal >= methaneStationSpaceMetalCost && titanium >= methaneStationTitaniumCost){
+		spaceMetal -= methaneStationSpaceMetalCost;
+		titanium -= methaneStationTitaniumCost;
+		methaneStation += 1;
+		methaneStationMetalCost = Math.floor(60 * Math.pow(1.1,methaneStation + 1));
+		methaneStationTitaniumCost = Math.floor(20 * Math.pow(1.1,methaneStation + 1));
+		document.getElementById("methaneStation").innerHTML = methaneStation;
+		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
+		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
+		refresh();
+		refreshPerSec();
+	}
+}
+
 
 function getPump(){
 	if(metal >= pumpMetalCost && gem >= pumpGemCost){
