@@ -990,7 +990,7 @@ function upgradeWoodStorage(){
 function upgradeSpaceMetalStorage(){
 	if(spaceMetal >= spaceMetalStorage && metal >= spaceMetalStorage*4){
 		spaceMetal -= spaceMetalStorage;
-		metal -= metalStorage/2.5;
+		metal -= spaceMetalStorage*4;
 		spaceMetalStorage = spaceMetalNextStorage;
 		spaceMetalNextStorage *= 2;
 		refresh();
