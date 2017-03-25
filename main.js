@@ -42,6 +42,40 @@ var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocket
 // Variables not in save function
 	//Empty
 
+function autosave(){
+	if(saved === true){
+		timer += 1
+		if(timer >= 20){
+			saved === false;
+			document.getElementById("saveButton").className = "btn btn-primary pull-right";
+			timer = 0;
+		}
+	}
+	if(loaded === true){
+		timer2 += 1
+		if(timer2 >= 20){
+			loaded === false;
+			document.getElementById("loadButton").className = "btn btn-primary pull-right";
+			timer2 = 0;
+		}
+	}
+	if(saveTimer >= 1200){
+		save();
+		saveTimer = 0;
+		document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
+	}
+	else{
+		if(saveTimer === 600){
+			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 1 minute";
+		}
+		if(saveTimer >= 1100){
+			secondsLeft = commafy((1200 - saveTimer)/10);
+			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+		}
+		saveTimer += 1;
+	}
+}
+
 function save(){
 	"use strict";
 	var save = {
@@ -1641,7 +1675,8 @@ function exploreVenus(){
 		rocketFuel -= 50;
 		document.getElementById("exploreVenus").className = "hidden";
 		document.getElementById("methaneNav").className = "";
-		resourcesUnlocked.push("methaneNav");
+		document.getElementById("methanePower").className = "";
+		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
 	}
 }
@@ -1652,9 +1687,7 @@ function exploreMars(){
 		document.getElementById("exploreMars").className = "hidden";
 		document.getElementById("titaniumNav").className = "";
 		document.getElementById("siliconNav").className = "";
-		document.getElementById("methanePower").className = "";
-		resourcesUnlocked.push("titaniumNav");
-		resourcesUnlocked.push("siliconNav");
+		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 	}
 }
@@ -1666,7 +1699,7 @@ function exploreAsteroidBelt(){
 		document.getElementById("wonderStation").className = "";
 		document.getElementById("goldNav").className = "";
 		document.getElementById("silverNav").className = "";
-		resourcesUnlocked.push("goldNav");
+		resourcesUnlocked.push("goldNav", "silverNav");
 		resourcesUnlocked.push("silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 
@@ -1683,11 +1716,47 @@ function exploreWonderStation(){
 
 // Wonders Tab
 
+function refreshWonderBars(){
+	if(gold >= 5000){
+		var preciousGold = 5000;
+	}
+	else{preciousGold = gold;}
+	if(silver >= 7500){
+		var preciousSilver = 7500;
+	}
+	else{preciousSilver = silver;}
+	if(gem >= 10000){
+		var preciousGem = 10000;
+	}
+	else{preciousGem = gem;}
+	var preciousBar = (preciousGold+preciousSilver+preciousGem)/225;
+	if(preciousBar <= 100){
+		document.getElementById("preciousBar").innerHTML = commafy(preciousBar) + "%";
+		document.getElementById("preciousBar").style.width = preciousBar + "%";
+	}
+	else{
+		document.getElementById("preciousBar").innerHTML = "100%";
+		document.getElementById("preciousBar").style.width = 100 + "%";
+	}
+}
 
+function achievePreciousWonder(){
+	if(gold >= 5000 && silver >= 7500 && gem >= 10000){
+		gold-= 5000;
+		silver -= 7500;
+		gem -= 10000;
+		document.getElementById("preciousWonderButton").className = "hidden";
+		document.getElementById("preciousProgress").className = "hidden";
+		document.getElementById("preciousWonderNav").className = "";
+		buttonsHidden.push("preciousProgress", "preciousWonderButton");
+		resourcesUnlocked.push("preciousWonderNav");
+	}
+}
 
 window.onload = function(){
 	load();
 };
+
 
 var timer = 0;
 var timer2 = 0;
@@ -1700,35 +1769,6 @@ window.setInterval(function(){
 	refreshPerSec();
 	gainResources();
 	refresh();
-	if(saved === true){
-		timer += 1
-		if(timer >= 20){
-			saved === false;
-			document.getElementById("saveButton").className = "btn btn-primary pull-right";
-			timer = 0;
-		}
-	}
-	if(loaded === true){
-		timer2 += 1
-		if(timer2 >= 20){
-			loaded === false;
-			document.getElementById("loadButton").className = "btn btn-primary pull-right";
-			timer2 = 0;
-		}
-	}
-	if(saveTimer >= 1200){
-		save();
-		saveTimer = 0;
-		document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
-	}
-	else{
-		if(saveTimer === 600){
-			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 1 minute";
-		}
-		if(saveTimer >= 1100){
-			secondsLeft = commafy((1200 - saveTimer)/10);
-			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-		}
-		saveTimer += 1;
-	}
+	autosave();
+	refreshWonderBars();
 },100);

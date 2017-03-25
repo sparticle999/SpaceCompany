@@ -1802,24 +1802,24 @@
 		<div role="tabpanel" class="tab-pane fade" id="wonder">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#startingTab" aria-controls="startingTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr href="#theWonderStationTab" aria-controls="theWonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
 								Wonder Station
 							</span>
 						</td>
 					</tr>
-					<tr href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="preciousWonderNav" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
 								Precious Wonder
 							</span>
 						</td>
 					</tr>
-					<tr href="#creditsTab" aria-controls="creditsTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="Nav" class="hidden" href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Credits
+								
 							</span>
 						</td>
 					</tr>
@@ -1835,7 +1835,7 @@
 										Inside The Wonder Station
 									</h2>
 									<span>
-										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section.
+										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to large hallway. Adorning the walls are huge paintings of monolithic structures and descriptions underneath. You feel that there is a higher being watching over you as you walk through the room.
 									</span>
 									<br>
 									<br>
@@ -1847,15 +1847,22 @@
 										Precious Metals Wonder
 									</h3>
 									<span>
+										The first painting depicts a large, shiny structure and the plaque reads:
+										<br>
 										While the alien overlord is rich beyond comparison, he still values adding precious resources to his collection. In return for your gems, silver and gold, he will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored.
 										<br>
 										He requires that you donate 10,000 gems, 7,500 silver and 5,000 gold for this knowledge.
 										<br>
 										<br>
-										<button onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
+										<button id="preciousWonderButton" onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
 										<br>
 										<br>
-										Progress Bar Here of all three metals added together out of total needed.
+										<div id="preciousProgress" class="progress">
+										  <div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar"
+										  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										    0%
+										  </div>
+										</div>
 									</span>
 								</td>
 							</tr>
