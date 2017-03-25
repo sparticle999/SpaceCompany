@@ -384,6 +384,28 @@
 							<span id="siliconStorage">50</span>
 						</td>
 					</tr>
+					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Silicon
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="uraniumps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="uranium">
+								0
+							</span>
+							/
+							<span id="uraniumStorage">50</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -1145,7 +1167,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getscout()" class="btn btn-default">Get Scout Ship</button>
+									<button onclick="getScout()" class="btn btn-default">Get Scout Ship</button>
 								</td>
 							</tr>
 							<tr>
@@ -1200,7 +1222,79 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="upgradeSilverStorage()" class="btn btn-default">Upgrade Storage</button>
+									<button onclick="upgradeSiliconStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Empowered Blowtorch: <span id="blowtorch">0</span>
+									</h3>
+									<span>
+										This type of blowtorch instantly turns sand into silicon, but only on a small scale. To make it, extraterrestrial resources are required.
+										<br>
+										Produces 1 silicon per second.
+										<br>
+										Costs <span id="blowtorchSpaceMetalCost">150</span> space metal, <span id="blowtorchTitaniumCost">30</span> titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Seaside Scorcher: <span id="scorcher">0</span>
+									</h3>
+									<span>
+										This tool almost melts parts of beaches to get silicon at a larger scale.
+										<br>
+										Produces <span id="scorcherOutput">9</span> silicon per second.
+										<br>
+										Uses 18 energy per second.
+										<br>
+										Costs <span id="scorcherSpaceMetalCost">500</span> space metal, <span id="scorcherGemCost">1,200</span> gems, <span id="scorcherOilCost">1,600</span> oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="uraniumTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Uranium
+									</h2>
+									<span>
+										XXXX
+									</span>
+									<br>
+									<br>
+									<button onclick="gainUranium()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="uraniumStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
+										<br>
+										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeUraniumStorage()" class="btn btn-default">Upgrade Storage</button>
 								</td>
 							</tr>
 							<tr>
@@ -1819,14 +1913,21 @@
 					<tr id="preciousWonderNav" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Precious Wonder: Level <span id="preciousLevel">1</span>
+								Precious Wonder: Lv <span id="preciousLevel">1</span>
+							</span>
+						</td>
+					</tr>
+					<tr id="energeticWonderNav" class="hidden" href="#energeticWonderTab" aria-controls="energeticWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Energetic Wonder: Lv <span id="energeticLevel">1</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="elevationWonderNav" class="hidden" href="#elevationWonderTab" aria-controls="elevationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Elevation Wonder: Level <span id="elevationLevel">1</span>
+								Elevation Wonder: Lv <span id="elevationLevel">1</span>
 							</span>
 						</td>
 					</tr>
@@ -1856,7 +1957,7 @@
 									<span>
 										The first painting depicts a large, shiny structure and the plaque reads:
 										<br>
-										While the alien overlord is rich beyond comparison, he still values adding precious resources to his collection. In return for your gems, silver and gold, he will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored.
+										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored."
 										<br>
 										He requires that you donate 10,000 Gems, 7,500 Silver and 5,000 Gold for this knowledge.
 										<br>
@@ -1870,6 +1971,41 @@
 										    0%
 										  </div>
 										</div>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Energetic Wonder
+									</h3>
+									<span>
+										A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?
+										<br>
+										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate electricity no man has seen before."
+										<br>
+										He requests a pyramid containing 10,000 Wood, 5,000 Charcoal and 200 Uranium to acquire his methods.
+										<br>
+										<br>
+										<button id="energeticWonderButton" onclick="achieveEnergeticWonder()" class="btn btn-default">Donate Energy</button>
+										<br>
+										<br>
+										<div id="energeticProgress" class="progress">
+										  <div id="energeticBar" class="progress-bar progress-bar-striped active" role="progressbar"
+										  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										    0%
+										  </div>
+										</div>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										XXXX
+									</h3>
+									<span>
+										XXXX
 									</span>
 								</td>
 							</tr>
@@ -1922,7 +2058,40 @@
 										Costs: <span id="preciousWonderGemCost">30,000</span> Gems, <span id="preciousWonderSilverCost">20,000</span> Silver, <span id="preciousWonderGoldCost">10,000</span> Gold.
 										<br>
 										<br>
-										<button id="unlockNextResourceButton" onclick="unlockNextResource()" class="btn btn-default">Unlock Next Resource</button>
+										<button id="upgradePreciousWonder" onclick="upgradePreciousWonder()" class="btn btn-default">Upgrade Precious Wonder</button>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="energeticWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Energetic Wonder
+									</h2>
+									<span>
+										Now with a pyramid of energy at his disposal, the Overlord grants you some of his technology to produce electricity.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrade Wonder
+									</h3>
+									<span>
+										Upgrading this wonder will unlock a new method of power generation.
+										<br>
+										The next upgrade will unlock <span id="nextPower">Nuclear Power</span>.
+										<br>
+										Costs: <span id="energeticWonderWoodCost">30,000</span> Wood, <span id="energeticWonderCharcoalCost">15,000</span> Charcoal, <span id="energeticWonderUraniumCost">500</span> Uranium.
+										<br>
+										<br>
+										<button id="upgradeEnergeticWonder" onclick="upgradeEnergeticWonder()" class="btn btn-default">Upgrade Energetic Wonder</button>
 									</span>
 								</td>
 							</tr>
@@ -1945,10 +2114,17 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX
+										Upgrade Wonder
 									</h3>
 									<span>
-										XXXX
+										Upgrading this wonder will 
+										<br>
+										The next upgrade will unlock 
+										<br>
+										Costs: <span id="elevationWonderGemCost">30,000</span> Gems, <span id="elevationWonderSilverCost">20,000</span> Silver, <span id="elevationWonderGoldCost">10,000</span> Gold.
+										<br>
+										<br>
+										<button id="upgradeElevationWonder" onclick="upgradeElevationWonder()" class="btn btn-default">Upgrade Elevation Wonder</button>
 									</span>
 								</td>
 							</tr>

@@ -38,7 +38,7 @@ var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost 
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
-
+var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 // Variables not in save function
 	//Empty
 
@@ -237,6 +237,10 @@ function save(){
 		noBorder: noBorder,
 		rocketLaunched: rocketLaunched,
 		buttonsHidden: buttonsHidden,
+		uranium: uranium,
+		uraniumStorage: uraniumStorage,
+		uraniumNextStorage: uraniumNextStorage,
+		uraniumps: uraniumps,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
 	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
@@ -405,6 +409,11 @@ function load(){
 		if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
 		if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
+		if(typeof savegame.uranium !== "undefined") uranium = savegame.uranium;
+		if(typeof savegame.uraniumStorage !== "undefined") uraniumStorage = savegame.uraniumStorage;
+		if(typeof savegame.uraniumNextStorage !== "undefined") uraniumNextStorage = savegame.uraniumNextStorage;
+		if(typeof savegame.uraniumps !== "undefined") uraniumps = savegame.uraniumps;
+
 	}
 
 	refreshUI();
@@ -453,6 +462,7 @@ function refresh(){
 	document.getElementById("gold").innerHTML = commafy(gold);
 	document.getElementById("silver").innerHTML = commafy(silver);
 	document.getElementById("silicon").innerHTML = commafy(silicon);
+	document.getElementById("uranium").innerHTML = commafy(uranium);
 }
 
 function refreshPerSec(){
@@ -548,6 +558,10 @@ function refreshPerSec(){
 	document.getElementById("siliconps").innerHTML = commafy(siliconps);
 	if(silicon >= siliconStorage){
 		document.getElementById("siliconps").innerHTML = 0;
+	}
+	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
+	if(uranium >= uraniumStorage){
+		document.getElementById("uraniumps").innerHTML = 0;
 	}
 }
 
@@ -685,6 +699,10 @@ function refreshUI(){
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
 	document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
+	document.getElementById("uranium").innerHTML = commafy(uranium);
+	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
+	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
+	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
 }
 
 function refreshResources(){
@@ -1015,7 +1033,7 @@ function upgradeMethaneStorage(){
 }
 
 function upgradeTitaniumStorage(){
-	if(titanium >= titaniumStorage && Metal >= titaniumStorage/2.5){
+	if(titanium >= titaniumStorage && spaceMetal >= titaniumStorage/2.5){
 		titanium -= titaniumStorage;
 		spaceMetal -= titaniumStorage/2.5;
 		titaniumStorage = titaniumNextStorage;
@@ -1029,7 +1047,7 @@ function upgradeTitaniumStorage(){
 }
 
 function upgradeGoldStorage(){
-	if(gold >= Storage && spaceMetal >= goldStorage/2.5){
+	if(gold >= goldStorage && spaceMetal >= goldStorage/2.5){
 		gold -= goldStorage;
 		spaceMetal -= goldStorage/2.5;
 		goldStorage = goldNextStorage;
@@ -1043,7 +1061,7 @@ function upgradeGoldStorage(){
 }
 
 function upgradeSilverStorage(){
-	if(silver >= Storage && spaceMetal >= silverStorage/2.5){
+	if(silver >= silverStorage && spaceMetal >= silverStorage/2.5){
 		silver -= silverStorage;
 		spaceMetal -= silverStorage/2.5;
 		silverStorage = silverNextStorage;
@@ -1339,7 +1357,7 @@ function getSuctionExcavator(){
 		spaceMetal -= suctionExcavatorSpaceMetalCost;
 		gem -= suctionExcavatorGemCost;
 		oil -= suctionExcavatorOilCost;
-		XXXX += 1;
+		suctionExcavator += 1;
 		OilCost = Math.floor(600 * Math.pow(1.1,suctionExcavator + 1));
 		GemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator + 1));
 		spaceMetalCost = Math.floor(100 * Math.pow(1.1,suctionExcavator + 1));
@@ -1385,7 +1403,7 @@ function getSpaceMetalDrill(){
 function getDroid(){
 	if(spaceMetal >= droidSpaceMetalCost && methane >= droidMethaneCost){
 		spaceMetal -= droidSpaceMetalCost;
-		methane -= MethaneCost;
+		methane -= droidMethaneCost;
 		droid += 1;
 		droidMethaneCost = Math.floor(50 * Math.pow(1.1,droid + 1));
 		droidSpaceMetalCost = Math.floor(200 * Math.pow(1.1,droid + 1));
@@ -1699,7 +1717,6 @@ function exploreAsteroidBelt(){
 		document.getElementById("goldNav").className = "";
 		document.getElementById("silverNav").className = "";
 		resourcesUnlocked.push("goldNav", "silverNav");
-		resourcesUnlocked.push("silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 
 	}
@@ -1708,48 +1725,87 @@ function exploreAsteroidBelt(){
 function exploreWonderStation(){
 	if(rocketFuel >= 500){
 		rocketFuel -= 500;
-		document.getElementById("wonderTab").className = "hidden";
-		document.getElementById("exploreWonderStation").className = "";
+		document.getElementById("wonderTab").className = "";
+		document.getElementById("exploreWonderStation").className = "hidden";
+		buttonsHidden.push("exploreWonderStation");
 	}
 }
 
 // Wonders Tab
 
 function refreshWonderBars(){
-	if(gold >= 5000){
-		var preciousGold = 5000;
+	if(contains(resourcesUnlocked, preciousWonderNav) === false){
+		if(gem >= 10000){
+			var preciousGem = 10000;
+		}
+		else{preciousGem = gem;}
+		if(silver >= 7500){
+			var preciousSilver = 7500;
+		}
+		else{preciousSilver = silver;}
+		if(gold >= 5000){
+			var preciousGold = 5000;
+		}
+		else{preciousGold = gold;}
+		var preciousBar = (preciousGem+preciousSilver+preciousGold)/225;
+		if(preciousBar <= 100){
+			document.getElementById("preciousBar").innerHTML = commafy(preciousBar) + "%";
+			document.getElementById("preciousBar").style.width = preciousBar + "%";
+		}
+		else{
+			document.getElementById("preciousBar").innerHTML = "100%";
+			document.getElementById("preciousBar").style.width = 100 + "%";
+		}
 	}
-	else{preciousGold = gold;}
-	if(silver >= 7500){
-		var preciousSilver = 7500;
-	}
-	else{preciousSilver = silver;}
-	if(gem >= 10000){
-		var preciousGem = 10000;
-	}
-	else{preciousGem = gem;}
-	var preciousBar = (preciousGold+preciousSilver+preciousGem)/225;
-	if(preciousBar <= 100){
-		document.getElementById("preciousBar").innerHTML = commafy(preciousBar) + "%";
-		document.getElementById("preciousBar").style.width = preciousBar + "%";
-	}
-	else{
-		document.getElementById("preciousBar").innerHTML = "100%";
-		document.getElementById("preciousBar").style.width = 100 + "%";
+	if(contains(resourcesUnlocked, energeticWonderNav) === false){
+		if(wood >= 10000){
+			var energeticWood = 10000;
+		}
+		else{energeticWood = wood;}
+		if(charcoal >= 5000){
+			var energeticCharcoal = 5000;
+		}
+		else{energeticCharcoal = charcoal;}
+		if(uranium >= 200){
+			var energeticUranium = 200;
+		}
+		else{energeticUranium = uranium;}
+		var energeticBar = (energeticWood+energeticCharcoal+energeticUranium)/152;
+		if(preciousBar <= 100){
+			document.getElementById("energeticBar").innerHTML = commafy(energeticBar) + "%";
+			document.getElementById("energeticBar").style.width = energeticBar + "%";
+		}
+		else{
+			document.getElementById("energeticBar").innerHTML = "100%";
+			document.getElementById("energeticBar").style.width = 100 + "%";
+		}
 	}
 }
 
 function achievePreciousWonder(){
-	if(gold >= 5000 && silver >= 7500 && gem >= 10000){
-		gold-= 5000;
+	if(gem >= 10000 && silver >= 7500 && gold >= 5000){
+		gem-= 10000;
 		silver -= 7500;
-		gem -= 10000;
+		gold -= 5000;
 		document.getElementById("preciousWonderButton").className = "hidden";
 		document.getElementById("preciousProgress").className = "hidden";
 		document.getElementById("preciousWonderNav").className = "";
 		document.getElementById("WonderFloor1Nav").className = "";
 		buttonsHidden.push("preciousProgress", "preciousWonderButton");
 		resourcesUnlocked.push("preciousWonderNav", "wonderLv1Nav");
+	}
+}
+
+function achieveEnergeticWonder(){
+	if(wood >= 10000 && charcoal >= 5000 && uranium >= 200){
+		wood-= 10000;
+		charcoal -= 5000;
+		uranium -= 200;
+		document.getElementById("energeticWonderButton").className = "hidden";
+		document.getElementById("energeticProgress").className = "hidden";
+		document.getElementById("energeticWonderNav").className = "";
+		buttonsHidden.push("energeticProgress", "energeticWonderButton");
+		resourcesUnlocked.push("energeticWonderNav");
 	}
 }
 
