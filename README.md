@@ -2,7 +2,7 @@
 
 # Plans for the Future
 - When a wonder is built, it unlocks a new thing.
-- Nuclear Power
+- Uranium + Nuclear Power
 - Satelites
 - GeoStationary satelites give information/second
 - Space elevator
@@ -23,9 +23,10 @@ v0.1.3
 
 v0.1.2
 - Added auto-saving
+- Finished Beginner's Guide
 
 v0.1.1
-- Fixed all bugs from the 0.1.0 update
+- Fixed  bugs from the 0.1.0 update
 
 v0.1.0 The Space Update [Released to the Public]
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt

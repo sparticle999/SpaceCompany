@@ -1520,7 +1520,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="asteroidBelt" href="#wonderStationTab" aria-controls="wonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="wonderStation" href="#wonderStationTab" aria-controls="wonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/wonderStationIcon.png" style="width:30px; height:auto">
 						</td>
@@ -1802,24 +1802,31 @@
 		<div role="tabpanel" class="tab-pane fade" id="wonder">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#theWonderStationTab" aria-controls="theWonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr href="#theWonderStationTab" aria-controls="theWonderStationTab" role="tab" data-toggle="tab" style="height:60px; border:none;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
 								Wonder Station
 							</span>
 						</td>
 					</tr>
+					<tr id="wonderFloor1Nav" class="hidden">
+						<th>
+							<span>
+								Wonder Station - Floor 1
+							</span>
+						</th>
+					</tr>
 					<tr id="preciousWonderNav" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Precious Wonder
+								Precious Wonder: Level <span id="preciousLevel">1</span>
 							</span>
 						</td>
 					</tr>
-					<tr id="Nav" class="hidden" href="#" aria-controls="" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="elevationWonderNav" class="hidden" href="#elevationWonderTab" aria-controls="elevationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								
+								Elevation Wonder: Level <span id="elevationLevel">1</span>
 							</span>
 						</td>
 					</tr>
@@ -1851,7 +1858,7 @@
 										<br>
 										While the alien overlord is rich beyond comparison, he still values adding precious resources to his collection. In return for your gems, silver and gold, he will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored.
 										<br>
-										He requires that you donate 10,000 gems, 7,500 silver and 5,000 gold for this knowledge.
+										He requires that you donate 10,000 Gems, 7,500 Silver and 5,000 Gold for this knowledge.
 										<br>
 										<br>
 										<button id="preciousWonderButton" onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
@@ -1859,7 +1866,7 @@
 										<br>
 										<div id="preciousProgress" class="progress">
 										  <div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar"
-										  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 										    0%
 										  </div>
 										</div>
@@ -1869,20 +1876,20 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										TBC
+										Elevation Wonder
 									</h3>
 									<span>
-										TBC
+										XXXX
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										TBC
+										XXXX
 									</h3>
 									<span>
-										TBC
+										XXXX
 									</span>
 								</td>
 							</tr>
@@ -1898,53 +1905,50 @@
 										The Precious Wonder
 									</h2>
 									<span>
-										
+										The Overlord is pleased with his new riches and offers you the ability to produce satellites, which orbit the globe and can find new resources.
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<h3>
-										TBC
+									<h3 class="pointer btn-link">
+										Upgrade Wonder
 									</h3>
 									<span>
-										TBC
+										Upgrading this wonder will allow your satellites to find different types of resource.
+										<br>
+										The next upgrade will unlock <span id="nextResource">Uranium</span>.
+										<br>
+										Costs: <span id="preciousWonderGemCost">30,000</span> Gems, <span id="preciousWonderSilverCost">20,000</span> Silver, <span id="preciousWonderGoldCost">10,000</span> Gold.
+										<br>
+										<br>
+										<button id="unlockNextResourceButton" onclick="unlockNextResource()" class="btn btn-default">Unlock Next Resource</button>
 									</span>
 								</td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				<div id="creditsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+				<div id="elevationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="pointer btn-link">
-										About
+										The Elevation Wonder
 									</h2>
 									<span>
-										
+										XXXX
 									</span>
 								</td>
 							</tr>
 							<tr>
-								<td style="border:none;">
+								<td>
 									<h3 class="pointer btn-link">
-										Tools Used
+										XXXX
 									</h3>
 									<span>
-										
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td style="border:none;">
-									<h2 class="pointer btn-link">
-										Donating
-									</h2>
-									<span>
-										
+										XXXX
 									</span>
 								</td>
 							</tr>
@@ -2052,6 +2056,35 @@
 									</h3>
 									<span>
 										The first thing needed to unlock inter-planetary exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock exploration around the solar system and new technologies and ways to get resources.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Exploring Planets
+									</h3>
+									<span>
+										There are four exploratory sites in the solar system that you can go to once space-travel is unlocked. These are the Moon, Venus, Mars and the Asteroid Belt. Exploring them will cost more rocket fuel the further it is from Earth and exploring them will give you access to resources found on each planet, such as space metal or titanium.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										The Wonder Station
+									</h3>
+									<span>
+										Once you have travelled to the Asteroid Belt, the Wonder Station becomes available to travel to. It costs 500 rocket fuel to go there, so you may want to build more chemical plants to achieve this. At the Station, there are places to build monuments to dedicate to a galactic overlord in return for him sharing his knowledge to you. This will allow you to get further in the game, gain resources faster and unlock inter-star-system travel.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrading Wonders
+									<span>
+										Upgrading Wonders costs a hefty amount, but it can give your company a boost when nothing else can. These upgrades allow you to find new methods of playing, such as nuclear power to generate large amounts of energy much more easily.
 									</span>
 								</td>
 							</tr>

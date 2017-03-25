@@ -1747,8 +1747,9 @@ function achievePreciousWonder(){
 		document.getElementById("preciousWonderButton").className = "hidden";
 		document.getElementById("preciousProgress").className = "hidden";
 		document.getElementById("preciousWonderNav").className = "";
+		document.getElementById("WonderFloor1Nav").className = "";
 		buttonsHidden.push("preciousProgress", "preciousWonderButton");
-		resourcesUnlocked.push("preciousWonderNav");
+		resourcesUnlocked.push("preciousWonderNav", "wonderLv1Nav");
 	}
 }
 
