@@ -725,7 +725,6 @@ function refreshResearches(){
 		document.getElementById("solarPower").className = "";
 	}
 	if(contains(researched, "unlockMachines")){
-		document.getElementById("upgradeResourceTech").className = "";
 		document.getElementById("oilMachine1").className = "";
 		document.getElementById("metalMachine1").className = "";
 		document.getElementById("gemMachine1").className = "";
