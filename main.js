@@ -751,12 +751,6 @@ function refreshTabs(){
 
 function gainResources(){
 	energy += energyps/10;
-	if(oil + oilps/10 < oilStorage){
-		oil += oilps/10;
-	}
-	else{
-		oil = oilStorage;
-	}
 	if(metal + metalps/10 < metalStorage){
 		metal += metalps/10;
 	}
@@ -768,28 +762,6 @@ function gainResources(){
 	}
 	else{
 		gem = gemStorage;
-	}
-	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= (charcoalps*2/10)){
-		charcoal += charcoalps/10;
-		wood -= (charcoalps*2)/10;
-	}
-	else{
-		var difference = charcoalStorage - charcoal;
-		if(wood >= difference*2){
-			if(charcoal + difference < charcoalStorage){
-				charcoal += difference;
-			}
-			else{
-				charcoal = charcoalStorage;
-			}
-			wood -= difference*2;
-		}	
-	}
-	if(wood + woodps/10 < woodStorage){
-		wood += woodps/10;
-	}
-	else{
-		wood = woodStorage;
 	}
 	science += scienceps/10;
 	science = Math.round(science*100)/100;
@@ -833,6 +805,34 @@ function gainResources(){
 	}
 	else{
 		silicon = siliconStorage;
+	}
+	if(oil + oilps/10 < oilStorage){
+		oil += oilps/10;
+	}
+	else{
+		oil = oilStorage;
+	}
+	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= (charcoalps*2/10)){
+		charcoal += charcoalps/10;
+		wood -= (charcoalps*2)/10;
+	}
+	else{
+		var difference = charcoalStorage - charcoal;
+		if(wood >= difference*2){
+			if(charcoal + difference < charcoalStorage){
+				charcoal += difference;
+			}
+			else{
+				charcoal = charcoalStorage;
+			}
+			wood -= difference*2;
+		}	
+	}
+	if(wood + woodps/10 < woodStorage){
+		wood += woodps/10;
+	}
+	else{
+		wood = woodStorage;
 	}
 }
 
