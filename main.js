@@ -456,7 +456,7 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = charcoalEngine+(solarPanel*0.5)+(methaneStation*8);
+	var energyInput = charcoalEngine+(solarPanel*0.5)+(methaneStation*16);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -467,7 +467,7 @@ function refreshPerSec(){
 		methane -= methaneStation*6/10;
 	}
 	else{
-		energyInput -= methaneStation*8;
+		energyInput -= methaneStation*16;
 	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4)+(moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	if(energy <= 1){
@@ -482,7 +482,7 @@ function refreshPerSec(){
 		woodps = woodcutter + (laserCutter*laserCutterOutput);
 		scienceps = (lab*labGain);
 		spaceMetalps = moonWorker + (moonDrill * 10);
-		methaneps = vacuum + (suctionExcavator * 7);
+		methaneps = vacuum + (suctionExcavator * 8);
 		titaniumps = explorer + (spaceMetalDrill * 6);
 		goldps = droid + (destroyer * 8);
 		silverps = scout + (spaceLaser * 13);
