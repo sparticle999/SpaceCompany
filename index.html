@@ -406,6 +406,28 @@
 							<span id="uraniumStorage">50</span>
 						</td>
 					</tr>
+					<tr id="lavaNav" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/lavaIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Lava
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="lavaps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="lava">
+								0
+							</span>
+							/
+							<span id="lavaStorage">50</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -1300,37 +1322,109 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Empowered Blowtorch: <span id="blowtorch">0</span>
+										XXXX: <span id="XXXX">0</span>
 									</h3>
 									<span>
-										This type of blowtorch instantly turns sand into silicon, but only on a small scale. To make it, extraterrestrial resources are required.
+										XXXX
 										<br>
-										Produces 1 silicon per second.
+										Produces XXXX Uranium per second.
 										<br>
-										Costs <span id="blowtorchSpaceMetalCost">150</span> space metal, <span id="blowtorchTitaniumCost">30</span> titanium.
+										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
 									</span>
 									<br>
 									<br>
-									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Seaside Scorcher: <span id="scorcher">0</span>
+										XXXX: <span id="XXXX">0</span>
 									</h3>
 									<span>
-										This tool almost melts parts of beaches to get silicon at a larger scale.
+										XXXX
 										<br>
-										Produces <span id="scorcherOutput">9</span> silicon per second.
+										Produces <span id="XXXX">XXXX</span> Uranium per second.
 										<br>
-										Uses 18 energy per second.
+										Uses XXXX energy per second.
 										<br>
-										Costs <span id="scorcherSpaceMetalCost">500</span> space metal, <span id="scorcherGemCost">1,200</span> gems, <span id="scorcherOilCost">1,600</span> oil.
+										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
 									</span>
 									<br>
 									<br>
-									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
+									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="lavaTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Lava
+									</h2>
+									<span>
+										XXXX
+									</span>
+									<br>
+									<br>
+									<button onclick="gainUranium()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="lavaStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Uranium storage size to <span id="lavaNextStorage">100</span>.
+										<br>
+										Costs <span id="lavaStorageCost">50</span> Uranium, <span id="lavaStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeUraniumStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										XXXX: <span id="XXXX">0</span>
+									</h3>
+									<span>
+										XXXX
+										<br>
+										Produces XXXX Uranium per second.
+										<br>
+										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+									</span>
+									<br>
+									<br>
+									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										XXXX: <span id="XXXX">0</span>
+									</h3>
+									<span>
+										XXXX
+										<br>
+										Produces <span id="XXXX">XXXX</span> Uranium per second.
+										<br>
+										Uses XXXX energy per second.
+										<br>
+										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+									</span>
+									<br>
+									<br>
+									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
 								</td>
 							</tr>
 						</table>
@@ -2053,7 +2147,7 @@
 									<span>
 										Upgrading this wonder will allow your satellites to find different types of resource.
 										<br>
-										The next upgrade will unlock <span id="nextResource">Uranium</span>.
+										The next upgrade will unlock <span id="nextResource">uranium</span>.
 										<br>
 										Costs: <span id="preciousGemCost">30,000</span> Gems, <span id="preciousSilverCost">20,000</span> Silver, <span id="preciousGoldCost">10,000</span> Gold.
 										<br>
@@ -2086,7 +2180,7 @@
 									<span>
 										Upgrading this wonder will unlock a new method of power generation.
 										<br>
-										The next upgrade will unlock <span id="nextPower">Nuclear Power</span>.
+										The next upgrade will unlock <span id="nextPower">Nuclear</span> Power.
 										<br>
 										Costs: <span id="energeticWonderWoodCost">30,000</span> Wood, <span id="energeticWonderCharcoalCost">15,000</span> Charcoal, <span id="energeticWonderUraniumCost">500</span> Uranium.
 										<br>

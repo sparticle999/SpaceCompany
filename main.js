@@ -41,6 +41,8 @@ var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocket
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var preciousLevel = 1; var preciousGemCost = 30000; var preciousSilverCost = 20000; var preciousGoldCost = 10000;
 var energeticLevel = 1; var energeticWoodCost = 30000; var energeticCharcoalCost = 15000; var energeticUraniumCost = 500;
+var nextResource = ["uranium", "lava", "meteorite"];
+var nextPower = ["nuclear", "magmatic"];
 
 function autosave(){
 	if(saved === true){
@@ -1820,11 +1822,10 @@ function upgradePreciousWonder(){
 		gem -= preciousGemCost;
 		silver -= preciousSilverCost;
 		gold -= preciousGoldCost;
-		preciouslevel += 1;
+		document.getElementById(nextResource[preciousLevel-1] + "Tab").className = "";
+		document.getElementById("nextResource").className = nextResource[preciousLevel];
+		preciousLevel += 1;
 		document.getElementById("preciousLevel").innerHTML = preciousLevel;
-		document.getElementById("preciousProgress").className = "hidden";
-		document.getElementById("preciousWonderNav").className = "";
-		document.getElementById("WonderFloor1Nav").className = "";
 	}
 }
 
@@ -1838,6 +1839,18 @@ function achieveEnergeticWonder(){
 		document.getElementById("energeticWonderNav").className = "";
 		buttonsHidden.push("energeticProgress", "energeticWonderButton");
 		resourcesUnlocked.push("energeticWonderNav");
+	}
+}
+
+function upgradeEnergeticWonder(){
+	if(wood >= energeticWoodCost && charcoal >= energeticCharcoalCost && uranium >= energeticUraniumCost){
+		wood -= energeticWoodCost;
+		charcoal -= energeticCharcoalCost;
+		uranium -= energeticUraniumCost;
+		document.getElementById(nextPower[energeticLevel-1] + "Tab").className = "";
+		document.getElementById("nextPower").className = nextPower[energeticLevel];
+		energeticLevel += 1;
+		document.getElementById("energeticLevel").innerHTML = energeticLevel;
 	}
 }
 

@@ -3,6 +3,8 @@
 # Plans for the Future
 - When a wonder is built, it unlocks a new thing.
 - Uranium + Nuclear Power
+- Lava Power
+- Meteorite: 5th Tier of machine
 - Satelites
 - GeoStationary satelites give information/second
 - Space elevator
@@ -11,15 +13,18 @@
 
 # RoadMap
 
-v0.2.0 The Wondrous Update
-- Added Wonders
+v0.2.1
 - Added Computerized Tier of resource machines
 - When loading game, the tab you left on is the tab you now start on.
 
 # Changelog:
 
-v0.1.3
-- 
+v0.2.0 The Wondrous Update
+- Added Wonder Tab
+- Added two different wonders - Precious Wonder & Power Wonder
+- Added ability to upgrade Wonders
+- Added Uranium & Lava
+- Added Nuclear & Magmatic Power
 
 v0.1.2
 - Added auto-saving
