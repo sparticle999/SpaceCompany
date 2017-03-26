@@ -39,8 +39,8 @@ var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; 
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
-// Variables not in save function
-	//Empty
+var preciousLevel = 1; var preciousGemCost = 30000; var preciousSilverCost = 20000; var preciousGoldCost = 10000;
+var energeticLevel = 1; var energeticWoodCost = 30000; var energeticCharcoalCost = 15000; var energeticUraniumCost = 500;
 
 function autosave(){
 	if(saved === true){
@@ -241,6 +241,14 @@ function save(){
 		uraniumStorage: uraniumStorage,
 		uraniumNextStorage: uraniumNextStorage,
 		uraniumps: uraniumps,
+		preciousLevel: preciousLevel,
+		preciousGemCost: preciousGemCost,
+		preciousSilverCost: preciousSilverCost,
+		preciousGoldCost: preciousGoldCost,
+		energeticLevel: energeticLevel,
+		energeticWoodCost: energeticWoodCost,
+		energeticCharcoalCost: energeticCharcoalCost,
+		energeticUraniumCost: energeticUraniumCost,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
 	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
@@ -413,6 +421,14 @@ function load(){
 		if(typeof savegame.uraniumStorage !== "undefined") uraniumStorage = savegame.uraniumStorage;
 		if(typeof savegame.uraniumNextStorage !== "undefined") uraniumNextStorage = savegame.uraniumNextStorage;
 		if(typeof savegame.uraniumps !== "undefined") uraniumps = savegame.uraniumps;
+		if(typeof savegame.preciousLevel !== "undefined") preciousLevel = savegame.preciousLevel;
+		if(typeof savegame.preciousGemCost !== "undefined") preciousGemCost = savegame.preciousGemCost;
+		if(typeof savegame.preciousSilverCost !== "undefined") preciousSilverCost = savegame.preciousSilverCost;
+		if(typeof savegame.preciousGoldCost !== "undefined") preciousGoldCost = savegame.preciousGoldCost;
+		if(typeof savegame.energeticLevel !== "undefined") energeticLevel = savegame.energeticLevel;
+		if(typeof savegame.energeticWoodCost !== "undefined") energeticWoodCost = savegame.energeticWoodCost;
+		if(typeof savegame.energeticCharcoalCost !== "undefined") energeticCharcoalCost = savegame.energeticCharcoalCost;
+		if(typeof savegame.energeticUraniumCost !== "undefined") energeticUraniumCost = savegame.energeticUraniumCost;
 
 	}
 
@@ -703,6 +719,9 @@ function refreshUI(){
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
+	document.getElementById("preciousLevel").innerHTML = preciousLevel;
+	document.getElementById("energeticLevel").innerHTML = energeticLevel;
+
 }
 
 function refreshResources(){
@@ -1793,6 +1812,19 @@ function achievePreciousWonder(){
 		document.getElementById("WonderFloor1Nav").className = "";
 		buttonsHidden.push("preciousProgress", "preciousWonderButton");
 		resourcesUnlocked.push("preciousWonderNav", "wonderLv1Nav");
+	}
+}
+
+function upgradePreciousWonder(){
+	if(gem >= preciousGemCost && silver >= preciousSilverCost && gold >= preciousGoldCost){
+		gem -= preciousGemCost;
+		silver -= preciousSilverCost;
+		gold -= preciousGoldCost;
+		preciouslevel += 1;
+		document.getElementById("preciousLevel").innerHTML = preciousLevel;
+		document.getElementById("preciousProgress").className = "hidden";
+		document.getElementById("preciousWonderNav").className = "";
+		document.getElementById("WonderFloor1Nav").className = "";
 	}
 }
 
