@@ -44,17 +44,17 @@ var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uran
 
 function autosave(){
 	if(saved === true){
-		timer += 1
+		timer += 1;
 		if(timer >= 20){
-			saved === false;
+			saved = false;
 			document.getElementById("saveButton").className = "btn btn-primary pull-right";
 			timer = 0;
 		}
 	}
 	if(loaded === true){
-		timer2 += 1
+		timer2 += 1;
 		if(timer2 >= 20){
-			loaded === false;
+			loaded = false;
 			document.getElementById("loadButton").className = "btn btn-primary pull-right";
 			timer2 = 0;
 		}
@@ -785,7 +785,7 @@ function gainResources(){
 	science = Math.round(science*100)/100;
 	if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
 		oil -= chemicalPlant*20/10;
-		charcoal -= chemicalPlant*20/10
+		charcoal -= chemicalPlant*20/10;
 		rocketFuel += chemicalPlant/5/10;
 	}
 	if(spaceMetal + spaceMetalps/10 < spaceMetalStorage){
@@ -1123,7 +1123,7 @@ function getMethaneStation(){
 		spaceMetal -= methaneStationSpaceMetalCost;
 		titanium -= methaneStationTitaniumCost;
 		methaneStation += 1;
-		methaneStationMetalCost = Math.floor(60 * Math.pow(1.1,methaneStation + 1));
+		methaneStationSpaceMetalCost = Math.floor(60 * Math.pow(1.1,methaneStation + 1));
 		methaneStationTitaniumCost = Math.floor(20 * Math.pow(1.1,methaneStation + 1));
 		document.getElementById("methaneStation").innerHTML = methaneStation;
 		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
@@ -1311,7 +1311,7 @@ function getMoonWorker(){
 	if(gem >= moonWorkerGemCost){
 		gem -= moonWorkerGemCost;
 		moonWorker += 1;
-		GemCost = Math.floor(500 * Math.pow(1.1,moonWorker + 1));
+		moonWorkerGemCost = Math.floor(500 * Math.pow(1.1,moonWorker + 1));
 		document.getElementById("moonWorker").innerHTML = moonWorker;
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
@@ -1358,9 +1358,9 @@ function getSuctionExcavator(){
 		gem -= suctionExcavatorGemCost;
 		oil -= suctionExcavatorOilCost;
 		suctionExcavator += 1;
-		OilCost = Math.floor(600 * Math.pow(1.1,suctionExcavator + 1));
-		GemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator + 1));
-		spaceMetalCost = Math.floor(100 * Math.pow(1.1,suctionExcavator + 1));
+		suctionExcavatorOilCost = Math.floor(600 * Math.pow(1.1,suctionExcavator + 1));
+		suctionExcavatorGemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator + 1));
+		suctionExcavatorSpaceMetalCost = Math.floor(100 * Math.pow(1.1,suctionExcavator + 1));
 		document.getElementById("suctionExcavator").innerHTML = suctionExcavator;
 		document.getElementById("suctionExcavatorSpaceMetalCost").innerHTML = commafy(suctionExcavatorSpaceMetalCost);
 		document.getElementById("suctionExcavatorGemCost").innerHTML = commafy(suctionExcavatorGemCost);
@@ -1439,7 +1439,7 @@ function getScout(){
 		titanium -= scoutTitaniumCost;
 		scout += 1;
 		scoutTitaniumCost = Math.floor(20 * Math.pow(1.1,scout + 1));
-		SpaceMetalCost = Math.floor(100 * Math.pow(1.1,scout + 1));
+		scoutSpaceMetalCost = Math.floor(100 * Math.pow(1.1,scout + 1));
 		document.getElementById("scout").innerHTML = scout;
 		document.getElementById("scoutSpaceMetalCost").innerHTML = commafy(scoutSpaceMetalCost);
 		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
@@ -1554,7 +1554,7 @@ function unlockBasicEnergy(){
 		document.getElementById("unlockMachines").className = "";
 		resourcesUnlocked.push("energyNav", "charcoalNav");
 		noBorder.push("metalNav");
-		if($.inArray("oilNav", noBorder) === -1){
+		if(contains(noBorder, "oilNav") === true){
 			noBorder.push("oilNav");
 		}
 		available.push("unlockSolar", "unlockMachines");
@@ -1628,7 +1628,7 @@ function unlockSolarSystem(){
 		science -= 500;
 		document.getElementById("unlockSolarSystem").className = "hidden";
 		document.getElementById("solarSystemTab").className = "";
-		tabsUnlocked.push("solarSystemTab")
+		tabsUnlocked.push("solarSystemTab");
 		researched.push("unlockSolarSystem");
 	}
 }
@@ -1734,7 +1734,7 @@ function exploreWonderStation(){
 // Wonders Tab
 
 function refreshWonderBars(){
-	if(contains(resourcesUnlocked, preciousWonderNav) === false){
+	if(contains(resourcesUnlocked, "preciousWonderNav") === false){
 		if(gem >= 10000){
 			var preciousGem = 10000;
 		}
@@ -1757,7 +1757,7 @@ function refreshWonderBars(){
 			document.getElementById("preciousBar").style.width = 100 + "%";
 		}
 	}
-	if(contains(resourcesUnlocked, energeticWonderNav) === false){
+	if(contains(resourcesUnlocked, "energeticWonderNav") === false){
 		if(wood >= 10000){
 			var energeticWood = 10000;
 		}
