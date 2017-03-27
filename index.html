@@ -1079,7 +1079,7 @@
 										Gold
 									</h2>
 									<span>
-										Gold is a metal found inside asteroids. It is used to build your Wonders.
+										Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.
 									</span>
 									<br>
 									<br>
@@ -1295,7 +1295,7 @@
 										Uranium
 									</h2>
 									<span>
-										XXXX
+										Uranium is mostly used for nuclear power generation because when it is split, it releases huge amounts of energy. However, it is sometimes used for propulsion technology and is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
 									</span>
 									<br>
 									<br>
@@ -1322,18 +1322,18 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX: <span id="XXXX">0</span>
+										Grinder: <span id="grinder">0</span>
 									</h3>
 									<span>
-										XXXX
+										Pulverizes Uranium for easy transportation out of deep mineshafts.
 										<br>
-										Produces XXXX Uranium per second.
+										Produces 9 Uranium per second.
 										<br>
-										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+										Costs <span id="grinderTitaniumCost">XXXX</span> XXXX, <span id="grinderSpaceMetalCost">XXXX</span> XXXX, <span id="grinderGoldCost">XXXX</span> XXXX.
 									</span>
 									<br>
 									<br>
-									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+									<button onclick="getGrinder()" class="btn btn-default">Get Grinder</button>
 								</td>
 							</tr>
 							<tr>
@@ -2007,21 +2007,21 @@
 					<tr id="preciousWonderNav" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Precious Wonder: Lv <span id="preciousLevel">1</span>
+								Precious Wonder: <span id="preciousActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="energeticWonderNav" class="hidden" href="#energeticWonderTab" aria-controls="energeticWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Energetic Wonder: Lv <span id="energeticLevel">1</span>
+								Energetic Wonder: <span id="energeticActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="elevationWonderNav" class="hidden" href="#elevationWonderTab" aria-controls="elevationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Elevation Wonder: Lv <span id="elevationLevel">1</span>
+								Elevation Wonder: <span id="elevationActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -2051,7 +2051,7 @@
 									<span>
 										The first painting depicts a large, shiny structure and the plaque reads:
 										<br>
-										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about placing satellites around the earth to gain information about the planet, which will allow you to find rare resources and strange places previously unexplored."
+										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about what lies inside your own planet, allowing you to find rare resources and strange places previously unexplored."
 										<br>
 										He requires that you donate 10,000 Gems, 7,500 Silver and 5,000 Gold for this knowledge.
 										<br>
@@ -2076,7 +2076,7 @@
 									<span>
 										A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?
 										<br>
-										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate electricity no man has seen before."
+										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."
 										<br>
 										He requests a pyramid containing 10,000 Wood, 5,000 Charcoal and 200 Uranium to acquire his methods.
 										<br>
@@ -2096,27 +2096,7 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX
-									</h3>
-									<span>
-										XXXX
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
 										Elevation Wonder
-									</h3>
-									<span>
-										XXXX
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										XXXX
 									</h3>
 									<span>
 										XXXX
@@ -2142,17 +2122,15 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Upgrade Wonder
+										Activate Wonder
 									</h3>
 									<span>
-										Upgrading this wonder will allow your satellites to find different types of resource.
-										<br>
-										The next upgrade will unlock <span id="nextResource">uranium</span>.
+										Activating this wonder will teach you about Uranium, how to get it and how to harness it. Learning about this rare element found deep within Earth will unlock nuclear power, a new way to create energy.
 										<br>
 										Costs: <span id="preciousGemCost">30,000</span> Gems, <span id="preciousSilverCost">20,000</span> Silver, <span id="preciousGoldCost">10,000</span> Gold.
 										<br>
 										<br>
-										<button id="upgradePreciousWonder" onclick="upgradePreciousWonder()" class="btn btn-default">Upgrade Precious Wonder</button>
+										<button id="activatePreciousWonder" onclick="activatePreciousWonder()" class="btn btn-default">Activate Precious Wonder</button>
 									</span>
 								</td>
 							</tr>
@@ -2175,17 +2153,15 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Upgrade Wonder
+										Activate Wonder
 									</h3>
 									<span>
-										Upgrading this wonder will unlock a new method of power generation.
-										<br>
-										The next upgrade will unlock <span id="nextPower">Nuclear</span> Power.
+										Activating this wonder will allow you to harness the power of Lava, a new method of energy generation.
 										<br>
 										Costs: <span id="energeticWonderWoodCost">30,000</span> Wood, <span id="energeticWonderCharcoalCost">15,000</span> Charcoal, <span id="energeticWonderUraniumCost">500</span> Uranium.
 										<br>
 										<br>
-										<button id="upgradeEnergeticWonder" onclick="upgradeEnergeticWonder()" class="btn btn-default">Upgrade Energetic Wonder</button>
+										<button id="activateEnergeticWonder" onclick="activateEnergeticWonder()" class="btn btn-default">Activate Energetic Wonder</button>
 									</span>
 								</td>
 							</tr>
@@ -2208,17 +2184,15 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Upgrade Wonder
+										Activate Wonder
 									</h3>
 									<span>
-										Upgrading this wonder will 
-										<br>
-										The next upgrade will unlock 
+										Activating this wonder will 
 										<br>
 										Costs: <span id="elevationWonderGemCost">30,000</span> Gems, <span id="elevationWonderSilverCost">20,000</span> Silver, <span id="elevationWonderGoldCost">10,000</span> Gold.
 										<br>
 										<br>
-										<button id="upgradeElevationWonder" onclick="upgradeElevationWonder()" class="btn btn-default">Upgrade Elevation Wonder</button>
+										<button id="activateElevationWonder" onclick="activateElevationWonder()" class="btn btn-default">Activate Elevation Wonder</button>
 									</span>
 								</td>
 							</tr>

@@ -39,10 +39,9 @@ var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; 
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
-var preciousLevel = 1; var preciousGemCost = 30000; var preciousSilverCost = 20000; var preciousGoldCost = 10000;
-var energeticLevel = 1; var energeticWoodCost = 30000; var energeticCharcoalCost = 15000; var energeticUraniumCost = 500;
-var nextResource = ["uranium", "lava", "meteorite"];
-var nextPower = ["nuclear", "magmatic"];
+var activated = [];
+var grinder = 0; var grinderTitaniumCost = ; var grinderSpaceMetalCost = ; var grinderGoldCost = ;
+var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 
 function autosave(){
 	if(saved === true){
@@ -243,14 +242,11 @@ function save(){
 		uraniumStorage: uraniumStorage,
 		uraniumNextStorage: uraniumNextStorage,
 		uraniumps: uraniumps,
-		preciousLevel: preciousLevel,
-		preciousGemCost: preciousGemCost,
-		preciousSilverCost: preciousSilverCost,
-		preciousGoldCost: preciousGoldCost,
-		energeticLevel: energeticLevel,
-		energeticWoodCost: energeticWoodCost,
-		energeticCharcoalCost: energeticCharcoalCost,
-		energeticUraniumCost: energeticUraniumCost,
+		activated: activated,
+		grinder: grinder,
+		grinderTitaniumCost: grinderTitaniumCost,
+		grinderSpaceMetalCost: grinderSpaceMetalCost,
+		grinderGoldCost: grinderGoldCost,
 	};
 	localStorage.setItem("save",JSON.stringify(save));
 	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
@@ -423,14 +419,11 @@ function load(){
 		if(typeof savegame.uraniumStorage !== "undefined") uraniumStorage = savegame.uraniumStorage;
 		if(typeof savegame.uraniumNextStorage !== "undefined") uraniumNextStorage = savegame.uraniumNextStorage;
 		if(typeof savegame.uraniumps !== "undefined") uraniumps = savegame.uraniumps;
-		if(typeof savegame.preciousLevel !== "undefined") preciousLevel = savegame.preciousLevel;
-		if(typeof savegame.preciousGemCost !== "undefined") preciousGemCost = savegame.preciousGemCost;
-		if(typeof savegame.preciousSilverCost !== "undefined") preciousSilverCost = savegame.preciousSilverCost;
-		if(typeof savegame.preciousGoldCost !== "undefined") preciousGoldCost = savegame.preciousGoldCost;
-		if(typeof savegame.energeticLevel !== "undefined") energeticLevel = savegame.energeticLevel;
-		if(typeof savegame.energeticWoodCost !== "undefined") energeticWoodCost = savegame.energeticWoodCost;
-		if(typeof savegame.energeticCharcoalCost !== "undefined") energeticCharcoalCost = savegame.energeticCharcoalCost;
-		if(typeof savegame.energeticUraniumCost !== "undefined") energeticUraniumCost = savegame.energeticUraniumCost;
+		if(typeof savegame.activated !== "undefined") activated = savegame.activated;
+		if(typeof savegame.grinder !== "undefined") grinder = savegame.grinder;
+		if(typeof savegame.grinderTitaniumCost !== "undefined") grinderTitaniumCost = savegame.grinderTitaniumCost;
+		if(typeof savegame.grinderSpaceMetalCost !== "undefined") grinderSpaceMetalCost = savegame.grinderSpaceMetalCost;
+		if(typeof savegame.grinderGoldCost !== "undefined") grinderGoldCost = savegame.grinderGoldCost;
 
 	}
 
@@ -717,23 +710,31 @@ function refreshUI(){
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
 	document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
+	document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
+	document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
+	document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
+	document.getElementById("chemicalPlantOilCost").innerHTML = commafy(chemicalPlantOilCost);
 	document.getElementById("uranium").innerHTML = commafy(uranium);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
-	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
-	document.getElementById("preciousLevel").innerHTML = preciousLevel;
-	document.getElementById("energeticLevel").innerHTML = energeticLevel;
+	document.getElementById("grinder").innerHTML = grinder;
+	document.getElementById("grinderTitaniumCost").innerHTML = commafy(grinderTitaniumCost);
+	document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
+	document.getElementById("grinderGoldCost").innerHTML = commafy(grinderGoldCost);
 
 }
 
 function refreshResources(){
-	for(i=0; i<resourcesUnlocked.length; i++){
+	for(var i=0; i<resourcesUnlocked.length; i++){
 		document.getElementById(resourcesUnlocked[i]).className = "";
 	}
-	for(i=0; i<noBorder.length; i++){
-		for(j=0; j<4; j++){
+	for(var i=0; i<noBorder.length; i++){
+		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";
 		}
+	}
+	for(var i=0; i<activated.length; i++){
+		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
 }
 
@@ -747,10 +748,10 @@ function contains(array, obj) {
 }
 
 function refreshResearches(){
-	for(i=0; i<available.length; i++){
+	for(var i=0; i<available.length; i++){
 		document.getElementById(available[i]).className = "";
 	}
-	for(i=0; i<researched.length; i++){
+	for(var i=0; i<researched.length; i++){
 		document.getElementById(researched[i]).className = "hidden";
 	}
 	if(contains(researched, "unlockStorage")){
@@ -773,7 +774,7 @@ function refreshResearches(){
 }
 
 function refreshTabs(){
-	for(i=0; i<tabsUnlocked.length; i++){
+	for(var i=0; i<tabsUnlocked.length; i++){
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}
  	if(rocketLaunched === true){
@@ -783,7 +784,7 @@ function refreshTabs(){
 		document.getElementById("mars").className = "";
 		document.getElementById("asteroidBelt").className = "";
  	}
- 	for(i=0; i<buttonsHidden.length; i++){
+ 	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += "hidden";
  	}
 }
@@ -844,6 +845,18 @@ function gainResources(){
 	}
 	else{
 		silicon = siliconStorage;
+	}
+	if(uranium + uraniumps/10 < uraniumStorage){
+		uranium += uraniumps/10;
+	}
+	else{
+		uranium = uraniumStorage;
+	}
+	if(lava + lavaps/10 < lavaStorage){
+		lava += lavaps/10;
+	}
+	else{
+		lava = lavaStorage;
 	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
@@ -1817,15 +1830,15 @@ function achievePreciousWonder(){
 	}
 }
 
-function upgradePreciousWonder(){
-	if(gem >= preciousGemCost && silver >= preciousSilverCost && gold >= preciousGoldCost){
-		gem -= preciousGemCost;
-		silver -= preciousSilverCost;
-		gold -= preciousGoldCost;
-		document.getElementById(nextResource[preciousLevel-1] + "Tab").className = "";
-		document.getElementById("nextResource").className = nextResource[preciousLevel];
-		preciousLevel += 1;
-		document.getElementById("preciousLevel").innerHTML = preciousLevel;
+function activatePreciousWonder(){
+	if(gem >= 30000 && silver >= 20000 && gold >= 10000){
+		gem -= 30000;
+		silver -= 20000;
+		gold -= 10000;
+		document.getElementById("uraniumNav").className = "";
+		document.getElementById("preciousActivation").innerHTML = "Activated";
+		buttonsHidden.push("activatePreciousWonder");
+		activated.push("precious");
 	}
 }
 
@@ -1842,15 +1855,15 @@ function achieveEnergeticWonder(){
 	}
 }
 
-function upgradeEnergeticWonder(){
-	if(wood >= energeticWoodCost && charcoal >= energeticCharcoalCost && uranium >= energeticUraniumCost){
-		wood -= energeticWoodCost;
-		charcoal -= energeticCharcoalCost;
-		uranium -= energeticUraniumCost;
-		document.getElementById(nextPower[energeticLevel-1] + "Tab").className = "";
-		document.getElementById("nextPower").className = nextPower[energeticLevel];
-		energeticLevel += 1;
-		document.getElementById("energeticLevel").innerHTML = energeticLevel;
+function activateEnergeticWonder(){
+	if(wood >= 30000 && charcoal >= 15000 && uranium >= 500){
+		wood -= 30000;
+		charcoal -= 15000;
+		uranium -= 500;
+		document.getElementById("lavaNav").className = "";
+		document.getElementById("energeticActivation").innerHTML = "Activated";
+		buttonsHidden.push("activateEnergeticWonder");
+		activated.push("energetic");
 	}
 }
 
