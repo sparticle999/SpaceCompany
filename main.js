@@ -1,8 +1,9 @@
 // Variables in save function
 
+var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0;
 var energy = 0; var energyps = 0;
-var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25;
-var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35;
+var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 1;
+var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 0.5;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 50; var methaneStationTitaniumCost = 40;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
@@ -11,7 +12,7 @@ var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
-var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 5; var furnaceOutput = 3;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var science = 0; var scienceps = 0;
@@ -38,9 +39,10 @@ var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost 
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
-var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var activated = [];
-var grinder = 0; var grinderTitaniumCost = ; var grinderSpaceMetalCost = ; var grinderGoldCost = ;
+var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
+var grinder = 0; var grinderTitaniumCost = 0; var grinderSpaceMetalCost = 0; var grinderGoldCost = 0;
+var cubic = 0; var cubicUraniumCost = 0; var cubicSpaceMetalCost = 0; var cubicOilCost = 0;
 var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 
 function autosave(){
@@ -48,7 +50,7 @@ function autosave(){
 		timer += 1;
 		if(timer >= 20){
 			saved = false;
-			document.getElementById("saveButton").className = "btn btn-primary pull-right";
+			document.getElementById("saveButton").className = "btn btn-primary";
 			timer = 0;
 		}
 	}
@@ -56,38 +58,48 @@ function autosave(){
 		timer2 += 1;
 		if(timer2 >= 20){
 			loaded = false;
-			document.getElementById("loadButton").className = "btn btn-primary pull-right";
+			document.getElementById("loadButton").className = "btn btn-primary";
 			timer2 = 0;
 		}
 	}
-	if(saveTimer >= 1200){
+
+	if(saveTimer >= document.getElementById("sliderValue").innerHTML * 600){
 		save();
 		saveTimer = 0;
-		document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	}
 	else{
-		if(saveTimer === 600){
-			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 1 minute";
+		secondsLeft = commafy(((document.getElementById("sliderValue").innerHTML * 600) - saveTimer)/10);
+		if(saveTimer < 10){
+			document.getElementById("autoSaveTimer").innerHTML = "Saved";
 		}
-		if(saveTimer >= 1100){
-			secondsLeft = commafy((1200 - saveTimer)/10);
+		else if(secondsLeft <= 30){
+			document.getElementById("autoSaveTimer").className = "";
 			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+		}
+		else{
+			document.getElementById("autoSaveTimer").className = "hidden";
 		}
 		saveTimer += 1;
 	}
 }
 
-function save(){
+function save(type){
 	"use strict";
-	var save = {
+	var localSave = {
+		handMined: handMined,
+		tier1: tier1,
+		tier2: tier2,
+		tier3: tier3,
 		energy: energy,
 		energyps: energyps,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
+		charcoalEngineOutput: charcoalEngineOutput,
 		solarPanel: solarPanel,
 		solarPanelMetalCost: solarPanelMetalCost,
 		solarPanelGemCost: solarPanelGemCost,
+		solarPanelOutput: solarPanelOutput,
 		methaneStation: methaneStation,
 		methaneStationSpaceMetalCost: methaneStationSpaceMetalCost,
 		methaneStationTitaniumCost: methaneStationTitaniumCost,
@@ -248,23 +260,48 @@ function save(){
 		grinderSpaceMetalCost: grinderSpaceMetalCost,
 		grinderGoldCost: grinderGoldCost,
 	};
-	localStorage.setItem("save",JSON.stringify(save));
-	document.getElementById("saveButton").className = "btn btn-primary pull-right disabled";
+	if(type === "local"){
+		localStorage.setItem("save",JSON.stringify(localSave));
+	}
+	if(type === "export"){
+		var string = JSON.stringify(localSave);
+		var compressed = LZString.compressToBase64(string);
+		console.log('Compressing Save');
+		console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
+		document.getElementById('impexpField').value = compressed;
+	}
+	document.getElementById("saveButton").className = "btn btn-primary disabled";
 	saved = true;
 }
 
-function load(){
+function load(type){
 	"use strict";
-	var savegame = JSON.parse(localStorage.getItem("save"));
+	if(type === "local"){
+		var savegame = JSON.parse(localStorage.getItem("save"));
+	}
+	if(type === "import"){
+		var compressed = document.getElementById('impexpField').value;
+		var decompressed = LZString.decompressFromBase64(compressed);
+		var revived = JSON.parse(decompressed);
+		var savegame = revived;
+		console.log("Imported Saved Game");
+		console.log(revived);
+	}
 	if(savegame){
+		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
+		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
+		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
+		if(typeof savegame.tier3 !== "undefined") tier3 = savegame.tier3;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
+		if(typeof savegame.charcoalEngineOutput !== "undefined") charcoalEngineOutput = savegame.charcoalEngineOutput;
 		if(typeof savegame.solarPanel !== "undefined") solarPanel = savegame.solarPanel;
 		if(typeof savegame.solarPanelMetalCost !== "undefined") solarPanelMetalCost = savegame.solarPanelMetalCost;
 		if(typeof savegame.solarPanelGemCost !== "undefined") solarPanelGemCost = savegame.solarPanelGemCost;
+		if(typeof savegame.solarPanelOutput !== "undefined") solarPanelOutput = savegame.solarPanelOutput;
 		if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;
 		if(typeof savegame.methaneStationSpaceMetalCost !== "undefined") methaneStationSpaceMetalCost = savegame.methaneStationSpaceMetalCost;
 		if(typeof savegame.methaneStationTitaniumCost !== "undefined") methaneStationTitaniumCost = savegame.methaneStationTitaniumCost;
@@ -428,11 +465,12 @@ function load(){
 	}
 
 	refreshUI();
+	refreshStats();
 	refreshResources();
 	refreshResearches();
 	refreshTabs();
 
-	document.getElementById("loadButton").className = "btn btn-primary pull-right disabled";
+	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
 }
 
@@ -477,7 +515,7 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = charcoalEngine+(solarPanel*0.5)+(methaneStation*16);
+	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -522,7 +560,7 @@ function refreshPerSec(){
 		silverps = scout;
 		siliconps = blowtorch;
 	}
-	document.getElementById("energyps").innerHTML = commafy(energyps);
+	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("oilps").innerHTML = commafy(oilps - (chemicalPlant*20));
 	if(oil >= oilStorage){
 		document.getElementById("oilps").innerHTML = 0;
@@ -535,13 +573,13 @@ function refreshPerSec(){
 	if(gem >= gemStorage){
 		document.getElementById("gemps").innerHTML = 0;
 	}
-	document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
-	if(charcoal >= charcoalStorage){
+	if(charcoal >= charcoalStorage - 3){
 		document.getElementById("woodps").innerHTML = commafy(woodps);
 		document.getElementById("charcoalps").innerHTML = 0;
 	}
 	else{
 		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput));
+		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
 	}
 	if(wood >= woodStorage){
 			document.getElementById("woodps").innerHTML = 0;
@@ -576,7 +614,12 @@ function refreshPerSec(){
 	}
 }
 
-
+function refreshStats(){
+	document.getElementById("handMined").innerHTML = commafy(handMined);
+	document.getElementById("tier1").innerHTML = commafy(tier1);
+	document.getElementById("tier2").innerHTML = commafy(tier2);
+	document.getElementById("tier3").innerHTML = commafy(tier3);
+}
 function refreshUI(){
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
@@ -625,9 +668,11 @@ function refreshUI(){
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
+	document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
 	document.getElementById("solarPanel").innerHTML = solarPanel;
 	document.getElementById("solarPanelMetalCost").innerHTML = commafy(solarPanelMetalCost);
 	document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
+	document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
 	document.getElementById("methaneStation").innerHTML = methaneStation;
 	document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 	document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
@@ -638,6 +683,7 @@ function refreshUI(){
 	document.getElementById("pumpjackOilCost").innerHTML = commafy(pumpjackOilCost);
 	document.getElementById("pumpjackGemCost").innerHTML = commafy(pumpjackGemCost);
 	document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
+	document.getElementById("pumpjackOutput").innerHTML = commafy(pumpjackOutput);
 	document.getElementById("miner").innerHTML = miner;
 	document.getElementById("minerMetalCost").innerHTML = commafy(minerMetalCost);
 	document.getElementById("minerWoodCost").innerHTML = commafy(minerWoodCost);
@@ -645,6 +691,7 @@ function refreshUI(){
 	document.getElementById("heavyDrillMetalCost").innerHTML = commafy(heavyDrillMetalCost);
 	document.getElementById("heavyDrillGemCost").innerHTML = commafy(heavyDrillGemCost);
 	document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
+	document.getElementById("heavyDrillOutput").innerHTML = commafy(heavyDrillOutput);
 	document.getElementById("gemMiner").innerHTML = gemMiner;
 	document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
 	document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
@@ -652,6 +699,7 @@ function refreshUI(){
 	document.getElementById("advancedDrillMetalCost").innerHTML = commafy(advancedDrillMetalCost);
 	document.getElementById("advancedDrillGemCost").innerHTML = commafy(advancedDrillGemCost);
 	document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
+	document.getElementById("advancedDrillOutput").innerHTML = commafy(advancedDrillOutput);
 	document.getElementById("woodburner").innerHTML = woodburner;
 	document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
 	document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
@@ -659,6 +707,8 @@ function refreshUI(){
 	document.getElementById("furnaceMetalCost").innerHTML = commafy(furnaceMetalCost);
 	document.getElementById("furnaceWoodCost").innerHTML = commafy(furnaceWoodCost);
 	document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
+	document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
+	document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
 	document.getElementById("woodcutter").innerHTML = woodcutter;
 	document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 	document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
@@ -666,6 +716,7 @@ function refreshUI(){
 	document.getElementById("laserCutterMetalCost").innerHTML = commafy(laserCutterMetalCost);
 	document.getElementById("laserCutterGemCost").innerHTML = commafy(laserCutterGemCost);
 	document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
+	document.getElementById("laserCutterOutput").innerHTML = commafy(laserCutterOutput);
 	document.getElementById("moonWorker").innerHTML = moonWorker;
 	document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 	document.getElementById("moonDrill").innerHTML = moonDrill;
@@ -866,19 +917,19 @@ function gainResources(){
 	}
 	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= (charcoalps*2/10)){
 		charcoal += charcoalps/10;
-		wood -= (charcoalps*2)/10;
+		wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
 		if(wood >= difference*2){
-			if(charcoal + difference < charcoalStorage){
+			if(charcoal + difference <= charcoalStorage){
 				charcoal += difference;
+				wood -= difference*2;
 			}
 			else{
 				charcoal = charcoalStorage;
 			}
-			wood -= difference*2;
-		}	
+		}
 	}
 	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
@@ -894,6 +945,7 @@ function gainOil(){
 	if(oil < oilStorage){
 		oil += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -901,6 +953,7 @@ function gainMetal(){
 	if(metal < metalStorage){
 		metal += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -908,6 +961,7 @@ function gainGem(){
 	if(gem < gemStorage){
 		gem += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -916,6 +970,7 @@ function gainCharcoal(){
 		wood -= 2;
 		charcoal += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -923,6 +978,7 @@ function gainWood(){
 	if(wood < woodStorage){
 		wood += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -930,6 +986,7 @@ function gainSpaceMetal(){
 	if(spaceMetal < spaceMetalStorage){
 		spaceMetal += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -937,6 +994,7 @@ function gainMethane(){
 	if(methane < methaneStorage){
 		methane += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -944,6 +1002,7 @@ function gainTitanium(){
 	if(titanium < titaniumStorage){
 		titanium += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -951,6 +1010,7 @@ function gainGold(){
 	if(gold < goldStorage){
 		gold += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -958,6 +1018,7 @@ function gainSilver(){
 	if(silver < silverStorage){
 		silver += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -965,6 +1026,7 @@ function gainSilicon(){
 	if(silicon < siliconStorage){
 		silicon += 1;
 		refresh();
+		handMined += 1;
 	}
 }
 
@@ -1134,6 +1196,7 @@ function getCharcoalEngine(){
 		document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1149,6 +1212,7 @@ function getSolarPanel(){
 		document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1164,6 +1228,7 @@ function getMethaneStation(){
 		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
 		refresh();
 		refreshPerSec();
+		tier3 += 1;
 	}
 }
 
@@ -1180,6 +1245,7 @@ function getPump(){
 		document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1198,6 +1264,7 @@ function getPumpjack(){
 		document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1221,6 +1288,7 @@ function getMiner(){
 		}
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1239,6 +1307,7 @@ function getHeavyDrill(){
 		document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1254,6 +1323,7 @@ function getGemMiner(){
 		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1272,6 +1342,7 @@ function getAdvancedDrill(){
 		document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1287,6 +1358,7 @@ function getWoodburner(){
 		document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1305,6 +1377,7 @@ function getFurnace(){
 		document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1320,6 +1393,7 @@ function getWoodcutter(){
 		document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1338,6 +1412,7 @@ function getLaserCutter(){
 		document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1350,6 +1425,7 @@ function getMoonWorker(){
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1368,6 +1444,7 @@ function getMoonDrill(){
 		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1383,6 +1460,7 @@ function getVacuum(){
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1401,6 +1479,7 @@ function getSuctionExcavator(){
 		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1413,6 +1492,7 @@ function getExplorer(){
 		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1431,6 +1511,7 @@ function getSpaceMetalDrill(){
 		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1446,6 +1527,7 @@ function getDroid(){
 		document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1464,6 +1546,7 @@ function getDestroyer(){
 		document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1479,6 +1562,7 @@ function getScout(){
 		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1497,6 +1581,7 @@ function getSpaceLaser(){
 		document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1512,6 +1597,7 @@ function getBlowtorch(){
 		document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
 		refresh();
 		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
@@ -1530,6 +1616,7 @@ function getScorcher(){
 		document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
 		refresh();
 		refreshPerSec();
+		tier2 += 1;
 	}
 }
 
@@ -1586,12 +1673,13 @@ function unlockBasicEnergy(){
 		document.getElementById("unlockBasicEnergy").className = "hidden";
 		document.getElementById("unlockSolar").className = "";
 		document.getElementById("unlockMachines").className = "";
+		document.getElementById("upgradeEngineTech").className = "";
 		resourcesUnlocked.push("energyNav", "charcoalNav");
 		noBorder.push("metalNav");
 		if(contains(noBorder, "oilNav") === true){
 			noBorder.push("oilNav");
 		}
-		available.push("unlockSolar", "unlockMachines");
+		available.push("unlockSolar", "unlockMachines", "upgradeEngineTech");
 		researched.push("unlockBasicEnergy");
 	}
 }
@@ -1617,6 +1705,8 @@ function unlockSolar(){
 		science -= 50;
 		document.getElementById("unlockSolar").className = "hidden";
 		document.getElementById("solarPower").className = "";
+		document.getElementById("upgradeSolarTech").className = "";
+		available.push("upgradeSolarTech");
 		researched.push("unlockSolar");
 	}
 }
@@ -1664,6 +1754,26 @@ function unlockSolarSystem(){
 		document.getElementById("solarSystemTab").className = "";
 		tabsUnlocked.push("solarSystemTab");
 		researched.push("unlockSolarSystem");
+	}
+}
+
+function upgradeEngineTech(){
+	if(science >= 1000){
+		science -= 1000;
+		document.getElementById("upgradeEngineTech").className = "hidden";
+		charcoalEngineOutput = 2;
+		document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
+		researched.push("upgradeEngineTech");
+	}
+}
+
+function upgradeSolarTech(){
+	if(science >= 5000){
+		science -= 5000;
+		document.getElementById("upgradeSolarTech").className = "hidden";
+		solarPanelOutput = 3;
+		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
+		researched.push("upgradeSolarTech");
 	}
 }
 
@@ -1868,18 +1978,23 @@ function activateEnergeticWonder(){
 }
 
 window.onload = function(){
-	load();
+	load('local');
 };
-
 
 var timer = 0;
 var timer2 = 0;
-var saveTimer = 0;
+var statsTimer = 0;
+var saveTimer = 10;
 var secondsLeft = 0;
 var saved = false;
 var loaded = false;
 
 window.setInterval(function(){
+	if(statsTimer >= 11){
+		refreshStats();
+		statsTimer = 0;
+	}
+	statsTimer += 1;
 	refreshPerSec();
 	gainResources();
 	refresh();

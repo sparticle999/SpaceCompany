@@ -38,27 +38,12 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.1.2 Alpha
+						v0.2.1 Alpha
 					</span>
 				</a>
-				<button onclick="deleteSave()" class="btn btn-danger pull-right" style="margin-top:5px; margin-left:2px; height:80%; display:inline-block; vertical-align: middle">
-					<span style="color:white;">
-						Hard Reset
-					</span>
-				</button>
-				<button id="loadButton" onclick="load()" class="btn btn-primary pull-right" style="margin-top:5px; margin-left:2px; height:80%; display:inline-block; vertical-align: middle">
-					<span style="color:white;">
-						Load
-					</span>
-				</button>
-				<button id="saveButton" onclick="save()" class="btn btn-primary pull-right" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
-					<span style="color:white;">
-						Save
-					</span>
-				</button>
 				<div class="pull-right">
 					<a class="navbar-brand">
-						<span id="autoSaveTimer" class="text-muted small ng-binding">
+						<span id="autoSaveTimer" class="hidden text-muted small ng-binding" style="font-size:14px;">
 							
 						</span>
 					</a>
@@ -75,28 +60,11 @@
 		<li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
 		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
     	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab">Solar System</a></li>
-    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aira-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
-    	<li role="presentation" class="active pull-right"><a href="#help" aira-control="help" role="tab" data-toggle="tab">Help / FAQ</a></li>
+    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
+    	<li role="presentation" class="active pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab">Help / FAQ</a></li>
+    	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab">Settings</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
     		<ul class="dropdown-menu" role="menu">
-    			<li role="presentation" id="settingsTab">
-    				<a role="menuitem" tabindex="-1" href="#settings">
-    					<span class="glyphicon glyphicon-cog"></span>
-    					Settings [WIP]
-    				</a>
-    			</li>
-    			<li role="presentation" id="statsTab">
-    				<a role="menuitem" tabindex="-1" href="#stats">
-    					<span class="glyphicon glyphicon-stats"></span>
-    					Stats [WIP]
-    				</a>
-    			</li>
-    			<li role="presentation" id="achievementsTab">
-    				<a role="menuitem" tabindex="-1" href="#">
-    					<span class="glyphicon glyphicon-ok"></span>
-    					Achievemets [WIP]
-    				</a>
-    			</li>
     			<li role="presentation" id="githubTab">
     				<a role="menuitem" tabindex="-1" target="_blank" href="https://github.com/sparticle999/SpaceCompany/">
     					<span class="glyphicon glyphicon-folder-open"></span>
@@ -120,7 +88,7 @@
 	<div class="tab-content">
 			<!-- Resources -->
 		<div role="tabpanel" class="tab-pane fade in" id="resources">
-			<div class="container" style="width:300px; float:left;">
+			<div class="container" style="width:350px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
 					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
@@ -140,6 +108,28 @@
 							<span id="energy">
 								0
 							</span>
+						</td>
+					</tr>
+					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Uranium
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="uraniumps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="uranium">
+								0
+							</span>
+							/
+							<span id="uraniumStorage">50</span>
 						</td>
 					</tr>
 					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -384,28 +374,6 @@
 							<span id="siliconStorage">50</span>
 						</td>
 					</tr>
-					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
-							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
-						</td>
-						<td style="vertical-align:middle;">
-							<span>
-								Uranium
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:center;">
-							<span>
-								<span id="uraniumps">0</span>/Sec
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:right;">
-							<span id="uranium">
-								0
-							</span>
-							/
-							<span id="uraniumStorage">50</span>
-						</td>
-					</tr>
 					<tr id="lavaNav" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/lavaIcon.png" style="width:30px; height:auto">
@@ -454,7 +422,7 @@
 									<span>
 										Burns charcoal to produce a steady source of energy.
 										<br>
-										Each engine produces 1 energy per second.
+										Each engine produces <span id="charcoalEngineOutput">1</span> energy per second.
 										<br>
 										Costs <span id="charcoalEngineMetalCost">50</span> Metal, <span id="charcoalEngineGemCost">25</span> Gems.
 									</span>
@@ -471,7 +439,7 @@
 									<span>
 										Gains energy slowly from the sun without using any resources.
 										<br>
-										Each Solar Panel produces 0.5 energy per second.
+										Each Solar Panel produces <span id="solarPanelOutput">0.5</span> energy per second.
 										<br>
 										Costs <span id="solarPanelMetalCost">30</span> Metal, <span id="solarPanelGemCost">35</span> Gems.
 									</span>
@@ -538,6 +506,8 @@
 									</h3>
 									<span>
 										Build a small pump to extract oil from the ground
+										<br>
+										Produces 1 Oil per second.
 										<br>
 										Costs <span id="pumpMetalCost">60</span> Metal, <span id="pumpGemCost">20</span> Gems.
 									</span>
@@ -767,9 +737,9 @@
 									<span>
 										Furnaces use electric heaters to produce heat to turn  wood into charcoal. Because of the increased heat, the process is more efficient.
 										<br>
-										Produces <span id="furnaceOutput">3</span> charcoal per second.
+										Produces <span id="furnaceOutput">4</span> charcoal per second.
 										<br>
-										Uses <span id="furnaceWoodInput">5</span> wood per second.
+										Uses <span id="furnaceWoodInput">6</span> wood per second.
 										<br>
 										Uses 3 energy per second.
 										<br>
@@ -912,7 +882,7 @@
 									<span>
 										These drills practically float!
 										<br>
-										Produces <span id="moonDrillOutput">10</span> space metal per second.
+										Produces 10 space metal per second.
 										<br>
 										Uses 20 energy per second.
 										<br>
@@ -984,7 +954,7 @@
 									<span>
 										Strips the atmosphere of methane on an industrial scale.
 										<br>
-										Produces <span id="suctionExcavatorOutput">8</span> methane per second.
+										Produces 8 methane per second.
 										<br>
 										Uses 16 energy per second.
 										<br>
@@ -1056,7 +1026,7 @@
 									<span>
 										These space metal drills are extremely powerful, needed to mine out titanium from inside Mars' crust.
 										<br>
-										Produces <span id="spaceMetalDrillOutput">6</span> titanium per second.
+										Produces 6 titanium per second.
 										<br>
 										Uses 13 energy per second.
 										<br>
@@ -1128,7 +1098,7 @@
 									<span>
 										Tears through asteroids to find gold. It is much more effective than the simple droid.
 										<br>
-										Produces <span id="destroyerOutput">8</span> Gold per second.
+										Produces 8 Gold per second.
 										<br>
 										Uses 19 energy per second.
 										<br>
@@ -1200,7 +1170,7 @@
 									<span>
 										Cuts through asteroids to find silver deposits in their cores.
 										<br>
-										Produces <span id="spaceLaserOutput">13</span> silver per second.
+										Produces 13 silver per second.
 										<br>
 										Uses 24 energy per second.
 										<br>
@@ -1272,7 +1242,7 @@
 									<span>
 										This tool almost melts parts of beaches to get silicon at a larger scale.
 										<br>
-										Produces <span id="scorcherOutput">9</span> silicon per second.
+										Produces 9 silicon per second.
 										<br>
 										Uses 18 energy per second.
 										<br>
@@ -1295,7 +1265,7 @@
 										Uranium
 									</h2>
 									<span>
-										Uranium is mostly used for nuclear power generation because when it is split, it releases huge amounts of energy. However, it is sometimes used for propulsion technology and is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
+										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
 									</span>
 									<br>
 									<br>
@@ -1327,9 +1297,9 @@
 									<span>
 										Pulverizes Uranium for easy transportation out of deep mineshafts.
 										<br>
-										Produces 9 Uranium per second.
+										Produces 1 Uranium per second.
 										<br>
-										Costs <span id="grinderTitaniumCost">XXXX</span> XXXX, <span id="grinderSpaceMetalCost">XXXX</span> XXXX, <span id="grinderGoldCost">XXXX</span> XXXX.
+										Costs <span id="grinderTitaniumCost">XXXX</span> Titanium, <span id="grinderSpaceMetalCost">XXXX</span> Space Metal, <span id="grinderGoldCost">XXXX</span> Gold.
 									</span>
 									<br>
 									<br>
@@ -1339,20 +1309,20 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX: <span id="XXXX">0</span>
+										Cubic Teleposer: <span id="cubic">0</span>
 									</h3>
 									<span>
-										XXXX
+										This teleposes blocks of rock from far underground to the surface so that Uranium can be mined more easily.
 										<br>
-										Produces <span id="XXXX">XXXX</span> Uranium per second.
+										Produces 9 Uranium per second.
 										<br>
-										Uses XXXX energy per second.
+										Uses 30 energy per second.
 										<br>
-										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+										Costs <span id="cubicUraniumCost">40</span> Uranium, <span id="cubicSpaceMetalCost">XXXX</span> Space Metal, <span id="cubicOilCost">XXXX</span> Oil.
 									</span>
 									<br>
 									<br>
-									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
 								</td>
 							</tr>
 						</table>
@@ -1371,7 +1341,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="gainUranium()" class="btn btn-default">Gain 1</button>
+									<button onclick="gainLava()" class="btn btn-default">Gain 1</button>
 									<br>
 									<br>
 								</td>
@@ -1382,13 +1352,13 @@
 										Storage Upgrade
 									</h3>
 									<span>
-										Upgrade your Uranium storage size to <span id="lavaNextStorage">100</span>.
+										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
 										<br>
-										Costs <span id="lavaStorageCost">50</span> Uranium, <span id="lavaStorageSpaceMetalCost">20</span> Space metal.
+										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageSpaceMetalCost">20</span> Space metal.
 									</span>
 									<br>
 									<br>
-									<button onclick="upgradeUraniumStorage()" class="btn btn-default">Upgrade Storage</button>
+									<button onclick="upgradeLavaStorage()" class="btn btn-default">Upgrade Storage</button>
 								</td>
 							</tr>
 							<tr>
@@ -1399,7 +1369,7 @@
 									<span>
 										XXXX
 										<br>
-										Produces XXXX Uranium per second.
+										Produces XXXX Lava per second.
 										<br>
 										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
 									</span>
@@ -1416,7 +1386,7 @@
 									<span>
 										XXXX
 										<br>
-										Produces <span id="XXXX">XXXX</span> Uranium per second.
+										Produces <span id="XXXX">XXXX</span> Lava per second.
 										<br>
 										Uses XXXX energy per second.
 										<br>
@@ -1629,6 +1599,40 @@
 									<br>
 									<br>
 									<button onclick="unlockSolarSystem()" class="btn btn-default">Unlock Space Travel</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="upgradeEngineTech" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrade Engine Technology
+									</h3>
+									<span>
+										Upgrading Engine Technology will make charcoal engines produce 2 energy per second instead of 1.
+										<br>
+										Costs 1000 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeEngineTech()" class="btn btn-default">Upgrade Engine TEch</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="upgradeSolarTech" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Upgrade Solar Technology
+									</h3>
+									<span>
+										Upgrading Solar Technology will make solar panels produce 3 energy per second instead of 0.5.
+										<br>
+										Costs 5000 Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeSolarTech()" class="btn btn-default">Upgrade Solar TEch</button>
 									<br>
 									<br>
 								</td>
@@ -2202,19 +2206,166 @@
 			</div>
 		</div>
 
-		<!-- Stats -->
-		<div role="tabpanel" class="tab-pane fade" id="stats">
-			<div class="container">
-				
+		<!-- Settings -->
+		<div role="tabpanel" class="tab-pane fade" id="settings">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#optionsTab" aria-controls="optionsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Options
+							</span>
+						</td>
+					</tr>
+					<tr href="#statsTab" aria-controls="statsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Stats
+							</span>
+						</td>
+					</tr>
+					<tr href="#achievementsTab" aria-controls="achievementsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Achievements
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="optionsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Saving
+									</h2>
+									<span>
+										This is where you can change how your game is saved.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Auto-Save Duration
+									</h3>
+									<span>
+										Change how long the game waits before auto-saving again.
+									</span>
+									<br>
+									<input type="hidden" value="2" id="slider1" />
+									<br>
+									<span>Autosaves every <span id="autoSaveTime">2</span> minutes.</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Manual Saving
+									</h3>
+									<button id="saveButton" onclick="save('local')" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
+										<span style="color:white;">
+											Save
+										</span>
+									</button>
+									<button id="loadButton" onclick="load(local)" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
+										<span style="color:white;">
+											Load
+										</span>
+									</button>
+									<br>
+									<button onclick="deleteSave()" class="btn btn-danger" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
+										<span style="color:white;">
+											Hard Reset
+										</span>
+									</button>
+									<span>
+										Warning: This is non-reversible! Be cautious. There is a confirmation to delete your save.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Import/Export
+									</h3>
+									<button class="btn btn-primary" onclick="save('export')">Export Save</button>
+									<button class="btn btn-primary" onclick="load('import')">Import Save</button>
+									<br>
+									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
+									<br>
+									<span>
+										Copy and paste this onto a file somewhere so that you can import it into the game at a later date.
+										<br>
+										You can also use this to create multiple 'savefiles' of the game by storing multiple instances separately.
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="statsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Stats
+									</h2>
+									<span>
+										This is where you can see your progress in a table with each aspect laid out for you to see. 
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4 class="pointer btn-link">
+										Clicking
+									</h4>
+									<span>
+										Resources Mined By Hand: <span id="handMined">0</span><br>
+										Tier 1 Machines Owned: <span id="tier1">0</span><br>
+										Tier 2 Machines Owned: <span id="tier2">0</span><br>
+										Tier 3 Machines Owned: <span id="tier3">0</span><br>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="achievementsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Achievements
+									</h2>
+									<span>
+										These have not been implemented into the game yet, but they are on my to-do list.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										XXXX
+									</h3>
+									<span>
+										XXXX
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<!-- Settings -->
-		<div role="tabpanel" class="tab-pane fade" id="settings">
-			<div class="container">
-				
-			</div>
-		</div>
+		<!-- Help -->
 
 		<div role="tabpanel" class="tab-pane fade in active" id="help">
 			<div class="container" style="width:250px; float:left;">
@@ -2306,7 +2457,7 @@
 										Solar System
 									</h3>
 									<span>
-										The first thing needed to unlock inter-planetary exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock exploration around the solar system and new technologies and ways to get resources.
+										Well, it isn't called Space Company for nothing. The first thing needed to unlock inter-planetary exploration is to build a rocket. This is the first large goal that you should aim for as a target. To build a rocket, you need a lot of resources, which you most likely need to use advanced machines to get without taking an extremely long time. Secondly, to launch it requires 20 rocket fuel, which can be made in chemical plants. These require a large amount of oil and charcoal to produce - 20 of each per second per plant. Once you have 20 rocket fuel and have built a rocket, press the launch button to unlock exploration around the solar system and new technologies and ways to get resources.
 									</span>
 								</td>
 							</tr>
@@ -2333,10 +2484,10 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										Upgrading Wonders
+										Activating Wonders
 									</h3>
 									<span>
-										Upgrading Wonders costs a hefty amount, but it can give your company a boost when nothing else can. These upgrades allow you to find new methods of playing, such as nuclear power to generate large amounts of energy much more easily.
+										Activating Wonders costs a hefty amount, but it can give your company a boost when nothing else can. These allow you to find new methods of playing, such as nuclear power to generate large amounts of energy much more easily.
 									</span>
 								</td>
 							</tr>
@@ -2385,6 +2536,36 @@
 									</h4>
 									<span>
 										Well, this isn't a full-time project for me. This means that although I will try to work on it as much as I can, progress can be slow. However, I will endeavour to release updates as often as I can and fix any bugs as quickly as possible.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>
+										Help, I'm stuck?
+									</h4>
+									<span>
+										Have you checked all of the tabs to see if there is anything new? Maybe the guide has something about it? If not, feel free to ask me either on reddit or post it as an issue on github if you thing there is a problem with the game.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>
+										What does this do?
+									</h4>
+									<span>
+										It will probably be self-explanatory, be explained in the description or in the wiki. If not, tell me and I will add it to the item, wiki or to the Frequently Asked Questions page.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>
+										I want to help. How do I do that?
+									</h4>
+									<span>
+										Help is always appreciated! You can look over my code in <a href="github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, sumbit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
 									</span>
 								</td>
 							</tr>
@@ -2445,7 +2626,6 @@
 										<br>
 										<br>
 									</span>
-
 									<span>
 										I didn't like the intrusiveness of ads on this game and felt that getting people to pay for an in-game boost wouldn't bode well in the community as it makes the game feel like a fremium or pay-to-win game.
 										<br>
@@ -2467,4 +2647,7 @@
 <script type="text/javascript" src="main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="sliderBar.js"></script>
+<script type="text/javascript" src="lz-string.min.js"></script>
+<link href="rangeslider.css">
 </html>

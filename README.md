@@ -4,7 +4,7 @@
 - When a wonder is built, it unlocks a new thing.
 - Uranium + Nuclear Power
 - Lava Power
-- Meteorite: 5th Tier of machine
+- Meteorite: 4th Tier of machine
 - Satelites
 - GeoStationary satelites give information/second
 - Space elevator
@@ -12,6 +12,10 @@
 - [Achievements]
 
 # RoadMap
+
+v0.2.2
+- Added Meteorite
+- Added Meteorite Tier of resource machines
 
 v0.2.1
 - Added Computerized Tier of resource machines
@@ -25,6 +29,11 @@ v0.2.0 The Wondrous Update
 - Added ability to upgrade Wonders
 - Added Uranium & Lava
 - Added Nuclear & Magmatic Power
+- Widened resources navigation so that storage could be displayed on one line
+- Added Solar Panel and Charcoal Engine Upgrades
+- Added Statistics
+- Added Settings
+- Added Import and Export
 
 v0.1.2
 - Added auto-saving
