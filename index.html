@@ -408,7 +408,7 @@
 										Energy
 									</h2>
 									<span>
-										Energy is created by power sources such as steam engines, solar power and burning oil.
+										Energy is created by power sources such as steam engines, solar power and burning oil. The maximum you can hold is 100,000 energy.
 									</span>
 									<br>
 									<br>
@@ -467,7 +467,79 @@
 							</tr>
 						</table>
 					</div>
-				</div>	
+				</div>
+				<div id="uraniumTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Uranium
+									</h2>
+									<span>
+										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainUranium()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="uraniumStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
+										<br>
+										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeUraniumStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Grinder: <span id="grinder">0</span>
+									</h3>
+									<span>
+										Pulverizes Uranium for easy transportation out of deep mineshafts.
+										<br>
+										Produces 1 Uranium per second.
+										<br>
+										Costs <span id="grinderTitaniumCost">2000</span> Titanium, <span id="grinderSpaceMetalCost">4000</span> Space Metal, <span id="grinderGoldCost">2000</span> Gold.
+									</span>
+									<br>
+									<br>
+									<button onclick="getGrinder()" class="btn btn-default">Get Grinder</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Cubic Teleposer: <span id="cubic">0</span>
+									</h3>
+									<span>
+										This teleposes blocks of rock from far underground to the surface so that Uranium can be mined more easily.
+										<br>
+										Produces 9 Uranium per second.
+										<br>
+										Uses 30 energy per second.
+										<br>
+										Costs <span id="cubicUraniumCost">40</span> Uranium, <span id="cubicSpaceMetalCost">10000</span> Space Metal, <span id="cubicOilCost">10000</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="oilTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -1256,78 +1328,6 @@
 						</table>
 					</div>
 				</div>
-				<div id="uraniumTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="pointer btn-link">
-										Uranium
-									</h2>
-									<span>
-										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
-									</span>
-									<br>
-									<br>
-									<button onclick="gainUranium()" class="btn btn-default">Gain 1</button>
-									<br>
-									<br>
-								</td>
-							</tr>
-							<tr id="uraniumStorageUpgrade">
-								<td>
-									<h3 class="pointer btn-link">
-										Storage Upgrade
-									</h3>
-									<span>
-										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
-										<br>
-										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space metal.
-									</span>
-									<br>
-									<br>
-									<button onclick="upgradeUraniumStorage()" class="btn btn-default">Upgrade Storage</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Grinder: <span id="grinder">0</span>
-									</h3>
-									<span>
-										Pulverizes Uranium for easy transportation out of deep mineshafts.
-										<br>
-										Produces 1 Uranium per second.
-										<br>
-										Costs <span id="grinderTitaniumCost">XXXX</span> Titanium, <span id="grinderSpaceMetalCost">XXXX</span> Space Metal, <span id="grinderGoldCost">XXXX</span> Gold.
-									</span>
-									<br>
-									<br>
-									<button onclick="getGrinder()" class="btn btn-default">Get Grinder</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Cubic Teleposer: <span id="cubic">0</span>
-									</h3>
-									<span>
-										This teleposes blocks of rock from far underground to the surface so that Uranium can be mined more easily.
-										<br>
-										Produces 9 Uranium per second.
-										<br>
-										Uses 30 energy per second.
-										<br>
-										Costs <span id="cubicUraniumCost">40</span> Uranium, <span id="cubicSpaceMetalCost">XXXX</span> Space Metal, <span id="cubicOilCost">XXXX</span> Oil.
-									</span>
-									<br>
-									<br>
-									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
 				<div id="lavaTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -1337,7 +1337,7 @@
 										Lava
 									</h2>
 									<span>
-										XXXX
+										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to use and to get.
 									</span>
 									<br>
 									<br>
@@ -1364,37 +1364,37 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX: <span id="XXXX">0</span>
+										Heat Resistant Crucible: <span id="crucible">0</span>
 									</h3>
 									<span>
-										XXXX
+										You can use a modified crucible to pick up lava and to store it for later use
 										<br>
-										Produces XXXX Lava per second.
+										Produces 1 Lava per second.
 										<br>
-										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+										Costs <span id="crucibleGemCost">6000</span> Gems, <span id="crucibleSpaceMetalCost">4000</span> Space Metal.
 									</span>
 									<br>
 									<br>
-									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+									<button onclick="getCrucible()" class="btn btn-default">Get Crucible</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX: <span id="XXXX">0</span>
+										Lava Extractor: <span id="extractor">0</span>
 									</h3>
 									<span>
-										XXXX
+										This extracts lava from volcanoes automatically and quickly
 										<br>
-										Produces <span id="XXXX">XXXX</span> Lava per second.
+										Produces 7 Lava per second.
 										<br>
-										Uses XXXX energy per second.
+										Uses 26 energy per second.
 										<br>
-										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+										Costs <span id="extractorSpaceMetalCost">12000</span> Space Metal, <span id="extractorTitaniumCost">4000</span> Titanium, <span id="extractorSiliconCost">1000</span> Silicon.
 									</span>
 									<br>
 									<br>
-									<button onclick="XXXX()" class="btn btn-default">Get XXXX</button>
+									<button onclick="getExtractor()" class="btn btn-default">Get Extractor</button>
 								</td>
 							</tr>
 						</table>
@@ -1577,7 +1577,7 @@
 									<span>
 										Make your resource machines produce even more resources than before. This upgrade doubles the amount they produce for each unit of energy.
 										<br>
-										Costs 200 Science.
+										Costs 300 Science.
 									</span>
 									<br>
 									<br>
@@ -2271,7 +2271,7 @@
 											Save
 										</span>
 									</button>
-									<button id="loadButton" onclick="load(local)" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
+									<button id="loadButton" onclick="load('local')" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
 										<span style="color:white;">
 											Load
 										</span>

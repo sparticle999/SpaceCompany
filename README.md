@@ -18,12 +18,13 @@ v0.2.2
 - Added Meteorite Tier of resource machines
 
 v0.2.1
-- Added Computerized Tier of resource machines
+- Added Computerized Tier of resource machines.
+- Tier 3 machines use Uranium to power themselves instead of energy.
 - When loading game, the tab you left on is the tab you now start on.
 
 # Changelog:
 
-v0.2.0 The Wondrous Update
+v0.2.0 The Wondrous Update [Released To The Public]
 - Added Wonder Tab
 - Added two different wonders - Precious Wonder & Power Wonder
 - Added ability to upgrade Wonders
@@ -42,7 +43,7 @@ v0.1.2
 v0.1.1
 - Fixed  bugs from the 0.1.0 update
 
-v0.1.0 The Space Update [Released to the Public]
+v0.1.0 The Space Update
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
 - Added new resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
 - Added methane-based power
