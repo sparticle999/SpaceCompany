@@ -1,8 +1,7 @@
 # To Do:
 
 # Plans for the Future
-- When a wonder is built, it unlocks a new thing.
-- Uranium + Nuclear Power
+- Nuclear Power
 - Lava Power
 - Meteorite: 4th Tier of machine
 - Satelites
@@ -18,6 +17,7 @@ v0.2.2
 - Added Meteorite Tier of resource machines
 
 v0.2.1
+- Added Tech Wonder
 - Added Computerized Tier of resource machines.
 - Tier 3 machines use Uranium to power themselves instead of energy.
 - When loading game, the tab you left on is the tab you now start on.
