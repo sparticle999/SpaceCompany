@@ -465,6 +465,23 @@
 									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
 								</td>
 							</tr>
+							<tr id="nuclearPower" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Nuclear Power Stations: <span id="nuclearStation">0</span>
+									</h3>
+									<span>
+										Uses fission to create large amounts of power.
+										<br>
+										Each Power Station produces 25 energy and uses 7 uranium per second.
+										<br>
+										Costs <span id="nuclearStationSpaceMetalCost">XXXX</span> Space Metal, <span id="nuclearStationTitaniumCost">XXXX</span> Titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1265,7 +1282,7 @@
 										Silicon
 									</h2>
 									<span>
-										Silicon is useful for automatic mining systems of the highest tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
+										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
 									</span>
 									<br>
 									<br>
@@ -2097,16 +2114,6 @@
 									</span>
 								</td>
 							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Elevation Wonder
-									</h3>
-									<span>
-										XXXX
-									</span>
-								</td>
-							</tr>
 						</table>
 					</div>
 				</div>
@@ -2166,37 +2173,6 @@
 										<br>
 										<br>
 										<button id="activateEnergeticWonder" onclick="activateEnergeticWonder()" class="btn btn-default">Activate Energetic Wonder</button>
-									</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div id="elevationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="pointer btn-link">
-										The Elevation Wonder
-									</h2>
-									<span>
-										XXXX
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Activate Wonder
-									</h3>
-									<span>
-										Activating this wonder will 
-										<br>
-										Costs: <span id="elevationWonderGemCost">30,000</span> Gems, <span id="elevationWonderSilverCost">20,000</span> Silver, <span id="elevationWonderGoldCost">10,000</span> Gold.
-										<br>
-										<br>
-										<button id="activateElevationWonder" onclick="activateElevationWonder()" class="btn btn-default">Activate Elevation Wonder</button>
 									</span>
 								</td>
 							</tr>
@@ -2352,10 +2328,10 @@
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX
+										
 									</h3>
 									<span>
-										XXXX
+										
 									</span>
 								</td>
 							</tr>
