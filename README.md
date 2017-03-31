@@ -21,6 +21,7 @@ v0.2.1
 - Added Computerized Tier of resource machines.
 - Tier 3 machines use Uranium to power themselves instead of energy.
 - When loading game, the tab you left on is the tab you now start on.
+- Added Nuclear & Magmatic Power
 
 # Changelog:
 
@@ -29,7 +30,6 @@ v0.2.0 The Wondrous Update [Released To The Public]
 - Added two different wonders - Precious Wonder & Power Wonder
 - Added ability to upgrade Wonders
 - Added Uranium & Lava
-- Added Nuclear & Magmatic Power
 - Widened resources navigation so that storage could be displayed on one line
 - Added Solar Panel and Charcoal Engine Upgrades
 - Added Statistics
