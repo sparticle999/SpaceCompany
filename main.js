@@ -3043,10 +3043,11 @@ function activatePreciousWonder(){
 		gem -= 30000;
 		silver -= 20000;
 		gold -= 10000;
+		document.getElementById("nuclearPower").className = "";
 		document.getElementById("activatePreciousWonder").className = "hidden";
 		document.getElementById("uraniumNav").className = "space";
 		document.getElementById("preciousActivation").innerHTML = "Activated";
-		resourcesUnlocked.push("uraniumNav");
+		resourcesUnlocked.push("uraniumNav", "nuclearPower");
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
 		refreshResources();
@@ -3071,10 +3072,11 @@ function activateEnergeticWonder(){
 		wood -= 30000;
 		charcoal -= 15000;
 		uranium -= 500;
+		document.getElementById("magmaticPower").className = "";
 		document.getElementById("activateEnergeticWonder").className = "hidden";
 		document.getElementById("lavaNav").className = "space";
 		document.getElementById("energeticActivation").innerHTML = "Activated";
-		resourcesUnlocked.push("lavaNav");
+		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
 	}

@@ -19,7 +19,7 @@ v0.2.3
 v0.2.2
 - Added Tech Wonder
 - Added Computerized Tier of resource machines.
-- Tier 3 machines use Uranium to power themselves instead of energy
+- Added Plasma
 - When loading game, the tab you left on is the tab you now start on
 
 # Changelog:
