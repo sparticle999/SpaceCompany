@@ -2234,7 +2234,25 @@ function getNuclearStation(){
 	if(spaceMetal >= nuclearStationSpaceMetalCost && titanium >= nuclearStationTitaniumCost){
 		spaceMetal -= nuclearStationSpaceMetalCost;
 		titanium -= nuclearStationTitaniumCost;
-		nuclearStation += 1
+		nuclearStation += 1;
+		nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation + 1));
+		nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation + 1));
+		document.getElementById("nuclearStation").innerHTML = nuclearStation;
+		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
+		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
+		refresh();
+		refreshPerSec();
+		tier4 += 1;
+	}
+}
+
+
+function getMagmatic(){
+	if(spaceMetal >= magmaticSpaceMetalCost && gem >= magmaticGemCost && silver >= magmaticSilverCost){
+		spaceMetal -= magmaticSpaceMetalCost;
+		gem -= magmaticGemCost;
+		silver -= magmaticSilverCost;
+		magmatic += 1;
 		nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation + 1));
 		nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation + 1));
 		document.getElementById("nuclearStation").innerHTML = nuclearStation;
