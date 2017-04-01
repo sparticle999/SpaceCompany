@@ -2253,9 +2253,10 @@ function getMagmatic(){
 		gem -= magmaticGemCost;
 		silver -= magmaticSilverCost;
 		magmatic += 1;
-		nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation + 1));
-		nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation + 1));
-		document.getElementById("nuclearStation").innerHTML = nuclearStation;
+		magmaticSpaceMetalCost = Math.floor(25000 * Math.pow(1.1,magmatic + 1));
+		magmaticGemCost = Math.floor(20000 * Math.pow(1.1,magmatic + 1));
+		magmaticSilverCost = Math.floor(15000 * Math.pow(1.1,magmatic + 1));
+		document.getElementById("magmatic").innerHTML = magmatic;
 		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
 		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
 		refresh();
