@@ -1566,6 +1566,78 @@
 						</table>
 					</div>
 				</div>
+				<div id="heliumTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Helium
+									</h2>
+									<span>
+										Helium is the second most common on gas giants such as Jupiter and Saturn.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainHelium()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="heliumStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
+										<br>
+										Costs <span id="heliumStorageCost">50</span> Hydrogen, <span id="heliumStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeHeliumStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Helium Drone: <span id="drone">0</span>
+									</h3>
+									<span>
+										The Helium Drone scouts out the area on Saturn and picks out spots high in Helium which are then mined slowly by it.
+										<br>
+										Produces 1 Helium per second.
+										<br>
+										Costs <span id="droneSpaceMetalCost">14000</span> Space Metal, <span id="droneSiliconCost">10000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getDrone()" class="btn btn-default">Get Drone</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Helium Tanker: <span id="tanker">0</span>
+									</h3>
+									<span>
+										This huge tanker holds large amounts of Helium and transports it from Saturn to Earth through the vacuum of space.
+										<br>
+										Produces 11 Helium per second.
+										<br>
+										Uses 72 energy per second.
+										<br>
+										Costs <span id="tankerSpaceMetalCost">21000</span> Space Metal, <span id="tankerTitaniumCost">17000</span> Titanium, <span id="tankerSiliconCost">14000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getTanker()" class="btn btn-default">Get Tanker</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 

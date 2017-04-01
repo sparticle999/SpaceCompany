@@ -50,6 +50,8 @@ var crucible = 0; var crucibleGemCost = 8000; var crucibleSpaceMetalCost = 4000;
 var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCost = 12000; var extractorSiliconCost = 6000;
 var collector = 0; var collectorSpaceMetalCost = 10000; var collectorTitaniumCost = 8000;
 var magnet = 0; var magnetSpaceMetalCost = 18000; var magnetTitaniumCost = 16000; var magnetGoldCost = 11000;
+var drone = 0; var droneSpaceMetalCost = 14000; var droneSiliconCost = 10000;
+var tanker = 0; var tankerSpaceMetalCost = 21000; var tankerTitaniumCost = 17000; var tankerSiliconCost = 14000;
 
 // Variables not being saved
 
@@ -3173,7 +3175,7 @@ function refreshWonderBars(){
 			document.getElementById("preciousBar").style.width = 100 + "%";
 		}
 	}
-	if(document.getElementById("activatePreciousWonder").className === "hidden") === false){
+	if((document.getElementById("activatePreciousWonder").className === "hidden") === false){
 		if(gem >= 30000){
 			var preciousActivateGem = 30000;
 		}
@@ -3188,8 +3190,8 @@ function refreshWonderBars(){
 		else{preciousActivateGold = gold;}
 		var preciousActivateBar = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/600;
 		if(preciousActivateBar <= 100){
-			document.getElementById("preciousActivateBar").innerHTML = commafy(preciousBar) + "%";
-			document.getElementById("preciousActivateBar").style.width = preciousBar + "%";
+			document.getElementById("preciousActivateBar").innerHTML = commafy(preciousActivateBar) + "%";
+			document.getElementById("preciousActivateBar").style.width = preciousActivateBar + "%";
 		}
 		else{
 			document.getElementById("preciousActivateBar").innerHTML = "100%";
@@ -3219,7 +3221,7 @@ function refreshWonderBars(){
 			document.getElementById("energeticBar").style.width = 100 + "%";
 		}
 	}
-	if(document.getElementById("activateEnergeticWonder").className === "hidden") === false){
+	if((document.getElementById("activateEnergeticWonder").className === "hidden") === false){
 		if(wood >= 30000){
 			var energeticActivateGem = 30000;
 		}
