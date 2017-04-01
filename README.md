@@ -2,7 +2,8 @@
 Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
 # Plans for the Future
-- Exploration of the outer planets
+- When loading game, the tab you left on is the tab you now start on
+
 - Alien Bases in the Kuiper Belt that trade resources
 - Energy to Mass Conversion Machines
 - Supercooling
@@ -16,12 +17,13 @@ Space Company is a science-fiction incremental game where you start from humble 
 v0.2.3
 - Added Meteorite
 - Added Meteorite Tier of resource machines
+- Added Plasma
+
 
 v0.2.2
 - Added Tech Wonder
 - Added Computerized Tier of resource machines.
-- Added Plasma
-- When loading game, the tab you left on is the tab you now start on
+- Exploration of the outer planets
 
 # Changelog:
 
