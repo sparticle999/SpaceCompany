@@ -2857,6 +2857,40 @@ function getMagnet(){
 	}
 }
 
+function getDrone(){
+	if(spaceMetal >= droneSpaceMetalCost && silicon >= droneSiliconCost){
+		spaceMetal -= droneSpaceMetalCost;
+		silicon -= droneSiliconCost;
+		drone += 1;
+		droneTitaniumCost = Math.floor(8000 * Math.pow(1.1,drone + 1));
+		droneSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,drone + 1));
+		document.getElementById("drone").innerHTML = drone;
+		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
+		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier1 += 1;
+	}
+}
+
+function getTanker(){
+	if(spaceMetal >= tankerSpaceMetalCost && titanium >= tankerTitaniumCost && silicon >= tankerSiliconCost){
+		spaceMetal -= tankerSpaceMetalCost;
+		titanium -= tankerTitaniumCost;
+		silicon -= tankerSiliconCost;
+		tanker += 1;
+		tankerSiliconCost = Math.floor(11000 * Math.pow(1.1,tanker + 1));
+		tankerTitaniumCost = Math.floor(16000 * Math.pow(1.1,tanker + 1));
+		tankerSpaceMetalCost = Math.floor(18000 * Math.pow(1.1,tanker + 1));
+		document.getElementById("tanker").innerHTML = tanker;
+		document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
+		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
+		document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier2 += 1;
+	}
+}
 
 // Research Tab
 
