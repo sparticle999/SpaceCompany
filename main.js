@@ -1,6 +1,6 @@
 // Variables in save function
 
-var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0;
+var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0;
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
 var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 1.5;
@@ -102,6 +102,8 @@ function save(type){
 		tier1: tier1,
 		tier2: tier2,
 		tier3: tier3,
+		tier4: tier4,
+		tier5: tier5,
 		energy: energy,
 		energyps: energyps,
 		charcoalEngine: charcoalEngine,
@@ -279,6 +281,9 @@ function save(type){
 		cubicUraniumCost: cubicUraniumCost,
 		cubicSpaceMetalCost: cubicSpaceMetalCost,
 		cubicOilCost: cubicOilCost,
+		lava: lava,
+		lavaStorage: lavaStorage,
+		lavaNextStorage: lavaNextStorage,
 		crucible: crucible,
 		crucibleSpaceMetalCost: crucibleSpaceMetalCost,
 		crucibleGemCost: crucibleGemCost,
@@ -321,6 +326,8 @@ function load(type){
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
 		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
 		if(typeof savegame.tier3 !== "undefined") tier3 = savegame.tier3;
+		if(typeof savegame.tier4 !== "undefined") tier4 = savegame.tier4;
+		if(typeof savegame.tier5 !== "undefined") tier5 = savegame.tier5;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
@@ -577,7 +584,7 @@ function refreshPerSec(){
 	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
 	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
-	energyOutput += (cubic*40)+(extractor*58)
+	energyOutput += (cubic*40)+(extractor*58);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -676,6 +683,8 @@ function refreshStats(){
 	document.getElementById("tier1").innerHTML = commafy(tier1);
 	document.getElementById("tier2").innerHTML = commafy(tier2);
 	document.getElementById("tier3").innerHTML = commafy(tier3);
+	document.getElementById("tier4").innerHTML = commafy(tier4);
+	document.getElementById("tier5").innerHTML = commafy(tier5);
 }
 function refreshUI(){
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
@@ -1875,7 +1884,7 @@ function gainResources(){
 		wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
 	}
 	else{
-		wood = 0
+		wood = 0;
 	}
 	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
@@ -2273,7 +2282,7 @@ function getGrinder(){
 		grinder += 1;
 		grinderTitaniumCost = Math.floor(2000 * Math.pow(1.1,grinder + 1));
 		grinderSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,grinder + 1));
-		grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder + 1))
+		grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder + 1));
 		document.getElementById("grinder").innerHTML = grinder;
 		document.getElementById("grinderTitaniumCost").innerHTML = commafy(grinderTitaniumCost);
 		document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
@@ -2292,7 +2301,7 @@ function getCubic(){
 		cubic += 1;
 		cubicUraniumCost = Math.floor(80 * Math.pow(1.1,cubic + 1));
 		cubicSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,cubic + 1));
-		cubicOilCost = Math.floor(10000 * Math.pow(1.1,cubic + 1))
+		cubicOilCost = Math.floor(10000 * Math.pow(1.1,cubic + 1));
 		document.getElementById("cubic").innerHTML = cubic;
 		document.getElementById("cubicUraniumCost").innerHTML = commafy(cubicUraniumCost);
 		document.getElementById("cubicSpaceMetalCost").innerHTML = commafy(cubicSpaceMetalCost);

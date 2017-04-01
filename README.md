@@ -1,12 +1,13 @@
-# To Do:
+# Overview:
+Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
 # Plans for the Future
-- Nuclear Power
-- Lava Power
+- Exploration of the outer planets
+- Alien Bases in the Kuiper Belt that trade resources
+- Energy to Mass Conversion Machines
+- Supercooling
+- Dysons around stars
 - Meteorite: 4th Tier of machine
-- Satelites
-- GeoStationary satelites give information/second
-- Space elevator
 - [Change UI from bootstrap to my own]
 - [Achievements]
 
