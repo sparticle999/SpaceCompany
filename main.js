@@ -3027,6 +3027,29 @@ function refreshWonderBars(){
 			document.getElementById("preciousBar").style.width = 100 + "%";
 		}
 	}
+	if(document.getElementById("activatePreciousWonder").className === "hidden") === false){
+		if(gem >= 30000){
+			var preciousActivateGem = 30000;
+		}
+		else{preciousActivateGem = gem;}
+		if(silver >= 20000){
+			var preciousActivateSilver = 20000;
+		}
+		else{preciousActivateSilver = silver;}
+		if(gold >= 10000){
+			var preciousActivateGold = 10000;
+		}
+		else{preciousActivateGold = gold;}
+		var preciousActivateBar = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/600;
+		if(preciousActivateBar <= 100){
+			document.getElementById("preciousActivateBar").innerHTML = commafy(preciousBar) + "%";
+			document.getElementById("preciousActivateBar").style.width = preciousBar + "%";
+		}
+		else{
+			document.getElementById("preciousActivateBar").innerHTML = "100%";
+			document.getElementById("preciousActivateBar").style.width = 100 + "%";
+		}
+	}
 	if(contains(resourcesUnlocked, "energeticWonderNav") === false){
 		if(wood >= 10000){
 			var energeticWood = 10000;
@@ -3048,6 +3071,29 @@ function refreshWonderBars(){
 		else{
 			document.getElementById("energeticBar").innerHTML = "100%";
 			document.getElementById("energeticBar").style.width = 100 + "%";
+		}
+	}
+	if(document.getElementById("activateEnergeticWonder").className === "hidden") === false){
+		if(wood >= 30000){
+			var energeticActivateGem = 30000;
+		}
+		else{energeticActivateGem = gem;}
+		if(charcoal >= 15000){
+			var energeticActivateSilver = 15000;
+		}
+		else{energeticActivateSilver = silver;}
+		if(uranium >= 500){
+			var energeticActivateGold = 500;
+		}
+		else{energeticActivateGold = gold;}
+		var energeticActivateBar = (energeticActivateGem+energeticActivateSilver+energeticActivateGold)/455;
+		if(energeticActivateBar <= 100){
+			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticBar) + "%";
+			document.getElementById("energeticActivateBar").style.width = energeticBar + "%";
+		}
+		else{
+			document.getElementById("energeticActivateBar").innerHTML = "100%";
+			document.getElementById("energeticActivateBar").style.width = 100 + "%";
 		}
 	}
 }
