@@ -3174,10 +3174,10 @@ function exploreJupiter(){
 	}
 }
 
-function exploreNeptune(){
+function exploreSaturn(){
 	if(rocketFuel >= 2000){
 		rocketFuel -= 2000;
-		document.getElementById("exploreNeptune").className = "hidden";
+		document.getElementById("exploreSaturn").className = "hidden";
 		document.getElementById("heliumNav").className = "outerPlanet";
 		resourcesUnlocked.push("heliumNav");
 		buttonsHidden.push("exploreSaturn");
