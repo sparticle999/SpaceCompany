@@ -1693,28 +1693,28 @@ function refreshResources(){
 		document.getElementById("charcoalNav").className = "earth";
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "space";
+		document.getElementById("spaceMetalNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "methaneNav")){
-		document.getElementById("methaneNav").className = "space";
+		document.getElementById("methaneNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "titaniumNav")){
-		document.getElementById("titaniumNav").className = "space";
+		document.getElementById("titaniumNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "goldNav")){
-		document.getElementById("goldNav").className = "space";
+		document.getElementById("goldNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "silverNav")){
-		document.getElementById("silverNav").className = "space";
+		document.getElementById("silverNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "siliconNav")){
-		document.getElementById("siliconNav").className = "space";
+		document.getElementById("siliconNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "uraniumNav")){
-		document.getElementById("uraniumNav").className = "space";
+		document.getElementById("uraniumNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "lavaNav")){
-		document.getElementById("lavaNav").className = "space";
+		document.getElementById("lavaNav").className = "innerPlanet";
 	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
@@ -2944,7 +2944,7 @@ function exploreMoon(){
 		rocketFuel -= 20;
 		document.getElementById("exploreMoon").className = "hidden";
 		document.getElementById("collapseSpace").className = "collapseSpace";
-		document.getElementById("spaceMetalNav").className = "space";
+		document.getElementById("spaceMetalNav").className = "innerPlanet";
 		resourcesUnlocked.push("spaceMetalNav", "collapseSpace");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
@@ -2956,7 +2956,7 @@ function exploreVenus(){
 	if(rocketFuel >= 50){
 		rocketFuel -= 50;
 		document.getElementById("exploreVenus").className = "hidden";
-		document.getElementById("methaneNav").className = "space";
+		document.getElementById("methaneNav").className = "innerPlanet";
 		document.getElementById("methanePower").className = "";
 		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
@@ -2969,8 +2969,8 @@ function exploreMars(){
 	if(rocketFuel >= 80){
 		rocketFuel -= 80;
 		document.getElementById("exploreMars").className = "hidden";
-		document.getElementById("titaniumNav").className = "space";
-		document.getElementById("siliconNav").className = "space";
+		document.getElementById("titaniumNav").className = "innerPlanet";
+		document.getElementById("siliconNav").className = "innerPlanet";
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
@@ -2983,8 +2983,8 @@ function exploreAsteroidBelt(){
 		rocketFuel -= 200;
 		document.getElementById("exploreAsteroidBelt").className = "hidden";
 		document.getElementById("wonderStation").className = "";
-		document.getElementById("goldNav").className = "space";
-		document.getElementById("silverNav").className = "space";
+		document.getElementById("goldNav").className = "innerPlanet";
+		document.getElementById("silverNav").className = "innerPlanet";
 		resourcesUnlocked.push("goldNav", "silverNav", "jupiter", "saturn", "uranus", "neptune", "pluto", "kuiperBelt");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
@@ -3121,7 +3121,7 @@ function activatePreciousWonder(){
 		gold -= 10000;
 		document.getElementById("nuclearPower").className = "";
 		document.getElementById("activatePreciousWonder").className = "hidden";
-		document.getElementById("uraniumNav").className = "space";
+		document.getElementById("uraniumNav").className = "innerPlanet";
 		document.getElementById("preciousActivation").innerHTML = "Activated";
 		resourcesUnlocked.push("uraniumNav", "nuclearPower");
 		buttonsHidden.push("activatePreciousWonder");
@@ -3150,7 +3150,7 @@ function activateEnergeticWonder(){
 		uranium -= 500;
 		document.getElementById("magmaticPower").className = "";
 		document.getElementById("activateEnergeticWonder").className = "hidden";
-		document.getElementById("lavaNav").className = "space";
+		document.getElementById("lavaNav").className = "innerPlanet";
 		document.getElementById("energeticActivation").innerHTML = "Activated";
 		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
@@ -3174,15 +3174,29 @@ $('.collapseEarth').click(function(){
     }
 });
 
-$('.collapseSpace').click(function(){
+$('.collapseInnerPlanet').click(function(){
     if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("space").length; i++){
-        	document.getElementsByClassName("space")[i].className = "space";
+        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet";
         }
         $(this).removeClass("collapsed");
     } else {
-        for(var i = 0; i < document.getElementsByClassName("space").length; i++){
-        	document.getElementsByClassName("space")[i].className = "space hidden";
+        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseOuterPlanet').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet hidden";
         }
         $(this).addClass("collapsed");
     }

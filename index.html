@@ -38,7 +38,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.2.1 Alpha
+						v0.2.2 Alpha
 					</span>
 				</a>
 				<div class="pull-right" style="width:200px;">
@@ -226,9 +226,9 @@
 						</td>
 					</tr>
 					</a>
-					<tr id="collapseSpace" class="collapseSpace hidden">
+					<tr id="collapseInnerPlanet" class="collapseSpace hidden">
 						<td colspan="4">
-							<span>Space Resources</span> <span class="caret"></span>
+							<span>Inner Planetary Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
 					<tr id="spaceMetalNav" class="hidden" href="#spaceMetalTab" aria-controls="spaceMetalTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -405,6 +405,55 @@
 							</span>
 							/
 							<span id="lavaStorage">50</span>
+						</td>
+					</tr>
+					<tr id="collapseOuterPlanet" class="collapseSpace hidden">
+						<td colspan="4">
+							<span>Outer Planetary Resources</span> <span class="caret"></span>
+						</td>
+					</tr>
+					<tr id="hydrogenNav" class="hidden" href="#hydrogenTab" aria-controls="hydrogenTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/hydrogenIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Hydrogen
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="hydrogenps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="hydrogen">
+								0
+							</span>
+							/
+							<span id="hydrogenStorage">50</span>
+						</td>
+					</tr>
+					<tr id="heliumNav" class="hidden" href="#heliumTab" aria-controls="heliumTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/heliumIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Helium
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="heliumps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="helium">
+								0
+							</span>
+							/
+							<span id="heliumStorage">50</span>
 						</td>
 					</tr>
 				</table>

@@ -23,9 +23,11 @@ v0.2.3
 v0.2.2
 - Added Tech Wonder
 - Added Computerized Tier of resource machines.
-- Exploration of the outer planets
 
 # Changelog:
+
+v0.2.2
+- Added Exploration of the outer planets
 
 v0.2.1
 - Fixed Bugs
