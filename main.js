@@ -626,8 +626,8 @@ function refreshPerSec(){
 		silverps = scout + (spaceLaser * 13);
 		siliconps = blowtorch + (scorcher * 9);
 		lavaps = crucible + (extractor*7);
-		hydrogen = collector + (magnet*5);
-		helium = drone + (tanker*11);
+		hydrogenps = collector + (magnet*5);
+		heliumps = drone + (tanker*11);
 	}
 	if(energy <= 10){
 		uraniumps = grinder;
@@ -643,8 +643,8 @@ function refreshPerSec(){
 		silverps = scout;
 		siliconps = blowtorch;
 		lavaps = crucible;
-		hydrogen = collector;
-		helium = drone;
+		hydrogenps = collector;
+		heliumps = drone;
 	}
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
@@ -3101,9 +3101,9 @@ function exploreMoon(){
 	if(rocketFuel >= 20){
 		rocketFuel -= 20;
 		document.getElementById("exploreMoon").className = "hidden";
-		document.getElementById("collapseSpace").className = "collapseSpace";
+		document.getElementById("collapseInnerPlanet").className = "collapseInnerPlanet";
 		document.getElementById("spaceMetalNav").className = "innerPlanet";
-		resourcesUnlocked.push("spaceMetalNav", "collapseSpace");
+		resourcesUnlocked.push("spaceMetalNav", "collapseInnerPlanet");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
 		refreshResources();
@@ -3165,8 +3165,9 @@ function exploreJupiter(){
 	if(rocketFuel >= 1000){
 		rocketFuel -= 1000;
 		document.getElementById("exploreJupiter").className = "hidden";
+		document.getElementById("collapseOuterPlanet").className = "collapseOuterPlanet";
 		document.getElementById("hydrogenNav").className = "outerPlanet";
-		resourcesUnlocked.push("hydrogenNav");
+		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet");
 		buttonsHidden.push("exploreJupiter");
 		explored.push("jupiter");
 		refreshResources();
