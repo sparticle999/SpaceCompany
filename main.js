@@ -876,7 +876,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("gemStorageMetalCost").className = "";
 	}
-
 	
 	if(charcoal < charcoalStorage){
 		document.getElementById("charcoalStorageCost").className = "red";
@@ -905,7 +904,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("woodStorageMetalCost").className = "";
 	}
-
 	
 	if(spaceMetal < spaceMetalStorage){
 		document.getElementById("spaceMetalStorageCost").className = "red";
@@ -934,7 +932,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("methaneStorageSpaceMetalCost").className = "";
 	}
-
 	
 	if(titanium < titaniumStorage){
 		document.getElementById("titaniumStorageCost").className = "red";
@@ -950,7 +947,6 @@ function checkRedCost(){
 		document.getElementById("titaniumStorageSpaceMetalCost").className = "";
 	}
 
-	
 	if(gold < goldStorage){
 		document.getElementById("goldStorageCost").className = "red";
 	}
@@ -964,7 +960,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("goldStorageSpaceMetalCost").className = "";
 	}
-
 	
 	if(silver < silverStorage){
 		document.getElementById("silverStorageCost").className = "red";
@@ -993,7 +988,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("siliconStorageSpaceMetalCost").className = "";
 	}
-
 	
 	if(lava < lavaStorage){
 		document.getElementById("lavaStorageCost").className = "red";
@@ -1001,7 +995,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("lavaStorageCost").className = "";
 	}
-
 	
 	if(spaceMetal < lavaStorage/2.5){
 		document.getElementById("lavaStorageSpaceMetalCost").className = "red";
@@ -1016,7 +1009,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("charcoalEngineMetalCost").className = "";
 	}
-
 	
 	if(gem < charcoalEngineGemCost){
 		document.getElementById("charcoalEngineGemCost").className = "red";
@@ -1031,7 +1023,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("solarPanelMetalCost").className = "";
 	}
-
 	
 	if(gem < solarPanelGemCost){
 		document.getElementById("solarPanelGemCost").className = "red";
@@ -1047,14 +1038,12 @@ function checkRedCost(){
 		document.getElementById("methaneStationSpaceMetalCost").className = "";
 	}
 
-	
 	if(titanium < methaneStationTitaniumCost){
 		document.getElementById("methaneStationTitaniumCost").className = "red";
 	}
 	else{
 		document.getElementById("methaneStationTitaniumCost").className = "";
 	}
-
 	
 	if(metal < pumpMetalCost){
 		document.getElementById("pumpMetalCost").className = "red";
@@ -1062,7 +1051,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("pumpMetalCost").className = "";
 	}
-
 	
 	if(gem < pumpGemCost){
 		document.getElementById("pumpGemCost").className = "red";
@@ -1077,7 +1065,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("pumpjackOilCost").className = "";
 	}
-
 	
 	if(gem < pumpjackGemCost){
 		document.getElementById("pumpjackGemCost").className = "red";
@@ -1085,7 +1072,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("pumpjackGemCost").className = "";
 	}
-
 	
 	if(metal < pumpjackMetalCost){
 		document.getElementById("pumpjackMetalCost").className = "red";
@@ -1093,7 +1079,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("pumpjackMetalCost").className = "";
 	}
-
 	
 	if(metal < minerMetalCost){
 		document.getElementById("minerMetalCost").className = "red";
@@ -1101,7 +1086,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("minerMetalCost").className = "";
 	}
-
 	
 	if(wood < minerWoodCost){
 		document.getElementById("minerWoodCost").className = "red";
@@ -1109,7 +1093,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("minerWoodCost").className = "";
 	}
-
 	
 	if(metal < heavyDrillMetalCost){
 		document.getElementById("heavyDrillMetalCost").className = "red";
@@ -1117,7 +1100,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("heavyDrillMetalCost").className = "";
 	}
-
 	
 	if(gem < heavyDrillGemCost){
 		document.getElementById("heavyDrillGemCost").className = "red";
@@ -1125,7 +1107,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("heavyDrillGemCost").className = "";
 	}
-
 	
 	if(oil < heavyDrillOilCost){
 		document.getElementById("heavyDrillOilCost").className = "red";
@@ -1133,7 +1114,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("heavyDrillOilCost").className = "";
 	}
-
 	
 	if(metal < gemMinerMetalCost){
 		document.getElementById("gemMinerMetalCost").className = "red";
@@ -1141,7 +1121,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("gemMinerMetalCost").className = "";
 	}
-
 	
 	if(gem < gemMinerGemCost){
 		document.getElementById("gemMinerGemCost").className = "red";
@@ -1149,7 +1128,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("gemMinerGemCost").className = "";
 	}
-
 	
 	if(metal < advancedDrillMetalCost){
 		document.getElementById("advancedDrillMetalCost").className = "red";
@@ -1157,7 +1135,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("advancedDrillMetalCost").className = "";
 	}
-
 	
 	if(gem < advancedDrillGemCost){
 		document.getElementById("advancedDrillGemCost").className = "red";
@@ -1165,7 +1142,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("advancedDrillGemCost").className = "";
 	}
-
 	
 	if(oil < advancedDrillOilCost){
 		document.getElementById("advancedDrillOilCost").className = "red";
@@ -1173,7 +1149,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("advancedDrillOilCost").className = "";
 	}
-
 	
 	if(metal < woodburnerMetalCost){
 		document.getElementById("woodburnerMetalCost").className = "red";
@@ -1181,7 +1156,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("woodburnerMetalCost").className = "";
 	}
-
 	
 	if(wood < woodburnerWoodCost){
 		document.getElementById("woodburnerWoodCost").className = "red";
@@ -1189,7 +1163,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("woodburnerWoodCost").className = "";
 	}
-
 	
 	if(metal < furnaceMetalCost){
 		document.getElementById("furnaceMetalCost").className = "red";
@@ -1197,7 +1170,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("furnaceMetalCost").className = "";
 	}
-
 	
 	if(wood < furnaceWoodCost){
 		document.getElementById("furnaceWoodCost").className = "red";
@@ -1205,7 +1177,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("furnaceWoodCost").className = "";
 	}
-
 	
 	if(oil < furnaceOilCost){
 		document.getElementById("furnaceOilCost").className = "red";
@@ -1213,7 +1184,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("furnaceOilCost").className = "";
 	}
-
 	
 	if(metal < woodcutterMetalCost){
 		document.getElementById("woodcutterMetalCost").className = "red";
@@ -1221,7 +1191,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("woodcutterMetalCost").className = "";
 	}
-
 	
 	if(wood < woodcutterWoodCost){
 		document.getElementById("woodcutterWoodCost").className = "red";
@@ -1230,14 +1199,12 @@ function checkRedCost(){
 		document.getElementById("woodcutterWoodCost").className = "";
 	}
 
-	
 	if(metal < laserCutterMetalCost){
 		document.getElementById("laserCutterMetalCost").className = "red";
 	}
 	else{
 		document.getElementById("laserCutterMetalCost").className = "";
 	}
-
 	
 	if(gem < laserCutterGemCost){
 		document.getElementById("laserCutterGemCost").className = "red";
@@ -1245,7 +1212,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("laserCutterGemCost").className = "";
 	}
-
 	
 	if(oil < laserCutterOilCost){
 		document.getElementById("laserCutterOilCost").className = "red";
@@ -1260,7 +1226,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("moonWorkerGemCost").className = "";
 	}
-
 	
 	if(metal < moonDrillMetalCost){
 		document.getElementById("moonDrillMetalCost").className = "red";
@@ -1268,7 +1233,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("moonDrillMetalCost").className = "";
 	}
-
 	
 	if(gem < moonDrillGemCost){
 		document.getElementById("moonDrillGemCost").className = "red";
@@ -1276,7 +1240,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("moonDrillGemCost").className = "";
 	}
-
 	
 	if(oil < moonDrillOilCost){
 		document.getElementById("moonDrillOilCost").className = "red";
@@ -1284,7 +1247,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("moonDrillOilCost").className = "";
 	}
-
 	
 	if(spaceMetal < vacuumSpaceMetalCost){
 		document.getElementById("vacuumSpaceMetalCost").className = "red";
@@ -1292,7 +1254,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("vacuumSpaceMetalCost").className = "";
 	}
-
 	
 	if(gem < vacuumGemCost){
 		document.getElementById("vacuumGemCost").className = "red";
@@ -1300,7 +1261,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("vacuumGemCost").className = "";
 	}
-
 	
 	if(spaceMetal < suctionExcavatorSpaceMetalCost){
 		document.getElementById("suctionExcavatorSpaceMetalCost").className = "red";
@@ -1309,7 +1269,6 @@ function checkRedCost(){
 		document.getElementById("suctionExcavatorSpaceMetalCost").className = "";
 	}
 
-	
 	if(gem < suctionExcavatorGemCost){
 		document.getElementById("suctionExcavatorGemCost").className = "red";
 	}
@@ -1317,14 +1276,12 @@ function checkRedCost(){
 		document.getElementById("suctionExcavatorGemCost").className = "";
 	}
 
-	
 	if(oil < suctionExcavatorOilCost){
 		document.getElementById("suctionExcavatorOilCost").className = "red";
 	}
 	else{
 		document.getElementById("suctionExcavatorOilCost").className = "";
 	}
-
 	
 	if(spaceMetal < spaceMetalDrillSpaceMetalCost){
 		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "red";
@@ -1332,7 +1289,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "";
 	}
-
 	
 	if(gem < spaceMetalDrillGemCost){
 		document.getElementById("spaceMetalDrillGemCost").className = "red";
@@ -1340,7 +1296,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceMetalDrillGemCost").className = "";
 	}
-
 	
 	if(oil < spaceMetalDrillOilCost){
 		document.getElementById("spaceMetalDrillOilCost").className = "red";
@@ -1348,7 +1303,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceMetalDrillOilCost").className = "";
 	}
-
 	
 	if(spaceMetal < droidSpaceMetalCost){
 		document.getElementById("droidSpaceMetalCost").className = "red";
@@ -1356,7 +1310,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("droidSpaceMetalCost").className = "";
 	}
-
 	
 	if(methane < droidMethaneCost){
 		document.getElementById("droidMethaneCost").className = "red";
@@ -1364,7 +1317,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("droidMethaneCost").className = "";
 	}
-
 	
 	if(spaceMetal < destroyerSpaceMetalCost){
 		document.getElementById("destroyerSpaceMetalCost").className = "red";
@@ -1373,14 +1325,12 @@ function checkRedCost(){
 		document.getElementById("destroyerSpaceMetalCost").className = "";
 	}
 
-	
 	if(gem < destroyerGemCost){
 		document.getElementById("destroyerGemCost").className = "red";
 	}
 	else{
 		document.getElementById("destroyerGemCost").className = "";
 	}
-
 	
 	if(oil < destroyerOilCost){
 		document.getElementById("destroyerOilCost").className = "red";
@@ -1388,7 +1338,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("destroyerOilCost").className = "";
 	}
-
 	
 	if(spaceMetal < scoutSpaceMetalCost){
 		document.getElementById("scoutSpaceMetalCost").className = "red";
@@ -1396,7 +1345,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("scoutSpaceMetalCost").className = "";
 	}
-
 	
 	if(titanium < scoutTitaniumCost){
 		document.getElementById("scoutTitaniumCost").className = "red";
@@ -1404,7 +1352,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("scoutTitaniumCost").className = "";
 	}
-
 	
 	if(spaceMetal < spaceLaserSpaceMetalCost){
 		document.getElementById("spaceLaserSpaceMetalCost").className = "red";
@@ -1412,7 +1359,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceLaserSpaceMetalCost").className = "";
 	}
-
 	
 	if(gem < spaceLaserGemCost){
 		document.getElementById("spaceLaserGemCost").className = "red";
@@ -1420,7 +1366,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceLaserGemCost").className = "";
 	}
-
 	
 	if(oil < spaceLaserOilCost){
 		document.getElementById("spaceLaserOilCost").className = "red";
@@ -1428,7 +1373,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceLaserOilCost").className = "";
 	}
-
 	
 	if(spaceMetal < blowtorchSpaceMetalCost){
 		document.getElementById("blowtorchSpaceMetalCost").className = "red";
@@ -1436,7 +1380,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("blowtorchSpaceMetalCost").className = "";
 	}
-
 	
 	if(titanium < blowtorchTitaniumCost){
 		document.getElementById("blowtorchTitaniumCost").className = "red";
@@ -1444,7 +1387,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("blowtorchTitaniumCost").className = "";
 	}
-
 	
 	if(spaceMetal < scorcherSpaceMetalCost){
 		document.getElementById("scorcherSpaceMetalCost").className = "red";
@@ -1452,7 +1394,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("scorcherSpaceMetalCost").className = "";
 	}
-
 	
 	if(gem < scorcherGemCost){
 		document.getElementById("scorcherGemCost").className = "red";
@@ -1460,7 +1401,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("scorcherGemCost").className = "";
 	}
-
 	
 	if(oil < scorcherOilCost){
 		document.getElementById("scorcherOilCost").className = "red";
@@ -1468,7 +1408,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("scorcherOilCost").className = "";
 	}
-
 	
 	if(wood < labWoodCost){
 		document.getElementById("labWoodCost").className = "red";
@@ -1476,7 +1415,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("labWoodCost").className = "";
 	}
-
 	
 	if(gem < labGemCost){
 		document.getElementById("labGemCost").className = "red";
@@ -1484,7 +1422,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("labGemCost").className = "";
 	}
-
 	
 	if(metal < labMetalCost){
 		document.getElementById("labMetalCost").className = "red";
@@ -1499,7 +1436,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("chemicalPlantMetalCost").className = "";
 	}
-
 	
 	if(gem < chemicalPlantGemCost){
 		document.getElementById("chemicalPlantGemCost").className = "red";
@@ -1507,7 +1443,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("chemicalPlantGemCost").className = "";
 	}
-
 	
 	if(oil < chemicalPlantOilCost){
 		document.getElementById("chemicalPlantOilCost").className = "red";
@@ -1515,7 +1450,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("chemicalPlantOilCost").className = "";
 	}
-
 	
 	if(titanium < grinderTitaniumCost){
 		document.getElementById("grinderTitaniumCost").className = "red";
@@ -1523,7 +1457,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("grinderTitaniumCost").className = "";
 	}
-
 	
 	if(spaceMetal < grinderSpaceMetalCost){
 		document.getElementById("grinderSpaceMetalCost").className = "red";
@@ -1531,7 +1464,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("grinderSpaceMetalCost").className = "";
 	}
-
 	
 	if(gold < grinderGoldCost){
 		document.getElementById("grinderGoldCost").className = "red";
@@ -1539,7 +1471,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("grinderGoldCost").className = "";
 	}
-
 	
 	if(uranium < cubicUraniumCost){
 		document.getElementById("cubicUraniumCost").className = "red";
@@ -1547,7 +1478,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("cubicUraniumCost").className = "";
 	}
-
 	
 	if(spaceMetal < cubicSpaceMetalCost){
 		document.getElementById("cubicSpaceMetalCost").className = "red";
@@ -1555,7 +1485,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("cubicSpaceMetalCost").className = "";
 	}
-
 	
 	if(oil < cubicOilCost){
 		document.getElementById("cubicOilCost").className = "red";
@@ -1563,7 +1492,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("cubicOilCost").className = "";
 	}
-
 	
 	if(gem < crucibleGemCost){
 		document.getElementById("crucibleGemCost").className = "red";
@@ -1571,7 +1499,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("crucibleGemCost").className = "";
 	}
-
 	
 	if(spaceMetal < crucibleSpaceMetalCost){
 		document.getElementById("crucibleSpaceMetalCost").className = "red";
@@ -1579,7 +1506,6 @@ function checkRedCost(){
 	else{
 		document.getElementById("crucibleSpaceMetalCost").className = "";
 	}
-
 	
 	if(titanium < extractorTitaniumCost){
 		document.getElementById("extractorTitaniumCost").className = "red";
@@ -1588,7 +1514,6 @@ function checkRedCost(){
 		document.getElementById("extractorTitaniumCost").className = "";
 	}
 
-	
 	if(spaceMetal < extractorSpaceMetalCost){
 		document.getElementById("extractorSpaceMetalCost").className = "red";
 	}
@@ -1596,7 +1521,6 @@ function checkRedCost(){
 		document.getElementById("extractorSpaceMetalCost").className = "";
 	}
 
-	
 	if(silicon < extractorSiliconCost){
 		document.getElementById("extractorSiliconCost").className = "red";
 	}
