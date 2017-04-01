@@ -48,6 +48,8 @@ var cubic = 0; var cubicUraniumCost = 80; var cubicSpaceMetalCost = 10000; var c
 var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 var crucible = 0; var crucibleGemCost = 8000; var crucibleSpaceMetalCost = 4000;
 var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCost = 12000; var extractorSiliconCost = 6000;
+var collector = 0; var collectorSpaceMetalCost = 10000; var collectorTitaniumCost = 8000;
+var magnet = 0; var magnetSpaceMetalCost = 18000; var magnetTitaniumCost = 16000; var magnetGoldCost = 11000;
 
 // Variables not being saved
 
@@ -291,6 +293,13 @@ function save(type){
 		extractorSpaceMetalCost: extractorSpaceMetalCost,
 		extractorTitaniumCost: extractorTitaniumCost,
 		extractorSiliconCost: extractorSiliconCost,
+		collector: collector,
+		collectorSpaceMetalCost: collectorSpaceMetalCost,
+		collectorTitaniumCost: collectorTitaniumCost,
+		magnet: magnet,
+		magnetSpaceMetalCost: magnetSpaceMetalCost,
+		magnetTitaniumCost: magnetTitaniumCost,
+		magnetGoldCost: magnetGoldCost,
 	};
 	if(type === "local"){
 		localStorage.setItem("save",JSON.stringify(localSave));
@@ -512,6 +521,13 @@ function load(type){
 		if(typeof savegame.extractorSpaceMetalCost !== "undefined") extractorSpaceMetalCost = savegame.extractorSpaceMetalCost;
 		if(typeof savegame.extractorTitaniumCost !== "undefined") extractorTitaniumCost = savegame.extractorTitaniumCost;
 		if(typeof savegame.extractorSiliconCost !== "undefined") extractorSiliconCost = savegame.extractorSiliconCost;
+		if(typeof savegame.collector !== "undefined") collector = savegame.collector;
+		if(typeof savegame.collectorSpaceMetalCost !== "undefined") collectorSpaceMetalCost = savegame.collectorSpaceMetalCost;
+		if(typeof savegame.collectorTitaniumCost !== "undefined") collectorTitaniumCost = savegame.collectorTitaniumCost;
+		if(typeof savegame.magnet !== "undefined") magnet = savegame.magnet;
+		if(typeof savegame.magnetSpaceMetalCost !== "undefined") magnetSpaceMetalCost = savegame.magnetSpaceMetalCost;
+		if(typeof savegame.magnetTitaniumCost !== "undefined") magnetTitaniumCost = savegame.magnetTitaniumCost;
+		if(typeof savegame.magnetGoldCost !== "undefined") magnetGoldCost = savegame.magnetGoldCost;
 
 	}
 
@@ -566,6 +582,8 @@ function refresh(){
 	document.getElementById("silicon").innerHTML = commafy(silicon);
 	document.getElementById("uranium").innerHTML = commafy(uranium);
 	document.getElementById("lava").innerHTML = commafy(lava);
+	document.getElementById("hydrogen").innerHTML = commafy(hydrogen);
+	document.getElementById("helium").innerHTML = commafy(helium);
 }
 
 function refreshPerSec(){
@@ -604,6 +622,8 @@ function refreshPerSec(){
 		silverps = scout + (spaceLaser * 13);
 		siliconps = blowtorch + (scorcher * 9);
 		lavaps = crucible + (extractor*7);
+		hydrogen = collector + (magnet*5);
+		helium = drone + (tanker*11);
 	}
 	if(energy <= 10){
 		uraniumps = grinder;
@@ -619,6 +639,8 @@ function refreshPerSec(){
 		silverps = scout;
 		siliconps = blowtorch;
 		lavaps = crucible;
+		hydrogen = collector;
+		helium = drone;
 	}
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
@@ -675,6 +697,14 @@ function refreshPerSec(){
 	document.getElementById("lavaps").innerHTML = commafy(lavaps);
 	if(lava >= lavaStorage){
 		document.getElementById("lavaps").innerHTML = 0;
+	}
+	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps);
+	if(hydrogen >= hydrogenStorage){
+		document.getElementById("hydrogenps").innerHTML = 0;
+	}
+	document.getElementById("heliumps").innerHTML = commafy(heliumps);
+	if(helium >= heliumStorage){
+		document.getElementById("heliumps").innerHTML = 0;
 	}
 }
 
@@ -857,6 +887,13 @@ function refreshUI(){
 	document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
 	document.getElementById("extractorSpaceMetalCost").innerHTML = commafy(extractorSpaceMetalCost);
 	document.getElementById("extractorSiliconCost").innerHTML = commafy(extractorSiliconCost);
+	document.getElementById("collector").innerHTML = commafy(collector);
+	document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
+	document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
+	document.getElementById("magnet").innerHTML = commafy(magnet);
+	document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
+	document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
+	document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
 
 }
 
@@ -1861,6 +1898,18 @@ function gainResources(){
 	else{
 		lava = lavaStorage;
 	}
+	if(hydrogen + hydrogenps/10 < hydrogenStorage){
+		hydrogen += hydrogenps/10;
+	}
+	else{
+		hydrogen = hydrogenStorage;
+	}
+	if(helium + heliumps/10 < heliumStorage){
+		helium += heliumps/10;
+	}
+	else{
+		helium = heliumStorage;
+	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
@@ -1986,14 +2035,6 @@ function gainSilver(){
 	}
 }
 
-function gainLava(){
-	if(lava < lavaStorage){
-		lava += 1;
-		refresh();
-		handMined += 1;
-	}
-}
-
 function gainSilicon(){
 	if(silicon < siliconStorage){
 		silicon += 1;
@@ -2005,6 +2046,22 @@ function gainSilicon(){
 function gainLava(){
 	if(lava < lavaStorage){
 		lava += 1;
+		refresh();
+		handMined += 1;
+	}
+}
+
+function gainHydrogen(){
+	if(hydrogen < hydrogenStorage){
+		hydrogen += 1;
+		refresh();
+		handMined += 1;
+	}
+}
+
+function gainHelium(){
+	if(helium < heliumStorage){
+		helium += 1;
 		refresh();
 		handMined += 1;
 	}
@@ -2189,6 +2246,34 @@ function upgradeLavaStorage(){
 		document.getElementById("lavaNextStorage").innerHTML = commafy(lavaNextStorage);
 		document.getElementById("lavaStorageCost").innerHTML = commafy(lavaStorage);
 		document.getElementById("lavaStorageSpaceMetalCost").innerHTML = commafy(lavaStorage/2.5);
+	}
+}
+
+function upgradeHydrogenStorage(){
+	if(hydrogen >= hydrogenStorage && spaceMetal >= hydrogenStorage/2.5){
+		hydrogen -= hydrogenStorage;
+		spaceMetal -= hydrogenStorage/2.5;
+		hydrogenStorage = hydrogenNextStorage;
+		hydrogenNextStorage *= 2;
+		refresh();
+		document.getElementById("hydrogenStorage").innerHTML = commafy(hydrogenStorage);
+		document.getElementById("hydrogenNextStorage").innerHTML = commafy(hydrogenNextStorage);
+		document.getElementById("hydrogenStorageCost").innerHTML = commafy(hydrogenStorage);
+		document.getElementById("hydrogenStorageSpaceMetalCost").innerHTML = commafy(hydrogenStorage/2.5);
+	}
+}
+
+function upgradeHeliumStorage(){
+	if(helium >= heliumStorage && spaceMetal >= heliumStorage/2.5){
+		helium -= heliumStorage;
+		spaceMetal -= heliumStorage/2.5;
+		heliumStorage = heliumNextStorage;
+		heliumNextStorage *= 2;
+		refresh();
+		document.getElementById("heliumStorage").innerHTML = commafy(heliumStorage);
+		document.getElementById("heliumNextStorage").innerHTML = commafy(heliumNextStorage);
+		document.getElementById("heliumStorageCost").innerHTML = commafy(heliumStorage);
+		document.getElementById("heliumStorageSpaceMetalCost").innerHTML = commafy(heliumStorage/2.5);
 	}
 }
 
@@ -2735,6 +2820,41 @@ function getExtractor(){
 	}
 }
 
+function getCollector(){
+	if(spaceMetal >= collectorSpaceMetalCost && titanium >= collectorTitaniumCost){
+		spaceMetal -= collectorSpaceMetalCost;
+		titanium -= collectorTitaniumCost;
+		collector += 1;
+		collectorTitaniumCost = Math.floor(8000 * Math.pow(1.1,collector + 1));
+		collectorSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,collector + 1));
+		document.getElementById("collector").innerHTML = collector;
+		document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
+		document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
+		refresh();
+		refreshPerSec();
+		tier1 += 1;
+	}
+}
+
+function getMagnet(){
+	if(spaceMetal >= magnetSpaceMetalCost && titanium >= magnetTitaniumCost && gold >= magnetGoldCost){
+		spaceMetal -= magnetSpaceMetalCost;
+		titanium -= magnetTitaniumCost;
+		gold -= magnetGoldCost;
+		magnet += 1;
+		magnetGoldCost = Math.floor(11000 * Math.pow(1.1,magnet + 1));
+		magnetTitaniumCost = Math.floor(16000 * Math.pow(1.1,magnet + 1));
+		magnetSpaceMetalCost = Math.floor(18000 * Math.pow(1.1,magnet + 1));
+		document.getElementById("magnet").innerHTML = magnet;
+		document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
+		document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
+		document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
+		refresh();
+		refreshPerSec();
+		tier2 += 1;
+	}
+}
+
 
 // Research Tab
 
@@ -3000,6 +3120,30 @@ function exploreWonderStation(){
 		buttonsHidden.push("exploreWonderStation");
 		explored.push("wonderStation");
 		tabsUnlocked.push("wonderTab");
+	}
+}
+
+function exploreJupiter(){
+	if(rocketFuel >= 1000){
+		rocketFuel -= 1000;
+		document.getElementById("exploreJupiter").className = "hidden";
+		document.getElementById("hydrogenNav").className = "outerPlanet";
+		resourcesUnlocked.push("hydrogenNav");
+		buttonsHidden.push("exploreJupiter");
+		explored.push("jupiter");
+		refreshResources();
+	}
+}
+
+function exploreNeptune(){
+	if(rocketFuel >= 2000){
+		rocketFuel -= 2000;
+		document.getElementById("exploreNeptune").className = "hidden";
+		document.getElementById("heliumNav").className = "outerPlanet";
+		resourcesUnlocked.push("heliumNav");
+		buttonsHidden.push("exploreSaturn");
+		explored.push("saturn");
+		refreshResources();
 	}
 }
 

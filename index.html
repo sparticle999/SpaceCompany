@@ -1431,7 +1431,7 @@
 										Lava
 									</h2>
 									<span>
-										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to use and to get.
+										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.
 									</span>
 									<br>
 									<br>
@@ -1461,7 +1461,7 @@
 										Heat Resistant Crucible: <span id="crucible">0</span>
 									</h3>
 									<span>
-										You can use a modified crucible to pick up lava and to store it for later use
+										You can use a modified crucible to pick up lava and to store it for later use.
 										<br>
 										Produces 1 Lava per second.
 										<br>
@@ -1478,7 +1478,7 @@
 										Lava Extractor: <span id="extractor">0</span>
 									</h3>
 									<span>
-										This extracts lava from volcanoes automatically and quickly
+										This extracts lava from volcanoes automatically and quickly.
 										<br>
 										Produces 7 Lava per second.
 										<br>
@@ -1489,6 +1489,78 @@
 									<br>
 									<br>
 									<button onclick="getExtractor()" class="btn btn-default">Get Extractor</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="hydrogenTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Hydrogen
+									</h2>
+									<span>
+										Hydrogen is extremely common on gas giants such as Jupiter and Saturn.
+									</span>
+									<br>
+									<br>
+									<button onclick="gainHydrogen()" class="btn btn-default">Gain 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="hydrogenStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
+										<br>
+										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeHydrogenStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Hydrogen Collector: <span id="collector">0</span>
+									</h3>
+									<span>
+										This collector travels around Jupiter seeking hydrogen to store to bring back to Earth.
+										<br>
+										Produces 1 Hydrogen per second.
+										<br>
+										Costs <span id="collectorSpaceMetalCost">10000</span> Space Metal, <span id="collectorTitaniumCost">8000</span> Titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCollector()" class="btn btn-default">Get Collector</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Gaseous Magnet: <span id="magnet">0</span>
+									</h3>
+									<span>
+										The magnet attracts the hydrogen to it to increase the amount collected per second.
+										<br>
+										Produces 5 Hydrogen per second.
+										<br>
+										Uses 63 energy per second.
+										<br>
+										Costs <span id="magnetSpaceMetalCost">18000</span> Space Metal, <span id="magnetTitaniumCost">16000</span> Titanium, <span id="magnetGoldCost">11000</span> Gold.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMagnet()" class="btn btn-default">Get Magnet</button>
 								</td>
 							</tr>
 						</table>
