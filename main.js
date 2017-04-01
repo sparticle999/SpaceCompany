@@ -1611,6 +1611,36 @@ function refreshResources(){
 	for(var i=0; i<resourcesUnlocked.length; i++){
 		document.getElementById(resourcesUnlocked[i]).className = "";
 	}
+	if(contains(resourcesUnlocked, "oilNav")){
+		document.getElementById("oilNav").className = "earth";
+	}
+	if(contains(resourcesUnlocked, "charcoalNav")){
+		document.getElementById("charcoalNav").className = "earth";
+	}
+	if(contains(resourcesUnlocked, "spaceMetalNav")){
+		document.getElementById("spaceMetalNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "methaneNav")){
+		document.getElementById("methaneNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "titaniumNav")){
+		document.getElementById("titaniumNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "goldNav")){
+		document.getElementById("goldNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "silverNav")){
+		document.getElementById("silverNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "siliconNav")){
+		document.getElementById("siliconNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "uraniumNav")){
+		document.getElementById("uraniumNav").className = "space";
+	}
+	if(contains(resourcesUnlocked, "lavaNav")){
+		document.getElementById("lavaNav").className = "space";
+	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";
@@ -2620,7 +2650,7 @@ function unlockStorage(){
 function unlockBasicEnergy(){
 	if(science >= 20){
 		science -= 20;
-		document.getElementById("charcoalNav").className = "";
+		document.getElementById("charcoalNav").className = "earth";
 		document.getElementById("energyNav").className = "";
 		document.getElementById("metalNav0").style.border = "";
 		document.getElementById("metalNav1").style.border = "";
@@ -2641,6 +2671,7 @@ function unlockBasicEnergy(){
 		}
 		available.push("unlockSolar", "unlockMachines", "upgradeEngineTech");
 		researched.push("unlockBasicEnergy");
+		refreshResources();
 	}
 }
 
@@ -2648,7 +2679,7 @@ function unlockOil(){
 	if(science >= 30){
 		science -= 30;
 		document.getElementById("unlockOil").className = "hidden";
-		document.getElementById("oilNav").className = "";
+		document.getElementById("oilNav").className = "earth";
 		document.getElementById("metalNav0").style.border = "";
 		document.getElementById("metalNav1").style.border = "";
 		document.getElementById("metalNav2").style.border = "";
@@ -2657,6 +2688,7 @@ function unlockOil(){
 		resourcesUnlocked.push("oilNav");
 		noBorder.push("metalNav");
 		researched.push("unlockOil");
+		refreshResources();
 	}
 }
 
@@ -2785,10 +2817,11 @@ function exploreMoon(){
 	if(rocketFuel >= 20){
 		rocketFuel -= 20;
 		document.getElementById("exploreMoon").className = "hidden";
-		document.getElementById("spaceMetalNav").className = "";
+		document.getElementById("spaceMetalNav").className = "space";
 		resourcesUnlocked.push("spaceMetalNav");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
+		refreshResources();
 	}
 }
 
@@ -2796,11 +2829,12 @@ function exploreVenus(){
 	if(rocketFuel >= 50){
 		rocketFuel -= 50;
 		document.getElementById("exploreVenus").className = "hidden";
-		document.getElementById("methaneNav").className = "";
+		document.getElementById("methaneNav").className = "space";
 		document.getElementById("methanePower").className = "";
 		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
 		explored.push("venus");
+		refreshResources();
 	}
 }
 
@@ -2808,11 +2842,12 @@ function exploreMars(){
 	if(rocketFuel >= 80){
 		rocketFuel -= 80;
 		document.getElementById("exploreMars").className = "hidden";
-		document.getElementById("titaniumNav").className = "";
-		document.getElementById("siliconNav").className = "";
+		document.getElementById("titaniumNav").className = "space";
+		document.getElementById("siliconNav").className = "space";
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
+		refreshResources();
 	}
 }
 
@@ -2821,12 +2856,12 @@ function exploreAsteroidBelt(){
 		rocketFuel -= 200;
 		document.getElementById("exploreAsteroidBelt").className = "hidden";
 		document.getElementById("wonderStation").className = "";
-		document.getElementById("goldNav").className = "";
-		document.getElementById("silverNav").className = "";
+		document.getElementById("goldNav").className = "space";
+		document.getElementById("silverNav").className = "space";
 		resourcesUnlocked.push("goldNav", "silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
-
+		refreshResources();
 	}
 }
 
@@ -2911,10 +2946,12 @@ function activatePreciousWonder(){
 		gem -= 30000;
 		silver -= 20000;
 		gold -= 10000;
-		document.getElementById("uraniumNav").className = "";
+		document.getElementById("uraniumNav").className = "space";
 		document.getElementById("preciousActivation").innerHTML = "Activated";
+		resourcesUnlocked.push("uraniumNav");
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
+		refreshResources();
 	}
 }
 
@@ -2936,12 +2973,43 @@ function activateEnergeticWonder(){
 		wood -= 30000;
 		charcoal -= 15000;
 		uranium -= 500;
-		document.getElementById("lavaNav").className = "";
+		document.getElementById("lavaNav").className = "space";
 		document.getElementById("energeticActivation").innerHTML = "Activated";
+		resourcesUnlocked.push("lavaNav");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
 	}
 }
+
+// Collapses Earth and Space Metals
+
+$('.collapseEarth').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+        	document.getElementsByClassName("earth")[i].className = "earth";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+        	document.getElementsByClassName("earth")[i].className = "earth hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseSpace').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("space").length; i++){
+        	document.getElementsByClassName("space")[i].className = "space";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("space").length; i++){
+        	document.getElementsByClassName("space")[i].className = "space hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
 
 window.onload = function(){
 	load('local');
