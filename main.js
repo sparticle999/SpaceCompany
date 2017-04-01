@@ -2168,6 +2168,20 @@ function upgradeSiliconStorage(){
 	}
 }
 
+function upgradeLavaStorage(){
+	if(lava >= lavaStorage && spaceMetal >= lavaStorage/2.5){
+		lava -= lavaStorage;
+		spaceMetal -= lavaStorage/2.5;
+		lavaStorage = lavaNextStorage;
+		lavaNextStorage *= 2;
+		refresh();
+		document.getElementById("lavaStorage").innerHTML = commafy(lavaStorage);
+		document.getElementById("lavaNextStorage").innerHTML = commafy(lavaNextStorage);
+		document.getElementById("lavaStorageCost").innerHTML = commafy(lavaStorage);
+		document.getElementById("lavaStorageSpaceMetalCost").innerHTML = commafy(lavaStorage/2.5);
+	}
+}
+
 function getCharcoalEngine(){
 	if(metal >= charcoalEngineMetalCost && gem >= charcoalEngineGemCost){
 		metal -= charcoalEngineMetalCost;
