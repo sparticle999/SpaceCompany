@@ -2817,8 +2817,9 @@ function exploreMoon(){
 	if(rocketFuel >= 20){
 		rocketFuel -= 20;
 		document.getElementById("exploreMoon").className = "hidden";
+		document.getElementById("collapseSpace").className = "collapseSpace";
 		document.getElementById("spaceMetalNav").className = "space";
-		resourcesUnlocked.push("spaceMetalNav");
+		resourcesUnlocked.push("spaceMetalNav", "collapseSpace");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
 		refreshResources();
