@@ -1768,6 +1768,7 @@ function refreshTabs(){
  	if(rocketLaunched === true){
  		document.getElementById("spaceRocket").className = "hidden";
 		document.getElementById("moon").className = "";
+		document.getElementById("mercury").className = "";
 		document.getElementById("venus").className = "";
 		document.getElementById("mars").className = "";
 		document.getElementById("asteroidBelt").className = "";
@@ -2930,6 +2931,7 @@ function launchRocket(){
 		rocket -= 1;
 		document.getElementById("spaceRocket").className = "hidden";
 		document.getElementById("moon").className = "";
+		document.getElementById("mercury").className = "";
 		document.getElementById("venus").className = "";
 		document.getElementById("mars").className = "";
 		document.getElementById("asteroidBelt").className = "";
