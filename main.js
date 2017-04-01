@@ -2983,7 +2983,7 @@ function exploreAsteroidBelt(){
 		document.getElementById("wonderStation").className = "";
 		document.getElementById("goldNav").className = "space";
 		document.getElementById("silverNav").className = "space";
-		resourcesUnlocked.push("goldNav", "silverNav");
+		resourcesUnlocked.push("goldNav", "silverNav", "jupiter", "saturn", "uranus", "neptune", "pluto", "kuiperBelt");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
 		refreshResources();
