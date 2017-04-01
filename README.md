@@ -12,16 +12,20 @@
 
 # RoadMap
 
-v0.2.2
+v0.2.3
 - Added Meteorite
 - Added Meteorite Tier of resource machines
 
-v0.2.1
+v0.2.2
 - Added Tech Wonder
 - Added Computerized Tier of resource machines.
 - Tier 3 machines use Uranium to power themselves instead of energy.
 - When loading game, the tab you left on is the tab you now start on.
 - Added Nuclear & Magmatic Power
+
+v0.2.1
+- Fixed Bugs
+- If you do not have enough resources for something, the number will be red
 
 # Changelog:
 

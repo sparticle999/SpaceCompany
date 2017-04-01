@@ -41,8 +41,8 @@ var researchUnlocked = false; var researched = []; var available = ["unlockStora
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = [];
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
-var grinder = 0; var grinderTitaniumCost = 0; var grinderSpaceMetalCost = 0; var grinderGoldCost = 0;
-var cubic = 0; var cubicUraniumCost = 0; var cubicSpaceMetalCost = 0; var cubicOilCost = 0;
+var grinder = 0; var grinderTitaniumCost = 2000; var grinderSpaceMetalCost = 4000; var grinderGoldCost = 2000;
+var cubic = 0; var cubicUraniumCost = 40; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
 var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 var crucible = 0; var crucibleGemCost = 6000; var crucibleSpaceMetalCost = 4000;
 var extractor = 0; var extractorSpaceMetalCost = 12000; var extractorTitaniumCost = 4000; var extractorSiliconCost = 1000;
@@ -65,12 +65,12 @@ function autosave(){
 		}
 	}
 
-	if(saveTimer >= document.getElementById("sliderValue").innerHTML * 600){
+	if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 600){
 		save();
 		saveTimer = 0;
 	}
 	else{
-		secondsLeft = commafy(((document.getElementById("sliderValue").innerHTML * 600) - saveTimer)/10);
+		secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 600) - saveTimer)/10);
 		if(saveTimer < 10){
 			document.getElementById("autoSaveTimer").innerHTML = "Saved";
 		}
@@ -827,6 +827,786 @@ function refreshUI(){
 
 }
 
+function checkRedCost(){
+	if(uranium < uraniumStorageCost){
+		document.getElementById("uraniumStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("uraniumStorageCost").className = "";
+	}
+
+	if(spaceMetal < uraniumStorageSpaceMetalCost){
+		document.getElementById("uraniumStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("uraniumStorageSpaceMetalCost").className = "";
+	}
+	
+	if(oil < oilStorageCost){
+		document.getElementById("oilStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("oilStorageCost").className = "";
+	}
+	
+	if(metal < oilStorageMetalCost){
+		document.getElementById("oilStorageMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("oilStorageMetalCost").className = "";
+	}
+	
+	if(metal < metalStorageCost){
+		document.getElementById("metalStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("metalStorageCost").className = "";
+	}
+	
+	if(gem < gemStorageCost){
+		document.getElementById("gemStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("gemStorageCost").className = "";
+	}
+	
+	if(metal < gemStorageMetalCost){
+		document.getElementById("gemStorageMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("gemStorageMetalCost").className = "";
+	}
+
+	
+	if(charcoal < charcoalStorageCost){
+		document.getElementById("charcoalStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("charcoalStorageCost").className = "";
+	}
+	
+	if(metal < charcoalStorageMetalCost){
+		document.getElementById("charcoalStorageMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("charcoalStorageMetalCost").className = "";
+	}
+
+	if(wood < woodStorageCost){
+		document.getElementById("woodStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("woodStorageCost").className = "";
+	}
+
+	if(metal < woodStorageMetalCost){
+		document.getElementById("woodStorageMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("woodStorageMetalCost").className = "";
+	}
+
+	
+	if(spaceMetal < spaceMetalStorageCost){
+		document.getElementById("spaceMetalStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceMetalStorageCost").className = "";
+	}
+
+	if(metal < spaceMetalStorageMetalCost){
+		document.getElementById("spaceMetalStorageMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceMetalStorageMetalCost").className = "";
+	}
+
+	if(methane < methaneStorageCost){
+		document.getElementById("methaneStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("methaneStorageCost").className = "";
+	}
+
+	if(spaceMetal < methaneStorageSpaceMetalCost){
+		document.getElementById("methaneStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("methaneStorageSpaceMetalCost").className = "";
+	}
+
+	
+	if(titanium < titaniumStorageCost){
+		document.getElementById("titaniumStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("titaniumStorageCost").className = "";
+	}
+
+	if(spaceMetal < titaniumStorageSpaceMetalCost){
+		document.getElementById("titaniumStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("titaniumStorageSpaceMetalCost").className = "";
+	}
+
+	
+	if(gold < goldStorageCost){
+		document.getElementById("goldStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("goldStorageCost").className = "";
+	}
+
+	if(spaceMetal < goldStorageSpaceMetalCost){
+		document.getElementById("goldStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("goldStorageSpaceMetalCost").className = "";
+	}
+
+	
+	if(silver < silverStorageCost){
+		document.getElementById("silverStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("silverStorageCost").className = "";
+	}
+
+	if(spaceMetal < silverStorageSpaceMetalCost){
+		document.getElementById("silverStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("silverStorageSpaceMetalCost").className = "";
+	}
+	
+	if(silicon < siliconStorageCost){
+		document.getElementById("siliconStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("siliconStorageCost").className = "";
+	}
+
+	if(spaceMetal < siliconStorageSpaceMetalCost){
+		document.getElementById("siliconStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("siliconStorageSpaceMetalCost").className = "";
+	}
+
+	
+	if(lava < lavaStorageCost){
+		document.getElementById("lavaStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("lavaStorageCost").className = "";
+	}
+
+	
+	if(spaceMetal < lavaStorageSpaceMetalCost){
+		document.getElementById("lavaStorageSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("lavaStorageSpaceMetalCost").className = "";
+	}
+
+	if(metal < charcoalEngineMetalCost){
+		document.getElementById("charcoalEngineMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("charcoalEngineMetalCost").className = "";
+	}
+
+	
+	if(gem < charcoalEngineGemCost){
+		document.getElementById("charcoalEngineGemCost").className = "red";
+	}
+	else{
+		document.getElementById("charcoalEngineGemCost").className = "";
+	}
+
+	if(metal < solarPanelMetalCost){
+		document.getElementById("solarPanelMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("solarPanelMetalCost").className = "";
+	}
+
+	
+	if(gem < solarPanelGemCost){
+		document.getElementById("solarPanelGemCost").className = "red";
+	}
+	else{
+		document.getElementById("solarPanelGemCost").className = "";
+	}
+
+	if(spaceMetal < methaneStationSpaceMetalCost){
+		document.getElementById("methaneStationSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("methaneStationSpaceMetalCost").className = "";
+	}
+
+	
+	if(titanium < methaneStationTitaniumCost){
+		document.getElementById("methaneStationTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("methaneStationTitaniumCost").className = "";
+	}
+
+	
+	if(metal < pumpMetalCost){
+		document.getElementById("pumpMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("pumpMetalCost").className = "";
+	}
+
+	
+	if(gem < pumpGemCost){
+		document.getElementById("pumpGemCost").className = "red";
+	}
+	else{
+		document.getElementById("pumpGemCost").className = "";
+	}
+
+	if(oil < pumpjackOilCost){
+		document.getElementById("pumpjackOilCost").className = "red";
+	}
+	else{
+		document.getElementById("pumpjackOilCost").className = "";
+	}
+
+	
+	if(gem < pumpjackGemCost){
+		document.getElementById("pumpjackGemCost").className = "red";
+	}
+	else{
+		document.getElementById("pumpjackGemCost").className = "";
+	}
+
+	
+	if(metal < pumpjackMetalCost){
+		document.getElementById("pumpjackMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("pumpjackMetalCost").className = "";
+	}
+
+	
+	if(metal < minerMetalCost){
+		document.getElementById("minerMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("minerMetalCost").className = "";
+	}
+
+	
+	if(wood < minerWoodCost){
+		document.getElementById("minerWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("minerWoodCost").className = "";
+	}
+
+	
+	if(metal < heavyDrillMetalCost){
+		document.getElementById("heavyDrillMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("heavyDrillMetalCost").className = "";
+	}
+
+	
+	if(gem < heavyDrillGemCost){
+		document.getElementById("heavyDrillGemCost").className = "red";
+	}
+	else{
+		document.getElementById("heavyDrillGemCost").className = "";
+	}
+
+	
+	if(oil < heavyDrillOilCost){
+		document.getElementById("heavyDrillOilCost").className = "red";
+	}
+	else{
+		document.getElementById("heavyDrillOilCost").className = "";
+	}
+
+	
+	if(metal < gemMinerMetalCost){
+		document.getElementById("gemMinerMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("gemMinerMetalCost").className = "";
+	}
+
+	
+	if(gem < gemMinerGemCost){
+		document.getElementById("gemMinerGemCost").className = "red";
+	}
+	else{
+		document.getElementById("gemMinerGemCost").className = "";
+	}
+
+	
+	if(metal < advancedDrillMetalCost){
+		document.getElementById("advancedDrillMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("advancedDrillMetalCost").className = "";
+	}
+
+	
+	if(gem < advancedDrillGemCost){
+		document.getElementById("advancedDrillGemCost").className = "red";
+	}
+	else{
+		document.getElementById("advancedDrillGemCost").className = "";
+	}
+
+	
+	if(oil < advancedDrillOilCost){
+		document.getElementById("advancedDrillOilCost").className = "red";
+	}
+	else{
+		document.getElementById("advancedDrillOilCost").className = "";
+	}
+
+	
+	if(metal < woodburnerMetalCost){
+		document.getElementById("woodburnerMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("woodburnerMetalCost").className = "";
+	}
+
+	
+	if(wood < woodburnerWoodCost){
+		document.getElementById("woodburnerWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("woodburnerWoodCost").className = "";
+	}
+
+	
+	if(metal < furnaceMetalCost){
+		document.getElementById("furnaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("furnaceMetalCost").className = "";
+	}
+
+	
+	if(wood < furnaceWoodCost){
+		document.getElementById("furnaceWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("furnaceWoodCost").className = "";
+	}
+
+	
+	if(oil < furnaceOilCost){
+		document.getElementById("furnaceOilCost").className = "red";
+	}
+	else{
+		document.getElementById("furnaceOilCost").className = "";
+	}
+
+	
+	if(metal < woodcutterMetalCost){
+		document.getElementById("woodcutterMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("woodcutterMetalCost").className = "";
+	}
+
+	
+	if(wood < woodcutterWoodCost){
+		document.getElementById("woodcutterWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("woodcutterWoodCost").className = "";
+	}
+
+	
+	if(metal < laserCutterMetalCost){
+		document.getElementById("laserCutterMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("laserCutterMetalCost").className = "";
+	}
+
+	
+	if(gem < laserCutterGemCost){
+		document.getElementById("laserCutterGemCost").className = "red";
+	}
+	else{
+		document.getElementById("laserCutterGemCost").className = "";
+	}
+
+	
+	if(oil < laserCutterOilCost){
+		document.getElementById("laserCutterOilCost").className = "red";
+	}
+	else{
+		document.getElementById("laserCutterOilCost").className = "";
+	}
+
+	if(gem < moonWorkerGemCost){
+		document.getElementById("moonWorkerGemCost").className = "red";
+	}
+	else{
+		document.getElementById("moonWorkerGemCost").className = "";
+	}
+
+	
+	if(metal < moonDrillMetalCost){
+		document.getElementById("moonDrillMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("moonDrillMetalCost").className = "";
+	}
+
+	
+	if(gem < moonDrillGemCost){
+		document.getElementById("moonDrillGemCost").className = "red";
+	}
+	else{
+		document.getElementById("moonDrillGemCost").className = "";
+	}
+
+	
+	if(oil < moonDrillOilCost){
+		document.getElementById("moonDrillOilCost").className = "red";
+	}
+	else{
+		document.getElementById("moonDrillOilCost").className = "";
+	}
+
+	
+	if(spaceMetal < vacuumSpaceMetalCost){
+		document.getElementById("vacuumSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("vacuumSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < vacuumGemCost){
+		document.getElementById("vacuumGemCost").className = "red";
+	}
+	else{
+		document.getElementById("vacuumGemCost").className = "";
+	}
+
+	
+	if(spaceMetal < suctionExcavatorSpaceMetalCost){
+		document.getElementById("suctionExcavatorSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("suctionExcavatorSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < suctionExcavatorGemCost){
+		document.getElementById("suctionExcavatorGemCost").className = "red";
+	}
+	else{
+		document.getElementById("suctionExcavatorGemCost").className = "";
+	}
+
+	
+	if(oil < suctionExcavatorOilCost){
+		document.getElementById("suctionExcavatorOilCost").className = "red";
+	}
+	else{
+		document.getElementById("suctionExcavatorOilCost").className = "";
+	}
+
+	
+	if(spaceMetal < spaceMetalDrillSpaceMetalCost){
+		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < spaceMetalDrillGemCost){
+		document.getElementById("spaceMetalDrillGemCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceMetalDrillGemCost").className = "";
+	}
+
+	
+	if(oil < spaceMetalDrillOilCost){
+		document.getElementById("spaceMetalDrillOilCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceMetalDrillOilCost").className = "";
+	}
+
+	
+	if(spaceMetal < droidSpaceMetalCost){
+		document.getElementById("droidSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("droidSpaceMetalCost").className = "";
+	}
+
+	
+	if(methane < droidMethaneCost){
+		document.getElementById("droidMethaneCost").className = "red";
+	}
+	else{
+		document.getElementById("droidMethaneCost").className = "";
+	}
+
+	
+	if(spaceMetal < destroyerSpaceMetalCost){
+		document.getElementById("destroyerSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("destroyerSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < destroyerGemCost){
+		document.getElementById("destroyerGemCost").className = "red";
+	}
+	else{
+		document.getElementById("destroyerGemCost").className = "";
+	}
+
+	
+	if(oil < destroyerOilCost){
+		document.getElementById("destroyerOilCost").className = "red";
+	}
+	else{
+		document.getElementById("destroyerOilCost").className = "";
+	}
+
+	
+	if(spaceMetal < scoutSpaceMetalCost){
+		document.getElementById("scoutSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("scoutSpaceMetalCost").className = "";
+	}
+
+	
+	if(titanium < scoutTitaniumCost){
+		document.getElementById("scoutTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("scoutTitaniumCost").className = "";
+	}
+
+	
+	if(spaceMetal < spaceLaserSpaceMetalCost){
+		document.getElementById("spaceLaserSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceLaserSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < spaceLaserGemCost){
+		document.getElementById("spaceLaserGemCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceLaserGemCost").className = "";
+	}
+
+	
+	if(oil < spaceLaserOilCost){
+		document.getElementById("spaceLaserOilCost").className = "red";
+	}
+	else{
+		document.getElementById("spaceLaserOilCost").className = "";
+	}
+
+	
+	if(spaceMetal < blowtorchSpaceMetalCost){
+		document.getElementById("blowtorchSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("blowtorchSpaceMetalCost").className = "";
+	}
+
+	
+	if(titanium < blowtorchTitaniumCost){
+		document.getElementById("blowtorchTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("blowtorchTitaniumCost").className = "";
+	}
+
+	
+	if(spaceMetal < scorcherSpaceMetalCost){
+		document.getElementById("scorcherSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("scorcherSpaceMetalCost").className = "";
+	}
+
+	
+	if(gem < scorcherGemCost){
+		document.getElementById("scorcherGemCost").className = "red";
+	}
+	else{
+		document.getElementById("scorcherGemCost").className = "";
+	}
+
+	
+	if(oil < scorcherOilCost){
+		document.getElementById("scorcherOilCost").className = "red";
+	}
+	else{
+		document.getElementById("scorcherOilCost").className = "";
+	}
+
+	
+	if(wood < labWoodCost){
+		document.getElementById("labWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("labWoodCost").className = "";
+	}
+
+	
+	if(gem < labGemCost){
+		document.getElementById("labGemCost").className = "red";
+	}
+	else{
+		document.getElementById("labGemCost").className = "";
+	}
+
+	
+	if(metal < labMetalCost){
+		document.getElementById("labMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("labMetalCost").className = "";
+	}
+
+	if(metal < chemicalPlantMetalCost){
+		document.getElementById("chemicalPlantMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("chemicalPlantMetalCost").className = "";
+	}
+
+	
+	if(gem < chemicalPlantGemCost){
+		document.getElementById("chemicalPlantGemCost").className = "red";
+	}
+	else{
+		document.getElementById("chemicalPlantGemCost").className = "";
+	}
+
+	
+	if(oil < chemicalPlantOilCost){
+		document.getElementById("chemicalPlantOilCost").className = "red";
+	}
+	else{
+		document.getElementById("chemicalPlantOilCost").className = "";
+	}
+
+	
+	if(titanium < grinderTitaniumCost){
+		document.getElementById("grinderTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("grinderTitaniumCost").className = "";
+	}
+
+	
+	if(spaceMetal < grinderSpaceMetalCost){
+		document.getElementById("grinderSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("grinderSpaceMetalCost").className = "";
+	}
+
+	
+	if(gold < grinderGoldCost){
+		document.getElementById("grinderGoldCost").className = "red";
+	}
+	else{
+		document.getElementById("grinderGoldCost").className = "";
+	}
+
+	
+	if(uranium < cubicUraniumCost){
+		document.getElementById("cubicUraniumCost").className = "red";
+	}
+	else{
+		document.getElementById("cubicUraniumCost").className = "";
+	}
+
+	
+	if(spaceMetal < cubicSpaceMetalCost){
+		document.getElementById("cubicSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("cubicSpaceMetalCost").className = "";
+	}
+
+	
+	if(oil < cubicOilCost){
+		document.getElementById("cubicOilCost").className = "red";
+	}
+	else{
+		document.getElementById("cubicOilCost").className = "";
+	}
+
+	
+	if(gem < crucibleGemCost){
+		document.getElementById("crucibleGemCost").className = "red";
+	}
+	else{
+		document.getElementById("crucibleGemCost").className = "";
+	}
+
+	
+	if(spaceMetal < crucibleSpaceMetalCost){
+		document.getElementById("crucibleSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("crucibleSpaceMetalCost").className = "";
+	}
+
+	
+	if(titanium < extractorTitaniumCost){
+		document.getElementById("extractorTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("extractorTitaniumCost").className = "";
+	}
+
+	
+	if(spaceMetal < extractorSpaceMetalCost){
+		document.getElementById("extractorSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("extractorSpaceMetalCost").className = "";
+	}
+
+	
+	if(silicon < extractorSiliconCost){
+		document.getElementById("extractorSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("extractorSiliconCost").className = "";
+	}
+
+}
+
+
 function refreshResources(){
 	for(var i=0; i<resourcesUnlocked.length; i++){
 		document.getElementById(resourcesUnlocked[i]).className = "";
@@ -1125,6 +1905,20 @@ function gainLava(){
 }
 
 // Resources Tab
+
+function upgradeUraniumStorage(){
+	if(uranium >= uraniumStorage && spaceMetal >= uraniumStorage/2.5){
+		uranium -= uraniumStorage;
+		spaceMetal -= uraniumStorage/2.5;
+		uraniumStorage = uraniumNextStorage;
+		uraniumNextStorage *= 2;
+		refresh();
+		document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
+		document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
+		document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
+		document.getElementById("uraniumStorageMetalCost").innerHTML = commafy(uraniumStorage/2.5);
+	}
+}
 
 function upgradeOilStorage(){
 	if(oil >= oilStorage && metal >= oilStorage/2.5){
@@ -2172,4 +2966,5 @@ window.setInterval(function(){
 	refresh();
 	autosave();
 	refreshWonderBars();
+	checkRedCost();
 },100);
