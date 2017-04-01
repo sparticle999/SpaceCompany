@@ -2270,7 +2270,7 @@ function getMagmatic(){
 		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
 		refresh();
 		refreshPerSec();
-		tier4 += 1;
+		tier5 += 1;
 	}
 }
 
