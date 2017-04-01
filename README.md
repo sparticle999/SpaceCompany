@@ -19,15 +19,16 @@ v0.2.3
 v0.2.2
 - Added Tech Wonder
 - Added Computerized Tier of resource machines.
-- Tier 3 machines use Uranium to power themselves instead of energy.
-- When loading game, the tab you left on is the tab you now start on.
+- Tier 3 machines use Uranium to power themselves instead of energy
+- When loading game, the tab you left on is the tab you now start on
 - Added Nuclear & Magmatic Power
+
+# Changelog:
 
 v0.2.1
 - Fixed Bugs
 - If you do not have enough resources for something, the number will be red
-
-# Changelog:
+- You can collapse resources into earth and space categories
 
 v0.2.0 The Wondrous Update [Released To The Public]
 - Added Wonder Tab
