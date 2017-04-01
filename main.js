@@ -2,9 +2,11 @@
 
 var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0;
 var energy = 0; var energyps = 0;
-var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 1;
-var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 0.5;
+var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
+var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 1.5;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 50; var methaneStationTitaniumCost = 40;
+var nuclearStation = 0; var nuclearStationSpaceMetalCost = 20000; var nuclearStationTitaniumCost = 10000;
+var magmatic = 0; var magmaticSpaceMetalCost = 25000; var magmaticGemCost = 20000; var magmaticSilverCost = 15000;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
@@ -42,10 +44,18 @@ var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocket
 var activated = [];
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var grinder = 0; var grinderTitaniumCost = 2000; var grinderSpaceMetalCost = 4000; var grinderGoldCost = 2000;
-var cubic = 0; var cubicUraniumCost = 40; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
+var cubic = 0; var cubicUraniumCost = 80; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
 var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
-var crucible = 0; var crucibleGemCost = 6000; var crucibleSpaceMetalCost = 4000;
-var extractor = 0; var extractorSpaceMetalCost = 12000; var extractorTitaniumCost = 4000; var extractorSiliconCost = 1000;
+var crucible = 0; var crucibleGemCost = 8000; var crucibleSpaceMetalCost = 4000;
+var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCost = 12000; var extractorSiliconCost = 6000;
+
+// Variables not being saved
+
+var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost = 5000;
+var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;
+var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticUraniumCost = 200;
+var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
+var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 
 function autosave(){
 	if(saved === true){
@@ -105,6 +115,9 @@ function save(type){
 		methaneStation: methaneStation,
 		methaneStationSpaceMetalCost: methaneStationSpaceMetalCost,
 		methaneStationTitaniumCost: methaneStationTitaniumCost,
+		nuclearStation: nuclearStation,
+		nuclearStationSpaceMetalCost: nuclearStationSpaceMetalCost,
+		nuclearStationTitaniumCost: nuclearStationTitaniumCost,
 		oil: oil,
 		oilStorage: oilStorage,
 		oilNextStorage: oilNextStorage,
@@ -287,6 +300,7 @@ function save(type){
 	}
 	document.getElementById("saveButton").className = "btn btn-primary disabled";
 	saved = true;
+	console.log("Save Successful");
 }
 
 function load(type){
@@ -320,6 +334,9 @@ function load(type){
 		if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;
 		if(typeof savegame.methaneStationSpaceMetalCost !== "undefined") methaneStationSpaceMetalCost = savegame.methaneStationSpaceMetalCost;
 		if(typeof savegame.methaneStationTitaniumCost !== "undefined") methaneStationTitaniumCost = savegame.methaneStationTitaniumCost;
+		if(typeof savegame.nuclearStation !== "undefined") nuclearStation = savegame.nuclearStation;
+		if(typeof savegame.nuclearStationSpaceMetalCost !== "undefined") nuclearStationSpaceMetalCost = savegame.nuclearStationSpaceMetalCost;
+		if(typeof savegame.nuclearStationTitaniumCost !== "undefined") nuclearStationTitaniumCost = savegame.nuclearStationTitaniumCost;
 		if(typeof savegame.oil !== "undefined") oil = savegame.oil;
 		if(typeof savegame.oilStorage !== "undefined") oilStorage = savegame.oilStorage;
 		if(typeof savegame.oilNextStorage !== "undefined") oilNextStorage = savegame.oilNextStorage;
@@ -478,16 +495,16 @@ function load(type){
 		if(typeof savegame.grinderSpaceMetalCost !== "undefined") grinderSpaceMetalCost = savegame.grinderSpaceMetalCost;
 		if(typeof savegame.grinderGoldCost !== "undefined") grinderGoldCost = savegame.grinderGoldCost;
 		if(typeof savegame.cubic !== "undefined") cubic = savegame.cubic;
-		if(typeof savegame.cubicUraniumCost !== "undefined") cubic = savegame.cubicUraniumCost;
-		if(typeof savegame.cubicSpaceMetalCost !== "undefined") cubic = savegame.cubicSpaceMetalCost;
-		if(typeof savegame.cubicOilCost !== "undefined") cubic = savegame.cubicOilCost;
-		if(typeof savegame.crucible !== "undefined") cubic = savegame.crucible;
-		if(typeof savegame.crucibleGemCost !== "undefined") cubic = savegame.crucibleGemCost;
-		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") cubic = savegame.crucibleSpaceMetalCost;
-		if(typeof savegame.extractor !== "undefined") cubic = savegame.extractor;
-		if(typeof savegame.extractorSpaceMetalCost !== "undefined") cubic = savegame.extractorSpaceMetalCost;
-		if(typeof savegame.extractorTitaniumCost !== "undefined") cubic = savegame.extractorTitaniumCost;
-		if(typeof savegame.extractorSiliconCost !== "undefined") cubic = savegame.extractorSiliconCost;
+		if(typeof savegame.cubicUraniumCost !== "undefined") cubicUraniumCost = savegame.cubicUraniumCost;
+		if(typeof savegame.cubicSpaceMetalCost !== "undefined") cubicSpaceMetalCost = savegame.cubicSpaceMetalCost;
+		if(typeof savegame.cubicOilCost !== "undefined") cubicOilCost = savegame.cubicOilCost;
+		if(typeof savegame.crucible !== "undefined") crucible = savegame.crucible;
+		if(typeof savegame.crucibleGemCost !== "undefined") crucibleGemCost = savegame.crucibleGemCost;
+		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleSpaceMetalCost = savegame.crucibleSpaceMetalCost;
+		if(typeof savegame.extractor !== "undefined") extractor = savegame.extractor;
+		if(typeof savegame.extractorSpaceMetalCost !== "undefined") extractorSpaceMetalCost = savegame.extractorSpaceMetalCost;
+		if(typeof savegame.extractorTitaniumCost !== "undefined") extractorTitaniumCost = savegame.extractorTitaniumCost;
+		if(typeof savegame.extractorSiliconCost !== "undefined") extractorSiliconCost = savegame.extractorSiliconCost;
 
 	}
 
@@ -499,6 +516,8 @@ function load(type){
 
 	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
+	console.log("Load Successful");
+
 }
 
 function deleteSave(){
@@ -543,7 +562,7 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16);
+	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16)+(nuclearStation*82)+(magmatic*96);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -556,7 +575,9 @@ function refreshPerSec(){
 	else{
 		energyInput -= methaneStation*16;
 	}
-	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4)+(moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
+	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+	energyOutput += (cubic*40)+(extractor*58)
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -720,6 +741,9 @@ function refreshUI(){
 	document.getElementById("methaneStation").innerHTML = methaneStation;
 	document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 	document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
+	document.getElementById("nuclearStation").innerHTML = nuclearStation;
+	document.getElementById("nuclearStationSpaceMetalCost").innerHTML = nuclearStationSpaceMetalCost;
+	document.getElementById("nuclearStationTitaniumCost").innerHTML = nuclearStationTitaniumCost;
 	document.getElementById("pump").innerHTML = pump;
 	document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
 	document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
@@ -1044,7 +1068,42 @@ function checkRedCost(){
 	else{
 		document.getElementById("methaneStationTitaniumCost").className = "";
 	}
+
+	if(spaceMetal < nuclearStationSpaceMetalCost){
+		document.getElementById("nuclearStationSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("nuclearStationSpaceMetalCost").className = "";
+	}
+
+	if(titanium < nuclearStationTitaniumCost){
+		document.getElementById("nuclearStationTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("nuclearStationTitaniumCost").className = "";
+	}
 	
+	if(spaceMetal < magmaticSpaceMetalCost){
+		document.getElementById("magmaticSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("magmaticSpaceMetalCost").className = "";
+	}
+
+	if(gem < magmaticGemCost){
+		document.getElementById("magmaticGemCost").className = "red";
+	}
+	else{
+		document.getElementById("magmaticGemCost").className = "";
+	}
+
+	if(silver < magmaticSilverCost){
+		document.getElementById("magmaticSilverCost").className = "red";
+	}
+	else{
+		document.getElementById("magmaticSilverCost").className = "";
+	}
+
 	if(metal < pumpMetalCost){
 		document.getElementById("pumpMetalCost").className = "red";
 	}
@@ -1528,6 +1587,89 @@ function checkRedCost(){
 		document.getElementById("extractorSiliconCost").className = "";
 	}
 
+	if(gem < preciousGemCost){
+		document.getElementById("preciousGemCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousGemCost").className = "";
+	}
+
+	if(silver < preciousSilverCost){
+		document.getElementById("preciousSilverCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousSilverCost").className = "";
+	}
+
+	if(gold < preciousGoldCost){
+		document.getElementById("preciousGoldCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousGoldCost").className = "";
+	}
+
+	if(gem < preciousActivateGemCost){
+		document.getElementById("preciousActivateGemCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousActivateGemCost").className = "";
+	}
+
+	if(silver < preciousActivateSilverCost){
+		document.getElementById("preciousActivateSilverCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousActivateSilverCost").className = "";
+	}
+
+	if(gold < preciousActivateGoldCost){
+		document.getElementById("preciousActivateGoldCost").className = "red";
+	}
+	else{
+		document.getElementById("preciousActivateGoldCost").className = "";
+	}
+
+	if(wood < energeticWoodCost){
+		document.getElementById("energeticWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticWoodCost").className = "";
+	}
+
+	if(charcoal < energeticCharcoalCost){
+		document.getElementById("energeticCharcoalCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticCharcoalCost").className = "";
+	}
+
+	if(uranium < energeticUraniumCost){
+		document.getElementById("energeticUraniumCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticUraniumCost").className = "";
+	}
+
+	if(wood < energeticActivateWoodCost){
+		document.getElementById("energeticActivateWoodCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticActivateWoodCost").className = "";
+	}
+
+	if(charcoal < energeticActivateCharcoalCost){
+		document.getElementById("energeticActivateCharcoalCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticActivateCharcoalCost").className = "";
+	}
+
+	if(uranium < energeticActivateUraniumCost){
+		document.getElementById("energeticActivateUraniumCost").className = "red";
+	}
+	else{
+		document.getElementById("energeticActivateUraniumCost").className = "";
+	}
 }
 
 
@@ -1870,7 +2012,7 @@ function upgradeUraniumStorage(){
 		document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 		document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 		document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
-		document.getElementById("uraniumStorageMetalCost").innerHTML = commafy(uraniumStorage/2.5);
+		document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = commafy(uraniumStorage/2.5);
 	}
 }
 
@@ -2074,6 +2216,22 @@ function getMethaneStation(){
 	}
 }
 
+function getNuclearStation(){
+	if(spaceMetal >= nuclearStationSpaceMetalCost && titanium >= nuclearStationTitaniumCost){
+		spaceMetal -= nuclearStationSpaceMetalCost;
+		titanium -= nuclearStationTitaniumCost;
+		nuclearStation += 1
+		nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation + 1));
+		nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation + 1));
+		document.getElementById("nuclearStation").innerHTML = nuclearStation;
+		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
+		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
+		refresh();
+		refreshPerSec();
+		tier4 += 1;
+	}
+}
+
 function getGrinder(){
 	if(titanium >= grinderTitaniumCost && spaceMetal >= grinderSpaceMetalCost && gold >= grinderGoldCost){
 		titanium -= grinderTitaniumCost;
@@ -2099,7 +2257,7 @@ function getCubic(){
 		spaceMetal -= cubicSpaceMetalCost;
 		oil -= cubicOilCost;
 		cubic += 1;
-		cubicUraniumCost = Math.floor(40 * Math.pow(1.1,cubic + 1));
+		cubicUraniumCost = Math.floor(80 * Math.pow(1.1,cubic + 1));
 		cubicSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,cubic + 1));
 		cubicOilCost = Math.floor(10000 * Math.pow(1.1,cubic + 1))
 		document.getElementById("cubic").innerHTML = cubic;
@@ -2504,7 +2662,7 @@ function getCrucible(){
 		spaceMetal -= crucibleSpaceMetalCost;
 		gem -= crucibleGemCost;
 		crucible += 1;
-		crucibleGemCost = Math.floor(6000 * Math.pow(1.1,crucible + 1));
+		crucibleGemCost = Math.floor(7000 * Math.pow(1.1,crucible + 1));
 		crucibleSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,crucible + 1));
 		document.getElementById("crucible").innerHTML = crucible;
 		document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);
@@ -2521,9 +2679,9 @@ function getExtractor(){
 		titanium -= extractorTitaniumCost;
 		silicon -= extractorSiliconCost;
 		extractor += 1;
-		extractorSiliconCost = Math.floor(1000 * Math.pow(1.1,extractor + 1));
-		extractorTitaniumCost = Math.floor(4000 * Math.pow(1.1,extractor + 1));
-		extractorSpaceMetalCost = Math.floor(12000 * Math.pow(1.1,extractor + 1));
+		extractorSiliconCost = Math.floor(6000 * Math.pow(1.1,extractor + 1));
+		extractorTitaniumCost = Math.floor(12000 * Math.pow(1.1,extractor + 1));
+		extractorSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,extractor + 1));
 		document.getElementById("extractor").innerHTML = extractor;
 		document.getElementById("extractorSpaceMetalCost").innerHTML = commafy(extractorSpaceMetalCost);
 		document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
@@ -2677,7 +2835,7 @@ function upgradeEngineTech(){
 	if(science >= 1000){
 		science -= 1000;
 		document.getElementById("upgradeEngineTech").className = "hidden";
-		charcoalEngineOutput = 2;
+		charcoalEngineOutput = 4;
 		document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
 		researched.push("upgradeEngineTech");
 	}
@@ -2871,6 +3029,7 @@ function activatePreciousWonder(){
 		gem -= 30000;
 		silver -= 20000;
 		gold -= 10000;
+		document.getElementById("activatePreciousWonder").className = "hidden";
 		document.getElementById("uraniumNav").className = "space";
 		document.getElementById("preciousActivation").innerHTML = "Activated";
 		resourcesUnlocked.push("uraniumNav");
@@ -2898,6 +3057,7 @@ function activateEnergeticWonder(){
 		wood -= 30000;
 		charcoal -= 15000;
 		uranium -= 500;
+		document.getElementById("activateEnergeticWonder").className = "hidden";
 		document.getElementById("lavaNav").className = "space";
 		document.getElementById("energeticActivation").innerHTML = "Activated";
 		resourcesUnlocked.push("lavaNav");
@@ -2939,14 +3099,6 @@ $('.collapseSpace').click(function(){
 window.onload = function(){
 	load('local');
 };
-
-var timer = 0;
-var timer2 = 0;
-var statsTimer = 0;
-var saveTimer = 10;
-var secondsLeft = 0;
-var saved = false;
-var loaded = false;
 
 window.setInterval(function(){
 	if(statsTimer >= 11){

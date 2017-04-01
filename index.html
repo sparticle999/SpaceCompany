@@ -433,7 +433,7 @@
 									<span>
 										Burns charcoal to produce a steady source of energy.
 										<br>
-										Each engine produces <span id="charcoalEngineOutput">1</span> energy and uses 1 charcoal per second.
+										Each engine produces <span id="charcoalEngineOutput">2</span> energy and uses 1 charcoal per second.
 										<br>
 										Costs <span id="charcoalEngineMetalCost">50</span> Metal, <span id="charcoalEngineGemCost">25</span> Gems.
 									</span>
@@ -450,7 +450,7 @@
 									<span>
 										Gains energy slowly from the sun without using any resources.
 										<br>
-										Each Solar Panel produces <span id="solarPanelOutput">0.5</span> energy per second.
+										Each Solar Panel produces <span id="solarPanelOutput">1.5</span> energy per second.
 										<br>
 										Costs <span id="solarPanelMetalCost">30</span> Metal, <span id="solarPanelGemCost">35</span> Gems.
 									</span>
@@ -484,9 +484,26 @@
 									<span>
 										Uses fission to create large amounts of power.
 										<br>
-										Each Power Station produces 25 energy and uses 7 uranium per second.
+										Each Power Station produces 82 energy and uses 7 uranium per second.
 										<br>
-										Costs <span id="nuclearStationSpaceMetalCost">XXXX</span> Space Metal, <span id="nuclearStationTitaniumCost">XXXX</span> Titanium.
+										Costs <span id="nuclearStationSpaceMetalCost">20,000</span> Space Metal, <span id="nuclearStationTitaniumCost">10,000</span> Titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
+								</td>
+							</tr>
+							<tr id="magmaticPower" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Magmatic Dynamo: <span id="magmatic">0</span>
+									</h3>
+									<span>
+										The Magmatic Dynamo is a method of producing power by using lava as a fuel. Because of the extreme temperature of lava, a lot of energy can be produced at once.
+										<br>
+										Each Power Station produces 96 energy and uses 11 lava per second.
+										<br>
+										Costs <span id="magmaticSpaceMetalCost">25,000</span> Space Metal, <span id="magmaticGemCost">30,000</span> Gems, <span id="magmaticSilverCost">20,000</span> Silver.
 									</span>
 									<br>
 									<br>
@@ -556,9 +573,9 @@
 										<br>
 										Produces 9 Uranium per second.
 										<br>
-										Uses 30 energy per second.
+										Uses 40 energy per second.
 										<br>
-										Costs <span id="cubicUraniumCost">40</span> Uranium, <span id="cubicSpaceMetalCost">10000</span> Space Metal, <span id="cubicOilCost">10000</span> Oil.
+										Costs <span id="cubicUraniumCost">80</span> Uranium, <span id="cubicSpaceMetalCost">10000</span> Space Metal, <span id="cubicOilCost">10000</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -1399,7 +1416,7 @@
 										<br>
 										Produces 1 Lava per second.
 										<br>
-										Costs <span id="crucibleGemCost">6000</span> Gems, <span id="crucibleSpaceMetalCost">4000</span> Space Metal.
+										Costs <span id="crucibleGemCost">7000</span> Gems, <span id="crucibleSpaceMetalCost">4000</span> Space Metal.
 									</span>
 									<br>
 									<br>
@@ -1416,9 +1433,9 @@
 										<br>
 										Produces 7 Lava per second.
 										<br>
-										Uses 26 energy per second.
+										Uses 58 energy per second.
 										<br>
-										Costs <span id="extractorSpaceMetalCost">12000</span> Space Metal, <span id="extractorTitaniumCost">4000</span> Titanium, <span id="extractorSiliconCost">1000</span> Silicon.
+										Costs <span id="extractorSpaceMetalCost">16000</span> Space Metal, <span id="extractorTitaniumCost">14000</span> Titanium, <span id="extractorSiliconCost">6000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1569,7 +1586,7 @@
 										Solar Panels
 									</h3>
 									<span>
-										Solar Panels produce energy without the need for fuel, but they do it much slower than other forms of energy production.
+										Solar Panels produce energy without the need for fuel, but they do it slower than other forms of energy production.
 										<br>
 										Costs 50 Science.
 									</span>
@@ -2085,18 +2102,20 @@
 										<br>
 										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about what lies inside your own planet, allowing you to find rare resources and strange places previously unexplored."
 										<br>
-										He requires that you donate 10,000 Gems, 7,500 Silver and 5,000 Gold for this knowledge.
-										<br>
-										<br>
-										<button id="preciousWonderButton" onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
-										<br>
-										<br>
-										<div id="preciousProgress" class="progress">
-										  <div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar"
-										  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-										    0%
-										  </div>
-										</div>
+										<hide id="preciousWonderButton">
+											He requires that you donate <span id="preciousGemCost">10,000</span> Gems, <span id="preciousSilverCost">7,500</span> Silver and <span id="preciousGoldCost">5,000</span> Gold for this knowledge.
+											<br>
+											<br>
+											<button onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
+											<br>
+											<br>
+											<div id="preciousProgress" class="progress">
+											  <div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
 									</span>
 								</td>
 							</tr>
@@ -2110,18 +2129,20 @@
 										<br>
 										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."
 										<br>
-										He requests a pyramid containing 10,000 Wood, 5,000 Charcoal and 200 Uranium to acquire his methods.
-										<br>
-										<br>
-										<button id="energeticWonderButton" onclick="achieveEnergeticWonder()" class="btn btn-default">Donate Energy</button>
-										<br>
-										<br>
-										<div id="energeticProgress" class="progress">
-										  <div id="energeticBar" class="progress-bar progress-bar-striped active" role="progressbar"
-										  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-										    0%
-										  </div>
-										</div>
+										<hide id="energeticWonderButton">
+											He requests a pyramid containing <span id="energeticWoodCost">10,000</span> Wood, <span id="energeticCharcoalCost">5,000</span> Charcoal and <span id="energeticUraniumCost">200</span> Uranium to acquire his methods.
+											<br>
+											<br>
+											<button onclick="achieveEnergeticWonder()" class="btn btn-default">Donate Energy</button>
+											<br>
+											<br>
+											<div id="energeticProgress" class="progress">
+											  <div id="energeticBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
 									</span>
 								</td>
 							</tr>
@@ -2149,10 +2170,12 @@
 									<span>
 										Activating this wonder will teach you about Uranium, how to get it and how to harness it. Learning about this rare element found deep within Earth will unlock nuclear power, a new way to create energy.
 										<br>
-										Costs: <span id="preciousGemCost">30,000</span> Gems, <span id="preciousSilverCost">20,000</span> Silver, <span id="preciousGoldCost">10,000</span> Gold.
-										<br>
-										<br>
-										<button id="activatePreciousWonder" onclick="activatePreciousWonder()" class="btn btn-default">Activate Precious Wonder</button>
+										<hide id="activatePreciousWonder">
+											Costs: <span id="preciousActivateGemCost">30,000</span> Gems, <span id="preciousActivateSilverCost">20,000</span> Silver, <span id="preciousActivateGoldCost">10,000</span> Gold.
+											<br>
+											<br>
+											<button onclick="activatePreciousWonder()" class="btn btn-default">Activate Precious Wonder</button>
+										</hide>
 									</span>
 								</td>
 							</tr>
@@ -2180,10 +2203,12 @@
 									<span>
 										Activating this wonder will allow you to harness the power of Lava, a new method of energy generation.
 										<br>
-										Costs: <span id="energeticWonderWoodCost">30,000</span> Wood, <span id="energeticWonderCharcoalCost">15,000</span> Charcoal, <span id="energeticWonderUraniumCost">500</span> Uranium.
-										<br>
-										<br>
-										<button id="activateEnergeticWonder" onclick="activateEnergeticWonder()" class="btn btn-default">Activate Energetic Wonder</button>
+										<hide id="activateEnergeticWonder">
+											Costs: <span id="energeticActivateWoodCost">30,000</span> Wood, <span id="energeticActivateCharcoalCost">15,000</span> Charcoal, <span id="energeticActivateUraniumCost">500</span> Uranium.
+											<br>
+											<br>
+											<button onclick="activateEnergeticWonder()" class="btn btn-default">Activate Energetic Wonder</button>
+										</hide>
 									</span>
 								</td>
 							</tr>

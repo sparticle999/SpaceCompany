@@ -29,6 +29,7 @@ v0.2.1
 - Fixed Bugs
 - If you do not have enough resources for something, the number will be red
 - You can collapse resources into earth and space categories
+- Buffed Charcoal Engines and Solar Panels to stop people falling into a 'negative energy hole'
 
 v0.2.0 The Wondrous Update [Released To The Public]
 - Added Wonder Tab
