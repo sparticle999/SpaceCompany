@@ -297,6 +297,9 @@ function save(type){
 		extractorSpaceMetalCost: extractorSpaceMetalCost,
 		extractorTitaniumCost: extractorTitaniumCost,
 		extractorSiliconCost: extractorSiliconCost,
+		hydrogen: hydrogen,
+		hydrogenStorage, hydrogenStorage,
+		hydrogenNextStorage: hydrogenNextStorage,
 		collector: collector,
 		collectorSpaceMetalCost: collectorSpaceMetalCost,
 		collectorTitaniumCost: collectorTitaniumCost,
@@ -304,11 +307,23 @@ function save(type){
 		magnetSpaceMetalCost: magnetSpaceMetalCost,
 		magnetTitaniumCost: magnetTitaniumCost,
 		magnetGoldCost: magnetGoldCost,
+		helium: helium,
+		heliumStorage, heliumStorage,
+		heliumNextStorage: heliumNextStorage,
+		drone: drone,
+		droneSpaceMetalCost: droneSpaceMetalCost,
+		droneSiliconCost: droneSiliconCost,
+		tanker: tanker,
+		tankerSpaceMetalCost: tankerSpaceMetalCost,
+		tankerTitaniumCost: tankerTitaniumCost,
+		tankerSiliconCost: tankerSiliconCost,
 	};
 	if(type === "local"){
+		//localStorage.setItem("newSave",JSON.stringify(localSave));
 		localStorage.setItem("save",JSON.stringify(localSave));
 	}
 	if(type === "export"){
+		//localStorage.setItem("newSave",JSON.stringify(localSave));
 		localStorage.setItem("save",JSON.stringify(localSave));
 		var string = JSON.stringify(localSave);
 		var compressed = LZString.compressToBase64(string);
@@ -324,6 +339,8 @@ function save(type){
 function load(type){
 	"use strict";
 	if(type === "local"){
+		//window.localStorage.removeItem('save');
+		//var savegame = JSON.parse(localStorage.getItem("newSave"));
 		var savegame = JSON.parse(localStorage.getItem("save"));
 	}
 	if(type === "import"){
@@ -1665,6 +1682,42 @@ function checkRedCost(){
 		document.getElementById("extractorSiliconCost").className = "";
 	}
 
+	if(gem < droneSiliconCost){
+		document.getElementById("droneSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("droneSiliconCost").className = "";
+	}
+	
+	if(spaceMetal < droneSpaceMetalCost){
+		document.getElementById("droneSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("droneSpaceMetalCost").className = "";
+	}
+	
+	if(titanium < tankerTitaniumCost){
+		document.getElementById("tankerTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("tankerTitaniumCost").className = "";
+	}
+
+	if(spaceMetal < tankerSpaceMetalCost){
+		document.getElementById("tankerSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("tankerSpaceMetalCost").className = "";
+	}
+
+	if(silicon < tankerSiliconCost){
+		document.getElementById("tankerSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("tankerSiliconCost").className = "";
+	}
+
+
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";
 	}
@@ -1784,6 +1837,12 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "lavaNav")){
 		document.getElementById("lavaNav").className = "innerPlanet";
+	}
+	if(contains(resourcesUnlocked, "hydrogenNav")){
+		document.getElementById("lavaNav").className = "outerPlanet";
+	}
+	if(contains(resourcesUnlocked, "heliumNav")){
+		document.getElementById("lavaNav").className = "outerPlanet";
 	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
@@ -2892,8 +2951,8 @@ function getDrone(){
 		spaceMetal -= droneSpaceMetalCost;
 		silicon -= droneSiliconCost;
 		drone += 1;
-		droneTitaniumCost = Math.floor(8000 * Math.pow(1.1,drone + 1));
-		droneSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,drone + 1));
+		droneSiliconCost = Math.floor(10000 * Math.pow(1.1,drone + 1));
+		droneSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,drone + 1));
 		document.getElementById("drone").innerHTML = drone;
 		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
@@ -2909,9 +2968,9 @@ function getTanker(){
 		titanium -= tankerTitaniumCost;
 		silicon -= tankerSiliconCost;
 		tanker += 1;
-		tankerSiliconCost = Math.floor(11000 * Math.pow(1.1,tanker + 1));
-		tankerTitaniumCost = Math.floor(16000 * Math.pow(1.1,tanker + 1));
-		tankerSpaceMetalCost = Math.floor(18000 * Math.pow(1.1,tanker + 1));
+		tankerSiliconCost = Math.floor(14000 * Math.pow(1.1,tanker + 1));
+		tankerTitaniumCost = Math.floor(17000 * Math.pow(1.1,tanker + 1));
+		tankerSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,tanker + 1));
 		document.getElementById("tanker").innerHTML = tanker;
 		document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
 		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
