@@ -1916,8 +1916,8 @@ function refreshResources(){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
 	if(techUnlocked = true){
-		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0 i--){
-			document.getElementsByClassName("tier3 hidden")[i].className = "tier3"
+		for(var i = document.getElementsByClassName("tier3 hidden").length - 1; i>0; i--){
+			document.getElementsByClassName("tier3 hidden")[i].className = "tier3";
 		}
 	}
 }
@@ -3449,8 +3449,8 @@ function refreshWonderBars(){
 		else{energeticActivateUranium = uranium;}
 		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateCharcoal)/455;
 		if(energeticActivateBar <= 100){
-			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticBar) + "%";
-			document.getElementById("energeticActivateBar").style.width = energeticBar + "%";
+			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticActivateBar) + "%";
+			document.getElementById("energeticActivateBar").style.width = energeticActivateBar + "%";
 		}
 		else{
 			document.getElementById("energeticActivateBar").innerHTML = "100%";
@@ -3495,8 +3495,8 @@ function refreshWonderBars(){
 		else{techActivateGem = gem;}
 		var techActivateBar = (techActivateSilicon+techActivateGold+techActivateGem)/1400;
 		if(techActivateBar <= 100){
-			document.getElementById("techActivateBar").innerHTML = commafy(techBar) + "%";
-			document.getElementById("techActivateBar").style.width = techBar + "%";
+			document.getElementById("techActivateBar").innerHTML = commafy(techActivateBar) + "%";
+			document.getElementById("techActivateBar").style.width = techActivateBar + "%";
 		}
 		else{
 			document.getElementById("techActivateBar").innerHTML = "100%";
@@ -3581,7 +3581,7 @@ function activateTechWonder(){
 		silicon -= 50000;
 		gold -= 30000;
 		gem -= 60000;
-		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0 i--){
+		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0; i--){
 			document.getElementsByClassName("tier3 hidden")[i].className = "tier3"
 		}
 		document.getElementById("activateTechWonder").className = "hidden";
