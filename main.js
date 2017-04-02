@@ -1392,6 +1392,13 @@ function checkRedCost(){
 		document.getElementById("suctionExcavatorOilCost").className = "";
 	}
 	
+	if(gem < explorerGemCost){
+		document.getElementById("explorerGemCost").className = "red";
+	}
+	else{
+		document.getElementById("explorerGemCost").className = "";
+	}
+	
 	if(spaceMetal < spaceMetalDrillSpaceMetalCost){
 		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "red";
 	}
