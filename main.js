@@ -51,7 +51,7 @@ var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCos
 var hydrogen = 0; var hydrogenStorage = 50; var hydrogenNextStorage = 100; var hydrogenps = 0;
 var collector = 0; var collectorSpaceMetalCost = 10000; var collectorTitaniumCost = 8000;
 var magnet = 0; var magnetSpaceMetalCost = 18000; var magnetTitaniumCost = 16000; var magnetGoldCost = 11000;
-var helium = 0; var heliumStorage = 50; var heliumStorageCost = 100; var heliumps = 0;
+var helium = 0; var heliumStorage = 50; var heliumNextStorage = 100; var heliumStorageCost = 100; var heliumps = 0;
 var drone = 0; var droneSpaceMetalCost = 14000; var droneSiliconCost = 10000;
 var tanker = 0; var tankerSpaceMetalCost = 21000; var tankerTitaniumCost = 17000; var tankerSiliconCost = 14000;
 
