@@ -1,12 +1,13 @@
 // Variables in save function
 
-var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0;
+var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
 var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 1.5;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 50; var methaneStationTitaniumCost = 40;
 var nuclearStation = 0; var nuclearStationSpaceMetalCost = 20000; var nuclearStationTitaniumCost = 10000;
 var magmatic = 0; var magmaticSpaceMetalCost = 25000; var magmaticGemCost = 20000; var magmaticSilverCost = 15000;
+var fusionReactor = 0; var fusionReactorSpaceMetalCost = 30000; var fusionReactorTitaniumCost = 20000; var fusionReactorSiliconCost = 15000;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
@@ -110,6 +111,7 @@ function save(type){
 		tier3: tier3,
 		tier4: tier4,
 		tier5: tier5,
+		tier6: tier6,
 		energy: energy,
 		energyps: energyps,
 		charcoalEngine: charcoalEngine,
@@ -126,6 +128,14 @@ function save(type){
 		nuclearStation: nuclearStation,
 		nuclearStationSpaceMetalCost: nuclearStationSpaceMetalCost,
 		nuclearStationTitaniumCost: nuclearStationTitaniumCost,
+		magmatic: magmatic,
+		magmaticSpaceMetalCost: magmaticSpaceMetalCost,
+		magmaticGemCost: magmaticGemCost,
+		magmaticSilverCost: magmaticSilverCost,
+		fusionReactor: fusionReactor,
+		fusionReactorSpaceMetalCost: fusionReactorSpaceMetalCost,
+		fusionReactorTitaniumCost: fusionReactorTitaniumCost,
+		fusionReactorSiliconCost: fusionReactorSiliconCost,
 		oil: oil,
 		oilStorage: oilStorage,
 		oilNextStorage: oilNextStorage,
@@ -358,6 +368,7 @@ function load(type){
 		if(typeof savegame.tier3 !== "undefined") tier3 = savegame.tier3;
 		if(typeof savegame.tier4 !== "undefined") tier4 = savegame.tier4;
 		if(typeof savegame.tier5 !== "undefined") tier5 = savegame.tier5;
+		if(typeof savegame.tier6 !== "undefined") tier6 = savegame.tier6;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
@@ -374,6 +385,14 @@ function load(type){
 		if(typeof savegame.nuclearStation !== "undefined") nuclearStation = savegame.nuclearStation;
 		if(typeof savegame.nuclearStationSpaceMetalCost !== "undefined") nuclearStationSpaceMetalCost = savegame.nuclearStationSpaceMetalCost;
 		if(typeof savegame.nuclearStationTitaniumCost !== "undefined") nuclearStationTitaniumCost = savegame.nuclearStationTitaniumCost;
+		if(typeof savegame.magmatic !== "undefined") magmatic = savegame.magmatic;
+		if(typeof savegame.magmaticSpaceMetalCost !== "undefined") magmaticSpaceMetalCost = savegame.magmaticSpaceMetalCost;
+		if(typeof savegame.magmaticGemCost !== "undefined") magmaticGemCost = savegame.magmaticGemCost;
+		if(typeof savegame.magmaticSilverCost !== "undefined") magmaticSilverCost = savegame.magmaticSilverCost;
+		if(typeof savegame.fusionReactor !== "undefined") fusionReactor = savegame.fusionReactor;
+		if(typeof savegame.fusionReactorSpaceMetalCost !== "undefined") fusionReactorSpaceMetalCost = savegame.fusionReactorSpaceMetalCost;
+		if(typeof savegame.fusionReactorTitaniumCost !== "undefined") fusionReactorTitaniumCost = savegame.fusionReactorTitaniumCost;
+		if(typeof savegame.fusionReactorSiliconCost !== "undefined") fusionReactorSiliconCost = savegame.fusionReactorSiliconCost;
 		if(typeof savegame.oil !== "undefined") oil = savegame.oil;
 		if(typeof savegame.oilStorage !== "undefined") oilStorage = savegame.oilStorage;
 		if(typeof savegame.oilNextStorage !== "undefined") oilNextStorage = savegame.oilNextStorage;
@@ -608,7 +627,7 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16)+(nuclearStation*82)+(magmatic*96);
+	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16)+(nuclearStation*82)+(magmatic*96)+(fusionReactor*110);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -621,9 +640,28 @@ function refreshPerSec(){
 	else{
 		energyInput -= methaneStation*16;
 	}
+	if(uranium + uraniumps/10 >= nuclearStation*7/10){
+		uranium -= nuclearStation*7/10;
+	}
+	else{
+		energyInput -= nuclearStation*82;
+	}
+	if(lava + lavaps/10 >= magmatic*11/10){
+		lava -= magmatic*11/10;
+	}
+	else{
+		energyInput -= magmatic*96;
+	}
+	if(hydrogen + hydrogenps/10 >= fusionReactor*10/10 && helium + heliumps >= fusionReactor*10/10){
+		hydrogen -= fusionReactor*10/10;
+		helium -= fusionReactor*10/10;
+	}
+	else{
+		energyInput -= fusionReactor*110;
+	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
 	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
-	energyOutput += (cubic*40)+(extractor*58);
+	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -664,11 +702,11 @@ function refreshPerSec(){
 		heliumps = drone;
 	}
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
-	document.getElementById("uraniumps").innerHTML = commafy(uraniumps);
+	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	if(uranium >= uraniumStorage){
 		document.getElementById("uraniumps").innerHTML = 0;
 	}
-	document.getElementById("oilps").innerHTML = commafy(oilps - (chemicalPlant*20));
+	document.getElementById("oilps").innerHTML = commafy(oilps - chemicalPlant*20);
 	if(oil >= oilStorage){
 		document.getElementById("oilps").innerHTML = 0;
 	}
@@ -715,15 +753,15 @@ function refreshPerSec(){
 	if(silicon >= siliconStorage){
 		document.getElementById("siliconps").innerHTML = 0;
 	}
-	document.getElementById("lavaps").innerHTML = commafy(lavaps);
+	document.getElementById("lavaps").innerHTML = commafy(lavaps - magmatic*11);
 	if(lava >= lavaStorage){
 		document.getElementById("lavaps").innerHTML = 0;
 	}
-	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps);
+	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10);
 	if(hydrogen >= hydrogenStorage){
 		document.getElementById("hydrogenps").innerHTML = 0;
 	}
-	document.getElementById("heliumps").innerHTML = commafy(heliumps);
+	document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10);
 	if(helium >= heliumStorage){
 		document.getElementById("heliumps").innerHTML = 0;
 	}
@@ -736,6 +774,7 @@ function refreshStats(){
 	document.getElementById("tier3").innerHTML = commafy(tier3);
 	document.getElementById("tier4").innerHTML = commafy(tier4);
 	document.getElementById("tier5").innerHTML = commafy(tier5);
+	document.getElementById("tier6").innerHTML = commafy(tier6);
 }
 function refreshUI(){
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
@@ -804,6 +843,14 @@ function refreshUI(){
 	document.getElementById("nuclearStation").innerHTML = nuclearStation;
 	document.getElementById("nuclearStationSpaceMetalCost").innerHTML = nuclearStationSpaceMetalCost;
 	document.getElementById("nuclearStationTitaniumCost").innerHTML = nuclearStationTitaniumCost;
+	document.getElementById("magmatic").innerHTML = magmatic;
+	document.getElementById("magmaticSpaceMetalCost").innerHTML = commafy(magmaticSpaceMetalCost);
+	document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
+	document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
+	document.getElementById("fusionReactor").innerHTML = fusionReactor;
+	document.getElementById("fusionReactorSpaceMetalCost").innerHTML = fusionReactorSpaceMetalCost;
+	document.getElementById("fusionReactorTitaniumCost").innerHTML = fusionReactorTitaniumCost;
+	document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
 	document.getElementById("pump").innerHTML = pump;
 	document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
 	document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
@@ -1169,6 +1216,27 @@ function checkRedCost(){
 	}
 	else{
 		document.getElementById("magmaticSilverCost").className = "";
+	}
+
+	if(spaceMetal < fusionReactorSpaceMetalCost){
+		document.getElementById("fusionReactorSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("fusionReactorSpaceMetalCost").className = "";
+	}
+
+	if(titanium < fusionReactorTitaniumCost){
+		document.getElementById("fusionReactorTitaniumCost").className = "red";
+	}
+	else{
+		document.getElementById("fusionReactorTitaniumCost").className = "";
+	}
+
+	if(silicon < fusionReactorSiliconCost){
+		document.getElementById("fusionReactorSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("fusionReactorSiliconCost").className = "";
 	}
 
 	if(metal < pumpMetalCost){
@@ -2620,14 +2688,34 @@ function getMagmatic(){
 		silver -= magmaticSilverCost;
 		magmatic += 1;
 		magmaticSpaceMetalCost = Math.floor(25000 * Math.pow(1.1,magmatic + 1));
-		magmaticGemCost = Math.floor(20000 * Math.pow(1.1,magmatic + 1));
-		magmaticSilverCost = Math.floor(15000 * Math.pow(1.1,magmatic + 1));
+		magmaticGemCost = Math.floor(30000 * Math.pow(1.1,magmatic + 1));
+		magmaticSilverCost = Math.floor(20000 * Math.pow(1.1,magmatic + 1));
 		document.getElementById("magmatic").innerHTML = magmatic;
-		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
-		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
+		document.getElementById("magmaticSpaceMetalCost").innerHTML = commafy(magmaticSpaceMetalCost);
+		document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
+		document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
 		refresh();
 		refreshPerSec();
 		tier5 += 1;
+	}
+}
+
+function getFusionReactor(){
+	if(spaceMetal >= fusionReactorSpaceMetalCost && titanium >= fusionReactorTitaniumCost && silicon >= fusionReactorSiliconCost){
+		spaceMetal -= fusionReactorSpaceMetalCost;
+		titanium -= fusionReactorTitaniumCost;
+		silicon -= fusionReactorSiliconCost;
+		fusionReactor += 1;
+		fusionReactorSpaceMetalCost = Math.floor(30000 * Math.pow(1.1,fusionReactor + 1));
+		fusionReactorTitaniumCost = Math.floor(20000 * Math.pow(1.1,fusionReactor + 1));
+		fusionReactorSiliconCost = Math.floor(15000 * Math.pow(1.1,fusionReactor + 1));
+		document.getElementById("fusionReactor").innerHTML = fusionReactor;
+		document.getElementById("fusionReactorSpaceMetalCost").innerHTML = commafy(fusionReactorSpaceMetalCost);
+		document.getElementById("fusionReactorTitaniumCost").innerHTML = commafy(fusionReactorTitaniumCost);
+		document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier6 += 1;
 	}
 }
 

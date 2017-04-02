@@ -559,6 +559,23 @@
 									<button onclick="getMagmatic()" class="btn btn-default">Get Magmatic Dynamo</button>
 								</td>
 							</tr>
+							<tr id="fusionPower" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Fusion Reactor: <span id="fusionReactor">0</span>
+									</h3>
+									<span>
+										In a fusion reaction, energy is released when two light atomic nuclei are fused together to form one heavier atom. This is the same reaction that occurs in stars and produces a lot of power.
+										<br>
+										Each Power Station produces 110 energy and uses 10 hydrogen and 10 helium per second.
+										<br>
+										Costs <span id="fusionReactorSpaceMetalCost">30,000</span> Space Metal, <span id="fusionReactorTitaniumCost">20,000</span> Titanium, <span id="fusionReactorSiliconCost">15,000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getFusionReactor()" class="btn btn-default">Get Fusion Reactor</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1779,7 +1796,7 @@
 										Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means.
 										Unlocking Oil Processing allows you to extract it from the ground.
 										<br>
-										Costs <span id="unlockOil">30</span> Science.
+										Costs <span id="unlockOilCost">30</span> Science.
 									</span>
 									<br>
 									<br>
@@ -2939,6 +2956,7 @@
 										Tier 3 Machines Owned: <span id="tier3">0</span><br>
 										Tier 4 Machines Owned: <span id="tier4">0</span><br>
 										Tier 5 Machines Owned: <span id="tier5">0</span><br>
+										Tier 6 Machines Owned: <span id="tier6">0</span><br>
 									</span>
 								</td>
 							</tr>

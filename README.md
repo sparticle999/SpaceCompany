@@ -22,7 +22,7 @@ v0.3.1
 
 v0.3.0
 - Added Computerized Tier of resource machines.
-- Added Fusion Reactor
+- Added Fusion Reactor - 10 hydrogen, 10 helium, 100 energy
 
 # Changelog:
 
