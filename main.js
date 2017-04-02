@@ -1539,6 +1539,27 @@ function checkRedCost(){
 		document.getElementById("labMetalCost").className = "";
 	}
 
+	if(metal < 1200){
+		document.getElementById("rocketMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("rocketMetalCost").className = "";
+	}
+
+	if(gem < 900){
+		document.getElementById("rocketGemCost").className = "red";
+	}
+	else{
+		document.getElementById("rocketGemCost").className = "";
+	}
+
+	if(oil < 1000){
+		document.getElementById("rocketOilCost").className = "red";
+	}
+	else{
+		document.getElementById("rocketOilCost").className = "";
+	}
+
 	if(metal < chemicalPlantMetalCost){
 		document.getElementById("chemicalPlantMetalCost").className = "red";
 	}
