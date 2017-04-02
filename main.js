@@ -1605,6 +1605,69 @@ function checkRedCost(){
 		document.getElementById("chemicalPlantOilCost").className = "";
 	}
 	
+	if(rocketFuel < 20){
+		document.getElementById("moonRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("moonRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 50){
+		document.getElementById("venusRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("venusRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 80){
+		document.getElementById("marsRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("marsRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 200){
+		document.getElementById("asteroidBeltRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("asteroidBeltRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 500){
+		document.getElementById("wonderStationRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("wonderStationRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 1000){
+		document.getElementById("jupiterRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("jupiterRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 2000){
+		document.getElementById("saturnRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("saturnRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 5000){
+		document.getElementById("plutoRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("plutoRocketFuelCost").className = "";
+	}
+
+	if(rocketFuel < 6000){
+		document.getElementById("kuiperBeltRocketFuelCost").className = "red";
+	}
+	else{
+		document.getElementById("kuiperBeltRocketFuelCost").className = "";
+	}
+
 	if(titanium < grinderTitaniumCost){
 		document.getElementById("grinderTitaniumCost").className = "red";
 	}
@@ -1839,10 +1902,10 @@ function refreshResources(){
 		document.getElementById("lavaNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "hydrogenNav")){
-		document.getElementById("lavaNav").className = "outerPlanet";
+		document.getElementById("hydrogenNav").className = "outerPlanet";
 	}
 	if(contains(resourcesUnlocked, "heliumNav")){
-		document.getElementById("lavaNav").className = "outerPlanet";
+		document.getElementById("heliumNav").className = "outerPlanet";
 	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
@@ -3268,6 +3331,27 @@ function exploreSaturn(){
 		document.getElementById("heliumNav").className = "outerPlanet";
 		resourcesUnlocked.push("heliumNav");
 		buttonsHidden.push("exploreSaturn");
+		explored.push("saturn");
+		refreshResources();
+	}
+}
+
+function explorePluto(){
+	if(rocketFuel >= 5000){
+		rocketFuel -= 5000;
+		document.getElementById("explorePluto").className = "hidden";
+		buttonsHidden.push("explorePluto");
+		explored.push("pluto");
+	}
+}
+
+function exploreKuiperBelt(){
+	if(rocketFuel >= 6000){
+		rocketFuel -= 6000;
+		document.getElementById("exploreKuiperBelt").className = "hidden";
+		document.getElementById("solCentre").className = "";
+		resourcesUnlocked.push("solCentre");
+		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("saturn");
 		refreshResources();
 	}
