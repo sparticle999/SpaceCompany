@@ -22,7 +22,6 @@ v0.3.1
 
 v0.3.0
 - Added Computerized Tier of resource machines.
-- Added Fusion Reactor - 10 hydrogen, 10 helium, 100 energy
 
 # Changelog:
 
@@ -31,6 +30,7 @@ v0.3.0 The Tech Update
 - Added Hydrogen and Helium
 - Added Tech Wonder
 - Added Sol Scientific Center
+- Added Fusion Reactor
 
 v0.2.1
 - Fixed Bugs

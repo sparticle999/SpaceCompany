@@ -40,6 +40,7 @@ var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;
 var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 900; var spaceLaserOilCost = 1200;
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
+var annihilator = 0; var annihilatorSpaceMetalCost = 3000; var annihilatorGemCost = 8300; var annihilatorSilverCost = 2400;
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false;
@@ -275,6 +276,10 @@ function save(type){
 		scorcherSpaceMetalCost: scorcherSpaceMetalCost,
 		scorcherGemCost: scorcherGemCost,
 		scorcherOilCost: scorcherOilCost,
+		annihilator: annihilator,
+		annihilatorSpaceMetalCost: annihilatorSpaceMetalCost,
+		annihilatorGemCost: annihilatorGemCost,
+		annihilatorSilverCost: annihilatorSilverCost,
 		researchUnlocked: researchUnlocked,
 		researched: researched,
 		available: available,
@@ -532,6 +537,10 @@ function load(type){
 		if(typeof savegame.scorcherSpaceMetalCost !== "undefined") scorcherSpaceMetalCost = savegame.scorcherSpaceMetalCost;
 		if(typeof savegame.scorcherGemCost !== "undefined") scorcherGemCost = savegame.scorcherGemCost;
 		if(typeof savegame.scorcherOilCost !== "undefined") scorcherOilCost = savegame.scorcherOilCost;
+		if(typeof savegame.annihilator !== "undefined") annihilator = savegame.annihilator;
+		if(typeof savegame.annihilatorSpaceMetalCost !== "undefined") annihilatorSpaceMetalCost = savegame.annihilatorSpaceMetalCost;
+		if(typeof savegame.annihilatorGemCost !== "undefined") annihilatorGemCost = savegame.annihilatorGemCost;
+		if(typeof savegame.annihilatorSilverCost !== "undefined") annihilatorSilverCost = savegame.annihilatorSilverCost;
 		if(typeof savegame.researchUnlocked !== "undefined") researchUnlocked = savegame.researchUnlocked;
 		if(typeof savegame.researched !== "undefined") researched = savegame.researched;
 		if(typeof savegame.tabsUnlocked !== "undefined") tabsUnlocked = savegame.tabsUnlocked;
@@ -662,6 +671,7 @@ function refreshPerSec(){
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
 	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
+	energyOutput += (annihilator*62);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -679,7 +689,7 @@ function refreshPerSec(){
 		titaniumps = explorer + (spaceMetalDrill * 6);
 		goldps = droid + (destroyer * 8);
 		silverps = scout + (spaceLaser * 13);
-		siliconps = blowtorch + (scorcher * 9);
+		siliconps = blowtorch + (scorcher * 9) + (annihilator*40);
 		lavaps = crucible + (extractor*7);
 		hydrogenps = collector + (magnet*5);
 		heliumps = drone + (tanker*11);
@@ -932,6 +942,10 @@ function refreshUI(){
 	document.getElementById("scorcherSpaceMetalCost").innerHTML = commafy(scorcherSpaceMetalCost);
 	document.getElementById("scorcherGemCost").innerHTML = commafy(scorcherGemCost);
 	document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
+	document.getElementById("annihilator").innerHTML = commafy(annihilator);
+	document.getElementById("annihilatorSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
+	document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
+	document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
 	document.getElementById("lab").innerHTML = lab;
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
@@ -1608,6 +1622,27 @@ function checkRedCost(){
 	}
 	else{
 		document.getElementById("scorcherOilCost").className = "";
+	}
+
+	if(spaceMetal < annihilatorSpaceMetalCost){
+		document.getElementById("annihilatorSpaceMetalCost").className = "red";
+	}
+	else{
+		document.getElementById("annihilatorSpaceMetalCost").className = "";
+	}
+	
+	if(gem < annihilatorGemCost){
+		document.getElementById("annihilatorGemCost").className = "red";
+	}
+	else{
+		document.getElementById("annihilatorGemCost").className = "";
+	}
+	
+	if(silver < annihilatorSilverCost){
+		document.getElementById("annihilatorSilverCost").className = "red";
+	}
+	else{
+		document.getElementById("annihilatorSilverCost").className = "";
 	}
 	
 	if(wood < labWoodCost){
@@ -3141,6 +3176,25 @@ function getScorcher(){
 		refresh();
 		refreshPerSec();
 		tier2 += 1;
+	}
+}
+
+function getAnnihilator(){
+	if(spaceMetal >= annihilatorSpaceMetalCost && gem >= annihilatorGemCost && silver >= annihilatorSilverCost){
+		spaceMetal -= annihilatorSpaceMetalCost;
+		gem -= annihilatorGemCost;
+		silver -= annihilatorSilverCost;
+		annihilator += 1;
+		annihilatorSpaceMetalCost = Math.floor(3000 * Math.pow(1.1,annihilator + 1));
+		annihilatorGemCost = Math.floor(8300 * Math.pow(1.1,annihilator + 1));
+		annihilatorSilverCost = Math.floor(2400 * Math.pow(1.1,annihilator + 1));
+		document.getElementById("annihilator").innerHTML = annihilator;
+		document.getElementById("scorcherSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
+		document.getElementById("scorcherGemCost").innerHTML = commafy(annihilatorGemCost);
+		document.getElementById("scorcherOilCost").innerHTML = commafy(annihilatorSilverCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
 	}
 }
 
