@@ -14,20 +14,23 @@ Space Company is a science-fiction incremental game where you start from humble 
 
 # RoadMap
 
-v0.2.3
+v0.3.1
 - Added Meteorite
 - Added Meteorite Tier of resource machines
 - Added Plasma
 
 
-v0.2.2
-- Added Tech Wonder
+v0.3.0
 - Added Computerized Tier of resource machines.
+- Added Fusion Reactor
 
 # Changelog:
 
-v0.2.2
+v0.3.0 The Tech Update
 - Added Exploration of the outer planets
+- Added Hydrogen and Helium
+- Added Tech Wonder
+- Added Sol Scientific Center
 
 v0.2.1
 - Fixed Bugs

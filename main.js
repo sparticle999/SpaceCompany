@@ -1563,6 +1563,76 @@ function checkRedCost(){
 		document.getElementById("labMetalCost").className = "";
 	}
 
+	if(science < 5){
+		document.getElementById("unlockStorageCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockStorageCost").className = "";
+	}
+
+	if(science < 20){
+		document.getElementById("unlockBasicEnergyCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockBasicEnergyCost").className = "";
+	}
+
+	if(science < 30){
+		document.getElementById("unlockOilCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockOilCost").className = "";
+	}
+
+	if(science < 30){
+		document.getElementById("unlockOilCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockOilCost").className = "";
+	}
+
+	if(science < 50){
+		document.getElementById("unlockSolarCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockSolarCost").className = "";
+	}
+
+	if(science < 100){
+		document.getElementById("unlockMachinesCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockMachinesCost").className = "";
+	}
+
+	if(science < 300){
+		document.getElementById("upgradeResourceTechCost").className = "red";
+	}
+	else{
+		document.getElementById("upgradeResourceTechCost").className = "";
+	}
+
+	if(science < 500){
+		document.getElementById("unlockSolarSystemCost").className = "red";
+	}
+	else{
+		document.getElementById("unlockSolarSystemCost").className = "";
+	}
+
+	if(science < 1000){
+		document.getElementById("upgradeEngineTech").className = "red";
+	}
+	else{
+		document.getElementById("upgradeEngineTech").className = "";
+	}
+
+	if(science < 5000){
+		document.getElementById("upgradeSolarTechCost").className = "red";
+	}
+	else{
+		document.getElementById("upgradeSolarTechCost").className = "";
+	}
+
 	if(metal < 1200){
 		document.getElementById("rocketMetalCost").className = "red";
 	}
@@ -1863,6 +1933,48 @@ function checkRedCost(){
 	}
 	else{
 		document.getElementById("energeticActivateUraniumCost").className = "";
+	}
+
+	if(silicon < techSiliconCost){
+		document.getElementById("techSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("techSiliconCost").className = "";
+	}
+
+	if(gold < techGoldCost){
+		document.getElementById("techGoldCost").className = "red";
+	}
+	else{
+		document.getElementById("techGoldCost").className = "";
+	}
+
+	if(gem < techGemCost){
+		document.getElementById("techGemCost").className = "red";
+	}
+	else{
+		document.getElementById("techGemCost").className = "";
+	}
+
+	if(silicon < techActivateSiliconCost){
+		document.getElementById("techActivateSiliconCost").className = "red";
+	}
+	else{
+		document.getElementById("techActivateSiliconCost").className = "";
+	}
+
+	if(gold < techActivateGoldCost){
+		document.getElementById("techActivateGoldCost").className = "red";
+	}
+	else{
+		document.getElementById("techActivateGoldCost").className = "";
+	}
+
+	if(gem < techActivateGemCost){
+		document.getElementById("techActivateGemCost").className = "red";
+	}
+	else{
+		document.getElementById("techActivateGemCost").className = "";
 	}
 }
 
