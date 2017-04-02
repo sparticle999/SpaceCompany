@@ -3354,8 +3354,8 @@ function exploreKuiperBelt(){
 	if(rocketFuel >= 6000){
 		rocketFuel -= 6000;
 		document.getElementById("exploreKuiperBelt").className = "hidden";
-		document.getElementById("solCentre").className = "";
-		resourcesUnlocked.push("solCentre");
+		document.getElementById("solCenter").className = "";
+		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("saturn");
 		refreshResources();
