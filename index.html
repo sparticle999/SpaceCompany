@@ -2566,10 +2566,10 @@
 							</span>
 						</td>
 					</tr>
-					<tr id="elevationWonderNav" class="hidden" href="#elevationWonderTab" aria-controls="elevationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="techWonderNav" class="hidden" href="#techWonderTab" aria-controls="techWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Elevation Wonder: <span id="elevationActivation">Dormant</span>
+								Technological Wonder: <span id="techActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -2599,7 +2599,7 @@
 									<span>
 										The first painting depicts a large, shiny structure and the plaque reads:
 										<br>
-										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about what lies inside your own planet, allowing you to find rare resources and strange places previously unexplored."
+										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your gems, silver and gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."
 										<br>
 										<hide id="preciousWonderButton">
 											He requires that you donate <span id="preciousGemCost">10,000</span> Gems, <span id="preciousSilverCost">7,500</span> Silver and <span id="preciousGoldCost">5,000</span> Gold for this knowledge.
@@ -2609,10 +2609,9 @@
 											<br>
 											<br>
 											<div id="preciousProgress" class="progress">
-											  <div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar"
-											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-											    0%
-											  </div>
+												<div id="preciousBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+												    0%
+												</div>
 											</div>
 										</hide>
 									</span>
@@ -2636,10 +2635,35 @@
 											<br>
 											<br>
 											<div id="energeticProgress" class="progress">
-											  <div id="energeticBar" class="progress-bar progress-bar-striped active" role="progressbar"
-											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-											    0%
-											  </div>
+												<div id="energeticBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    	0%
+												</div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Technological Wonder
+									</h3>
+									<span>
+										A green-tinted picture shows the inside of some computer system.
+										<br>
+										"With my technological superiority over anyone in the cosmos, I want a monument dedicated to the advanced computer systems I control. As a reward, I will teach you about computerized machines and give you the ability to make more advanced resource gatherers."
+										<br>
+										<hide id="techWonderButton">
+											He requests a tower consisting of <span id="techSiliconCost">30,000</span> Silicon, <span id="techGoldCost">18,000</span> Gold and <span id="techGemCost">40,000</span> Gems to unlock this technology.
+											<br>
+											<br>
+											<button onclick="achieveTechWonder()" class="btn btn-default">Donate Resources</button>
+											<br>
+											<br>
+											<div id="techProgress" class="progress">
+												<div id="techBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    	0%
+												</div>
 											</div>
 										</hide>
 									</span>
@@ -2719,6 +2743,47 @@
 											<br>
 											<div id="energeticActivateProgress" class="progress">
 											  <div id="energeticActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="techWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Technological Wonder
+									</h2>
+									<span>
+										Proud of his new monument, the Overlord teaches you the ways of computerized machines and advanced gathering of resources.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Activate Wonder
+									</h3>
+									<span>
+										Activating this wonder will allow you to build Tier 3 Machines, a much more effective method of collecting resources.
+										<br>
+										<hide id="activateTechWonder">
+											Costs: <span id="techActivateSiliconCost">50,000</span> Silicon, <span id="techActivateGoldCost">30,000</span> Gold, <span id="techActivateGemCost">60,000</span> Gems.
+											<br>
+											<br>
+											<button onclick="activateTechWonder()" class="btn btn-default">Activate Technological Wonder</button>
+											<br>
+											<br>
+											<div id="techActivateProgress" class="progress">
+											  <div id="techActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>

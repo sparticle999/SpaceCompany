@@ -41,7 +41,7 @@ var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost 
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
-var activated = [];
+var activated = []; var techUnlocked = false;
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var grinder = 0; var grinderTitaniumCost = 2000; var grinderSpaceMetalCost = 4000; var grinderGoldCost = 2000;
 var cubic = 0; var cubicUraniumCost = 80; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
@@ -1915,6 +1915,11 @@ function refreshResources(){
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
+	if(techUnlocked = true){
+		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0 i--){
+			document.getElementsByClassName("tier3 hidden")[i].className = "tier3"
+		}
+	}
 }
 
 function contains(array, obj) {
@@ -3431,18 +3436,18 @@ function refreshWonderBars(){
 	}
 	if((document.getElementById("activateEnergeticWonder").className === "hidden") === false){
 		if(wood >= 30000){
-			var energeticActivateGem = 30000;
+			var energeticActivateWood = 30000;
 		}
-		else{energeticActivateGem = gem;}
+		else{energeticActivateWood = wood;}
 		if(charcoal >= 15000){
-			var energeticActivateSilver = 15000;
+			var energeticActivateCharcoal = 15000;
 		}
-		else{energeticActivateSilver = silver;}
+		else{energeticActivateCharcoal = charcoal;}
 		if(uranium >= 500){
-			var energeticActivateGold = 500;
+			var energeticActivateUranium = 500;
 		}
-		else{energeticActivateGold = gold;}
-		var energeticActivateBar = (energeticActivateGem+energeticActivateSilver+energeticActivateGold)/455;
+		else{energeticActivateUranium = uranium;}
+		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateCharcoal)/455;
 		if(energeticActivateBar <= 100){
 			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticBar) + "%";
 			document.getElementById("energeticActivateBar").style.width = energeticBar + "%";
@@ -3450,6 +3455,52 @@ function refreshWonderBars(){
 		else{
 			document.getElementById("energeticActivateBar").innerHTML = "100%";
 			document.getElementById("energeticActivateBar").style.width = 100 + "%";
+		}
+	}
+	if(contains(resourcesUnlocked, "techWonderNav") === false){
+		if(silicon >= 30000){
+			var techSilicon = 30000;
+		}
+		else{techSilicon = silicon;}
+		if(gold >= 18000){
+			var techGold = 18000;
+		}
+		else{techGold = gold;}
+		if(gem >= 40000){
+			var techGem = 40000;
+		}
+		else{techGem = gem;}
+		var techBar = (techSilicon+techGold+techGem)/880;
+		if(techBar <= 100){
+			document.getElementById("techBar").innerHTML = commafy(techBar) + "%";
+			document.getElementById("techBar").style.width = techBar + "%";
+		}
+		else{
+			document.getElementById("techBar").innerHTML = "100%";
+			document.getElementById("techBar").style.width = 100 + "%";
+		}
+	}
+	if((document.getElementById("activateEnergeticWonder").className === "hidden") === false){
+		if(silicon >= 50000){
+			var techActivateSilicon = 50000;
+		}
+		else{techActivateSilicon = silicon;}
+		if(gold >= 30000){
+			var techActivateGold = 30000;
+		}
+		else{techActivateGold = gold;}
+		if(gem >= 60000){
+			var techActivateGem = 60000;
+		}
+		else{techActivateGem = gem;}
+		var techActivateBar = (techActivateSilicon+techActivateGold+techActivateGem)/1400;
+		if(techActivateBar <= 100){
+			document.getElementById("techActivateBar").innerHTML = commafy(techBar) + "%";
+			document.getElementById("techActivateBar").style.width = techBar + "%";
+		}
+		else{
+			document.getElementById("techActivateBar").innerHTML = "100%";
+			document.getElementById("techActivateBar").style.width = 100 + "%";
 		}
 	}
 }
@@ -3509,6 +3560,35 @@ function activateEnergeticWonder(){
 		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
+	}
+}
+
+function achieveTechWonder(){
+	if(silicon >= 30000 && gold >= 18000 && gem >= 40000){
+		silicon-= 30000;
+		gold -= 18000;
+		gem -= 40000;
+		document.getElementById("techWonderButton").className = "hidden";
+		document.getElementById("techProgress").className = "hidden";
+		document.getElementById("techWonderNav").className = "";
+		buttonsHidden.push("techProgress", "techWonderButton");
+		resourcesUnlocked.push("techWonderNav");
+	}
+}
+
+function activateTechWonder(){
+	if(silicon >= 50000 && gold >= 30000 && gem >= 60000){
+		silicon -= 50000;
+		gold -= 30000;
+		gem -= 60000;
+		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0 i--){
+			document.getElementsByClassName("tier3 hidden")[i].className = "tier3"
+		}
+		document.getElementById("activateTechWonder").className = "hidden";
+		document.getElementById("techActivation").innerHTML = "Activated";
+		techUnlocked = true;
+		buttonsHidden.push("activateTechWonder");
+		activated.push("tech");
 	}
 }
 
