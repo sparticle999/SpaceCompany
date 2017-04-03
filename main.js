@@ -119,7 +119,6 @@ function autosave(){
 function save(type){
 	"use strict";
 	var localSave = {
-		autoSaveTime: document.getElementById("autoSaveTime").innerHTML,
 		handMined: handMined,
 		tier1: tier1,
 		tier2: tier2,
