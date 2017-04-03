@@ -1234,61 +1234,23 @@ function checkRedCost(){
 		document.getElementById("titaniumStorageSpaceMetalCost").className = "";
 	}
 
-	if(gold < goldStorage){
-		document.getElementById("goldStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("goldStorageCost").className = "";
-	}
+	turnRed(gold, goldStorage, "goldStorageCost");
+	turnRed(spaceMetal, goldStorage/2.5, "goldStorageSpaceMetalCost")
+	
+	turnRed(silver, silverStorage, "silverStorageCost");
+	turnRed(spaceMetal, silverStorage/2.5, "silverStorageSpaceMetalCost")
 
-	if(spaceMetal < goldStorage/2.5){
-		document.getElementById("goldStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("goldStorageSpaceMetalCost").className = "";
-	}
-	
-	if(silver < silverStorage){
-		document.getElementById("silverStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("silverStorageCost").className = "";
-	}
+	turnRed(silicon, siliconStorage, "siliconStorageCost");
+	turnRed(spaceMetal, siliconStorage/2.5, "siliconStorageSpaceMetalCost")
 
-	if(spaceMetal < silverStorage/2.5){
-		document.getElementById("silverStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("silverStorageSpaceMetalCost").className = "";
-	}
-	
-	if(silicon < siliconStorage){
-		document.getElementById("siliconStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("siliconStorageCost").className = "";
-	}
+	turnRed(lava, lavaStorage, "lavaStorageCost");
+	turnRed(spaceMetal, lavaStorage/2.5, "lavaStorageSpaceMetalCost")
 
-	if(spaceMetal < siliconStorage/2.5){
-		document.getElementById("siliconStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("siliconStorageSpaceMetalCost").className = "";
-	}
-	
-	if(lava < lavaStorage){
-		document.getElementById("lavaStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("lavaStorageCost").className = "";
-	}
-	
-	if(spaceMetal < lavaStorage/2.5){
-		document.getElementById("lavaStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("lavaStorageSpaceMetalCost").className = "";
-	}
+	turnRed(hydrogen, hydrogenStorage, "hydrogenStorageCost");
+	turnRed(spaceMetal, hydrogenStorage/2.5, "hydrogenStorageSpaceMetalCost")
+
+	turnRed(helium, heliumStorage, "heliumStorageCost");
+	turnRed(spaceMetal, heliumStorage/2.5, "heliumStorageSpaceMetalCost")
 
 	if(metal < charcoalEngineMetalCost){
 		document.getElementById("charcoalEngineMetalCost").className = "red";
@@ -2074,7 +2036,10 @@ function checkRedCost(){
 		document.getElementById("extractorSiliconCost").className = "";
 	}
 
-	if(gem < droneSiliconCost){
+	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
+	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
+
+	if(silicon < droneSiliconCost){
 		document.getElementById("droneSiliconCost").className = "red";
 	}
 	else{
