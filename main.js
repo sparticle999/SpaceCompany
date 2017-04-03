@@ -3627,7 +3627,7 @@ function exploreKuiperBelt(){
 		document.getElementById("solCenter").className = "";
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
-		explored.push("saturn");
+		explored.push("kuiperBelt");
 		refreshResources();
 	}
 }
