@@ -818,10 +818,6 @@ function refreshPerSec(){
 	if(gem === 0){
 		document.getElementById("gem").className = "red";
 	}
-	if(charcoal >= charcoalStorage - 3){
-		document.getElementById("woodps").innerHTML = commafy(woodps);
-		document.getElementById("charcoal").className = "green";
-	}
 	else{
 		document.getElementById("charcoal").className = "";
 		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
@@ -847,9 +843,6 @@ function refreshPerSec(){
 	}
 	document.getElementById("methaneps").innerHTML = commafy(methaneps - methaneStation*6);
 	document.getElementById("methane").className = "";
-	if(methane >= methaneStorage -7){
-		document.getElementById("methane").className = "green";
-	}
 	if(methane === 0){
 		document.getElementById("methane").className = "red";
 	}
@@ -2448,6 +2441,13 @@ function gainResources(){
 	}
 	else{
 		wood = woodStorage;
+	}
+	if(charcoal >= charcoalStorage){
+		document.getElementById("woodps").innerHTML = commafy(woodps);
+		document.getElementById("charcoal").className = "green";
+	}
+	if(methane >= methaneStorage){
+		document.getElementById("methane").className = "green";
 	}
 }
 
