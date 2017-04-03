@@ -548,6 +548,18 @@ function load(type){
 		if(typeof savegame.siliconStorage !== "undefined") siliconStorage = savegame.siliconStorage;
 		if(typeof savegame.siliconNextStorage !== "undefined") siliconNextStorage = savegame.siliconNextStorage;
 		if(typeof savegame.siliconps !== "undefined") siliconps = savegame.siliconps;
+		if(typeof savegame.lava !== "undefined") lava = savegame.lava;
+		if(typeof savegame.lavaStorage !== "undefined") lavaStorage = savegame.lavaStorage;
+		if(typeof savegame.lavaNextStorage !== "undefined") lavaNextStorage = savegame.lavaNextStorage;
+		if(typeof savegame.lavaps !== "undefined") lavaps = savegame.lavaps;
+		if(typeof savegame.hydrogen !== "undefined") hydrogen = savegame.hydrogen;
+		if(typeof savegame.hydrogenStorage !== "undefined") hydrogenStorage = savegame.hydrogenStorage;
+		if(typeof savegame.hydrogenNextStorage !== "undefined") hydrogenNextStorage = savegame.hydrogenNextStorage;
+		if(typeof savegame.hydrogenps !== "undefined") hydrogenps = savegame.hydrogenps;
+		if(typeof savegame.helium !== "undefined") helium = savegame.helium;
+		if(typeof savegame.heliumStorage !== "undefined") heliumStorage = savegame.heliumStorage;
+		if(typeof savegame.heliumNextStorage !== "undefined") heliumNextStorage = savegame.heliumNextStorage;
+		if(typeof savegame.heliumps !== "undefined") heliumps = savegame.heliumps;
 		if(typeof savegame.moonWorker !== "undefined") moonWorker = savegame.moonWorker;
 		if(typeof savegame.moonWorkerGemCost !== "undefined") moonWorkerGemCost = savegame.moonWorkerGemCost;
 		if(typeof savegame.moonDrill !== "undefined") moonDrill = savegame.moonDrill;
