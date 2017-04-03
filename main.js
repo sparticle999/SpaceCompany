@@ -96,24 +96,85 @@ function autosave(){
 		}
 	}
 
-	// if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 60){
-	// 	save();
-	// 	saveTimer = 0;
-	// }
-	// else{
-	// 	secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 60) - saveTimer));
-	// 	if(saveTimer < 3){
-	// 		document.getElementById("autoSaveTimer").innerHTML = "Saved";
-	// 	}
-	// 	else if(secondsLeft <= 30){
-	// 		document.getElementById("autoSaveTimer").className = "";
-	// 		document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-	// 	}
-	// 	else{
-	// 		document.getElementById("autoSaveTimer").className = "hidden";
-	// 	}
-	// 	saveTimer += 1;
-	// }
+	if(document.getElementById("30secs").checked){
+		if(saveTimer >= 30){
+			save();
+			saveTimer = 0;
+		}
+		else{
+			secondsLeft = 30 - saveTimer;
+			if(saveTimer < 3){
+				document.getElementById("autoSaveTimer").innerHTML = "Saved";
+			}
+			else if(secondsLeft <= 15){
+				document.getElementById("autoSaveTimer").className = "";
+				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+			}
+			else{
+				document.getElementById("autoSaveTimer").className = "hidden";
+			}
+			saveTimer += 1;
+		}
+	}
+	if(document.getElementById("2mins").checked){
+		if(saveTimer >= 120){
+			save();
+			saveTimer = 0;
+		}
+		else{
+			secondsLeft = 120 - saveTimer;
+			if(saveTimer < 3){
+				document.getElementById("autoSaveTimer").innerHTML = "Saved";
+			}
+			else if(secondsLeft <= 15){
+				document.getElementById("autoSaveTimer").className = "";
+				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+			}
+			else{
+				document.getElementById("autoSaveTimer").className = "hidden";
+			}
+			saveTimer += 1;
+		}
+	}
+	if(document.getElementById("10mins").checked){
+		if(saveTimer >= 600){
+			save();
+			saveTimer = 0;
+		}
+		else{
+			secondsLeft = 600 - saveTimer;
+			if(saveTimer < 3){
+				document.getElementById("autoSaveTimer").innerHTML = "Saved";
+			}
+			else if(secondsLeft <= 15){
+				document.getElementById("autoSaveTimer").className = "";
+				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+			}
+			else{
+				document.getElementById("autoSaveTimer").className = "hidden";
+			}
+			saveTimer += 1;
+		}
+	}
+
+	if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 60){
+		save();
+		saveTimer = 0;
+	}
+	else{
+		secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 60) - saveTimer));
+		if(saveTimer < 3){
+			document.getElementById("autoSaveTimer").innerHTML = "Saved";
+		}
+		else if(secondsLeft <= 30){
+			document.getElementById("autoSaveTimer").className = "";
+			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
+		}
+		else{
+			document.getElementById("autoSaveTimer").className = "hidden";
+		}
+		saveTimer += 1;
+	}
 }
 
 function save(type){
