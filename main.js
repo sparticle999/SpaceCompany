@@ -68,7 +68,7 @@ var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secon
 function autosave(){
 	if(saved === true){
 		timer += 1;
-		if(timer >= 20){
+		if(timer >= 2){
 			saved = false;
 			document.getElementById("saveButton").className = "btn btn-primary";
 			timer = 0;
@@ -76,20 +76,20 @@ function autosave(){
 	}
 	if(loaded === true){
 		timer2 += 1;
-		if(timer2 >= 20){
+		if(timer2 >= 2){
 			loaded = false;
 			document.getElementById("loadButton").className = "btn btn-primary";
 			timer2 = 0;
 		}
 	}
 
-	if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 600){
+	if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 60){
 		save();
 		saveTimer = 0;
 	}
 	else{
-		secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 600) - saveTimer)/10);
-		if(saveTimer < 10){
+		secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 60) - saveTimer));
+		if(saveTimer < 3){
 			document.getElementById("autoSaveTimer").innerHTML = "Saved";
 		}
 		else if(secondsLeft <= 30){
@@ -3896,15 +3896,14 @@ window.onload = function(){
 };
 
 window.setInterval(function(){
-	if(statsTimer >= 11){
-		refreshStats();
-		statsTimer = 0;
-	}
-	statsTimer += 1;
 	refreshPerSec();
 	gainResources();
 	refresh();
-	autosave();
 	refreshWonderBars();
 	checkRedCost();
 },100);
+
+window.setInterval(function(){
+	refreshStats();
+	autosave();
+},1000);
