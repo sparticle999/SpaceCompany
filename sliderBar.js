@@ -12,7 +12,7 @@
         container.addClass('pp-slider');
         container.addClass('clearfix');
 
-        container.append('<div class="pp-slider-min">-</div><div class="pp-slider-scale"><div class="pp-slider-button" style="left: 70px;"><div class="pp-slider-divies"></div></div><div id="sliderValue" class="pp-slider-tooltip" style="left: 64px;">2</div></div><div class="pp-slider-max">+</div>');
+        container.append('<div class="pp-slider-min">-</div><div class="pp-slider-scale"><div class="pp-slider-button" style="left: 70px;"><div class="pp-slider-divies"></div></div><div id="sliderValue" class="pp-slider-tooltip" style="left: 64px;">' + autoSaveTime + '</div></div><div class="pp-slider-max">+</div>');
         
         if (typeof(options) != 'undefined' && typeof(options.hideTooltip) != 'undefined' && options.hideTooltip == true)
         {

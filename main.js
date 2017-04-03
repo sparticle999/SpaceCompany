@@ -1,5 +1,6 @@
 // Variables in save function
 
+var autoSaveTime = 2;
 var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
@@ -115,6 +116,7 @@ function autosave(){
 function save(type){
 	"use strict";
 	var localSave = {
+		autoSaveTime: document.getElementById("autoSaveTime").innerHTML,
 		handMined: handMined,
 		tier1: tier1,
 		tier2: tier2,
@@ -392,6 +394,7 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
+		if(typeof savegame.autoSaveTime !== "undefined") document.getElementById("autoSaveTime").innerHTML = savegame.autoSaveTime;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
 		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
