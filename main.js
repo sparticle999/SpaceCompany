@@ -791,6 +791,7 @@ function refreshUI(){
 	document.getElementById("uranium").innerHTML = commafy(uranium);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
+	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = commafy(uraniumNextStorage/2.5);	
 	document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
 	document.getElementById("oilNextStorage").innerHTML = commafy(oilNextStorage);
@@ -980,12 +981,26 @@ function refreshUI(){
 }
 
 function checkRedCost(){
-	if(uranium < uraniumStorage){
-		document.getElementById("uraniumStorageCost").className = "red";
+
+	function turnRed(resource, variable, id){
+		if(resource < variable){
+			document.getElementById(id).className = "red";
+		}
+		else{
+			document.getElementById(id).className = "";
+		}
 	}
-	else{
-		document.getElementById("uraniumStorageCost").className = "";
-	}
+
+	turnRed(uranium, uraniumStorage, "uraniumStorageCost");
+
+
+
+	// if(uranium < uraniumStorage){
+	// 	document.getElementById("uraniumStorageCost").className = "red";
+	// }
+	// else{
+	// 	document.getElementById("uraniumStorageCost").className = "";
+	// }
 
 	if(spaceMetal < uraniumStorage/2.5){
 		document.getElementById("uraniumStorageSpaceMetalCost").className = "red";
@@ -1723,10 +1738,10 @@ function checkRedCost(){
 	}
 
 	if(science < 1000){
-		document.getElementById("upgradeEngineTech").className = "red";
+		document.getElementById("upgradeEngineTechCost").className = "red";
 	}
 	else{
-		document.getElementById("upgradeEngineTech").className = "";
+		document.getElementById("upgradeEngineTechCost").className = "";
 	}
 
 	if(science < 5000){
