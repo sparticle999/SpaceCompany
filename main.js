@@ -2189,7 +2189,7 @@ function refreshResources(){
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
-	if(techUnlocked = true){
+	if(techUnlocked === true){
 		for(var i = document.getElementsByClassName("tier3 hidden").length - 1; i>0; i--){
 			document.getElementsByClassName("tier3 hidden")[i].className = "tier3";
 		}
