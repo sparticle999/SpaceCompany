@@ -904,7 +904,7 @@ function refreshUI(){
 	document.getElementById("uranium").innerHTML = commafy(uranium);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
-	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumNextStorage);
+	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = commafy(uraniumNextStorage/2.5);	
 	document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
 	document.getElementById("oilNextStorage").innerHTML = commafy(oilNextStorage);
