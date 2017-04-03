@@ -14,6 +14,7 @@ var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pum
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
 var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5;
 var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
+var gigaDrill = 0; var gigaDrillSpaceMetalCost = 2800; var gigaDrillGemCost = 3400; var gigaDrillSiliconCost = 4100;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10;
 var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
@@ -169,6 +170,10 @@ function save(type){
 		heavyDrillGemCost: heavyDrillGemCost,
 		heavyDrillOilCost: heavyDrillOilCost,
 		heavyDrillOutput: heavyDrillOutput,
+		gigaDrill: gigaDrill,
+		gigaDrillSpaceMetalCost: gigaDrillSpaceMetalCost,
+		gigaDrillGemCost: gigaDrillGemCost,
+		gigaDrillSiliconCost: gigaDrillSiliconCost,
 		gem: gem,
 		gemStorage: gemStorage,
 		gemNextStorage: gemNextStorage,
@@ -442,6 +447,10 @@ function load(type){
 		if(typeof savegame.heavyDrillGemCost !== "undefined") heavyDrillGemCost = savegame.heavyDrillGemCost;
 		if(typeof savegame.heavyDrillOilCost !== "undefined") heavyDrillOilCost = savegame.heavyDrillOilCost;
 		if(typeof savegame.heavyDrillOutput !== "undefined") heavyDrillOutput = savegame.heavyDrillOutput;
+		if(typeof savegame.gigaDrill !== "undefined") gigaDrill = savegame.gigaDrill;
+		if(typeof savegame.gigaDrillSpaceMetalCost !== "undefined") gigaDrillSpaceMetalCost = savegame.gigaDrillSpaceMetalCost;
+		if(typeof savegame.gigaDrillGemCost !== "undefined") gigaDrillGemCost = savegame.gigaDrillGemCost;
+		if(typeof savegame.gigaDrillSiliconCost !== "undefined") gigaDrillSiliconCost = savegame.gigaDrillSiliconCost;
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
 		if(typeof savegame.gemStorage !== "undefined") gemStorage = savegame.gemStorage;
 		if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;
@@ -700,7 +709,7 @@ function refreshPerSec(){
 		energyInput -= fusionReactor*110;
 	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
-	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (deforester*20);
 	energyOutput += (moonQuarry*64)+(annihilator*62);
@@ -910,6 +919,10 @@ function refreshUI(){
 	document.getElementById("heavyDrillGemCost").innerHTML = commafy(heavyDrillGemCost);
 	document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
 	document.getElementById("heavyDrillOutput").innerHTML = commafy(heavyDrillOutput);
+	document.getElementById("gigaDrill").innerHTML = gigaDrill;
+	document.getElementById("gigaDrillSpaceMetalCost").innerHTML = commafy(gigaDrillSpaceMetalCost);
+	document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
+	document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
 	document.getElementById("gemMiner").innerHTML = gemMiner;
 	document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
 	document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
@@ -1369,6 +1382,10 @@ function checkRedCost(){
 		document.getElementById("heavyDrillOilCost").className = "";
 	}
 	
+	turnRed(spaceMetal, gigaDrillSpaceMetalCost, "gigaDrillSpaceMetalCost");
+	turnRed(gem, gigaDrillGemCost, "gigaDrillGemCost");
+	turnRed(silicon, gigaDrillSiliconCost, "gigaDrillSiliconCost");
+
 	if(metal < gemMinerMetalCost){
 		document.getElementById("gemMinerMetalCost").className = "red";
 	}
