@@ -24,9 +24,6 @@ v0.3.1
 v0.3.0
 - Added Computerized Tier of resource machines.
 
-T3 space metal: Moon Quarry
-T3 wood: Mass Deforester
-
 # Changelog:
 
 v0.3.0 The Tech Update

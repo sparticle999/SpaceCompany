@@ -1020,6 +1020,25 @@
 									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
 								</td>
 							</tr>
+							<tr class="tier3 hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Mass Deforester <span id="deforester">0</span>
+									</h3>
+									<span>
+										This machine is the reason we're losing our rainforests. At least we get a ton of wood!
+										<br>
+										Produces <span id="laserCutterOutput">56</span> wood per second.
+										<br>
+										Uses 20 energy per second.
+										<br>
+										Costs <span id="laserCutterSpaceMetalCost">3000</span> metal, <span id="laserCutterTitaniumCost">2700</span> Titanium, <span id="laserCutterSiliconCost">2500</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -2585,16 +2604,19 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="XXXX">
+							<tr id="exploreSolCenter">
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX
+										Exploration
 									</h3>
 									<span>
-										XXXX
+										Exploring the Sol Center gives you access to the hidden base
 										<br>
-										XXXX
+										Costs <span id="SolCenterRocketFuelCost">6000</span> rocket fuel.
 									</span>
+									<br>
+									<br>
+									<button onclick="exploreKuiperBelt()" class="btn btn-default">Explore Kuiper Belt</button>
 									<br>
 									<br>
 								</td>
@@ -2894,6 +2916,13 @@
 							</span>
 						</td>
 					</tr>
+					<tr href="#donatingTab" aria-controls="donatingTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Donating
+							</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -3028,6 +3057,26 @@
 						</table>
 					</div>
 				</div>
+				<div id="donatingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Dontaing
+									</h2>
+									<span>
+										I didn't like the intrusiveness of ads on this game and felt that getting people to pay for an in-game boost wouldn't bode well in the community as it makes the game feel like a fremium or pay-to-win game.
+										<br>
+										However, I like the donation system because there is nothing forcing you to donate other than out of the goodness of people's hearts. If you like the game and want more content faster, I would be happy to put more time towards this game if I felt that it is paying off.
+										<br>
+										I have a <a href="https://www.paypal.me/Sparticle999" target="_blank" class="btn-link" style="font-size:16px;">Donation Link</a> if you want to help out and speed the game's progress along.
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -3054,13 +3103,6 @@
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
 								Credits
-							</span>
-						</td>
-					</tr>
-					<tr href="#donatingTab" aria-controls="donatingTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td colspan="2" style="vertical-align:middle;">
-							<span>
-								Donating
 							</span>
 						</td>
 					</tr>
@@ -3273,26 +3315,6 @@
 										<br>
 										<br>
 										Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shuttershock</a> and retextured and edited by myself to fit the theme of this game.
-									</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div id="donatingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="pointer btn-link">
-										Dontaing
-									</h2>
-									<span>
-										I didn't like the intrusiveness of ads on this game and felt that getting people to pay for an in-game boost wouldn't bode well in the community as it makes the game feel like a fremium or pay-to-win game.
-										<br>
-										However, I like the donation system because there is nothing forcing you to donate other than out of the goodness of people's hearts. If you like the game and want more content faster, I would be happy to put more time towards this game if I felt that it is paying off.
-										<br>
-										I have a <a href="https://www.paypal.me/Sparticle999" target="_blank" class="btn-link" style="font-size:16px;">Donation Link</a> if you want to help out and speed the game's progress along.
 									</span>
 								</td>
 							</tr>

@@ -9,15 +9,21 @@ var nuclearStation = 0; var nuclearStationSpaceMetalCost = 20000; var nuclearSta
 var magmatic = 0; var magmaticSpaceMetalCost = 25000; var magmaticGemCost = 20000; var magmaticSilverCost = 15000;
 var fusionReactor = 0; var fusionReactorSpaceMetalCost = 30000; var fusionReactorTitaniumCost = 20000; var fusionReactorSiliconCost = 15000;
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
-var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
+var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20;
+var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
-var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5; var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
+var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5;
+var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
-var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10; var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
+var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10;
+var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
-var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
+var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
+var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
-var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5; var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
+var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
+var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
+var deforester = 0; var deforesterSpaceMetalCost = 3000; var deforesterTitaniumCost = 2700; var deforesterSiliconCost = 2500;
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
@@ -680,7 +686,8 @@ function refreshPerSec(){
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
 	energyOutput += (moonDrill*10)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
-	energyOutput += (annihilator*62);
+	energyOutput += (deforester*20);
+	energyOutput += (moonQuarry*64)+(annihilator*62);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -691,9 +698,9 @@ function refreshPerSec(){
 		metalps = miner + (heavyDrill*heavyDrillOutput);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput);
 		charcoalps = woodburner + (furnace*furnaceOutput);
-		woodps = woodcutter + (laserCutter*laserCutterOutput);
+		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
 		scienceps = (lab*labGain);
-		spaceMetalps = moonWorker + (moonDrill * 10);
+		spaceMetalps = moonWorker + (moonDrill * 10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator * 8);
 		titaniumps = explorer + (spaceMetalDrill * 6);
 		goldps = droid + (destroyer * 8);
