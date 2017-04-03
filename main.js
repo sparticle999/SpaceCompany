@@ -20,6 +20,7 @@ var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCos
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
 var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
+var kiln = 0; var kilnSpaceMetalCost = 3500; var kilnGemCost = 6200; var kilnSiliconCost = 3800;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
 var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
@@ -193,6 +194,10 @@ function save(type){
 		furnaceOilCost: furnaceOilCost,
 		furnaceWoodInput: furnaceWoodInput,
 		furnaceOutput: furnaceOutput,
+		kiln: kiln,
+		kilnSpaceMetalCost: kilnSpaceMetalCost,
+		kilnGemCost: kilnGemCost,
+		kilnSiliconCost: kilnSiliconCost,
 		wood: wood,
 		woodStorage: woodStorage,
 		woodNextStorage: woodNextStorage,
@@ -462,6 +467,10 @@ function load(type){
 		if(typeof savegame.furnaceOilCost !== "undefined") furnaceOilCost = savegame.furnaceOilCost;
 		if(typeof savegame.furnaceWoodInput !== "undefined") furnaceWoodInput = savegame.furnaceWoodInput;
 		if(typeof savegame.furnaceOutput !== "undefined") furnaceOutput = savegame.furnaceOutput;
+		if(typeof savegame.kiln !== "undefined") kiln = savegame.kiln;
+		if(typeof savegame.kilnSpaceMetalCost !== "undefined") kilnSpaceMetalCost = savegame.kilnSpaceMetalCost;
+		if(typeof savegame.kilnGemCost !== "undefined") kilnGemCost = savegame.kilnGemCost;
+		if(typeof savegame.kilnSiliconCost !== "undefined") kilnSiliconCost = savegame.kilnSiliconCost;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
 		if(typeof savegame.woodStorage !== "undefined") woodStorage = savegame.woodStorage;
 		if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;
@@ -703,7 +712,7 @@ function refreshPerSec(){
 		oilps = pump + (pumpjack*pumpjackOutput);
 		metalps = miner + (heavyDrill*heavyDrillOutput);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput);
-		charcoalps = woodburner + (furnace*furnaceOutput);
+		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
 		scienceps = (lab*labGain);
 		spaceMetalps = moonWorker + (moonDrill * 10) + (moonQuarry*53);
@@ -756,7 +765,7 @@ function refreshPerSec(){
 		document.getElementById("charcoalps").innerHTML = 0;
 	}
 	else{
-		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput));
+		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
 		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
 	}
 	if(wood >= woodStorage){
@@ -798,10 +807,6 @@ function refreshPerSec(){
 	if(helium >= heliumStorage){
 		document.getElementById("heliumps").innerHTML = 0;
 	}
-}
-
-function refreshItem(item){
-	document.getElementById(item).innerHTML = commafy(item);
 }
 
 function refreshStats(){
@@ -922,6 +927,10 @@ function refreshUI(){
 	document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
 	document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
 	document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
+	document.getElementById("kiln").innerHTML = commafy(kiln);
+	document.getElementById("kilnSpaceMetalCost").innerHTML = commafy(kilnSpaceMetalCost);
+	document.getElementById("kilnGemCost").innerHTML = kilnGemCost;
+	document.getElementById("kilnSiliconCost").innerHTML = kilnSiliconCost;
 	document.getElementById("woodcutter").innerHTML = woodcutter;
 	document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 	document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
@@ -1430,6 +1439,10 @@ function checkRedCost(){
 		document.getElementById("furnaceOilCost").className = "";
 	}
 	
+	turnRed(spaceMetal, kilnSpaceMetalCost, "kilnSpaceMetalCost");
+	turnRed(gem, kilnGemCost, "kilnGemCost");
+	turnRed(silicon, kilnSiliconCost, "kilnSiliconCost");
+
 	if(metal < woodcutterMetalCost){
 		document.getElementById("woodcutterMetalCost").className = "red";
 	}
