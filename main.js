@@ -156,25 +156,6 @@ function autosave(){
 			saveTimer += 1;
 		}
 	}
-
-	if(saveTimer >= document.getElementById("autoSaveTime").innerHTML * 60){
-		save();
-		saveTimer = 0;
-	}
-	else{
-		secondsLeft = commafy(((document.getElementById("autoSaveTime").innerHTML * 60) - saveTimer));
-		if(saveTimer < 3){
-			document.getElementById("autoSaveTimer").innerHTML = "Saved";
-		}
-		else if(secondsLeft <= 30){
-			document.getElementById("autoSaveTimer").className = "";
-			document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-		}
-		else{
-			document.getElementById("autoSaveTimer").className = "hidden";
-		}
-		saveTimer += 1;
-	}
 }
 
 function save(type){
