@@ -205,6 +205,10 @@ function save(type){
 		laserCutterGemCost: laserCutterGemCost,
 		laserCutterOilCost: laserCutterOilCost,
 		laserCutterOutput: laserCutterOutput,
+		deforester: deforester,
+		deforesterSpaceMetalCost: deforesterSpaceMetalCost,
+		deforesterTitaniumCost: deforesterTitaniumCost,
+		deforesterSiliconCost: deforesterSiliconCost,
 		science: science,
 		scienceps: scienceps,
 		lab: lab,
@@ -470,6 +474,10 @@ function load(type){
 		if(typeof savegame.laserCutterGemCost !== "undefined") laserCutterGemCost = savegame.laserCutterGemCost;
 		if(typeof savegame.laserCutterOilCost !== "undefined") laserCutterOilCost = savegame.laserCutterOilCost;
 		if(typeof savegame.laserCutterOutput !== "undefined") laserCutterOutput = savegame.laserCutterOutput;
+		if(typeof savegame.deforester !== "undefined") deforester = savegame.deforester;
+		if(typeof savegame.deforesterSpaceMetalCost !== "undefined") deforesterSpaceMetalCost = savegame.deforesterSpaceMetalCost;
+		if(typeof savegame.deforesterTitaniumCost !== "undefined") deforesterTitaniumCost = savegame.deforesterTitaniumCost;
+		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
 		if(typeof savegame.scienceps !== "undefined") scienceps = savegame.scienceps;
 		if(typeof savegame.lab !== "undefined") lab = savegame.lab;
@@ -629,7 +637,6 @@ function commafy(input){
 }
 
 function refresh(){
-	
 	document.getElementById("energy").innerHTML = commafy(energy);
 	document.getElementById("oil").innerHTML = commafy(oil);
 	document.getElementById("metal").innerHTML = commafy(metal);
@@ -692,7 +699,6 @@ function refreshPerSec(){
 		energyps = energyInput;
 	}
 	if(energy >= 10 || energyps <= 0){
-		uraniumps = grinder + (cubic*9);
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput);
 		metalps = miner + (heavyDrill*heavyDrillOutput);
@@ -706,6 +712,7 @@ function refreshPerSec(){
 		goldps = droid + (destroyer * 8);
 		silverps = scout + (spaceLaser * 13);
 		siliconps = blowtorch + (scorcher * 9) + (annihilator*40);
+		uraniumps = grinder + (cubic*9);
 		lavaps = crucible + (extractor*7);
 		hydrogenps = collector + (magnet*5);
 		heliumps = drone + (tanker*11);
@@ -791,6 +798,10 @@ function refreshPerSec(){
 	if(helium >= heliumStorage){
 		document.getElementById("heliumps").innerHTML = 0;
 	}
+}
+
+function refreshItem(item){
+	document.getElementById(item).innerHTML = commafy(item);
 }
 
 function refreshStats(){
@@ -1453,6 +1464,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("laserCutterOilCost").className = "";
 	}
+
+	turnRed(spaceMetal, deforesterSpaceMetalCost, "deforesterSpaceMetalCost");
+	turnRed(titanium, deforesterTitaniumCost, "deforesterTitaniumCost");
+	turnRed(silicon, deforesterSiliconCost, "deforesterSiliconCost");
 
 	if(gem < moonWorkerGemCost){
 		document.getElementById("moonWorkerGemCost").className = "red";
@@ -3007,6 +3022,25 @@ function getLaserCutter(){
 	}
 }
 
+function getDeforester(){
+	if(spaceMetal >= deforesterSpaceMetalCost && titanium >= deforesterTitaniumCost && silicon >= deforesterSiliconCost){
+		spaceMetal -= deforesterSpaceMetalCost;
+		titanium -= deforesterTitaniumCost;
+		silicon -= deforesterSiliconCost;
+		deforester += 1;
+		deforesterSpaceMetalCost = Math.floor(40 * Math.pow(1.1,deforester + 1));
+		deforesterTitaniumCost = Math.floor(90 * Math.pow(1.1,deforester + 1));
+		deforesterSiliconCost = Math.floor(50 * Math.pow(1.1,deforester + 1));
+		document.getElementById("deforester").innerHTML = deforester;
+		document.getElementById("deforesterSpaceMetalCost").innerHTML = commafy(deforesterSpaceMetalCost);
+		document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
+		document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getMoonWorker(){
 	if(gem >= moonWorkerGemCost){
 		gem -= moonWorkerGemCost;
@@ -3663,6 +3697,18 @@ function exploreKuiperBelt(){
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("kuiperBelt");
+		refreshResources();
+	}
+}
+
+function exploreSolCenter(){
+	if(rocketFuel >= 7000){
+		rocketFuel -= 7000;
+		document.getElementById("exploreSolCenter").className = "hidden";
+		document.getElementById("solCenterTopTab").className = "";
+		resourcesUnlocked.push("solCenterTopTab");
+		buttonsHidden.push("exploreSolCenter");
+		explored.push("solCenter");
 		refreshResources();
 	}
 }

@@ -61,6 +61,7 @@
 		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
     	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab">Solar System</a></li>
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
+    	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab">Sol Center</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab">Settings</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
@@ -1028,15 +1029,15 @@
 									<span>
 										This machine is the reason we're losing our rainforests. At least we get a ton of wood!
 										<br>
-										Produces <span id="laserCutterOutput">56</span> wood per second.
+										Produces <span id="deforesterOutput">56</span> wood per second.
 										<br>
 										Uses 20 energy per second.
 										<br>
-										Costs <span id="laserCutterSpaceMetalCost">3000</span> metal, <span id="laserCutterTitaniumCost">2700</span> Titanium, <span id="laserCutterSiliconCost">2500</span> Silicon.
+										Costs <span id="deforesterSpaceMetalCost">3000</span> metal, <span id="deforesterTitaniumCost">2700</span> Titanium, <span id="deforesterSiliconCost">2500</span> Silicon.
 									</span>
 									<br>
 									<br>
-									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+									<button onclick="getDeforester()" class="btn btn-default">Get Deforester</button>
 								</td>
 							</tr>
 						</table>
@@ -2610,7 +2611,7 @@
 										Exploration
 									</h3>
 									<span>
-										Exploring the Sol Center gives you access to the hidden base
+										Exploring the Sol Center gives you access to the hidden base.
 										<br>
 										Costs <span id="SolCenterRocketFuelCost">6000</span> rocket fuel.
 									</span>
@@ -2890,6 +2891,59 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Sol Center -->
+
+		<div role="tabpanel" class="tab-pane fade" id="solCenterPage">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#XXXX" aria-controls="XXXX" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								XXXX
+							</span>
+						</td>
+					</tr>
+					<tr href="#XXXX" aria-controls="XXXX" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								XXXX
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="XXXX" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										XXXX
+									</h2>
+									<span>
+										XXXX
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										XXXX
+									</h3>
+									<span>
+										XXXX
+									</span>
+									<br>
+
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+
 
 		<!-- Settings -->
 		<div role="tabpanel" class="tab-pane fade" id="settings">
