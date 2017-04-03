@@ -4013,14 +4013,30 @@ function achieveTechWonder(){
 	}
 }
 
+function unlockTier3(){
+	// document.getElementById("oilTier3").className = "";
+	document.getElementById("metalTier3").className = "";
+	document.getElementById("gemTier3").className = "";
+	document.getElementById("charcoalTier3").className = "";
+	document.getElementById("woodTier3").className = "";
+	document.getElementById("spaceMetalTier3").className = "";
+	// document.getElementById("methaneTier3").className = "";
+	// document.getElementById("titaniumTier3").className = "";
+	// document.getElementById("goldTier3").className = "";
+	// document.getElementById("silverTier3").className = "";
+	document.getElementById("siliconTier3").className = "";
+	// document.getElementById("uraniumTier3").className = "";
+	// document.getElementById("lavaTier3").className = "";
+	// document.getElementById("hydrogenTier3").className = "";
+	// document.getElementById("heliumTier3").className = "";
+}
+
 function activateTechWonder(){
 	if(silicon >= 50000 && gold >= 30000 && gem >= 60000){
 		silicon -= 50000;
 		gold -= 30000;
 		gem -= 60000;
-		for(var i = document.getElementsByClassName("tier3 hidden").length; i>0; i--){
-			document.getElementsByClassName("tier3 hidden")[i].className = "tier3"
-		}
+		unlockTier3();
 		document.getElementById("activateTechWonder").className = "hidden";
 		document.getElementById("techActivation").innerHTML = "Activated";
 		techUnlocked = true;
