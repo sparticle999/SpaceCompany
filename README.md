@@ -18,10 +18,14 @@ v0.3.1
 - Added Meteorite
 - Added Meteorite Tier of resource machines
 - Added Plasma
+- Compress Loading with for loops and array lists.
 
 
 v0.3.0
 - Added Computerized Tier of resource machines.
+
+T3 space metal: Moon Quarry
+T3 wood: Mass Deforester
 
 # Changelog:
 

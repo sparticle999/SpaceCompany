@@ -2290,25 +2290,26 @@ function gainResources(){
 	else{
 		oil = oilStorage;
 	}
-	if(charcoal + charcoalps/10 < charcoalStorage && wood >= ((woodburner*2) + furnace*furnaceWoodInput)/10){
-		charcoal += charcoalps/10;
+	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= ((woodburner*2)/10 + furnace*furnaceWoodInput)/10){
+		if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
+			charcoal += charcoalps/10;
+			wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
+		}
+		else{
+			wood = 0;
+		}
 	}
 	else{
 		var difference = charcoalStorage - charcoal;
 		if(wood >= difference*2){
 			if(charcoal + difference <= charcoalStorage){
 				charcoal += difference;
+				wood -= difference * 2;
 			}
 			else{
 				charcoal = charcoalStorage;
 			}
 		}
-	}
-	if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
-		wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
-	}
-	else{
-		wood = 0;
 	}
 	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
