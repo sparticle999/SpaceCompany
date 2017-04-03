@@ -1635,3 +1635,20 @@ function refreshTabs(){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
  	}
 }
+
+window.onload = function(){
+	load('local');
+};
+
+window.setInterval(function(){
+	refreshPerSec();
+	gainResources();
+	refresh();
+	refreshWonderBars();
+	checkRedCost();
+},100);
+
+window.setInterval(function(){
+	refreshStats();
+	autosave();
+},1000);
