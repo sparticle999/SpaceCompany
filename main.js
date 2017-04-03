@@ -30,6 +30,7 @@ var silver = 0; var silverStorage = 50; var silverNextStorage = 100; var silverp
 var silicon = 0; var siliconStorage = 50; var siliconNextStorage = 100; var siliconps = 0;
 var moonWorker = 0; var moonWorkerGemCost = 500;
 var moonDrill = 0; var moonDrillMetalCost = 1000; var moonDrillGemCost = 600; var moonDrillOilCost = 400;
+var moonQuarry - 0; var moonQuarrySpaceMetalCost = 8000; var moonQuarryGemCost = 5000; var moonQuarrySiliconCost = 3500;
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
 var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionExcavatorGemCost = 800; var suctionExcavatorOilCost = 600;
 var explorer = 0; var explorerGemCost = 1000;
@@ -242,6 +243,10 @@ function save(type){
 		moonDrillMetalCost: moonDrillMetalCost,
 		moonDrillGemCost: moonDrillGemCost,
 		moonDrillOilCost: moonDrillOilCost,
+		moonQuarry: moonQuarry,
+		moonQuarrySpaceMetalCost: moonQuarrySpaceMetalCost,
+		moonQuarryGemCost: moonQuarryGemCost,
+		moonQuarrySiliconCost: moonQuarrySiliconCost,
 		vacuum: vacuum,
 		vacuumSpaceMetalCost: vacuumSpaceMetalCost,
 		vacuumGemCost: vacuumGemCost,
@@ -503,6 +508,10 @@ function load(type){
 		if(typeof savegame.moonDrillMetalCost !== "undefined") moonDrillMetalCost = savegame.moonDrillMetalCost;
 		if(typeof savegame.moonDrillGemCost !== "undefined") moonDrillGemCost = savegame.moonDrillGemCost;
 		if(typeof savegame.moonDrillOilCost !== "undefined") moonDrillOilCost = savegame.moonDrillOilCost;
+		if(typeof savegame.moonQuarry !== "undefined") moonQuarry = savegame.moonQuarry;
+		if(typeof savegame.moonQuarrySpaceMetalCost !== "undefined") moonQuarrySpaceMetalCost = savegame.moonQuarrySpaceMetalCost;
+		if(typeof savegame.moonQuarryGemCost !== "undefined") moonQuarryGemCost = savegame.moonQuarryGemCost;
+		if(typeof savegame.moonQuarrySiliconCost !== "undefined") moonQuarrySiliconCost = savegame.moonQuarrySiliconCost;
 		if(typeof savegame.vacuum !== "undefined") vacuum = savegame.vacuum;
 		if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumSpaceMetalCost = savegame.vacuumSpaceMetalCost;
 		if(typeof savegame.vacuumGemCost !== "undefined") vacuumGemCost = savegame.vacuumGemCost;
@@ -909,6 +918,10 @@ function refreshUI(){
 	document.getElementById("moonDrillMetalCost").innerHTML = commafy(moonDrillMetalCost);
 	document.getElementById("moonDrillGemCost").innerHTML = commafy(moonDrillGemCost);
 	document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
+	document.getElementById("moonQuarry").innerHTML = moonQuarry;
+	document.getElementById("moonQuarrySpaceMetalCost").innerHTML = commafy(moonQuarrySpaceMetalCost);
+	document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
+	document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
 	document.getElementById("vacuum").innerHTML = vacuum;
 	document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
 	document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
@@ -992,15 +1005,6 @@ function checkRedCost(){
 	}
 
 	turnRed(uranium, uraniumStorage, "uraniumStorageCost");
-
-
-
-	// if(uranium < uraniumStorage){
-	// 	document.getElementById("uraniumStorageCost").className = "red";
-	// }
-	// else{
-	// 	document.getElementById("uraniumStorageCost").className = "";
-	// }
 
 	if(spaceMetal < uraniumStorage/2.5){
 		document.getElementById("uraniumStorageSpaceMetalCost").className = "red";
@@ -1471,6 +1475,11 @@ function checkRedCost(){
 		document.getElementById("moonDrillOilCost").className = "";
 	}
 	
+	turnRed(spaceMetal, moonQuarrySpaceMetalCost, "moonQuarrySpaceMetalCost");
+	turnRed(gem, moonQuarryGemCost, "moonQuarryGemCost");
+	turnRed(silicon, moonQuarrySiliconCost, "moonQuarrySiliconCost");
+
+
 	if(spaceMetal < vacuumSpaceMetalCost){
 		document.getElementById("vacuumSpaceMetalCost").className = "red";
 	}
@@ -3020,6 +3029,25 @@ function getMoonDrill(){
 		refresh();
 		refreshPerSec();
 		tier2 += 1;
+	}
+}
+
+function getMoonQuarry(){
+	if(spaceMetal >= moonQuarrySpaceMetalCost && gem >= moonQuarryGemCost && silicon >= moonQuarrySiliconCost){
+		spaceMetal -= moonQuarrySpaceMetalCost;
+		gem -= moonQuarryGemCost;
+		silicon -= moonQuarrySiliconCost;
+		moonQuarry += 1;
+		moonQuarrySiliconCost = Math.floor(3500 * Math.pow(1.1,moonQuarry + 1));
+		moonQuarryGemCost = Math.floor(5000 * Math.pow(1.1,moonQuarry + 1));
+		moonQuarrySpaceMetalCost = Math.floor(8000 * Math.pow(1.1,moonQuarry + 1));
+		document.getElementById("moonQuarry").innerHTML = moonQuarry;
+		document.getElementById("moonQuarrySpaceMetalCost").innerHTML = commafy(moonQuarrySpaceMetalCost);
+		document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
+		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
 	}
 }
 
