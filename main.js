@@ -401,7 +401,7 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
-		if(typeof savegame.autoSaveTime !== "undefined") document.getElementById("autoSaveTime").innerHTML = savegame.autoSaveTime;
+		//if(typeof savegame.autoSaveTime !== "undefined") document.getElementById("autoSaveTime").innerHTML = savegame.autoSaveTime;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
 		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;

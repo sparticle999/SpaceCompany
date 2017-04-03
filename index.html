@@ -713,7 +713,7 @@
 									<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
 								</td>
 							</tr>
-							<tr id="oilTier3">
+							<tr id="oilTier3" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
 										XXXX: <span id="XXXX">0</span>
@@ -800,7 +800,7 @@
 									<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
 								</td>
 							</tr>
-							<tr id="metalTier3">
+							<tr id="metalTier3" class="hidden"">
 								<td>
 									<h3 class="pointer btn-link">
 										Giga Drill: <span id="gigaDrill">0</span>
@@ -986,7 +986,7 @@
 									<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
 								</td>
 							</tr>
-							<tr class="charcoalTier3">
+							<tr class="charcoalTier3" class="hidden"">
 								<td>
 									<h3 class="pointer btn-link">
 										Industrial Kiln: <span id="kiln">0</span>
@@ -1079,7 +1079,7 @@
 									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
 								</td>
 							</tr>
-							<tr id="woodTier3">
+							<tr id="woodTier3" class="hidden"">
 								<td>
 									<h3 class="pointer btn-link">
 										Mass Deforester <span id="deforester">0</span>
@@ -1170,7 +1170,7 @@
 									<button onclick="getMoonDrill()" class="btn btn-default">Get Low-Gravity Drill</button>
 								</td>
 							</tr>
-							<tr id="spaceMetalTier3">
+							<tr id="spaceMetalTier3" class="hidden"">
 								<td>
 									<h3 class="pointer btn-link">
 										Moon Quarry: <span id="moonQuarry">0</span>
@@ -1549,7 +1549,7 @@
 									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
 								</td>
 							</tr>
-							<tr id="siliconTier3">
+							<tr id="siliconTier3" class="hidden"">
 								<td>
 									<h3 class="pointer btn-link">
 										Beach Annihilator: <span id="annihilator">0</span>
@@ -3062,9 +3062,17 @@
 										Change how long the game waits before auto-saving again.
 									</span>
 									<br>
-									<input type="hidden" value="2" id="slider1" />
-									<br>
-									<span>Autosaves every <span id="autoSaveTime">2</span> minutes.</span>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-primary active">
+											<input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+										</label>
+										<label class="btn btn-primary">
+											<input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+										</label>
+										<label class="btn btn-primary">
+											<input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+										</label>
+									</div>
 								</td>
 							</tr>
 							<tr>
