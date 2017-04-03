@@ -19,6 +19,7 @@ var gigaDrill = 0; var gigaDrillSpaceMetalCost = 2800; var gigaDrillGemCost = 34
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10;
 var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
+var diamondDrill = 0; var diamondDrillSpaceMetalCost = 2400; var diamondDrillGemCost = 8000; var diamondDrillSiliconCost = 4500;
 var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
 var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
@@ -188,6 +189,10 @@ function save(type){
 		advancedDrillGemCost: advancedDrillGemCost,
 		advancedDrillOilCost: advancedDrillOilCost,
 		advancedDrillOutput: advancedDrillOutput,
+		diamondDrill: diamondDrill,
+		diamondDrillSpaceMetalCost: diamondDrillSpaceMetalCost,
+		diamondDrillGemCost: diamondDrillGemCost,
+		diamondDrillSiliconCost: diamondDrillSiliconCost,
 		charcoal: charcoal,
 		charcoalStorage: charcoalStorage,
 		charcoalNextStorage: charcoalNextStorage,
@@ -466,6 +471,10 @@ function load(type){
 		if(typeof savegame.advancedDrillGemCost !== "undefined") advancedDrillGemCost = savegame.advancedDrillGemCost;
 		if(typeof savegame.advancedDrillOilCost !== "undefined") advancedDrillOilCost = savegame.advancedDrillOilCost;
 		if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
+		if(typeof savegame.diamondDrill !== "undefined") diamondDrill = savegame.diamondDrill;
+		if(typeof savegame.diamondDrillMetalCost !== "undefined") diamondDrillMetalCost = savegame.diamondDrillMetalCost;
+		if(typeof savegame.diamondDrillGemCost !== "undefined") diamondDrillGemCost = savegame.diamondDrillGemCost;
+		if(typeof savegame.diamondDrillOilCost !== "undefined") diamondDrillOilCost = savegame.diamondDrillOilCost;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
@@ -994,6 +1003,10 @@ function refreshUI(){
 	document.getElementById("advancedDrillGemCost").innerHTML = commafy(advancedDrillGemCost);
 	document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
 	document.getElementById("advancedDrillOutput").innerHTML = commafy(advancedDrillOutput);
+	document.getElementById("diamondDrill").innerHTML = diamondDrill;
+	document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
+	document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
+	document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
 	document.getElementById("woodburner").innerHTML = woodburner;
 	document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
 	document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
@@ -1483,6 +1496,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("advancedDrillOilCost").className = "";
 	}
+
+	turnRed(spaceMetal, diamondDrillSpaceMetalCost, "diamondDrillSpaceMetalCost");
+	turnRed(gem, diamondDrillGemCost, "diamondDrillGemCost");
+	turnRed(silicon, diamondDrillSiliconCost, "diamondDrillSiliconCost");
 	
 	if(metal < woodburnerMetalCost){
 		document.getElementById("woodburnerMetalCost").className = "red";
