@@ -74,6 +74,8 @@ var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost
 var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;
 var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticUraniumCost = 200;
 var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
+var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
+var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 
 function autosave(){
@@ -2038,6 +2040,10 @@ function checkRedCost(){
 
 	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
 	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
+
+	turnRed(spaceMetal, magnetSpaceMetalCost, "magnetSpaceMetalCost");
+	turnRed(titanium, magnetTitaniumCost, "magnetTitaniumCost");
+	turnRed(gold, magnetGoldCost, "magnetGoldCost");
 
 	if(silicon < droneSiliconCost){
 		document.getElementById("droneSiliconCost").className = "red";
