@@ -632,6 +632,13 @@ function load(type){
 		if(typeof savegame.magnetSpaceMetalCost !== "undefined") magnetSpaceMetalCost = savegame.magnetSpaceMetalCost;
 		if(typeof savegame.magnetTitaniumCost !== "undefined") magnetTitaniumCost = savegame.magnetTitaniumCost;
 		if(typeof savegame.magnetGoldCost !== "undefined") magnetGoldCost = savegame.magnetGoldCost;
+		if(typeof savegame.drone !== "undefined") drone = savegame.drone;
+		if(typeof savegame.droneSpaceMetalCost !== "undefined") droneSpaceMetalCost = savegame.droneSpaceMetalCost;
+		if(typeof savegame.droneSiliconCost !== "undefined") droneSiliconCost = savegame.droneSiliconCost;
+		if(typeof savegame.tanker !== "undefined") tanker = savegame.tanker;
+		if(typeof savegame.tankerSpaceMetalCost !== "undefined") tankerSpaceMetalCost = savegame.tankerSpaceMetalCost;
+		if(typeof savegame.tankerTitaniumCost !== "undefined") tankerTitaniumCost = savegame.tankerTitaniumCost;
+		if(typeof savegame.tankerSiliconCost !== "undefined") tankerSiliconCost = savegame.tankerSiliconCost;
 
 	}
 
@@ -828,7 +835,7 @@ function refreshPerSec(){
 	}
 	document.getElementById("methaneps").innerHTML = commafy(methaneps - methaneStation*6);
 	document.getElementById("methane").className = "";
-	if(methane >= methaneStorage){
+	if(methane >= methaneStorage -7){
 		document.getElementById("methane").className = "green";
 	}
 	if(methane === 0){
@@ -1108,6 +1115,13 @@ function refreshUI(){
 	document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
 	document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
 	document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
+	document.getElementById("drone").innerHTML = commafy(drone);
+	document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
+	document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
+	document.getElementById("tanker").innerHTML = commafy(tanker);
+	document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
+	document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
+	document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
 
 }
 
@@ -1194,65 +1208,32 @@ function checkRedCost(){
 		document.getElementById("woodStorageMetalCost").className = "";
 	}
 	
-	if(spaceMetal < spaceMetalStorage){
-		document.getElementById("spaceMetalStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceMetalStorageCost").className = "";
-	}
+	turnRed(spaceMetal, spaceMetalStorage, "spaceMetalStorageCost");
+	turnRed(metal, spaceMetalStorage*4, "spaceMetalStorageMetalCost");
 
-	if(metal < spaceMetalStorage*4){
-		document.getElementById("spaceMetalStorageMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceMetalStorageMetalCost").className = "";
-	}
+	turnRed(methane, methaneStorage, "methaneStorageCost");
+	turnRed(spaceMetal, methaneStorage/2.5, "methaneStorageSpaceMetalCost");
 
-	if(methane < methaneStorage){
-		document.getElementById("methaneStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("methaneStorageCost").className = "";
-	}
-
-	if(spaceMetal < methaneStorage/2.5){
-		document.getElementById("methaneStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("methaneStorageSpaceMetalCost").className = "";
-	}
-	
-	if(titanium < titaniumStorage){
-		document.getElementById("titaniumStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("titaniumStorageCost").className = "";
-	}
-
-	if(spaceMetal < titaniumStorage/2.5){
-		document.getElementById("titaniumStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("titaniumStorageSpaceMetalCost").className = "";
-	}
+	turnRed(titanium, titaniumStorage, "titaniumStorageCost");
+	turnRed(spaceMetal, titaniumStorage/2.5, "titaniumStorageSpaceMetalCost");
 
 	turnRed(gold, goldStorage, "goldStorageCost");
-	turnRed(spaceMetal, goldStorage/2.5, "goldStorageSpaceMetalCost")
+	turnRed(spaceMetal, goldStorage/2.5, "goldStorageSpaceMetalCost");
 	
 	turnRed(silver, silverStorage, "silverStorageCost");
-	turnRed(spaceMetal, silverStorage/2.5, "silverStorageSpaceMetalCost")
+	turnRed(spaceMetal, silverStorage/2.5, "silverStorageSpaceMetalCost");
 
 	turnRed(silicon, siliconStorage, "siliconStorageCost");
-	turnRed(spaceMetal, siliconStorage/2.5, "siliconStorageSpaceMetalCost")
+	turnRed(spaceMetal, siliconStorage/2.5, "siliconStorageSpaceMetalCost");
 
 	turnRed(lava, lavaStorage, "lavaStorageCost");
-	turnRed(spaceMetal, lavaStorage/2.5, "lavaStorageSpaceMetalCost")
+	turnRed(spaceMetal, lavaStorage/2.5, "lavaStorageSpaceMetalCost");
 
 	turnRed(hydrogen, hydrogenStorage, "hydrogenStorageCost");
-	turnRed(spaceMetal, hydrogenStorage/2.5, "hydrogenStorageSpaceMetalCost")
+	turnRed(spaceMetal, hydrogenStorage/2.5, "hydrogenStorageSpaceMetalCost");
 
 	turnRed(helium, heliumStorage, "heliumStorageCost");
-	turnRed(spaceMetal, heliumStorage/2.5, "heliumStorageSpaceMetalCost")
+	turnRed(spaceMetal, heliumStorage/2.5, "heliumStorageSpaceMetalCost");
 
 	if(metal < charcoalEngineMetalCost){
 		document.getElementById("charcoalEngineMetalCost").className = "red";
