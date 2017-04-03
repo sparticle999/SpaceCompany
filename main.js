@@ -758,66 +758,66 @@ function refreshPerSec(){
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	if(uranium >= uraniumStorage){
-		document.getElementById("uraniumps").innerHTML = 0;
+		document.getElementById("uranium").className = "green";
 	}
 	document.getElementById("oilps").innerHTML = commafy(oilps - chemicalPlant*20);
 	if(oil >= oilStorage){
-		document.getElementById("oilps").innerHTML = 0;
+		document.getElementById("oil").className = "green";
 	}
 	document.getElementById("metalps").innerHTML = commafy(metalps);
 	if(metal >= metalStorage){
-		document.getElementById("metalps").innerHTML = 0;
+		document.getElementById("metal").className = "green";
 	}
 	document.getElementById("gemps").innerHTML = commafy(gemps);
 	if(gem >= gemStorage){
-		document.getElementById("gemps").innerHTML = 0;
+		document.getElementById("gem").className = "green";
 	}
 	if(charcoal >= charcoalStorage - 3){
 		document.getElementById("woodps").innerHTML = commafy(woodps);
-		document.getElementById("charcoalps").innerHTML = 0;
+		document.getElementById("charcoal").className = "green";
 	}
 	else{
 		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
 		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
 	}
 	if(wood >= woodStorage){
-			document.getElementById("woodps").innerHTML = 0;
+			document.getElementById("wood").className = "green";
 		}
 	document.getElementById("spaceMetalps").innerHTML = commafy(spaceMetalps);
 	if(spaceMetal >= spaceMetalStorage){
-		document.getElementById("spaceMetalps").innerHTML = 0;
+		document.getElementById("spaceMetal").className = "green";
 	}
 	document.getElementById("methaneps").innerHTML = commafy(methaneps - methaneStation*6);
 	if(methane >= methaneStorage){
-		document.getElementById("methaneps").innerHTML = 0;
+		document.getElementById("methane").className = "green";
 	}
 	document.getElementById("titaniumps").innerHTML = commafy(titaniumps);
 	if(titanium >= titaniumStorage){
-		document.getElementById("titaniumps").innerHTML = 0;
+		document.getElementById("titanium").className = "green";
 	}
 	document.getElementById("goldps").innerHTML = commafy(goldps);
 	if(gold >= goldStorage){
-		document.getElementById("goldps").innerHTML = 0;
+		document.getElementById("gold").className = "green";
 	}
 	document.getElementById("silverps").innerHTML = commafy(silverps);
 	if(silver >= silverStorage){
-		document.getElementById("silverps").innerHTML = 0;
+		document.getElementById("silver").className = "green";
 	}
 	document.getElementById("siliconps").innerHTML = commafy(siliconps);
 	if(silicon >= siliconStorage){
-		document.getElementById("siliconps").innerHTML = 0;
+		document.getElementById("silicon").className = "green";
 	}
 	document.getElementById("lavaps").innerHTML = commafy(lavaps - magmatic*11);
 	if(lava >= lavaStorage){
-		document.getElementById("lavaps").innerHTML = 0;
+		document.getElementById("lava").className = "green";
 	}
 	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10);
 	if(hydrogen >= hydrogenStorage){
-		document.getElementById("hydrogenps").innerHTML = 0;
+		document.getElementById("hydrogen").className = "green";
 	}
 	document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10);
 	if(helium >= heliumStorage){
-		document.getElementById("heliumps").innerHTML = 0;
+		document.getElementById("helium").className = "green";
 	}
 }
 
