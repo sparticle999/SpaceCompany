@@ -538,13 +538,13 @@ function achieveTechWonder(){
 }
 
 function unlockTier3(){
-	// document.getElementById("oilTier3").className = "";
+	document.getElementById("oilTier3").className = "";
 	document.getElementById("metalTier3").className = "";
 	document.getElementById("gemTier3").className = "";
 	document.getElementById("charcoalTier3").className = "";
 	document.getElementById("woodTier3").className = "";
 	document.getElementById("spaceMetalTier3").className = "";
-	// document.getElementById("methaneTier3").className = "";
+	document.getElementById("methaneTier3").className = "";
 	// document.getElementById("titaniumTier3").className = "";
 	// document.getElementById("goldTier3").className = "";
 	// document.getElementById("silverTier3").className = "";

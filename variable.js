@@ -12,6 +12,7 @@ var fusionReactor = 0; var fusionReactorSpaceMetalCost = 30000; var fusionReacto
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20;
 var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
+var oilField = 0; var oilFieldSpaceMetalCost = 2400; var oilFieldTitaniumCost = 2700; var oilFieldSiliconCost = 3900;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
 var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5;
 var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
@@ -43,6 +44,7 @@ var moonDrill = 0; var moonDrillMetalCost = 1000; var moonDrillGemCost = 600; va
 var moonQuarry = 0; var moonQuarrySpaceMetalCost = 8000; var moonQuarryGemCost = 5000; var moonQuarrySiliconCost = 3500;
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
 var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionExcavatorGemCost = 800; var suctionExcavatorOilCost = 600;
+var spaceCow = 0; var spaceCowSpaceMetalCost = 10000; var spaceCowTitaniumCost = 9000; var spaceCowSiliconCost = 4100;
 var explorer = 0; var explorerGemCost = 1000;
 var spaceMetalDrill = 0; var spaceMetalDrillSpaceMetalCost = 200; var spaceMetalDrillGemCost = 800; var spaceMetalDrillOilCost = 1000;
 var droid = 0; var droidSpaceMetalCost = 200; var droidMethaneCost = 50;

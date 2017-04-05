@@ -704,7 +704,9 @@
 										Pumpjack: <span id="pumpjack">0</span>
 									</h3>
 									<span>
-										Pumpjacks are much bigger than small pumps and produce Oil on an industrial scale but they require a lot of energy. Each one produces <span id="pumpjackOutput">5</span> Oil for 4 energy every second.
+										Pumpjacks are much bigger than small pumps and produce Oil on an industrial scale but they require a lot of energy.
+										<br>
+										Each one produces <span id="pumpjackOutput">5</span> Oil for 4 energy every second.
 										<br>
 										Costs <span id="pumpjackMetalCost">250</span> metal, <span id="pumpjackGemCost">80</span> Gems, <span id="pumpjackOilCost">50</span> Oil.
 									</span>
@@ -716,16 +718,20 @@
 							<tr id="oilTier3" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX: <span id="XXXX">0</span>
+										Oil Field: <span id="oilField">0</span>
 									</h3>
 									<span>
-										XXXX
+										Oil Fields are large open spaces, usually found in deserts where vast oil wells can be found under the ground. 
 										<br>
-										Costs <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX, <span id="XXXX">XXXX</span> XXXX.
+										Costs <span id="oilFieldSpaceMetalCost">2,400</span> Space Metal, <span id="oilFieldTitaniumCost">2,700</span> Titanium, <span id="oilFieldSiliconCost">3,900</span> Silicon.
+										<br>
+										Produces 23 Oil per second.
+										<br>
+										Uses 17 energy per second.
 									</span>
 									<br>
 									<br>
-									<button onclick="getXXXX()" class="btn btn-default">Get XXXX</button>
+									<button onclick="getOilField()" class="btn btn-default">Get Oil Field</button>
 								</td>
 							</tr>
 						</table>
@@ -1254,11 +1260,30 @@
 										<br>
 										Uses 16 energy per second.
 										<br>
-										Costs <span id="suctionExcavatorSpaceMetalCost">100</span> Space Metal, <span id="suctionExcavatorGemCost">800</span> Gems, <span id="suctionExcavatorOilCost">600</span> Oil.
+										Costs <span id="suctionExcavatorSpaceMetalCost">10,000</span> Space Metal, <span id="suctionExcavatorGemCost">800</span> Gems, <span id="suctionExcavatorOilCost">600</span> Oil.
 									</span>
 									<br>
 									<br>
 									<button onclick="getSuctionExcavator()" class="btn btn-default">Get Suction Excavator</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Space Cow Plantation: <span id="spaceCow">0</span>
+									</h3>
+									<span>
+										These hold cows genetically modified to produce methane constantly.
+										<br>
+										Produces 37 methane per second.
+										<br>
+										Uses 72 energy per second.
+										<br>
+										Costs <span id="spaceCowSpaceMetalCost">10,000</span> Space Metal, <span id="spaceCowTitaniumCost">9,000</span> Gems, <span id="spaceCowSiliconCost">4,100</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSpaceCow()" class="btn btn-default">Get Space Cow</button>
 								</td>
 							</tr>
 						</table>
@@ -2671,7 +2696,7 @@
 									<span>
 										Exploring the Sol Center gives you access to the hidden base.
 										<br>
-										Costs <span id="SolCenterRocketFuelCost">6000</span> rocket fuel.
+										Costs <span id="solCenterRocketFuelCost">7000</span> rocket fuel.
 									</span>
 									<br>
 									<br>

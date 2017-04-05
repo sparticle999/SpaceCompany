@@ -130,6 +130,12 @@ function gainResources(){
 	if(methane >= methaneStorage){
 		document.getElementById("methane").className = "green";
 	}
+	if(uranium >= uraniumStorage){
+		document.getElementById("uranium").className = "green";
+	}
+	if(lava >= lavaStorage){
+		document.getElementById("lava").className = "green";
+	}
 }
 
 // Gain Buttons
@@ -641,6 +647,25 @@ function getPumpjack(){
 	}
 }
 
+function getOilField(){
+	if(spaceMetal >= oilFieldSpaceMetalCost && titanium >= oilFieldTitaniumCost && silicon >= oilFieldSiliconCost){
+		spaceMetal -= oilFieldSpaceMetalCost;
+		titanium -= oilFieldTitaniumCost;
+		silicon -= oilFieldSiliconCost;
+		oilField += 1;
+		oilFieldSiliconCost = Math.floor(3900 * Math.pow(1.1,oilField + 1));
+		oilFieldTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilField + 1));
+		oilFieldSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilField + 1));
+		document.getElementById("oilField").innerHTML = oilField;
+		document.getElementById("oilFieldSpaceMetalCost").innerHTML = commafy(oilFieldSpaceMetalCost);
+		document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
+		document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getMiner(){
 	if(metal >= minerMetalCost && wood >= minerWoodCost){
 		metal -= minerMetalCost;
@@ -891,6 +916,25 @@ function getSuctionExcavator(){
 		refresh();
 		refreshPerSec();
 		tier2 += 1;
+	}
+}
+
+function getSpaceCow(){
+	if(spaceMetal >= spaceCowSpaceMetalCost && titanium >= spaceCowTitaniumCost && silicon >= spaceCowSiliconCost){
+		spaceMetal -= spaceCowSpaceMetalCost;
+		titanium -= spaceCowTitaniumCost;
+		silicon -= spaceCowSiliconCost;
+		spaceCow += 1;
+		spaceCowSiliconCost = Math.floor(3900 * Math.pow(1.1,spaceCow + 1));
+		spaceCowTitaniumCost = Math.floor(2700 * Math.pow(1.1,spaceCow + 1));
+		spaceCowSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,spaceCow + 1));
+		document.getElementById("spaceCow").innerHTML = spaceCow;
+		document.getElementById("spaceCowSpaceMetalCost").innerHTML = commafy(spaceCowSpaceMetalCost);
+		document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
+		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
 	}
 }
 

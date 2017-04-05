@@ -124,6 +124,10 @@ function save(type){
 		pumpjackGemCost: pumpjackGemCost,
 		pumpjackOilCost: pumpjackOilCost,
 		pumpjackOutput: pumpjackOutput,
+		oilField: oilField,
+		oilFieldSpaceMetalCost: oilFieldSpaceMetalCost,
+		oilFieldTitaniumCost: oilFieldTitaniumCost,
+		oilFieldSiliconCost: oilFieldSiliconCost,
 		metal: metal,
 		metalStorage: metalStorage,
 		metalNextStorage: metalNextStorage,
@@ -244,6 +248,10 @@ function save(type){
 		suctionExcavatorSpaceMetalCost: suctionExcavatorSpaceMetalCost,
 		suctionExcavatorGemCost: suctionExcavatorGemCost,
 		suctionExcavatorOilCost: suctionExcavatorOilCost,
+		spaceCow: spaceCow,
+		spaceCowSpaceMetalCost: spaceCowSpaceMetalCost,
+		spaceCowTitaniumCost: spaceCowTitaniumCost,
+		spaceCowSiliconCost: spaceCowSiliconCost,
 		explorer: explorer,
 		explorerGemCost: explorerGemCost,
 		spaceMetalDrill: spaceMetalDrill,
@@ -282,6 +290,7 @@ function save(type){
 		resourcesUnlocked: resourcesUnlocked,
 		noBorder: noBorder,
 		rocketLaunched: rocketLaunched,
+		techUnlocked: techUnlocked,
 		buttonsHidden: buttonsHidden,
 		explored: explored,
 		uranium: uranium,
@@ -406,6 +415,10 @@ function load(type){
 		if(typeof savegame.pumpjackGemCost !== "undefined") pumpjackGemCost = savegame.pumpjackGemCost;
 		if(typeof savegame.pumpjackOilCost !== "undefined") pumpjackOilCost = savegame.pumpjackOilCost;
 		if(typeof savegame.pumpjackOutput !== "undefined") pumpjackOutput = savegame.pumpjackOutput;
+		if(typeof savegame.oilField !== "undefined") oilField = savegame.oilField;
+		if(typeof savegame.oilFieldSpaceMetalCost !== "undefined") oilFieldSpaceMetalCost = savegame.oilFieldSpaceMetalCost;
+		if(typeof savegame.oilFieldTitaniumCost !== "undefined") oilFieldTitaniumCost = savegame.oilFieldTitaniumCost;
+		if(typeof savegame.oilFieldSiliconCost !== "undefined") oilFieldSiliconCost = savegame.oilFieldSiliconCost;
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
 		if(typeof savegame.metalStorage !== "undefined") metalStorage = savegame.metalStorage;
 		if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;
@@ -538,6 +551,10 @@ function load(type){
 		if(typeof savegame.suctionExcavatorSpaceMetalCost !== "undefined") suctionExcavatorSpaceMetalCost = savegame.suctionExcavatorSpaceMetalCost;
 		if(typeof savegame.suctionExcavatorGemCost !== "undefined") suctionExcavatorGemCost = savegame.suctionExcavatorGemCost;
 		if(typeof savegame.suctionExcavatorOilCost !== "undefined") suctionExcavatorOilCost = savegame.suctionExcavatorOilCost;
+		if(typeof savegame.spaceCow !== "undefined") spaceCow = savegame.spaceCow;
+		if(typeof savegame.spaceCowSpaceMetalCost !== "undefined") spaceCowSpaceMetalCost = savegame.spaceCowSpaceMetalCost;
+		if(typeof savegame.spaceCowTitaniumCost !== "undefined") spaceCowTitaniumCost = savegame.spaceCowTitaniumCost;
+		if(typeof savegame.spaceCowSiliconCost !== "undefined") spaceCowSiliconCost = savegame.spaceCowSiliconCost;
 		if(typeof savegame.explorer !== "undefined") explorer = savegame.explorer;
 		if(typeof savegame.explorerGemCost !== "undefined") explorerGemCost = savegame.explorerGemCost;
 		if(typeof savegame.spaceMetalDrill !== "undefined") spaceMetalDrill = savegame.spaceMetalDrill;
@@ -576,6 +593,7 @@ function load(type){
 		if(typeof savegame.resourcesUnlocked !== "undefined") resourcesUnlocked = savegame.resourcesUnlocked;
 		if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
+		if(typeof savegame.techUnlocked !== "undefined") techUnlocked = savegame.techUnlocked;
 		if(typeof savegame.explored !== "undefined") explored = savegame.explored;
 		if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
 		if(typeof savegame.uranium !== "undefined") uranium = savegame.uranium;

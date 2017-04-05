@@ -63,21 +63,21 @@ function refreshPerSec(){
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
-	energyOutput += (deforester*20);
-	energyOutput += (moonQuarry*64)+(annihilator*62);
+	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
+	energyOutput += (moonQuarry*64)+(spaceCow*72)+(annihilator*62);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
 	if(energy >= 10 || energyps <= 0){
 		energyps = energyInput-energyOutput;
-		oilps = pump + (pumpjack*pumpjackOutput);
-		metalps = miner + (heavyDrill*heavyDrillOutput);
-		gemps = gemMiner + (advancedDrill*advancedDrillOutput);
+		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
+		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*38);
+		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*19);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
 		scienceps = (lab*labGain);
 		spaceMetalps = moonWorker + (moonDrill * 10) + (moonQuarry*53);
-		methaneps = vacuum + (suctionExcavator * 8);
+		methaneps = vacuum + (suctionExcavator * 8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill * 6);
 		goldps = droid + (destroyer * 8);
 		silverps = scout + (spaceLaser * 13);
@@ -107,9 +107,6 @@ function refreshPerSec(){
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
-	if(uranium >= uraniumStorage){
-		document.getElementById("uranium").className = "green";
-	}
 	if(uranium === 0){
 		document.getElementById("uranium").className = "red";
 	}
@@ -199,9 +196,6 @@ function refreshPerSec(){
 	}
 	document.getElementById("lavaps").innerHTML = commafy(lavaps - magmatic*11);
 	document.getElementById("lava").className = "";
-	if(lava >= lavaStorage){
-		document.getElementById("lava").className = "green";
-	}
 	if(lava === 0){
 		document.getElementById("lava").className = "red";
 	}
@@ -328,6 +322,10 @@ function refreshUI(){
 	document.getElementById("pumpjackGemCost").innerHTML = commafy(pumpjackGemCost);
 	document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
 	document.getElementById("pumpjackOutput").innerHTML = commafy(pumpjackOutput);
+	document.getElementById("oilField").innerHTML = oilField;
+	document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
+	document.getElementById("oilFieldSpaceMetalCost").innerHTML = commafy(oilFieldSpaceMetalCost);
+	document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
 	document.getElementById("miner").innerHTML = miner;
 	document.getElementById("minerMetalCost").innerHTML = commafy(minerMetalCost);
 	document.getElementById("minerWoodCost").innerHTML = commafy(minerWoodCost);
@@ -390,6 +388,10 @@ function refreshUI(){
 	document.getElementById("suctionExcavatorSpaceMetalCost").innerHTML = commafy(suctionExcavatorSpaceMetalCost);
 	document.getElementById("suctionExcavatorGemCost").innerHTML = commafy(suctionExcavatorGemCost);
 	document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
+	document.getElementById("spaceCow").innerHTML = spaceCow;
+	document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
+	document.getElementById("spaceCowSpaceMetalCost").innerHTML = commafy(spaceCowSpaceMetalCost);
+	document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
 	document.getElementById("explorer").innerHTML = explorer;
 	document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 	document.getElementById("spaceMetalDrill").innerHTML = spaceMetalDrill;
@@ -704,6 +706,10 @@ function checkRedCost(){
 		document.getElementById("pumpjackMetalCost").className = "";
 	}
 	
+	turnRed(spaceMetal, oilFieldSpaceMetalCost, "oilFieldSpaceMetalCost");
+	turnRed(titanium, oilFieldTitaniumCost, "oilFieldTitaniumCost");
+	turnRed(silicon, oilFieldSiliconCost, "oilFieldSiliconCost");
+
 	if(metal < minerMetalCost){
 		document.getElementById("minerMetalCost").className = "red";
 	}
@@ -928,6 +934,10 @@ function checkRedCost(){
 		document.getElementById("suctionExcavatorOilCost").className = "";
 	}
 	
+	turnRed(spaceMetal, spaceCowSpaceMetalCost, "spaceCowSpaceMetalCost");
+	turnRed(titanium, spaceCowTitaniumCost, "spaceCowTitaniumCost");
+	turnRed(silicon, spaceCowSiliconCost, "spaceCowSiliconCost");
+
 	if(gem < explorerGemCost){
 		document.getElementById("explorerGemCost").className = "red";
 	}
@@ -1278,6 +1288,8 @@ function checkRedCost(){
 		document.getElementById("kuiperBeltRocketFuelCost").className = "";
 	}
 
+	turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
+
 	if(titanium < grinderTitaniumCost){
 		document.getElementById("grinderTitaniumCost").className = "red";
 	}
@@ -1334,26 +1346,9 @@ function checkRedCost(){
 		document.getElementById("crucibleSpaceMetalCost").className = "";
 	}
 	
-	if(titanium < extractorTitaniumCost){
-		document.getElementById("extractorTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("extractorTitaniumCost").className = "";
-	}
-
-	if(spaceMetal < extractorSpaceMetalCost){
-		document.getElementById("extractorSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("extractorSpaceMetalCost").className = "";
-	}
-
-	if(silicon < extractorSiliconCost){
-		document.getElementById("extractorSiliconCost").className = "red";
-	}
-	else{
-		document.getElementById("extractorSiliconCost").className = "";
-	}
+	turnRed(spaceMetal, extractorSpaceMetalCost, "extractorSpaceMetalCost");
+	turnRed(titanium, extractorTitaniumCost, "extractorTitaniumCost");
+	turnRed(silicon, extractorSiliconCost, "extractorSiliconCost");
 
 	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
 	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
@@ -1575,9 +1570,21 @@ function refreshResources(){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
 	if(techUnlocked === true){
-		for(var i = document.getElementsByClassName("tier3 hidden").length - 1; i>0; i--){
-			document.getElementsByClassName("tier3 hidden")[i].className = "tier3";
-		}
+		document.getElementById("oilTier3").className = "";
+		document.getElementById("metalTier3").className = "";
+		document.getElementById("gemTier3").className = "";
+		document.getElementById("charcoalTier3").className = "";
+		document.getElementById("woodTier3").className = "";
+		document.getElementById("spaceMetalTier3").className = "";
+		document.getElementById("methaneTier3").className = "";
+		// document.getElementById("titaniumTier3").className = "";
+		// document.getElementById("goldTier3").className = "";
+		// document.getElementById("silverTier3").className = "";
+		document.getElementById("siliconTier3").className = "";
+		// document.getElementById("uraniumTier3").className = "";
+		// document.getElementById("lavaTier3").className = "";
+		// document.getElementById("hydrogenTier3").className = "";
+		// document.getElementById("heliumTier3").className = "";
 	}
 }
 
