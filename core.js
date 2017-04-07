@@ -64,7 +64,7 @@ function refreshPerSec(){
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
-	energyOutput += (moonQuarry*64)+(spaceCow*72)+(annihilator*62);
+	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(annihilator*62);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -76,12 +76,12 @@ function refreshPerSec(){
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
 		scienceps = (lab*labGain);
-		spaceMetalps = moonWorker + (moonDrill * 10) + (moonQuarry*53);
-		methaneps = vacuum + (suctionExcavator * 8) + (spaceCow*37);
-		titaniumps = explorer + (spaceMetalDrill * 6);
-		goldps = droid + (destroyer * 8);
-		silverps = scout + (spaceLaser * 13);
-		siliconps = blowtorch + (scorcher * 9) + (annihilator*40);
+		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
+		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
+		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);
+		goldps = droid + (destroyer*8);
+		silverps = scout + (spaceLaser*13);
+		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
 		uraniumps = grinder + (cubic*9);
 		lavaps = crucible + (extractor*7);
 		hydrogenps = collector + (magnet*5);
@@ -398,6 +398,10 @@ function refreshUI(){
 	document.getElementById("spaceMetalDrillSpaceMetalCost").innerHTML = commafy(spaceMetalDrillSpaceMetalCost);
 	document.getElementById("spaceMetalDrillGemCost").innerHTML = commafy(spaceMetalDrillGemCost);
 	document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
+	document.getElementById("pentaDrill").innerHTML = pentaDrill;
+	document.getElementById("pentaDrillSpaceMetalCost").innerHTML = commafy(pentaDrillSpaceMetalCost);
+	document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
+	document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 	document.getElementById("droid").innerHTML = droid;
 	document.getElementById("droidSpaceMetalCost").innerHTML = commafy(droidSpaceMetalCost);
 	document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
@@ -966,6 +970,10 @@ function checkRedCost(){
 		document.getElementById("spaceMetalDrillOilCost").className = "";
 	}
 	
+	turnRed(spaceMetal, pentaDrillSpaceMetalCost, "pentaDrillSpaceMetalCost");
+	turnRed(gem, pentaDrillGemCost, "pentaDrillGemCost");
+	turnRed(silicon, pentaDrillSiliconCost, "pentaDrillSiliconCost");
+
 	if(spaceMetal < droidSpaceMetalCost){
 		document.getElementById("droidSpaceMetalCost").className = "red";
 	}
@@ -1577,7 +1585,7 @@ function refreshResources(){
 		document.getElementById("woodTier3").className = "";
 		document.getElementById("spaceMetalTier3").className = "";
 		document.getElementById("methaneTier3").className = "";
-		// document.getElementById("titaniumTier3").className = "";
+		document.getElementById("titaniumTier3").className = "";
 		// document.getElementById("goldTier3").className = "";
 		// document.getElementById("silverTier3").className = "";
 		document.getElementById("siliconTier3").className = "";

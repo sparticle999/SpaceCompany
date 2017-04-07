@@ -47,6 +47,7 @@ var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionE
 var spaceCow = 0; var spaceCowSpaceMetalCost = 10000; var spaceCowTitaniumCost = 9000; var spaceCowSiliconCost = 4100;
 var explorer = 0; var explorerGemCost = 1000;
 var spaceMetalDrill = 0; var spaceMetalDrillSpaceMetalCost = 200; var spaceMetalDrillGemCost = 800; var spaceMetalDrillOilCost = 1000;
+var pentaDrill = 0; var pentaDrillSpaceMetalCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600;
 var droid = 0; var droidSpaceMetalCost = 200; var droidMethaneCost = 50;
 var destroyer = 0; var destroyerSpaceMetalCost = 500; var destroyerGemCost = 1500; var destroyerOilCost = 1000;
 var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;

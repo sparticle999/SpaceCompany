@@ -258,6 +258,10 @@ function save(type){
 		spaceMetalDrillSpaceMetalCost: spaceMetalDrillSpaceMetalCost,
 		spaceMetalDrillGemCost: spaceMetalDrillGemCost,
 		spaceMetalDrillOilCost: spaceMetalDrillOilCost,
+		pentaDrill: pentaDrill,
+		pentaDrillSpaceMetalCost: pentaDrillSpaceMetalCost,
+		pentaDrillGemCost: pentaDrillGemCost,
+		pentaDrillSiliconCost: pentaDrillSiliconCost,
 		droid: droid,
 		droidSpaceMetalCost: droidSpaceMetalCost,
 		droidMethaneCost: droidMethaneCost,
@@ -561,6 +565,10 @@ function load(type){
 		if(typeof savegame.spaceMetalDrillSpaceMetalCost !== "undefined") spaceMetalDrillSpaceMetalCost = savegame.spaceMetalDrillSpaceMetalCost;
 		if(typeof savegame.spaceMetalDrillGemCost !== "undefined") spaceMetalDrillGemCost = savegame.spaceMetalDrillGemCost;
 		if(typeof savegame.spaceMetalDrillOilCost !== "undefined") spaceMetalDrillOilCost = savegame.spaceMetalDrillOilCost;
+		if(typeof savegame.pentaDrill !== "undefined") pentaDrill = savegame.pentaDrill;
+		if(typeof savegame.pentaDrillSpaceMetalCost !== "undefined") pentaDrillSpaceMetalCost = savegame.pentaDrillSpaceMetalCost;
+		if(typeof savegame.pentaDrillGemCost !== "undefined") pentaDrillGemCost = savegame.pentaDrillGemCost;
+		if(typeof savegame.pentaDrillSiliconCost !== "undefined") pentaDrillSiliconCost = savegame.pentaDrillSiliconCost;
 		if(typeof savegame.droid !== "undefined") droid = savegame.droid;
 		if(typeof savegame.droidSpaceMetalCost !== "undefined") droidSpaceMetalCost = savegame.droidSpaceMetalCost;
 		if(typeof savegame.droidMethaneCost !== "undefined") droidMethaneCost = savegame.droidMethaneCost;

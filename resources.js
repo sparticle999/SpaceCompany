@@ -970,6 +970,25 @@ function getSpaceMetalDrill(){
 	}
 }
 
+function getPentaDrill(){
+	if(spaceMetal >= pentaDrillSpaceMetalCost && gem >= pentaDrillGemCost && silicon >= pentaDrillOilCost){
+		spaceMetal -= pentaDrillSpaceMetalCost;
+		gem -= pentaDrillGemCost;
+		silicon -= pentaDrillOilCost;
+		pentaDrill += 1;
+		pentaDrillSiliconCost = Math.floor(5600 * Math.pow(1.1,pentaDrill + 1));
+		pentaDrillGemCost = Math.floor(11000 * Math.pow(1.1,pentaDrill + 1));
+		pentaDrillSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,pentaDrill + 1));
+		document.getElementById("pentaDrill").innerHTML = pentaDrill;
+		document.getElementById("pentaDrillSpaceMetalCost").innerHTML = commafy(pentaDrillSpaceMetalCost);
+		document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
+		document.getElementById("pentaDrillOilCost").innerHTML = commafy(pentaDrillOilCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getDroid(){
 	if(spaceMetal >= droidSpaceMetalCost && methane >= droidMethaneCost){
 		spaceMetal -= droidSpaceMetalCost;
