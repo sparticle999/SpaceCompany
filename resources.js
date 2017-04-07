@@ -971,10 +971,10 @@ function getSpaceMetalDrill(){
 }
 
 function getPentaDrill(){
-	if(spaceMetal >= pentaDrillSpaceMetalCost && gem >= pentaDrillGemCost && silicon >= pentaDrillOilCost){
+	if(spaceMetal >= pentaDrillSpaceMetalCost && gem >= pentaDrillGemCost && silicon >= pentaDrillSiliconCost){
 		spaceMetal -= pentaDrillSpaceMetalCost;
 		gem -= pentaDrillGemCost;
-		silicon -= pentaDrillOilCost;
+		silicon -= pentaDrillSiliconCost;
 		pentaDrill += 1;
 		pentaDrillSiliconCost = Math.floor(5600 * Math.pow(1.1,pentaDrill + 1));
 		pentaDrillGemCost = Math.floor(11000 * Math.pow(1.1,pentaDrill + 1));
@@ -982,7 +982,7 @@ function getPentaDrill(){
 		document.getElementById("pentaDrill").innerHTML = pentaDrill;
 		document.getElementById("pentaDrillSpaceMetalCost").innerHTML = commafy(pentaDrillSpaceMetalCost);
 		document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
-		document.getElementById("pentaDrillOilCost").innerHTML = commafy(pentaDrillOilCost);
+		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 		refresh();
 		refreshPerSec();
 		tier3 += 1;
