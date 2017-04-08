@@ -41,6 +41,7 @@ v0.2.2
 - You can collapse resources into earth and space categories
 - Buffed Charcoal Engines and Solar Panels to stop people falling into a 'negative energy hole'
 - Added Nuclear & Magmatic Power
+- Nerfed Methane Station
 
 v0.2.1
 - Fixed Bugs

@@ -508,8 +508,8 @@ function getMethaneStation(){
 		spaceMetal -= methaneStationSpaceMetalCost;
 		titanium -= methaneStationTitaniumCost;
 		methaneStation += 1;
-		methaneStationSpaceMetalCost = Math.floor(50 * Math.pow(1.1,methaneStation + 1));
-		methaneStationTitaniumCost = Math.floor(40 * Math.pow(1.1,methaneStation + 1));
+		methaneStationSpaceMetalCost = Math.floor(110 * Math.pow(1.1,methaneStation + 1));
+		methaneStationTitaniumCost = Math.floor(90 * Math.pow(1.1,methaneStation + 1));
 		document.getElementById("methaneStation").innerHTML = methaneStation;
 		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
