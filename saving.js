@@ -320,6 +320,10 @@ function save(type){
 		extractorSpaceMetalCost: extractorSpaceMetalCost,
 		extractorTitaniumCost: extractorTitaniumCost,
 		extractorSiliconCost: extractorSiliconCost,
+		extruder: extruder,
+		extruderSpaceMetalCost: extruderSpaceMetalCost,
+		extruderTitaniumCost: extruderTitaniumCost,
+		extruderSiliconCost: extruderSiliconCost,
 		hydrogen: hydrogen,
 		hydrogenStorage, hydrogenStorage,
 		hydrogenNextStorage: hydrogenNextStorage,
@@ -624,6 +628,10 @@ function load(type){
 		if(typeof savegame.extractorSpaceMetalCost !== "undefined") extractorSpaceMetalCost = savegame.extractorSpaceMetalCost;
 		if(typeof savegame.extractorTitaniumCost !== "undefined") extractorTitaniumCost = savegame.extractorTitaniumCost;
 		if(typeof savegame.extractorSiliconCost !== "undefined") extractorSiliconCost = savegame.extractorSiliconCost;
+		if(typeof savegame.extruder !== "undefined") extruder = savegame.extruder;
+		if(typeof savegame.extruderSpaceMetalCost !== "undefined") extruderSpaceMetalCost = savegame.extruderSpaceMetalCost;
+		if(typeof savegame.extruderTitaniumCost !== "undefined") extruderTitaniumCost = savegame.extruderTitaniumCost;
+		if(typeof savegame.extruderSiliconCost !== "undefined") extruderSiliconCost = savegame.extruderSiliconCost;
 		if(typeof savegame.collector !== "undefined") collector = savegame.collector;
 		if(typeof savegame.collectorSpaceMetalCost !== "undefined") collectorSpaceMetalCost = savegame.collectorSpaceMetalCost;
 		if(typeof savegame.collectorTitaniumCost !== "undefined") collectorTitaniumCost = savegame.collectorTitaniumCost;

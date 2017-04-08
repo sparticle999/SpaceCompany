@@ -64,7 +64,8 @@ function refreshPerSec(){
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
-	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(annihilator*62);
+	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(0)+(0)+(annihilator*62);
+	energyOutput += (0)+(extruder*326)+(0)+(0);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -83,7 +84,7 @@ function refreshPerSec(){
 		silverps = scout + (spaceLaser*13);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
 		uraniumps = grinder + (cubic*9);
-		lavaps = crucible + (extractor*7);
+		lavaps = crucible + (extractor*7) + (extruder*43);
 		hydrogenps = collector + (magnet*5);
 		heliumps = drone + (tanker*11);
 	}
@@ -450,6 +451,10 @@ function refreshUI(){
 	document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
 	document.getElementById("extractorSpaceMetalCost").innerHTML = commafy(extractorSpaceMetalCost);
 	document.getElementById("extractorSiliconCost").innerHTML = commafy(extractorSiliconCost);
+	document.getElementById("extruder").innerHTML = extruder;
+	document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
+	document.getElementById("extruderSpaceMetalCost").innerHTML = commafy(extruderSpaceMetalCost);
+	document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
 	document.getElementById("collector").innerHTML = commafy(collector);
 	document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 	document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
@@ -479,76 +484,21 @@ function checkRedCost(){
 	}
 
 	turnRed(uranium, uraniumStorage, "uraniumStorageCost");
+	turnRed(spaceMetal, uraniumStorage/2.5, "uraniumStorageSpaceMetalCost");
+	
+	turnRed(oil, oilStorage, "oilStorageCost");
+	turnRed(metal, oilStorage/2.5, "oilStorageMetalCost");
+	
+	turnRed(metal, metalStorage, "metalStorageCost");
+	
+	turnRed(gem, gemStorage, "gemStorageCost");
+	turnRed(metal, gemStorage/2.5, "gemStorageMetalCost");
+	
+	turnRed(charcoal, charcoalStorage, "charcoalStorageCost");
+	turnRed(metal, charcoalStorage/2.5, "charcoalStorageMetalCost");
 
-	if(spaceMetal < uraniumStorage/2.5){
-		document.getElementById("uraniumStorageSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("uraniumStorageSpaceMetalCost").className = "";
-	}
-	
-	if(oil < oilStorage){
-		document.getElementById("oilStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("oilStorageCost").className = "";
-	}
-	
-	if(metal < oilStorage/2.5){
-		document.getElementById("oilStorageMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("oilStorageMetalCost").className = "";
-	}
-	
-	if(metal < metalStorage){
-		document.getElementById("metalStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("metalStorageCost").className = "";
-	}
-	
-	if(gem < gemStorage){
-		document.getElementById("gemStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("gemStorageCost").className = "";
-	}
-	
-	if(metal < gemStorage/2.5){
-		document.getElementById("gemStorageMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("gemStorageMetalCost").className = "";
-	}
-	
-	if(charcoal < charcoalStorage){
-		document.getElementById("charcoalStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("charcoalStorageCost").className = "";
-	}
-	
-	if(metal < charcoalStorage/2.5){
-		document.getElementById("charcoalStorageMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("charcoalStorageMetalCost").className = "";
-	}
-
-	if(wood < woodStorage){
-		document.getElementById("woodStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("woodStorageCost").className = "";
-	}
-
-	if(metal < woodStorage/2.5){
-		document.getElementById("woodStorageMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("woodStorageMetalCost").className = "";
-	}
+	turnRed(wood, woodStorage, "woodStorageCost");
+	turnRed(metal, woodStorage/2.5, "woodStorageMetalCost");
 	
 	turnRed(spaceMetal, spaceMetalStorage, "spaceMetalStorageCost");
 	turnRed(metal, spaceMetalStorage*4, "spaceMetalStorageMetalCost");
@@ -576,34 +526,12 @@ function checkRedCost(){
 
 	turnRed(helium, heliumStorage, "heliumStorageCost");
 	turnRed(spaceMetal, heliumStorage/2.5, "heliumStorageSpaceMetalCost");
-
-	if(metal < charcoalEngineMetalCost){
-		document.getElementById("charcoalEngineMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("charcoalEngineMetalCost").className = "";
-	}
 	
-	if(gem < charcoalEngineGemCost){
-		document.getElementById("charcoalEngineGemCost").className = "red";
-	}
-	else{
-		document.getElementById("charcoalEngineGemCost").className = "";
-	}
+	turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
+	turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
 
-	if(metal < solarPanelMetalCost){
-		document.getElementById("solarPanelMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("solarPanelMetalCost").className = "";
-	}
-	
-	if(gem < solarPanelGemCost){
-		document.getElementById("solarPanelGemCost").className = "red";
-	}
-	else{
-		document.getElementById("solarPanelGemCost").className = "";
-	}
+	turnRed(metal, solarPanelMetalCost, "solarPanelMetalCost");
+	turnRed(gem, solarPanelGemCost, "solarPanelGemCost");
 
 	if(spaceMetal < methaneStationSpaceMetalCost){
 		document.getElementById("methaneStationSpaceMetalCost").className = "red";
@@ -1358,6 +1286,10 @@ function checkRedCost(){
 	turnRed(titanium, extractorTitaniumCost, "extractorTitaniumCost");
 	turnRed(silicon, extractorSiliconCost, "extractorSiliconCost");
 
+	turnRed(spaceMetal, extruderSpaceMetalCost, "extruderSpaceMetalCost");
+	turnRed(titanium, extruderTitaniumCost, "extruderTitaniumCost");
+	turnRed(silicon, extruderSiliconCost, "extruderSiliconCost");
+
 	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
 	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
 
@@ -1590,7 +1522,7 @@ function refreshResources(){
 		// document.getElementById("silverTier3").className = "";
 		document.getElementById("siliconTier3").className = "";
 		// document.getElementById("uraniumTier3").className = "";
-		// document.getElementById("lavaTier3").className = "";
+		document.getElementById("lavaTier3").className = "";
 		// document.getElementById("hydrogenTier3").className = "";
 		// document.getElementById("heliumTier3").className = "";
 	}

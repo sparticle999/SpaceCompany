@@ -1148,6 +1148,25 @@ function getExtractor(){
 	}
 }
 
+function getExtruder(){
+	if(spaceMetal >= extruderSpaceMetalCost && titanium >= extruderTitaniumCost && silicon >= extruderSiliconCost){
+		spaceMetal -= extruderSpaceMetalCost;
+		titanium -= extruderTitaniumCost;
+		silicon -= extruderSiliconCost;
+		extruder += 1;
+		extruderSiliconCost = Math.floor(39000 * Math.pow(1.1,extruder + 1));
+		extruderTitaniumCost = Math.floor(57000 * Math.pow(1.1,extruder + 1));
+		extruderSpaceMetalCost = Math.floor(69000 * Math.pow(1.1,extruder + 1));
+		document.getElementById("extruder").innerHTML = extruder;
+		document.getElementById("extruderSpaceMetalCost").innerHTML = commafy(extruderSpaceMetalCost);
+		document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
+		document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getCollector(){
 	if(spaceMetal >= collectorSpaceMetalCost && titanium >= collectorTitaniumCost){
 		spaceMetal -= collectorSpaceMetalCost;

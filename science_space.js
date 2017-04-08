@@ -550,7 +550,7 @@ function unlockTier3(){
 	// document.getElementById("silverTier3").className = "";
 	document.getElementById("siliconTier3").className = "";
 	// document.getElementById("uraniumTier3").className = "";
-	// document.getElementById("lavaTier3").className = "";
+	document.getElementById("lavaTier3").className = "";
 	// document.getElementById("hydrogenTier3").className = "";
 	// document.getElementById("heliumTier3").className = "";
 }

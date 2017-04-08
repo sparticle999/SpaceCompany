@@ -22,13 +22,11 @@ v0.3.1
 
 
 v0.3.0
-- Added Computerized Tier of resource machines.
+- Added Computerized Tier of resource machines
 - Electrolytic Cell: Hydrogen
-- Penta-drill: Titanium
-- Igneous Extruder: Lava
 - Morphic
 - Fixed Wood/Charcoal Bugs
-- Fixed Negative Enegy Bugs
+- Fixed Negative Energy Bugs
 
 # Changelog:
 
@@ -39,12 +37,14 @@ v0.3.0 The Tech Update
 - Added Sol Scientific Center
 - Added Fusion Reactor
 
-v0.2.1
-- Fixed Bugs
+v0.2.2
 - If you do not have enough resources for something, the number will be red
 - You can collapse resources into earth and space categories
 - Buffed Charcoal Engines and Solar Panels to stop people falling into a 'negative energy hole'
 - Added Nuclear & Magmatic Power
+
+v0.2.1
+- Fixed Bugs
 
 v0.2.0 The Wondrous Update [Released To The Public]
 - Added Wonder Tab
