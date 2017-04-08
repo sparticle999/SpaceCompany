@@ -23,7 +23,6 @@ v0.3.1
 
 v0.3.0
 - Added Computerized Tier of resource machines
-- Electrolytic Cell: Hydrogen
 - Morphic
 - Fixed Wood/Charcoal Bugs
 - Fixed Negative Energy Bugs

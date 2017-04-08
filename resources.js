@@ -1202,6 +1202,25 @@ function getMagnet(){
 	}
 }
 
+function getECell(){
+	if(silver >= eCellSilverCost && titanium >= eCellSiliconCost && gold >= eCellGoldCost){
+		silver -= eCellSilverCost;
+		silicon -= eCellSiliconCost;
+		gold -= eCellGoldCost;
+		eCell += 1;
+		eCellGoldCost = Math.floor(57000 * Math.pow(1.1,eCell + 1));
+		eCellSiliconCost = Math.floor(43000 * Math.pow(1.1,eCell + 1));
+		eCellSilverCost = Math.floor(62000 * Math.pow(1.1,eCell + 1));
+		document.getElementById("eCell").innerHTML = eCell;
+		document.getElementById("eCellSilverCost").innerHTML = commafy(eCellSilverCost);
+		document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
+		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getDrone(){
 	if(spaceMetal >= droneSpaceMetalCost && silicon >= droneSiliconCost){
 		spaceMetal -= droneSpaceMetalCost;

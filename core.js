@@ -1297,6 +1297,10 @@ function checkRedCost(){
 	turnRed(titanium, magnetTitaniumCost, "magnetTitaniumCost");
 	turnRed(gold, magnetGoldCost, "magnetGoldCost");
 
+	turnRed(silver, eCellSilverCost, "eCellSilverCost");
+	turnRed(gold, eCellGoldCost, "eCellGoldCost");
+	turnRed(silicon, eCellSiliconCost, "eCellSiliconCost");
+
 	if(silicon < droneSiliconCost){
 		document.getElementById("droneSiliconCost").className = "red";
 	}
