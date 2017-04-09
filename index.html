@@ -4,10 +4,11 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Space Company</title>
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />	
+	<link rel="shortcut icon" type="image/x-icon" href="SpaceCompanyFavicon.png" />	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -21,8 +22,16 @@
 	</script>
 </head>
 <body>
-
-<div class="container" style="width:95%; margin: auto;">
+<div id="loadScreen" style="width:100%; height:100%">
+	<div style="margin-left:35%; margin-top:3%;">
+		<img id="loadLogo" style="opacity: 1; width:40%; height:40%; /*margin-left:35%; margin-top:3%;*/" src="SpaceCompanyFavicon.png">
+		<div style="margin-left:10%; font-size: 36px; font-family: 'Courgette', cursive;">
+			Loading ...
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="loading.js"></script>
+<div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
 	<div class="navbar navbar-default ng-scope" role="navigation" ng-controller="HeaderCtrl">
@@ -3541,4 +3550,5 @@
 <script type="text/javascript" src="sliderBar.js"></script>
 <script type="text/javascript" src="lz-string.min.js"></script>
 <link href="rangeslider.css">
+<script type="text/javascript" src="stopLoading.js"></script>
 </html>
