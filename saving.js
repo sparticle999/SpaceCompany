@@ -269,6 +269,10 @@ function save(type){
 		destroyerSpaceMetalCost: destroyerSpaceMetalCost,
 		destroyerGemCost: destroyerGemCost,
 		destroyerOilCost: destroyerOilCost,
+		deathStar: deathStar,
+		deathStarSpaceMetalCost: deathStarSpaceMetalCost,
+		deathStarSilverCost: deathStarSilverCost,
+		deathStarSiliconCost: deathStarSiliconCost,
 		scout: scout,
 		scoutSpaceMetalCost: scoutSpaceMetalCost,
 		scoutTitaniumCost: scoutTitaniumCost,
@@ -584,6 +588,10 @@ function load(type){
 		if(typeof savegame.destroyerSpaceMetalCost !== "undefined") destroyerSpaceMetalCost = savegame.destroyerSpaceMetalCost;
 		if(typeof savegame.destroyerGemCost !== "undefined") destroyerGemCost = savegame.destroyerGemCost;
 		if(typeof savegame.destroyerOilCost !== "undefined") destroyerOilCost = savegame.destroyerOilCost;
+		if(typeof savegame.deathStar !== "undefined") deathStar = savegame.deathStar;
+		if(typeof savegame.deathStarSpaceMetalCost !== "undefined") deathStarSpaceMetalCost = savegame.deathStarSpaceMetalCost;
+		if(typeof savegame.deathStarSilverCost !== "undefined") deathStarSilverCost = savegame.deathStarSilverCost;
+		if(typeof savegame.deathStarSiliconCost !== "undefined") deathStarSiliconCost = savegame.deathStarSiliconCost;
 		if(typeof savegame.scout !== "undefined") scout = savegame.scout;
 		if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutSpaceMetalCost = savegame.scoutSpaceMetalCost;
 		if(typeof savegame.scoutTitaniumCost !== "undefined") scoutTitaniumCost = savegame.scoutTitaniumCost;

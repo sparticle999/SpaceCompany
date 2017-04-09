@@ -35,6 +35,7 @@ v0.3.0 The Tech Update
 - Added Tech Wonder
 - Added Sol Scientific Center
 - Added Fusion Reactor
+- Added Loading Screen
 
 v0.2.2
 - If you do not have enough resources for something, the number will be red

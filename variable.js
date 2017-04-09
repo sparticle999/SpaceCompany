@@ -50,6 +50,7 @@ var spaceMetalDrill = 0; var spaceMetalDrillSpaceMetalCost = 200; var spaceMetal
 var pentaDrill = 0; var pentaDrillSpaceMetalCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600;
 var droid = 0; var droidSpaceMetalCost = 200; var droidMethaneCost = 50;
 var destroyer = 0; var destroyerSpaceMetalCost = 500; var destroyerGemCost = 1500; var destroyerOilCost = 1000;
+var deathStar = 0; var deathStarSpaceMetalCost = 17000; var deathStarSilverCost = 11500; var deathStarSiliconCost = 8200;
 var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;
 var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 900; var spaceLaserOilCost = 1200;
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;

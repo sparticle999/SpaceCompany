@@ -1024,6 +1024,25 @@ function getDestroyer(){
 	}
 }
 
+function getDestroyer(){
+	if(spaceMetal >= deathStarSpaceMetalCost && silver >= deathStarSilverCost && silicon >= deathStarSiliconCost){
+		spaceMetal -= deathStarSpaceMetalCost;
+		silver -= deathStarSilverCost;
+		silicon -= deathStarSiliconCost;
+		deathStar += 1;
+		deathStarSiliconCost = Math.floor(1000 * Math.pow(1.1,deathStar + 1));
+		deathStarSilverCost = Math.floor(1500 * Math.pow(1.1,deathStar + 1));
+		deathStarSpaceMetalCost = Math.floor(500 * Math.pow(1.1,deathStar + 1));
+		document.getElementById("deathStar").innerHTML = deathStar;
+		document.getElementById("deathStarSpaceMetalCost").innerHTML = commafy(deathStarSpaceMetalCost);
+		document.getElementById("deathStarSilverCost").innerHTML = commafy(deathStarSilverCost);
+		document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getScout(){
 	if(spaceMetal >= scoutSpaceMetalCost && titanium >= scoutTitaniumCost){
 		spaceMetal -= scoutSpaceMetalCost;

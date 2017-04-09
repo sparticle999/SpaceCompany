@@ -64,7 +64,7 @@ function refreshPerSec(){
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
-	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(0)+(0)+(annihilator*62);
+	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(0)+(annihilator*62);
 	energyOutput += (0)+(extruder*326)+(0)+(0);
 	if(energy <= 1){
 		energyps = energyInput;
@@ -80,7 +80,7 @@ function refreshPerSec(){
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);
-		goldps = droid + (destroyer*8);
+		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
 		uraniumps = grinder + (cubic*9);
@@ -410,6 +410,10 @@ function refreshUI(){
 	document.getElementById("destroyerSpaceMetalCost").innerHTML = commafy(destroyerSpaceMetalCost);
 	document.getElementById("destroyerGemCost").innerHTML = commafy(destroyerGemCost);
 	document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
+	document.getElementById("deathStar").innerHTML = deathStar;
+	document.getElementById("deathStarSpaceMetalCost").innerHTML = commafy(deathStarSpaceMetalCost);
+	document.getElementById("deathStarSilverCost").innerHTML = commafy(deathStarSilverCost);
+	document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
 	document.getElementById("scout").innerHTML = scout;
 	document.getElementById("scoutSpaceMetalCost").innerHTML = commafy(scoutSpaceMetalCost);
 	document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
@@ -936,6 +940,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("destroyerOilCost").className = "";
 	}
+
+	turnRed(spaceMetal, deathStarSpaceMetalCost, "deathStarSpaceMetalCost");
+	turnRed(silver, deathStarSilverCost, "deathStarSilverCost");
+	turnRed(silicon, deathStarSiliconCost, "deathStarSiliconCost");
 	
 	if(spaceMetal < scoutSpaceMetalCost){
 		document.getElementById("scoutSpaceMetalCost").className = "red";
