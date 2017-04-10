@@ -1,6 +1,6 @@
 // Variables in save function
 
-var autoSaveTime = 2;
+var autoSaveTime = 2; var pageLoaded = false;
 var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;

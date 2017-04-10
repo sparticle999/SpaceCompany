@@ -674,7 +674,7 @@ function load(type){
 	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
 	console.log("Load Successful");
-
+	pageLoaded = true;
 }
 
 function deleteSave(){
