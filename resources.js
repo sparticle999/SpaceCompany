@@ -1024,7 +1024,7 @@ function getDestroyer(){
 	}
 }
 
-function getDestroyer(){
+function getDeathStar(){
 	if(spaceMetal >= deathStarSpaceMetalCost && silver >= deathStarSilverCost && silicon >= deathStarSiliconCost){
 		spaceMetal -= deathStarSpaceMetalCost;
 		silver -= deathStarSilverCost;
