@@ -466,10 +466,10 @@ function refreshUI(){
 	document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
 	document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
 	document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
-	document.getElementById("compressor").innerHTML = commafy(compressor);
-	document.getElementById("compressorSilverCost").innerHTML = commafy(compressorSilverCost);
-	document.getElementById("compressorGoldCost").innerHTML = commafy(compressorGoldCost);
-	document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
+	document.getElementById("eCell").innerHTML = commafy(eCell);
+	document.getElementById("eCellSilverCost").innerHTML = commafy(eCellSilverCost);
+	document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
+	document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
 	document.getElementById("drone").innerHTML = commafy(drone);
 	document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 	document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
