@@ -1274,3 +1274,22 @@ function getTanker(){
 		tier2 += 1;
 	}
 }
+
+function getCompressor(){
+	if(spaceMetal >= compressorSpaceMetalCost && titanium >= compressorTitaniumCost && silicon >= compressorSiliconCost){
+		spaceMetal -= compressorSpaceMetalCost;
+		titanium -= compressorTitaniumCost;
+		silicon -= compressorSiliconCost;
+		compressor += 1;
+		compressorSiliconCost = Math.floor(105000 * Math.pow(1.1,compressor + 1));
+		compressorTitaniumCost = Math.floor(73000 * Math.pow(1.1,compressor + 1));
+		compressorSpaceMetalCost = Math.floor(59000 * Math.pow(1.1,compressor + 1));
+		document.getElementById("compressor").innerHTML = compressor;
+		document.getElementById("compressorSpaceMetalCost").innerHTML = commafy(compressorSpaceMetalCost);
+		document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
+		document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}

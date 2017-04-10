@@ -65,7 +65,7 @@ function refreshPerSec(){
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
 	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(0)+(annihilator*62);
-	energyOutput += (0)+(extruder*326)+(0)+(0);
+	energyOutput += (0)+(extruder*326)+(eCell*366)+(compressor*297);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -85,8 +85,8 @@ function refreshPerSec(){
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
 		uraniumps = grinder + (cubic*9);
 		lavaps = crucible + (extractor*7) + (extruder*43);
-		hydrogenps = collector + (magnet*5);
-		heliumps = drone + (tanker*11);
+		hydrogenps = collector + (magnet*5) + (eCell*28);
+		heliumps = drone + (tanker*11) + (compressor*57);
 	}
 	if(energy <= 10){
 		uraniumps = grinder;
@@ -466,6 +466,10 @@ function refreshUI(){
 	document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
 	document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
 	document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
+	document.getElementById("compressor").innerHTML = commafy(compressor);
+	document.getElementById("compressorSilverCost").innerHTML = commafy(compressorSilverCost);
+	document.getElementById("compressorGoldCost").innerHTML = commafy(compressorGoldCost);
+	document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
 	document.getElementById("drone").innerHTML = commafy(drone);
 	document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 	document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
@@ -473,6 +477,10 @@ function refreshUI(){
 	document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
 	document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
 	document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
+	document.getElementById("compressor").innerHTML = commafy(compressor);
+	document.getElementById("compressorSpaceMetalCost").innerHTML = commafy(compressorSpaceMetalCost);
+	document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
+	document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
 
 }
 
@@ -1344,6 +1352,9 @@ function checkRedCost(){
 		document.getElementById("tankerSiliconCost").className = "";
 	}
 
+	turnRed(spaceMetal, compressorSpaceMetalCost, "compressorSpaceMetalCost");
+	turnRed(titanium, compressorTitaniumCost, "compressorTitaniumCost");
+	turnRed(silicon, compressorSiliconCost, "compressorSiliconCost");
 
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";

@@ -352,6 +352,10 @@ function save(type){
 		tankerSpaceMetalCost: tankerSpaceMetalCost,
 		tankerTitaniumCost: tankerTitaniumCost,
 		tankerSiliconCost: tankerSiliconCost,
+		compressor: compressor,
+		compressorSpaceMetalCost: compressorSpaceMetalCost,
+		compressorTitaniumCost: compressorTitaniumCost,
+		compressorSiliconCost: compressorSiliconCost,
 	};
 	if(type === "local"){
 		//localStorage.setItem("newSave",JSON.stringify(localSave));
@@ -662,6 +666,10 @@ function load(type){
 		if(typeof savegame.tankerSpaceMetalCost !== "undefined") tankerSpaceMetalCost = savegame.tankerSpaceMetalCost;
 		if(typeof savegame.tankerTitaniumCost !== "undefined") tankerTitaniumCost = savegame.tankerTitaniumCost;
 		if(typeof savegame.tankerSiliconCost !== "undefined") tankerSiliconCost = savegame.tankerSiliconCost;
+		if(typeof savegame.compressor !== "undefined") compressor = savegame.compressor;
+		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorSpaceMetalCost = savegame.compressorSpaceMetalCost;
+		if(typeof savegame.compressorTitaniumCost !== "undefined") compressorTitaniumCost = savegame.compressorTitaniumCost;
+		if(typeof savegame.compressorSiliconCost !== "undefined") compressorSiliconCost = savegame.compressorSiliconCost;
 
 	}
 

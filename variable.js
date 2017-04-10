@@ -73,6 +73,8 @@ var eCell = 0; var eCellSilverCost = 62000; var eCellGoldCost = 57000; var eCell
 var helium = 0; var heliumStorage = 50; var heliumNextStorage = 100; var heliumStorageCost = 100; var heliumps = 0;
 var drone = 0; var droneSpaceMetalCost = 14000; var droneSiliconCost = 10000;
 var tanker = 0; var tankerSpaceMetalCost = 21000; var tankerTitaniumCost = 17000; var tankerSiliconCost = 14000;
+var compressor = 0; var compressorSpaceMetalCost = 105000; var compressorTitaniumCost = 73000; var compressorSiliconCost = 59000;
+
 
 // Variables not being saved
 
