@@ -227,6 +227,7 @@ function refreshStats(){
 	document.getElementById("tier5").innerHTML = commafy(tier5);
 	document.getElementById("tier6").innerHTML = commafy(tier6);
 }
+
 function refreshUI(){
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	document.getElementById("uranium").innerHTML = commafy(uranium);
@@ -1541,13 +1542,13 @@ function refreshResources(){
 		document.getElementById("spaceMetalTier3").className = "";
 		document.getElementById("methaneTier3").className = "";
 		document.getElementById("titaniumTier3").className = "";
-		// document.getElementById("goldTier3").className = "";
+		document.getElementById("goldTier3").className = "";
 		// document.getElementById("silverTier3").className = "";
 		document.getElementById("siliconTier3").className = "";
 		// document.getElementById("uraniumTier3").className = "";
 		document.getElementById("lavaTier3").className = "";
-		// document.getElementById("hydrogenTier3").className = "";
-		// document.getElementById("heliumTier3").className = "";
+		document.getElementById("hydrogenTier3").className = "";
+		document.getElementById("heliumTier3").className = "";
 	}
 }
 
