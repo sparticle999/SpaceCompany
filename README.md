@@ -27,13 +27,13 @@ v0.3.1
 
 
 v0.3.0
-- Added Computerized Tier of resource machines
 - Added Sol Scientific Center
 - Fixed Negative Energy Bugs
 
 # Changelog:
 
 v0.3.0 The Tech Update [Pushed to Beta]
+- Added Computerized Tier of resource machines
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
 - Added Tech Wonder
