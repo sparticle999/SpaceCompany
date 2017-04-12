@@ -364,6 +364,17 @@ function save(type){
 		compressorSpaceMetalCost: compressorSpaceMetalCost,
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
+		icePick: icePick,
+		icePickSpaceMetalCost: icePickSpaceMetalCost,
+		icePickGemCost: icePickGemCost,
+		iceDrill: iceDrill,
+		iceDrillSpaceMetalCost: iceDrillSpaceMetalCost,
+		iceDrillTitaniumCost: iceDrillTitaniumCost,
+		iceDrillSiliconCost: iceDrillSiliconCost,
+		freezer: freezer,
+		freezerSpaceMetalCost: freezerSpaceMetalCost,
+		freezerTitaniumCost: freezerTitaniumCost,
+		freezerSiliconCost: freezerSiliconCost,
 	};
 	if(type === "local"){
 		//localStorage.setItem("newSave",JSON.stringify(localSave));
@@ -686,6 +697,17 @@ function load(type){
 		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorSpaceMetalCost = savegame.compressorSpaceMetalCost;
 		if(typeof savegame.compressorTitaniumCost !== "undefined") compressorTitaniumCost = savegame.compressorTitaniumCost;
 		if(typeof savegame.compressorSiliconCost !== "undefined") compressorSiliconCost = savegame.compressorSiliconCost;
+		if(typeof savegame.icePick !== "undefined") icePick = savegame.icePick;
+		if(typeof savegame.icePickSpaceMetalCost !== "undefined") icePickSpaceMetalCost = savegame.icePickSpaceMetalCost;
+		if(typeof savegame.icePickGemCost !== "undefined") icePickGemCost = savegame.icePickGemCost;
+		if(typeof savegame.iceDrill !== "undefined") iceDrill = savegame.iceDrill;
+		if(typeof savegame.iceDrillSpaceMetalCost !== "undefined") iceDrillSpaceMetalCost = savegame.iceDrillSpaceMetalCost;
+		if(typeof savegame.iceDrillTitaniumCost !== "undefined") iceDrillTitaniumCost = savegame.iceDrillTitaniumCost;
+		if(typeof savegame.iceDrillSiliconCost !== "undefined") iceDrillSiliconCost = savegame.iceDrillSiliconCost;
+		if(typeof savegame.freezer !== "undefined") freezer = savegame.freezer;
+		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
+		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
+		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 
 	}
 

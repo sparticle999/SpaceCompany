@@ -1359,3 +1359,57 @@ function getCompressor(){
 		tier3 += 1;
 	}
 }
+
+function getIcePick(){
+	if(spaceMetal >= icePickSpaceMetalCost && gem >= icePickGemCost){
+		spaceMetal -= icePickSpaceMetalCost;
+		gem -= icePickGemCost;
+		icePick += 1;
+		icePickGemCost = Math.floor(19300 * Math.pow(1.1,icePick + 1));
+		icePickSpaceMetalCost = Math.floor(17800 * Math.pow(1.1,icePick + 1));
+		document.getElementById("icePick").innerHTML = icePick;
+		document.getElementById("icePickSpaceMetalCost").innerHTML = commafy(icePickSpaceMetalCost);
+		document.getElementById("icePickGemCost").innerHTML = commafy(icePickGemCost);
+		refresh();
+		refreshPerSec();
+		tier1 += 1;
+	}
+}
+
+function getIceDrill(){
+	if(spaceMetal >= iceDrillSpaceMetalCost && titanium >= iceDrillTitaniumCost && silicon >= iceDrillSiliconCost){
+		spaceMetal -= iceDrillSpaceMetalCost;
+		titanium -= iceDrillTitaniumCost;
+		silicon -= iceDrillSiliconCost;
+		iceDrill += 1;
+		iceDrillSiliconCost = Math.floor(19600 * Math.pow(1.1,iceDrill + 1));
+		iceDrillTitaniumCost = Math.floor(21200 * Math.pow(1.1,iceDrill + 1));
+		iceDrillSpaceMetalCost = Math.floor(23900 * Math.pow(1.1,iceDrill + 1));
+		document.getElementById("iceDrill").innerHTML = iceDrill;
+		document.getElementById("iceDrillSpaceMetalCost").innerHTML = commafy(iceDrillSpaceMetalCost);
+		document.getElementById("iceDrillTitaniumCost").innerHTML = commafy(iceDrillTitaniumCost);
+		document.getElementById("iceDrillSiliconCost").innerHTML = commafy(iceDrillSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier2 += 1;
+	}
+}
+
+function getFreezer(){
+	if(spaceMetal >= freezerSpaceMetalCost && titanium >= freezerTitaniumCost && silicon >= freezerSiliconCost){
+		spaceMetal -= freezerSpaceMetalCost;
+		titanium -= freezerTitaniumCost;
+		silicon -= freezerSiliconCost;
+		freezer += 1;
+		freezerSiliconCost = Math.floor(73000 * Math.pow(1.1,freezer + 1));
+		freezerTitaniumCost = Math.floor(86000 * Math.pow(1.1,freezer + 1));
+		freezerSpaceMetalCost = Math.floor(117000 * Math.pow(1.1,freezer + 1));
+		document.getElementById("freezer").innerHTML = freezer;
+		document.getElementById("freezerSpaceMetalCost").innerHTML = commafy(freezerSpaceMetalCost);
+		document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
+		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}

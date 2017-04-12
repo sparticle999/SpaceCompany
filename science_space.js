@@ -294,8 +294,10 @@ function explorePluto(){
 	if(rocketFuel >= 5000){
 		rocketFuel -= 5000;
 		document.getElementById("explorePluto").className = "hidden";
+		document.getElementById("iceNav").className = "outerPlanet";
 		buttonsHidden.push("explorePluto");
 		explored.push("pluto");
+		refreshResources();
 	}
 }
 
@@ -553,6 +555,7 @@ function unlockTier3(){
 	document.getElementById("lavaTier3").className = "";
 	document.getElementById("hydrogenTier3").className = "";
 	document.getElementById("heliumTier3").className = "";
+	document.getElementById("iceTier3").className = "";
 }
 
 function activateTechWonder(){

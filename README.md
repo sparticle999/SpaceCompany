@@ -7,9 +7,10 @@ Space Company is a science-fiction incremental game where you start from humble 
 - Energy to Mass Conversion Machines
 - Resources only makeable, not findable
 - Supercooling with Ice
-- Dysons around stars
+- Dyson spheres around stars
 - Meteorite: 4th Tier of machine
 - Dark Matter
+- Random Events
 - [Change UI from bootstrap to my own]
 - [Achievements]
 
@@ -22,12 +23,14 @@ v0.3.1
 - Drill of Titans: Titanium
 - Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
-- Added Plasma
 - Compress Loading with for loops and array lists.
 
 
 v0.3.0
 - Added Sol Scientific Center
+- Added Ice
+- Added Plasma
+- Added More Statistics
 - Fixed Negative Energy Bugs
 
 # Changelog:

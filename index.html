@@ -462,6 +462,28 @@
 							<span id="heliumStorage">50</span>
 						</td>
 					</tr>
+					<tr id="iceNav" class="hidden" href="#iceTab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/iceIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Ice
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="iceps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="ice">
+								0
+							</span>
+							/
+							<span id="iceStorage">50</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -660,7 +682,7 @@
 										Uranium Enricher: <span id="enricher">0</span>
 									</h3>
 									<span>
-										XXXX
+										The Enricher increases the quality of uranium mined and thus allows more of the uranium in rocks to be used in your company.
 										<br>
 										Produces 47 Uranium per second.
 										<br>
@@ -1887,7 +1909,7 @@
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
 										<br>
-										Costs <span id="heliumStorageCost">50</span> Hydrogen, <span id="heliumStorageSpaceMetalCost">20</span> Space metal.
+										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageSpaceMetalCost">20</span> Space metal.
 									</span>
 									<br>
 									<br>
@@ -1947,6 +1969,97 @@
 									<br>
 									<br>
 									<button onclick="getCompressor()" class="btn btn-default">Get Compressor</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="iceTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Ice
+									</h2>
+									<span>
+										Ice, although it can be collected on Earth, is not nearly as profitable as flying to Pluto and back with space craft full of the stuff. It is mainly used for super-cooling technology necessary for Tier 4 machines.
+									</span>
+									<br>
+									<br>
+									<div onclick="gainIce()" class="btn btn-default">Gain 1</div>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="iceStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
+										<br>
+										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageSpaceMetalCost">20</span> Space metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeIceStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Ice Pickaxe: <span id="icePick">0</span>
+									</h3>
+									<span>
+										The Ice Pickaxe is the simplest way of mining frozen water, and although it is the cheapest, it is the slowest.
+										<br>
+										Produces 1 Ice per second.
+										<br>
+										Costs <span id="icePickSpaceMetalCost">17,800</span> Space Metal, <span id="icePickGemCost">19,300</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getIcePick()" class="btn btn-default">Get Ice Pickaxe</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Ice Drill: <span id="iceDrill">0</span>
+									</h3>
+									<span>
+										The Ice Drill is more effective than the Pickaxe and gains much more Ice every second. However, it does use electricity.
+										<br>
+										Produces 9 Ice per second.
+										<br>
+										Uses 83 energy per second.
+										<br>
+										Costs <span id="iceDrillSpaceMetalCost">23,900</span> Space Metal, <span id="iceDrillTitaniumCost">21,200</span> Titanium, <span id="iceDrillSiliconCost">19,600</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getIceDrill()" class="btn btn-default">Get Ice Drill</button>
+								</td>
+							</tr>
+							<tr id="iceTier3" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Ocean Freezer: <span id="freezer">0</span>
+									</h3>
+									<span>
+										With advanced technology, you are now able to turn Earth's water into a high-quality Ice previously only found on Pluto.
+										<br>
+										Produces 65 Ice per second.
+										<br>
+										Uses 324 energy per second.
+										<br>
+										Costs <span id="freezerSpaceMetalCost">117,000</span> Space Metal, <span id="freezerTitaniumCost">86,000</span> Titanium, <span id="freezerSiliconCost">73,000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getFreezer()" class="btn btn-default">Get Freezer</button>
 								</td>
 							</tr>
 						</table>

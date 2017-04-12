@@ -80,6 +80,10 @@ var helium = 0; var heliumStorage = 50; var heliumNextStorage = 100; var heliumS
 var drone = 0; var droneSpaceMetalCost = 14000; var droneSiliconCost = 10000;
 var tanker = 0; var tankerSpaceMetalCost = 21000; var tankerTitaniumCost = 17000; var tankerSiliconCost = 14000;
 var compressor = 0; var compressorSpaceMetalCost = 105000; var compressorTitaniumCost = 73000; var compressorSiliconCost = 59000;
+var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost = 100; var iceps = 0;
+var icePick = 0; var icePickSpaceMetalCost = 17800; var icePickGemCost = 19300;
+var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600;
+var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000;
 
 
 // Variables not being saved
