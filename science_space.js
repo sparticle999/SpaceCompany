@@ -547,7 +547,7 @@ function unlockTier3(){
 	document.getElementById("methaneTier3").className = "";
 	document.getElementById("titaniumTier3").className = "";
 	document.getElementById("goldTier3").className = "";
-	// document.getElementById("silverTier3").className = "";
+	document.getElementById("silverTier3").className = "";
 	document.getElementById("siliconTier3").className = "";
 	// document.getElementById("uraniumTier3").className = "";
 	document.getElementById("lavaTier3").className = "";

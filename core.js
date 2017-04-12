@@ -64,7 +64,7 @@ function refreshPerSec(){
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
-	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(0)+(annihilator*62);
+	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(bertha*69)+(annihilator*62);
 	energyOutput += (0)+(extruder*326)+(eCell*366)+(compressor*297);
 	if(energy <= 1){
 		energyps = energyInput;
@@ -81,7 +81,7 @@ function refreshPerSec(){
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);
 		goldps = droid + (destroyer*8) + (deathStar*51);
-		silverps = scout + (spaceLaser*13);
+		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
 		uraniumps = grinder + (cubic*9);
 		lavaps = crucible + (extractor*7) + (extruder*43);
@@ -428,6 +428,10 @@ function refreshUI(){
 	document.getElementById("spaceLaserSpaceMetalCost").innerHTML = commafy(spaceLaserSpaceMetalCost);
 	document.getElementById("spaceLaserGemCost").innerHTML = commafy(spaceLaserGemCost);
 	document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
+	document.getElementById("bertha").innerHTML = bertha;
+	document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
+	document.getElementById("berthaSpaceMetalCost").innerHTML = commafy(berthaSpaceMetalCost);
+	document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
 	document.getElementById("blowtorch").innerHTML = blowtorch;
 	document.getElementById("blowtorchSpaceMetalCost").innerHTML = commafy(blowtorchSpaceMetalCost);
 	document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
@@ -994,6 +998,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("spaceLaserOilCost").className = "";
 	}
+
+	turnRed(spaceMetal, berthaSpaceMetalCost, "berthaSpaceMetalCost");
+	turnRed(titanium, berthaTitaniumCost, "berthaTitaniumCost");
+	turnRed(silicon, berthaSiliconCost, "berthaSiliconCost");
 	
 	if(spaceMetal < blowtorchSpaceMetalCost){
 		document.getElementById("blowtorchSpaceMetalCost").className = "red";

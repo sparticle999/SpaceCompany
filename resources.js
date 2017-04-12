@@ -1097,6 +1097,25 @@ function getSpaceLaser(){
 	}
 }
 
+function getBertha(){
+	if(spaceMetal >= berthaSpaceMetalCost && titanium >= berthaTitaniumCost && silicon >= berthaSiliconCost){
+		spaceMetal -= berthaSpaceMetalCost;
+		titanium -= berthaTitaniumCost;
+		silicon -= berthaSiliconCost;
+		bertha += 1;
+		berthaSiliconCost = Math.floor(11000 * Math.pow(1.1,bertha + 1));
+		berthaTitaniumCost = Math.floor(18200 * Math.pow(1.1,bertha + 1));
+		berthaSpaceMetalCost = Math.floor(19500 * Math.pow(1.1,bertha + 1));
+		document.getElementById("bertha").innerHTML = bertha;
+		document.getElementById("berthaSpaceMetalCost").innerHTML = commafy(berthaSpaceMetalCost);
+		document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
+		document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getBlowtorch(){
 	if(spaceMetal >= blowtorchSpaceMetalCost && titanium >= blowtorchTitaniumCost){
 		spaceMetal -= blowtorchSpaceMetalCost;

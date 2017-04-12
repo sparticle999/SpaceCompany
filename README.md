@@ -28,7 +28,7 @@ v0.3.1
 
 v0.3.0
 - Added Computerized Tier of resource machines
-- Big Bertha: Silicon
+- Big Bertha: Silver
 - Added Sol Scientific Center
 - Fixed Wood/Charcoal Bugs
 - Fixed Negative Energy Bugs
