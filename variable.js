@@ -67,6 +67,7 @@ var annihilator = 0; var annihilatorSpaceMetalCost = 3000; var annihilatorGemCos
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var grinder = 0; var grinderTitaniumCost = 2000; var grinderSpaceMetalCost = 4000; var grinderGoldCost = 2000;
 var cubic = 0; var cubicUraniumCost = 80; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
+var enricher = 0; var enricherSpaceMetalCost = 21700; var enricherTitaniumCost = 23000; var enricherSiliconCost = 13500;
 var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 var crucible = 0; var crucibleGemCost = 8000; var crucibleSpaceMetalCost = 4000;
 var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCost = 12000; var extractorSiliconCost = 6000;

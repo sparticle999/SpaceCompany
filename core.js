@@ -65,7 +65,7 @@ function refreshPerSec(){
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72);
 	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
 	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(bertha*69)+(annihilator*62);
-	energyOutput += (0)+(extruder*326)+(eCell*366)+(compressor*297);
+	energyOutput += (enricher*236)+(extruder*326)+(eCell*366)+(compressor*297);
 	if(energy <= 1){
 		energyps = energyInput;
 	}
@@ -76,14 +76,13 @@ function refreshPerSec(){
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*19);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
-		scienceps = (lab*labGain);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);
 		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
-		uraniumps = grinder + (cubic*9);
+		uraniumps = grinder + (cubic*9) +(enricher*47);
 		lavaps = crucible + (extractor*7) + (extruder*43);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
 		heliumps = drone + (tanker*11) + (compressor*57);
@@ -105,6 +104,7 @@ function refreshPerSec(){
 		hydrogenps = collector;
 		heliumps = drone;
 	}
+	scienceps = (lab*labGain);
 	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
@@ -135,11 +135,7 @@ function refreshPerSec(){
 	if(gem === 0){
 		document.getElementById("gem").className = "red";
 	}
-	else{
-		document.getElementById("charcoal").className = "";
-		document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
-		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
-	}
+	document.getElementById("charcoal").className = "";
 	if(charcoal === 0){
 		document.getElementById("charcoal").className = "red";
 	}
@@ -1527,12 +1523,6 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "siliconNav")){
 		document.getElementById("siliconNav").className = "innerPlanet";
 	}
-	if(contains(resourcesUnlocked, "uraniumNav")){
-		document.getElementById("uraniumNav").className = "innerPlanet";
-	}
-	if(contains(resourcesUnlocked, "lavaNav")){
-		document.getElementById("lavaNav").className = "innerPlanet";
-	}
 	if(contains(resourcesUnlocked, "hydrogenNav")){
 		document.getElementById("hydrogenNav").className = "outerPlanet";
 	}
@@ -1548,21 +1538,22 @@ function refreshResources(){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 	}
 	if(techUnlocked === true){
-		document.getElementById("oilTier3").className = "";
-		document.getElementById("metalTier3").className = "";
-		document.getElementById("gemTier3").className = "";
-		document.getElementById("charcoalTier3").className = "";
-		document.getElementById("woodTier3").className = "";
-		document.getElementById("spaceMetalTier3").className = "";
-		document.getElementById("methaneTier3").className = "";
-		document.getElementById("titaniumTier3").className = "";
-		document.getElementById("goldTier3").className = "";
+		unlockTier3();
+		// document.getElementById("oilTier3").className = "";
+		// document.getElementById("metalTier3").className = "";
+		// document.getElementById("gemTier3").className = "";
+		// document.getElementById("charcoalTier3").className = "";
+		// document.getElementById("woodTier3").className = "";
+		// document.getElementById("spaceMetalTier3").className = "";
+		// document.getElementById("methaneTier3").className = "";
+		// document.getElementById("titaniumTier3").className = "";
+		// document.getElementById("goldTier3").className = "";
 		// document.getElementById("silverTier3").className = "";
-		document.getElementById("siliconTier3").className = "";
+		// document.getElementById("siliconTier3").className = "";
 		// document.getElementById("uraniumTier3").className = "";
-		document.getElementById("lavaTier3").className = "";
-		document.getElementById("hydrogenTier3").className = "";
-		document.getElementById("heliumTier3").className = "";
+		// document.getElementById("lavaTier3").className = "";
+		// document.getElementById("hydrogenTier3").className = "";
+		// document.getElementById("heliumTier3").className = "";
 	}
 }
 

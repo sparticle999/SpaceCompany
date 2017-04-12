@@ -28,9 +28,7 @@ v0.3.1
 
 v0.3.0
 - Added Computerized Tier of resource machines
-- Big Bertha: Silver
 - Added Sol Scientific Center
-- Fixed Wood/Charcoal Bugs
 - Fixed Negative Energy Bugs
 
 # Changelog:
@@ -42,6 +40,7 @@ v0.3.0 The Tech Update [Pushed to Beta]
 - Added Fusion Reactor
 - Added Loading Screen
 - Fixed Typos
+- Fixed Wood/Charcoal Bugs
 
 v0.2.2
 - If you do not have enough resources for something, the number will be red

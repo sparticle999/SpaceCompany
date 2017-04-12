@@ -96,6 +96,14 @@ function gainResources(){
 	else{
 		oil = oilStorage;
 	}
+
+	
+	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
+	document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+	
+	
+
+	// ReWrite This
 	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= ((woodburner*2)/10 + furnace*furnaceWoodInput)/10){
 		if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
 			charcoal += charcoalps/10;
@@ -123,6 +131,7 @@ function gainResources(){
 	else{
 		wood = woodStorage;
 	}
+	// Up To Here
 	if(charcoal >= charcoalStorage){
 		document.getElementById("woodps").innerHTML = commafy(woodps);
 		document.getElementById("charcoal").className = "green";
@@ -609,6 +618,25 @@ function getCubic(){
 		refresh();
 		refreshPerSec();
 		tier2 += 1;
+	}
+}
+
+function getEnricher(){
+	if(spaceMetal >= enricherSpaceMetalCost && titanium >= enricherTitaniumCost && silicon >= enricherSiliconCost){
+		spaceMetal -= enricherSpaceMetalCost;
+		titanium -= enricherTitaniumCost;
+		silicon -= enricherSiliconCost;
+		enricher += 1;
+		enricherSiliconCost = Math.floor(21700 * Math.pow(1.1,enricher + 1));
+		enricherTitaniumCost = Math.floor(23000 * Math.pow(1.1,enricher + 1));
+		enricherSpaceMetalCost = Math.floor(13500 * Math.pow(1.1,enricher + 1));
+		document.getElementById("enricher").innerHTML = enricher;
+		document.getElementById("enricherSpaceMetalCost").innerHTML = commafy(enricherSpaceMetalCost);
+		document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
+		document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
 	}
 }
 

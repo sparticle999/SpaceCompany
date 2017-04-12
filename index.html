@@ -117,6 +117,50 @@
 							</span>
 						</td>
 					</tr>
+					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Uranium
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="uraniumps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="uranium">
+								0
+							</span>
+							/
+							<span id="uraniumStorage">50</span>
+						</td>
+					</tr>
+					<tr id="lavaNav" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/lavaIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Lava
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="lavaps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="lava">
+								0
+							</span>
+							/
+							<span id="lavaStorage">50</span>
+						</td>
+					</tr>
 					<tr class="collapseEarth">
 						<td colspan="4">
 							<span>Earth Resources</span> <span class="caret"></span>
@@ -369,50 +413,6 @@
 							<span id="siliconStorage">50</span>
 						</td>
 					</tr>
-					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
-							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
-						</td>
-						<td style="vertical-align:middle;">
-							<span>
-								Uranium
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:center;">
-							<span>
-								<span id="uraniumps">0</span>/Sec
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:right;">
-							<span id="uranium">
-								0
-							</span>
-							/
-							<span id="uraniumStorage">50</span>
-						</td>
-					</tr>
-					<tr id="lavaNav" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
-							<img src="Icons/lavaIcon.png" style="width:30px; height:auto">
-						</td>
-						<td style="vertical-align:middle;">
-							<span>
-								Lava
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:center;">
-							<span>
-								<span id="lavaps">0</span>/Sec
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:right;">
-							<span id="lava">
-								0
-							</span>
-							/
-							<span id="lavaStorage">50</span>
-						</td>
-					</tr>
 					<tr id="collapseOuterPlanet" class="collapseOuterPlanet hidden">
 						<td colspan="4">
 							<span>Outer Planetary Resources</span> <span class="caret"></span>
@@ -652,6 +652,25 @@
 									<br>
 									<br>
 									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
+								</td>
+							</tr>
+							<tr id="uraniumTier3" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Uranium Enricher: <span id="enricher">0</span>
+									</h3>
+									<span>
+										XXXX
+										<br>
+										Produces 47 Uranium per second.
+										<br>
+										Uses 236 energy per second.
+										<br>
+										Costs <span id="enricherSpaceMetalCost">21,700</span> Space Metal, <span id="enricherTitaniumCost">23,000</span> Titnaium, <span id="enricherSiliconCost">13,500</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getEnricher()" class="btn btn-default">Get Uranium Enricher</button>
 								</td>
 							</tr>
 						</table>
@@ -1547,7 +1566,7 @@
 									<button onclick="getSpaceLaser()" class="btn btn-default">Get Interplanetary Laser</button>
 								</td>
 							</tr>
-							<tr>
+							<tr id="silverTier3" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
 										Big Bertha: <span id="bertha">0</span>

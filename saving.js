@@ -318,6 +318,10 @@ function save(type){
 		cubicUraniumCost: cubicUraniumCost,
 		cubicSpaceMetalCost: cubicSpaceMetalCost,
 		cubicOilCost: cubicOilCost,
+		enricher: enricher,
+		enricherSpaceMetalCost: enricherSpaceMetalCost,
+		enricherTitaniumCost: enricherTitaniumCost,
+		enricherSiliconCost: enricherSiliconCost,
 		lava: lava,
 		lavaStorage: lavaStorage,
 		lavaNextStorage: lavaNextStorage,
@@ -645,6 +649,10 @@ function load(type){
 		if(typeof savegame.cubicUraniumCost !== "undefined") cubicUraniumCost = savegame.cubicUraniumCost;
 		if(typeof savegame.cubicSpaceMetalCost !== "undefined") cubicSpaceMetalCost = savegame.cubicSpaceMetalCost;
 		if(typeof savegame.cubicOilCost !== "undefined") cubicOilCost = savegame.cubicOilCost;
+		if(typeof savegame.enricher !== "undefined") enricher = savegame.enricher;
+		if(typeof savegame.enricherSpaceMetalCost !== "undefined") enricherSpaceMetalCost = savegame.enricherSpaceMetalCost;
+		if(typeof savegame.enricherTitaniumCost !== "undefined") enricherTitaniumCost = savegame.enricherTitaniumCost;
+		if(typeof savegame.enricherSiliconCost !== "undefined") enricherSiliconCost = savegame.enricherSiliconCost;
 		if(typeof savegame.crucible !== "undefined") crucible = savegame.crucible;
 		if(typeof savegame.crucibleGemCost !== "undefined") crucibleGemCost = savegame.crucibleGemCost;
 		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleSpaceMetalCost = savegame.crucibleSpaceMetalCost;
