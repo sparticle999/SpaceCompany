@@ -226,6 +226,12 @@ function refreshStats(){
 	document.getElementById("tier4").innerHTML = commafy(tier4);
 	document.getElementById("tier5").innerHTML = commafy(tier5);
 	document.getElementById("tier6").innerHTML = commafy(tier6);
+	document.getElementById("tabsUnlockedNum").innerHTML = commafy(tabsUnlockedNum);
+	document.getElementById("resourcesUnlockedNum").innerHTML = commafy(resourcesUnlockedNum);
+	document.getElementById("techsResearchedNum").innerHTML = commafy(techsResearchedNum);
+	document.getElementById("placesExploredNum").innerHTML = commafy(placesExploredNum);
+	document.getElementById("wondersBuiltNum").innerHTML = commafy(wondersBuiltNum);
+	document.getElementById("wondersActivatedNum").innerHTML = commafy(wondersActivatedNum);
 }
 
 function refreshUI(){

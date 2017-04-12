@@ -3,12 +3,13 @@ Space Company is a science-fiction incremental game where you start from humble 
 
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
-
 - Alien Bases in the Kuiper Belt that trade resources
 - Energy to Mass Conversion Machines
-- Supercooling
+- Resources only makeable, not findable
+- Supercooling with Ice
 - Dysons around stars
 - Meteorite: 4th Tier of machine
+- Dark Matter
 - [Change UI from bootstrap to my own]
 - [Achievements]
 
@@ -17,25 +18,30 @@ Space Company is a science-fiction incremental game where you start from humble 
 v0.3.1
 - Added Meteorite
 - Added Meteorite Tier of resource machines
+- Forest Fryer: Charcoal
+- Drill of Titans: Titanium
+- Desert Destroyer: Silicon
+- Volcanic Veluptuator: Lava
 - Added Plasma
 - Compress Loading with for loops and array lists.
 
 
 v0.3.0
 - Added Computerized Tier of resource machines
-- Morphic Compressor - Helium
+- Big Bertha: Silicon
+- Added Sol Scientific Center
 - Fixed Wood/Charcoal Bugs
 - Fixed Negative Energy Bugs
 
 # Changelog:
 
-v0.3.0 The Tech Update
+v0.3.0 The Tech Update [Pushed to Beta]
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
 - Added Tech Wonder
-- Added Sol Scientific Center
 - Added Fusion Reactor
 - Added Loading Screen
+- Fixed Typos
 
 v0.2.2
 - If you do not have enough resources for something, the number will be red
@@ -49,7 +55,7 @@ v0.2.1
 
 v0.2.0 The Wondrous Update [Released To The Public]
 - Added Wonder Tab
-- Added two different wonders - Precious Wonder & Power Wonder
+- Added two different wonders - Precious Wonder & Energetic Wonder
 - Added ability to upgrade Wonders
 - Added Uranium & Lava
 - Widened resources navigation so that storage could be displayed on one line
@@ -76,12 +82,12 @@ v0.1.0 The Space Update
 - Updated Beginner's Guide
 
 v0.0.7
-- Added Resource Technology Upgrade to double resource machines
+- Added Resource Technology Upgrade to double resource machines output
 - Nerfed Science
 - Changed the per second display to be zero if the storage is full
 
 v0.0.6
-- Added the other icons for the rest of the resources
+- Added icons for the rest of the resources
 - Added Help / FAQ Tab
 - Added Beginner Guide, FAQ and Credits
 - Made resource numbers scroll up instead of jumping to the current value
@@ -93,7 +99,7 @@ v0.0.5
 
 v0.0.4 
 - Balanced Game More (to not take 2 minutes to complete)
-- Fixed Wood/sec not counting charcoal use bug
+- Fixed Wood/sec bug
 - Made all resource gatherers increase in cost as you buy them
 - Fixed Resource Machines not using energy
 - Changed storage upgrades to cost metal as well
@@ -103,7 +109,7 @@ v0.0.3
 - Added Solar Panels
 - Resource Gathering Machine were added that use a constant supply of energy
 - Oil was made a component in building machines
-- Fixed storage costs not changing bug
+- Fixed storage costs bug
 
 v0.0.2
 - Merged Crafting and Resources tabs

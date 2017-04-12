@@ -7,12 +7,7 @@
 	<link href="SpaceCompanyFavicon.png" rel="shortcut icon" type="image/x-icon" />	
 	<link href="bootstrap.min.css" rel="stylesheet" >
 	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-	<!-- <link href="style.css" rel="stylesheet"> -->
-	<style>
-	  /*This is minified and inline css*/
-      .pointer:hover{cursor:pointer}.no-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}.red{color:red}.green{color:#00b200}
-    </style>
+	<link href="style.css" rel="stylesheet">
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1266,7 +1261,7 @@
 										Suction Excavator: <span id="suctionExcavator">0</span>
 									</h3>
 									<span>
-										Strips the atmosphere of methane on an industrial scale.
+										Sucks more than anything!
 										<br>
 										Produces 8 methane per second.
 										<br>
@@ -1900,7 +1895,7 @@
 							<tr id="heliumTier3" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
-										Helium Compressor: <span id="compressor">0</span>
+										Morphic Compressor: <span id="compressor">0</span>
 									</h3>
 									<span>
 										The Compressor packs helium densely into a small space so that it can be easily transported back to Earth.
@@ -2807,7 +2802,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="exploreKuiperBelt()" class="btn btn-default">Explore Kuiper Belt</button>
+									<button onclick="exploreSolCenter()" class="btn btn-default">Explore Sol Center</button>
 									<br>
 									<br>
 								</td>
@@ -2869,7 +2864,7 @@
 										Inside The Wonder Station
 									</h2>
 									<span>
-										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to large hallway. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
+										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
 									</span>
 									<br>
 									<br>
@@ -3087,10 +3082,10 @@
 		<div role="tabpanel" class="tab-pane fade" id="solCenterPage">
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#XXXX" aria-controls="XXXX" role="tab" data-toggle="tab" style="height:60px;">
+					<tr href="#emc" aria-controls="emc" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
-								XXXX
+								Energy-Mass Conversion
 							</span>
 						</td>
 					</tr>
@@ -3104,16 +3099,16 @@
 				</table>
 			</div>
 			<div class="tab-content">
-				<div id="XXXX" class="tab-pane fade in" style="margin-left:10px; float:left;">
+				<div id="emc" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table no-select">
 							<tr>
 								<td style="border:none;">
 									<h2 class="pointer btn-link">
-										XXXX
+										Energy-Mass Conversion
 									</h2>
 									<span>
-										XXXX
+										EMC is a tech only dreamt about back on Earth. Here, it's a reality.
 									</span>
 								</td>
 							</tr>
@@ -3262,24 +3257,128 @@
 										Stats
 									</h2>
 									<span>
-										This is where you can see your progress in a table with each aspect laid out for you to see. 
+										This is where you can see your progress in a table with each aspect laid out for you to see.
+										<br>
+										Warning: your stats will not have been added if they were implemented after you achieved them.
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<h4 class="pointer btn-link">
-										Clicking
-									</h4>
-									<span>
-										Resources Mined By Hand: <span id="handMined">0</span><br>
-										Tier 1 Machines Owned: <span id="tier1">0</span><br>
-										Tier 2 Machines Owned: <span id="tier2">0</span><br>
-										Tier 3 Machines Owned: <span id="tier3">0</span><br>
-										Tier 4 Machines Owned: <span id="tier4">0</span><br>
-										Tier 5 Machines Owned: <span id="tier5">0</span><br>
-										Tier 6 Machines Owned: <span id="tier6">0</span><br>
-									</span>
+									<table class="table">
+										<th class="pointer btn-link theader" style="border:none;">
+											Clicking
+										</th>
+										<tr>
+											<td>
+												Resources Mined By Hand: 
+											</td>
+											<td>
+												<span id="handMined">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 1 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier1">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 2 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier2">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 3 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier3">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 4 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier4">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 5 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier5">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Tier 6 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier6">0</span><br>
+											</td>
+										</tr>
+									</table>
+									<table class="table">
+										<th class="pointer btn-link theader" style="border:none;">
+											Unlockables
+										</th>
+										<tr>
+											<td>
+												Tabs Unlocked:
+											</td>
+											<td>
+												<span id="tabsUnlockedNum">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Resources Unlocked: 
+											</td>
+											<td>
+												<span id="resourcesUnlockedNum">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Technologies Researched: 
+											</td>
+											<td>
+												<span id="techsResearchedNum">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Places Explored: 
+											</td>
+											<td>
+												<span id="placesExploredNum">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Wonders Built: 
+											</td>
+											<td>
+												<span id="wondersBuiltNum">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Wonders Activated: 
+											</td>
+											<td>
+												<span id="wondersActivatedNum">0</span><br>
+											</td>
+										</tr>
+									</table>
 								</td>
 							</tr>
 						</table>
@@ -3507,7 +3606,7 @@
 										Help, I'm stuck?
 									</h4>
 									<span>
-										Have you checked all of the tabs to see if there is anything new? Maybe the guide has something about it? If not, feel free to ask me either on reddit or post it as an issue on github if you thing there is a problem with the game.
+										Have you checked all of the tabs to see if there is anything new? Maybe the guide has something about it? If not, feel free to ask me either on reddit or post it as an issue on github if you think there is a problem with the game.
 									</span>
 								</td>
 							</tr>
@@ -3553,7 +3652,7 @@
 										About
 									</h2>
 									<span>
-										This game made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
+										This game is made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
 										<br>
 										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I appologise for any infuriation caused.
 									</span>
@@ -3588,7 +3687,6 @@
 <script type="text/javascript" src="resources.js"></script>
 <script type="text/javascript" src="science_space.js"></script>
 <script type="text/javascript" src="core.js"></script>
-<script type="text/javascript" src="sliderBar.js"></script>
 <script type="text/javascript" src="lz-string.min.js"></script>
 <link href="rangeslider.css">
 <script type="text/javascript" src="stopLoading.js"></script>

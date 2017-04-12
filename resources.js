@@ -779,6 +779,25 @@ function getFurnace(){
 	}
 }
 
+function getKiln(){
+	if(metal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
+		spaceMetal -= kilnSpaceMetalCost;
+		gem -= kilnGemCost;
+		silicon -= kilnSiliconCost;
+		kiln += 1;
+		kilnSiliconCost = Math.floor(3800 * Math.pow(1.1,kiln + 1));
+		kilnGemCost = Math.floor(6200 * Math.pow(1.1,kiln + 1));
+		kilnSpaceMetalCost = Math.floor(3500 * Math.pow(1.1,kiln + 1));
+		document.getElementById("kiln").innerHTML = kiln;
+		document.getElementById("kilnSpaceMetalCost").innerHTML = commafy(kilnSpaceMetalCost);
+		document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
+		document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getWoodcutter(){
 	if(metal >= woodcutterMetalCost && wood >= woodcutterWoodCost){
 		metal -= woodcutterMetalCost;

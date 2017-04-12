@@ -20,4 +20,3 @@ window.setInterval(function(){
 		document.getElementById("loadLogo").style.opacity = op;
 	}
 },100);
-
