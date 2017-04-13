@@ -507,6 +507,49 @@
 				</table>
 			</div>
 			<div class="tab-content">
+				<div id="plasmaTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Plasma
+									</h2>
+									<span>
+										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.
+										<br>
+										1 Plasma is created by 'attacking' 10 Hydrogen with 1000 Energy.
+									</span>
+									<br>
+									<br>
+									<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Super-Heater: <span id="heater">0</span>
+									</h3>
+									<span>
+										The Super-Heater throws electricity at Hydrogen to turn it into a plasmatic substance.
+										<br>
+										Uses 1000 Energy and 10 Hydrogen per second.
+										<br>
+										Produces 1 Plasma per second.
+										<br>
+										Costs <span id="heaterSpaceMetalCost">75,000</span> Space Metal, <span id="heaterGemCost">68,000</span> Gems, <span id="heaterSiliconCost">59,000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getHeater()" class="btn btn-default">Get Super-Heater</button>
+									<button onclick="toggleHeater()" class="btn btn-default">Turn Heater <span id="heaterToggled">Off</span></button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="energyTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -3291,7 +3334,10 @@
 									<span>
 										After trading resources with the Sol Center, they will give you some of their research on plasma and how to get it.
 										<br>
-										Costs: <span id="unlockPlasmaHydrogenCost">XXXX</span>
+										Costs: <span id="unlockPlasmaHydrogenCost">XXXX</span> Hydrogen, <span id="unlockPlasmaUraniumCost">XXXX</span> Uranium, <span id="unlockPlasmaOilCost">XXXX</span> Oil, <span id="unlockPlasmaWoodCost">XXXX</span> Wood.
+										<br>
+										<br>
+										<button onclick="unlockPlasma()" class="btn btn-default">Unlock Plasma Research</button>
 									</span>
 								</td>
 							</tr>

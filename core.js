@@ -7,6 +7,7 @@ function commafy(input){
 }
 
 function refresh(){
+	document.getElementById("plasma").innerHTML = commafy(plasma);
 	document.getElementById("energy").innerHTML = commafy(energy);
 	document.getElementById("oil").innerHTML = commafy(oil);
 	document.getElementById("metal").innerHTML = commafy(metal);
@@ -70,6 +71,13 @@ function refreshPerSec(){
 	if(energy <= 1){
 		energyps = energyInput;
 	}
+	if(energy >= 1000 && hydrogen > 10 && heaterToggled === true){
+		energyOutput += (heater*1000);
+		plasmaps = heater;
+	}
+	else{
+		plasmaps = 0;
+	}
 	if(energy >= 10 || energyps <= 0){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
@@ -90,6 +98,7 @@ function refreshPerSec(){
 		iceps = icePick + (iceDrill*9) + (freezer*65);
 	}
 	if(energy <= 10){
+		plasmaps = 0;
 		uraniumps = grinder;
 		oilps = pump;
 		metalps = miner;
@@ -108,7 +117,17 @@ function refreshPerSec(){
 		iceps = icePick;
 	}
 	scienceps = (lab*labGain);
-	document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
+	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
+	document.getElementById("plasma").className = "";
+	if(plasma <= 0){
+		document.getElementById("plasma").className = "red";
+	}
+	if(energyps >= 0){
+		document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
+	}
+	else{
+		document.getElementById("energyps").innerHTML = Math.round(energyps);
+	}
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
 	if(uranium === 0){
@@ -242,7 +261,6 @@ function refreshStats(){
 
 function refreshUI(){
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
-	document.getElementById("uranium").innerHTML = commafy(uranium);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
@@ -310,6 +328,10 @@ function refreshUI(){
 	document.getElementById("lavaStorage").innerHTML = commafy(lavaStorage);
 	document.getElementById("lavaNextStorage").innerHTML = commafy(lavaNextStorage);
 	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = commafy(lavaNextStorage/2.5);
+	document.getElementById("heater").innerHTML = heater;
+	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
+	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
+	document.getElementById("heaterSiliconCost").innerHTML = heaterSiliconCost;
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
@@ -574,6 +596,10 @@ function checkRedCost(){
 	turnRed(ice, iceStorage, "iceStorageCost");
 	turnRed(spaceMetal, iceStorage/2.5, "iceStorageSpaceMetalCost");
 	
+	turnRed(spaceMetal, heaterSpaceMetalCost, "heaterSpaceMetalCost");
+	turnRed(gem, heaterGemCost, "heaterGemCost");
+	turnRed(silicon, heaterSiliconCost, "heaterSiliconCost");
+
 	turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
 

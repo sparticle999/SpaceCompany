@@ -1,6 +1,8 @@
 # Overview:
 Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
+Currently, the game is in Beta, which means there is frequent, active development on the game and most bugs from existing features will have been fixed. You should not have to worry about your saves being wiped. However, when achieving uncompleted content, there may be some features missed out because you gained the pre-requisite before they were implemented.
+
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
 - Alien Bases in the Kuiper Belt that trade resources
@@ -28,7 +30,6 @@ v0.3.1
 
 v0.3.0
 - Added Plasma
-- Added More Statistics
 - Fixed Negative Energy Bugs
 
 # Changelog:
@@ -41,6 +42,7 @@ v0.3.0 The Tech Update [Pushed to Beta]
 - Added Ice
 - Added Tech Wonder
 - Added Fusion Reactor
+- Added More Statistics
 - Added Loading Screen
 - Fixed Typos
 - Fixed Wood/Charcoal Bugs

@@ -88,6 +88,18 @@ function save(type){
 		tier4: tier4,
 		tier5: tier5,
 		tier6: tier6,
+		tabsUnlockedNum: tabsUnlockedNum,
+		resourcesUnlockedNum: resourcesUnlockedNum,
+		techsResearchedNum: techsResearchedNum,
+		placesExploredNum: placesExploredNum,
+		wondersBuiltNum: wondersBuiltNum,
+		wondersActivatedNum: wondersActivatedNum,
+		plasma: plasma,
+		plasmaps: plasmaps,
+		heater: heater,
+		heaterSpaceMetalCost: heaterSpaceMetalCost,
+		heaterGemCost: heaterGemCost,
+		heaterSiliconCost: heaterSiliconCost,
 		energy: energy,
 		energyps: energyps,
 		charcoalEngine: charcoalEngine,
@@ -410,7 +422,6 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
-		//if(typeof savegame.autoSaveTime !== "undefined") document.getElementById("autoSaveTime").innerHTML = savegame.autoSaveTime;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
 		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
@@ -418,6 +429,18 @@ function load(type){
 		if(typeof savegame.tier4 !== "undefined") tier4 = savegame.tier4;
 		if(typeof savegame.tier5 !== "undefined") tier5 = savegame.tier5;
 		if(typeof savegame.tier6 !== "undefined") tier6 = savegame.tier6;
+		if(typeof savegame.tabsUnlockedNum !== "undefined") tabsUnlockedNum = savegame.tabsUnlockedNum;
+		if(typeof savegame.resourcesUnlockedNum !== "undefined") resourcesUnlockedNum = savegame.resourcesUnlockedNum;
+		if(typeof savegame.techsResearchedNum !== "undefined") techsResearchedNum = savegame.techsResearchedNum;
+		if(typeof savegame.placesExploredNum !== "undefined") placesExploredNum = savegame.placesExploredNum;
+		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
+		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
+		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
+		if(typeof savegame.plasmaps !== "undefined") plasmaps = savegame.plasmaps;
+		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
+		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
+		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
+		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;

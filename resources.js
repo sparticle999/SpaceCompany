@@ -1,4 +1,10 @@
 function gainResources(){
+	if(plasma + plasmaps/10 <= 100000){
+		plasma += plasmaps/10;
+	}
+	else{
+		plasma = 100000;
+	}
 	if(energy + energyps/10 <= 100000){
 		energy += energyps/10;
 	}
@@ -149,6 +155,16 @@ function gainResources(){
 
 // Gain Buttons
 
+function gainPlasma(){
+	if(plasma < plasmaStorage && energy >= 1000 && hydrogen >= 10){
+		plasma += 1;
+		energy -= 1000;
+		hydrogen -= 10;
+		refresh();
+		handMined += 1;
+	}
+}
+
 function gainUranium(){
 	if(uranium < uraniumStorage){
 		uranium += 1;
@@ -265,6 +281,14 @@ function gainHydrogen(){
 function gainHelium(){
 	if(helium < heliumStorage){
 		helium += 1;
+		refresh();
+		handMined += 1;
+	}
+}
+
+function gainIce(){
+	if(ice < iceStorage){
+		ice += 1;
 		refresh();
 		handMined += 1;
 	}
@@ -477,6 +501,49 @@ function upgradeHeliumStorage(){
 		document.getElementById("heliumNextStorage").innerHTML = commafy(heliumNextStorage);
 		document.getElementById("heliumStorageCost").innerHTML = commafy(heliumStorage);
 		document.getElementById("heliumStorageSpaceMetalCost").innerHTML = commafy(heliumStorage/2.5);
+	}
+}
+
+function upgradeIceStorage(){
+	if(ice >= iceStorage && spaceMetal >= iceStorage/2.5){
+		ice -= iceStorage;
+		spaceMetal -= iceStorage/2.5;
+		iceStorage = iceNextStorage;
+		iceNextStorage *= 2;
+		refresh();
+		document.getElementById("iceStorage").innerHTML = commafy(iceStorage);
+		document.getElementById("iceNextStorage").innerHTML = commafy(iceNextStorage);
+		document.getElementById("iceStorageCost").innerHTML = commafy(iceStorage);
+		document.getElementById("iceStorageSpaceMetalCost").innerHTML = commafy(iceStorage/2.5);
+	}
+}
+
+function toggleHeater(){
+	if(heaterToggled === true){
+		heaterToggled = false;
+		document.getElementById("heaterToggled").innerHTML = "On";
+	}
+	else{
+		heaterToggled = true;
+		document.getElementById("heaterToggled").innerHTML = "Off";
+	}
+}
+
+function getHeater(){
+	if(spaceMetal >= heaterSpaceMetalCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
+		metal -= heaterMetalCost;
+		gem -= heaterGemCost;
+		heater += 1;
+		heaterSpaceMetalCost = Math.floor(75000 * Math.pow(1.1,heater + 1));
+		heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater + 1));
+		heaterSiliconCost = Math.floor(59000 * Math.pow(1.1,heater + 1));
+		document.getElementById("heater").innerHTML = heater;
+		document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
+		document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
+		document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier1 += 1;
 	}
 }
 
