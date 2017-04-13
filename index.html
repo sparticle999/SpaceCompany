@@ -97,6 +97,26 @@
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
 			<div class="container" style="width:350px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
+					<tr id="plasmaNav" class="hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<img src="Icons/PlasmaIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Plasma
+							</span>
+						</td>
+						<td style="border: none; vertical-align:middle; text-align:center;">
+							<span>
+								<span id="plasmaps">0</span>/Sec
+							</span>
+						</td>
+						<td style="border:none; vertical-align:middle; text-align:right;">
+							<span id="plasma">
+								0
+							</span>
+						</td>
+					</tr>
 					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<img src="Icons/EnergyIcon.png" style="width:30px; height:auto">
@@ -161,26 +181,26 @@
 							<span id="lavaStorage">50</span>
 						</td>
 					</tr>
-					<tr class="collapseEarth">
+					<tr class="collapseEarth" style="border:none;">
 						<td colspan="4">
 							<span>Earth Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
 					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td id="oilNav0" style="border:none; vertical-align:middle;">
+						<td id="oilNav0" style="vertical-align:middle;">
 							<img src="Icons/oilIcon.png" style="width:30px; height:auto">
 						</td>
-						<td id="oilNav1" style="border:none; vertical-align:middle;">
+						<td id="oilNav1" style="vertical-align:middle;">
 							<span>
 								Oil
 							</span>
 						</td>
-						<td id="oilNav2" style="border: none; vertical-align:middle; text-align:center;">
+						<td id="oilNav2" style="vertical-align:middle; text-align:center;">
 							<span>
 								<span id="oilps">0</span>/Sec
 							</span>
 						</td>
-						<td id="oilNav3" style="border:none; vertical-align:middle; text-align:right;">
+						<td id="oilNav3" style="vertical-align:middle; text-align:right;">
 							<span id="oil">
 								0
 							</span>
@@ -189,20 +209,20 @@
 						</td>
 					</tr>
 					<tr id="metalNav" class="earth" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td id="metalNav0" style="border:none; vertical-align:middle;">
+						<td id="metalNav0" style="vertical-align:middle;">
 							<img src="Icons/metalIcon.png" style="width:30px; height:auto">
 						</td>
-						<td id="metalNav1" style="border:none; vertical-align:middle;">
+						<td id="metalNav1" style="vertical-align:middle;">
 							<span>
 								Metal
 							</span>
 						</td>
-						<td id="metalNav2" style="border: none; vertical-align:middle; text-align:center;">
+						<td id="metalNav2" style="vertical-align:middle; text-align:center;">
 							<span>
 								<span id="metalps">0</span>/Sec
 							</span>
 						</td>
-						<td id="metalNav3" style="border:none; vertical-align:middle; text-align:right;">
+						<td id="metalNav3" style="vertical-align:middle; text-align:right;">
 							<span id="metal">
 								0
 							</span>
@@ -3233,6 +3253,13 @@
 		<div role="tabpanel" class="tab-pane fade" id="solCenterPage">
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#unlockPlasma" aria-controls="unlockPlasma" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Plasma
+							</span>
+						</td>
+					</tr>
 					<tr href="#emc" aria-controls="emc" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
@@ -3240,16 +3267,37 @@
 							</span>
 						</td>
 					</tr>
-					<tr href="#XXXX" aria-controls="XXXX" role="tab" data-toggle="tab" style="height:60px;">
-						<td colspan="2" style="vertical-align:middle;">
-							<span>
-								XXXX
-							</span>
-						</td>
-					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
+				<div id="unlockPlasma" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Plasma
+									</h2>
+									<span>
+										Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutions.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Research
+									</h3>
+									<span>
+										After trading resources with the Sol Center, they will give you some of their research on plasma and how to get it.
+										<br>
+										Costs: <span id="unlockPlasmaHydrogenCost">XXXX</span>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="emc" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table no-select">
@@ -3259,20 +3307,18 @@
 										Energy-Mass Conversion
 									</h2>
 									<span>
-										EMC is a tech only dreamt about back on Earth. Here, it's a reality.
+										EMC is a technology only dreamt about back on Earth. Here, it's a reality. You can turn energy and plasma into regular resources, or, with large amounts, you can turn it into rare ones, which you are unable to find and have to make to acquire.
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="pointer btn-link">
-										XXXX
+										Research
 									</h3>
 									<span>
 										XXXX
 									</span>
-									<br>
-
 								</td>
 							</tr>
 						</table>
@@ -3418,10 +3464,10 @@
 								<td>
 									<table class="table">
 										<th class="pointer btn-link theader" style="border:none;">
-											Clicking
+											General
 										</th>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Resources Mined By Hand: 
 											</td>
 											<td>
@@ -3429,7 +3475,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 1 Machines Owned: 
 											</td>
 											<td>
@@ -3437,7 +3483,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 2 Machines Owned: 
 											</td>
 											<td>
@@ -3445,7 +3491,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 3 Machines Owned: 
 											</td>
 											<td>
@@ -3453,7 +3499,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 4 Machines Owned: 
 											</td>
 											<td>
@@ -3461,7 +3507,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 5 Machines Owned: 
 											</td>
 											<td>
@@ -3469,7 +3515,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tier 6 Machines Owned: 
 											</td>
 											<td>
@@ -3482,51 +3528,51 @@
 											Unlockables
 										</th>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Tabs Unlocked:
 											</td>
 											<td>
-												<span id="tabsUnlockedNum">0</span><br>
+												<span id="tabsUnlockedNum">3</span> / 7<br>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Resources Unlocked: 
 											</td>
 											<td>
-												<span id="resourcesUnlockedNum">0</span><br>
+												<span id="resourcesUnlockedNum">3</span> / 18<br>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Technologies Researched: 
 											</td>
 											<td>
-												<span id="techsResearchedNum">0</span><br>
+												<span id="techsResearchedNum">0</span> / 9<br>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Places Explored: 
 											</td>
 											<td>
-												<span id="placesExploredNum">0</span><br>
+												<span id="placesExploredNum">0</span> / 10<br>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Wonders Built: 
 											</td>
 											<td>
-												<span id="wondersBuiltNum">0</span><br>
+												<span id="wondersBuiltNum">0</span> / 3<br>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td style="width:80%">
 												Wonders Activated: 
 											</td>
 											<td>
-												<span id="wondersActivatedNum">0</span><br>
+												<span id="wondersActivatedNum">0</span> / 3<br>
 											</td>
 										</tr>
 									</table>

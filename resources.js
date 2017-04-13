@@ -709,6 +709,7 @@ function getMiner(){
 				document.getElementById("researchTab").className = "";
 				document.getElementById("dropdownMenu").className = "dropdown";
 				researchUnlocked = true;
+				tabsUnlockedNum += 1;
 				tabsUnlocked.push("researchTab", "dropdownMenu");
 			}
 		}

@@ -31,6 +31,7 @@ function unlockStorage(){
 		document.getElementById("unlockOil").className = "";
 		available.push("unlockOil");
 		researched.push("unlockStorage");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -39,25 +40,16 @@ function unlockBasicEnergy(){
 		science -= 20;
 		document.getElementById("charcoalNav").className = "earth";
 		document.getElementById("energyNav").className = "";
-		document.getElementById("metalNav0").style.border = "";
-		document.getElementById("metalNav1").style.border = "";
-		document.getElementById("metalNav2").style.border = "";
-		document.getElementById("metalNav3").style.border = "";
-		document.getElementById("oilNav0").style.border = "";
-		document.getElementById("oilNav1").style.border = "";
-		document.getElementById("oilNav2").style.border = "";
-		document.getElementById("oilNav3").style.border = "";
+		document.getElementById("collapseEarth").style.border = "";
 		document.getElementById("unlockBasicEnergy").className = "hidden";
 		document.getElementById("unlockSolar").className = "";
 		document.getElementById("unlockMachines").className = "";
 		document.getElementById("upgradeEngineTech").className = "";
 		resourcesUnlocked.push("energyNav", "charcoalNav");
-		noBorder.push("metalNav");
-		if(contains(noBorder, "oilNav") === true){
-			noBorder.push("oilNav");
-		}
 		available.push("unlockSolar", "unlockMachines", "upgradeEngineTech");
 		researched.push("unlockBasicEnergy");
+		techsResearchedNum += 1;
+		resourcesUnlockedNum += 2;
 		refreshResources();
 	}
 }
@@ -67,14 +59,12 @@ function unlockOil(){
 		science -= 30;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "earth";
-		document.getElementById("metalNav0").style.border = "";
-		document.getElementById("metalNav1").style.border = "";
-		document.getElementById("metalNav2").style.border = "";
-		document.getElementById("metalNav3").style.border = "";
 		refresh();
 		resourcesUnlocked.push("oilNav");
 		noBorder.push("metalNav");
 		researched.push("unlockOil");
+		techsResearchedNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -87,6 +77,7 @@ function unlockSolar(){
 		document.getElementById("upgradeSolarTech").className = "";
 		available.push("upgradeSolarTech");
 		researched.push("unlockSolar");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -103,6 +94,7 @@ function unlockMachines(){
 		document.getElementById("unlockSolarSystem").className = "";
 		available.push("unlockSolarSystem", "upgradeResourceTech");
 		researched.push("unlockMachines");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -123,6 +115,7 @@ function upgradeResourceTech(){
 		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
 		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 		researched.push("upgradeResourceTech");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -131,8 +124,10 @@ function unlockSolarSystem(){
 		science -= 500;
 		document.getElementById("unlockSolarSystem").className = "hidden";
 		document.getElementById("solarSystemTab").className = "";
+		tabsUnlockedNum += 1;
 		tabsUnlocked.push("solarSystemTab");
 		researched.push("unlockSolarSystem");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -143,6 +138,7 @@ function upgradeEngineTech(){
 		charcoalEngineOutput = 4;
 		document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
 		researched.push("upgradeEngineTech");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -153,6 +149,7 @@ function upgradeSolarTech(){
 		solarPanelOutput = 3;
 		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
 		researched.push("upgradeSolarTech");
+		techsResearchedNum += 1;
 	}
 }
 
@@ -210,6 +207,8 @@ function exploreMoon(){
 		resourcesUnlocked.push("spaceMetalNav", "collapseInnerPlanet");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -223,6 +222,8 @@ function exploreVenus(){
 		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
 		explored.push("venus");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -236,6 +237,8 @@ function exploreMars(){
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 2;
 		refreshResources();
 	}
 }
@@ -250,6 +253,8 @@ function exploreAsteroidBelt(){
 		resourcesUnlocked.push("goldNav", "silverNav", "jupiter", "saturn", "uranus", "neptune", "pluto", "kuiperBelt");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 2;
 		refreshResources();
 	}
 }
@@ -261,7 +266,9 @@ function exploreWonderStation(){
 		document.getElementById("exploreWonderStation").className = "hidden";
 		buttonsHidden.push("exploreWonderStation");
 		explored.push("wonderStation");
+		placesExploredNum += 1;
 		tabsUnlocked.push("wonderTab");
+		tabsUnlockedNum += 1;
 	}
 }
 
@@ -274,6 +281,8 @@ function exploreJupiter(){
 		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet");
 		buttonsHidden.push("exploreJupiter");
 		explored.push("jupiter");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -286,6 +295,8 @@ function exploreSaturn(){
 		resourcesUnlocked.push("heliumNav");
 		buttonsHidden.push("exploreSaturn");
 		explored.push("saturn");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -298,6 +309,8 @@ function explorePluto(){
 		resourcesUnlocked.push("iceNav");
 		buttonsHidden.push("explorePluto");
 		explored.push("pluto");
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 	}
 }
@@ -310,6 +323,7 @@ function exploreKuiperBelt(){
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("kuiperBelt");
+		placesExploredNum += 1;
 		refreshResources();
 	}
 }
@@ -322,6 +336,7 @@ function exploreSolCenter(){
 		resourcesUnlocked.push("solCenterTopTab");
 		buttonsHidden.push("exploreSolCenter");
 		explored.push("solCenter");
+		placesExploredNum += 1;
 		refreshResources();
 	}
 }
@@ -480,6 +495,7 @@ function achievePreciousWonder(){
 		document.getElementById("wonderFloor1Nav").className = "";
 		buttonsHidden.push("preciousProgress", "preciousWonderButton");
 		resourcesUnlocked.push("preciousWonderNav", "wonderFloor1Nav");
+		wondersBuiltNum += 1;
 	}
 }
 
@@ -495,7 +511,7 @@ function activatePreciousWonder(){
 		resourcesUnlocked.push("uraniumNav", "nuclearPower");
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
-		refreshResources();
+		wondersActivatedNum += 1;
 	}
 }
 
@@ -509,6 +525,7 @@ function achieveEnergeticWonder(){
 		document.getElementById("energeticWonderNav").className = "";
 		buttonsHidden.push("energeticProgress", "energeticWonderButton");
 		resourcesUnlocked.push("energeticWonderNav");
+		wondersBuiltNum += 1;
 	}
 }
 
@@ -524,6 +541,7 @@ function activateEnergeticWonder(){
 		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
+		wondersActivatedNum += 1;
 	}
 }
 
@@ -537,6 +555,7 @@ function achieveTechWonder(){
 		document.getElementById("techWonderNav").className = "";
 		buttonsHidden.push("techProgress", "techWonderButton");
 		resourcesUnlocked.push("techWonderNav");
+		wondersBuiltNum += 1;
 	}
 }
 
@@ -570,6 +589,7 @@ function activateTechWonder(){
 		techUnlocked = true;
 		buttonsHidden.push("activateTechWonder");
 		activated.push("tech");
+		wondersActivatedNum += 1;
 	}
 }
 

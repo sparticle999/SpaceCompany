@@ -27,8 +27,6 @@ v0.3.1
 
 
 v0.3.0
-- Added Sol Scientific Center
-- Added Ice
 - Added Plasma
 - Added More Statistics
 - Fixed Negative Energy Bugs
@@ -36,9 +34,11 @@ v0.3.0
 # Changelog:
 
 v0.3.0 The Tech Update [Pushed to Beta]
+- Added Sol Scientific Center
 - Added Computerized Tier of resource machines
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
+- Added Ice
 - Added Tech Wonder
 - Added Fusion Reactor
 - Added Loading Screen
