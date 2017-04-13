@@ -593,6 +593,19 @@ function activateTechWonder(){
 	}
 }
 
+// Sol Center Tab
+
+function unlockPlasma(){
+	if(hydrogen >= 1500 && uranium >= 1500 && oil >= 15000 && wood >= 15000){
+		hydrogen -= 1500;
+		uranium -= 1500;
+		oil -= 15000;
+		wood -= 15000;
+		document.getElementById("unlockPlasma").className = "hidden";
+		document.getElementById("plasmaNav").className = "";
+	}
+}
+
 // Collapses Earth and Space Metals
 
 $('.collapseEarth').click(function(){

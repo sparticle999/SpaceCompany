@@ -29,7 +29,6 @@ v0.3.1
 
 
 v0.3.0
-- Added Plasma
 - Fixed Negative Energy Bugs
 
 # Changelog:
@@ -40,6 +39,7 @@ v0.3.0 The Tech Update [Pushed to Beta]
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
 - Added Ice
+- Added Plasma
 - Added Tech Wonder
 - Added Fusion Reactor
 - Added More Statistics
