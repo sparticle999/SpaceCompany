@@ -295,6 +295,7 @@ function explorePluto(){
 		rocketFuel -= 5000;
 		document.getElementById("explorePluto").className = "hidden";
 		document.getElementById("iceNav").className = "outerPlanet";
+		resourcesUnlocked.push("iceNav");
 		buttonsHidden.push("explorePluto");
 		explored.push("pluto");
 		refreshResources();
