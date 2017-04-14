@@ -491,6 +491,10 @@ function refreshUI(){
 	document.getElementById("cubicUraniumCost").innerHTML = commafy(cubicUraniumCost);
 	document.getElementById("cubicSpaceMetalCost").innerHTML = commafy(cubicSpaceMetalCost);
 	document.getElementById("cubicOilCost").innerHTML = commafy(cubicOilCost);
+	document.getElementById("enricher").innerHTML = enricher;
+	document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
+	document.getElementById("enricherSpaceMetalCost").innerHTML = commafy(enricherSpaceMetalCost);
+	document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
 	document.getElementById("crucible").innerHTML = crucible;
 	document.getElementById("crucibleGemCost").innerHTML = commafy(crucibleGemCost);
 	document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);

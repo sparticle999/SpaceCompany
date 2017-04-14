@@ -278,7 +278,8 @@ function exploreJupiter(){
 		document.getElementById("exploreJupiter").className = "hidden";
 		document.getElementById("collapseOuterPlanet").className = "collapseOuterPlanet";
 		document.getElementById("hydrogenNav").className = "outerPlanet";
-		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet");
+		document.getElementById("fusionPower").className = "";
+		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet", "fusionPower");
 		buttonsHidden.push("exploreJupiter");
 		explored.push("jupiter");
 		placesExploredNum += 1;
