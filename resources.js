@@ -122,7 +122,7 @@ function gainResources(){
 	else{
 		var difference = charcoalStorage - charcoal;
 		if(wood >= difference*2){
-			if(charcoal + difference <= charcoalStorage){
+			if(charcoal + difference < charcoalStorage){
 				charcoal += difference;
 				wood -= difference * 2;
 			}

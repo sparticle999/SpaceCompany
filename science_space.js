@@ -602,8 +602,21 @@ function unlockPlasma(){
 		uranium -= 1500;
 		oil -= 15000;
 		wood -= 15000;
-		document.getElementById("unlockPlasma").className = "hidden";
+		document.getElementById("researchPlasma").className = "hidden";
 		document.getElementById("plasmaNav").className = "";
+		buttonsHidden.push("researchPlasma");
+		resourcesUnlocked.push("plasmaNav");
+	}
+}
+
+function unlockEmc(){
+	if(energy >= 75000 && plasma >= 100){
+		energy -= 75000;
+		plasma -= 100;
+		document.getElementById("researchEmc").className = "hidden";
+		document.getElementById("emcPage").className = "";
+		buttonsHidden.push("researchEmc");
+		resourcesUnlocked.push("emcPage");
 	}
 }
 
