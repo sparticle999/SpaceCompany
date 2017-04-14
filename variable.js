@@ -9,7 +9,7 @@ var researchUnlocked = false; var researched = []; var available = ["unlockStora
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false;
 
-var plasma = 0; var plasmaStorage = 50; var plasmaNextStorage = 100; var plasmaps = 0;
+var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
 var energy = 0; var energyps = 0;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;

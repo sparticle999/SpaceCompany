@@ -71,9 +71,16 @@ function refreshPerSec(){
 	if(energy <= 1){
 		energyps = energyInput;
 	}
-	if(energy >= 1000 && hydrogen > 10 && heaterToggled === true){
-		energyOutput += (heater*1000);
-		plasmaps = heater;
+	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
+		if(plasma + heater/10 <= 100000){
+			energyOutput += (heater*1000);
+			plasmaps = heater;
+			plasma += plasmaps/10;
+			hydrogen -= 10;
+		}
+		else{
+			plasma = 100000
+		}
 	}
 	else{
 		plasmaps = 0;
@@ -218,7 +225,7 @@ function refreshPerSec(){
 	if(lava === 0){
 		document.getElementById("lava").className = "red";
 	}
-	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10);
+	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10 - heater*10);
 	document.getElementById("hydrogen").className = "";
 	if(hydrogen >= hydrogenStorage){
 		document.getElementById("hydrogen").className = "green";

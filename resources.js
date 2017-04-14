@@ -1,10 +1,4 @@
 function gainResources(){
-	if(plasma + plasmaps/10 <= 100000){
-		plasma += plasmaps/10;
-	}
-	else{
-		plasma = 100000;
-	}
 	if(energy + energyps/10 <= 100000){
 		energy += energyps/10;
 	}
@@ -156,7 +150,7 @@ function gainResources(){
 // Gain Buttons
 
 function gainPlasma(){
-	if(plasma < plasmaStorage && energy >= 1000 && hydrogen >= 10){
+	if(energy >= 1000 && hydrogen >= 10){
 		plasma += 1;
 		energy -= 1000;
 		hydrogen -= 10;
