@@ -411,6 +411,10 @@ function refreshUI(){
 	document.getElementById("laserCutterGemCost").innerHTML = commafy(laserCutterGemCost);
 	document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
 	document.getElementById("laserCutterOutput").innerHTML = commafy(laserCutterOutput);
+	document.getElementById("deforester").innerHTML = deforester;
+	document.getElementById("deforesterSpaceMetalCost").innerHTML = commafy(deforesterSpaceMetalCost);
+	document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
+	document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
 	document.getElementById("moonWorker").innerHTML = moonWorker;
 	document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 	document.getElementById("moonDrill").innerHTML = moonDrill;
@@ -552,6 +556,10 @@ function checkRedCost(){
 			document.getElementById(id).className = "";
 		}
 	}
+
+	turnRed(wood, 2, "manualCharcoalCost");
+	turnRed(energy, 1000, "manualPlasmaEnergyCost");
+	turnRed(hydrogen, 10, "manualPlasmaHydrogenCost");
 
 	turnRed(uranium, uraniumStorage, "uraniumStorageCost");
 	turnRed(spaceMetal, uraniumStorage/2.5, "uraniumStorageSpaceMetalCost");
@@ -1407,6 +1415,14 @@ function checkRedCost(){
 	turnRed(spaceMetal, freezerSpaceMetalCost, "freezerSpaceMetalCost");
 	turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
+
+	turnRed(hydrogen, 1500, "unlockPlasmaHydrogenCost");
+	turnRed(uranium, 1500, "unlockPlasmaUraniumCost");
+	turnRed(oil, 15000, "unlockPlasmaOilCost");
+	turnRed(wood, 15000, "unlockPlasmaWoodCost");
+
+	turnRed(energy, 75000, "unlockEmcEnergyCost");
+	turnRed(plasma, 100, "unlockEmcPlasmaCost");
 
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";
