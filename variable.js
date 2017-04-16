@@ -97,3 +97,4 @@ var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000
 var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
 var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
+var emcAmount = 1;

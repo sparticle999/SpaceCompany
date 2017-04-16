@@ -3387,7 +3387,81 @@
 									<span>
 										This is where you can convert your energy and plasma into resources.
 										<br>
+										<button class="btn btn-default" onclick="changeEmcAmount()">Converting <span class="emcAmount">1</span>x</button>
+										<br>
 									</span>
+									<br>
+									<table style="width:700px">
+										<tr>
+											<td colspan="3">
+												<button onclick="emcConvertUranium()" class="btn btn-default" style="width:100%"><span id="energyUraniumConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Uranium</button>
+											</td>
+											<td colspan="3">
+												<button onclick="emcConvertLava()" class="btn btn-default" style="width:100%"><span id="energyLavaConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Lava</button>
+											</td>
+										</tr>
+										<tr>
+											<td height="20px"></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<button onclick="emcConvertOil()" class="btn btn-default" style="width:100%"><span id="energyOilConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Oil</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertMetal()" class="btn btn-default" style="width:100%"><span id="energyMetalConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Metal</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertGem()" class="btn btn-default" style="width:100%"><span id="energyGemsConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Gems</button>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+												<button onclick="emcConvertCharcoal()" class="btn btn-default" style="width:100%"><span id="energyCharcoalConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Charcoal</button>
+											</td>
+											<td colspan="3">
+												<button onclick="emcConvertWood()" class="btn btn-default" style="width:100%"><span id="energyWoodConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Wood</button>
+											</td>
+										</tr>
+										<tr>
+											<td height="20px"></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<button onclick="emcConvertSpaceMetal()" class="btn btn-default" style="width:100%"><span id="energySpaceMetalConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Space Metal</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertMethane()" class="btn btn-default" style="width:100%"><span id="energyMethaneConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Methane</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertTitanium()" class="btn btn-default" style="width:100%"><span id="energyTitaniumConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Titanium</button>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<button onclick="emcConvertGold()" class="btn btn-default" style="width:100%"><span id="energyGoldConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Gold</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertSilver()" class="btn btn-default" style="width:100%"><span id="energySilverConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Silver</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertSilicon()" class="btn btn-default" style="width:100%"><span id="energySiliconConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Silicon</button>
+											</td>
+										</tr>
+										<tr>
+											<td height="20px"></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<button onclick="emcConvertHydrogen()" class="btn btn-default" style="width:100%"><span id="energyHydrogenConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Hydrogen</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertHelium()" class="btn btn-default" style="width:100%"><span id="energyHeliumConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Helium</button>
+											</td>
+											<td colspan="2">
+												<button onclick="emcConvertIce()" class="btn btn-default" style="width:100%"><span id="energyIceConvIn">X</span> Energy -> <span class="emcAmount">Y</span> Ice</button>
+											</td>
+										</tr>
+									</table>
 								</td>
 							</tr>
 						</table>
@@ -3977,7 +4051,10 @@
 <script type="text/javascript" src="variable.js"></script>
 <script type="text/javascript" src="saving.js"></script>
 <script type="text/javascript" src="resources.js"></script>
-<script type="text/javascript" src="science_space.js"></script>
+<script type="text/javascript" src="science.js"></script>
+<script type="text/javascript" src="solarSystem.js"></script>
+<script type="text/javascript" src="wonder.js"></script>
+<script type="text/javascript" src="solCenter.js"></script>
 <script type="text/javascript" src="core.js"></script>
 <script type="text/javascript" src="lz-string.min.js"></script>
 <link href="rangeslider.css">

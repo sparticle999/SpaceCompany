@@ -1664,6 +1664,50 @@ function refreshTabs(){
  	}
 }
 
+// Collapses Resources
+
+$('.collapseEarth').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+        	document.getElementsByClassName("earth")[i].className = "earth";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+        	document.getElementsByClassName("earth")[i].className = "earth hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseInnerPlanet').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseOuterPlanet').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
 window.onload = function(){
 	load('local');
 };
