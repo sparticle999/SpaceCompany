@@ -5,8 +5,6 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
-- Alien Bases in the Kuiper Belt that trade resources
-- Energy to Mass Conversion Machines
 - Resources only makeable, not findable
 - Supercooling with Ice
 - Dyson spheres around stars
@@ -36,6 +34,7 @@ v0.3.0
 v0.3.0 The Tech Update [Pushed to Beta]
 - Added Sol Scientific Center
 - Added Computerized Tier of resource machines
+- Added Energy-Mass Conversion
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
 - Added Ice

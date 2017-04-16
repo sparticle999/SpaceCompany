@@ -241,6 +241,7 @@ function refreshPerSec(){
 	if(helium === 0){
 		document.getElementById("helium").className = "red";
 	}
+	document.getElementById("iceps").innerHTML = commafy(iceps);
 	document.getElementById("ice").className = "";
 	if(ice >= iceStorage){
 		document.getElementById("ice").className = "green";

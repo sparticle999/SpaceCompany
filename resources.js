@@ -90,6 +90,12 @@ function gainResources(){
 	else{
 		helium = heliumStorage;
 	}
+	if(ice + iceps/10 < iceStorage){
+		ice += iceps/10;
+	}
+	else{
+		ice = heliumStorage;
+	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
@@ -799,6 +805,25 @@ function getHeavyDrill(){
 	}
 }
 
+function getGigaDrill(){
+	if(spaceMetal >= gigaDrillSpaceMetalCost && gem >= gigaDrillGemCost && silicon >= gigaDrillSiliconCost){
+		metal -= gigaDrillSpaceMetalCost;
+		gem -= gigaDrillGemCost;
+		silicon -= gigaDrillSiliconCost;
+		gigaDrill += 1;
+		gigaDrillSiliconCost = Math.floor(50 * Math.pow(1.1,gigaDrill + 1));
+		gigaDrillGemCost = Math.floor(60 * Math.pow(1.1,gigaDrill + 1));
+		gigaDrillSpaceMetalCost = Math.floor(160 * Math.pow(1.1,gigaDrill + 1));
+		document.getElementById("gigaDrill").innerHTML = gigaDrill;
+		document.getElementById("gigaDrillSpaceMetalCost").innerHTML = commafy(gigaDrillSpaceMetalCost);
+		document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
+		document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
+	}
+}
+
 function getGemMiner(){
 	if(metal >= gemMinerMetalCost && gem >= gemMinerGemCost){
 		metal -= gemMinerMetalCost;
@@ -831,6 +856,25 @@ function getAdvancedDrill(){
 		refresh();
 		refreshPerSec();
 		tier2 += 1;
+	}
+}
+
+function getDiamondDrill(){
+	if(spaceMetal >= diamondDrillSpaceMetalCost && gem >= diamondDrillGemCost && silicon >= diamondDrillSiliconCost){
+		spaceMetal -= diamondDrillSpaceMetalCost;
+		gem -= diamondDrillGemCost;
+		silicon -= diamondDrillSiliconCost;
+		diamondDrill += 1;
+		diamondDrillSiliconCost = Math.floor(60 * Math.pow(1.1,diamondDrill + 1));
+		diamondDrillGemCost = Math.floor(200 * Math.pow(1.1,diamondDrill + 1));
+		diamondDrillSpaceMetalCost = Math.floor(120 * Math.pow(1.1,diamondDrill + 1));
+		document.getElementById("diamondDrill").innerHTML = diamondDrill;
+		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
+		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
+		document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
+		refresh();
+		refreshPerSec();
+		tier3 += 1;
 	}
 }
 
