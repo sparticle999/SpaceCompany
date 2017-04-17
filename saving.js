@@ -18,7 +18,7 @@ function autosave(){
 
 	if(document.getElementById("30secs").checked){
 		if(saveTimer >= 30){
-			save();
+			save("local");
 			saveTimer = 0;
 		}
 		else{
@@ -38,7 +38,7 @@ function autosave(){
 	}
 	if(document.getElementById("2mins").checked){
 		if(saveTimer >= 120){
-			save();
+			save("local");
 			saveTimer = 0;
 		}
 		else{
@@ -58,7 +58,7 @@ function autosave(){
 	}
 	if(document.getElementById("10mins").checked){
 		if(saveTimer >= 600){
-			save();
+			save("local");
 			saveTimer = 0;
 		}
 		else{
@@ -501,7 +501,7 @@ function load(type){
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
-		if(typeof savegame.charcoalToggled !== "undefined") charcoalToggled = savegame.charcoalToggled;
+		if(typeof savegame.charcoal Toggled !== "undefined") charcoal Toggled = savegame.charcoal Toggled;
 		if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
 		if(typeof savegame.woodburnerMetalCost !== "undefined") woodburnerMetalCost = savegame.woodburnerMetalCost;
 		if(typeof savegame.woodburnerWoodCost !== "undefined") woodburnerWoodCost = savegame.woodburnerWoodCost;
