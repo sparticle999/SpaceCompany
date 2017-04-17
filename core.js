@@ -76,7 +76,7 @@ function refreshPerSec(){
 			energyOutput += (heater*1000);
 			plasmaps = heater;
 			plasma += plasmaps/10;
-			hydrogen -= 10;
+			hydrogen -= 10*heater;
 		}
 		else{
 			plasma = 100000

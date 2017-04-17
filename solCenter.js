@@ -42,6 +42,6 @@ function changeEmcAmount(){
 function convertEnergy(resource, resourceName){
 	if(energy >= emcAmount*window[resourceName + "EmcVal"]){
 		energy -= emcAmount*window[resourceName + "EmcVal"];
-		resource += emcAmount;
+		window[resourceName] += emcAmount;
 	}
 }
