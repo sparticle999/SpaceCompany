@@ -99,6 +99,7 @@ var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techA
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = 1;
 
+var resources = ["uranium", "lava", "oil", "metal", "gem", "charcoal", "wood", "spaceMetal", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice"]
 var uraniumEmcVal = 37; var lavaEmcVal = 42;
 var oilEmcVal = 3; var metalEmcVal = 1; var gemEmcVal = 3; var charcoalEmcVal = 2; var woodEmcVal = 1;
 var spaceMetalEmcVal = 15; var methaneEmcVal = 12; var titaniumEmcVal = 17; var goldEmcVal = 14; var silverEmcVal = 16; var siliconEmcVal = 23;

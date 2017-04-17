@@ -99,7 +99,7 @@
 				<table class="table table-hover text-primary no-select pointer">
 					<tr id="plasmaNav" class="hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
-							<img src="Icons/PlasmaIcon.png" style="width:30px; height:auto">
+							<img src="Icons/plasmaIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="border:none; vertical-align:middle;">
 							<span>
@@ -3391,13 +3391,13 @@
 										<br>
 									</span>
 									<br>
-									<table style="width:700px">
+									<table style="width:750px">
 										<tr>
 											<td colspan="3">
-												<button onclick="convertEnergy(uranium, 'uranium')" class="btn btn-default" style="width:100%"><span id="energyUraniumConvIn">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
+												<button onclick="convertEnergy(uranium, 'uranium')" class="btn btn-default" style="width:100%"><span id="uraniumEmcVal">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
 											</td>
 											<td colspan="3">
-												<button onclick="convertEnergy(lava, 'lava')" class="btn btn-default" style="width:100%"><span id="energyLavaConvIn">42</span> Energy -> <span class="emcAmount">1</span> Lava</button>
+												<button onclick="convertEnergy(lava, 'lava')" class="btn btn-default" style="width:100%"><span id="lavaEmcVal">42</span> Energy -> <span class="emcAmount">1</span> Lava</button>
 											</td>
 										</tr>
 										<tr>
@@ -3405,21 +3405,21 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<button onclick="convertEnergy(oil, 'oil')" class="btn btn-default" style="width:100%"><span id="energyOilConvIn">3</span> Energy -> <span class="emcAmount">1</span> Oil</button>
+												<button onclick="convertEnergy(oil, 'oil')" class="btn btn-default" style="width:100%"><span id="oilEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Oil</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(metal, 'metal')" class="btn btn-default" style="width:100%"><span id="energyMetalConvIn">1</span> Energy -> <span class="emcAmount">1</span> Metal</button>
+												<button onclick="convertEnergy(metal, 'metal')" class="btn btn-default" style="width:100%"><span id="metalEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Metal</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(gem, 'gem')" class="btn btn-default" style="width:100%"><span id="energyGemsConvIn">3</span> Energy -> <span class="emcAmount">1</span> Gems</button>
+												<button onclick="convertEnergy(gem, 'gem')" class="btn btn-default" style="width:100%"><span id="gemEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Gems</button>
 											</td>
 										</tr>
 										<tr>
 											<td colspan="3">
-												<button onclick="convertEnergy(charcoal, 'charcoal')" class="btn btn-default" style="width:100%"><span id="energyCharcoalConvIn">2</span> Energy -> <span class="emcAmount">1</span> Charcoal</button>
+												<button onclick="convertEnergy(charcoal, 'charcoal')" class="btn btn-default" style="width:100%"><span id="charcoalEmcVal">2</span> Energy -> <span class="emcAmount">1</span> Charcoal</button>
 											</td>
 											<td colspan="3">
-												<button onclick="convertEnergy(wood, 'wood')" class="btn btn-default" style="width:100%"><span id="energyWoodConvIn">1</span> Energy -> <span class="emcAmount">1</span> Wood</button>
+												<button onclick="convertEnergy(wood, 'wood')" class="btn btn-default" style="width:100%"><span id="woodEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Wood</button>
 											</td>
 										</tr>
 										<tr>
@@ -3427,24 +3427,24 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<button onclick="convertEnergy(spaceMetal, 'spaceMetal')" class="btn btn-default" style="width:100%"><span id="energySpaceMetalConvIn">15</span> Energy -> <span class="emcAmount">1</span> Space Metal</button>
+												<button onclick="convertEnergy(spaceMetal, 'spaceMetal')" class="btn btn-default" style="width:100%"><span id="spaceMetalEmcVal">15</span> Energy -> <span class="emcAmount">1</span> Space Metal</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(methane, 'methane')" class="btn btn-default" style="width:100%"><span id="energyMethaneConvIn">12</span> Energy -> <span class="emcAmount">1</span> Methane</button>
+												<button onclick="convertEnergy(methane, 'methane')" class="btn btn-default" style="width:100%"><span id="methaneEmcVal">12</span> Energy -> <span class="emcAmount">1</span> Methane</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(titanium, 'titanium')" class="btn btn-default" style="width:100%"><span id="energyTitaniumConvIn">17</span> Energy -> <span class="emcAmount">1</span> Titanium</button>
+												<button onclick="convertEnergy(titanium, 'titanium')" class="btn btn-default" style="width:100%"><span id="titaniumEmcVal">17</span> Energy -> <span class="emcAmount">1</span> Titanium</button>
 											</td>
 										</tr>
 										<tr>
 											<td colspan="2">
-												<button onclick="convertEnergy(gold, 'gold')" class="btn btn-default" style="width:100%"><span id="energyGoldConvIn">14</span> Energy -> <span class="emcAmount">1</span> Gold</button>
+												<button onclick="convertEnergy(gold, 'gold')" class="btn btn-default" style="width:100%"><span id="goldEmcVal">14</span> Energy -> <span class="emcAmount">1</span> Gold</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(silver, 'silver')" class="btn btn-default" style="width:100%"><span id="energySilverConvIn">16</span> Energy -> <span class="emcAmount">1</span> Silver</button>
+												<button onclick="convertEnergy(silver, 'silver')" class="btn btn-default" style="width:100%"><span id="silverEmcVal">16</span> Energy -> <span class="emcAmount">1</span> Silver</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(silicon, 'silicon')" class="btn btn-default" style="width:100%"><span id="energySiliconConvIn">23</span> Energy -> <span class="emcAmount">1</span> Silicon</button>
+												<button onclick="convertEnergy(silicon, 'silicon')" class="btn btn-default" style="width:100%"><span id="siliconEmcVal">23</span> Energy -> <span class="emcAmount">1</span> Silicon</button>
 											</td>
 										</tr>
 										<tr>
@@ -3452,13 +3452,13 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<button onclick="convertEnergy(hydrogen, 'hydrogen')" class="btn btn-default" style="width:100%"><span id="energyHydrogenConvIn">33</span> Energy -> <span class="emcAmount">1</span> Hydrogen</button>
+												<button onclick="convertEnergy(hydrogen, 'hydrogen')" class="btn btn-default" style="width:100%"><span id="hydrogenEmcVal">33</span> Energy -> <span class="emcAmount">1</span> Hydrogen</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(helium, 'helium')" class="btn btn-default" style="width:100%"><span id="energyHeliumConvIn">39</span> Energy -> <span class="emcAmount">1</span> Helium</button>
+												<button onclick="convertEnergy(helium, 'helium')" class="btn btn-default" style="width:100%"><span id="heliumEmcVal">39</span> Energy -> <span class="emcAmount">1</span> Helium</button>
 											</td>
 											<td colspan="2">
-												<button onclick="convertEnergy(ice, 'ice')" class="btn btn-default" style="width:100%"><span id="energyIceConvIn">44</span> Energy -> <span class="emcAmount">1</span> Ice</button>
+												<button onclick="convertEnergy(ice, 'ice')" class="btn btn-default" style="width:100%"><span id="iceEmcVal">44</span> Energy -> <span class="emcAmount">1</span> Ice</button>
 											</td>
 										</tr>
 									</table>

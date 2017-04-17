@@ -37,6 +37,9 @@ function changeEmcAmount(){
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
 		document.getElementsByClassName("emcAmount")[i].innerHTML = emcAmount;
 	}
+	for(var i = 0; i < resources.length; i++){
+		document.getElementById(resources[i] + "EmcVal").innerHTML = window[resources[i]+"EmcVal"]*emcAmount;
+	}
 }
 
 function convertEnergy(resource, resourceName){
