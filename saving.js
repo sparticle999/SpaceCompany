@@ -501,7 +501,7 @@ function load(type){
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
-		if(typeof savegame.charcoal Toggled !== "undefined") charcoal Toggled = savegame.charcoal Toggled;
+		if(typeof savegame.charcoalToggled !== "undefined") charcoalToggled = savegame.charcoalToggled;
 		if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
 		if(typeof savegame.woodburnerMetalCost !== "undefined") woodburnerMetalCost = savegame.woodburnerMetalCost;
 		if(typeof savegame.woodburnerWoodCost !== "undefined") woodburnerWoodCost = savegame.woodburnerWoodCost;
