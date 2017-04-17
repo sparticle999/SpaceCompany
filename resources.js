@@ -746,7 +746,7 @@ function getPump(){
 
 function getPumpjack(){
 	if(metal >= pumpjackMetalCost && gem >= pumpjackGemCost && oil >= pumpjackOilCost){
-		metal -= pumpMetalCost;
+		metal -= pumpjackMetalCost;
 		gem -= pumpjackGemCost;
 		oil -= pumpjackOilCost;
 		pumpjack += 1;
