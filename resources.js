@@ -94,7 +94,7 @@ function gainResources(){
 		ice += iceps/10;
 	}
 	else{
-		ice = heliumStorage;
+		ice = iceStorage;
 	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;

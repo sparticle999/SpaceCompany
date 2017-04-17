@@ -38,3 +38,10 @@ function changeEmcAmount(){
 		document.getElementsByClassName("emcAmount")[i].innerHTML = emcAmount;
 	}
 }
+
+function convertEnergy(resource, resourceName){
+	if(energy >= emcAmount*window[resourceName + "EmcVal"]){
+		energy -= emcAmount*window[resourceName + "EmcVal"];
+		resource += emcAmount;
+	}
+}

@@ -6,35 +6,34 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
 - Resources only makeable, not findable
-- Supercooling with Ice
-- Dyson spheres around stars
 - Meteorite: 4th Tier of machine
 - Dark Matter
 - Random Events
 - [Change UI from bootstrap to my own]
-- [Achievements]
 
 # RoadMap
 
-v0.3.1
+v0.4.0 The Hot and Cold Update
+- Added Achievements
+- Supercooling with Ice
 - Added Meteorite
 - Added Meteorite Tier of resource machines
 - Forest Fryer: Charcoal
 - Drill of Titans: Titanium
 - Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
-- Compress Loading with for loops and array lists.
 
 
 v0.3.0
 - Fixed Negative Energy Bugs
+- Added Energy-Mass Conversion
+- Added Dyson Spheres
 
 # Changelog:
 
 v0.3.0 The Tech Update [Pushed to Beta]
 - Added Sol Scientific Center
 - Added Computerized Tier of resource machines
-- Added Energy-Mass Conversion
 - Added Exploration of the outer planets
 - Added Hydrogen and Helium
 - Added Ice

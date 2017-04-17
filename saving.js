@@ -95,14 +95,12 @@ function save(type){
 		wondersBuiltNum: wondersBuiltNum,
 		wondersActivatedNum: wondersActivatedNum,
 		plasma: plasma,
-		plasmaps: plasmaps,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
 		heaterGemCost: heaterGemCost,
 		heaterSiliconCost: heaterSiliconCost,
 		heaterToggled: heaterToggled,
 		energy: energy,
-		energyps: energyps,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -128,7 +126,6 @@ function save(type){
 		oil: oil,
 		oilStorage: oilStorage,
 		oilNextStorage: oilNextStorage,
-		oilps: oilps,
 		pump: pump,
 		pumpMetalCost: pumpMetalCost,
 		pumpGemCost: pumpGemCost,
@@ -144,7 +141,6 @@ function save(type){
 		metal: metal,
 		metalStorage: metalStorage,
 		metalNextStorage: metalNextStorage,
-		metalps: metalps,
 		miner: miner,
 		minerMetalCost: minerMetalCost,
 		minerWoodCost: minerWoodCost,
@@ -160,7 +156,6 @@ function save(type){
 		gem: gem,
 		gemStorage: gemStorage,
 		gemNextStorage: gemNextStorage,
-		gemps: gemps,
 		gemMiner: gemMiner,
 		gemMinerMetalCost: gemMinerMetalCost,
 		gemMinerGemCost: gemMinerGemCost,
@@ -176,7 +171,6 @@ function save(type){
 		charcoal: charcoal,
 		charcoalStorage: charcoalStorage,
 		charcoalNextStorage: charcoalNextStorage,
-		charcoalps: charcoalps,
 		woodburner: woodburner,
 		woodburnerMetalCost: woodburnerMetalCost,
 		woodburnerWoodCost: woodburnerWoodCost,
@@ -193,7 +187,6 @@ function save(type){
 		wood: wood,
 		woodStorage: woodStorage,
 		woodNextStorage: woodNextStorage,
-		woodps: woodps,
 		woodcutter: woodcutter,
 		woodcutterMetalCost: woodcutterMetalCost,
 		woodcutterWoodCost: woodcutterWoodCost,
@@ -207,7 +200,6 @@ function save(type){
 		deforesterTitaniumCost: deforesterTitaniumCost,
 		deforesterSiliconCost: deforesterSiliconCost,
 		science: science,
-		scienceps: scienceps,
 		lab: lab,
 		labGain: labGain,
 		labWoodCost: labWoodCost,
@@ -215,7 +207,6 @@ function save(type){
 		labMetalCost: labMetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
-		rocketFuelps: rocketFuelps,
 		chemicalPlant: chemicalPlant,
 		chemicalPlantMetalCost: chemicalPlantMetalCost,
 		chemicalPlantGemCost: chemicalPlantGemCost,
@@ -223,27 +214,21 @@ function save(type){
 		spaceMetal: spaceMetal,
 		spaceMetalStorage: spaceMetalStorage,
 		spaceMetalNextStorage: spaceMetalNextStorage,
-		spaceMetalps: spaceMetalps,
 		methane: methane,
 		methaneStorage: methaneStorage,
 		methaneNextStorage: methaneNextStorage,
-		methaneps: methaneps,
 		titanium: titanium,
 		titaniumStorage: titaniumStorage,
 		titaniumNextStorage: titaniumNextStorage,
-		titaniumps: titaniumps,
 		gold: gold,
 		goldStorage: goldStorage,
 		goldNextStorage: goldNextStorage,
-		goldps: goldps,
 		silver: silver,
 		silverStorage: silverStorage,
 		silverNextStorage: silverNextStorage,
-		silverps: silverps,
 		silicon: silicon,
 		siliconStorage: siliconStorage,
 		siliconNextStorage: siliconNextStorage,
-		siliconps: siliconps,
 		moonWorker: moonWorker,
 		moonWorkerGemCost: moonWorkerGemCost,
 		moonDrill: moonDrill,
@@ -321,7 +306,6 @@ function save(type){
 		uranium: uranium,
 		uraniumStorage: uraniumStorage,
 		uraniumNextStorage: uraniumNextStorage,
-		uraniumps: uraniumps,
 		activated: activated,
 		grinder: grinder,
 		grinderTitaniumCost: grinderTitaniumCost,
@@ -377,6 +361,9 @@ function save(type){
 		compressorSpaceMetalCost: compressorSpaceMetalCost,
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
+		ice: ice,
+		iceStorage, iceStorage,
+		iceNextStorage: iceNextStorage,
 		icePick: icePick,
 		icePickSpaceMetalCost: icePickSpaceMetalCost,
 		icePickGemCost: icePickGemCost,
@@ -437,14 +424,12 @@ function load(type){
 		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
 		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
-		if(typeof savegame.plasmaps !== "undefined") plasmaps = savegame.plasmaps;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
 		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
 		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
-		if(typeof savegame.energyps !== "undefined") energyps = savegame.energyps;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
@@ -470,7 +455,6 @@ function load(type){
 		if(typeof savegame.oil !== "undefined") oil = savegame.oil;
 		if(typeof savegame.oilStorage !== "undefined") oilStorage = savegame.oilStorage;
 		if(typeof savegame.oilNextStorage !== "undefined") oilNextStorage = savegame.oilNextStorage;
-		if(typeof savegame.oilps !== "undefined") oilps = savegame.oilps;
 		if(typeof savegame.pump !== "undefined") pump = savegame.pump;
 		if(typeof savegame.pumpMetalCost !== "undefined") pumpMetalCost = savegame.pumpMetalCost;
 		if(typeof savegame.pumpGemCost !== "undefined") pumpGemCost = savegame.pumpGemCost;
@@ -486,7 +470,6 @@ function load(type){
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
 		if(typeof savegame.metalStorage !== "undefined") metalStorage = savegame.metalStorage;
 		if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;
-		if(typeof savegame.metalps !== "undefined") metalps = savegame.metalps;
 		if(typeof savegame.miner !== "undefined") miner = savegame.miner;
 		if(typeof savegame.minerMetalCost !== "undefined") minerMetalCost = savegame.minerMetalCost;
 		if(typeof savegame.minerWoodCost !== "undefined") minerWoodCost = savegame.minerWoodCost;
@@ -502,7 +485,6 @@ function load(type){
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
 		if(typeof savegame.gemStorage !== "undefined") gemStorage = savegame.gemStorage;
 		if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;
-		if(typeof savegame.gemps !== "undefined") gemps = savegame.gemps;
 		if(typeof savegame.gemMiner !== "undefined") gemMiner = savegame.gemMiner;
 		if(typeof savegame.gemMinerMetalCost !== "undefined") gemMinerMetalCost = savegame.gemMinerMetalCost;
 		if(typeof savegame.gemMinerGemCost !== "undefined") gemMinerGemCost = savegame.gemMinerGemCost;
@@ -518,7 +500,6 @@ function load(type){
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
-		if(typeof savegame.charcoalps !== "undefined") charcoalps = savegame.charcoalps;
 		if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
 		if(typeof savegame.woodburnerMetalCost !== "undefined") woodburnerMetalCost = savegame.woodburnerMetalCost;
 		if(typeof savegame.woodburnerWoodCost !== "undefined") woodburnerWoodCost = savegame.woodburnerWoodCost;
@@ -535,7 +516,6 @@ function load(type){
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
 		if(typeof savegame.woodStorage !== "undefined") woodStorage = savegame.woodStorage;
 		if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;
-		if(typeof savegame.woodps !== "undefined") woodps = savegame.woodps;
 		if(typeof savegame.woodcutter !== "undefined") woodcutter = savegame.woodcutter;
 		if(typeof savegame.woodcutterMetalCost !== "undefined") woodcutterMetalCost = savegame.woodcutterMetalCost;
 		if(typeof savegame.woodcutterWoodCost !== "undefined") woodcutterWoodCost = savegame.woodcutterWoodCost;
@@ -549,7 +529,6 @@ function load(type){
 		if(typeof savegame.deforesterTitaniumCost !== "undefined") deforesterTitaniumCost = savegame.deforesterTitaniumCost;
 		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
-		if(typeof savegame.scienceps !== "undefined") scienceps = savegame.scienceps;
 		if(typeof savegame.lab !== "undefined") lab = savegame.lab;
 		if(typeof savegame.labGain !== "undefined") labGain = savegame.labGain;
 		if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;
@@ -557,7 +536,6 @@ function load(type){
 		if(typeof savegame.labMetalCost !== "undefined") labMetalCost = savegame.labMetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
-		if(typeof savegame.rocketFuelps !== "undefined") rocketFuelps = savegame.rocketFuelps;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
 		if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
 		if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
@@ -565,39 +543,33 @@ function load(type){
 		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
 		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
 		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;
-		if(typeof savegame.spaceMetalps !== "undefined") spaceMetalps = savegame.spaceMetalps;
 		if(typeof savegame.methane !== "undefined") methane = savegame.methane;
 		if(typeof savegame.methaneStorage !== "undefined") methaneStorage = savegame.methaneStorage;
 		if(typeof savegame.methaneNextStorage !== "undefined") methaneNextStorage = savegame.methaneNextStorage;
-		if(typeof savegame.methaneps !== "undefined") methaneps = savegame.methaneps;
 		if(typeof savegame.titanium !== "undefined") titanium = savegame.titanium;
 		if(typeof savegame.titaniumStorage !== "undefined") titaniumStorage = savegame.titaniumStorage;
 		if(typeof savegame.titaniumNextStorage !== "undefined") titaniumNextStorage = savegame.titaniumNextStorage;
-		if(typeof savegame.titaniumps !== "undefined") titaniumps = savegame.titaniumps;
 		if(typeof savegame.gold !== "undefined") gold = savegame.gold;
 		if(typeof savegame.goldStorage !== "undefined") goldStorage = savegame.goldStorage;
 		if(typeof savegame.goldNextStorage !== "undefined") goldNextStorage = savegame.goldNextStorage;
-		if(typeof savegame.goldps !== "undefined") goldps = savegame.goldps;
 		if(typeof savegame.silver !== "undefined") silver = savegame.silver;
 		if(typeof savegame.silverStorage !== "undefined") silverStorage = savegame.silverStorage;
 		if(typeof savegame.silverNextStorage !== "undefined") silverNextStorage = savegame.silverNextStorage;
-		if(typeof savegame.silverps !== "undefined") silverps = savegame.silverps;
 		if(typeof savegame.silicon !== "undefined") silicon = savegame.silicon;
 		if(typeof savegame.siliconStorage !== "undefined") siliconStorage = savegame.siliconStorage;
 		if(typeof savegame.siliconNextStorage !== "undefined") siliconNextStorage = savegame.siliconNextStorage;
-		if(typeof savegame.siliconps !== "undefined") siliconps = savegame.siliconps;
 		if(typeof savegame.lava !== "undefined") lava = savegame.lava;
 		if(typeof savegame.lavaStorage !== "undefined") lavaStorage = savegame.lavaStorage;
 		if(typeof savegame.lavaNextStorage !== "undefined") lavaNextStorage = savegame.lavaNextStorage;
-		if(typeof savegame.lavaps !== "undefined") lavaps = savegame.lavaps;
 		if(typeof savegame.hydrogen !== "undefined") hydrogen = savegame.hydrogen;
 		if(typeof savegame.hydrogenStorage !== "undefined") hydrogenStorage = savegame.hydrogenStorage;
 		if(typeof savegame.hydrogenNextStorage !== "undefined") hydrogenNextStorage = savegame.hydrogenNextStorage;
-		if(typeof savegame.hydrogenps !== "undefined") hydrogenps = savegame.hydrogenps;
 		if(typeof savegame.helium !== "undefined") helium = savegame.helium;
 		if(typeof savegame.heliumStorage !== "undefined") heliumStorage = savegame.heliumStorage;
 		if(typeof savegame.heliumNextStorage !== "undefined") heliumNextStorage = savegame.heliumNextStorage;
-		if(typeof savegame.heliumps !== "undefined") heliumps = savegame.heliumps;
+		if(typeof savegame.ice !== "undefined") ice = savegame.ice;
+		if(typeof savegame.iceStorage !== "undefined") iceStorage = savegame.iceStorage;
+		if(typeof savegame.iceNextStorage !== "undefined") iceNextStorage = savegame.iceNextStorage;
 		if(typeof savegame.moonWorker !== "undefined") moonWorker = savegame.moonWorker;
 		if(typeof savegame.moonWorkerGemCost !== "undefined") moonWorkerGemCost = savegame.moonWorkerGemCost;
 		if(typeof savegame.moonDrill !== "undefined") moonDrill = savegame.moonDrill;
@@ -675,7 +647,6 @@ function load(type){
 		if(typeof savegame.uranium !== "undefined") uranium = savegame.uranium;
 		if(typeof savegame.uraniumStorage !== "undefined") uraniumStorage = savegame.uraniumStorage;
 		if(typeof savegame.uraniumNextStorage !== "undefined") uraniumNextStorage = savegame.uraniumNextStorage;
-		if(typeof savegame.uraniumps !== "undefined") uraniumps = savegame.uraniumps;
 		if(typeof savegame.activated !== "undefined") activated = savegame.activated;
 		if(typeof savegame.grinder !== "undefined") grinder = savegame.grinder;
 		if(typeof savegame.grinderTitaniumCost !== "undefined") grinderTitaniumCost = savegame.grinderTitaniumCost;
