@@ -66,12 +66,6 @@ function gainResources(){
 	else{
 		silicon = siliconStorage;
 	}
-	if(uranium + uraniumps/10 < uraniumStorage){
-		uranium += uraniumps/10;
-	}
-	else{
-		uranium = uraniumStorage;
-	}
 	if(lava + lavaps/10 < lavaStorage){
 		lava += lavaps/10;
 	}
