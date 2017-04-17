@@ -35,10 +35,10 @@ function changeEmcAmount(){
 		emcAmount = 1;
 	}
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = emcAmount;
+		document.getElementsByClassName("emcAmount")[i].innerHTML = commafy(emcAmount);
 	}
 	for(var i = 0; i < resources.length; i++){
-		document.getElementById(resources[i] + "EmcVal").innerHTML = window[resources[i]+"EmcVal"]*emcAmount;
+		document.getElementById(resources[i] + "EmcVal").innerHTML = commafy(window[resources[i]+"EmcVal"]*emcAmount);
 	}
 }
 
