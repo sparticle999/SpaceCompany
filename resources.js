@@ -105,42 +105,52 @@ function gainResources(){
 
 	
 	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
-	document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+	if(charcoalToggled === true){
+		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+	}
+	else{
+		document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine - (chemicalPlant*20));
+	}
 	
 	
 
 	// ReWrite This
-	if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= ((woodburner*2)/10 + furnace*furnaceWoodInput)/10){
-		if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
-			charcoal += charcoalps/10;
-			wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
+	if(charcoalToggled === true){
+		if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= ((woodburner*2)/10 + furnace*furnaceWoodInput)/10){
+			if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
+				charcoal += charcoalps/10;
+				wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
+			}
+			else{
+				wood = 0;
+			}
 		}
 		else{
-			wood = 0;
+			var difference = charcoalStorage - charcoal;
+			if(wood >= difference*2){
+				if(charcoal + difference < charcoalStorage){
+					charcoal += difference;
+					wood -= difference * 2;
+				}
+				else{
+					charcoal = charcoalStorage;
+				}
+			}
+		}
+		if(charcoal >= charcoalStorage){
+			document.getElementById("woodps").innerHTML = commafy(woodps);
+			document.getElementById("charcoal").className = "green";
 		}
 	}
 	else{
-		var difference = charcoalStorage - charcoal;
-		if(wood >= difference*2){
-			if(charcoal + difference < charcoalStorage){
-				charcoal += difference;
-				wood -= difference * 2;
-			}
-			else{
-				charcoal = charcoalStorage;
-			}
-		}
+		document.getElementById("woodps").innerHTML = commafy(woodps);
 	}
+	// Up To Here
 	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
 	}
 	else{
 		wood = woodStorage;
-	}
-	// Up To Here
-	if(charcoal >= charcoalStorage){
-		document.getElementById("woodps").innerHTML = commafy(woodps);
-		document.getElementById("charcoal").className = "green";
 	}
 	if(methane >= methaneStorage){
 		document.getElementById("methane").className = "green";
@@ -515,6 +525,17 @@ function upgradeIceStorage(){
 		document.getElementById("iceNextStorage").innerHTML = commafy(iceNextStorage);
 		document.getElementById("iceStorageCost").innerHTML = commafy(iceStorage);
 		document.getElementById("iceStorageSpaceMetalCost").innerHTML = commafy(iceStorage/2.5);
+	}
+}
+
+function toggleCharcoal(){
+	if(charcoalToggled === true){
+		charcoalToggled = false;
+		document.getElementById("charcoalToggled").innerHTML = "On";
+	}
+	else{
+		charcoalToggled = true;
+		document.getElementById("charcoalToggled").innerHTML = "Off";
 	}
 }
 

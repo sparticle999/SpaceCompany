@@ -30,7 +30,7 @@ var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10;
 var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;
 var diamondDrill = 0; var diamondDrillSpaceMetalCost = 2400; var diamondDrillGemCost = 8000; var diamondDrillSiliconCost = 4500;
-var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0;
+var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var charcoalps = 0; var charcoalToggled = true;
 var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var kiln = 0; var kilnSpaceMetalCost = 3500; var kilnGemCost = 6200; var kilnSiliconCost = 3800;

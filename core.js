@@ -62,12 +62,15 @@ function refreshPerSec(){
 	else{
 		energyInput -= fusionReactor*110;
 	}
-	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(furnace*3)+(laserCutter*4);
+	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
-	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(kiln*23)+(deforester*20);
+	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(deforester*20);
 	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(bertha*69)+(annihilator*62);
 	energyOutput += (enricher*236)+(extruder*326)+(eCell*366)+(compressor*297)+(freezer*324);
+	if(charcoalToggled === true){
+		energyOutput += (furnace*3)+(kiln*23);
+	}
 	if(energy <= 1){
 		energyps = energyInput;
 	}
