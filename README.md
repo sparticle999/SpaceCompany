@@ -15,6 +15,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 v0.4.0 The Hot and Cold Update
 - Added Achievements
+- Added Dyson Spheres
 - Supercooling with Ice
 - Added Meteorite
 - Added Meteorite Tier of resource machines
@@ -23,18 +24,13 @@ v0.4.0 The Hot and Cold Update
 - Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
 
-
-v0.3.0
-- Fixed Negative Energy Bugs
-- Added Energy-Mass Conversion
-- Added Dyson Spheres
-
 # Changelog:
 
 v0.3.0 The Tech Update [Pushed to Beta]
 - Added Sol Scientific Center
 - Added Computerized Tier of resource machines
 - Added Exploration of the outer planets
+- Added Energy-Mass Conversion
 - Added Hydrogen and Helium
 - Added Ice
 - Added Plasma
