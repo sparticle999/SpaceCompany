@@ -296,6 +296,7 @@ function refreshUI(){
 	document.getElementById("charcoalNextStorage").innerHTML = commafy(charcoalNextStorage);
 	document.getElementById("charcoalStorageCost").innerHTML = commafy(charcoalStorage);
 	document.getElementById("charcoalStorageMetalCost").innerHTML = commafy(charcoalStorage/2.5);
+	document.getElementById("charcoalToggled").innerHTML = commafy(charcoalToggled);
 	document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
 	document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
 	document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
@@ -348,6 +349,7 @@ function refreshUI(){
 	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 	document.getElementById("heaterSiliconCost").innerHTML = heaterSiliconCost;
+	document.getElementById("heaterToggled").innerHTML = heaterToggled;
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
@@ -503,6 +505,7 @@ function refreshUI(){
 	document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
 	document.getElementById("chemicalPlantOilCost").innerHTML = commafy(chemicalPlantOilCost);
+	document.getElementById("chemicalPlantToggled").innerHTML = chemicalPlantToggled;
 	document.getElementById("grinder").innerHTML = grinder;
 	document.getElementById("grinderTitaniumCost").innerHTML = commafy(grinderTitaniumCost);
 	document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
