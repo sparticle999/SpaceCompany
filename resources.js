@@ -1456,8 +1456,8 @@ function getDrone(){
 		spaceMetal -= droneSpaceMetalCost;
 		silicon -= droneSiliconCost;
 		drone += 1;
-		droneSiliconCost = Math.floor(10000 * Math.pow(1.1,drone + 1));
-		droneSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,drone + 1));
+		droneSiliconCost = Math.floor(6000 * Math.pow(1.1,drone + 1));
+		droneSpaceMetalCost = Math.floor(8400 * Math.pow(1.1,drone + 1));
 		document.getElementById("drone").innerHTML = drone;
 		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
@@ -1473,9 +1473,9 @@ function getTanker(){
 		titanium -= tankerTitaniumCost;
 		silicon -= tankerSiliconCost;
 		tanker += 1;
-		tankerSiliconCost = Math.floor(14000 * Math.pow(1.1,tanker + 1));
-		tankerTitaniumCost = Math.floor(17000 * Math.pow(1.1,tanker + 1));
-		tankerSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,tanker + 1));
+		tankerSiliconCost = Math.floor(8400 * Math.pow(1.1,tanker + 1));
+		tankerTitaniumCost = Math.floor(10200 * Math.pow(1.1,tanker + 1));
+		tankerSpaceMetalCost = Math.floor(12600 * Math.pow(1.1,tanker + 1));
 		document.getElementById("tanker").innerHTML = tanker;
 		document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
 		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
@@ -1492,9 +1492,9 @@ function getCompressor(){
 		titanium -= compressorTitaniumCost;
 		silicon -= compressorSiliconCost;
 		compressor += 1;
-		compressorSiliconCost = Math.floor(105000 * Math.pow(1.1,compressor + 1));
-		compressorTitaniumCost = Math.floor(73000 * Math.pow(1.1,compressor + 1));
-		compressorSpaceMetalCost = Math.floor(59000 * Math.pow(1.1,compressor + 1));
+		compressorSiliconCost = Math.floor(35400 * Math.pow(1.1,compressor + 1));
+		compressorTitaniumCost = Math.floor(43800 * Math.pow(1.1,compressor + 1));
+		compressorSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,compressor + 1));
 		document.getElementById("compressor").innerHTML = compressor;
 		document.getElementById("compressorSpaceMetalCost").innerHTML = commafy(compressorSpaceMetalCost);
 		document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);

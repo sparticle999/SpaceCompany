@@ -79,9 +79,9 @@ var collector = 0; var collectorSpaceMetalCost = 6000; var collectorTitaniumCost
 var magnet = 0; var magnetSpaceMetalCost = 10800; var magnetTitaniumCost = 9600; var magnetGoldCost = 6600;
 var eCell = 0; var eCellSilverCost = 37200; var eCellGoldCost = 34200; var eCellSiliconCost = 25800;
 var helium = 0; var heliumStorage = 50; var heliumNextStorage = 100; var heliumStorageCost = 100; var heliumps = 0;
-var drone = 0; var droneSpaceMetalCost = 14000; var droneSiliconCost = 10000;
-var tanker = 0; var tankerSpaceMetalCost = 21000; var tankerTitaniumCost = 17000; var tankerSiliconCost = 14000;
-var compressor = 0; var compressorSpaceMetalCost = 105000; var compressorTitaniumCost = 73000; var compressorSiliconCost = 59000;
+var drone = 0; var droneSpaceMetalCost = 8400; var droneSiliconCost = 6000;
+var tanker = 0; var tankerSpaceMetalCost = 12600; var tankerTitaniumCost = 10200; var tankerSiliconCost = 8400;
+var compressor = 0; var compressorSpaceMetalCost = 63000; var compressorTitaniumCost = 43800; var compressorSiliconCost = 35400;
 var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost = 100; var iceps = 0;
 var icePick = 0; var icePickSpaceMetalCost = 17800; var icePickGemCost = 19300;
 var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600;
