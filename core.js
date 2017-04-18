@@ -30,7 +30,7 @@ function refresh(){
 }
 
 function refreshPerSec(){
-	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*16)+(nuclearStation*82)+(magmatic*96)+(fusionReactor*110);
+	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*23)+(nuclearStation*153)+(magmatic*191)+(fusionReactor*273);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -41,26 +41,26 @@ function refreshPerSec(){
 		methane -= methaneStation*6/10;
 	}
 	else{
-		energyInput -= methaneStation*16;
+		energyInput -= methaneStation*23;
 	}
 	if(uranium + uraniumps/10 >= nuclearStation*7/10){
 		uranium -= nuclearStation*7/10;
 	}
 	else{
-		energyInput -= nuclearStation*82;
+		energyInput -= nuclearStation*153;
 	}
 	if(lava + lavaps/10 >= magmatic*11/10){
 		lava -= magmatic*11/10;
 	}
 	else{
-		energyInput -= magmatic*96;
+		energyInput -= magmatic*191;
 	}
 	if(hydrogen + hydrogenps/10 >= fusionReactor*10/10 && helium + heliumps >= fusionReactor*10/10){
 		hydrogen -= fusionReactor*10/10;
 		helium -= fusionReactor*10/10;
 	}
 	else{
-		energyInput -= fusionReactor*110;
+		energyInput -= fusionReactor*273;
 	}
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
