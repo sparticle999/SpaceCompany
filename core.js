@@ -88,7 +88,7 @@ function refreshPerSec(){
 	else{
 		plasmaps = 0;
 	}
-	if(energy >= 10 || energyps <= 0){
+	if(energy >= 10){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*38);
