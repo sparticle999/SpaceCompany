@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Space Company</title>
 	<link href="SpaceCompanyFavicon.png" rel="shortcut icon" type="image/x-icon" />	
-	<link href="bootstrap.min.css" rel="stylesheet" >
 	<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles/base-bootstrap.min.css" id="theme_css">
 	<link href="style.css" rel="stylesheet">
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -64,13 +64,13 @@
 
 <!-- Nav tabs -->
 	<ul class="nav nav-tabs no-select" role="tablist">
-		<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
-		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
-    	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab">Solar System</a></li>
-    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab">Wonders</a></li>
-    	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab">Sol Center</a></li>
+		<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab" onclick="tabClicked('resources')"><div id="resourcesTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Resources</a></li>
+		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab"><div id="researchTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Research</a></li>
+    	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
+    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"><div id="wondersTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
+    	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
-    	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab">Settings</a></li>
+    	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab"> Settings</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
     		<ul class="dropdown-menu" role="menu">
     			<li role="presentation" id="githubTab">
@@ -3613,6 +3613,17 @@
 									</span>
 								</td>
 							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Themes
+									</h3>
+				                	<select id="themeSelector" ng-model="player.current_theme" onchange="updateTheme()" class="ng-valid ng-touched ng-dirty ng-valid-parse">
+				                		<option value="base">Base</option>
+				                		<option value="cyborg">Cyborg</option>
+				                	</select>
+				                </td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -4050,6 +4061,7 @@
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="variable.js"></script>
 <script type="text/javascript" src="saving.js"></script>
 <script type="text/javascript" src="resources.js"></script>

@@ -1773,6 +1773,11 @@ $('.collapseOuterPlanet').click(function(){
     }
 });
 
+function updateTheme(){
+	currentTheme = document.getElementById("themeSelector").options[themeSelector.selectedIndex].value;
+    document.getElementById('theme_css').href = 'styles/'+currentTheme+'-bootstrap.min.css';
+};
+
 window.onload = function(){
 	load('local');
 };

@@ -28,6 +28,8 @@ v0.4.0 The Hot and Cold Update
 
 v0.3.2
 - Added Collapsability for the solar system tab
+- Made per second text red when negative
+- Added notifications on tabs when there is something new in them
 
 v0.3.1
 - Rebalanced Fusion Reactor and Magmatic Dynamo

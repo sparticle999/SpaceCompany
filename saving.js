@@ -81,6 +81,7 @@ function autosave(){
 function save(type){
 	"use strict";
 	var localSave = {
+		currentTheme: currentTheme,
 		handMined: handMined,
 		tier1: tier1,
 		tier2: tier2,
@@ -412,6 +413,7 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
+		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
 		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
@@ -710,7 +712,13 @@ function load(type){
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 
 	}
-
+	if(currentTheme === "base"){
+		document.getElementById("themeSelector").selectedIndex = 0;
+	}
+	if(currentTheme === "cyborg"){
+		document.getElementById("themeSelector").selectedIndex = 1;
+	}
+	updateTheme();
 	refreshUI();
 	refreshStats();
 	refreshResources();

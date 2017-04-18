@@ -1,6 +1,6 @@
 // Variables in save function
 
-var autoSaveTime = 2; var pageLoaded = false;
+var currentTheme = "base";
 
 var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
 var tabsUnlockedNum = 3; var resourcesUnlockedNum = 3; var techsResearchedNum = 0; var placesExploredNum = 0; var wondersBuiltNum = 0; var wondersActivatedNum = 0;
@@ -89,6 +89,8 @@ var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 8
 
 
 // Variables not being saved
+
+var autoSaveTime = 2; var pageLoaded = false;
 
 var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost = 5000;
 var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;
