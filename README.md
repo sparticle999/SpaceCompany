@@ -26,8 +26,10 @@ v0.4.0 The Hot and Cold Update
 
 # Changelog:
 
-v0.3.1
+v0.3.2
 - Added Collapsability for the solar system tab
+
+v0.3.1
 - Rebalanced Fusion Reactor and Magmatic Dynamo
 - Rebalanced Tier 3 Machines For Some Resources
 
