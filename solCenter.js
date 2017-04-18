@@ -8,6 +8,10 @@ function unlockPlasma(){
 		wood -= 15000;
 		document.getElementById("researchPlasma").className = "hidden";
 		document.getElementById("plasmaNav").className = "";
+		for(var i = 0; i < 4; i++){
+			document.getElementById("energyNav" + [i]).style.border = "";
+		}
+		noBorder.push("energyNav");
 		buttonsHidden.push("researchPlasma");
 		resourcesUnlocked.push("plasmaNav");
 	}
