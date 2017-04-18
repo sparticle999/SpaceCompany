@@ -91,10 +91,10 @@ function refreshPerSec(){
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
-		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*38);
-		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*19);
+		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*61);
+		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
-		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*56);
+		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);

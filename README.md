@@ -29,6 +29,7 @@ v0.4.0 The Hot and Cold Update
 v0.3.1
 - Added Collapsability for the solar system tab
 - Rebalanced Fusion Reactor and Magmatic Dynamo
+- Rebalanced Tier 3 Machines For Some Resources
 
 v0.3.0 The Tech Update [Pushed to Beta]
 - Added Sol Scientific Center
@@ -71,7 +72,7 @@ v0.1.2
 - Finished Beginner's Guide
 
 v0.1.1
-- Fixed  bugs from the 0.1.0 update
+- Fixed bugs from the 0.1.0 update
 
 v0.1.0 The Space Update
 - Added space travel to The Moon, Venus, Mars and the Asteroid Belt
