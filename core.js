@@ -133,7 +133,12 @@ function refreshPerSec(){
 		document.getElementById("plasma").className = "red";
 	}
 	if(energyps >= 0){
-		document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
+		if(energyps > 500){
+			document.getElementById("energyps").innerHTML = commafy(energyps);
+		}
+		else{
+			document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
+		}
 	}
 	else{
 		document.getElementById("energyps").innerHTML = Math.round(energyps);
@@ -591,6 +596,38 @@ function checkRedCost(){
 			document.getElementById(id).className = "";
 		}
 	}
+
+	turnRed(energyps, 0, "energyps");
+	turnRed(uraniumps - nuclearStation*7, 0, "uraniumps");
+	if(chemicalPlantToggled === true){
+		turnRed(oilps - chemicalPlant*20, 0, "oilps");
+	}
+	else{
+		turnRed(oilps, 0, "oilps");
+	}
+	if(chemicalPlantToggled === true){
+		if(charcoalToggled === true){
+			turnRed(charcoalps - charcoalEngine - chemicalPlant*20, 0, "charcoalps");
+		}
+		else{
+			turnRed(0 - charcoalEngine - chemicalPlant*20, 0, "charcoalps");
+		}
+	}
+	else{
+		if(charcoalToggled === true){
+			turnRed(charcoalps - charcoalEngine, 0, "charcoalps");
+		}
+		else{
+			turnRed(0 - charcoalEngine, 0, "charcoalps");
+		}
+	}
+	turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45), 0, "woodps");
+	turnRed(spaceMetalps, 0, "spaceMetalps");
+	turnRed(methaneps - methaneStation*6, 0, "methaneps");
+	turnRed(lavaps - magmatic*11, 0, "lavaps");
+	turnRed(hydrogenps - fusionReactor*10 - heater*10, 0, "hydrogenps");
+	turnRed(heliumps - fusionReactor*10, 0, "heliumps");
+	
 
 	turnRed(wood, 2, "manualCharcoalCost");
 	turnRed(energy, 1000, "manualPlasmaEnergyCost");
