@@ -1402,8 +1402,8 @@ function getCollector(){
 		spaceMetal -= collectorSpaceMetalCost;
 		titanium -= collectorTitaniumCost;
 		collector += 1;
-		collectorTitaniumCost = Math.floor(8000 * Math.pow(1.1,collector + 1));
-		collectorSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,collector + 1));
+		collectorTitaniumCost = Math.floor(4800 * Math.pow(1.1,collector + 1));
+		collectorSpaceMetalCost = Math.floor(6000 * Math.pow(1.1,collector + 1));
 		document.getElementById("collector").innerHTML = collector;
 		document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 		document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
@@ -1419,9 +1419,9 @@ function getMagnet(){
 		titanium -= magnetTitaniumCost;
 		gold -= magnetGoldCost;
 		magnet += 1;
-		magnetGoldCost = Math.floor(11000 * Math.pow(1.1,magnet + 1));
-		magnetTitaniumCost = Math.floor(16000 * Math.pow(1.1,magnet + 1));
-		magnetSpaceMetalCost = Math.floor(18000 * Math.pow(1.1,magnet + 1));
+		magnetGoldCost = Math.floor(6600 * Math.pow(1.1,magnet + 1));
+		magnetTitaniumCost = Math.floor(9600 * Math.pow(1.1,magnet + 1));
+		magnetSpaceMetalCost = Math.floor(10800 * Math.pow(1.1,magnet + 1));
 		document.getElementById("magnet").innerHTML = magnet;
 		document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
 		document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
@@ -1438,9 +1438,9 @@ function getECell(){
 		silicon -= eCellSiliconCost;
 		gold -= eCellGoldCost;
 		eCell += 1;
-		eCellGoldCost = Math.floor(57000 * Math.pow(1.1,eCell + 1));
-		eCellSiliconCost = Math.floor(43000 * Math.pow(1.1,eCell + 1));
-		eCellSilverCost = Math.floor(62000 * Math.pow(1.1,eCell + 1));
+		eCellGoldCost = Math.floor(34200 * Math.pow(1.1,eCell + 1));
+		eCellSiliconCost = Math.floor(25800 * Math.pow(1.1,eCell + 1));
+		eCellSilverCost = Math.floor(37200 * Math.pow(1.1,eCell + 1));
 		document.getElementById("eCell").innerHTML = eCell;
 		document.getElementById("eCellSilverCost").innerHTML = commafy(eCellSilverCost);
 		document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
