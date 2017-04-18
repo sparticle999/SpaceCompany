@@ -276,6 +276,25 @@ function refreshStats(){
 }
 
 function refreshUI(){
+	if(heaterToggled === true){
+		document.getElementById("heaterToggled").innerHTML = "Off";
+	}
+	else{
+		document.getElementById("heaterToggled").innerHTML = "On";
+	}
+	if(charcoalToggled === true){
+		document.getElementById("charcoalToggled").innerHTML = "Off";
+	}
+	else{
+		document.getElementById("charcoalToggled").innerHTML = "On";
+	}
+	if(chemicalPlantToggled === true){
+		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
+	}
+	else{
+		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+	}
+
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
@@ -296,7 +315,6 @@ function refreshUI(){
 	document.getElementById("charcoalNextStorage").innerHTML = commafy(charcoalNextStorage);
 	document.getElementById("charcoalStorageCost").innerHTML = commafy(charcoalStorage);
 	document.getElementById("charcoalStorageMetalCost").innerHTML = commafy(charcoalStorage/2.5);
-	document.getElementById("charcoalToggled").innerHTML = commafy(charcoalToggled);
 	document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
 	document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
 	document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
@@ -349,7 +367,6 @@ function refreshUI(){
 	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 	document.getElementById("heaterSiliconCost").innerHTML = heaterSiliconCost;
-	document.getElementById("heaterToggled").innerHTML = heaterToggled;
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
@@ -505,7 +522,6 @@ function refreshUI(){
 	document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
 	document.getElementById("chemicalPlantOilCost").innerHTML = commafy(chemicalPlantOilCost);
-	document.getElementById("chemicalPlantToggled").innerHTML = chemicalPlantToggled;
 	document.getElementById("grinder").innerHTML = grinder;
 	document.getElementById("grinderTitaniumCost").innerHTML = commafy(grinderTitaniumCost);
 	document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);

@@ -26,6 +26,10 @@ v0.4.0 The Hot and Cold Update
 
 # Changelog:
 
+v0.3.1
+- Added Collapsability for the solar system tab
+- Rebalanced Fusion Reactor and Magmatic Dynamo
+
 v0.3.0 The Tech Update [Pushed to Beta]
 - Added Sol Scientific Center
 - Added Computerized Tier of resource machines
