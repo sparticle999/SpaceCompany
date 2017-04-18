@@ -41,7 +41,7 @@ var deforester = 0; var deforesterSpaceMetalCost = 3000; var deforesterTitaniumC
 var science = 0; var scienceps = 0;
 var lab = 0; var labGain = 0.1; var labWoodCost = 10; var labGemCost = 15; var labMetalCost = 20;
 var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
-var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
+var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500; var chemicalPlantToggled = true;
 var spaceMetal = 0; var spaceMetalStorage = 50; var spaceMetalNextStorage = 100; var spaceMetalps = 0;
 var methane = 0; var methaneStorage = 50; var methaneNextStorage = 100; var methaneps = 0;
 var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumps = 0;

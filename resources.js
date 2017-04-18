@@ -25,10 +25,12 @@ function gainResources(){
 	}
 	science += scienceps/10;
 	science = Math.round(science*100)/100;
-	if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
-		oil -= chemicalPlant*20/10;
-		charcoal -= chemicalPlant*20/10;
-		rocketFuel += chemicalPlant/5/10;
+	if(chemicalPlantToggled === true){
+		if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
+			oil -= chemicalPlant*20/10;
+			charcoal -= chemicalPlant*20/10;
+			rocketFuel += chemicalPlant/5/10;
+		}
 	}
 	if(spaceMetal + spaceMetalps/10 < spaceMetalStorage){
 		spaceMetal += spaceMetalps/10;
@@ -100,10 +102,21 @@ function gainResources(){
 	
 	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
 	if(charcoalToggled === true){
-		document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+		if(chemicalPlantToggled === true){
+			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+		}
+		else{
+			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine);
+		}
 	}
 	else{
-		document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine - (chemicalPlant*20));
+		if(chemicalPlantToggled === true){
+			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine - (chemicalPlant*20));
+		}
+		else{
+			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine);
+		}
+		
 	}
 	
 	
@@ -541,6 +554,17 @@ function toggleHeater(){
 	else{
 		heaterToggled = true;
 		document.getElementById("heaterToggled").innerHTML = "Off";
+	}
+}
+
+function toggleChemicalPlant(){
+	if(chemicalPlantToggled === true){
+		chemicalPlantToggled = false;
+		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+	}
+	else{
+		chemicalPlantToggled = true;
+		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
 	}
 }
 

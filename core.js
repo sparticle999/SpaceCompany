@@ -143,7 +143,12 @@ function refreshPerSec(){
 	if(uranium === 0){
 		document.getElementById("uranium").className = "red";
 	}
-	document.getElementById("oilps").innerHTML = commafy(oilps - chemicalPlant*20);
+	if(chemicalPlantToggled === true){
+		document.getElementById("oilps").innerHTML = commafy(oilps - chemicalPlant*20);
+	}
+	else{
+		document.getElementById("oilps").innerHTML = commafy(oilps);
+	}
 	document.getElementById("oil").className = "";
 	if(oil >= oilStorage){
 		document.getElementById("oil").className = "green";
