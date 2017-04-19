@@ -718,6 +718,12 @@ function load(type){
 	if(currentTheme === "cyborg"){
 		document.getElementById("themeSelector").selectedIndex = 1;
 	}
+	if(currentTheme === "solar"){
+		document.getElementById("themeSelector").selectedIndex = 2;
+	}
+	if(currentTheme === "united"){
+		document.getElementById("themeSelector").selectedIndex = 3;
+	}
 	updateTheme();
 	refreshUI();
 	refreshStats();
