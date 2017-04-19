@@ -14,6 +14,7 @@ function unlockPlasma(){
 		noBorder.push("energyNav");
 		buttonsHidden.push("researchPlasma");
 		resourcesUnlocked.push("plasmaNav");
+		newUnlock("resources");
 	}
 }
 

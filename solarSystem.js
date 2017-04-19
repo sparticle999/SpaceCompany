@@ -55,6 +55,7 @@ function exploreMoon(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -70,6 +71,7 @@ function exploreVenus(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -85,6 +87,7 @@ function exploreMars(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 2;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -101,6 +104,7 @@ function exploreAsteroidBelt(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 2;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -114,6 +118,7 @@ function exploreWonderStation(){
 		placesExploredNum += 1;
 		tabsUnlocked.push("wonderTab");
 		tabsUnlockedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -130,6 +135,7 @@ function exploreJupiter(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -144,6 +150,7 @@ function exploreSaturn(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -158,6 +165,7 @@ function explorePluto(){
 		placesExploredNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -184,5 +192,6 @@ function exploreSolCenter(){
 		explored.push("solCenter");
 		placesExploredNum += 1;
 		refreshResources();
+		newUnlock("solCenter");
 	}
 }

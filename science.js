@@ -32,6 +32,7 @@ function unlockStorage(){
 		available.push("unlockOil");
 		researched.push("unlockStorage");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -51,6 +52,7 @@ function unlockBasicEnergy(){
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 2;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -66,6 +68,7 @@ function unlockOil(){
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
 		refreshResources();
+		newUnlock("resources");
 	}
 }
 
@@ -78,6 +81,7 @@ function unlockSolar(){
 		available.push("upgradeSolarTech");
 		researched.push("unlockSolar");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -95,6 +99,7 @@ function unlockMachines(){
 		available.push("unlockSolarSystem", "upgradeResourceTech");
 		researched.push("unlockMachines");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -116,6 +121,7 @@ function upgradeResourceTech(){
 		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 		researched.push("upgradeResourceTech");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -128,6 +134,7 @@ function unlockSolarSystem(){
 		tabsUnlocked.push("solarSystemTab");
 		researched.push("unlockSolarSystem");
 		techsResearchedNum += 1;
+		newUnlock("solarSystem");
 	}
 }
 
@@ -139,6 +146,7 @@ function upgradeEngineTech(){
 		document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
 		researched.push("upgradeEngineTech");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -150,5 +158,6 @@ function upgradeSolarTech(){
 		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
 		researched.push("upgradeSolarTech");
 		techsResearchedNum += 1;
+		newUnlock("resources");
 	}
 }

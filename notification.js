@@ -1,7 +1,7 @@
 function newUnlock(tab){
-	document.getElementById(tab + "TabGlyph").className = "";
+	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign";
 }
 
 function tabClicked(tab){
-	document.getElementById(tab + "TabGlyph").className = "hidden";
+	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign hidden";
 }

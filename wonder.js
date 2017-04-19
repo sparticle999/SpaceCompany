@@ -169,6 +169,7 @@ function activatePreciousWonder(){
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
 		wondersActivatedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -199,6 +200,7 @@ function activateEnergeticWonder(){
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
 		wondersActivatedNum += 1;
+		newUnlock("resources");
 	}
 }
 
@@ -247,5 +249,6 @@ function activateTechWonder(){
 		buttonsHidden.push("activateTechWonder");
 		activated.push("tech");
 		wondersActivatedNum += 1;
+		newUnlock("resources");
 	}
 }
