@@ -25,6 +25,11 @@ v0.4.0 The Hot and Cold Update
 - Volcanic Veluptuator: Lava
 
 # Changelog:
+
+v0.3.5
+- Added Number Formatting for large numbers
+- Made Selected Tab Blue for QoL
+
 v0.3.4
 - Added New Solar Theme
 - Added New United Theme

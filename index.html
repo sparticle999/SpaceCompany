@@ -45,7 +45,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.3.4 Beta
+						v0.3.5 Beta
 					</span>
 				</a>
 				<div class="pull-right" style="width:200px;">
@@ -97,7 +97,7 @@
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
 			<div class="container" style="width:350px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr id="plasmaNav" class="hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="plasmaNav" onclick="activeResourceTab('plasmaNav')" class="hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<img src="Icons/plasmaIcon.png" style="width:30px; height:auto">
 						</td>
@@ -117,7 +117,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr id="energyNav" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="energyNav" onclick="activeResourceTab('energyNav')" class="hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td id="energyNav0" style="border:none; vertical-align:middle;">
 							<img src="Icons/EnergyIcon.png" style="width:30px; height:auto">
 						</td>
@@ -137,7 +137,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr id="uraniumNav" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="uraniumNav" onclick="activeResourceTab('uraniumNav')" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/uraniumIcon.png" style="width:30px; height:auto">
 						</td>
@@ -159,7 +159,7 @@
 							<span id="uraniumStorage">50</span>
 						</td>
 					</tr>
-					<tr id="lavaNav" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="lavaNav" onclick="activeResourceTab('lavaNav')" class="hidden" href="#lavaTab" aria-controls="lavaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/lavaIcon.png" style="width:30px; height:auto">
 						</td>
@@ -186,7 +186,7 @@
 							<span>Earth Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr id="oilNav" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="oilNav" onclick="activeResourceTab('oilNav')" class="hidden" href="#oilTab" aria-controls="oilTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td id="oilNav0" style="vertical-align:middle;">
 							<img src="Icons/oilIcon.png" style="width:30px; height:auto">
 						</td>
@@ -208,7 +208,7 @@
 							<span id="oilStorage">50</span>
 						</td>
 					</tr>
-					<tr id="metalNav" class="earth" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="metalNav" onclick="activeResourceTab('metalNav')" class="earth" href="#metalTab" aria-controls="metalTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td id="metalNav0" style="vertical-align:middle;">
 							<img src="Icons/metalIcon.png" style="width:30px; height:auto">
 						</td>
@@ -230,7 +230,7 @@
 							<span id="metalStorage">50</span>
 						</td>
 					</tr>
-					<tr id="gemNav" class="earth" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="gemNav" onclick="activeResourceTab('gemNav')" class="earth" href="#gemTab" aria-controls="gemTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/gemIcon.png" style="width:30px; height:auto">
 						</td>
@@ -252,7 +252,7 @@
 							<span id="gemStorage">50</span>
 						</td>
 					</tr>
-					<tr id="charcoalNav" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="charcoalNav" onclick="activeResourceTab('charcoalNav')" class="hidden" href="#charcoalTab" aria-controls="charcoalTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/charcoalIcon.png" style="width:30px; height:auto;">
 						</td>
@@ -274,7 +274,7 @@
 							<span id="charcoalStorage">50</span>
 						</td>
 					</tr>
-					<tr id="woodNav" class="earth" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="woodNav" onclick="activeResourceTab('woodNav')" class="earth" href="#woodTab" aria-controls="woodTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/woodIcon.png" style="width:30px; height:auto">
 						</td>
@@ -301,7 +301,7 @@
 							<span>Inner Planetary Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr id="spaceMetalNav" class="hidden" href="#spaceMetalTab" aria-controls="spaceMetalTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="spaceMetalNav" onclick="activeResourceTab('spaceMetalNav')" class="hidden" href="#spaceMetalTab" aria-controls="spaceMetalTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/spaceMetalIcon.png" style="width:30px; height:auto">
 						</td>
@@ -323,7 +323,7 @@
 							<span id="spaceMetalStorage">50</span>
 						</td>
 					</tr>
-					<tr id="methaneNav" class="hidden" href="#methaneTab" aria-controls="methaneTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="methaneNav" onclick="activeResourceTab('methaneNav')" class="hidden" href="#methaneTab" aria-controls="methaneTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/methaneIcon.png" style="width:30px; height:auto">
 						</td>
@@ -345,7 +345,7 @@
 							<span id="methaneStorage">50</span>
 						</td>
 					</tr>
-					<tr id="titaniumNav" class="hidden" href="#titaniumTab" aria-controls="titaniumTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="titaniumNav" onclick="activeResourceTab('titaniumNav')" class="hidden" href="#titaniumTab" aria-controls="titaniumTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/titaniumIcon.png" style="width:30px; height:auto">
 						</td>
@@ -367,7 +367,7 @@
 							<span id="titaniumStorage">50</span>
 						</td>
 					</tr>
-					<tr id="goldNav" class="hidden" href="#goldTab" aria-controls="goldTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="goldNav" onclick="activeResourceTab('goldNav')" class="hidden" href="#goldTab" aria-controls="goldTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/goldIcon.png" style="width:30px; height:auto">
 						</td>
@@ -389,7 +389,7 @@
 							<span id="goldStorage">50</span>
 						</td>
 					</tr>
-					<tr id="silverNav" class="hidden" href="#silverTab" aria-controls="silverTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="silverNav" onclick="activeResourceTab('silverNav')" class="hidden" href="#silverTab" aria-controls="silverTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/silverIcon.png" style="width:30px; height:auto">
 						</td>
@@ -411,7 +411,7 @@
 							<span id="silverStorage">50</span>
 						</td>
 					</tr>
-					<tr id="siliconNav" class="hidden" href="#siliconTab" aria-controls="siliconTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="siliconNav" onclick="activeResourceTab('siliconNav')" class="hidden" href="#siliconTab" aria-controls="siliconTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/siliconIcon.png" style="width:30px; height:auto">
 						</td>
@@ -438,7 +438,7 @@
 							<span>Outer Planetary Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr id="hydrogenNav" class="hidden" href="#hydrogenTab" aria-controls="hydrogenTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="hydrogenNav" onclick="activeResourceTab('hydrogenNav')" class="hidden" href="#hydrogenTab" aria-controls="hydrogenTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/hydrogenIcon.png" style="width:30px; height:auto">
 						</td>
@@ -460,7 +460,7 @@
 							<span id="hydrogenStorage">50</span>
 						</td>
 					</tr>
-					<tr id="heliumNav" class="hidden" href="#heliumTab" aria-controls="heliumTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="heliumNav" onclick="activeResourceTab('heliumNav')" class="hidden" href="#heliumTab" aria-controls="heliumTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/heliumIcon.png" style="width:30px; height:auto">
 						</td>
@@ -482,7 +482,7 @@
 							<span id="heliumStorage">50</span>
 						</td>
 					</tr>
-					<tr id="iceNav" class="hidden" href="#iceTab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="iceNav" onclick="activeResourceTab('iceNav')" class="hidden" href="#iceTab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/iceIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2136,7 +2136,7 @@
 		<div role="tabpanel" class="tab-pane fade" id="research">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="scienceNav" onclick="activeResearchTab('scienceNav')" href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<img src="Icons/scienceIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2151,7 +2151,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="technologiesNav" onclick="activeResearchTab('technologiesNav')" href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/technologyIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2376,7 +2376,7 @@
 		<div role="tabpanel" class="tab-pane fade" id="solarSystem">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#rocketFuelTab" aria-controls="rocketFuelTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="rocketFuelNav" onclick="activeSolarTab('rocketFuelNav')" href="#rocketFuelTab" aria-controls="rocketFuelTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<img src="Icons/rocketFuelIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2391,7 +2391,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr id="spaceRocket" href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="spaceRocket" onclick="activeSolarTab('spaceRocket')" href="#rocketTab" aria-controls="rocketTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/rocketIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2406,7 +2406,7 @@
 							<span>Collapse Inner Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr class="hidden" id="moon" href="#moonTab" aria-controls="moonTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="moon" onclick="activeSolarTab('moon')" href="#moonTab" aria-controls="moonTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/moonIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2416,7 +2416,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="mercury" href="#mercuryTab" aria-controls="mercuryTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="mercury" onclick="activeSolarTab('mercury')" href="#mercuryTab" aria-controls="mercuryTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/mercuryIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2426,7 +2426,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="venus" href="#venusTab" aria-controls="venusTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="venus" onclick="activeSolarTab('venus')" href="#venusTab" aria-controls="venusTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/venusIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2436,7 +2436,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="mars" href="#marsTab" aria-controls="marsTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="mars" onclick="activeSolarTab('mars')" href="#marsTab" aria-controls="marsTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/marsIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2446,7 +2446,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="asteroidBelt" href="#asteroidBeltTab" aria-controls="asteroidBeltTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="asteroidBelt" onclick="activeSolarTab('asteroidBelt')" href="#asteroidBeltTab" aria-controls="asteroidBeltTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/asteroidBeltIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2456,7 +2456,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="wonderStation" href="#wonderStationTab" aria-controls="wonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="wonderStation" onclick="activeSolarTab('wonderStation')" href="#wonderStationTab" aria-controls="wonderStationTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/wonderStationIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2471,7 +2471,7 @@
 							<span>Collapse Outer Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr class="hidden" id="jupiter" href="#jupiterTab" aria-controls="jupiterTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="jupiter" onclick="activeSolarTab('jupiter')" href="#jupiterTab" aria-controls="jupiterTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/jupiterIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2481,7 +2481,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="saturn" href="#saturnTab" aria-controls="saturnTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="saturn" onclick="activeSolarTab('saturn')" href="#saturnTab" aria-controls="saturnTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/saturnIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2491,7 +2491,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="uranus" href="#uranusTab" aria-controls="uranusTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="uranus" onclick="activeSolarTab('uranus')" href="#uranusTab" aria-controls="uranusTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/uranusIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2501,7 +2501,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="neptune" href="#neptuneTab" aria-controls="neptuneTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="neptune" onclick="activeSolarTab('neptune')" href="#neptuneTab" aria-controls="neptuneTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/neptuneIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2511,7 +2511,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="pluto" href="#plutoTab" aria-controls="plutoTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="pluto" onclick="activeSolarTab('pluto')" href="#plutoTab" aria-controls="plutoTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/plutoIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2521,7 +2521,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="kuiperBelt" href="#kuiperBeltTab" aria-controls="kuiperBeltTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="kuiperBelt" onclick="activeSolarTab('kuiperBelt')" href="#kuiperBeltTab" aria-controls="kuiperBeltTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/kuiperBeltIcon.png" style="width:30px; height:auto">
 						</td>
@@ -2531,7 +2531,7 @@
 							</span>
 						</td>
 					</tr>
-					<tr class="hidden" id="solCenter" href="#solCenterTab" aria-controls="solCenterTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr class="hidden" id="solCenter" onclick="activeSolarTab('solCenter')" href="#solCenterTab" aria-controls="solCenterTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<img src="Icons/solCenterIcon.png" style="width:30px; height:auto">
 						</td>
@@ -3043,7 +3043,7 @@
 		<div role="tabpanel" class="tab-pane fade" id="wonder">
 			<div class="container" style="width:250px; float:left;">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#theWonderStationTab" aria-controls="theWonderStationTab" role="tab" data-toggle="tab" style="height:60px; border:none;">
+					<tr id="theWonderStation" onclick="activeWonderTab('theWonderStation')" href="#theWonderStationTab" aria-controls="theWonderStationTab" role="tab" data-toggle="tab" style="height:60px; border:none;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
 								Wonder Station
@@ -3057,21 +3057,21 @@
 							</span>
 						</th>
 					</tr>
-					<tr id="preciousWonderNav" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="preciousWonderNav" onclick="activeWonderTab('preciousWonderNav')" class="hidden" href="#preciousWonderTab" aria-controls="preciousWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
 								Precious Wonder: <span id="preciousActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
-					<tr id="energeticWonderNav" class="hidden" href="#energeticWonderTab" aria-controls="energeticWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="energeticWonderNav" onclick="activeWonderTab('energeticWonderNav')" class="hidden" href="#energeticWonderTab" aria-controls="energeticWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
 								Energetic Wonder: <span id="energeticActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
-					<tr id="techWonderNav" class="hidden" href="#techWonderTab" aria-controls="techWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="techWonderNav" onclick="activeWonderTab('techWonderNav')" class="hidden" href="#techWonderTab" aria-controls="techWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
 								Technological Wonder: <span id="techActivation">Dormant</span>
@@ -3104,7 +3104,7 @@
 									<span>
 										The first painting depicts a large, shiny structure and the plaque reads:
 										<br>
-										"While I am rich beyond comparison, I still value adding precious resources to his collection. In return for your Gems, Silver, and Gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."
+										"While I am rich beyond comparison, I still value adding precious resources to my collection. In return for your Gems, Silver, and Gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."
 										<br>
 										<hide id="preciousWonderButton">
 											He requires that you donate <span id="preciousGemCost">10,000</span> Gems, <span id="preciousSilverCost">7,500</span> Silver and <span id="preciousGoldCost">5,000</span> Gold for this knowledge.
@@ -3308,21 +3308,21 @@
 		<div role="tabpanel" class="tab-pane fade" id="solCenterPage">
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr href="#unlockPlasma" aria-controls="unlockPlasma" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="unlockPlasmaNav" onclick="activeSolCenterTab('unlockPlasmaNav')" href="#unlockPlasma" aria-controls="unlockPlasma" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
 								Plasma
 							</span>
 						</td>
 					</tr>
-					<tr href="#unlockEmc" aria-controls="unlockEmc" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="unlockEmcNav" onclick="activeSolCenterTab('unlockEmcNav')" href="#unlockEmc" aria-controls="unlockEmc" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<span>
 								Energy-Mass Conversion
 							</span>
 						</td>
 					</tr>
-					<!-- <tr href="#unlockDyson" aria-controls="unlockDyson" role="tab" data-toggle="tab" style="height:60px;">
+					<!-- <tr id="unlockDysonNav" onclick="activeSolCenterTab('unlockDysonNav')"href="#unlockDyson" aria-controls="unlockDyson" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
 							<span>
 								Dyson Sphere

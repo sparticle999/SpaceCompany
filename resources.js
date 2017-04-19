@@ -570,7 +570,7 @@ function toggleChemicalPlant(){
 
 function getHeater(){
 	if(spaceMetal >= heaterSpaceMetalCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
-		metal -= heaterMetalCost;
+		metal -= heaterSpaceMetalCost;
 		gem -= heaterGemCost;
 		heater += 1;
 		heaterSpaceMetalCost = Math.floor(75000 * Math.pow(1.1,heater + 1));
