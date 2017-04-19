@@ -25,6 +25,10 @@ v0.4.0 The Hot and Cold Update
 - Volcanic Veluptuator: Lava
 
 # Changelog:
+v0.3.4
+- Added New Solar Theme
+- Added New United Theme
+
 v0.3.3
 - Added Collapsability for the solar system tab
 - Added notifications on tabs when there is something new in them
