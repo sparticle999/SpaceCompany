@@ -1,31 +1,26 @@
 // Sol Center Tab
 
-function unlockPlasma(){
+function unlockPlasmaResearch(){
 	if(hydrogen >= 1500 && uranium >= 1500 && oil >= 15000 && wood >= 15000){
 		hydrogen -= 1500;
 		uranium -= 1500;
 		oil -= 15000;
 		wood -= 15000;
 		document.getElementById("researchPlasma").className = "hidden";
-		document.getElementById("plasmaNav").className = "";
-		for(var i = 0; i < 4; i++){
-			document.getElementById("energyNav" + [i]).style.border = "";
-		}
-		noBorder.push("energyNav");
+		document.getElementById("unlockPlasma").className = "";
+		available.push("unlockPlasma");
 		buttonsHidden.push("researchPlasma");
-		resourcesUnlocked.push("plasmaNav");
-		newUnlock("resources");
 	}
 }
 
-function unlockEmc(){
+function unlockEmcResearch(){
 	if(energy >= 75000 && plasma >= 100){
 		energy -= 75000;
 		plasma -= 100;
 		document.getElementById("researchEmc").className = "hidden";
-		document.getElementById("emcPage").className = "";
+		document.getElementById("unlockEmc").className = "";
+		available.push("unlockEmc");
 		buttonsHidden.push("researchEmc");
-		resourcesUnlocked.push("emcPage");
 	}
 }
 

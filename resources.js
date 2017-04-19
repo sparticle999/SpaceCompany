@@ -904,9 +904,9 @@ function getDiamondDrill(){
 		gem -= diamondDrillGemCost;
 		silicon -= diamondDrillSiliconCost;
 		diamondDrill += 1;
-		diamondDrillSiliconCost = Math.floor(60 * Math.pow(1.1,diamondDrill + 1));
-		diamondDrillGemCost = Math.floor(200 * Math.pow(1.1,diamondDrill + 1));
-		diamondDrillSpaceMetalCost = Math.floor(120 * Math.pow(1.1,diamondDrill + 1));
+		diamondDrillSiliconCost = Math.floor(3900 * Math.pow(1.1,diamondDrill + 1));
+		diamondDrillGemCost = Math.floor(2700 * Math.pow(1.1,diamondDrill + 1));
+		diamondDrillSpaceMetalCost = Math.floor(3100 * Math.pow(1.1,diamondDrill + 1));
 		document.getElementById("diamondDrill").innerHTML = diamondDrill;
 		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
 		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);

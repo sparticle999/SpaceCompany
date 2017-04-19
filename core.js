@@ -1452,6 +1452,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("cubicOilCost").className = "";
 	}
+
+	turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
+	turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
+	turnRed(silicon, enricherSiliconCost, "enricherSiliconCost");
 	
 	if(gem < crucibleGemCost){
 		document.getElementById("crucibleGemCost").className = "red";
@@ -1508,13 +1512,13 @@ function checkRedCost(){
 	turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
 
-	turnRed(hydrogen, 1500, "unlockPlasmaHydrogenCost");
-	turnRed(uranium, 1500, "unlockPlasmaUraniumCost");
-	turnRed(oil, 15000, "unlockPlasmaOilCost");
-	turnRed(wood, 15000, "unlockPlasmaWoodCost");
+	turnRed(hydrogen, 1500, "unlockPlasmaResearchHydrogenCost");
+	turnRed(uranium, 1500, "unlockPlasmaResearchUraniumCost");
+	turnRed(oil, 15000, "unlockPlasmaResearchOilCost");
+	turnRed(wood, 15000, "unlockPlasmaResearchWoodCost");
 
-	turnRed(energy, 75000, "unlockEmcEnergyCost");
-	turnRed(plasma, 100, "unlockEmcPlasmaCost");
+	turnRed(energy, 75000, "unlockEmcResearchEnergyCost");
+	turnRed(plasma, 100, "unlockEmcResearchPlasmaCost");
 
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";

@@ -161,3 +161,30 @@ function upgradeSolarTech(){
 		newUnlock("resources");
 	}
 }
+
+function unlockPlasma(){
+	if(science >= 40000){
+		science -= 40000;
+		document.getElementById("unlockPlasma").className = "hidden";
+		document.getElementById("plasmaNav").className = "";
+		for(var i = 0; i < 4; i++){
+			document.getElementById("energyNav" + [i]).style.border = "";
+		}
+		researched.push("unlockPlasma");
+		noBorder.push("energyNav");
+		resourcesUnlocked.push("plasmaNav");
+		newUnlock("resources");
+	}
+}
+
+function unlockEmc(){
+	if(science >= 60000){
+		science -= 60000;
+		document.getElementById("unlockEmc").className = "hidden";
+		document.getElementById("emcPage").className = "";
+		researched.push("unlockEmc");
+		resourcesUnlocked.push("emcPage");
+		newUnlock("solCenter");
+
+	}
+}

@@ -1020,7 +1020,7 @@
 										<br>
 										Uses 11 Energy per second.
 										<br>
-										Costs <span id="diamondDrillSpaceMetalCost">120</span> Space Metal, <span id="diamondDrillGemCost">200</span> Gems, <span id="diamondDrillSiliconCost">60</span> Silicon.
+										Costs <span id="diamondDrillSpaceMetalCost">3,100</span> Space Metal, <span id="diamondDrillGemCost">2,700</span> Gems, <span id="diamondDrillSiliconCost">3,900</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2366,6 +2366,40 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockPlasma" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Plasma Technology
+									</h3>
+									<span>
+										This allows you to turn your energy and hydrogen into plasma.
+										<br>
+										Costs <span id="unlockPlasmaCost">40,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPlasma()" class="btn btn-default">Unlock Plasma</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockEmc" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Energy-Mass Conversion
+									</h3>
+									<span>
+										XXXX
+										<br>
+										Costs <span id="unlockPlasmaCost">60,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockEmc()" class="btn btn-default">Unlock EMC</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -3308,7 +3342,7 @@
 		<div role="tabpanel" class="tab-pane fade" id="solCenterPage">
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
-					<tr id="unlockPlasmaNav" onclick="activeSolCenterTab('unlockPlasmaNav')" href="#unlockPlasma" aria-controls="unlockPlasma" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="unlockPlasmaNav" onclick="activeSolCenterTab('unlockPlasmaNav')" href="#unlockPlasmaResearch" aria-controls="unlockPlasmaResearch" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
 							<span>
 								Plasma
@@ -3332,7 +3366,7 @@
 				</table>
 			</div>
 			<div class="tab-content">
-				<div id="unlockPlasma" class="tab-pane fade in" style="margin-left:10px; float:left;">
+				<div id="unlockPlasmaResearch" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table no-select">
 							<tr>
@@ -3353,10 +3387,10 @@
 									<span>
 										After trading resources with the Sol Center, they will give you some of their research on plasma and how to get it.
 										<br>
-										Costs: <span id="unlockPlasmaHydrogenCost">1,500</span> Hydrogen, <span id="unlockPlasmaUraniumCost">1,500</span> Uranium, <span id="unlockPlasmaOilCost">15,000</span> Oil, <span id="unlockPlasmaWoodCost">15,000</span> Wood.
+										Costs: <span id="unlockPlasmaResearchHydrogenCost">1,500</span> Hydrogen, <span id="unlockPlasmaResearchUraniumCost">1,500</span> Uranium, <span id="unlockPlasmaResearchOilCost">15,000</span> Oil, <span id="unlockPlasmaResearchWoodCost">15,000</span> Wood.
 										<br>
 										<br>
-										<button onclick="unlockPlasma()" class="btn btn-default">Unlock Plasma Research</button>
+										<button onclick="unlockPlasmaResearch()" class="btn btn-default">Unlock Plasma Research</button>
 									</span>
 								</td>
 							</tr>
@@ -3384,10 +3418,10 @@
 									<span>
 										To be given the blueprints for this mysterious machine, the Aliens require both types of energy.
 										<br>
-										Costs: <span id="unlockEmcEnergyCost">75,000</span> Energy, <span id="unlockEmcPlasmaCost">100</span> Plasma.
+										Costs: <span id="unlockEmcResearchEnergyCost">75,000</span> Energy, <span id="unlockEmcResearchPlasmaCost">100</span> Plasma.
 										<br>
 										<br>
-										<button onclick="unlockEmc()" class="btn btn-default">Unlock EMC Machine</button>
+										<button onclick="unlockEmcResearch()" class="btn btn-default">Unlock EMC Machine Research</button>
 									</span>
 								</td>
 							</tr>
@@ -3488,7 +3522,7 @@
 										Dyson Sphere
 									</h2>
 									<span>
-										XXXX
+										This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost?
 									</span>
 								</td>
 							</tr>
@@ -3498,7 +3532,7 @@
 										Research
 									</h3>
 									<span>
-										XXXX
+										To understand this supreme construct, you must request the aliens' help. They require XXXX
 									</span>
 								</td>
 							</tr>
