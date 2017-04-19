@@ -1661,6 +1661,9 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "iceNav")){
 		document.getElementById("iceNav").className = "outerPlanet";
 	}
+	if(contains(resourcesUnlocked, "spaceMetalNav")){
+		document.getElementById("spaceMetalNav").className = "innerPlanet";
+	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";
@@ -1715,14 +1718,25 @@ function refreshTabs(){
  	}
  	if(rocketLaunched === true){
  		document.getElementById("spaceRocket").className = "hidden";
-		document.getElementById("moon").className = "";
-		document.getElementById("mercury").className = "";
-		document.getElementById("venus").className = "";
-		document.getElementById("mars").className = "";
-		document.getElementById("asteroidBelt").className = "";
+  		document.getElementById("collapseInner").className ="collapseInner";
+		document.getElementById("moon").className = "inner";
+		document.getElementById("mercury").className = "inner";
+		document.getElementById("venus").className = "inner";
+		document.getElementById("mars").className = "inner";
+		document.getElementById("asteroidBelt").className = "inner";
  	}
  	if(contains(explored, "asteroidBelt")){
- 		document.getElementById("wonderStation").className = "";
+ 		document.getElementById("wonderStation").className = "inner";
+ 		document.getElementById("collapseOuter").className ="collapseOuter";
+ 		document.getElementById("jupiter").className = "outer";
+ 		document.getElementById("saturn").className = "outer";
+ 		document.getElementById("uranus").className = "outer";
+ 		document.getElementById("neptune").className = "outer";
+ 		document.getElementById("pluto").className = "outer";
+ 		document.getElementById("kuiperBelt").className = "outer";
+ 	}
+ 	if(contains(explored, "kuiperBelt")){
+ 		document.getElementById("solCenter").className = "outer";
  	}
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
@@ -1768,6 +1782,34 @@ $('.collapseOuterPlanet').click(function(){
     } else {
         for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
         	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseInner').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
+        	document.getElementsByClassName("inner")[i].className = "inner";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
+        	document.getElementsByClassName("inner")[i].className = "inner hidden";
+        }
+        $(this).addClass("collapsed");
+    }
+});
+
+$('.collapseOuter').click(function(){
+    if($(this).hasClass("collapsed")){
+        for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
+        	document.getElementsByClassName("outer")[i].className = "outer";
+        }
+        $(this).removeClass("collapsed");
+    } else {
+        for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
+        	document.getElementsByClassName("outer")[i].className = "outer hidden";
         }
         $(this).addClass("collapsed");
     }

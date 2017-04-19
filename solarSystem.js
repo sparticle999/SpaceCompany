@@ -34,11 +34,12 @@ function launchRocket(){
 		rocketFuel -= 20;
 		rocket -= 1;
 		document.getElementById("spaceRocket").className = "hidden";
-		document.getElementById("moon").className = "";
-		document.getElementById("mercury").className = "";
-		document.getElementById("venus").className = "";
-		document.getElementById("mars").className = "";
-		document.getElementById("asteroidBelt").className = "";
+		document.getElementById("collapseInner").className ="collapseInner";
+		document.getElementById("moon").className = "inner";
+		document.getElementById("mercury").className = "inner";
+		document.getElementById("venus").className = "inner";
+		document.getElementById("mars").className = "inner";
+		document.getElementById("asteroidBelt").className = "inner";
 		rocketLaunched = true;
 	}
 }
@@ -95,10 +96,17 @@ function exploreAsteroidBelt(){
 	if(rocketFuel >= 200){
 		rocketFuel -= 200;
 		document.getElementById("exploreAsteroidBelt").className = "hidden";
-		document.getElementById("wonderStation").className = "";
+		document.getElementById("wonderStation").className = "inner";
+		document.getElementById("collapseOuter").className ="collapseOuter";
+		document.getElementById("jupiter").className = "outer";
+		document.getElementById("saturn").className = "outer";
+		document.getElementById("uranus").className = "outer";
+		document.getElementById("neptune").className = "outer";
+		document.getElementById("pluto").className = "outer";
+		document.getElementById("kuiperBelt").className = "outer";
 		document.getElementById("goldNav").className = "innerPlanet";
 		document.getElementById("silverNav").className = "innerPlanet";
-		resourcesUnlocked.push("goldNav", "silverNav", "jupiter", "saturn", "uranus", "neptune", "pluto", "kuiperBelt");
+		resourcesUnlocked.push("goldNav", "silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
 		placesExploredNum += 1;
@@ -173,7 +181,7 @@ function exploreKuiperBelt(){
 	if(rocketFuel >= 6000){
 		rocketFuel -= 6000;
 		document.getElementById("exploreKuiperBelt").className = "hidden";
-		document.getElementById("solCenter").className = "";
+		document.getElementById("solCenter").className = "outer";
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("kuiperBelt");
