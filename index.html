@@ -65,10 +65,10 @@
 <!-- Nav tabs -->
 	<ul class="nav nav-tabs no-select" role="tablist">
 		<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab" onclick="tabClicked('resources')"><div id="resourcesTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Resources</a></li>
-		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab"><div id="researchTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Research</a></li>
-    	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
-    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"><div id="wondersTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
-    	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
+		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab" onclick="tabClicked('research')"><div id="researchTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Research</a></li>
+    	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"onclick="tabClicked('solarSystem')"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
+    	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
+    	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab"> Settings</a></li>
     	<li role="presentation" id="dropdownMenu" class="dropdown hidden pull-right" ng-class="{active: !cur}"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:"> More... <span class="caret"></span></a>
@@ -1931,7 +1931,7 @@
 										Electrolytic Cell: <span id="eCell">0</span>
 									</h3>
 									<span>
-										These are made here on Earth and can turn water into hydrogen with a contant supply of Energy.
+										These are made here on Earth and can turn water into hydrogen with a constant supply of Energy.
 										<br>
 										Produces 28 Hydrogen per second.
 										<br>
@@ -2113,7 +2113,7 @@
 										Ocean Freezer: <span id="freezer">0</span>
 									</h3>
 									<span>
-										With advanced technology, you are now able to turn Earth's water into a high-quality Ice previously only found on Pluto.
+										With advanced technology, you are now able to turn Earth's water into high-quality Ice, previously only found on Pluto.
 										<br>
 										Produces 65 Ice per second.
 										<br>
