@@ -7,14 +7,14 @@ function tabClicked(tab){
 }
 
 function activeResourceTab(tab){
-	if(document.getElementById("plasmaNav").className != "hidden";){
+	if(document.getElementById("plasmaNav").className != "hidden"){
 		document.getElementById("plasmaNav").className = "";
 	}
-	if(document.getElementById("energyNav").className != "hidden";){
+	if(document.getElementById("energyNav").className != "hidden"){
 		document.getElementById("energyNav").className = "";
 	}
 	for(var i = 0; i < resources.length; i++){
-		if(document.getElementById(resources[i] + "Nav").className != "hidden";){
+		if(document.getElementById(resources[i] + "Nav").className != "hidden"){
 			document.getElementById(resources[i] + "Nav").className = "";
 		}
 	}
