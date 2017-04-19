@@ -35,8 +35,8 @@ v0.3.4
 - Added New United Theme
 
 v0.3.3
-- Added Collapsability for the solar system tab
-- Added notifications on tabs when there is something new in them
+- Added Collapsability for the Solar System Tab
+- Added Notifications on tabs when there is something new in them
 
 v0.3.2
 - Made per second text red when negative
