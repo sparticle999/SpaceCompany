@@ -6,37 +6,37 @@ function commafy(input){
 		}
 	}
 	if(input >= 100000 && input < 1000000){
-		var output = Math.floor(input/100)/10 + "k";
+		var output = (Math.floor(input/100)/10) + "k";
 	}
 	if(input >= 1000000 && input < 10000000){
-		var output = Math.floor(input/1000)/1000 + "M";
+		var output = (Math.floor(input/1000)/1000).toFixed(3) + "M";
 	}
 	if(input >= 10000000 && input < 100000000){
-		var output = Math.floor(input/10000)/100 + "M";
+		var output = (Math.floor(input/10000)/100).toFixed(2) + "M";
 	}
 	if(input >= 100000000 && input < 1000000000){
-		var output = Math.floor(input/100000)/10 + "M";
+		var output = (Math.floor(input/100000)/10).toFixed(1) + "M";
 	}
 	if(input >= 1000000000 && input < 10000000000){
-		var output = Math.floor(input/1000000)/1000 + "B";
+		var output = (Math.floor(input/1000000)/1000).toFixed(3) + "B";
 	}
 	if(input >= 10000000000 && input < 100000000000){
-		var output = Math.floor(input/10000000)/100 + "B";
+		var output = (Math.floor(input/10000000)/100).toFixed(2) + "B";
 	}
 	if(input >= 100000000000 && input < 1000000000000){
-		var output = Math.floor(input/100000000)/10 + "B";
+		var output = (Math.floor(input/100000000)/10).toFixed(1) + "B";
 	}
 	if(input >= 1000000000000 && input < 10000000000000){
-		var output = Math.floor(input/1000000000)/1000 + "T";
+		var output = (Math.floor(input/1000000000)/1000).toFixed(3) + "T";
 	}
 	if(input >= 10000000000000 && input < 100000000000000){
-		var output = Math.floor(input/10000000000)/100 + "T";
+		var output = (Math.floor(input/10000000000)/100).toFixed(2) + "T";
 	}
 	if(input >= 100000000000000 && input < 1000000000000000){
-		var output = Math.floor(input/100000000000)/10 + "T";
+		var output = (Math.floor(input/100000000000)/10).toFixed(1) + "T";
 	}
 	if(input >= 1000000000000000){
-		var output = Math.floor(input/1000000000000) + "T";
+		var output = (Math.floor(input/1000000000000)).toFixed(0) + "T";
 	}
 	return output;
 }

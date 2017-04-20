@@ -1439,7 +1439,7 @@ function getMagnet(){
 }
 
 function getECell(){
-	if(silver >= eCellSilverCost && titanium >= eCellSiliconCost && gold >= eCellGoldCost){
+	if(silver >= eCellSilverCost && silicon >= eCellSiliconCost && gold >= eCellGoldCost){
 		silver -= eCellSilverCost;
 		silicon -= eCellSiliconCost;
 		gold -= eCellGoldCost;
