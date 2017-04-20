@@ -6,7 +6,7 @@ function commafy(input){
 		}
 	}
 	if(input >= 100000 && input < 1000000){
-		var output = Math.floor(input/1000) + "K";
+		var output = Math.floor(input/1000) + "k";
 	}
 	if(input >= 1000000 && input < 10000000){
 		var output = Math.floor(input/100000)/10 + "M";
@@ -14,15 +14,18 @@ function commafy(input){
 	if(input >= 10000000 && input < 1000000000){
 		var output = Math.floor(input/1000000) + "M";
 	}
-	// if(input >= 1000000000 && input < 10000000000){
-	// 	var output = Math.floor(input/10000000)/100 + "B";
-	// }
-	// if(input >= 10000000000 && input < 100000000000){
-	// 	var output = Math.floor(input/100000000)/10 + "B";
-	// }
-	// if(input >= 100000000000){
-	// 	var output = Math.floor(input/1000000000) + "B";
-	// }
+	if(input >= 1000000000 && input < 10000000000){
+		var output = Math.floor(input/100000000)/10 + "B";
+	}
+	if(input >= 10000000000 && input < 1000000000000){
+		var output = Math.floor(input/1000000000) + "B";
+	}
+	if(input >= 1000000000000 && input < 10000000000000){
+		var output = Math.floor(input/100000000000)/10 + "T";
+	}
+	if(input >= 10000000000000){
+		var output = Math.floor(input/1000000000000) + "T";
+	}
 	return output;
 }
 
@@ -1456,7 +1459,7 @@ function checkRedCost(){
 	turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
 	turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
 	turnRed(silicon, enricherSiliconCost, "enricherSiliconCost");
-	
+
 	if(gem < crucibleGemCost){
 		document.getElementById("crucibleGemCost").className = "red";
 	}
