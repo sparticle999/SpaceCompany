@@ -63,7 +63,6 @@ function unlockOil(){
 		document.getElementById("oilNav").className = "earth";
 		refresh();
 		resourcesUnlocked.push("oilNav");
-		noBorder.push("metalNav");
 		researched.push("unlockOil");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;

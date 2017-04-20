@@ -14,11 +14,17 @@ function activeResourceTab(tab){
 		document.getElementById("energyNav").className = "";
 	}
 	for(var i = 0; i < resources.length; i++){
-		if(document.getElementById(resources[i] + "Nav").className != "hidden"){
-			document.getElementById(resources[i] + "Nav").className = "";
+		if(document.getElementById(resources[i] + "Nav").className === "earth info"){
+			document.getElementById(resources[i] + "Nav").className = "earth";
+		}
+		if(document.getElementById(resources[i] + "Nav").className === "innerPlanet info"){
+			document.getElementById(resources[i] + "Nav").className = "innerPlanet";
+		}
+		if(document.getElementById(resources[i] + "Nav").className === "outerPlanet info"){
+			document.getElementById(resources[i] + "Nav").className = "outerPlanet";
 		}
 	}
-	document.getElementById(tab).className = "info";
+	document.getElementById(tab).className += " info";
 }
 
 function activeResearchTab(tab){
@@ -36,13 +42,18 @@ function activeSolarTab(tab){
 		document.getElementById("mercury").className = "";
 	}
 	for(var i = 0; i < explored.length; i++){
-		document.getElementById(explored[i]).className = "";
+		if(document.getElementById(explored[i]).className === "inner info"){
+			document.getElementById(explored[i]).className === "inner";
+		}
+		if(document.getElementById(explored[i]).className === "outer info"){
+			document.getElementById(explored[i]).className = "outer";
+		}
 	}
 	if(contains(explored, "asteroidBelt")){
-		document.getElementById("uranus").className = "";
-		document.getElementById("neptune").className = "";
+		document.getElementById("uranus").className = "outer";
+		document.getElementById("neptune").className = "outer";
 	}
-	document.getElementById(tab).className = "info";
+	document.getElementById(tab).className += " info";
 }
 
 function activeWonderTab(tab){
