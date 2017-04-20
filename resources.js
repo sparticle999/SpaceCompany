@@ -80,11 +80,17 @@ function gainResources(){
 	else{
 		hydrogen = hydrogenStorage;
 	}
+	if(hydrogen >= hydrogenStorage){
+		document.getElementById("hydrogen").className = "green";
+	}
 	if(helium + heliumps/10 < heliumStorage){
 		helium += heliumps/10;
 	}
 	else{
 		helium = heliumStorage;
+	}
+	if(helium >= heliumStorage){
+		document.getElementById("helium").className = "green";
 	}
 	if(ice + iceps/10 < iceStorage){
 		ice += iceps/10;

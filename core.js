@@ -279,17 +279,11 @@ function refreshPerSec(){
 	else{
 		document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10);
 	}
-	document.getElementById("hydrogen").className = "";
-	if(hydrogen >= hydrogenStorage){
-		document.getElementById("hydrogen").className = "green";
-	}
-	if(hydrogen === 0){
-		document.getElementById("hydrogen").className = "red";
-	}
 	document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10);
 	document.getElementById("helium").className = "";
-	if(helium >= heliumStorage){
-		document.getElementById("helium").className = "green";
+	document.getElementById("hydrogen").className = "";
+	if(hydrogen === 0){
+		document.getElementById("hydrogen").className = "red";
 	}
 	if(helium === 0){
 		document.getElementById("helium").className = "red";
