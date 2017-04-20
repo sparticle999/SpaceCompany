@@ -114,7 +114,7 @@ function refreshPerSec(){
 			energyOutput += (heater*1000);
 			plasmaps = heater;
 			plasma += plasmaps/10;
-			hydrogen -= 10*heater;
+			hydrogen -= heater*10/10;
 		}
 		else{
 			plasma = 100000
@@ -273,7 +273,12 @@ function refreshPerSec(){
 	if(lava === 0){
 		document.getElementById("lava").className = "red";
 	}
-	document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10 - heater*10);
+	if(heaterToggled === true){
+		document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10 - heater*10);
+	}
+	else{
+		document.getElementById("hydrogenps").innerHTML = commafy(hydrogenps - fusionReactor*10);
+	}
 	document.getElementById("hydrogen").className = "";
 	if(hydrogen >= hydrogenStorage){
 		document.getElementById("hydrogen").className = "green";
@@ -660,7 +665,12 @@ function checkRedCost(){
 	turnRed(spaceMetalps, 0, "spaceMetalps");
 	turnRed(methaneps - methaneStation*6, 0, "methaneps");
 	turnRed(lavaps - magmatic*11, 0, "lavaps");
-	turnRed(hydrogenps - fusionReactor*10 - heater*10, 0, "hydrogenps");
+	if(heaterToggled === true){
+		turnRed(hydrogenps - fusionReactor*10 - heater*10, 0, "hydrogenps");
+	}
+	else{
+		turnRed(hydrogenps - fusionReactor*10, 0, "hydrogenps");
+	}
 	turnRed(heliumps - fusionReactor*10, 0, "heliumps");
 	
 
