@@ -15,7 +15,6 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 v0.4.0 The Hot and Cold Update
 - Added Achievements
-- Added Dyson Spheres
 - Supercooling with Ice
 - Added Meteorite
 - Added Meteorite Tier of resource machines
@@ -25,6 +24,10 @@ v0.4.0 The Hot and Cold Update
 - Volcanic Veluptuator: Lava
 
 # Changelog:
+
+v0.3.6
+- Added Research from Sol Center
+- Added Dyson Sphere
 
 v0.3.5
 - Added Number Formatting for large numbers
