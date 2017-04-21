@@ -45,7 +45,9 @@ function activeSolarTab(tab){
 		document.getElementById("spaceRocket").className = "";
 	}
 	else{
-		document.getElementById("mercury").className = "inner";
+		if(document.getElementById("mercury").className != "inner hidden"){
+			document.getElementById("mercury").className = "inner";
+		}
 	}
 	for(var i = 0; i < explored.length; i++){
 		if(document.getElementById(explored[i]).className === "inner info"){
@@ -56,8 +58,12 @@ function activeSolarTab(tab){
 		}
 	}
 	if(contains(explored, "asteroidBelt")){
-		document.getElementById("uranus").className = "outer";
-		document.getElementById("neptune").className = "outer";
+		if(document.getElementById("uranus").className != "outer hidden"){
+			document.getElementById("uranus").className = "outer";
+		}
+		if(document.getElementById("neptune").className != "outer hidden"){
+			document.getElementById("neptune").className = "outer";
+		}
 	}
 	document.getElementById(tab).className += " info";
 }
