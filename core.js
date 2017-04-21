@@ -70,7 +70,7 @@ function refreshPerSec(){
 		charcoal -= charcoalEngine/10;
 	}
 	else{
-		energyInput -= charcoalEngine;
+		energyInput -= charcoalEngine*2;
 	}
 	if(methane + methaneps/10 >= methaneStation*6/10){
 		methane -= methaneStation*6/10;
