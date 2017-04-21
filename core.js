@@ -1539,8 +1539,8 @@ function checkRedCost(){
 	turnRed(energy, 75000, "unlockEmcResearchEnergyCost");
 	turnRed(plasma, 100, "unlockEmcResearchPlasmaCost");
 
-	turnRed(energy, 100000, "unlockEmcResearchEnergyCost");
-	turnRed(plasma, 10000, "unlockEmcResearchPlasmaCost");
+	turnRed(energy, 100000, "unlockDysonResearchEnergyCost");
+	turnRed(plasma, 10000, "unlockDysonResearchPlasmaCost");
 
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";

@@ -192,9 +192,9 @@ function unlockDyson(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockDyson").className = "hidden";
-		document.getElementById("DysonPage").className = "";
+		document.getElementById("dysonPage").className = "";
 		researched.push("unlockDyson");
-		resourcesUnlocked.push("DysonPage");
+		resourcesUnlocked.push("dysonPage");
 		newUnlock("solCenter");
 	}
 }
