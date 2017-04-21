@@ -45,11 +45,11 @@ function activeSolarTab(tab){
 		document.getElementById("spaceRocket").className = "";
 	}
 	else{
-		document.getElementById("mercury").className = "";
+		document.getElementById("mercury").className = "inner";
 	}
 	for(var i = 0; i < explored.length; i++){
 		if(document.getElementById(explored[i]).className === "inner info"){
-			document.getElementById(explored[i]).className === "inner";
+			document.getElementById(explored[i]).className = "inner";
 		}
 		if(document.getElementById(explored[i]).className === "outer info"){
 			document.getElementById(explored[i]).className = "outer";
