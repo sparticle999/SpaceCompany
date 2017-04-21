@@ -418,15 +418,15 @@ function refreshUI(){
 	document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 	document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
 	document.getElementById("nuclearStation").innerHTML = nuclearStation;
-	document.getElementById("nuclearStationSpaceMetalCost").innerHTML = nuclearStationSpaceMetalCost;
-	document.getElementById("nuclearStationTitaniumCost").innerHTML = nuclearStationTitaniumCost;
+	document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
+	document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
 	document.getElementById("magmatic").innerHTML = magmatic;
 	document.getElementById("magmaticSpaceMetalCost").innerHTML = commafy(magmaticSpaceMetalCost);
 	document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
 	document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
 	document.getElementById("fusionReactor").innerHTML = fusionReactor;
-	document.getElementById("fusionReactorSpaceMetalCost").innerHTML = fusionReactorSpaceMetalCost;
-	document.getElementById("fusionReactorTitaniumCost").innerHTML = fusionReactorTitaniumCost;
+	document.getElementById("fusionReactorSpaceMetalCost").innerHTML = commafy(fusionReactorSpaceMetalCost);
+	document.getElementById("fusionReactorTitaniumCost").innerHTML = commafy(fusionReactorTitaniumCost);
 	document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
 	document.getElementById("pump").innerHTML = pump;
 	document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
@@ -475,8 +475,8 @@ function refreshUI(){
 	document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
 	document.getElementById("kiln").innerHTML = commafy(kiln);
 	document.getElementById("kilnSpaceMetalCost").innerHTML = commafy(kilnSpaceMetalCost);
-	document.getElementById("kilnGemCost").innerHTML = kilnGemCost;
-	document.getElementById("kilnSiliconCost").innerHTML = kilnSiliconCost;
+	document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
+	document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
 	document.getElementById("woodcutter").innerHTML = woodcutter;
 	document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 	document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
@@ -1538,6 +1538,9 @@ function checkRedCost(){
 
 	turnRed(energy, 75000, "unlockEmcResearchEnergyCost");
 	turnRed(plasma, 100, "unlockEmcResearchPlasmaCost");
+
+	turnRed(energy, 100000, "unlockEmcResearchEnergyCost");
+	turnRed(plasma, 10000, "unlockEmcResearchPlasmaCost");
 
 	if(gem < preciousGemCost){
 		document.getElementById("preciousGemCost").className = "red";

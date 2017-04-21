@@ -24,6 +24,17 @@ function unlockEmcResearch(){
 	}
 }
 
+function unlockDysonResearch(){
+	if(energy >= 100000 && plasma >= 10000){
+		energy -= 100000;
+		plasma -= 10000;
+		document.getElementById("researchDyson").className = "hidden";
+		document.getElementById("unlockDyson").className = "";
+		available.push("unlockDyson");
+		buttonsHidden.push("researchDyson");
+	}
+}
+
 function changeEmcAmount(){
 	if(emcAmount === 1){
 		emcAmount = 100;

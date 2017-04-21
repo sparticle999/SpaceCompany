@@ -823,6 +823,7 @@ function getMiner(){
 				researchUnlocked = true;
 				tabsUnlockedNum += 1;
 				tabsUnlocked.push("researchTab", "dropdownMenu");
+				newUnlock("research");
 			}
 		}
 		refresh();

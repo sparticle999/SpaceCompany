@@ -187,3 +187,14 @@ function unlockEmc(){
 
 	}
 }
+
+function unlockDyson(){
+	if(science >= 100000){
+		science -= 100000;
+		document.getElementById("unlockDyson").className = "hidden";
+		document.getElementById("DysonPage").className = "";
+		researched.push("unlockDyson");
+		resourcesUnlocked.push("DysonPage");
+		newUnlock("solCenter");
+	}
+}
