@@ -14,10 +14,10 @@ function activeResourceTab(tab){
 		document.getElementById("energyNav").className = "";
 	}
 	for(var i = 0; i < resources.length; i++){
-		if(document.getElementById("uraniumNav").className === "info"){
+		if(document.getElementById("uraniumNav").className === " info"){
 			document.getElementById("uraniumNav").className = "";
 		}
-		if(document.getElementById("lavaNav").className === "info"){
+		if(document.getElementById("lavaNav").className === " info"){
 			document.getElementById("lavaNav").className = "";
 		}
 		if(document.getElementById(resources[i] + "Nav").className === "earth info"){
