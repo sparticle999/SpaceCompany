@@ -86,6 +86,7 @@ var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost =
 var icePick = 0; var icePickSpaceMetalCost = 17800; var icePickGemCost = 19300;
 var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600;
 var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000;
+var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0;
 
 
 // Variables not being saved
@@ -101,8 +102,8 @@ var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techA
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = 1;
 
-var resources = ["uranium", "lava", "oil", "metal", "gem", "charcoal", "wood", "spaceMetal", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice"]
+var resources = ["uranium", "lava", "oil", "metal", "gem", "charcoal", "wood", "spaceMetal", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice", "meteorite"]
 var uraniumEmcVal = 37; var lavaEmcVal = 42;
 var oilEmcVal = 3; var metalEmcVal = 1; var gemEmcVal = 3; var charcoalEmcVal = 2; var woodEmcVal = 1;
 var spaceMetalEmcVal = 15; var methaneEmcVal = 12; var titaniumEmcVal = 17; var goldEmcVal = 14; var silverEmcVal = 16; var siliconEmcVal = 23;
-var hydrogenEmcVal = 33; var heliumEmcVal = 39; var iceEmcVal = 44;
+var hydrogenEmcVal = 33; var heliumEmcVal = 39; var iceEmcVal = 44; var meteoriteEmcVal = 3;

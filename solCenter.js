@@ -59,3 +59,10 @@ function convertEnergy(resource, resourceName){
 		window[resourceName] += emcAmount;
 	}
 }
+
+function convertPlasma(resource, resourceName){
+	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
+		plasma -= emcAmount*window[resourceName + "EmcVal"];
+		window[resourceName] += emcAmount;
+	}
+}

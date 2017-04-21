@@ -181,10 +181,23 @@ function unlockEmc(){
 		science -= 60000;
 		document.getElementById("unlockEmc").className = "hidden";
 		document.getElementById("emcPage").className = "";
+		document.getElementById("unlockMeteorite").className = "";
+		available.push("unlockMeteorite");
 		researched.push("unlockEmc");
 		resourcesUnlocked.push("emcPage");
 		newUnlock("solCenter");
 
+	}
+}
+
+function unlockMeteorite(){
+	if(science >= 100000){
+		science -= 100000;
+		document.getElementById("unlockMeteorite").className = "hidden";
+		document.getElementById("meteoriteNav").className = "";
+		researched.push("unlockMeteorite");
+		resourcesUnlocked.push("meteoriteNav");
+		newUnlock("resources");
 	}
 }
 

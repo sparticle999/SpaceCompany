@@ -98,6 +98,12 @@ function gainResources(){
 	else{
 		ice = iceStorage;
 	}
+	if(meteorite + meteoriteps/10 < meteoriteStorage){
+		meteorite += meteoriteps/10;
+	}
+	else{
+		meteorite = meteoriteStorage;
+	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
@@ -314,6 +320,17 @@ function gainIce(){
 		ice += 1;
 		refresh();
 		handMined += 1;
+	}
+}
+
+function gainMeteorite(){
+	if(meteorite < meteoriteStorage){
+		if(plasma >= 3){
+			plasma -= 3;
+			meteorite += 1;
+			refresh();
+			handMined += 1;
+		}
 	}
 }
 
@@ -538,6 +555,20 @@ function upgradeIceStorage(){
 		document.getElementById("iceNextStorage").innerHTML = commafy(iceNextStorage);
 		document.getElementById("iceStorageCost").innerHTML = commafy(iceStorage);
 		document.getElementById("iceStorageSpaceMetalCost").innerHTML = commafy(iceStorage/2.5);
+	}
+}
+
+function upgradeMeteoriteStorage(){
+	if(meteorite >= meteoriteStorage && spaceMetal >= meteoriteStorage*4){
+		meteorite -= meteoriteStorage;
+		spaceMetal -= meteoriteStorage*4;
+		meteoriteStorage = meteoriteNextStorage;
+		meteoriteNextStorage *= 2;
+		refresh();
+		document.getElementById("meteoriteStorage").innerHTML = commafy(meteoriteStorage);
+		document.getElementById("meteoriteNextStorage").innerHTML = commafy(meteoriteNextStorage);
+		document.getElementById("meteoriteStorageCost").innerHTML = commafy(meteoriteStorage);
+		document.getElementById("meteoriteStorageSpaceMetalCost").innerHTML = commafy(meteoriteStorage*4);
 	}
 }
 

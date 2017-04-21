@@ -378,6 +378,9 @@ function save(type){
 		freezerSpaceMetalCost: freezerSpaceMetalCost,
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
+		meteorite: meteorite,
+		meteoriteStorage, meteoriteStorage,
+		meteoriteNextStorage: meteoriteNextStorage,
 	};
 	if(type === "local"){
 		//localStorage.setItem("newSave",JSON.stringify(localSave));
@@ -576,6 +579,9 @@ function load(type){
 		if(typeof savegame.ice !== "undefined") ice = savegame.ice;
 		if(typeof savegame.iceStorage !== "undefined") iceStorage = savegame.iceStorage;
 		if(typeof savegame.iceNextStorage !== "undefined") iceNextStorage = savegame.iceNextStorage;
+		if(typeof savegame.meteorite !== "undefined") meteorite = savegame.meteorite;
+		if(typeof savegame.meteoriteStorage !== "undefined") meteoriteStorage = savegame.meteoriteStorage;
+		if(typeof savegame.meteoriteNextStorage !== "undefined") meteoriteNextStorage = savegame.meteoriteNextStorage;
 		if(typeof savegame.moonWorker !== "undefined") moonWorker = savegame.moonWorker;
 		if(typeof savegame.moonWorkerGemCost !== "undefined") moonWorkerGemCost = savegame.moonWorkerGemCost;
 		if(typeof savegame.moonDrill !== "undefined") moonDrill = savegame.moonDrill;

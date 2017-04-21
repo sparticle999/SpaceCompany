@@ -504,6 +504,28 @@
 							<span id="iceStorage">50</span>
 						</td>
 					</tr>
+					<tr id="meteoriteNav" onclick="activeResourceTab('meteoriteNav')" class="hidden" href="#meteoriteTab" aria-controls="meteoriteTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/meteoriteIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Meteorite
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="meteoriteps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="meteorite">
+								0
+							</span>
+							/
+							<span id="meteoriteStorage">50</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -2129,6 +2151,44 @@
 						</table>
 					</div>
 				</div>
+				<div id="meteoriteTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Meteorite
+									</h2>
+									<span>
+										Creating Meteorite is only possible from purer forms of energy than those created with earth technology. Therefore, Plasma is necessary to make the strong resource.
+										<br>
+										Converting to 1 Meteorite Costs 3 Plasma.
+									</span>
+									<br>
+									<br>
+									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="meteoriteStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
+										<br>
+										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageSpaceMetalCost">400</span> Space Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeMeteoriteStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -2396,6 +2456,23 @@
 									<br>
 									<br>
 									<button onclick="unlockEmc()" class="btn btn-default">Unlock EMC</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockMeteorite" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Meteorite
+									</h3>
+									<span>
+										Meteorite is one of the rare resources in the Galaxy as it is an artificial one. All of the pre-existing Meteorite that once was in the Kuiper Belt, and similar asteroid fields in other solar systems, has all been mined away. Now, the only way to get is to make it in machines from energy.
+										<br>
+										Costs <span id="unlockMeteoriteCost">50,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockMeteorite()" class="btn btn-default">Unlock Meteorite</button>
 									<br>
 									<br>
 								</td>
@@ -3524,6 +3601,14 @@
 												<button onclick="convertEnergy(ice, 'ice')" class="btn btn-default" style="width:100%"><span id="iceEmcVal">44</span> Energy -> <span class="emcAmount">1</span> Ice</button>
 											</td>
 										</tr>
+										<tr>
+											<td height="20px"></td>
+										</tr>
+										<tr>
+											<td colspan="6">
+												<button onclick="convertPlasma(meteorite, 'meteorite')" class="btn btn-default" style="width:100%"><span id="meteoriteEmcVal">3</span> Plasma -> <span class="emcAmount">1</span> Meteorite</button>
+											</td>
+										</tr>
 									</table>
 								</td>
 							</tr>
@@ -3566,7 +3651,7 @@
 									<span>
 										This mega-structure cannot possibly be built in one piece. It must be created from a hundred small sections and forged together around the sun.
 										<br>
-										The next section costs: XXXX
+										The next section costs: 300,000 Titanium, 100,000 Gold, 200,000 Silicon, 1,000 Meteorite, 100,000 Ice.
 										<br>
 										<br>
 										<button onclick="XXXX()" class="btn btn-default">XXXX</button>

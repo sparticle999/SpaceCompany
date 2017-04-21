@@ -62,6 +62,7 @@ function refresh(){
 	document.getElementById("hydrogen").innerHTML = commafy(hydrogen);
 	document.getElementById("helium").innerHTML = commafy(helium);
 	document.getElementById("ice").innerHTML = commafy(ice);
+	document.getElementById("meteorite").innerHTML = commafy(meteorite);
 }
 
 function refreshPerSec(){
@@ -288,14 +289,15 @@ function refreshPerSec(){
 	if(helium === 0){
 		document.getElementById("helium").className = "red";
 	}
-	document.getElementById("iceps").innerHTML = commafy(iceps);
-	document.getElementById("ice").className = "";
-	if(ice >= iceStorage){
-		document.getElementById("ice").className = "green";
+	document.getElementById("meteoriteps").innerHTML = commafy(meteoriteps);
+	document.getElementById("meteorite").className = "";
+	if(meteorite >= meteoriteStorage){
+		document.getElementById("meteorite").className = "green";
 	}
-	if(ice === 0){
-		document.getElementById("ice").className = "red";
+	if(meteorite === 0){
+		document.getElementById("meteorite").className = "red";
 	}
+
 }
 
 function refreshStats(){
@@ -398,6 +400,10 @@ function refreshUI(){
 	document.getElementById("iceNextStorage").innerHTML = commafy(iceNextStorage);
 	document.getElementById("iceStorageCost").innerHTML = commafy(iceStorage);
 	document.getElementById("iceStorageSpaceMetalCost").innerHTML = commafy(iceStorage/2.5);
+	document.getElementById("meteoriteStorage").innerHTML = commafy(meteoriteStorage);
+	document.getElementById("meteoriteNextStorage").innerHTML = commafy(meteoriteNextStorage);
+	document.getElementById("meteoriteStorageCost").innerHTML = commafy(meteoriteStorage);
+	document.getElementById("meteoriteStorageSpaceMetalCost").innerHTML = commafy(meteoriteStorage*4);
 	document.getElementById("lava").innerHTML = commafy(lava);
 	document.getElementById("lavaStorage").innerHTML = commafy(lavaStorage);
 	document.getElementById("lavaNextStorage").innerHTML = commafy(lavaNextStorage);
@@ -718,6 +724,9 @@ function checkRedCost(){
 
 	turnRed(ice, iceStorage, "iceStorageCost");
 	turnRed(spaceMetal, iceStorage/2.5, "iceStorageSpaceMetalCost");
+
+	turnRed(meteorite, meteoriteStorage, "meteoriteStorageCost");
+	turnRed(spaceMetal, meteoriteStorage*4, "meteoriteStorageSpaceMetalCost");
 	
 	turnRed(spaceMetal, heaterSpaceMetalCost, "heaterSpaceMetalCost");
 	turnRed(gem, heaterGemCost, "heaterGemCost");
@@ -1706,6 +1715,9 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "iceNav")){
 		document.getElementById("iceNav").className = "outerPlanet";
+	}
+	if(contains(resourcesUnlocked, "meteoriteNav")){
+		document.getElementById("meteoriteNav").className = "outerPlanet";
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
 		document.getElementById("spaceMetalNav").className = "innerPlanet";
