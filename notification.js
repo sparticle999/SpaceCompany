@@ -79,6 +79,6 @@ function activeWonderTab(tab){
 function activeSolCenterTab(tab){
 	document.getElementById("unlockPlasmaNav").className = "";
 	document.getElementById("unlockEmcNav").className = "";
-	// document.getElementById("unlockDysonNav").className = "";
+	document.getElementById("unlockDysonNav").className = "";
 	document.getElementById(tab).className = "info";
 }
