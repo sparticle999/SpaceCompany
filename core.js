@@ -641,7 +641,6 @@ function refreshUI(){
 	document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
 	document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
 	document.getElementById("dyson").innerHTML = commafy(dyson);
-	document.getElementById("dysonPieces").innerHTML = commafy(dyson);
 	document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
 	document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
 	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
