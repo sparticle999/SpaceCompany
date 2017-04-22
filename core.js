@@ -163,6 +163,7 @@ function refreshPerSec(){
 		iceps = icePick;
 	}
 	scienceps = (lab*labGain);
+	document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
 	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
 	document.getElementById("plasma").className = "";
 	if(plasma <= 0){

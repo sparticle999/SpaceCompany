@@ -29,6 +29,7 @@ v0.4.0
 - Added Research from Sol Center
 - Added Meteorite
 - Added Dyson Sphere
+- Added Per Second Display on Science
 
 v0.3.5
 - Added Number Formatting for large numbers

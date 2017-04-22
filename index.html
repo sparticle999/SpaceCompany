@@ -567,6 +567,7 @@
 									<br>
 									<button onclick="getHeater()" class="btn btn-default">Get Super-Heater</button>
 									<button onclick="toggleHeater()" class="btn btn-default">Turn Heater <span id="heaterToggled">Off</span></button>
+									<button onclick="destroyMachine(heater, 'heater')" class="btn btn-default destroy hidden">Destroy Heater</button>
 								</td>
 							</tr>
 						</table>
@@ -602,6 +603,7 @@
 									<br>
 									<br>
 									<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
+									<button onclick="destroyMachine(charcoalEngine, 'charcoalEngine')" class="btn btn-default destroy hidden">Destroy Charcoal Engine</button>
 								</td>
 							</tr>
 							<tr id="solarPower" class="hidden">
@@ -619,6 +621,7 @@
 									<br>
 									<br>
 									<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
+									<button onclick="destroyMachine(solarPanel, 'solarPanel')" class="btn btn-default destroy hidden">Destroy Solar Panel</button>
 								</td>
 							</tr>
 							<tr id="methanePower" class="hidden">
@@ -636,6 +639,7 @@
 									<br>
 									<br>
 									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
+									<button onclick="destroyMachine(methaneStation, 'methaneStation')" class="btn btn-default destroy hidden">Destroy Methane Station</button>
 								</td>
 							</tr>
 							<tr id="nuclearPower" class="hidden">
@@ -653,6 +657,7 @@
 									<br>
 									<br>
 									<button onclick="getNuclearStation()" class="btn btn-default">Get Nuclear Power Station</button>
+									<button onclick="destroyMachine(nuclearStation, 'nuclearStation')" class="btn btn-default destroy hidden">Destroy Nuclear Station</button>
 								</td>
 							</tr>
 							<tr id="magmaticPower" class="hidden">
@@ -670,6 +675,7 @@
 									<br>
 									<br>
 									<button onclick="getMagmatic()" class="btn btn-default">Get Magmatic Dynamo</button>
+									<button onclick="destroyMachine(magmatic, 'magmatic')" class="btn btn-default destroy hidden">Destroy Magmatic Dynamo</button>
 								</td>
 							</tr>
 							<tr id="fusionPower" class="hidden">
@@ -687,6 +693,7 @@
 									<br>
 									<br>
 									<button onclick="getFusionReactor()" class="btn btn-default">Get Fusion Reactor</button>
+									<button onclick="destroyMachine(fusionReactor, 'fusionReactor')" class="btn btn-default destroy hidden">Destroy Fusion Reactor</button>
 								</td>
 							</tr>
 						</table>
@@ -740,6 +747,7 @@
 									<br>
 									<br>
 									<button onclick="getGrinder()" class="btn btn-default">Get Grinder</button>
+									<button onclick="destroyMachine(grinder, 'grinder')" class="btn btn-default destroy hidden">Destroy Grinder</button>
 								</td>
 							</tr>
 							<tr>
@@ -759,6 +767,7 @@
 									<br>
 									<br>
 									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
+									<button onclick="destroyMachine(cubic, 'cubic')" class="btn btn-default destroy hidden">Destroy Cubic Teleposer</button>
 								</td>
 							</tr>
 							<tr id="uraniumTier3" class="hidden">
@@ -778,6 +787,7 @@
 									<br>
 									<br>
 									<button onclick="getEnricher()" class="btn btn-default">Get Uranium Enricher</button>
+									<button onclick="destroyMachine(enricher, 'enricher')" class="btn btn-default destroy hidden">Destroy Uranium Enricher</button>
 								</td>
 							</tr>
 						</table>
@@ -829,6 +839,7 @@
 									<br>
 									<br>
 									<button onclick="getPump()" class="btn btn-default">Get Pump</button>
+									<button onclick="destroyMachine(pump, 'pump')" class="btn btn-default destroy hidden">Destroy Small Pump</button>
 								</td>
 							</tr>
 							<tr id="oilMachine1" class="hidden">
@@ -846,6 +857,7 @@
 									<br>
 									<br>
 									<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
+									<button onclick="destroyMachine(pumpjack, 'pumpjack')" class="btn btn-default destroy hidden">Destroy Pumpjack</button>
 								</td>
 							</tr>
 							<tr id="oilTier3" class="hidden">
@@ -865,6 +877,7 @@
 									<br>
 									<br>
 									<button onclick="getOilField()" class="btn btn-default">Get Oil Field</button>
+									<button onclick="destroyMachine(oilField, 'oilField')" class="btn btn-default destroy hidden">Destroy Oil Field</button>
 								</td>
 							</tr>
 						</table>
@@ -918,6 +931,7 @@
 									<br>
 									<br>
 									<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
+									<button onclick="destroyMachine(miner, 'miner')" class="btn btn-default destroy hidden">Destroy Miner</button>
 								</td>
 							</tr>
 							<tr id="metalMachine1" class="hidden">
@@ -937,6 +951,7 @@
 									<br>
 									<br>
 									<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
+									<button onclick="destroyMachine(heavyDrill, 'heavyDrill')" class="btn btn-default destroy hidden">Destroy Heavy Drill</button>
 								</td>
 							</tr>
 							<tr id="metalTier3" class="hidden">
@@ -956,6 +971,7 @@
 									<br>
 									<br>
 									<button onclick="getGigaDrill()" class="btn btn-default">Get Giga Drill</button>
+									<button onclick="destroyMachine(gigaDrill, 'gigaDrill')" class="btn btn-default destroy hidden">Destroy Giga Drill</button>
 								</td>
 							</tr>
 						</table>
@@ -1009,6 +1025,7 @@
 									<br>
 									<br>
 									<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
+									<button onclick="destroyMachine(gemMiner, 'gemMiner')" class="btn btn-default destroy hidden">Destroy Gem Miner</button>
 								</td>
 							</tr>
 							<tr id="gemMachine1" class="hidden">
@@ -1028,6 +1045,7 @@
 									<br>
 									<br>
 									<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
+									<button onclick="destroyMachine(advancedDrill, 'advancedDrill')" class="btn btn-default destroy hidden">Destroy Advanced Drill</button>
 								</td>
 							</tr>
 							<tr id="gemTier3" class="hidden">
@@ -1047,6 +1065,7 @@
 									<br>
 									<br>
 									<button onclick="getDiamondDrill()" class="btn btn-default">Get Diamond Drill</button>
+									<button onclick="destroyMachine(diamondDrill, 'diamondDrill')" class="btn btn-default destroy hidden">Destroy Diamond Drill</button>
 								</td>
 							</tr>
 						</table>
@@ -1103,6 +1122,7 @@
 									<br>
 									<br>
 									<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
+									<button onclick="destroyMachine(woodburner, 'woodburner')" class="btn btn-default destroy hidden">Destroy Woodburner</button>
 								</td>
 							</tr>
 							<tr id="charcoalMachine1" class="hidden">
@@ -1124,6 +1144,7 @@
 									<br>
 									<br>
 									<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
+									<button onclick="destroyMachine(furnace, 'furnace')" class="btn btn-default destroy hidden">Destroy Furnace</button>
 								</td>
 							</tr>
 							<tr id="charcoalTier3" class="hidden">
@@ -1145,6 +1166,7 @@
 									<br>
 									<br>
 									<button onclick="getKiln()" class="btn btn-default">Get Kiln</button>
+									<button onclick="destroyMachine(kiln, 'kiln')" class="btn btn-default destroy hidden">Destroy Kiln</button>
 								</td>
 							</tr>
 						</table>
@@ -1198,6 +1220,7 @@
 									<br>
 									<br>
 									<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
+									<button onclick="destroyMachine(woodcutter, 'woodcutter')" class="btn btn-default destroy hidden">Destroy Woodcutter</button>
 								</td>
 							</tr>
 							<tr id="woodMachine1" class="hidden">
@@ -1217,6 +1240,7 @@
 									<br>
 									<br>
 									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+									<button onclick="destroyMachine(laserCutter, 'laserCutter')" class="btn btn-default destroy hidden">Destroy Laser Cutter</button>
 								</td>
 							</tr>
 							<tr id="woodTier3" class="hidden">
@@ -1236,6 +1260,7 @@
 									<br>
 									<br>
 									<button onclick="getDeforester()" class="btn btn-default">Get Deforester</button>
+									<button onclick="destroyMachine(deforester, 'deforester')" class="btn btn-default destroy hidden">Destroy Mass Deforester</button>
 								</td>
 							</tr>
 						</table>
@@ -1289,6 +1314,7 @@
 									<br>
 									<br>
 									<button onclick="getMoonWorker()" class="btn btn-default">Get Moon Worker</button>
+									<button onclick="destroyMachine(moonWorker, 'moonWorker')" class="btn btn-default destroy hidden">Fire Moon Worker</button>
 								</td>
 							</tr>
 							<tr>
@@ -1308,6 +1334,7 @@
 									<br>
 									<br>
 									<button onclick="getMoonDrill()" class="btn btn-default">Get Low-Gravity Drill</button>
+									<button onclick="destroyMachine(moonDrill, 'moonDrill')" class="btn btn-default destroy hidden">Destroy Low-Gravity Drill</button>
 								</td>
 							</tr>
 							<tr id="spaceMetalTier3" class="hidden">
@@ -1327,6 +1354,7 @@
 									<br>
 									<br>
 									<button onclick="getMoonQuarry()" class="btn btn-default">Get Moon Quarry</button>
+									<button onclick="destroyMachine(moonQuarry, 'moonQuarry')" class="btn btn-default destroy hidden">Destroy Moon Quarry</button>
 								</td>
 							</tr>
 						</table>
@@ -1380,6 +1408,7 @@
 									<br>
 									<br>
 									<button onclick="getVacuum()" class="btn btn-default">Get Vacuum Cleaner</button>
+									<button onclick="destroyMachine(vacuum, 'vacuum')" class="btn btn-default destroy hidden">Destroy Vacuum Cleaner</button>
 								</td>
 							</tr>
 							<tr>
@@ -1399,6 +1428,7 @@
 									<br>
 									<br>
 									<button onclick="getSuctionExcavator()" class="btn btn-default">Get Suction Excavator</button>
+									<button onclick="destroyMachine(suctionExcavator, 'suctionExcavator')" class="btn btn-default destroy hidden">Destroy Suction Excavator</button>
 								</td>
 							</tr>
 							<tr id="methaneTier3" class="hidden">
@@ -1418,6 +1448,7 @@
 									<br>
 									<br>
 									<button onclick="getSpaceCow()" class="btn btn-default">Get Space Cow</button>
+									<button onclick="destroyMachine(spaceCow, 'spaceCow')" class="btn btn-default destroy hidden">Destroy Space Cow</button>
 								</td>
 							</tr>
 						</table>
@@ -1471,6 +1502,7 @@
 									<br>
 									<br>
 									<button onclick="getExplorer()" class="btn btn-default">Get Explorer</button>
+									<button onclick="destroyMachine(explorer, 'explorer')" class="btn btn-default destroy hidden">Destroy Explorer</button>
 								</td>
 							</tr>
 							<tr>
@@ -1490,6 +1522,7 @@
 									<br>
 									<br>
 									<button onclick="getSpaceMetalDrill()" class="btn btn-default">Get Space Metal Drill</button>
+									<button onclick="destroyMachine(spaceMetalDrill, 'spaceMetalDrill')" class="btn btn-default destroy hidden">Destroy Space Metal Drill</button>
 								</td>
 							</tr>
 							<tr id="titaniumTier3" class="hidden">
@@ -1509,6 +1542,7 @@
 									<br>
 									<br>
 									<button onclick="getPentaDrill()" class="btn btn-default">Get Penta-Drill</button>
+									<button onclick="destroyMachine(pentaDrill, 'pentaDrill')" class="btn btn-default destroy hidden">Destroy Penta-Drill</button>
 								</td>
 							</tr>
 						</table>
@@ -1562,6 +1596,7 @@
 									<br>
 									<br>
 									<button onclick="getDroid()" class="btn btn-default">Get Rocket Droid</button>
+									<button onclick="destroyMachine(droid, 'droid')" class="btn btn-default destroy hidden">Destroy Droid</button>
 								</td>
 							</tr>
 							<tr>
@@ -1581,6 +1616,7 @@
 									<br>
 									<br>
 									<button onclick="getDestroyer()" class="btn btn-default">Get Asteroid Destroyer</button>
+									<button onclick="destroyMachine(destroyer, 'destroyer')" class="btn btn-default destroy hidden">Destroy Destroyer</button>
 								</td>
 							</tr>
 							<tr id="goldTier3" class="hidden">
@@ -1600,6 +1636,7 @@
 									<br>
 									<br>
 									<button onclick="getDeathStar()" class="btn btn-default">Get Death Star Jr</button>
+									<button onclick="destroyMachine(deathStar, 'deathStar')" class="btn btn-default destroy hidden">Destroy Death Star Jr</button>
 								</td>
 							</tr>
 						</table>
@@ -1653,6 +1690,7 @@
 									<br>
 									<br>
 									<button onclick="getScout()" class="btn btn-default">Get Scout Ship</button>
+									<button onclick="destroyMachine(scout, 'scout')" class="btn btn-default destroy hidden">Destroy Scout</button>
 								</td>
 							</tr>
 							<tr>
@@ -1672,6 +1710,7 @@
 									<br>
 									<br>
 									<button onclick="getSpaceLaser()" class="btn btn-default">Get Interplanetary Laser</button>
+									<button onclick="destroyMachine(spaceLaser, 'spaceLaser')" class="btn btn-default destroy hidden">Destroy Space Laser</button>
 								</td>
 							</tr>
 							<tr id="silverTier3" class="hidden">
@@ -1691,6 +1730,7 @@
 									<br>
 									<br>
 									<button onclick="getBertha()" class="btn btn-default">Get Big Bertha</button>
+									<button onclick="destroyMachine(bertha, 'bertha')" class="btn btn-default destroy hidden">Destroy Bertha</button>
 								</td>
 							</tr>
 						</table>
@@ -1744,6 +1784,7 @@
 									<br>
 									<br>
 									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+									<button onclick="destroyMachine(blowtorch, 'blowtorch')" class="btn btn-default destroy hidden">Destroy Empowered Blowtorch</button>
 								</td>
 							</tr>
 							<tr>
@@ -1763,6 +1804,7 @@
 									<br>
 									<br>
 									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
+									<button onclick="destroyMachine(scorcher, 'scorcher')" class="btn btn-default destroy hidden">Destroy Scorcher</button>
 								</td>
 							</tr>
 							<tr id="siliconTier3" class="hidden">
@@ -1782,6 +1824,7 @@
 									<br>
 									<br>
 									<button onclick="getAnnihilator()" class="btn btn-default">Get Annihilator</button>
+									<button onclick="destroyMachine(annihilator, 'annihilator')" class="btn btn-default destroy hidden">Destroy Beach Annihilator</button>
 								</td>
 							</tr>
 						</table>
@@ -1835,6 +1878,7 @@
 									<br>
 									<br>
 									<button onclick="getCrucible()" class="btn btn-default">Get Crucible</button>
+									<button onclick="destroyMachine(crucible, 'crucible')" class="btn btn-default destroy hidden">Destroy Heat Resistant Crucible</button>
 								</td>
 							</tr>
 							<tr>
@@ -1854,6 +1898,7 @@
 									<br>
 									<br>
 									<button onclick="getExtractor()" class="btn btn-default">Get Extractor</button>
+									<button onclick="destroyMachine(extractor, 'extractor')" class="btn btn-default destroy hidden">Destroy Lava Extractor</button>
 								</td>
 							</tr>
 							<tr id="lavaTier3" class="hidden">
@@ -1873,6 +1918,7 @@
 									<br>
 									<br>
 									<button onclick="getExtruder()" class="btn btn-default">Get Extruder</button>
+									<button onclick="destroyMachine(extruder, 'extruder')" class="btn btn-default destroy hidden">Destroy Igneous Extruder</button>
 								</td>
 							</tr>
 						</table>
@@ -1926,6 +1972,7 @@
 									<br>
 									<br>
 									<button onclick="getCollector()" class="btn btn-default">Get Collector</button>
+									<button onclick="destroyMachine(collector, 'collector')" class="btn btn-default destroy hidden">Destroy Collector</button>
 								</td>
 							</tr>
 							<tr>
@@ -1945,6 +1992,7 @@
 									<br>
 									<br>
 									<button onclick="getMagnet()" class="btn btn-default">Get Magnet</button>
+									<button onclick="destroyMachine(magnet, 'magnet')" class="btn btn-default destroy hidden">Destroy Gaseous Magnet</button>
 								</td>
 							</tr>
 							<tr id="hydrogenTier3" class="hidden">
@@ -1964,6 +2012,7 @@
 									<br>
 									<br>
 									<button onclick="getECell()" class="btn btn-default">Get Electrolytic Cell</button>
+									<button onclick="destroyMachine(eCell, 'eCell')" class="btn btn-default destroy hidden">Destroy Electrolytic Cell</button>
 								</td>
 							</tr>
 						</table>
@@ -2017,6 +2066,7 @@
 									<br>
 									<br>
 									<button onclick="getDrone()" class="btn btn-default">Get Drone</button>
+									<button onclick="destroyMachine(drone, 'drone')" class="btn btn-default destroy hidden">Destroy Helium Drone</button>
 								</td>
 							</tr>
 							<tr>
@@ -2036,6 +2086,7 @@
 									<br>
 									<br>
 									<button onclick="getTanker()" class="btn btn-default">Get Tanker</button>
+									<button onclick="destroyMachine(tanker, 'tanker')" class="btn btn-default destroy hidden">Destroy Helium Tanker</button>
 								</td>
 							</tr>
 							<tr id="heliumTier3" class="hidden">
@@ -2055,6 +2106,7 @@
 									<br>
 									<br>
 									<button onclick="getCompressor()" class="btn btn-default">Get Compressor</button>
+									<button onclick="destroyMachine(compressor, 'compressor')" class="btn btn-default destroy hidden">Destroy Compressor</button>
 								</td>
 							</tr>
 						</table>
@@ -2108,6 +2160,7 @@
 									<br>
 									<br>
 									<button onclick="getIcePick()" class="btn btn-default">Get Ice Pickaxe</button>
+									<button onclick="destroyMachine(icePick, 'icePick')" class="btn btn-default destroy hidden">Destroy Ice Pickaxe</button>
 								</td>
 							</tr>
 							<tr>
@@ -2127,6 +2180,7 @@
 									<br>
 									<br>
 									<button onclick="getIceDrill()" class="btn btn-default">Get Ice Drill</button>
+									<button onclick="destroyMachine(iceDrill, 'iceDrill')" class="btn btn-default destroy hidden">Destroy Ice Drill</button>
 								</td>
 							</tr>
 							<tr id="iceTier3" class="hidden">
@@ -2146,6 +2200,7 @@
 									<br>
 									<br>
 									<button onclick="getFreezer()" class="btn btn-default">Get Freezer</button>
+									<button onclick="destroyMachine(freezer, 'freezer')" class="btn btn-default destroy hidden">Destroy Ocean Freezer</button>
 								</td>
 							</tr>
 						</table>
@@ -2205,6 +2260,11 @@
 								Science Production
 							</span>
 						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="scienceps">0</span>/Sec
+							</span>
+						</td>
 						<td style="border:none; vertical-align:middle; text-align:right;">
 							<span id="science">
 								0
@@ -2215,7 +2275,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/technologyIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Technologies
 							</span>
