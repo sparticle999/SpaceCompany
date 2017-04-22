@@ -49,7 +49,7 @@ function refresh(){
 	document.getElementById("gem").innerHTML = commafy(gem);
 	document.getElementById("charcoal").innerHTML = commafy(charcoal);
 	document.getElementById("wood").innerHTML = commafy(wood);
-	document.getElementById("science").innerHTML = commafy(science);
+	document.getElementById("science").innerHTML = commafy(science*10)/10;
 	document.getElementById("rocketFuel").innerHTML = commafy(rocketFuel);
 	document.getElementById("spaceMetal").innerHTML = commafy(spaceMetal);
 	document.getElementById("methane").innerHTML = commafy(methane);
@@ -162,7 +162,7 @@ function refreshPerSec(){
 		heliumps = drone;
 		iceps = icePick;
 	}
-	scienceps = (lab*labGain);
+	scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 	document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
 	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
 	document.getElementById("plasma").className = "";
@@ -572,6 +572,14 @@ function refreshUI(){
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
 	document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
+	document.getElementById("labT2").innerHTML = labT2;
+	document.getElementById("labT2WoodCost").innerHTML = commafy(labT2WoodCost);
+	document.getElementById("labT2GemCost").innerHTML = commafy(labT2GemCost);
+	document.getElementById("labT2MetalCost").innerHTML = commafy(labT2MetalCost);
+	document.getElementById("labT3").innerHTML = labT3;
+	document.getElementById("labT3WoodCost").innerHTML = commafy(labT3WoodCost);
+	document.getElementById("labT3GemCost").innerHTML = commafy(labT3GemCost);
+	document.getElementById("labT3MetalCost").innerHTML = commafy(labT3MetalCost);
 	document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
 	document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
@@ -1255,26 +1263,17 @@ function checkRedCost(){
 		document.getElementById("annihilatorSilverCost").className = "";
 	}
 	
-	if(wood < labWoodCost){
-		document.getElementById("labWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("labWoodCost").className = "";
-	}
-	
-	if(gem < labGemCost){
-		document.getElementById("labGemCost").className = "red";
-	}
-	else{
-		document.getElementById("labGemCost").className = "";
-	}
-	
-	if(metal < labMetalCost){
-		document.getElementById("labMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("labMetalCost").className = "";
-	}
+	turnRed(metal, labMetalCost, "labMetalCost");
+	turnRed(gem, labGemCost, "labGemCost");
+	turnRed(wood, labWoodCost, "labWoodCost");
+
+	turnRed(metal, labT2MetalCost, "labT2MetalCost");
+	turnRed(gem, labT2GemCost, "labT2GemCost");
+	turnRed(wood, labT2WoodCost, "labT2WoodCost");
+
+	turnRed(metal, labT3MetalCost, "labT3MetalCost");
+	turnRed(gem, labT3GemCost, "labT3GemCost");
+	turnRed(wood, labT3WoodCost, "labT3WoodCost");
 
 	if(science < 5){
 		document.getElementById("unlockStorageCost").className = "red";
@@ -1333,6 +1332,9 @@ function checkRedCost(){
 	else{
 		document.getElementById("unlockSolarSystemCost").className = "";
 	}
+
+	turnRed(science, 300, "unlockLabT2");
+	turnRed(science, 300, "unlockLabT3");
 
 	if(science < 1000){
 		document.getElementById("upgradeEngineTechCost").className = "red";
@@ -1803,6 +1805,13 @@ function refreshResearches(){
 	else{
 		if(contains(researched, "unlockMachines")){
 			document.getElementById("unlockDestruction").className = "";
+			available.push("unlockDestruction");
+		}
+	}
+	if(contains(researched, "upgradeResourceTech")){
+		if(contains(available, "unlockLabT2") === false){
+			document.getElementById("unlockLabT2").className = "";
+			available.push("unlockLabT2");
 		}
 	}
 }

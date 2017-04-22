@@ -203,10 +203,17 @@ function save(type){
 		deforesterSiliconCost: deforesterSiliconCost,
 		science: science,
 		lab: lab,
-		labGain: labGain,
 		labWoodCost: labWoodCost,
 		labGemCost: labGemCost,
 		labMetalCost: labMetalCost,
+		labT2: labT2,
+		labT2WoodCost: labT2WoodCost,
+		labT2GemCost: labT2GemCost,
+		labT2MetalCost: labT2MetalCost,
+		labT3: labT3,
+		labT3WoodCost: labT3WoodCost,
+		labT3GemCost: labT3GemCost,
+		labT3MetalCost: labT3MetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		chemicalPlant: chemicalPlant,
@@ -544,10 +551,17 @@ function load(type){
 		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
 		if(typeof savegame.lab !== "undefined") lab = savegame.lab;
-		if(typeof savegame.labGain !== "undefined") labGain = savegame.labGain;
 		if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;
 		if(typeof savegame.labGemCost !== "undefined") labGemCost = savegame.labGemCost;
 		if(typeof savegame.labMetalCost !== "undefined") labMetalCost = savegame.labMetalCost;
+		if(typeof savegame.labT2 !== "undefined") labT2 = savegame.labT2;
+		if(typeof savegame.labT2WoodCost !== "undefined") labT2WoodCost = savegame.labT2WoodCost;
+		if(typeof savegame.labT2GemCost !== "undefined") labT2GemCost = savegame.labT2GemCost;
+		if(typeof savegame.labT2MetalCost !== "undefined") labT2MetalCost = savegame.labT2MetalCost;
+		if(typeof savegame.labT3 !== "undefined") labT3 = savegame.labT3;
+		if(typeof savegame.labT3WoodCost !== "undefined") labT3WoodCost = savegame.labT3WoodCost;
+		if(typeof savegame.labT3GemCost !== "undefined") labT3GemCost = savegame.labT3GemCost;
+		if(typeof savegame.labT3MetalCost !== "undefined") labT3MetalCost = savegame.labT3MetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
