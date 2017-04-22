@@ -128,6 +128,7 @@ function unlockDestruction(){
 	if(science >= 500){
 		science -= 500;
 		destructionUnlocked = true;
+		document.getElementById("unlockDestruction").className = "hidden";
 		for(var i = 0; i < document.getElementsByClassName("destroy").length; i++){
 			document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
 		}
