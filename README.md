@@ -15,7 +15,6 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 v0.4.0 The Hot and Cold Update
 - Added Achievements
-- Added Tiered Laboratories
 - Supercooling with Ice
 - Added Meteorite Tier of resource machines
 - Forest Fryer: Charcoal
@@ -32,6 +31,7 @@ v0.4.0
 - Added Per Second Display on Science
 - Added Ability to Destroy Machines
 - Increased Width of Resources List to reduce vertical scrolling
+- Added Tiered Laboratories
 
 v0.3.5
 - Added Number Formatting for large numbers
