@@ -30,12 +30,10 @@ v0.4.0
 - Added Meteorite
 - Added Dyson Sphere
 - Added Per Second Display on Science
-- Added Ability to Destroy Machines
-- Increased Width of Resources List to reduce vertical scrolling
 
 v0.3.5
 - Added Number Formatting for large numbers
-- Made Selected Tab Blue
+- Made Selected Tab Blue for QoL
 
 v0.3.4
 - Added New Solar Theme

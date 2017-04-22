@@ -67,6 +67,8 @@ function convertPlasma(resource, resourceName){
 	}
 }
 
+var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
+
 function getDyson(){
 	if(titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost){
 		titanium -= dysonTitaniumCost;
