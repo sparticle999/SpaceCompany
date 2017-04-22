@@ -1805,6 +1805,14 @@ function refreshResearches(){
 			document.getElementById("unlockDestruction").className = "";
 		}
 	}
+	if(contains(researched, "unlockLabT2")){
+		var removeThis = researched.indexOf("unlockLabT2")
+		researched.splice(removeThis, 1);
+	}
+	if(contains(available, "unlockLabT2")){
+		var removeThis = available.indexOf("unlockLabT2")
+		available.splice(removeThis, 1);
+	}
 }
 
 function refreshTabs(){
