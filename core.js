@@ -1813,6 +1813,14 @@ function refreshResearches(){
 		var removeThis = available.indexOf("unlockLabT2")
 		available.splice(removeThis, 1);
 	}
+	if(contains(researched, "unlockLabT3")){
+	    var removeThis = researched.indexOf("unlockLabT3")
+	    researched.splice(removeThis, 1);
+	}
+	if(contains(available, "unlockLabT3")){
+	    var removeThis = available.indexOf("unlockLabT3")
+	    available.splice(removeThis, 1);
+	}
 }
 
 function refreshTabs(){
