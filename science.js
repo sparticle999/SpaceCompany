@@ -1,14 +1,14 @@
 // Research Tab
 
-function getLab(){
+function buildLab(){
 	if(wood >= labWoodCost && gem >= labGemCost && metal >= labMetalCost){
 		wood -= labWoodCost;
 		gem -= labGemCost;
 		metal -= labMetalCost;
 		lab += 1;
-		labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
-		labGemCost = Math.floor(15 * Math.pow(1.1,lab));
-		labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+		labWoodCost = Math.floor(10 * Math.pow(1.1,lab + 1));
+		labGemCost = Math.floor(15 * Math.pow(1.1,lab + 1));
+		labMetalCost = Math.floor(20 * Math.pow(1.1,lab + 1));
 		document.getElementById("lab").innerHTML = lab;
 		document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 		document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
@@ -18,41 +18,6 @@ function getLab(){
 	}
 }
 
-function getLabT2(){
-	if(wood >= labT2WoodCost && gem >= labT2GemCost && metal >= labT2MetalCost){
-		wood -= labT2WoodCost;
-		gem -= labT2GemCost;
-		metal -= labT2MetalCost;
-		labT2 += 1;
-		labT2WoodCost = Math.floor(XXXX * Math.pow(1.1,labT2));
-		labT2GemCost = Math.floor(XXXX * Math.pow(1.1,labT2));
-		labT2MetalCost = Math.floor(XXXX * Math.pow(1.1,labT2));
-		document.getElementById("labT2").innerHTML = labT2;
-		document.getElementById("labT2WoodCost").innerHTML = commafy(labT2WoodCost);
-		document.getElementById("labT2GemCost").innerHTML = commafy(labT2GemCost);
-		document.getElementById("labT2MetalCost").innerHTML = commafy(labT2MetalCost);
-		refresh();
-		refreshPerSec();
-	}
-}
-
-function getLabT3(){
-	if(wood >= labT3WoodCost && gem >= labT3GemCost && metal >= labT3MetalCost){
-		wood -= labT3WoodCost;
-		gem -= labT3GemCost;
-		metal -= labT3MetalCost;
-		labT3 += 1;
-		labT3WoodCost = Math.floor(XXXX * Math.pow(1.1,labT3));
-		labT3GemCost = Math.floor(XXXX * Math.pow(1.1,labT3));
-		labT3MetalCost = Math.floor(XXXX * Math.pow(1.1,labT3));
-		document.getElementById("labT3").innerHTML = labT3;
-		document.getElementById("labT3WoodCost").innerHTML = commafy(labT3WoodCost);
-		document.getElementById("labT3GemCost").innerHTML = commafy(labT3GemCost);
-		document.getElementById("labT3MetalCost").innerHTML = commafy(labT3MetalCost);
-		refresh();
-		refreshPerSec();
-	}
-}
 
 function unlockStorage(){
 	if(science >= 5){
@@ -177,36 +142,12 @@ function unlockSolarSystem(){
 	if(science >= 500){
 		science -= 500;
 		document.getElementById("unlockSolarSystem").className = "hidden";
-		document.getElementById("unlockLabT2").className = "";
 		document.getElementById("solarSystemTab").className = "";
 		tabsUnlockedNum += 1;
 		tabsUnlocked.push("solarSystemTab");
-		available.push("unlockLabT2");
 		researched.push("unlockSolarSystem");
 		techsResearchedNum += 1;
 		newUnlock("solarSystem");
-	}
-}
-
-function unlockLabT2(){
-	if(science >= 500){
-		science -= 500;
-		document.getElementById("unlockLabT2").className = "hidden";
-		document.getElementById("unlockLabT3").className = "";
-		document.getElementById("labTier2").className = "";
-		available.push("unlockLabT3");
-		researched.push("unlockLabT2");
-		techsResearchedNum += 1;
-	}
-}
-
-function unlockLabT3(){
-	if(science >= 3000){
-		science -= 3000;
-		document.getElementById("unlockLabT3").className = "hidden";
-		document.getElementById("labTier3").className = "";
-		researched.push("unlockLabT3");
-		techsResearchedNum += 1;
 	}
 }
 
