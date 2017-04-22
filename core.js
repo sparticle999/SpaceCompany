@@ -127,7 +127,7 @@ function refreshPerSec(){
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
-		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*61);
+		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*112);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
@@ -137,7 +137,7 @@ function refreshPerSec(){
 		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
-		uraniumps = grinder + (cubic*9) +(enricher*47);
+		uraniumps = grinder + (cubic*9) +(enricher*61);
 		lavaps = crucible + (extractor*7) + (extruder*43);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
 		heliumps = drone + (tanker*11) + (compressor*57);
