@@ -91,8 +91,9 @@ function getDyson(){
 }
 
 function buildSphere(){
-	if(dyson >= 100){
+	if(dyson >= 100 && rocketFuel >= 250000){
 		dyson -= 100;
+		rocketFuel -= 250000;
 		sphere += 1;
 	}
 }

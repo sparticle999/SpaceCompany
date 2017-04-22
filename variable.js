@@ -90,6 +90,7 @@ var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost =
 var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000;
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0;
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
+var sphere = 0;
 
 
 // Variables not being saved
