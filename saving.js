@@ -381,6 +381,12 @@ function save(type){
 		meteorite: meteorite,
 		meteoriteStorage, meteoriteStorage,
 		meteoriteNextStorage: meteoriteNextStorage,
+		dyson: dyson,
+		dysonTitaniumCost: dysonTitaniumCost,
+		dysonGoldCost: dysonGoldCost,
+		dysonSiliconCost: dysonSiliconCost,
+		dysonMeteoriteCost: dysonMeteoriteCost,
+		dysonIceCost: dysonIceCost,
 	};
 	if(type === "local"){
 		//localStorage.setItem("newSave",JSON.stringify(localSave));
@@ -716,6 +722,12 @@ function load(type){
 		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
+		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
+		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
+		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;
+		if(typeof savegame.dysonSiliconCost !== "undefined") dysonSiliconCost = savegame.dysonSiliconCost;
+		if(typeof savegame.dysonMeteoriteCost !== "undefined") dysonMeteoriteCost = savegame.dysonMeteoriteCost;
+		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 
 	}
 	if(currentTheme === "base"){
