@@ -631,7 +631,12 @@ function refreshUI(){
 	document.getElementById("freezerSpaceMetalCost").innerHTML = commafy(freezerSpaceMetalCost);
 	document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
 	document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
-
+	document.getElementById("dyson").innerHTML = commafy(dyson);
+	document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
+	document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
+	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
+	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
+	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
 }
 
 function checkRedCost(){
@@ -1547,6 +1552,12 @@ function checkRedCost(){
 	turnRed(spaceMetal, freezerSpaceMetalCost, "freezerSpaceMetalCost");
 	turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
+
+	turnRed(titanium, dysonTitaniumCost, "dysonTitaniumCost");
+	turnRed(gold, dysonGoldCost, "dysonGoldCost");
+	turnRed(silicon, dysonSiliconCost, "dysonSiliconCost");
+	turnRed(meteorite, dysonMeteoriteCost, "dysonMeteoriteCost");
+	turnRed(ice, dysonIceCost, "dysonIceCost");
 
 	turnRed(hydrogen, 1500, "unlockPlasmaResearchHydrogenCost");
 	turnRed(uranium, 1500, "unlockPlasmaResearchUraniumCost");

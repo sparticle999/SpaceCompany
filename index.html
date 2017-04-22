@@ -3437,14 +3437,14 @@
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
 					<tr id="unlockPlasmaNav" onclick="activeSolCenterTab('unlockPlasmaNav')" href="#unlockPlasmaResearch" aria-controls="unlockPlasmaResearch" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="border:none; vertical-align:middle;">
+						<td style="border:none; vertical-align:middle;" colspan="2">
 							<span>
 								Plasma
 							</span>
 						</td>
 					</tr>
 					<tr id="unlockEmcNav" onclick="activeSolCenterTab('unlockEmcNav')" href="#unlockEmcResearch" aria-controls="unlockEmcResearch" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
+						<td style="vertical-align:middle;" colspan="2">
 							<span>
 								Energy-Mass Conversion
 							</span>
@@ -3455,6 +3455,9 @@
 							<span>
 								Dyson Sphere
 							</span>
+						</td>
+						<td style="vertical-align:middle;">
+							<span id="dyson">0</span>
 						</td>
 					</tr>
 				</table>
@@ -3651,10 +3654,10 @@
 									<span>
 										This mega-structure cannot possibly be built in one piece. It must be created from a hundred small sections and forged together around the sun.
 										<br>
-										The next section costs: 300,000 Titanium, 100,000 Gold, 200,000 Silicon, 1,000 Meteorite, 100,000 Ice.
+										The next section costs: <span id="dysonTitaniumCost">300,000</span> Titanium, <span id="dysonGoldCost">100,000</span> Gold, <span id="dysonSiliconCost">200,000</span> Silicon, <span id="dysonMeteoriteCost">1,000</span> Meteorite, <span id="dysonIceCost">100,000</span> Ice.
 										<br>
 										<br>
-										<button onclick="XXXX()" class="btn btn-default">XXXX</button>
+										<button onclick="getDyson()" class="btn btn-default">Build Dyson Section</button>
 									</span>
 								</td>
 							</tr>

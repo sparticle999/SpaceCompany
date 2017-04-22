@@ -194,7 +194,7 @@ function unlockMeteorite(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockMeteorite").className = "hidden";
-		document.getElementById("meteoriteNav").className = "";
+		document.getElementById("meteoriteNav").className = "outerPlanet";
 		researched.push("unlockMeteorite");
 		resourcesUnlocked.push("meteoriteNav");
 		newUnlock("resources");

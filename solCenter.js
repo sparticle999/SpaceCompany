@@ -66,3 +66,34 @@ function convertPlasma(resource, resourceName){
 		window[resourceName] += emcAmount;
 	}
 }
+
+var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
+
+function getDyson(){
+	if(titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost){
+		titanium -= dysonTitaniumCost;
+		gold -= dysonGoldCost;
+		silicon -= dysonSiliconCost;
+		meteorite -= dysonMeteoriteCost;
+		ice -= dysonIceCost;
+		dyson += 1;
+		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.1,dyson + 1));
+		dysonGoldCost = Math.floor(100000 * Math.pow(1.1,dyson + 1));
+		dysonSiliconCost = Math.floor(200000 * Math.pow(1.1,dyson + 1));
+		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.1,dyson + 1));
+		dysonIceCost = Math.floor(100000 * Math.pow(1.1,dyson + 1));
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
+		document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
+		document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
+		document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
+		document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
+	}
+}
+
+function buildSphere(){
+	if(dyson >= 100){
+		dyson -= 100;
+		sphere += 1;
+	}
+}

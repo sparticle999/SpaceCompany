@@ -15,8 +15,8 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 v0.4.0 The Hot and Cold Update
 - Added Achievements
+- Added Tiered Laboratories
 - Supercooling with Ice
-- Added Meteorite
 - Added Meteorite Tier of resource machines
 - Forest Fryer: Charcoal
 - Drill of Titans: Titanium
@@ -25,8 +25,9 @@ v0.4.0 The Hot and Cold Update
 
 # Changelog:
 
-v0.3.6
+v0.4.0
 - Added Research from Sol Center
+- Added Meteorite
 - Added Dyson Sphere
 
 v0.3.5
