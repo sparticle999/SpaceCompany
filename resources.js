@@ -606,9 +606,9 @@ function toggleChemicalPlant(){
 }
 
 function destroyMachine(machine, id){
-	if(machine > 0){
-		machine -= 1;
-		document.getElementById(id).innerHTML = machine;
+	if(window[id] > 0){
+		window[id] -= 1;
+		document.getElementById(id).innerHTML = window[id];
 	}
 }
 
