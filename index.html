@@ -2418,6 +2418,23 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockDestruction" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Destruction of Machines
+									</h3>
+									<span>
+										This allows you to destroy machines you have already created. It can be useful when there are more efficient methods of gaining resources, or if you don't have enough energy to support your machines.
+										<br>
+										Costs <span id="unlockDestructionCost">300</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockDestruction()" class="btn btn-default">Unlock Destruction</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="upgradeResourceTech" class="hidden">
 								<td>
 									<h3 class="pointer btn-link">
@@ -2511,7 +2528,7 @@
 									<span>
 										This power technology not only lets you create existing resources, but allows you to make new, and only creatable elements, such as meteorite.
 										<br>
-										Costs <span id="unlockPlasmaCost">60,000</span> Science.
+										Costs <span id="unlockEmcCost">60,000</span> Science.
 									</span>
 									<br>
 									<br>
@@ -2545,7 +2562,7 @@
 									<span>
 										Dysons produce huge amounts of energy and can even make plasma on their own. 
 										<br>
-										Costs <span id="unlockPlasmaCost">100,000</span> Science.
+										Costs <span id="unlockDysonCost">100,000</span> Science.
 									</span>
 									<br>
 									<br>
@@ -3953,7 +3970,7 @@
 												Resources Unlocked: 
 											</td>
 											<td>
-												<span id="resourcesUnlockedNum">3</span> / 18<br>
+												<span id="resourcesUnlockedNum">3</span> / 19<br>
 											</td>
 										</tr>
 										<tr>
@@ -3961,7 +3978,7 @@
 												Technologies Researched: 
 											</td>
 											<td>
-												<span id="techsResearchedNum">0</span> / 9<br>
+												<span id="techsResearchedNum">0</span> / 14<br>
 											</td>
 										</tr>
 										<tr>

@@ -1318,6 +1318,8 @@ function checkRedCost(){
 		document.getElementById("unlockMachinesCost").className = "";
 	}
 
+	turnRed(science, 300, "unlockDestructionCost");
+
 	if(science < 300){
 		document.getElementById("upgradeResourceTechCost").className = "red";
 	}
@@ -1345,6 +1347,11 @@ function checkRedCost(){
 	else{
 		document.getElementById("upgradeSolarTechCost").className = "";
 	}
+
+	turnRed(science, 40000, "unlockPlasmaCost");
+	turnRed(science, 60000, "unlockEmcCost");
+	turnRed(science, 100000, "unlockMeteoriteCost");
+	turnRed(science, 100000, "unlockDysonCost");
 
 	if(metal < 1200){
 		document.getElementById("rocketMetalCost").className = "red";
@@ -1787,6 +1794,16 @@ function refreshResearches(){
 		document.getElementById("gemMachine1").className = "";
 		document.getElementById("charcoalMachine1").className = "";
 		document.getElementById("woodMachine1").className = "";	
+	}
+	if(contains(researched, "unlockDestruction")){
+		for(var i = 0; i < document.getElementsByClassName("destroy").length; i++){
+			document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
+		}
+	}
+	else{
+		if(contains(researched, "unlockMachines")){
+			document.getElementById("unlockDestruction").className = "";
+		}
 	}
 }
 

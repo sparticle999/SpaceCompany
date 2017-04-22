@@ -95,7 +95,7 @@ function unlockMachines(){
 		document.getElementById("charcoalMachine1").className = "";
 		document.getElementById("woodMachine1").className = "";	
 		document.getElementById("unlockSolarSystem").className = "";
-		available.push("unlockSolarSystem", "upgradeResourceTech");
+		available.push("unlockSolarSystem", "upgradeResourceTech", "unlockDestruction");
 		researched.push("unlockMachines");
 		techsResearchedNum += 1;
 		newUnlock("resources");
@@ -119,6 +119,19 @@ function upgradeResourceTech(){
 		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
 		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 		researched.push("upgradeResourceTech");
+		techsResearchedNum += 1;
+		newUnlock("resources");
+	}
+}
+
+function unlockDestruction(){
+	if(science >= 500){
+		science -= 500;
+		destructionUnlocked = true;
+		for(var i = 0; i < document.getElementsByClassName("destroy").length; i++){
+			document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
+		}
+		researched.push("unlockDestruction");
 		techsResearchedNum += 1;
 		newUnlock("resources");
 	}
@@ -170,6 +183,7 @@ function unlockPlasma(){
 			document.getElementById("energyNav" + [i]).style.border = "";
 		}
 		researched.push("unlockPlasma");
+		techsResearchedNum += 1;
 		noBorder.push("energyNav");
 		resourcesUnlocked.push("plasmaNav");
 		newUnlock("resources");
@@ -184,6 +198,7 @@ function unlockEmc(){
 		document.getElementById("unlockMeteorite").className = "";
 		available.push("unlockMeteorite");
 		researched.push("unlockEmc");
+		techsResearchedNum += 1;
 		resourcesUnlocked.push("emcPage");
 		newUnlock("solCenter");
 
@@ -196,6 +211,8 @@ function unlockMeteorite(){
 		document.getElementById("unlockMeteorite").className = "hidden";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
 		researched.push("unlockMeteorite");
+		techsResearchedNum += 1;
+		resourcesUnlockedNum += 1;
 		resourcesUnlocked.push("meteoriteNav");
 		newUnlock("resources");
 	}
@@ -207,6 +224,7 @@ function unlockDyson(){
 		document.getElementById("unlockDyson").className = "hidden";
 		document.getElementById("dysonPage").className = "";
 		researched.push("unlockDyson");
+		techsResearchedNum += 1;
 		resourcesUnlocked.push("dysonPage");
 		newUnlock("solCenter");
 	}

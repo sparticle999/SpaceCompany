@@ -606,8 +606,10 @@ function toggleChemicalPlant(){
 }
 
 function destroyMachine(machine, id){
-	machine -= 1;
-	document.getElementById(id).innerHTML = machine;
+	if(machine > 0){
+		machine -= 1;
+		document.getElementById(id).innerHTML = machine;
+	}
 }
 
 function getHeater(){
