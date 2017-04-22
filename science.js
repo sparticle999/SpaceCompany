@@ -24,9 +24,9 @@ function getLabT2(){
 		gem -= labT2GemCost;
 		metal -= labT2MetalCost;
 		labT2 += 1;
-		labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
-		labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
-		labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
+		labT2WoodCost = Math.floor(XXXX * Math.pow(1.1,labT2));
+		labT2GemCost = Math.floor(XXXX * Math.pow(1.1,labT2));
+		labT2MetalCost = Math.floor(XXXX * Math.pow(1.1,labT2));
 		document.getElementById("labT2").innerHTML = labT2;
 		document.getElementById("labT2WoodCost").innerHTML = commafy(labT2WoodCost);
 		document.getElementById("labT2GemCost").innerHTML = commafy(labT2GemCost);
@@ -130,7 +130,6 @@ function unlockMachines(){
 		document.getElementById("charcoalMachine1").className = "";
 		document.getElementById("woodMachine1").className = "";	
 		document.getElementById("unlockSolarSystem").className = "";
-		document.getElementById("unlockDestruction").className = "";
 		available.push("unlockSolarSystem", "upgradeResourceTech", "unlockDestruction");
 		researched.push("unlockMachines");
 		techsResearchedNum += 1;
