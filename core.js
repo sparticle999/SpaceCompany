@@ -1812,25 +1812,18 @@ function refreshResearches(){
 		}
 	}
 	else{
-		if(contains(researched, "unlockMachines")){
-			document.getElementById("unlockDestruction").className = "";
+		if(contains(available, "unlockDestruction") === false){
+			if(contains(researched, "unlockMachines")){
+				document.getElementById("unlockDestruction").className = "";
+				available.push("unlockDestruction");
+			}
 		}
 	}
-	if(contains(researched, "unlockLabT2")){
-		var removeThis = researched.indexOf("unlockLabT2")
-		researched.splice(removeThis, 1);
-	}
-	if(contains(available, "unlockLabT2")){
-		var removeThis = available.indexOf("unlockLabT2")
-		available.splice(removeThis, 1);
-	}
-	if(contains(researched, "unlockLabT3")){
-	    var removeThis = researched.indexOf("unlockLabT3")
-	    researched.splice(removeThis, 1);
-	}
-	if(contains(available, "unlockLabT3")){
-	    var removeThis = available.indexOf("unlockLabT3")
-	    available.splice(removeThis, 1);
+	if(contains(researched, "unlockSolarSystem")){
+		if(contains(available, "unlockLabT2") === false){
+			document.getElementById("unlockLabT2").className = "";
+			available.push("unlockLabT2");
+		}
 	}
 }
 
