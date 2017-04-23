@@ -131,6 +131,19 @@ function refreshPerSec(){
 	else{
 		plasmaps = 0;
 	}
+	if(energy >= energyps){
+		if(energyLow === true){
+			energyTimer += 0.1;
+			if(energyTimer >= 3){
+				document.getElementById("energyLow").className = "text-muted small ng-binding red hidden";
+				energyLow = false;
+				energyTimer = 0;
+			}
+		}
+	}
+	else{
+		energyTimer = 0;
+	}
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63);
@@ -151,6 +164,10 @@ function refreshPerSec(){
 		iceps = icePick + (iceDrill*9) + (freezer*65);
 	}
 	if(energy <= 10){
+		if(energyLow === false){
+			document.getElementById("energyLow").className = "text-muted small ng-binding red";
+			energyLow = true;
+		}
 		energyps = energyInput;
 		plasmaps = 0;
 		uraniumps = grinder;
