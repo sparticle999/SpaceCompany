@@ -184,13 +184,11 @@ function refreshPerSec(){
 	if(plasma <= 0){
 		document.getElementById("plasma").className = "red";
 	}
-	if(energyps >= 0){
-		if(energyps > 250 || energyps < -250){
-			document.getElementById("energyps").innerHTML = commafy(energyps);
-		}
-		else{
-			document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
-		}
+	if(energyps > 250 || energyps < -250){
+		document.getElementById("energyps").innerHTML = commafy(energyps);
+	}
+	else{
+		document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
 	}
 	else{
 		document.getElementById("energyps").innerHTML = Math.round(energyps);
