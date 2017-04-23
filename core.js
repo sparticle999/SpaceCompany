@@ -185,7 +185,7 @@ function refreshPerSec(){
 		document.getElementById("plasma").className = "red";
 	}
 	if(energyps >= 0){
-		if(energyps > 500){
+		if(energyps > 250 || energyps < -250){
 			document.getElementById("energyps").innerHTML = commafy(energyps);
 		}
 		else{
