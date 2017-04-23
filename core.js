@@ -1287,6 +1287,14 @@ function checkRedCost(){
 		document.getElementById("labMetalCost").className = "";
 	}
 
+	turnRed(metal, labT2MetalCost, "labT2MetalCost");
+	turnRed(gem, labT2GemCost, "labT2GemCost");
+	turnRed(wood, labT2WoodCost, "labT2WoodCost");
+
+	turnRed(metal, labT3MetalCost, "labT3MetalCost");
+	turnRed(gem, labT3GemCost, "labT3GemCost");
+	turnRed(wood, labT3WoodCost, "labT3WoodCost");
+
 	if(science < 5){
 		document.getElementById("unlockStorageCost").className = "red";
 	}
@@ -1824,6 +1832,12 @@ function refreshResearches(){
 			document.getElementById("unlockLabT2").className = "";
 			available.push("unlockLabT2");
 		}
+	}
+	if(contains(researched, "unlockLabT2")){
+		document.getElementById("labTier2").className = "";
+	}
+	if(contains(researched, "unlockLabT3")){
+		document.getElementById("labTier3").className = "";
 	}
 }
 
