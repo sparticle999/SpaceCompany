@@ -40,6 +40,9 @@ function changeEmcAmount(){
 		emcAmount = 100;
 	}
 	else if(emcAmount === 100){
+		emcAmount = 1000;
+	}
+	else if(emcAmount === 1000){
 		emcAmount = 10000;
 	}
 	else{
