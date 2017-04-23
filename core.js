@@ -167,7 +167,7 @@ function refreshPerSec(){
 		heliumps = drone;
 		iceps = icePick;
 	}
-	scienceps = (lab*0.1);
+	scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 	if(scienceps < 500){
 		document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
 	}

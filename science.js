@@ -42,9 +42,9 @@ function getLabT3(){
 		gem -= labT3GemCost;
 		metal -= labT3MetalCost;
 		labT3 += 1;
-		labT3WoodCost = Math.floor(XXXX * Math.pow(1.1,labT3));
-		labT3GemCost = Math.floor(XXXX * Math.pow(1.1,labT3));
-		labT3MetalCost = Math.floor(XXXX * Math.pow(1.1,labT3));
+		labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
+		labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
+		labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
 		document.getElementById("labT3").innerHTML = labT3;
 		document.getElementById("labT3WoodCost").innerHTML = commafy(labT3WoodCost);
 		document.getElementById("labT3GemCost").innerHTML = commafy(labT3GemCost);
