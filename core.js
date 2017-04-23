@@ -184,14 +184,21 @@ function refreshPerSec(){
 	if(plasma <= 0){
 		document.getElementById("plasma").className = "red";
 	}
-	if(energyps > 250 || energyps < -250){
-		document.getElementById("energyps").innerHTML = commafy(energyps);
+	if(energyps >= 0){
+		if(energyps > 250){
+			document.getElementById("energyps").innerHTML = commafy(energyps);
+		}
+		else{
+			document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
+		}
 	}
 	else{
-		document.getElementById("energyps").innerHTML = commafy(energyps*2)/2;
-	}
-	else{
-		document.getElementById("energyps").innerHTML = Math.round(energyps);
+		if(energyps < -250){
+			document.getElementById("energyps").innerHTML = Math.round(energyps);
+		}
+		else{
+			document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
+		}
 	}
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
