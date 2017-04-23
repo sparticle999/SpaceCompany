@@ -9,6 +9,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 - Meteorite: 4th Tier of machine
 - Dark Matter
 - Random Events
+- Some sort of prestige
 - [Change UI from bootstrap to my own]
 
 # RoadMap

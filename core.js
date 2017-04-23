@@ -62,7 +62,7 @@ function refresh(){
 	document.getElementById("helium").innerHTML = commafy(helium);
 	document.getElementById("ice").innerHTML = commafy(ice);
 	document.getElementById("meteorite").innerHTML = commafy(meteorite);
-	if(science < 500){
+	if(science < 100){
 		document.getElementById("science").innerHTML = commafy(science*10)/10;
 	}
 	else{
