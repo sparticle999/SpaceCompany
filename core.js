@@ -49,7 +49,6 @@ function refresh(){
 	document.getElementById("gem").innerHTML = commafy(gem);
 	document.getElementById("charcoal").innerHTML = commafy(charcoal);
 	document.getElementById("wood").innerHTML = commafy(wood);
-	document.getElementById("science").innerHTML = commafy(science);
 	document.getElementById("rocketFuel").innerHTML = commafy(rocketFuel);
 	document.getElementById("spaceMetal").innerHTML = commafy(spaceMetal);
 	document.getElementById("methane").innerHTML = commafy(methane);
@@ -63,6 +62,12 @@ function refresh(){
 	document.getElementById("helium").innerHTML = commafy(helium);
 	document.getElementById("ice").innerHTML = commafy(ice);
 	document.getElementById("meteorite").innerHTML = commafy(meteorite);
+	if(science < 500){
+		document.getElementById("science").innerHTML = commafy(science*10)/10;
+	}
+	else{
+		document.getElementById("science").innerHTML = commafy(science);
+	}
 }
 
 function refreshPerSec(){
@@ -162,8 +167,13 @@ function refreshPerSec(){
 		heliumps = drone;
 		iceps = icePick;
 	}
-	scienceps = (lab*labGain);
-	document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
+	scienceps = (lab*0.1);
+	if(scienceps < 500){
+		document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
+	}
+	else{
+		document.getElementById("scienceps").innerHTML = commafy(scienceps);
+	}
 	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
 	document.getElementById("plasma").className = "";
 	if(plasma <= 0){
