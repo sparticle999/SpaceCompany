@@ -2324,7 +2324,7 @@
 									<span>
 										Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
 										<br>
-										Costs <span id="labT2MetalCost">XXXX</span> Metal, <span id="labT2GemCost">XXXX</span> Gems, <span id="labT2WoodCost">XXXX</span> Wood.
+										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
 									</span>
 									<br>
 									<br>
@@ -2339,9 +2339,9 @@
 										Laboratory T3: <span id="labT3">0</span>
 									</h3>
 									<span>
-										Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
+										Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 10 science per second.
 										<br>
-										Costs <span id="labT3MetalCost">XXXX</span> Metal, <span id="labT3GemCost">XXXX</span> Gems, <span id="labT3WoodCost">XXXX</span> Wood.
+										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
 									</span>
 									<br>
 									<br>
@@ -2497,6 +2497,40 @@
 									<br>
 									<br>
 									<button onclick="unlockSolarSystem()" class="btn btn-default">Unlock Space Travel</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT2" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Tier 2 Science
+									</h3>
+									<span>
+										Researching this will allow you to increase your science production drastically.
+										<br>
+										Costs <span id="unlockLabT2Cost">500</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT2()" class="btn btn-default">Unlock Tier 2 Science</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT3" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Tier 3 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.
+										<br>
+										Costs <span id="unlockLabT3Cost">3,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT3()" class="btn btn-default">Unlock Tier 3 Science</button>
 									<br>
 									<br>
 								</td>
@@ -3761,12 +3795,19 @@
 										Construction
 									</h3>
 									<span>
-										This mega-structure cannot possibly be built in one piece. It must be created from a hundred small sections and forged together around the sun.
+										This mega-structure cannot possibly be built in one piece. It must be created from a hundred small sections and forged together around the sun. The entire sphere, once built, can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place, 2,500 per piece.
 										<br>
 										The next section costs: <span id="dysonTitaniumCost">300,000</span> Titanium, <span id="dysonGoldCost">100,000</span> Gold, <span id="dysonSiliconCost">200,000</span> Silicon, <span id="dysonMeteoriteCost">1,000</span> Meteorite, <span id="dysonIceCost">100,000</span> Ice.
 										<br>
 										<br>
 										<button onclick="getDyson()" class="btn btn-default">Build Dyson Section</button>
+										<br>
+										<br>
+										<br>
+										You currently have <span id="dysonPieces">0</span> out of 100 pieces.
+										<br>
+										<br>
+										<button onclick="getSphere()" class="btn btn-default">Construct Sphere</button>
 									</span>
 								</td>
 							</tr>
@@ -4285,7 +4326,7 @@
 										I want to help. How do I do that?
 									</h4>
 									<span>
-										Help is always appreciated! You can look over my code in <a href="github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, sumbit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
+										Help is always appreciated! You can look over my code in <a href="http://github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, sumbit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
 									</span>
 								</td>
 							</tr>
@@ -4296,6 +4337,22 @@
 									</h4>
 									<span>
 										No. I didn't want to make this game pay-to-win and make people feel that they had to pay money to get further in the game because this makes it less appealing to those who don't want to donate.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>
+										Where else can I find the game?
+									</h4>
+									<span>
+										You can find the game on any of these sites:
+										<br>
+										<a href="http://reddit.com">Reddit: </a><a href="https://www.reddit.com/r/incremental_games/comments/65xap3/space_company_v030_beta_release/">Post</a>
+										<br>
+										<a href="http://github.com">GitHub: </a><a href="https://github.com/sparticle999/SpaceCompany/">Game Page</a>
+										<br>
+										<a href="https://plaza.dsolver.ca/">The Plaza: </a><a href="https://plaza.dsolver.ca/games/space-company">Game</a>
 									</span>
 								</td>
 							</tr>

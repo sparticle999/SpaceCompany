@@ -206,6 +206,14 @@ function save(type){
 		labWoodCost: labWoodCost,
 		labGemCost: labGemCost,
 		labMetalCost: labMetalCost,
+		labT2: labT2,
+		labT2WoodCost: labT2WoodCost,
+		labT2GemCost: labT2GemCost,
+		labT2MetalCost: labT2MetalCost,
+		labT3: labT3,
+		labT3WoodCost: labT3WoodCost,
+		labT3GemCost: labT3GemCost,
+		labT3MetalCost: labT3MetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		chemicalPlant: chemicalPlant,
@@ -386,6 +394,7 @@ function save(type){
 		dysonSiliconCost: dysonSiliconCost,
 		dysonMeteoriteCost: dysonMeteoriteCost,
 		dysonIceCost: dysonIceCost,
+		sphere: sphere,
 	};
 	if(type === "local"){
 		//localStorage.setItem("newSave",JSON.stringify(localSave));
@@ -546,6 +555,14 @@ function load(type){
 		if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;
 		if(typeof savegame.labGemCost !== "undefined") labGemCost = savegame.labGemCost;
 		if(typeof savegame.labMetalCost !== "undefined") labMetalCost = savegame.labMetalCost;
+		if(typeof savegame.labT2 !== "undefined") labT2 = savegame.labT2;
+		if(typeof savegame.labT2WoodCost !== "undefined") labT2WoodCost = savegame.labT2WoodCost;
+		if(typeof savegame.labT2GemCost !== "undefined") labT2GemCost = savegame.labT2GemCost;
+		if(typeof savegame.labT2MetalCost !== "undefined") labT2MetalCost = savegame.labT2MetalCost;
+		if(typeof savegame.labT3 !== "undefined") labT3 = savegame.labT3;
+		if(typeof savegame.labT3WoodCost !== "undefined") labT3WoodCost = savegame.labT3WoodCost;
+		if(typeof savegame.labT3GemCost !== "undefined") labT3GemCost = savegame.labT3GemCost;
+		if(typeof savegame.labT3MetalCost !== "undefined") labT3MetalCost = savegame.labT3MetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
@@ -726,6 +743,7 @@ function load(type){
 		if(typeof savegame.dysonSiliconCost !== "undefined") dysonSiliconCost = savegame.dysonSiliconCost;
 		if(typeof savegame.dysonMeteoriteCost !== "undefined") dysonMeteoriteCost = savegame.dysonMeteoriteCost;
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
+		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 
 	}
 	if(currentTheme === "base"){
