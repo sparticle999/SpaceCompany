@@ -117,9 +117,6 @@ function refreshPerSec(){
 	if(charcoalToggled === true){
 		energyOutput += (furnace*3)+(kiln*13);
 	}
-	if(energy <= 1){
-		energyps = energyInput;
-	}
 	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
 		if(plasma + heater/10 <= 100000){
 			energyOutput += (heater*1000);
@@ -154,6 +151,7 @@ function refreshPerSec(){
 		iceps = icePick + (iceDrill*9) + (freezer*65);
 	}
 	if(energy <= 10){
+		energyps = energyInput;
 		plasmaps = 0;
 		uraniumps = grinder;
 		oilps = pump;
