@@ -168,7 +168,7 @@ function refreshPerSec(){
 		iceps = icePick;
 	}
 	scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
-	if(scienceps < 500){
+	if(scienceps < 100){
 		document.getElementById("scienceps").innerHTML = commafy(scienceps*10)/10;
 	}
 	else{
@@ -582,6 +582,14 @@ function refreshUI(){
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
 	document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
+	document.getElementById("labT2").innerHTML = labT2;
+	document.getElementById("labT2WoodCost").innerHTML = commafy(labT2WoodCost);
+	document.getElementById("labT2GemCost").innerHTML = commafy(labT2GemCost);
+	document.getElementById("labT2MetalCost").innerHTML = commafy(labT2MetalCost);
+	document.getElementById("labT3").innerHTML = labT3;
+	document.getElementById("labT3WoodCost").innerHTML = commafy(labT3WoodCost);
+	document.getElementById("labT3GemCost").innerHTML = commafy(labT3GemCost);
+	document.getElementById("labT3MetalCost").innerHTML = commafy(labT3MetalCost);
 	document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
 	document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
