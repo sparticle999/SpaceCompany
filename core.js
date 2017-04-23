@@ -101,11 +101,11 @@ function refreshPerSec(){
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
-	energyOutput += (oilField*17)+(gigaDrill*13)+(diamondDrill*11)+(deforester*20);
-	energyOutput += (moonQuarry*64)+(spaceCow*72)+(pentaDrill*48)+(deathStar*72)+(bertha*69)+(annihilator*62);
-	energyOutput += (enricher*236)+(extruder*326)+(eCell*366)+(compressor*297)+(freezer*324);
+	energyOutput += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
+	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
+	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 	if(charcoalToggled === true){
-		energyOutput += (furnace*3)+(kiln*23);
+		energyOutput += (furnace*3)+(kiln*13);
 	}
 	if(energy <= 1){
 		energyps = energyInput;
@@ -126,10 +126,10 @@ function refreshPerSec(){
 	}
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
-		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*23);
-		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*112);
+		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63);
+		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89);
-		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*27);
+		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
@@ -675,7 +675,7 @@ function checkRedCost(){
 			turnRed(0 - charcoalEngine, 0, "charcoalps");
 		}
 	}
-	turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45), 0, "woodps");
+	turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56), 0, "woodps");
 	turnRed(spaceMetalps, 0, "spaceMetalps");
 	turnRed(methaneps - methaneStation*6, 0, "methaneps");
 	turnRed(lavaps - magmatic*11, 0, "lavaps");
