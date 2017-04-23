@@ -42,8 +42,13 @@ function commafy(input){
 }
 
 function refresh(){
+	if(energy < 250 && energy > -250){
+		document.getElementById("energy").innerHTML = commafy(energy*2)/2;
+	}
+	else{
+		document.getElementById("energy").innerHTML = commafy(energy);
+	}
 	document.getElementById("plasma").innerHTML = commafy(plasma);
-	document.getElementById("energy").innerHTML = commafy(energy);
 	document.getElementById("oil").innerHTML = commafy(oil);
 	document.getElementById("metal").innerHTML = commafy(metal);
 	document.getElementById("gem").innerHTML = commafy(gem);
