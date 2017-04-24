@@ -153,7 +153,7 @@ function refreshPerSec(){
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
-		titaniumps = explorer + (spaceMetalDrill*6) + (pentaDrill*32);
+		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49);
 		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
