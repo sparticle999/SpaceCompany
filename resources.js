@@ -1379,9 +1379,9 @@ function getAnnihilator(){
 		annihilatorGemCost = Math.floor(8300 * Math.pow(1.1,annihilator));
 		annihilatorSilverCost = Math.floor(2400 * Math.pow(1.1,annihilator));
 		document.getElementById("annihilator").innerHTML = annihilator;
-		document.getElementById("scorcherSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
-		document.getElementById("scorcherGemCost").innerHTML = commafy(annihilatorGemCost);
-		document.getElementById("scorcherOilCost").innerHTML = commafy(annihilatorSilverCost);
+		document.getElementById("annihilatorSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
+		document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
+		document.getElementById("annihilatorOilCost").innerHTML = commafy(annihilatorSilverCost);
 		refresh();
 		refreshPerSec();
 		tier3 += 1;
