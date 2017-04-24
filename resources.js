@@ -625,7 +625,6 @@ function getHeater(){
 		document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 		document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -641,7 +640,6 @@ function getCharcoalEngine(){
 		document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 		document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -657,7 +655,6 @@ function getSolarPanel(){
 		document.getElementById("solarPanelMetalCost").innerHTML = commafy(solarPanelMetalCost);
 		document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -673,7 +670,6 @@ function getMethaneStation(){
 		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -689,7 +685,6 @@ function getNuclearStation(){
 		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
 		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
 		refresh();
-		refreshPerSec();
 		tier4 += 1;
 	}
 }
@@ -709,7 +704,6 @@ function getMagmatic(){
 		document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
 		document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
 		refresh();
-		refreshPerSec();
 		tier5 += 1;
 	}
 }
@@ -728,7 +722,6 @@ function getFusionReactor(){
 		document.getElementById("fusionReactorTitaniumCost").innerHTML = commafy(fusionReactorTitaniumCost);
 		document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier6 += 1;
 	}
 }
@@ -747,7 +740,6 @@ function getGrinder(){
 		document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
 		document.getElementById("grinderGoldCost").innerHTML = commafy(grinderGoldCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -766,7 +758,6 @@ function getCubic(){
 		document.getElementById("cubicSpaceMetalCost").innerHTML = commafy(cubicSpaceMetalCost);
 		document.getElementById("cubicOilCost").innerHTML = commafy(cubicOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -785,7 +776,6 @@ function getEnricher(){
 		document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
 		document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -801,7 +791,6 @@ function getPump(){
 		document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
 		document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -820,7 +809,6 @@ function getPumpjack(){
 		document.getElementById("pumpjackGemCost").innerHTML = commafy(pumpjackGemCost);
 		document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -839,7 +827,6 @@ function getOilField(){
 		document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
 		document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -865,7 +852,6 @@ function getMiner(){
 			}
 		}
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -884,7 +870,6 @@ function getHeavyDrill(){
 		document.getElementById("heavyDrillGemCost").innerHTML = commafy(heavyDrillGemCost);
 		document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -903,7 +888,6 @@ function getGigaDrill(){
 		document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
 		document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -919,7 +903,6 @@ function getGemMiner(){
 		document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
 		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -938,7 +921,6 @@ function getAdvancedDrill(){
 		document.getElementById("advancedDrillGemCost").innerHTML = commafy(advancedDrillGemCost);
 		document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -957,7 +939,6 @@ function getDiamondDrill(){
 		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
 		document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -973,7 +954,6 @@ function getWoodburner(){
 		document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
 		document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -992,7 +972,6 @@ function getFurnace(){
 		document.getElementById("furnaceWoodCost").innerHTML = commafy(furnaceWoodCost);
 		document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1011,7 +990,6 @@ function getKiln(){
 		document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
 		document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1027,7 +1005,6 @@ function getWoodcutter(){
 		document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 		document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1046,7 +1023,6 @@ function getLaserCutter(){
 		document.getElementById("laserCutterGemCost").innerHTML = commafy(laserCutterGemCost);
 		document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1065,7 +1041,6 @@ function getDeforester(){
 		document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
 		document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1078,7 +1053,6 @@ function getMoonWorker(){
 		document.getElementById("moonWorker").innerHTML = moonWorker;
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1097,7 +1071,6 @@ function getMoonDrill(){
 		document.getElementById("moonDrillGemCost").innerHTML = commafy(moonDrillGemCost);
 		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1116,7 +1089,6 @@ function getMoonQuarry(){
 		document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
 		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1132,7 +1104,6 @@ function getVacuum(){
 		document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1151,7 +1122,6 @@ function getSuctionExcavator(){
 		document.getElementById("suctionExcavatorGemCost").innerHTML = commafy(suctionExcavatorGemCost);
 		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1170,7 +1140,6 @@ function getSpaceCow(){
 		document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
 		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1183,7 +1152,6 @@ function getExplorer(){
 		document.getElementById("explorer").innerHTML = explorer;
 		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1202,7 +1170,6 @@ function getSpaceMetalDrill(){
 		document.getElementById("spaceMetalDrillGemCost").innerHTML = commafy(spaceMetalDrillGemCost);
 		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1221,7 +1188,6 @@ function getPentaDrill(){
 		document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
 		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1237,7 +1203,6 @@ function getDroid(){
 		document.getElementById("droidSpaceMetalCost").innerHTML = commafy(droidSpaceMetalCost);
 		document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1256,7 +1221,6 @@ function getDestroyer(){
 		document.getElementById("destroyerGemCost").innerHTML = commafy(destroyerGemCost);
 		document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1275,7 +1239,6 @@ function getDeathStar(){
 		document.getElementById("deathStarSilverCost").innerHTML = commafy(deathStarSilverCost);
 		document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1291,7 +1254,6 @@ function getScout(){
 		document.getElementById("scoutSpaceMetalCost").innerHTML = commafy(scoutSpaceMetalCost);
 		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1310,7 +1272,6 @@ function getSpaceLaser(){
 		document.getElementById("spaceLaserGemCost").innerHTML = commafy(spaceLaserGemCost);
 		document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1329,7 +1290,6 @@ function getBertha(){
 		document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
 		document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1345,7 +1305,6 @@ function getBlowtorch(){
 		document.getElementById("blowtorchSpaceMetalCost").innerHTML = commafy(blowtorchSpaceMetalCost);
 		document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1364,7 +1323,6 @@ function getScorcher(){
 		document.getElementById("scorcherGemCost").innerHTML = commafy(scorcherGemCost);
 		document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1383,7 +1341,6 @@ function getAnnihilator(){
 		document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
 		document.getElementById("annihilatorOilCost").innerHTML = commafy(annihilatorSilverCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1399,7 +1356,6 @@ function getCrucible(){
 		document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);
 		document.getElementById("crucibleGemCost").innerHTML = commafy(crucibleGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1418,7 +1374,6 @@ function getExtractor(){
 		document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
 		document.getElementById("extractorSiliconCost").innerHTML = commafy(extractorSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1437,7 +1392,6 @@ function getExtruder(){
 		document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
 		document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1453,7 +1407,6 @@ function getCollector(){
 		document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 		document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1472,7 +1425,6 @@ function getMagnet(){
 		document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
 		document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1491,7 +1443,6 @@ function getECell(){
 		document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
 		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1507,7 +1458,6 @@ function getDrone(){
 		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1526,7 +1476,6 @@ function getTanker(){
 		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
 		document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1545,7 +1494,6 @@ function getCompressor(){
 		document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
 		document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
@@ -1561,7 +1509,6 @@ function getIcePick(){
 		document.getElementById("icePickSpaceMetalCost").innerHTML = commafy(icePickSpaceMetalCost);
 		document.getElementById("icePickGemCost").innerHTML = commafy(icePickGemCost);
 		refresh();
-		refreshPerSec();
 		tier1 += 1;
 	}
 }
@@ -1580,7 +1527,6 @@ function getIceDrill(){
 		document.getElementById("iceDrillTitaniumCost").innerHTML = commafy(iceDrillTitaniumCost);
 		document.getElementById("iceDrillSiliconCost").innerHTML = commafy(iceDrillSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier2 += 1;
 	}
 }
@@ -1599,7 +1545,6 @@ function getFreezer(){
 		document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
 		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
 		refresh();
-		refreshPerSec();
 		tier3 += 1;
 	}
 }
