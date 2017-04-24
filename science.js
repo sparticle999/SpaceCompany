@@ -270,11 +270,12 @@ function unlockMeteorite(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockMeteorite").className = "hidden";
+		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
-		resourcesUnlocked.push("meteoriteNav");
+		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
 		newUnlock("resources");
 	}
 }

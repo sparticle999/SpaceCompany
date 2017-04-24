@@ -1872,6 +1872,12 @@ function refreshResearches(){
 	if(contains(researched, "unlockLabT3")){
 		document.getElementById("labTier3").className = "";
 	}
+	if(contains(researched, "unlockMeteorite")){
+		if(contains(resourcesUnlocked, "meteoriteEMC") === false){
+			document.getElementById("meteoriteEMC").className = "";
+			resourcesUnlocked.push("meteoriteEMC");
+		}
+	}
 }
 
 function refreshTabs(){
