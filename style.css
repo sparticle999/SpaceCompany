@@ -19,3 +19,19 @@
 .theader{
 	font-size:20px;
 }
+
+.achievementTD{
+	padding: 0px;
+	empty-cells: show;
+}
+
+.achievementTD div{
+	width: 64px;
+	height:64px;
+	overflow: hidden;
+}
+
+.achievementTD div img{
+	width: 64px;
+	height:64px;
+}
