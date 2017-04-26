@@ -381,6 +381,7 @@ function refreshUI(){
 	}
 
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
+	document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
@@ -456,6 +457,10 @@ function refreshUI(){
 	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 	document.getElementById("heaterSiliconCost").innerHTML = heaterSiliconCost;
+	document.getElementById("battery").innerHTML = battery;
+	document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
+	document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
+	document.getElementById("batterySpaceMetalCost").innerHTML = batterySpaceMetalCost;
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
