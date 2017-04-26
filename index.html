@@ -140,6 +140,10 @@
 							<span id="energy">
 								0
 							</span>
+							<span id="energyStorageBox" class="hidden">
+								/
+								<span id="energyStorage">50</span>
+							</span>
 						</td>
 					</tr>
 					<tr id="uraniumNav" onclick="activeResourceTab('uraniumNav')" class="hidden" href="#uraniumTab" aria-controls="uraniumTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -591,6 +595,21 @@
 									</span>
 									<br>
 									<br>
+								</td>
+							</tr>
+							<tr id="batteries">
+								<td>
+									<h3 class="pointer btn-link">
+										Batteries: <span id="battery">0</span>
+									</h3>
+									<span>
+										Batteries increase your energy storage by 50,000 per battery built.
+										<br>
+										Costs <span id="batteryMetalCost">500,000</span> Metal, <span id="batteryGemCost">500,000</span> Gems, <span id="batterySpaceMetalCost">300,000</span> Space Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBattery()" class="btn btn-default">Get Battery</button>
 								</td>
 							</tr>
 							<tr>
@@ -2548,7 +2567,7 @@
 									<span>
 										Upgrading Engine Technology will make Charcoal engines produce 4 Energy per second instead of 2.
 										<br>
-										Costs <span id="upgradeEngineTechCost">1000</span> Science.
+										Costs <span id="upgradeEngineTechCost">1,000</span> Science.
 									</span>
 									<br>
 									<br>
@@ -2565,11 +2584,28 @@
 									<span>
 										Upgrading Solar Technology will make solar panels produce 3 Energy per second instead of 1.5.
 										<br>
-										Costs <span id="upgradeSolarTechCost">5000</span> Science.
+										Costs <span id="upgradeSolarTechCost">5,000</span> Science.
 									</span>
 									<br>
 									<br>
 									<button onclick="upgradeSolarTech()" class="btn btn-default">Upgrade Solar Tech</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockBatteries" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Batteries
+									</h3>
+									<span>
+										Batteries improve the amount of energy you can store at once.
+										<br>
+										Costs <span id="unlockBatteriesCost">15,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockBatteries()" class="btn btn-default">Unlock Batteries</button>
 									<br>
 									<br>
 								</td>
@@ -4109,49 +4145,49 @@
 									</h3>
 									<table class="table">
 										<tr>
-											<td class="achievementTD" style="border:none;" style="border:none;">
+											<td class="achievementTD achieved" style="border:none;" data-toggle="tooltip" title="Build 1 Miner">
 												<div>
 													<img src="Icons/metalIcon.png">T1 x1
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 10 Miners">
 												<div>
 													<img src="Icons/metalIcon.png">T1 x10
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 100 Miners">
 												<div>
 													<img src="Icons/metalIcon.png">T1 x100
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 1 Heavy Drill">
 												<div>
 													<img src="Icons/metalIcon.png">T2 x1
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 10 Heavy Drills">
 												<div>
 													<img src="Icons/metalIcon.png">T2 x10
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 100 Heavy Drills">
 												<div>
 													<img src="Icons/metalIcon.png">T2 x100
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 1 Giga Drill">
 												<div>
 													<img src="Icons/metalIcon.png">T3 x1
 												</div>
 											</td>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 10 Giga Drills">
 												<div>
 													<img src="Icons/metalIcon.png">T3 x10
 												</div>
 											</td>
 										</tr>
 										<tr>
-											<td class="achievementTD" style="border:none;">
+											<td class="achievementTD" style="border:none;" data-toggle="tooltip" title="Build 100 Giga Drills">
 												<div>
 													<img src="Icons/metalIcon.png">T3 x100
 												</div>

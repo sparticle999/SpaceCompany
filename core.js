@@ -1872,6 +1872,12 @@ function refreshResearches(){
 	if(contains(researched, "unlockLabT3")){
 		document.getElementById("labTier3").className = "";
 	}
+	if(contains(researched, "upgradeSolarTech")){
+		if(contains(available, "unlockBatteries") === false){
+			document.getElementById("unlockBatteries").className ="";
+			available.push("unlockBatteries");
+		}
+	}
 	if(contains(researched, "unlockMeteorite")){
 		if(contains(resourcesUnlocked, "meteoriteEMC") === false){
 			document.getElementById("meteoriteEMC").className = "";
@@ -1983,6 +1989,11 @@ $('.collapseOuter').click(function(){
     }
 });
 
+//ToolTips
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
 function updateTheme(){
 	currentTheme = document.getElementById("themeSelector").options[themeSelector.selectedIndex].value;
     document.getElementById('theme_css').href = 'styles/'+currentTheme+'-bootstrap.min.css';
@@ -1991,6 +2002,8 @@ function updateTheme(){
 window.onload = function(){
 	load('local');
 };
+
+//Time Loops
 
 window.setInterval(function(){
 	refreshPerSec();

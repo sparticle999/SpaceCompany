@@ -1,9 +1,9 @@
 function gainResources(){
-	if(energy + energyps/10 <= 100000){
+	if(energy + energyps/10 <= 100000 + 50000*battery){
 		energy += energyps/10;
 	}
 	else{
-		energy = 100000;
+		energy = 100000 + 50000*battery;
 	}
 	if(uranium + uraniumps/10 < uraniumStorage){
 		uranium += uraniumps/10;
@@ -624,6 +624,24 @@ function getHeater(){
 		document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 		document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 		document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
+		refresh();
+		tier1 += 1;
+	}
+}
+
+function getBattery(){
+	if(metal >= batteryMetalCost && gem >= batteryGemCost && spaceMetal >= batterySpaceMetalCost ){
+		metal -= batteryMetalCost;
+		gem -= batteryGemCost;
+		spaceMetal -= batterySpaceMetalCost;
+		battery += 1;
+		batteryMetalCost = Math.floor(500000 * Math.pow(1.1,battery));
+		batteryGemCost = Math.floor(500000 * Math.pow(1.1,battery));
+		batterySpaceMetalCost = Math.floor(300000 * Math.pow(1.1,battery));
+		document.getElementById("battery").innerHTML = battery;
+		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
+		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
+		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
 		refresh();
 		tier1 += 1;
 	}
@@ -1339,7 +1357,7 @@ function getAnnihilator(){
 		document.getElementById("annihilator").innerHTML = annihilator;
 		document.getElementById("annihilatorSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
 		document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
-		document.getElementById("annihilatorOilCost").innerHTML = commafy(annihilatorSilverCost);
+		document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
 		refresh();
 		tier3 += 1;
 	}

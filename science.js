@@ -227,9 +227,24 @@ function upgradeSolarTech(){
 	if(science >= 5000){
 		science -= 5000;
 		document.getElementById("upgradeSolarTech").className = "hidden";
+		document.getElementById("unlockBatteries").className = "";
 		solarPanelOutput = 3;
 		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
 		researched.push("upgradeSolarTech");
+		available.push("unlockBatteries");
+		techsResearchedNum += 1;
+		newUnlock("resources");
+	}
+}
+
+function unlockBatteries(){
+	if(science >= 15000){
+		science -= 15000;
+		document.getElementById("unlockBatteries").className = "hidden";
+		document.getElementById("batteries").className = "";
+		document.getElementById("energyStorageBox").className = "";
+		researched.push("unlockBatteries");
+		resourcesUnlocked.push("batteries", "energyStorageBox");
 		techsResearchedNum += 1;
 		newUnlock("resources");
 	}

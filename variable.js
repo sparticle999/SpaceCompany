@@ -11,7 +11,8 @@ var activated = []; var techUnlocked = false;
 
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
-var energy = 0; var energyps = 0;
+var energy = 0; var energyps = 0; var energyStorage = 100000;
+var battery = 0; var batteryMetalCost = 500000; var batteryGemCost = 500000; var batterySpaceMetalCost = 300000;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
 var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 1.5;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 110; var methaneStationTitaniumCost = 90;
