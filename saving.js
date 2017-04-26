@@ -102,6 +102,10 @@ function save(type){
 		heaterSiliconCost: heaterSiliconCost,
 		heaterToggled: heaterToggled,
 		energy: energy,
+		battery: battery,
+		batteryMetalCost: batteryMetalCost,
+		batteryGemCost: batteryGemCost,
+		batterySpaceMetalCost: batterySpaceMetalCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -451,6 +455,10 @@ function load(type){
 		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
+		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
+		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;
+		if(typeof savegame.batteryGemCost !== "undefined") batteryGemCost = savegame.batteryGemCost;
+		if(typeof savegame.batterySpaceMetalCost !== "undefined") batterySpaceMetalCost = savegame.batterySpaceMetalCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
