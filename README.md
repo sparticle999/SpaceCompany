@@ -33,6 +33,7 @@ v0.4.0
 - Added Ability to Destroy Machines
 - Increased Width of Resources List to reduce vertical scrolling
 - Added Tiered Laboratories
+- Added Batteries
 
 v0.3.5
 - Added Number Formatting for large numbers
