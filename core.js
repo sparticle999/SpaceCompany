@@ -795,6 +795,10 @@ function checkRedCost(){
 	turnRed(gem, heaterGemCost, "heaterGemCost");
 	turnRed(silicon, heaterSiliconCost, "heaterSiliconCost");
 
+	turnRed(metal, batteryMetalCost, "batteryMetalCost");
+	turnRed(gem, batteryGemCost, "batteryGemCost");
+	turnRed(spaceMetal, batterySpaceMetalCost, "batterySpaceMetalCost");
+
 	turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
 
