@@ -215,6 +215,9 @@ function refreshPerSec(){
 			document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
 		}
 	}
+	if(energy >= 100000 + 50000*battery){
+		document.getElementById("energy").className = "green";
+	}
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
 	if(uranium === 0){
