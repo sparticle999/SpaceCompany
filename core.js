@@ -460,7 +460,7 @@ function refreshUI(){
 	document.getElementById("battery").innerHTML = battery;
 	document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 	document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
-	document.getElementById("batterySpaceMetalCost").innerHTML = batterySpaceMetalCost;
+	document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
@@ -1996,7 +1996,7 @@ $('.collapseOuter').click(function(){
 
 //ToolTips
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
 });
 
 function updateTheme(){
