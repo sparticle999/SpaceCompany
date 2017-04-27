@@ -1299,6 +1299,21 @@ function getMoonWorker(){
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
 		tier1 += 1;
+		if(moonWorker === 1){
+			document.getElementById("Build 1 Native Moon Worker").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Native Moon Worker");
+		}
+		else if(moonWorker === 10){
+			document.getElementById("Build 10 Native Moon Workers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Native Moon Workers");
+		}
+		else if(moonWorker === 100){
+			document.getElementById("Build 100 Native Moon Workers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Native Moon Workers");
+		}
 	}
 }
 
@@ -1317,6 +1332,21 @@ function getMoonDrill(){
 		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
 		refresh();
 		tier2 += 1;
+		if(moonDrill === 1){
+			document.getElementById("Build 1 Low-Gravity Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Low-Gravity Drill");
+		}
+		else if(moonDrill === 10){
+			document.getElementById("Build 10 Low-Gravity Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Low-Gravity Drills");
+		}
+		else if(moonDrill === 100){
+			document.getElementById("Build 100 Low-Gravity Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Low-Gravity Drills");
+		}
 	}
 }
 
@@ -1335,6 +1365,21 @@ function getMoonQuarry(){
 		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
 		refresh();
 		tier3 += 1;
+		if(moonQuarry === 1){
+			document.getElementById("Build 1 Moon Quarry").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Moon Quarry");
+		}
+		else if(moonQuarry === 10){
+			document.getElementById("Build 10 Moon Quarries").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Moon Quarries");
+		}
+		else if(moonQuarry === 100){
+			document.getElementById("Build 100 Moon Quarries").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Moon Quarries");
+		}
 	}
 }
 
@@ -1350,6 +1395,21 @@ function getVacuum(){
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
 		tier1 += 1;
+		if(vacuum === 1){
+			document.getElementById("Build 1 Vacuum Cleaner").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Vacuum Cleaner");
+		}
+		else if(vacuum === 10){
+			document.getElementById("Build 10 Vacuum Cleaners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Vacuum Cleaners");
+		}
+		else if(vacuum === 100){
+			document.getElementById("Build 100 Vacuum Cleaners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Vacuum Cleaners");
+		}
 	}
 }
 
@@ -1368,6 +1428,21 @@ function getSuctionExcavator(){
 		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
 		refresh();
 		tier2 += 1;
+		if(suctionExcavator === 1){
+			document.getElementById("Build 1 Suction Excavator").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Suction Excavator");
+		}
+		else if(suctionExcavator === 10){
+			document.getElementById("Build 10 Suction Excavators").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Suction Excavators");
+		}
+		else if(suctionExcavator === 100){
+			document.getElementById("Build 100 Suction Excavators").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Suction Excavators");
+		}
 	}
 }
 
@@ -1386,6 +1461,21 @@ function getSpaceCow(){
 		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
 		refresh();
 		tier3 += 1;
+		if(spaceCow === 1){
+			document.getElementById("Build 1 Space Cow Plantation").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Space Cow Plantation");
+		}
+		else if(spaceCow === 10){
+			document.getElementById("Build 10 Space Cow Plantations").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Space Cow Plantations");
+		}
+		else if(spaceCow === 100){
+			document.getElementById("Build 100 Space Cow Plantations").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Space Cow Plantations");
+		}
 	}
 }
 
@@ -1398,6 +1488,21 @@ function getExplorer(){
 		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 		refresh();
 		tier1 += 1;
+		if(explorer === 1){
+			document.getElementById("Build 1 Explorer").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Explorer");
+		}
+		else if(explorer === 10){
+			document.getElementById("Build 10 Explorers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Explorers");
+		}
+		else if(explorer === 100){
+			document.getElementById("Build 100 Explorers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Explorers");
+		}
 	}
 }
 
@@ -1416,6 +1521,21 @@ function getSpaceMetalDrill(){
 		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
 		refresh();
 		tier2 += 1;
+		if(spaceMetalDrill === 1){
+			document.getElementById("Build 1 Space Metal Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Space Metal Drill");
+		}
+		else if(spaceMetalDrill === 10){
+			document.getElementById("Build 10 Space Metal Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Space Metal Drills");
+		}
+		else if(spaceMetalDrill === 100){
+			document.getElementById("Build 100 Space Metal Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Space Metal Drills");
+		}
 	}
 }
 
@@ -1434,6 +1554,21 @@ function getPentaDrill(){
 		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 		refresh();
 		tier3 += 1;
+		if(pentaDrill === 1){
+			document.getElementById("Build 1 Penta-Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Penta-Drill");
+		}
+		else if(pentaDrill === 10){
+			document.getElementById("Build 10 Penta-Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Penta-Drills");
+		}
+		else if(pentaDrill === 100){
+			document.getElementById("Build 100 Penta-Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Penta-Drills");
+		}
 	}
 }
 

@@ -15,7 +15,6 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 # RoadMap
 
 v0.4.0 The Hot and Cold Update
-- Added Achievements
 - Supercooling with Ice
 - Added Meteorite Tier of resource machines
 - Forest Fryer: Charcoal
@@ -25,7 +24,8 @@ v0.4.0 The Hot and Cold Update
 
 # Changelog:
 
-v0.4.0
+v0.4.0 The Hot and Cold Update
+- Added Achievements
 - Added Research from Sol Center
 - Added Meteorite
 - Added Dyson Sphere
