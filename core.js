@@ -1766,6 +1766,11 @@ function checkRedCost(){
 	}
 }
 
+function refreshAchievements(){
+	for(var i = 0; i < achieved.length; i ++){
+		document.getElementById(achieved[i]).className = "achievementTD achieved";
+	}
+}
 
 function refreshResources(){
 	for(var i=0; i<resourcesUnlocked.length; i++){

@@ -813,12 +813,18 @@ function getPump(){
 		tier1 += 1;
 		if(pump === 1){
 			document.getElementById("Build 1 Small Pump").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Small Pump");
 		}
-		if(pump === 10){
+		else if(pump === 10){
 			document.getElementById("Build 10 Small Pumps").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Small Pumps");
 		}
-		if(pump === 100){
+		else if(pump === 100){
 			document.getElementById("Build 100 Small Pumps").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Small Pumps");
 		}
 	}
 }
@@ -840,12 +846,18 @@ function getPumpjack(){
 		tier2 += 1;
 		if(pumpjack === 1){
 			document.getElementById("Build 1 Pumpjack").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Pumpjack");
 		}
-		if(pumpjack === 10){
+		else if(pumpjack === 10){
 			document.getElementById("Build 10 Pumpjacks").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Pumpjacks");
 		}
-		if(pumpjack === 100){
+		else if(pumpjack === 100){
 			document.getElementById("Build 100 Pumpjacks").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Pumpjacks");
 		}
 	}
 }
@@ -867,12 +879,18 @@ function getOilField(){
 		tier3 += 1;
 		if(oilField === 1){
 			document.getElementById("Build 1 Oil Field").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Oil Field");
 		}
-		if(oilField === 10){
+		else if(oilField === 10){
 			document.getElementById("Build 10 Oil Fields").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Oil Fields");
 		}
-		if(oilField === 100){
+		else if(oilField === 100){
 			document.getElementById("Build 100 Oil Fields").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Oil Fields");
 		}
 	}
 }
@@ -901,12 +919,18 @@ function getMiner(){
 		tier1 += 1;
 		if(miner === 1){
 			document.getElementById("Build 1 Miner").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Miner");
 		}
-		if(miner === 10){
+		else if(miner === 10){
 			document.getElementById("Build 10 Miners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Miners");
 		}
-		if(miner === 100){
+		else if(miner === 100){
 			document.getElementById("Build 100 Miners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Miners");
 		}
 	}
 }
@@ -928,12 +952,18 @@ function getHeavyDrill(){
 		tier2 += 1;
 		if(heavyDrill === 1){
 			document.getElementById("Build 1 Heavy Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Heavy Drill");
 		}
-		if(heavyDrill === 10){
+		else if(heavyDrill === 10){
 			document.getElementById("Build 10 Heavy Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Heavy Drills");
 		}
-		if(heavyDrill === 100){
+		else if(heavyDrill === 100){
 			document.getElementById("Build 100 Heavy Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Heavy Drills");
 		}
 	}
 }
@@ -955,12 +985,18 @@ function getGigaDrill(){
 		tier3 += 1;
 		if(gigaDrill === 1){
 			document.getElementById("Build 1 Giga Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Giga Drill");
 		}
-		if(gigaDrill === 10){
+		else if(gigaDrill === 10){
 			document.getElementById("Build 10 Giga Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Giga Drills");
 		}
-		if(gigaDrill === 100){
+		else if(gigaDrill === 100){
 			document.getElementById("Build 100 Giga Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Giga Drills");
 		}
 	}
 }
@@ -979,12 +1015,18 @@ function getGemMiner(){
 		tier1 += 1;
 		if(gemMiner === 1){
 			document.getElementById("Build 1 Gem Miner").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Gem Miner");
 		}
-		if(gemMiner === 10){
+		else if(gemMiner === 10){
 			document.getElementById("Build 10 Gem Miners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Gem Miners");
 		}
-		if(gemMiner === 100){
+		else if(gemMiner === 100){
 			document.getElementById("Build 100 Gem Miners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Gem Miners");
 		}
 	}
 }
@@ -1006,12 +1048,18 @@ function getAdvancedDrill(){
 		tier2 += 1;
 		if(pumpjack === 1){
 			document.getElementById("Build 1 Pumpjack").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Pumpjack");
 		}
-		if(pumpjack === 10){
+		else if(pumpjack === 10){
 			document.getElementById("Build 10 Pumpjacks").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Pumpjacks");
 		}
-		if(pumpjack === 100){
+		else if(pumpjack === 100){
 			document.getElementById("Build 100 Pumpjacks").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Pumpjacks");
 		}
 	}
 }
@@ -1033,12 +1081,18 @@ function getDiamondDrill(){
 		tier3 += 1;
 		if(diamondDrill === 1){
 			document.getElementById("Build 1 Diamond-Encrusted Drill").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Diamond-Encrusted Drill");
 		}
-		if(diamondDrill === 10){
+		else if(diamondDrill === 10){
 			document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Diamond-Encrusted Drill");
 		}
-		if(diamondDrill === 100){
+		else if(diamondDrill === 100){
 			document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Diamond-Encrusted Drill");
 		}
 	}
 }
@@ -1057,12 +1111,18 @@ function getWoodburner(){
 		tier1 += 1;
 		if(woodburner === 1){
 			document.getElementById("Build 1 Woodburner").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Woodburner");
 		}
-		if(woodburner === 10){
+		else if(woodburner === 10){
 			document.getElementById("Build 10 Woodburners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Woodburners");
 		}
-		if(woodburner === 100){
+		else if(woodburner === 100){
 			document.getElementById("Build 100 Woodburners").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Woodburners");
 		}
 	}
 }
@@ -1084,12 +1144,18 @@ function getFurnace(){
 		tier2 += 1;
 		if(furnace === 1){
 			document.getElementById("Build 1 Furnace").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Furnace");
 		}
-		if(furnace === 10){
+		else if(furnace === 10){
 			document.getElementById("Build 10 Furnaces").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Furnaces");
 		}
-		if(furnace === 100){
+		else if(furnace === 100){
 			document.getElementById("Build 100 Furnaces").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Furnaces");
 		}
 	}
 }
@@ -1111,12 +1177,18 @@ function getKiln(){
 		tier3 += 1;
 		if(kiln === 1){
 			document.getElementById("Build 1 Industrial Kiln").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Industrial Kiln");
 		}
-		if(kiln === 10){
+		else if(kiln === 10){
 			document.getElementById("Build 10 Industrial Kilns").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Industrial Kilns");
 		}
-		if(kiln === 100){
+		else if(kiln === 100){
 			document.getElementById("Build 100 Industrial Kilns").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Industrial Kilns");
 		}
 	}
 }
@@ -1135,12 +1207,18 @@ function getWoodcutter(){
 		tier1 += 1;
 		if(woodcutter === 1){
 			document.getElementById("Build 1 Woodcutter").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Woodcutter");
 		}
-		if(woodcutter === 10){
+		else if(woodcutter === 10){
 			document.getElementById("Build 10 Woodcutters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Woodcutters");
 		}
-		if(woodcutter === 100){
+		else if(woodcutter === 100){
 			document.getElementById("Build 100 Woodcutters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Woodcutters");
 		}
 	}
 }
@@ -1162,12 +1240,19 @@ function getLaserCutter(){
 		tier2 += 1;
 		if(laserCutter === 1){
 			document.getElementById("Build 1 Laser Cutter").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Laser Cutter");
+
 		}
-		if(laserCutter === 10){
+		else if(laserCutter === 10){
 			document.getElementById("Build 10 Laser Cutters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Laser Cutters");
 		}
-		if(laserCutter === 100){
+		else if(laserCutter === 100){
 			document.getElementById("Build 100 Laser Cutters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Laser Cutters");
 		}
 	}
 }
@@ -1189,12 +1274,18 @@ function getDeforester(){
 		tier3 += 1;
 		if(deforester === 1){
 			document.getElementById("Build 1 Mass Deforester").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Mass Deforester");
 		}
-		if(deforester === 10){
+		else if(deforester === 10){
 			document.getElementById("Build 10 Mass Deforesters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Mass Deforesters");
 		}
-		if(deforester === 100){
+		else if(deforester === 100){
 			document.getElementById("Build 100 Mass Deforesters").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Mass Deforesters");
 		}
 	}
 }
