@@ -166,9 +166,11 @@ function refreshPerSec(){
 		iceps = icePick + (iceDrill*9) + (freezer*65);
 	}
 	if(energy <= 10){
-		if(energyLow === false){
-			document.getElementById("energyLow").className = "text-muted small ng-binding red";
-			energyLow = true;
+		if(windowLoaded){
+			if(energyLow === false){
+				document.getElementById("energyLow").className = "text-muted small ng-binding red";
+				energyLow = true;
+			}
 		}
 		energyps = energyInput;
 		plasmaps = 0;
@@ -2025,6 +2027,7 @@ function updateTheme(){
 
 window.onload = function(){
 	load('local');
+	var windowLoaded = true;
 };
 
 //Time Loops
