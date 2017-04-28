@@ -348,7 +348,7 @@ function save(type){
 		extruderTitaniumCost: extruderTitaniumCost,
 		extruderSiliconCost: extruderSiliconCost,
 		hydrogen: hydrogen,
-		hydrogenStorage, hydrogenStorage,
+		hydrogenStorage: hydrogenStorage,
 		hydrogenNextStorage: hydrogenNextStorage,
 		collector: collector,
 		collectorSpaceMetalCost: collectorSpaceMetalCost,
@@ -362,7 +362,7 @@ function save(type){
 		eCellGoldCost: eCellGoldCost,
 		eCellSiliconCost: eCellSiliconCost,
 		helium: helium,
-		heliumStorage, heliumStorage,
+		heliumStorage: heliumStorage,
 		heliumNextStorage: heliumNextStorage,
 		drone: drone,
 		droneSpaceMetalCost: droneSpaceMetalCost,
@@ -376,7 +376,7 @@ function save(type){
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
 		ice: ice,
-		iceStorage, iceStorage,
+		iceStorage: iceStorage,
 		iceNextStorage: iceNextStorage,
 		icePick: icePick,
 		icePickSpaceMetalCost: icePickSpaceMetalCost,
@@ -390,7 +390,7 @@ function save(type){
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
 		meteorite: meteorite,
-		meteoriteStorage, meteoriteStorage,
+		meteoriteStorage: meteoriteStorage,
 		meteoriteNextStorage: meteoriteNextStorage,
 		dyson: dyson,
 		dysonTitaniumCost: dysonTitaniumCost,
@@ -401,11 +401,9 @@ function save(type){
 		sphere: sphere,
 	};
 	if(type === "local"){
-		//localStorage.setItem("newSave",JSON.stringify(localSave));
 		localStorage.setItem("save",JSON.stringify(localSave));
 	}
 	if(type === "export"){
-		//localStorage.setItem("newSave",JSON.stringify(localSave));
 		localStorage.setItem("save",JSON.stringify(localSave));
 		var string = JSON.stringify(localSave);
 		var compressed = LZString.compressToBase64(string);
@@ -421,8 +419,6 @@ function save(type){
 function load(type){
 	"use strict";
 	if(type === "local"){
-		//window.localStorage.removeItem('save');
-		//var savegame = JSON.parse(localStorage.getItem("newSave"));
 		var savegame = JSON.parse(localStorage.getItem("save"));
 	}
 	if(type === "import"){
