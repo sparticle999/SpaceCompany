@@ -131,18 +131,20 @@ function refreshPerSec(){
 	else{
 		plasmaps = 0;
 	}
-	if(energy >= energyps){
-		if(energyLow === true){
-			energyTimer += 0.1;
-			if(energyTimer >= 3){
-				document.getElementById("energyLow").className = "text-muted small ng-binding red hidden";
-				energyLow = false;
-				energyTimer = 0;
+	if(energy != 0 && energyps != 0){
+		if(energy >= energyps){
+			if(energyLow === true){
+				energyTimer += 0.1;
+				if(energyTimer >= 3){
+					document.getElementById("energyLow").className = "text-muted small ng-binding red hidden";
+					energyLow = false;
+					energyTimer = 0;
+				}
 			}
 		}
-	}
-	else{
-		energyTimer = 0;
+		else{
+			energyTimer = 0;
+		}
 	}
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
@@ -727,7 +729,12 @@ function checkRedCost(){
 			turnRed(0 - charcoalEngine, 0, "charcoalps");
 		}
 	}
-	turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56), 0, "woodps");
+	if(charcoalToggled === true){
+		turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56), 0, "woodps");
+	}
+	else{
+		turnRed(woodps, 0, "woodps");
+	}
 	turnRed(spaceMetalps, 0, "spaceMetalps");
 	turnRed(methaneps - methaneStation*6, 0, "methaneps");
 	turnRed(lavaps - magmatic*11, 0, "lavaps");
