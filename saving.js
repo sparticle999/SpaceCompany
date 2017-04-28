@@ -768,6 +768,7 @@ function load(type){
 	refreshResources();
 	refreshResearches();
 	refreshTabs();
+	refreshAchievements();
 
 	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
