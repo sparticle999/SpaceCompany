@@ -98,12 +98,6 @@ function gainResources(){
 	else{
 		ice = iceStorage;
 	}
-	if(meteorite + meteoriteps/10 < meteoriteStorage){
-		meteorite += meteoriteps/10;
-	}
-	else{
-		meteorite = meteoriteStorage;
-	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}

@@ -374,7 +374,12 @@ function refreshPerSec(){
 	if(ice === 0){
 		document.getElementById("ice").className = "red";
 	}
-	document.getElementById("meteoriteps").innerHTML = commafy(meteoriteps);
+	if(meteoriteToggled){
+		document.getElementById("meteoriteps").innerHTML = commafy(meteoriteps);
+	}
+	else{
+		document.getElementById("meteoriteps").innerHTML = 0;
+	}
 	document.getElementById("meteorite").className = "";
 	if(meteorite >= meteoriteStorage){
 		document.getElementById("meteorite").className = "green";
