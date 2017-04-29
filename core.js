@@ -1887,6 +1887,9 @@ function refreshResources(){
 	if(techUnlocked === true){
 		unlockTier3();
 	}
+	if(meteoriteUnlocked === true){
+		unlockTier4();
+	}
 }
 
 function contains(array, obj) {
@@ -1961,6 +1964,10 @@ function refreshResearches(){
 		if(contains(available, "unlockMeteoriteTier1") === false){
 			document.getElementById("unlockMeteoriteTier1").className = "";
 			available.push("unlockMeteoriteTier1");
+		}
+		if(contains(resourcesUnlocked, "meteoriteWonder") === false){
+			document.getElementById("meteoriteWonder").className = "";
+			resourcesUnlocked.push("meteoriteWonder");
 		}
 	}
 }

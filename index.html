@@ -3425,6 +3425,13 @@
 							</span>
 						</td>
 					</tr>
+					<tr id="meteoriteWonderNav" onclick="activeWonderTab('meteoriteWonderNav')" class="hidden" href="#meteoriteWonderTab" aria-controls="meteoriteWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Meteorite Wonder: <span id="meteoriteActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -3453,6 +3460,7 @@
 										<br>
 										"While I am rich beyond comparison, I still value adding precious resources to my collection. In return for your Gems, Silver, and Gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."
 										<br>
+										<br>
 										<hide id="preciousWonderButton">
 											He requires that you donate <span id="preciousGemCost">10,000</span> Gems, <span id="preciousSilverCost">7,500</span> Silver and <span id="preciousGoldCost">5,000</span> Gold for this knowledge.
 											<br>
@@ -3478,6 +3486,7 @@
 										A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?
 										<br>
 										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."
+										<br>
 										<br>
 										<hide id="energeticWonderButton">
 											He requests a pyramid containing <span id="energeticWoodCost">10,000</span> Wood, <span id="energeticCharcoalCost">5,000</span> Charcoal and <span id="energeticUraniumCost">200</span> Uranium to acquire his methods.
@@ -3505,8 +3514,9 @@
 										<br>
 										"With my technological superiority over anyone in the cosmos, I want a monument dedicated to the advanced computer systems I control. As a reward, I will teach you about computerized machines and give you the ability to make more advanced resource gatherers."
 										<br>
+										<br>
 										<hide id="techWonderButton">
-											He requests a tower consisting of <span id="techSiliconCost">30,000</span> Silicon, <span id="techGoldCost">18,000</span> Gold and <span id="techGemCost">40,000</span> Gems to unlock this technology.
+											He requests a tower consisting of <span id="techSiliconCost">2,000,000</span> Silicon, <span id="techGoldCost">18,000</span> Gold and <span id="techGemCost">40,000</span> Gems to unlock this technology.
 											<br>
 											<br>
 											<button onclick="achieveTechWonder()" class="btn btn-default">Donate Resources</button>
@@ -3514,6 +3524,33 @@
 											<br>
 											<div id="techProgress" class="progress">
 												<div id="techBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    	0%
+												</div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+							<tr id="meteoriteWonder" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Meteorite Wonder
+									</h3>
+									<span>
+										A blazing red portrait depicts a futuristic set of machines.
+										<br>
+										"You have accomplished much so far, but now you face building a great structure to last generations. For my next monument, I will gift you with a new type of machine only seen in science-fiction. Meteorite machines use the energy installed in them to convert plasma into raw power useful in extracting resources."
+										<br>
+										<br>
+										<hide id="meteoriteWonderButton">
+											The Overlord wishes for a cube made up of <span id="meteoriteMeteoriteCost">5,000</span> Meteorite, <span id="meteoriteIceCost">600,000</span> Ice and <span id="meteoriteSiliconCost">1,200,000</span> Silicon to be given this technology.
+											<br>
+											<br>
+											<button onclick="achieveMeteoriteWonder()" class="btn btn-default">Donate Resources</button>
+											<br>
+											<br>
+											<div id="meteoriteProgress" class="progress">
+												<div id="meteoriteBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    	0%
 												</div>
 											</div>
@@ -3636,6 +3673,47 @@
 											<br>
 											<div id="techActivateProgress" class="progress">
 											  <div id="techActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="meteoriteWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										The Meteorite Wonder
+									</h2>
+									<span>
+										The Overlord, watching his newly built wonder, offers the 
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Activate Wonder
+									</h3>
+									<span>
+										Activating this wonder gives you the ability to construct 4th Tier resource gathering machines, which are better and more efficient than anything before it.
+										<br>
+										<hide id="activateMeteoriteWonder">
+											Costs: <span id="meteoriteActivateMeteoriteCost">10,000</span> Meteorite, <span id="meteoriteActivateIceCost">2,000,000</span> Ice, <span id="meteoriteActivateSiliconCost">4,000,000</span> Silicon.
+											<br>
+											<br>
+											<button onclick="activateMeteoriteWonder()" class="btn btn-default">Activate Meteorite Wonder</button>
+											<br>
+											<br>
+											<div id="meteoriteActivateProgress" class="progress">
+											  <div id="meteoriteActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>

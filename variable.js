@@ -8,7 +8,7 @@ var tabsUnlockedNum = 3; var resourcesUnlockedNum = 3; var techsResearchedNum = 
 var achieved = [];
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
-var activated = []; var techUnlocked = false;
+var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
 
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;

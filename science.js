@@ -288,12 +288,14 @@ function unlockMeteorite(){
 		document.getElementById("unlockMeteoriteTier1").className = "";
 		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
+		document.getElementById("meteoriteWonder").className = "";
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
 		available.push("unlockMeteoriteTier1");
-		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
+		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC", "meteoriteWonder");
 		newUnlock("resources");
+		newUnlock("wonder");
 	}
 }
 

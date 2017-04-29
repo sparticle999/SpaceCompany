@@ -83,7 +83,7 @@ function refreshWonderBars(){
 			var energeticActivateUranium = 500;
 		}
 		else{energeticActivateUranium = uranium;}
-		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateCharcoal)/455;
+		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/455;
 		if(energeticActivateBar <= 100){
 			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticActivateBar) + "%";
 			document.getElementById("energeticActivateBar").style.width = energeticActivateBar + "%";
@@ -116,7 +116,7 @@ function refreshWonderBars(){
 			document.getElementById("techBar").style.width = 100 + "%";
 		}
 	}
-	if((document.getElementById("activateEnergeticWonder").className === "hidden") === false){
+	if((document.getElementById("activateTechWonder").className === "hidden") === false){
 		if(silicon >= 50000){
 			var techActivateSilicon = 50000;
 		}
@@ -139,6 +139,90 @@ function refreshWonderBars(){
 			document.getElementById("techActivateBar").style.width = 100 + "%";
 		}
 	}
+	if(contains(resourcesUnlocked, "meteoriteWonderNav") === false){
+		if(meteorite >= 5000){
+			var meteoriteMeteorite = 5000;
+		}
+		else{meteoriteMeteorite = meteorite;}
+		if(ice >= 600000){
+			var meteoriteIce = 600000;
+		}
+		else{meteoriteIce = ice;}
+		if(silicon >= 1200000){
+			var meteoriteSilicon = 1200000;
+		}
+		else{meteoriteSilicon = silicon;}
+		var meteoriteBar = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/18050;
+		if(meteoriteBar <= 100){
+			document.getElementById("meteoriteBar").innerHTML = commafy(meteoriteBar) + "%";
+			document.getElementById("meteoriteBar").style.width = meteoriteBar + "%";
+		}
+		else{
+			document.getElementById("meteoriteBar").innerHTML = "100%";
+			document.getElementById("meteoriteBar").style.width = 100 + "%";
+		}
+	}
+	if((document.getElementById("activateMeteoriteWonder").className === "hidden") === false){
+		if(meteorite >= 10000){
+			var meteoriteActivateMeteorite = 10000;
+		}
+		else{meteoriteActivateMeteorite = meteorite;}
+		if(ice >= 2000000){
+			var meteoriteActivateIce = 2000000;
+		}
+		else{meteoriteActivateIce = ice;}
+		if(uranium >= 4000000){
+			var meteoriteActivateSilicon = 4000000;
+		}
+		else{meteoriteActivateSilicon = uranium;}
+		var meteoriteActivateBar = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/60100;
+		if(meteoriteActivateBar <= 100){
+			document.getElementById("meteoriteActivateBar").innerHTML = commafy(meteoriteActivateBar) + "%";
+			document.getElementById("meteoriteActivateBar").style.width = meteoriteActivateBar + "%";
+		}
+		else{
+			document.getElementById("meteoriteActivateBar").innerHTML = "100%";
+			document.getElementById("meteoriteActivateBar").style.width = 100 + "%";
+		}
+	}
+}
+
+function unlockTier3(){
+	document.getElementById("oilTier3").className = "";
+	document.getElementById("metalTier3").className = "";
+	document.getElementById("gemTier3").className = "";
+	document.getElementById("charcoalTier3").className = "";
+	document.getElementById("woodTier3").className = "";
+	document.getElementById("spaceMetalTier3").className = "";
+	document.getElementById("methaneTier3").className = "";
+	document.getElementById("titaniumTier3").className = "";
+	document.getElementById("goldTier3").className = "";
+	document.getElementById("silverTier3").className = "";
+	document.getElementById("siliconTier3").className = "";
+	document.getElementById("uraniumTier3").className = "";
+	document.getElementById("lavaTier3").className = "";
+	document.getElementById("hydrogenTier3").className = "";
+	document.getElementById("heliumTier3").className = "";
+	document.getElementById("iceTier3").className = "";
+}
+
+function unlockTier4(){
+	// document.getElementById("oilTier4").className = "";
+	// document.getElementById("metalTier4").className = "";
+	// document.getElementById("gemTier4").className = "";
+	// document.getElementById("charcoalTier4").className = "";
+	// document.getElementById("woodTier4").className = "";
+	// document.getElementById("spaceMetalTier4").className = "";
+	// document.getElementById("methaneTier4").className = "";
+	// document.getElementById("titaniumTier4").className = "";
+	// document.getElementById("goldTier4").className = "";
+	// document.getElementById("silverTier4").className = "";
+	// document.getElementById("siliconTier4").className = "";
+	// document.getElementById("uraniumTier4").className = "";
+	// document.getElementById("lavaTier4").className = "";
+	// document.getElementById("hydrogenTier4").className = "";
+	// document.getElementById("heliumTier4").className = "";
+	// document.getElementById("iceTier4").className = "";
 }
 
 function achievePreciousWonder(){
@@ -218,25 +302,6 @@ function achieveTechWonder(){
 	}
 }
 
-function unlockTier3(){
-	document.getElementById("oilTier3").className = "";
-	document.getElementById("metalTier3").className = "";
-	document.getElementById("gemTier3").className = "";
-	document.getElementById("charcoalTier3").className = "";
-	document.getElementById("woodTier3").className = "";
-	document.getElementById("spaceMetalTier3").className = "";
-	document.getElementById("methaneTier3").className = "";
-	document.getElementById("titaniumTier3").className = "";
-	document.getElementById("goldTier3").className = "";
-	document.getElementById("silverTier3").className = "";
-	document.getElementById("siliconTier3").className = "";
-	document.getElementById("uraniumTier3").className = "";
-	document.getElementById("lavaTier3").className = "";
-	document.getElementById("hydrogenTier3").className = "";
-	document.getElementById("heliumTier3").className = "";
-	document.getElementById("iceTier3").className = "";
-}
-
 function activateTechWonder(){
 	if(silicon >= 50000 && gold >= 30000 && gem >= 60000){
 		silicon -= 50000;
@@ -248,6 +313,36 @@ function activateTechWonder(){
 		techUnlocked = true;
 		buttonsHidden.push("activateTechWonder");
 		activated.push("tech");
+		wondersActivatedNum += 1;
+		newUnlock("resources");
+	}
+}
+
+function achieveMeteoriteWonder(){
+	if(meteorite >= 5000 && ice >= 600000 && silicon >= 1200000){
+		meteorite-= 5000;
+		ice -= 600000;
+		silicon -= 1200000;
+		document.getElementById("meteoriteWonderButton").className = "hidden";
+		document.getElementById("meteoriteProgress").className = "hidden";
+		document.getElementById("meteoriteWonderNav").className = "";
+		buttonsHidden.push("meteoriteProgress", "meteoriteWonderButton");
+		resourcesUnlocked.push("meteoriteWonderNav");
+		wondersBuiltNum += 1;
+	}
+}
+
+function activateMeteoriteWonder(){
+	if(meteorite >= 10000 && ice >= 2000000 && silicon >= 4000000){
+		meteorite -= 10000;
+		ice -= 2000000;
+		silicon -= 4000000;
+		unlockTier4();
+		document.getElementById("activateMeteoriteWonder").className = "hidden";
+		document.getElementById("meteoriteActivation").innerHTML = "Activated";
+		T4Unlocked = true;
+		buttonsHidden.push("activateMeteoriteWonder");
+		activated.push("meteorite");
 		wondersActivatedNum += 1;
 		newUnlock("resources");
 	}
