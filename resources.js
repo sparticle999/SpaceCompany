@@ -128,7 +128,6 @@ function gainResources(){
 		else{
 			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine);
 		}
-		
 	}
 	
 	
@@ -179,6 +178,9 @@ function gainResources(){
 	}
 	if(lava >= lavaStorage){
 		document.getElementById("lava").className = "green";
+	}
+	if(meteorite >= meteoriteStorage){
+		document.getElementById("meteorite").className = "green";
 	}
 }
 
@@ -602,6 +604,17 @@ function toggleChemicalPlant(){
 	else{
 		chemicalPlantToggled = true;
 		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
+	}
+}
+
+function toggleMeteorite(){
+	if(meteoriteToggled === true){
+		meteoriteToggled = false;
+		document.getElementById("meteoriteToggled").innerHTML = "On";
+	}
+	else{
+		meteoriteToggled = true;
+		document.getElementById("meteoriteToggled").innerHTML = "Off";
 	}
 }
 
@@ -2061,5 +2074,20 @@ function getFreezer(){
 		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
 		refresh();
 		tier3 += 1;
+	}
+}
+
+function getPrinter(){
+	if(spaceMetal >= printerSpaceMetalCost && silicon >= printerSiliconCost){
+		spaceMetal -= printerSpaceMetalCost;
+		silicon -= printerSiliconCost;
+		printer += 1;
+		printerSpaceMetalCost = Math.floor(100000 * Math.pow(1.1,printer));
+		printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer));
+		document.getElementById("printer").innerHTML = printer;
+		document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
+		document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
+		refresh();
+		tier1 += 1;
 	}
 }

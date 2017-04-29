@@ -285,12 +285,26 @@ function unlockMeteorite(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockMeteorite").className = "hidden";
+		document.getElementById("unlockMeteoriteTier1").className = "";
 		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
+		available.push("unlockMeteoriteTier1");
 		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
+		newUnlock("resources");
+	}
+}
+
+function unlockMeteoriteTier1(){
+	if(science >= 75000){
+		science -= 75000;
+		document.getElementById("unlockMeteoriteTier1").className = "hidden";
+		document.getElementById("meteoriteTier1").className = "";
+		researched.push("unlockMeteoriteTier1");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("meteoriteTier1");
 		newUnlock("resources");
 	}
 }

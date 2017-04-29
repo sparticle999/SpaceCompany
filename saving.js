@@ -392,6 +392,10 @@ function save(type){
 		meteorite: meteorite,
 		meteoriteStorage: meteoriteStorage,
 		meteoriteNextStorage: meteoriteNextStorage,
+		meteoriteToggled: meteoriteToggled,
+		printer: printer,
+		printerSpaceMetalCost: printerSpaceMetalCost,
+		printerSiliconCost: printerSiliconCost,
 		dyson: dyson,
 		dysonTitaniumCost: dysonTitaniumCost,
 		dysonGoldCost: dysonGoldCost,
@@ -741,6 +745,9 @@ function load(type){
 		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
+		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
+		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
+		if(typeof savegame.printerGemCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
 		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
 		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;

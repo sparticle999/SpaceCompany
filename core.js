@@ -120,8 +120,7 @@ function refreshPerSec(){
 	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
 		if(plasma + heater/10 <= 100000){
 			energyOutput += (heater*1000);
-			plasmaps = heater;
-			plasma += plasmaps/10;
+			plasma += heater/10;
 			hydrogen -= heater*10/10;
 		}
 		else{
@@ -130,6 +129,27 @@ function refreshPerSec(){
 	}
 	else{
 		plasmaps = 0;
+	}
+	if(meteoriteToggled === true && plasma >= 3){
+		if(meteorite <= meteoriteStorage){
+			plasma -= printer*3/10;
+			meteorite += printer/10;
+			meteoriteps = printer;
+		}
+		else{
+			meteorite = meteoriteStorage;
+			meteoriteps = 0;
+		}
+	}
+	if(energy <= 1000){
+		if(meteoriteToggled === true){
+			plasmaps = 0 - printer*3;
+			meteoriteps = printer;
+		}
+		else{
+			plasmaps = 0;
+			meteoriteps = 0;
+		}
 	}
 	if(energy != 0 && energyps != 0){
 		if(energy >= energyps){
@@ -173,7 +193,6 @@ function refreshPerSec(){
 			}
 		}
 		energyps = energyInput;
-		plasmaps = 0;
 		uraniumps = grinder;
 		oilps = pump;
 		metalps = miner;
@@ -198,7 +217,22 @@ function refreshPerSec(){
 	else{
 		document.getElementById("scienceps").innerHTML = commafy(scienceps);
 	}
-	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
+	if(meteoriteToggled === true){
+		if(heaterToggled === true){
+			document.getElementById("plasmaps").innerHTML = commafy(heater - printer*3);
+		}
+		else{
+			document.getElementById("plasmaps").innerHTML = commafy(0 - printer*3);
+		}
+	}
+	else{
+		if(heaterToggled === true){
+			document.getElementById("plasmaps").innerHTML = commafy(heater);
+		}
+		else{
+			document.getElementById("plasmaps").innerHTML = commafy(0);
+		}
+	}
 	document.getElementById("plasma").className = "";
 	if(plasma <= 0){
 		document.getElementById("plasma").className = "red";
@@ -385,6 +419,12 @@ function refreshUI(){
 	}
 	else{
 		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+	}
+	if(meteoriteToggled === true){
+		document.getElementById("meteoriteToggled").innerHTML = "Off";
+	}
+	else{
+		document.getElementById("meteoriteToggled").innerHTML = "On";
 	}
 
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
@@ -694,6 +734,9 @@ function refreshUI(){
 	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
 	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
+	document.getElementById("printer").innerHTML = commafy(printer);
+	document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
+	document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
 }
 
 function checkRedCost(){
@@ -706,7 +749,9 @@ function checkRedCost(){
 			document.getElementById(id).className = "";
 		}
 	}
-
+	if(meteoriteToggled === true){
+		turnRed(plasmaps, 0 - printer*3, "plasmaps")
+	}
 	turnRed(energyps, 0, "energyps");
 	turnRed(uraniumps - nuclearStation*7, 0, "uraniumps");
 	if(chemicalPlantToggled === true){
@@ -1424,6 +1469,7 @@ function checkRedCost(){
 	turnRed(science, 40000, "unlockPlasmaCost");
 	turnRed(science, 60000, "unlockEmcCost");
 	turnRed(science, 100000, "unlockMeteoriteCost");
+	turnRed(science, 75000, "unlockMeteoriteTier1Cost");
 	turnRed(science, 100000, "unlockDysonCost");
 
 	if(metal < 1200){
@@ -1633,6 +1679,9 @@ function checkRedCost(){
 	turnRed(spaceMetal, freezerSpaceMetalCost, "freezerSpaceMetalCost");
 	turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
+
+	turnRed(spaceMetal, printerSpaceMetalCost, "printerSpaceMetalCost");
+	turnRed(silicon, printerSiliconCost, "printerSiliconCost");
 
 	turnRed(titanium, dysonTitaniumCost, "dysonTitaniumCost");
 	turnRed(gold, dysonGoldCost, "dysonGoldCost");
@@ -1908,6 +1957,10 @@ function refreshResearches(){
 		if(contains(resourcesUnlocked, "meteoriteEMC") === false){
 			document.getElementById("meteoriteEMC").className = "";
 			resourcesUnlocked.push("meteoriteEMC");
+		}
+		if(contains(available, "unlockMeteoriteTier1") === false){
+			document.getElementById("unlockMeteoriteTier1").className = "";
+			available.push("unlockMeteoriteTier1");
 		}
 	}
 }

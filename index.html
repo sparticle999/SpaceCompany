@@ -2246,6 +2246,7 @@
 									<br>
 									<br>
 									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									<button onclick="toggleMeteorite()" class="btn btn-default">Turn Meteorite Production <span id="meteoriteToggled">Off</span></button>
 									<br>
 									<br>
 								</td>
@@ -2263,6 +2264,23 @@
 									<br>
 									<br>
 									<button onclick="upgradeMeteoriteStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr id="meteoriteTier1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Meteorite Printer: <span id="printer">0</span>
+									</h3>
+									<span>
+										Contruct an automated way of producing meteorite without you having to do anything.
+										<br>
+										Produces 1 Meteorite per second. Uses 3 Plasma per second.
+										Costs <span id="printerSpaceMetalCost">100,000</span> Space Metal, <span id="printerSiliconCost">60,000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPrinter()" class="btn btn-default">Get Meteorite Printer</button>
+									<button onclick="destroyMachine(printer, 'printer')" class="btn btn-default destroy hidden">Destroy Meteorite Printer</button>
 								</td>
 							</tr>
 						</table>
@@ -2657,6 +2675,23 @@
 									<br>
 									<br>
 									<button onclick="unlockMeteorite()" class="btn btn-default">Unlock Meteorite</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockMeteoriteTier1" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Meteorite Tier 1
+									</h3>
+									<span>
+										Research an automated way to gather Meteorite so that you don't have to worry about losing out when you're not around.
+										<br>
+										Costs <span id="unlockMeteoriteTier1Cost">75,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockMeteoriteTier1()" class="btn btn-default">Unlock Meteorite Tier 1</button>
 									<br>
 									<br>
 								</td>
