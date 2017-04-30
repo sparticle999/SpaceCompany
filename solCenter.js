@@ -100,5 +100,6 @@ function buildSphere(){
 		dyson -= 100;
 		rocketFuel -= 250000;
 		sphere += 1;
+		document.getElementById("sphere").innerHTML = sphere;
 	}
 }

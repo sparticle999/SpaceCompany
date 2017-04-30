@@ -77,6 +77,7 @@ function refresh(){
 
 function refreshPerSec(){
 	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*23)+(nuclearStation*153)+(magmatic*191)+(fusionReactor*273);
+	energyInput += (sphere*25000);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
