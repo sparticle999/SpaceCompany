@@ -171,10 +171,10 @@ function refreshWonderBars(){
 			var meteoriteActivateIce = 2000000;
 		}
 		else{meteoriteActivateIce = ice;}
-		if(uranium >= 4000000){
+		if(silicon >= 4000000){
 			var meteoriteActivateSilicon = 4000000;
 		}
-		else{meteoriteActivateSilicon = uranium;}
+		else{meteoriteActivateSilicon = silicon;}
 		var meteoriteActivateBar = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/60100;
 		if(meteoriteActivateBar <= 100){
 			document.getElementById("meteoriteActivateBar").innerHTML = commafy(meteoriteActivateBar) + "%";
