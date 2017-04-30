@@ -53,6 +53,12 @@ function changeEmcAmount(){
 	}
 	for(var i = 0; i < resources.length; i++){
 		document.getElementById(resources[i] + "EmcVal").innerHTML = commafy(window[resources[i]+"EmcVal"]*emcAmount);
+		if(window[resources[i]+"EmcVal"]*emcAmount > window[resources[i]+"Storage"]){
+			document.getElementById(resources[i] + "Conv").className = "btn btn-default green";
+		}
+		else{
+			document.getElementById(resources[i] + "Conv").className = "btn btn-default";
+		}
 	}
 }
 

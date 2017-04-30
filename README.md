@@ -29,6 +29,7 @@ v0.4.0 The Hot and Cold Update
 - Added Achievements
 - Added Research from Sol Center
 - Added Meteorite
+- Added Dyson Sections
 - Added Dyson Sphere
 - Added Per Second Display on Science
 - Added Ability to Destroy Machines
