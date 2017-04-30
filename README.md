@@ -36,6 +36,7 @@ v0.4.0 The Hot and Cold Update
 - Added Tiered Laboratories
 - Added Batteries
 - Changed Silicon from an inner planet resource to an earth resource
+- Altered Cyborg Theme
 
 v0.3.5
 - Added Number Formatting for large numbers

@@ -1,7 +1,9 @@
 .pointer:hover{
 	cursor: pointer;
 }
-
+.cursor{
+	cursor: default;
+}
 .no-select{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
