@@ -81,7 +81,7 @@ function exploreMars(){
 		rocketFuel -= 80;
 		document.getElementById("exploreMars").className = "hidden";
 		document.getElementById("titaniumNav").className = "innerPlanet";
-		document.getElementById("siliconNav").className = "innerPlanet";
+		document.getElementById("siliconNav").className = "earth";
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");

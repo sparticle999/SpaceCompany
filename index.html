@@ -305,6 +305,28 @@
 							<span id="woodStorage">50</span>
 						</td>
 					</tr>
+					<tr id="siliconNav" onclick="activeResourceTab('siliconNav')" class="hidden" href="#siliconTab" aria-controls="siliconTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="vertical-align:middle;">
+							<img src="Icons/siliconIcon.png" style="width:30px; height:auto">
+						</td>
+						<td style="vertical-align:middle;">
+							<span>
+								Silicon
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="siliconps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="silicon">
+								0
+							</span>
+							/
+							<span id="siliconStorage">50</span>
+						</td>
+					</tr>
 					<tr id="collapseInnerPlanet" class="collapseInnerPlanet hidden">
 						<td colspan="4">
 							<span>Inner Planetary Resources</span> <span class="caret"></span>
@@ -418,28 +440,6 @@
 							</span>
 							/
 							<span id="silverStorage">50</span>
-						</td>
-					</tr>
-					<tr id="siliconNav" onclick="activeResourceTab('siliconNav')" class="hidden" href="#siliconTab" aria-controls="siliconTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
-							<img src="Icons/siliconIcon.png" style="width:30px; height:auto">
-						</td>
-						<td style="vertical-align:middle;">
-							<span>
-								Silicon
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:center;">
-							<span>
-								<span id="siliconps">0</span>/Sec
-							</span>
-						</td>
-						<td style="vertical-align:middle; text-align:right;">
-							<span id="silicon">
-								0
-							</span>
-							/
-							<span id="siliconStorage">50</span>
 						</td>
 					</tr>
 					<tr id="collapseOuterPlanet" class="collapseOuterPlanet hidden">
@@ -1290,6 +1290,100 @@
 						</table>
 					</div>
 				</div>
+				<div id="siliconTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="pointer btn-link">
+										Silicon
+									</h2>
+									<span>
+										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
+									</span>
+									<br>
+									<br>
+									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="siliconStorageUpgrade">
+								<td>
+									<h3 class="pointer btn-link">
+										Storage Upgrade
+									</h3>
+									<span>
+										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
+										<br>
+										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="upgradeSiliconStorage()" class="btn btn-default">Upgrade Storage</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Empowered Blowtorch: <span id="blowtorch">0</span>
+									</h3>
+									<span>
+										This type of blowtorch instantly turns sand into Silicon, but only on a small scale. To make it, extraterrestrial resources are required.
+										<br>
+										Produces 1 silicon per second.
+										<br>
+										Costs <span id="blowtorchSpaceMetalCost">150</span> Space Metal, <span id="blowtorchTitaniumCost">30</span> Titanium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+									<button onclick="destroyMachine(blowtorch, 'blowtorch')" class="btn btn-default destroy hidden">Destroy Empowered Blowtorch</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="pointer btn-link">
+										Seaside Scorcher: <span id="scorcher">0</span>
+									</h3>
+									<span>
+										This tool almost melts parts of beaches to get silicon at a larger scale.
+										<br>
+										Produces 9 silicon per second.
+										<br>
+										Uses 18 Energy per second.
+										<br>
+										Costs <span id="scorcherSpaceMetalCost">500</span> Space Metal, <span id="scorcherGemCost">1,200</span> Gems, <span id="scorcherOilCost">1,600</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
+									<button onclick="destroyMachine(scorcher, 'scorcher')" class="btn btn-default destroy hidden">Destroy Scorcher</button>
+								</td>
+							</tr>
+							<tr id="siliconTier3" class="hidden">
+								<td>
+									<h3 class="pointer btn-link">
+										Beach Annihilator: <span id="annihilator">0</span>
+									</h3>
+									<span>
+										This weapon of mass destruction has been re-labelled and now hovers above coast-lines, or what is now left of them.
+										<br>
+										Produces 40 silicon per second.
+										<br>
+										Uses 53 Energy per second.
+										<br>
+										Costs <span id="annihilatorSpaceMetalCost">3,000</span> Space Metal, <span id="annihilatorGemCost">8,300</span> Gems, <span id="annihilatorSilverCost">2,400</span> Silver.
+									</span>
+									<br>
+									<br>
+									<button onclick="getAnnihilator()" class="btn btn-default">Get Annihilator</button>
+									<button onclick="destroyMachine(annihilator, 'annihilator')" class="btn btn-default destroy hidden">Destroy Beach Annihilator</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="spaceMetalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -1755,100 +1849,6 @@
 									<br>
 									<button onclick="getBertha()" class="btn btn-default">Get Big Bertha</button>
 									<button onclick="destroyMachine(bertha, 'bertha')" class="btn btn-default destroy hidden">Destroy Bertha</button>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div id="siliconTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="pointer btn-link">
-										Silicon
-									</h2>
-									<span>
-										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
-									</span>
-									<br>
-									<br>
-									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
-									<br>
-									<br>
-								</td>
-							</tr>
-							<tr id="siliconStorageUpgrade">
-								<td>
-									<h3 class="pointer btn-link">
-										Storage Upgrade
-									</h3>
-									<span>
-										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
-										<br>
-										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
-									</span>
-									<br>
-									<br>
-									<button onclick="upgradeSiliconStorage()" class="btn btn-default">Upgrade Storage</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Empowered Blowtorch: <span id="blowtorch">0</span>
-									</h3>
-									<span>
-										This type of blowtorch instantly turns sand into Silicon, but only on a small scale. To make it, extraterrestrial resources are required.
-										<br>
-										Produces 1 silicon per second.
-										<br>
-										Costs <span id="blowtorchSpaceMetalCost">150</span> Space Metal, <span id="blowtorchTitaniumCost">30</span> Titanium.
-									</span>
-									<br>
-									<br>
-									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
-									<button onclick="destroyMachine(blowtorch, 'blowtorch')" class="btn btn-default destroy hidden">Destroy Empowered Blowtorch</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="pointer btn-link">
-										Seaside Scorcher: <span id="scorcher">0</span>
-									</h3>
-									<span>
-										This tool almost melts parts of beaches to get silicon at a larger scale.
-										<br>
-										Produces 9 silicon per second.
-										<br>
-										Uses 18 Energy per second.
-										<br>
-										Costs <span id="scorcherSpaceMetalCost">500</span> Space Metal, <span id="scorcherGemCost">1,200</span> Gems, <span id="scorcherOilCost">1,600</span> Oil.
-									</span>
-									<br>
-									<br>
-									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
-									<button onclick="destroyMachine(scorcher, 'scorcher')" class="btn btn-default destroy hidden">Destroy Scorcher</button>
-								</td>
-							</tr>
-							<tr id="siliconTier3" class="hidden">
-								<td>
-									<h3 class="pointer btn-link">
-										Beach Annihilator: <span id="annihilator">0</span>
-									</h3>
-									<span>
-										This weapon of mass destruction has been re-labelled and now hovers above coast-lines, or what is now left of them.
-										<br>
-										Produces 40 silicon per second.
-										<br>
-										Uses 53 Energy per second.
-										<br>
-										Costs <span id="annihilatorSpaceMetalCost">3,000</span> Space Metal, <span id="annihilatorGemCost">8,300</span> Gems, <span id="annihilatorSilverCost">2,400</span> Silver.
-									</span>
-									<br>
-									<br>
-									<button onclick="getAnnihilator()" class="btn btn-default">Get Annihilator</button>
-									<button onclick="destroyMachine(annihilator, 'annihilator')" class="btn btn-default destroy hidden">Destroy Beach Annihilator</button>
 								</td>
 							</tr>
 						</table>
@@ -4493,6 +4493,53 @@
 													<img src="Icons/woodIcon.png" data-toggle="tooltip" title="Build 100 Mass Destroyers">
 												</div>
 											</td>
+											<td id="Build 1 Empowered Blowtorch" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Empowered Blowtorch">
+												</div>
+											</td>
+											<td id="Build 10 Empowered Blowtorches" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Empowered Blowtorches">
+												</div>
+											</td>
+											<td id="Build 100 Empowered Blowtorches" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Empowered Blowtorches">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td id="Build 1 Seaside Scorcher" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Seaside Scorcher">
+												</div>
+											</td>
+											<td id="Build 10 Seaside Scorchers" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Seaside Scorchers">
+												</div>
+											</td>
+											<td id="Build 100 Seaside Scorchers" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Seaside Scorchers">
+												</div>
+											</td>
+											<td id="Build 1 Beach Annihilator" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Beach Annihilator">
+												</div>
+											</td>
+											<td id="Build 10 Beach Annihilators" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Beach Annihilators">
+												</div>
+											</td>
+											<td id="Build 100 Beach Annihilators" class="achievementTD" style="border:none;">
+												<div>
+													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Beach Annihilators">
+												</div>
+											</td>
 											<td id="Build 1 Native Moon Worker" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/spaceMetalIcon.png" data-toggle="tooltip" title="Get 1 Native Moon Worker">
@@ -4503,13 +4550,13 @@
 													<img src="Icons/spaceMetalIcon.png" data-toggle="tooltip" title="Get 10 Native Moon Workers">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 100 Native Moon Workers" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/spaceMetalIcon.png" data-toggle="tooltip" title="Get 100 Native Moon Workers">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 1 Low-Gravity Drill" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/spaceMetalIcon.png" data-toggle="tooltip" title="Build 1 Low-Gravity Drill">
@@ -4545,13 +4592,13 @@
 													<img src="Icons/methaneIcon.png" data-toggle="tooltip" title="Build 1 Vacuum Cleaner">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 10 Vacuum Cleaners" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/methaneIcon.png" data-toggle="tooltip" title="Build 10 Vacuum Cleaners">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 100 Vacuum Cleaners" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/methaneIcon.png" data-toggle="tooltip" title="Build 100 Vacuum Cleaners">
@@ -4587,13 +4634,13 @@
 													<img src="Icons/methaneIcon.png" data-toggle="tooltip" title="Build 100 Space Cow Plantations">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 1 Explorer" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/titaniumIcon.png" data-toggle="tooltip" title="Build 1 Explorer">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 10 Explorers" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/titaniumIcon.png" data-toggle="tooltip" title="Build 10 Explorers">
@@ -4629,13 +4676,13 @@
 													<img src="Icons/titaniumIcon.png" data-toggle="tooltip" title="Build 10 Penta-Drills">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 100 Penta-Drills" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/titaniumIcon.png" data-toggle="tooltip" title="Build 100 Penta-Drills">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 1 Rocket Droid" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/goldIcon.png" data-toggle="tooltip" title="Build 1 Rocket Droid">
@@ -4671,13 +4718,13 @@
 													<img src="Icons/goldIcon.png" data-toggle="tooltip" title="Build 1 Death Star Jr">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 10 Death Star Jrs" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/goldIcon.png" data-toggle="tooltip" title="Build 10 Death Star Jrs">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 100 Death Star Jrs" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/goldIcon.png" data-toggle="tooltip" title="Build 100 Death Star Jrs">
@@ -4713,13 +4760,13 @@
 													<img src="Icons/silverIcon.png" data-toggle="tooltip" title="Build 100 Interplanetary Lasers">
 												</div>
 											</td>
+										</tr>
+										<tr>
 											<td id="Build 1 Big Bertha" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/silverIcon.png" data-toggle="tooltip" title="Build 1 Big Bertha">
 												</div>
 											</td>
-										</tr>
-										<tr>
 											<td id="Build 10 Big Berthas" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/silverIcon.png" data-toggle="tooltip" title="Build 10 Big Berthas">
@@ -4728,53 +4775,6 @@
 											<td id="Build 100 Big Berthas" class="achievementTD" style="border:none;">
 												<div>
 													<img src="Icons/silverIcon.png" data-toggle="tooltip" title="Build 100 Big Berthas">
-												</div>
-											</td>
-											<td id="Build 1 Empowered Blowtorch" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Empowered Blowtorch">
-												</div>
-											</td>
-											<td id="Build 10 Empowered Blowtorches" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Empowered Blowtorches">
-												</div>
-											</td>
-											<td id="Build 100 Empowered Blowtorches" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Empowered Blowtorches">
-												</div>
-											</td>
-											<td id="Build 1 Seaside Scorcher" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Seaside Scorcher">
-												</div>
-											</td>
-											<td id="Build 10 Seaside Scorchers" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Seaside Scorchers">
-												</div>
-											</td>
-											<td id="Build 100 Seaside Scorchers" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Seaside Scorchers">
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td id="Build 1 Beach Annihilator" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 1 Beach Annihilator">
-												</div>
-											</td>
-											<td id="Build 10 Beach Annihilators" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 10 Beach Annihilators">
-												</div>
-											</td>
-											<td id="Build 100 Beach Annihilators" class="achievementTD" style="border:none;">
-												<div>
-													<img src="Icons/siliconIcon.png" data-toggle="tooltip" title="Build 100 Beach Annihilators">
 												</div>
 											</td>
 										</tr>

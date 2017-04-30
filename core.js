@@ -1848,6 +1848,9 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "charcoalNav")){
 		document.getElementById("charcoalNav").className = "earth";
 	}
+	if(contains(resourcesUnlocked, "siliconNav")){
+		document.getElementById("siliconNav").className = "earth";
+	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
 		document.getElementById("spaceMetalNav").className = "innerPlanet";
 	}
@@ -1862,9 +1865,6 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "silverNav")){
 		document.getElementById("silverNav").className = "innerPlanet";
-	}
-	if(contains(resourcesUnlocked, "siliconNav")){
-		document.getElementById("siliconNav").className = "innerPlanet";
 	}
 	if(contains(resourcesUnlocked, "hydrogenNav")){
 		document.getElementById("hydrogenNav").className = "outerPlanet";
