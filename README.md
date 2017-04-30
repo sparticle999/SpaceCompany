@@ -21,6 +21,7 @@ v0.4.0 The Hot and Cold Update
 - Drill of Titans: Titanium
 - Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
+- 
 
 # Changelog:
 
@@ -34,6 +35,7 @@ v0.4.0 The Hot and Cold Update
 - Increased Width of Resources List to reduce vertical scrolling
 - Added Tiered Laboratories
 - Added Batteries
+- Changed Silicon from an inner planet resource to an earth resource
 
 v0.3.5
 - Added Number Formatting for large numbers
