@@ -107,5 +107,7 @@ function buildSphere(){
 		rocketFuel -= 250000;
 		sphere += 1;
 		document.getElementById("sphere").innerHTML = sphere;
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonPieces").innerHTML = dyson;
 	}
 }

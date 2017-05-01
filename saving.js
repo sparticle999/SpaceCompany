@@ -1,4 +1,8 @@
 function autosave(){
+	if(secondsSession <= 60){
+		saveTimer = 0;
+	}
+
 	if(saved === true){
 		timer += 1;
 		if(timer >= 2){
@@ -15,7 +19,6 @@ function autosave(){
 			timer2 = 0;
 		}
 	}
-
 	if(document.getElementById("30secs").checked){
 		if(saveTimer >= 30){
 			save("local");
@@ -95,6 +98,7 @@ function save(type){
 		placesExploredNum: placesExploredNum,
 		wondersBuiltNum: wondersBuiltNum,
 		wondersActivatedNum: wondersActivatedNum,
+		secondsTotal: secondsTotal,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -448,6 +452,7 @@ function load(type){
 		if(typeof savegame.placesExploredNum !== "undefined") placesExploredNum = savegame.placesExploredNum;
 		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
 		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
+		if(typeof savegame.secondsTotal !== "undefined") secondsTotal = savegame.secondsTotal;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
