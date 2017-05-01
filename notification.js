@@ -79,6 +79,9 @@ function activeWonderTab(tab){
 	if(document.getElementById("techWonderNav").className != "hidden"){
 		document.getElementById("techWonderNav").className = "";
 	}
+	if(document.getElementById("meteoriteWonderNav").className != "hidden"){
+		document.getElementById("meteoriteWonderNav").className = "";
+	}
 	document.getElementById(tab).className = "info";
 }
 

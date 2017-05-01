@@ -1579,6 +1579,39 @@ function getPentaDrill(){
 	}
 }
 
+function getTitanDrill(){
+	if(spaceMetal >= titanDrillSpaceMetalCost && gold >= titanDrillGoldCost && meteorite >= titanDrillMeteoriteCost){
+		spaceMetal -= titanDrillSpaceMetalCost;
+		gold -= titanDrillGoldCost;
+		meteorite -= titanDrillMeteoriteCost;
+		titanDrill += 1;
+		titanDrillSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,titanDrill));
+		titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
+		titanDrillMeteoriteCost = Math.floor(6000 * Math.pow(1.1,titanDrill));
+		document.getElementById("titanDrill").innerHTML = titanDrill;
+		document.getElementById("titanDrillSpaceMetalCost").innerHTML = commafy(titanDrillSpaceMetalCost);
+		document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
+		document.getElementById("titanDrillMeteoriteCost").innerHTML = commafy(titanDrillMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(titanDrill >= 1 && document.getElementById("Build 1 Penta-Drill").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Penta-Drill").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 1 Penta-Drill");
+		// }
+		// if(titanDrill >= 10 && document.getElementById("Build 10 Penta-Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Penta-Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 10 Penta-Drills");
+		// }
+		// if(titanDrill >= 100 && document.getElementById("Build 100 Penta-Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Penta-Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 100 Penta-Drills");
+		// }
+	}
+}
+
 function getDroid(){
 	if(spaceMetal >= droidSpaceMetalCost && methane >= droidMethaneCost){
 		spaceMetal -= droidSpaceMetalCost;
@@ -1881,22 +1914,22 @@ function getDesert(){
 		document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
 		document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
 		refresh();
-		tier3 += 1;
-		if(desert >= 1 && document.getElementById("Build 1 Desert Destroyer").className === "achievementTD"){
-			document.getElementById("Build 1 Desert Destroyer").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Desert Destroyer");
-		}
-		if(desert >= 10 && document.getElementById("Build 10 Desert Destroyers").className === "achievementTD"){
-			document.getElementById("Build 10 Desert Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Desert Destroyers");
-		}
-		if(desert >= 100 && document.getElementById("Build 100 Desert Destroyers").className === "achievementTD"){
-			document.getElementById("Build 100 Desert Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Desert Destroyers");
-		}
+		tier4 += 1;
+		// if(desert >= 1 && document.getElementById("Build 1 Desert Destroyer").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Desert Destroyer").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 1 Desert Destroyer");
+		// }
+		// if(desert >= 10 && document.getElementById("Build 10 Desert Destroyers").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Desert Destroyers").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 10 Desert Destroyers");
+		// }
+		// if(desert >= 100 && document.getElementById("Build 100 Desert Destroyers").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Desert Destroyers").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 100 Desert Destroyers");
+		// }
 	}
 }
 

@@ -278,6 +278,10 @@ function save(type){
 		pentaDrillSpaceMetalCost: pentaDrillSpaceMetalCost,
 		pentaDrillGemCost: pentaDrillGemCost,
 		pentaDrillSiliconCost: pentaDrillSiliconCost,
+		titanDrill: titanDrill,
+		titanDrillSpaceMetalCost: titanDrillSpaceMetalCost,
+		titanDrillGoldCost: titanDrillGoldCost,
+		titanDrillMeteoriteCost: titanDrillMeteoriteCost,
 		droid: droid,
 		droidSpaceMetalCost: droidSpaceMetalCost,
 		droidMethaneCost: droidMethaneCost,
@@ -323,6 +327,7 @@ function save(type){
 		noBorder: noBorder,
 		rocketLaunched: rocketLaunched,
 		techUnlocked: techUnlocked,
+		meteoriteUnlocked: meteoriteUnlocked,
 		buttonsHidden: buttonsHidden,
 		explored: explored,
 		uranium: uranium,
@@ -651,6 +656,10 @@ function load(type){
 		if(typeof savegame.pentaDrillSpaceMetalCost !== "undefined") pentaDrillSpaceMetalCost = savegame.pentaDrillSpaceMetalCost;
 		if(typeof savegame.pentaDrillGemCost !== "undefined") pentaDrillGemCost = savegame.pentaDrillGemCost;
 		if(typeof savegame.pentaDrillSiliconCost !== "undefined") pentaDrillSiliconCost = savegame.pentaDrillSiliconCost;
+		if(typeof savegame.titanDrill !== "undefined") titanDrill = savegame.titanDrill;
+		if(typeof savegame.titanDrillSpaceMetalCost !== "undefined") titanDrillSpaceMetalCost = savegame.titanDrillSpaceMetalCost;
+		if(typeof savegame.titanDrillGoldCost !== "undefined") titanDrillGoldCost = savegame.titanDrillGoldCost;
+		if(typeof savegame.titanDrillMeteoriteCost !== "undefined") titanDrillMeteoriteCost = savegame.titanDrillMeteoriteCost;
 		if(typeof savegame.droid !== "undefined") droid = savegame.droid;
 		if(typeof savegame.droidSpaceMetalCost !== "undefined") droidSpaceMetalCost = savegame.droidSpaceMetalCost;
 		if(typeof savegame.droidMethaneCost !== "undefined") droidMethaneCost = savegame.droidMethaneCost;
@@ -696,6 +705,7 @@ function load(type){
 		if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
 		if(typeof savegame.techUnlocked !== "undefined") techUnlocked = savegame.techUnlocked;
+		if(typeof savegame.meteoriteUnlocked !== "undefined") meteoriteUnlocked = savegame.meteoriteUnlocked;
 		if(typeof savegame.explored !== "undefined") explored = savegame.explored;
 		if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
 		if(typeof savegame.uranium !== "undefined") uranium = savegame.uranium;

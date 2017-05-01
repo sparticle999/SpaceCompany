@@ -214,7 +214,7 @@ function unlockTier4(){
 	// document.getElementById("woodTier4").className = "";
 	// document.getElementById("spaceMetalTier4").className = "";
 	// document.getElementById("methaneTier4").className = "";
-	// document.getElementById("titaniumTier4").className = "";
+	document.getElementById("titaniumTier4").className = "";
 	// document.getElementById("goldTier4").className = "";
 	// document.getElementById("silverTier4").className = "";
 	document.getElementById("siliconTier4").className = "";

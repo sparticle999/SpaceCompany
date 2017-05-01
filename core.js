@@ -118,7 +118,7 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (0)+(0)+(0)+(0);
-	energyOutput += (0)+(0)+(0)+(0)+(0)+(desert*208);
+	energyOutput += (0)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
 	energyOutput += (0)+(0)+(0)+(0)+(0);
 
 	if(charcoalToggled === true){
@@ -172,7 +172,7 @@ function refreshPerSec(){
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
-		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49);
+		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
 		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
@@ -609,6 +609,10 @@ function refreshUI(){
 	document.getElementById("pentaDrillSpaceMetalCost").innerHTML = commafy(pentaDrillSpaceMetalCost);
 	document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
 	document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
+	document.getElementById("titanDrill").innerHTML = titanDrill;
+	document.getElementById("titanDrillSpaceMetalCost").innerHTML = commafy(titanDrillSpaceMetalCost);
+	document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
+	document.getElementById("titanDrillMeteoriteCost").innerHTML = commafy(titanDrillMeteoriteCost);
 	document.getElementById("droid").innerHTML = droid;
 	document.getElementById("droidSpaceMetalCost").innerHTML = commafy(droidSpaceMetalCost);
 	document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
@@ -1221,6 +1225,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, pentaDrillSpaceMetalCost, "pentaDrillSpaceMetalCost");
 	turnRed(gem, pentaDrillGemCost, "pentaDrillGemCost");
 	turnRed(silicon, pentaDrillSiliconCost, "pentaDrillSiliconCost");
+
+	turnRed(spaceMetal, titanDrillSpaceMetalCost, "titanDrillSpaceMetalCost");
+	turnRed(gold, titanDrillGoldCost, "titanDrillGoldCost");
+	turnRed(meteorite, titanDrillMeteoriteCost, "titanDrillMeteoriteCost");
 
 	if(spaceMetal < droidSpaceMetalCost){
 		document.getElementById("droidSpaceMetalCost").className = "red";

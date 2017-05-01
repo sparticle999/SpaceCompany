@@ -24,7 +24,6 @@ v0.4.0 The Hot and Cold Update
 - Forest Fryer: Charcoal
 - Planet Excavator: Space Metal
 - Drill of Titans: Titanium
-- Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
 - Mr Freeze: Ice
 
