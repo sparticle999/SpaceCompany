@@ -15,13 +15,18 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 # RoadMap
 
 v0.4.0 The Hot and Cold Update
+- Added Achievements for T4 Machines
 - Supercooling with Ice
 - Added Meteorite Tier of resource machines
+- Quantum Drill: Metal
+- Carbyne Drill: Gem
+- Offshore Rig: Oil
 - Forest Fryer: Charcoal
+- Planet Excavator: Space Metal
 - Drill of Titans: Titanium
 - Desert Destroyer: Silicon
 - Volcanic Veluptuator: Lava
-- 
+- Mr Freeze: Ice
 
 # Changelog:
 
@@ -38,6 +43,7 @@ v0.4.0 The Hot and Cold Update
 - Added Batteries
 - Changed Silicon from an inner planet resource to an earth resource
 - Altered Cyborg Theme
+- Added Stats for Time Keeping
 
 v0.3.5
 - Added Number Formatting for large numbers

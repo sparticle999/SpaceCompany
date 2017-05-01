@@ -112,9 +112,15 @@ function refreshPerSec(){
 	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
 	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
 	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
+
 	energyOutput += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
 	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
+
+	energyOutput += (0)+(0)+(0)+(0);
+	energyOutput += (0)+(0)+(0)+(0)+(0)+(desert*208);
+	energyOutput += (0)+(0)+(0)+(0)+(0);
+
 	if(charcoalToggled === true){
 		energyOutput += (furnace*3)+(kiln*13);
 	}
@@ -123,32 +129,22 @@ function refreshPerSec(){
 			energyOutput += (heater*1000);
 			plasma += heater/10;
 			hydrogen -= heater*10/10;
+			plasmaps = heater;
 		}
 		else{
 			plasma = 100000
+			plasmaps = 0;
 		}
 	}
-	else{
-		plasmaps = 0;
-	}
 	if(meteoriteToggled === true && plasma >= 3){
-		if(meteorite <= meteoriteStorage){
+		if(meteorite + printer/10 <= meteoriteStorage){
 			plasma -= printer*3/10;
 			meteorite += printer/10;
 			meteoriteps = printer;
+			plasmaps -= printer*3;
 		}
 		else{
 			meteorite = meteoriteStorage;
-			meteoriteps = 0;
-		}
-	}
-	if(energy <= 1000){
-		if(meteoriteToggled === true){
-			plasmaps = 0 - printer*3;
-			meteoriteps = printer;
-		}
-		else{
-			plasmaps = 0;
 			meteoriteps = 0;
 		}
 	}
@@ -179,7 +175,7 @@ function refreshPerSec(){
 		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49);
 		goldps = droid + (destroyer*8) + (deathStar*51);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
-		siliconps = blowtorch + (scorcher*9) + (annihilator*40);
+		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
 		uraniumps = grinder + (cubic*9) +(enricher*61);
 		lavaps = crucible + (extractor*7) + (extruder*43);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
@@ -218,22 +214,7 @@ function refreshPerSec(){
 	else{
 		document.getElementById("scienceps").innerHTML = commafy(scienceps);
 	}
-	if(meteoriteToggled === true){
-		if(heaterToggled === true){
-			document.getElementById("plasmaps").innerHTML = commafy(heater - printer*3);
-		}
-		else{
-			document.getElementById("plasmaps").innerHTML = commafy(0 - printer*3);
-		}
-	}
-	else{
-		if(heaterToggled === true){
-			document.getElementById("plasmaps").innerHTML = commafy(heater);
-		}
-		else{
-			document.getElementById("plasmaps").innerHTML = commafy(0);
-		}
-	}
+	document.getElementById("plasmaps").innerHTML = commafy(plasmaps);
 	document.getElementById("plasma").className = "";
 	if(plasma <= 0){
 		document.getElementById("plasma").className = "red";
@@ -661,6 +642,10 @@ function refreshUI(){
 	document.getElementById("annihilatorSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
 	document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
 	document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
+	document.getElementById("desert").innerHTML = commafy(desert);
+	document.getElementById("desertSpaceMetalCost").innerHTML = commafy(desertSpaceMetalCost);
+	document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
+	document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
 	document.getElementById("lab").innerHTML = lab;
 	document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
 	document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
@@ -1370,6 +1355,10 @@ function checkRedCost(){
 	else{
 		document.getElementById("annihilatorSilverCost").className = "";
 	}
+
+	turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
+	turnRed(silicon, desertSiliconCost, "desertSiliconCost");
+	turnRed(meteorite, desertMeteoriteCost, "desertMeteoriteCost");
 	
 	if(wood < labWoodCost){
 		document.getElementById("labWoodCost").className = "red";
@@ -1706,131 +1695,37 @@ function checkRedCost(){
 	turnRed(energy, 100000, "unlockDysonResearchEnergyCost");
 	turnRed(plasma, 10000, "unlockDysonResearchPlasmaCost");
 
-	if(gem < preciousGemCost){
-		document.getElementById("preciousGemCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousGemCost").className = "";
-	}
+	turnRed(gem, preciousGemCost, "preciousGemCost");
+	turnRed(silver, preciousSilverCost, "preciousSilverCost");
+	turnRed(gold, preciousGoldCost, "preciousGoldCost");
 
-	if(silver < preciousSilverCost){
-		document.getElementById("preciousSilverCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousSilverCost").className = "";
-	}
+	turnRed(gem, preciousActivateGemCost, "preciousActivateGemCost");
+	turnRed(silver, preciousActivateSilverCost, "preciousActivateSilverCost");
+	turnRed(gold, preciousActivateGoldCost, "preciousActivateGoldCost");
 
-	if(gold < preciousGoldCost){
-		document.getElementById("preciousGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousGoldCost").className = "";
-	}
+	turnRed(wood, energeticWoodCost, "energeticWoodCost");
+	turnRed(charcoal, energeticCharcoalCost, "energeticCharcoalCost");
+	turnRed(uranium, energeticUraniumCost, "energeticUraniumCost");
 
-	if(gem < preciousActivateGemCost){
-		document.getElementById("preciousActivateGemCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousActivateGemCost").className = "";
-	}
+	turnRed(wood, energeticActivateWoodCost, "energeticActivateWoodCost");
+	turnRed(charcoal, energeticActivateCharcoalCost, "energeticActivateCharcoalCost");
+	turnRed(uranium, energeticActivateUraniumCost, "energeticActivateUraniumCost");
 
-	if(silver < preciousActivateSilverCost){
-		document.getElementById("preciousActivateSilverCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousActivateSilverCost").className = "";
-	}
+	turnRed(silicon, techSiliconCost, "techSiliconCost");
+	turnRed(gold, techGoldCost, "techGoldCost");
+	turnRed(gem, techGemCost, "techGemCost");
 
-	if(gold < preciousActivateGoldCost){
-		document.getElementById("preciousActivateGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("preciousActivateGoldCost").className = "";
-	}
+	turnRed(silicon, techActivateSiliconCost, "techActivateSiliconCost");
+	turnRed(gold, techActivateGoldCost, "techActivateGoldCost");
+	turnRed(gem, techActivateGemCost, "techActivateGemCost");
 
-	if(wood < energeticWoodCost){
-		document.getElementById("energeticWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticWoodCost").className = "";
-	}
+	turnRed(meteorite, meteoriteMeteoriteCost, "meteoriteMeteoriteCost");
+	turnRed(ice, meteoriteIceCost, "meteoriteIceCost");
+	turnRed(silicon, meteoriteSiliconCost, "meteoriteSiliconCost");
 
-	if(charcoal < energeticCharcoalCost){
-		document.getElementById("energeticCharcoalCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticCharcoalCost").className = "";
-	}
-
-	if(uranium < energeticUraniumCost){
-		document.getElementById("energeticUraniumCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticUraniumCost").className = "";
-	}
-
-	if(wood < energeticActivateWoodCost){
-		document.getElementById("energeticActivateWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticActivateWoodCost").className = "";
-	}
-
-	if(charcoal < energeticActivateCharcoalCost){
-		document.getElementById("energeticActivateCharcoalCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticActivateCharcoalCost").className = "";
-	}
-
-	if(uranium < energeticActivateUraniumCost){
-		document.getElementById("energeticActivateUraniumCost").className = "red";
-	}
-	else{
-		document.getElementById("energeticActivateUraniumCost").className = "";
-	}
-
-	if(silicon < techSiliconCost){
-		document.getElementById("techSiliconCost").className = "red";
-	}
-	else{
-		document.getElementById("techSiliconCost").className = "";
-	}
-
-	if(gold < techGoldCost){
-		document.getElementById("techGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("techGoldCost").className = "";
-	}
-
-	if(gem < techGemCost){
-		document.getElementById("techGemCost").className = "red";
-	}
-	else{
-		document.getElementById("techGemCost").className = "";
-	}
-
-	if(silicon < techActivateSiliconCost){
-		document.getElementById("techActivateSiliconCost").className = "red";
-	}
-	else{
-		document.getElementById("techActivateSiliconCost").className = "";
-	}
-
-	if(gold < techActivateGoldCost){
-		document.getElementById("techActivateGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("techActivateGoldCost").className = "";
-	}
-
-	if(gem < techActivateGemCost){
-		document.getElementById("techActivateGemCost").className = "red";
-	}
-	else{
-		document.getElementById("techActivateGemCost").className = "";
-	}
+	turnRed(meteorite, meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
+	turnRed(ice, meteoriteActivateIceCost, "meteoriteActivateIceCost");
+	turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 }
 
 function refreshAchievements(){

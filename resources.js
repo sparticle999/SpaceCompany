@@ -1867,6 +1867,39 @@ function getAnnihilator(){
 	}
 }
 
+function getDesert(){
+	if(spaceMetal >= desertSpaceMetalCost && silicon >= desertSiliconCost && meteorite >= desertMeteoriteCost){
+		spaceMetal -= desertSpaceMetalCost;
+		silicon -= desertSiliconCost;
+		meteorite -= desertMeteoriteCost;
+		desert += 1;
+		desertSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,desert));
+		desertSiliconCost = Math.floor(17700 * Math.pow(1.1,desert));
+		desertMeteoriteCost = Math.floor(400 * Math.pow(1.1,desert));
+		document.getElementById("desert").innerHTML = desert;
+		document.getElementById("desertSpaceMetalCost").innerHTML = commafy(desertSpaceMetalCost);
+		document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
+		document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
+		refresh();
+		tier3 += 1;
+		if(desert >= 1 && document.getElementById("Build 1 Desert Destroyer").className === "achievementTD"){
+			document.getElementById("Build 1 Desert Destroyer").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 1 Desert Destroyer");
+		}
+		if(desert >= 10 && document.getElementById("Build 10 Desert Destroyers").className === "achievementTD"){
+			document.getElementById("Build 10 Desert Destroyers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 10 Desert Destroyers");
+		}
+		if(desert >= 100 && document.getElementById("Build 100 Desert Destroyers").className === "achievementTD"){
+			document.getElementById("Build 100 Desert Destroyers").className = "achievementTD achieved";
+			newUnlock("settings");
+			achieved.push("Build 100 Desert Destroyers");
+		}
+	}
+}
+
 function getCrucible(){
 	if(spaceMetal >= crucibleSpaceMetalCost && gem >= crucibleGemCost){
 		spaceMetal -= crucibleSpaceMetalCost;

@@ -311,6 +311,10 @@ function save(type){
 		annihilatorSpaceMetalCost: annihilatorSpaceMetalCost,
 		annihilatorGemCost: annihilatorGemCost,
 		annihilatorSilverCost: annihilatorSilverCost,
+		desert: desert,
+		desertSpaceMetalCost: desertSpaceMetalCost,
+		desertSiliconCost: desertSiliconCost,
+		desertMeteoriteCost: desertMeteoriteCost,
 		researchUnlocked: researchUnlocked,
 		researched: researched,
 		available: available,
@@ -680,6 +684,10 @@ function load(type){
 		if(typeof savegame.annihilatorSpaceMetalCost !== "undefined") annihilatorSpaceMetalCost = savegame.annihilatorSpaceMetalCost;
 		if(typeof savegame.annihilatorGemCost !== "undefined") annihilatorGemCost = savegame.annihilatorGemCost;
 		if(typeof savegame.annihilatorSilverCost !== "undefined") annihilatorSilverCost = savegame.annihilatorSilverCost;
+		if(typeof savegame.desert !== "undefined") desert = savegame.desert;
+		if(typeof savegame.desertSpaceMetalCost !== "undefined") desertSpaceMetalCost = savegame.desertSpaceMetalCost;
+		if(typeof savegame.desertSiliconCost !== "undefined") desertSiliconCost = savegame.desertSiliconCost;
+		if(typeof savegame.desertMeteoriteCost !== "undefined") desertMeteoriteCost = savegame.desertMeteoriteCost;
 		if(typeof savegame.researchUnlocked !== "undefined") researchUnlocked = savegame.researchUnlocked;
 		if(typeof savegame.researched !== "undefined") researched = savegame.researched;
 		if(typeof savegame.tabsUnlocked !== "undefined") tabsUnlocked = savegame.tabsUnlocked;

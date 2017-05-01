@@ -71,6 +71,7 @@ var bertha = 0; var berthaSpaceMetalCost = 19500; var berthaTitaniumCost = 18200
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var annihilator = 0; var annihilatorSpaceMetalCost = 3000; var annihilatorGemCost = 8300; var annihilatorSilverCost = 2400;
+var desert = 0; var desertSpaceMetalCost = 20000; var desertSiliconCost = 17700; var desertMeteoriteCost = 400;
 var uranium = 0; var uraniumStorage = 50; var uraniumNextStorage = 100; var uraniumps = 0;
 var grinder = 0; var grinderTitaniumCost = 2000; var grinderSpaceMetalCost = 4000; var grinderGoldCost = 2000;
 var cubic = 0; var cubicUraniumCost = 80; var cubicSpaceMetalCost = 10000; var cubicOilCost = 10000;
@@ -107,6 +108,8 @@ var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticU
 var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
 var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
 var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
+var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 2000000;
+var meteoriteActivateMeteoriteCost = 10000; var meteoriteActivateIceCost = 2000000; var meteoriteActivateSiliconCost = 4000000;
 var timer = 0; var timer2 = 0; var energyTimer = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = 1;
 
