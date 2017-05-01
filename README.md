@@ -23,7 +23,6 @@ v0.4.0 The Hot and Cold Update
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
 - Planet Excavator: Space Metal
-- Drill of Titans: Titanium
 - Volcanic Veluptuator: Lava
 - Mr Freeze: Ice
 
