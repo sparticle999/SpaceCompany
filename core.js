@@ -490,7 +490,7 @@ function refreshUI(){
 	document.getElementById("heater").innerHTML = heater;
 	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
-	document.getElementById("heaterSiliconCost").innerHTML = heaterSiliconCost;
+	document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
 	document.getElementById("battery").innerHTML = battery;
 	document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 	document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
@@ -729,6 +729,7 @@ function refreshUI(){
 	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
 	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
+	document.getElementById("sphere").innerHTML = commafy(sphere);
 	document.getElementById("printer").innerHTML = commafy(printer);
 	document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
 	document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);

@@ -537,9 +537,9 @@ function load(type){
 		if(typeof savegame.advancedDrillOilCost !== "undefined") advancedDrillOilCost = savegame.advancedDrillOilCost;
 		if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
 		if(typeof savegame.diamondDrill !== "undefined") diamondDrill = savegame.diamondDrill;
-		if(typeof savegame.diamondDrillMetalCost !== "undefined") diamondDrillMetalCost = savegame.diamondDrillMetalCost;
+		if(typeof savegame.diamondDrillSpaceMetalCost !== "undefined") diamondDrillSpaceMetalCost = savegame.diamondDrillSpaceMetalCost;
 		if(typeof savegame.diamondDrillGemCost !== "undefined") diamondDrillGemCost = savegame.diamondDrillGemCost;
-		if(typeof savegame.diamondDrillOilCost !== "undefined") diamondDrillOilCost = savegame.diamondDrillOilCost;
+		if(typeof savegame.diamondDrillSiliconCost !== "undefined") diamondDrillSiliconCost = savegame.diamondDrillSiliconCost;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
@@ -770,7 +770,7 @@ function load(type){
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
 		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
-		if(typeof savegame.printerGemCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
+		if(typeof savegame.printerSiliconCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
 		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
 		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;
