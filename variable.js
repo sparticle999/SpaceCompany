@@ -56,6 +56,7 @@ var silicon = 0; var siliconStorage = 50; var siliconNextStorage = 100; var sili
 var moonWorker = 0; var moonWorkerGemCost = 500;
 var moonDrill = 0; var moonDrillMetalCost = 1000; var moonDrillGemCost = 600; var moonDrillOilCost = 400;
 var moonQuarry = 0; var moonQuarrySpaceMetalCost = 8000; var moonQuarryGemCost = 5000; var moonQuarrySiliconCost = 3500;
+var planetExcavator = 0; var planetExcavatorTitaniumCost = 45000; var planetExcavatorIceCost = 37000; var planetExcavatorMeteoriteCost = 500;
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
 var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionExcavatorGemCost = 800; var suctionExcavatorOilCost = 600;
 var spaceCow = 0; var spaceCowSpaceMetalCost = 10000; var spaceCowTitaniumCost = 9000; var spaceCowSiliconCost = 4100;

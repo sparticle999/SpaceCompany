@@ -621,8 +621,9 @@ function destroyMachine(machine, id){
 
 function getHeater(){
 	if(spaceMetal >= heaterSpaceMetalCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
-		metal -= heaterSpaceMetalCost;
+		spaceMetal -= heaterSpaceMetalCost;
 		gem -= heaterGemCost;
+		silicon -= heaterSiliconCost;
 		heater += 1;
 		heaterSpaceMetalCost = Math.floor(75000 * Math.pow(1.1,heater));
 		heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater));
@@ -1387,6 +1388,39 @@ function getMoonQuarry(){
 			newUnlock("settings");
 			achieved.push("Build 100 Moon Quarries");
 		}
+	}
+}
+
+function getPlanetExcavator(){
+	if(titanium >= planetExcavatorTitaniumCost && ice >= planetExcavatorIceCost && meteorite >= planetExcavatorMeteoriteCost){
+		titanium -= planetExcavatorTitaniumCost;
+		ice -= planetExcavatorIceCost;
+		meteorite -= planetExcavatorMeteoriteCost;
+		planetExcavator += 1;
+		planetExcavatorMeteoriteCost = Math.floor(3500 * Math.pow(1.1,planetExcavator));
+		planetExcavatorIceCost = Math.floor(5000 * Math.pow(1.1,planetExcavator));
+		planetExcavatorTitaniumCost = Math.floor(8000 * Math.pow(1.1,planetExcavator));
+		document.getElementById("planetExcavator").innerHTML = planetExcavator;
+		document.getElementById("planetExcavatorTitaniumCost").innerHTML = commafy(planetExcavatorTitaniumCost);
+		document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);
+		document.getElementById("planetExcavatorMeteoriteCost").innerHTML = commafy(planetExcavatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(moonQuarry >= 1 && document.getElementById("Build 1 Moon Quarry").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Moon Quarry").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 1 Moon Quarry");
+		// }
+		// if(moonQuarry >= 10 && document.getElementById("Build 10 Moon Quarries").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Moon Quarries").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 10 Moon Quarries");
+		// }
+		// if(moonQuarry >= 100 && document.getElementById("Build 100 Moon Quarries").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Moon Quarries").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 100 Moon Quarries");
+		// }
 	}
 }
 

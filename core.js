@@ -118,7 +118,7 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (0)+(0)+(0)+(0);
-	energyOutput += (0)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
+	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
 	energyOutput += (0)+(0)+(0)+(0)+(0);
 
 	if(charcoalToggled === true){
@@ -170,7 +170,7 @@ function refreshPerSec(){
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
-		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53);
+		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
 		goldps = droid + (destroyer*8) + (deathStar*51);
@@ -588,6 +588,10 @@ function refreshUI(){
 	document.getElementById("moonQuarrySpaceMetalCost").innerHTML = commafy(moonQuarrySpaceMetalCost);
 	document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
 	document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
+	document.getElementById("planetExcavator").innerHTML = planetExcavator;
+	document.getElementById("planetExcavatorTitaniumCost").innerHTML = commafy(planetExcavatorTitaniumCost);
+	document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);
+	document.getElementById("planetExcavatorMeteoriteCost").innerHTML = commafy(planetExcavatorMeteoriteCost);
 	document.getElementById("vacuum").innerHTML = vacuum;
 	document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
 	document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
@@ -1154,6 +1158,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, moonQuarrySpaceMetalCost, "moonQuarrySpaceMetalCost");
 	turnRed(gem, moonQuarryGemCost, "moonQuarryGemCost");
 	turnRed(silicon, moonQuarrySiliconCost, "moonQuarrySiliconCost");
+
+	turnRed(titanium, planetExcavatorTitaniumCost, "planetExcavatorTitaniumCost");
+	turnRed(ice, planetExcavatorIceCost, "planetExcavatorIceCost");
+	turnRed(meteorite, planetExcavatorMeteoriteCost, "planetExcavatorMeteoriteCost");
 
 
 	if(spaceMetal < vacuumSpaceMetalCost){

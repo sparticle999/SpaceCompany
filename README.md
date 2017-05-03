@@ -17,12 +17,11 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 v0.4.0 The Hot and Cold Update
 - Added Achievements for T4 Machines
 - Supercooling with Ice
-- Added Meteorite Tier of resource machines
+
 - Quantum Drill: Metal
 - Carbyne Drill: Gem
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
-- Planet Excavator: Space Metal
 - Volcanic Veluptuator: Lava
 - Mr Freeze: Ice
 
@@ -32,6 +31,7 @@ v0.4.0 The Hot and Cold Update
 - Added Achievements
 - Added Research from Sol Center
 - Added Meteorite
+- Added Meteorite Tier of resource machines (4th Tier)
 - Added Dyson Sections
 - Added Dyson Sphere
 - Added Per Second Display on Science
