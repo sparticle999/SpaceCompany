@@ -117,7 +117,7 @@ function refreshPerSec(){
 	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
-	energyOutput += (0)+(0)+(0)+(0);
+	energyOutput += (0)+(0)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
 	energyOutput += (0)+(0)+(0)+(0)+(0);
 
@@ -167,7 +167,7 @@ function refreshPerSec(){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63);
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108);
-		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89);
+		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
@@ -553,6 +553,10 @@ function refreshUI(){
 	document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
 	document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
 	document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
+	document.getElementById("carbyneDrill").innerHTML = carbyneDrill;
+	document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = commafy(carbyneDrillSpaceMetalCost);
+	document.getElementById("carbyneDrillGemCost").innerHTML = commafy(carbyneDrillGemCost);
+	document.getElementById("carbyneDrillMeteoriteCost").innerHTML = commafy(carbyneDrillMeteoriteCost);
 	document.getElementById("woodburner").innerHTML = woodburner;
 	document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
 	document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
@@ -1048,6 +1052,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, diamondDrillSpaceMetalCost, "diamondDrillSpaceMetalCost");
 	turnRed(gem, diamondDrillGemCost, "diamondDrillGemCost");
 	turnRed(silicon, diamondDrillSiliconCost, "diamondDrillSiliconCost");
+
+	turnRed(spaceMetal, carbyneDrillSpaceMetalCost, "carbyneDrillSpaceMetalCost");
+	turnRed(gem, carbyneDrillGemCost, "carbyneDrillGemCost");
+	turnRed(meteorite, carbyneDrillMeteoriteCost, "carbyneDrillMeteoriteCost");
 	
 	if(metal < woodburnerMetalCost){
 		document.getElementById("woodburnerMetalCost").className = "red";

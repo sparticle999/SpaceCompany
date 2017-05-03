@@ -1078,9 +1078,9 @@ function getDiamondDrill(){
 		gem -= diamondDrillGemCost;
 		silicon -= diamondDrillSiliconCost;
 		diamondDrill += 1;
-		diamondDrillSiliconCost = Math.floor(3900 * Math.pow(1.1,diamondDrill));
-		diamondDrillGemCost = Math.floor(2700 * Math.pow(1.1,diamondDrill));
-		diamondDrillSpaceMetalCost = Math.floor(3100 * Math.pow(1.1,diamondDrill));
+		diamondDrillSiliconCost = Math.floor(4500 * Math.pow(1.1,diamondDrill));
+		diamondDrillGemCost = Math.floor(8000 * Math.pow(1.1,diamondDrill));
+		diamondDrillSpaceMetalCost = Math.floor(3400 * Math.pow(1.1,diamondDrill));
 		document.getElementById("diamondDrill").innerHTML = diamondDrill;
 		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
 		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
@@ -1102,6 +1102,39 @@ function getDiamondDrill(){
 			newUnlock("settings");
 			achieved.push("Build 100 Diamond-Encrusted Drill");
 		}
+	}
+}
+
+function getCarbyneDrill(){
+	if(spaceMetal >= carbyneDrillSpaceMetalCost && gem >= carbyneDrillGemCost && meteorite >= carbyneDrillMeteoriteCost){
+		spaceMetal -= carbyneDrillSpaceMetalCost;
+		gem -= carbyneDrillGemCost;
+		meteorite -= carbyneDrillMeteoriteCost;
+		carbyneDrill += 1;
+		carbyneDrillMeteoriteCost = Math.floor(800 * Math.pow(1.1,carbyneDrill));
+		carbyneDrillGemCost = Math.floor(27000 * Math.pow(1.1,carbyneDrill));
+		carbyneDrillSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
+		document.getElementById("carbyneDrill").innerHTML = carbyneDrill;
+		document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = commafy(carbyneDrillSpaceMetalCost);
+		document.getElementById("carbyneDrillGemCost").innerHTML = commafy(carbyneDrillGemCost);
+		document.getElementById("carbyneDrillMeteoriteCost").innerHTML = commafy(carbyneDrillMeteoriteCost);
+		refresh();
+		tier3 += 1;
+		// if(carbyneDrill >= 1 && document.getElementById("Build 1 Diamond-Encrusted Drill").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Diamond-Encrusted Drill").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 1 Diamond-Encrusted Drill");
+		// }
+		// if(carbyneDrill >= 10 && document.getElementById("Build 10 Diamond-Encrusted Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 10 Diamond-Encrusted Drill");
+		// }
+		// if(carbyneDrill >= 100 && document.getElementById("Build 100 Diamond-Encrusted Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 100 Diamond-Encrusted Drill");
+		// }
 	}
 }
 

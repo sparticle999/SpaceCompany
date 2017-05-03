@@ -177,6 +177,10 @@ function save(type){
 		diamondDrillSpaceMetalCost: diamondDrillSpaceMetalCost,
 		diamondDrillGemCost: diamondDrillGemCost,
 		diamondDrillSiliconCost: diamondDrillSiliconCost,
+		carbyneDrill: carbyneDrill,
+		carbyneDrillSpaceMetalCost: carbyneDrillSpaceMetalCost,
+		carbyneDrillGemCost: carbyneDrillGemCost,
+		carbyneDrillMeteoriteCost: carbyneDrillMeteoriteCost,
 		charcoal: charcoal,
 		charcoalStorage: charcoalStorage,
 		charcoalNextStorage: charcoalNextStorage,
@@ -544,6 +548,10 @@ function load(type){
 		if(typeof savegame.diamondDrillSpaceMetalCost !== "undefined") diamondDrillSpaceMetalCost = savegame.diamondDrillSpaceMetalCost;
 		if(typeof savegame.diamondDrillGemCost !== "undefined") diamondDrillGemCost = savegame.diamondDrillGemCost;
 		if(typeof savegame.diamondDrillSiliconCost !== "undefined") diamondDrillSiliconCost = savegame.diamondDrillSiliconCost;
+		if(typeof savegame.carbyneDrill !== "undefined") carbyneDrill = savegame.carbyneDrill;
+		if(typeof savegame.carbyneDrillSpaceMetalCost !== "undefined") carbyneDrillSpaceMetalCost = savegame.carbyneDrillSpaceMetalCost;
+		if(typeof savegame.carbyneDrillGemCost !== "undefined") carbyneDrillGemCost = savegame.carbyneDrillGemCost;
+		if(typeof savegame.carbyneDrillMeteoriteCost !== "undefined") carbyneDrillMeteoriteCost = savegame.carbyneDrillMeteoriteCost;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
