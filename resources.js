@@ -1430,9 +1430,9 @@ function getPlanetExcavator(){
 		ice -= planetExcavatorIceCost;
 		meteorite -= planetExcavatorMeteoriteCost;
 		planetExcavator += 1;
-		planetExcavatorMeteoriteCost = Math.floor(3500 * Math.pow(1.1,planetExcavator));
-		planetExcavatorIceCost = Math.floor(5000 * Math.pow(1.1,planetExcavator));
-		planetExcavatorTitaniumCost = Math.floor(8000 * Math.pow(1.1,planetExcavator));
+		planetExcavatorMeteoriteCost = Math.floor(500 * Math.pow(1.1,planetExcavator));
+		planetExcavatorIceCost = Math.floor(37000 * Math.pow(1.1,planetExcavator));
+		planetExcavatorTitaniumCost = Math.floor(45000 * Math.pow(1.1,planetExcavator));
 		document.getElementById("planetExcavator").innerHTML = planetExcavator;
 		document.getElementById("planetExcavatorTitaniumCost").innerHTML = commafy(planetExcavatorTitaniumCost);
 		document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);

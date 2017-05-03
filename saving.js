@@ -647,6 +647,10 @@ function load(type){
 		if(typeof savegame.moonQuarrySpaceMetalCost !== "undefined") moonQuarrySpaceMetalCost = savegame.moonQuarrySpaceMetalCost;
 		if(typeof savegame.moonQuarryGemCost !== "undefined") moonQuarryGemCost = savegame.moonQuarryGemCost;
 		if(typeof savegame.moonQuarrySiliconCost !== "undefined") moonQuarrySiliconCost = savegame.moonQuarrySiliconCost;
+		if(typeof savegame.planetExcavator !== "undefined") planetExcavator = savegame.planetExcavator;
+		if(typeof savegame.planetExcavatorTitaniumCost !== "undefined") planetExcavatorTitaniumCost = savegame.planetExcavatorTitaniumCost;
+		if(typeof savegame.planetExcavatorIceCost !== "undefined") planetExcavatorIceCost = savegame.planetExcavatorIceCost;
+		if(typeof savegame.planetExcavatorMeteoriteCost !== "undefined") planetExcavatorMeteoriteCost = savegame.planetExcavatorMeteoriteCost;
 		if(typeof savegame.vacuum !== "undefined") vacuum = savegame.vacuum;
 		if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumSpaceMetalCost = savegame.vacuumSpaceMetalCost;
 		if(typeof savegame.vacuumGemCost !== "undefined") vacuumGemCost = savegame.vacuumGemCost;
