@@ -340,7 +340,7 @@ function activateMeteoriteWonder(){
 		unlockTier4();
 		document.getElementById("activateMeteoriteWonder").className = "hidden";
 		document.getElementById("meteoriteActivation").innerHTML = "Activated";
-		T4Unlocked = true;
+		meteoriteUnlocked = true;
 		buttonsHidden.push("activateMeteoriteWonder");
 		activated.push("meteorite");
 		wondersActivatedNum += 1;

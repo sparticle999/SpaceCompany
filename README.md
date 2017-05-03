@@ -19,7 +19,6 @@ v0.4.0 The Hot and Cold Update
 - Supercooling with Ice
 
 - Quantum Drill: Metal
-- Carbyne Drill: Gem
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
 - Volcanic Veluptuator: Lava
