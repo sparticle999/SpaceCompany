@@ -1900,6 +1900,12 @@ function refreshResearches(){
 }
 
 function refreshTabs(){
+	if(contains(tabsUnlocked, "dropdownMenu")){
+ 		var index = tabsUnlocked.indexOf("dropdownMenu");
+ 		if (index > -1) {
+		    tabsUnlocked.splice(index, 1);
+		}
+ 	}
 	for(var i=0; i<tabsUnlocked.length; i++){
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}

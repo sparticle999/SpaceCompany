@@ -916,10 +916,9 @@ function getMiner(){
 		if(researchUnlocked === false){
 			if(miner >= 1){
 				document.getElementById("researchTab").className = "";
-				document.getElementById("dropdownMenu").className = "dropdown";
 				researchUnlocked = true;
 				tabsUnlockedNum += 1;
-				tabsUnlocked.push("researchTab", "dropdownMenu");
+				tabsUnlocked.push("researchTab");
 				newUnlock("research");
 			}
 		}
