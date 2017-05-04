@@ -29,6 +29,7 @@ var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 
 var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5;
 var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
 var gigaDrill = 0; var gigaDrillSpaceMetalCost = 2800; var gigaDrillGemCost = 3400; var gigaDrillSiliconCost = 4100;
+var quantumDrill = 0; var quantumDrillSpaceMetalCost = 29000; var quantumDrillGoldCost = 18700; var quantumDrillMeteoriteCost = 900;
 var gem = 0; var gemStorage = 50; var gemNextStorage = 100; var gemps = 0;
 var gemMiner = 0; var gemMinerMetalCost = 15; var gemMinerGemCost = 10;
 var advancedDrill = 0; var advancedDrillMetalCost = 120; var advancedDrillGemCost = 200; var advancedDrillOilCost = 60; var advancedDrillOutput = 4;

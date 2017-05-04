@@ -162,6 +162,10 @@ function save(type){
 		gigaDrillSpaceMetalCost: gigaDrillSpaceMetalCost,
 		gigaDrillGemCost: gigaDrillGemCost,
 		gigaDrillSiliconCost: gigaDrillSiliconCost,
+		quantumDrill: quantumDrill,
+		quantumDrillSpaceMetalCost: quantumDrillSpaceMetalCost,
+		quantumDrillGoldCost: quantumDrillGoldCost,
+		quantumDrillMeteoriteCost: quantumDrillMeteoriteCost,
 		gem: gem,
 		gemStorage: gemStorage,
 		gemNextStorage: gemNextStorage,
@@ -533,6 +537,10 @@ function load(type){
 		if(typeof savegame.gigaDrillSpaceMetalCost !== "undefined") gigaDrillSpaceMetalCost = savegame.gigaDrillSpaceMetalCost;
 		if(typeof savegame.gigaDrillGemCost !== "undefined") gigaDrillGemCost = savegame.gigaDrillGemCost;
 		if(typeof savegame.gigaDrillSiliconCost !== "undefined") gigaDrillSiliconCost = savegame.gigaDrillSiliconCost;
+		if(typeof savegame.quantumDrill !== "undefined") quantumDrill = savegame.quantumDrill;
+		if(typeof savegame.quantumDrillSpaceMetalCost !== "undefined") quantumDrillSpaceMetalCost = savegame.quantumDrillSpaceMetalCost;
+		if(typeof savegame.quantumDrillGoldCost !== "undefined") quantumDrillGoldCost = savegame.quantumDrillGoldCost;
+		if(typeof savegame.quantumDrillMeteoriteCost !== "undefined") quantumDrillMeteoriteCost = savegame.quantumDrillMeteoriteCost;
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
 		if(typeof savegame.gemStorage !== "undefined") gemStorage = savegame.gemStorage;
 		if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;

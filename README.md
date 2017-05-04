@@ -5,8 +5,6 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
-- Resources only makeable, not findable
-- Meteorite: 4th Tier of machine
 - Dark Matter
 - Random Events
 - Some sort of prestige
@@ -18,7 +16,6 @@ v0.4.0 The Hot and Cold Update
 - Added Achievements for T4 Machines
 - Supercooling with Ice
 
-- Quantum Drill: Metal
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
 - Volcanic Veluptuator: Lava
@@ -41,6 +38,7 @@ v0.4.0 The Hot and Cold Update
 - Changed Silicon from an inner planet resource to an earth resource
 - Altered Cyborg Theme
 - Added Stats for Time Keeping
+- Merged "More" and "Settings" Tabs
 
 v0.3.5
 - Added Number Formatting for large numbers

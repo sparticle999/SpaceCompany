@@ -208,7 +208,7 @@ function unlockTier3(){
 
 function unlockTier4(){
 	// document.getElementById("oilTier4").className = "";
-	// document.getElementById("metalTier4").className = "";
+	document.getElementById("metalTier4").className = "";
 	document.getElementById("gemTier4").className = "";
 	// document.getElementById("charcoalTier4").className = "";
 	// document.getElementById("woodTier4").className = "";

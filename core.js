@@ -117,7 +117,7 @@ function refreshPerSec(){
 	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
-	energyOutput += (0)+(0)+(carbyneDrill*40)+(0);
+	energyOutput += (0)+(quantumDrill*24)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
 	energyOutput += (0)+(0)+(0)+(0)+(0);
 
@@ -167,7 +167,7 @@ function refreshPerSec(){
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63);
-		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108);
+		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
@@ -542,6 +542,10 @@ function refreshUI(){
 	document.getElementById("gigaDrillSpaceMetalCost").innerHTML = commafy(gigaDrillSpaceMetalCost);
 	document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
 	document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
+	document.getElementById("quantumDrill").innerHTML = quantumDrill;
+	document.getElementById("quantumDrillSpaceMetalCost").innerHTML = commafy(quantumDrillSpaceMetalCost);
+	document.getElementById("quantumDrillGoldCost").innerHTML = commafy(quantumDrillGoldCost);
+	document.getElementById("quantumDrillMeteoriteCost").innerHTML = commafy(quantumDrillMeteoriteCost);
 	document.getElementById("gemMiner").innerHTML = gemMiner;
 	document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
 	document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
@@ -1014,6 +1018,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, gigaDrillSpaceMetalCost, "gigaDrillSpaceMetalCost");
 	turnRed(gem, gigaDrillGemCost, "gigaDrillGemCost");
 	turnRed(silicon, gigaDrillSiliconCost, "gigaDrillSiliconCost");
+
+	turnRed(spaceMetal, quantumDrillSpaceMetalCost, "quantumDrillSpaceMetalCost");
+	turnRed(gold, quantumDrillGoldCost, "quantumDrillGoldCost");
+	turnRed(meteorite, quantumDrillMeteoriteCost, "quantumDrillMeteoriteCost");
 
 	if(metal < gemMinerMetalCost){
 		document.getElementById("gemMinerMetalCost").className = "red";

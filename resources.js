@@ -1008,6 +1008,39 @@ function getGigaDrill(){
 	}
 }
 
+function getQuantumDrill(){
+	if(spaceMetal >= quantumDrillSpaceMetalCost && gold >= quantumDrillGoldCost && meteorite >= quantumDrillMeteoriteCost){
+		spaceMetal -= quantumDrillSpaceMetalCost;
+		gold -= quantumDrillGoldCost;
+		meteorite -= quantumDrillMeteoriteCost;
+		quantumDrill += 1;
+		quantumDrillMeteoriteCost = Math.floor(900 * Math.pow(1.1,quantumDrill));
+		quantumDrillGoldCost = Math.floor(18700 * Math.pow(1.1,quantumDrill));
+		quantumDrillSpaceMetalCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
+		document.getElementById("quantumDrill").innerHTML = quantumDrill;
+		document.getElementById("quantumDrillSpaceMetalCost").innerHTML = commafy(quantumDrillSpaceMetalCost);
+		document.getElementById("quantumDrillGoldCost").innerHTML = commafy(quantumDrillGoldCost);
+		document.getElementById("quantumDrillMeteoriteCost").innerHTML = commafy(quantumDrillMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(quantumDrill >= 1 && document.getElementById("Build 1 Quantum Drill").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Quantum Drill").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 1 Quantum Drill");
+		// }
+		// if(quantumDrill >= 10 && document.getElementById("Build 10 Quantum Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Quantum Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 10 Quantum Drills");
+		// }
+		// if(quantumDrill >= 100 && document.getElementById("Build 100 Quantum Drills").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Quantum Drills").className = "achievementTD achieved";
+		// 	newUnlock("settings");
+		// 	achieved.push("Build 100 Quantum Drills");
+		// }
+	}
+}
+
 function getGemMiner(){
 	if(metal >= gemMinerMetalCost && gem >= gemMinerGemCost){
 		metal -= gemMinerMetalCost;
