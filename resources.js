@@ -978,7 +978,7 @@ function getHeavyDrill(){
 
 function getGigaDrill(){
 	if(spaceMetal >= gigaDrillSpaceMetalCost && gem >= gigaDrillGemCost && silicon >= gigaDrillSiliconCost){
-		metal -= gigaDrillSpaceMetalCost;
+		spaceMetal -= gigaDrillSpaceMetalCost;
 		gem -= gigaDrillGemCost;
 		silicon -= gigaDrillSiliconCost;
 		gigaDrill += 1;
