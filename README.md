@@ -19,7 +19,6 @@ v0.4.0 The Hot and Cold Update
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
 - Volcanic Veluptuator: Lava
-- Mr Freeze: Ice
 
 # Changelog:
 

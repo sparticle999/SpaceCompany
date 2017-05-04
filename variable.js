@@ -96,6 +96,7 @@ var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost =
 var icePick = 0; var icePickSpaceMetalCost = 17800; var icePickGemCost = 19300;
 var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600;
 var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000;
+var mrFreeze = 0; var mrFreezeSpaceMetalCost = 519000; var mrFreezeHeliumCost = 14000; var mrFreezeMeteoriteCost = 1500;
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;
 var printer = 0; var printerSpaceMetalCost = 100000; var printerSiliconCost = 50000;
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;

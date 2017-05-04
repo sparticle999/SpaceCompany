@@ -2236,6 +2236,24 @@ function getFreezer(){
 	}
 }
 
+function getMrFreeze(){
+	if(spaceMetal >= mrFreezeSpaceMetalCost && helium >= mrFreezeHeliumCost && meteorite >= mrFreezeMeteoriteCost){
+		spaceMetal -= mrFreezeSpaceMetalCost;
+		helium -= mrFreezeHeliumCost;
+		meteorite -= mrFreezeMeteoriteCost;
+		mrFreeze += 1;
+		mrFreezeMeteoriteCost = Math.floor(1500 * Math.pow(1.1,mrFreeze));
+		mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
+		mrFreezeSpaceMetalCost = Math.floor(519000 * Math.pow(1.1,mrFreeze));
+		document.getElementById("mrFreeze").innerHTML = mrFreeze;
+		document.getElementById("mrFreezeSpaceMetalCost").innerHTML = commafy(mrFreezeSpaceMetalCost);
+		document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
+		document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getPrinter(){
 	if(spaceMetal >= printerSpaceMetalCost && silicon >= printerSiliconCost){
 		spaceMetal -= printerSpaceMetalCost;

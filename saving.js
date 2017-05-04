@@ -414,6 +414,10 @@ function save(type){
 		freezerSpaceMetalCost: freezerSpaceMetalCost,
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
+		mrFreeze: mrFreeze,
+		mrFreezeSpaceMetalCost: mrFreezeSpaceMetalCost,
+		mrFreezeHeliumCost: mrFreezeHeliumCost,
+		mrFreezeMeteoriteCost: mrFreezeMeteoriteCost,
 		meteorite: meteorite,
 		meteoriteStorage: meteoriteStorage,
 		meteoriteNextStorage: meteoriteNextStorage,
@@ -792,6 +796,10 @@ function load(type){
 		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
+		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
+		if(typeof savegame.mrFreezeSpaceMetalCost !== "undefined") mrFreezeSpaceMetalCost = savegame.mrFreezeSpaceMetalCost;
+		if(typeof savegame.mrFreezeHeliumCost !== "undefined") mrFreezeHeliumCost = savegame.mrFreezeHeliumCost;
+		if(typeof savegame.mrFreezeMeteoriteCost !== "undefined") mrFreezeMeteoriteCost = savegame.mrFreezeMeteoriteCost;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
 		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
 		if(typeof savegame.printerSiliconCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;

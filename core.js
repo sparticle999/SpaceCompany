@@ -119,7 +119,7 @@ function refreshPerSec(){
 
 	energyOutput += (0)+(quantumDrill*24)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(0)+(0)+(desert*138);
-	energyOutput += (0)+(0)+(0)+(0)+(0);
+	energyOutput += (0)+(0)+(0)+(0)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
 		energyOutput += (furnace*3)+(kiln*13);
@@ -181,7 +181,7 @@ function refreshPerSec(){
 		lavaps = crucible + (extractor*7) + (extruder*43);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
 		heliumps = drone + (tanker*11) + (compressor*57);
-		iceps = icePick + (iceDrill*9) + (freezer*65);
+		iceps = icePick + (iceDrill*9) + (freezer*65) + (mrFreeze*278);
 	}
 	if(energy <= 10){
 		if(windowLoaded){
@@ -735,6 +735,10 @@ function refreshUI(){
 	document.getElementById("freezerSpaceMetalCost").innerHTML = commafy(freezerSpaceMetalCost);
 	document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
 	document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
+	document.getElementById("mrFreeze").innerHTML = commafy(mrFreeze);
+	document.getElementById("mrFreezeSpaceMetalCost").innerHTML = commafy(mrFreezeSpaceMetalCost);
+	document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
+	document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
 	document.getElementById("dyson").innerHTML = commafy(dyson);
 	document.getElementById("dysonPieces").innerHTML = commafy(dyson);
 	document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
@@ -1708,6 +1712,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, freezerSpaceMetalCost, "freezerSpaceMetalCost");
 	turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
+
+	turnRed(spaceMetal, mrFreezeSpaceMetalCost, "mrFreezeSpaceMetalCost");
+	turnRed(helium, mrFreezeHeliumCost, "mrFreezeHeliumCost");
+	turnRed(silicon, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
 	turnRed(spaceMetal, printerSpaceMetalCost, "printerSpaceMetalCost");
 	turnRed(silicon, printerSiliconCost, "printerSiliconCost");
