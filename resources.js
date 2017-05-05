@@ -2116,6 +2116,24 @@ function getExtruder(){
 	}
 }
 
+function getVeluptuator(){
+	if(spaceMetal >= veluptuatorSpaceMetalCost && gold >= veluptuatorGoldCost && meteorite >= veluptuatorMeteoriteCost){
+		spaceMetal -= veluptuatorSpaceMetalCost;
+		gold -= veluptuatorGoldCost;
+		meteorite -= veluptuatorMeteoriteCost;
+		veluptuator += 1;
+		veluptuatorMeteoriteCost = Math.floor(750 * Math.pow(1.1,veluptuator));
+		veluptuatorGoldCost = Math.floor(121000 * Math.pow(1.1,veluptuator));
+		veluptuatorSpaceMetalCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
+		document.getElementById("veluptuator").innerHTML = veluptuator;
+		document.getElementById("veluptuatorSpaceMetalCost").innerHTML = commafy(veluptuatorSpaceMetalCost);
+		document.getElementById("veluptuatorGoldCost").innerHTML = commafy(veluptuatorGoldCost);
+		document.getElementById("veluptuatorMeteoriteCost").innerHTML = commafy(veluptuatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getCollector(){
 	if(spaceMetal >= collectorSpaceMetalCost && titanium >= collectorTitaniumCost){
 		spaceMetal -= collectorSpaceMetalCost;

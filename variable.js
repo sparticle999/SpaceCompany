@@ -85,6 +85,7 @@ var lava = 0; var lavaStorage = 50; var lavaNextStorage = 100; var lavaps = 0;
 var crucible = 0; var crucibleGemCost = 8000; var crucibleSpaceMetalCost = 4000;
 var extractor = 0; var extractorSpaceMetalCost = 16000; var extractorTitaniumCost = 12000; var extractorSiliconCost = 6000;
 var extruder = 0; var extruderSpaceMetalCost = 69000; var extruderTitaniumCost = 57000; var extruderSiliconCost = 39000;
+var veluptuator = 0; var veluptuatorSpaceMetalCost = 298000; var veluptuatorGoldCost = 121000; var veluptuatorMeteoriteCost = 750;
 var hydrogen = 0; var hydrogenStorage = 50; var hydrogenNextStorage = 100; var hydrogenps = 0;
 var collector = 0; var collectorSpaceMetalCost = 6000; var collectorTitaniumCost = 4800;
 var magnet = 0; var magnetSpaceMetalCost = 10800; var magnetTitaniumCost = 9600; var magnetGoldCost = 6600;

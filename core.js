@@ -119,7 +119,7 @@ function refreshPerSec(){
 
 	energyOutput += (0)+(quantumDrill*24)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(0)+(desert*138);
-	energyOutput += (0)+(0)+(0)+(0)+(mrFreeze*1135);
+	energyOutput += (0)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
 		energyOutput += (furnace*3)+(kiln*13);
@@ -178,7 +178,7 @@ function refreshPerSec(){
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
 		uraniumps = grinder + (cubic*9) +(enricher*61);
-		lavaps = crucible + (extractor*7) + (extruder*43);
+		lavaps = crucible + (extractor*7) + (extruder*43) + (veluptuator*187);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
 		heliumps = drone + (tanker*11) + (compressor*57);
 		iceps = icePick + (iceDrill*9) + (freezer*65) + (mrFreeze*278);

@@ -20,8 +20,7 @@ v0.4.0 The Hot and Cold Update
 - Yellowcake Recycler: Uranium
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
-- Volcanic Veluptuator: Lava
-- Chronal Actuator: Gold
+														- Volcanic Veluptuator: Lava
 
 - Some descriptions are pinned in #general
 
