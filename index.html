@@ -75,7 +75,7 @@
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
-    	<li role="presentation" class="pull-right"><a href="#settings" aria-control="settings" role="tab" data-toggle="tab" onclick="tabClicked('settings')"><div id="settingsTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
+    	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
 
 
@@ -2664,23 +2664,6 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="unlockLabT3" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										Tier 3 Science
-									</h3>
-									<span>
-										Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.
-										<br>
-										Costs <span id="unlockLabT3Cost">3,000</span> Science.
-									</span>
-									<br>
-									<br>
-									<button onclick="unlockLabT3()" class="btn btn-default">Unlock Tier 3 Science</button>
-									<br>
-									<br>
-								</td>
-							</tr>
 							<tr id="upgradeEngineTech" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -2694,6 +2677,23 @@
 									<br>
 									<br>
 									<button onclick="upgradeEngineTech()" class="btn btn-default">Upgrade Engine Tech</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 3 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.
+										<br>
+										Costs <span id="unlockLabT3Cost">3,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT3()" class="btn btn-default">Unlock Tier 3 Science</button>
 									<br>
 									<br>
 								</td>
@@ -4084,8 +4084,8 @@
 
 
 
-		<!-- Settings -->
-		<div role="tabpanel" class="tab-pane fade" id="settings">
+		<!-- More Tab -->
+		<div role="tabpanel" class="tab-pane fade" id="more">
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
 					<tr href="#optionsTab" aria-controls="optionsTab" role="tab" data-toggle="tab" style="height:60px;">
