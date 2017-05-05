@@ -1,9 +1,12 @@
 function newUnlock(tab){
 	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign";
+	if(tab === "more"){
+		document.getElementById("achievementsTabGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign";
+	}
 }
 
 function tabClicked(tab){
-	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign hidden";
+	document.getElementById(tab + "TabGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign hidden";
 }
 
 function activeResourceTab(tab){
