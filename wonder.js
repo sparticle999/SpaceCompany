@@ -188,38 +188,38 @@ function refreshWonderBars(){
 }
 
 function unlockTier3(){
+	document.getElementById("uraniumTier3").className = "";
+	document.getElementById("lavaTier3").className = "";
 	document.getElementById("oilTier3").className = "";
 	document.getElementById("metalTier3").className = "";
 	document.getElementById("gemTier3").className = "";
 	document.getElementById("charcoalTier3").className = "";
 	document.getElementById("woodTier3").className = "";
+	document.getElementById("siliconTier3").className = "";
 	document.getElementById("spaceMetalTier3").className = "";
 	document.getElementById("methaneTier3").className = "";
 	document.getElementById("titaniumTier3").className = "";
 	document.getElementById("goldTier3").className = "";
 	document.getElementById("silverTier3").className = "";
-	document.getElementById("siliconTier3").className = "";
-	document.getElementById("uraniumTier3").className = "";
-	document.getElementById("lavaTier3").className = "";
 	document.getElementById("hydrogenTier3").className = "";
 	document.getElementById("heliumTier3").className = "";
 	document.getElementById("iceTier3").className = "";
 }
 
 function unlockTier4(){
+	// document.getElementById("uraniumTier4").className = "";
+	// document.getElementById("lavaTier4").className = "";
 	// document.getElementById("oilTier4").className = "";
 	document.getElementById("metalTier4").className = "";
 	document.getElementById("gemTier4").className = "";
 	// document.getElementById("charcoalTier4").className = "";
 	// document.getElementById("woodTier4").className = "";
+	document.getElementById("siliconTier4").className = "";
 	document.getElementById("spaceMetalTier4").className = "";
 	// document.getElementById("methaneTier4").className = "";
 	document.getElementById("titaniumTier4").className = "";
-	// document.getElementById("goldTier4").className = "";
+	document.getElementById("goldTier4").className = "";
 	// document.getElementById("silverTier4").className = "";
-	document.getElementById("siliconTier4").className = "";
-	// document.getElementById("uraniumTier4").className = "";
-	// document.getElementById("lavaTier4").className = "";
 	// document.getElementById("hydrogenTier4").className = "";
 	// document.getElementById("heliumTier4").className = "";
 	document.getElementById("iceTier4").className = "";

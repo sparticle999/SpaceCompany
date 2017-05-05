@@ -1807,6 +1807,39 @@ function getDeathStar(){
 	}
 }
 
+function getActuator(){
+	if(spaceMetal >= actuatorSpaceMetalCost && helium >= actuatorHeliumCost && meteorite >= actuatorMeteoriteCost){
+		spaceMetal -= actuatorSpaceMetalCost;
+		helium -= actuatorHeliumCost;
+		meteorite -= actuatorMeteoriteCost;
+		actuator += 1;
+		actuatorMeteoriteCost = Math.floor(600 * Math.pow(1.1,actuator));
+		actuatorHeliumCost = Math.floor(15700 * Math.pow(1.1,actuator));
+		actuatorSpaceMetalCost = Math.floor(61000 * Math.pow(1.1,actuator));
+		document.getElementById("actuator").innerHTML = actuator;
+		document.getElementById("actuatorSpaceMetalCost").innerHTML = commafy(actuatorSpaceMetalCost);
+		document.getElementById("actuatorHeliumCost").innerHTML = commafy(actuatorHeliumCost);
+		document.getElementById("actuatorMeteoriteCost").innerHTML = commafy(actuatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(actuator >= 1 && document.getElementById("Build 1 Chronal Actuator").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Chronal Actuator").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Chronal Actuator");
+		// }
+		// if(actuator >= 10 && document.getElementById("Build 10 Chronal Actuators").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Chronal Actuators").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Chronal Actuators");
+		// }
+		// if(actuator >= 100 && document.getElementById("Build 100 Chronal Actuators").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Chronal Actuators").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Chronal Actuators");
+		// }
+	}
+}
+
 function getScout(){
 	if(spaceMetal >= scoutSpaceMetalCost && titanium >= scoutTitaniumCost){
 		spaceMetal -= scoutSpaceMetalCost;

@@ -306,6 +306,10 @@ function save(type){
 		deathStarSpaceMetalCost: deathStarSpaceMetalCost,
 		deathStarSilverCost: deathStarSilverCost,
 		deathStarSiliconCost: deathStarSiliconCost,
+		actuator: actuator,
+		actuatorSpaceMetalCost: actuatorSpaceMetalCost,
+		actuatorHeliumCost: actuatorHeliumCost,
+		actuatorMeteoriteCost: actuatorMeteoriteCost,
 		scout: scout,
 		scoutSpaceMetalCost: scoutSpaceMetalCost,
 		scoutTitaniumCost: scoutTitaniumCost,
@@ -701,6 +705,10 @@ function load(type){
 		if(typeof savegame.deathStarSpaceMetalCost !== "undefined") deathStarSpaceMetalCost = savegame.deathStarSpaceMetalCost;
 		if(typeof savegame.deathStarSilverCost !== "undefined") deathStarSilverCost = savegame.deathStarSilverCost;
 		if(typeof savegame.deathStarSiliconCost !== "undefined") deathStarSiliconCost = savegame.deathStarSiliconCost;
+		if(typeof savegame.actuator !== "undefined") actuator = savegame.actuator;
+		if(typeof savegame.actuatorSpaceMetalCost !== "undefined") actuatorSpaceMetalCost = savegame.actuatorSpaceMetalCost;
+		if(typeof savegame.actuatorHeliumCost !== "undefined") actuatorHeliumCost = savegame.actuatorHeliumCost;
+		if(typeof savegame.actuatorMeteoriteCost !== "undefined") actuatorMeteoriteCost = savegame.actuatorMeteoriteCost;
 		if(typeof savegame.scout !== "undefined") scout = savegame.scout;
 		if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutSpaceMetalCost = savegame.scoutSpaceMetalCost;
 		if(typeof savegame.scoutTitaniumCost !== "undefined") scoutTitaniumCost = savegame.scoutTitaniumCost;

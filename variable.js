@@ -69,6 +69,7 @@ var titanDrill = 0; var titanDrillSpaceMetalCost = 63000; var titanDrillGoldCost
 var droid = 0; var droidSpaceMetalCost = 200; var droidMethaneCost = 50;
 var destroyer = 0; var destroyerSpaceMetalCost = 500; var destroyerGemCost = 1500; var destroyerOilCost = 1000;
 var deathStar = 0; var deathStarSpaceMetalCost = 17000; var deathStarSilverCost = 11500; var deathStarSiliconCost = 8200;
+var actuator = 0; var actuatorSpaceMetalCost = 61000; var actuatorHeliumCost = 15700; var actuatorMeteoriteCost = 600;
 var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;
 var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 900; var spaceLaserOilCost = 1200;
 var bertha = 0; var berthaSpaceMetalCost = 19500; var berthaTitaniumCost = 18200; var berthaSiliconCost = 11000;

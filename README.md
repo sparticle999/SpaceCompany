@@ -16,9 +16,14 @@ v0.4.0 The Hot and Cold Update
 - Added Achievements for T4 Machines
 - Supercooling with Ice
 
+- Plasmatic Pit: Plasma
+- Yellowcake Recycler: Uranium
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
 - Volcanic Veluptuator: Lava
+- Chronal Actuator: Gold
+
+- Some descriptions are pinned in #general
 
 # Changelog:
 
