@@ -363,6 +363,10 @@ function save(type){
 		enricherSpaceMetalCost: enricherSpaceMetalCost,
 		enricherTitaniumCost: enricherTitaniumCost,
 		enricherSiliconCost: enricherSiliconCost,
+		recycler: recycler,
+		recyclerSpaceMetalCost: recyclerSpaceMetalCost,
+		recyclerMethaneCost: recyclerMethaneCost,
+		recyclerMeteoriteCost: recyclerMeteoriteCost,
 		lava: lava,
 		lavaStorage: lavaStorage,
 		lavaNextStorage: lavaNextStorage,
@@ -766,6 +770,10 @@ function load(type){
 		if(typeof savegame.enricherSpaceMetalCost !== "undefined") enricherSpaceMetalCost = savegame.enricherSpaceMetalCost;
 		if(typeof savegame.enricherTitaniumCost !== "undefined") enricherTitaniumCost = savegame.enricherTitaniumCost;
 		if(typeof savegame.enricherSiliconCost !== "undefined") enricherSiliconCost = savegame.enricherSiliconCost;
+		if(typeof savegame.recycler !== "undefined") recycler = savegame.recycler;
+		if(typeof savegame.recyclerSpaceMetalCost !== "undefined") recyclerSpaceMetalCost = savegame.recyclerSpaceMetalCost;
+		if(typeof savegame.recyclerMethaneCost !== "undefined") recyclerMethaneCost = savegame.recyclerMethaneCost;
+		if(typeof savegame.recyclerMeteoriteCost !== "undefined") recyclerMeteoriteCost = savegame.recyclerMeteoriteCost;
 		if(typeof savegame.crucible !== "undefined") crucible = savegame.crucible;
 		if(typeof savegame.crucibleGemCost !== "undefined") crucibleGemCost = savegame.crucibleGemCost;
 		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleSpaceMetalCost = savegame.crucibleSpaceMetalCost;

@@ -798,6 +798,26 @@
 									<button onclick="destroyMachine(enricher, 'enricher')" class="btn btn-default destroy hidden">Destroy Uranium Enricher</button>
 								</td>
 							</tr>
+							<tr id="uraniumTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Yellowcake Recycler: <span id="recycler">0</span>
+									</h3>
+									<span>
+										Recycles used-up Uranium to provide the resources with a second use. This greatly increases the amount of Uranium you can use per second.
+										<br>
+										Produces 235 Uranium per second.
+										<br>
+										Uses 463 Energy per second.
+										<br>
+										Costs <span id="recyclerSpaceMetalCost">93,100</span> Space Metal, <span id="recyclerMethaneCost">47,000</span> Methane, <span id="recyclerMeteoriteCost">830</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getRecycler()" class="btn btn-default">Get Yellowcake Recycler</button>
+									<button onclick="destroyMachine(recycler, 'recycler')" class="btn btn-default destroy hidden">Destroy Yellowcake Recycler</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>

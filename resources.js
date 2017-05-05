@@ -807,6 +807,24 @@ function getEnricher(){
 	}
 }
 
+function getRecycler(){
+	if(spaceMetal >= recyclerSpaceMetalCost && methane >= recyclerMethaneCost && meteorite >= recyclerMeteoriteCost){
+		spaceMetal -= recyclerSpaceMetalCost;
+		methane -= recyclerMethaneCost;
+		meteorite -= recyclerMeteoriteCost;
+		recycler += 1;
+		recyclerMeteoriteCost = Math.floor(830 * Math.pow(1.1,recycler));
+		recyclerMethaneCost = Math.floor(47000 * Math.pow(1.1,recycler));
+		recyclerSpaceMetalCost = Math.floor(93100 * Math.pow(1.1,recycler));
+		document.getElementById("recycler").innerHTML = recycler;
+		document.getElementById("recyclerSpaceMetalCost").innerHTML = commafy(recyclerSpaceMetalCost);
+		document.getElementById("recyclerMethaneCost").innerHTML = commafy(recyclerMethaneCost);
+		document.getElementById("recyclerMeteoriteCost").innerHTML = commafy(recyclerMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getPump(){
 	if(metal >= pumpMetalCost && gem >= pumpGemCost){
 		metal -= pumpMetalCost;

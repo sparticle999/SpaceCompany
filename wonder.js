@@ -207,7 +207,7 @@ function unlockTier3(){
 }
 
 function unlockTier4(){
-	// document.getElementById("uraniumTier4").className = "";
+	document.getElementById("uraniumTier4").className = "";
 	document.getElementById("lavaTier4").className = "";
 	// document.getElementById("oilTier4").className = "";
 	document.getElementById("metalTier4").className = "";

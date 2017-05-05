@@ -17,10 +17,8 @@ v0.4.0 The Hot and Cold Update
 - Supercooling with Ice
 
 - Plasmatic Pit: Plasma
-- Yellowcake Recycler: Uranium
 - Offshore Rig: Oil
 - Forest Fryer: Charcoal
-														- Volcanic Veluptuator: Lava
 
 - Some descriptions are pinned in #general
 

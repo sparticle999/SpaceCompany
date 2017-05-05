@@ -119,7 +119,7 @@ function refreshPerSec(){
 
 	energyOutput += (0)+(quantumDrill*24)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(0)+(desert*138);
-	energyOutput += (0)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
+	energyOutput += (recycler*463)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
 		energyOutput += (furnace*3)+(kiln*13);
@@ -177,7 +177,7 @@ function refreshPerSec(){
 		goldps = droid + (destroyer*8) + (deathStar*51) + (actuator*211);
 		silverps = scout + (spaceLaser*13) + (bertha*53);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
-		uraniumps = grinder + (cubic*9) +(enricher*61);
+		uraniumps = grinder + (cubic*9) +(enricher*61) + (recycler*235);
 		lavaps = crucible + (extractor*7) + (extruder*43) + (veluptuator*187);
 		hydrogenps = collector + (magnet*5) + (eCell*28);
 		heliumps = drone + (tanker*11) + (compressor*57);
@@ -695,6 +695,10 @@ function refreshUI(){
 	document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
 	document.getElementById("enricherSpaceMetalCost").innerHTML = commafy(enricherSpaceMetalCost);
 	document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
+	document.getElementById("recycler").innerHTML = recycler;
+	document.getElementById("recyclerMethaneCost").innerHTML = commafy(recyclerMethaneCost);
+	document.getElementById("recyclerSpaceMetalCost").innerHTML = commafy(recyclerSpaceMetalCost);
+	document.getElementById("recyclerMeteoriteCost").innerHTML = commafy(recyclerMeteoriteCost);
 	document.getElementById("crucible").innerHTML = crucible;
 	document.getElementById("crucibleGemCost").innerHTML = commafy(crucibleGemCost);
 	document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);
