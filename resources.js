@@ -821,17 +821,17 @@ function getPump(){
 		tier1 += 1;
 		if(pump >= 1 && document.getElementById("Build 1 Small Pump").className === "achievementTD"){
 			document.getElementById("Build 1 Small Pump").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Small Pump");
 		}
 		if(pump >= 10 && document.getElementById("Build 10 Small Pumps").className === "achievementTD"){
 			document.getElementById("Build 10 Small Pumps").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Small Pumps");
 		}
 		if(pump >= 100 && document.getElementById("Build 100 Small Pumps").className === "achievementTD"){
 			document.getElementById("Build 100 Small Pumps").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Small Pumps");
 		}
 	}
@@ -854,17 +854,17 @@ function getPumpjack(){
 		tier2 += 1;
 		if(pumpjack >= 1 && document.getElementById("Build 1 Pumpjack").className === "achievementTD"){
 			document.getElementById("Build 1 Pumpjack").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Pumpjack");
 		}
 		if(pumpjack >= 10 && document.getElementById("Build 10 Pumpjacks").className === "achievementTD"){
 			document.getElementById("Build 10 Pumpjacks").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Pumpjacks");
 		}
 		if(pumpjack >= 100 && document.getElementById("Build 100 Pumpjacks").className === "achievementTD"){
 			document.getElementById("Build 100 Pumpjacks").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Pumpjacks");
 		}
 	}
@@ -887,17 +887,17 @@ function getOilField(){
 		tier3 += 1;
 		if(oilField >= 1 && document.getElementById("Build 1 Oil Field").className === "achievementTD"){
 			document.getElementById("Build 1 Oil Field").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Oil Field");
 		}
 		if(oilField >= 10 && document.getElementById("Build 10 Oil Fields").className === "achievementTD"){
 			document.getElementById("Build 10 Oil Fields").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Oil Fields");
 		}
 		if(oilField >= 100 && document.getElementById("Build 100 Oil Fields").className === "achievementTD"){
 			document.getElementById("Build 100 Oil Fields").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Oil Fields");
 		}
 	}
@@ -926,17 +926,17 @@ function getMiner(){
 		tier1 += 1;
 		if(miner >= 1 && document.getElementById("Build 1 Miner").className === "achievementTD"){
 			document.getElementById("Build 1 Miner").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Miner");
 		}
 		if(miner >= 10 && document.getElementById("Build 10 Miners").className === "achievementTD"){
 			document.getElementById("Build 10 Miners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Miners");
 		}
 		if(miner >= 100 && document.getElementById("Build 100 Miners").className === "achievementTD"){
 			document.getElementById("Build 100 Miners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Miners");
 		}
 	}
@@ -959,17 +959,17 @@ function getHeavyDrill(){
 		tier2 += 1;
 		if(heavyDrill >= 1 && document.getElementById("Build 1 Heavy Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Heavy Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Heavy Drill");
 		}
 		if(heavyDrill >= 10 && document.getElementById("Build 10 Heavy Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Heavy Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Heavy Drills");
 		}
 		if(heavyDrill >= 100 && document.getElementById("Build 100 Heavy Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Heavy Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Heavy Drills");
 		}
 	}
@@ -992,17 +992,17 @@ function getGigaDrill(){
 		tier3 += 1;
 		if(gigaDrill >= 1 && document.getElementById("Build 1 Giga Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Giga Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Giga Drill");
 		}
 		if(gigaDrill >= 10 && document.getElementById("Build 10 Giga Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Giga Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Giga Drills");
 		}
 		if(gigaDrill >= 100 && document.getElementById("Build 100 Giga Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Giga Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Giga Drills");
 		}
 	}
@@ -1025,17 +1025,17 @@ function getQuantumDrill(){
 		tier4 += 1;
 		// if(quantumDrill >= 1 && document.getElementById("Build 1 Quantum Drill").className === "achievementTD"){
 		// 	document.getElementById("Build 1 Quantum Drill").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 1 Quantum Drill");
 		// }
 		// if(quantumDrill >= 10 && document.getElementById("Build 10 Quantum Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 10 Quantum Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 10 Quantum Drills");
 		// }
 		// if(quantumDrill >= 100 && document.getElementById("Build 100 Quantum Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 100 Quantum Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 100 Quantum Drills");
 		// }
 	}
@@ -1055,17 +1055,17 @@ function getGemMiner(){
 		tier1 += 1;
 		if(gemMiner >= 1 && document.getElementById("Build 1 Gem Miner").className === "achievementTD"){
 			document.getElementById("Build 1 Gem Miner").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Gem Miner");
 		}
 		if(gemMiner >= 10 && document.getElementById("Build 10 Gem Miners").className === "achievementTD"){
 			document.getElementById("Build 10 Gem Miners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Gem Miners");
 		}
 		if(gemMiner >= 100 && document.getElementById("Build 100 Gem Miners").className === "achievementTD"){
 			document.getElementById("Build 100 Gem Miners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Gem Miners");
 		}
 	}
@@ -1088,17 +1088,17 @@ function getAdvancedDrill(){
 		tier2 += 1;
 		if(pumpjack >= 1 && document.getElementById("Build 1 Advanced Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Advanced Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Advanced Drill");
 		}
 		if(pumpjack >= 10 && document.getElementById("Build 10 Advanced Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Advanced Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Advanced Drills");
 		}
 		if(pumpjack >= 100 && document.getElementById("Build 100 Advanced Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Advanced Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Advanced Drills");
 		}
 	}
@@ -1121,17 +1121,17 @@ function getDiamondDrill(){
 		tier3 += 1;
 		if(diamondDrill >= 1 && document.getElementById("Build 1 Diamond-Encrusted Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Diamond-Encrusted Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Diamond-Encrusted Drill");
 		}
 		if(diamondDrill >= 10 && document.getElementById("Build 10 Diamond-Encrusted Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Diamond-Encrusted Drill");
 		}
 		if(diamondDrill >= 100 && document.getElementById("Build 100 Diamond-Encrusted Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Diamond-Encrusted Drill");
 		}
 	}
@@ -1154,17 +1154,17 @@ function getCarbyneDrill(){
 		tier3 += 1;
 		// if(carbyneDrill >= 1 && document.getElementById("Build 1 Diamond-Encrusted Drill").className === "achievementTD"){
 		// 	document.getElementById("Build 1 Diamond-Encrusted Drill").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 1 Diamond-Encrusted Drill");
 		// }
 		// if(carbyneDrill >= 10 && document.getElementById("Build 10 Diamond-Encrusted Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 10 Diamond-Encrusted Drill");
 		// }
 		// if(carbyneDrill >= 100 && document.getElementById("Build 100 Diamond-Encrusted Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 100 Diamond-Encrusted Drill");
 		// }
 	}
@@ -1184,17 +1184,17 @@ function getWoodburner(){
 		tier1 += 1;
 		if(woodburner >= 1 && document.getElementById("Build 1 Woodburner").className === "achievementTD"){
 			document.getElementById("Build 1 Woodburner").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Woodburner");
 		}
 		if(woodburner >= 10 && document.getElementById("Build 10 Woodburners").className === "achievementTD"){
 			document.getElementById("Build 10 Woodburners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Woodburners");
 		}
 		if(woodburner >= 100 && document.getElementById("Build 100 Woodburners").className === "achievementTD"){
 			document.getElementById("Build 100 Woodburners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Woodburners");
 		}
 	}
@@ -1217,17 +1217,17 @@ function getFurnace(){
 		tier2 += 1;
 		if(furnace >= 1 && document.getElementById("Build 1 Furnace").className === "achievementTD"){
 			document.getElementById("Build 1 Furnace").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Furnace");
 		}
 		if(furnace >= 10 && document.getElementById("Build 10 Furnaces").className === "achievementTD"){
 			document.getElementById("Build 10 Furnaces").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Furnaces");
 		}
 		if(furnace >= 100 && document.getElementById("Build 100 Furnaces").className === "achievementTD"){
 			document.getElementById("Build 100 Furnaces").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Furnaces");
 		}
 	}
@@ -1250,17 +1250,17 @@ function getKiln(){
 		tier3 += 1;
 		if(kiln >= 1 && document.getElementById("Build 1 Industrial Kiln").className === "achievementTD"){
 			document.getElementById("Build 1 Industrial Kiln").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Industrial Kiln");
 		}
 		if(kiln >= 10 && document.getElementById("Build 10 Industrial Kilns").className === "achievementTD"){
 			document.getElementById("Build 10 Industrial Kilns").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Industrial Kilns");
 		}
 		if(kiln >= 100 && document.getElementById("Build 100 Industrial Kilns").className === "achievementTD"){
 			document.getElementById("Build 100 Industrial Kilns").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Industrial Kilns");
 		}
 	}
@@ -1280,17 +1280,17 @@ function getWoodcutter(){
 		tier1 += 1;
 		if(woodcutter >= 1 && document.getElementById("Build 1 Woodcutter").className === "achievementTD"){
 			document.getElementById("Build 1 Woodcutter").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Woodcutter");
 		}
 		if(woodcutter >= 10 && document.getElementById("Build 10 Woodcutters").className === "achievementTD"){
 			document.getElementById("Build 10 Woodcutters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Woodcutters");
 		}
 		if(woodcutter >= 100 && document.getElementById("Build 100 Woodcutters").className === "achievementTD"){
 			document.getElementById("Build 100 Woodcutters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Woodcutters");
 		}
 	}
@@ -1313,18 +1313,18 @@ function getLaserCutter(){
 		tier2 += 1;
 		if(laserCutter >= 1 && document.getElementById("Build 1 Laser Cutter").className === "achievementTD"){
 			document.getElementById("Build 1 Laser Cutter").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Laser Cutter");
 
 		}
 		if(laserCutter >= 10 && document.getElementById("Build 10 Laser Cutters").className === "achievementTD"){
 			document.getElementById("Build 10 Laser Cutters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Laser Cutters");
 		}
 		if(laserCutter >= 100 && document.getElementById("Build 100 Laser Cutters").className === "achievementTD"){
 			document.getElementById("Build 100 Laser Cutters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Laser Cutters");
 		}
 	}
@@ -1347,17 +1347,17 @@ function getDeforester(){
 		tier3 += 1;
 		if(deforester >= 1 && document.getElementById("Build 1 Mass Deforester").className === "achievementTD"){
 			document.getElementById("Build 1 Mass Deforester").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Mass Deforester");
 		}
 		if(deforester >= 10 && document.getElementById("Build 10 Mass Deforesters").className === "achievementTD"){
 			document.getElementById("Build 10 Mass Deforesters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Mass Deforesters");
 		}
 		if(deforester >= 100 && document.getElementById("Build 100 Mass Deforesters").className === "achievementTD"){
 			document.getElementById("Build 100 Mass Deforesters").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Mass Deforesters");
 		}
 	}
@@ -1374,17 +1374,17 @@ function getMoonWorker(){
 		tier1 += 1;
 		if(moonWorker >= 1 && document.getElementById("Build 1 Native Moon Worker").className === "achievementTD"){
 			document.getElementById("Build 1 Native Moon Worker").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Native Moon Worker");
 		}
 		if(moonWorker >= 10 && document.getElementById("Build 10 Native Moon Workers").className === "achievementTD"){
 			document.getElementById("Build 10 Native Moon Workers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Native Moon Workers");
 		}
 		if(moonWorker >= 100 && document.getElementById("Build 100 Native Moon Workers").className === "achievementTD"){
 			document.getElementById("Build 100 Native Moon Workers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Native Moon Workers");
 		}
 	}
@@ -1407,17 +1407,17 @@ function getMoonDrill(){
 		tier2 += 1;
 		if(moonDrill >= 1 && document.getElementById("Build 1 Low-Gravity Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Low-Gravity Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Low-Gravity Drill");
 		}
 		if(moonDrill >= 10 && document.getElementById("Build 10 Low-Gravity Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Low-Gravity Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Low-Gravity Drills");
 		}
 		if(moonDrill >= 100 && document.getElementById("Build 100 Low-Gravity Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Low-Gravity Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Low-Gravity Drills");
 		}
 	}
@@ -1440,17 +1440,17 @@ function getMoonQuarry(){
 		tier3 += 1;
 		if(moonQuarry >= 1 && document.getElementById("Build 1 Moon Quarry").className === "achievementTD"){
 			document.getElementById("Build 1 Moon Quarry").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Moon Quarry");
 		}
 		if(moonQuarry >= 10 && document.getElementById("Build 10 Moon Quarries").className === "achievementTD"){
 			document.getElementById("Build 10 Moon Quarries").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Moon Quarries");
 		}
 		if(moonQuarry >= 100 && document.getElementById("Build 100 Moon Quarries").className === "achievementTD"){
 			document.getElementById("Build 100 Moon Quarries").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Moon Quarries");
 		}
 	}
@@ -1473,17 +1473,17 @@ function getPlanetExcavator(){
 		tier4 += 1;
 		// if(moonQuarry >= 1 && document.getElementById("Build 1 Moon Quarry").className === "achievementTD"){
 		// 	document.getElementById("Build 1 Moon Quarry").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 1 Moon Quarry");
 		// }
 		// if(moonQuarry >= 10 && document.getElementById("Build 10 Moon Quarries").className === "achievementTD"){
 		// 	document.getElementById("Build 10 Moon Quarries").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 10 Moon Quarries");
 		// }
 		// if(moonQuarry >= 100 && document.getElementById("Build 100 Moon Quarries").className === "achievementTD"){
 		// 	document.getElementById("Build 100 Moon Quarries").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 100 Moon Quarries");
 		// }
 	}
@@ -1503,17 +1503,17 @@ function getVacuum(){
 		tier1 += 1;
 		if(vacuum >= 1 && document.getElementById("Build 1 Vacuum Cleaner").className === "achievementTD"){
 			document.getElementById("Build 1 Vacuum Cleaner").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Vacuum Cleaner");
 		}
 		if(vacuum >= 10 && document.getElementById("Build 10 Vacuum Cleaners").className === "achievementTD"){
 			document.getElementById("Build 10 Vacuum Cleaners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Vacuum Cleaners");
 		}
 		if(vacuum >= 100 && document.getElementById("Build 100 Vacuum Cleaners").className === "achievementTD"){
 			document.getElementById("Build 100 Vacuum Cleaners").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Vacuum Cleaners");
 		}
 	}
@@ -1536,17 +1536,17 @@ function getSuctionExcavator(){
 		tier2 += 1;
 		if(suctionExcavator >= 1 && document.getElementById("Build 1 Suction Excavator").className === "achievementTD"){
 			document.getElementById("Build 1 Suction Excavator").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Suction Excavator");
 		}
 		if(suctionExcavator >= 10 && document.getElementById("Build 10 Suction Excavators").className === "achievementTD"){
 			document.getElementById("Build 10 Suction Excavators").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Suction Excavators");
 		}
 		if(suctionExcavator >= 100 && document.getElementById("Build 100 Suction Excavators").className === "achievementTD"){
 			document.getElementById("Build 100 Suction Excavators").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Suction Excavators");
 		}
 	}
@@ -1569,17 +1569,17 @@ function getSpaceCow(){
 		tier3 += 1;
 		if(spaceCow >= 1 && document.getElementById("Build 1 Space Cow Plantation").className === "achievementTD"){
 			document.getElementById("Build 1 Space Cow Plantation").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Space Cow Plantation");
 		}
 		if(spaceCow >= 10 && document.getElementById("Build 10 Space Cow Plantations").className === "achievementTD"){
 			document.getElementById("Build 10 Space Cow Plantations").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Space Cow Plantations");
 		}
 		if(spaceCow >= 100 && document.getElementById("Build 100 Space Cow Plantations").className === "achievementTD"){
 			document.getElementById("Build 100 Space Cow Plantations").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Space Cow Plantations");
 		}
 	}
@@ -1596,17 +1596,17 @@ function getExplorer(){
 		tier1 += 1;
 		if(explorer >= 1 && document.getElementById("Build 1 Explorer").className === "achievementTD"){
 			document.getElementById("Build 1 Explorer").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Explorer");
 		}
 		if(explorer >= 10 && document.getElementById("Build 10 Explorers").className === "achievementTD"){
 			document.getElementById("Build 10 Explorers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Explorers");
 		}
 		if(explorer >= 100 && document.getElementById("Build 100 Explorers").className === "achievementTD"){
 			document.getElementById("Build 100 Explorers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Explorers");
 		}
 	}
@@ -1629,17 +1629,17 @@ function getSpaceMetalDrill(){
 		tier2 += 1;
 		if(spaceMetalDrill >= 1 && document.getElementById("Build 1 Space Metal Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Space Metal Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Space Metal Drill");
 		}
 		if(spaceMetalDrill >= 10 && document.getElementById("Build 10 Space Metal Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Space Metal Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Space Metal Drills");
 		}
 		if(spaceMetalDrill >= 100 && document.getElementById("Build 100 Space Metal Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Space Metal Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Space Metal Drills");
 		}
 	}
@@ -1662,17 +1662,17 @@ function getPentaDrill(){
 		tier3 += 1;
 		if(pentaDrill >= 1 && document.getElementById("Build 1 Penta-Drill").className === "achievementTD"){
 			document.getElementById("Build 1 Penta-Drill").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Penta-Drill");
 		}
 		if(pentaDrill >= 10 && document.getElementById("Build 10 Penta-Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Penta-Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Penta-Drills");
 		}
 		if(pentaDrill >= 100 && document.getElementById("Build 100 Penta-Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Penta-Drills").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Penta-Drills");
 		}
 	}
@@ -1695,17 +1695,17 @@ function getTitanDrill(){
 		tier4 += 1;
 		// if(titanDrill >= 1 && document.getElementById("Build 1 Penta-Drill").className === "achievementTD"){
 		// 	document.getElementById("Build 1 Penta-Drill").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 1 Penta-Drill");
 		// }
 		// if(titanDrill >= 10 && document.getElementById("Build 10 Penta-Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 10 Penta-Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 10 Penta-Drills");
 		// }
 		// if(titanDrill >= 100 && document.getElementById("Build 100 Penta-Drills").className === "achievementTD"){
 		// 	document.getElementById("Build 100 Penta-Drills").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 100 Penta-Drills");
 		// }
 	}
@@ -1725,17 +1725,17 @@ function getDroid(){
 		tier1 += 1;
 		if(droid >= 1 && document.getElementById("Build 1 Rocket Droid").className === "achievementTD"){
 			document.getElementById("Build 1 Rocket Droid").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Rocket Droid");
 		}
 		if(droid >= 10 && document.getElementById("Build 10 Rocket Droids").className === "achievementTD"){
 			document.getElementById("Build 10 Rocket Droids").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Rocket Droids");
 		}
 		if(droid >= 100 && document.getElementById("Build 100 Rocket Droids").className === "achievementTD"){
 			document.getElementById("Build 100 Rocket Droids").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Rocket Droids");
 		}
 	}
@@ -1758,17 +1758,17 @@ function getDestroyer(){
 		tier2 += 1;
 		if(destroyer >= 1 && document.getElementById("Build 1 Asteroid Destroyer").className === "achievementTD"){
 			document.getElementById("Build 1 Asteroid Destroyer").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Asteroid Destroyer");
 		}
 		if(destroyer >= 10 && document.getElementById("Build 10 Asteroid Destroyers").className === "achievementTD"){
 			document.getElementById("Build 10 Asteroid Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Asteroid Destroyers");
 		}
 		if(destroyer >= 100 && document.getElementById("Build 100 Asteroid Destroyers").className === "achievementTD"){
 			document.getElementById("Build 100 Asteroid Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Asteroid Destroyers");
 		}
 	}
@@ -1791,17 +1791,17 @@ function getDeathStar(){
 		tier3 += 1;
 		if(deathStar >= 1 && document.getElementById("Build 1 Death Star Jr").className === "achievementTD"){
 			document.getElementById("Build 1 Death Star Jr").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Death Star Jr");
 		}
 		if(deathStar >= 10 && document.getElementById("Build 10 Death Star Jrs").className === "achievementTD"){
 			document.getElementById("Build 10 Death Star Jrs").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Death Star Jrs");
 		}
 		if(deathStar >= 100 && document.getElementById("Build 100 Death Star Jrs").className === "achievementTD"){
 			document.getElementById("Build 100 Death Star Jrs").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Death Star Jrs");
 		}
 	}
@@ -1821,17 +1821,17 @@ function getScout(){
 		tier1 += 1;
 		if(scout >= 1 && document.getElementById("Build 1 Scout Ship").className === "achievementTD"){
 			document.getElementById("Build 1 Scout Ship").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Scout Ship");
 		}
 		if(scout >= 10 && document.getElementById("Build 10 Scout Ships").className === "achievementTD"){
 			document.getElementById("Build 10 Scout Ships").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Scout Ships");
 		}
 		if(scout >= 100 && document.getElementById("Build 100 Scout Ships").className === "achievementTD"){
 			document.getElementById("Build 100 Scout Ships").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Scout Ships");
 		}
 	}
@@ -1854,17 +1854,17 @@ function getSpaceLaser(){
 		tier2 += 1;
 		if(spaceLaser >= 1 && document.getElementById("Build 1 Interplanetary Laser").className === "achievementTD"){
 			document.getElementById("Build 1 Interplanetary Laser").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Interplanetary Laser");
 		}
 		if(spaceLaser >= 10 && document.getElementById("Build 10 Interplanetary Lasers").className === "achievementTD"){
 			document.getElementById("Build 10 Interplanetary Lasers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Interplanetary Lasers");
 		}
 		if(spaceLaser >= 100 && document.getElementById("Build 100 Interplanetary Lasers").className === "achievementTD"){
 			document.getElementById("Build 100 Interplanetary Lasers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Interplanetary Lasers");
 		}
 	}
@@ -1887,17 +1887,17 @@ function getBertha(){
 		tier3 += 1;
 		if(bertha >= 1 && document.getElementById("Build 1 Big Bertha").className === "achievementTD"){
 			document.getElementById("Build 1 Big Bertha").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Big Bertha");
 		}
 		if(bertha >= 10 && document.getElementById("Build 10 Big Berthas").className === "achievementTD"){
 			document.getElementById("Build 10 Big Berthas").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Big Berthas");
 		}
 		if(bertha >= 100 && document.getElementById("Build 100 Big Berthas").className === "achievementTD"){
 			document.getElementById("Build 100 Big Berthas").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Big Berthas");
 		}
 	}
@@ -1917,17 +1917,17 @@ function getBlowtorch(){
 		tier1 += 1;
 		if(blowtorch >= 1 && document.getElementById("Build 1 Empowered Blowtorch").className === "achievementTD"){
 			document.getElementById("Build 1 Empowered Blowtorch").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Empowered Blowtorch");
 		}
 		if(blowtorch >= 10 && document.getElementById("Build 10 Empowered Blowtorches").className === "achievementTD"){
 			document.getElementById("Build 10 Empowered Blowtorches").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Empowered Blowtorches");
 		}
 		if(blowtorch >= 100 && document.getElementById("Build 100 Empowered Blowtorches").className === "achievementTD"){
 			document.getElementById("Build 100 Empowered Blowtorches").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Empowered Blowtorches");
 		}
 	}
@@ -1950,17 +1950,17 @@ function getScorcher(){
 		tier2 += 1;
 		if(scorcher >= 1 && document.getElementById("Build 1 Seaside Scorcher").className === "achievementTD"){
 			document.getElementById("Build 1 Seaside Scorcher").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Seaside Scorcher");
 		}
 		if(scorcher >= 10 && document.getElementById("Build 10 Seaside Scorchers").className === "achievementTD"){
 			document.getElementById("Build 10 Seaside Scorchers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Seaside Scorchers");
 		}
 		if(scorcher >= 100 && document.getElementById("Build 100 Seaside Scorchers").className === "achievementTD"){
 			document.getElementById("Build 100 Seaside Scorchers").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Seaside Scorchers");
 		}
 	}
@@ -1983,17 +1983,17 @@ function getAnnihilator(){
 		tier3 += 1;
 		if(annihilator >= 1 && document.getElementById("Build 1 Beach Annihilator").className === "achievementTD"){
 			document.getElementById("Build 1 Beach Annihilator").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 1 Beach Annihilator");
 		}
 		if(annihilator >= 10 && document.getElementById("Build 10 Beach Annihilators").className === "achievementTD"){
 			document.getElementById("Build 10 Beach Annihilators").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 10 Beach Annihilators");
 		}
 		if(annihilator >= 100 && document.getElementById("Build 100 Beach Annihilators").className === "achievementTD"){
 			document.getElementById("Build 100 Beach Annihilators").className = "achievementTD achieved";
-			newUnlock("settings");
+			newUnlock("more");
 			achieved.push("Build 100 Beach Annihilators");
 		}
 	}
@@ -2016,17 +2016,17 @@ function getDesert(){
 		tier4 += 1;
 		// if(desert >= 1 && document.getElementById("Build 1 Desert Destroyer").className === "achievementTD"){
 		// 	document.getElementById("Build 1 Desert Destroyer").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 1 Desert Destroyer");
 		// }
 		// if(desert >= 10 && document.getElementById("Build 10 Desert Destroyers").className === "achievementTD"){
 		// 	document.getElementById("Build 10 Desert Destroyers").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 10 Desert Destroyers");
 		// }
 		// if(desert >= 100 && document.getElementById("Build 100 Desert Destroyers").className === "achievementTD"){
 		// 	document.getElementById("Build 100 Desert Destroyers").className = "achievementTD achieved";
-		// 	newUnlock("settings");
+		// 	newUnlock("more");
 		// 	achieved.push("Build 100 Desert Destroyers");
 		// }
 	}
