@@ -921,6 +921,39 @@ function getOilField(){
 	}
 }
 
+function getOilRig(){
+	if(spaceMetal >= oilRigSpaceMetalCost && titanium >= oilRigTitaniumCost && meteorite >= oilRigMeteoriteCost){
+		spaceMetal -= oilRigSpaceMetalCost;
+		titanium -= oilRigTitaniumCost;
+		meteorite -= oilRigMeteoriteCost;
+		oilRig += 1;
+		oilRigMeteoriteCost = Math.floor(3900 * Math.pow(1.1,oilRig));
+		oilRigTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilRig));
+		oilRigSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilRig));
+		document.getElementById("oilRig").innerHTML = oilRig;
+		document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
+		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
+		document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(oilRig >= 1 && document.getElementById("Build 1 Oil Rig").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Oil Rig").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Oil Rig");
+		// }
+		// if(oilRig >= 10 && document.getElementById("Build 10 Oil Rigs").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Oil Rigs").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Oil Rigs");
+		// }
+		// if(oilRig >= 100 && document.getElementById("Build 100 Oil Rigs").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Oil Rigs").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Oil Rigs");
+		// }
+	}
+}
+
 function getMiner(){
 	if(metal >= minerMetalCost && wood >= minerWoodCost){
 		metal -= minerMetalCost;

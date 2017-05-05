@@ -117,7 +117,7 @@ function refreshPerSec(){
 	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
-	energyOutput += (0)+(quantumDrill*24)+(carbyneDrill*40)+(0);
+	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(0);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(0)+(desert*138);
 	energyOutput += (recycler*463)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
 
@@ -166,7 +166,7 @@ function refreshPerSec(){
 	}
 	if(energy >= 10){
 		energyps = energyInput-energyOutput;
-		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63);
+		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
@@ -530,6 +530,10 @@ function refreshUI(){
 	document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
 	document.getElementById("oilFieldSpaceMetalCost").innerHTML = commafy(oilFieldSpaceMetalCost);
 	document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
+	document.getElementById("oilRig").innerHTML = oilRig;
+	document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
+	document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
+	document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
 	document.getElementById("miner").innerHTML = miner;
 	document.getElementById("minerMetalCost").innerHTML = commafy(minerMetalCost);
 	document.getElementById("minerWoodCost").innerHTML = commafy(minerWoodCost);
@@ -991,6 +995,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, oilFieldSpaceMetalCost, "oilFieldSpaceMetalCost");
 	turnRed(titanium, oilFieldTitaniumCost, "oilFieldTitaniumCost");
 	turnRed(silicon, oilFieldSiliconCost, "oilFieldSiliconCost");
+
+	turnRed(spaceMetal, oilRigSpaceMetalCost, "oilRigSpaceMetalCost");
+	turnRed(titanium, oilRigTitaniumCost, "oilRigTitaniumCost");
+	turnRed(silicon, oilRigMeteoriteCost, "oilRigMeteoriteCost");
 
 	if(metal < minerMetalCost){
 		document.getElementById("minerMetalCost").className = "red";

@@ -148,6 +148,10 @@ function save(type){
 		oilFieldSpaceMetalCost: oilFieldSpaceMetalCost,
 		oilFieldTitaniumCost: oilFieldTitaniumCost,
 		oilFieldSiliconCost: oilFieldSiliconCost,
+		oilRig: oilRig,
+		oilRigSpaceMetalCost: oilRigSpaceMetalCost,
+		oilRigTitaniumCost: oilRigTitaniumCost,
+		oilRigMeteoriteCost: oilRigMeteoriteCost,
 		metal: metal,
 		metalStorage: metalStorage,
 		metalNextStorage: metalNextStorage,
@@ -540,6 +544,10 @@ function load(type){
 		if(typeof savegame.oilFieldSpaceMetalCost !== "undefined") oilFieldSpaceMetalCost = savegame.oilFieldSpaceMetalCost;
 		if(typeof savegame.oilFieldTitaniumCost !== "undefined") oilFieldTitaniumCost = savegame.oilFieldTitaniumCost;
 		if(typeof savegame.oilFieldSiliconCost !== "undefined") oilFieldSiliconCost = savegame.oilFieldSiliconCost;
+		if(typeof savegame.oilRig !== "undefined") oilRig = savegame.oilRig;
+		if(typeof savegame.oilRigSpaceMetalCost !== "undefined") oilRigSpaceMetalCost = savegame.oilRigSpaceMetalCost;
+		if(typeof savegame.oilRigTitaniumCost !== "undefined") oilRigTitaniumCost = savegame.oilRigTitaniumCost;
+		if(typeof savegame.oilRigMeteoriteCost !== "undefined") oilRigMeteoriteCost = savegame.oilRigMeteoriteCost;
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
 		if(typeof savegame.metalStorage !== "undefined") metalStorage = savegame.metalStorage;
 		if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;

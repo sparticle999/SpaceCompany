@@ -25,6 +25,7 @@ var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20;
 var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackOutput = 5;
 var oilField = 0; var oilFieldSpaceMetalCost = 2400; var oilFieldTitaniumCost = 2700; var oilFieldSiliconCost = 3900;
+var oilRig = 0; var oilRigSpaceMetalCost = 19400; var oilRigTitaniumCost = 16800; var oilRigMeteoriteCost = 760;
 var metal = 0; var metalStorage = 50; var metalNextStorage = 100; var metalps = 0;
 var miner = 0; var minerMetalCost = 10; var minerWoodCost = 5;
 var heavyDrill = 0; var heavyDrillMetalCost = 160; var heavyDrillGemCost = 60; var heavyDrillOilCost = 50; var heavyDrillOutput = 8;
@@ -43,12 +44,6 @@ var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
 var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var deforester = 0; var deforesterSpaceMetalCost = 3000; var deforesterTitaniumCost = 2700; var deforesterSiliconCost = 2500;
-var science = 0; var scienceps = 0;
-var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
-var labT2 = 0; var labT2MetalCost = 1000; var labT2GemCost = 200; var labT2WoodCost = 500;
-var labT3 = 0; var labT3MetalCost = 17000; var labT3GemCost = 4700; var labT3WoodCost = 9600;
-var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
-var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500; var chemicalPlantToggled = true;
 var spaceMetal = 0; var spaceMetalStorage = 50; var spaceMetalNextStorage = 100; var spaceMetalps = 0;
 var methane = 0; var methaneStorage = 50; var methaneNextStorage = 100; var methaneps = 0;
 var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumps = 0;
@@ -102,6 +97,14 @@ var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 8
 var mrFreeze = 0; var mrFreezeSpaceMetalCost = 519000; var mrFreezeHeliumCost = 14000; var mrFreezeMeteoriteCost = 1500;
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;
 var printer = 0; var printerSpaceMetalCost = 100000; var printerSiliconCost = 50000;
+
+var science = 0; var scienceps = 0;
+var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
+var labT2 = 0; var labT2MetalCost = 1000; var labT2GemCost = 200; var labT2WoodCost = 500;
+var labT3 = 0; var labT3MetalCost = 17000; var labT3GemCost = 4700; var labT3WoodCost = 9600;
+var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
+var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500; var chemicalPlantToggled = true;
+
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var sphere = 0;
 
