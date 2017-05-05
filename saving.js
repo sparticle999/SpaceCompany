@@ -99,6 +99,7 @@ function save(type){
 		wondersBuiltNum: wondersBuiltNum,
 		wondersActivatedNum: wondersActivatedNum,
 		secondsTotal: secondsTotal,
+		achieved: achieved,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -478,6 +479,7 @@ function load(type){
 		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
 		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
 		if(typeof savegame.secondsTotal !== "undefined") secondsTotal = savegame.secondsTotal;
+		if(typeof savegame.achieved !== "undefined") achieved = savegame.achieved;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;

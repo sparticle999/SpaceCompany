@@ -1485,12 +1485,16 @@ function checkRedCost(){
 		document.getElementById("unlockSolarSystemCost").className = "";
 	}
 
+	turnRed(science, 500, "unlockLabT2Cost");
+
 	if(science < 1000){
 		document.getElementById("upgradeEngineTechCost").className = "red";
 	}
 	else{
 		document.getElementById("upgradeEngineTechCost").className = "";
 	}
+
+	turnRed(science, 3000, "unlockLabT3Cost");
 
 	if(science < 5000){
 		document.getElementById("upgradeSolarTechCost").className = "red";
@@ -1499,6 +1503,7 @@ function checkRedCost(){
 		document.getElementById("upgradeSolarTechCost").className = "";
 	}
 
+	turnRed(science, 15000, "unlockBatteriesCost");
 	turnRed(science, 40000, "unlockPlasmaCost");
 	turnRed(science, 60000, "unlockEmcCost");
 	turnRed(science, 100000, "unlockMeteoriteCost");
@@ -1715,7 +1720,7 @@ function checkRedCost(){
 
 	turnRed(spaceMetal, mrFreezeSpaceMetalCost, "mrFreezeSpaceMetalCost");
 	turnRed(helium, mrFreezeHeliumCost, "mrFreezeHeliumCost");
-	turnRed(silicon, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
+	turnRed(meteorite, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
 	turnRed(spaceMetal, printerSpaceMetalCost, "printerSpaceMetalCost");
 	turnRed(silicon, printerSiliconCost, "printerSiliconCost");

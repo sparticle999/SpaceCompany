@@ -201,16 +201,6 @@ function unlockLabT2(){
 	}
 }
 
-function unlockLabT3(){
-	if(science >= 3000){
-		science -= 3000;
-		document.getElementById("unlockLabT3").className = "hidden";
-		document.getElementById("labTier3").className = "";
-		researched.push("unlockLabT3");
-		techsResearchedNum += 1;
-	}
-}
-
 function upgradeEngineTech(){
 	if(science >= 1000){
 		science -= 1000;
@@ -220,6 +210,16 @@ function upgradeEngineTech(){
 		researched.push("upgradeEngineTech");
 		techsResearchedNum += 1;
 		newUnlock("resources");
+	}
+}
+
+function unlockLabT3(){
+	if(science >= 3000){
+		science -= 3000;
+		document.getElementById("unlockLabT3").className = "hidden";
+		document.getElementById("labTier3").className = "";
+		researched.push("unlockLabT3");
+		techsResearchedNum += 1;
 	}
 }
 

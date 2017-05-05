@@ -48,7 +48,7 @@ v0.3.4
 - Added New United Theme
 
 v0.3.3
-- Added Collapsability for the Solar System Tab
+- Added Collapsibility for the Solar System Tab
 - Added Notifications on tabs when there is something new in them
 
 v0.3.2

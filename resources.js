@@ -1053,17 +1053,17 @@ function getGemMiner(){
 		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
 		refresh();
 		tier1 += 1;
-		if(gemMiner >= 1 && document.getElementById("Build 1 Miner").className === "achievementTD"){
+		if(gemMiner >= 1 && document.getElementById("Build 1 Gem Miner").className === "achievementTD"){
 			document.getElementById("Build 1 Gem Miner").className = "achievementTD achieved";
 			newUnlock("settings");
 			achieved.push("Build 1 Gem Miner");
 		}
-		if(gemMiner >= 10 && document.getElementById("Build 10 Miner").className === "achievementTD"){
+		if(gemMiner >= 10 && document.getElementById("Build 10 Gem Miners").className === "achievementTD"){
 			document.getElementById("Build 10 Gem Miners").className = "achievementTD achieved";
 			newUnlock("settings");
 			achieved.push("Build 10 Gem Miners");
 		}
-		if(gemMiner >= 100 && document.getElementById("Build 100 Miner").className === "achievementTD"){
+		if(gemMiner >= 100 && document.getElementById("Build 100 Gem Miners").className === "achievementTD"){
 			document.getElementById("Build 100 Gem Miners").className = "achievementTD achieved";
 			newUnlock("settings");
 			achieved.push("Build 100 Gem Miners");
