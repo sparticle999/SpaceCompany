@@ -11,11 +11,11 @@
 }
 
 .red{
-	color: red;
+	color: red !important;
 }
 
 .green{
-	color: #00b200;
+	color: #00b200 !important;
 }
 
 .theader{
