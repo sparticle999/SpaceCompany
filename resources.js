@@ -936,20 +936,20 @@ function getOilRig(){
 		document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
 		refresh();
 		tier4 += 1;
-		// if(oilRig >= 1 && document.getElementById("Build 1 Oil Rig").className === "achievementTD"){
-		// 	document.getElementById("Build 1 Oil Rig").className = "achievementTD achieved";
+		// if(oilRig >= 1 && document.getElementById("Build 1 Offshore Rig").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Offshore Rig").className = "achievementTD achieved";
 		// 	newUnlock("more");
-		// 	achieved.push("Build 1 Oil Rig");
+		// 	achieved.push("Build 1 Offshore Rig");
 		// }
-		// if(oilRig >= 10 && document.getElementById("Build 10 Oil Rigs").className === "achievementTD"){
-		// 	document.getElementById("Build 10 Oil Rigs").className = "achievementTD achieved";
+		// if(oilRig >= 10 && document.getElementById("Build 10 Offshore Rigs").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Offshore Rigs").className = "achievementTD achieved";
 		// 	newUnlock("more");
-		// 	achieved.push("Build 10 Oil Rigs");
+		// 	achieved.push("Build 10 Offshore Rigs");
 		// }
-		// if(oilRig >= 100 && document.getElementById("Build 100 Oil Rigs").className === "achievementTD"){
-		// 	document.getElementById("Build 100 Oil Rigs").className = "achievementTD achieved";
+		// if(oilRig >= 100 && document.getElementById("Build 100 Offshore Rigs").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Offshore Rigs").className = "achievementTD achieved";
 		// 	newUnlock("more");
-		// 	achieved.push("Build 100 Oil Rigs");
+		// 	achieved.push("Build 100 Offshore Rigs");
 		// }
 	}
 }

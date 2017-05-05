@@ -17,7 +17,6 @@ v0.4.0 The Hot and Cold Update
 - Supercooling with Ice
 
 - Plasmatic Pit: Plasma
-- Offshore Rig: Oil
 - Forest Fryer: Charcoal
 
 - Some descriptions are pinned in #general
