@@ -51,22 +51,46 @@ function activeSolarTab(tab){
 		if(document.getElementById("mercury").className != "inner hidden"){
 			document.getElementById("mercury").className = "inner";
 		}
-		document.getElementById("moon").className = "inner";
-		document.getElementById("venus").className = "inner";
-		document.getElementById("mars").className = "inner";
-		document.getElementById("asteroidBelt").className = "inner";
+		if(document.getElementById("moon").className != "inner hidden"){
+			document.getElementById("moon").className = "inner";
+		}
+		if(document.getElementById("venus").className != "inner hidden"){
+			document.getElementById("venus").className = "inner";
+		}
+		if(document.getElementById("mars").className != "inner hidden"){
+			document.getElementById("mars").className = "inner";
+		}
+		if(document.getElementById("asteroidBelt").className != "inner hidden"){
+			document.getElementById("asteroidBelt").className = "inner";
+		}
 	}
 	if(contains(explored, "asteroidBelt")){
-		document.getElementById("wonderStation").className = "inner";
-		document.getElementById("jupiter").className = "outer";
-		document.getElementById("saturn").className = "outer";
-		document.getElementById("uranus").className = "outer";
-		document.getElementById("neptune").className = "outer";
-		document.getElementById("pluto").className = "outer";
-		document.getElementById("kuiperBelt").className = "outer";
+		if(document.getElementById("wonderStation").className != "inner hidden"){
+			document.getElementById("wonderStation").className = "inner";
+		}
+		if(document.getElementById("jupiter").className != "outer hidden"){
+			document.getElementById("jupiter").className = "outer";
+		}
+		if(document.getElementById("saturn").className != "outer hidden"){
+			document.getElementById("saturn").className = "outer";
+		}
+		if(document.getElementById("uranus").className != "outer hidden"){
+			document.getElementById("uranus").className = "outer";
+		}
+		if(document.getElementById("neptune").className != "outer hidden"){
+			document.getElementById("neptune").className = "outer";
+		}
+		if(document.getElementById("pluto").className != "outer hidden"){
+			document.getElementById("pluto").className = "outer";
+		}
+		if(document.getElementById("kuiperBelt").className != "outer hidden"){
+			document.getElementById("kuiperBelt").className = "outer";
+		};
 	}
 	if(contains(explored, "kuiperBelt")){
-		document.getElementById("solCenter").className = "outer";
+		if(document.getElementById("kuiperBelt").className != "outer hidden"){
+			document.getElementById("solCenter").className = "outer";
+		}
 	}
 	document.getElementById(tab).className += " info";
 }
