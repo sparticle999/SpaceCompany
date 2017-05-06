@@ -25,6 +25,7 @@ v0.4.0 The Hot and Cold Update
 
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal
+- Biomass Infuser: Wood
 
 - Some descriptions are pinned in #general
 
