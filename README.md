@@ -15,6 +15,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 v0.4.0 The Hot and Cold Update
 - Added Achievements for T4 Machines
 - Supercooling with Ice
+- Added T2 Machines for Plasma and Meteorite
 
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal

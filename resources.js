@@ -1178,7 +1178,7 @@ function getDiamondDrill(){
 		if(diamondDrill >= 10 && document.getElementById("Build 10 Diamond-Encrusted Drills").className === "achievementTD"){
 			document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
 			newUnlock("more");
-			achieved.push("Build 10 Diamond-Encrusted Drill");
+			achieved.push("Build 10 Diamond-Encrusted Drills");
 		}
 		if(diamondDrill >= 100 && document.getElementById("Build 100 Diamond-Encrusted Drills").className === "achievementTD"){
 			document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
