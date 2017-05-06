@@ -24,7 +24,7 @@ function getRocket(){
 		gem -= 900;
 		oil -= 1000;
 		rocket = 1;
-		document.getElementById("rocket").innerHTML = rocket;
+		document.getElementById("rocket").innerHTML = "Built";
 		refresh();
 	}
 }
