@@ -1737,7 +1737,7 @@ function getTitanDrill(){
 		titanDrill += 1;
 		titanDrillSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,titanDrill));
 		titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
-		titanDrillMeteoriteCost = Math.floor(6000 * Math.pow(1.1,titanDrill));
+		titanDrillMeteoriteCost = Math.floor(600 * Math.pow(1.1,titanDrill));
 		document.getElementById("titanDrill").innerHTML = titanDrill;
 		document.getElementById("titanDrillSpaceMetalCost").innerHTML = commafy(titanDrillSpaceMetalCost);
 		document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
