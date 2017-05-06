@@ -5,17 +5,23 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # Plans for the Future
 - When loading game, the tab you left on is the tab you now start on
-- Dark Matter
 - Random Events
-- Some sort of prestige
 - [Change UI from bootstrap to my own]
 
 # RoadMap
 
+v0.5.0 The Interstellar Update
+- Exotic Matter for intersteller travel
+- Dark Matter
+- Some sort of prestige
+
+v0.4.1
+- More Achievements
+
 v0.4.0 The Hot and Cold Update
-- Added Achievements for T4 Machines
+- Achievements for T4 Machines
 - Supercooling with Ice
-- Added T2 Machines for Plasma and Meteorite
+- T2 Machines for Plasma and Meteorite
 
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal
@@ -25,54 +31,54 @@ v0.4.0 The Hot and Cold Update
 # Changelog:
 
 v0.4.0 The Hot and Cold Update
-- Added Achievements
-- Added Research from Sol Center
-- Added Meteorite
-- Added Meteorite Tier of resource machines (4th Tier)
-- Added Dyson Sections
-- Added Dyson Sphere
-- Added Per Second Display on Science
-- Added Ability to Destroy Machines
+- Achievements
+- Research from Sol Center
+- Meteorite
+- Meteorite Tier of resource machines (4th Tier)
+- Dyson Sections
+- Dyson Sphere
+- Per Second Display on Science
+- Ability to Destroy Machines
 - Increased Width of Resources List to reduce vertical scrolling
-- Added Tiered Laboratories
-- Added Batteries
+- Tiered Laboratories
+- Batteries
 - Changed Silicon from an inner planet resource to an earth resource
 - Altered Cyborg Theme
-- Added Stats for Time Keeping
+- Stats for Time Keeping
 - Merged "More" and "Settings" Tabs
 
 v0.3.5
-- Added Number Formatting for large numbers
+- Number Formatting for large numbers
 - Made Selected Tab Blue
 
 v0.3.4
-- Added New Solar Theme
-- Added New United Theme
+- New Solar Theme
+- New United Theme
 
 v0.3.3
-- Added Collapsibility for the Solar System Tab
-- Added Notifications on tabs when there is something new in them
+- Collapsibility for the Solar System Tab
+- Notifications on tabs when there is something new in them
 
 v0.3.2
 - Made per second text red when negative
-- Added Dark Cyborg Theme
+- Dark Cyborg Theme
 
 v0.3.1
 - Rebalanced Fusion Reactor and Magmatic Dynamo
 - Rebalanced Tier 3 Machines For Some Resources
 
 v0.3.0 The Tech Update [Pushed to Beta]
-- Added Sol Scientific Center
-- Added Computerized Tier of resource machines
-- Added Exploration of the outer planets
-- Added Energy-Mass Conversion
-- Added Hydrogen and Helium
-- Added Ice
-- Added Plasma
-- Added Tech Wonder
-- Added Fusion Reactor
-- Added More Statistics
-- Added Loading Screen
+- Sol Scientific Center
+- Computerized Tier of resource machines
+- Exploration of the outer planets
+- Energy-Mass Conversion
+- Hydrogen and Helium
+- Ice
+- Plasma
+- Tech Wonder
+- Fusion Reactor
+- More Statistics
+- Loading Screen
 - Fixed Typos
 - Fixed Wood/Charcoal Bugs
 
@@ -80,55 +86,55 @@ v0.2.2
 - If you do not have enough resources for something, the number will be red
 - You can collapse resources into earth and space categories
 - Buffed Charcoal Engines and Solar Panels to stop people falling into a 'negative energy hole'
-- Added Nuclear & Magmatic Power
+- Nuclear & Magmatic Power
 - Nerfed Methane Station
 
 v0.2.1
 - Fixed Bugs
 
 v0.2.0 The Wondrous Update [Released To The Public]
-- Added Wonder Tab
-- Added two different wonders - Precious Wonder & Energetic Wonder
-- Added ability to upgrade Wonders
-- Added Uranium & Lava
+- Wonder Tab
+- two different wonders - Precious Wonder & Energetic Wonder
+- ability to upgrade Wonders
+- Uranium & Lava
 - Widened resources navigation so that storage could be displayed on one line
-- Added Solar Panel and Charcoal Engine Upgrades
-- Added Statistics
-- Added Settings
-- Added Import and Export
+- Solar Panel and Charcoal Engine Upgrades
+- Statistics
+- Settings
+- Import and Export
 
 v0.1.2
-- Added auto-saving
+- Auto-saving
 - Finished Beginner's Guide
 
 v0.1.1
 - Fixed bugs from the 0.1.0 update
 
 v0.1.0 The Space Update
-- Added space travel to The Moon, Venus, Mars and the Asteroid Belt
-- Added new resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
-- Added methane-based power
-- Added commas to all numbers more than 1000
+- Space travel to The Moon, Venus, Mars and the Asteroid Belt
+- New resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
+- Methane-based power
+- Commas to all numbers more than 1000
 - Fixed negative energy
-- Added Saving
-- Added Donations through paypal
+- Saving
+- Donations through paypal
 - Updated Beginner's Guide
 
 v0.0.7
-- Added Resource Technology Upgrade to double resource machines output
+- Resource Technology Upgrade to double resource machines output
 - Nerfed Science
 - Changed the per second display to be zero if the storage is full
 
 v0.0.6
-- Added icons for the rest of the resources
-- Added Help / FAQ Tab
-- Added Beginner Guide, FAQ and Credits
+- Icons for the rest of the resources
+- Help / FAQ Tab
+- Beginner Guide, FAQ and Credits
 - Made resource numbers scroll up instead of jumping to the current value
 
 v0.0.5
-- Added Space Tab
-- Added chemical plants that produce rocket fuel
-- Added rocket that uses rocket fuel to launch into space
+- Space Tab
+- Chemical plants that produce rocket fuel
+- Rocket that uses rocket fuel to launch into space
 
 v0.0.4 
 - Balanced Game More (to not take 2 minutes to complete)
@@ -139,7 +145,7 @@ v0.0.4
 
 v0.0.3
 - Removed cap on energy
-- Added Solar Panels
+- Solar Panels
 - Resource Gathering Machine were added that use a constant supply of energy
 - Oil was made a component in building machines
 - Fixed storage costs bug
@@ -149,8 +155,8 @@ v0.0.2
 - Reworked Science Techs
 - Balanced Science Tab
 - Removed the ability for science to be clicked - it can only be gained slowly
-- Added energy and charcoal engines
-- Added Charcoal
+- Energy and Charcoal engines
+- Charcoal
 - Removed Gas
 
 v0.0.1
