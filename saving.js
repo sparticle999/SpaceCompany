@@ -412,6 +412,10 @@ function save(type){
 		eCellSilverCost: eCellSilverCost,
 		eCellGoldCost: eCellGoldCost,
 		eCellSiliconCost: eCellSiliconCost,
+		hindenburg: hindenburg,
+		hindenburgSpaceMetalCost: hindenburgSpaceMetalCost,
+		hindenburgMethaneCost: hindenburgMethaneCost,
+		hindenburgMeteoriteCost: hindenburgMeteoriteCost,
 		helium: helium,
 		heliumStorage: heliumStorage,
 		heliumNextStorage: heliumNextStorage,
@@ -826,6 +830,10 @@ function load(type){
 		if(typeof savegame.eCellSilverCost !== "undefined") eCellSilverCost = savegame.eCellSilverCost;
 		if(typeof savegame.eCellGoldCost !== "undefined") eCellGoldCost = savegame.eCellGoldCost;
 		if(typeof savegame.eCellSiliconCost !== "undefined") eCellSiliconCost = savegame.eCellSiliconCost;
+		if(typeof savegame.hindenburg !== "undefined") hindenburg = savegame.hindenburg;
+		if(typeof savegame.hindenburgSpaceMetalCost !== "undefined") hindenburgSpaceMetalCost = savegame.hindenburgSpaceMetalCost;
+		if(typeof savegame.hindenburgMethaneCost !== "undefined") hindenburgMethaneCost = savegame.hindenburgMethaneCost;
+		if(typeof savegame.hindenburgMeteoriteCost !== "undefined") hindenburgMeteoriteCost = savegame.hindenburgMeteoriteCost;
 		if(typeof savegame.drone !== "undefined") drone = savegame.drone;
 		if(typeof savegame.droneSpaceMetalCost !== "undefined") droneSpaceMetalCost = savegame.droneSpaceMetalCost;
 		if(typeof savegame.droneSiliconCost !== "undefined") droneSiliconCost = savegame.droneSiliconCost;

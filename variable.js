@@ -40,6 +40,7 @@ var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var c
 var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var kiln = 0; var kilnSpaceMetalCost = 3500; var kilnGemCost = 6200; var kilnSiliconCost = 3800;
+var fryer = 0;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
 var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
@@ -58,6 +59,7 @@ var planetExcavator = 0; var planetExcavatorTitaniumCost = 45000; var planetExca
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
 var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionExcavatorGemCost = 800; var suctionExcavatorOilCost = 600;
 var spaceCow = 0; var spaceCowSpaceMetalCost = 10000; var spaceCowTitaniumCost = 9000; var spaceCowSiliconCost = 4100;
+var vent = 0;
 var explorer = 0; var explorerGemCost = 1000;
 var spaceMetalDrill = 0; var spaceMetalDrillSpaceMetalCost = 200; var spaceMetalDrillGemCost = 800; var spaceMetalDrillOilCost = 1000;
 var pentaDrill = 0; var pentaDrillSpaceMetalCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600;
@@ -88,10 +90,12 @@ var hydrogen = 0; var hydrogenStorage = 50; var hydrogenNextStorage = 100; var h
 var collector = 0; var collectorSpaceMetalCost = 6000; var collectorTitaniumCost = 4800;
 var magnet = 0; var magnetSpaceMetalCost = 10800; var magnetTitaniumCost = 9600; var magnetGoldCost = 6600;
 var eCell = 0; var eCellSilverCost = 37200; var eCellGoldCost = 34200; var eCellSiliconCost = 25800;
+var hindenburg = 0; var hindenburgSpaceMetalCost = 172000; var hindenburgMethaneCost = 134000; var hindenburgMeteoriteCost = 710;
 var helium = 0; var heliumStorage = 50; var heliumNextStorage = 100; var heliumStorageCost = 100; var heliumps = 0;
 var drone = 0; var droneSpaceMetalCost = 8400; var droneSiliconCost = 6000;
 var tanker = 0; var tankerSpaceMetalCost = 12600; var tankerTitaniumCost = 10200; var tankerSiliconCost = 8400;
 var compressor = 0; var compressorSpaceMetalCost = 63000; var compressorTitaniumCost = 43800; var compressorSiliconCost = 35400;
+var skimmer = 0;
 var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost = 100; var iceps = 0;
 var icePick = 0; var icePickSpaceMetalCost = 17800; var icePickGemCost = 19300;
 var iceDrill = 0; var iceDrillSpaceMetalCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600;

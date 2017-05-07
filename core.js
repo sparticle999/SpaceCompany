@@ -118,11 +118,11 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(cannon*170)+(desert*138);
-	energyOutput += (recycler*463)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
+	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*188)+(actuator*223)+(cannon*170)+(desert*138);
+	energyOutput += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
-		energyOutput += (furnace*3)+(kiln*13);
+		energyOutput += (furnace*3)+(kiln*13)+(fryer*34);
 	}
 	plasmaps = 0;
 	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
@@ -169,18 +169,18 @@ function refreshPerSec(){
 		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
-		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
+		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53) + (fryer*210);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
-		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
+		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37) + (vent*149);
 		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
 		goldps = droid + (destroyer*8) + (deathStar*51) + (actuator*211);
 		silverps = scout + (spaceLaser*13) + (bertha*53) + (cannon*208);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
 		uraniumps = grinder + (cubic*9) +(enricher*61) + (recycler*235);
 		lavaps = crucible + (extractor*7) + (extruder*43) + (veluptuator*187);
-		hydrogenps = collector + (magnet*5) + (eCell*28);
-		heliumps = drone + (tanker*11) + (compressor*57);
+		hydrogenps = collector + (magnet*5) + (eCell*28) + (hindenburg*113);
+		heliumps = drone + (tanker*11) + (compressor*57) + (skimmer*232);
 		iceps = icePick + (iceDrill*9) + (freezer*65) + (mrFreeze*278);
 	}
 	if(energy <= 10){
@@ -733,6 +733,10 @@ function refreshUI(){
 	document.getElementById("eCellSilverCost").innerHTML = commafy(eCellSilverCost);
 	document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
 	document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
+	document.getElementById("hindenburg").innerHTML = commafy(hindenburg);
+	document.getElementById("hindenburgSpaceMetalCost").innerHTML = commafy(hindenburgSpaceMetalCost);
+	document.getElementById("hindenburgMethaneCost").innerHTML = commafy(hindenburgMethaneCost);
+	document.getElementById("hindenburgMeteoriteCost").innerHTML = commafy(hindenburgMeteoriteCost);
 	document.getElementById("drone").innerHTML = commafy(drone);
 	document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 	document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
@@ -1731,6 +1735,10 @@ function checkRedCost(){
 	turnRed(silver, eCellSilverCost, "eCellSilverCost");
 	turnRed(gold, eCellGoldCost, "eCellGoldCost");
 	turnRed(silicon, eCellSiliconCost, "eCellSiliconCost");
+
+	turnRed(spaceMetal, hindenburgSpaceMetalCost, "hindenburgSpaceMetalCost");
+	turnRed(methane, hindenburgMethaneCost, "hindenburgMethaneCost");
+	turnRed(meteorite, hindenburgMeteoriteCost, "hindenburgMeteoriteCost");
 
 	turnRed(spaceMetal, droneSpaceMetalCost, "droneSpaceMetalCost");
 	turnRed(silicon, droneSiliconCost, "droneSiliconCost");

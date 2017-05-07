@@ -2243,6 +2243,26 @@
 									<button onclick="destroyMachine(eCell, 'eCell')" class="btn btn-default destroy hidden">Destroy Electrolytic Cell</button>
 								</td>
 							</tr>
+							<tr id="hydrogenTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Hindenburg Excavation: <span id="hindenburg">0</span>
+									</h3>
+									<span>
+										Somehow, it works.
+										<br>
+										Produces 113 Hydrogen per second.
+										<br>
+										Uses 613 Energy per second.
+										<br>
+										Costs <span id="hindenburgSpaceMetalCost">172,000</span> Space Metal, <span id="hindenburgMethaneCost">134,000</span> Methane, <span id="hindenburgMeteoriteCost">710</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getHindenburg()" class="btn btn-default">Get Hindenburg Excavation</button>
+									<button onclick="destroyMachine(hindenburg, 'hindenburg')" class="btn btn-default destroy hidden">Destroy Hindenburg Excavation</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>

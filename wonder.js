@@ -220,7 +220,7 @@ function unlockTier4(){
 	document.getElementById("titaniumTier4").className = "";
 	document.getElementById("goldTier4").className = "";
 	document.getElementById("silverTier4").className = "";
-	// document.getElementById("hydrogenTier4").className = "";
+	document.getElementById("hydrogenTier4").className = "";
 	// document.getElementById("heliumTier4").className = "";
 	document.getElementById("iceTier4").className = "";
 }

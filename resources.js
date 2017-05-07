@@ -2026,7 +2026,7 @@ function getCannon(){
 		oil -= cannonOilCost;
 		meteorite -= cannonMeteoriteCost;
 		cannon += 1;
-		cannonMeteoriteCost = Math.floor(420 * Math.pow(1.1,cannon));
+		cannonMeteoriteCost = Math.floor(520 * Math.pow(1.1,cannon));
 		cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
 		cannonSpaceMetalCost = Math.floor(85100 * Math.pow(1.1,cannon));
 		document.getElementById("cannon").innerHTML = cannon;
@@ -2299,6 +2299,24 @@ function getECell(){
 		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
 		refresh();
 		tier3 += 1;
+	}
+}
+
+function getHindenburg(){
+	if(spaceMetal >= hindenburgSpaceMetalCost && methane >= hindenburgMethaneCost && meteorite >= hindenburgMeteoriteCost){
+		spaceMetal -= hindenburgSpaceMetalCost;
+		methane -= hindenburgMethaneCost;
+		meteorite -= hindenburgMeteoriteCost;
+		hindenburg += 1;
+		hindenburgMeteoriteCost = Math.floor(710 * Math.pow(1.1,hindenburg));
+		hindenburgMethaneCost = Math.floor(134000 * Math.pow(1.1,hindenburg));
+		hindenburgSpaceMetalCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
+		document.getElementById("hindenburg").innerHTML = hindenburg;
+		document.getElementById("hindenburgSpaceMetalCost").innerHTML = commafy(hindenburgSpaceMetalCost);
+		document.getElementById("hindenburgMethaneCost").innerHTML = commafy(hindenburgMethaneCost);
+		document.getElementById("hindenburgMeteoriteCost").innerHTML = commafy(hindenburgMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
