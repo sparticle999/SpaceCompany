@@ -213,7 +213,7 @@ function unlockTier4(){
 	document.getElementById("metalTier4").className = "";
 	document.getElementById("gemTier4").className = "";
 	// document.getElementById("charcoalTier4").className = "";
-	// document.getElementById("woodTier4").className = "";
+	document.getElementById("woodTier4").className = "";
 	document.getElementById("siliconTier4").className = "";
 	document.getElementById("spaceMetalTier4").className = "";
 	// document.getElementById("methaneTier4").className = "";

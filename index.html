@@ -1337,18 +1337,38 @@
 										Mass Deforester <span id="deforester">0</span>
 									</h3>
 									<span>
-										This machine is the reason we're losing our rainforests. At least we get a ton of wood!
+										This machine is the reason we're losing our rainforests. At least we get lots of wood!
 										<br>
 										Produces <span id="deforesterOutput">74</span> wood per second.
 										<br>
 										Uses 16 Energy per second.
 										<br>
-										Costs <span id="deforesterSpaceMetalCost">3000</span> Space Metal, <span id="deforesterTitaniumCost">2700</span> Titanium, <span id="deforesterSiliconCost">2500</span> Silicon.
+										Costs <span id="deforesterSpaceMetalCost">3,000</span> Space Metal, <span id="deforesterTitaniumCost">2,700</span> Titanium, <span id="deforesterSiliconCost">2,500</span> Silicon.
 									</span>
 									<br>
 									<br>
-									<button onclick="getDeforester()" class="btn btn-default">Get Deforester</button>
+									<button onclick="getDeforester()" class="btn btn-default">Get Mass Deforester</button>
 									<button onclick="destroyMachine(deforester, 'deforester')" class="btn btn-default destroy hidden">Destroy Mass Deforester</button>
+								</td>
+							</tr>
+							<tr id="woodTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Biomass Infuser <span id="infuser">0</span>
+									</h3>
+									<span>
+										Creates Wood using old, useless materials found everywhere on Earth by crushing them and packing what remains as densely as possible until it can be used as Wood again.
+										<br>
+										Produces 297 wood per second.
+										<br>
+										Uses 43 Energy per second.
+										<br>
+										Costs <span id="infuserSpaceMetalCost">16,000</span> Space Metal, <span id="infuserOilCost">31,200</span> Oil, <span id="infuserMeteoriteCost">490</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getInfuser()" class="btn btn-default">Get Biomass Infuser</button>
+									<button onclick="destroyMachine(infuser, 'infuser')" class="btn btn-default destroy hidden">Destroy Biomass Infuser</button>
 								</td>
 							</tr>
 						</table>

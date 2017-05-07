@@ -223,6 +223,10 @@ function save(type){
 		deforesterSpaceMetalCost: deforesterSpaceMetalCost,
 		deforesterTitaniumCost: deforesterTitaniumCost,
 		deforesterSiliconCost: deforesterSiliconCost,
+		infuser: infuser,
+		infuserSpaceMetalCost: infuserSpaceMetalCost,
+		infuserOilCost: infuserOilCost,
+		infuserMeteoriteCost: infuserMeteoriteCost,
 		science: science,
 		lab: lab,
 		labWoodCost: labWoodCost,
@@ -620,6 +624,10 @@ function load(type){
 		if(typeof savegame.deforesterSpaceMetalCost !== "undefined") deforesterSpaceMetalCost = savegame.deforesterSpaceMetalCost;
 		if(typeof savegame.deforesterTitaniumCost !== "undefined") deforesterTitaniumCost = savegame.deforesterTitaniumCost;
 		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
+		if(typeof savegame.infuser !== "undefined") infuser = savegame.infuser;
+		if(typeof savegame.infuserSpaceMetalCost !== "undefined") infuserSpaceMetalCost = savegame.infuserSpaceMetalCost;
+		if(typeof savegame.infuserOilCost !== "undefined") infuserOilCost = savegame.infuserOilCost;
+		if(typeof savegame.infuserMeteoriteCost !== "undefined") infuserMeteoriteCost = savegame.infuserMeteoriteCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
 		if(typeof savegame.lab !== "undefined") lab = savegame.lab;
 		if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;

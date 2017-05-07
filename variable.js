@@ -44,6 +44,7 @@ var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
 var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;
 var deforester = 0; var deforesterSpaceMetalCost = 3000; var deforesterTitaniumCost = 2700; var deforesterSiliconCost = 2500;
+var infuser = 0; var infuserSpaceMetalCost = 16000; var infuserOilCost = 31200; var infuserMeteoriteCost = 490;
 var spaceMetal = 0; var spaceMetalStorage = 50; var spaceMetalNextStorage = 100; var spaceMetalps = 0;
 var methane = 0; var methaneStorage = 50; var methaneNextStorage = 100; var methaneps = 0;
 var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumps = 0;

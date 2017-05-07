@@ -117,7 +117,7 @@ function refreshPerSec(){
 	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
-	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(0);
+	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
 	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(0)+(desert*138);
 	energyOutput += (recycler*463)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
 
@@ -170,7 +170,7 @@ function refreshPerSec(){
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53);
-		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74);
+		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
@@ -591,6 +591,10 @@ function refreshUI(){
 	document.getElementById("deforesterSpaceMetalCost").innerHTML = commafy(deforesterSpaceMetalCost);
 	document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
 	document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
+	document.getElementById("infuser").innerHTML = infuser;
+	document.getElementById("infuserSpaceMetalCost").innerHTML = commafy(infuserSpaceMetalCost);
+	document.getElementById("infuserOilCost").innerHTML = commafy(infuserOilCost);
+	document.getElementById("infuserMeteoriteCost").innerHTML = commafy(infuserMeteoriteCost);
 	document.getElementById("moonWorker").innerHTML = moonWorker;
 	document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 	document.getElementById("moonDrill").innerHTML = moonDrill;
@@ -1163,6 +1167,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, deforesterSpaceMetalCost, "deforesterSpaceMetalCost");
 	turnRed(titanium, deforesterTitaniumCost, "deforesterTitaniumCost");
 	turnRed(silicon, deforesterSiliconCost, "deforesterSiliconCost");
+
+	turnRed(spaceMetal, infuserSpaceMetalCost, "infuserSpaceMetalCost");
+	turnRed(oil, infuserOilCost, "infuserOilCost");
+	turnRed(meteorite, infuserMeteoriteCost, "infuserMeteoriteCost");
 
 	if(gem < moonWorkerGemCost){
 		document.getElementById("moonWorkerGemCost").className = "red";

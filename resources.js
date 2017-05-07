@@ -1414,6 +1414,39 @@ function getDeforester(){
 	}
 }
 
+function getInfuser(){
+	if(spaceMetal >= infuserSpaceMetalCost && oil >= infuserOilCost && meteorite >= infuserMeteoriteCost){
+		spaceMetal -= infuserSpaceMetalCost;
+		oil -= infuserOilCost;
+		meteorite -= infuserMeteoriteCost;
+		infuser += 1;
+		infuserSpaceMetalCost = Math.floor(16000 * Math.pow(1.1,infuser));
+		infuserOilCost = Math.floor(31200 * Math.pow(1.1,infuser));
+		infuserMeteoriteCost = Math.floor(490 * Math.pow(1.1,infuser));
+		document.getElementById("infuser").innerHTML = infuser;
+		document.getElementById("infuserSpaceMetalCost").innerHTML = commafy(infuserSpaceMetalCost);
+		document.getElementById("infuserOilCost").innerHTML = commafy(infuserOilCost);
+		document.getElementById("infuserMeteoriteCost").innerHTML = commafy(infuserMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(infuser >= 1 && document.getElementById("Build 1 Mass Deforester").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Mass Deforester").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Mass Deforester");
+		// }
+		// if(infuser >= 10 && document.getElementById("Build 10 Mass Deforesters").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Mass Deforesters").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Mass Deforesters");
+		// }
+		// if(infuser >= 100 && document.getElementById("Build 100 Mass Deforesters").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Mass Deforesters").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Mass Deforesters");
+		// }
+	}
+}
+
 function getMoonWorker(){
 	if(gem >= moonWorkerGemCost){
 		gem -= moonWorkerGemCost;

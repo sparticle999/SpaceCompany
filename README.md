@@ -22,10 +22,11 @@ v0.4.0 The Hot and Cold Update
 - Achievements for T4 Machines
 - Supercooling with Ice
 - T2 Machines for Plasma and Meteorite
+- Added Dyson Swarm
+- Added Research for Dyson Sphere
 
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal "Forests? What forests?"
-- Biomass Infuser: Wood "Creates Wood using old, useless materials found everywhere on Earth by crushing them and packing what remains as densely as possible until it can be used as Wood again."
 - Hydrothermal Vent: Methane "Collect gas from deep sea vents on the ocean floor of Titan"
 - Atomic Cannon: Silver "This powerful canon orbits Neptune and can atomise the surface of asteroids, revealing the silver within"
 - Hindenburg Excavation: Hydrogen "Somehow it works"
