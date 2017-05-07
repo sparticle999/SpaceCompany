@@ -24,8 +24,12 @@ v0.4.0 The Hot and Cold Update
 - T2 Machines for Plasma and Meteorite
 
 - Plasmatic Pit: Plasma
-- Forest Fryer: Charcoal
-- Biomass Infuser: Wood
+- Forest Fryer: Charcoal "Forests? What forests?"
+- Biomass Infuser: Wood "Creates Wood using old, useless materials found everywhere on Earth by crushing them and packing what remains as densely as possible until it can be used as Wood again."
+- Hydrothermal Vent: Methane "Collect gas from deep sea vents on the ocean floor of Titan"
+- Atomic Cannon: Silver "This powerful canon orbits Neptune and can atomise the surface of asteroids, revealing the silver within"
+- Hindenburg Excavation: Hydrogen "Somehow it works"
+- Gas Giant Skimmer: Helium "Flying into Gas Giants' atmospheres with a big bucket is the best plan we've had yet!"
 
 - Some descriptions are pinned in #general
 
