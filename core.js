@@ -748,6 +748,10 @@ function refreshUI(){
 	document.getElementById("compressorSpaceMetalCost").innerHTML = commafy(compressorSpaceMetalCost);
 	document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
 	document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
+	document.getElementById("skimmer").innerHTML = commafy(skimmer);
+	document.getElementById("skimmerSpaceMetalCost").innerHTML = commafy(skimmerSpaceMetalCost);
+	document.getElementById("skimmerTitaniumCost").innerHTML = commafy(skimmerTitaniumCost);
+	document.getElementById("skimmerMeteoriteCost").innerHTML = commafy(skimmerMeteoriteCost);
 	document.getElementById("icePick").innerHTML = commafy(icePick);
 	document.getElementById("icePickSpaceMetalCost").innerHTML = commafy(icePickSpaceMetalCost);
 	document.getElementById("icePickGemCost").innerHTML = commafy(icePickGemCost);
@@ -1750,6 +1754,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, compressorSpaceMetalCost, "compressorSpaceMetalCost");
 	turnRed(titanium, compressorTitaniumCost, "compressorTitaniumCost");
 	turnRed(silicon, compressorSiliconCost, "compressorSiliconCost");
+
+	turnRed(spaceMetal, skimmerSpaceMetalCost, "skimmerSpaceMetalCost");
+	turnRed(titanium, skimmerTitaniumCost, "skimmerTitaniumCost");
+	turnRed(silicon, skimmerMeteoriteCost, "skimmerMeteoriteCost");
 
 	turnRed(spaceMetal, icePickSpaceMetalCost, "icePickSpaceMetalCost");
 	turnRed(gem, icePickGemCost, "icePickGemCost");

@@ -430,6 +430,10 @@ function save(type){
 		compressorSpaceMetalCost: compressorSpaceMetalCost,
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
+		skimmer: skimmer,
+		skimmerSpaceMetalCost: skimmerSpaceMetalCost,
+		skimmerTitaniumCost: skimmerTitaniumCost,
+		skimmerMeteoriteCost: skimmerMeteoriteCost,
 		ice: ice,
 		iceStorage: iceStorage,
 		iceNextStorage: iceNextStorage,
@@ -845,6 +849,10 @@ function load(type){
 		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorSpaceMetalCost = savegame.compressorSpaceMetalCost;
 		if(typeof savegame.compressorTitaniumCost !== "undefined") compressorTitaniumCost = savegame.compressorTitaniumCost;
 		if(typeof savegame.compressorSiliconCost !== "undefined") compressorSiliconCost = savegame.compressorSiliconCost;
+		if(typeof savegame.skimmer !== "undefined") skimmer = savegame.skimmer;
+		if(typeof savegame.skimmerSpaceMetalCost !== "undefined") skimmerSpaceMetalCost = savegame.skimmerSpaceMetalCost;
+		if(typeof savegame.skimmerTitaniumCost !== "undefined") skimmerTitaniumCost = savegame.skimmerTitaniumCost;
+		if(typeof savegame.skimmerMeteoriteCost !== "undefined") skimmerMeteoriteCost = savegame.skimmerMeteoriteCost;
 		if(typeof savegame.icePick !== "undefined") icePick = savegame.icePick;
 		if(typeof savegame.icePickSpaceMetalCost !== "undefined") icePickSpaceMetalCost = savegame.icePickSpaceMetalCost;
 		if(typeof savegame.icePickGemCost !== "undefined") icePickGemCost = savegame.icePickGemCost;

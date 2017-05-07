@@ -2371,6 +2371,24 @@ function getCompressor(){
 	}
 }
 
+function getSkimmer(){
+	if(spaceMetal >= skimmerSpaceMetalCost && titanium >= skimmerTitaniumCost && meteorite >= skimmerMeteoriteCost){
+		spaceMetal -= skimmerSpaceMetalCost;
+		titanium -= skimmerTitaniumCost;
+		meteorite -= skimmerMeteoriteCost;
+		skimmer += 1;
+		skimmerMeteoriteCost = Math.floor(770 * Math.pow(1.1,skimmer));
+		skimmerTitaniumCost = Math.floor(173000 * Math.pow(1.1,skimmer));
+		skimmerSpaceMetalCost = Math.floor(255000 * Math.pow(1.1,skimmer));
+		document.getElementById("skimmer").innerHTML = skimmer;
+		document.getElementById("skimmerSpaceMetalCost").innerHTML = commafy(skimmerSpaceMetalCost);
+		document.getElementById("skimmerTitaniumCost").innerHTML = commafy(skimmerTitaniumCost);
+		document.getElementById("skimmerMeteoriteCost").innerHTML = commafy(skimmerMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getIcePick(){
 	if(spaceMetal >= icePickSpaceMetalCost && gem >= icePickGemCost){
 		spaceMetal -= icePickSpaceMetalCost;
