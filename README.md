@@ -28,7 +28,6 @@ v0.4.0 The Hot and Cold Update
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal "Forests? What forests?"
 - Hydrothermal Vent: Methane "Collect gas from deep sea vents on the ocean floor of Titan"
-- Atomic Cannon: Silver "This powerful canon orbits Neptune and can atomise the surface of asteroids, revealing the silver within"
 - Hindenburg Excavation: Hydrogen "Somehow it works"
 - Gas Giant Skimmer: Helium "Flying into Gas Giants' atmospheres with a big bucket is the best plan we've had yet!"
 

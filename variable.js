@@ -69,6 +69,7 @@ var actuator = 0; var actuatorSpaceMetalCost = 61000; var actuatorHeliumCost = 1
 var scout = 0; var scoutSpaceMetalCost = 100; var scoutTitaniumCost = 20;
 var spaceLaser = 0; var spaceLaserSpaceMetalCost = 350; var spaceLaserGemCost = 900; var spaceLaserOilCost = 1200;
 var bertha = 0; var berthaSpaceMetalCost = 19500; var berthaTitaniumCost = 18200; var berthaSiliconCost = 11000;
+var cannon = 0; var cannonSpaceMetalCost = 85100; var cannonOilCost = 93800; var cannonMeteoriteCost = 520;
 var blowtorch = 0; var blowtorchSpaceMetalCost = 150; var blowtorchTitaniumCost = 30;
 var scorcher = 0; var scorcherSpaceMetalCost = 500; var scorcherGemCost = 1200; var scorcherOilCost = 1600;
 var annihilator = 0; var annihilatorSpaceMetalCost = 3000; var annihilatorGemCost = 8300; var annihilatorSilverCost = 2400;

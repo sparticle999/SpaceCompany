@@ -118,7 +118,7 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(0)+(desert*138);
+	energyOutput += (planetExcavator*182)+(0)+(titanDrill*188)+(actuator*223)+(cannon*170)+(desert*138);
 	energyOutput += (recycler*463)+(veluptuator*698)+(0)+(0)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
@@ -175,7 +175,7 @@ function refreshPerSec(){
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37);
 		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
 		goldps = droid + (destroyer*8) + (deathStar*51) + (actuator*211);
-		silverps = scout + (spaceLaser*13) + (bertha*53);
+		silverps = scout + (spaceLaser*13) + (bertha*53) + (cannon*208);
 		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
 		uraniumps = grinder + (cubic*9) +(enricher*61) + (recycler*235);
 		lavaps = crucible + (extractor*7) + (extruder*43) + (veluptuator*187);
@@ -660,6 +660,10 @@ function refreshUI(){
 	document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
 	document.getElementById("berthaSpaceMetalCost").innerHTML = commafy(berthaSpaceMetalCost);
 	document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
+	document.getElementById("cannon").innerHTML = cannon;
+	document.getElementById("cannonOilCost").innerHTML = commafy(cannonOilCost);
+	document.getElementById("cannonSpaceMetalCost").innerHTML = commafy(cannonSpaceMetalCost);
+	document.getElementById("cannonMeteoriteCost").innerHTML = commafy(cannonMeteoriteCost);
 	document.getElementById("blowtorch").innerHTML = blowtorch;
 	document.getElementById("blowtorchSpaceMetalCost").innerHTML = commafy(blowtorchSpaceMetalCost);
 	document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
@@ -1365,6 +1369,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, berthaSpaceMetalCost, "berthaSpaceMetalCost");
 	turnRed(titanium, berthaTitaniumCost, "berthaTitaniumCost");
 	turnRed(silicon, berthaSiliconCost, "berthaSiliconCost");
+
+	turnRed(spaceMetal, cannonSpaceMetalCost, "cannonSpaceMetalCost");
+	turnRed(oil, cannonOilCost, "cannonOilCost");
+	turnRed(meteorite, cannonMeteoriteCost, "cannonMeteoriteCost");
 	
 	if(spaceMetal < blowtorchSpaceMetalCost){
 		document.getElementById("blowtorchSpaceMetalCost").className = "red";

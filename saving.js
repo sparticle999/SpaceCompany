@@ -330,6 +330,10 @@ function save(type){
 		berthaSpaceMetalCost: berthaSpaceMetalCost,
 		berthaTitaniumCost: berthaTitaniumCost,
 		berthaSiliconCost: berthaSiliconCost,
+		cannon: cannon,
+		cannonSpaceMetalCost: cannonSpaceMetalCost,
+		cannonOilCost: cannonOilCost,
+		cannonMeteoriteCost: cannonMeteoriteCost,
 		blowtorch: blowtorch,
 		blowtorchSpaceMetalCost: blowtorchSpaceMetalCost,
 		blowtorchTitaniumCost: blowtorchTitaniumCost,
@@ -746,6 +750,10 @@ function load(type){
 		if(typeof savegame.berthaSpaceMetalCost !== "undefined") berthaSpaceMetalCost = savegame.berthaSpaceMetalCost;
 		if(typeof savegame.berthaTitaniumCost !== "undefined") berthaTitaniumCost = savegame.berthaTitaniumCost;
 		if(typeof savegame.berthaSiliconCost !== "undefined") berthaSiliconCost = savegame.berthaSiliconCost;
+		if(typeof savegame.cannon !== "undefined") cannon = savegame.cannon;
+		if(typeof savegame.cannonSpaceMetalCost !== "undefined") cannonSpaceMetalCost = savegame.cannonSpaceMetalCost;
+		if(typeof savegame.cannonOilCost !== "undefined") cannonOilCost = savegame.cannonOilCost;
+		if(typeof savegame.cannonMeteoriteCost !== "undefined") cannonMeteoriteCost = savegame.cannonMeteoriteCost;
 		if(typeof savegame.blowtorch !== "undefined") blowtorch = savegame.blowtorch;
 		if(typeof savegame.blowtorchSpaceMetalCost !== "undefined") blowtorchSpaceMetalCost = savegame.blowtorchSpaceMetalCost;
 		if(typeof savegame.blowtorchTitaniumCost !== "undefined") blowtorchTitaniumCost = savegame.blowtorchTitaniumCost;

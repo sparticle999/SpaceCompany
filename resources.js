@@ -2020,6 +2020,39 @@ function getBertha(){
 	}
 }
 
+function getCannon(){
+	if(spaceMetal >= cannonSpaceMetalCost && oil >= cannonOilCost && meteorite >= cannonMeteoriteCost){
+		spaceMetal -= cannonSpaceMetalCost;
+		oil -= cannonOilCost;
+		meteorite -= cannonMeteoriteCost;
+		cannon += 1;
+		cannonMeteoriteCost = Math.floor(420 * Math.pow(1.1,cannon));
+		cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
+		cannonSpaceMetalCost = Math.floor(85100 * Math.pow(1.1,cannon));
+		document.getElementById("cannon").innerHTML = cannon;
+		document.getElementById("cannonSpaceMetalCost").innerHTML = commafy(cannonSpaceMetalCost);
+		document.getElementById("cannonOilCost").innerHTML = commafy(cannonOilCost);
+		document.getElementById("cannonMeteoriteCost").innerHTML = commafy(cannonMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(cannon >= 1 && document.getElementById("Build 1 Atomic Cannon").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Atomic Cannon").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Atomic Cannon");
+		// }
+		// if(cannon >= 10 && document.getElementById("Build 10 Atomic Cannons").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Atomic Cannons").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Atomic Cannons");
+		// }
+		// if(cannon >= 100 && document.getElementById("Build 100 Atomic Cannons").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Atomic Cannons").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Atomic Cannons");
+		// }
+	}
+}
+
 function getBlowtorch(){
 	if(spaceMetal >= blowtorchSpaceMetalCost && titanium >= blowtorchTitaniumCost){
 		spaceMetal -= blowtorchSpaceMetalCost;
