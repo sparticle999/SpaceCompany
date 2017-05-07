@@ -208,6 +208,10 @@ function save(type){
 		kilnSpaceMetalCost: kilnSpaceMetalCost,
 		kilnGemCost: kilnGemCost,
 		kilnSiliconCost: kilnSiliconCost,
+		fryer: fryer,
+		fryerSpaceMetalCost: fryerSpaceMetalCost,
+		fryerLavaCost: fryerLavaCost,
+		fryerMeteoriteCost: fryerMeteoriteCost,
 		wood: wood,
 		woodStorage: woodStorage,
 		woodNextStorage: woodNextStorage,
@@ -625,6 +629,10 @@ function load(type){
 		if(typeof savegame.kilnSpaceMetalCost !== "undefined") kilnSpaceMetalCost = savegame.kilnSpaceMetalCost;
 		if(typeof savegame.kilnGemCost !== "undefined") kilnGemCost = savegame.kilnGemCost;
 		if(typeof savegame.kilnSiliconCost !== "undefined") kilnSiliconCost = savegame.kilnSiliconCost;
+		if(typeof savegame.fryer !== "undefined") fryer = savegame.fryer;
+		if(typeof savegame.fryerSpaceMetalCost !== "undefined") fryerSpaceMetalCost = savegame.fryerSpaceMetalCost;
+		if(typeof savegame.fryerLavaCost !== "undefined") fryerLavaCost = savegame.fryerLavaCost;
+		if(typeof savegame.fryerMeteoriteCost !== "undefined") fryerMeteoriteCost = savegame.fryerMeteoriteCost;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
 		if(typeof savegame.woodStorage !== "undefined") woodStorage = savegame.woodStorage;
 		if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;

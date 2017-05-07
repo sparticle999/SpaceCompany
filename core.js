@@ -579,6 +579,10 @@ function refreshUI(){
 	document.getElementById("kilnSpaceMetalCost").innerHTML = commafy(kilnSpaceMetalCost);
 	document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
 	document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
+	document.getElementById("fryer").innerHTML = commafy(fryer);
+	document.getElementById("fryerSpaceMetalCost").innerHTML = commafy(fryerSpaceMetalCost);
+	document.getElementById("fryerLavaCost").innerHTML = commafy(fryerLavaCost);
+	document.getElementById("fryerMeteoriteCost").innerHTML = commafy(fryerMeteoriteCost);
 	document.getElementById("woodcutter").innerHTML = woodcutter;
 	document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 	document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
@@ -821,8 +825,8 @@ function checkRedCost(){
 			turnRed(0 - charcoalEngine, 0, "charcoalps");
 		}
 	}
-	if(charcoalToggled === true){
-		turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56), 0, "woodps");
+	if(charcoalToggled === true && charcoal < charcoalStorage){
+		turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148), 0, "woodps");
 	}
 	else{
 		turnRed(woodps, 0, "woodps");
@@ -1144,6 +1148,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, kilnSpaceMetalCost, "kilnSpaceMetalCost");
 	turnRed(gem, kilnGemCost, "kilnGemCost");
 	turnRed(silicon, kilnSiliconCost, "kilnSiliconCost");
+
+	turnRed(spaceMetal, fryerSpaceMetalCost, "fryerSpaceMetalCost");
+	turnRed(lava, fryerLavaCost, "fryerLavaCost");
+	turnRed(meteorite, fryerMeteoriteCost, "fryerMeteoriteCost");
 
 	if(metal < woodcutterMetalCost){
 		document.getElementById("woodcutterMetalCost").className = "red";

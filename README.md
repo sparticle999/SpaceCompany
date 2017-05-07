@@ -26,7 +26,6 @@ v0.4.0 The Hot and Cold Update
 - Added Research for Dyson Sphere
 
 - Plasmatic Pit: Plasma
-- Forest Fryer: Charcoal "Forests? What forests?"
 
 # Changelog:
 

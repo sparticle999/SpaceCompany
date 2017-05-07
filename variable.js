@@ -40,7 +40,7 @@ var charcoal = 0; var charcoalStorage = 50; var charcoalNextStorage = 100; var c
 var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5;
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var kiln = 0; var kilnSpaceMetalCost = 3500; var kilnGemCost = 6200; var kilnSiliconCost = 3800;
-var fryer = 0;
+var fryer = 0; var fryerSpaceMetalCost = 15800; var fryerLavaCost = 12500; var fryerMeteoriteCost = 560;
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
 var woodcutter = 0; var woodcutterMetalCost = 10; var woodcutterWoodCost = 5;
 var laserCutter = 0; var laserCutterMetalCost = 50; var laserCutterGemCost = 90; var laserCutterOilCost = 40; var laserCutterOutput = 6;

@@ -106,7 +106,7 @@ function gainResources(){
 	}
 
 	
-	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
+	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
 	if(charcoalToggled === true){
 		if(chemicalPlantToggled === true){
 			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
@@ -1285,7 +1285,7 @@ function getFurnace(){
 }
 
 function getKiln(){
-	if(metal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
+	if(spaceMetal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
 		spaceMetal -= kilnSpaceMetalCost;
 		gem -= kilnGemCost;
 		silicon -= kilnSiliconCost;
@@ -1314,6 +1314,39 @@ function getKiln(){
 			newUnlock("more");
 			achieved.push("Build 100 Industrial Kilns");
 		}
+	}
+}
+
+function getFryer(){
+	if(spaceMetal >= fryerSpaceMetalCost && lava >= fryerLavaCost && meteorite >= fryerMeteoriteCost){
+		spaceMetal -= fryerSpaceMetalCost;
+		lava -= fryerLavaCost;
+		meteorite -= fryerMeteoriteCost;
+		fryer += 1;
+		fryerMeteoriteCost = Math.floor(560 * Math.pow(1.1,fryer));
+		fryerLavaCost = Math.floor(12500 * Math.pow(1.1,fryer));
+		fryerSpaceMetalCost = Math.floor(15800 * Math.pow(1.1,fryer));
+		document.getElementById("fryer").innerHTML = fryer;
+		document.getElementById("fryerSpaceMetalCost").innerHTML = commafy(fryerSpaceMetalCost);
+		document.getElementById("fryerLavaCost").innerHTML = commafy(fryerLavaCost);
+		document.getElementById("fryerMeteoriteCost").innerHTML = commafy(fryerMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(fryer >= 1 && document.getElementById("Build 1 Forest Fryer").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Forest Fryer").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Forest Fryer");
+		// }
+		// if(fryer >= 10 && document.getElementById("Build 10 Forest Fryers").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Forest Fryers").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Forest Fryers");
+		// }
+		// if(fryer >= 100 && document.getElementById("Build 100 Forest Fryers").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Forest Fryers").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Forest Fryers");
+		// }
 	}
 }
 
