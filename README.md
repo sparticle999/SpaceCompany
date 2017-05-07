@@ -28,8 +28,6 @@ v0.4.0 The Hot and Cold Update
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal "Forests? What forests?"
 
-- Some descriptions are pinned in #general
-
 # Changelog:
 
 v0.4.0 The Hot and Cold Update

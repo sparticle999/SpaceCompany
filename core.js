@@ -1018,7 +1018,7 @@ function checkRedCost(){
 
 	turnRed(spaceMetal, oilRigSpaceMetalCost, "oilRigSpaceMetalCost");
 	turnRed(titanium, oilRigTitaniumCost, "oilRigTitaniumCost");
-	turnRed(silicon, oilRigMeteoriteCost, "oilRigMeteoriteCost");
+	turnRed(meteorite, oilRigMeteoriteCost, "oilRigMeteoriteCost");
 
 	if(metal < minerMetalCost){
 		document.getElementById("minerMetalCost").className = "red";
