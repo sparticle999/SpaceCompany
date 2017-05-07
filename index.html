@@ -1693,6 +1693,27 @@
 									<button onclick="destroyMachine(spaceCow, 'spaceCow')" class="btn btn-default destroy hidden">Destroy Space Cow</button>
 								</td>
 							</tr>
+							<tr id="methaneTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Hydrothermal Vent: <span id="vent">0</span>
+									</h3>
+									<span>
+										Collect gas from deep sea vents on the ocean floor of Titan.
+										<br>
+										Produces 149 methane per second.
+										<br>
+										Uses 132 Energy per second.
+										<br>
+										Costs <span id="ventSpaceMetalCost">52,000</span> Space Metal, <span id="ventHeliumCost">47,000</span> Helium, <span id="ventMeteoriteCost">390</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getVent()" class="btn btn-default">Get Hydrothermal Vent</button>
+									<button onclick="destroyMachine(vent, 'vent')" class="btn btn-default destroy hidden">Destroy Hydrothermal Vent</button>
+								</td>
+							</tr>
+
 						</table>
 					</div>
 				</div>

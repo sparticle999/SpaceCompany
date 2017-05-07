@@ -290,6 +290,10 @@ function save(type){
 		spaceCowSpaceMetalCost: spaceCowSpaceMetalCost,
 		spaceCowTitaniumCost: spaceCowTitaniumCost,
 		spaceCowSiliconCost: spaceCowSiliconCost,
+		vent: vent,
+		ventSpaceMetalCost: ventSpaceMetalCost,
+		ventHeliumCost: ventHeliumCost,
+		ventMeteoriteCost: ventMeteoriteCost,
 		explorer: explorer,
 		explorerGemCost: explorerGemCost,
 		spaceMetalDrill: spaceMetalDrill,
@@ -718,6 +722,10 @@ function load(type){
 		if(typeof savegame.spaceCowSpaceMetalCost !== "undefined") spaceCowSpaceMetalCost = savegame.spaceCowSpaceMetalCost;
 		if(typeof savegame.spaceCowTitaniumCost !== "undefined") spaceCowTitaniumCost = savegame.spaceCowTitaniumCost;
 		if(typeof savegame.spaceCowSiliconCost !== "undefined") spaceCowSiliconCost = savegame.spaceCowSiliconCost;
+		if(typeof savegame.vent !== "undefined") vent = savegame.vent;
+		if(typeof savegame.ventSpaceMetalCost !== "undefined") ventSpaceMetalCost = savegame.ventSpaceMetalCost;
+		if(typeof savegame.ventHeliumCost !== "undefined") ventHeliumCost = savegame.ventHeliumCost;
+		if(typeof savegame.ventMeteoriteCost !== "undefined") ventMeteoriteCost = savegame.ventMeteoriteCost;
 		if(typeof savegame.explorer !== "undefined") explorer = savegame.explorer;
 		if(typeof savegame.explorerGemCost !== "undefined") explorerGemCost = savegame.explorerGemCost;
 		if(typeof savegame.spaceMetalDrill !== "undefined") spaceMetalDrill = savegame.spaceMetalDrill;

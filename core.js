@@ -620,6 +620,10 @@ function refreshUI(){
 	document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
 	document.getElementById("spaceCowSpaceMetalCost").innerHTML = commafy(spaceCowSpaceMetalCost);
 	document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
+	document.getElementById("vent").innerHTML = vent;
+	document.getElementById("ventHeliumCost").innerHTML = commafy(ventHeliumCost);
+	document.getElementById("ventSpaceMetalCost").innerHTML = commafy(ventSpaceMetalCost);
+	document.getElementById("ventMeteoriteCost").innerHTML = commafy(ventMeteoriteCost);
 	document.getElementById("explorer").innerHTML = explorer;
 	document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 	document.getElementById("spaceMetalDrill").innerHTML = spaceMetalDrill;
@@ -1259,6 +1263,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, spaceCowSpaceMetalCost, "spaceCowSpaceMetalCost");
 	turnRed(titanium, spaceCowTitaniumCost, "spaceCowTitaniumCost");
 	turnRed(silicon, spaceCowSiliconCost, "spaceCowSiliconCost");
+
+	turnRed(spaceMetal, ventSpaceMetalCost, "ventSpaceMetalCost");
+	turnRed(helium, ventHeliumCost, "ventHeliumCost");
+	turnRed(meteorite, ventMeteoriteCost, "ventMeteoriteCost");
 
 	if(gem < explorerGemCost){
 		document.getElementById("explorerGemCost").className = "red";

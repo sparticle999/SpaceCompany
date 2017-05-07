@@ -27,7 +27,6 @@ v0.4.0 The Hot and Cold Update
 
 - Plasmatic Pit: Plasma
 - Forest Fryer: Charcoal "Forests? What forests?"
-- Hydrothermal Vent: Methane "Collect gas from deep sea vents on the ocean floor of Titan"
 
 - Some descriptions are pinned in #general
 

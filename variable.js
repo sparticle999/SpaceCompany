@@ -59,7 +59,7 @@ var planetExcavator = 0; var planetExcavatorTitaniumCost = 45000; var planetExca
 var vacuum = 0; var vacuumSpaceMetalCost = 50; var vacuumGemCost = 500;
 var suctionExcavator = 0; var suctionExcavatorSpaceMetalCost = 100; var suctionExcavatorGemCost = 800; var suctionExcavatorOilCost = 600;
 var spaceCow = 0; var spaceCowSpaceMetalCost = 10000; var spaceCowTitaniumCost = 9000; var spaceCowSiliconCost = 4100;
-var vent = 0;
+var vent = 0; var ventSpaceMetalCost = 52000; var ventHeliumCost = 47000; var ventMeteoriteCost = 390;
 var explorer = 0; var explorerGemCost = 1000;
 var spaceMetalDrill = 0; var spaceMetalDrillSpaceMetalCost = 200; var spaceMetalDrillGemCost = 800; var spaceMetalDrillOilCost = 1000;
 var pentaDrill = 0; var pentaDrillSpaceMetalCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600;

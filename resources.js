@@ -1669,6 +1669,39 @@ function getSpaceCow(){
 	}
 }
 
+function getVent(){
+	if(spaceMetal >= ventSpaceMetalCost && helium >= ventHeliumCost && meteorite >= ventMeteoriteCost){
+		spaceMetal -= ventSpaceMetalCost;
+		helium -= ventHeliumCost;
+		meteorite -= ventMeteoriteCost;
+		vent += 1;
+		ventMeteoriteCost = Math.floor(390 * Math.pow(1.1,vent));
+		ventHeliumCost = Math.floor(47000 * Math.pow(1.1,vent));
+		ventSpaceMetalCost = Math.floor(52000 * Math.pow(1.1,vent));
+		document.getElementById("vent").innerHTML = vent;
+		document.getElementById("ventSpaceMetalCost").innerHTML = commafy(ventSpaceMetalCost);
+		document.getElementById("ventHeliumCost").innerHTML = commafy(ventHeliumCost);
+		document.getElementById("ventMeteoriteCost").innerHTML = commafy(ventMeteoriteCost);
+		refresh();
+		tier4 += 1;
+		// if(vent >= 1 && document.getElementById("Build 1 Space Cow Plantation").className === "achievementTD"){
+		// 	document.getElementById("Build 1 Space Cow Plantation").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 1 Space Cow Plantation");
+		// }
+		// if(vent >= 10 && document.getElementById("Build 10 Space Cow Plantations").className === "achievementTD"){
+		// 	document.getElementById("Build 10 Space Cow Plantations").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 10 Space Cow Plantations");
+		// }
+		// if(vent >= 100 && document.getElementById("Build 100 Space Cow Plantations").className === "achievementTD"){
+		// 	document.getElementById("Build 100 Space Cow Plantations").className = "achievementTD achieved";
+		// 	newUnlock("more");
+		// 	achieved.push("Build 100 Space Cow Plantations");
+		// }
+	}
+}
+
 function getExplorer(){
 	if(gem >= explorerGemCost){
 		gem -= explorerGemCost;
