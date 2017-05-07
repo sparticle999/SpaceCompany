@@ -84,6 +84,7 @@ function autosave(){
 function save(type){
 	"use strict";
 	var localSave = {
+		versionNumber: versionNumber,
 		currentTheme: currentTheme,
 		handMined: handMined,
 		tier1: tier1,
@@ -480,6 +481,7 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
+		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
 		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;

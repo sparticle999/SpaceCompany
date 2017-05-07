@@ -1,6 +1,6 @@
 // Variables in save function
 
-var currentTheme = "base";
+var versionNumber = "0.3.5"; var currentTheme = "base";
 
 var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
 var tabsUnlockedNum = 3; var resourcesUnlockedNum = 3; var techsResearchedNum = 0; var placesExploredNum = 0; var wondersBuiltNum = 0; var wondersActivatedNum = 0;
