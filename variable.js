@@ -13,6 +13,7 @@ var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
 
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
+var plasmatic = 0; var plasmaticSpaceMetalCost = 810000; var plasmaticSiliconCost = 720000; var plasmaticMeteoriteCost = 970; var plasmaticToggled = true;
 var energy = 0; var energyps = 0; var energyStorage = 100000;
 var battery = 0; var batteryMetalCost = 500000; var batteryGemCost = 500000; var batterySpaceMetalCost = 300000;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;

@@ -16,16 +16,13 @@ v0.5.0 The Interstellar Update
 - Some sort of prestige
 
 v0.4.1
-- More Achievements
+- Achievements for the rest of the resources
+- Achievements for T4 Machines
 
 v0.4.0 The Hot and Cold Update
-- Achievements for T4 Machines
-- Supercooling with Ice
 - T2 Machines for Plasma and Meteorite
 - Added Dyson Swarm
 - Added Research for Dyson Sphere
-
-- Plasmatic Pit: Plasma
 
 # Changelog:
 

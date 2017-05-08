@@ -730,6 +730,10 @@ function refreshUI(){
 	document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
 	document.getElementById("extruderSpaceMetalCost").innerHTML = commafy(extruderSpaceMetalCost);
 	document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
+	document.getElementById("veluptuatur").innerHTML = veluptuatur;
+	document.getElementById("veluptuaturGoldCost").innerHTML = commafy(veluptuaturGoldCost);
+	document.getElementById("veluptuaturSpaceMetalCost").innerHTML = commafy(veluptuaturSpaceMetalCost);
+	document.getElementById("veluptuaturMeteoriteCost").innerHTML = commafy(veluptuaturMeteoriteCost);
 	document.getElementById("collector").innerHTML = commafy(collector);
 	document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 	document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
@@ -1744,6 +1748,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, extruderSpaceMetalCost, "extruderSpaceMetalCost");
 	turnRed(titanium, extruderTitaniumCost, "extruderTitaniumCost");
 	turnRed(silicon, extruderSiliconCost, "extruderSiliconCost");
+
+	turnRed(spaceMetal, veluptuaturSpaceMetalCost, "veluptuaturSpaceMetalCost");
+	turnRed(gold, veluptuaturGoldCost, "veluptuaturGoldCost");
+	turnRed(meteorite, veluptuaturMeteoriteCost, "veluptuaturMeteoriteCost");
 
 	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
 	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");

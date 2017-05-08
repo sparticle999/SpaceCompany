@@ -559,8 +559,29 @@
 									<br>
 									<br>
 									<button onclick="getHeater()" class="btn btn-default">Get Super-Heater</button>
-									<button onclick="toggleHeater()" class="btn btn-default">Turn Heater <span id="heaterToggled">Off</span></button>
-									<button onclick="destroyMachine(heater, 'heater')" class="btn btn-default destroy hidden">Destroy Heater</button>
+									<button onclick="toggleHeater()" class="btn btn-default">Turn Super-Heater <span id="heaterToggled">Off</span></button>
+									<button onclick="destroyMachine(heater, 'heater')" class="btn btn-default destroy hidden">Destroy Super-Heater</button>
+								</td>
+							</tr>
+							<tr id="plasmaTier2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasmatic Pit: <span id="plasmatic">0</span>
+									</h3>
+									<span>
+										This contraption converts Helium into Plasma through firing intensive energy bolts at the gas cloud.
+										<br>
+										Uses 8500 Energy and 80 Helium per second.
+										<br>
+										Produces 10 Plasma per second.
+										<br>
+										Costs <span id="plasmaticSpaceMetalCost">810,000</span> Space Metal, <span id="plasmaticSiliconCost">720,000</span> Silicon, <span id="plasmaticMeteoriteCost">970</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getplasmatic()" class="btn btn-default">Get Plasmatic Pit</button>
+									<button onclick="toggleplasmatic()" class="btn btn-default">Turn Plasmatic Pit <span id="plasmaticToggled">Off</span></button>
+									<button onclick="destroyMachine(plasmatic, 'plasmatic')" class="btn btn-default destroy hidden">Destroy Plasmatic Pit</button>
 								</td>
 							</tr>
 						</table>

@@ -590,6 +590,17 @@ function toggleHeater(){
 	}
 }
 
+function togglePlasmatic(){
+	if(plasmaticToggled === true){
+		plasmaticToggled = false;
+		document.getElementById("plasmaticToggled").innerHTML = "On";
+	}
+	else{
+		plasmaticToggled = true;
+		document.getElementById("plasmaticToggled").innerHTML = "Off";
+	}
+}
+
 function toggleChemicalPlant(){
 	if(chemicalPlantToggled === true){
 		chemicalPlantToggled = false;
