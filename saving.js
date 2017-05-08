@@ -472,6 +472,10 @@ function save(type){
 		printer: printer,
 		printerSpaceMetalCost: printerSpaceMetalCost,
 		printerSiliconCost: printerSiliconCost,
+		web: web,
+		webSpaceMetalCost: webSpaceMetalCost,
+		webUraniumCost: webUraniumCost,
+		webSiliconCost: webSiliconCost,
 		dyson: dyson,
 		dysonTitaniumCost: dysonTitaniumCost,
 		dysonGoldCost: dysonGoldCost,
@@ -897,6 +901,10 @@ function load(type){
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
 		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
 		if(typeof savegame.printerSiliconCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
+		if(typeof savegame.web !== "undefined") web = savegame.web;
+		if(typeof savegame.webSpaceMetalCost !== "undefined") webSpaceMetalCost = savegame.webSpaceMetalCost;
+		if(typeof savegame.webUraniumCost !== "undefined") webUraniumCost = savegame.webUraniumCost;
+		if(typeof savegame.webSiliconCost !== "undefined") webSiliconCost = savegame.webSiliconCost;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
 		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
 		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;

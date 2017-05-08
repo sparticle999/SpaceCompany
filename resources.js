@@ -2567,3 +2567,21 @@ function getPrinter(){
 		tier1 += 1;
 	}
 }
+
+function getWeb(){
+	if(spaceMetal >= webSpaceMetalCost && uranium >= webUraniumCost && silicon >= webSiliconCost){
+		spaceMetal -= webSpaceMetalCost;
+		uranium -= webUraniumCost;
+		silicon -= webSiliconCost;
+		web += 1;
+		webSpaceMetalCost = Math.floor(940000 * Math.pow(1.1,web));
+		webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
+		webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
+		document.getElementById("web").innerHTML = web;
+		document.getElementById("webSpaceMetalCost").innerHTML = commafy(webSpaceMetalCost);
+		document.getElementById("webUraniumCost").innerHTML = commafy(webUraniumCost);
+		document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
+		refresh();
+		tier2 += 1;
+	}
+}

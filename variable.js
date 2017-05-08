@@ -104,6 +104,7 @@ var freezer = 0; var freezerSpaceMetalCost = 117000; var freezerTitaniumCost = 8
 var mrFreeze = 0; var mrFreezeSpaceMetalCost = 519000; var mrFreezeHeliumCost = 14000; var mrFreezeMeteoriteCost = 1500;
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;
 var printer = 0; var printerSpaceMetalCost = 100000; var printerSiliconCost = 50000;
+var web = 0; var webSpaceMetalCost = 930000; var webUraniumCost = 490000; var webSiliconCost = 510000;
 
 var science = 0; var scienceps = 0;
 var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;

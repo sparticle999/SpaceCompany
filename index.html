@@ -2612,6 +2612,24 @@
 									<button onclick="destroyMachine(printer, 'printer')" class="btn btn-default destroy hidden">Destroy Meteorite Printer</button>
 								</td>
 							</tr>
+							<tr id="meteoriteTier2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Meteorite Web: <span id="web">0</span>
+									</h3>
+									<span>
+										The Meteorite Web uses nano-fibres made while submerged in highly radioactive liquids to become strong enough to physically catch meteors from the Asteroid Belt. Plasma is required to refine the asteroids into Meteorite Ore, which can be usable.
+										<br>
+										Produces 8 Meteorite per second. Uses 21 Plasma per second.
+										<br>
+										Costs <span id="webSpaceMetalCost">940,000</span> Space Metal, <span id="webUraniumCost">490,000</span> Uranium, <span id="webSiliconCost">510,000</span> Silicon.
+									</span>
+									<br>
+									<br>
+									<button onclick="getWeb()" class="btn btn-default">Get Meteorite Web</button>
+									<button onclick="destroyMachine(web, 'web')" class="btn btn-default destroy hidden">Destroy Meteorite Web</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -3038,6 +3056,23 @@
 									<br>
 									<br>
 									<button onclick="unlockMeteoriteTier1()" class="btn btn-default">Unlock Meteorite Tier 1</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockMeteoriteTier2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Meteorite Tier 2
+									</h3>
+									<span>
+										Research a more efficient method of getting meteorite than creating it artificialy.
+										<br>
+										Costs <span id="unlockMeteoriteTier2Cost">100,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockMeteoriteTier2()" class="btn btn-default">Unlock Meteorite Tier 2</button>
 									<br>
 									<br>
 								</td>

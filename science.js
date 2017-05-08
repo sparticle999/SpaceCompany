@@ -303,10 +303,10 @@ function unlockMeteorite(){
 		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
 		document.getElementById("meteoriteWonder").className = "";
+		available.push("unlockMeteoriteTier1");
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
-		available.push("unlockMeteoriteTier1");
 		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC", "meteoriteWonder");
 		newUnlock("resources");
 		newUnlock("wonder");
@@ -317,10 +317,24 @@ function unlockMeteoriteTier1(){
 	if(science >= 75000){
 		science -= 75000;
 		document.getElementById("unlockMeteoriteTier1").className = "hidden";
+		document.getElementById("unlockMeteoriteTier2").className = "";
 		document.getElementById("meteoriteTier1").className = "";
+		available.push("unlockMeteoriteTier2");
 		researched.push("unlockMeteoriteTier1");
 		techsResearchedNum += 1;
 		resourcesUnlocked.push("meteoriteTier1");
+		newUnlock("resources");
+	}
+}
+
+function unlockMeteoriteTier2(){
+	if(science >= 100000){
+		science -= 100000;
+		document.getElementById("unlockMeteoriteTier2").className = "hidden";
+		document.getElementById("meteoriteTier2").className = "";
+		researched.push("unlockMeteoriteTier2");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("meteoriteTier2");
 		newUnlock("resources");
 	}
 }

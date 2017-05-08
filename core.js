@@ -148,11 +148,11 @@ function refreshPerSec(){
 		}
 	}
 	if(meteoriteToggled === true && plasma >= 3){
-		if(meteorite + printer/10 <= meteoriteStorage){
-			plasma -= printer*3/10;
-			meteorite += printer/10;
-			meteoriteps = printer;
-			plasmaps -= printer*3;
+		if(meteorite + printer/10 + web*8/10<= meteoriteStorage){
+			plasma -= (printer*3/10 + web*21/10);
+			meteorite += (printer/10 + web*8/10);
+			meteoriteps = printer + web*8;
+			plasmaps -= printer*3 + web*21;
 		}
 		else{
 			meteorite = meteoriteStorage;
@@ -248,6 +248,9 @@ function refreshPerSec(){
 	}
 	if(energy >= 100000 + 50000*battery){
 		document.getElementById("energy").className = "green";
+	}
+	else{
+		document.getElementById("energy").className = "";
 	}
 	document.getElementById("uraniumps").innerHTML = commafy(uraniumps - nuclearStation*7);
 	document.getElementById("uranium").className = "";
@@ -804,6 +807,13 @@ function refreshUI(){
 	document.getElementById("mrFreezeSpaceMetalCost").innerHTML = commafy(mrFreezeSpaceMetalCost);
 	document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
 	document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
+	document.getElementById("printer").innerHTML = commafy(printer);
+	document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
+	document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
+	document.getElementById("web").innerHTML = commafy(web);
+	document.getElementById("webSpaceMetalCost").innerHTML = commafy(webSpaceMetalCost);
+	document.getElementById("webUraniumCost").innerHTML = commafy(webUraniumCost);
+	document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
 	document.getElementById("dyson").innerHTML = commafy(dyson);
 	document.getElementById("dysonPieces").innerHTML = commafy(dyson);
 	document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
@@ -812,24 +822,19 @@ function refreshUI(){
 	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
 	document.getElementById("sphere").innerHTML = commafy(sphere);
-	document.getElementById("printer").innerHTML = commafy(printer);
-	document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
-	document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
+}
+
+function turnRed(resource, variable, id){
+	if(resource < variable){
+		document.getElementById(id).className = "red";
+	}
+	else{
+		document.getElementById(id).className = "";
+	}
 }
 
 function checkRedCost(){
-
-	function turnRed(resource, variable, id){
-		if(resource < variable){
-			document.getElementById(id).className = "red";
-		}
-		else{
-			document.getElementById(id).className = "";
-		}
-	}
-	if(meteoriteToggled === true){
-		turnRed(plasmaps, 0 - printer*3, "plasmaps")
-	}
+	turnRed(plasmaps, 0, "plasmaps");
 	turnRed(energyps, 0, "energyps");
 	turnRed(uraniumps - nuclearStation*7, 0, "uraniumps");
 	if(chemicalPlantToggled === true){
@@ -1033,26 +1038,9 @@ function checkRedCost(){
 		document.getElementById("pumpGemCost").className = "";
 	}
 
-	if(oil < pumpjackOilCost){
-		document.getElementById("pumpjackOilCost").className = "red";
-	}
-	else{
-		document.getElementById("pumpjackOilCost").className = "";
-	}
-	
-	if(gem < pumpjackGemCost){
-		document.getElementById("pumpjackGemCost").className = "red";
-	}
-	else{
-		document.getElementById("pumpjackGemCost").className = "";
-	}
-	
-	if(metal < pumpjackMetalCost){
-		document.getElementById("pumpjackMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("pumpjackMetalCost").className = "";
-	}
+	turnRed(metal, pumpjackMetalCost, "pumpjackMetalCost");
+	turnRed(gem, pumpjackGemCost, "pumpjackGemCost");
+	turnRed(oil, pumpjackOilCost, "pumpjackOilCost");
 	
 	turnRed(spaceMetal, oilFieldSpaceMetalCost, "oilFieldSpaceMetalCost");
 	turnRed(titanium, oilFieldTitaniumCost, "oilFieldTitaniumCost");
@@ -1835,6 +1823,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, printerSpaceMetalCost, "printerSpaceMetalCost");
 	turnRed(silicon, printerSiliconCost, "printerSiliconCost");
 
+	turnRed(spaceMetal, webSpaceMetalCost, "webSpaceMetalCost");
+	turnRed(uranium, webUraniumCost, "webUraniumCost");
+	turnRed(silicon, webSiliconCost, "webSiliconCost");
+
 	turnRed(titanium, dysonTitaniumCost, "dysonTitaniumCost");
 	turnRed(gold, dysonGoldCost, "dysonGoldCost");
 	turnRed(silicon, dysonSiliconCost, "dysonSiliconCost");
@@ -2026,6 +2018,12 @@ function refreshResearches(){
 		if(contains(resourcesUnlocked, "meteoriteWonder") === false){
 			document.getElementById("meteoriteWonder").className = "";
 			resourcesUnlocked.push("meteoriteWonder");
+		}
+	}
+	if(contains(researched, "unlockMeteoriteTier1")){
+		if(contains(available, "unlockMeteoriteTier2") === false){
+			document.getElementById("unlockMeteoriteTier2").className = "";
+			available.push("unlockMeteoriteTier2");
 		}
 	}
 	if(contains(researched, "unlockPlasma")){
