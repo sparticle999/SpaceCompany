@@ -20,9 +20,6 @@ v0.4.1
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
 
-v0.4.0 The Hot and Cold Update
-- Dyson Sphere
-
 # Changelog:
 
 v0.4.0 The Hot and Cold Update
@@ -32,7 +29,7 @@ v0.4.0 The Hot and Cold Update
 - Meteorite Tier of resource machines (4th Tier)
 - Dyson Sections
 - Dyson Swarm
-
+- Dyson Sphere
 - Per Second Display on Science
 - Ability to Destroy Machines
 - Increased Width of Resources List to reduce vertical scrolling
