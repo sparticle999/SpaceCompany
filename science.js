@@ -343,10 +343,24 @@ function unlockDyson(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockDyson").className = "hidden";
+		document.getElementById("unlockDysonSphere").className = "";
 		document.getElementById("dysonPage").className = "";
+		available.push("unlockDysonSphere");
 		researched.push("unlockDyson");
 		techsResearchedNum += 1;
 		resourcesUnlocked.push("dysonPage");
+		newUnlock("solCenter");
+	}
+}
+
+function unlockDysonSphere(){
+	if(science >= 500000){
+		science -= 500000;
+		document.getElementById("unlockDysonSphere").className = "hidden";
+		document.getElementById("dysonSphere").className = "";
+		researched.push("unlockDysonSphere");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("dysonSphere");
 		newUnlock("solCenter");
 	}
 }

@@ -3080,16 +3080,33 @@
 							<tr id="unlockDyson" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Dyson Sphere
+										Dyson Swarm
 									</h3>
 									<span>
-										Dysons produce huge amounts of energy and can even make plasma on their own. 
+										Dysons Swarms produce huge amounts of energy by surrounding the sun in solar stations.
 										<br>
 										Costs <span id="unlockDysonCost">100,000</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="unlockDyson()" class="btn btn-default">Unlock Dyson</button>
+									<button onclick="unlockDyson()" class="btn btn-default">Unlock Dyson Swarm</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockDysonSphere" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Dyson Sphere
+									</h3>
+									<span>
+										The Dyson Sphere encompasses the sun and allows you to harness enough energy to go interstellar.
+										<br>
+										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockDysonSphere()" class="btn btn-default">Unlock Dyson Sphere</button>
 									<br>
 									<br>
 								</td>
@@ -4330,7 +4347,7 @@
 										Construction
 									</h3>
 									<span>
-										This mega-structure cannot possibly be built in one piece. It must be created from a hundred small sections and forged together around the sun.
+										These mega-structures cannot possibly be built in one piece. They must be created from small sections and forged together around the sun.
 										<br>
 										The next section costs: <span id="dysonTitaniumCost">300,000</span> Titanium, <span id="dysonGoldCost">100,000</span> Gold, <span id="dysonSiliconCost">200,000</span> Silicon, <span id="dysonMeteoriteCost">1,000</span> Meteorite, <span id="dysonIceCost">100,000</span> Ice.
 										<br>
@@ -4342,28 +4359,32 @@
 											Swarm: <span id="swarm">0</span>
 										</h3>
 										<span>
-											The swarm, once built, can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place, 2,500 per piece.
+											The swarm is an array of solar stations orbiting the sun, once built, can produce 25,000 energy per second. However, it requires <span id="swarmRocketFuelCost">250,000</span> rocket fuel in total to put the sections in place, 2,500 per piece.
 											<br>
 											<br>
-											You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to build the completed structure.
+											You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to create the swarm.
 											<br>
 											<br>
 										</span>
 										<button onclick="buildSwarm()" class="btn btn-default">Construct Swarm</button>
 										<br>
 										<br>
-										<!-- <h3 class="default btn-link">
-											Sphere: <span id="sphere">0</span>
-										</h3>
-										<span>
-											The entire sphere, once built, can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place, 2,500 per piece.
-											<br>
-											<br>
-											You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to build the completed structure.
-											<br>
-											<br>
-										</span>
-										<button onclick="buildSphere()" class="btn btn-default">Construct Sphere</button> -->
+										<hide id="dysonSphere" class="hidden">
+											<h3 class="default btn-link">
+												Sphere: <span id="sphere">0</span>
+											</h3>
+											<span>
+												The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.
+												<br>
+												Costs: <span id="sphereRocketFuelCost">1.000M</span> Rocket Fuel to assemble the pieces.
+												<br>
+												<br>
+												You currently have <span id="dysonPieces2">0</span> out of 250 Dyson pieces to build the completed structure.
+												<br>
+												<br>
+											</span>
+											<button onclick="buildSphere()" class="btn btn-default">Construct Sphere</button>
+										</hide>
 									</span>
 								</td>
 							</tr>

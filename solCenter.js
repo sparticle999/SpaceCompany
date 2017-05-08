@@ -93,6 +93,7 @@ function getDyson(){
 		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson + 1));
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
 		document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
 		document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
 		document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
@@ -109,5 +110,18 @@ function buildSwarm(){
 		document.getElementById("swarm").innerHTML = swarm;
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
+	}
+}
+
+function buildSphere(){
+	if(dyson >= 250 && rocketFuel >= 1000000){
+		dyson -= 250;
+		rocketFuel -= 1000000;
+		sphere += 1;
+		document.getElementById("sphere").innerHTML = sphere;
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
 	}
 }

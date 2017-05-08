@@ -14,14 +14,14 @@ v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige
+- Stargate for other solar systems
 
 v0.4.1
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
 
 v0.4.0 The Hot and Cold Update
-- Added Dyson Swarm
-- Added Research for Dyson Sphere
+- Dyson Sphere
 
 # Changelog:
 
@@ -31,7 +31,8 @@ v0.4.0 The Hot and Cold Update
 - Meteorite
 - Meteorite Tier of resource machines (4th Tier)
 - Dyson Sections
-- Dyson Sphere
+- Dyson Swarm
+
 - Per Second Display on Science
 - Ability to Destroy Machines
 - Increased Width of Resources List to reduce vertical scrolling

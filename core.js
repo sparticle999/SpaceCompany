@@ -77,7 +77,7 @@ function refresh(){
 
 function refreshPerSec(){
 	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*23)+(nuclearStation*153)+(magmatic*191)+(fusionReactor*273);
-	energyInput += (swarm*25000);
+	energyInput += (swarm*25000) + (sphere*1000000);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -816,12 +816,14 @@ function refreshUI(){
 	document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
 	document.getElementById("dyson").innerHTML = commafy(dyson);
 	document.getElementById("dysonPieces").innerHTML = commafy(dyson);
+	document.getElementById("dysonPieces2").innerHTML = commafy(dyson);
 	document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
 	document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
 	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
 	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
 	document.getElementById("swarm").innerHTML = commafy(swarm);
+	document.getElementById("sphere").innerHTML = commafy(sphere);
 }
 
 function turnRed(resource, variable, id){
@@ -1572,29 +1574,18 @@ function checkRedCost(){
 	}
 
 	turnRed(science, 500, "unlockLabT2Cost");
-
-	if(science < 1000){
-		document.getElementById("upgradeEngineTechCost").className = "red";
-	}
-	else{
-		document.getElementById("upgradeEngineTechCost").className = "";
-	}
-
+	turnRed(science, 1000, "upgradeEngineTechCost");
 	turnRed(science, 3000, "unlockLabT3Cost");
-
-	if(science < 5000){
-		document.getElementById("upgradeSolarTechCost").className = "red";
-	}
-	else{
-		document.getElementById("upgradeSolarTechCost").className = "";
-	}
-
+	turnRed(science, 5000, "upgradeSolarTechCost");
 	turnRed(science, 15000, "unlockBatteriesCost");
 	turnRed(science, 40000, "unlockPlasmaCost");
+	turnRed(science, 60000, "unlockPlasmaTier2Cost");
 	turnRed(science, 60000, "unlockEmcCost");
 	turnRed(science, 100000, "unlockMeteoriteCost");
 	turnRed(science, 75000, "unlockMeteoriteTier1Cost");
+	turnRed(science, 100000, "unlockMeteoriteTier2Cost");
 	turnRed(science, 100000, "unlockDysonCost");
+	turnRed(science, 500000, "unlockDysonSphereCost");
 
 	if(metal < 1200){
 		document.getElementById("rocketMetalCost").className = "red";
@@ -1837,6 +1828,9 @@ function checkRedCost(){
 	turnRed(meteorite, dysonMeteoriteCost, "dysonMeteoriteCost");
 	turnRed(ice, dysonIceCost, "dysonIceCost");
 
+	turnRed(rocketFuel, 250000, "swarmRocketFuelCost");
+	turnRed(rocketFuel, 1000000, "sphereRocketFuelCost");
+
 	turnRed(hydrogen, 1500, "unlockPlasmaResearchHydrogenCost");
 	turnRed(uranium, 1500, "unlockPlasmaResearchUraniumCost");
 	turnRed(oil, 15000, "unlockPlasmaResearchOilCost");
@@ -2034,6 +2028,12 @@ function refreshResearches(){
 		if(contains(available, "unlockPlasmaTier2") === false){
 			document.getElementById("unlockPlasmaTier2").className ="";
 			available.push("unlockPlasmaTier2");
+		}
+	}
+	if(contains(researched, "unlockDyson")){
+		if(contains(available, "unlockDysonSphere") === false){
+			document.getElementById("unlockDysonSphere").className ="";
+			available.push("unlockDysonSphere");
 		}
 	}
 
