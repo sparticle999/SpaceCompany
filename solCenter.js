@@ -101,12 +101,12 @@ function getDyson(){
 	}
 }
 
-function buildSphere(){
+function buildSwarm(){
 	if(dyson >= 100 && rocketFuel >= 250000){
 		dyson -= 100;
 		rocketFuel -= 250000;
-		sphere += 1;
-		document.getElementById("sphere").innerHTML = sphere;
+		swarm += 1;
+		document.getElementById("swarm").innerHTML = swarm;
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
 	}

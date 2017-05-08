@@ -20,7 +20,6 @@ v0.4.1
 - Achievements for T4 Machines
 
 v0.4.0 The Hot and Cold Update
-- T2 Machine for Meteorite
 - Added Dyson Swarm
 - Added Research for Dyson Sphere
 
@@ -42,7 +41,7 @@ v0.4.0 The Hot and Cold Update
 - Altered Cyborg Theme
 - Stats for Time Keeping
 - Merged "More" and "Settings" Tabs
-- Tier 2 for Plasma
+- Tier 2 for Plasma and Meteorite
 
 v0.3.5
 - Number Formatting for large numbers

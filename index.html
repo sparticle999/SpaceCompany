@@ -4302,7 +4302,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										Dyson Sphere
+										Dyson Swarms and Sphere
 									</h2>
 									<span>
 										This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost?
@@ -4339,6 +4339,20 @@
 										<br>
 										<br>
 										<h3 class="default btn-link">
+											Swarm: <span id="swarm">0</span>
+										</h3>
+										<span>
+											The swarm, once built, can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place, 2,500 per piece.
+											<br>
+											<br>
+											You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to build the completed structure.
+											<br>
+											<br>
+										</span>
+										<button onclick="buildSwarm()" class="btn btn-default">Construct Swarm</button>
+										<br>
+										<br>
+										<!-- <h3 class="default btn-link">
 											Sphere: <span id="sphere">0</span>
 										</h3>
 										<span>
@@ -4349,7 +4363,7 @@
 											<br>
 											<br>
 										</span>
-										<button onclick="buildSphere()" class="btn btn-default">Construct Sphere</button>
+										<button onclick="buildSphere()" class="btn btn-default">Construct Sphere</button> -->
 									</span>
 								</td>
 							</tr>

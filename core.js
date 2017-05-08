@@ -77,7 +77,7 @@ function refresh(){
 
 function refreshPerSec(){
 	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*23)+(nuclearStation*153)+(magmatic*191)+(fusionReactor*273);
-	energyInput += (sphere*25000);
+	energyInput += (swarm*25000);
 	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
 		charcoal -= charcoalEngine/10;
 	}
@@ -821,7 +821,7 @@ function refreshUI(){
 	document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
 	document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
-	document.getElementById("sphere").innerHTML = commafy(sphere);
+	document.getElementById("swarm").innerHTML = commafy(swarm);
 }
 
 function turnRed(resource, variable, id){
@@ -1745,9 +1745,13 @@ function checkRedCost(){
 		document.getElementById("cubicOilCost").className = "";
 	}
 
-	turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
 	turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
+	turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
 	turnRed(silicon, enricherSiliconCost, "enricherSiliconCost");
+
+	turnRed(spaceMetal, recyclerSpaceMetalCost, "recyclerSpaceMetalCost");
+	turnRed(methane, recyclerMethaneCost, "recyclerMethaneCost");
+	turnRed(meteorite, recyclerMeteoriteCost, "recyclerMeteoriteCost");
 
 	if(gem < crucibleGemCost){
 		document.getElementById("crucibleGemCost").className = "red";
@@ -2031,6 +2035,13 @@ function refreshResearches(){
 			document.getElementById("unlockPlasmaTier2").className ="";
 			available.push("unlockPlasmaTier2");
 		}
+	}
+
+	if(typeof versionNumber === "undefined" || versionNumber === "0.3.5"){
+		swarm = sphere;
+		sphere = 0;
+		versionNumber = "0.4.0";
+		refreshUI();
 	}
 }
 

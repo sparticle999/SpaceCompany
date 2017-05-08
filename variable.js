@@ -114,6 +114,7 @@ var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500; var chemicalPlantToggled = true;
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
+var swarm = 0;
 var sphere = 0;
 
 // Variables not being saved
