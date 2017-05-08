@@ -130,11 +130,21 @@ function refreshPerSec(){
 			energyOutput += (heater*1000);
 			plasma += heater/10;
 			hydrogen -= heater*10/10;
-			plasmaps = heater;
+			plasmaps += heater;
 		}
 		else{
 			plasma = 100000
-			plasmaps = 0;
+		}
+	}
+	if(energy >= 8500 && helium >= 80 && plasmaticToggled === true){
+		if(plasma + plasmatic*10/10 <= 100000){
+			energyOutput += (plasmatic*8500);
+			plasma += plasmatic*10/10;
+			helium -= plasmatic*80/10;
+			plasmaps += plasmatic*10;
+		}
+		else{
+			plasma = 100000
 		}
 	}
 	if(meteoriteToggled === true && plasma >= 3){
@@ -344,7 +354,12 @@ function refreshPerSec(){
 	if(hydrogen === 0){
 		document.getElementById("hydrogen").className = "red";
 	}
-	document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10);
+	if(plasmaticToggled === true){
+		document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10 - plasmatic*80);
+	}
+	else{
+		document.getElementById("heliumps").innerHTML = commafy(heliumps - fusionReactor*10);
+	}
 	document.getElementById("helium").className = "";
 	if(helium === 0){
 		document.getElementById("helium").className = "red";
@@ -395,6 +410,12 @@ function refreshUI(){
 	}
 	else{
 		document.getElementById("heaterToggled").innerHTML = "On";
+	}
+	if(plasmaticToggled === true){
+		document.getElementById("plasmaticToggled").innerHTML = "Off";
+	}
+	else{
+		document.getElementById("plasmaticToggled").innerHTML = "On";
 	}
 	if(charcoalToggled === true){
 		document.getElementById("charcoalToggled").innerHTML = "Off";
@@ -492,6 +513,10 @@ function refreshUI(){
 	document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 	document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
+	document.getElementById("plasmatic").innerHTML = plasmatic;
+	document.getElementById("plasmaticSpaceMetalCost").innerHTML = commafy(plasmaticSpaceMetalCost);
+	document.getElementById("plasmaticSiliconCost").innerHTML = commafy(plasmaticSiliconCost);
+	document.getElementById("plasmaticMeteoriteCost").innerHTML = commafy(plasmaticMeteoriteCost);
 	document.getElementById("battery").innerHTML = battery;
 	document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 	document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
@@ -730,10 +755,10 @@ function refreshUI(){
 	document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
 	document.getElementById("extruderSpaceMetalCost").innerHTML = commafy(extruderSpaceMetalCost);
 	document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
-	document.getElementById("veluptuatur").innerHTML = veluptuatur;
-	document.getElementById("veluptuaturGoldCost").innerHTML = commafy(veluptuaturGoldCost);
-	document.getElementById("veluptuaturSpaceMetalCost").innerHTML = commafy(veluptuaturSpaceMetalCost);
-	document.getElementById("veluptuaturMeteoriteCost").innerHTML = commafy(veluptuaturMeteoriteCost);
+	document.getElementById("veluptuator").innerHTML = veluptuator;
+	document.getElementById("veluptuatorGoldCost").innerHTML = commafy(veluptuatorGoldCost);
+	document.getElementById("veluptuatorSpaceMetalCost").innerHTML = commafy(veluptuatorSpaceMetalCost);
+	document.getElementById("veluptuatorMeteoriteCost").innerHTML = commafy(veluptuatorMeteoriteCost);
 	document.getElementById("collector").innerHTML = commafy(collector);
 	document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 	document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
@@ -844,7 +869,12 @@ function checkRedCost(){
 	else{
 		turnRed(hydrogenps - fusionReactor*10, 0, "hydrogenps");
 	}
-	turnRed(heliumps - fusionReactor*10, 0, "heliumps");
+	if(plasmaticToggled === true){
+		turnRed(heliumps - fusionReactor*10 - plasmatic*80, 0, "heliumps");
+	}
+	else{
+		turnRed(heliumps - fusionReactor*10, 0, "heliumps");
+	}
 	
 
 	turnRed(wood, 2, "manualCharcoalCost");
@@ -904,6 +934,10 @@ function checkRedCost(){
 	turnRed(spaceMetal, heaterSpaceMetalCost, "heaterSpaceMetalCost");
 	turnRed(gem, heaterGemCost, "heaterGemCost");
 	turnRed(silicon, heaterSiliconCost, "heaterSiliconCost");
+
+	turnRed(spaceMetal, plasmaticSpaceMetalCost, "plasmaticSpaceMetalCost");
+	turnRed(silicon, plasmaticSiliconCost, "plasmaticSiliconCost");
+	turnRed(meteorite, plasmaticMeteoriteCost, "plasmaticMeteoriteCost");
 
 	turnRed(metal, batteryMetalCost, "batteryMetalCost");
 	turnRed(gem, batteryGemCost, "batteryGemCost");
@@ -1749,9 +1783,9 @@ function checkRedCost(){
 	turnRed(titanium, extruderTitaniumCost, "extruderTitaniumCost");
 	turnRed(silicon, extruderSiliconCost, "extruderSiliconCost");
 
-	turnRed(spaceMetal, veluptuaturSpaceMetalCost, "veluptuaturSpaceMetalCost");
-	turnRed(gold, veluptuaturGoldCost, "veluptuaturGoldCost");
-	turnRed(meteorite, veluptuaturMeteoriteCost, "veluptuaturMeteoriteCost");
+	turnRed(spaceMetal, veluptuatorSpaceMetalCost, "veluptuatorSpaceMetalCost");
+	turnRed(gold, veluptuatorGoldCost, "veluptuatorGoldCost");
+	turnRed(meteorite, veluptuatorMeteoriteCost, "veluptuatorMeteoriteCost");
 
 	turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
 	turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
@@ -1992,6 +2026,12 @@ function refreshResearches(){
 		if(contains(resourcesUnlocked, "meteoriteWonder") === false){
 			document.getElementById("meteoriteWonder").className = "";
 			resourcesUnlocked.push("meteoriteWonder");
+		}
+	}
+	if(contains(researched, "unlockPlasma")){
+		if(contains(available, "unlockPlasmaTier2") === false){
+			document.getElementById("unlockPlasmaTier2").className ="";
+			available.push("unlockPlasmaTier2");
 		}
 	}
 }

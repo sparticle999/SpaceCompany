@@ -230,8 +230,8 @@ function upgradeSolarTech(){
 		document.getElementById("unlockBatteries").className = "";
 		solarPanelOutput = 3;
 		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
-		researched.push("upgradeSolarTech");
 		available.push("unlockBatteries");
+		researched.push("upgradeSolarTech");
 		techsResearchedNum += 1;
 		newUnlock("resources");
 	}
@@ -254,14 +254,28 @@ function unlockPlasma(){
 	if(science >= 40000){
 		science -= 40000;
 		document.getElementById("unlockPlasma").className = "hidden";
+		document.getElementById("unlockPlasmaTier2").className = "";
 		document.getElementById("plasmaNav").className = "";
 		for(var i = 0; i < 4; i++){
 			document.getElementById("energyNav" + [i]).style.border = "";
 		}
+		available.push("unlockPlasmaTier2");
 		researched.push("unlockPlasma");
 		techsResearchedNum += 1;
 		noBorder.push("energyNav");
 		resourcesUnlocked.push("plasmaNav");
+		newUnlock("resources");
+	}
+}
+
+function unlockPlasmaTier2(){
+	if(science >= 60000){
+		science -= 60000;
+		document.getElementById("unlockPlasmaTier2").className = "hidden";
+		document.getElementById("plasmaTier2").className = "";
+		researched.push("unlockPlasmaTier2");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("plasmaTier2");
 		newUnlock("resources");
 	}
 }

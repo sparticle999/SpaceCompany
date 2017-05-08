@@ -648,6 +648,24 @@ function getHeater(){
 	}
 }
 
+function getPlasmatic(){
+	if(spaceMetal >= plasmaticSpaceMetalCost && silicon >= plasmaticSiliconCost && meteorite >= plasmaticMeteoriteCost){
+		spaceMetal -= plasmaticSpaceMetalCost;
+		silicon -= plasmaticSiliconCost;
+		meteorite -= plasmaticMeteoriteCost;
+		plasmatic += 1;
+		plasmaticSpaceMetalCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
+		plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
+		plasmaticMeteoriteCost = Math.floor(970 * Math.pow(1.1,plasmatic));
+		document.getElementById("plasmatic").innerHTML = plasmatic;
+		document.getElementById("plasmaticSpaceMetalCost").innerHTML = commafy(plasmaticSpaceMetalCost);
+		document.getElementById("plasmaticSiliconCost").innerHTML = commafy(plasmaticSiliconCost);
+		document.getElementById("plasmaticMeteoriteCost").innerHTML = commafy(plasmaticMeteoriteCost);
+		refresh();
+		tier2 += 1;
+	}
+}
+
 function getBattery(){
 	if(metal >= batteryMetalCost && gem >= batteryGemCost && spaceMetal >= batterySpaceMetalCost ){
 		metal -= batteryMetalCost;

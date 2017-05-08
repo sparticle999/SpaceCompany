@@ -107,6 +107,11 @@ function save(type){
 		heaterGemCost: heaterGemCost,
 		heaterSiliconCost: heaterSiliconCost,
 		heaterToggled: heaterToggled,
+		plasmatic: plasmatic,
+		plasmaticSpaceMetalCost: plasmaticSpaceMetalCost,
+		plasmaticSiliconCost: plasmaticSiliconCost,
+		plasmaticMeteoriteCost: plasmaticMeteoriteCost,
+		plasmaticToggled: plasmaticToggled,
 		energy: energy,
 		battery: battery,
 		batteryMetalCost: batteryMetalCost,
@@ -528,6 +533,11 @@ function load(type){
 		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
 		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
+		if(typeof savegame.plasmatic !== "undefined") plasmatic = savegame.plasmatic;
+		if(typeof savegame.plasmaticSpaceMetalCost !== "undefined") plasmaticSpaceMetalCost = savegame.plasmaticSpaceMetalCost;
+		if(typeof savegame.plasmaticSiliconCost !== "undefined") plasmaticSiliconCost = savegame.plasmaticSiliconCost;
+		if(typeof savegame.plasmaticMeteoriteCost !== "undefined") plasmaticMeteoriteCost = savegame.plasmaticMeteoriteCost;
+		if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
 		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;

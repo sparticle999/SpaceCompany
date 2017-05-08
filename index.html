@@ -579,8 +579,8 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getplasmatic()" class="btn btn-default">Get Plasmatic Pit</button>
-									<button onclick="toggleplasmatic()" class="btn btn-default">Turn Plasmatic Pit <span id="plasmaticToggled">Off</span></button>
+									<button onclick="getPlasmatic()" class="btn btn-default">Get Plasmatic Pit</button>
+									<button onclick="togglePlasmatic()" class="btn btn-default">Turn Plasmatic Pit <span id="plasmaticToggled">Off</span></button>
 									<button onclick="destroyMachine(plasmatic, 'plasmatic')" class="btn btn-default destroy hidden">Destroy Plasmatic Pit</button>
 								</td>
 							</tr>
@@ -2603,6 +2603,7 @@
 										Contruct an automated way of producing meteorite without you having to do anything.
 										<br>
 										Produces 1 Meteorite per second. Uses 3 Plasma per second.
+										<br>
 										Costs <span id="printerSpaceMetalCost">100,000</span> Space Metal, <span id="printerSiliconCost">60,000</span> Silicon.
 									</span>
 									<br>
@@ -2969,6 +2970,23 @@
 									<br>
 									<br>
 									<button onclick="unlockPlasma()" class="btn btn-default">Unlock Plasma</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPlasmaTier2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasma Tier 2 Technology
+									</h3>
+									<span>
+										This research unlocks the second tier of Plasma production, the Plasmatic Pit.
+										<br>
+										Costs <span id="unlockPlasmaTier2Cost">60,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPlasmaTier2()" class="btn btn-default">Unlock Plasma Tier 2</button>
 									<br>
 									<br>
 								</td>
