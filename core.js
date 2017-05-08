@@ -2037,10 +2037,10 @@ function refreshResearches(){
 		}
 	}
 
-	if(typeof versionNumber === "undefined" || versionNumber === "0.3.5"){
+	if(typeof versionNumber === "undefined" || versionNumber === "0.3.5" || versionNumber === "0.4.0"){
 		swarm = sphere;
 		sphere = 0;
-		versionNumber = "0.4.0";
+		versionNumber = "0.4.1";
 		refreshUI();
 	}
 }

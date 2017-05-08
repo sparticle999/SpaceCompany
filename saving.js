@@ -483,6 +483,7 @@ function save(type){
 		dysonMeteoriteCost: dysonMeteoriteCost,
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
+		swarm: swarm,
 	};
 	if(type === "local"){
 		localStorage.setItem("save",JSON.stringify(localSave));
@@ -912,7 +913,7 @@ function load(type){
 		if(typeof savegame.dysonMeteoriteCost !== "undefined") dysonMeteoriteCost = savegame.dysonMeteoriteCost;
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
-
+		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
 	}
 	if(currentTheme === "base"){
 		document.getElementById("themeSelector").selectedIndex = 0;

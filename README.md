@@ -16,11 +16,14 @@ v0.5.0 The Interstellar Update
 - Some sort of prestige
 - Stargate for other solar systems
 
-v0.4.1
+v0.4.2
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
 
 # Changelog:
+
+v0.4.1
+- Bug Fix with Sphere -> Swarm Conversion
 
 v0.4.0 The Hot and Cold Update
 - Achievements
