@@ -2004,6 +2004,12 @@ function refreshResearches(){
 			available.push("unlockBatteries");
 		}
 	}
+	if(contains(researched, "unlockEmc")){
+		if(contains(available, "unlockMeteorite") === false){
+			document.getElementById("unlockMeteorite").className = "";
+			available.push("unlockMeteorite");
+		}
+	}
 	if(contains(researched, "unlockMeteorite")){
 		if(contains(resourcesUnlocked, "meteoriteEMC") === false){
 			document.getElementById("meteoriteEMC").className = "";
