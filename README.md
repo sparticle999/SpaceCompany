@@ -23,7 +23,7 @@ v0.4.2
 # Changelog:
 
 v0.4.1
-- Bug Fix with Sphere -> Swarm Conversion
+- Bug Fix with Sphere to Swarm Conversion
 
 v0.4.0 The Hot and Cold Update
 - Achievements
