@@ -1882,6 +1882,12 @@ function refreshAchievements(){
 }
 
 function refreshResources(){
+	if(contains(resourcesUnlocked, "meteoriteWonder")){
+		var index = resourcesUnlocked.indexOf("meteoriteWonder");
+ 		if (index > -1) {
+		    resourcesUnlocked.splice(index, 1);
+		}
+	}
 	for(var i=0; i<resourcesUnlocked.length; i++){
 		document.getElementById(resourcesUnlocked[i]).className = "";
 	}
@@ -2018,10 +2024,6 @@ function refreshResearches(){
 		if(contains(available, "unlockMeteoriteTier1") === false){
 			document.getElementById("unlockMeteoriteTier1").className = "";
 			available.push("unlockMeteoriteTier1");
-		}
-		if(contains(resourcesUnlocked, "meteoriteWonder") === false){
-			document.getElementById("meteoriteWonder").className = "";
-			resourcesUnlocked.push("meteoriteWonder");
 		}
 	}
 	if(contains(researched, "unlockMeteoriteTier1")){

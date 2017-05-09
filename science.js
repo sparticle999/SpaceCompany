@@ -302,12 +302,11 @@ function unlockMeteorite(){
 		document.getElementById("unlockMeteoriteTier1").className = "";
 		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
-		document.getElementById("meteoriteWonder").className = "";
 		available.push("unlockMeteoriteTier1");
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
-		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC", "meteoriteWonder");
+		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
 		newUnlock("resources");
 		newUnlock("wonder");
 	}
