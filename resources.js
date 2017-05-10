@@ -627,6 +627,12 @@ function destroyMachine(machine, id){
 	if(window[id] > 0){
 		window[id] -= 1;
 		document.getElementById(id).innerHTML = window[id];
+		// for(var i = 0; i < resoures.length; I++){
+		// 	if(typeof window[id + resources[i]] !== "undefined"){
+		// 		window[id + resources[i]] = Math.floor(75000 * Math.pow(1.1,window[id]));
+		// 	}
+		// }
+		// refreshUI();
 	}
 }
 
@@ -672,9 +678,9 @@ function getBattery(){
 		gem -= batteryGemCost;
 		spaceMetal -= batterySpaceMetalCost;
 		battery += 1;
-		batteryMetalCost = Math.floor(500000 * Math.pow(1.1,battery));
-		batteryGemCost = Math.floor(500000 * Math.pow(1.1,battery));
-		batterySpaceMetalCost = Math.floor(300000 * Math.pow(1.1,battery));
+		batteryMetalCost = Math.floor(50000 * Math.pow(1.1,battery));
+		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
+		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
 		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
 		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);

@@ -16,9 +16,13 @@ v0.5.0 The Interstellar Update
 - Some sort of prestige
 - Stargate for other solar systems
 
-v0.4.2
+v0.4.3
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
+
+v0.4.2
+- Added text-color differentiation for color-blindness
+- Nerfed Battery Costs
 
 # Changelog:
 

@@ -291,7 +291,6 @@ function unlockEmc(){
 		techsResearchedNum += 1;
 		resourcesUnlocked.push("emcPage");
 		newUnlock("solCenter");
-
 	}
 }
 
