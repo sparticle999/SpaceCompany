@@ -828,7 +828,12 @@ function refreshUI(){
 
 function turnRed(resource, variable, id){
 	if(resource < variable){
-		document.getElementById(id).className = "red";
+		if($('#boldEnabled').prop('checked')){
+	    	document.getElementById(id).className = "bold red";
+	    }
+		else{
+			document.getElementById(id).className = "red";
+		}
 	}
 	else{
 		document.getElementById(id).className = "";
