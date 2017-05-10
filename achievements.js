@@ -157,7 +157,6 @@ Game.achievements = (function() {
         data.achievements = {version: this.dataVersion, entries: []};
         for(var id in this.entries) {
             if(this.entries[id].unlocked === true) {
-                console.debug("Save Unlock: " + id)
                 data.achievements.entries.push(id);
             }
         }
