@@ -20,11 +20,11 @@ v0.4.3
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
 
-v0.4.2
-- Added text-color differentiation for color-blindness
-- Nerfed Battery Costs
-
 # Changelog:
+
+v0.4.2
+- Added option for bold text on red costs
+- Nerfed Battery Costs
 
 v0.4.1
 - Bug Fix with Sphere to Swarm Conversion
