@@ -1875,12 +1875,6 @@ function checkRedCost(){
 	turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 }
 
-function refreshAchievements(){
-	for(var i = 0; i < achieved.length; i ++){
-		document.getElementById(achieved[i]).className = "achievementTD achieved";
-	}
-}
-
 function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteWonder")){
 		var index = resourcesUnlocked.indexOf("meteoriteWonder");
@@ -2173,8 +2167,7 @@ function updateTheme(){
 };
 
 window.onload = function(){
-	load('local');
-	var windowLoaded = true;
+    pageLoaded = true;
 };
 
 //Time Loops
@@ -2200,17 +2193,3 @@ function calculateTime(){
 	secondsSession += 1;
 	document.getElementById("timeSession").innerHTML = timify(secondsSession);
 }
-
-window.setInterval(function(){
-	refreshPerSec();
-	gainResources();
-	refresh();
-	refreshWonderBars();
-	checkRedCost();
-},100);
-
-window.setInterval(function(){
-	refreshStats();
-	autosave();
-	calculateTime();
-},1000);
