@@ -1562,7 +1562,7 @@ function checkRedCost(){
 		document.getElementById("unlockMachinesCost").className = "";
 	}
 
-	turnRed(science, 300, "unlockDestructionCost");
+	turnRed(science, 500, "unlockDestructionCost");
 
 	if(science < 300){
 		document.getElementById("upgradeResourceTechCost").className = "red";
