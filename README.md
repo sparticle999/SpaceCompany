@@ -16,11 +16,18 @@ v0.5.0 The Interstellar Update
 - Some sort of prestige
 - Stargate for other solar systems
 
-v0.4.2
+v0.4.3
 - Achievements for the rest of the resources
 - Achievements for T4 Machines
 
 # Changelog:
+
+v0.4.3
+- Fixed Destruction of Machines Research Red Cost Bug
+
+v0.4.2
+- Added option for bold text on red costs
+- Nerfed Battery Costs
 
 v0.4.1
 - Bug Fix with Sphere to Swarm Conversion
