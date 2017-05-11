@@ -26,18 +26,3 @@
 	padding: 0px;
 	background-color: white !important;
 }
-
-.achievementTD div{
-	width: 64px;
-	height:64px;
-}
-
-.achievementTD div img{
-	width: 64px;
-	height:64px;
-	opacity:0.1;
-}
-
-.achieved div img{
-	opacity:1;
-}
