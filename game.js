@@ -19,7 +19,7 @@ var Game = (function() {
             var data = this.intervals[name];
             data.e += delta;
             if (data.e > data.d) {
-                data.c(this, data.e);
+                data.c(this, data.e / 1000);
                 data.e = 0;
             }
         }
@@ -42,9 +42,18 @@ var Game = (function() {
     instance.slowUpdate = function(self, delta) {
         refreshStats();
         autosave();
-        calculateTime();
+
+        self.updateTime(delta);
 
         self.achievements.update(delta);
+    };
+
+    instance.updateTime = function(delta) {
+        secondsTotal += delta;
+        secondsSession += delta;
+
+        $('#timeTotal').text(this.formatTime(secondsTotal));
+        $('#timeSession').text(this.formatTime(secondsSession));
     };
 
     instance.save = function(data) {
@@ -76,6 +85,12 @@ var Game = (function() {
             // Do this in a setInterval so it gets called even when the window is inactive
             window.setInterval(function(){ refreshPerSec(); gainResources(); },100);
         }
+    };
+
+    instance.formatTime = function(seconds) {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
     };
 
     instance.start = function() {

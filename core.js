@@ -2174,27 +2174,3 @@ function updateTheme(){
 window.onload = function(){
     pageLoaded = true;
 };
-
-//Time Loops
-
-function str_pad_left(string,pad,length) {
-    return (new Array(length+1).join(pad)+string).slice(-length);
-}
-
-function timify(time){
-	var hours = Math.floor(time / 3600);
-	time = time - hours * 3600;
-
-	var minutes = Math.floor(time / 60);
-	var seconds = time - minutes * 60;
-
-	var finalTime = str_pad_left(hours,'0',2)+':'+str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
-	return finalTime;
-}
-
-function calculateTime(){
-	secondsTotal += 1;
-	document.getElementById("timeTotal").innerHTML = timify(secondsTotal);
-	secondsSession += 1;
-	document.getElementById("timeSession").innerHTML = timify(secondsSession);
-}
