@@ -27,6 +27,7 @@ v0.4.3
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
+- Fixed Dyson Costs Jumping to 3rd from 1st
 
 v0.4.2
 - Added option for bold text on red costs
