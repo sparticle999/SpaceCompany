@@ -128,7 +128,7 @@ var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticU
 var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
 var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
 var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
-var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 2000000;
+var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 1200000;
 var meteoriteActivateMeteoriteCost = 10000; var meteoriteActivateIceCost = 2000000; var meteoriteActivateSiliconCost = 4000000;
 var timer = 0; var timer2 = 0; var energyTimer = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = 1;

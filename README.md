@@ -22,6 +22,9 @@ v0.4.3
 
 # Changelog:
 
+v0.4.3
+- Fixed Destruction of Machines Research Red Cost Bug
+
 v0.4.2
 - Added option for bold text on red costs
 - Nerfed Battery Costs
