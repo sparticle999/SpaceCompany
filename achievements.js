@@ -220,10 +220,10 @@ Game.achievements = (function() {
     };
 
     instance.save = function(data) {
-        data.achievements = {version: this.dataVersion, entries: []};
+        data.achievements = {version: this.dataVersion, entries: {}};
         for(var id in this.entries) {
-            if(this.entries[id].unlocked > 0) {
-                data.achievements.entries.push(id);
+            if(this.entries[id].unlocked >= 0) {
+                data.achievements.entries[id] = this.entries[id].unlocked;
             }
         }
     };
@@ -231,10 +231,9 @@ Game.achievements = (function() {
     instance.load = function(data) {
         if(data.achievements) {
             if(data.achievements.version && data.achievements.version == this.dataVersion) {
-                for(var i = 0; i < data.achievements.entries.length; i++){
-                    var id = data.achievements.entries[i];
+                for(var id in data.achievements.entries) {
                     if(this.entries[id]){
-                        this.unlock(id, data.achievements.entries[i]);
+                        this.unlock(id, data.achievements.entries[id]);
                     }
                 }
             }
