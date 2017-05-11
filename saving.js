@@ -100,7 +100,6 @@ function save(type){
 		wondersBuiltNum: wondersBuiltNum,
 		wondersActivatedNum: wondersActivatedNum,
 		secondsTotal: secondsTotal,
-		achieved: achieved,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -485,6 +484,9 @@ function save(type){
 		sphere: sphere,
 		swarm: swarm,
 	};
+
+	Game.save(localSave);
+
 	if(type === "local"){
 		localStorage.setItem("save",JSON.stringify(localSave));
 	}
@@ -531,7 +533,6 @@ function load(type){
 		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
 		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
 		if(typeof savegame.secondsTotal !== "undefined") secondsTotal = savegame.secondsTotal;
-		if(typeof savegame.achieved !== "undefined") achieved = savegame.achieved;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
@@ -914,6 +915,8 @@ function load(type){
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
+
+		Game.load(savegame);
 	}
 	if(currentTheme === "base"){
 		document.getElementById("themeSelector").selectedIndex = 0;
@@ -933,12 +936,10 @@ function load(type){
 	refreshResources();
 	refreshResearches();
 	refreshTabs();
-	refreshAchievements();
 
 	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
 	console.log("Load Successful");
-	pageLoaded = true;
 }
 
 function deleteSave(){
