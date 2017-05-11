@@ -118,7 +118,7 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*188)+(actuator*223)+(cannon*170)+(desert*138);
+	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
 	energyOutput += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
@@ -1880,6 +1880,12 @@ function checkRedCost(){
 	turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 }
 
+function refreshAchievements(){
+	for(var i = 0; i < achieved.length; i ++){
+		document.getElementById(achieved[i]).className = "achievementTD achieved";
+	}
+}
+
 function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteWonder")){
 		var index = resourcesUnlocked.indexOf("meteoriteWonder");
@@ -2172,5 +2178,44 @@ function updateTheme(){
 };
 
 window.onload = function(){
-    pageLoaded = true;
+	load('local');
+	var windowLoaded = true;
 };
+
+//Time Loops
+
+function str_pad_left(string,pad,length) {
+    return (new Array(length+1).join(pad)+string).slice(-length);
+}
+
+function timify(time){
+	var hours = Math.floor(time / 3600);
+	time = time - hours * 3600;
+
+	var minutes = Math.floor(time / 60);
+	var seconds = time - minutes * 60;
+
+	var finalTime = str_pad_left(hours,'0',2)+':'+str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
+	return finalTime;
+}
+
+function calculateTime(){
+	secondsTotal += 1;
+	document.getElementById("timeTotal").innerHTML = timify(secondsTotal);
+	secondsSession += 1;
+	document.getElementById("timeSession").innerHTML = timify(secondsSession);
+}
+
+window.setInterval(function(){
+	refreshPerSec();
+	gainResources();
+	refresh();
+	refreshWonderBars();
+	checkRedCost();
+},100);
+
+window.setInterval(function(){
+	refreshStats();
+	autosave();
+	calculateTime();
+},1000);
