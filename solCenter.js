@@ -86,11 +86,11 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
-		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson + 1));
-		dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson + 1));
-		dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson + 1));
-		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson + 1));
-		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson + 1));
+		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
+		dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
+		dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
+		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
+		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
 		document.getElementById("dysonPieces2").innerHTML = dyson;
