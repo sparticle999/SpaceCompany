@@ -1,4 +1,8 @@
 function autosave(){
+	if(secondsSession <= 60){
+		saveTimer = 0;
+	}
+
 	if(saved === true){
 		timer += 1;
 		if(timer >= 2){
@@ -15,7 +19,6 @@ function autosave(){
 			timer2 = 0;
 		}
 	}
-
 	if(document.getElementById("30secs").checked){
 		if(saveTimer >= 30){
 			save("local");
@@ -81,6 +84,7 @@ function autosave(){
 function save(type){
 	"use strict";
 	var localSave = {
+		versionNumber: versionNumber,
 		currentTheme: currentTheme,
 		handMined: handMined,
 		tier1: tier1,
@@ -95,12 +99,18 @@ function save(type){
 		placesExploredNum: placesExploredNum,
 		wondersBuiltNum: wondersBuiltNum,
 		wondersActivatedNum: wondersActivatedNum,
+		secondsTotal: secondsTotal,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
 		heaterGemCost: heaterGemCost,
 		heaterSiliconCost: heaterSiliconCost,
 		heaterToggled: heaterToggled,
+		plasmatic: plasmatic,
+		plasmaticSpaceMetalCost: plasmaticSpaceMetalCost,
+		plasmaticSiliconCost: plasmaticSiliconCost,
+		plasmaticMeteoriteCost: plasmaticMeteoriteCost,
+		plasmaticToggled: plasmaticToggled,
 		energy: energy,
 		battery: battery,
 		batteryMetalCost: batteryMetalCost,
@@ -143,6 +153,10 @@ function save(type){
 		oilFieldSpaceMetalCost: oilFieldSpaceMetalCost,
 		oilFieldTitaniumCost: oilFieldTitaniumCost,
 		oilFieldSiliconCost: oilFieldSiliconCost,
+		oilRig: oilRig,
+		oilRigSpaceMetalCost: oilRigSpaceMetalCost,
+		oilRigTitaniumCost: oilRigTitaniumCost,
+		oilRigMeteoriteCost: oilRigMeteoriteCost,
 		metal: metal,
 		metalStorage: metalStorage,
 		metalNextStorage: metalNextStorage,
@@ -158,6 +172,10 @@ function save(type){
 		gigaDrillSpaceMetalCost: gigaDrillSpaceMetalCost,
 		gigaDrillGemCost: gigaDrillGemCost,
 		gigaDrillSiliconCost: gigaDrillSiliconCost,
+		quantumDrill: quantumDrill,
+		quantumDrillSpaceMetalCost: quantumDrillSpaceMetalCost,
+		quantumDrillGoldCost: quantumDrillGoldCost,
+		quantumDrillMeteoriteCost: quantumDrillMeteoriteCost,
 		gem: gem,
 		gemStorage: gemStorage,
 		gemNextStorage: gemNextStorage,
@@ -173,6 +191,10 @@ function save(type){
 		diamondDrillSpaceMetalCost: diamondDrillSpaceMetalCost,
 		diamondDrillGemCost: diamondDrillGemCost,
 		diamondDrillSiliconCost: diamondDrillSiliconCost,
+		carbyneDrill: carbyneDrill,
+		carbyneDrillSpaceMetalCost: carbyneDrillSpaceMetalCost,
+		carbyneDrillGemCost: carbyneDrillGemCost,
+		carbyneDrillMeteoriteCost: carbyneDrillMeteoriteCost,
 		charcoal: charcoal,
 		charcoalStorage: charcoalStorage,
 		charcoalNextStorage: charcoalNextStorage,
@@ -190,6 +212,10 @@ function save(type){
 		kilnSpaceMetalCost: kilnSpaceMetalCost,
 		kilnGemCost: kilnGemCost,
 		kilnSiliconCost: kilnSiliconCost,
+		fryer: fryer,
+		fryerSpaceMetalCost: fryerSpaceMetalCost,
+		fryerLavaCost: fryerLavaCost,
+		fryerMeteoriteCost: fryerMeteoriteCost,
 		wood: wood,
 		woodStorage: woodStorage,
 		woodNextStorage: woodNextStorage,
@@ -205,6 +231,10 @@ function save(type){
 		deforesterSpaceMetalCost: deforesterSpaceMetalCost,
 		deforesterTitaniumCost: deforesterTitaniumCost,
 		deforesterSiliconCost: deforesterSiliconCost,
+		infuser: infuser,
+		infuserSpaceMetalCost: infuserSpaceMetalCost,
+		infuserOilCost: infuserOilCost,
+		infuserMeteoriteCost: infuserMeteoriteCost,
 		science: science,
 		lab: lab,
 		labWoodCost: labWoodCost,
@@ -253,6 +283,10 @@ function save(type){
 		moonQuarrySpaceMetalCost: moonQuarrySpaceMetalCost,
 		moonQuarryGemCost: moonQuarryGemCost,
 		moonQuarrySiliconCost: moonQuarrySiliconCost,
+		planetExcavator: planetExcavator,
+		planetExcavatorTitaniumCost: planetExcavatorTitaniumCost,
+		planetExcavatorIceCost: planetExcavatorIceCost,
+		planetExcavatorMeteoriteCost: planetExcavatorMeteoriteCost,
 		vacuum: vacuum,
 		vacuumSpaceMetalCost: vacuumSpaceMetalCost,
 		vacuumGemCost: vacuumGemCost,
@@ -264,6 +298,10 @@ function save(type){
 		spaceCowSpaceMetalCost: spaceCowSpaceMetalCost,
 		spaceCowTitaniumCost: spaceCowTitaniumCost,
 		spaceCowSiliconCost: spaceCowSiliconCost,
+		vent: vent,
+		ventSpaceMetalCost: ventSpaceMetalCost,
+		ventHeliumCost: ventHeliumCost,
+		ventMeteoriteCost: ventMeteoriteCost,
 		explorer: explorer,
 		explorerGemCost: explorerGemCost,
 		spaceMetalDrill: spaceMetalDrill,
@@ -274,6 +312,10 @@ function save(type){
 		pentaDrillSpaceMetalCost: pentaDrillSpaceMetalCost,
 		pentaDrillGemCost: pentaDrillGemCost,
 		pentaDrillSiliconCost: pentaDrillSiliconCost,
+		titanDrill: titanDrill,
+		titanDrillSpaceMetalCost: titanDrillSpaceMetalCost,
+		titanDrillGoldCost: titanDrillGoldCost,
+		titanDrillMeteoriteCost: titanDrillMeteoriteCost,
 		droid: droid,
 		droidSpaceMetalCost: droidSpaceMetalCost,
 		droidMethaneCost: droidMethaneCost,
@@ -285,6 +327,10 @@ function save(type){
 		deathStarSpaceMetalCost: deathStarSpaceMetalCost,
 		deathStarSilverCost: deathStarSilverCost,
 		deathStarSiliconCost: deathStarSiliconCost,
+		actuator: actuator,
+		actuatorSpaceMetalCost: actuatorSpaceMetalCost,
+		actuatorHeliumCost: actuatorHeliumCost,
+		actuatorMeteoriteCost: actuatorMeteoriteCost,
 		scout: scout,
 		scoutSpaceMetalCost: scoutSpaceMetalCost,
 		scoutTitaniumCost: scoutTitaniumCost,
@@ -296,6 +342,10 @@ function save(type){
 		berthaSpaceMetalCost: berthaSpaceMetalCost,
 		berthaTitaniumCost: berthaTitaniumCost,
 		berthaSiliconCost: berthaSiliconCost,
+		cannon: cannon,
+		cannonSpaceMetalCost: cannonSpaceMetalCost,
+		cannonOilCost: cannonOilCost,
+		cannonMeteoriteCost: cannonMeteoriteCost,
 		blowtorch: blowtorch,
 		blowtorchSpaceMetalCost: blowtorchSpaceMetalCost,
 		blowtorchTitaniumCost: blowtorchTitaniumCost,
@@ -307,6 +357,10 @@ function save(type){
 		annihilatorSpaceMetalCost: annihilatorSpaceMetalCost,
 		annihilatorGemCost: annihilatorGemCost,
 		annihilatorSilverCost: annihilatorSilverCost,
+		desert: desert,
+		desertSpaceMetalCost: desertSpaceMetalCost,
+		desertSiliconCost: desertSiliconCost,
+		desertMeteoriteCost: desertMeteoriteCost,
 		researchUnlocked: researchUnlocked,
 		researched: researched,
 		available: available,
@@ -315,6 +369,7 @@ function save(type){
 		noBorder: noBorder,
 		rocketLaunched: rocketLaunched,
 		techUnlocked: techUnlocked,
+		meteoriteUnlocked: meteoriteUnlocked,
 		buttonsHidden: buttonsHidden,
 		explored: explored,
 		uranium: uranium,
@@ -333,6 +388,10 @@ function save(type){
 		enricherSpaceMetalCost: enricherSpaceMetalCost,
 		enricherTitaniumCost: enricherTitaniumCost,
 		enricherSiliconCost: enricherSiliconCost,
+		recycler: recycler,
+		recyclerSpaceMetalCost: recyclerSpaceMetalCost,
+		recyclerMethaneCost: recyclerMethaneCost,
+		recyclerMeteoriteCost: recyclerMeteoriteCost,
 		lava: lava,
 		lavaStorage: lavaStorage,
 		lavaNextStorage: lavaNextStorage,
@@ -347,6 +406,10 @@ function save(type){
 		extruderSpaceMetalCost: extruderSpaceMetalCost,
 		extruderTitaniumCost: extruderTitaniumCost,
 		extruderSiliconCost: extruderSiliconCost,
+		veluptuator: veluptuator,
+		veluptuatorSpaceMetalCost: veluptuatorSpaceMetalCost,
+		veluptuatorGoldCost: veluptuatorGoldCost,
+		veluptuatorMeteoriteCost: veluptuatorMeteoriteCost,
 		hydrogen: hydrogen,
 		hydrogenStorage: hydrogenStorage,
 		hydrogenNextStorage: hydrogenNextStorage,
@@ -361,6 +424,10 @@ function save(type){
 		eCellSilverCost: eCellSilverCost,
 		eCellGoldCost: eCellGoldCost,
 		eCellSiliconCost: eCellSiliconCost,
+		hindenburg: hindenburg,
+		hindenburgSpaceMetalCost: hindenburgSpaceMetalCost,
+		hindenburgMethaneCost: hindenburgMethaneCost,
+		hindenburgMeteoriteCost: hindenburgMeteoriteCost,
 		helium: helium,
 		heliumStorage: heliumStorage,
 		heliumNextStorage: heliumNextStorage,
@@ -375,6 +442,10 @@ function save(type){
 		compressorSpaceMetalCost: compressorSpaceMetalCost,
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
+		skimmer: skimmer,
+		skimmerSpaceMetalCost: skimmerSpaceMetalCost,
+		skimmerTitaniumCost: skimmerTitaniumCost,
+		skimmerMeteoriteCost: skimmerMeteoriteCost,
 		ice: ice,
 		iceStorage: iceStorage,
 		iceNextStorage: iceNextStorage,
@@ -389,9 +460,21 @@ function save(type){
 		freezerSpaceMetalCost: freezerSpaceMetalCost,
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
+		mrFreeze: mrFreeze,
+		mrFreezeSpaceMetalCost: mrFreezeSpaceMetalCost,
+		mrFreezeHeliumCost: mrFreezeHeliumCost,
+		mrFreezeMeteoriteCost: mrFreezeMeteoriteCost,
 		meteorite: meteorite,
 		meteoriteStorage: meteoriteStorage,
 		meteoriteNextStorage: meteoriteNextStorage,
+		meteoriteToggled: meteoriteToggled,
+		printer: printer,
+		printerSpaceMetalCost: printerSpaceMetalCost,
+		printerSiliconCost: printerSiliconCost,
+		web: web,
+		webSpaceMetalCost: webSpaceMetalCost,
+		webUraniumCost: webUraniumCost,
+		webSiliconCost: webSiliconCost,
 		dyson: dyson,
 		dysonTitaniumCost: dysonTitaniumCost,
 		dysonGoldCost: dysonGoldCost,
@@ -399,7 +482,11 @@ function save(type){
 		dysonMeteoriteCost: dysonMeteoriteCost,
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
+		swarm: swarm,
 	};
+
+	Game.save(localSave);
+
 	if(type === "local"){
 		localStorage.setItem("save",JSON.stringify(localSave));
 	}
@@ -430,6 +517,7 @@ function load(type){
 		console.log(revived);
 	}
 	if(savegame){
+		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
 		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
 		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
 		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
@@ -444,12 +532,18 @@ function load(type){
 		if(typeof savegame.placesExploredNum !== "undefined") placesExploredNum = savegame.placesExploredNum;
 		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
 		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
+		if(typeof savegame.secondsTotal !== "undefined") secondsTotal = savegame.secondsTotal;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
 		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
 		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
+		if(typeof savegame.plasmatic !== "undefined") plasmatic = savegame.plasmatic;
+		if(typeof savegame.plasmaticSpaceMetalCost !== "undefined") plasmaticSpaceMetalCost = savegame.plasmaticSpaceMetalCost;
+		if(typeof savegame.plasmaticSiliconCost !== "undefined") plasmaticSiliconCost = savegame.plasmaticSiliconCost;
+		if(typeof savegame.plasmaticMeteoriteCost !== "undefined") plasmaticMeteoriteCost = savegame.plasmaticMeteoriteCost;
+		if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
 		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;
@@ -492,6 +586,10 @@ function load(type){
 		if(typeof savegame.oilFieldSpaceMetalCost !== "undefined") oilFieldSpaceMetalCost = savegame.oilFieldSpaceMetalCost;
 		if(typeof savegame.oilFieldTitaniumCost !== "undefined") oilFieldTitaniumCost = savegame.oilFieldTitaniumCost;
 		if(typeof savegame.oilFieldSiliconCost !== "undefined") oilFieldSiliconCost = savegame.oilFieldSiliconCost;
+		if(typeof savegame.oilRig !== "undefined") oilRig = savegame.oilRig;
+		if(typeof savegame.oilRigSpaceMetalCost !== "undefined") oilRigSpaceMetalCost = savegame.oilRigSpaceMetalCost;
+		if(typeof savegame.oilRigTitaniumCost !== "undefined") oilRigTitaniumCost = savegame.oilRigTitaniumCost;
+		if(typeof savegame.oilRigMeteoriteCost !== "undefined") oilRigMeteoriteCost = savegame.oilRigMeteoriteCost;
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
 		if(typeof savegame.metalStorage !== "undefined") metalStorage = savegame.metalStorage;
 		if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;
@@ -507,6 +605,10 @@ function load(type){
 		if(typeof savegame.gigaDrillSpaceMetalCost !== "undefined") gigaDrillSpaceMetalCost = savegame.gigaDrillSpaceMetalCost;
 		if(typeof savegame.gigaDrillGemCost !== "undefined") gigaDrillGemCost = savegame.gigaDrillGemCost;
 		if(typeof savegame.gigaDrillSiliconCost !== "undefined") gigaDrillSiliconCost = savegame.gigaDrillSiliconCost;
+		if(typeof savegame.quantumDrill !== "undefined") quantumDrill = savegame.quantumDrill;
+		if(typeof savegame.quantumDrillSpaceMetalCost !== "undefined") quantumDrillSpaceMetalCost = savegame.quantumDrillSpaceMetalCost;
+		if(typeof savegame.quantumDrillGoldCost !== "undefined") quantumDrillGoldCost = savegame.quantumDrillGoldCost;
+		if(typeof savegame.quantumDrillMeteoriteCost !== "undefined") quantumDrillMeteoriteCost = savegame.quantumDrillMeteoriteCost;
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
 		if(typeof savegame.gemStorage !== "undefined") gemStorage = savegame.gemStorage;
 		if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;
@@ -519,9 +621,13 @@ function load(type){
 		if(typeof savegame.advancedDrillOilCost !== "undefined") advancedDrillOilCost = savegame.advancedDrillOilCost;
 		if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
 		if(typeof savegame.diamondDrill !== "undefined") diamondDrill = savegame.diamondDrill;
-		if(typeof savegame.diamondDrillMetalCost !== "undefined") diamondDrillMetalCost = savegame.diamondDrillMetalCost;
+		if(typeof savegame.diamondDrillSpaceMetalCost !== "undefined") diamondDrillSpaceMetalCost = savegame.diamondDrillSpaceMetalCost;
 		if(typeof savegame.diamondDrillGemCost !== "undefined") diamondDrillGemCost = savegame.diamondDrillGemCost;
-		if(typeof savegame.diamondDrillOilCost !== "undefined") diamondDrillOilCost = savegame.diamondDrillOilCost;
+		if(typeof savegame.diamondDrillSiliconCost !== "undefined") diamondDrillSiliconCost = savegame.diamondDrillSiliconCost;
+		if(typeof savegame.carbyneDrill !== "undefined") carbyneDrill = savegame.carbyneDrill;
+		if(typeof savegame.carbyneDrillSpaceMetalCost !== "undefined") carbyneDrillSpaceMetalCost = savegame.carbyneDrillSpaceMetalCost;
+		if(typeof savegame.carbyneDrillGemCost !== "undefined") carbyneDrillGemCost = savegame.carbyneDrillGemCost;
+		if(typeof savegame.carbyneDrillMeteoriteCost !== "undefined") carbyneDrillMeteoriteCost = savegame.carbyneDrillMeteoriteCost;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") charcoalStorage = savegame.charcoalStorage;
 		if(typeof savegame.charcoalNextStorage !== "undefined") charcoalNextStorage = savegame.charcoalNextStorage;
@@ -539,6 +645,10 @@ function load(type){
 		if(typeof savegame.kilnSpaceMetalCost !== "undefined") kilnSpaceMetalCost = savegame.kilnSpaceMetalCost;
 		if(typeof savegame.kilnGemCost !== "undefined") kilnGemCost = savegame.kilnGemCost;
 		if(typeof savegame.kilnSiliconCost !== "undefined") kilnSiliconCost = savegame.kilnSiliconCost;
+		if(typeof savegame.fryer !== "undefined") fryer = savegame.fryer;
+		if(typeof savegame.fryerSpaceMetalCost !== "undefined") fryerSpaceMetalCost = savegame.fryerSpaceMetalCost;
+		if(typeof savegame.fryerLavaCost !== "undefined") fryerLavaCost = savegame.fryerLavaCost;
+		if(typeof savegame.fryerMeteoriteCost !== "undefined") fryerMeteoriteCost = savegame.fryerMeteoriteCost;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
 		if(typeof savegame.woodStorage !== "undefined") woodStorage = savegame.woodStorage;
 		if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;
@@ -554,6 +664,10 @@ function load(type){
 		if(typeof savegame.deforesterSpaceMetalCost !== "undefined") deforesterSpaceMetalCost = savegame.deforesterSpaceMetalCost;
 		if(typeof savegame.deforesterTitaniumCost !== "undefined") deforesterTitaniumCost = savegame.deforesterTitaniumCost;
 		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
+		if(typeof savegame.infuser !== "undefined") infuser = savegame.infuser;
+		if(typeof savegame.infuserSpaceMetalCost !== "undefined") infuserSpaceMetalCost = savegame.infuserSpaceMetalCost;
+		if(typeof savegame.infuserOilCost !== "undefined") infuserOilCost = savegame.infuserOilCost;
+		if(typeof savegame.infuserMeteoriteCost !== "undefined") infuserMeteoriteCost = savegame.infuserMeteoriteCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
 		if(typeof savegame.lab !== "undefined") lab = savegame.lab;
 		if(typeof savegame.labWoodCost !== "undefined") labWoodCost = savegame.labWoodCost;
@@ -617,6 +731,10 @@ function load(type){
 		if(typeof savegame.moonQuarrySpaceMetalCost !== "undefined") moonQuarrySpaceMetalCost = savegame.moonQuarrySpaceMetalCost;
 		if(typeof savegame.moonQuarryGemCost !== "undefined") moonQuarryGemCost = savegame.moonQuarryGemCost;
 		if(typeof savegame.moonQuarrySiliconCost !== "undefined") moonQuarrySiliconCost = savegame.moonQuarrySiliconCost;
+		if(typeof savegame.planetExcavator !== "undefined") planetExcavator = savegame.planetExcavator;
+		if(typeof savegame.planetExcavatorTitaniumCost !== "undefined") planetExcavatorTitaniumCost = savegame.planetExcavatorTitaniumCost;
+		if(typeof savegame.planetExcavatorIceCost !== "undefined") planetExcavatorIceCost = savegame.planetExcavatorIceCost;
+		if(typeof savegame.planetExcavatorMeteoriteCost !== "undefined") planetExcavatorMeteoriteCost = savegame.planetExcavatorMeteoriteCost;
 		if(typeof savegame.vacuum !== "undefined") vacuum = savegame.vacuum;
 		if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumSpaceMetalCost = savegame.vacuumSpaceMetalCost;
 		if(typeof savegame.vacuumGemCost !== "undefined") vacuumGemCost = savegame.vacuumGemCost;
@@ -628,6 +746,10 @@ function load(type){
 		if(typeof savegame.spaceCowSpaceMetalCost !== "undefined") spaceCowSpaceMetalCost = savegame.spaceCowSpaceMetalCost;
 		if(typeof savegame.spaceCowTitaniumCost !== "undefined") spaceCowTitaniumCost = savegame.spaceCowTitaniumCost;
 		if(typeof savegame.spaceCowSiliconCost !== "undefined") spaceCowSiliconCost = savegame.spaceCowSiliconCost;
+		if(typeof savegame.vent !== "undefined") vent = savegame.vent;
+		if(typeof savegame.ventSpaceMetalCost !== "undefined") ventSpaceMetalCost = savegame.ventSpaceMetalCost;
+		if(typeof savegame.ventHeliumCost !== "undefined") ventHeliumCost = savegame.ventHeliumCost;
+		if(typeof savegame.ventMeteoriteCost !== "undefined") ventMeteoriteCost = savegame.ventMeteoriteCost;
 		if(typeof savegame.explorer !== "undefined") explorer = savegame.explorer;
 		if(typeof savegame.explorerGemCost !== "undefined") explorerGemCost = savegame.explorerGemCost;
 		if(typeof savegame.spaceMetalDrill !== "undefined") spaceMetalDrill = savegame.spaceMetalDrill;
@@ -638,6 +760,10 @@ function load(type){
 		if(typeof savegame.pentaDrillSpaceMetalCost !== "undefined") pentaDrillSpaceMetalCost = savegame.pentaDrillSpaceMetalCost;
 		if(typeof savegame.pentaDrillGemCost !== "undefined") pentaDrillGemCost = savegame.pentaDrillGemCost;
 		if(typeof savegame.pentaDrillSiliconCost !== "undefined") pentaDrillSiliconCost = savegame.pentaDrillSiliconCost;
+		if(typeof savegame.titanDrill !== "undefined") titanDrill = savegame.titanDrill;
+		if(typeof savegame.titanDrillSpaceMetalCost !== "undefined") titanDrillSpaceMetalCost = savegame.titanDrillSpaceMetalCost;
+		if(typeof savegame.titanDrillGoldCost !== "undefined") titanDrillGoldCost = savegame.titanDrillGoldCost;
+		if(typeof savegame.titanDrillMeteoriteCost !== "undefined") titanDrillMeteoriteCost = savegame.titanDrillMeteoriteCost;
 		if(typeof savegame.droid !== "undefined") droid = savegame.droid;
 		if(typeof savegame.droidSpaceMetalCost !== "undefined") droidSpaceMetalCost = savegame.droidSpaceMetalCost;
 		if(typeof savegame.droidMethaneCost !== "undefined") droidMethaneCost = savegame.droidMethaneCost;
@@ -649,6 +775,10 @@ function load(type){
 		if(typeof savegame.deathStarSpaceMetalCost !== "undefined") deathStarSpaceMetalCost = savegame.deathStarSpaceMetalCost;
 		if(typeof savegame.deathStarSilverCost !== "undefined") deathStarSilverCost = savegame.deathStarSilverCost;
 		if(typeof savegame.deathStarSiliconCost !== "undefined") deathStarSiliconCost = savegame.deathStarSiliconCost;
+		if(typeof savegame.actuator !== "undefined") actuator = savegame.actuator;
+		if(typeof savegame.actuatorSpaceMetalCost !== "undefined") actuatorSpaceMetalCost = savegame.actuatorSpaceMetalCost;
+		if(typeof savegame.actuatorHeliumCost !== "undefined") actuatorHeliumCost = savegame.actuatorHeliumCost;
+		if(typeof savegame.actuatorMeteoriteCost !== "undefined") actuatorMeteoriteCost = savegame.actuatorMeteoriteCost;
 		if(typeof savegame.scout !== "undefined") scout = savegame.scout;
 		if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutSpaceMetalCost = savegame.scoutSpaceMetalCost;
 		if(typeof savegame.scoutTitaniumCost !== "undefined") scoutTitaniumCost = savegame.scoutTitaniumCost;
@@ -660,6 +790,10 @@ function load(type){
 		if(typeof savegame.berthaSpaceMetalCost !== "undefined") berthaSpaceMetalCost = savegame.berthaSpaceMetalCost;
 		if(typeof savegame.berthaTitaniumCost !== "undefined") berthaTitaniumCost = savegame.berthaTitaniumCost;
 		if(typeof savegame.berthaSiliconCost !== "undefined") berthaSiliconCost = savegame.berthaSiliconCost;
+		if(typeof savegame.cannon !== "undefined") cannon = savegame.cannon;
+		if(typeof savegame.cannonSpaceMetalCost !== "undefined") cannonSpaceMetalCost = savegame.cannonSpaceMetalCost;
+		if(typeof savegame.cannonOilCost !== "undefined") cannonOilCost = savegame.cannonOilCost;
+		if(typeof savegame.cannonMeteoriteCost !== "undefined") cannonMeteoriteCost = savegame.cannonMeteoriteCost;
 		if(typeof savegame.blowtorch !== "undefined") blowtorch = savegame.blowtorch;
 		if(typeof savegame.blowtorchSpaceMetalCost !== "undefined") blowtorchSpaceMetalCost = savegame.blowtorchSpaceMetalCost;
 		if(typeof savegame.blowtorchTitaniumCost !== "undefined") blowtorchTitaniumCost = savegame.blowtorchTitaniumCost;
@@ -671,6 +805,10 @@ function load(type){
 		if(typeof savegame.annihilatorSpaceMetalCost !== "undefined") annihilatorSpaceMetalCost = savegame.annihilatorSpaceMetalCost;
 		if(typeof savegame.annihilatorGemCost !== "undefined") annihilatorGemCost = savegame.annihilatorGemCost;
 		if(typeof savegame.annihilatorSilverCost !== "undefined") annihilatorSilverCost = savegame.annihilatorSilverCost;
+		if(typeof savegame.desert !== "undefined") desert = savegame.desert;
+		if(typeof savegame.desertSpaceMetalCost !== "undefined") desertSpaceMetalCost = savegame.desertSpaceMetalCost;
+		if(typeof savegame.desertSiliconCost !== "undefined") desertSiliconCost = savegame.desertSiliconCost;
+		if(typeof savegame.desertMeteoriteCost !== "undefined") desertMeteoriteCost = savegame.desertMeteoriteCost;
 		if(typeof savegame.researchUnlocked !== "undefined") researchUnlocked = savegame.researchUnlocked;
 		if(typeof savegame.researched !== "undefined") researched = savegame.researched;
 		if(typeof savegame.tabsUnlocked !== "undefined") tabsUnlocked = savegame.tabsUnlocked;
@@ -679,6 +817,7 @@ function load(type){
 		if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
 		if(typeof savegame.techUnlocked !== "undefined") techUnlocked = savegame.techUnlocked;
+		if(typeof savegame.meteoriteUnlocked !== "undefined") meteoriteUnlocked = savegame.meteoriteUnlocked;
 		if(typeof savegame.explored !== "undefined") explored = savegame.explored;
 		if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
 		if(typeof savegame.uranium !== "undefined") uranium = savegame.uranium;
@@ -697,6 +836,10 @@ function load(type){
 		if(typeof savegame.enricherSpaceMetalCost !== "undefined") enricherSpaceMetalCost = savegame.enricherSpaceMetalCost;
 		if(typeof savegame.enricherTitaniumCost !== "undefined") enricherTitaniumCost = savegame.enricherTitaniumCost;
 		if(typeof savegame.enricherSiliconCost !== "undefined") enricherSiliconCost = savegame.enricherSiliconCost;
+		if(typeof savegame.recycler !== "undefined") recycler = savegame.recycler;
+		if(typeof savegame.recyclerSpaceMetalCost !== "undefined") recyclerSpaceMetalCost = savegame.recyclerSpaceMetalCost;
+		if(typeof savegame.recyclerMethaneCost !== "undefined") recyclerMethaneCost = savegame.recyclerMethaneCost;
+		if(typeof savegame.recyclerMeteoriteCost !== "undefined") recyclerMeteoriteCost = savegame.recyclerMeteoriteCost;
 		if(typeof savegame.crucible !== "undefined") crucible = savegame.crucible;
 		if(typeof savegame.crucibleGemCost !== "undefined") crucibleGemCost = savegame.crucibleGemCost;
 		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleSpaceMetalCost = savegame.crucibleSpaceMetalCost;
@@ -708,6 +851,10 @@ function load(type){
 		if(typeof savegame.extruderSpaceMetalCost !== "undefined") extruderSpaceMetalCost = savegame.extruderSpaceMetalCost;
 		if(typeof savegame.extruderTitaniumCost !== "undefined") extruderTitaniumCost = savegame.extruderTitaniumCost;
 		if(typeof savegame.extruderSiliconCost !== "undefined") extruderSiliconCost = savegame.extruderSiliconCost;
+		if(typeof savegame.veluptuator !== "undefined") veluptuator = savegame.veluptuator;
+		if(typeof savegame.veluptuatorSpaceMetalCost !== "undefined") veluptuatorSpaceMetalCost = savegame.veluptuatorSpaceMetalCost;
+		if(typeof savegame.veluptuatorGoldCost !== "undefined") veluptuatorGoldCost = savegame.veluptuatorGoldCost;
+		if(typeof savegame.veluptuatorMeteoriteCost !== "undefined") veluptuatorMeteoriteCost = savegame.veluptuatorMeteoriteCost;
 		if(typeof savegame.collector !== "undefined") collector = savegame.collector;
 		if(typeof savegame.collectorSpaceMetalCost !== "undefined") collectorSpaceMetalCost = savegame.collectorSpaceMetalCost;
 		if(typeof savegame.collectorTitaniumCost !== "undefined") collectorTitaniumCost = savegame.collectorTitaniumCost;
@@ -719,6 +866,10 @@ function load(type){
 		if(typeof savegame.eCellSilverCost !== "undefined") eCellSilverCost = savegame.eCellSilverCost;
 		if(typeof savegame.eCellGoldCost !== "undefined") eCellGoldCost = savegame.eCellGoldCost;
 		if(typeof savegame.eCellSiliconCost !== "undefined") eCellSiliconCost = savegame.eCellSiliconCost;
+		if(typeof savegame.hindenburg !== "undefined") hindenburg = savegame.hindenburg;
+		if(typeof savegame.hindenburgSpaceMetalCost !== "undefined") hindenburgSpaceMetalCost = savegame.hindenburgSpaceMetalCost;
+		if(typeof savegame.hindenburgMethaneCost !== "undefined") hindenburgMethaneCost = savegame.hindenburgMethaneCost;
+		if(typeof savegame.hindenburgMeteoriteCost !== "undefined") hindenburgMeteoriteCost = savegame.hindenburgMeteoriteCost;
 		if(typeof savegame.drone !== "undefined") drone = savegame.drone;
 		if(typeof savegame.droneSpaceMetalCost !== "undefined") droneSpaceMetalCost = savegame.droneSpaceMetalCost;
 		if(typeof savegame.droneSiliconCost !== "undefined") droneSiliconCost = savegame.droneSiliconCost;
@@ -730,6 +881,10 @@ function load(type){
 		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorSpaceMetalCost = savegame.compressorSpaceMetalCost;
 		if(typeof savegame.compressorTitaniumCost !== "undefined") compressorTitaniumCost = savegame.compressorTitaniumCost;
 		if(typeof savegame.compressorSiliconCost !== "undefined") compressorSiliconCost = savegame.compressorSiliconCost;
+		if(typeof savegame.skimmer !== "undefined") skimmer = savegame.skimmer;
+		if(typeof savegame.skimmerSpaceMetalCost !== "undefined") skimmerSpaceMetalCost = savegame.skimmerSpaceMetalCost;
+		if(typeof savegame.skimmerTitaniumCost !== "undefined") skimmerTitaniumCost = savegame.skimmerTitaniumCost;
+		if(typeof savegame.skimmerMeteoriteCost !== "undefined") skimmerMeteoriteCost = savegame.skimmerMeteoriteCost;
 		if(typeof savegame.icePick !== "undefined") icePick = savegame.icePick;
 		if(typeof savegame.icePickSpaceMetalCost !== "undefined") icePickSpaceMetalCost = savegame.icePickSpaceMetalCost;
 		if(typeof savegame.icePickGemCost !== "undefined") icePickGemCost = savegame.icePickGemCost;
@@ -741,6 +896,17 @@ function load(type){
 		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
+		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
+		if(typeof savegame.mrFreezeSpaceMetalCost !== "undefined") mrFreezeSpaceMetalCost = savegame.mrFreezeSpaceMetalCost;
+		if(typeof savegame.mrFreezeHeliumCost !== "undefined") mrFreezeHeliumCost = savegame.mrFreezeHeliumCost;
+		if(typeof savegame.mrFreezeMeteoriteCost !== "undefined") mrFreezeMeteoriteCost = savegame.mrFreezeMeteoriteCost;
+		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
+		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
+		if(typeof savegame.printerSiliconCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
+		if(typeof savegame.web !== "undefined") web = savegame.web;
+		if(typeof savegame.webSpaceMetalCost !== "undefined") webSpaceMetalCost = savegame.webSpaceMetalCost;
+		if(typeof savegame.webUraniumCost !== "undefined") webUraniumCost = savegame.webUraniumCost;
+		if(typeof savegame.webSiliconCost !== "undefined") webSiliconCost = savegame.webSiliconCost;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
 		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
 		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;
@@ -748,7 +914,9 @@ function load(type){
 		if(typeof savegame.dysonMeteoriteCost !== "undefined") dysonMeteoriteCost = savegame.dysonMeteoriteCost;
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
+		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
 
+		Game.load(savegame);
 	}
 	if(currentTheme === "base"){
 		document.getElementById("themeSelector").selectedIndex = 0;
@@ -772,7 +940,6 @@ function load(type){
 	document.getElementById("loadButton").className = "btn btn-primary disabled";
 	loaded = true;
 	console.log("Load Successful");
-	pageLoaded = true;
 }
 
 function deleteSave(){

@@ -53,6 +53,12 @@ function changeEmcAmount(){
 	}
 	for(var i = 0; i < resources.length; i++){
 		document.getElementById(resources[i] + "EmcVal").innerHTML = commafy(window[resources[i]+"EmcVal"]*emcAmount);
+		if(window[resources[i]+"EmcVal"]*emcAmount > window[resources[i]+"Storage"]){
+			document.getElementById(resources[i] + "Conv").className = "btn btn-default green";
+		}
+		else{
+			document.getElementById(resources[i] + "Conv").className = "btn btn-default";
+		}
 	}
 }
 
@@ -80,13 +86,14 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
-		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.05,dyson + 1));
-		dysonGoldCost = Math.floor(100000 * Math.pow(1.05,dyson + 1));
-		dysonSiliconCost = Math.floor(200000 * Math.pow(1.05,dyson + 1));
-		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.05,dyson + 1));
-		dysonIceCost = Math.floor(100000 * Math.pow(1.05,dyson + 1));
+		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson + 1));
+		dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson + 1));
+		dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson + 1));
+		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson + 1));
+		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson + 1));
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
 		document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
 		document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
 		document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
@@ -95,10 +102,26 @@ function getDyson(){
 	}
 }
 
-function buildSphere(){
+function buildSwarm(){
 	if(dyson >= 100 && rocketFuel >= 250000){
 		dyson -= 100;
 		rocketFuel -= 250000;
+		swarm += 1;
+		document.getElementById("swarm").innerHTML = swarm;
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
+	}
+}
+
+function buildSphere(){
+	if(dyson >= 250 && rocketFuel >= 1000000){
+		dyson -= 250;
+		rocketFuel -= 1000000;
 		sphere += 1;
+		document.getElementById("sphere").innerHTML = sphere;
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
 	}
 }

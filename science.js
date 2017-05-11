@@ -201,16 +201,6 @@ function unlockLabT2(){
 	}
 }
 
-function unlockLabT3(){
-	if(science >= 3000){
-		science -= 3000;
-		document.getElementById("unlockLabT3").className = "hidden";
-		document.getElementById("labTier3").className = "";
-		researched.push("unlockLabT3");
-		techsResearchedNum += 1;
-	}
-}
-
 function upgradeEngineTech(){
 	if(science >= 1000){
 		science -= 1000;
@@ -223,6 +213,16 @@ function upgradeEngineTech(){
 	}
 }
 
+function unlockLabT3(){
+	if(science >= 3000){
+		science -= 3000;
+		document.getElementById("unlockLabT3").className = "hidden";
+		document.getElementById("labTier3").className = "";
+		researched.push("unlockLabT3");
+		techsResearchedNum += 1;
+	}
+}
+
 function upgradeSolarTech(){
 	if(science >= 5000){
 		science -= 5000;
@@ -230,8 +230,8 @@ function upgradeSolarTech(){
 		document.getElementById("unlockBatteries").className = "";
 		solarPanelOutput = 3;
 		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
-		researched.push("upgradeSolarTech");
 		available.push("unlockBatteries");
+		researched.push("upgradeSolarTech");
 		techsResearchedNum += 1;
 		newUnlock("resources");
 	}
@@ -254,14 +254,28 @@ function unlockPlasma(){
 	if(science >= 40000){
 		science -= 40000;
 		document.getElementById("unlockPlasma").className = "hidden";
+		document.getElementById("unlockPlasmaTier2").className = "";
 		document.getElementById("plasmaNav").className = "";
 		for(var i = 0; i < 4; i++){
 			document.getElementById("energyNav" + [i]).style.border = "";
 		}
+		available.push("unlockPlasmaTier2");
 		researched.push("unlockPlasma");
 		techsResearchedNum += 1;
 		noBorder.push("energyNav");
 		resourcesUnlocked.push("plasmaNav");
+		newUnlock("resources");
+	}
+}
+
+function unlockPlasmaTier2(){
+	if(science >= 60000){
+		science -= 60000;
+		document.getElementById("unlockPlasmaTier2").className = "hidden";
+		document.getElementById("plasmaTier2").className = "";
+		researched.push("unlockPlasmaTier2");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("plasmaTier2");
 		newUnlock("resources");
 	}
 }
@@ -277,7 +291,6 @@ function unlockEmc(){
 		techsResearchedNum += 1;
 		resourcesUnlocked.push("emcPage");
 		newUnlock("solCenter");
-
 	}
 }
 
@@ -285,12 +298,41 @@ function unlockMeteorite(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockMeteorite").className = "hidden";
+		document.getElementById("unlockMeteoriteTier1").className = "";
 		document.getElementById("meteoriteEMC").className = "";
 		document.getElementById("meteoriteNav").className = "outerPlanet";
+		available.push("unlockMeteoriteTier1");
 		researched.push("unlockMeteorite");
 		techsResearchedNum += 1;
 		resourcesUnlockedNum += 1;
 		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
+		newUnlock("resources");
+		newUnlock("wonder");
+	}
+}
+
+function unlockMeteoriteTier1(){
+	if(science >= 75000){
+		science -= 75000;
+		document.getElementById("unlockMeteoriteTier1").className = "hidden";
+		document.getElementById("unlockMeteoriteTier2").className = "";
+		document.getElementById("meteoriteTier1").className = "";
+		available.push("unlockMeteoriteTier2");
+		researched.push("unlockMeteoriteTier1");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("meteoriteTier1");
+		newUnlock("resources");
+	}
+}
+
+function unlockMeteoriteTier2(){
+	if(science >= 100000){
+		science -= 100000;
+		document.getElementById("unlockMeteoriteTier2").className = "hidden";
+		document.getElementById("meteoriteTier2").className = "";
+		researched.push("unlockMeteoriteTier2");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("meteoriteTier2");
 		newUnlock("resources");
 	}
 }
@@ -299,10 +341,24 @@ function unlockDyson(){
 	if(science >= 100000){
 		science -= 100000;
 		document.getElementById("unlockDyson").className = "hidden";
+		document.getElementById("unlockDysonSphere").className = "";
 		document.getElementById("dysonPage").className = "";
+		available.push("unlockDysonSphere");
 		researched.push("unlockDyson");
 		techsResearchedNum += 1;
 		resourcesUnlocked.push("dysonPage");
+		newUnlock("solCenter");
+	}
+}
+
+function unlockDysonSphere(){
+	if(science >= 500000){
+		science -= 500000;
+		document.getElementById("unlockDysonSphere").className = "hidden";
+		document.getElementById("dysonSphere").className = "";
+		researched.push("unlockDysonSphere");
+		techsResearchedNum += 1;
+		resourcesUnlocked.push("dysonSphere");
 		newUnlock("solCenter");
 	}
 }

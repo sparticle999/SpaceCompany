@@ -1,9 +1,12 @@
 function newUnlock(tab){
 	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign";
+	if(tab === "more"){
+		document.getElementById("achievementsTabGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign";
+	}
 }
 
 function tabClicked(tab){
-	document.getElementById(tab + "TabGlyph").className = "glyphicon glyphicon-exclamation-sign hidden";
+	document.getElementById(tab + "TabGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign hidden";
 }
 
 function activeResourceTab(tab){
@@ -48,21 +51,45 @@ function activeSolarTab(tab){
 		if(document.getElementById("mercury").className != "inner hidden"){
 			document.getElementById("mercury").className = "inner";
 		}
-	}
-	for(var i = 0; i < explored.length; i++){
-		if(document.getElementById(explored[i]).className === "inner info"){
-			document.getElementById(explored[i]).className = "inner";
+		if(document.getElementById("moon").className != "inner hidden"){
+			document.getElementById("moon").className = "inner";
 		}
-		if(document.getElementById(explored[i]).className === "outer info"){
-			document.getElementById(explored[i]).className = "outer";
+		if(document.getElementById("venus").className != "inner hidden"){
+			document.getElementById("venus").className = "inner";
+		}
+		if(document.getElementById("mars").className != "inner hidden"){
+			document.getElementById("mars").className = "inner";
+		}
+		if(document.getElementById("asteroidBelt").className != "inner hidden"){
+			document.getElementById("asteroidBelt").className = "inner";
 		}
 	}
 	if(contains(explored, "asteroidBelt")){
+		if(document.getElementById("wonderStation").className != "inner hidden"){
+			document.getElementById("wonderStation").className = "inner";
+		}
+		if(document.getElementById("jupiter").className != "outer hidden"){
+			document.getElementById("jupiter").className = "outer";
+		}
+		if(document.getElementById("saturn").className != "outer hidden"){
+			document.getElementById("saturn").className = "outer";
+		}
 		if(document.getElementById("uranus").className != "outer hidden"){
 			document.getElementById("uranus").className = "outer";
 		}
 		if(document.getElementById("neptune").className != "outer hidden"){
 			document.getElementById("neptune").className = "outer";
+		}
+		if(document.getElementById("pluto").className != "outer hidden"){
+			document.getElementById("pluto").className = "outer";
+		}
+		if(document.getElementById("kuiperBelt").className != "outer hidden"){
+			document.getElementById("kuiperBelt").className = "outer";
+		};
+	}
+	if(contains(explored, "kuiperBelt")){
+		if(document.getElementById("kuiperBelt").className != "outer hidden"){
+			document.getElementById("solCenter").className = "outer";
 		}
 	}
 	document.getElementById(tab).className += " info";
@@ -78,6 +105,9 @@ function activeWonderTab(tab){
 	}
 	if(document.getElementById("techWonderNav").className != "hidden"){
 		document.getElementById("techWonderNav").className = "";
+	}
+	if(document.getElementById("meteoriteWonderNav").className != "hidden"){
+		document.getElementById("meteoriteWonderNav").className = "";
 	}
 	document.getElementById(tab).className = "info";
 }

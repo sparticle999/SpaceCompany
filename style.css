@@ -1,7 +1,9 @@
 .pointer:hover{
 	cursor: pointer;
 }
-
+.default, .disabled{
+	cursor: default !important;
+}
 .no-select{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
@@ -9,11 +11,13 @@
 }
 
 .red{
-	color: red;
+	color: red !important;
 }
-
+.bold{
+	font-weight:bold;
+}
 .green{
-	color: #00b200;
+	color: #00b200 !important;
 }
 
 .theader{
@@ -22,19 +26,5 @@
 
 .achievementTD{
 	padding: 0px;
-}
-
-.achievementTD div{
-	width: 64px;
-	height:64px;
-}
-
-.achievementTD div img{
-	width: 64px;
-	height:64px;
-	opacity:0.1;
-}
-
-.achieved div img{
-	opacity:1;
+	background-color: white !important;
 }

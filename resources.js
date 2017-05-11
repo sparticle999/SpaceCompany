@@ -98,12 +98,6 @@ function gainResources(){
 	else{
 		ice = iceStorage;
 	}
-	if(meteorite + meteoriteps/10 < meteoriteStorage){
-		meteorite += meteoriteps/10;
-	}
-	else{
-		meteorite = meteoriteStorage;
-	}
 	if(oil + oilps/10 < oilStorage){
 		oil += oilps/10;
 	}
@@ -112,7 +106,7 @@ function gainResources(){
 	}
 
 	
-	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*45));
+	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
 	if(charcoalToggled === true){
 		if(chemicalPlantToggled === true){
 			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
@@ -128,7 +122,6 @@ function gainResources(){
 		else{
 			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine);
 		}
-		
 	}
 	
 	
@@ -179,6 +172,9 @@ function gainResources(){
 	}
 	if(lava >= lavaStorage){
 		document.getElementById("lava").className = "green";
+	}
+	if(meteorite >= meteoriteStorage){
+		document.getElementById("meteorite").className = "green";
 	}
 }
 
@@ -594,6 +590,17 @@ function toggleHeater(){
 	}
 }
 
+function togglePlasmatic(){
+	if(plasmaticToggled === true){
+		plasmaticToggled = false;
+		document.getElementById("plasmaticToggled").innerHTML = "On";
+	}
+	else{
+		plasmaticToggled = true;
+		document.getElementById("plasmaticToggled").innerHTML = "Off";
+	}
+}
+
 function toggleChemicalPlant(){
 	if(chemicalPlantToggled === true){
 		chemicalPlantToggled = false;
@@ -605,17 +612,35 @@ function toggleChemicalPlant(){
 	}
 }
 
+function toggleMeteorite(){
+	if(meteoriteToggled === true){
+		meteoriteToggled = false;
+		document.getElementById("meteoriteToggled").innerHTML = "On";
+	}
+	else{
+		meteoriteToggled = true;
+		document.getElementById("meteoriteToggled").innerHTML = "Off";
+	}
+}
+
 function destroyMachine(machine, id){
 	if(window[id] > 0){
 		window[id] -= 1;
 		document.getElementById(id).innerHTML = window[id];
+		// for(var i = 0; i < resoures.length; I++){
+		// 	if(typeof window[id + resources[i]] !== "undefined"){
+		// 		window[id + resources[i]] = Math.floor(75000 * Math.pow(1.1,window[id]));
+		// 	}
+		// }
+		// refreshUI();
 	}
 }
 
 function getHeater(){
 	if(spaceMetal >= heaterSpaceMetalCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
-		metal -= heaterSpaceMetalCost;
+		spaceMetal -= heaterSpaceMetalCost;
 		gem -= heaterGemCost;
+		silicon -= heaterSiliconCost;
 		heater += 1;
 		heaterSpaceMetalCost = Math.floor(75000 * Math.pow(1.1,heater));
 		heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater));
@@ -629,15 +654,33 @@ function getHeater(){
 	}
 }
 
+function getPlasmatic(){
+	if(spaceMetal >= plasmaticSpaceMetalCost && silicon >= plasmaticSiliconCost && meteorite >= plasmaticMeteoriteCost){
+		spaceMetal -= plasmaticSpaceMetalCost;
+		silicon -= plasmaticSiliconCost;
+		meteorite -= plasmaticMeteoriteCost;
+		plasmatic += 1;
+		plasmaticSpaceMetalCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
+		plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
+		plasmaticMeteoriteCost = Math.floor(970 * Math.pow(1.1,plasmatic));
+		document.getElementById("plasmatic").innerHTML = plasmatic;
+		document.getElementById("plasmaticSpaceMetalCost").innerHTML = commafy(plasmaticSpaceMetalCost);
+		document.getElementById("plasmaticSiliconCost").innerHTML = commafy(plasmaticSiliconCost);
+		document.getElementById("plasmaticMeteoriteCost").innerHTML = commafy(plasmaticMeteoriteCost);
+		refresh();
+		tier2 += 1;
+	}
+}
+
 function getBattery(){
 	if(metal >= batteryMetalCost && gem >= batteryGemCost && spaceMetal >= batterySpaceMetalCost ){
 		metal -= batteryMetalCost;
 		gem -= batteryGemCost;
 		spaceMetal -= batterySpaceMetalCost;
 		battery += 1;
-		batteryMetalCost = Math.floor(500000 * Math.pow(1.1,battery));
-		batteryGemCost = Math.floor(500000 * Math.pow(1.1,battery));
-		batterySpaceMetalCost = Math.floor(300000 * Math.pow(1.1,battery));
+		batteryMetalCost = Math.floor(50000 * Math.pow(1.1,battery));
+		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
+		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
 		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
 		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
@@ -799,6 +842,24 @@ function getEnricher(){
 	}
 }
 
+function getRecycler(){
+	if(spaceMetal >= recyclerSpaceMetalCost && methane >= recyclerMethaneCost && meteorite >= recyclerMeteoriteCost){
+		spaceMetal -= recyclerSpaceMetalCost;
+		methane -= recyclerMethaneCost;
+		meteorite -= recyclerMeteoriteCost;
+		recycler += 1;
+		recyclerMeteoriteCost = Math.floor(830 * Math.pow(1.1,recycler));
+		recyclerMethaneCost = Math.floor(47000 * Math.pow(1.1,recycler));
+		recyclerSpaceMetalCost = Math.floor(93100 * Math.pow(1.1,recycler));
+		document.getElementById("recycler").innerHTML = recycler;
+		document.getElementById("recyclerSpaceMetalCost").innerHTML = commafy(recyclerSpaceMetalCost);
+		document.getElementById("recyclerMethaneCost").innerHTML = commafy(recyclerMethaneCost);
+		document.getElementById("recyclerMeteoriteCost").innerHTML = commafy(recyclerMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getPump(){
 	if(metal >= pumpMetalCost && gem >= pumpGemCost){
 		metal -= pumpMetalCost;
@@ -811,21 +872,6 @@ function getPump(){
 		document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
 		refresh();
 		tier1 += 1;
-		if(pump >= 1 && document.getElementById("Build 1 Small Pump").className === "achievementTD"){
-			document.getElementById("Build 1 Small Pump").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Small Pump");
-		}
-		if(pump >= 10 && document.getElementById("Build 1 Small Pumps").className === "achievementTD"){
-			document.getElementById("Build 10 Small Pumps").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Small Pumps");
-		}
-		if(pump >= 100 && document.getElementById("Build 1 Small Pumps").className === "achievementTD"){
-			document.getElementById("Build 100 Small Pumps").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Small Pumps");
-		}
 	}
 }
 
@@ -844,21 +890,6 @@ function getPumpjack(){
 		document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
 		refresh();
 		tier2 += 1;
-		if(pumpjack >= 1 && document.getElementById("Build 1 Pumpjack").className === "achievementTD"){
-			document.getElementById("Build 1 Pumpjack").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Pumpjack");
-		}
-		if(pumpjack >= 10 && document.getElementById("Build 1 Pumpjacks").className === "achievementTD"){
-			document.getElementById("Build 10 Pumpjacks").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Pumpjacks");
-		}
-		if(pumpjack >= 100 && document.getElementById("Build 1 Pumpjacks").className === "achievementTD"){
-			document.getElementById("Build 100 Pumpjacks").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Pumpjacks");
-		}
 	}
 }
 
@@ -877,21 +908,24 @@ function getOilField(){
 		document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(oilField >= 1 && document.getElementById("Build 1 Oil Field").className === "achievementTD"){
-			document.getElementById("Build 1 Oil Field").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Oil Field");
-		}
-		if(oilField >= 10 && document.getElementById("Build 1 Oil Fields").className === "achievementTD"){
-			document.getElementById("Build 10 Oil Fields").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Oil Fields");
-		}
-		if(oilField >= 100 && document.getElementById("Build 1 Oil Fields").className === "achievementTD"){
-			document.getElementById("Build 100 Oil Fields").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Oil Fields");
-		}
+	}
+}
+
+function getOilRig(){
+	if(spaceMetal >= oilRigSpaceMetalCost && titanium >= oilRigTitaniumCost && meteorite >= oilRigMeteoriteCost){
+		spaceMetal -= oilRigSpaceMetalCost;
+		titanium -= oilRigTitaniumCost;
+		meteorite -= oilRigMeteoriteCost;
+		oilRig += 1;
+		oilRigMeteoriteCost = Math.floor(3900 * Math.pow(1.1,oilRig));
+		oilRigTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilRig));
+		oilRigSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilRig));
+		document.getElementById("oilRig").innerHTML = oilRig;
+		document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
+		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
+		document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -908,30 +942,14 @@ function getMiner(){
 		if(researchUnlocked === false){
 			if(miner >= 1){
 				document.getElementById("researchTab").className = "";
-				document.getElementById("dropdownMenu").className = "dropdown";
 				researchUnlocked = true;
 				tabsUnlockedNum += 1;
-				tabsUnlocked.push("researchTab", "dropdownMenu");
+				tabsUnlocked.push("researchTab");
 				newUnlock("research");
 			}
 		}
 		refresh();
 		tier1 += 1;
-		if(miner >= 1 && document.getElementById("Build 1 Miner").className === "achievementTD"){
-			document.getElementById("Build 1 Miner").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Miner");
-		}
-		if(miner >= 10 && document.getElementById("Build 10 Miners").className === "achievementTD"){
-			document.getElementById("Build 10 Miners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Miners");
-		}
-		if(miner >= 100 && document.getElementById("Build 100 Miners").className === "achievementTD"){
-			document.getElementById("Build 100 Miners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Miners");
-		}
 	}
 }
 
@@ -950,27 +968,12 @@ function getHeavyDrill(){
 		document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
 		refresh();
 		tier2 += 1;
-		if(heavyDrill >= 1 && document.getElementById("Build 1 Heavy Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Heavy Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Heavy Drill");
-		}
-		if(heavyDrill >= 10 && document.getElementById("Build 1 Heavy Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Heavy Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Heavy Drills");
-		}
-		if(heavyDrill >= 100 && document.getElementById("Build 1 Heavy Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Heavy Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Heavy Drills");
-		}
 	}
 }
 
 function getGigaDrill(){
 	if(spaceMetal >= gigaDrillSpaceMetalCost && gem >= gigaDrillGemCost && silicon >= gigaDrillSiliconCost){
-		metal -= gigaDrillSpaceMetalCost;
+		spaceMetal -= gigaDrillSpaceMetalCost;
 		gem -= gigaDrillGemCost;
 		silicon -= gigaDrillSiliconCost;
 		gigaDrill += 1;
@@ -983,21 +986,24 @@ function getGigaDrill(){
 		document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(gigaDrill >= 1 && document.getElementById("Build 1 Giga Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Giga Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Giga Drill");
-		}
-		if(gigaDrill >= 10 && document.getElementById("Build 1 Giga Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Giga Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Giga Drills");
-		}
-		if(gigaDrill >= 100 && document.getElementById("Build 1 Giga Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Giga Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Giga Drills");
-		}
+	}
+}
+
+function getQuantumDrill(){
+	if(spaceMetal >= quantumDrillSpaceMetalCost && gold >= quantumDrillGoldCost && meteorite >= quantumDrillMeteoriteCost){
+		spaceMetal -= quantumDrillSpaceMetalCost;
+		gold -= quantumDrillGoldCost;
+		meteorite -= quantumDrillMeteoriteCost;
+		quantumDrill += 1;
+		quantumDrillMeteoriteCost = Math.floor(900 * Math.pow(1.1,quantumDrill));
+		quantumDrillGoldCost = Math.floor(18700 * Math.pow(1.1,quantumDrill));
+		quantumDrillSpaceMetalCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
+		document.getElementById("quantumDrill").innerHTML = quantumDrill;
+		document.getElementById("quantumDrillSpaceMetalCost").innerHTML = commafy(quantumDrillSpaceMetalCost);
+		document.getElementById("quantumDrillGoldCost").innerHTML = commafy(quantumDrillGoldCost);
+		document.getElementById("quantumDrillMeteoriteCost").innerHTML = commafy(quantumDrillMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1013,21 +1019,6 @@ function getGemMiner(){
 		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
 		refresh();
 		tier1 += 1;
-		if(gemMiner >= 1 && document.getElementById("Build 1 Miner").className === "achievementTD"){
-			document.getElementById("Build 1 Gem Miner").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Gem Miner");
-		}
-		if(gemMiner >= 10 && document.getElementById("Build 1 Miner").className === "achievementTD"){
-			document.getElementById("Build 10 Gem Miners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Gem Miners");
-		}
-		if(gemMiner >= 100 && document.getElementById("Build 1 Miner").className === "achievementTD"){
-			document.getElementById("Build 100 Gem Miners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Gem Miners");
-		}
 	}
 }
 
@@ -1046,21 +1037,6 @@ function getAdvancedDrill(){
 		document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
 		refresh();
 		tier2 += 1;
-		if(pumpjack >= 1 && document.getElementById("Build 1 Advanced Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Advanced Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Advanced Drill");
-		}
-		if(pumpjack >= 10 && document.getElementById("Build 1 Advanced Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Advanced Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Advanced Drills");
-		}
-		if(pumpjack >= 100 && document.getElementById("Build 1 Advanced Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Advanced Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Advanced Drills");
-		}
 	}
 }
 
@@ -1070,30 +1046,33 @@ function getDiamondDrill(){
 		gem -= diamondDrillGemCost;
 		silicon -= diamondDrillSiliconCost;
 		diamondDrill += 1;
-		diamondDrillSiliconCost = Math.floor(3900 * Math.pow(1.1,diamondDrill));
-		diamondDrillGemCost = Math.floor(2700 * Math.pow(1.1,diamondDrill));
-		diamondDrillSpaceMetalCost = Math.floor(3100 * Math.pow(1.1,diamondDrill));
+		diamondDrillSiliconCost = Math.floor(4500 * Math.pow(1.1,diamondDrill));
+		diamondDrillGemCost = Math.floor(8000 * Math.pow(1.1,diamondDrill));
+		diamondDrillSpaceMetalCost = Math.floor(3400 * Math.pow(1.1,diamondDrill));
 		document.getElementById("diamondDrill").innerHTML = diamondDrill;
 		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
 		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
 		document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(diamondDrill >= 1 && document.getElementById("Build 1 Diamond-Encrusted Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Diamond-Encrusted Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Diamond-Encrusted Drill");
-		}
-		if(diamondDrill >= 10 && document.getElementById("Build 1 Diamond-Encrusted Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Diamond-Encrusted Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Diamond-Encrusted Drill");
-		}
-		if(diamondDrill >= 100 && document.getElementById("Build 1 Diamond-Encrusted Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Diamond-Encrusted Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Diamond-Encrusted Drill");
-		}
+	}
+}
+
+function getCarbyneDrill(){
+	if(spaceMetal >= carbyneDrillSpaceMetalCost && gem >= carbyneDrillGemCost && meteorite >= carbyneDrillMeteoriteCost){
+		spaceMetal -= carbyneDrillSpaceMetalCost;
+		gem -= carbyneDrillGemCost;
+		meteorite -= carbyneDrillMeteoriteCost;
+		carbyneDrill += 1;
+		carbyneDrillMeteoriteCost = Math.floor(800 * Math.pow(1.1,carbyneDrill));
+		carbyneDrillGemCost = Math.floor(27000 * Math.pow(1.1,carbyneDrill));
+		carbyneDrillSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
+		document.getElementById("carbyneDrill").innerHTML = carbyneDrill;
+		document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = commafy(carbyneDrillSpaceMetalCost);
+		document.getElementById("carbyneDrillGemCost").innerHTML = commafy(carbyneDrillGemCost);
+		document.getElementById("carbyneDrillMeteoriteCost").innerHTML = commafy(carbyneDrillMeteoriteCost);
+		refresh();
+		tier3 += 1;
 	}
 }
 
@@ -1109,21 +1088,6 @@ function getWoodburner(){
 		document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
 		refresh();
 		tier1 += 1;
-		if(woodburner >= 1 && document.getElementById("Build 1 Woodburner").className === "achievementTD"){
-			document.getElementById("Build 1 Woodburner").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Woodburner");
-		}
-		if(woodburner >= 10 && document.getElementById("Build 1 Woodburners").className === "achievementTD"){
-			document.getElementById("Build 10 Woodburners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Woodburners");
-		}
-		if(woodburner >= 100 && document.getElementById("Build 1 Woodburners").className === "achievementTD"){
-			document.getElementById("Build 100 Woodburners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Woodburners");
-		}
 	}
 }
 
@@ -1142,26 +1106,11 @@ function getFurnace(){
 		document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
 		refresh();
 		tier2 += 1;
-		if(furnace >= 1 && document.getElementById("Build 1 Furnace").className === "achievementTD"){
-			document.getElementById("Build 1 Furnace").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Furnace");
-		}
-		if(furnace >= 10 && document.getElementById("Build 1 Furnaces").className === "achievementTD"){
-			document.getElementById("Build 10 Furnaces").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Furnaces");
-		}
-		if(furnace >= 100 && document.getElementById("Build 1 Furnaces").className === "achievementTD"){
-			document.getElementById("Build 100 Furnaces").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Furnaces");
-		}
 	}
 }
 
 function getKiln(){
-	if(metal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
+	if(spaceMetal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
 		spaceMetal -= kilnSpaceMetalCost;
 		gem -= kilnGemCost;
 		silicon -= kilnSiliconCost;
@@ -1175,21 +1124,24 @@ function getKiln(){
 		document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(kiln >= 1 && document.getElementById("Build 1 Industrial Kiln").className === "achievementTD"){
-			document.getElementById("Build 1 Industrial Kiln").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Industrial Kiln");
-		}
-		if(kiln >= 10 && document.getElementById("Build 1 Industrial Kilns").className === "achievementTD"){
-			document.getElementById("Build 10 Industrial Kilns").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Industrial Kilns");
-		}
-		if(kiln >= 100 && document.getElementById("Build 1 Industrial Kilns").className === "achievementTD"){
-			document.getElementById("Build 100 Industrial Kilns").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Industrial Kilns");
-		}
+	}
+}
+
+function getFryer(){
+	if(spaceMetal >= fryerSpaceMetalCost && lava >= fryerLavaCost && meteorite >= fryerMeteoriteCost){
+		spaceMetal -= fryerSpaceMetalCost;
+		lava -= fryerLavaCost;
+		meteorite -= fryerMeteoriteCost;
+		fryer += 1;
+		fryerMeteoriteCost = Math.floor(560 * Math.pow(1.1,fryer));
+		fryerLavaCost = Math.floor(12500 * Math.pow(1.1,fryer));
+		fryerSpaceMetalCost = Math.floor(15800 * Math.pow(1.1,fryer));
+		document.getElementById("fryer").innerHTML = fryer;
+		document.getElementById("fryerSpaceMetalCost").innerHTML = commafy(fryerSpaceMetalCost);
+		document.getElementById("fryerLavaCost").innerHTML = commafy(fryerLavaCost);
+		document.getElementById("fryerMeteoriteCost").innerHTML = commafy(fryerMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1205,21 +1157,6 @@ function getWoodcutter(){
 		document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
 		refresh();
 		tier1 += 1;
-		if(woodcutter >= 1 && document.getElementById("Build 1 Woodcutter").className === "achievementTD"){
-			document.getElementById("Build 1 Woodcutter").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Woodcutter");
-		}
-		if(woodcutter >= 10 && document.getElementById("Build 1 Woodcutters").className === "achievementTD"){
-			document.getElementById("Build 10 Woodcutters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Woodcutters");
-		}
-		if(woodcutter >= 100 && document.getElementById("Build 1 Woodcutters").className === "achievementTD"){
-			document.getElementById("Build 100 Woodcutters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Woodcutters");
-		}
 	}
 }
 
@@ -1238,22 +1175,6 @@ function getLaserCutter(){
 		document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
 		refresh();
 		tier2 += 1;
-		if(laserCutter >= 1 && document.getElementById("Build 1 Laser Cutter").className === "achievementTD"){
-			document.getElementById("Build 1 Laser Cutter").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Laser Cutter");
-
-		}
-		if(laserCutter >= 10 && document.getElementById("Build 1 Laser Cutters").className === "achievementTD"){
-			document.getElementById("Build 10 Laser Cutters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Laser Cutters");
-		}
-		if(laserCutter >= 100 && document.getElementById("Build 1 Laser Cutters").className === "achievementTD"){
-			document.getElementById("Build 100 Laser Cutters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Laser Cutters");
-		}
 	}
 }
 
@@ -1272,21 +1193,24 @@ function getDeforester(){
 		document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(deforester >= 1 && document.getElementById("Build 1 Mass Deforester").className === "achievementTD"){
-			document.getElementById("Build 1 Mass Deforester").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Mass Deforester");
-		}
-		if(deforester >= 10 && document.getElementById("Build 1 Mass Deforesters").className === "achievementTD"){
-			document.getElementById("Build 10 Mass Deforesters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Mass Deforesters");
-		}
-		if(deforester >= 100 && document.getElementById("Build 1 Mass Deforesters").className === "achievementTD"){
-			document.getElementById("Build 100 Mass Deforesters").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Mass Deforesters");
-		}
+	}
+}
+
+function getInfuser(){
+	if(spaceMetal >= infuserSpaceMetalCost && oil >= infuserOilCost && meteorite >= infuserMeteoriteCost){
+		spaceMetal -= infuserSpaceMetalCost;
+		oil -= infuserOilCost;
+		meteorite -= infuserMeteoriteCost;
+		infuser += 1;
+		infuserSpaceMetalCost = Math.floor(16000 * Math.pow(1.1,infuser));
+		infuserOilCost = Math.floor(31200 * Math.pow(1.1,infuser));
+		infuserMeteoriteCost = Math.floor(490 * Math.pow(1.1,infuser));
+		document.getElementById("infuser").innerHTML = infuser;
+		document.getElementById("infuserSpaceMetalCost").innerHTML = commafy(infuserSpaceMetalCost);
+		document.getElementById("infuserOilCost").innerHTML = commafy(infuserOilCost);
+		document.getElementById("infuserMeteoriteCost").innerHTML = commafy(infuserMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1299,21 +1223,6 @@ function getMoonWorker(){
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
 		tier1 += 1;
-		if(moonWorker >= 1 && document.getElementById("Build 1 Native Moon Worker").className === "achievementTD"){
-			document.getElementById("Build 1 Native Moon Worker").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Native Moon Worker");
-		}
-		if(moonWorker >= 10 && document.getElementById("Build 1 Native Moon Workers").className === "achievementTD"){
-			document.getElementById("Build 10 Native Moon Workers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Native Moon Workers");
-		}
-		if(moonWorker >= 100 && document.getElementById("Build 1 Native Moon Workers").className === "achievementTD"){
-			document.getElementById("Build 100 Native Moon Workers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Native Moon Workers");
-		}
 	}
 }
 
@@ -1332,21 +1241,6 @@ function getMoonDrill(){
 		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
 		refresh();
 		tier2 += 1;
-		if(moonDrill >= 1 && document.getElementById("Build 1 Low-Gravity Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Low-Gravity Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Low-Gravity Drill");
-		}
-		if(moonDrill >= 10 && document.getElementById("Build 1 Low-Gravity Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Low-Gravity Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Low-Gravity Drills");
-		}
-		if(moonDrill >= 100 && document.getElementById("Build 1 Low-Gravity Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Low-Gravity Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Low-Gravity Drills");
-		}
 	}
 }
 
@@ -1365,21 +1259,24 @@ function getMoonQuarry(){
 		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
 		refresh();
 		tier3 += 1;
-		if(moonQuarry >= 1 && document.getElementById("Build 1 Moon Quarry").className === "achievementTD"){
-			document.getElementById("Build 1 Moon Quarry").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Moon Quarry");
-		}
-		if(moonQuarry >= 10 && document.getElementById("Build 1 Moon Quarries").className === "achievementTD"){
-			document.getElementById("Build 10 Moon Quarries").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Moon Quarries");
-		}
-		if(moonQuarry >= 100 && document.getElementById("Build 1 Moon Quarries").className === "achievementTD"){
-			document.getElementById("Build 100 Moon Quarries").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Moon Quarries");
-		}
+	}
+}
+
+function getPlanetExcavator(){
+	if(titanium >= planetExcavatorTitaniumCost && ice >= planetExcavatorIceCost && meteorite >= planetExcavatorMeteoriteCost){
+		titanium -= planetExcavatorTitaniumCost;
+		ice -= planetExcavatorIceCost;
+		meteorite -= planetExcavatorMeteoriteCost;
+		planetExcavator += 1;
+		planetExcavatorMeteoriteCost = Math.floor(500 * Math.pow(1.1,planetExcavator));
+		planetExcavatorIceCost = Math.floor(37000 * Math.pow(1.1,planetExcavator));
+		planetExcavatorTitaniumCost = Math.floor(45000 * Math.pow(1.1,planetExcavator));
+		document.getElementById("planetExcavator").innerHTML = planetExcavator;
+		document.getElementById("planetExcavatorTitaniumCost").innerHTML = commafy(planetExcavatorTitaniumCost);
+		document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);
+		document.getElementById("planetExcavatorMeteoriteCost").innerHTML = commafy(planetExcavatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1395,21 +1292,6 @@ function getVacuum(){
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
 		tier1 += 1;
-		if(vacuum >= 1 && document.getElementById("Build 1 Vacuum Cleaner").className === "achievementTD"){
-			document.getElementById("Build 1 Vacuum Cleaner").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Vacuum Cleaner");
-		}
-		if(vacuum >= 10 && document.getElementById("Build 1 Vacuum Cleaners").className === "achievementTD"){
-			document.getElementById("Build 10 Vacuum Cleaners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Vacuum Cleaners");
-		}
-		if(vacuum >= 100 && document.getElementById("Build 1 Vacuum Cleaners").className === "achievementTD"){
-			document.getElementById("Build 100 Vacuum Cleaners").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Vacuum Cleaners");
-		}
 	}
 }
 
@@ -1428,21 +1310,6 @@ function getSuctionExcavator(){
 		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
 		refresh();
 		tier2 += 1;
-		if(suctionExcavator >= 1 && document.getElementById("Build 1 Suction Excavator").className === "achievementTD"){
-			document.getElementById("Build 1 Suction Excavator").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Suction Excavator");
-		}
-		if(suctionExcavator >= 10 && document.getElementById("Build 1 Suction Excavators").className === "achievementTD"){
-			document.getElementById("Build 10 Suction Excavators").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Suction Excavators");
-		}
-		if(suctionExcavator >= 100 && document.getElementById("Build 1 Suction Excavators").className === "achievementTD"){
-			document.getElementById("Build 100 Suction Excavators").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Suction Excavators");
-		}
 	}
 }
 
@@ -1461,21 +1328,24 @@ function getSpaceCow(){
 		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(spaceCow >= 1 && document.getElementById("Build 1 Space Cow Plantation").className === "achievementTD"){
-			document.getElementById("Build 1 Space Cow Plantation").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Space Cow Plantation");
-		}
-		if(spaceCow >= 10 && document.getElementById("Build 1 Space Cow Plantations").className === "achievementTD"){
-			document.getElementById("Build 10 Space Cow Plantations").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Space Cow Plantations");
-		}
-		if(spaceCow >= 100 && document.getElementById("Build 1 Space Cow Plantations").className === "achievementTD"){
-			document.getElementById("Build 100 Space Cow Plantations").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Space Cow Plantations");
-		}
+	}
+}
+
+function getVent(){
+	if(spaceMetal >= ventSpaceMetalCost && helium >= ventHeliumCost && meteorite >= ventMeteoriteCost){
+		spaceMetal -= ventSpaceMetalCost;
+		helium -= ventHeliumCost;
+		meteorite -= ventMeteoriteCost;
+		vent += 1;
+		ventMeteoriteCost = Math.floor(390 * Math.pow(1.1,vent));
+		ventHeliumCost = Math.floor(47000 * Math.pow(1.1,vent));
+		ventSpaceMetalCost = Math.floor(52000 * Math.pow(1.1,vent));
+		document.getElementById("vent").innerHTML = vent;
+		document.getElementById("ventSpaceMetalCost").innerHTML = commafy(ventSpaceMetalCost);
+		document.getElementById("ventHeliumCost").innerHTML = commafy(ventHeliumCost);
+		document.getElementById("ventMeteoriteCost").innerHTML = commafy(ventMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1488,21 +1358,6 @@ function getExplorer(){
 		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 		refresh();
 		tier1 += 1;
-		if(explorer >= 1 && document.getElementById("Build 1 Explorer").className === "achievementTD"){
-			document.getElementById("Build 1 Explorer").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Explorer");
-		}
-		if(explorer >= 10 && document.getElementById("Build 1 Explorers").className === "achievementTD"){
-			document.getElementById("Build 10 Explorers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Explorers");
-		}
-		if(explorer >= 100 && document.getElementById("Build 1 Explorers").className === "achievementTD"){
-			document.getElementById("Build 100 Explorers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Explorers");
-		}
 	}
 }
 
@@ -1521,21 +1376,6 @@ function getSpaceMetalDrill(){
 		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
 		refresh();
 		tier2 += 1;
-		if(spaceMetalDrill >= 1 && document.getElementById("Build 1 Space Metal Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Space Metal Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Space Metal Drill");
-		}
-		if(spaceMetalDrill >= 10 && document.getElementById("Build 1 Space Metal Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Space Metal Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Space Metal Drills");
-		}
-		if(spaceMetalDrill >= 100 && document.getElementById("Build 1 Space Metal Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Space Metal Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Space Metal Drills");
-		}
 	}
 }
 
@@ -1554,21 +1394,24 @@ function getPentaDrill(){
 		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(pentaDrill >= 1 && document.getElementById("Build 1 Penta-Drill").className === "achievementTD"){
-			document.getElementById("Build 1 Penta-Drill").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Penta-Drill");
-		}
-		if(pentaDrill >= 10 && document.getElementById("Build 1 Penta-Drills").className === "achievementTD"){
-			document.getElementById("Build 10 Penta-Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Penta-Drills");
-		}
-		if(pentaDrill >= 100 && document.getElementById("Build 1 Penta-Drills").className === "achievementTD"){
-			document.getElementById("Build 100 Penta-Drills").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Penta-Drills");
-		}
+	}
+}
+
+function getTitanDrill(){
+	if(spaceMetal >= titanDrillSpaceMetalCost && gold >= titanDrillGoldCost && meteorite >= titanDrillMeteoriteCost){
+		spaceMetal -= titanDrillSpaceMetalCost;
+		gold -= titanDrillGoldCost;
+		meteorite -= titanDrillMeteoriteCost;
+		titanDrill += 1;
+		titanDrillSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,titanDrill));
+		titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
+		titanDrillMeteoriteCost = Math.floor(600 * Math.pow(1.1,titanDrill));
+		document.getElementById("titanDrill").innerHTML = titanDrill;
+		document.getElementById("titanDrillSpaceMetalCost").innerHTML = commafy(titanDrillSpaceMetalCost);
+		document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
+		document.getElementById("titanDrillMeteoriteCost").innerHTML = commafy(titanDrillMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1584,21 +1427,6 @@ function getDroid(){
 		document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
 		refresh();
 		tier1 += 1;
-		if(droid >= 1 && document.getElementById("Build 1 Rocket Droid").className === "achievementTD"){
-			document.getElementById("Build 1 Rocket Droid").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Rocket Droid");
-		}
-		if(droid >= 10 && document.getElementById("Build 1 Rocket Droids").className === "achievementTD"){
-			document.getElementById("Build 10 Rocket Droids").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Rocket Droids");
-		}
-		if(droid >= 100 && document.getElementById("Build 1 Rocket Droids").className === "achievementTD"){
-			document.getElementById("Build 100 Rocket Droids").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Rocket Droids");
-		}
 	}
 }
 
@@ -1617,21 +1445,6 @@ function getDestroyer(){
 		document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
 		refresh();
 		tier2 += 1;
-		if(destroyer >= 1 && document.getElementById("Build 1 Asteroid Destroyer").className === "achievementTD"){
-			document.getElementById("Build 1 Asteroid Destroyer").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Asteroid Destroyer");
-		}
-		if(destroyer >= 10 && document.getElementById("Build 1 Asteroid Destroyers").className === "achievementTD"){
-			document.getElementById("Build 10 Asteroid Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Asteroid Destroyers");
-		}
-		if(destroyer >= 100 && document.getElementById("Build 1 Asteroid Destroyers").className === "achievementTD"){
-			document.getElementById("Build 100 Asteroid Destroyers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Asteroid Destroyers");
-		}
 	}
 }
 
@@ -1650,21 +1463,24 @@ function getDeathStar(){
 		document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(deathStar >= 1 && document.getElementById("Build 1 Death Star Jr").className === "achievementTD"){
-			document.getElementById("Build 1 Death Star Jr").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Death Star Jr");
-		}
-		if(deathStar >= 10 && document.getElementById("Build 1 Death Star Jrs").className === "achievementTD"){
-			document.getElementById("Build 10 Death Star Jrs").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Death Star Jrs");
-		}
-		if(deathStar >= 100 && document.getElementById("Build 1 Death Star Jrs").className === "achievementTD"){
-			document.getElementById("Build 100 Death Star Jrs").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Death Star Jrs");
-		}
+	}
+}
+
+function getActuator(){
+	if(spaceMetal >= actuatorSpaceMetalCost && helium >= actuatorHeliumCost && meteorite >= actuatorMeteoriteCost){
+		spaceMetal -= actuatorSpaceMetalCost;
+		helium -= actuatorHeliumCost;
+		meteorite -= actuatorMeteoriteCost;
+		actuator += 1;
+		actuatorMeteoriteCost = Math.floor(600 * Math.pow(1.1,actuator));
+		actuatorHeliumCost = Math.floor(15700 * Math.pow(1.1,actuator));
+		actuatorSpaceMetalCost = Math.floor(61000 * Math.pow(1.1,actuator));
+		document.getElementById("actuator").innerHTML = actuator;
+		document.getElementById("actuatorSpaceMetalCost").innerHTML = commafy(actuatorSpaceMetalCost);
+		document.getElementById("actuatorHeliumCost").innerHTML = commafy(actuatorHeliumCost);
+		document.getElementById("actuatorMeteoriteCost").innerHTML = commafy(actuatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1680,21 +1496,6 @@ function getScout(){
 		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
 		refresh();
 		tier1 += 1;
-		if(scout >= 1 && document.getElementById("Build 1 Scout Ship").className === "achievementTD"){
-			document.getElementById("Build 1 Scout Ship").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Scout Ship");
-		}
-		if(scout >= 10 && document.getElementById("Build 1 Scout Ships").className === "achievementTD"){
-			document.getElementById("Build 10 Scout Ships").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Scout Ships");
-		}
-		if(scout >= 100 && document.getElementById("Build 1 Scout Ships").className === "achievementTD"){
-			document.getElementById("Build 100 Scout Ships").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Scout Ships");
-		}
 	}
 }
 
@@ -1713,21 +1514,6 @@ function getSpaceLaser(){
 		document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
 		refresh();
 		tier2 += 1;
-		if(spaceLaser >= 1 && document.getElementById("Build 1 Interplanetary Laser").className === "achievementTD"){
-			document.getElementById("Build 1 Interplanetary Laser").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Interplanetary Laser");
-		}
-		if(spaceLaser >= 10 && document.getElementById("Build 1 Interplanetary Lasers").className === "achievementTD"){
-			document.getElementById("Build 10 Interplanetary Lasers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Interplanetary Lasers");
-		}
-		if(spaceLaser >= 100 && document.getElementById("Build 1 Interplanetary Lasers").className === "achievementTD"){
-			document.getElementById("Build 100 Interplanetary Lasers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Interplanetary Lasers");
-		}
 	}
 }
 
@@ -1746,21 +1532,24 @@ function getBertha(){
 		document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
 		refresh();
 		tier3 += 1;
-		if(bertha >= 1 && document.getElementById("Build 1 Big Bertha").className === "achievementTD"){
-			document.getElementById("Build 1 Big Bertha").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Big Bertha");
-		}
-		if(bertha >= 10 && document.getElementById("Build 1 Big Berthas").className === "achievementTD"){
-			document.getElementById("Build 10 Big Berthas").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Big Berthas");
-		}
-		if(bertha >= 100 && document.getElementById("Build 1 Big Berthas").className === "achievementTD"){
-			document.getElementById("Build 100 Big Berthas").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Big Berthas");
-		}
+	}
+}
+
+function getCannon(){
+	if(spaceMetal >= cannonSpaceMetalCost && oil >= cannonOilCost && meteorite >= cannonMeteoriteCost){
+		spaceMetal -= cannonSpaceMetalCost;
+		oil -= cannonOilCost;
+		meteorite -= cannonMeteoriteCost;
+		cannon += 1;
+		cannonMeteoriteCost = Math.floor(520 * Math.pow(1.1,cannon));
+		cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
+		cannonSpaceMetalCost = Math.floor(85100 * Math.pow(1.1,cannon));
+		document.getElementById("cannon").innerHTML = cannon;
+		document.getElementById("cannonSpaceMetalCost").innerHTML = commafy(cannonSpaceMetalCost);
+		document.getElementById("cannonOilCost").innerHTML = commafy(cannonOilCost);
+		document.getElementById("cannonMeteoriteCost").innerHTML = commafy(cannonMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1776,21 +1565,6 @@ function getBlowtorch(){
 		document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
 		refresh();
 		tier1 += 1;
-		if(blowtorch >= 1 && document.getElementById("Build 1 Empowered Blowtorch").className === "achievementTD"){
-			document.getElementById("Build 1 Empowered Blowtorche").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Empowered Blowtorch");
-		}
-		if(blowtorch >= 10 && document.getElementById("Build 1 Empowered Blowtorches").className === "achievementTD"){
-			document.getElementById("Build 10 Empowered Blowtorches").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Empowered Blowtorches");
-		}
-		if(blowtorch >= 100 && document.getElementById("Build 1 Empowered Blowtorches").className === "achievementTD"){
-			document.getElementById("Build 100 Empowered Blowtorches").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Empowered Blowtorches");
-		}
 	}
 }
 
@@ -1809,21 +1583,6 @@ function getScorcher(){
 		document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
 		refresh();
 		tier2 += 1;
-		if(scorcher >= 1 && document.getElementById("Build 1 Seaside Scorcher").className === "achievementTD"){
-			document.getElementById("Build 1 Seaside Scorcher").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Seaside Scorcher");
-		}
-		if(scorcher >= 10 && document.getElementById("Build 1 Seaside Scorchers").className === "achievementTD"){
-			document.getElementById("Build 10 Seaside Scorchers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Seaside Scorchers");
-		}
-		if(scorcher >= 100 && document.getElementById("Build 1 Seaside Scorchers").className === "achievementTD"){
-			document.getElementById("Build 100 Seaside Scorchers").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Seaside Scorchers");
-		}
 	}
 }
 
@@ -1842,21 +1601,24 @@ function getAnnihilator(){
 		document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
 		refresh();
 		tier3 += 1;
-		if(annihilator >= 1 && document.getElementById("Build 1 Beach Annihilator").className === "achievementTD"){
-			document.getElementById("Build 1 Beach Annihilator").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 1 Beach Annihilator");
-		}
-		if(annihilator >= 10 && document.getElementById("Build 1 Beach Annihilators").className === "achievementTD"){
-			document.getElementById("Build 10 Beach Annihilators").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 10 Beach Annihilators");
-		}
-		if(annihilator >= 100 && document.getElementById("Build 1 Beach Annihilators").className === "achievementTD"){
-			document.getElementById("Build 100 Beach Annihilators").className = "achievementTD achieved";
-			newUnlock("settings");
-			achieved.push("Build 100 Beach Annihilators");
-		}
+	}
+}
+
+function getDesert(){
+	if(spaceMetal >= desertSpaceMetalCost && silicon >= desertSiliconCost && meteorite >= desertMeteoriteCost){
+		spaceMetal -= desertSpaceMetalCost;
+		silicon -= desertSiliconCost;
+		meteorite -= desertMeteoriteCost;
+		desert += 1;
+		desertSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,desert));
+		desertSiliconCost = Math.floor(17700 * Math.pow(1.1,desert));
+		desertMeteoriteCost = Math.floor(400 * Math.pow(1.1,desert));
+		document.getElementById("desert").innerHTML = desert;
+		document.getElementById("desertSpaceMetalCost").innerHTML = commafy(desertSpaceMetalCost);
+		document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
+		document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -1911,6 +1673,24 @@ function getExtruder(){
 	}
 }
 
+function getVeluptuator(){
+	if(spaceMetal >= veluptuatorSpaceMetalCost && gold >= veluptuatorGoldCost && meteorite >= veluptuatorMeteoriteCost){
+		spaceMetal -= veluptuatorSpaceMetalCost;
+		gold -= veluptuatorGoldCost;
+		meteorite -= veluptuatorMeteoriteCost;
+		veluptuator += 1;
+		veluptuatorMeteoriteCost = Math.floor(750 * Math.pow(1.1,veluptuator));
+		veluptuatorGoldCost = Math.floor(121000 * Math.pow(1.1,veluptuator));
+		veluptuatorSpaceMetalCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
+		document.getElementById("veluptuator").innerHTML = veluptuator;
+		document.getElementById("veluptuatorSpaceMetalCost").innerHTML = commafy(veluptuatorSpaceMetalCost);
+		document.getElementById("veluptuatorGoldCost").innerHTML = commafy(veluptuatorGoldCost);
+		document.getElementById("veluptuatorMeteoriteCost").innerHTML = commafy(veluptuatorMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getCollector(){
 	if(spaceMetal >= collectorSpaceMetalCost && titanium >= collectorTitaniumCost){
 		spaceMetal -= collectorSpaceMetalCost;
@@ -1959,6 +1739,24 @@ function getECell(){
 		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
 		refresh();
 		tier3 += 1;
+	}
+}
+
+function getHindenburg(){
+	if(spaceMetal >= hindenburgSpaceMetalCost && methane >= hindenburgMethaneCost && meteorite >= hindenburgMeteoriteCost){
+		spaceMetal -= hindenburgSpaceMetalCost;
+		methane -= hindenburgMethaneCost;
+		meteorite -= hindenburgMeteoriteCost;
+		hindenburg += 1;
+		hindenburgMeteoriteCost = Math.floor(710 * Math.pow(1.1,hindenburg));
+		hindenburgMethaneCost = Math.floor(134000 * Math.pow(1.1,hindenburg));
+		hindenburgSpaceMetalCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
+		document.getElementById("hindenburg").innerHTML = hindenburg;
+		document.getElementById("hindenburgSpaceMetalCost").innerHTML = commafy(hindenburgSpaceMetalCost);
+		document.getElementById("hindenburgMethaneCost").innerHTML = commafy(hindenburgMethaneCost);
+		document.getElementById("hindenburgMeteoriteCost").innerHTML = commafy(hindenburgMeteoriteCost);
+		refresh();
+		tier4 += 1;
 	}
 }
 
@@ -2013,6 +1811,24 @@ function getCompressor(){
 	}
 }
 
+function getSkimmer(){
+	if(spaceMetal >= skimmerSpaceMetalCost && titanium >= skimmerTitaniumCost && meteorite >= skimmerMeteoriteCost){
+		spaceMetal -= skimmerSpaceMetalCost;
+		titanium -= skimmerTitaniumCost;
+		meteorite -= skimmerMeteoriteCost;
+		skimmer += 1;
+		skimmerMeteoriteCost = Math.floor(770 * Math.pow(1.1,skimmer));
+		skimmerTitaniumCost = Math.floor(173000 * Math.pow(1.1,skimmer));
+		skimmerSpaceMetalCost = Math.floor(255000 * Math.pow(1.1,skimmer));
+		document.getElementById("skimmer").innerHTML = skimmer;
+		document.getElementById("skimmerSpaceMetalCost").innerHTML = commafy(skimmerSpaceMetalCost);
+		document.getElementById("skimmerTitaniumCost").innerHTML = commafy(skimmerTitaniumCost);
+		document.getElementById("skimmerMeteoriteCost").innerHTML = commafy(skimmerMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
 function getIcePick(){
 	if(spaceMetal >= icePickSpaceMetalCost && gem >= icePickGemCost){
 		spaceMetal -= icePickSpaceMetalCost;
@@ -2061,5 +1877,56 @@ function getFreezer(){
 		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
 		refresh();
 		tier3 += 1;
+	}
+}
+
+function getMrFreeze(){
+	if(spaceMetal >= mrFreezeSpaceMetalCost && helium >= mrFreezeHeliumCost && meteorite >= mrFreezeMeteoriteCost){
+		spaceMetal -= mrFreezeSpaceMetalCost;
+		helium -= mrFreezeHeliumCost;
+		meteorite -= mrFreezeMeteoriteCost;
+		mrFreeze += 1;
+		mrFreezeMeteoriteCost = Math.floor(1500 * Math.pow(1.1,mrFreeze));
+		mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
+		mrFreezeSpaceMetalCost = Math.floor(519000 * Math.pow(1.1,mrFreeze));
+		document.getElementById("mrFreeze").innerHTML = mrFreeze;
+		document.getElementById("mrFreezeSpaceMetalCost").innerHTML = commafy(mrFreezeSpaceMetalCost);
+		document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
+		document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
+		refresh();
+		tier4 += 1;
+	}
+}
+
+function getPrinter(){
+	if(spaceMetal >= printerSpaceMetalCost && silicon >= printerSiliconCost){
+		spaceMetal -= printerSpaceMetalCost;
+		silicon -= printerSiliconCost;
+		printer += 1;
+		printerSpaceMetalCost = Math.floor(100000 * Math.pow(1.1,printer));
+		printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer));
+		document.getElementById("printer").innerHTML = printer;
+		document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
+		document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
+		refresh();
+		tier1 += 1;
+	}
+}
+
+function getWeb(){
+	if(spaceMetal >= webSpaceMetalCost && uranium >= webUraniumCost && silicon >= webSiliconCost){
+		spaceMetal -= webSpaceMetalCost;
+		uranium -= webUraniumCost;
+		silicon -= webSiliconCost;
+		web += 1;
+		webSpaceMetalCost = Math.floor(940000 * Math.pow(1.1,web));
+		webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
+		webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
+		document.getElementById("web").innerHTML = web;
+		document.getElementById("webSpaceMetalCost").innerHTML = commafy(webSpaceMetalCost);
+		document.getElementById("webUraniumCost").innerHTML = commafy(webUraniumCost);
+		document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
+		refresh();
+		tier2 += 1;
 	}
 }

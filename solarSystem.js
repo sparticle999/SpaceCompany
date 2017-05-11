@@ -24,7 +24,7 @@ function getRocket(){
 		gem -= 900;
 		oil -= 1000;
 		rocket = 1;
-		document.getElementById("rocket").innerHTML = rocket;
+		document.getElementById("rocket").innerHTML = "Built";
 		refresh();
 	}
 }
@@ -81,7 +81,7 @@ function exploreMars(){
 		rocketFuel -= 80;
 		document.getElementById("exploreMars").className = "hidden";
 		document.getElementById("titaniumNav").className = "innerPlanet";
-		document.getElementById("siliconNav").className = "innerPlanet";
+		document.getElementById("siliconNav").className = "earth";
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
