@@ -34,7 +34,6 @@ var Game = (function() {
     };
 
     instance.fastUpdate = function(self, delta) {
-        refreshPerSec();
         refresh();
         refreshWonderBars();
         checkRedCost();
@@ -75,7 +74,7 @@ var Game = (function() {
             self.createInterval("Slow Update", self.slowUpdate, 1000);
 
             // Do this in a setInterval so it gets called even when the window is inactive
-            window.setInterval(function(){ gainResources()},100);
+            window.setInterval(function(){ refreshPerSec(); gainResources(); },100);
         }
     };
 
