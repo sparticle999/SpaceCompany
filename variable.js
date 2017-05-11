@@ -15,7 +15,7 @@ var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
 var plasmatic = 0; var plasmaticSpaceMetalCost = 810000; var plasmaticSiliconCost = 720000; var plasmaticMeteoriteCost = 970; var plasmaticToggled = true;
 var energy = 0; var energyps = 0; var energyStorage = 100000;
-var battery = 0; var batteryMetalCost = 500000; var batteryGemCost = 500000; var batterySpaceMetalCost = 300000;
+var battery = 0; var batteryMetalCost = 50000; var batteryGemCost = 50000; var batterySpaceMetalCost = 30000;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
 var solarPanel = 0; var solarPanelMetalCost = 30; var solarPanelGemCost = 35; var solarPanelOutput = 1.5;
 var methaneStation = 0; var methaneStationSpaceMetalCost = 110; var methaneStationTitaniumCost = 90;
@@ -128,7 +128,7 @@ var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticU
 var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
 var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
 var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
-var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 2000000;
+var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 1200000;
 var meteoriteActivateMeteoriteCost = 10000; var meteoriteActivateIceCost = 2000000; var meteoriteActivateSiliconCost = 4000000;
 var timer = 0; var timer2 = 0; var energyTimer = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = 1;

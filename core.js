@@ -828,7 +828,12 @@ function refreshUI(){
 
 function turnRed(resource, variable, id){
 	if(resource < variable){
-		document.getElementById(id).className = "red";
+		if($('#boldEnabled').prop('checked')){
+	    	document.getElementById(id).className = "bold red";
+	    }
+		else{
+			document.getElementById(id).className = "red";
+		}
 	}
 	else{
 		document.getElementById(id).className = "";
@@ -1557,7 +1562,7 @@ function checkRedCost(){
 		document.getElementById("unlockMachinesCost").className = "";
 	}
 
-	turnRed(science, 300, "unlockDestructionCost");
+	turnRed(science, 500, "unlockDestructionCost");
 
 	if(science < 300){
 		document.getElementById("upgradeResourceTechCost").className = "red";
