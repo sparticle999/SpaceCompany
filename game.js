@@ -49,7 +49,9 @@ var Game = (function() {
 
         self.achievements.update(delta);
         self.statistics.update(delta);
+    };
 
+    instance.uiUpdate = function(self, delta) {
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].update(delta);
         }
@@ -96,9 +98,12 @@ var Game = (function() {
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
         self.createInterval("Slow Update", self.slowUpdate, 1000);
+        self.createInterval("UI Update", self.uiUpdate, 10);
 
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ refreshPerSec(); gainResources(); },100);
+
+        console.debug("Load Complete");
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -124,11 +129,12 @@ var Game = (function() {
     };
 
     instance.start = function() {
+        console.debug("Loading Game");
+
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 
         this.update_frame(0);
-        console.debug("Starting Game");
     };
 
     return instance;

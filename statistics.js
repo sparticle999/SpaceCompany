@@ -9,6 +9,7 @@ Game.statistics = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
+    instance.statisticTypeCount = 0;
 
     instance.initialize = function() {
         this.createStatistic("manualResources", Game.constants.statisticCategoryGeneral, "Resources Mined By Hand");
@@ -30,6 +31,8 @@ Game.statistics = (function(){
         // Set some defaults
         this.add('tabsUnlocked', 3);
         this.add('resourcesUnlocked', 3);
+
+        console.debug("Loaded " + this.statisticTypeCount + " Statistics");
     };
 
     instance.update = function(delta) {
@@ -77,6 +80,7 @@ Game.statistics = (function(){
             displayNeedsUpdate: true
         };
 
+        this.statisticTypeCount++;
         this.entries[data.id] = data;
     };
 

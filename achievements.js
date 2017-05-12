@@ -8,6 +8,8 @@ Game.achievements = (function() {
     instance.nextId = 0;
 
     instance.entries = {};
+    instance.achievementCount = 0;
+    instance.achievementCountIncludingTiers = 0;
 
     instance.initialize = function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
@@ -117,6 +119,8 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, Game.constants.achievementProducerBrackets);
+
+        console.debug("Loaded " + this.achievementCount + " (" + this.achievementCountIncludingTiers +") Achievements");
     };
 
     instance.update = function(delta) {
@@ -151,6 +155,8 @@ Game.achievements = (function() {
             displayNeedsUpdate: true
         };
 
+        this.achievementCount++;
+        this.achievementCountIncludingTiers += brackets.length;
         this.entries[data.id] = data;
     };
 

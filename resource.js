@@ -4,15 +4,25 @@ Game.resources = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
+    instance.resourceTypeCount = 0;
 
     instance.initialize = function() {
         for (var id in Game.resource_data) {
-            this.entries[id] = {
+            var data = Game.resource_data[id];
+            this.resourceTypeCount++;
+            this.entries[id] = $.extend({
+                id: id,
+                htmlId: 'res_' + id,
                 current: 0,
                 perSecond: 0,
-                capacity: Game.resource_data[id].initialCapacity || 0
-            };
+                perClick: 1,
+                iconPath: Game.constants.iconPath,
+                iconExtension: Game.constants.iconExtension,
+                displayNeedsUpdate: true
+            }, data);
         }
+
+        console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
     };
 
     instance.update = function(delta) {
@@ -45,12 +55,14 @@ Game.resources = (function(){
         // Add the resource and clamp to the maximum
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
+        this.entries[id].displayNeedsUpdate = true;
     };
 
     instance.takeResource = function(id, count) {
         // Remove the resource and ensure we can not go below 0
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
+        this.entries[id].displayNeedsUpdate = true;
     };
 
     instance.setPerSecondProduction = function(id, value) {
@@ -65,6 +77,10 @@ Game.resources = (function(){
         }
 
         this.entries[id].perSecond = value;
+    };
+
+    instance.getResourceData = function(id) {
+        return this.entries[id];
     };
 
     return instance;

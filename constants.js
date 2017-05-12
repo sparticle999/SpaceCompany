@@ -19,5 +19,7 @@ Game.constants = (function(){
 
     instance.maxTier = 6;
 
+    instance.enableDataDrivenResources = false;
+
     return instance;
 }());

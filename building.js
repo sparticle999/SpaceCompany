@@ -5,14 +5,22 @@ Game.buildings = (function(){
     instance.dataVersion = 1;
     instance.entries = {};
     instance.updatePerSecondProduction = true;
+    instance.buildingTypeCount = 0;
 
     instance.initialize = function() {
         for (var id in Game.building_data) {
-            this.entries[id] = {
+            var data = Game.building_data[id];
+            this.buildingTypeCount++;
+            this.entries[id] = $.extend({
                 current: 0,
-                max: Game.building_data[id].maxCount
-            };
+                iconPath: Game.constants.iconPath,
+                iconName: data.icon,
+                iconExtension: Game.constants.iconExtension,
+                max: data.maxCount
+            }, data);
         }
+
+        console.debug("Loaded " + this.buildingTypeCount + " Building Types");
     };
 
     instance.update = function(delta) {
