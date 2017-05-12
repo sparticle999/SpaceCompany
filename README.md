@@ -17,10 +17,6 @@ v0.5.0 The Interstellar Update
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
 
-v0.4.3
-- Achievements for the rest of the resources
-- Achievements for T4 Machines
-
 # Changelog:
 
 v0.4.3
@@ -28,6 +24,8 @@ v0.4.3
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
 - Fixed Dyson Costs Jumping to 3rd from 1st
+- Completed Achievements
+- Changed Achievements System
 
 v0.4.2
 - Added option for bold text on red costs
