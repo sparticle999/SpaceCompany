@@ -63,11 +63,15 @@ var Game = (function() {
     instance.save = function(data) {
         this.achievements.save(data);
         this.statistics.save(data);
+        this.resources.save(data);
+        this.buildings.save(data);
     };
 
     instance.load = function(data) {
         this.achievements.load(data);
         this.statistics.load(data);
+        this.resources.load(data);
+        this.buildings.load(data);
     };
 
     instance.loadDelay = function (self, delta) {
@@ -79,6 +83,8 @@ var Game = (function() {
         // Initialize first
         self.achievements.initialize();
         self.statistics.initialize();
+        self.resources.initialize();
+        self.buildings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
