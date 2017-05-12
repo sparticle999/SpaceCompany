@@ -391,22 +391,6 @@ function refreshPerSec(){
 
 }
 
-function refreshStats(){
-	document.getElementById("handMined").innerHTML = commafy(handMined);
-	document.getElementById("tier1").innerHTML = commafy(tier1);
-	document.getElementById("tier2").innerHTML = commafy(tier2);
-	document.getElementById("tier3").innerHTML = commafy(tier3);
-	document.getElementById("tier4").innerHTML = commafy(tier4);
-	document.getElementById("tier5").innerHTML = commafy(tier5);
-	document.getElementById("tier6").innerHTML = commafy(tier6);
-	document.getElementById("tabsUnlockedNum").innerHTML = commafy(tabsUnlockedNum);
-	document.getElementById("resourcesUnlockedNum").innerHTML = commafy(resourcesUnlockedNum);
-	document.getElementById("techsResearchedNum").innerHTML = commafy(techsResearchedNum);
-	document.getElementById("placesExploredNum").innerHTML = commafy(placesExploredNum);
-	document.getElementById("wondersBuiltNum").innerHTML = commafy(wondersBuiltNum);
-	document.getElementById("wondersActivatedNum").innerHTML = commafy(wondersActivatedNum);
-}
-
 function refreshUI(){
 	if(heaterToggled === true){
 		document.getElementById("heaterToggled").innerHTML = "Off";
@@ -2169,8 +2153,4 @@ $(document).ready(function(){
 function updateTheme(){
 	currentTheme = document.getElementById("themeSelector").options[themeSelector.selectedIndex].value;
     document.getElementById('theme_css').href = 'styles/'+currentTheme+'-bootstrap.min.css';
-};
-
-window.onload = function(){
-    pageLoaded = true;
 };

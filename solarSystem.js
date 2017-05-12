@@ -6,9 +6,9 @@ function getChemicalPlant(){
 		gem -= chemicalPlantGemCost;
 		oil -= chemicalPlantOilCost;
 		chemicalPlant += 1;
-		chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant + 1));
-		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant + 1));
-		chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant + 1));
+		chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
+		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
+		chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant));
 		document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
 		document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
 		document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
@@ -53,8 +53,8 @@ function exploreMoon(){
 		resourcesUnlocked.push("spaceMetalNav", "collapseInnerPlanet");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 1;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked');
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -69,8 +69,8 @@ function exploreVenus(){
 		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
 		explored.push("venus");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 1;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked');
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -85,8 +85,8 @@ function exploreMars(){
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 2;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked', 2);
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -109,8 +109,8 @@ function exploreAsteroidBelt(){
 		resourcesUnlocked.push("goldNav", "silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 2;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked', 2);
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -123,9 +123,9 @@ function exploreWonderStation(){
 		document.getElementById("exploreWonderStation").className = "hidden";
 		buttonsHidden.push("exploreWonderStation");
 		explored.push("wonderStation");
-		placesExploredNum += 1;
+        Game.statistics.add('placesExplored');
 		tabsUnlocked.push("wonderTab");
-		tabsUnlockedNum += 1;
+        Game.statistics.add('tabsUnlocked');
 		newUnlock("resources");
 	}
 }
@@ -140,8 +140,8 @@ function exploreJupiter(){
 		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet", "fusionPower");
 		buttonsHidden.push("exploreJupiter");
 		explored.push("jupiter");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 1;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked');
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -155,8 +155,8 @@ function exploreSaturn(){
 		resourcesUnlocked.push("heliumNav");
 		buttonsHidden.push("exploreSaturn");
 		explored.push("saturn");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 1;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked');
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -170,8 +170,8 @@ function explorePluto(){
 		resourcesUnlocked.push("iceNav");
 		buttonsHidden.push("explorePluto");
 		explored.push("pluto");
-		placesExploredNum += 1;
-		resourcesUnlockedNum += 1;
+        Game.statistics.add('placesExplored');
+        Game.statistics.add('resourcesUnlocked');
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -185,7 +185,7 @@ function exploreKuiperBelt(){
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("kuiperBelt");
-		placesExploredNum += 1;
+        Game.statistics.add('placesExplored');
 		refreshResources();
 	}
 }
@@ -198,7 +198,7 @@ function exploreSolCenter(){
 		resourcesUnlocked.push("solCenterTopTab");
 		buttonsHidden.push("exploreSolCenter");
 		explored.push("solCenter");
-		placesExploredNum += 1;
+        Game.statistics.add('placesExplored');
 		refreshResources();
 		newUnlock("solCenter");
 	}
