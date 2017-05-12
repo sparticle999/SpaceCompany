@@ -2,31 +2,14 @@ Game.achievements = (function() {
     'use strict';
 
     var instance = {};
+
     instance.dataVersion = 4;
-    instance.categoryTemplate = null;
-    instance.entryTemplate = null;
+
     instance.nextId = 0;
-    instance.categoryElements = {};
+
     instance.entries = {};
-    instance.rootElement = null;
 
     instance.initialize = function() {
-        this.categoryTemplate = Handlebars.compile(
-            ['<td>',
-                '<h3 class="default btn-link">{{name}}</h3>',
-                '<table class="table" id="{{id}}"></table>',
-             '</td>'].join('\n'));
-
-        this.entryTemplate = Handlebars.compile(
-            ['<td id="{{id}}" class="achievementTD" style="border:none;">',
-			    '<div id="{{id}}_div" data-toggle="tooltip" title="{{title}}" style="width: 64px; height: 64px; border:2px solid white;">',
-                '<div id="{{id}}_bg" style="width: 50px; height: 40px; background: url({{iconPath}}{{iconName}}.{{iconExtension}}) no-repeat center; -webkit-background-size: contain;background-size: contain; margin-left: 5px;opacity: 0.2"></div>',
-				    '<div id="{{id}}_img" style="overflow: hidden; vertical-align: bottom;"><img src="Icons/achievementStar.png" height="11px"></div>',
-                '</div>',
-            '</td>'].join('\n'));
-
-        this.rootElement = $('#achievementContent');
-
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Gems", "gemIcon", function(x) { return gem >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Wood", "woodIcon", function(x) { return wood >= x}, Game.constants.achievementResourceBrackets);
@@ -144,33 +127,7 @@ Game.achievements = (function() {
                 this.unlock(id, data.unlocked + 1);
                 newUnlock('more');
             }
-
-            if(data.displayNeedsUpdate === true) {
-                this.updateDisplay(id);
-            }
         }
-    };
-
-    instance.updateDisplay = function(id) {
-        var data = this.entries[id];
-        var div = $('#' + id + "_div");
-        var bg = $('#' + id + "_bg");
-
-        if(data.unlocked === data.brackets.length - 1) {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked]) + " Completed");
-        } else {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked + 1]));
-        }
-
-        div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
-
-        $('#' + id + '_img').width(12 * (data.unlocked + 1));
-
-        if(data.unlocked >= 0){
-            bg.fadeTo(2, 1);
-        }
-
-        data.displayNeedsUpdate = false;
     };
 
     instance.unlock = function(id, tier) {
@@ -180,31 +137,10 @@ Game.achievements = (function() {
         }
     };
 
-    instance.createCategory = function (category) {
-        var data = {id: "ach_cat_" + category, name: category};
-        this.categoryElements[category] = {colc: 0, col: null, id: data.id};
-
-        var html = $(this.categoryTemplate(data));
-        this.rootElement.append(html);
-
-        this.createCategoryRow(category);
-    };
-
-    instance.createCategoryRow = function (category) {
-        var data = this.categoryElements[category];
-
-        data.colc = 0;
-        data.col = $('<tr></tr>');
-        $('#'+data.id).append(data.col);
-    };
-
     instance.createAchievements = function(category, title, icon, evaluator, brackets) {
-        if (this.categoryElements[category] === undefined) {
-            this.createCategory(category);
-        }
-
         var data = {
             id: "ach_" + this.nextId++,
+            category: category,
             iconPath: Game.constants.iconPath,
             iconName: icon,
             iconExtension: Game.constants.iconExtension,
@@ -216,13 +152,6 @@ Game.achievements = (function() {
         };
 
         this.entries[data.id] = data;
-        var html = this.entryTemplate(data);
-        this.categoryElements[category].colc++;
-        this.categoryElements[category].col.append($(html));
-
-        if(this.categoryElements[category].colc >= Game.constants.achievementIconsPerRow) {
-            this.createCategoryRow(category);
-        }
     };
 
     instance.save = function(data) {
