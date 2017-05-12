@@ -2,31 +2,14 @@ Game.achievements = (function() {
     'use strict';
 
     var instance = {};
-    instance.dataVersion = 2;
-    instance.categoryTemplate = null;
-    instance.entryTemplate = null;
+
+    instance.dataVersion = 4;
+
     instance.nextId = 0;
-    instance.categoryElements = {};
+
     instance.entries = {};
-    instance.rootElement = null;
 
     instance.initialize = function() {
-        this.categoryTemplate = Handlebars.compile(
-            ['<td>',
-                '<h3 class="default btn-link">{{name}}</h3>',
-                '<table class="table" id="{{id}}"></table>',
-             '</td>'].join('\n'));
-
-        this.entryTemplate = Handlebars.compile(
-            ['<td id="{{id}}" class="achievementTD" style="border:none;">',
-			    '<div id="{{id}}_div" data-toggle="tooltip" title="{{title}}" style="width: 64px; height: 64px; border:2px solid white;">',
-                '<div id="{{id}}_bg" style="width: 50px; height: 40px; background: url({{iconPath}}{{iconName}}.{{iconExtension}}) no-repeat center; -webkit-background-size: contain;background-size: contain; margin-left: 5px;opacity: 0.2"></div>',
-				    '<div id="{{id}}_img" style="overflow: hidden; vertical-align: bottom;"><img src="Icons/achievementStar.png" height="11px"></div>',
-                '</div>',
-            '</td>'].join('\n'));
-
-        this.rootElement = $('#achievementContent');
-
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Gems", "gemIcon", function(x) { return gem >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Wood", "woodIcon", function(x) { return wood >= x}, Game.constants.achievementResourceBrackets);
@@ -44,11 +27,14 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Hydrogen", "hydrogenIcon", function(x) { return hydrogen >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Helium", "heliumIcon", function(x) { return helium >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Ice", "iceIcon", function(x) { return ice >= x}, Game.constants.achievementResourceBrackets);
+        this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Meteorite", "meteoriteIcon", function(x) { return meteorite >= x}, Game.constants.achievementResourceBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Charcoal Engines", "EnergyIcon", function(x) { return charcoalEngine >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Solar Panels", "EnergyIcon", function(x) { return solarPanel >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Methane Power Stations", "EnergyIcon", function(x) { return methaneStation >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Reactors", "EnergyIcon", function(x) { return nuclearStation >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Fusion Reactors", "EnergyIcon", function(x) { return fusionReactor >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Magmatic Reactors", "EnergyIcon", function(x) { return magmatic >= x}, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Woodburners", "charcoalIcon", function(x) { return woodburner >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Furnaces", "charcoalIcon", function(x) { return furnace >= x}, Game.constants.achievementProducerBrackets);
@@ -125,6 +111,9 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ocean Freezers", "iceIcon", function(x) { return freezer >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mr Freeze", "iceIcon", function(x) { return mrFreeze >= x}, Game.constants.achievementProducerBrackets);
 
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, Game.constants.achievementProducerBrackets);
+
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, Game.constants.achievementProducerBrackets);
@@ -138,33 +127,7 @@ Game.achievements = (function() {
                 this.unlock(id, data.unlocked + 1);
                 newUnlock('more');
             }
-
-            if(data.displayNeedsUpdate === true) {
-                this.updateDisplay(id);
-            }
         }
-    };
-
-    instance.updateDisplay = function(id) {
-        var data = this.entries[id];
-        var div = $('#' + id + "_div");
-        var bg = $('#' + id + "_bg");
-
-        if(data.unlocked === data.brackets.length - 1) {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked]) + " Completed");
-        } else {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked + 1]));
-        }
-
-        div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
-
-        $('#' + id + '_img').width(12 * (data.unlocked + 1));
-
-        if(data.unlocked >= 0){
-            bg.fadeTo(2, 1);
-        }
-
-        data.displayNeedsUpdate = false;
     };
 
     instance.unlock = function(id, tier) {
@@ -174,31 +137,10 @@ Game.achievements = (function() {
         }
     };
 
-    instance.createCategory = function (category) {
-        var data = {id: "ach_cat_" + category, name: category};
-        this.categoryElements[category] = {colc: 0, col: null, id: data.id};
-
-        var html = $(this.categoryTemplate(data));
-        this.rootElement.append(html);
-
-        this.createCategoryRow(category);
-    };
-
-    instance.createCategoryRow = function (category) {
-        var data = this.categoryElements[category];
-
-        data.colc = 0;
-        data.col = $('<tr></tr>');
-        $('#'+data.id).append(data.col);
-    };
-
     instance.createAchievements = function(category, title, icon, evaluator, brackets) {
-        if (this.categoryElements[category] === undefined) {
-            this.createCategory(category);
-        }
-
         var data = {
             id: "ach_" + this.nextId++,
+            category: category,
             iconPath: Game.constants.iconPath,
             iconName: icon,
             iconExtension: Game.constants.iconExtension,
@@ -210,13 +152,6 @@ Game.achievements = (function() {
         };
 
         this.entries[data.id] = data;
-        var html = this.entryTemplate(data);
-        this.categoryElements[category].colc++;
-        this.categoryElements[category].col.append($(html));
-
-        if(this.categoryElements[category].colc >= Game.constants.achievementIconsPerRow) {
-            this.createCategoryRow(category);
-        }
     };
 
     instance.save = function(data) {

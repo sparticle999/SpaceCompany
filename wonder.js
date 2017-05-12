@@ -236,7 +236,7 @@ function achievePreciousWonder(){
 		document.getElementById("wonderFloor1Nav").className = "";
 		buttonsHidden.push("preciousProgress", "preciousWonderButton");
 		resourcesUnlocked.push("preciousWonderNav", "wonderFloor1Nav");
-		wondersBuiltNum += 1;
+        Game.statistics.add('wondersBuilt');
 	}
 }
 
@@ -252,7 +252,7 @@ function activatePreciousWonder(){
 		resourcesUnlocked.push("uraniumNav", "nuclearPower");
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
-		wondersActivatedNum += 1;
+        Game.statistics.add('wondersActivated');
 		newUnlock("resources");
 	}
 }
@@ -267,7 +267,7 @@ function achieveEnergeticWonder(){
 		document.getElementById("energeticWonderNav").className = "";
 		buttonsHidden.push("energeticProgress", "energeticWonderButton");
 		resourcesUnlocked.push("energeticWonderNav");
-		wondersBuiltNum += 1;
+        Game.statistics.add('wondersBuilt');
 	}
 }
 
@@ -283,7 +283,7 @@ function activateEnergeticWonder(){
 		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
-		wondersActivatedNum += 1;
+        Game.statistics.add('wondersActivated');
 		newUnlock("resources");
 	}
 }
@@ -298,7 +298,7 @@ function achieveTechWonder(){
 		document.getElementById("techWonderNav").className = "";
 		buttonsHidden.push("techProgress", "techWonderButton");
 		resourcesUnlocked.push("techWonderNav");
-		wondersBuiltNum += 1;
+        Game.statistics.add('wondersBuilt');
 	}
 }
 
@@ -313,7 +313,7 @@ function activateTechWonder(){
 		techUnlocked = true;
 		buttonsHidden.push("activateTechWonder");
 		activated.push("tech");
-		wondersActivatedNum += 1;
+        Game.statistics.add('wondersActivated');
 		newUnlock("resources");
 	}
 }
@@ -328,7 +328,7 @@ function achieveMeteoriteWonder(){
 		document.getElementById("meteoriteWonderNav").className = "";
 		buttonsHidden.push("meteoriteProgress", "meteoriteWonderButton");
 		resourcesUnlocked.push("meteoriteWonderNav");
-		wondersBuiltNum += 1;
+        Game.statistics.add('wondersBuilt');
 	}
 }
 
@@ -343,7 +343,7 @@ function activateMeteoriteWonder(){
 		meteoriteUnlocked = true;
 		buttonsHidden.push("activateMeteoriteWonder");
 		activated.push("meteorite");
-		wondersActivatedNum += 1;
+        Game.statistics.add('wondersActivated');
 		newUnlock("resources");
 	}
 }
