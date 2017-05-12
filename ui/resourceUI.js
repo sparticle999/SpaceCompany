@@ -11,6 +11,12 @@
     instance.tabRoot = null;
     instance.navRoot = null;
 
+    instance.categoryNames = {
+        'earth': "Earth Resources",
+        'inner': "Inner Planetary Resources",
+        'outer': "Outer Planetary Resources"
+    };
+
     instance.initialize = function() {
         if(Game.constants.enableDataDrivenResources === false) {
             return;
@@ -90,7 +96,7 @@
         if(Game.constants.enableDataDrivenResources === false) {
             return;
         }
-        
+
         for(var id in this.entries) {
             var data = Game.resources.getResourceData(this.entries[id].id);
 

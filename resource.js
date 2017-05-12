@@ -2,7 +2,7 @@ Game.resources = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 1;
+    instance.dataVersion = 2;
     instance.entries = {};
     instance.resourceTypeCount = 0;
 
@@ -18,7 +18,8 @@ Game.resources = (function(){
                 perClick: 1,
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true
+                displayNeedsUpdate: true,
+                unlocked: false
             }, data);
         }
 
@@ -36,6 +37,7 @@ Game.resources = (function(){
         data.resources = { v: this.dataVersion, i: {}};
         for(var key in this.entries) {
             data.resources.i[key] = this.entries[key].current;
+            data.resources.u = this.entries[key].unlocked;
         }
     };
 
@@ -45,6 +47,7 @@ Game.resources = (function(){
                 for(var id in data.resources.i) {
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.i[id]);
+                        this.entries[id].unlocked = data.resources.u;
                     }
                 }
             }

@@ -8,6 +8,7 @@ Game.resource_data = (function(){
         icon: 'metalIcon',
         category: 'earth',
         capacity: 50,
+        unlocked: true,
     };
 
     instance.gems = {
@@ -16,6 +17,7 @@ Game.resource_data = (function(){
         icon: 'gemIcon',
         category: 'earth',
         capacity: 50,
+        unlocked: true,
     };
 
     instance.wood = {
@@ -24,6 +26,7 @@ Game.resource_data = (function(){
         icon: 'woodIcon',
         category: 'earth',
         capacity: 50,
+        unlocked: true,
     };
 
     return instance;
