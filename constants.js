@@ -13,5 +13,11 @@ Game.constants = (function(){
     instance.achievementCategoryResources = "Resources";
     instance.achievementCategoryProducers = "Producers";
 
+    instance.statisticCategoryGeneral = "General";
+    instance.statisticCategoryUnlockable = "Unlockables";
+    instance.statisticCategoryTiming = "Timing";
+
+    instance.maxTier = 6;
+
     return instance;
 }());
