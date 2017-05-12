@@ -629,7 +629,7 @@ function destroyMachine(machine, id){
 		document.getElementById(id).innerHTML = window[id];
 		// for(var i = 0; i < resoures.length; I++){
 		// 	if(typeof window[id + resources[i]] !== "undefined"){
-		// 		window[id + resources[i]] = Math.floor(75000 * Math.pow(1.1,window[id]));
+		// 		window[id + resources[i]] = Math.floor(XXXX * Math.pow(1.1,window[id]));
 		// 	}
 		// }
 		// refreshUI();

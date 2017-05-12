@@ -16,6 +16,8 @@ v0.5.0 The Interstellar Update
 - Some sort of prestige
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
+- Space Elevator
+- Second Floor of Wonder Station
 
 # Changelog:
 
