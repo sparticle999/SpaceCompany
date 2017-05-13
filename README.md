@@ -25,6 +25,7 @@ v0.4.3
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
+- Fixed Helium T4 Red Costs
 - Fixed Dyson Costs Jumping to 3rd from 1st
 - Fixed Metal Icon not being transparent
 - Completed Achievements

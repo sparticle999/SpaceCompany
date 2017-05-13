@@ -118,7 +118,7 @@ function refreshPerSec(){
 	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
 
 	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*188)+(actuator*223)+(cannon*170)+(desert*138);
+	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
 	energyOutput += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
 	if(charcoalToggled === true){
