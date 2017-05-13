@@ -1787,7 +1787,7 @@ function checkRedCost(){
 
 	turnRed(spaceMetal, skimmerSpaceMetalCost, "skimmerSpaceMetalCost");
 	turnRed(titanium, skimmerTitaniumCost, "skimmerTitaniumCost");
-	turnRed(silicon, skimmerMeteoriteCost, "skimmerMeteoriteCost");
+	turnRed(meteorite, skimmerMeteoriteCost, "skimmerMeteoriteCost");
 
 	turnRed(spaceMetal, icePickSpaceMetalCost, "icePickSpaceMetalCost");
 	turnRed(gem, icePickGemCost, "icePickGemCost");
