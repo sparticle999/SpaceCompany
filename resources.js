@@ -917,9 +917,9 @@ function getOilRig(){
 		titanium -= oilRigTitaniumCost;
 		meteorite -= oilRigMeteoriteCost;
 		oilRig += 1;
-		oilRigMeteoriteCost = Math.floor(3900 * Math.pow(1.1,oilRig));
-		oilRigTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilRig));
-		oilRigSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilRig));
+		oilRigMeteoriteCost = Math.floor(760 * Math.pow(1.1,oilRig));
+		oilRigTitaniumCost = Math.floor(16800 * Math.pow(1.1,oilRig));
+		oilRigSpaceMetalCost = Math.floor(19400 * Math.pow(1.1,oilRig));
 		document.getElementById("oilRig").innerHTML = oilRig;
 		document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
 		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
