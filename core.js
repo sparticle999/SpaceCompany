@@ -125,6 +125,18 @@ function refreshPerSec(){
 		energyOutput += (furnace*3)+(kiln*13)+(fryer*34);
 	}
 	plasmaps = 0;
+	if(meteoriteToggled === true && plasma >= 3){
+		if(meteorite + printer/10 + web*8/10<= meteoriteStorage){
+			plasma -= (printer*3/10 + web*21/10);
+			meteorite += (printer/10 + web*8/10);
+			meteoriteps = printer + web*8;
+			plasmaps -= printer*3 + web*21;
+		}
+		else{
+			meteorite = meteoriteStorage;
+			meteoriteps = 0;
+		}
+	}
 	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
 		if(plasma + heater/10 <= 100000){
 			energyOutput += (heater*1000);
@@ -145,18 +157,6 @@ function refreshPerSec(){
 		}
 		else{
 			plasma = 100000
-		}
-	}
-	if(meteoriteToggled === true && plasma >= 3){
-		if(meteorite + printer/10 + web*8/10<= meteoriteStorage){
-			plasma -= (printer*3/10 + web*21/10);
-			meteorite += (printer/10 + web*8/10);
-			meteoriteps = printer + web*8;
-			plasmaps -= printer*3 + web*21;
-		}
-		else{
-			meteorite = meteoriteStorage;
-			meteoriteps = 0;
 		}
 	}
 	if(energy != 0 && energyps != 0){
