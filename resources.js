@@ -1,9 +1,9 @@
 function gainResources(){
-	if(energy + energyps/10 <= 100000 + 50000*battery){
+	if(energy + energyps/10 <= 100000 + 50000*battery + 500000*batteryT2){
 		energy += energyps/10;
 	}
 	else{
-		energy = 100000 + 50000*battery;
+		energy = 100000 + 50000*battery + 500000*batteryT2;
 	}
 	if(uranium + uraniumps/10 < uraniumStorage){
 		uranium += uraniumps/10;
@@ -688,6 +688,25 @@ function getBattery(){
 		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
 		refresh();
         Game.statistics.add('tierOwned1');
+	}
+}
+
+function getBatteryT2(){
+	if(metal >= batteryT2MetalCost && gem >= batteryT2GemCost && spaceMetal >= batteryT2SpaceMetalCost ){
+		metal -= batteryT2MetalCost;
+		gem -= batteryT2GemCost;
+		spaceMetal -= batteryT2SpaceMetalCost;
+		batteryT2 += 1;
+		batteryT2MetalCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
+		batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
+		batteryT2SpaceMetalCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
+		document.getElementById("batteryT2").innerHTML = batteryT2;
+		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
+		document.getElementById("batteryT2MetalCost").innerHTML = commafy(batteryT2MetalCost);
+		document.getElementById("batteryT2GemCost").innerHTML = commafy(batteryT2GemCost);
+		document.getElementById("batteryT2SpaceMetalCost").innerHTML = commafy(batteryT2SpaceMetalCost);
+		refresh();
+        Game.statistics.add('tierOwned2');
 	}
 }
 

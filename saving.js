@@ -102,6 +102,10 @@ function save(type){
 		batteryMetalCost: batteryMetalCost,
 		batteryGemCost: batteryGemCost,
 		batterySpaceMetalCost: batterySpaceMetalCost,
+		batteryT2: batteryT2,
+		batteryT2MetalCost: batteryT2MetalCost,
+		batteryT2GemCost: batteryT2GemCost,
+		batteryT2SpaceMetalCost: batteryT2SpaceMetalCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -521,6 +525,10 @@ function load(type){
 		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;
 		if(typeof savegame.batteryGemCost !== "undefined") batteryGemCost = savegame.batteryGemCost;
 		if(typeof savegame.batterySpaceMetalCost !== "undefined") batterySpaceMetalCost = savegame.batterySpaceMetalCost;
+		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;
+		if(typeof savegame.batteryT2MetalCost !== "undefined") batteryT2MetalCost = savegame.batteryT2MetalCost;
+		if(typeof savegame.batteryT2GemCost !== "undefined") batteryT2GemCost = savegame.batteryT2GemCost;
+		if(typeof savegame.batteryT2SpaceMetalCost !== "undefined") batteryT2SpaceMetalCost = savegame.batteryT2SpaceMetalCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;

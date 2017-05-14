@@ -246,7 +246,7 @@ function refreshPerSec(){
 			document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
 		}
 	}
-	if(energy >= 100000 + 50000*battery){
+	if(energy >= 100000 + 50000*battery + 500000*batteryT2){
 		document.getElementById("energy").className = "green";
 	}
 	else{
@@ -424,7 +424,7 @@ function refreshUI(){
 	}
 
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
-	document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
+	document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
@@ -508,6 +508,10 @@ function refreshUI(){
 	document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 	document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
 	document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
+	document.getElementById("batteryT2").innerHTML = batteryT2;
+	document.getElementById("batteryT2MetalCost").innerHTML = commafy(batteryT2MetalCost);
+	document.getElementById("batteryT2GemCost").innerHTML = commafy(batteryT2GemCost);
+	document.getElementById("batteryT2SpaceMetalCost").innerHTML = commafy(batteryT2SpaceMetalCost);
 	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
 	document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 	document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
@@ -938,6 +942,10 @@ function checkRedCost(){
 	turnRed(metal, batteryMetalCost, "batteryMetalCost");
 	turnRed(gem, batteryGemCost, "batteryGemCost");
 	turnRed(spaceMetal, batterySpaceMetalCost, "batterySpaceMetalCost");
+
+	turnRed(metal, batteryT2MetalCost, "batteryT2MetalCost");
+	turnRed(gem, batteryT2GemCost, "batteryT2GemCost");
+	turnRed(spaceMetal, batteryT2SpaceMetalCost, "batteryT2SpaceMetalCost");
 
 	turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
@@ -1574,6 +1582,7 @@ function checkRedCost(){
 	turnRed(science, 75000, "unlockMeteoriteTier1Cost");
 	turnRed(science, 100000, "unlockMeteoriteTier2Cost");
 	turnRed(science, 100000, "unlockDysonCost");
+	turnRed(science, 300000, "unlockBatteriesT2Cost");
 	turnRed(science, 500000, "unlockDysonSphereCost");
 
 	if(metal < 1200){
@@ -2019,6 +2028,12 @@ function refreshResearches(){
 		if(contains(available, "unlockPlasmaTier2") === false){
 			document.getElementById("unlockPlasmaTier2").className ="";
 			available.push("unlockPlasmaTier2");
+		}
+	}
+	if(contains(researched, "unlockBatteries")){
+		if(contains(available, "unlockBatteriesT2") === false){
+			document.getElementById("unlockBatteriesT2").className ="";
+			available.push("unlockBatteriesT2");
 		}
 	}
 	if(contains(researched, "unlockDyson")){
