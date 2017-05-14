@@ -3862,6 +3862,34 @@
 							</span>
 						</td>
 					</tr>
+					<tr id="wonderFloor2Nav" class="hidden">
+						<th>
+							<span>
+								Wonder Station - Floor 2
+							</span>
+						</th>
+					</tr>
+					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Portal Room: <span id="portalRoomActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
+					<tr id="wonderFloor3Nav" class="hidden">
+						<th>
+							<span>
+								Wonder Station - Floor 3
+							</span>
+						</th>
+					</tr>
+					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Stargate: <span id="stargateActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -4123,7 +4151,7 @@
 										The Meteorite Wonder
 									</h2>
 									<span>
-										The Overlord, watching his newly built wonder, offers the 
+										The Overlord, watching his newly built wonder, offers you the possibility for a new wave of machines that best any before them.
 									</span>
 								</td>
 							</tr>
@@ -4144,6 +4172,47 @@
 											<br>
 											<div id="meteoriteActivateProgress" class="progress">
 											  <div id="meteoriteActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="portalRoomTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Portal Room (Coming Soon!)
+									</h2>
+									<span>
+										[Description]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Activate Portal
+									</h3>
+									<span>
+										Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.
+										<br>
+										<hide id="activatePortal">
+											Costs: <span id="portalMeteoriteCost">XXXX</span> Meteorite, <span id="portalIceCost">XXXX</span> Ice, <span id="portalSiliconCost">XXXX</span> Silicon.
+											<br>
+											<br>
+											<button onclick="activatePortal()" class="btn btn-default">Activate Portal</button>
+											<br>
+											<br>
+											<div id="portalProgress" class="progress">
+											  <div id="portalBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>

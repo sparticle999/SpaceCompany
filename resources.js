@@ -682,7 +682,7 @@ function getBattery(){
 		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
 		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
-		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
+		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
 		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
 		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);

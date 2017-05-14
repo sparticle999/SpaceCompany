@@ -1919,8 +1919,10 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteNav")){
 		document.getElementById("meteoriteNav").className = "outerPlanet";
 	}
-	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet";
+	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
+		document.getElementById("wonderFloor2Nav").className = "";
+		document.getElementById("portalRoomNav").className = "";
+		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
@@ -1935,6 +1937,9 @@ function refreshResources(){
 	}
 	if(meteoriteUnlocked === true){
 		unlockTier4();
+	}
+	if(contains(resourcesUnlocked, "spaceMetalNav")){
+		document.getElementById("spaceMetalNav").className = "innerPlanet";
 	}
 }
 

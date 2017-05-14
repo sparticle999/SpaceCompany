@@ -13,7 +13,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
-- Some sort of prestige (Amnesia)
+- Some sort of prestige (Amnesia?)
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
 - Space Elevator
