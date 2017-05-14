@@ -13,21 +13,30 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
-- Some sort of prestige
+- Some sort of prestige (Amnesia?)
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
-
-v0.4.3
-- Achievements for the rest of the resources
-- Achievements for T4 Machines
+- Space Elevator
+- Second Floor of Wonder Station
 
 # Changelog:
 
+v0.5.0
+- Tier 2 Batteries
+
+- Fixed Oil Rig Costs
+- Fixed Helium T4 Red Costs
+
 v0.4.3
+- Completed Achievements
+- Changed Achievements System
+- 100,000x Conversion Option
+
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
 - Fixed Dyson Costs Jumping to 3rd from 1st
+- Fixed Metal Icon not being transparent
 
 v0.4.2
 - Added option for bold text on red costs

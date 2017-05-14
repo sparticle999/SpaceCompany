@@ -241,10 +241,24 @@ function unlockBatteries(){
 	if(science >= 15000){
 		science -= 15000;
 		document.getElementById("unlockBatteries").className = "hidden";
+		document.getElementById("unlockBatteriesT2").className = "";
 		document.getElementById("batteries").className = "";
 		document.getElementById("energyStorageBox").className = "";
+		available.push("unlockBatteriesT2");
 		researched.push("unlockBatteries");
 		resourcesUnlocked.push("batteries", "energyStorageBox");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
+function unlockBatteriesT2(){
+	if(science >= 300000){
+		science -= 300000;
+		document.getElementById("unlockBatteriesT2").className = "hidden";
+		document.getElementById("batteriesT2").className = "";
+		researched.push("unlockBatteriesT2");
+		resourcesUnlocked.push("batteriesT2");
         Game.statistics.add('techResearched');
 		newUnlock("resources");
 	}

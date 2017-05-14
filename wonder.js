@@ -345,5 +345,9 @@ function activateMeteoriteWonder(){
 		activated.push("meteorite");
         Game.statistics.add('wondersActivated');
 		newUnlock("resources");
+
+		document.getElementById("wonderFloor2Nav").className = "";
+		document.getElementById("portalRoomNav").className = "";
+		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
 }

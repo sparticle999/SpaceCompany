@@ -44,7 +44,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.4.2 Beta
+						v0.4.3 Beta
 					</span>
 				</a>
 				<a class="navbar-brand">
@@ -73,6 +73,7 @@
     	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"onclick="tabClicked('solarSystem')"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
+    	<li role="presentation" id="machineTopTab" class="hidden"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
@@ -595,7 +596,7 @@
 										Energy
 									</h2>
 									<span>
-										Energy is created by power sources such as steam engines, solar power and burning Oil. The maximum you can hold is 100,000 Energy.
+										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
 									</span>
 									<br>
 									<br>
@@ -614,6 +615,21 @@
 									<br>
 									<br>
 									<button onclick="getBattery()" class="btn btn-default">Get Battery</button>
+								</td>
+							</tr>
+							<tr id="batteriesT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T2 Batteries: <span id="batteryT2">0</span>
+									</h3>
+									<span>
+										Tier 2 Batteries increase your energy storage by 500,000 per battery built.
+										<br>
+										Costs <span id="batteryT2MetalCost">550,000</span> Metal, <span id="batteryT2GemCost">550,000</span> Gems, <span id="batteryT2SpaceMetalCost">330,000</span> Space Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBatteryT2()" class="btn btn-default">Get Battery T2</button>
 								</td>
 							</tr>
 							<tr>
@@ -1860,7 +1876,7 @@
 										<br>
 										Produces 197 Titanium per second.
 										<br>
-										Uses 188 Energy per second.
+										Uses 123 Energy per second.
 										<br>
 										Costs <span id="titanDrillSpaceMetalCost">63,000</span> Space Metal, <span id="titanDrillGoldCost">27,000</span> Gold, <span id="titanDrillMeteoriteCost">600</span> Meteorite.
 									</span>
@@ -3110,6 +3126,23 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockBatteriesT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 2 Batteries
+									</h3>
+									<span>
+										Tier 2 Batteries improve the amount of energy you can store at once.
+										<br>
+										Costs <span id="unlockBatteriesT2Cost">300,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockBatteriesT2()" class="btn btn-default">Unlock T2 Batteries</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -3829,6 +3862,34 @@
 							</span>
 						</td>
 					</tr>
+					<tr id="wonderFloor2Nav" class="hidden">
+						<th>
+							<span>
+								Wonder Station - Floor 2
+							</span>
+						</th>
+					</tr>
+					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Portal Room: <span id="portalRoomActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
+					<tr id="wonderFloor3Nav" class="hidden">
+						<th>
+							<span>
+								Wonder Station - Floor 3
+							</span>
+						</th>
+					</tr>
+					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Stargate: <span id="stargateActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="tab-content">
@@ -4090,7 +4151,7 @@
 										The Meteorite Wonder
 									</h2>
 									<span>
-										The Overlord, watching his newly built wonder, offers the 
+										The Overlord, watching his newly built wonder, offers you the possibility for a new wave of machines that best any before them.
 									</span>
 								</td>
 							</tr>
@@ -4111,6 +4172,47 @@
 											<br>
 											<div id="meteoriteActivateProgress" class="progress">
 											  <div id="meteoriteActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="portalRoomTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Portal Room (Coming Soon!)
+									</h2>
+									<span>
+										[Description]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Activate Portal
+									</h3>
+									<span>
+										Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.
+										<br>
+										<hide id="activatePortal">
+											Costs: <span id="portalMeteoriteCost">XXXX</span> Meteorite, <span id="portalIceCost">XXXX</span> Ice, <span id="portalSiliconCost">XXXX</span> Silicon.
+											<br>
+											<br>
+											<button onclick="activatePortal()" class="btn btn-default">Activate Portal</button>
+											<br>
+											<br>
+											<div id="portalProgress" class="progress">
+											  <div id="portalBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
@@ -4224,7 +4326,7 @@
 									<span>
 										This is where you can convert your energy and plasma into resources.
 										<br>
-										<button class="btn btn-default" onclick="changeEmcAmount()">Converting <span class="emcAmount">1</span>x</button>
+										<button class="btn btn-default" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
 										<br>
 									</span>
 									<br>
@@ -4386,6 +4488,252 @@
 										</hide>
 									</span>
 								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Machines Tab -->
+		<div role="tabpanel" class="tab-pane fade in" id="machineTab">
+			<div class="container" style="width:250px; float:left;">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#machineTier1Tab" aria-controls="startingTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Tier 1
+							</span>
+						</td>
+					</tr>
+					<tr href="#machineTier2Tab" aria-controls="faqTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Tier 2
+							</span>
+						</td>
+					</tr>
+					<tr href="#machineTier3Tab" aria-controls="creditsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Tier 3
+							</span>
+						</td>
+					</tr>
+					<tr href="#machineTier4Tab" aria-controls="creditsTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Tier 4
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="machineTier1Tab" class="tab-pane fade in active" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<table>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<table>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>
+												++
+											</span>
+										</td>
+										<td>
+											<span>
+												+
+											</span>
+										</td>
+										<td>
+											<span>
+												Machine Name
+											</span>
+										</td>
+										<td>
+											<span>
+												-
+											</span>
+										</td>
+										<td>
+											<span>
+												--
+											</span>
+										</td>
+									</tr>
+								</table>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="tab-content">
+				<div id="machineTier2Tab" class="tab-pane fade in active" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="tab-content">
+				<div id="machineTier3Tab" class="tab-pane fade in active" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="tab-content">
+				<div id="machineTier4Tab" class="tab-pane fade in active" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
 							</tr>
 						</table>
 					</div>

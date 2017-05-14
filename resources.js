@@ -1,9 +1,9 @@
 function gainResources(){
-	if(energy + energyps/10 <= 100000 + 50000*battery){
+	if(energy + energyps/10 <= 100000 + 50000*battery + 500000*batteryT2){
 		energy += energyps/10;
 	}
 	else{
-		energy = 100000 + 50000*battery;
+		energy = 100000 + 50000*battery + 500000*batteryT2;
 	}
 	if(uranium + uraniumps/10 < uraniumStorage){
 		uranium += uraniumps/10;
@@ -629,7 +629,7 @@ function destroyMachine(machine, id){
 		document.getElementById(id).innerHTML = window[id];
 		// for(var i = 0; i < resoures.length; I++){
 		// 	if(typeof window[id + resources[i]] !== "undefined"){
-		// 		window[id + resources[i]] = Math.floor(75000 * Math.pow(1.1,window[id]));
+		// 		window[id + resources[i]] = Math.floor(XXXX * Math.pow(1.1,window[id]));
 		// 	}
 		// }
 		// refreshUI();
@@ -682,12 +682,31 @@ function getBattery(){
 		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
 		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
-		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery);
+		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
 		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
 		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
 		refresh();
         Game.statistics.add('tierOwned1');
+	}
+}
+
+function getBatteryT2(){
+	if(metal >= batteryT2MetalCost && gem >= batteryT2GemCost && spaceMetal >= batteryT2SpaceMetalCost ){
+		metal -= batteryT2MetalCost;
+		gem -= batteryT2GemCost;
+		spaceMetal -= batteryT2SpaceMetalCost;
+		batteryT2 += 1;
+		batteryT2MetalCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
+		batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
+		batteryT2SpaceMetalCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
+		document.getElementById("batteryT2").innerHTML = batteryT2;
+		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
+		document.getElementById("batteryT2MetalCost").innerHTML = commafy(batteryT2MetalCost);
+		document.getElementById("batteryT2GemCost").innerHTML = commafy(batteryT2GemCost);
+		document.getElementById("batteryT2SpaceMetalCost").innerHTML = commafy(batteryT2SpaceMetalCost);
+		refresh();
+        Game.statistics.add('tierOwned2');
 	}
 }
 
@@ -917,9 +936,9 @@ function getOilRig(){
 		titanium -= oilRigTitaniumCost;
 		meteorite -= oilRigMeteoriteCost;
 		oilRig += 1;
-		oilRigMeteoriteCost = Math.floor(3900 * Math.pow(1.1,oilRig));
-		oilRigTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilRig));
-		oilRigSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilRig));
+		oilRigMeteoriteCost = Math.floor(760 * Math.pow(1.1,oilRig));
+		oilRigTitaniumCost = Math.floor(16800 * Math.pow(1.1,oilRig));
+		oilRigSpaceMetalCost = Math.floor(19400 * Math.pow(1.1,oilRig));
 		document.getElementById("oilRig").innerHTML = oilRig;
 		document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
 		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
