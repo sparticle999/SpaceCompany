@@ -4836,12 +4836,12 @@
 									<h3 class="default btn-link">
 										Manual Saving
 									</h3>
-									<button id="saveButton" onclick="save('local')" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
+									<button id="saveButton" onclick="save()" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
 										<span style="color:white;">
 											Save
 										</span>
 									</button>
-									<button id="loadButton" onclick="load('local')" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
+									<button id="loadButton" onclick="loadSave()" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
 										<span style="color:white;">
 											Load
 										</span>
@@ -4862,8 +4862,8 @@
 									<h3 class="default btn-link">
 										Import/Export
 									</h3>
-									<button class="btn btn-primary" onclick="save('export')">Export Save</button>
-									<button class="btn btn-primary" onclick="load('import')">Import Save</button>
+									<button class="btn btn-primary" onclick="exportSave()">Export Save</button>
+									<button class="btn btn-primary" onclick="importSave()">Import Save</button>
 									<br>
 									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
 									<br>
