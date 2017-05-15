@@ -79,18 +79,44 @@ function refreshConversionDisplay() {
 
         buttonElement.prop('disabled', disabled);
     }
+
+    refreshPlasmaConversionDisplay();
+}
+
+function refreshPlasmaConversionDisplay() {
+    // special case for plasma
+    var disabled = false;
+    var meteoriteConvElement = $('#meteoriteConv');
+    var meteoriteEmcValue = emcAmount * meteoriteEmcVal;
+    if (plasma < meteoriteEmcValue) {
+        meteoriteConvElement.addClass('red');
+        disabled = true;
+    } else {
+        meteoriteConvElement.removeClass('red');
+    }
+
+    if(meteorite >= meteoriteStorage) {
+        meteoriteConvElement.addClass('green');
+        disabled = true;
+    } else {
+        meteoriteConvElement.removeClass('green');
+    }
+
+    meteoriteConvElement.prop('disabled', disabled);
 }
 
 function convertEnergy(resource, resourceName){
 	var current = window[resourceName];
 	var capacity = window[resourceName+"Storage"];
 
-	var amount = Math.min(emcAmount, capacity - current);
+	var amount = Math.floor(Math.min(emcAmount, capacity - current));
 	var requiredEnergy = amount * window[resourceName + "EmcVal"];
 
 	if(amount > 0 && energy >= requiredEnergy){
 		energy -= requiredEnergy;
 		window[resourceName] += amount;
+
+		Game.notifyInfo('Energy Conversion', 'Gained ' + amount + ' ' + resourceName);
 
         refreshConversionDisplay();
 	}
@@ -100,6 +126,8 @@ function convertPlasma(resource, resourceName){
 	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
 		plasma -= emcAmount*window[resourceName + "EmcVal"];
 		window[resourceName] += emcAmount;
+
+        refreshPlasmaConversionDisplay();
 	}
 }
 

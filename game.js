@@ -118,7 +118,27 @@ var Game = (function() {
         return date.toISOString().substr(11, 8);
     };
 
+    instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
+
+    instance.notifyInfo = function(title, message) {
+        if (this.constants.enableNotifications === false){
+            return;
+        }
+
+        new PNotify({
+            title: title,
+            text: message,
+            type: 'info',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
     instance.start = function() {
+        PNotify.prototype.options.styling = "bootstrap3";
+        
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 

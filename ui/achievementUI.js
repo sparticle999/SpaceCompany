@@ -61,11 +61,7 @@
         var div = $('#' + id + "_div");
         var bg = $('#' + id + "_bg");
 
-        if(data.unlocked === data.brackets.length - 1) {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked]) + " Completed");
-        } else {
-            div.prop('title', data.title.replace('%s', data.brackets[data.unlocked + 1]));
-        }
+        div.prop('title', Game.achievements.getAchievementTitle(data));
 
         div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
 

@@ -2173,6 +2173,17 @@ $(document).ready(function(){
 });
 
 function updateTheme(){
-	currentTheme = document.getElementById("themeSelector").options[themeSelector.selectedIndex].value;
-    document.getElementById('theme_css').href = 'styles/'+currentTheme+'-bootstrap.min.css';
+    currentTheme = document.getElementById("themeSelector").options[themeSelector.selectedIndex].value;
+	var element = $('#theme_css');
+
+	if(element.length === 0) {
+		console.warn("Theme CSS Element does not exist!");
+		return;
+	}
+
+	if(currentTheme === "base") {
+        element.attr('href', 'lib/bootstrap.min.css');
+	} else {
+		element.attr('href', 'styles/'+currentTheme+'-bootstrap.min.css');
+	}
 };

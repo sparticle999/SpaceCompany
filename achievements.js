@@ -119,12 +119,23 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, Game.constants.achievementProducerBrackets);
     };
 
+    instance.getAchievementTitle = function(data) {
+        if(data.unlocked === data.brackets.length - 1) {
+            return data.title.replace('%s', data.brackets[data.unlocked]) + " Completed";
+        } else {
+            return data.title.replace('%s', data.brackets[data.unlocked + 1]);
+        }
+    };
+
     instance.update = function(delta) {
         for(var id in this.entries) {
             var data = this.entries[id];
 
             if(data.unlocked < data.brackets.length - 1 && data.evaluator(data.brackets[data.unlocked + 1])) {
+                Game.notifyInfo("Achievement Reached", this.getAchievementTitle(data));
+
                 this.unlock(id, data.unlocked + 1);
+
                 newUnlock('more');
             }
         }
