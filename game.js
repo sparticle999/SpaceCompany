@@ -40,6 +40,10 @@ var Game = (function() {
         refresh();
         refreshWonderBars();
         checkRedCost();
+
+        self.resources.update(delta);
+        self.buildings.update(delta);
+        self.tech.update(delta);
     };
 
     instance.slowUpdate = function(self, delta) {
@@ -67,6 +71,7 @@ var Game = (function() {
         this.statistics.save(data);
         this.resources.save(data);
         this.buildings.save(data);
+        this.tech.save(data);
     };
 
     instance.load = function(data) {
@@ -74,6 +79,7 @@ var Game = (function() {
         this.statistics.load(data);
         this.resources.load(data);
         this.buildings.load(data);
+        this.tech.load(data);
     };
 
     instance.loadDelay = function (self, delta) {
@@ -87,6 +93,7 @@ var Game = (function() {
         self.statistics.initialize();
         self.resources.initialize();
         self.buildings.initialize();
+        self.tech.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();

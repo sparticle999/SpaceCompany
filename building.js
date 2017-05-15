@@ -5,13 +5,14 @@ Game.buildings = (function(){
     instance.dataVersion = 1;
     instance.entries = {};
     instance.updatePerSecondProduction = true;
-    instance.buildingTypeCount = 0;
+    instance.techTypeCount = 0;
 
     instance.initialize = function() {
-        for (var id in Game.building_data) {
-            var data = Game.building_data[id];
-            this.buildingTypeCount++;
+        for (var id in Game.buildingData) {
+            var data = Game.buildingData[id];
+            this.techTypeCount++;
             this.entries[id] = $.extend({
+                id: id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
@@ -20,7 +21,7 @@ Game.buildings = (function(){
             }, data);
         }
 
-        console.debug("Loaded " + this.buildingTypeCount + " Building Types");
+        console.debug("Loaded " + this.techTypeCount + " Building Types");
     };
 
     instance.update = function(delta) {
@@ -49,14 +50,14 @@ Game.buildings = (function(){
     };
 
     instance.constructBuildings = function(id, count) {
-        // Add the resource and clamp to the maximum
+        // Add the buildings and clamp to the maximum
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
         this.updatePerSecondProduction = true;
     };
 
     instance.destroyBuildings = function(id, count) {
-        // Remove the resource and ensure we can not go below 0
+        // Remove the buildings and ensure we can not go below 0
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
         this.updatePerSecondProduction = true;
@@ -70,7 +71,7 @@ Game.buildings = (function(){
                 continue;
             }
 
-            var buildingData = Game.building_data[id];
+            var buildingData = Game.buildingData[id];
             if (!buildingData.resource) {
                 continue;
             }

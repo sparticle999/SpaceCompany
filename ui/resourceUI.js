@@ -5,7 +5,7 @@
     instance.entries = {};
     instance.mainTemplate = null;
     instance.navTemplate = null;
-    instance.upgradeTemplate = null;
+    instance.techTemplate = null;
     instance.buildingTemplate = null;
 
     instance.tabRoot = null;
@@ -30,27 +30,27 @@
                 '</div>'].join('\n'));
 
         instance.titleTemplate = Handlebars.compile(
-            ['<td style="border:none;">',
+            ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<span>{{desc}}</span>',
                 '<br><br>',
                 '<div class="btn btn-default" id="{{htmlId}}_gain" disabled="true">ERR</div>',
                 '<br><br>',
-                '</td>'].join('\n'));
+                '</td></tr>'].join('\n'));
 
-        instance.upgradeTemplate = Handlebars.compile(
-            ['<td style="border:none;">',
+        instance.techTemplate = Handlebars.compile(
+            ['<tr><td style="border:none;">',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p>{{cost}}</p>',
                 '</span>',
                 '<br><br>',
-                '<div onclick="{{func}}" class="btn btn-default">Buy</div>',
-                '</td>'].join('\n'));
+                '<div class="btn btn-default" id="{{id}}_unlock">Unlock</div>',
+                '</td></tr>'].join('\n'));
 
         instance.buildingTemplate = Handlebars.compile(
-            ['<td style="border:none;">',
+            ['<tr></ter><td style="border:none;">',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
@@ -66,7 +66,7 @@
                 '<div onclick="{{funcDestroy}}" id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
                 '<div onclick="{{funcDestroy10}}" id="{{htmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
                 '<div onclick="{{funcDestroy100}}" id="{{htmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
-                '</td>'].join('\n'));
+                '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}_nav" class="{{category}}" href="#{{htmlId}}_tab" aria-controls="{{htmlId}}_tab" role="tab" data-toggle="tab" style="height:60px;">',
@@ -106,9 +106,23 @@
         }
     };
 
-    instance.createDisplay = function(id) {
-        var data = Game.resources.entries[id];
+    instance.createDisplayTabTech = function(data, techData) {
+        console.log("Tech: " + data.id + " - " + techData.id);
 
+        var tabContentRoot = $('#' + data.htmlId + '_tabContent');
+        var tech = this.techTemplate(techData);
+        tabContentRoot.append($(tech));
+    };
+
+    instance.createDisplayTabBuilding = function(data, buildingData) {
+        console.log("Building: " + data.id + " - " + buildingData.id);
+
+        var tabContentRoot = $('#' + data.htmlId + '_tabContent');
+        var tech = this.buildingTemplate(buildingData);
+        tabContentRoot.append($(tech));
+    };
+
+    instance.createDisplayTab = function(data) {
         // Build the Tab
         var tab = this.mainTemplate(data);
         var tabContent = $(tab);
@@ -118,6 +132,26 @@
         var tabTitle = this.titleTemplate(data);
         tabContentRoot.append(tabTitle);
         $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
+
+        for (var id in Game.tech.entries) {
+            var techData = Game.tech.entries[id];
+            if(techData.resource && techData.resource === data.id) {
+                this.createDisplayTabTech(data, techData);
+            }
+        }
+
+        for (var id in Game.buildings.entries) {
+            var buildingData = Game.buildings.entries[id];
+            if(buildingData.resource && buildingData.resource === data.id) {
+                this.createDisplayTabBuilding(data, buildingData);
+            }
+        }
+    };
+
+    instance.createDisplay = function(id) {
+        var data = Game.resources.entries[id];
+
+        this.createDisplayTab(data);
 
         // Build the Nav Section
         var nav = this.navTemplate(data);

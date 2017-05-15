@@ -1,3 +1,17 @@
+COST_TYPE = {
+    FIXED: 0,
+    PERCENT: 1
+};
+
+TECH_TYPE = {
+    UPGRADE: 0,
+    UNLOCK: 1,
+};
+
+BUILDING_TYPE = {
+    PRODUCER: 0,
+};
+
 Game.constants = (function(){
 
     var instance = {};
@@ -19,7 +33,7 @@ Game.constants = (function(){
 
     instance.maxTier = 6;
 
-    instance.enableDataDrivenResources = false;
+    instance.enableDataDrivenResources = true;
 
     return instance;
 }());

@@ -1,4 +1,4 @@
-Game.resource_data = (function(){
+Game.resourceData = (function(){
 
     var instance = {};
 

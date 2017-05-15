@@ -1,16 +1,13 @@
-BUILDING_TYPES = {
-    PRODUCER: 0,
-};
-
-Game.building_data = (function(){
+Game.buildingData = (function(){
 
     var instance = {};
 
     instance.metalMiner = {
         name: 'Miner',
         desc: 'Build a pickaxe for your miner.',
-        type: BUILDING_TYPES.PRODUCER,
+        type: BUILDING_TYPE.PRODUCER,
         resource: 'metal',
+        unlocked: false,
         perSecond: 1,
         energyCost: 0,
         maxCount: Number.MAX_VALUE,
@@ -23,7 +20,7 @@ Game.building_data = (function(){
     instance.metalHeavyDrill = {
         name: 'Heavy Drill',
         desc: 'Heavy Drills mine Metal at mass.',
-        type: BUILDING_TYPES.PRODUCER,
+        type: BUILDING_TYPE.PRODUCER,
         resource: 'metal',
         perSecond: 14,
         energyCost: 2,
@@ -38,7 +35,7 @@ Game.building_data = (function(){
     instance.metalGigaDrill = {
         name: 'Giga Drill',
         desc: 'Giga Drills extract Metal at colossal speeds.',
-        type: BUILDING_TYPES.PRODUCER,
+        type: BUILDING_TYPE.PRODUCER,
         resource: 'metal',
         perSecond: 108,
         energyCost: 9,
@@ -53,7 +50,7 @@ Game.building_data = (function(){
     instance.metalQuantumDrill = {
         name: 'Quantum Drill',
         desc: 'Quantum Drills bend the space-time continuum to get metal faster than physically possible.',
-        type: BUILDING_TYPES.PRODUCER,
+        type: BUILDING_TYPE.PRODUCER,
         resource: 'metal',
         perSecond: 427,
         energyCost: 24,

@@ -7,8 +7,8 @@ Game.resources = (function(){
     instance.resourceTypeCount = 0;
 
     instance.initialize = function() {
-        for (var id in Game.resource_data) {
-            var data = Game.resource_data[id];
+        for (var id in Game.resourceData) {
+            var data = Game.resourceData[id];
             this.resourceTypeCount++;
             this.entries[id] = $.extend({
                 id: id,
