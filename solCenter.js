@@ -81,7 +81,7 @@ function refreshConversionDisplay() {
     }
 }
 
-function convertEnergy(resource, resourceName){
+function convertEnergy(resourceName){
 	var current = window[resourceName];
 	var capacity = window[resourceName+"Storage"];
 
@@ -96,7 +96,7 @@ function convertEnergy(resource, resourceName){
 	}
 }
 
-function convertPlasma(resource, resourceName){
+function convertPlasma(resourceName){
 	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
 		plasma -= emcAmount*window[resourceName + "EmcVal"];
 		window[resourceName] += emcAmount;
