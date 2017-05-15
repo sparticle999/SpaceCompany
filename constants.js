@@ -34,7 +34,7 @@ Game.constants = (function(){
     instance.maxTier = 6;
 
     instance.enableNotifications = false;
-    instance.enableDataDrivenResources = true;
+    instance.enableDataDrivenResources = false;
 
     return instance;
 }());
