@@ -124,32 +124,15 @@ function gainResources(){
 		}
 	}
 	
-	
-
-	// ReWrite This
-	if(charcoalToggled === true){
-		if(charcoal + charcoalps/10 < charcoalStorage && wood + woodps/10 >= ((woodburner*2)/10 + furnace*furnaceWoodInput)/10){
-			if(wood - (((woodburner*2) + furnace*furnaceWoodInput)/10) > 0){
+	if(charcoalToggled){
+		if(charcoal + charcoalps/10 < charcoalStorage){
+			if(wood >= woodInput/10){
 				charcoal += charcoalps/10;
-				wood -= ((woodburner*2) + furnace*furnaceWoodInput)/10;
-			}
-			else{
-				wood = 0;
+	 			wood -= woodInput/10;
 			}
 		}
 		else{
-			var difference = charcoalStorage - charcoal;
-			if(wood >= difference*2){
-				if(charcoal + difference < charcoalStorage){
-					charcoal += difference;
-					wood -= difference * 2;
-				}
-				else{
-					charcoal = charcoalStorage;
-				}
-			}
-		}
-		if(charcoal >= charcoalStorage){
+			charcoal = charcoalStorage;
 			document.getElementById("woodps").innerHTML = commafy(woodps);
 			document.getElementById("charcoal").className = "green";
 		}
@@ -157,7 +140,7 @@ function gainResources(){
 	else{
 		document.getElementById("woodps").innerHTML = commafy(woodps);
 	}
-	// Up To Here
+	
 	if(wood + woodps/10 < woodStorage){
 		wood += woodps/10;
 	}

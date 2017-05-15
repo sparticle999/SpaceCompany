@@ -180,6 +180,7 @@ function refreshPerSec(){
 		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
 		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
 		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53) + (fryer*210);
+		woodInput = woodburner*2 + (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
 		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
 		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
 		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37) + (vent*149);
@@ -206,6 +207,7 @@ function refreshPerSec(){
 		metalps = miner;
 		gemps = gemMiner;
 		charcoalps = woodburner;
+		woodInput = woodburner*2
 		woodps = woodcutter;
 		spaceMetalps = moonWorker;
 		methaneps = vacuum;
