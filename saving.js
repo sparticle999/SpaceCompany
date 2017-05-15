@@ -85,7 +85,7 @@ function exportSave() {
 	var data = save();
 
     localStorage.setItem("save",JSON.stringify(data));
-    var string = JSON.stringify(localSave);
+    var string = JSON.stringify(data);
     var compressed = LZString.compressToBase64(string);
 
     console.log('Compressing Save');
