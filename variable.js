@@ -2,6 +2,11 @@
 
 var versionNumber = "0.4.1"; var currentTheme = "base";
 
+var handMined = 0; var tier1 = 0; var tier2 = 0; var tier3 = 0; var tier4 = 0; var tier5 = 0; var tier6 = 0;
+var tabsUnlockedNum = 3; var resourcesUnlockedNum = 3; var techsResearchedNum = 0; var placesExploredNum = 0; var wondersBuiltNum = 0; var wondersActivatedNum = 0;
+var secondsTotal = 0;
+
+var achieved = [];
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
@@ -9,7 +14,7 @@ var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterSpaceMetalCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
 var plasmatic = 0; var plasmaticSpaceMetalCost = 810000; var plasmaticSiliconCost = 720000; var plasmaticMeteoriteCost = 970; var plasmaticToggled = true;
-var energy = 0; var energyps = 0;
+var energy = 0; var energyps = 0; var energyStorage = 100000;
 var battery = 0; var batteryMetalCost = 50000; var batteryGemCost = 50000; var batterySpaceMetalCost = 30000;
 var batteryT2 = 0; var batteryT2MetalCost = 550000; var batteryT2GemCost = 550000; var batteryT2SpaceMetalCost = 330000;
 var charcoalEngine = 0; var charcoalEngineMetalCost = 50; var charcoalEngineGemCost = 25; var charcoalEngineOutput = 2;
@@ -106,7 +111,7 @@ var science = 0; var scienceps = 0;
 var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
 var labT2 = 0; var labT2MetalCost = 1000; var labT2GemCost = 200; var labT2WoodCost = 500;
 var labT3 = 0; var labT3MetalCost = 17000; var labT3GemCost = 4700; var labT3WoodCost = 9600;
-var rocket = 0; var rocketFuel = 0;
+var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500; var chemicalPlantToggled = true;
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
@@ -114,6 +119,9 @@ var swarm = 0;
 var sphere = 0;
 
 // Variables not being saved
+
+var autoSaveTime = 2; var pageLoaded = false;
+var secondsSession = 0;
 
 var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost = 5000;
 var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;

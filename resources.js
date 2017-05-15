@@ -169,7 +169,7 @@ function gainPlasma(){
 		energy -= 1000;
 		hydrogen -= 10;
 		refresh();
-		Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -177,7 +177,7 @@ function gainUranium(){
 	if(uranium < uraniumStorage){
 		uranium += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -185,7 +185,7 @@ function gainOil(){
 	if(oil < oilStorage){
 		oil += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -193,7 +193,7 @@ function gainMetal(){
 	if(metal < metalStorage){
 		metal += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -201,7 +201,7 @@ function gainGem(){
 	if(gem < gemStorage){
 		gem += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -210,7 +210,7 @@ function gainCharcoal(){
 		wood -= 2;
 		charcoal += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -218,7 +218,7 @@ function gainWood(){
 	if(wood < woodStorage){
 		wood += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -226,7 +226,7 @@ function gainSpaceMetal(){
 	if(spaceMetal < spaceMetalStorage){
 		spaceMetal += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -234,7 +234,7 @@ function gainMethane(){
 	if(methane < methaneStorage){
 		methane += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -242,7 +242,7 @@ function gainTitanium(){
 	if(titanium < titaniumStorage){
 		titanium += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -250,7 +250,7 @@ function gainGold(){
 	if(gold < goldStorage){
 		gold += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -258,7 +258,7 @@ function gainSilver(){
 	if(silver < silverStorage){
 		silver += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -266,7 +266,7 @@ function gainSilicon(){
 	if(silicon < siliconStorage){
 		silicon += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -274,7 +274,7 @@ function gainLava(){
 	if(lava < lavaStorage){
 		lava += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -282,7 +282,7 @@ function gainHydrogen(){
 	if(hydrogen < hydrogenStorage){
 		hydrogen += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -290,7 +290,7 @@ function gainHelium(){
 	if(helium < heliumStorage){
 		helium += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -298,7 +298,7 @@ function gainIce(){
 	if(ice < iceStorage){
 		ice += 1;
 		refresh();
-        Game.statistics.add('manualResources');
+		handMined += 1;
 	}
 }
 
@@ -308,7 +308,7 @@ function gainMeteorite(){
 			plasma -= 3;
 			meteorite += 1;
 			refresh();
-            Game.statistics.add('manualResources');
+			handMined += 1;
 		}
 	}
 }
@@ -633,7 +633,7 @@ function getHeater(){
 		document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
 		document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -651,7 +651,7 @@ function getPlasmatic(){
 		document.getElementById("plasmaticSiliconCost").innerHTML = commafy(plasmaticSiliconCost);
 		document.getElementById("plasmaticMeteoriteCost").innerHTML = commafy(plasmaticMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -670,7 +670,7 @@ function getBattery(){
 		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
 		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -704,7 +704,7 @@ function getCharcoalEngine(){
 		document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
 		document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -719,7 +719,7 @@ function getSolarPanel(){
 		document.getElementById("solarPanelMetalCost").innerHTML = commafy(solarPanelMetalCost);
 		document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -734,7 +734,7 @@ function getMethaneStation(){
 		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
 		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -749,7 +749,7 @@ function getNuclearStation(){
 		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
 		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -768,7 +768,7 @@ function getMagmatic(){
 		document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
 		document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
 		refresh();
-        Game.statistics.add('tierOwned5');
+		tier5 += 1;
 	}
 }
 
@@ -786,7 +786,7 @@ function getFusionReactor(){
 		document.getElementById("fusionReactorTitaniumCost").innerHTML = commafy(fusionReactorTitaniumCost);
 		document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned6');
+		tier6 += 1;
 	}
 }
 
@@ -804,7 +804,7 @@ function getGrinder(){
 		document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
 		document.getElementById("grinderGoldCost").innerHTML = commafy(grinderGoldCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -822,7 +822,7 @@ function getCubic(){
 		document.getElementById("cubicSpaceMetalCost").innerHTML = commafy(cubicSpaceMetalCost);
 		document.getElementById("cubicOilCost").innerHTML = commafy(cubicOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -840,7 +840,7 @@ function getEnricher(){
 		document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
 		document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -858,7 +858,7 @@ function getRecycler(){
 		document.getElementById("recyclerMethaneCost").innerHTML = commafy(recyclerMethaneCost);
 		document.getElementById("recyclerMeteoriteCost").innerHTML = commafy(recyclerMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -873,7 +873,7 @@ function getPump(){
 		document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
 		document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -891,7 +891,7 @@ function getPumpjack(){
 		document.getElementById("pumpjackGemCost").innerHTML = commafy(pumpjackGemCost);
 		document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -909,7 +909,7 @@ function getOilField(){
 		document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
 		document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -927,7 +927,7 @@ function getOilRig(){
 		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
 		document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -945,13 +945,13 @@ function getMiner(){
 			if(miner >= 1){
 				document.getElementById("researchTab").className = "";
 				researchUnlocked = true;
-                Game.statistics.add('tabsUnlocked');
+				tabsUnlockedNum += 1;
 				tabsUnlocked.push("researchTab");
 				newUnlock("research");
 			}
 		}
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -969,7 +969,7 @@ function getHeavyDrill(){
 		document.getElementById("heavyDrillGemCost").innerHTML = commafy(heavyDrillGemCost);
 		document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -987,7 +987,7 @@ function getGigaDrill(){
 		document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
 		document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1005,7 +1005,7 @@ function getQuantumDrill(){
 		document.getElementById("quantumDrillGoldCost").innerHTML = commafy(quantumDrillGoldCost);
 		document.getElementById("quantumDrillMeteoriteCost").innerHTML = commafy(quantumDrillMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1020,7 +1020,7 @@ function getGemMiner(){
 		document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
 		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1038,7 +1038,7 @@ function getAdvancedDrill(){
 		document.getElementById("advancedDrillGemCost").innerHTML = commafy(advancedDrillGemCost);
 		document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1056,7 +1056,7 @@ function getDiamondDrill(){
 		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
 		document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1074,7 +1074,7 @@ function getCarbyneDrill(){
 		document.getElementById("carbyneDrillGemCost").innerHTML = commafy(carbyneDrillGemCost);
 		document.getElementById("carbyneDrillMeteoriteCost").innerHTML = commafy(carbyneDrillMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1089,7 +1089,7 @@ function getWoodburner(){
 		document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
 		document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1107,7 +1107,7 @@ function getFurnace(){
 		document.getElementById("furnaceWoodCost").innerHTML = commafy(furnaceWoodCost);
 		document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1125,7 +1125,7 @@ function getKiln(){
 		document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
 		document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1143,7 +1143,7 @@ function getFryer(){
 		document.getElementById("fryerLavaCost").innerHTML = commafy(fryerLavaCost);
 		document.getElementById("fryerMeteoriteCost").innerHTML = commafy(fryerMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1158,7 +1158,7 @@ function getWoodcutter(){
 		document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
 		document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1176,7 +1176,7 @@ function getLaserCutter(){
 		document.getElementById("laserCutterGemCost").innerHTML = commafy(laserCutterGemCost);
 		document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1194,7 +1194,7 @@ function getDeforester(){
 		document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
 		document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
 		refresh();
-        Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1212,7 +1212,7 @@ function getInfuser(){
 		document.getElementById("infuserOilCost").innerHTML = commafy(infuserOilCost);
 		document.getElementById("infuserMeteoriteCost").innerHTML = commafy(infuserMeteoriteCost);
 		refresh();
-        Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1224,7 +1224,7 @@ function getMoonWorker(){
 		document.getElementById("moonWorker").innerHTML = moonWorker;
 		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
 		refresh();
-        Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1242,7 +1242,7 @@ function getMoonDrill(){
 		document.getElementById("moonDrillGemCost").innerHTML = commafy(moonDrillGemCost);
 		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
 		refresh();
-        Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1260,7 +1260,7 @@ function getMoonQuarry(){
 		document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
 		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1278,7 +1278,7 @@ function getPlanetExcavator(){
 		document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);
 		document.getElementById("planetExcavatorMeteoriteCost").innerHTML = commafy(planetExcavatorMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1293,7 +1293,7 @@ function getVacuum(){
 		document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
 		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1311,7 +1311,7 @@ function getSuctionExcavator(){
 		document.getElementById("suctionExcavatorGemCost").innerHTML = commafy(suctionExcavatorGemCost);
 		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1329,7 +1329,7 @@ function getSpaceCow(){
 		document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
 		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1347,7 +1347,7 @@ function getVent(){
 		document.getElementById("ventHeliumCost").innerHTML = commafy(ventHeliumCost);
 		document.getElementById("ventMeteoriteCost").innerHTML = commafy(ventMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1359,7 +1359,7 @@ function getExplorer(){
 		document.getElementById("explorer").innerHTML = explorer;
 		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1377,7 +1377,7 @@ function getSpaceMetalDrill(){
 		document.getElementById("spaceMetalDrillGemCost").innerHTML = commafy(spaceMetalDrillGemCost);
 		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1395,7 +1395,7 @@ function getPentaDrill(){
 		document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
 		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1413,7 +1413,7 @@ function getTitanDrill(){
 		document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
 		document.getElementById("titanDrillMeteoriteCost").innerHTML = commafy(titanDrillMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1428,7 +1428,7 @@ function getDroid(){
 		document.getElementById("droidSpaceMetalCost").innerHTML = commafy(droidSpaceMetalCost);
 		document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1446,7 +1446,7 @@ function getDestroyer(){
 		document.getElementById("destroyerGemCost").innerHTML = commafy(destroyerGemCost);
 		document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1464,7 +1464,7 @@ function getDeathStar(){
 		document.getElementById("deathStarSilverCost").innerHTML = commafy(deathStarSilverCost);
 		document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1482,7 +1482,7 @@ function getActuator(){
 		document.getElementById("actuatorHeliumCost").innerHTML = commafy(actuatorHeliumCost);
 		document.getElementById("actuatorMeteoriteCost").innerHTML = commafy(actuatorMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1497,7 +1497,7 @@ function getScout(){
 		document.getElementById("scoutSpaceMetalCost").innerHTML = commafy(scoutSpaceMetalCost);
 		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1515,7 +1515,7 @@ function getSpaceLaser(){
 		document.getElementById("spaceLaserGemCost").innerHTML = commafy(spaceLaserGemCost);
 		document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1533,7 +1533,7 @@ function getBertha(){
 		document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
 		document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1551,7 +1551,7 @@ function getCannon(){
 		document.getElementById("cannonOilCost").innerHTML = commafy(cannonOilCost);
 		document.getElementById("cannonMeteoriteCost").innerHTML = commafy(cannonMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1566,7 +1566,7 @@ function getBlowtorch(){
 		document.getElementById("blowtorchSpaceMetalCost").innerHTML = commafy(blowtorchSpaceMetalCost);
 		document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1584,7 +1584,7 @@ function getScorcher(){
 		document.getElementById("scorcherGemCost").innerHTML = commafy(scorcherGemCost);
 		document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1602,7 +1602,7 @@ function getAnnihilator(){
 		document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
 		document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1620,7 +1620,7 @@ function getDesert(){
 		document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
 		document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1635,7 +1635,7 @@ function getCrucible(){
 		document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);
 		document.getElementById("crucibleGemCost").innerHTML = commafy(crucibleGemCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1653,7 +1653,7 @@ function getExtractor(){
 		document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
 		document.getElementById("extractorSiliconCost").innerHTML = commafy(extractorSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1671,7 +1671,7 @@ function getExtruder(){
 		document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
 		document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1689,7 +1689,7 @@ function getVeluptuator(){
 		document.getElementById("veluptuatorGoldCost").innerHTML = commafy(veluptuatorGoldCost);
 		document.getElementById("veluptuatorMeteoriteCost").innerHTML = commafy(veluptuatorMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1704,7 +1704,7 @@ function getCollector(){
 		document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
 		document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1722,7 +1722,7 @@ function getMagnet(){
 		document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
 		document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1740,7 +1740,7 @@ function getECell(){
 		document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
 		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1758,7 +1758,7 @@ function getHindenburg(){
 		document.getElementById("hindenburgMethaneCost").innerHTML = commafy(hindenburgMethaneCost);
 		document.getElementById("hindenburgMeteoriteCost").innerHTML = commafy(hindenburgMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1773,7 +1773,7 @@ function getDrone(){
 		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
 		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1791,7 +1791,7 @@ function getTanker(){
 		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
 		document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1809,7 +1809,7 @@ function getCompressor(){
 		document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
 		document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1827,7 +1827,7 @@ function getSkimmer(){
 		document.getElementById("skimmerTitaniumCost").innerHTML = commafy(skimmerTitaniumCost);
 		document.getElementById("skimmerMeteoriteCost").innerHTML = commafy(skimmerMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1842,7 +1842,7 @@ function getIcePick(){
 		document.getElementById("icePickSpaceMetalCost").innerHTML = commafy(icePickSpaceMetalCost);
 		document.getElementById("icePickGemCost").innerHTML = commafy(icePickGemCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1860,7 +1860,7 @@ function getIceDrill(){
 		document.getElementById("iceDrillTitaniumCost").innerHTML = commafy(iceDrillTitaniumCost);
 		document.getElementById("iceDrillSiliconCost").innerHTML = commafy(iceDrillSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }
 
@@ -1878,7 +1878,7 @@ function getFreezer(){
 		document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
 		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned3');
+		tier3 += 1;
 	}
 }
 
@@ -1896,7 +1896,7 @@ function getMrFreeze(){
 		document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
 		document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
 		refresh();
-		Game.statistics.add('tierOwned4');
+		tier4 += 1;
 	}
 }
 
@@ -1911,7 +1911,7 @@ function getPrinter(){
 		document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
 		document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned1');
+		tier1 += 1;
 	}
 }
 
@@ -1929,6 +1929,6 @@ function getWeb(){
 		document.getElementById("webUraniumCost").innerHTML = commafy(webUraniumCost);
 		document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
 		refresh();
-		Game.statistics.add('tierOwned2');
+		tier2 += 1;
 	}
 }

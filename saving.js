@@ -1,5 +1,5 @@
 function autosave(){
-	if(Game.statistics.get('sessionTime') <= 60){
+	if(secondsSession <= 60){
 		saveTimer = 0;
 	}
 
@@ -86,6 +86,20 @@ function save(type){
 	var localSave = {
 		versionNumber: versionNumber,
 		currentTheme: currentTheme,
+		handMined: handMined,
+		tier1: tier1,
+		tier2: tier2,
+		tier3: tier3,
+		tier4: tier4,
+		tier5: tier5,
+		tier6: tier6,
+		tabsUnlockedNum: tabsUnlockedNum,
+		resourcesUnlockedNum: resourcesUnlockedNum,
+		techsResearchedNum: techsResearchedNum,
+		placesExploredNum: placesExploredNum,
+		wondersBuiltNum: wondersBuiltNum,
+		wondersActivatedNum: wondersActivatedNum,
+		secondsTotal: secondsTotal,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -509,6 +523,20 @@ function load(type){
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
 		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
+		if(typeof savegame.handMined !== "undefined") handMined = savegame.handMined;
+		if(typeof savegame.tier1 !== "undefined") tier1 = savegame.tier1;
+		if(typeof savegame.tier2 !== "undefined") tier2 = savegame.tier2;
+		if(typeof savegame.tier3 !== "undefined") tier3 = savegame.tier3;
+		if(typeof savegame.tier4 !== "undefined") tier4 = savegame.tier4;
+		if(typeof savegame.tier5 !== "undefined") tier5 = savegame.tier5;
+		if(typeof savegame.tier6 !== "undefined") tier6 = savegame.tier6;
+		if(typeof savegame.tabsUnlockedNum !== "undefined") tabsUnlockedNum = savegame.tabsUnlockedNum;
+		if(typeof savegame.resourcesUnlockedNum !== "undefined") resourcesUnlockedNum = savegame.resourcesUnlockedNum;
+		if(typeof savegame.techsResearchedNum !== "undefined") techsResearchedNum = savegame.techsResearchedNum;
+		if(typeof savegame.placesExploredNum !== "undefined") placesExploredNum = savegame.placesExploredNum;
+		if(typeof savegame.wondersBuiltNum !== "undefined") wondersBuiltNum = savegame.wondersBuiltNum;
+		if(typeof savegame.wondersActivatedNum !== "undefined") wondersActivatedNum = savegame.wondersActivatedNum;
+		if(typeof savegame.secondsTotal !== "undefined") secondsTotal = savegame.secondsTotal;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
@@ -912,6 +940,7 @@ function load(type){
 	}
 	updateTheme();
 	refreshUI();
+	refreshStats();
 	refreshResources();
 	refreshResearches();
 	refreshTabs();

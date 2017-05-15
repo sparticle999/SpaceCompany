@@ -53,8 +53,8 @@ function exploreMoon(){
 		resourcesUnlocked.push("spaceMetalNav", "collapseInnerPlanet");
 		buttonsHidden.push("exploreMoon");
 		explored.push("moon");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked');
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -69,8 +69,8 @@ function exploreVenus(){
 		resourcesUnlocked.push("methaneNav", "methanePower");
 		buttonsHidden.push("exploreVenus");
 		explored.push("venus");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked');
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -85,8 +85,8 @@ function exploreMars(){
 		resourcesUnlocked.push("titaniumNav", "siliconNav");
 		buttonsHidden.push("exploreMars");
 		explored.push("mars");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked', 2);
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 2;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -109,8 +109,8 @@ function exploreAsteroidBelt(){
 		resourcesUnlocked.push("goldNav", "silverNav");
 		buttonsHidden.push("exploreAsteroidBelt");
 		explored.push("asteroidBelt");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked', 2);
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 2;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -123,9 +123,9 @@ function exploreWonderStation(){
 		document.getElementById("exploreWonderStation").className = "hidden";
 		buttonsHidden.push("exploreWonderStation");
 		explored.push("wonderStation");
-        Game.statistics.add('placesExplored');
+		placesExploredNum += 1;
 		tabsUnlocked.push("wonderTab");
-        Game.statistics.add('tabsUnlocked');
+		tabsUnlockedNum += 1;
 		newUnlock("resources");
 	}
 }
@@ -140,8 +140,8 @@ function exploreJupiter(){
 		resourcesUnlocked.push("hydrogenNav", "collapseOuterPlanet", "fusionPower");
 		buttonsHidden.push("exploreJupiter");
 		explored.push("jupiter");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked');
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -155,8 +155,8 @@ function exploreSaturn(){
 		resourcesUnlocked.push("heliumNav");
 		buttonsHidden.push("exploreSaturn");
 		explored.push("saturn");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked');
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -170,8 +170,8 @@ function explorePluto(){
 		resourcesUnlocked.push("iceNav");
 		buttonsHidden.push("explorePluto");
 		explored.push("pluto");
-        Game.statistics.add('placesExplored');
-        Game.statistics.add('resourcesUnlocked');
+		placesExploredNum += 1;
+		resourcesUnlockedNum += 1;
 		refreshResources();
 		newUnlock("resources");
 	}
@@ -185,7 +185,7 @@ function exploreKuiperBelt(){
 		resourcesUnlocked.push("solCenter");
 		buttonsHidden.push("exploreKuiperBelt");
 		explored.push("kuiperBelt");
-        Game.statistics.add('placesExplored');
+		placesExploredNum += 1;
 		refreshResources();
 	}
 }
@@ -198,7 +198,7 @@ function exploreSolCenter(){
 		resourcesUnlocked.push("solCenterTopTab");
 		buttonsHidden.push("exploreSolCenter");
 		explored.push("solCenter");
-        Game.statistics.add('placesExplored');
+		placesExploredNum += 1;
 		refreshResources();
 		newUnlock("solCenter");
 	}

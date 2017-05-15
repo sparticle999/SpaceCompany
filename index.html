@@ -28,6 +28,7 @@
 		</div> -->
 	</div>
 </div>
+<script type="text/javascript" src="loading.js"></script>
 <div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
@@ -4932,7 +4933,175 @@
 								</td>
 							</tr>
 							<tr>
-								<td id="statisticContent"></td>
+								<td>
+									<table class="table">
+										<th class="default btn-link theader" style="border:none;">
+											General
+										</th>
+										<tr>
+											<td style="width:80%">
+												Resources Mined By Hand: 
+											</td>
+											<td>
+												<span id="handMined">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 1 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier1">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 2 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier2">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 3 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier3">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 4 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier4">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 5 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier5">0</span><br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Tier 6 Machines Owned: 
+											</td>
+											<td>
+												<span id="tier6">0</span><br>
+											</td>
+										</tr>
+									</table>
+									<table class="table">
+										<th class="default btn-link theader" style="border:none;">
+											Unlockables
+										</th>
+										<tr>
+											<td style="width:80%">
+												Tabs Unlocked:
+											</td>
+											<td>
+												<span id="tabsUnlockedNum">3</span> / 7<br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Resources Unlocked: 
+											</td>
+											<td>
+												<span id="resourcesUnlockedNum">3</span> / 19<br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Technologies Researched: 
+											</td>
+											<td>
+												<span id="techsResearchedNum">0</span> / 21<br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Places Explored: 
+											</td>
+											<td>
+												<span id="placesExploredNum">0</span> / 10<br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Wonders Built: 
+											</td>
+											<td>
+												<span id="wondersBuiltNum">0</span> / 4<br>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Wonders Activated: 
+											</td>
+											<td>
+												<span id="wondersActivatedNum">0</span> / 4<br>
+											</td>
+										</tr>
+									</table>
+									<table class="table">
+										<th class="default btn-link theader" style="border:none;">
+											Timing
+										</th>
+										<tr>
+											<td style="width:80%">
+												Time Played This Session:
+											</td>
+											<td>
+												<span id="timeSession">0:00:00</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												Time Played Total: 
+											</td>
+											<td>
+												<span id="timeTotal">0:00:00</span>
+											</td>
+										</tr>
+										<!-- <tr>
+											<td style="width:80%">
+												XXXX:
+											</td>
+											<td>
+												<span id="XXXX">0</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												XXXX: 
+											</td>
+											<td>
+												<span id="XXXX">0</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												XXXX: 
+											</td>
+											<td>
+												<span id="XXXX">0</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width:80%">
+												XXXX:
+											</td>
+											<td>
+												<span id="XXXX">0</span>
+											</td>
+										</tr> -->
+									</table>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -5281,10 +5450,6 @@
 <script type="text/javascript" src="game.js"></script>
 <script type="text/javascript" src="achievements.js"></script>
 <script type="text/javascript" src="constants.js"></script>
-<script type="text/javascript" src="statistics.js"></script>
-
-<script type="text/javascript" src="ui/achievementUI.js"></script>
-<script type="text/javascript" src="ui/statisticUI.js"></script>
 
 <script type="text/javascript" src="core.js"></script>
 <script type="text/javascript" src="notification.js"></script>
