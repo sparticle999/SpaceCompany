@@ -14,16 +14,21 @@ v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
+- Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
 - Space Elevator
 - Second Floor of Wonder Station
+- Unlock Technologies such as reduce the exponental increase of costs
+- Third Floor of Wonder Station
+- Mass to Energy Conversion
 
 # Changelog:
 
 v0.5.0
 - Tier 2 Batteries
 
+- Recoded Charcoal Production
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
 

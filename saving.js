@@ -81,7 +81,30 @@ function autosave(){
 	}
 }
 
-function save(type){
+function exportSave() {
+	var data = save();
+
+    localStorage.setItem("save",JSON.stringify(data));
+    var string = JSON.stringify(localSave);
+    var compressed = LZString.compressToBase64(string);
+
+    console.log('Compressing Save');
+    console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
+    document.getElementById('impexpField').value = compressed;
+}
+
+function save() {
+	var data = doSave();
+    localStorage.setItem("save",JSON.stringify(data));
+
+    document.getElementById("saveButton").className = "btn btn-primary disabled";
+    saved = true;
+    console.log("Save Successful");
+
+    return data;
+}
+
+function doSave(){
 	"use strict";
 	var localSave = {
 		versionNumber: versionNumber,
@@ -477,35 +500,30 @@ function save(type){
 
 	Game.save(localSave);
 
-	if(type === "local"){
-		localStorage.setItem("save",JSON.stringify(localSave));
-	}
-	if(type === "export"){
-		localStorage.setItem("save",JSON.stringify(localSave));
-		var string = JSON.stringify(localSave);
-		var compressed = LZString.compressToBase64(string);
-		console.log('Compressing Save');
-		console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
-		document.getElementById('impexpField').value = compressed;
-	}
-	document.getElementById("saveButton").className = "btn btn-primary disabled";
-	saved = true;
-	console.log("Save Successful");
+	return localSave;
 }
 
-function load(type){
+function importSave() {
+    var compressed = document.getElementById('impexpField').value;
+    var decompressed = LZString.decompressFromBase64(compressed);
+    var revived = JSON.parse(decompressed);
+    console.log("Imported Saved Game");
+    console.log(revived);
+
+    doLoad(revived);
+    save();
+
+    window.location.reload();
+}
+
+function loadSave() {
+    var data = JSON.parse(localStorage.getItem("save"));
+    doLoad(data);
+}
+
+function doLoad(savegame){
 	"use strict";
-	if(type === "local"){
-		var savegame = JSON.parse(localStorage.getItem("save"));
-	}
-	if(type === "import"){
-		var compressed = document.getElementById('impexpField').value;
-		var decompressed = LZString.decompressFromBase64(compressed);
-		var revived = JSON.parse(decompressed);
-		var savegame = revived;
-		console.log("Imported Saved Game");
-		console.log(revived);
-	}
+
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
 		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
