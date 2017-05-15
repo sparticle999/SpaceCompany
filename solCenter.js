@@ -36,39 +36,63 @@ function unlockDysonResearch(){
 }
 
 function changeEmcAmount(){
-	if(emcAmount === 1){
-		emcAmount = 100;
-	}
-	else if(emcAmount === 100){
-		emcAmount = 1000;
-	}
-	else if(emcAmount === 1000){
-		emcAmount = 10000;
-	}
-	else if(emcAmount === 10000){
-		emcAmount = 100000;
-	}
-	else{
-		emcAmount = 1;
-	}
+    emcAmount *= 10;
+    if(emcAmount > getMaxEnergy())
+    {
+        emcAmount = 1;
+    }
+
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
 		document.getElementsByClassName("emcAmount")[i].innerHTML = commafy(emcAmount);
 	}
-	for(var i = 0; i < resources.length; i++){
-		document.getElementById(resources[i] + "EmcVal").innerHTML = commafy(window[resources[i]+"EmcVal"]*emcAmount);
-		if(window[resources[i]+"EmcVal"]*emcAmount > window[resources[i]+"Storage"]){
-			document.getElementById(resources[i] + "Conv").className = "btn btn-default green";
-		}
-		else{
-			document.getElementById(resources[i] + "Conv").className = "btn btn-default";
-		}
-	}
+
+    refreshConversionDisplay();
+}
+
+function refreshConversionDisplay() {
+    var maxEnergy = getMaxEnergy();
+    for(var i = 0; i < resources.length; i++){
+        var element = $('#' + resources[i] + "EmcVal");
+        var buttonElement = $('#' + resources[i] + "Conv");
+
+        var value = window[resources[i]+"EmcVal"];
+        var emcValue = value * emcAmount;
+        var current = window[resources[i]];
+        var capacity = window[resources[i]+"Storage"];
+        element.text(commafy(emcValue));
+
+        var disabled = false;
+        if(maxEnergy < emcValue) {
+            buttonElement.addClass('red');
+            disabled = true;
+        } else {
+            buttonElement.removeClass('red');
+        }
+
+        if(emcAmount > capacity || current >= capacity){
+            buttonElement.addClass('green');
+            disabled = true;
+        }
+        else{
+            buttonElement.removeClass('green');
+        }
+
+        buttonElement.prop('disabled', disabled);
+    }
 }
 
 function convertEnergy(resource, resourceName){
-	if(energy >= emcAmount*window[resourceName + "EmcVal"]){
-		energy -= emcAmount*window[resourceName + "EmcVal"];
-		window[resourceName] += emcAmount;
+	var current = window[resourceName];
+	var capacity = window[resourceName+"Storage"];
+
+	var amount = Math.min(emcAmount, capacity - current);
+	var requiredEnergy = amount * window[resourceName + "EmcVal"];
+
+	if(amount > 0 && energy >= requiredEnergy){
+		energy -= requiredEnergy;
+		window[resourceName] += amount;
+
+        refreshConversionDisplay();
 	}
 }
 

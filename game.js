@@ -47,6 +47,7 @@ var Game = (function() {
     };
 
     instance.slowUpdate = function(self, delta) {
+        refreshConversionDisplay();
         autosave();
 
         self.updateTime(delta);
@@ -100,7 +101,7 @@ var Game = (function() {
         }
 
         // Now load
-        load('local');
+        loadSave();
 
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
