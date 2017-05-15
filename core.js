@@ -248,7 +248,7 @@ function refreshPerSec(){
 			document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
 		}
 	}
-	if(energy >= 100000 + 50000*battery + 500000*batteryT2){
+	if(energy >= getMaxEnergy()){
 		document.getElementById("energy").className = "green";
 	}
 	else{
@@ -426,7 +426,7 @@ function refreshUI(){
 	}
 
 	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
-	document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
+	document.getElementById("energyStorage").innerHTML = commafy(getMaxEnergy());
 	document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);

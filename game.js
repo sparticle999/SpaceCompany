@@ -43,6 +43,7 @@ var Game = (function() {
     };
 
     instance.slowUpdate = function(self, delta) {
+        refreshConversionDisplay();
         autosave();
 
         self.updateTime(delta);

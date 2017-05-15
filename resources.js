@@ -1,9 +1,9 @@
 function gainResources(){
-	if(energy + energyps/10 <= 100000 + 50000*battery + 500000*batteryT2){
+	if(energy + energyps/10 <= getMaxEnergy()){
 		energy += energyps/10;
 	}
 	else{
-		energy = 100000 + 50000*battery + 500000*batteryT2;
+		energy = getMaxEnergy();
 	}
 	if(uranium + uraniumps/10 < uraniumStorage){
 		uranium += uraniumps/10;
@@ -159,6 +159,10 @@ function gainResources(){
 	if(meteorite >= meteoriteStorage){
 		document.getElementById("meteorite").className = "green";
 	}
+}
+
+function getMaxEnergy() {
+	return 100000 + (50000 * battery) + (500000 * batteryT2);
 }
 
 // Gain Buttons
@@ -665,7 +669,7 @@ function getBattery(){
 		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
 		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
-		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
+		document.getElementById("energyStorage").innerHTML = commafy(getMaxEnergy());
 		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
 		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
 		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
@@ -684,7 +688,7 @@ function getBatteryT2(){
 		batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
 		batteryT2SpaceMetalCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
 		document.getElementById("batteryT2").innerHTML = batteryT2;
-		document.getElementById("energyStorage").innerHTML = commafy(100000 + 50000*battery + 500000*batteryT2);
+		document.getElementById("energyStorage").innerHTML = commafy(getMaxEnergy());
 		document.getElementById("batteryT2MetalCost").innerHTML = commafy(batteryT2MetalCost);
 		document.getElementById("batteryT2GemCost").innerHTML = commafy(batteryT2GemCost);
 		document.getElementById("batteryT2SpaceMetalCost").innerHTML = commafy(batteryT2SpaceMetalCost);
