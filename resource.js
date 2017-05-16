@@ -105,6 +105,11 @@ Game.resources = (function(){
         this.entries[id].perSecond = value;
     };
 
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
+    };
+
     instance.getResourceData = function(id) {
         return this.entries[id];
     };

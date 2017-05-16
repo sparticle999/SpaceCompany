@@ -55,6 +55,7 @@ Game.buildings = (function(){
         // Add the buildings and clamp to the maximum
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
+        this.entries[id].displayNeedsUpdate = true;
         this.updatePerSecondProduction = true;
     };
 
@@ -62,7 +63,13 @@ Game.buildings = (function(){
         // Remove the buildings and ensure we can not go below 0
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
+        this.entries[id].displayNeedsUpdate = true;
         this.updatePerSecondProduction = true;
+    };
+
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
     };
 
     instance.updateProduction = function() {
