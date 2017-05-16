@@ -67,7 +67,7 @@
 	<div height="30"></div>
 
 <!-- Nav tabs -->
-	<ul class="nav nav-tabs no-select" role="tablist">
+	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">
 		<li role="presentation" class="active"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab" onclick="tabClicked('resources')"><div id="resourcesTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Resources</a></li>
 		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab" onclick="tabClicked('research')"><div id="researchTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Research</a></li>
     	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"onclick="tabClicked('solarSystem')"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
@@ -81,7 +81,7 @@
 
 <!-- Tab panes -->
 
-	<div class="tab-content">
+	<div class="tab-content" id="tabContent">
 			<!-- Resources -->
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
 			<div class="container" style="width:380px; padding:0; float:left;">
@@ -5290,6 +5290,7 @@
 <script type="text/javascript" src="tech.js"></script>
 <script type="text/javascript" src="techData.js"></script>
 
+<script type="text/javascript" src="ui/gameTabUI.js"></script>
 <script type="text/javascript" src="ui/achievementUI.js"></script>
 <script type="text/javascript" src="ui/statisticUI.js"></script>
 <script type="text/javascript" src="ui/resourceUI.js"></script>

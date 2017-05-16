@@ -1,13 +1,13 @@
 var Game = (function() {
     'use strict';
 
-    var instance = {};
-    instance.lastUpdateTime = 0;
-
-    instance.intervals = {};
-    instance.uiComponents = [];
-
-    instance.logoAnimating = false;
+    var instance = {
+        ui: {},
+        lastUpdateTime: 0,
+        intervals: {},
+        uiComponents: [],
+        logoAnimating: false
+    };
 
     instance.update_frame = function(time) {
         Game.update(time - Game.lastUpdateTime);

@@ -84,7 +84,7 @@
                 '<td style="vertical-align:middle; text-align:center;">',
                     '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
                 '</td>',
-                '</div>'].join('\n'));
+                '</tr>'].join('\n'));
 
         instance.navCategoryTemplate = Handlebars.compile(
             ['<tr id="{{id}}_collapse" class="{{class}}" style="border:none;">',
