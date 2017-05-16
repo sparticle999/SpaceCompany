@@ -5,11 +5,17 @@ COST_TYPE = {
 
 TECH_TYPE = {
     UPGRADE: 0,
-    UNLOCK: 1,
+    UNLOCK: 1
 };
 
 BUILDING_TYPE = {
-    PRODUCER: 0,
+    PRODUCER: 0
+};
+
+RESOURCE_OBSERVER_TYPE = {
+    VALUE: 0,
+    CAPACITY: 1,
+    PER_SECOND: 2
 };
 
 Game.constants = (function(){

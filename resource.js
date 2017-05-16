@@ -2,7 +2,7 @@ Game.resources = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 2;
+    instance.dataVersion = 5;
     instance.entries = {};
     instance.categoryEntries = {};
     instance.resourceTypeCount = 0;
@@ -12,7 +12,7 @@ Game.resources = (function(){
         for (var id in Game.resourceData) {
             var data = Game.resourceData[id];
             this.resourceTypeCount++;
-            this.entries[id] = $.extend({
+            this.entries[id] = $.extend({}, data, {
                 id: id,
                 htmlId: 'res_' + id,
                 current: 0,
@@ -21,9 +21,8 @@ Game.resources = (function(){
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
-                unlocked: false,
                 hidden: false
-            }, data);
+            });
 
             this.entries[id].capacity = data.baseCapacity;
         }
@@ -31,9 +30,9 @@ Game.resources = (function(){
         for (var id in Game.resourceCategoryData) {
             var data = Game.resourceCategoryData[id];
             this.resourceCategoryCount++;
-            this.categoryEntries[id] = $.extend({
-                id: id,
-            }, data);
+            this.categoryEntries[id] = $.extend({}, data, {
+                id: id
+            });
         }
 
         console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
@@ -48,10 +47,12 @@ Game.resources = (function(){
     };
 
     instance.save = function(data) {
-        data.resources = { v: this.dataVersion, i: {}};
+        data.resources = { v: this.dataVersion, r: {}};
         for(var key in this.entries) {
-            data.resources.i[key] = this.entries[key].current;
-            data.resources.u = this.entries[key].unlocked;
+            data.resources.r[key] = {
+                n: this.entries[key].current,
+                u: this.entries[key].unlocked
+            }
         }
     };
 
@@ -60,8 +61,8 @@ Game.resources = (function(){
             if(data.resources.v && data.resources.v == this.dataVersion) {
                 for(var id in data.resources.i) {
                     if(this.entries[id]) {
-                        this.addResource(id, data.resources.i[id]);
-                        this.entries[id].unlocked = data.resources.u;
+                        this.addResource(id, data.resources.r[id].n);
+                        this.entries[id].unlocked = data.resources.r[id].u;
                     }
                 }
             }
@@ -69,6 +70,10 @@ Game.resources = (function(){
     };
 
     instance.addResource = function(id, count) {
+        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+            return;
+        }
+
         // Add the resource and clamp to the maximum
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
@@ -76,6 +81,10 @@ Game.resources = (function(){
     };
 
     instance.takeResource = function(id, count) {
+        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+            return;
+        }
+
         // Remove the resource and ensure we can not go below 0
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);

@@ -11,15 +11,16 @@ Game.buildings = (function(){
         for (var id in Game.buildingData) {
             var data = Game.buildingData[id];
             this.techTypeCount++;
-            this.entries[id] = $.extend({
+            this.entries[id] = $.extend({}, data, {
                 id: id,
-                resHtmlId: 'resbld_' + id,
+                htmlId: 'resbld_' + id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
-                max: data.maxCount
-            }, data);
+                max: data.maxCount,
+                displayNeedsUpdate: true
+            });
         }
 
         console.debug("Loaded " + this.techTypeCount + " Building Types");

@@ -10,15 +10,16 @@ Game.tech = (function(){
         for (var id in Game.techData) {
             var data = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id] = $.extend({
+            this.entries[id] = $.extend({}, data, {
                 id: id,
-                resHtmlId: 'restech_' + id,
+                htmlId: 'restech_' + id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
-                max: data.maxCount
-            }, data);
+                max: data.maxCount,
+                displayNeedsUpdate: true
+            });
         }
 
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
