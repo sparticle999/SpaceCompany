@@ -1,4 +1,4 @@
-Game.resourceCategoryData = (function(){
+Game.resourceCategoryData = (function () {
 
     var instance = {};
 
@@ -22,7 +22,7 @@ Game.resourceCategoryData = (function(){
 
 }());
 
-Game.resourceData = (function(){
+Game.resourceData = (function () {
 
     var instance = {};
 
@@ -129,7 +129,7 @@ Game.resourceData = (function(){
     /******************************
      * Inner Planetary Resources  *
      ******************************/
-    
+
     instance.spaceMetal = {
         name: 'Space Metal',
         desc: 'Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.',
@@ -212,6 +212,15 @@ Game.resourceData = (function(){
         icon: 'meteoriteIcon',
         category: 'outerPlanetary',
         baseCapacity: 50,
+        unlocked: false,
+    };
+
+    instance.science = {
+        name: 'Science Production',
+        desc: 'Science is used for researching new technologies to further your progress in the game.',
+        icon: 'scienceIcon',
+        category: 'other',
+        baseCapacity: 1000000,
         unlocked: false,
     };
 
