@@ -1,9 +1,9 @@
-Game.buildingData = (function(){
+Game.buildingData = (function () {
 
     var instance = {};
 
 
-//Plasma
+    //Plasma
     instance.plasmaT1 = {
         name: 'Super-Heater',
         desc: 'The Super-Heater throws electricity at Hydrogen to turn it into a plasmatic substance.',
@@ -42,7 +42,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Uranium
+    //Uranium
     instance.uraniumT1 = {
         name: 'Grinder',
         desc: 'Pulverizes Uranium for easy transportation out of deep mineshafts.',
@@ -86,7 +86,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -180, 
+            'energy': -180,
             'uranium': 61
         },
         cost: {
@@ -104,7 +104,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -436, 
+            'energy': -436,
             'uranium': 235
         },
         cost: {
@@ -114,7 +114,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Lava
+    //Lava
     instance.lavaT1 = {
         name: 'Heat Resistant Crucible',
         desc: 'You can use a modified crucible to pick up lava and to store it for later use.',
@@ -157,7 +157,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -237, 
+            'energy': -237,
             'lava': 43
         },
         cost: {
@@ -175,7 +175,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -689, 
+            'energy': -689,
             'lava': 187
         },
         cost: {
@@ -185,10 +185,10 @@ Game.buildingData = (function(){
         }
     };
 
-/********************
- * Earth Resources  *
- ********************/
-//Oil
+    /********************
+     * Earth Resources  *
+     ********************/
+    //Oil
     instance.oilT1 = {
         name: 'Small Pump',
         desc: 'Build a small pump to extract Oil from the ground.',
@@ -213,13 +213,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-4,
+            'energy': -4,
             'oil': 10
         },
         cost: {
             'metal': 250,
             'gem': 80,
-            'oil':50
+            'oil': 50
         }
     };
 
@@ -231,13 +231,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-17,
+            'energy': -17,
             'oil': 63
         },
         cost: {
             'spaceMetal': 2400,
             'titanium': 2700,
-            'silicon':3900
+            'silicon': 3900
         }
     };
 
@@ -249,17 +249,17 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-44,
+            'energy': -44,
             'oil': 246
         },
         cost: {
             'spaceMetal': 19400,
             'titanium': 16800,
-            'meteorite':760
+            'meteorite': 760
         }
     };
 
-//Metal
+    //Metal
     instance.metalT1 = {
         name: 'Miner',
         desc: 'Build a pickaxe for your miner.',
@@ -284,13 +284,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-2, 
+            'energy': -2,
             'metal': 8
         },
         cost: {
             'metal': 160,
             'gem': 60,
-            'oil':50
+            'oil': 50
         }
     };
 
@@ -302,13 +302,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-9, 
+            'energy': -9,
             'metal': 108
         },
         cost: {
             'spaceMetal': 2800,
             'gem': 3400,
-            'silicon':4100
+            'silicon': 4100
         }
     };
 
@@ -320,17 +320,17 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-24, 
+            'energy': -24,
             'metal': 427
         },
         cost: {
             'spaceMetal': 29000,
             'gold': 18700,
-            'meteorite':900
+            'meteorite': 900
         }
     };
 
-//Gem
+    //Gem
     instance.gemlT1 = {
         name: 'Gem Miner',
         desc: 'Build an improved pickaxe to mine Gems.',
@@ -355,13 +355,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-2, 
+            'energy': -2,
             'gem': 4
         },
         cost: {
             'metal': 120,
             'gem': 200,
-            'oil':60
+            'oil': 60
         }
     };
 
@@ -373,13 +373,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-15, 
+            'energy': -15,
             'gem': 89
         },
         cost: {
             'spaceMetal': 3400,
             'gem': 8000,
-            'silicon':4500
+            'silicon': 4500
         }
     };
 
@@ -391,17 +391,17 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-40, 
+            'energy': -40,
             'gem': 358
         },
         cost: {
             'spaceMetal': 21000,
             'gem': 27000,
-            'meteorite':800
+            'meteorite': 800
         }
     };
 
-//Charcoal
+    //Charcoal
     instance.charcoalT1 = {
         name: 'Woodburner',
         desc: 'Build an shovel for your woodburner.',
@@ -410,7 +410,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'wood':-2,
+            'wood': -2,
             'charcoal': 1
         },
         cost: {
@@ -427,14 +427,14 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-3,
-            'wood':-6,
+            'energy': -3,
+            'wood': -6,
             'charcoal': 4
         },
         cost: {
             'metal': 80,
             'wood': 40,
-            'oil':100
+            'oil': 100
         }
     };
 
@@ -446,14 +446,14 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-13,
-            'wood': -56, 
+            'energy': -13,
+            'wood': -56,
             'charcoal': 53,
         },
         cost: {
             'spaceMetal': 3500,
             'gem': 6200,
-            'silicon':3800
+            'silicon': 3800
         }
     };
 
@@ -465,18 +465,18 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-34,
-            'wood':-148, 
+            'energy': -34,
+            'wood': -148,
             'charcoal': 210,
         },
         cost: {
             'spaceMetal': 15800,
             'lava': 12500,
-            'meteorite':560
+            'meteorite': 560
         }
     };
 
-//Wood
+    //Wood
     instance.woodlT1 = {
         name: 'Woodcutter',
         desc: 'Build an axe for your woodcutter.',
@@ -501,13 +501,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-4, 
+            'energy': -4,
             'wood': 6
         },
         cost: {
             'metal': 50,
             'gem': 90,
-            'oil':40
+            'oil': 40
         }
     };
 
@@ -519,13 +519,13 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-16, 
+            'energy': -16,
             'wood': 74
         },
         cost: {
             'spaceMetal': 3000,
             'titanium': 2700,
-            'silicon':2500
+            'silicon': 2500
         }
     };
 
@@ -537,17 +537,17 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-43, 
+            'energy': -43,
             'wood': 297
         },
         cost: {
             'spaceMetal': 16000,
             'oil': 31200,
-            'meteorite':490
+            'meteorite': 490
         }
     };
 
-//Silicon
+    //Silicon
     instance.siliconT1 = {
         name: 'Empowered Blowtorch',
         desc: 'This type of blowtorch instantly turns sand into Silicon, but only on a small scale. To make it, extraterrestrial resources are required.',
@@ -572,7 +572,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-18,
+            'energy': -18,
             'silicon': 9
         },
         cost: {
@@ -590,7 +590,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-53, 
+            'energy': -53,
             'silicon': 40
         },
         cost: {
@@ -608,7 +608,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy':-138, 
+            'energy': -138,
             'silicon': 157
         },
         cost: {
@@ -618,10 +618,10 @@ Game.buildingData = (function(){
         }
     };
 
-/******************************
- * Inner Planetary Resources  *
- ******************************/
-//Space Metal
+    /******************************
+     * Inner Planetary Resources  *
+     ******************************/
+    //Space Metal
     instance.spaceMetalT1 = {
         name: 'Native Moon Worker',
         desc: 'Bribe local workers to mine your Space Metal.',
@@ -663,7 +663,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -70, 
+            'energy': -70,
             'spaceMetal': 53
         },
         cost: {
@@ -681,7 +681,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -182, 
+            'energy': -182,
             'spaceMetal': 207
         },
         cost: {
@@ -691,7 +691,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Methane
+    //Methane
     instance.methaneT1 = {
         name: 'Vacuum Cleaner',
         desc: 'Sucks in methane and cleans the planet at the same time!',
@@ -733,7 +733,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -49, 
+            'energy': -49,
             'methane': 37
         },
         cost: {
@@ -751,7 +751,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -132, 
+            'energy': -132,
             'methane': 149
         },
         cost: {
@@ -761,7 +761,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Titanium
+    //Titanium
     instance.titaniumT1 = {
         name: 'Explorer',
         desc: 'Hire explorers to search for Titanium on the surface, uncovered by winds on Mars.',
@@ -803,7 +803,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -46, 
+            'energy': -46,
             'titanium': 49
         },
         cost: {
@@ -821,7 +821,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -123, 
+            'energy': -123,
             'titanium': 197
         },
         cost: {
@@ -831,7 +831,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Gold
+    //Gold
     instance.goldT1 = {
         name: 'Rocket Droid',
         desc: 'Powered by Methane, this droid scouts the asteroids for gold deposits.',
@@ -874,7 +874,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -81, 
+            'energy': -81,
             'gold': 51
         },
         cost: {
@@ -892,7 +892,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -223, 
+            'energy': -223,
             'gold': 211
         },
         cost: {
@@ -902,7 +902,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Silver
+    //Silver
     instance.silverT1 = {
         name: 'Scout Ship',
         desc: 'The Scout Ship searches through the asteroid field for pieces of silver embedded in asteroids.',
@@ -945,7 +945,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -65, 
+            'energy': -65,
             'silver': 53
         },
         cost: {
@@ -963,7 +963,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -170, 
+            'energy': -170,
             'silver': 208
         },
         cost: {
@@ -973,10 +973,10 @@ Game.buildingData = (function(){
         }
     };
 
-/******************************
- * Outer Planetary Resources  *
- ******************************/
-//Hydrogen
+    /******************************
+     * Outer Planetary Resources  *
+     ******************************/
+    //Hydrogen
     instance.hydrogenT1 = {
         name: 'Hydrogen Collector',
         desc: 'This collector travels around Jupiter seeking Hydrogen to store to bring back to Earth.',
@@ -1019,7 +1019,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -234, 
+            'energy': -234,
             'hydrogen': 28
         },
         cost: {
@@ -1037,7 +1037,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -613, 
+            'energy': -613,
             'hydrogen': 113
         },
         cost: {
@@ -1047,7 +1047,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Helium
+    //Helium
     instance.heliumT1 = {
         name: 'Helium Drone',
         desc: 'The Helium Drone scouts out the area on Saturn and picks out spots high in Helium which are then mined slowly by it.',
@@ -1090,7 +1090,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -248, 
+            'energy': -248,
             'helium': 57
         },
         cost: {
@@ -1108,7 +1108,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -670, 
+            'energy': -670,
             'helium': 232
         },
         cost: {
@@ -1118,7 +1118,7 @@ Game.buildingData = (function(){
         }
     };
 
-//Ice
+    //Ice
     instance.iceT1 = {
         name: 'Ice Pickaxe',
         desc: 'The Ice Pickaxe is the simplest way of mining frozen water, and although it is the cheapest, it is the slowest.',
@@ -1161,7 +1161,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -397, 
+            'energy': -397,
             'ice': 65
         },
         cost: {
@@ -1179,7 +1179,7 @@ Game.buildingData = (function(){
         unlocked: false,
         maxCount: Number.MAX_VALUE,
         resourcePerSecond: {
-            'energy': -1135, 
+            'energy': -1135,
             'ice': 278
         },
         cost: {
@@ -1190,7 +1190,7 @@ Game.buildingData = (function(){
     };
 
 
-//Meteorite
+    //Meteorite
     instance.meteoriteT1 = {
         name: 'Meteorite Printer',
         desc: 'Contruct an automated way of producing meteorite without you having to do anything.',
