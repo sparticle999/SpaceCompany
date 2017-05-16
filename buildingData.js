@@ -2,6 +2,105 @@ Game.buildingData = (function () {
 
     var instance = {};
 
+    //Energy
+    instance.energyT1 = {
+        name: 'Charcoal Engine',
+        desc: 'Burns Charcoal to produce a steady source of Energy.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 2,
+            'charcoal': -1
+        },
+        cost: {
+            'metal': 50,
+            'gem': 25
+        }
+    };
+    instance.energyT2 = {
+        name: 'Solar Panel',
+        desc: 'Gains Energy slowly from the sun without using any resources.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 1.5
+        },
+        cost: {
+            'metal': 30,
+            'gem': 35
+        }
+    };
+    instance.energyT3 = {
+        name: 'Methane Power Station',
+        desc: 'Burn powerful methane from Venus to satisfy all your power needs.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 23,
+            'methane': -6
+        },
+        cost: {
+            'spaceMetal': 110,
+            'titanium': 90
+        }
+    };
+    instance.energyT4 = {
+        name: 'Nuclear Power Station',
+        desc: 'Uses fission to create large amounts of power.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 153,
+            'uranium': -7
+        },
+        cost: {
+            'spaceMetal': 20000,
+            'titanium': 10000
+        }
+    };
+    instance.energyT5 = {
+        name: 'Magmatic Dynamo',
+        desc: 'The Magmatic Dynamo is a method of producing power by using lava as a fuel. Because of the extreme temperature of lava, a lot of Energy can be produced at once.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 191,
+            'lava': -11
+        },
+        cost: {
+            'spaceMetal': 25000,
+            'gem': 30000,
+            'silver': 20000
+        }
+    };
+    instance.energyT6 = {
+        name: 'Fusion Reactor',
+        desc: 'In a fusion reaction, Energy is released when two light atomic nuclei are fused together to form one heavier atom. This is the same reaction that occurs in stars and produces a lot of power.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'energy',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'energy': 273,
+            'hydrogen': -10,
+            'helium': -10
+        },
+        cost: {
+            'spaceMetal': 30000,
+            'titanium': 20000,
+            'silicon': 15000
+        }
+    };
 
     //Plasma
     instance.plasmaT1 = {
@@ -22,7 +121,6 @@ Game.buildingData = (function () {
             'silicon': 59000
         }
     };
-
     instance.plasmaT2 = {
         name: 'Plasmatic Pit',
         desc: 'This contraption converts Helium into Plasma through firing intensive energy bolts at the gas cloud.',
@@ -59,7 +157,6 @@ Game.buildingData = (function () {
             'gold': 2000
         }
     };
-
     instance.uraniumT2 = {
         name: 'Cubic Teleposer',
         desc: 'This teleposes blocks of rock from far underground to the surface so that Uranium can be mined more easily.',
@@ -77,7 +174,6 @@ Game.buildingData = (function () {
             'oil': 10000
         }
     };
-
     instance.uraniumT3 = {
         name: 'Uranium Enricher',
         desc: 'The Enricher increases the quality of uranium mined and thus allows more of the uranium in rocks to be used in your company.',
@@ -95,7 +191,6 @@ Game.buildingData = (function () {
             'silicon': 13500
         }
     };
-
     instance.uraniumT4 = {
         name: 'Yellowcake Recycler',
         desc: 'Recycles used-up Uranium to provide the resources with a second use. This greatly increases the amount of Uranium you can use per second.',
@@ -130,7 +225,6 @@ Game.buildingData = (function () {
             'gem': 7000
         }
     };
-
     instance.lavaT2 = {
         name: 'Lava Extractor',
         desc: 'This extracts lava from volcanoes automatically and quickly.',
@@ -148,7 +242,6 @@ Game.buildingData = (function () {
             'silicon': 6000
         }
     };
-
     instance.lavaT3 = {
         name: 'Igneous Extruder',
         desc: 'Instead of going out and finding lava, it can be more convenient to make it yourself with heat and pressure.',
@@ -166,7 +259,6 @@ Game.buildingData = (function () {
             'silicon': 39000
         }
     };
-
     instance.lavaT4 = {
         name: 'Volcanic Veluptuator',
         desc: 'A melting pot of misery, pouring lava out from mined rock.',
@@ -188,6 +280,7 @@ Game.buildingData = (function () {
     /********************
      * Earth Resources  *
      ********************/
+    
     //Oil
     instance.oilT1 = {
         name: 'Small Pump',
@@ -204,7 +297,6 @@ Game.buildingData = (function () {
             'gem': 20
         }
     };
-
     instance.oilT2 = {
         name: 'Pumpjack',
         desc: 'Pumpjacks are much bigger than small pumps and produce Oil on an industrial scale but they require a lot of Energy.',
@@ -222,7 +314,6 @@ Game.buildingData = (function () {
             'oil': 50
         }
     };
-
     instance.oilT3 = {
         name: 'Oil Field',
         desc: 'Oil Fields are large open spaces, usually found in deserts where vast oil wells can be found under the ground.',
@@ -240,7 +331,6 @@ Game.buildingData = (function () {
             'silicon': 3900
         }
     };
-
     instance.oilT4 = {
         name: 'Offshore Rig',
         desc: 'Offshore Rigs are megastructures floating in the oceans, extracting Oil from under the sea-beds.',
@@ -275,7 +365,6 @@ Game.buildingData = (function () {
             'wood': 5
         }
     };
-
     instance.metalT2 = {
         name: 'Heavy Drill',
         desc: 'Heavy Drills mine Metal at mass.',
@@ -293,7 +382,6 @@ Game.buildingData = (function () {
             'oil': 50
         }
     };
-
     instance.metalT3 = {
         name: 'Giga Drill',
         desc: 'Giga Drills extract Metal at colossal speeds.',
@@ -311,7 +399,6 @@ Game.buildingData = (function () {
             'silicon': 4100
         }
     };
-
     instance.metalT4 = {
         name: 'Giga Drill',
         desc: 'Giga Drills extract Metal at colossal speeds.',
@@ -346,7 +433,6 @@ Game.buildingData = (function () {
             'gem': 10
         }
     };
-
     instance.gemT2 = {
         name: 'Advanced Drill',
         desc: 'Advanced Drills mine gem at mass. Because of the toughness of the drill needed it is slower than the heavy drill.',
@@ -364,7 +450,6 @@ Game.buildingData = (function () {
             'oil': 60
         }
     };
-
     instance.gemT3 = {
         name: 'Diamond Encrusted Drill',
         desc: 'The Diamond Encrusted Drill is one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.',
@@ -382,7 +467,6 @@ Game.buildingData = (function () {
             'silicon': 4500
         }
     };
-
     instance.gemT4 = {
         name: 'Carbyne Drill',
         desc: 'Carbyne Drills one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.',
@@ -418,7 +502,6 @@ Game.buildingData = (function () {
             'wood': 5
         }
     };
-
     instance.charcoalT2 = {
         name: 'Furnace',
         desc: 'Furnaces use electric heaters to produce heat to turn Wood into Charcoal. Because of the increased heat, the process is more efficient.',
@@ -437,7 +520,6 @@ Game.buildingData = (function () {
             'oil': 100
         }
     };
-
     instance.charcoalT3 = {
         name: 'Industrial Kiln',
         desc: 'These large kilns are much for effective than previous methods of creating charcoal and use less wood to make the same amount as a furnace.',
@@ -456,7 +538,6 @@ Game.buildingData = (function () {
             'silicon': 3800
         }
     };
-
     instance.charcoalT4 = {
         name: 'Forest Fryer',
         desc: 'Forests? What forests?',
@@ -492,7 +573,6 @@ Game.buildingData = (function () {
             'wood': 5
         }
     };
-
     instance.woodT2 = {
         name: 'Laser Cutter',
         desc: 'Laser Cutters slice trees (and fingers) quicker than axes and produce a lot more wood.',
@@ -510,7 +590,6 @@ Game.buildingData = (function () {
             'oil': 40
         }
     };
-
     instance.woodT3 = {
         name: 'Mass Deforester',
         desc: 'This machine is the reason we\'re losing our rainforests. At least we get lots of wood!',
@@ -528,7 +607,6 @@ Game.buildingData = (function () {
             'silicon': 2500
         }
     };
-
     instance.woodT4 = {
         name: 'Biomass Infuser',
         desc: 'Creates Wood using old, useless materials found everywhere on Earth by crushing them and packing what remains as densely as possible until it can be used as Wood again.',
@@ -563,7 +641,6 @@ Game.buildingData = (function () {
             'titanium': 30
         }
     };
-
     instance.siliconT2 = {
         name: 'Seaside Scorcher',
         desc: 'This tool almost melts parts of beaches to get silicon at a larger scale.',
@@ -581,7 +658,6 @@ Game.buildingData = (function () {
             'oil': 1600
         }
     };
-
     instance.siliconT3 = {
         name: 'Beach Annihilator',
         desc: 'This weapon of mass destruction has been re-labelled and now hovers above coast-lines, or what is now left of them.',
@@ -599,7 +675,6 @@ Game.buildingData = (function () {
             'silver': 2400
         }
     };
-
     instance.siliconT4 = {
         name: 'Desert Destroyer',
         desc: 'This large ship orbits around the planet, focused in the Sahara Desert, tearing up sand from Earth and turning it into Silicon under intense heat.',
@@ -621,6 +696,7 @@ Game.buildingData = (function () {
     /******************************
      * Inner Planetary Resources  *
      ******************************/
+
     //Space Metal
     instance.spaceMetalT1 = {
         name: 'Native Moon Worker',
@@ -636,7 +712,6 @@ Game.buildingData = (function () {
             'gem': 500
         }
     };
-
     instance.spaceMetalT2 = {
         name: 'Low-Gravity Drill',
         desc: 'These drills practically float!',
@@ -654,7 +729,6 @@ Game.buildingData = (function () {
             'oil': 400
         }
     };
-
     instance.spaceMetalT3 = {
         name: 'Moon Quarry',
         desc: 'This quarry tears up the surface of the moon so much that it can be seen from Earth.',
@@ -672,7 +746,6 @@ Game.buildingData = (function () {
             'silicon': 3500
         }
     };
-
     instance.spaceMetalT4 = {
         name: 'Planetary Excavator',
         desc: 'This large machine dives deep into the Earth to find large pools of Space-Metal found near the core. This is originally where the metal on the Moon comes from.',
@@ -706,7 +779,6 @@ Game.buildingData = (function () {
             'spaceMetal': 50
         }
     };
-
     instance.methaneT2 = {
         name: 'Suction Excavator',
         desc: 'Sucks more than anything!',
@@ -724,7 +796,6 @@ Game.buildingData = (function () {
             'oil': 600
         }
     };
-
     instance.methaneT3 = {
         name: 'Space Cow Plantation',
         desc: 'These hold cows genetically modified to produce methane constantly',
@@ -742,7 +813,6 @@ Game.buildingData = (function () {
             'silicon': 4100
         }
     };
-
     instance.methaneT4 = {
         name: 'Hydrothermal Vent',
         desc: 'Collect gas from deep sea vents on the ocean floor of Titan.',
@@ -776,7 +846,6 @@ Game.buildingData = (function () {
             'gem': 1000
         }
     };
-
     instance.titaniumT2 = {
         name: 'Space Metal Drill',
         desc: 'These Space Metal Drills are extremely powerful, needed to mine out Titanium from inside Mars\' crust.',
@@ -794,7 +863,6 @@ Game.buildingData = (function () {
             'oil': 1000
         }
     };
-
     instance.titaniumT3 = {
         name: 'Penta-Drill',
         desc: 'This is a mining machine modified to have 5 drills on its face. This allows for a massive increase in resources gained per second.',
@@ -812,7 +880,6 @@ Game.buildingData = (function () {
             'silicon': 5600
         }
     };
-
     instance.titaniumT4 = {
         name: 'Drill of Titans',
         desc: 'This mighty drill is said to have been wielded by Titans themselves, many milennia ago.',
@@ -847,7 +914,6 @@ Game.buildingData = (function () {
             'methane': 50
         }
     };
-
     instance.goldT2 = {
         name: 'Asteroid Destroyer',
         desc: 'Mines through asteroids to find Gold. It is much more effective than the simple droid.',
@@ -865,7 +931,6 @@ Game.buildingData = (function () {
             'oil': 1000
         }
     };
-
     instance.goldT3 = {
         name: 'Death Star Jr',
         desc: 'That\'s no moon! That\'s a Space Station! This cuts through asteroids to expose all of the Gold in the centers.',
@@ -883,7 +948,6 @@ Game.buildingData = (function () {
             'silicon': 8200
         }
     };
-
     instance.goldT4 = {
         name: 'Chronal Actuator',
         desc: 'Speeds up time through quantum physics in order to produce even more Gold.',
@@ -918,7 +982,6 @@ Game.buildingData = (function () {
             'titanium': 20
         }
     };
-
     instance.silverT2 = {
         name: 'Interplanetary Laser',
         desc: 'Cuts through asteroids to find silver deposits in their cores.',
@@ -936,7 +999,6 @@ Game.buildingData = (function () {
             'oil': 1200
         }
     };
-
     instance.silverT3 = {
         name: 'Big Bertha',
         desc: 'This large, space drill, named after the World War One Howitzer built almost a milienia ago, is a silver seeking machine specially designed for.',
@@ -954,7 +1016,6 @@ Game.buildingData = (function () {
             'silicon': 11000
         }
     };
-
     instance.silverT4 = {
         name: 'Atomic Cannon',
         desc: 'This powerful canon orbits Neptune and can atomise the surface of asteroids, revealing the silver within.',
@@ -976,6 +1037,7 @@ Game.buildingData = (function () {
     /******************************
      * Outer Planetary Resources  *
      ******************************/
+
     //Hydrogen
     instance.hydrogenT1 = {
         name: 'Hydrogen Collector',
@@ -992,7 +1054,6 @@ Game.buildingData = (function () {
             'titanium': 4800
         }
     };
-
     instance.hydrogenT2 = {
         name: 'Gaseous Magnet',
         desc: 'The magnet attracts the Hydrogen to it to increase the amount collected per second.',
@@ -1010,7 +1071,6 @@ Game.buildingData = (function () {
             'silicon': 6600
         }
     };
-
     instance.hydrogenT3 = {
         name: 'Electrolytic Cell',
         desc: 'These are made here on Earth and can turn water into hydrogen with a constant supply of Energy.',
@@ -1028,7 +1088,6 @@ Game.buildingData = (function () {
             'silicon': 25800
         }
     };
-
     instance.hydrogenT4 = {
         name: 'Hindenburg Excavation',
         desc: 'Somehow, it works.',
@@ -1063,7 +1122,6 @@ Game.buildingData = (function () {
             'titanium': 6000
         }
     };
-
     instance.heliumT2 = {
         name: 'Helium Tanker',
         desc: 'This huge tanker holds large amounts of Helium and transports it from Saturn to Earth through the vacuum of space.',
@@ -1081,7 +1139,6 @@ Game.buildingData = (function () {
             'silicon': 8400
         }
     };
-
     instance.heliumT3 = {
         name: 'Morphic Compressor',
         desc: 'The Compressor packs helium densely into a small space so that it can be easily transported back to Earth.',
@@ -1099,7 +1156,6 @@ Game.buildingData = (function () {
             'silicon': 35400
         }
     };
-
     instance.heliumT4 = {
         name: 'Gas Giant Skimmer',
         desc: 'Flying into Gas Giants\' atmospheres with a big bucket is the best plan we\'ve had yet!',
@@ -1134,7 +1190,6 @@ Game.buildingData = (function () {
             'gem': 19300
         }
     };
-
     instance.iceT2 = {
         name: 'Ice Drill',
         desc: 'The Ice Drill is more effective than the Pickaxe and gains much more Ice every second. However, it does use electricity.',
@@ -1152,7 +1207,6 @@ Game.buildingData = (function () {
             'silicon': 19600
         }
     };
-
     instance.iceT3 = {
         name: 'Ocean Freezer',
         desc: 'With advanced technology, you are now able to turn Earth\'s water into high-quality Ice, previously only found on Pluto.',
@@ -1170,7 +1224,6 @@ Game.buildingData = (function () {
             'silicon': 73000
         }
     };
-
     instance.iceT4 = {
         name: 'Mr Freeze',
         desc: 'This robot is the coolest guy in the solar system.',
@@ -1189,7 +1242,6 @@ Game.buildingData = (function () {
         }
     };
 
-
     //Meteorite
     instance.meteoriteT1 = {
         name: 'Meteorite Printer',
@@ -1207,7 +1259,6 @@ Game.buildingData = (function () {
             'silicon': 60000
         }
     };
-
     instance.meteoriteT2 = {
         name: 'Meteorite Web',
         desc: 'The Meteorite Web uses nano-fibres made while submerged in highly radioactive liquids to become strong enough to physically catch meteors from the Asteroid Belt. Plasma is required to refine the asteroids into Meteorite Ore, which can be usable.',
