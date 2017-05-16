@@ -22,10 +22,13 @@ v0.5.0 The Interstellar Update
 - Unlock Technologies such as reduce the exponental increase of costs
 - Third Floor of Wonder Station
 - Mass to Energy Conversion
+- Plasma Storage Units (PSUs)
+- Change Lab Names
 
 # Changelog:
 
 v0.5.0
+- Added Notifications
 - Tier 2 Batteries
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
