@@ -58,7 +58,6 @@
     // basic functions
     // ---------------------------------------------------------------------------
     GameTab.prototype.initialize = function() {
-        console.log(this.data);
         var html = tabTemplate(this.data);
         tabRoot.append($(html));
 
@@ -66,7 +65,6 @@
         tabContentRoot.append($(contentHtml));
 
         var link = $('#' + this.data.htmlId + '_link');
-        console.log(link.length);
         link.click({id: this.data.id}, function(args) { tabRegister[args.data.id].activate(); });
     };
 
@@ -76,6 +74,14 @@
 
     GameTab.prototype.hide = function() {
         $('#' + this.data.htmlId).hide();
+    };
+
+    GameTab.prototype.showCategory = function(id) {
+        $('#' + this.data.htmlId + '_' + id + '_collapse').show();
+    };
+
+    GameTab.prototype.hideCategory = function(id) {
+        $('#' + this.data.htmlId + '_' + id + '_collapse').hide();
     };
 
     GameTab.prototype.activate = function() {
@@ -144,8 +150,29 @@
         $('#' + this.data.htmlId + '_content').append(contentElement);
 
         this.categoryEntries[category].push(id);
+    };
 
-        return {n: element, c: $('#' + this.data.htmlId + '_' + id + '_netc')};
+    GameTab.prototype.categoryHasEntries = function(category) {
+        return this.categoryEntries[category].length;
+    };
+
+    GameTab.prototype.categoryHasVisibleEntries = function(category) {
+        for(var i = 0; i < this.categoryEntries[category].length; i++) {
+            var elementId = this.getNavElementId(this.categoryEntries[category][i]);
+            if($('#' + elementId).is(":visible")) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    GameTab.prototype.getContentElementId = function(id) {
+        return this.data.htmlId + '_' + id + '_netc';
+    };
+
+    GameTab.prototype.getNavElementId = function(id) {
+        return this.data.htmlId + '_' + id + '_ne';
     };
 
     // ---------------------------------------------------------------------------
@@ -156,26 +183,3 @@
     }
 
 }());
-
-// Example use:
-/*var tab = Game.ui.createTab({id: 'mission', title: 'Missions'});
-tab.initialize();
-tab.addCategory('test1', "First Test");
-tab.addCategory('test2', "Second Test");
-tab.addCategory('test3', "Third Test");
-
-var a = tab.addNavEntry('test1', 'a');
-a.n.append($('<td>1</td>'));
-a.c.text("1");
-
-a = tab.addNavEntry('test1', 'b');
-a.n.append($('<td>2</td>'));
-a.c.text("2");
-
-a = tab.addNavEntry('test1', 'c');
-a.n.append($('<td>3</td>'));
-a.c.text("3");
-
-a = tab.addNavEntry('test3', 'd');
-a.n.append($('<td>4</td>'));
-a.c.text("4");*/

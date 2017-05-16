@@ -2,20 +2,27 @@ Game.resourceCategoryData = (function () {
 
     var instance = {};
 
+    instance.energy = {
+        title: 'Energy',
+        category: 'energy'
+    };
+
     instance.earth = {
         class: 'collapseEarth',
         title: 'Earth Resources',
         category: 'earth'
     };
-    instance.innerPlanetary = {
+
+    instance.innerSol = {
         class: 'collapseInnerPlanetary',
         title: 'Inner Planetary Resources',
-        category: 'innerPlanetary'
+        category: 'innerSol'
     };
-    instance.earth = {
+
+    instance.outerSol = {
         class: 'collapseOuterPlanetary',
         title: 'Outer Planetary Resources',
-        category: 'outerPlanetary'
+        category: 'outerSol'
     };
 
     return instance;
@@ -37,7 +44,7 @@ Game.resourceData = (function () {
         icon: 'energyIcon',
         category: 'energy',
         baseCapacity: 50000,
-        unlocked: true,
+        unlocked: false
     };
 
     instance.plasma = {
@@ -46,7 +53,7 @@ Game.resourceData = (function () {
         icon: 'plasmaIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.uranium = {
@@ -55,7 +62,7 @@ Game.resourceData = (function () {
         icon: 'uraniumIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.lava = {
@@ -64,7 +71,7 @@ Game.resourceData = (function () {
         icon: 'lavaIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     /********************
@@ -77,7 +84,7 @@ Game.resourceData = (function () {
         icon: 'oilIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.metal = {
@@ -86,7 +93,7 @@ Game.resourceData = (function () {
         icon: 'metalIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: true,
+        unlocked: true
     };
 
     instance.gem = {
@@ -95,7 +102,7 @@ Game.resourceData = (function () {
         icon: 'gemIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: true,
+        unlocked: true
     };
 
     instance.charcoal = {
@@ -104,7 +111,7 @@ Game.resourceData = (function () {
         icon: 'charcoalIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: true,
+        unlocked: false
     };
 
     instance.wood = {
@@ -113,7 +120,7 @@ Game.resourceData = (function () {
         icon: 'woodIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: true
     };
 
     instance.silicon = {
@@ -122,7 +129,7 @@ Game.resourceData = (function () {
         icon: 'siliconIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
 
@@ -134,45 +141,45 @@ Game.resourceData = (function () {
         name: 'Space Metal',
         desc: 'Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.',
         icon: 'spaceMetalIcon',
-        category: 'innerPlanetary',
+        category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.methane = {
         name: 'Methane',
         desc: 'Methane is a gas found in abundance on Venus. It can be used to power your company much more effectively than solid fuel.',
         icon: 'methaneIcon',
-        category: 'innerPlanetary',
+        category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.titanium = {
         name: 'Titanium',
         desc: 'Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants.',
         icon: 'titaniumIcon',
-        category: 'innerPlanetary',
+        category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.gold = {
         name: 'Gold',
         desc: 'Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.',
         icon: 'goldIcon',
-        category: 'innerPlanetary',
+        category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.silver = {
         name: 'Silver',
         desc: 'Silver is another metal most commonly found in the asteroid belt.',
         icon: 'silverIcon',
-        category: 'innerPlanetary',
+        category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     /******************************
@@ -183,45 +190,44 @@ Game.resourceData = (function () {
         name: 'Hydrogen',
         desc: 'Hydrogen is extremely common on gas giants such as Jupiter and Saturn.',
         icon: 'hydrogenIcon',
-        category: 'outerPlanetary',
+        category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.helium = {
         name: 'Helium',
         desc: 'Helium is the second most common element on gas giants such as Jupiter and Saturn.',
         icon: 'heliumIcon',
-        category: 'outerPlanetary',
+        category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.ice = {
         name: 'Ice',
         desc: 'Ice, although it can be collected on Earth, is not nearly as profitable as flying to Pluto and back with space craft full of the stuff. It is mainly used for super-cooling technology necessary for Tier 4 machines.',
         icon: 'iceIcon',
-        category: 'outerPlanetary',
+        category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.meteorite = {
         name: 'Meteorite',
         desc: 'Creating Meteorite is only possible from purer forms of energy than those created with earth technology. Therefore, Plasma is necessary to make the strong resource.',
         icon: 'meteoriteIcon',
-        category: 'outerPlanetary',
+        category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false,
+        unlocked: false
     };
 
     instance.science = {
         name: 'Science Production',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
-        category: 'other',
         baseCapacity: 1000000,
-        unlocked: false,
+        unlocked: false
     };
 
     return instance;

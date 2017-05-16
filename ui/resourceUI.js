@@ -4,14 +4,18 @@
 
     instance.entries = {};
     instance.resourceTechEntries = {};
+    instance.resourceTechObservers = {};
     instance.resourceBuildingEntries = {};
-    instance.mainTemplate = null;
-    instance.navTemplate = null;
+    instance.resourceBuildingObservers = {};
+    instance.titleTemplate = null;
     instance.techTemplate = null;
     instance.buildingTemplate = null;
+    instance.navTemplate = null;
 
     instance.tabRoot = null;
     instance.navRoot = null;
+
+    instance.tab = null;
 
     instance.categoryNames = {
         'earth': "Earth Resources",
@@ -24,12 +28,8 @@
             return;
         }
 
-        instance.mainTemplate = Handlebars.compile(
-            ['<div id="{{htmlId}}_tab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">',
-                '<div class="container" style="max-width:800px;">',
-                '<table class="table" id="{{htmlId}}_tabContent"></table>',
-                '</div>',
-                '</div>'].join('\n'));
+        this.tab = Game.ui.createTab({id: 'resourcesBETA', title: 'Resources (BETA)'});
+        this.tab.initialize();
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
@@ -41,38 +41,37 @@
                 '</td></tr>'].join('\n'));
 
         instance.techTemplate = Handlebars.compile(
-            ['<tr id="{{resHtmlId}}"><td style="border:none;">',
-                '<h3 class="default btn-link" id="{{resHtmlId}}_name">{{name}}</h3>',
+            ['<tr id="{{htmlId}}"><td style="border:none;">',
+                '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
-                    '<p id="{{resHtmlId}}_cost"></p>',
+                    '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div class="btn btn-default" id="{{resHtmlId}}_unlock">Unlock</div>',
+                '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
                 '</td></tr>'].join('\n'));
 
         instance.buildingTemplate = Handlebars.compile(
-            ['<tr id="{{resHtmlId}}"></ter><td style="border:none;">',
+            ['<tr id="{{htmlId}}"></ter><td style="border:none;">',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
-                    '<p id="{{resHtmlId}}_prod"></p>',
-                    '<p id="{{resHtmlId}}_rcost"></p>',
-                    '<p id="{{resHtmlId}}_cost"></p>',
+                    '<p id="{{htmlId}}_prod"></p>',
+                    '<p id="{{htmlId}}_rcost"></p>',
+                    '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div id="{{resHtmlId}}_buy" class="btn btn-default">Buy 1</div>',
-                '<div id="{{resHtmlId}}_buy10" class="btn btn-default">Buy 10</div>',
-                '<div id="{{resHtmlId}}_buy100" class="btn btn-default">Buy 100</div>',
+                '<div id="{{htmlId}}_buy" class="btn btn-default">Buy 1</div>',
+                '<div id="{{htmlId}}_buy10" class="btn btn-default">Buy 10</div>',
+                '<div id="{{htmlId}}_buy100" class="btn btn-default">Buy 100</div>',
                 '<br>',
-                '<div id="{{resHtmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
-                '<div id="{{resHtmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
-                '<div id="{{resHtmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
+                '<div id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
+                '<div id="{{htmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
+                '<div id="{{htmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}_nav" class="{{category}}" href="#{{htmlId}}_tab" aria-controls="{{htmlId}}_tab" role="tab" data-toggle="tab" style="height:60px;">',
-                '<td style="vertical-align:middle;">',
+            ['<td style="vertical-align:middle;">',
                     '<img src="{{iconPath}}{{icon}}.{{iconExtension}}" style="width:30px; height:auto">',
                 '</td>',
                 '<td style="vertical-align:middle;">',
@@ -83,25 +82,14 @@
                 '</td>',
                 '<td style="vertical-align:middle; text-align:center;">',
                     '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
-                '</td>',
-                '</tr>'].join('\n'));
-
-        instance.navCategoryTemplate = Handlebars.compile(
-            ['<tr id="{{id}}_collapse" class="{{class}}" style="border:none;">',
-                '<td colspan="4">',
-                '<span>{{title}}</span> <span class="caret"></span>',
-                '</td>',
-                '</tr>'].join('\n'));
-
-        this.tabRoot = $('#resourceTabParent');
-        this.navRoot = $('#resourceNavParent');
+                '</td>'].join('\n'));
 
         if(Game.constants.enableDataDrivenResources === false) {
             return;
         }
 
         for(var id in Game.resources.categoryEntries) {
-            this.createResourceCategoryDisplay(id);
+            this.tab.addCategory(id, Game.resources.categoryEntries[id].title);
         }
 
         for(var id in Game.resources.entries) {
@@ -116,142 +104,197 @@
 
         for(var id in this.entries) {
             var data = Game.resources.getResourceData(this.entries[id].id);
-
             if(data.displayNeedsUpdate === true) {
-                this.updateDisplay(id, data);
+                this.updateDisplay(data);
             }
         }
 
         for(var id in this.resourceTechEntries) {
             var data = Game.tech.getTechData(id);
-            this.updateTechDisplay(id, data);
+            if(data.displayNeedsUpdate === true) {
+                this.updateTechDisplay(data);
+            }
         }
 
         for(var id in this.resourceBuildingEntries) {
             var data = Game.buildings.getBuildingData(id);
-            this.updateBuildingDisplay(id, data);
+            if(data.displayNeedsUpdate === true) {
+                this.updateBuildingDisplay(data);
+            }
+        }
+
+        for(var id in Game.resources.categoryEntries) {
+            if(this.tab.categoryHasVisibleEntries(id) === true) {
+                this.tab.showCategory(id);
+            } else {
+                this.tab.hideCategory(id);
+            }
         }
     };
 
-    instance.createDisplayTabTech = function(data, techData) {
-        console.log("Tech: " + data.id + " - " + techData.id);
-
-        var tabContentRoot = $('#' + data.htmlId + '_tabContent');
+    instance.createResourceContentTech = function(data, techData) {
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         var tech = this.techTemplate(techData);
         tabContentRoot.append($(tech));
 
-        var unlockButton = $('#' + techData.resHtmlId + '_unlock');
+        var unlockButton = $('#' + techData.htmlId + '_unlock');
         unlockButton.click({id: techData.id}, function(args) { Game.tech.buyTech(args.data.id, 1); });
 
         this.resourceTechEntries[techData.id] = data.id;
+        this.resourceTechObservers[techData.id] = [];
     };
 
-    instance.createDisplayTabBuilding = function(data, buildingData) {
-        console.log("Building: " + data.id + " - " + buildingData.id);
-
-        var tabContentRoot = $('#' + data.htmlId + '_tabContent');
+    instance.createResourceContentBuilding = function(data, buildingData) {
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         var tech = this.buildingTemplate(buildingData);
         tabContentRoot.append($(tech));
 
         this.resourceBuildingEntries[buildingData.id] = data.id;
+        this.resourceBuildingObservers[buildingData.id] = [];
     };
 
-    instance.createDisplayTab = function(data) {
-        // Build the Tab
-        var tab = this.mainTemplate(data);
-        var tabContent = $(tab);
-        this.tabRoot.append(tabContent);
+    instance.createResourceContent = function(data) {
+        var target = $('#' + this.tab.getContentElementId(data.id));
 
-        var tabContentRoot = $('#' + data.htmlId + '_tabContent');
         var tabTitle = this.titleTemplate(data);
-        tabContentRoot.append(tabTitle);
+        target.append(tabTitle);
         $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
 
         for (var id in Game.tech.entries) {
             var techData = Game.tech.entries[id];
             if(techData.resource && techData.resource === data.id) {
-                this.createDisplayTabTech(data, techData);
+                this.createResourceContentTech(data, techData);
             }
         }
 
         for (var id in Game.buildings.entries) {
             var buildingData = Game.buildings.entries[id];
             if(buildingData.resource && buildingData.resource === data.id) {
-                this.createDisplayTabBuilding(data, buildingData);
+                this.createResourceContentBuilding(data, buildingData);
             }
         }
     };
 
-    instance.createResourceCategoryDisplay = function(id) {
-        var data = Game.resources.getCategoryData(id);
+    instance.createResourceNav = function(data) {
+        var target = $('#' + this.tab.getNavElementId(data.id));
 
-        var categoryElementContent = this.navCategoryTemplate(data);
-        var categoryElement = $(categoryElementContent);
-        this.navRoot.append(categoryElement);
+        var html = this.navTemplate(data);
+        target.append($(html));
 
-        categoryElement.click({category: data.category}, function(args) {
-            var category = args.data.category;
-            if($(this).hasClass("collapsed")){
-                Game.resources.showByCategory(category);
-                $(this).removeClass("collapsed");
-            } else {
-                Game.resources.hideByCategory(category);
-                $(this).addClass("collapsed");
-            }
-        });
+        // Create the resource observers, we don't care about keeping these, always active
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_current', res: data.id, type: RESOURCE_OBSERVER_TYPE.CURRENT_VALUE});
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_capacity', res: data.id, type: RESOURCE_OBSERVER_TYPE.CAPACITY});
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_perSecond', res: data.id, type: RESOURCE_OBSERVER_TYPE.PER_SECOND});
     };
 
     instance.createDisplay = function(id) {
         var data = Game.resources.getResourceData(id);
 
-        this.createDisplayTab(data);
+        if (!Game.resourceCategoryData[data.category]) {
+            return;
+        }
 
-        // Build the Nav Section
-        var nav = this.navTemplate(data);
-        var navContent = $(nav);
-        navContent.click({self: instance, id: data.htmlId}, instance.activateTab);
-        this.navRoot.append(navContent);
+        this.tab.addNavEntry(data.category, id);
 
-        this.entries[data.htmlId] = {id: id};
+        this.createResourceContent(data);
+        this.createResourceNav(data);
+
+        this.entries[data.htmlId] = data;
     };
 
-    instance.updateTechDisplay = function(id, data) {
-        var element = $('#' + data.resHtmlId);
+    instance.updateTechDisplay = function(data) {
+        var element = $('#' + data.htmlId);
         if(data.unlocked === true) {
             element.show();
         } else {
             element.hide();
         }
 
-        if (data.maxLevel > 1) {
-            var titleElement = $('#' + data.resHtmlId + '_name');
+        // Update the title if we have a counted tech
+        if (data.maxLevel === -1 || data.maxLevel > 1) {
+            var titleElement = $('#' + data.htmlId + '_name');
             titleElement.text(data.name + " " + data.current);
         }
+
+        // Update the cost display
+        if(data.cost) {
+            var costDisplayData = this.buildCostDisplay(this.resourceTechObservers[data.id], data);
+            var costElement = $('#' + data.htmlId + '_cost');
+            costElement.empty();
+            costElement.append($(costDisplayData));
+        }
+
+        data.displayNeedsUpdate = false;
     };
 
-    instance.updateBuildingDisplay = function(id, data) {
-        var element = $('#' + data.resHtmlId);
+    instance.updateBuildingDisplay = function(data) {
+        var element = $('#' + data.htmlId);
         if(data.unlocked === true) {
             element.show();
         } else {
             element.hide();
         }
+
+        // Update the cost display
+        if(data.cost) {
+            var costDisplayData = this.buildCostDisplay(this.resourceBuildingObservers[data.id], data);
+            var costElement = $('#' + data.htmlId + '_cost');
+            costElement.empty();
+            costElement.append($(costDisplayData));
+        }
+
+        data.displayNeedsUpdate = false;
     };
 
-    instance.updateDisplay = function(id, data) {
+    instance.buildCostDisplay = function(observerArray, data) {
+        for(var i = 0; i < observerArray.length; i++) {
+            observerArray[i].delete();
+        }
 
-        var navPanel = $('#' + id + '_nav');
+        // Empty but keep the reference
+        observerArray.length = 0;
+
+        var segments = [];
+        for(var id in data.cost) {
+            var resourceData = Game.resources.getResourceData(id);
+            if(!data) {
+                console.error("Unknown Resource in cost: " + id);
+                continue;
+            }
+
+            segments.push({i: id, h: data.htmlId + '_' + id + '_c', n: resourceData.name, c: data.cost[id]});
+        }
+
+        var resultHtml = '<span>Cost: </span>';
+        for(var i = 0; i < segments.length; i++) {
+            var segmentData = segments[i];
+            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
+            resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
+            if(i < segments.length - 1) {
+                resultHtml = resultHtml + '<span>, </span>';
+            }
+
+            var observer = Game.ui.createResourceObserver({htmlId: segmentData.h, value: segmentData.c, res: segmentData.i, type: RESOURCE_OBSERVER_TYPE.SPECIFIC_VALUE});
+            observerArray.push(observer);
+        }
+
+        return resultHtml;
+    };
+
+    instance.updateDisplay = function(data) {
+
+        var navPanel = $('#' + this.tab.getNavElementId(data.id));
         if(data.unlocked === true && data.hidden !== true) {
             navPanel.show();
         } else {
             navPanel.hide();
         }
 
-        var gainButton = $('#' + id + '_gain');
+        var gainButton = $('#' + data.htmlId + '_gain');
         gainButton.attr("disabled", data.current >= data.capacity);
         gainButton.text('Gain ' + data.perClick);
 
-        var perSecondSpan = $('#' + id + '_perSecond');
+        /*var perSecondSpan = $('#' + data.htmlId + '_perSecond');
         perSecondSpan.text(data.perSecond);
         if(data.perSecond < 0) {
             perSecondSpan.addClass('red');
@@ -259,7 +302,7 @@
             perSecondSpan.removeClass('red');
         }
 
-        var currentSpan = $('#' + id + '_current');
+        var currentSpan = $('#' + data.htmlId + '_current');
         if(data.current >= data.capacity) {
             currentSpan.addClass('green');
         } else {
@@ -273,22 +316,9 @@
         }
 
         currentSpan.text(commafy(data.current));
-        $('#' + id + '_capacity').text(commafy(data.capacity));
+        $('#' + data.htmlId + '_capacity').text(commafy(data.capacity));*/
 
         data.displayNeedsUpdate = false;
-    };
-
-    instance.activateTab = function(args) {
-        var self = args.data.self;
-        var targetId = args.data.id;
-
-        for (var id in self.entries) {
-            if(id === targetId) {
-                $('#' + id + '_nav').addClass('info');
-            } else {
-                $('#' + id + '_nav').removeClass('info');
-            }
-        }
     };
 
     instance.gainClick = function(args) {
