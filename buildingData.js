@@ -280,7 +280,7 @@ Game.buildingData = (function () {
     /********************
      * Earth Resources  *
      ********************/
-    
+
     //Oil
     instance.oilT1 = {
         name: 'Small Pump',
@@ -1259,6 +1259,7 @@ Game.buildingData = (function () {
             'silicon': 60000
         }
     };
+
     instance.meteoriteT2 = {
         name: 'Meteorite Web',
         desc: 'The Meteorite Web uses nano-fibres made while submerged in highly radioactive liquids to become strong enough to physically catch meteors from the Asteroid Belt. Plasma is required to refine the asteroids into Meteorite Ore, which can be usable.',
@@ -1277,5 +1278,58 @@ Game.buildingData = (function () {
         }
     };
 
+    //Research
+    instance.scienceT1 = {
+        name: 'Laboratory',
+        desc: 'Build a laboratory of your very own to start producing science. Each one produces 0.1 science per second.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'science',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'science': 0.1,
+        },
+        cost: {
+            'metal': 20,
+            'gem': 15,
+            'wood': 10
+        }
+    };
+
+    instance.scienceT2 = {
+        name: 'Laboratory T2',
+        desc: 'Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'science',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'science': 1,
+        },
+        cost: {
+            'metal': 1000,
+            'gem': 200,
+            'wood': 500
+        }
+    };
+
+    instance.scienceT3 = {
+        name: 'Laboratory T3',
+        desc: 'Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 10 science per second',
+        type: BUILDING_TYPE.PRODUCER,
+        resource: 'science',
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        resourcePerSecond: {
+            'science': 10,
+        },
+        cost: {
+            'metal': 17000,
+            'gem': 4700,
+            'wood': 9600
+        }
+    };
+
+    
     return instance;
 }());
