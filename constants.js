@@ -13,9 +13,10 @@ BUILDING_TYPE = {
 };
 
 RESOURCE_OBSERVER_TYPE = {
-    VALUE: 0,
-    CAPACITY: 1,
-    PER_SECOND: 2
+    CURRENT_VALUE: 0,
+    SPECIFIC_VALUE: 1,
+    CAPACITY: 2,
+    PER_SECOND: 3
 };
 
 Game.constants = (function(){
