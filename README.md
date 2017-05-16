@@ -27,6 +27,8 @@ v0.5.0 The Interstellar Update
 
 v0.5.0
 - Tier 2 Batteries
+- Energy Conversion Changes
+- Reworded Chemical Plant Description
 
 - Recoded Charcoal Production
 - Fixed Oil Rig Costs
