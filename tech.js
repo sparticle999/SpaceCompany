@@ -12,6 +12,7 @@ Game.tech = (function(){
             this.techTypeCount++;
             this.entries[id] = $.extend({
                 id: id,
+                resHtmlId: 'restech_' + id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
@@ -37,7 +38,7 @@ Game.tech = (function(){
         if(data.tech) {
             if(data.tech.v && data.tech.v == this.dataVersion) {
                 for(var id in data.tech.i) {
-                    if(this.entries[id]) {
+                    if(this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                         this.gainTech(id, data.tech.i[id]);
                     }
                 }
@@ -45,16 +46,67 @@ Game.tech = (function(){
         }
     };
 
+    instance.buyTech = function(id, count) {
+        console.log("TODO: Tech cost");
+
+        this.gainTech(id, count);
+    };
+
     instance.gainTech = function(id, count) {
-        // Add the tech and clamp to the maximum
+        this.removeTechEffect(id);
+
+        if(isNaN(count) || count === undefined) {
+            count = 1;
+        }
+
         var newValue = Math.floor(this.entries[id].current + count);
-        this.entries[id].current = Math.min(newValue, this.entries[id].max);
+        var finalValue = newValue;
+        if(this.entries[id].maxLevel > 0) {
+            // There is a max level on this tech, clamp so we don't exceed
+            finalValue = Math.min(newValue, this.entries[id].maxLevel)
+        }
+
+        this.entries[id].current = finalValue;
+
+        this.applyTechEffect(id);
     };
 
     instance.removeTech = function(id, count) {
+        this.removeTechEffect(id);
+
+        if(isNaN(count) || count === undefined) {
+            count = 1;
+        }
+
         // Remove the tech and ensure we can not go below 0
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
+
+        this.applyTechEffect(id);
+    };
+
+    instance.getTechData = function(id) {
+        return this.entries[id];
+    };
+
+    instance.removeTechEffect = function(id) {
+        var data = this.entries[id];
+        if(data.resource) {
+            data.remove(data, Game.resources.getResourceData(data.resource));
+            return;
+        }
+
+        console.warn("TODO: RemoveTech Effect not implemented for " + id);
+    };
+
+    instance.applyTechEffect = function(id) {
+        var data = this.entries[id];
+        if(data.resource) {
+            data.apply(data, Game.resources.getResourceData(data.resource));
+            return;
+        }
+
+        console.warn("TODO: ApplyTech Effect not implemented for " + id);
     };
 
     return instance;

@@ -13,6 +13,7 @@ Game.buildings = (function(){
             this.techTypeCount++;
             this.entries[id] = $.extend({
                 id: id,
+                resHtmlId: 'resbld_' + id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
@@ -81,6 +82,10 @@ Game.buildings = (function(){
         }
 
         this.updatePerSecondProduction = false;
+    };
+
+    instance.getBuildingData = function(id) {
+        return this.entries[id];
     };
 
     return instance;

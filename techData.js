@@ -2,35 +2,40 @@ Game.techData = (function(){
 
     var instance = {};
 
-    instance.storageUpgradeMetal = {
-        name: 'Storage Upgrade',
-        desc: 'Upgrade your Metal storage size to %s',
+    var baseUpgradeData = {
+        name: 'Storage Upgrade:',
         type: TECH_TYPE.UPGRADE,
-        resource: 'metal',
         unlocked: true,
         costType: COST_TYPE.PERCENT,
+        current: 0,
+        maxLevel: -1,
+        apply: function(self, x) { var capacityAddition = x.baseCapacity; for(var i = 0; i < self.current; i++) { capacityAddition *= 2; }; x.capacity += capacityAddition; },
+        remove: function(self, x) { var capacityAddition = x.baseCapacity; for(var i = 0; i < self.current; i++) { capacityAddition *= 2; }; x.capacity -= capacityAddition; }
+    };
+
+    instance.storageUpgradeMetal = $.extend({
+        desc: 'Doubles your Metal storage size',
+        resource: 'metal',
         cost: {
             'metal': .95,
         },
-        level: 0,
-        maxLevel: Number.MAX_VALUE,
-        apply: function(x) { x.capacity *= (this.level + 1); },
-        remove: function(x) { x.capacity /= (this.level + 1); }
-    };
+    }, baseUpgradeData);
 
-    /*instance.metalMiner = {
-        name: 'Miner',
-        desc: 'Build a pickaxe for your miner.',
-        type: BUILDING_TYPES.PRODUCER,
-        resource: 'metal',
-        perSecond: 1,
-        energyCost: 0,
-        maxCount: Number.MAX_VALUE,
+    instance.storageUpgradeGem = $.extend({
+        desc: 'Doubles your Gem storage size',
+        resource: 'gem',
         cost: {
-            'metal': 10,
-            'wood': 5
-        }
-    };*/
+            'gem': .95,
+        },
+    }, baseUpgradeData);
+
+    instance.storageUpgradeWood = $.extend({
+        desc: 'Doubles your Wood storage size',
+        resource: 'wood',
+        cost: {
+            'wood': .95,
+        },
+    }, baseUpgradeData);
 
     return instance;
 }());

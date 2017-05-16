@@ -1,3 +1,17 @@
+Game.resourceCategoryData = (function(){
+
+    var instance = {};
+
+    instance.earth = {
+        class: 'collapseEarth',
+        title: 'Earth Resources',
+        category: 'earth'
+    };
+
+    return instance;
+
+}());
+
 Game.resourceData = (function(){
 
     var instance = {};
@@ -7,16 +21,16 @@ Game.resourceData = (function(){
         desc: 'Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.',
         icon: 'metalIcon',
         category: 'earth',
-        capacity: 50,
+        baseCapacity: 50,
         unlocked: true,
     };
 
-    instance.gems = {
+    instance.gem = {
         name: 'Gems',
         desc: 'Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.',
         icon: 'gemIcon',
         category: 'earth',
-        capacity: 50,
+        baseCapacity: 50,
         unlocked: true,
     };
 
@@ -25,7 +39,7 @@ Game.resourceData = (function(){
         desc: 'Wood is one of the primary resources. It is used more often in early game for tools and buildings.',
         icon: 'woodIcon',
         category: 'earth',
-        capacity: 50,
+        baseCapacity: 50,
         unlocked: true,
     };
 

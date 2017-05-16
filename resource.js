@@ -4,7 +4,9 @@ Game.resources = (function(){
 
     instance.dataVersion = 2;
     instance.entries = {};
+    instance.categoryEntries = {};
     instance.resourceTypeCount = 0;
+    instance.resourceCategoryCount = 0;
 
     instance.initialize = function() {
         for (var id in Game.resourceData) {
@@ -19,10 +21,22 @@ Game.resources = (function(){
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
-                unlocked: false
+                unlocked: false,
+                hidden: false
+            }, data);
+
+            this.entries[id].capacity = data.baseCapacity;
+        }
+
+        for (var id in Game.resourceCategoryData) {
+            var data = Game.resourceCategoryData[id];
+            this.resourceCategoryCount++;
+            this.categoryEntries[id] = $.extend({
+                id: id,
             }, data);
         }
 
+        console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
         console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
     };
 
@@ -84,6 +98,28 @@ Game.resources = (function(){
 
     instance.getResourceData = function(id) {
         return this.entries[id];
+    };
+
+    instance.getCategoryData = function(id) {
+        return this.categoryEntries[id];
+    };
+
+    instance.showByCategory = function(category) {
+        for(var id in this.entries) {
+            var data = this.entries[id];
+            if(data.category === category) {
+                data.hidden = false;
+            }
+        }
+    };
+
+    instance.hideByCategory = function(category) {
+        for(var id in this.entries) {
+            var data = this.entries[id];
+            if(data.category === category) {
+                data.hidden = true;
+            }
+        }
     };
 
     return instance;

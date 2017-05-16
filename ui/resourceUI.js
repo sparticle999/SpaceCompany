@@ -3,6 +3,8 @@
     var instance = {};
 
     instance.entries = {};
+    instance.resourceTechEntries = {};
+    instance.resourceBuildingEntries = {};
     instance.mainTemplate = null;
     instance.navTemplate = null;
     instance.techTemplate = null;
@@ -39,33 +41,33 @@
                 '</td></tr>'].join('\n'));
 
         instance.techTemplate = Handlebars.compile(
-            ['<tr><td style="border:none;">',
-                '<h3 class="default btn-link">{{name}}</h3>',
+            ['<tr id="{{resHtmlId}}"><td style="border:none;">',
+                '<h3 class="default btn-link" id="{{resHtmlId}}_name">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
-                    '<p>{{cost}}</p>',
+                    '<p id="{{resHtmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div class="btn btn-default" id="{{id}}_unlock">Unlock</div>',
+                '<div class="btn btn-default" id="{{resHtmlId}}_unlock">Unlock</div>',
                 '</td></tr>'].join('\n'));
 
         instance.buildingTemplate = Handlebars.compile(
-            ['<tr></ter><td style="border:none;">',
+            ['<tr id="{{resHtmlId}}"></ter><td style="border:none;">',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
-                    '<p>{{prod}}</p>',
-                    '<p>{{runningCost}}</p>',
-                    '<p>{{cost}}</p>',
+                    '<p id="{{resHtmlId}}_prod"></p>',
+                    '<p id="{{resHtmlId}}_rcost"></p>',
+                    '<p id="{{resHtmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div onclick="{{funcBuy}}" id="{{htmlId}}_buy" class="btn btn-default">Buy 1</div>',
-                '<div onclick="{{funcBuy10}}" id="{{htmlId}}_buy10" class="btn btn-default">Buy 10</div>',
-                '<div onclick="{{funcBuy100}}" id="{{htmlId}}_buy100" class="btn btn-default">Buy 100</div>',
+                '<div id="{{resHtmlId}}_buy" class="btn btn-default">Buy 1</div>',
+                '<div id="{{resHtmlId}}_buy10" class="btn btn-default">Buy 10</div>',
+                '<div id="{{resHtmlId}}_buy100" class="btn btn-default">Buy 100</div>',
                 '<br>',
-                '<div onclick="{{funcDestroy}}" id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
-                '<div onclick="{{funcDestroy10}}" id="{{htmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
-                '<div onclick="{{funcDestroy100}}" id="{{htmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
+                '<div id="{{resHtmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
+                '<div id="{{resHtmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
+                '<div id="{{resHtmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
@@ -84,8 +86,23 @@
                 '</td>',
                 '</div>'].join('\n'));
 
+        instance.navCategoryTemplate = Handlebars.compile(
+            ['<tr id="{{id}}_collapse" class="{{class}}" style="border:none;">',
+                '<td colspan="4">',
+                '<span>{{title}}</span> <span class="caret"></span>',
+                '</td>',
+                '</tr>'].join('\n'));
+
         this.tabRoot = $('#resourceTabParent');
         this.navRoot = $('#resourceNavParent');
+
+        if(Game.constants.enableDataDrivenResources === false) {
+            return;
+        }
+
+        for(var id in Game.resources.categoryEntries) {
+            this.createResourceCategoryDisplay(id);
+        }
 
         for(var id in Game.resources.entries) {
             this.createDisplay(id);
@@ -104,6 +121,16 @@
                 this.updateDisplay(id, data);
             }
         }
+
+        for(var id in this.resourceTechEntries) {
+            var data = Game.tech.getTechData(id);
+            this.updateTechDisplay(id, data);
+        }
+
+        for(var id in this.resourceBuildingEntries) {
+            var data = Game.buildings.getBuildingData(id);
+            this.updateBuildingDisplay(id, data);
+        }
     };
 
     instance.createDisplayTabTech = function(data, techData) {
@@ -112,6 +139,11 @@
         var tabContentRoot = $('#' + data.htmlId + '_tabContent');
         var tech = this.techTemplate(techData);
         tabContentRoot.append($(tech));
+
+        var unlockButton = $('#' + techData.resHtmlId + '_unlock');
+        unlockButton.click({id: techData.id}, function(args) { Game.tech.buyTech(args.data.id, 1); });
+
+        this.resourceTechEntries[techData.id] = data.id;
     };
 
     instance.createDisplayTabBuilding = function(data, buildingData) {
@@ -120,6 +152,8 @@
         var tabContentRoot = $('#' + data.htmlId + '_tabContent');
         var tech = this.buildingTemplate(buildingData);
         tabContentRoot.append($(tech));
+
+        this.resourceBuildingEntries[buildingData.id] = data.id;
     };
 
     instance.createDisplayTab = function(data) {
@@ -148,8 +182,27 @@
         }
     };
 
+    instance.createResourceCategoryDisplay = function(id) {
+        var data = Game.resources.getCategoryData(id);
+
+        var categoryElementContent = this.navCategoryTemplate(data);
+        var categoryElement = $(categoryElementContent);
+        this.navRoot.append(categoryElement);
+
+        categoryElement.click({category: data.category}, function(args) {
+            var category = args.data.category;
+            if($(this).hasClass("collapsed")){
+                Game.resources.showByCategory(category);
+                $(this).removeClass("collapsed");
+            } else {
+                Game.resources.hideByCategory(category);
+                $(this).addClass("collapsed");
+            }
+        });
+    };
+
     instance.createDisplay = function(id) {
-        var data = Game.resources.entries[id];
+        var data = Game.resources.getResourceData(id);
 
         this.createDisplayTab(data);
 
@@ -162,7 +215,37 @@
         this.entries[data.htmlId] = {id: id};
     };
 
+    instance.updateTechDisplay = function(id, data) {
+        var element = $('#' + data.resHtmlId);
+        if(data.unlocked === true) {
+            element.show();
+        } else {
+            element.hide();
+        }
+
+        if (data.maxLevel > 1) {
+            var titleElement = $('#' + data.resHtmlId + '_name');
+            titleElement.text(data.name + " " + data.current);
+        }
+    };
+
+    instance.updateBuildingDisplay = function(id, data) {
+        var element = $('#' + data.resHtmlId);
+        if(data.unlocked === true) {
+            element.show();
+        } else {
+            element.hide();
+        }
+    };
+
     instance.updateDisplay = function(id, data) {
+
+        var navPanel = $('#' + id + '_nav');
+        if(data.unlocked === true && data.hidden !== true) {
+            navPanel.show();
+        } else {
+            navPanel.hide();
+        }
 
         var gainButton = $('#' + id + '_gain');
         gainButton.attr("disabled", data.current >= data.capacity);
@@ -189,8 +272,8 @@
             currentSpan.removeClass('red');
         }
 
-        currentSpan.text(data.current);
-        $('#' + id + '_capacity').text(data.capacity);
+        currentSpan.text(commafy(data.current));
+        $('#' + id + '_capacity').text(commafy(data.capacity));
 
         data.displayNeedsUpdate = false;
     };
