@@ -54,7 +54,7 @@
 				</a>
 				<div class="pull-right" style="width:200px;">
 					<a class="navbar-brand">
-						<span id="autoSaveTimer" class="hidden text-muted small ng-binding" style="font-size:14px;">
+						<span id="autoSaveTimer" class="text-muted small ng-binding" style="font-size:14px;">
 							
 						</span>
 					</a>
@@ -4820,13 +4820,13 @@
 									<br>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default active">
-											<input type="radio" name="autosaves" id="30secs" onclick="console.log(1)" autocomplete="off" checked> 30 Seconds
+											<input type="radio" name="autosaves" id="30secs" autocomplete="off" checked> 30 Seconds
 										</label>
 										<label class="btn btn-default">
-											<input type="radio" name="autosaves" id="2mins" onclick="console.log(2)" autocomplete="off"> 2 Minutes
+											<input type="radio" name="autosaves" id="2mins" autocomplete="off"> 2 Minutes
 										</label>
 										<label class="btn btn-default">
-											<input type="radio" name="autosaves" id="10mins" onclick="console.log(3)" autocomplete="off"> 10 Minutes
+											<input type="radio" name="autosaves" id="10mins" autocomplete="off"> 10 Minutes
 										</label>
 									</div>
 								</td>
@@ -4836,18 +4836,18 @@
 									<h3 class="default btn-link">
 										Manual Saving
 									</h3>
-									<button id="saveButton" onclick="save()" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
+									<button id="saveButton" onclick="Game.save()" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
 										<span style="color:white;">
 											Save
 										</span>
 									</button>
-									<button id="loadButton" onclick="loadSave()" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
+									<button id="loadButton" onclick="Game.load()" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
 										<span style="color:white;">
 											Load
 										</span>
 									</button>
 									<br>
-									<button onclick="deleteSave()" class="btn btn-danger" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
+									<button onclick="Game.deleteSave()" class="btn btn-danger" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
 										<span style="color:white;">
 											Hard Reset
 										</span>
@@ -4862,8 +4862,8 @@
 									<h3 class="default btn-link">
 										Import/Export
 									</h3>
-									<button class="btn btn-primary" onclick="exportSave()">Export Save</button>
-									<button class="btn btn-primary" onclick="importSave()">Import Save</button>
+									<button class="btn btn-primary" onclick="Game.export()">Export Save</button>
+									<button class="btn btn-primary" onclick="Game.import()">Import Save</button>
 									<br>
 									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
 									<br>
@@ -4895,7 +4895,7 @@
 									<h3 class="default btn-link">
 										Themes
 									</h3>
-				                	<select id="themeSelector" ng-model="player.current_theme" onchange="updateTheme()" class="ng-valid ng-touched ng-dirty ng-valid-parse">
+				                	<select id="themeSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
 				                		<option value="base">Base</option>
 				                		<option value="cyborg">Cyborg</option>
 				                		<option value="solar">Solar</option>
@@ -4912,6 +4912,21 @@
 										<label><input id="boldEnabled" type="checkbox" value="">Red Costs: Bold</label>
 									</div>
 				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Formatting
+									</h3>
+									<select id="formatSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
+										<option value="raw">Raw</option>
+										<option value="rounded">Rounded</option>
+										<option value="name">Name</option>
+										<option value="shortName" selected>Short Name</option>
+										<option value="shortName2">Short Name (2)</option>
+										<option value="scientific">Scientific</option>
+									</select>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -5289,6 +5304,8 @@
 <script type="text/javascript" src="buildingData.js"></script>
 <script type="text/javascript" src="tech.js"></script>
 <script type="text/javascript" src="techData.js"></script>
+<script type="text/javascript" src="settings.js"></script>
+<script type="text/javascript" src="utils.js"></script>
 
 <script type="text/javascript" src="ui/gameTabUI.js"></script>
 <script type="text/javascript" src="ui/resourceObserver.js"></script>

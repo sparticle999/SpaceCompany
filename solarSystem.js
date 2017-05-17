@@ -10,9 +10,9 @@ function getChemicalPlant(){
 		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
 		chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant));
 		document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
-		document.getElementById("chemicalPlantMetalCost").innerHTML = commafy(chemicalPlantMetalCost);
-		document.getElementById("chemicalPlantGemCost").innerHTML = commafy(chemicalPlantGemCost);
-		document.getElementById("chemicalPlantOilCost").innerHTML = commafy(chemicalPlantOilCost);
+		document.getElementById("chemicalPlantMetalCost").innerHTML = Game.settings.format(chemicalPlantMetalCost);
+		document.getElementById("chemicalPlantGemCost").innerHTML = Game.settings.format(chemicalPlantGemCost);
+		document.getElementById("chemicalPlantOilCost").innerHTML = Game.settings.format(chemicalPlantOilCost);
 		refresh();
 		refreshPerSec();
 	}

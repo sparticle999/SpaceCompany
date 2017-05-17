@@ -106,21 +106,21 @@ function gainResources(){
 	}
 
 	
-	document.getElementById("woodps").innerHTML = commafy(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
+	document.getElementById("woodps").innerHTML = Game.settings.format(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
 	if(charcoalToggled === true){
 		if(chemicalPlantToggled === true){
-			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine - (chemicalPlant*20));
+			document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine - (chemicalPlant*20));
 		}
 		else{
-			document.getElementById("charcoalps").innerHTML = commafy(charcoalps - charcoalEngine);
+			document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine);
 		}
 	}
 	else{
 		if(chemicalPlantToggled === true){
-			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine - (chemicalPlant*20));
+			document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine - (chemicalPlant*20));
 		}
 		else{
-			document.getElementById("charcoalps").innerHTML = commafy(0 - charcoalEngine);
+			document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine);
 		}
 	}
 	
@@ -133,12 +133,12 @@ function gainResources(){
 		}
 		else{
 			charcoal = charcoalStorage;
-			document.getElementById("woodps").innerHTML = commafy(woodps);
+			document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
 			document.getElementById("charcoal").className = "green";
 		}
 	}
 	else{
-		document.getElementById("woodps").innerHTML = commafy(woodps);
+		document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
 	}
 	
 	if(wood + woodps/10 < woodStorage){
@@ -326,10 +326,10 @@ function upgradeUraniumStorage(){
 		uraniumStorage = uraniumNextStorage;
 		uraniumNextStorage *= 2;
 		refresh();
-		document.getElementById("uraniumStorage").innerHTML = commafy(uraniumStorage);
-		document.getElementById("uraniumNextStorage").innerHTML = commafy(uraniumNextStorage);
-		document.getElementById("uraniumStorageCost").innerHTML = commafy(uraniumStorage);
-		document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = commafy(uraniumStorage/2.5);
+		document.getElementById("uraniumStorage").innerHTML = Game.settings.format(uraniumStorage);
+		document.getElementById("uraniumNextStorage").innerHTML = Game.settings.format(uraniumNextStorage);
+		document.getElementById("uraniumStorageCost").innerHTML = Game.settings.format(uraniumStorage);
+		document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumStorage/2.5);
 	}
 }
 
@@ -340,10 +340,10 @@ function upgradeOilStorage(){
 		oilStorage = oilNextStorage;
 		oilNextStorage *= 2;
 		refresh();
-		document.getElementById("oilStorage").innerHTML = commafy(oilStorage);
-		document.getElementById("oilNextStorage").innerHTML = commafy(oilNextStorage);
-		document.getElementById("oilStorageCost").innerHTML = commafy(oilStorage);
-		document.getElementById("oilStorageMetalCost").innerHTML = commafy(oilStorage/2.5);
+		document.getElementById("oilStorage").innerHTML = Game.settings.format(oilStorage);
+		document.getElementById("oilNextStorage").innerHTML = Game.settings.format(oilNextStorage);
+		document.getElementById("oilStorageCost").innerHTML = Game.settings.format(oilStorage);
+		document.getElementById("oilStorageMetalCost").innerHTML = Game.settings.format(oilStorage/2.5);
 	}
 }
 
@@ -353,9 +353,9 @@ function upgradeMetalStorage(){
 		metalStorage = metalNextStorage;
 		metalNextStorage *= 2;
 		refresh();
-		document.getElementById("metalStorage").innerHTML = commafy(metalStorage);
-		document.getElementById("metalNextStorage").innerHTML = commafy(metalNextStorage);
-		document.getElementById("metalStorageCost").innerHTML = commafy(metalStorage);
+		document.getElementById("metalStorage").innerHTML = Game.settings.format(metalStorage);
+		document.getElementById("metalNextStorage").innerHTML = Game.settings.format(metalNextStorage);
+		document.getElementById("metalStorageCost").innerHTML = Game.settings.format(metalStorage);
 	}
 }
 
@@ -366,10 +366,10 @@ function upgradeGemStorage(){
 		gemStorage = gemNextStorage;
 		gemNextStorage *= 2;
 		refresh();
-		document.getElementById("gemStorage").innerHTML = commafy(gemStorage);
-		document.getElementById("gemNextStorage").innerHTML = commafy(gemNextStorage);
-		document.getElementById("gemStorageCost").innerHTML = commafy(gemStorage);
-		document.getElementById("gemStorageMetalCost").innerHTML = commafy(gemStorage/2.5);
+		document.getElementById("gemStorage").innerHTML = Game.settings.format(gemStorage);
+		document.getElementById("gemNextStorage").innerHTML = Game.settings.format(gemNextStorage);
+		document.getElementById("gemStorageCost").innerHTML = Game.settings.format(gemStorage);
+		document.getElementById("gemStorageMetalCost").innerHTML = Game.settings.format(gemStorage/2.5);
 	}
 }
 
@@ -380,10 +380,10 @@ function upgradeCharcoalStorage(){
 		charcoalStorage = charcoalNextStorage;
 		charcoalNextStorage *= 2;
 		refresh();
-		document.getElementById("charcoalStorage").innerHTML = commafy(charcoalStorage);
-		document.getElementById("charcoalNextStorage").innerHTML = commafy(charcoalNextStorage);
-		document.getElementById("charcoalStorageCost").innerHTML = commafy(charcoalStorage);
-		document.getElementById("charcoalStorageMetalCost").innerHTML = commafy(charcoalStorage/2.5);
+		document.getElementById("charcoalStorage").innerHTML = Game.settings.format(charcoalStorage);
+		document.getElementById("charcoalNextStorage").innerHTML = Game.settings.format(charcoalNextStorage);
+		document.getElementById("charcoalStorageCost").innerHTML = Game.settings.format(charcoalStorage);
+		document.getElementById("charcoalStorageMetalCost").innerHTML = Game.settings.format(charcoalStorage/2.5);
 	}
 }
 
@@ -394,10 +394,10 @@ function upgradeWoodStorage(){
 		woodStorage = woodNextStorage;
 		woodNextStorage *= 2;
 		refresh();
-		document.getElementById("woodStorage").innerHTML = commafy(woodStorage);
-		document.getElementById("woodNextStorage").innerHTML = commafy(woodNextStorage);
-		document.getElementById("woodStorageCost").innerHTML = commafy(woodStorage);
-		document.getElementById("woodStorageMetalCost").innerHTML = commafy(woodStorage/2.5);
+		document.getElementById("woodStorage").innerHTML = Game.settings.format(woodStorage);
+		document.getElementById("woodNextStorage").innerHTML = Game.settings.format(woodNextStorage);
+		document.getElementById("woodStorageCost").innerHTML = Game.settings.format(woodStorage);
+		document.getElementById("woodStorageMetalCost").innerHTML = Game.settings.format(woodStorage/2.5);
 	}
 }
 
@@ -408,10 +408,10 @@ function upgradeSpaceMetalStorage(){
 		spaceMetalStorage = spaceMetalNextStorage;
 		spaceMetalNextStorage *= 2;
 		refresh();
-		document.getElementById("spaceMetalStorage").innerHTML = commafy(spaceMetalStorage);
-		document.getElementById("spaceMetalNextStorage").innerHTML = commafy(spaceMetalNextStorage);
-		document.getElementById("spaceMetalStorageCost").innerHTML = commafy(spaceMetalStorage);
-		document.getElementById("spaceMetalStorageMetalCost").innerHTML = commafy(spaceMetalStorage*4);
+		document.getElementById("spaceMetalStorage").innerHTML = Game.settings.format(spaceMetalStorage);
+		document.getElementById("spaceMetalNextStorage").innerHTML = Game.settings.format(spaceMetalNextStorage);
+		document.getElementById("spaceMetalStorageCost").innerHTML = Game.settings.format(spaceMetalStorage);
+		document.getElementById("spaceMetalStorageMetalCost").innerHTML = Game.settings.format(spaceMetalStorage*4);
 	}
 }
 
@@ -422,10 +422,10 @@ function upgradeMethaneStorage(){
 		methaneStorage = methaneNextStorage;
 		methaneNextStorage *= 2;
 		refresh();
-		document.getElementById("methaneStorage").innerHTML = commafy(methaneStorage);
-		document.getElementById("methaneNextStorage").innerHTML = commafy(methaneNextStorage);
-		document.getElementById("methaneStorageCost").innerHTML = commafy(methaneStorage);
-		document.getElementById("methaneStorageSpaceMetalCost").innerHTML = commafy(methaneStorage/2.5);
+		document.getElementById("methaneStorage").innerHTML = Game.settings.format(methaneStorage);
+		document.getElementById("methaneNextStorage").innerHTML = Game.settings.format(methaneNextStorage);
+		document.getElementById("methaneStorageCost").innerHTML = Game.settings.format(methaneStorage);
+		document.getElementById("methaneStorageSpaceMetalCost").innerHTML = Game.settings.format(methaneStorage/2.5);
 	}
 }
 
@@ -436,10 +436,10 @@ function upgradeTitaniumStorage(){
 		titaniumStorage = titaniumNextStorage;
 		titaniumNextStorage *= 2;
 		refresh();
-		document.getElementById("titaniumStorage").innerHTML = commafy(titaniumStorage);
-		document.getElementById("titaniumNextStorage").innerHTML = commafy(titaniumNextStorage);
-		document.getElementById("titaniumStorageCost").innerHTML = commafy(titaniumStorage);
-		document.getElementById("titaniumStorageSpaceMetalCost").innerHTML = commafy(titaniumStorage/2.5);
+		document.getElementById("titaniumStorage").innerHTML = Game.settings.format(titaniumStorage);
+		document.getElementById("titaniumNextStorage").innerHTML = Game.settings.format(titaniumNextStorage);
+		document.getElementById("titaniumStorageCost").innerHTML = Game.settings.format(titaniumStorage);
+		document.getElementById("titaniumStorageSpaceMetalCost").innerHTML = Game.settings.format(titaniumStorage/2.5);
 	}
 }
 
@@ -450,10 +450,10 @@ function upgradeGoldStorage(){
 		goldStorage = goldNextStorage;
 		goldNextStorage *= 2;
 		refresh();
-		document.getElementById("goldStorage").innerHTML = commafy(goldStorage);
-		document.getElementById("goldNextStorage").innerHTML = commafy(goldNextStorage);
-		document.getElementById("goldStorageCost").innerHTML = commafy(goldStorage);
-		document.getElementById("goldStorageSpaceMetalCost").innerHTML = commafy(goldStorage/2.5);
+		document.getElementById("goldStorage").innerHTML = Game.settings.format(goldStorage);
+		document.getElementById("goldNextStorage").innerHTML = Game.settings.format(goldNextStorage);
+		document.getElementById("goldStorageCost").innerHTML = Game.settings.format(goldStorage);
+		document.getElementById("goldStorageSpaceMetalCost").innerHTML = Game.settings.format(goldStorage/2.5);
 	}
 }
 
@@ -464,10 +464,10 @@ function upgradeSilverStorage(){
 		silverStorage = silverNextStorage;
 		silverNextStorage *= 2;
 		refresh();
-		document.getElementById("silverStorage").innerHTML = commafy(silverStorage);
-		document.getElementById("silverNextStorage").innerHTML = commafy(silverNextStorage);
-		document.getElementById("silverStorageCost").innerHTML = commafy(silverStorage);
-		document.getElementById("silverStorageSpaceMetalCost").innerHTML = commafy(silverStorage/2.5);
+		document.getElementById("silverStorage").innerHTML = Game.settings.format(silverStorage);
+		document.getElementById("silverNextStorage").innerHTML = Game.settings.format(silverNextStorage);
+		document.getElementById("silverStorageCost").innerHTML = Game.settings.format(silverStorage);
+		document.getElementById("silverStorageSpaceMetalCost").innerHTML = Game.settings.format(silverStorage/2.5);
 	}
 }
 
@@ -478,10 +478,10 @@ function upgradeSiliconStorage(){
 		siliconStorage = siliconNextStorage;
 		siliconNextStorage *= 2;
 		refresh();
-		document.getElementById("siliconStorage").innerHTML = commafy(siliconStorage);
-		document.getElementById("siliconNextStorage").innerHTML = commafy(siliconNextStorage);
-		document.getElementById("siliconStorageCost").innerHTML = commafy(siliconStorage);
-		document.getElementById("siliconStorageSpaceMetalCost").innerHTML = commafy(siliconStorage/2.5);
+		document.getElementById("siliconStorage").innerHTML = Game.settings.format(siliconStorage);
+		document.getElementById("siliconNextStorage").innerHTML = Game.settings.format(siliconNextStorage);
+		document.getElementById("siliconStorageCost").innerHTML = Game.settings.format(siliconStorage);
+		document.getElementById("siliconStorageSpaceMetalCost").innerHTML = Game.settings.format(siliconStorage/2.5);
 	}
 }
 
@@ -492,10 +492,10 @@ function upgradeLavaStorage(){
 		lavaStorage = lavaNextStorage;
 		lavaNextStorage *= 2;
 		refresh();
-		document.getElementById("lavaStorage").innerHTML = commafy(lavaStorage);
-		document.getElementById("lavaNextStorage").innerHTML = commafy(lavaNextStorage);
-		document.getElementById("lavaStorageCost").innerHTML = commafy(lavaStorage);
-		document.getElementById("lavaStorageSpaceMetalCost").innerHTML = commafy(lavaStorage/2.5);
+		document.getElementById("lavaStorage").innerHTML = Game.settings.format(lavaStorage);
+		document.getElementById("lavaNextStorage").innerHTML = Game.settings.format(lavaNextStorage);
+		document.getElementById("lavaStorageCost").innerHTML = Game.settings.format(lavaStorage);
+		document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaStorage/2.5);
 	}
 }
 
@@ -506,10 +506,10 @@ function upgradeHydrogenStorage(){
 		hydrogenStorage = hydrogenNextStorage;
 		hydrogenNextStorage *= 2;
 		refresh();
-		document.getElementById("hydrogenStorage").innerHTML = commafy(hydrogenStorage);
-		document.getElementById("hydrogenNextStorage").innerHTML = commafy(hydrogenNextStorage);
-		document.getElementById("hydrogenStorageCost").innerHTML = commafy(hydrogenStorage);
-		document.getElementById("hydrogenStorageSpaceMetalCost").innerHTML = commafy(hydrogenStorage/2.5);
+		document.getElementById("hydrogenStorage").innerHTML = Game.settings.format(hydrogenStorage);
+		document.getElementById("hydrogenNextStorage").innerHTML = Game.settings.format(hydrogenNextStorage);
+		document.getElementById("hydrogenStorageCost").innerHTML = Game.settings.format(hydrogenStorage);
+		document.getElementById("hydrogenStorageSpaceMetalCost").innerHTML = Game.settings.format(hydrogenStorage/2.5);
 	}
 }
 
@@ -520,10 +520,10 @@ function upgradeHeliumStorage(){
 		heliumStorage = heliumNextStorage;
 		heliumNextStorage *= 2;
 		refresh();
-		document.getElementById("heliumStorage").innerHTML = commafy(heliumStorage);
-		document.getElementById("heliumNextStorage").innerHTML = commafy(heliumNextStorage);
-		document.getElementById("heliumStorageCost").innerHTML = commafy(heliumStorage);
-		document.getElementById("heliumStorageSpaceMetalCost").innerHTML = commafy(heliumStorage/2.5);
+		document.getElementById("heliumStorage").innerHTML = Game.settings.format(heliumStorage);
+		document.getElementById("heliumNextStorage").innerHTML = Game.settings.format(heliumNextStorage);
+		document.getElementById("heliumStorageCost").innerHTML = Game.settings.format(heliumStorage);
+		document.getElementById("heliumStorageSpaceMetalCost").innerHTML = Game.settings.format(heliumStorage/2.5);
 	}
 }
 
@@ -534,10 +534,10 @@ function upgradeIceStorage(){
 		iceStorage = iceNextStorage;
 		iceNextStorage *= 2;
 		refresh();
-		document.getElementById("iceStorage").innerHTML = commafy(iceStorage);
-		document.getElementById("iceNextStorage").innerHTML = commafy(iceNextStorage);
-		document.getElementById("iceStorageCost").innerHTML = commafy(iceStorage);
-		document.getElementById("iceStorageSpaceMetalCost").innerHTML = commafy(iceStorage/2.5);
+		document.getElementById("iceStorage").innerHTML = Game.settings.format(iceStorage);
+		document.getElementById("iceNextStorage").innerHTML = Game.settings.format(iceNextStorage);
+		document.getElementById("iceStorageCost").innerHTML = Game.settings.format(iceStorage);
+		document.getElementById("iceStorageSpaceMetalCost").innerHTML = Game.settings.format(iceStorage/2.5);
 	}
 }
 
@@ -548,10 +548,10 @@ function upgradeMeteoriteStorage(){
 		meteoriteStorage = meteoriteNextStorage;
 		meteoriteNextStorage *= 2;
 		refresh();
-		document.getElementById("meteoriteStorage").innerHTML = commafy(meteoriteStorage);
-		document.getElementById("meteoriteNextStorage").innerHTML = commafy(meteoriteNextStorage);
-		document.getElementById("meteoriteStorageCost").innerHTML = commafy(meteoriteStorage);
-		document.getElementById("meteoriteStorageSpaceMetalCost").innerHTML = commafy(meteoriteStorage*4);
+		document.getElementById("meteoriteStorage").innerHTML = Game.settings.format(meteoriteStorage);
+		document.getElementById("meteoriteNextStorage").innerHTML = Game.settings.format(meteoriteNextStorage);
+		document.getElementById("meteoriteStorageCost").innerHTML = Game.settings.format(meteoriteStorage);
+		document.getElementById("meteoriteStorageSpaceMetalCost").innerHTML = Game.settings.format(meteoriteStorage*4);
 	}
 }
 
@@ -633,9 +633,9 @@ function getHeater(){
 		heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater));
 		heaterSiliconCost = Math.floor(59000 * Math.pow(1.1,heater));
 		document.getElementById("heater").innerHTML = heater;
-		document.getElementById("heaterSpaceMetalCost").innerHTML = commafy(heaterSpaceMetalCost);
-		document.getElementById("heaterGemCost").innerHTML = commafy(heaterGemCost);
-		document.getElementById("heaterSiliconCost").innerHTML = commafy(heaterSiliconCost);
+		document.getElementById("heaterSpaceMetalCost").innerHTML = Game.settings.format(heaterSpaceMetalCost);
+		document.getElementById("heaterGemCost").innerHTML = Game.settings.format(heaterGemCost);
+		document.getElementById("heaterSiliconCost").innerHTML = Game.settings.format(heaterSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -651,9 +651,9 @@ function getPlasmatic(){
 		plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
 		plasmaticMeteoriteCost = Math.floor(970 * Math.pow(1.1,plasmatic));
 		document.getElementById("plasmatic").innerHTML = plasmatic;
-		document.getElementById("plasmaticSpaceMetalCost").innerHTML = commafy(plasmaticSpaceMetalCost);
-		document.getElementById("plasmaticSiliconCost").innerHTML = commafy(plasmaticSiliconCost);
-		document.getElementById("plasmaticMeteoriteCost").innerHTML = commafy(plasmaticMeteoriteCost);
+		document.getElementById("plasmaticSpaceMetalCost").innerHTML = Game.settings.format(plasmaticSpaceMetalCost);
+		document.getElementById("plasmaticSiliconCost").innerHTML = Game.settings.format(plasmaticSiliconCost);
+		document.getElementById("plasmaticMeteoriteCost").innerHTML = Game.settings.format(plasmaticMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -669,10 +669,10 @@ function getBattery(){
 		batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
 		batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
 		document.getElementById("battery").innerHTML = battery;
-		document.getElementById("energyStorage").innerHTML = commafy(getMaxEnergy());
-		document.getElementById("batteryMetalCost").innerHTML = commafy(batteryMetalCost);
-		document.getElementById("batteryGemCost").innerHTML = commafy(batteryGemCost);
-		document.getElementById("batterySpaceMetalCost").innerHTML = commafy(batterySpaceMetalCost);
+		document.getElementById("energyStorage").innerHTML = Game.settings.format(getMaxEnergy());
+		document.getElementById("batteryMetalCost").innerHTML = Game.settings.format(batteryMetalCost);
+		document.getElementById("batteryGemCost").innerHTML = Game.settings.format(batteryGemCost);
+		document.getElementById("batterySpaceMetalCost").innerHTML = Game.settings.format(batterySpaceMetalCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -688,10 +688,10 @@ function getBatteryT2(){
 		batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
 		batteryT2SpaceMetalCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
 		document.getElementById("batteryT2").innerHTML = batteryT2;
-		document.getElementById("energyStorage").innerHTML = commafy(getMaxEnergy());
-		document.getElementById("batteryT2MetalCost").innerHTML = commafy(batteryT2MetalCost);
-		document.getElementById("batteryT2GemCost").innerHTML = commafy(batteryT2GemCost);
-		document.getElementById("batteryT2SpaceMetalCost").innerHTML = commafy(batteryT2SpaceMetalCost);
+		document.getElementById("energyStorage").innerHTML = Game.settings.format(getMaxEnergy());
+		document.getElementById("batteryT2MetalCost").innerHTML = Game.settings.format(batteryT2MetalCost);
+		document.getElementById("batteryT2GemCost").innerHTML = Game.settings.format(batteryT2GemCost);
+		document.getElementById("batteryT2SpaceMetalCost").innerHTML = Game.settings.format(batteryT2SpaceMetalCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -705,8 +705,8 @@ function getCharcoalEngine(){
 		charcoalEngineMetalCost = Math.floor(50 * Math.pow(1.1,charcoalEngine));
 		charcoalEngineGemCost = Math.floor(25 * Math.pow(1.1,charcoalEngine));
 		document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
-		document.getElementById("charcoalEngineMetalCost").innerHTML = commafy(charcoalEngineMetalCost);
-		document.getElementById("charcoalEngineGemCost").innerHTML = commafy(charcoalEngineGemCost);
+		document.getElementById("charcoalEngineMetalCost").innerHTML = Game.settings.format(charcoalEngineMetalCost);
+		document.getElementById("charcoalEngineGemCost").innerHTML = Game.settings.format(charcoalEngineGemCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -720,8 +720,8 @@ function getSolarPanel(){
 		solarPanelMetalCost = Math.floor(30 * Math.pow(1.1,solarPanel));
 		solarPanelGemCost = Math.floor(35 * Math.pow(1.1,solarPanel));
 		document.getElementById("solarPanel").innerHTML = solarPanel;
-		document.getElementById("solarPanelMetalCost").innerHTML = commafy(solarPanelMetalCost);
-		document.getElementById("solarPanelGemCost").innerHTML = commafy(solarPanelGemCost);
+		document.getElementById("solarPanelMetalCost").innerHTML = Game.settings.format(solarPanelMetalCost);
+		document.getElementById("solarPanelGemCost").innerHTML = Game.settings.format(solarPanelGemCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -735,8 +735,8 @@ function getMethaneStation(){
 		methaneStationSpaceMetalCost = Math.floor(110 * Math.pow(1.1,methaneStation));
 		methaneStationTitaniumCost = Math.floor(90 * Math.pow(1.1,methaneStation));
 		document.getElementById("methaneStation").innerHTML = methaneStation;
-		document.getElementById("methaneStationSpaceMetalCost").innerHTML = commafy(methaneStationSpaceMetalCost);
-		document.getElementById("methaneStationTitaniumCost").innerHTML = commafy(methaneStationTitaniumCost);
+		document.getElementById("methaneStationSpaceMetalCost").innerHTML = Game.settings.format(methaneStationSpaceMetalCost);
+		document.getElementById("methaneStationTitaniumCost").innerHTML = Game.settings.format(methaneStationTitaniumCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -750,8 +750,8 @@ function getNuclearStation(){
 		nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation));
 		nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation));
 		document.getElementById("nuclearStation").innerHTML = nuclearStation;
-		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = commafy(nuclearStationSpaceMetalCost);
-		document.getElementById("nuclearStationTitaniumCost").innerHTML = commafy(nuclearStationTitaniumCost);
+		document.getElementById("nuclearStationSpaceMetalCost").innerHTML = Game.settings.format(nuclearStationSpaceMetalCost);
+		document.getElementById("nuclearStationTitaniumCost").innerHTML = Game.settings.format(nuclearStationTitaniumCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -768,9 +768,9 @@ function getMagmatic(){
 		magmaticGemCost = Math.floor(30000 * Math.pow(1.1,magmatic));
 		magmaticSilverCost = Math.floor(20000 * Math.pow(1.1,magmatic));
 		document.getElementById("magmatic").innerHTML = magmatic;
-		document.getElementById("magmaticSpaceMetalCost").innerHTML = commafy(magmaticSpaceMetalCost);
-		document.getElementById("magmaticGemCost").innerHTML = commafy(magmaticGemCost);
-		document.getElementById("magmaticSilverCost").innerHTML = commafy(magmaticSilverCost);
+		document.getElementById("magmaticSpaceMetalCost").innerHTML = Game.settings.format(magmaticSpaceMetalCost);
+		document.getElementById("magmaticGemCost").innerHTML = Game.settings.format(magmaticGemCost);
+		document.getElementById("magmaticSilverCost").innerHTML = Game.settings.format(magmaticSilverCost);
 		refresh();
         Game.statistics.add('tierOwned5');
 	}
@@ -786,9 +786,9 @@ function getFusionReactor(){
 		fusionReactorTitaniumCost = Math.floor(20000 * Math.pow(1.1,fusionReactor));
 		fusionReactorSiliconCost = Math.floor(15000 * Math.pow(1.1,fusionReactor));
 		document.getElementById("fusionReactor").innerHTML = fusionReactor;
-		document.getElementById("fusionReactorSpaceMetalCost").innerHTML = commafy(fusionReactorSpaceMetalCost);
-		document.getElementById("fusionReactorTitaniumCost").innerHTML = commafy(fusionReactorTitaniumCost);
-		document.getElementById("fusionReactorSiliconCost").innerHTML = commafy(fusionReactorSiliconCost);
+		document.getElementById("fusionReactorSpaceMetalCost").innerHTML = Game.settings.format(fusionReactorSpaceMetalCost);
+		document.getElementById("fusionReactorTitaniumCost").innerHTML = Game.settings.format(fusionReactorTitaniumCost);
+		document.getElementById("fusionReactorSiliconCost").innerHTML = Game.settings.format(fusionReactorSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned6');
 	}
@@ -804,9 +804,9 @@ function getGrinder(){
 		grinderSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,grinder));
 		grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder));
 		document.getElementById("grinder").innerHTML = grinder;
-		document.getElementById("grinderTitaniumCost").innerHTML = commafy(grinderTitaniumCost);
-		document.getElementById("grinderSpaceMetalCost").innerHTML = commafy(grinderSpaceMetalCost);
-		document.getElementById("grinderGoldCost").innerHTML = commafy(grinderGoldCost);
+		document.getElementById("grinderTitaniumCost").innerHTML = Game.settings.format(grinderTitaniumCost);
+		document.getElementById("grinderSpaceMetalCost").innerHTML = Game.settings.format(grinderSpaceMetalCost);
+		document.getElementById("grinderGoldCost").innerHTML = Game.settings.format(grinderGoldCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -822,9 +822,9 @@ function getCubic(){
 		cubicSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,cubic));
 		cubicOilCost = Math.floor(10000 * Math.pow(1.1,cubic));
 		document.getElementById("cubic").innerHTML = cubic;
-		document.getElementById("cubicUraniumCost").innerHTML = commafy(cubicUraniumCost);
-		document.getElementById("cubicSpaceMetalCost").innerHTML = commafy(cubicSpaceMetalCost);
-		document.getElementById("cubicOilCost").innerHTML = commafy(cubicOilCost);
+		document.getElementById("cubicUraniumCost").innerHTML = Game.settings.format(cubicUraniumCost);
+		document.getElementById("cubicSpaceMetalCost").innerHTML = Game.settings.format(cubicSpaceMetalCost);
+		document.getElementById("cubicOilCost").innerHTML = Game.settings.format(cubicOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -840,9 +840,9 @@ function getEnricher(){
 		enricherTitaniumCost = Math.floor(23000 * Math.pow(1.1,enricher));
 		enricherSpaceMetalCost = Math.floor(13500 * Math.pow(1.1,enricher));
 		document.getElementById("enricher").innerHTML = enricher;
-		document.getElementById("enricherSpaceMetalCost").innerHTML = commafy(enricherSpaceMetalCost);
-		document.getElementById("enricherTitaniumCost").innerHTML = commafy(enricherTitaniumCost);
-		document.getElementById("enricherSiliconCost").innerHTML = commafy(enricherSiliconCost);
+		document.getElementById("enricherSpaceMetalCost").innerHTML = Game.settings.format(enricherSpaceMetalCost);
+		document.getElementById("enricherTitaniumCost").innerHTML = Game.settings.format(enricherTitaniumCost);
+		document.getElementById("enricherSiliconCost").innerHTML = Game.settings.format(enricherSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -858,9 +858,9 @@ function getRecycler(){
 		recyclerMethaneCost = Math.floor(47000 * Math.pow(1.1,recycler));
 		recyclerSpaceMetalCost = Math.floor(93100 * Math.pow(1.1,recycler));
 		document.getElementById("recycler").innerHTML = recycler;
-		document.getElementById("recyclerSpaceMetalCost").innerHTML = commafy(recyclerSpaceMetalCost);
-		document.getElementById("recyclerMethaneCost").innerHTML = commafy(recyclerMethaneCost);
-		document.getElementById("recyclerMeteoriteCost").innerHTML = commafy(recyclerMeteoriteCost);
+		document.getElementById("recyclerSpaceMetalCost").innerHTML = Game.settings.format(recyclerSpaceMetalCost);
+		document.getElementById("recyclerMethaneCost").innerHTML = Game.settings.format(recyclerMethaneCost);
+		document.getElementById("recyclerMeteoriteCost").innerHTML = Game.settings.format(recyclerMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -874,8 +874,8 @@ function getPump(){
 		pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump));
 		pumpGemCost = Math.floor(20 * Math.pow(1.1,pump));
 		document.getElementById("pump").innerHTML = pump;
-		document.getElementById("pumpMetalCost").innerHTML = commafy(pumpMetalCost);
-		document.getElementById("pumpGemCost").innerHTML = commafy(pumpGemCost);
+		document.getElementById("pumpMetalCost").innerHTML = Game.settings.format(pumpMetalCost);
+		document.getElementById("pumpGemCost").innerHTML = Game.settings.format(pumpGemCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -891,9 +891,9 @@ function getPumpjack(){
 		pumpjackGemCost = Math.floor(85 * Math.pow(1.1,pumpjack));
 		pumpjackMetalCost = Math.floor(250 * Math.pow(1.1,pumpjack));
 		document.getElementById("pumpjack").innerHTML = pumpjack;
-		document.getElementById("pumpjackOilCost").innerHTML = commafy(pumpjackOilCost);
-		document.getElementById("pumpjackGemCost").innerHTML = commafy(pumpjackGemCost);
-		document.getElementById("pumpjackMetalCost").innerHTML = commafy(pumpjackMetalCost);
+		document.getElementById("pumpjackOilCost").innerHTML = Game.settings.format(pumpjackOilCost);
+		document.getElementById("pumpjackGemCost").innerHTML = Game.settings.format(pumpjackGemCost);
+		document.getElementById("pumpjackMetalCost").innerHTML = Game.settings.format(pumpjackMetalCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -909,9 +909,9 @@ function getOilField(){
 		oilFieldTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilField));
 		oilFieldSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilField));
 		document.getElementById("oilField").innerHTML = oilField;
-		document.getElementById("oilFieldSpaceMetalCost").innerHTML = commafy(oilFieldSpaceMetalCost);
-		document.getElementById("oilFieldTitaniumCost").innerHTML = commafy(oilFieldTitaniumCost);
-		document.getElementById("oilFieldSiliconCost").innerHTML = commafy(oilFieldSiliconCost);
+		document.getElementById("oilFieldSpaceMetalCost").innerHTML = Game.settings.format(oilFieldSpaceMetalCost);
+		document.getElementById("oilFieldTitaniumCost").innerHTML = Game.settings.format(oilFieldTitaniumCost);
+		document.getElementById("oilFieldSiliconCost").innerHTML = Game.settings.format(oilFieldSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -927,9 +927,9 @@ function getOilRig(){
 		oilRigTitaniumCost = Math.floor(16800 * Math.pow(1.1,oilRig));
 		oilRigSpaceMetalCost = Math.floor(19400 * Math.pow(1.1,oilRig));
 		document.getElementById("oilRig").innerHTML = oilRig;
-		document.getElementById("oilRigSpaceMetalCost").innerHTML = commafy(oilRigSpaceMetalCost);
-		document.getElementById("oilRigTitaniumCost").innerHTML = commafy(oilRigTitaniumCost);
-		document.getElementById("oilRigMeteoriteCost").innerHTML = commafy(oilRigMeteoriteCost);
+		document.getElementById("oilRigSpaceMetalCost").innerHTML = Game.settings.format(oilRigSpaceMetalCost);
+		document.getElementById("oilRigTitaniumCost").innerHTML = Game.settings.format(oilRigTitaniumCost);
+		document.getElementById("oilRigMeteoriteCost").innerHTML = Game.settings.format(oilRigMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -943,8 +943,8 @@ function getMiner(){
 		minerWoodCost = Math.floor(5 * Math.pow(1.1,miner));
 		minerMetalCost = Math.floor(10 * Math.pow(1.1,miner));
 		document.getElementById("miner").innerHTML = miner;
-		document.getElementById("minerMetalCost").innerHTML = commafy(minerMetalCost);
-		document.getElementById("minerWoodCost").innerHTML = commafy(minerWoodCost);
+		document.getElementById("minerMetalCost").innerHTML = Game.settings.format(minerMetalCost);
+		document.getElementById("minerWoodCost").innerHTML = Game.settings.format(minerWoodCost);
 		if(researchUnlocked === false){
 			if(miner >= 1){
 				document.getElementById("researchTab").className = "";
@@ -969,9 +969,9 @@ function getHeavyDrill(){
 		heavyDrillGemCost = Math.floor(60 * Math.pow(1.1,heavyDrill));
 		heavyDrillMetalCost = Math.floor(160 * Math.pow(1.1,heavyDrill));
 		document.getElementById("heavyDrill").innerHTML = heavyDrill;
-		document.getElementById("heavyDrillMetalCost").innerHTML = commafy(heavyDrillMetalCost);
-		document.getElementById("heavyDrillGemCost").innerHTML = commafy(heavyDrillGemCost);
-		document.getElementById("heavyDrillOilCost").innerHTML = commafy(heavyDrillOilCost);
+		document.getElementById("heavyDrillMetalCost").innerHTML = Game.settings.format(heavyDrillMetalCost);
+		document.getElementById("heavyDrillGemCost").innerHTML = Game.settings.format(heavyDrillGemCost);
+		document.getElementById("heavyDrillOilCost").innerHTML = Game.settings.format(heavyDrillOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -987,9 +987,9 @@ function getGigaDrill(){
 		gigaDrillGemCost = Math.floor(3400 * Math.pow(1.1,gigaDrill));
 		gigaDrillSpaceMetalCost = Math.floor(2800 * Math.pow(1.1,gigaDrill));
 		document.getElementById("gigaDrill").innerHTML = gigaDrill;
-		document.getElementById("gigaDrillSpaceMetalCost").innerHTML = commafy(gigaDrillSpaceMetalCost);
-		document.getElementById("gigaDrillGemCost").innerHTML = commafy(gigaDrillGemCost);
-		document.getElementById("gigaDrillSiliconCost").innerHTML = commafy(gigaDrillSiliconCost);
+		document.getElementById("gigaDrillSpaceMetalCost").innerHTML = Game.settings.format(gigaDrillSpaceMetalCost);
+		document.getElementById("gigaDrillGemCost").innerHTML = Game.settings.format(gigaDrillGemCost);
+		document.getElementById("gigaDrillSiliconCost").innerHTML = Game.settings.format(gigaDrillSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -1005,9 +1005,9 @@ function getQuantumDrill(){
 		quantumDrillGoldCost = Math.floor(18700 * Math.pow(1.1,quantumDrill));
 		quantumDrillSpaceMetalCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
 		document.getElementById("quantumDrill").innerHTML = quantumDrill;
-		document.getElementById("quantumDrillSpaceMetalCost").innerHTML = commafy(quantumDrillSpaceMetalCost);
-		document.getElementById("quantumDrillGoldCost").innerHTML = commafy(quantumDrillGoldCost);
-		document.getElementById("quantumDrillMeteoriteCost").innerHTML = commafy(quantumDrillMeteoriteCost);
+		document.getElementById("quantumDrillSpaceMetalCost").innerHTML = Game.settings.format(quantumDrillSpaceMetalCost);
+		document.getElementById("quantumDrillGoldCost").innerHTML = Game.settings.format(quantumDrillGoldCost);
+		document.getElementById("quantumDrillMeteoriteCost").innerHTML = Game.settings.format(quantumDrillMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -1021,8 +1021,8 @@ function getGemMiner(){
 		gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner));
 		gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner));
 		document.getElementById("gemMiner").innerHTML = gemMiner;
-		document.getElementById("gemMinerMetalCost").innerHTML = commafy(gemMinerMetalCost);
-		document.getElementById("gemMinerGemCost").innerHTML = commafy(gemMinerGemCost);
+		document.getElementById("gemMinerMetalCost").innerHTML = Game.settings.format(gemMinerMetalCost);
+		document.getElementById("gemMinerGemCost").innerHTML = Game.settings.format(gemMinerGemCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -1038,9 +1038,9 @@ function getAdvancedDrill(){
 		advancedDrillGemCost = Math.floor(200 * Math.pow(1.1,advancedDrill));
 		advancedDrillMetalCost = Math.floor(120 * Math.pow(1.1,advancedDrill));
 		document.getElementById("advancedDrill").innerHTML = advancedDrill;
-		document.getElementById("advancedDrillMetalCost").innerHTML = commafy(advancedDrillMetalCost);
-		document.getElementById("advancedDrillGemCost").innerHTML = commafy(advancedDrillGemCost);
-		document.getElementById("advancedDrillOilCost").innerHTML = commafy(advancedDrillOilCost);
+		document.getElementById("advancedDrillMetalCost").innerHTML = Game.settings.format(advancedDrillMetalCost);
+		document.getElementById("advancedDrillGemCost").innerHTML = Game.settings.format(advancedDrillGemCost);
+		document.getElementById("advancedDrillOilCost").innerHTML = Game.settings.format(advancedDrillOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -1056,9 +1056,9 @@ function getDiamondDrill(){
 		diamondDrillGemCost = Math.floor(8000 * Math.pow(1.1,diamondDrill));
 		diamondDrillSpaceMetalCost = Math.floor(3400 * Math.pow(1.1,diamondDrill));
 		document.getElementById("diamondDrill").innerHTML = diamondDrill;
-		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = commafy(diamondDrillSpaceMetalCost);
-		document.getElementById("diamondDrillGemCost").innerHTML = commafy(diamondDrillGemCost);
-		document.getElementById("diamondDrillSiliconCost").innerHTML = commafy(diamondDrillSiliconCost);
+		document.getElementById("diamondDrillSpaceMetalCost").innerHTML = Game.settings.format(diamondDrillSpaceMetalCost);
+		document.getElementById("diamondDrillGemCost").innerHTML = Game.settings.format(diamondDrillGemCost);
+		document.getElementById("diamondDrillSiliconCost").innerHTML = Game.settings.format(diamondDrillSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -1074,9 +1074,9 @@ function getCarbyneDrill(){
 		carbyneDrillGemCost = Math.floor(27000 * Math.pow(1.1,carbyneDrill));
 		carbyneDrillSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
 		document.getElementById("carbyneDrill").innerHTML = carbyneDrill;
-		document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = commafy(carbyneDrillSpaceMetalCost);
-		document.getElementById("carbyneDrillGemCost").innerHTML = commafy(carbyneDrillGemCost);
-		document.getElementById("carbyneDrillMeteoriteCost").innerHTML = commafy(carbyneDrillMeteoriteCost);
+		document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = Game.settings.format(carbyneDrillSpaceMetalCost);
+		document.getElementById("carbyneDrillGemCost").innerHTML = Game.settings.format(carbyneDrillGemCost);
+		document.getElementById("carbyneDrillMeteoriteCost").innerHTML = Game.settings.format(carbyneDrillMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -1090,8 +1090,8 @@ function getWoodburner(){
 		woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner));
 		woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner));
 		document.getElementById("woodburner").innerHTML = woodburner;
-		document.getElementById("woodburnerMetalCost").innerHTML = commafy(woodburnerMetalCost);
-		document.getElementById("woodburnerWoodCost").innerHTML = commafy(woodburnerWoodCost);
+		document.getElementById("woodburnerMetalCost").innerHTML = Game.settings.format(woodburnerMetalCost);
+		document.getElementById("woodburnerWoodCost").innerHTML = Game.settings.format(woodburnerWoodCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -1107,9 +1107,9 @@ function getFurnace(){
 		furnaceOilCost = Math.floor(100 * Math.pow(1.1,furnace));
 		furnaceMetalCost = Math.floor(80 * Math.pow(1.1,furnace));
 		document.getElementById("furnace").innerHTML = furnace;
-		document.getElementById("furnaceMetalCost").innerHTML = commafy(furnaceMetalCost);
-		document.getElementById("furnaceWoodCost").innerHTML = commafy(furnaceWoodCost);
-		document.getElementById("furnaceOilCost").innerHTML = commafy(furnaceOilCost);
+		document.getElementById("furnaceMetalCost").innerHTML = Game.settings.format(furnaceMetalCost);
+		document.getElementById("furnaceWoodCost").innerHTML = Game.settings.format(furnaceWoodCost);
+		document.getElementById("furnaceOilCost").innerHTML = Game.settings.format(furnaceOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -1125,9 +1125,9 @@ function getKiln(){
 		kilnGemCost = Math.floor(6200 * Math.pow(1.1,kiln));
 		kilnSpaceMetalCost = Math.floor(3500 * Math.pow(1.1,kiln));
 		document.getElementById("kiln").innerHTML = kiln;
-		document.getElementById("kilnSpaceMetalCost").innerHTML = commafy(kilnSpaceMetalCost);
-		document.getElementById("kilnGemCost").innerHTML = commafy(kilnGemCost);
-		document.getElementById("kilnSiliconCost").innerHTML = commafy(kilnSiliconCost);
+		document.getElementById("kilnSpaceMetalCost").innerHTML = Game.settings.format(kilnSpaceMetalCost);
+		document.getElementById("kilnGemCost").innerHTML = Game.settings.format(kilnGemCost);
+		document.getElementById("kilnSiliconCost").innerHTML = Game.settings.format(kilnSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -1143,9 +1143,9 @@ function getFryer(){
 		fryerLavaCost = Math.floor(12500 * Math.pow(1.1,fryer));
 		fryerSpaceMetalCost = Math.floor(15800 * Math.pow(1.1,fryer));
 		document.getElementById("fryer").innerHTML = fryer;
-		document.getElementById("fryerSpaceMetalCost").innerHTML = commafy(fryerSpaceMetalCost);
-		document.getElementById("fryerLavaCost").innerHTML = commafy(fryerLavaCost);
-		document.getElementById("fryerMeteoriteCost").innerHTML = commafy(fryerMeteoriteCost);
+		document.getElementById("fryerSpaceMetalCost").innerHTML = Game.settings.format(fryerSpaceMetalCost);
+		document.getElementById("fryerLavaCost").innerHTML = Game.settings.format(fryerLavaCost);
+		document.getElementById("fryerMeteoriteCost").innerHTML = Game.settings.format(fryerMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -1159,8 +1159,8 @@ function getWoodcutter(){
 		woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter));
 		woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter));
 		document.getElementById("woodcutter").innerHTML = woodcutter;
-		document.getElementById("woodcutterMetalCost").innerHTML = commafy(woodcutterMetalCost);
-		document.getElementById("woodcutterWoodCost").innerHTML = commafy(woodcutterWoodCost);
+		document.getElementById("woodcutterMetalCost").innerHTML = Game.settings.format(woodcutterMetalCost);
+		document.getElementById("woodcutterWoodCost").innerHTML = Game.settings.format(woodcutterWoodCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -1176,9 +1176,9 @@ function getLaserCutter(){
 		laserCutterGemCost = Math.floor(90 * Math.pow(1.1,laserCutter));
 		laserCutterMetalCost = Math.floor(50 * Math.pow(1.1,laserCutter));
 		document.getElementById("laserCutter").innerHTML = laserCutter;
-		document.getElementById("laserCutterMetalCost").innerHTML = commafy(laserCutterMetalCost);
-		document.getElementById("laserCutterGemCost").innerHTML = commafy(laserCutterGemCost);
-		document.getElementById("laserCutterOilCost").innerHTML = commafy(laserCutterOilCost);
+		document.getElementById("laserCutterMetalCost").innerHTML = Game.settings.format(laserCutterMetalCost);
+		document.getElementById("laserCutterGemCost").innerHTML = Game.settings.format(laserCutterGemCost);
+		document.getElementById("laserCutterOilCost").innerHTML = Game.settings.format(laserCutterOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -1194,9 +1194,9 @@ function getDeforester(){
 		deforesterTitaniumCost = Math.floor(2700 * Math.pow(1.1,deforester));
 		deforesterSiliconCost = Math.floor(2500 * Math.pow(1.1,deforester));
 		document.getElementById("deforester").innerHTML = deforester;
-		document.getElementById("deforesterSpaceMetalCost").innerHTML = commafy(deforesterSpaceMetalCost);
-		document.getElementById("deforesterTitaniumCost").innerHTML = commafy(deforesterTitaniumCost);
-		document.getElementById("deforesterSiliconCost").innerHTML = commafy(deforesterSiliconCost);
+		document.getElementById("deforesterSpaceMetalCost").innerHTML = Game.settings.format(deforesterSpaceMetalCost);
+		document.getElementById("deforesterTitaniumCost").innerHTML = Game.settings.format(deforesterTitaniumCost);
+		document.getElementById("deforesterSiliconCost").innerHTML = Game.settings.format(deforesterSiliconCost);
 		refresh();
         Game.statistics.add('tierOwned3');
 	}
@@ -1212,9 +1212,9 @@ function getInfuser(){
 		infuserOilCost = Math.floor(31200 * Math.pow(1.1,infuser));
 		infuserMeteoriteCost = Math.floor(490 * Math.pow(1.1,infuser));
 		document.getElementById("infuser").innerHTML = infuser;
-		document.getElementById("infuserSpaceMetalCost").innerHTML = commafy(infuserSpaceMetalCost);
-		document.getElementById("infuserOilCost").innerHTML = commafy(infuserOilCost);
-		document.getElementById("infuserMeteoriteCost").innerHTML = commafy(infuserMeteoriteCost);
+		document.getElementById("infuserSpaceMetalCost").innerHTML = Game.settings.format(infuserSpaceMetalCost);
+		document.getElementById("infuserOilCost").innerHTML = Game.settings.format(infuserOilCost);
+		document.getElementById("infuserMeteoriteCost").innerHTML = Game.settings.format(infuserMeteoriteCost);
 		refresh();
         Game.statistics.add('tierOwned4');
 	}
@@ -1226,7 +1226,7 @@ function getMoonWorker(){
 		moonWorker += 1;
 		moonWorkerGemCost = Math.floor(500 * Math.pow(1.1,moonWorker));
 		document.getElementById("moonWorker").innerHTML = moonWorker;
-		document.getElementById("moonWorkerGemCost").innerHTML = commafy(moonWorkerGemCost);
+		document.getElementById("moonWorkerGemCost").innerHTML = Game.settings.format(moonWorkerGemCost);
 		refresh();
         Game.statistics.add('tierOwned1');
 	}
@@ -1242,9 +1242,9 @@ function getMoonDrill(){
 		moonDrillGemCost = Math.floor(600 * Math.pow(1.1,moonDrill));
 		moonDrillMetalCost = Math.floor(1000 * Math.pow(1.1,moonDrill));
 		document.getElementById("moonDrill").innerHTML = moonDrill;
-		document.getElementById("moonDrillMetalCost").innerHTML = commafy(moonDrillMetalCost);
-		document.getElementById("moonDrillGemCost").innerHTML = commafy(moonDrillGemCost);
-		document.getElementById("moonDrillOilCost").innerHTML = commafy(moonDrillOilCost);
+		document.getElementById("moonDrillMetalCost").innerHTML = Game.settings.format(moonDrillMetalCost);
+		document.getElementById("moonDrillGemCost").innerHTML = Game.settings.format(moonDrillGemCost);
+		document.getElementById("moonDrillOilCost").innerHTML = Game.settings.format(moonDrillOilCost);
 		refresh();
         Game.statistics.add('tierOwned2');
 	}
@@ -1260,9 +1260,9 @@ function getMoonQuarry(){
 		moonQuarryGemCost = Math.floor(5000 * Math.pow(1.1,moonQuarry));
 		moonQuarrySpaceMetalCost = Math.floor(8000 * Math.pow(1.1,moonQuarry));
 		document.getElementById("moonQuarry").innerHTML = moonQuarry;
-		document.getElementById("moonQuarrySpaceMetalCost").innerHTML = commafy(moonQuarrySpaceMetalCost);
-		document.getElementById("moonQuarryGemCost").innerHTML = commafy(moonQuarryGemCost);
-		document.getElementById("moonQuarrySiliconCost").innerHTML = commafy(moonQuarrySiliconCost);
+		document.getElementById("moonQuarrySpaceMetalCost").innerHTML = Game.settings.format(moonQuarrySpaceMetalCost);
+		document.getElementById("moonQuarryGemCost").innerHTML = Game.settings.format(moonQuarryGemCost);
+		document.getElementById("moonQuarrySiliconCost").innerHTML = Game.settings.format(moonQuarrySiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1278,9 +1278,9 @@ function getPlanetExcavator(){
 		planetExcavatorIceCost = Math.floor(37000 * Math.pow(1.1,planetExcavator));
 		planetExcavatorTitaniumCost = Math.floor(45000 * Math.pow(1.1,planetExcavator));
 		document.getElementById("planetExcavator").innerHTML = planetExcavator;
-		document.getElementById("planetExcavatorTitaniumCost").innerHTML = commafy(planetExcavatorTitaniumCost);
-		document.getElementById("planetExcavatorIceCost").innerHTML = commafy(planetExcavatorIceCost);
-		document.getElementById("planetExcavatorMeteoriteCost").innerHTML = commafy(planetExcavatorMeteoriteCost);
+		document.getElementById("planetExcavatorTitaniumCost").innerHTML = Game.settings.format(planetExcavatorTitaniumCost);
+		document.getElementById("planetExcavatorIceCost").innerHTML = Game.settings.format(planetExcavatorIceCost);
+		document.getElementById("planetExcavatorMeteoriteCost").innerHTML = Game.settings.format(planetExcavatorMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1294,8 +1294,8 @@ function getVacuum(){
 		vacuumGemCost = Math.floor(500 * Math.pow(1.1,vacuum));
 		vacuumSpaceMetalCost = Math.floor(50 * Math.pow(1.1,vacuum));
 		document.getElementById("vacuum").innerHTML = vacuum;
-		document.getElementById("vacuumSpaceMetalCost").innerHTML = commafy(vacuumSpaceMetalCost);
-		document.getElementById("vacuumGemCost").innerHTML = commafy(vacuumGemCost);
+		document.getElementById("vacuumSpaceMetalCost").innerHTML = Game.settings.format(vacuumSpaceMetalCost);
+		document.getElementById("vacuumGemCost").innerHTML = Game.settings.format(vacuumGemCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1311,9 +1311,9 @@ function getSuctionExcavator(){
 		suctionExcavatorGemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator));
 		suctionExcavatorSpaceMetalCost = Math.floor(100 * Math.pow(1.1,suctionExcavator));
 		document.getElementById("suctionExcavator").innerHTML = suctionExcavator;
-		document.getElementById("suctionExcavatorSpaceMetalCost").innerHTML = commafy(suctionExcavatorSpaceMetalCost);
-		document.getElementById("suctionExcavatorGemCost").innerHTML = commafy(suctionExcavatorGemCost);
-		document.getElementById("suctionExcavatorOilCost").innerHTML = commafy(suctionExcavatorOilCost);
+		document.getElementById("suctionExcavatorSpaceMetalCost").innerHTML = Game.settings.format(suctionExcavatorSpaceMetalCost);
+		document.getElementById("suctionExcavatorGemCost").innerHTML = Game.settings.format(suctionExcavatorGemCost);
+		document.getElementById("suctionExcavatorOilCost").innerHTML = Game.settings.format(suctionExcavatorOilCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1329,9 +1329,9 @@ function getSpaceCow(){
 		spaceCowTitaniumCost = Math.floor(2700 * Math.pow(1.1,spaceCow));
 		spaceCowSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,spaceCow));
 		document.getElementById("spaceCow").innerHTML = spaceCow;
-		document.getElementById("spaceCowSpaceMetalCost").innerHTML = commafy(spaceCowSpaceMetalCost);
-		document.getElementById("spaceCowTitaniumCost").innerHTML = commafy(spaceCowTitaniumCost);
-		document.getElementById("spaceCowSiliconCost").innerHTML = commafy(spaceCowSiliconCost);
+		document.getElementById("spaceCowSpaceMetalCost").innerHTML = Game.settings.format(spaceCowSpaceMetalCost);
+		document.getElementById("spaceCowTitaniumCost").innerHTML = Game.settings.format(spaceCowTitaniumCost);
+		document.getElementById("spaceCowSiliconCost").innerHTML = Game.settings.format(spaceCowSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1347,9 +1347,9 @@ function getVent(){
 		ventHeliumCost = Math.floor(47000 * Math.pow(1.1,vent));
 		ventSpaceMetalCost = Math.floor(52000 * Math.pow(1.1,vent));
 		document.getElementById("vent").innerHTML = vent;
-		document.getElementById("ventSpaceMetalCost").innerHTML = commafy(ventSpaceMetalCost);
-		document.getElementById("ventHeliumCost").innerHTML = commafy(ventHeliumCost);
-		document.getElementById("ventMeteoriteCost").innerHTML = commafy(ventMeteoriteCost);
+		document.getElementById("ventSpaceMetalCost").innerHTML = Game.settings.format(ventSpaceMetalCost);
+		document.getElementById("ventHeliumCost").innerHTML = Game.settings.format(ventHeliumCost);
+		document.getElementById("ventMeteoriteCost").innerHTML = Game.settings.format(ventMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1361,7 +1361,7 @@ function getExplorer(){
 		explorer += 1;
 		explorerGemCost = Math.floor(1000 * Math.pow(1.1,explorer));
 		document.getElementById("explorer").innerHTML = explorer;
-		document.getElementById("explorerGemCost").innerHTML = commafy(explorerGemCost);
+		document.getElementById("explorerGemCost").innerHTML = Game.settings.format(explorerGemCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1377,9 +1377,9 @@ function getSpaceMetalDrill(){
 		spaceMetalDrillGemCost = Math.floor(800 * Math.pow(1.1,spaceMetalDrill));
 		spaceMetalDrillSpaceMetalCost = Math.floor(200 * Math.pow(1.1,spaceMetalDrill));
 		document.getElementById("spaceMetalDrill").innerHTML = spaceMetalDrill;
-		document.getElementById("spaceMetalDrillSpaceMetalCost").innerHTML = commafy(spaceMetalDrillSpaceMetalCost);
-		document.getElementById("spaceMetalDrillGemCost").innerHTML = commafy(spaceMetalDrillGemCost);
-		document.getElementById("spaceMetalDrillOilCost").innerHTML = commafy(spaceMetalDrillOilCost);
+		document.getElementById("spaceMetalDrillSpaceMetalCost").innerHTML = Game.settings.format(spaceMetalDrillSpaceMetalCost);
+		document.getElementById("spaceMetalDrillGemCost").innerHTML = Game.settings.format(spaceMetalDrillGemCost);
+		document.getElementById("spaceMetalDrillOilCost").innerHTML = Game.settings.format(spaceMetalDrillOilCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1395,9 +1395,9 @@ function getPentaDrill(){
 		pentaDrillGemCost = Math.floor(11000 * Math.pow(1.1,pentaDrill));
 		pentaDrillSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,pentaDrill));
 		document.getElementById("pentaDrill").innerHTML = pentaDrill;
-		document.getElementById("pentaDrillSpaceMetalCost").innerHTML = commafy(pentaDrillSpaceMetalCost);
-		document.getElementById("pentaDrillGemCost").innerHTML = commafy(pentaDrillGemCost);
-		document.getElementById("pentaDrillSiliconCost").innerHTML = commafy(pentaDrillSiliconCost);
+		document.getElementById("pentaDrillSpaceMetalCost").innerHTML = Game.settings.format(pentaDrillSpaceMetalCost);
+		document.getElementById("pentaDrillGemCost").innerHTML = Game.settings.format(pentaDrillGemCost);
+		document.getElementById("pentaDrillSiliconCost").innerHTML = Game.settings.format(pentaDrillSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1413,9 +1413,9 @@ function getTitanDrill(){
 		titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
 		titanDrillMeteoriteCost = Math.floor(600 * Math.pow(1.1,titanDrill));
 		document.getElementById("titanDrill").innerHTML = titanDrill;
-		document.getElementById("titanDrillSpaceMetalCost").innerHTML = commafy(titanDrillSpaceMetalCost);
-		document.getElementById("titanDrillGoldCost").innerHTML = commafy(titanDrillGoldCost);
-		document.getElementById("titanDrillMeteoriteCost").innerHTML = commafy(titanDrillMeteoriteCost);
+		document.getElementById("titanDrillSpaceMetalCost").innerHTML = Game.settings.format(titanDrillSpaceMetalCost);
+		document.getElementById("titanDrillGoldCost").innerHTML = Game.settings.format(titanDrillGoldCost);
+		document.getElementById("titanDrillMeteoriteCost").innerHTML = Game.settings.format(titanDrillMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1429,8 +1429,8 @@ function getDroid(){
 		droidMethaneCost = Math.floor(50 * Math.pow(1.1,droid));
 		droidSpaceMetalCost = Math.floor(200 * Math.pow(1.1,droid));
 		document.getElementById("droid").innerHTML = droid;
-		document.getElementById("droidSpaceMetalCost").innerHTML = commafy(droidSpaceMetalCost);
-		document.getElementById("droidMethaneCost").innerHTML = commafy(droidMethaneCost);
+		document.getElementById("droidSpaceMetalCost").innerHTML = Game.settings.format(droidSpaceMetalCost);
+		document.getElementById("droidMethaneCost").innerHTML = Game.settings.format(droidMethaneCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1446,9 +1446,9 @@ function getDestroyer(){
 		destroyerGemCost = Math.floor(1500 * Math.pow(1.1,destroyer));
 		destroyerSpaceMetalCost = Math.floor(500 * Math.pow(1.1,destroyer));
 		document.getElementById("destroyer").innerHTML = destroyer;
-		document.getElementById("destroyerSpaceMetalCost").innerHTML = commafy(destroyerSpaceMetalCost);
-		document.getElementById("destroyerGemCost").innerHTML = commafy(destroyerGemCost);
-		document.getElementById("destroyerOilCost").innerHTML = commafy(destroyerOilCost);
+		document.getElementById("destroyerSpaceMetalCost").innerHTML = Game.settings.format(destroyerSpaceMetalCost);
+		document.getElementById("destroyerGemCost").innerHTML = Game.settings.format(destroyerGemCost);
+		document.getElementById("destroyerOilCost").innerHTML = Game.settings.format(destroyerOilCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1464,9 +1464,9 @@ function getDeathStar(){
 		deathStarSilverCost = Math.floor(11500 * Math.pow(1.1,deathStar));
 		deathStarSpaceMetalCost = Math.floor(17000 * Math.pow(1.1,deathStar));
 		document.getElementById("deathStar").innerHTML = deathStar;
-		document.getElementById("deathStarSpaceMetalCost").innerHTML = commafy(deathStarSpaceMetalCost);
-		document.getElementById("deathStarSilverCost").innerHTML = commafy(deathStarSilverCost);
-		document.getElementById("deathStarSiliconCost").innerHTML = commafy(deathStarSiliconCost);
+		document.getElementById("deathStarSpaceMetalCost").innerHTML = Game.settings.format(deathStarSpaceMetalCost);
+		document.getElementById("deathStarSilverCost").innerHTML = Game.settings.format(deathStarSilverCost);
+		document.getElementById("deathStarSiliconCost").innerHTML = Game.settings.format(deathStarSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1482,9 +1482,9 @@ function getActuator(){
 		actuatorHeliumCost = Math.floor(15700 * Math.pow(1.1,actuator));
 		actuatorSpaceMetalCost = Math.floor(61000 * Math.pow(1.1,actuator));
 		document.getElementById("actuator").innerHTML = actuator;
-		document.getElementById("actuatorSpaceMetalCost").innerHTML = commafy(actuatorSpaceMetalCost);
-		document.getElementById("actuatorHeliumCost").innerHTML = commafy(actuatorHeliumCost);
-		document.getElementById("actuatorMeteoriteCost").innerHTML = commafy(actuatorMeteoriteCost);
+		document.getElementById("actuatorSpaceMetalCost").innerHTML = Game.settings.format(actuatorSpaceMetalCost);
+		document.getElementById("actuatorHeliumCost").innerHTML = Game.settings.format(actuatorHeliumCost);
+		document.getElementById("actuatorMeteoriteCost").innerHTML = Game.settings.format(actuatorMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1498,8 +1498,8 @@ function getScout(){
 		scoutTitaniumCost = Math.floor(20 * Math.pow(1.1,scout));
 		scoutSpaceMetalCost = Math.floor(100 * Math.pow(1.1,scout));
 		document.getElementById("scout").innerHTML = scout;
-		document.getElementById("scoutSpaceMetalCost").innerHTML = commafy(scoutSpaceMetalCost);
-		document.getElementById("scoutTitaniumCost").innerHTML = commafy(scoutTitaniumCost);
+		document.getElementById("scoutSpaceMetalCost").innerHTML = Game.settings.format(scoutSpaceMetalCost);
+		document.getElementById("scoutTitaniumCost").innerHTML = Game.settings.format(scoutTitaniumCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1515,9 +1515,9 @@ function getSpaceLaser(){
 		spaceLaserGemCost = Math.floor(900 * Math.pow(1.1,spaceLaser));
 		spaceLaserSpaceMetalCost = Math.floor(350 * Math.pow(1.1,spaceLaser));
 		document.getElementById("spaceLaser").innerHTML = spaceLaser;
-		document.getElementById("spaceLaserSpaceMetalCost").innerHTML = commafy(spaceLaserSpaceMetalCost);
-		document.getElementById("spaceLaserGemCost").innerHTML = commafy(spaceLaserGemCost);
-		document.getElementById("spaceLaserOilCost").innerHTML = commafy(spaceLaserOilCost);
+		document.getElementById("spaceLaserSpaceMetalCost").innerHTML = Game.settings.format(spaceLaserSpaceMetalCost);
+		document.getElementById("spaceLaserGemCost").innerHTML = Game.settings.format(spaceLaserGemCost);
+		document.getElementById("spaceLaserOilCost").innerHTML = Game.settings.format(spaceLaserOilCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1533,9 +1533,9 @@ function getBertha(){
 		berthaTitaniumCost = Math.floor(18200 * Math.pow(1.1,bertha));
 		berthaSpaceMetalCost = Math.floor(19500 * Math.pow(1.1,bertha));
 		document.getElementById("bertha").innerHTML = bertha;
-		document.getElementById("berthaSpaceMetalCost").innerHTML = commafy(berthaSpaceMetalCost);
-		document.getElementById("berthaTitaniumCost").innerHTML = commafy(berthaTitaniumCost);
-		document.getElementById("berthaSiliconCost").innerHTML = commafy(berthaSiliconCost);
+		document.getElementById("berthaSpaceMetalCost").innerHTML = Game.settings.format(berthaSpaceMetalCost);
+		document.getElementById("berthaTitaniumCost").innerHTML = Game.settings.format(berthaTitaniumCost);
+		document.getElementById("berthaSiliconCost").innerHTML = Game.settings.format(berthaSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1551,9 +1551,9 @@ function getCannon(){
 		cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
 		cannonSpaceMetalCost = Math.floor(85100 * Math.pow(1.1,cannon));
 		document.getElementById("cannon").innerHTML = cannon;
-		document.getElementById("cannonSpaceMetalCost").innerHTML = commafy(cannonSpaceMetalCost);
-		document.getElementById("cannonOilCost").innerHTML = commafy(cannonOilCost);
-		document.getElementById("cannonMeteoriteCost").innerHTML = commafy(cannonMeteoriteCost);
+		document.getElementById("cannonSpaceMetalCost").innerHTML = Game.settings.format(cannonSpaceMetalCost);
+		document.getElementById("cannonOilCost").innerHTML = Game.settings.format(cannonOilCost);
+		document.getElementById("cannonMeteoriteCost").innerHTML = Game.settings.format(cannonMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1567,8 +1567,8 @@ function getBlowtorch(){
 		blowtorchTitaniumCost = Math.floor(30 * Math.pow(1.1,blowtorch));
 		blowtorchSpaceMetalCost = Math.floor(150 * Math.pow(1.1,blowtorch));
 		document.getElementById("blowtorch").innerHTML = blowtorch;
-		document.getElementById("blowtorchSpaceMetalCost").innerHTML = commafy(blowtorchSpaceMetalCost);
-		document.getElementById("blowtorchTitaniumCost").innerHTML = commafy(blowtorchTitaniumCost);
+		document.getElementById("blowtorchSpaceMetalCost").innerHTML = Game.settings.format(blowtorchSpaceMetalCost);
+		document.getElementById("blowtorchTitaniumCost").innerHTML = Game.settings.format(blowtorchTitaniumCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1584,9 +1584,9 @@ function getScorcher(){
 		scorcherGemCost = Math.floor(1200 * Math.pow(1.1,scorcher));
 		scorcherSpaceMetalCost = Math.floor(500 * Math.pow(1.1,scorcher));
 		document.getElementById("scorcher").innerHTML = scorcher;
-		document.getElementById("scorcherSpaceMetalCost").innerHTML = commafy(scorcherSpaceMetalCost);
-		document.getElementById("scorcherGemCost").innerHTML = commafy(scorcherGemCost);
-		document.getElementById("scorcherOilCost").innerHTML = commafy(scorcherOilCost);
+		document.getElementById("scorcherSpaceMetalCost").innerHTML = Game.settings.format(scorcherSpaceMetalCost);
+		document.getElementById("scorcherGemCost").innerHTML = Game.settings.format(scorcherGemCost);
+		document.getElementById("scorcherOilCost").innerHTML = Game.settings.format(scorcherOilCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1602,9 +1602,9 @@ function getAnnihilator(){
 		annihilatorGemCost = Math.floor(8300 * Math.pow(1.1,annihilator));
 		annihilatorSilverCost = Math.floor(2400 * Math.pow(1.1,annihilator));
 		document.getElementById("annihilator").innerHTML = annihilator;
-		document.getElementById("annihilatorSpaceMetalCost").innerHTML = commafy(annihilatorSpaceMetalCost);
-		document.getElementById("annihilatorGemCost").innerHTML = commafy(annihilatorGemCost);
-		document.getElementById("annihilatorSilverCost").innerHTML = commafy(annihilatorSilverCost);
+		document.getElementById("annihilatorSpaceMetalCost").innerHTML = Game.settings.format(annihilatorSpaceMetalCost);
+		document.getElementById("annihilatorGemCost").innerHTML = Game.settings.format(annihilatorGemCost);
+		document.getElementById("annihilatorSilverCost").innerHTML = Game.settings.format(annihilatorSilverCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1620,9 +1620,9 @@ function getDesert(){
 		desertSiliconCost = Math.floor(17700 * Math.pow(1.1,desert));
 		desertMeteoriteCost = Math.floor(400 * Math.pow(1.1,desert));
 		document.getElementById("desert").innerHTML = desert;
-		document.getElementById("desertSpaceMetalCost").innerHTML = commafy(desertSpaceMetalCost);
-		document.getElementById("desertSiliconCost").innerHTML = commafy(desertSiliconCost);
-		document.getElementById("desertMeteoriteCost").innerHTML = commafy(desertMeteoriteCost);
+		document.getElementById("desertSpaceMetalCost").innerHTML = Game.settings.format(desertSpaceMetalCost);
+		document.getElementById("desertSiliconCost").innerHTML = Game.settings.format(desertSiliconCost);
+		document.getElementById("desertMeteoriteCost").innerHTML = Game.settings.format(desertMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1636,8 +1636,8 @@ function getCrucible(){
 		crucibleGemCost = Math.floor(7000 * Math.pow(1.1,crucible));
 		crucibleSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,crucible));
 		document.getElementById("crucible").innerHTML = crucible;
-		document.getElementById("crucibleSpaceMetalCost").innerHTML = commafy(crucibleSpaceMetalCost);
-		document.getElementById("crucibleGemCost").innerHTML = commafy(crucibleGemCost);
+		document.getElementById("crucibleSpaceMetalCost").innerHTML = Game.settings.format(crucibleSpaceMetalCost);
+		document.getElementById("crucibleGemCost").innerHTML = Game.settings.format(crucibleGemCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1653,9 +1653,9 @@ function getExtractor(){
 		extractorTitaniumCost = Math.floor(12000 * Math.pow(1.1,extractor));
 		extractorSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,extractor));
 		document.getElementById("extractor").innerHTML = extractor;
-		document.getElementById("extractorSpaceMetalCost").innerHTML = commafy(extractorSpaceMetalCost);
-		document.getElementById("extractorTitaniumCost").innerHTML = commafy(extractorTitaniumCost);
-		document.getElementById("extractorSiliconCost").innerHTML = commafy(extractorSiliconCost);
+		document.getElementById("extractorSpaceMetalCost").innerHTML = Game.settings.format(extractorSpaceMetalCost);
+		document.getElementById("extractorTitaniumCost").innerHTML = Game.settings.format(extractorTitaniumCost);
+		document.getElementById("extractorSiliconCost").innerHTML = Game.settings.format(extractorSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1671,9 +1671,9 @@ function getExtruder(){
 		extruderTitaniumCost = Math.floor(57000 * Math.pow(1.1,extruder));
 		extruderSpaceMetalCost = Math.floor(69000 * Math.pow(1.1,extruder));
 		document.getElementById("extruder").innerHTML = extruder;
-		document.getElementById("extruderSpaceMetalCost").innerHTML = commafy(extruderSpaceMetalCost);
-		document.getElementById("extruderTitaniumCost").innerHTML = commafy(extruderTitaniumCost);
-		document.getElementById("extruderSiliconCost").innerHTML = commafy(extruderSiliconCost);
+		document.getElementById("extruderSpaceMetalCost").innerHTML = Game.settings.format(extruderSpaceMetalCost);
+		document.getElementById("extruderTitaniumCost").innerHTML = Game.settings.format(extruderTitaniumCost);
+		document.getElementById("extruderSiliconCost").innerHTML = Game.settings.format(extruderSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1689,9 +1689,9 @@ function getVeluptuator(){
 		veluptuatorGoldCost = Math.floor(121000 * Math.pow(1.1,veluptuator));
 		veluptuatorSpaceMetalCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
 		document.getElementById("veluptuator").innerHTML = veluptuator;
-		document.getElementById("veluptuatorSpaceMetalCost").innerHTML = commafy(veluptuatorSpaceMetalCost);
-		document.getElementById("veluptuatorGoldCost").innerHTML = commafy(veluptuatorGoldCost);
-		document.getElementById("veluptuatorMeteoriteCost").innerHTML = commafy(veluptuatorMeteoriteCost);
+		document.getElementById("veluptuatorSpaceMetalCost").innerHTML = Game.settings.format(veluptuatorSpaceMetalCost);
+		document.getElementById("veluptuatorGoldCost").innerHTML = Game.settings.format(veluptuatorGoldCost);
+		document.getElementById("veluptuatorMeteoriteCost").innerHTML = Game.settings.format(veluptuatorMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1705,8 +1705,8 @@ function getCollector(){
 		collectorTitaniumCost = Math.floor(4800 * Math.pow(1.1,collector));
 		collectorSpaceMetalCost = Math.floor(6000 * Math.pow(1.1,collector));
 		document.getElementById("collector").innerHTML = collector;
-		document.getElementById("collectorSpaceMetalCost").innerHTML = commafy(collectorSpaceMetalCost);
-		document.getElementById("collectorTitaniumCost").innerHTML = commafy(collectorTitaniumCost);
+		document.getElementById("collectorSpaceMetalCost").innerHTML = Game.settings.format(collectorSpaceMetalCost);
+		document.getElementById("collectorTitaniumCost").innerHTML = Game.settings.format(collectorTitaniumCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1722,9 +1722,9 @@ function getMagnet(){
 		magnetTitaniumCost = Math.floor(9600 * Math.pow(1.1,magnet));
 		magnetSpaceMetalCost = Math.floor(10800 * Math.pow(1.1,magnet));
 		document.getElementById("magnet").innerHTML = magnet;
-		document.getElementById("magnetSpaceMetalCost").innerHTML = commafy(magnetSpaceMetalCost);
-		document.getElementById("magnetTitaniumCost").innerHTML = commafy(magnetTitaniumCost);
-		document.getElementById("magnetGoldCost").innerHTML = commafy(magnetGoldCost);
+		document.getElementById("magnetSpaceMetalCost").innerHTML = Game.settings.format(magnetSpaceMetalCost);
+		document.getElementById("magnetTitaniumCost").innerHTML = Game.settings.format(magnetTitaniumCost);
+		document.getElementById("magnetGoldCost").innerHTML = Game.settings.format(magnetGoldCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1740,9 +1740,9 @@ function getECell(){
 		eCellSiliconCost = Math.floor(25800 * Math.pow(1.1,eCell));
 		eCellSilverCost = Math.floor(37200 * Math.pow(1.1,eCell));
 		document.getElementById("eCell").innerHTML = eCell;
-		document.getElementById("eCellSilverCost").innerHTML = commafy(eCellSilverCost);
-		document.getElementById("eCellSiliconCost").innerHTML = commafy(eCellSiliconCost);
-		document.getElementById("eCellGoldCost").innerHTML = commafy(eCellGoldCost);
+		document.getElementById("eCellSilverCost").innerHTML = Game.settings.format(eCellSilverCost);
+		document.getElementById("eCellSiliconCost").innerHTML = Game.settings.format(eCellSiliconCost);
+		document.getElementById("eCellGoldCost").innerHTML = Game.settings.format(eCellGoldCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1758,9 +1758,9 @@ function getHindenburg(){
 		hindenburgMethaneCost = Math.floor(134000 * Math.pow(1.1,hindenburg));
 		hindenburgSpaceMetalCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
 		document.getElementById("hindenburg").innerHTML = hindenburg;
-		document.getElementById("hindenburgSpaceMetalCost").innerHTML = commafy(hindenburgSpaceMetalCost);
-		document.getElementById("hindenburgMethaneCost").innerHTML = commafy(hindenburgMethaneCost);
-		document.getElementById("hindenburgMeteoriteCost").innerHTML = commafy(hindenburgMeteoriteCost);
+		document.getElementById("hindenburgSpaceMetalCost").innerHTML = Game.settings.format(hindenburgSpaceMetalCost);
+		document.getElementById("hindenburgMethaneCost").innerHTML = Game.settings.format(hindenburgMethaneCost);
+		document.getElementById("hindenburgMeteoriteCost").innerHTML = Game.settings.format(hindenburgMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1774,8 +1774,8 @@ function getDrone(){
 		droneSiliconCost = Math.floor(6000 * Math.pow(1.1,drone));
 		droneSpaceMetalCost = Math.floor(8400 * Math.pow(1.1,drone));
 		document.getElementById("drone").innerHTML = drone;
-		document.getElementById("droneSpaceMetalCost").innerHTML = commafy(droneSpaceMetalCost);
-		document.getElementById("droneSiliconCost").innerHTML = commafy(droneSiliconCost);
+		document.getElementById("droneSpaceMetalCost").innerHTML = Game.settings.format(droneSpaceMetalCost);
+		document.getElementById("droneSiliconCost").innerHTML = Game.settings.format(droneSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1791,9 +1791,9 @@ function getTanker(){
 		tankerTitaniumCost = Math.floor(10200 * Math.pow(1.1,tanker));
 		tankerSpaceMetalCost = Math.floor(12600 * Math.pow(1.1,tanker));
 		document.getElementById("tanker").innerHTML = tanker;
-		document.getElementById("tankerSpaceMetalCost").innerHTML = commafy(tankerSpaceMetalCost);
-		document.getElementById("tankerTitaniumCost").innerHTML = commafy(tankerTitaniumCost);
-		document.getElementById("tankerSiliconCost").innerHTML = commafy(tankerSiliconCost);
+		document.getElementById("tankerSpaceMetalCost").innerHTML = Game.settings.format(tankerSpaceMetalCost);
+		document.getElementById("tankerTitaniumCost").innerHTML = Game.settings.format(tankerTitaniumCost);
+		document.getElementById("tankerSiliconCost").innerHTML = Game.settings.format(tankerSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1809,9 +1809,9 @@ function getCompressor(){
 		compressorTitaniumCost = Math.floor(43800 * Math.pow(1.1,compressor));
 		compressorSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,compressor));
 		document.getElementById("compressor").innerHTML = compressor;
-		document.getElementById("compressorSpaceMetalCost").innerHTML = commafy(compressorSpaceMetalCost);
-		document.getElementById("compressorTitaniumCost").innerHTML = commafy(compressorTitaniumCost);
-		document.getElementById("compressorSiliconCost").innerHTML = commafy(compressorSiliconCost);
+		document.getElementById("compressorSpaceMetalCost").innerHTML = Game.settings.format(compressorSpaceMetalCost);
+		document.getElementById("compressorTitaniumCost").innerHTML = Game.settings.format(compressorTitaniumCost);
+		document.getElementById("compressorSiliconCost").innerHTML = Game.settings.format(compressorSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1827,9 +1827,9 @@ function getSkimmer(){
 		skimmerTitaniumCost = Math.floor(173000 * Math.pow(1.1,skimmer));
 		skimmerSpaceMetalCost = Math.floor(255000 * Math.pow(1.1,skimmer));
 		document.getElementById("skimmer").innerHTML = skimmer;
-		document.getElementById("skimmerSpaceMetalCost").innerHTML = commafy(skimmerSpaceMetalCost);
-		document.getElementById("skimmerTitaniumCost").innerHTML = commafy(skimmerTitaniumCost);
-		document.getElementById("skimmerMeteoriteCost").innerHTML = commafy(skimmerMeteoriteCost);
+		document.getElementById("skimmerSpaceMetalCost").innerHTML = Game.settings.format(skimmerSpaceMetalCost);
+		document.getElementById("skimmerTitaniumCost").innerHTML = Game.settings.format(skimmerTitaniumCost);
+		document.getElementById("skimmerMeteoriteCost").innerHTML = Game.settings.format(skimmerMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1843,8 +1843,8 @@ function getIcePick(){
 		icePickGemCost = Math.floor(19300 * Math.pow(1.1,icePick));
 		icePickSpaceMetalCost = Math.floor(17800 * Math.pow(1.1,icePick));
 		document.getElementById("icePick").innerHTML = icePick;
-		document.getElementById("icePickSpaceMetalCost").innerHTML = commafy(icePickSpaceMetalCost);
-		document.getElementById("icePickGemCost").innerHTML = commafy(icePickGemCost);
+		document.getElementById("icePickSpaceMetalCost").innerHTML = Game.settings.format(icePickSpaceMetalCost);
+		document.getElementById("icePickGemCost").innerHTML = Game.settings.format(icePickGemCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1860,9 +1860,9 @@ function getIceDrill(){
 		iceDrillTitaniumCost = Math.floor(21200 * Math.pow(1.1,iceDrill));
 		iceDrillSpaceMetalCost = Math.floor(23900 * Math.pow(1.1,iceDrill));
 		document.getElementById("iceDrill").innerHTML = iceDrill;
-		document.getElementById("iceDrillSpaceMetalCost").innerHTML = commafy(iceDrillSpaceMetalCost);
-		document.getElementById("iceDrillTitaniumCost").innerHTML = commafy(iceDrillTitaniumCost);
-		document.getElementById("iceDrillSiliconCost").innerHTML = commafy(iceDrillSiliconCost);
+		document.getElementById("iceDrillSpaceMetalCost").innerHTML = Game.settings.format(iceDrillSpaceMetalCost);
+		document.getElementById("iceDrillTitaniumCost").innerHTML = Game.settings.format(iceDrillTitaniumCost);
+		document.getElementById("iceDrillSiliconCost").innerHTML = Game.settings.format(iceDrillSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}
@@ -1878,9 +1878,9 @@ function getFreezer(){
 		freezerTitaniumCost = Math.floor(86000 * Math.pow(1.1,freezer));
 		freezerSpaceMetalCost = Math.floor(117000 * Math.pow(1.1,freezer));
 		document.getElementById("freezer").innerHTML = freezer;
-		document.getElementById("freezerSpaceMetalCost").innerHTML = commafy(freezerSpaceMetalCost);
-		document.getElementById("freezerTitaniumCost").innerHTML = commafy(freezerTitaniumCost);
-		document.getElementById("freezerSiliconCost").innerHTML = commafy(freezerSiliconCost);
+		document.getElementById("freezerSpaceMetalCost").innerHTML = Game.settings.format(freezerSpaceMetalCost);
+		document.getElementById("freezerTitaniumCost").innerHTML = Game.settings.format(freezerTitaniumCost);
+		document.getElementById("freezerSiliconCost").innerHTML = Game.settings.format(freezerSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned3');
 	}
@@ -1896,9 +1896,9 @@ function getMrFreeze(){
 		mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
 		mrFreezeSpaceMetalCost = Math.floor(519000 * Math.pow(1.1,mrFreeze));
 		document.getElementById("mrFreeze").innerHTML = mrFreeze;
-		document.getElementById("mrFreezeSpaceMetalCost").innerHTML = commafy(mrFreezeSpaceMetalCost);
-		document.getElementById("mrFreezeHeliumCost").innerHTML = commafy(mrFreezeHeliumCost);
-		document.getElementById("mrFreezeMeteoriteCost").innerHTML = commafy(mrFreezeMeteoriteCost);
+		document.getElementById("mrFreezeSpaceMetalCost").innerHTML = Game.settings.format(mrFreezeSpaceMetalCost);
+		document.getElementById("mrFreezeHeliumCost").innerHTML = Game.settings.format(mrFreezeHeliumCost);
+		document.getElementById("mrFreezeMeteoriteCost").innerHTML = Game.settings.format(mrFreezeMeteoriteCost);
 		refresh();
 		Game.statistics.add('tierOwned4');
 	}
@@ -1912,8 +1912,8 @@ function getPrinter(){
 		printerSpaceMetalCost = Math.floor(100000 * Math.pow(1.1,printer));
 		printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer));
 		document.getElementById("printer").innerHTML = printer;
-		document.getElementById("printerSpaceMetalCost").innerHTML = commafy(printerSpaceMetalCost);
-		document.getElementById("printerSiliconCost").innerHTML = commafy(printerSiliconCost);
+		document.getElementById("printerSpaceMetalCost").innerHTML = Game.settings.format(printerSpaceMetalCost);
+		document.getElementById("printerSiliconCost").innerHTML = Game.settings.format(printerSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned1');
 	}
@@ -1929,9 +1929,9 @@ function getWeb(){
 		webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
 		webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
 		document.getElementById("web").innerHTML = web;
-		document.getElementById("webSpaceMetalCost").innerHTML = commafy(webSpaceMetalCost);
-		document.getElementById("webUraniumCost").innerHTML = commafy(webUraniumCost);
-		document.getElementById("webSiliconCost").innerHTML = commafy(webSiliconCost);
+		document.getElementById("webSpaceMetalCost").innerHTML = Game.settings.format(webSpaceMetalCost);
+		document.getElementById("webUraniumCost").innerHTML = Game.settings.format(webUraniumCost);
+		document.getElementById("webSiliconCost").innerHTML = Game.settings.format(webSiliconCost);
 		refresh();
 		Game.statistics.add('tierOwned2');
 	}

@@ -1,114 +1,7 @@
-function autosave(){
-	if(Game.statistics.get('sessionTime') <= 60){
-		saveTimer = 0;
-	}
-
-	if(saved === true){
-		timer += 1;
-		if(timer >= 2){
-			saved = false;
-			document.getElementById("saveButton").className = "btn btn-primary";
-			timer = 0;
-		}
-	}
-	if(loaded === true){
-		timer2 += 1;
-		if(timer2 >= 2){
-			loaded = false;
-			document.getElementById("loadButton").className = "btn btn-primary";
-			timer2 = 0;
-		}
-	}
-	if(document.getElementById("30secs").checked){
-		if(saveTimer >= 30){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 30 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-	if(document.getElementById("2mins").checked){
-		if(saveTimer >= 120){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 120 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-	if(document.getElementById("10mins").checked){
-		if(saveTimer >= 600){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 600 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-}
-
-function exportSave() {
-	var data = save();
-
-    localStorage.setItem("save",JSON.stringify(data));
-    var string = JSON.stringify(data);
-    var compressed = LZString.compressToBase64(string);
-
-    console.log('Compressing Save');
-    console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
-    document.getElementById('impexpField').value = compressed;
-}
-
-function save() {
-	var data = doSave();
-    localStorage.setItem("save",JSON.stringify(data));
-
-    document.getElementById("saveButton").className = "btn btn-primary disabled";
-    saved = true;
-    console.log("Save Successful");
-
-    return data;
-}
-
-function doSave(){
+function legacySave(data) {
 	"use strict";
-	var localSave = {
+	var localSave = $.extend({
 		versionNumber: versionNumber,
-		currentTheme: currentTheme,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -496,37 +389,16 @@ function doSave(){
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
 		swarm: swarm,
-	};
-
-	Game.save(localSave);
+	}, data);
 
 	return localSave;
 }
 
-function importSave() {
-    var compressed = document.getElementById('impexpField').value;
-    var decompressed = LZString.decompressFromBase64(compressed);
-    var revived = JSON.parse(decompressed);
-    console.log("Imported Saved Game");
-    console.log(revived);
-
-    doLoad(revived);
-    save();
-
-    window.location.reload();
-}
-
-function loadSave() {
-    var data = JSON.parse(localStorage.getItem("save"));
-    doLoad(data);
-}
-
-function doLoad(savegame){
+function legacyLoad(savegame){
 	"use strict";
 
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
-		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
@@ -913,41 +785,5 @@ function doLoad(savegame){
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
-
-		Game.load(savegame);
-	}
-	if(currentTheme === "base"){
-		document.getElementById("themeSelector").selectedIndex = 0;
-	}
-	if(currentTheme === "cyborg"){
-		document.getElementById("themeSelector").selectedIndex = 1;
-	}
-	if(currentTheme === "solar"){
-		document.getElementById("themeSelector").selectedIndex = 2;
-	}
-	if(currentTheme === "united"){
-		document.getElementById("themeSelector").selectedIndex = 3;
-	}
-	updateTheme();
-	refreshUI();
-	refreshResources();
-	refreshResearches();
-	refreshTabs();
-
-	document.getElementById("loadButton").className = "btn btn-primary disabled";
-	loaded = true;
-	console.log("Load Successful");
-}
-
-function deleteSave(){
-	"use strict";
-	var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
-	if(deleteSave === "DELETE"){
-		localStorage.removeItem("save");
-		alert("Deleted Save");
-		window.location.reload();
-	}
-	else{
-		alert("Deletion Cancelled");
 	}
 }

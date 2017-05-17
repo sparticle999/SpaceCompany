@@ -315,8 +315,8 @@
             currentSpan.removeClass('red');
         }
 
-        currentSpan.text(commafy(data.current));
-        $('#' + data.htmlId + '_capacity').text(commafy(data.capacity));*/
+        currentSpan.text(Game.settings.format(data.current));
+        $('#' + data.htmlId + '_capacity').text(Game.settings.format(data.capacity));*/
 
         data.displayNeedsUpdate = false;
     };

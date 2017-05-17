@@ -10,9 +10,9 @@ function getLab(){
 		labGemCost = Math.floor(15 * Math.pow(1.1,lab));
 		labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
 		document.getElementById("lab").innerHTML = lab;
-		document.getElementById("labWoodCost").innerHTML = commafy(labWoodCost);
-		document.getElementById("labGemCost").innerHTML = commafy(labGemCost);
-		document.getElementById("labMetalCost").innerHTML = commafy(labMetalCost);
+		document.getElementById("labWoodCost").innerHTML = Game.settings.format(labWoodCost);
+		document.getElementById("labGemCost").innerHTML = Game.settings.format(labGemCost);
+		document.getElementById("labMetalCost").innerHTML = Game.settings.format(labMetalCost);
 		refresh();
 		refreshPerSec();
 	}
@@ -28,9 +28,9 @@ function getLabT2(){
 		labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
 		labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
 		document.getElementById("labT2").innerHTML = labT2;
-		document.getElementById("labT2WoodCost").innerHTML = commafy(labT2WoodCost);
-		document.getElementById("labT2GemCost").innerHTML = commafy(labT2GemCost);
-		document.getElementById("labT2MetalCost").innerHTML = commafy(labT2MetalCost);
+		document.getElementById("labT2WoodCost").innerHTML = Game.settings.format(labT2WoodCost);
+		document.getElementById("labT2GemCost").innerHTML = Game.settings.format(labT2GemCost);
+		document.getElementById("labT2MetalCost").innerHTML = Game.settings.format(labT2MetalCost);
 		refresh();
 		refreshPerSec();
 	}
@@ -46,9 +46,9 @@ function getLabT3(){
 		labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
 		labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
 		document.getElementById("labT3").innerHTML = labT3;
-		document.getElementById("labT3WoodCost").innerHTML = commafy(labT3WoodCost);
-		document.getElementById("labT3GemCost").innerHTML = commafy(labT3GemCost);
-		document.getElementById("labT3MetalCost").innerHTML = commafy(labT3MetalCost);
+		document.getElementById("labT3WoodCost").innerHTML = Game.settings.format(labT3WoodCost);
+		document.getElementById("labT3GemCost").innerHTML = Game.settings.format(labT3GemCost);
+		document.getElementById("labT3MetalCost").innerHTML = Game.settings.format(labT3MetalCost);
 		refresh();
 		refreshPerSec();
 	}

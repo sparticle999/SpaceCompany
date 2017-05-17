@@ -43,7 +43,7 @@ function changeEmcAmount(){
     }
 
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = commafy(emcAmount);
+		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
 	}
 
     refreshConversionDisplay();
@@ -59,7 +59,7 @@ function refreshConversionDisplay() {
         var emcValue = value * emcAmount;
         var current = window[resources[i]];
         var capacity = window[resources[i]+"Storage"];
-        element.text(commafy(emcValue));
+        element.text(Game.settings.format(emcValue));
 
         var disabled = false;
         if(maxEnergy < emcValue) {
@@ -149,11 +149,11 @@ function getDyson(){
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
 		document.getElementById("dysonPieces2").innerHTML = dyson;
-		document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
-		document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
-		document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
-		document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
-		document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
+		document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
+		document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
+		document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
+		document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
+		document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
 	}
 }
 

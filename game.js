@@ -6,7 +6,8 @@ var Game = (function() {
         lastUpdateTime: 0,
         intervals: {},
         uiComponents: [],
-        logoAnimating: false
+        logoAnimating: false,
+        timeSinceAutoSave: 0
     };
 
     instance.update_frame = function(time) {
@@ -44,11 +45,13 @@ var Game = (function() {
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
+        self.settings.update(delta);
+
+        self.updateAutoSave(delta);
     };
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
-        autosave();
 
         self.updateTime(delta);
 
@@ -67,20 +70,78 @@ var Game = (function() {
         Game.statistics.add('timePlayed', delta);
     };
 
-    instance.save = function(data) {
+    instance.import = function() {
+        var text = $('#impexpField').val();
+        var decompressed = LZString.decompressFromBase64(text);
+        localStorage.setItem("save", decompressed);
+
+        console.log("Imported Saved Game");
+
+        window.location.reload();
+    };
+
+    instance.export = function() {
+        var data = this.save();
+
+        var string = JSON.stringify(data);
+        var compressed = LZString.compressToBase64(string);
+
+        console.log('Compressing Save');
+        console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
+        $('#impexpField').val(compressed);
+    };
+
+    instance.save = function() {
+        var data = {};
+
         this.achievements.save(data);
         this.statistics.save(data);
         this.resources.save(data);
         this.buildings.save(data);
         this.tech.save(data);
+        this.settings.save(data);
+
+        data = legacySave(data);
+
+        localStorage.setItem("save",JSON.stringify(data));
+
+        console.log('Game Saved');
+
+        return data;
     };
 
-    instance.load = function(data) {
+    instance.load = function() {
+        var data = JSON.parse(localStorage.getItem("save"));
+
         this.achievements.load(data);
         this.statistics.load(data);
         this.resources.load(data);
         this.buildings.load(data);
         this.tech.load(data);
+        this.settings.load(data);
+
+        legacyLoad(data);
+
+        refreshUI();
+        refreshResources();
+        refreshResearches();
+        refreshTabs();
+
+        console.log("Load Successful");
+    };
+
+    instance.deleteSave = function() {
+        var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
+
+        if(deleteSave === "DELETE") {
+            localStorage.removeItem("save");
+
+            alert("Deleted Save");
+            window.location.reload();
+        }
+        else {
+            alert("Deletion Cancelled");
+        }
     };
 
     instance.loadDelay = function (self, delta) {
@@ -95,13 +156,14 @@ var Game = (function() {
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
+        self.settings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
         }
 
         // Now load
-        loadSave();
+        self.load();
 
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
@@ -130,12 +192,6 @@ var Game = (function() {
         }
     };
 
-    instance.formatTime = function(seconds) {
-        var date = new Date(null);
-        date.setSeconds(seconds);
-        return date.toISOString().substr(11, 8);
-    };
-
     instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
 
     instance.notifyInfo = function(title, message) {
@@ -152,6 +208,26 @@ var Game = (function() {
             addclass: "stack-bottomright",
             stack: this.noticeStack
         });
+    };
+
+    instance.updateAutoSave = function(delta) {
+        this.timeSinceAutoSave += delta;
+
+        var element = $('#autoSaveTimer');
+        var timeSinceSaveInMS = this.timeSinceAutoSave * 1000;
+        var timeLeft = Game.settings.entries.autoSaveInterval - timeSinceSaveInMS;
+
+        if (timeLeft <= 15000) {
+            element.show();
+            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+        } else {
+            element.hide();
+        }
+
+        if(timeLeft <= 0) {
+            this.save();
+            this.timeSinceAutoSave = 0;
+        }
     };
 
     instance.start = function() {
