@@ -367,7 +367,7 @@ function legacySave(data) {
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
 		mrFreeze: mrFreeze,
-		mrFreezeSpaceMetalCost: mrFreezeSpaceMetalCost,
+		mrFreezeWoodCost: mrFreezeWoodCost,
 		mrFreezeHeliumCost: mrFreezeHeliumCost,
 		mrFreezeMeteoriteCost: mrFreezeMeteoriteCost,
 		meteorite: meteorite,
@@ -767,7 +767,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
-		if(typeof savegame.mrFreezeSpaceMetalCost !== "undefined") mrFreezeSpaceMetalCost = savegame.mrFreezeSpaceMetalCost;
+		if(typeof savegame.mrFreezeWoodCost !== "undefined") mrFreezeWoodCost = savegame.mrFreezeWoodCost;
 		if(typeof savegame.mrFreezeHeliumCost !== "undefined") mrFreezeHeliumCost = savegame.mrFreezeHeliumCost;
 		if(typeof savegame.mrFreezeMeteoriteCost !== "undefined") mrFreezeMeteoriteCost = savegame.mrFreezeMeteoriteCost;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;

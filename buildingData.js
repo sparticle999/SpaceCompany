@@ -1083,7 +1083,7 @@ Game.buildingData = (function () {
             'ice': 278
         },
         cost: {
-            'spaceMetal': 519000,
+            'wood': 379000,
             'helium': 14000,
             'meteorite': 1500
         }

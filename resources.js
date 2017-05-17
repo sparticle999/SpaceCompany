@@ -1932,16 +1932,16 @@ function getFreezer(){
 }
 
 function getMrFreeze(){
-	if(spaceMetal >= mrFreezeSpaceMetalCost && helium >= mrFreezeHeliumCost && meteorite >= mrFreezeMeteoriteCost){
-		spaceMetal -= mrFreezeSpaceMetalCost;
+	if(wood >= mrFreezeWoodCost && helium >= mrFreezeHeliumCost && meteorite >= mrFreezeMeteoriteCost){
+		wood -= mrFreezeWoodCost;
 		helium -= mrFreezeHeliumCost;
 		meteorite -= mrFreezeMeteoriteCost;
 		mrFreeze += 1;
 		mrFreezeMeteoriteCost = Math.floor(1500 * Math.pow(1.1,mrFreeze));
 		mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
-		mrFreezeSpaceMetalCost = Math.floor(519000 * Math.pow(1.1,mrFreeze));
+		mrFreezeWoodCost = Math.floor(379000 * Math.pow(1.1,mrFreeze));
 		document.getElementById("mrFreeze").innerHTML = mrFreeze;
-		document.getElementById("mrFreezeSpaceMetalCost").innerHTML = Game.settings.format(mrFreezeSpaceMetalCost);
+		document.getElementById("mrFreezeWoodCost").innerHTML = Game.settings.format(mrFreezeWoodCost);
 		document.getElementById("mrFreezeHeliumCost").innerHTML = Game.settings.format(mrFreezeHeliumCost);
 		document.getElementById("mrFreezeMeteoriteCost").innerHTML = Game.settings.format(mrFreezeMeteoriteCost);
 		refresh();
