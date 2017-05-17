@@ -154,6 +154,42 @@ var Game = (function() {
         });
     };
 
+    instance.notifySuccess = function(title, message) {
+        if (this.constants.enableNotifications === false){
+            return;
+        }
+
+        new PNotify({
+            title: title,
+            text: message,
+            type: 'success',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
+    instance.notifyStorage = function() {
+        if (this.constants.enableNotifications === false){
+            return;
+        }
+
+        var storageNote = new PNotify({
+            title: "Storage Full!",
+            text: 'You will no longer collect resources when they are full.',
+            type: 'warning',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+
+        storageNote.get().click(function() {
+            storageNote.remove();
+        });
+    };
+
     instance.start = function() {
         PNotify.prototype.options.styling = "bootstrap3";
         PNotify.prototype.options.delay = 3500;

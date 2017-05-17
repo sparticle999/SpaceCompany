@@ -186,6 +186,7 @@ function unlockSolarSystem(){
 		researched.push("unlockSolarSystem");
         Game.statistics.add('techResearched');
 		newUnlock("solarSystem");
+		Game.notifySuccess("New Tab!", "You've unlocked the Solar System Tab!");
 	}
 }
 
