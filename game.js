@@ -116,14 +116,16 @@ var Game = (function() {
     instance.load = function() {
         var data = JSON.parse(localStorage.getItem("save"));
 
-        this.achievements.load(data);
-        this.statistics.load(data);
-        this.resources.load(data);
-        this.buildings.load(data);
-        this.tech.load(data);
-        this.settings.load(data);
+        if(data && data !== null) {
+            this.achievements.load(data);
+            this.statistics.load(data);
+            this.resources.load(data);
+            this.buildings.load(data);
+            this.tech.load(data);
+            this.settings.load(data);
 
-        legacyLoad(data);
+            legacyLoad(data);
+        }
 
         refreshUI();
         refreshResources();
