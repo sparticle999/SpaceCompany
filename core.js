@@ -757,7 +757,7 @@ function refreshUI(){
 	document.getElementById("freezerTitaniumCost").innerHTML = Game.settings.format(freezerTitaniumCost);
 	document.getElementById("freezerSiliconCost").innerHTML = Game.settings.format(freezerSiliconCost);
 	document.getElementById("mrFreeze").innerHTML = Game.settings.format(mrFreeze);
-	document.getElementById("mrFreezeSpaceMetalCost").innerHTML = Game.settings.format(mrFreezeSpaceMetalCost);
+	document.getElementById("mrFreezeWoodCost").innerHTML = Game.settings.format(mrFreezeWoodCost);
 	document.getElementById("mrFreezeHeliumCost").innerHTML = Game.settings.format(mrFreezeHeliumCost);
 	document.getElementById("mrFreezeMeteoriteCost").innerHTML = Game.settings.format(mrFreezeMeteoriteCost);
 	document.getElementById("printer").innerHTML = Game.settings.format(printer);
@@ -1760,7 +1760,7 @@ function checkRedCost(){
 	Game.settings.turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	Game.settings.turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, mrFreezeSpaceMetalCost, "mrFreezeSpaceMetalCost");
+	Game.settings.turnRed(spaceMetal, mrFreezeWoodCost, "mrFreezeWoodCost");
 	Game.settings.turnRed(helium, mrFreezeHeliumCost, "mrFreezeHeliumCost");
 	Game.settings.turnRed(meteorite, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
