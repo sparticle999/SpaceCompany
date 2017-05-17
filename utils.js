@@ -37,7 +37,7 @@ Game.utils = (function(){
         var hourMinutePart = this.getTimeDisplay(seconds, use24hourTime);
 
         if(timeSplit[1] > 0) {
-            return timeSplit[1] + 'd ' + hourMinutePart;
+            return timeSplit[1] + ' Days ' + hourMinutePart;
         }
 
         return hourMinutePart;
