@@ -1760,7 +1760,7 @@ function checkRedCost(){
 	Game.settings.turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	Game.settings.turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, mrFreezeWoodCost, "mrFreezeWoodCost");
+	Game.settings.turnRed(wood, mrFreezeWoodCost, "mrFreezeWoodCost");
 	Game.settings.turnRed(helium, mrFreezeHeliumCost, "mrFreezeHeliumCost");
 	Game.settings.turnRed(meteorite, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
