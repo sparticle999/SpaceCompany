@@ -1,6 +1,122 @@
+var StrLoc = function(str) {
+    return str;
+};
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var key = '{' + i.toString() + '}';
+        if(formatted.indexOf(key) < 0) {
+            throw new Error(StrLoc("Index {0} was not defined in string: {1}").format(i, formatted));
+        }
+
+        formatted = formatted.replace(key, arguments[i]);
+    }
+
+    return formatted;
+};
+
+Number.prototype.clamp = function(min, max) {
+    return Math.min(Math.max(this, min), max);
+};
+
+$.fn.textWidth = function(text, font) {
+    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').appendTo(document.body);
+    var htmlText = text || this.val() || this.text();
+    htmlText = $.fn.textWidth.fakeEl.text(htmlText).html(); //encode to Html
+    htmlText = htmlText.replace(/\s/g, "&nbsp;"); //replace trailing and leading spaces
+    $.fn.textWidth.fakeEl.html(htmlText).css('font', font || this.css('font'));
+    return $.fn.textWidth.fakeEl.width();
+};
+
 Game.utils = (function(){
 
     var instance = {};
+
+    instance.formatEveryThirdPower = function(notations)
+    {
+        return function (value)
+        {
+            var base = 0;
+            var notationValue = '';
+            if (value >= 1000000)
+            {
+                value /= 1000;
+                while(Math.round(value) >= 1000) {
+                    value /= 1000;
+                    base++;
+                }
+
+                if (base > notations.length) {
+                    return StrLoc('Infinity');
+                } else {
+                    notationValue = notations[base];
+                }
+            }
+
+            var valueString = (Math.round(value * 1000) / 1000.0).toLocaleString();
+
+            if(notationValue !== '') {
+                var numberCount = valueString.replace(/[^0-9]/g, "").length;
+                while (numberCount < 4) {
+                    valueString = valueString + "0";
+                    numberCount++;
+                }
+
+                if (numberCount > 4) {
+                    valueString = valueString.slice(0, 4 - numberCount)
+                }
+            }
+
+            return valueString + notationValue;
+        };
+    };
+
+    instance.formatScientificNotation = function(value)
+    {
+        if (value === 0 || (Math.abs(value) > 1 && Math.abs(value) < 100))
+        {
+            return Game.utils.formatRaw(value);
+        }
+
+        var sign = value > 0 ? '' : '-';
+        value = Math.abs(value);
+        var exp = ~~(Math.log(value)/Math.LN10);
+        var num = Math.round((value/Math.pow(10, exp)) * 100) / 100;
+        var output = num.toString();
+        if (num === Math.round(num)) {
+            output += '.00';
+        } else if (num * 10 === Math.round(num * 10)) {
+            output += '0';
+        }
+
+        return sign + output + '*10^' + exp;
+    };
+
+    instance.formatRounded = function(value)
+    {
+        return (Math.round(value * 1000) / 1000).toString();
+    };
+
+    instance.formatRaw = function(value) {
+        if(value === undefined || value === null) {
+            return "";
+        }
+
+        return value.toString();
+    };
+
+    instance.formatters = {
+        'raw': instance.formatRaw,
+        'rounded': instance.formatRaw,
+        'name': instance.formatEveryThirdPower(['', StrLoc(' million'), StrLoc(' billion'), StrLoc(' trillion'), StrLoc(' quadrillion'),
+            StrLoc(' quintillion'), StrLoc(' sextillion'), StrLoc(' septillion'), StrLoc(' octillion'),
+            StrLoc(' nonillion'), StrLoc(' decillion')
+        ]),
+        'shortName': instance.formatEveryThirdPower(['', StrLoc('M'), StrLoc('B'), StrLoc('T'), StrLoc('Qa'), StrLoc('Qi'), StrLoc('Sx'),StrLoc('Sp'), StrLoc('Oc'), StrLoc('No'), StrLoc('De') ]),
+        'shortName2': instance.formatEveryThirdPower(['', StrLoc('M'), StrLoc('G'), StrLoc('T'), StrLoc('P'), StrLoc('E'), StrLoc('Z'), StrLoc('Y')]),
+        'scientific': instance.formatScientificNotation
+    };
 
     instance.pad = function(n, width, z) {
         z = z || '0';
