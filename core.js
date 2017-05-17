@@ -68,7 +68,7 @@ function refresh(){
 	document.getElementById("ice").innerHTML = commafy(ice);
 	document.getElementById("meteorite").innerHTML = commafy(meteorite);
 	if(science < 100){
-		document.getElementById("science").innerHTML = commafy(science*10)/10;
+		document.getElementById("science").innerHTML = (commafy(science*10)/10).toFixed(1);
 	}
 	else{
 		document.getElementById("science").innerHTML = commafy(science);
