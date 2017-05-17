@@ -41,7 +41,7 @@ Game.buildings = (function(){
 
     instance.load = function(data) {
         if(data.buildings) {
-            if(data.buildings.v && data.buildings.v == this.dataVersion) {
+            if(data.buildings.v && data.buildings.v === this.dataVersion) {
                 for(var id in data.buildings.i) {
                     if(this.entries[id]) {
                         this.constructBuildings(id, data.buildings.i[id]);

@@ -97,7 +97,7 @@ Game.statistics = (function(){
         this.loadLegacy(data);
 
         if(data.statistics) {
-            if(data.statistics.version && data.statistics.version == this.dataVersion) {
+            if(data.statistics.version && data.statistics.version === this.dataVersion) {
                 for(var id in data.statistics.entries) {
                     if(this.entries[id]){
                         this.setValue(id, data.statistics.entries[id].v, data.statistics.entries[id].va);

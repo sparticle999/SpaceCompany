@@ -182,7 +182,7 @@ Game.achievements = (function() {
 
     instance.load = function(data) {
         if(data.achievements) {
-            if(data.achievements.version && data.achievements.version == this.dataVersion) {
+            if(data.achievements.version && data.achievements.version === this.dataVersion) {
                 for(var id in data.achievements.entries) {
                     if(this.entries[id]){
                         this.unlock(id, data.achievements.entries[id]);

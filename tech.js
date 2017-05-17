@@ -37,7 +37,7 @@ Game.tech = (function(){
 
     instance.load = function(data) {
         if(data.tech) {
-            if(data.tech.v && data.tech.v == this.dataVersion) {
+            if(data.tech.v && data.tech.v === this.dataVersion) {
                 for(var id in data.tech.i) {
                     if(this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                         this.gainTech(id, data.tech.i[id]);
