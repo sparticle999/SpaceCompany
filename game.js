@@ -7,7 +7,8 @@ var Game = (function() {
         intervals: {},
         uiComponents: [],
         logoAnimating: false,
-        timeSinceAutoSave: 0
+        timeSinceAutoSave: 0,
+        activeNotifications: {}
     };
 
     instance.update_frame = function(time) {
@@ -52,6 +53,8 @@ var Game = (function() {
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
+
+        checkStorages();
 
         self.updateTime(delta);
 
@@ -199,7 +202,7 @@ var Game = (function() {
             return;
         }
 
-        new PNotify({
+        this.activeNotifications.info = new PNotify({
             title: title,
             text: message,
             type: 'info',
@@ -207,6 +210,43 @@ var Game = (function() {
             animate_speed: 'fast',
             addclass: "stack-bottomright",
             stack: this.noticeStack
+        });
+    };
+
+    instance.notifySuccess = function(title, message) {
+        if (this.constants.enableNotifications === false){
+            return;
+        }
+
+        this.activeNotifications.success = new PNotify({
+            title: title,
+            text: message,
+            type: 'success',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
+    instance.notifyStorage = function() {
+        if (this.constants.enableNotifications === false){
+            return;
+        }
+
+        this.activeNotifications.storage = new PNotify({
+            title: "Storage Full!",
+            text: 'You will no longer collect resources when they are full.',
+            type: 'warning',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+
+        this.activeNotifications.storage.get().click(function() {
+            this.activeNotifications.storage.remove();
+            this.activeNotifications.storage = undefined;
         });
     };
 

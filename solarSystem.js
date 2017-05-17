@@ -127,6 +127,7 @@ function exploreWonderStation(){
 		tabsUnlocked.push("wonderTab");
         Game.statistics.add('tabsUnlocked');
 		newUnlock("resources");
+		Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 	}
 }
 
@@ -201,5 +202,6 @@ function exploreSolCenter(){
         Game.statistics.add('placesExplored');
 		refreshResources();
 		newUnlock("solCenter");
+		Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 	}
 }

@@ -1,3 +1,47 @@
+function checkStorages(){
+	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
+
+		if (Game.constants.enableNotifications === false){
+			return;
+		}
+		if (Game.constants.enableDataDrivenResources === false){
+			return;
+		}
+
+		var resourcesFull = 0;
+		for (var id in Game.resources.entries){
+
+			if(Game.resources.getResourceData(id).current >= Game.resources.getResourceData(id).capacity){
+				resourcesFull += 1;
+			}
+
+			// Fallback if data driven doesn't work, but this needs to be tested
+
+			// if(id != "plasma" || "energy" || "science"){
+			// 	if(window[id] >= window[id + "Storage"]){
+			// 		resourcesFull += 1;
+			// 	}
+			// }
+
+			// if(id == "energy"){
+			// 	if(window[id] >= getMaxEnergy()){
+			// 		resourcesFull += 1;
+			// 	}
+			// }
+
+			// if(id == "plasma"){
+			// 	if(window[id] >= 100000){
+			// 		resourcesFull += 1;
+			// 	}
+			// }
+
+		}
+		if(resourcesFull >= Game.statistics.get("resourcesUnlocked")){
+			Game.notifyStorage();
+		}
+	}
+}
+
 function gainResources(){
 	if(energy + energyps/10 <= getMaxEnergy()){
 		energy += energyps/10;
@@ -952,6 +996,7 @@ function getMiner(){
                 Game.statistics.add('tabsUnlocked');
 				tabsUnlocked.push("researchTab");
 				newUnlock("research");
+				Game.notifySuccess("New Tab!", "You've unlocked the Research Tab!");
 			}
 		}
 		refresh();

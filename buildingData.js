@@ -881,7 +881,7 @@ Game.buildingData = (function () {
 
     instance.silverT3 = $.extend({}, baseProducerBuilding, {
         name: 'Big Bertha',
-        desc: 'This large, space drill, named after the World War One Howitzer built almost a milienia ago, is a silver seeking machine specially designed for.',
+        desc: 'This large, space drill, named after the World War One Howitzer built almost a milienia ago, is a silver seeking machine specially designed for mining asteroids.',
         resource: 'silver',
         resourcePerSecond: {
             'energy': -65,
