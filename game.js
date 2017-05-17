@@ -48,6 +48,7 @@ var Game = (function() {
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
+        checkStorages();
         autosave();
 
         self.updateTime(delta);
@@ -175,14 +176,15 @@ var Game = (function() {
             return;
         }
 
-        var storageNote = new PNotify({
-            title: "Storage Full!",
+        storageNote = new PNotify({
+            title: "All Storages Full!",
             text: 'You will no longer collect resources when they are full.',
             type: 'warning',
             animation: 'fade',
             animate_speed: 'fast',
             addclass: "stack-bottomright",
-            stack: this.noticeStack
+            hide: false,
+            stack: this.noticeStack,
         });
 
         storageNote.get().click(function() {

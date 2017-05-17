@@ -115,6 +115,8 @@ var sphere = 0;
 
 // Variables not being saved
 
+var plasmaStorage = 100000;
+
 var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost = 5000;
 var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;
 var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticUraniumCost = 200;
@@ -133,4 +135,4 @@ var oilEmcVal = 3; var metalEmcVal = 1; var gemEmcVal = 3; var charcoalEmcVal = 
 var spaceMetalEmcVal = 15; var methaneEmcVal = 12; var titaniumEmcVal = 17; var goldEmcVal = 14; var silverEmcVal = 16; var siliconEmcVal = 23;
 var hydrogenEmcVal = 33; var heliumEmcVal = 39; var iceEmcVal = 44; var meteoriteEmcVal = 3;
 
-var windowLoaded = false;
+var windowLoaded = false; var storageNote = {state: "closed"};
