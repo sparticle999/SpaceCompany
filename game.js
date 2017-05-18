@@ -43,6 +43,7 @@ var Game = (function() {
         var currentTime = new Date().getTime();
         var delta = (currentTime - instance.lastFixedUpdate) / 1000;
 
+        refreshPerSec(delta);
         gainResources(delta);
 
         Game.lastFixedUpdate = currentTime;
@@ -53,7 +54,6 @@ var Game = (function() {
         refreshWonderBars();
         checkRedCost();
 
-        refreshPerSec();
         updateDisplayAfterGainResource();
 
         self.resources.update(delta);

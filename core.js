@@ -38,320 +38,143 @@ function refresh(){
     }
 }
 
-function refreshPerSec(){
-	var energyInput = (charcoalEngine*charcoalEngineOutput)+(solarPanel*solarPanelOutput)+(methaneStation*23)+(nuclearStation*153)+(magmatic*191)+(fusionReactor*273);
-	energyInput += (swarm*25000) + (sphere*1000000);
-	if(charcoal + charcoalps/10 >= charcoalEngine/10){ 
-		charcoal -= charcoalEngine/10;
-	}
-	else{
-		energyInput -= charcoalEngine*2;
-	}
-	if(methane + methaneps/10 >= methaneStation*6/10){
-		methane -= methaneStation*6/10;
-	}
-	else{
-		energyInput -= methaneStation*23;
-	}
-	if(uranium + uraniumps/10 >= nuclearStation*7/10){
-		uranium -= nuclearStation*7/10;
-	}
-	else{
-		energyInput -= nuclearStation*153;
-	}
-	if(lava + lavaps/10 >= magmatic*11/10){
-		lava -= magmatic*11/10;
-	}
-	else{
-		energyInput -= magmatic*191;
-	}
-	if(hydrogen + hydrogenps/10 >= fusionReactor*10/10 && helium + heliumps >= fusionReactor*10/10){
-		hydrogen -= fusionReactor*10/10;
-		helium -= fusionReactor*10/10;
-	}
-	else{
-		energyInput -= fusionReactor*273;
-	}
-	var energyOutput = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
-	energyOutput += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
-	energyOutput += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
+function calculateEnergyOutput(delta) {
+	// Fixed outputs first
+	var output = (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
-	energyOutput += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
-	energyOutput += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
-	energyOutput += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
+	if(charcoal + charcoalps * delta >= charcoalEngine * delta) {
+		output += charcoalEngine * charcoalEngineOutput;
+	}
 
-	energyOutput += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	energyOutput += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
-	energyOutput += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
+	if(methane + methaneps * delta >= methaneStation * 6 * delta) {
+		output += methaneStation * 23;
+	}
 
-	if(charcoalToggled === true){
-		energyOutput += (furnace*3)+(kiln*13)+(fryer*34);
+	if(uranium + uraniumps * delta >= nuclearStation * 7 * delta) {
+		output += nuclearStation * 153;
 	}
-	plasmaps = 0;
-	if(meteoriteToggled === true && plasma >= 3){
-		if(meteorite + printer/10 + web*8/10<= meteoriteStorage){
-			plasma -= (printer*3/10 + web*21/10);
-			meteorite += (printer/10 + web*8/10);
-			meteoriteps = printer + web*8;
-			plasmaps -= printer*3 + web*21;
-		}
-		else{
-			meteorite = meteoriteStorage;
-			meteoriteps = 0;
-		}
+
+	if(lava + lavaps * delta > magmatic * 11 * delta) {
+		output += magmatic * 191;
 	}
-	if(energy >= 1000 && hydrogen >= 10 && heaterToggled === true){
-		if(plasma + heater/10 <= 100000){
-			energyOutput += (heater*1000);
-			plasma += heater/10;
-			hydrogen -= heater*10/10;
-			plasmaps += heater;
-		}
-		else{
-			plasma = 100000
-		}
+
+	if(hydrogen + hydrogenps * delta >= fusionReactor * 10 * delta && helium + heliumps * delta >= fusionReactor * 10 * delta) {
+		output += fusionReactor * 273;
 	}
-	if(energy >= 8500 && helium >= 80 && plasmaticToggled === true){
-		if(plasma + plasmatic*10/10 <= 100000){
-			energyOutput += (plasmatic*8500);
-			plasma += plasmatic*10/10;
-			helium -= plasmatic*80/10;
-			plasmaps += plasmatic*10;
-		}
-		else{
-			plasma = 100000
-		}
+
+	return output;
+}
+
+function calculateEnergyUse(delta) {
+    var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
+    use += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+    use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
+
+    use += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
+    use += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
+    use += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
+
+    use += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
+    use += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
+    use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
+
+    if(charcoalToggled === true){
+        use += (furnace*3)+(kiln*13)+(fryer*34);
+    }
+
+    if(heaterToggled && hydrogen + hydrogenps >= heater * 10 * delta && plasma + plasmaps >= heater * delta) {
+        use += heater * 1000;
 	}
-	if(energy != 0 && energyps != 0){
-		if(energy >= energyps){
-			if(energyLow === true){
-				energyTimer += 0.1;
-				if(energyTimer >= 3){
-					document.getElementById("energyLow").className = "text-muted small ng-binding red hidden";
-					energyLow = false;
-					energyTimer = 0;
-				}
-			}
-		}
-		else{
-			energyTimer = 0;
-		}
+
+	if(plasmaticToggled && plasma + plasmaps >= plasmatic * 10 * delta) {
+        use += plasmatic * 8500;
 	}
-	if(energy >= 10){
-		energyps = energyInput-energyOutput;
-		oilps = pump + (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
-		metalps = miner + (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
-		gemps = gemMiner + (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
-		charcoalps = woodburner + (furnace*furnaceOutput) + (kiln*53) + (fryer*210);
-		woodInput = woodburner*2 + (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
-		woodps = woodcutter + (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
-		spaceMetalps = moonWorker + (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
-		methaneps = vacuum + (suctionExcavator*8) + (spaceCow*37) + (vent*149);
-		titaniumps = explorer + (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
-		goldps = droid + (destroyer*8) + (deathStar*51) + (actuator*211);
-		silverps = scout + (spaceLaser*13) + (bertha*53) + (cannon*208);
-		siliconps = blowtorch + (scorcher*9) + (annihilator*40) + (desert*157);
-		uraniumps = grinder + (cubic*9) +(enricher*61) + (recycler*235);
-		lavaps = crucible + (extractor*7) + (extruder*43) + (veluptuator*187);
-		hydrogenps = collector + (magnet*5) + (eCell*28) + (hindenburg*113);
-		heliumps = drone + (tanker*11) + (compressor*57) + (skimmer*232);
-		iceps = icePick + (iceDrill*9) + (freezer*65) + (mrFreeze*278);
+
+    return use;
+}
+
+function refreshPerSec(delta){
+
+	// First we update and check the energy
+	var energyOutput = calculateEnergyOutput(delta);
+	var energyUse = calculateEnergyUse(delta);
+	energyps = energyOutput - energyUse;
+
+	var deltaEnergyDiff = (energyOutput * delta) - (energyUse * delta);
+	if(deltaEnergyDiff < 0 && energy < deltaEnergyDiff) {
+        energyLow = true;
+	} else {
+        energyLow = false;
 	}
-	if(energy <= 10){
-		if(windowLoaded){
-			if(energyLow === false){
-				document.getElementById("energyLow").className = "text-muted small ng-binding red";
-				energyLow = true;
-			}
-		}
-		energyps = energyInput;
-		uraniumps = grinder;
-		oilps = pump;
-		metalps = miner;
-		gemps = gemMiner;
-		charcoalps = woodburner;
-		woodInput = woodburner*2
-		woodps = woodcutter;
-		spaceMetalps = moonWorker;
-		methaneps = vacuum;
-		titaniumps = explorer;
-		goldps = droid;
-		silverps = scout;
-		siliconps = blowtorch;
-		lavaps = crucible;
-		hydrogenps = collector;
-		heliumps = drone;
-		iceps = icePick;
+
+	// Now we calculate the base per second
+    uraniumps = grinder;
+    oilps = pump;
+    metalps = miner;
+    gemps = gemMiner;
+    charcoalps = woodburner;
+    woodInput = woodburner*2;
+    woodps = woodcutter;
+    spaceMetalps = moonWorker;
+    methaneps = vacuum;
+    titaniumps = explorer;
+    goldps = droid;
+    silverps = scout;
+    siliconps = blowtorch;
+    lavaps = crucible;
+    hydrogenps = collector;
+    heliumps = drone;
+    iceps = icePick;
+    plasmaps = 0;
+    meteoriteps = 0;
+
+    scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
+
+	if(!energyLow) {
+        oilps +=  (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
+        metalps +=  (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
+        gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
+        charcoalps +=  (furnace*furnaceOutput) + (kiln*53) + (fryer*210);
+        woodInput +=  (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
+        woodps +=  (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
+        spaceMetalps +=  (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
+        methaneps +=  (suctionExcavator*8) + (spaceCow*37) + (vent*149);
+        titaniumps +=  (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
+        goldps +=  (destroyer*8) + (deathStar*51) + (actuator*211);
+        silverps +=  (spaceLaser*13) + (bertha*53) + (cannon*208);
+        siliconps +=  (scorcher*9) + (annihilator*40) + (desert*157);
+        uraniumps +=  (cubic*9) +(enricher*61) + (recycler*235);
+        lavaps +=  (extractor*7) + (extruder*43) + (veluptuator*187);
+        hydrogenps +=  (magnet*5) + (eCell*28) + (hindenburg*113);
+        heliumps +=  (tanker*11) + (compressor*57) + (skimmer*232);
+        iceps +=  (iceDrill*9) + (freezer*65) + (mrFreeze*278);
 	}
-	scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
-	if(scienceps < 100){
-		document.getElementById("scienceps").innerHTML = Game.settings.format(scienceps*10)/10;
-	}
-	else{
-		document.getElementById("scienceps").innerHTML = Game.settings.format(scienceps);
-	}
-	document.getElementById("plasmaps").innerHTML = Game.settings.format(plasmaps);
-	document.getElementById("plasma").className = "";
-	if(plasma <= 0){
-		document.getElementById("plasma").className = "red";
-	}
-	if(energyps >= 0){
-		if(energyps > 250){
-			document.getElementById("energyps").innerHTML = Game.settings.format(energyps);
-		}
-		else{
-			document.getElementById("energyps").innerHTML = Game.settings.format(energyps*2)/2;
+
+	if(meteoriteToggled === true && meteorite < meteoriteStorage){
+        var plasmaCost = (printer * 3) + (web * 21);
+        var gain = printer + (web * 8);
+        if(plasma + plasmaps * delta >= plasmaCost) {
+            meteoriteps += gain;
+            plasmaps -= plasmaCost;
+        }
+    }
+
+    if(heaterToggled === true && plasma < plasmaStorage) {
+		var hydrogenCost = heater * 10;
+		var gain = heater * delta;
+		if(hydrogen + hydrogenps * delta >= hydrogenCost) {
+			hydrogenps -= hydrogenCost;
+			plasmaps += gain;
 		}
 	}
-	else{
-		if(energyps < -250){
-			document.getElementById("energyps").innerHTML = Math.round(energyps);
+
+	if(plasmaticToggled === true && plasma < plasmaStorage) {
+		var heliumCost = plasmatic * 80;
+		var gain = plasmatic * 10;
+		if(helium + heliumps >= heliumCost) {
+			heliumps -= heliumCost;
+			plasmaps += gain;
 		}
-		else{
-			document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
-		}
-	}
-	if(energy >= getMaxEnergy()){
-		document.getElementById("energy").className = "green";
-	}
-	else{
-		document.getElementById("energy").className = "";
-	}
-	document.getElementById("uraniumps").innerHTML = Game.settings.format(uraniumps - nuclearStation*7);
-	document.getElementById("uranium").className = "";
-	if(uranium === 0){
-		document.getElementById("uranium").className = "red";
-	}
-	if(chemicalPlantToggled === true){
-		document.getElementById("oilps").innerHTML = Game.settings.format(oilps - chemicalPlant*20);
-	}
-	else{
-		document.getElementById("oilps").innerHTML = Game.settings.format(oilps);
-	}
-	document.getElementById("oil").className = "";
-	if(oil >= oilStorage){
-		document.getElementById("oil").className = "green";
-	}
-	if(oil === 0){
-		document.getElementById("oil").className = "red";
-	}
-	document.getElementById("metalps").innerHTML = Game.settings.format(metalps);
-	document.getElementById("metal").className = "";
-	if(metal >= metalStorage){
-		document.getElementById("metal").className = "green";
-	}
-	if(metal === 0){
-		document.getElementById("metal").className = "red";
-	}
-	document.getElementById("gemps").innerHTML = Game.settings.format(gemps);
-	document.getElementById("gem").className = "";
-	if(gem >= gemStorage){
-		document.getElementById("gem").className = "green";
-	}
-	if(gem === 0){
-		document.getElementById("gem").className = "red";
-	}
-	document.getElementById("charcoal").className = "";
-	if(charcoal === 0){
-		document.getElementById("charcoal").className = "red";
-	}
-	document.getElementById("wood").className = "";
-	if(wood >= woodStorage){
-		document.getElementById("wood").className = "green";
-	}
-	if(wood === 0){
-		document.getElementById("wood").className = "red";
-	}
-	document.getElementById("spaceMetalps").innerHTML = Game.settings.format(spaceMetalps);
-	document.getElementById("spaceMetal").className = "";
-	if(spaceMetal >= spaceMetalStorage){
-		document.getElementById("spaceMetal").className = "green";
-	}
-	if(spaceMetal === 0){
-		document.getElementById("spaceMetal").className = "red";
-	}
-	document.getElementById("methaneps").innerHTML = Game.settings.format(methaneps - methaneStation*6);
-	document.getElementById("methane").className = "";
-	if(methane === 0){
-		document.getElementById("methane").className = "red";
-	}
-	document.getElementById("titaniumps").innerHTML = Game.settings.format(titaniumps);
-	document.getElementById("titanium").className = "";
-	if(titanium >= titaniumStorage){
-		document.getElementById("titanium").className = "green";
-	}
-	if(titanium === 0){
-		document.getElementById("titanium").className = "red";
-	}
-	document.getElementById("goldps").innerHTML = Game.settings.format(goldps);
-	document.getElementById("gold").className = "";
-	if(gold >= goldStorage){
-		document.getElementById("gold").className = "green";
-	}
-	if(gold === 0){
-		document.getElementById("gold").className = "red";
-	}
-	document.getElementById("silverps").innerHTML = Game.settings.format(silverps);
-	document.getElementById("silver").className = "";
-	if(silver >= silverStorage){
-		document.getElementById("silver").className = "green";
-	}
-	if(silver === 0){
-		document.getElementById("silver").className = "red";
-	}
-	document.getElementById("siliconps").innerHTML = Game.settings.format(siliconps);
-	document.getElementById("silicon").className = "";
-	if(silicon >= siliconStorage){
-		document.getElementById("silicon").className = "green";
-	}
-	if(silicon === 0){
-		document.getElementById("silicon").className = "red";
-	}
-	document.getElementById("lavaps").innerHTML = Game.settings.format(lavaps - magmatic*11);
-	document.getElementById("lava").className = "";
-	if(lava === 0){
-		document.getElementById("lava").className = "red";
-	}
-	if(heaterToggled === true){
-		document.getElementById("hydrogenps").innerHTML = Game.settings.format(hydrogenps - fusionReactor*10 - heater*10);
-	}
-	else{
-		document.getElementById("hydrogenps").innerHTML = Game.settings.format(hydrogenps - fusionReactor*10);
-	}
-	document.getElementById("hydrogen").className = "";
-	if(hydrogen === 0){
-		document.getElementById("hydrogen").className = "red";
-	}
-	if(plasmaticToggled === true){
-		document.getElementById("heliumps").innerHTML = Game.settings.format(heliumps - fusionReactor*10 - plasmatic*80);
-	}
-	else{
-		document.getElementById("heliumps").innerHTML = Game.settings.format(heliumps - fusionReactor*10);
-	}
-	document.getElementById("helium").className = "";
-	if(helium === 0){
-		document.getElementById("helium").className = "red";
-	}
-	document.getElementById("iceps").innerHTML = Game.settings.format(iceps);
-	document.getElementById("ice").className = "";
-	if(ice >= iceStorage){
-		document.getElementById("ice").className = "green";
-	}
-	if(ice === 0){
-		document.getElementById("ice").className = "red";
-	}
-	if(meteoriteToggled){
-		document.getElementById("meteoriteps").innerHTML = Game.settings.format(meteoriteps);
-	}
-	else{
-		document.getElementById("meteoriteps").innerHTML = 0;
-	}
-	document.getElementById("meteorite").className = "";
-	if(meteorite >= meteoriteStorage){
-		document.getElementById("meteorite").className = "green";
-	}
-	if(meteorite === 0){
-		document.getElementById("meteorite").className = "red";
 	}
 
 }

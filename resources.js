@@ -82,9 +82,187 @@ function gainResources(delta){
     ice = Math.min(iceStorage, ice + iceps * delta);
     oil = Math.min(oilStorage, oil + oilps * delta);
     wood = Math.min(woodStorage, wood + woodps * delta);
+    meteorite = Math.min(meteoriteStorage, meteorite + meteoriteps * delta);
+    plasma = Math.min(100000, plasma + plasmaps * delta);
 }
 
 function updateDisplayAfterGainResource() {
+	if(energyLow) {
+        document.getElementById("energyLow").className = "text-muted small ng-binding red";
+	} else {
+        document.getElementById("energyLow").className = "text-muted small ng-binding red hidden";
+	}
+
+    if(scienceps < 100){
+        document.getElementById("scienceps").innerHTML = Game.settings.format(scienceps*10)/10;
+    }
+    else{
+        document.getElementById("scienceps").innerHTML = Game.settings.format(scienceps);
+    }
+    document.getElementById("plasmaps").innerHTML = Game.settings.format(plasmaps);
+    document.getElementById("plasma").className = "";
+    if(plasma <= 0){
+        document.getElementById("plasma").className = "red";
+    }
+    if(energyps >= 0){
+        if(energyps > 250){
+            document.getElementById("energyps").innerHTML = Game.settings.format(energyps);
+        }
+        else{
+            document.getElementById("energyps").innerHTML = Game.settings.format(energyps*2)/2;
+        }
+    }
+    else{
+        if(energyps < -250){
+            document.getElementById("energyps").innerHTML = Math.round(energyps);
+        }
+        else{
+            document.getElementById("energyps").innerHTML = Math.round(energyps*2)/2;
+        }
+    }
+    if(energy >= getMaxEnergy()){
+        document.getElementById("energy").className = "green";
+    }
+    else{
+        document.getElementById("energy").className = "";
+    }
+    document.getElementById("uraniumps").innerHTML = Game.settings.format(uraniumps - nuclearStation*7);
+    document.getElementById("uranium").className = "";
+    if(uranium === 0){
+        document.getElementById("uranium").className = "red";
+    }
+    if(chemicalPlantToggled === true){
+        document.getElementById("oilps").innerHTML = Game.settings.format(oilps - chemicalPlant*20);
+    }
+    else{
+        document.getElementById("oilps").innerHTML = Game.settings.format(oilps);
+    }
+    document.getElementById("oil").className = "";
+    if(oil >= oilStorage){
+        document.getElementById("oil").className = "green";
+    }
+    if(oil === 0){
+        document.getElementById("oil").className = "red";
+    }
+    document.getElementById("metalps").innerHTML = Game.settings.format(metalps);
+    document.getElementById("metal").className = "";
+    if(metal >= metalStorage){
+        document.getElementById("metal").className = "green";
+    }
+    if(metal === 0){
+        document.getElementById("metal").className = "red";
+    }
+    document.getElementById("gemps").innerHTML = Game.settings.format(gemps);
+    document.getElementById("gem").className = "";
+    if(gem >= gemStorage){
+        document.getElementById("gem").className = "green";
+    }
+    if(gem === 0){
+        document.getElementById("gem").className = "red";
+    }
+    document.getElementById("charcoal").className = "";
+    if(charcoal === 0){
+        document.getElementById("charcoal").className = "red";
+    }
+    document.getElementById("wood").className = "";
+    if(wood >= woodStorage){
+        document.getElementById("wood").className = "green";
+    }
+    if(wood === 0){
+        document.getElementById("wood").className = "red";
+    }
+    document.getElementById("spaceMetalps").innerHTML = Game.settings.format(spaceMetalps);
+    document.getElementById("spaceMetal").className = "";
+    if(spaceMetal >= spaceMetalStorage){
+        document.getElementById("spaceMetal").className = "green";
+    }
+    if(spaceMetal === 0){
+        document.getElementById("spaceMetal").className = "red";
+    }
+    document.getElementById("methaneps").innerHTML = Game.settings.format(methaneps - methaneStation*6);
+    document.getElementById("methane").className = "";
+    if(methane === 0){
+        document.getElementById("methane").className = "red";
+    }
+    document.getElementById("titaniumps").innerHTML = Game.settings.format(titaniumps);
+    document.getElementById("titanium").className = "";
+    if(titanium >= titaniumStorage){
+        document.getElementById("titanium").className = "green";
+    }
+    if(titanium === 0){
+        document.getElementById("titanium").className = "red";
+    }
+    document.getElementById("goldps").innerHTML = Game.settings.format(goldps);
+    document.getElementById("gold").className = "";
+    if(gold >= goldStorage){
+        document.getElementById("gold").className = "green";
+    }
+    if(gold === 0){
+        document.getElementById("gold").className = "red";
+    }
+    document.getElementById("silverps").innerHTML = Game.settings.format(silverps);
+    document.getElementById("silver").className = "";
+    if(silver >= silverStorage){
+        document.getElementById("silver").className = "green";
+    }
+    if(silver === 0){
+        document.getElementById("silver").className = "red";
+    }
+    document.getElementById("siliconps").innerHTML = Game.settings.format(siliconps);
+    document.getElementById("silicon").className = "";
+    if(silicon >= siliconStorage){
+        document.getElementById("silicon").className = "green";
+    }
+    if(silicon === 0){
+        document.getElementById("silicon").className = "red";
+    }
+    document.getElementById("lavaps").innerHTML = Game.settings.format(lavaps - magmatic*11);
+    document.getElementById("lava").className = "";
+    if(lava === 0){
+        document.getElementById("lava").className = "red";
+    }
+    if(heaterToggled === true){
+        document.getElementById("hydrogenps").innerHTML = Game.settings.format(hydrogenps - fusionReactor*10 - heater*10);
+    }
+    else{
+        document.getElementById("hydrogenps").innerHTML = Game.settings.format(hydrogenps - fusionReactor*10);
+    }
+    document.getElementById("hydrogen").className = "";
+    if(hydrogen === 0){
+        document.getElementById("hydrogen").className = "red";
+    }
+    if(plasmaticToggled === true){
+        document.getElementById("heliumps").innerHTML = Game.settings.format(heliumps - fusionReactor*10 - plasmatic*80);
+    }
+    else{
+        document.getElementById("heliumps").innerHTML = Game.settings.format(heliumps - fusionReactor*10);
+    }
+    document.getElementById("helium").className = "";
+    if(helium === 0){
+        document.getElementById("helium").className = "red";
+    }
+    document.getElementById("iceps").innerHTML = Game.settings.format(iceps);
+    document.getElementById("ice").className = "";
+    if(ice >= iceStorage){
+        document.getElementById("ice").className = "green";
+    }
+    if(ice === 0){
+        document.getElementById("ice").className = "red";
+    }
+    if(meteoriteToggled){
+        document.getElementById("meteoriteps").innerHTML = Game.settings.format(meteoriteps);
+    }
+    else{
+        document.getElementById("meteoriteps").innerHTML = 0;
+    }
+    document.getElementById("meteorite").className = "";
+    if(meteorite >= meteoriteStorage){
+        document.getElementById("meteorite").className = "green";
+    }
+    if(meteorite === 0){
+        document.getElementById("meteorite").className = "red";
+    }
+
     if(hydrogen >= hydrogenStorage){
         document.getElementById("hydrogen").className = "green";
     }
