@@ -161,8 +161,6 @@ function refreshPerSec(delta){
 			if(!energyLow){
                 charcoalps += (furnace*furnaceOutput) + (kiln*53) + (fryer*210)
 			}
-
-			console.log('A'+charcoalps);
 		}
 	}
 
