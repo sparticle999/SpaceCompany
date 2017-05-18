@@ -668,6 +668,7 @@ function checkRedCost(){
     Game.settings.turnRedOnNegative(iceps, 'iceps');
     Game.settings.turnRedOnNegative(plasmaps, 'plasmaps');
     Game.settings.turnRedOnNegative(meteoriteps, 'meteoriteps');
+    Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
 
 	Game.settings.turnRed(wood, 2, "manualCharcoalCost");
 	Game.settings.turnRed(energy, 1000, "manualPlasmaEnergyCost");

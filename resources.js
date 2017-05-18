@@ -74,13 +74,7 @@ function updateDisplayAfterGainResource() {
         $('#energyLow').addClass('hidden');
 	}
 
-    if(scienceps < 100){
-		$('#scienceps').text(Game.settings.format(scienceps, 1));
-    }
-    else{
-        $('#scienceps').text(Game.settings.format(scienceps));
-    }
-
+    $('#scienceps').text(Game.settings.format(scienceps, 1));
     $('#uraniumps').text(Game.settings.format(uraniumps));
     $('#oilps').text(Game.settings.format(oilps));
     $('#metalps').text(Game.settings.format(metalps));
@@ -99,6 +93,7 @@ function updateDisplayAfterGainResource() {
     $('#iceps').text(Game.settings.format(iceps));
     $('#plasmaps').text(Game.settings.format(plasmaps));
     $('#meteoriteps').text(Game.settings.format(meteoriteps));
+    $('#rocketFuelps').text(Game.settings.format(rocketFuelps, 1));
 
     if(energyps >= 0){
         if(energyps > 250){
