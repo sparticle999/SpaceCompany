@@ -115,7 +115,7 @@ function refreshPerSec(delta){
     charcoalps = 0;
     woodps = woodcutter;
     spaceMetalps = moonWorker;
-    methaneps = vacuum;
+    methaneps = vacuum - (methaneStation * 6);
     titaniumps = explorer;
     goldps = droid;
     silverps = scout;
