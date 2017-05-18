@@ -292,6 +292,7 @@ var Game = (function() {
     instance.start = function() {
         PNotify.prototype.options.styling = "bootstrap3";
         PNotify.prototype.options.delay = 3500;
+
         console.debug("Loading Game");
       
         this.createInterval("Loading Animation", this.loadAnimation, 10);
