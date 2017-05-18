@@ -108,12 +108,11 @@ function refreshPerSec(delta){
 	}
 
 	// Now we calculate the base per second
-    uraniumps = grinder;
+    uraniumps = grinder - (nuclearStation * 7);
     oilps = pump;
     metalps = miner;
     gemps = gemMiner;
-    charcoalps = woodburner;
-    woodInput = woodburner*2;
+    charcoalps = 0;
     woodps = woodcutter;
     spaceMetalps = moonWorker;
     methaneps = vacuum;
@@ -121,12 +120,13 @@ function refreshPerSec(delta){
     goldps = droid;
     silverps = scout;
     siliconps = blowtorch;
-    lavaps = crucible;
-    hydrogenps = collector;
-    heliumps = drone;
+    lavaps = crucible - (magmatic * 11);
+    hydrogenps = collector - (fusionReactor * 10);
+    heliumps = drone - (fusionReactor * 10);
     iceps = icePick;
     plasmaps = 0;
     meteoriteps = 0;
+    rocketFuelps = 0;
 
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
@@ -134,8 +134,6 @@ function refreshPerSec(delta){
         oilps +=  (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
         metalps +=  (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
         gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
-        charcoalps +=  (furnace*furnaceOutput) + (kiln*53) + (fryer*210);
-        woodInput +=  (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
         woodps +=  (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
         spaceMetalps +=  (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
         methaneps +=  (suctionExcavator*8) + (spaceCow*37) + (vent*149);
@@ -149,6 +147,34 @@ function refreshPerSec(delta){
         heliumps +=  (tanker*11) + (compressor*57) + (skimmer*232);
         iceps +=  (iceDrill*9) + (freezer*65) + (mrFreeze*278);
 	}
+
+	if(charcoalToggled) {
+		var woodCost = woodburner * 2;
+		if(!energyLow) {
+            woodCost = (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
+		}
+
+		if(wood + woodps >= woodCost) {
+			woodps -= woodCost;
+			charcoalps += woodburner;
+
+			if(!energyLow){
+                charcoalps += (furnace*furnaceOutput) + (kiln*53) + (fryer*210)
+			}
+
+			console.log('A'+charcoalps);
+		}
+	}
+
+    if(chemicalPlantToggled === true) {
+        var oilCost = chemicalPlant * 20;
+        var charcoalCost = chemicalPlant * 20;
+        if(oil + oilps >= oilCost && charcoal + charcoalps >= charcoalCost) {
+            oilps -= oilCost;
+            charcoalps -= charcoalCost;
+            rocketFuelps += chemicalPlant / 5;
+        }
+    }
 
 	if(meteoriteToggled === true && meteorite < meteoriteStorage){
         var plasmaCost = (printer * 3) + (web * 21);
