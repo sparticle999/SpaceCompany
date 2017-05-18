@@ -603,53 +603,47 @@ function refreshUI(){
 }
 
 function checkRedCost(){
-	Game.settings.turnRed(plasmaps, 0, "plasmaps");
-	Game.settings.turnRed(energyps, 0, "energyps");
-	Game.settings.turnRed(uraniumps - nuclearStation*7, 0, "uraniumps");
-	if(chemicalPlantToggled === true){
-		Game.settings.turnRed(oilps - chemicalPlant*20, 0, "oilps");
-	}
-	else{
-		Game.settings.turnRed(oilps, 0, "oilps");
-	}
-	if(chemicalPlantToggled === true){
-		if(charcoalToggled === true){
-			Game.settings.turnRed(charcoalps - charcoalEngine - chemicalPlant*20, 0, "charcoalps");
-		}
-		else{
-			Game.settings.turnRed(0 - charcoalEngine - chemicalPlant*20, 0, "charcoalps");
-		}
-	}
-	else{
-		if(charcoalToggled === true){
-			Game.settings.turnRed(charcoalps - charcoalEngine, 0, "charcoalps");
-		}
-		else{
-			Game.settings.turnRed(0 - charcoalEngine, 0, "charcoalps");
-		}
-	}
-	if(charcoalToggled === true && charcoal < charcoalStorage){
-		Game.settings.turnRed(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148), 0, "woodps");
-	}
-	else{
-		Game.settings.turnRed(woodps, 0, "woodps");
-	}
-	Game.settings.turnRed(spaceMetalps, 0, "spaceMetalps");
-	Game.settings.turnRed(methaneps - methaneStation*6, 0, "methaneps");
-	Game.settings.turnRed(lavaps - magmatic*11, 0, "lavaps");
-	if(heaterToggled === true){
-		Game.settings.turnRed(hydrogenps - fusionReactor*10 - heater*10, 0, "hydrogenps");
-	}
-	else{
-		Game.settings.turnRed(hydrogenps - fusionReactor*10, 0, "hydrogenps");
-	}
-	if(plasmaticToggled === true){
-		Game.settings.turnRed(heliumps - fusionReactor*10 - plasmatic*80, 0, "heliumps");
-	}
-	else{
-		Game.settings.turnRed(heliumps - fusionReactor*10, 0, "heliumps");
-	}
-	
+
+    Game.settings.turnRedOrGreen(energy, getMaxEnergy(), 'energy');
+
+	Game.settings.turnRedOrGreen(uranium, uraniumStorage, 'uranium');
+    Game.settings.turnRedOrGreen(oil, oilStorage, 'oil');
+    Game.settings.turnRedOrGreen(metal, metalStorage, 'metal');
+    Game.settings.turnRedOrGreen(gem, gemStorage, 'gem');
+    Game.settings.turnRedOrGreen(charcoal, charcoalStorage, 'charcoal');
+    Game.settings.turnRedOrGreen(wood, woodStorage, 'wood');
+    Game.settings.turnRedOrGreen(spaceMetal, spaceMetalStorage, 'spaceMetal');
+    Game.settings.turnRedOrGreen(methane, methaneStorage, 'methane');
+    Game.settings.turnRedOrGreen(titanium, titaniumStorage, 'titanium');
+    Game.settings.turnRedOrGreen(gold, goldStorage, 'gold');
+    Game.settings.turnRedOrGreen(silver, silverStorage, 'silver');
+    Game.settings.turnRedOrGreen(silicon, siliconStorage, 'silicon');
+    Game.settings.turnRedOrGreen(lava, lavaStorage, 'lava');
+    Game.settings.turnRedOrGreen(hydrogen, hydrogenStorage, 'hydrogen');
+    Game.settings.turnRedOrGreen(helium, heliumStorage, 'helium');
+    Game.settings.turnRedOrGreen(ice, iceStorage, 'ice');
+    Game.settings.turnRedOrGreen(plasma, plasmaStorage, 'plasma');
+    Game.settings.turnRedOrGreen(meteorite, meteoriteStorage, 'meteorite');
+
+    Game.settings.turnRedOnNegative(energyps, 'energyps');
+    Game.settings.turnRedOnNegative(uraniumps, 'uraniumps');
+    Game.settings.turnRedOnNegative(oilps, 'oilps');
+    Game.settings.turnRedOnNegative(metalps, 'metalps');
+    Game.settings.turnRedOnNegative(gemps, 'gemps');
+    Game.settings.turnRedOnNegative(charcoalps, 'charcoalps');
+    Game.settings.turnRedOnNegative(woodps, 'woodps');
+    Game.settings.turnRedOnNegative(spaceMetalps, 'spaceMetalps');
+    Game.settings.turnRedOnNegative(methaneps, 'methaneps');
+    Game.settings.turnRedOnNegative(titaniumps, 'titaniumps');
+    Game.settings.turnRedOnNegative(goldps, 'goldps');
+    Game.settings.turnRedOnNegative(silverps, 'silverps');
+    Game.settings.turnRedOnNegative(siliconps, 'siliconps');
+    Game.settings.turnRedOnNegative(lavaps, 'lavaps');
+    Game.settings.turnRedOnNegative(hydrogenps, 'hydrogenps');
+    Game.settings.turnRedOnNegative(heliumps, 'heliumps');
+    Game.settings.turnRedOnNegative(iceps, 'iceps');
+    Game.settings.turnRedOnNegative(plasmaps, 'plasmaps');
+    Game.settings.turnRedOnNegative(meteoriteps, 'meteoriteps');
 
 	Game.settings.turnRed(wood, 2, "manualCharcoalCost");
 	Game.settings.turnRed(energy, 1000, "manualPlasmaEnergyCost");

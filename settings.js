@@ -22,9 +22,33 @@ Game.settings = (function(){
         return Game.utils.formatters[format](value.toFixed(digit || 0));
     };
 
+    instance.turnRedOnNegative = function(value, id) {
+        var element = $('#' + id);
+        if(element.length === 0) {
+            console.error("Element not found: " + id);
+            return;
+        }
+
+        if(value < 0){
+            element.addClass('red');
+            if(this.entries.boldEnabled === true){
+                element.addClass('bold');
+            } else {
+                element.removeClass('bold');
+            }
+
+            return true;
+        }
+        else{
+            element.removeClass('red');
+            return false;
+        }
+    };
+
     instance.turnRed = function(value, target, id) {
         var element = $('#' + id);
         if(element.length === 0) {
+            console.error("Element not found: " + id);
             return;
         }
 
@@ -38,6 +62,32 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+        }
+    };
+
+    instance.turnRedOrGreen = function(value, target, id) {
+        var element = $('#' + id);
+        if(element.length === 0) {
+            console.error("Element not found: " + id);
+            return;
+        }
+
+        if(value == 0){
+            element.addClass('red');
+            if(this.entries.boldEnabled === true){
+                element.addClass('bold');
+            } else {
+                element.removeClass('bold');
+            }
+        }
+        else{
+            element.removeClass('red');
+        }
+
+        if(value >= target) {
+            element.addClass('green');
+        } else {
+            element.removeClass('green');
         }
     };
 
