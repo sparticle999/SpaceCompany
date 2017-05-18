@@ -161,7 +161,7 @@ function refreshPerSec(delta){
 
     if(heaterToggled === true && plasma < plasmaStorage) {
 		var hydrogenCost = heater * 10;
-		var gain = heater * delta;
+		var gain = heater;
 		if(hydrogen + hydrogenps * delta >= hydrogenCost) {
 			hydrogenps -= hydrogenCost;
 			plasmaps += gain;
