@@ -28,6 +28,7 @@ v0.5.0 The Interstellar Update
 # Changelog:
 
 v0.5.0
+- Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Tier 2 Batteries
 - Energy Conversion Changes

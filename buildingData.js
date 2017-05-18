@@ -1121,8 +1121,8 @@ Game.buildingData = (function () {
 
     // Research
     instance.scienceT1 = $.extend({}, baseProducerBuilding, {
-        name: 'Laboratory',
-        desc: 'Build a laboratory of your very own to start producing science. Each one produces 0.1 science per second.',
+        name: 'Home Science Kit',
+        desc: 'Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.',
         resource: 'science',
         resourcePerSecond: {
             'science': 0.1
@@ -1135,8 +1135,8 @@ Game.buildingData = (function () {
     });
 
     instance.scienceT2 = $.extend({}, baseProducerBuilding, {
-        name: 'Laboratory T2',
-        desc: 'Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.',
+        name: 'High School Science',
+        desc: 'Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.',
         resource: 'science',
         resourcePerSecond: {
             'science': 1
@@ -1149,8 +1149,8 @@ Game.buildingData = (function () {
     });
 
     instance.scienceT3 = $.extend({}, baseProducerBuilding, {
-        name: 'Laboratory T3',
-        desc: 'Build a more effective version of the old laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 10 science per second',
+        name: 'University Laboratory',
+        desc: 'Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.',
         resource: 'science',
         resourcePerSecond: {
             'science': 10
