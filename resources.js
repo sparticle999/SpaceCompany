@@ -44,6 +44,27 @@ function checkStorages(){
 
 function gainResources(delta){
 
+    if(chemicalPlantToggled === true) {
+        var oilUse = (chemicalPlant * 20) * delta;
+        var coalUse = (chemicalPlant * 20) * delta;
+        if(oil >= oilUse && charcoal >= coalUse) {
+            oil -= oilUse;
+            charcoal -= coalUse;
+            rocketFuel += (chemicalPlant / 5) * delta;
+        }
+    }
+
+    if(charcoalToggled){
+        var woodUse = woodInput * delta;
+        var gain = charcoalps * delta;
+        gain = Math.min(gain, charcoalStorage - charcoal);
+
+        if(wood >= woodUse && gain > 0) {
+            wood -= woodUse;
+            charcoal = Math.min(charcoalStorage, charcoal + gain);
+        }
+    }
+
 	energy = Math.min(getMaxEnergy(), energy + energyps * delta);
     uranium = Math.min(uraniumStorage, uranium + uraniumps * delta);
 	metal = Math.min(metalStorage, metal + metalps * delta);
@@ -61,27 +82,6 @@ function gainResources(delta){
     ice = Math.min(iceStorage, ice + iceps * delta);
     oil = Math.min(oilStorage, oil + oilps * delta);
     wood = Math.min(woodStorage, wood + woodps * delta);
-
-	if(chemicalPlantToggled === true) {
-		var oilUse = (chemicalPlant * 20) * delta;
-		var coalUse = (chemicalPlant * 20) * delta;
-		if(oil >= oilUse && charcoal >= coalUse) {
-			oil -= oilUse;
-			charcoal -= coalUse;
-			rocketFuel += (chemicalPlant / 5) * delta;
-		}
-	}
-
-	if(charcoalToggled){
-		var woodUse = woodInput * delta;
-        var gain = charcoalps * delta;
-        gain = Math.min(gain, charcoalStorage - charcoal);
-
-		if(wood >= woodUse && gain > 0) {
-			wood -= woodUse;
-			charcoal = Math.min(charcoalStorage, charcoal + gain);
-		}
-	}
 }
 
 function updateDisplayAfterGainResource() {
