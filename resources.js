@@ -42,167 +42,97 @@ function checkStorages(){
 	}
 }
 
-function gainResources(){
-	if(energy + energyps/10 <= getMaxEnergy()){
-		energy += energyps/10;
-	}
-	else{
-		energy = getMaxEnergy();
-	}
-	if(uranium + uraniumps/10 < uraniumStorage){
-		uranium += uraniumps/10;
-	}
-	else{
-		uranium = uraniumStorage;
-	}
-	if(metal + metalps/10 < metalStorage){
-		metal += metalps/10;
-	}
-	else{
-		metal = metalStorage;
-	}
-	if(gem + gemps/10 < gemStorage){
-		gem += gemps/10;
-	}
-	else{
-		gem = gemStorage;
-	}
-	science += scienceps/10;
-	science = Math.round(science*100)/100;
-	if(chemicalPlantToggled === true){
-		if(oil >= chemicalPlant*20/10 && charcoal >= chemicalPlant*20/10){
-			oil -= chemicalPlant*20/10;
-			charcoal -= chemicalPlant*20/10;
-			rocketFuel += chemicalPlant/5/10;
+function gainResources(delta){
+
+	energy = Math.min(getMaxEnergy(), energy + energyps * delta);
+    uranium = Math.min(uraniumStorage, uranium + uraniumps * delta);
+	metal = Math.min(metalStorage, metal + metalps * delta);
+    gem = Math.min(gemStorage, gem + gemps * delta);
+	science += scienceps * delta;
+    spaceMetal = Math.min(spaceMetalStorage, spaceMetal + spaceMetalps * delta);
+    methane = Math.min(methaneStorage, methane + methaneps * delta);
+    titanium = Math.min(titaniumStorage, titanium + titaniumps * delta);
+    gold = Math.min(goldStorage, gold + goldps * delta);
+    silver = Math.min(silverStorage, silver + silverps * delta);
+    silicon = Math.min(siliconStorage, silicon + siliconps * delta);
+    lava = Math.min(lavaStorage, lava + lavaps * delta);
+    hydrogen = Math.min(hydrogenStorage, hydrogen + hydrogenps * delta);
+    helium = Math.min(heliumStorage, helium + heliumps * delta);
+    ice = Math.min(iceStorage, ice + iceps * delta);
+    oil = Math.min(oilStorage, oil + oilps * delta);
+    wood = Math.min(woodStorage, wood + woodps * delta);
+
+	if(chemicalPlantToggled === true) {
+		var oilUse = (chemicalPlant * 20) * delta;
+		var coalUse = (chemicalPlant * 20) * delta;
+		if(oil >= oilUse && charcoal >= coalUse) {
+			oil -= oilUse;
+			charcoal -= coalUse;
+			rocketFuel += (chemicalPlant / 5) * delta;
 		}
-	}
-	if(spaceMetal + spaceMetalps/10 < spaceMetalStorage){
-		spaceMetal += spaceMetalps/10;
-	}
-	else{
-		spaceMetal = spaceMetalStorage;
-	}
-	if(methane + methaneps/10 < methaneStorage){
-		methane += methaneps/10;
-	}
-	else{
-		methane = methaneStorage;
-	}
-	if(titanium + titaniumps/10 < titaniumStorage){
-		titanium += titaniumps/10;
-	}
-	else{
-		titanium = titaniumStorage;
-	}
-	if(gold + goldps/10 < goldStorage){
-		gold += goldps/10;
-	}
-	else{
-		gold = goldStorage;
-	}
-	if(silver + silverps/10 < silverStorage){
-		silver += silverps/10;
-	}
-	else{
-		silver = silverStorage;
-	}
-	if(silicon + siliconps/10 < siliconStorage){
-		silicon += siliconps/10;
-	}
-	else{
-		silicon = siliconStorage;
-	}
-	if(lava + lavaps/10 < lavaStorage){
-		lava += lavaps/10;
-	}
-	else{
-		lava = lavaStorage;
-	}
-	if(hydrogen + hydrogenps/10 < hydrogenStorage){
-		hydrogen += hydrogenps/10;
-	}
-	else{
-		hydrogen = hydrogenStorage;
-	}
-	if(hydrogen >= hydrogenStorage){
-		document.getElementById("hydrogen").className = "green";
-	}
-	if(helium + heliumps/10 < heliumStorage){
-		helium += heliumps/10;
-	}
-	else{
-		helium = heliumStorage;
-	}
-	if(helium >= heliumStorage){
-		document.getElementById("helium").className = "green";
-	}
-	if(ice + iceps/10 < iceStorage){
-		ice += iceps/10;
-	}
-	else{
-		ice = iceStorage;
-	}
-	if(oil + oilps/10 < oilStorage){
-		oil += oilps/10;
-	}
-	else{
-		oil = oilStorage;
 	}
 
-	
-	document.getElementById("woodps").innerHTML = Game.settings.format(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
-	if(charcoalToggled === true){
-		if(chemicalPlantToggled === true){
-			document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine - (chemicalPlant*20));
-		}
-		else{
-			document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine);
-		}
-	}
-	else{
-		if(chemicalPlantToggled === true){
-			document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine - (chemicalPlant*20));
-		}
-		else{
-			document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine);
-		}
-	}
-	
 	if(charcoalToggled){
-		if(charcoal + charcoalps/10 < charcoalStorage){
-			if(wood >= woodInput/10){
-				charcoal += charcoalps/10;
-	 			wood -= woodInput/10;
-			}
-		}
-		else{
-			charcoal = charcoalStorage;
-			document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
-			document.getElementById("charcoal").className = "green";
+		var woodUse = woodInput * delta;
+        var gain = charcoalps * delta;
+        gain = Math.min(gain, charcoalStorage - charcoal);
+
+		if(wood >= woodUse && gain > 0) {
+			wood -= woodUse;
+			charcoal = Math.min(charcoalStorage, charcoal + gain);
 		}
 	}
-	else{
-		document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
-	}
-	
-	if(wood + woodps/10 < woodStorage){
-		wood += woodps/10;
-	}
-	else{
-		wood = woodStorage;
-	}
-	if(methane >= methaneStorage){
-		document.getElementById("methane").className = "green";
-	}
-	if(uranium >= uraniumStorage){
-		document.getElementById("uranium").className = "green";
-	}
-	if(lava >= lavaStorage){
-		document.getElementById("lava").className = "green";
-	}
-	if(meteorite >= meteoriteStorage){
-		document.getElementById("meteorite").className = "green";
-	}
+}
+
+function updateDisplayAfterGainResource() {
+    if(hydrogen >= hydrogenStorage){
+        document.getElementById("hydrogen").className = "green";
+    }
+
+    if(helium >= heliumStorage){
+        document.getElementById("helium").className = "green";
+    }
+
+    document.getElementById("woodps").innerHTML = Game.settings.format(woodps - (woodburner*2) - (furnace*furnaceWoodInput) - (kiln*56) - (fryer*148));
+    if(charcoalToggled === true){
+        if(chemicalPlantToggled === true){
+            document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine - (chemicalPlant*20));
+        }
+        else{
+            document.getElementById("charcoalps").innerHTML = Game.settings.format(charcoalps - charcoalEngine);
+        }
+    }
+    else{
+        if(chemicalPlantToggled === true){
+            document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine - (chemicalPlant*20));
+        }
+        else{
+            document.getElementById("charcoalps").innerHTML = Game.settings.format(0 - charcoalEngine);
+        }
+    }
+
+    if(charcoalToggled){
+        if(charcoal + charcoalps/10 >= charcoalStorage){
+            document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
+            document.getElementById("charcoal").className = "green";
+        }
+    }
+    else{
+        document.getElementById("woodps").innerHTML = Game.settings.format(woodps);
+    }
+
+    if(methane >= methaneStorage){
+        document.getElementById("methane").className = "green";
+    }
+    if(uranium >= uraniumStorage){
+        document.getElementById("uranium").className = "green";
+    }
+    if(lava >= lavaStorage){
+        document.getElementById("lava").className = "green";
+    }
+    if(meteorite >= meteoriteStorage){
+        document.getElementById("meteorite").className = "green";
+    }
 }
 
 function getMaxEnergy() {

@@ -8,7 +8,8 @@ var Game = (function() {
         uiComponents: [],
         logoAnimating: false,
         timeSinceAutoSave: 0,
-        activeNotifications: {}
+        activeNotifications: {},
+        lastFixedUpdate: new Date().getTime()
     };
 
     instance.update_frame = function(time) {
@@ -38,10 +39,22 @@ var Game = (function() {
         delete this.intervals[name];
     };
 
+    instance.fixedUpdate = function() {
+        var currentTime = new Date().getTime();
+        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
+
+        gainResources(delta);
+
+        Game.lastFixedUpdate = currentTime;
+    };
+
     instance.fastUpdate = function(self, delta) {
         refresh();
         refreshWonderBars();
         checkRedCost();
+
+        refreshPerSec();
+        updateDisplayAfterGainResource();
 
         self.resources.update(delta);
         self.buildings.update(delta);
@@ -49,6 +62,10 @@ var Game = (function() {
         self.settings.update(delta);
 
         self.updateAutoSave(delta);
+
+        if(delta > 1) {
+            console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
+        }
     };
 
     instance.slowUpdate = function(self, delta) {
@@ -176,7 +193,7 @@ var Game = (function() {
         self.createInterval("UI Update", self.uiUpdate, 10);
 
         // Do this in a setInterval so it gets called even when the window is inactive
-        window.setInterval(function(){ refreshPerSec(); gainResources(); },100);
+        window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
     };
@@ -247,8 +264,8 @@ var Game = (function() {
         });
 
         this.activeNotifications.storage.get().click(function() {
-            this.activeNotifications.storage.remove();
-            this.activeNotifications.storage = undefined;
+            Game.activeNotifications.storage.remove();
+            Game.activeNotifications.storage = undefined;
         });
     };
 
