@@ -101,28 +101,28 @@ function refreshPerSec(delta){
 	energyps = energyOutput - energyUse;
 
 	var deltaEnergyDiff = (energyOutput * delta) - (energyUse * delta);
-	if(deltaEnergyDiff < 0 && energy < deltaEnergyDiff) {
+	if(deltaEnergyDiff < 0 && (energy <= 0 || energy < deltaEnergyDiff)) {
         energyLow = true;
 	} else {
         energyLow = false;
 	}
 
 	// Now we calculate the base per second
-    uraniumps = grinder - (nuclearStation * 7);
+    uraniumps = grinder;
     oilps = pump;
     metalps = miner;
     gemps = gemMiner;
     charcoalps = 0;
     woodps = woodcutter;
     spaceMetalps = moonWorker;
-    methaneps = vacuum - (methaneStation * 6);
+    methaneps = vacuum ;
     titaniumps = explorer;
     goldps = droid;
     silverps = scout;
     siliconps = blowtorch;
-    lavaps = crucible - (magmatic * 11);
-    hydrogenps = collector - (fusionReactor * 10);
-    heliumps = drone - (fusionReactor * 10);
+    lavaps = crucible;
+    hydrogenps = collector;
+    heliumps = drone;
     iceps = icePick;
     plasmaps = 0;
     meteoriteps = 0;
@@ -136,15 +136,15 @@ function refreshPerSec(delta){
         gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
         woodps +=  (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
         spaceMetalps +=  (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
-        methaneps +=  (suctionExcavator*8) + (spaceCow*37) + (vent*149);
+        methaneps +=  (suctionExcavator*8) + (spaceCow*37) + (vent*149) - (methaneStation * 6);
         titaniumps +=  (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
         goldps +=  (destroyer*8) + (deathStar*51) + (actuator*211);
         silverps +=  (spaceLaser*13) + (bertha*53) + (cannon*208);
         siliconps +=  (scorcher*9) + (annihilator*40) + (desert*157);
-        uraniumps +=  (cubic*9) +(enricher*61) + (recycler*235);
-        lavaps +=  (extractor*7) + (extruder*43) + (veluptuator*187);
-        hydrogenps +=  (magnet*5) + (eCell*28) + (hindenburg*113);
-        heliumps +=  (tanker*11) + (compressor*57) + (skimmer*232);
+        uraniumps +=  (cubic*9) +(enricher*61) + (recycler*235) - (nuclearStation * 7);
+        lavaps +=  (extractor*7) + (extruder*43) + (veluptuator*187) - (magmatic * 11);
+        hydrogenps +=  (magnet*5) + (eCell*28) + (hindenburg*113) - (fusionReactor * 10);
+        heliumps +=  (tanker*11) + (compressor*57) + (skimmer*232) - (fusionReactor * 10);
         iceps +=  (iceDrill*9) + (freezer*65) + (mrFreeze*278);
 	}
 
