@@ -20,7 +20,7 @@ v0.5.0 The Interstellar Update
 - Space Elevator
 - Second Floor of Wonder Station
 - Unlock Technologies such as reduce the exponental increase of costs
-- Third Floor of Wonder Station
+- Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Plasma Storage Units (PSUs)
 - Change Lab Names
@@ -28,6 +28,7 @@ v0.5.0 The Interstellar Update
 # Changelog:
 
 v0.5.0
+- Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Tier 2 Batteries
 - Energy Conversion Changes
