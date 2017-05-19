@@ -44,26 +44,26 @@ function checkStorages(){
 
 function gainResources(delta){
 
-    charcoal = Math.min(charcoalStorage, charcoal + charcoalps * delta);
-	energy = Math.min(getMaxEnergy(), energy + energyps * delta);
-    uranium = Math.min(uraniumStorage, uranium + uraniumps * delta);
-	metal = Math.min(metalStorage, metal + metalps * delta);
-    gem = Math.min(gemStorage, gem + gemps * delta);
+    charcoal = (charcoal + charcoalps * delta).clamp(0, charcoalStorage);
+	energy = (energy + energyps * delta).clamp(0, getMaxEnergy());
+    uranium = (uranium + uraniumps * delta).clamp(0, uraniumStorage);
+	metal = (metal + metalps * delta).clamp(0, metalStorage);
+    gem = (gem + gemps * delta).clamp(0, gemStorage);
 	science += scienceps * delta;
-    spaceMetal = Math.min(spaceMetalStorage, spaceMetal + spaceMetalps * delta);
-    methane = Math.min(methaneStorage, methane + methaneps * delta);
-    titanium = Math.min(titaniumStorage, titanium + titaniumps * delta);
-    gold = Math.min(goldStorage, gold + goldps * delta);
-    silver = Math.min(silverStorage, silver + silverps * delta);
-    silicon = Math.min(siliconStorage, silicon + siliconps * delta);
-    lava = Math.min(lavaStorage, lava + lavaps * delta);
-    hydrogen = Math.min(hydrogenStorage, hydrogen + hydrogenps * delta);
-    helium = Math.min(heliumStorage, helium + heliumps * delta);
-    ice = Math.min(iceStorage, ice + iceps * delta);
-    oil = Math.min(oilStorage, oil + oilps * delta);
-    wood = Math.min(woodStorage, wood + woodps * delta);
-    meteorite = Math.min(meteoriteStorage, meteorite + meteoriteps * delta);
-    plasma = Math.min(100000, plasma + plasmaps * delta);
+    spaceMetal = (spaceMetal + spaceMetalps * delta).clamp(0, spaceMetalStorage);
+    methane = (methane + methaneps * delta).clamp(0, methaneStorage);
+    titanium = (titanium + titaniumps * delta).clamp(0, titaniumStorage);
+    gold = (gold + goldps * delta).clamp(0, goldStorage);
+    silver = (silver + silverps * delta).clamp(0, silverStorage);
+    silicon = (silicon + siliconps * delta).clamp(0, siliconStorage);
+    lava = (lava + lavaps * delta).clamp(0, lavaStorage);
+    hydrogen = (hydrogen + hydrogenps * delta).clamp(0, hydrogenStorage);
+    helium = (helium + heliumps * delta).clamp(0, heliumStorage);
+    ice = (ice + iceps * delta).clamp(0, iceStorage);
+    oil = (oil + oilps * delta).clamp(0, oilStorage);
+    wood = (wood + woodps * delta).clamp(0, woodStorage);
+    meteorite = (meteorite + meteoriteps * delta).clamp(0, meteoriteStorage);
+    plasma = (plasma + plasmaps * delta).clamp(0, 100000);
     rocketFuel += rocketFuelps * delta;
 }
 
