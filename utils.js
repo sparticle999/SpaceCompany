@@ -33,10 +33,19 @@ Game.utils = (function(){
 
     var instance = {};
 
+    instance.decimalSeparator = function() {
+        var n = 1.1;
+        n = n.toLocaleString().substring(1, 2);
+        return n;
+    }();
+
     instance.formatEveryThirdPower = function(notations)
     {
         return function (value)
         {
+            // ensure we have a number
+            var value = value * 1;
+
             var base = 0;
             var notationValue = '';
             if (value >= 1000000)
@@ -58,13 +67,18 @@ Game.utils = (function(){
 
             if(notationValue !== '') {
                 var numberCount = valueString.replace(/[^0-9]/g, "").length;
-                while (numberCount < 4) {
-                    valueString = valueString + "0";
-                    numberCount++;
-                }
+                if(numberCount === 1) {
+                    // Special case for single digit, otherwise we do have the decimal
+                    valueString = valueString + Game.utils.decimalSeparator + '000';
+                } else {
+                    while (numberCount < 4) {
+                        valueString = valueString + "0";
+                        numberCount++;
+                    }
 
-                if (numberCount > 4) {
-                    valueString = valueString.slice(0, 4 - numberCount)
+                    if (numberCount > 4) {
+                        valueString = valueString.slice(0, 4 - numberCount)
+                    }
                 }
             }
 
