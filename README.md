@@ -31,6 +31,7 @@ v0.5.0
 - Added Notifications
 - Game Now Works in an Inactive Tab
 - Tier 2 Batteries
+- Tier 2 Rocket Fuel
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Changed Laboratory Names and Descriptions

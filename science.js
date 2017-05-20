@@ -195,7 +195,9 @@ function unlockRocketFuelT2(){
 	if(science >= 1000){
 		science -= 1000;
 		document.getElementById("unlockRocketFuelT2").className = "hidden";
+		document.getElementById("rocketFuelT2").className = "";
 		researched.push("unlockRocketFuelT2");
+		resourcesUnlocked.push("rocketFuelT2");
         Game.statistics.add('techResearched');
 		newUnlock("resources");
 	}
