@@ -156,11 +156,15 @@ function legacySave(data) {
 		labT3MetalCost: labT3MetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
+		rocketFuelToggled: rocketFuelToggled,
 		chemicalPlant: chemicalPlant,
 		chemicalPlantMetalCost: chemicalPlantMetalCost,
 		chemicalPlantGemCost: chemicalPlantGemCost,
 		chemicalPlantOilCost: chemicalPlantOilCost,
-		rocketFuelToggled: rocketFuelToggled,
+		oxidisation: oxidisation,
+		oxidisationMetalCost: oxidisationMetalCost,
+		oxidisationGemCost: oxidisationGemCost,
+		oxidisationOilCost: oxidisationOilCost,
 		spaceMetal: spaceMetal,
 		spaceMetalStorage: spaceMetalStorage,
 		spaceMetalNextStorage: spaceMetalNextStorage,
@@ -553,11 +557,15 @@ function legacyLoad(savegame){
 		if(typeof savegame.labT3MetalCost !== "undefined") labT3MetalCost = savegame.labT3MetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
+		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
 		if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
 		if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
 		if(typeof savegame.chemicalPlantOilCost !== "undefined") chemicalPlantOilCost = savegame.chemicalPlantOilCost;
-		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
+		if(typeof savegame.oxidisation !== "undefined") oxidisation = savegame.oxidisation;
+		if(typeof savegame.oxidisationMetalCost !== "undefined") oxidisationMetalCost = savegame.oxidisationMetalCost;
+		if(typeof savegame.oxidisationGemCost !== "undefined") oxidisationGemCost = savegame.oxidisationGemCost;
+		if(typeof savegame.oxidisationOilCost !== "undefined") oxidisationOilCost = savegame.oxidisationOilCost;
 		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
 		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
 		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;
