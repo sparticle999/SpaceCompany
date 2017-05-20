@@ -23,20 +23,22 @@ v0.5.0 The Interstellar Update
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Plasma Storage Units (PSUs)
-- Change Lab Names
 
 # Changelog:
 
 v0.5.0
 - Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
+- Game Now Works in an Inactive Tab
 - Tier 2 Batteries
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
+- Changed Laboratory Names and Descriptions
 
-- Recoded Charcoal Production
+- Reprogrammed Charcoal Production
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
+- Fixed Dyson Section Reset Costs
 
 v0.4.3
 - Completed Achievements
