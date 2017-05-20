@@ -18,6 +18,24 @@ function getChemicalPlant(){
 	}
 }
 
+function getOxidisation(){
+	if(metal >= oxidisationMetalCost && gem >= oxidisationGemCost && oil >= oxidisationOilCost){
+		metal -= oxidisationMetalCost;
+		gem -= oxidisationGemCost;
+		oil -= oxidisationOilCost;
+		oxidisation += 1;
+		oxidisationOilCost = Math.floor(6800 * Math.pow(1.1,oxidisation));
+		oxidisationGemCost = Math.floor(8300 * Math.pow(1.1,oxidisation));
+		oxidisationMetalCost = Math.floor(12000 * Math.pow(1.1,oxidisation));
+		document.getElementById("oxidisation").innerHTML = oxidisation;
+		document.getElementById("oxidisationMetalCost").innerHTML = Game.settings.format(oxidisationMetalCost);
+		document.getElementById("oxidisationGemCost").innerHTML = Game.settings.format(oxidisationGemCost);
+		document.getElementById("oxidisationOilCost").innerHTML = Game.settings.format(oxidisationOilCost);
+		refresh();
+		refreshPerSec();
+	}
+}
+
 function getRocket(){
 	if(metal >= 1200 && gem >= 900 && oil >= 1000){
 		metal -= 1200;

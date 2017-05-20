@@ -160,7 +160,7 @@ function legacySave(data) {
 		chemicalPlantMetalCost: chemicalPlantMetalCost,
 		chemicalPlantGemCost: chemicalPlantGemCost,
 		chemicalPlantOilCost: chemicalPlantOilCost,
-		chemicalPlantToggled: chemicalPlantToggled,
+		rocketFuelToggled: rocketFuelToggled,
 		spaceMetal: spaceMetal,
 		spaceMetalStorage: spaceMetalStorage,
 		spaceMetalNextStorage: spaceMetalNextStorage,
@@ -557,7 +557,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
 		if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
 		if(typeof savegame.chemicalPlantOilCost !== "undefined") chemicalPlantOilCost = savegame.chemicalPlantOilCost;
-		if(typeof savegame.chemicalPlantToggled !== "undefined") chemicalPlantToggled = savegame.chemicalPlantToggled;
+		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
 		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
 		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
 		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;

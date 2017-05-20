@@ -180,13 +180,24 @@ function unlockSolarSystem(){
 		document.getElementById("unlockSolarSystem").className = "hidden";
 		document.getElementById("solarSystemTab").className = "";
 		document.getElementById("unlockLabT2").className = "";
+		document.getElementById("unlockRocketFuelT2").className = "";
 		Game.statistics.add('tabsUnlocked');
 		tabsUnlocked.push("solarSystemTab");
-		available.push("unlockLabT2");
+		available.push("unlockLabT2", "unlockRocketFuelT2");
 		researched.push("unlockSolarSystem");
         Game.statistics.add('techResearched');
 		newUnlock("solarSystem");
 		Game.notifySuccess("New Tab!", "You've unlocked the Solar System Tab!");
+	}
+}
+
+function unlockRocketFuelT2(){
+	if(science >= 1000){
+		science -= 1000;
+		document.getElementById("unlockRocketFuelT2").className = "hidden";
+		researched.push("unlockRocketFuelT2");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
 	}
 }
 

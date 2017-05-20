@@ -2939,6 +2939,23 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockRocketFuelT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Oxidisation
+									</h3>
+									<span>
+										Oxidisation is a more efficient process of creating Rocket Fuel.
+										<br>
+										Costs <span id="unlockRocketFuelT2Cost">1000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockRocketFuelT2()" class="btn btn-default">Unlock Oxidisation</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="unlockLabT3" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3339,6 +3356,9 @@
 									</span>
 									<br>
 									<br>
+									<button onclick="toggleRocketFuel()" class="btn btn-default">Turn Rocket Fuel <span id="rocketFuelToggled">Off</span></button>
+									<br>
+									<br>
 								</td>
 							</tr>
 							<tr>
@@ -3358,7 +3378,27 @@
 									<br>
 									<br>
 									<button onclick="getChemicalPlant()" class="btn btn-default">Build Chemical Plant</button>
-									<button onclick="toggleChemicalPlant()" class="btn btn-default">Turn Chemical Plants <span id="chemicalPlantToggled">Off</span></button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="rocketFuelT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Oxidisation Chamber: <span id="oxidisation">0</span>
+									</h3>
+									<span>
+										Oxidisation Chambers make rocket fuel faster and more efficiently than chemical plants.
+										<br>
+										They use 100 Oil and 100 Charcoal each second.
+										<br>
+										They produce 1.5 Rocket Fuel per second.
+										<br>
+										Costs <span id="oxidisationMetalCost">12,000</span> Metal, <span id="oxidisationGemCost">8,300</span> Gems, <span id="oxidisationOilCost">6,800</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getOxidisation()" class="btn btn-default">Build Oxidisation Chamber</button>
 									<br>
 									<br>
 								</td>

@@ -164,13 +164,13 @@ function refreshPerSec(delta){
 		}
 	}
 
-    if(chemicalPlantToggled === true) {
-        var oilCost = chemicalPlant * 20;
-        var charcoalCost = chemicalPlant * 20;
+    if(rocketFuelToggled === true) {
+        var oilCost = (chemicalPlant*20) + (oxidisation*100);
+        var charcoalCost = (chemicalPlant*20) + (oxidisation*100);
         if(oil + oilps >= oilCost && charcoal + charcoalps >= charcoalCost) {
             oilps -= oilCost;
             charcoalps -= charcoalCost;
-            rocketFuelps += chemicalPlant / 5;
+            rocketFuelps += (chemicalPlant/5) + (oxidisation*1.5);
         }
     }
 
@@ -222,11 +222,11 @@ function refreshUI(){
 	else{
 		document.getElementById("charcoalToggled").innerHTML = "On";
 	}
-	if(chemicalPlantToggled === true){
-		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
+	if(rocketFuelToggled === true){
+		document.getElementById("rocketFuelToggled").innerHTML = "Off";
 	}
 	else{
-		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+		document.getElementById("rocketFuelToggled").innerHTML = "On";
 	}
 	if(meteoriteToggled === true){
 		document.getElementById("meteoriteToggled").innerHTML = "Off";
@@ -1780,6 +1780,12 @@ function refreshResearches(){
 				document.getElementById("unlockDestruction").className = "";
 				available.push("unlockDestruction");
 			}
+		}
+	}
+	if(contains(researched, "unlockSolarSystem")){
+		if(contains(available, "unlockRocketFuelT2") === false){
+			document.getElementById("unlockRocketFuelT2").className = "";
+			available.push("unlockRocketFuelT2");
 		}
 	}
 	if(contains(researched, "unlockSolarSystem")){

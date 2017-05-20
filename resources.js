@@ -540,14 +540,14 @@ function togglePlasmatic(){
 	}
 }
 
-function toggleChemicalPlant(){
-	if(chemicalPlantToggled === true){
-		chemicalPlantToggled = false;
-		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+function toggleRocketFuel(){
+	if(rocketFuelToggled === true){
+		rocketFuelToggled = false;
+		document.getElementById("rocketFuelToggled").innerHTML = "On";
 	}
 	else{
-		chemicalPlantToggled = true;
-		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
+		rocketFuelToggled = true;
+		document.getElementById("rocketFuelToggled").innerHTML = "Off";
 	}
 }
 
