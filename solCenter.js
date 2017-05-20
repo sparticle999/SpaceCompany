@@ -175,6 +175,9 @@ function buildSwarm(){
 }
 
 function buildSphere(){
+	if(sphere >= 1){
+		return;
+	}
 	if(dyson >= 250 && rocketFuel >= 1000000){
 		dyson -= 250;
 		rocketFuel -= 1000000;
