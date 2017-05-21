@@ -1481,44 +1481,44 @@ function refreshResources(){
 		document.getElementById(resourcesUnlocked[i]).className = "";
 	}
 	if(contains(resourcesUnlocked, "oilNav")){
-		document.getElementById("oilNav").className = "earth";
+		document.getElementById("oilNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "charcoalNav")){
-		document.getElementById("charcoalNav").className = "earth";
+		document.getElementById("charcoalNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "siliconNav")){
-		document.getElementById("siliconNav").className = "earth";
+		document.getElementById("siliconNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet";
+		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "methaneNav")){
-		document.getElementById("methaneNav").className = "innerPlanet";
+		document.getElementById("methaneNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "titaniumNav")){
-		document.getElementById("titaniumNav").className = "innerPlanet";
+		document.getElementById("titaniumNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "goldNav")){
-		document.getElementById("goldNav").className = "innerPlanet";
+		document.getElementById("goldNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "silverNav")){
-		document.getElementById("silverNav").className = "innerPlanet";
+		document.getElementById("silverNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "hydrogenNav")){
-		document.getElementById("hydrogenNav").className = "outerPlanet";
+		document.getElementById("hydrogenNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "heliumNav")){
-		document.getElementById("heliumNav").className = "outerPlanet";
+		document.getElementById("heliumNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "iceNav")){
-		document.getElementById("iceNav").className = "outerPlanet";
+		document.getElementById("iceNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "meteoriteNav")){
-		document.getElementById("meteoriteNav").className = "outerPlanet";
+		document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
-		document.getElementById("wonderFloor2Nav").className = "";
-		document.getElementById("portalRoomNav").className = "";
+		document.getElementById("wonderFloor2Nav").className = "sideTab";
+		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
 	for(var i=0; i<noBorder.length; i++){
@@ -1536,7 +1536,7 @@ function refreshResources(){
 		unlockTier4();
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet";
+		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
 	}
 }
 
@@ -1669,27 +1669,28 @@ function refreshTabs(){
 	for(var i=0; i<tabsUnlocked.length; i++){
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}
+ 	document.getElementById("rocketFuelNav").className = "sideTab";
  	if(rocketLaunched === true){
- 		document.getElementById("spaceRocket").className = "hidden";
-  		document.getElementById("collapseInner").className ="collapseInner";
-		document.getElementById("moon").className = "inner";
-		document.getElementById("mercury").className = "inner";
-		document.getElementById("venus").className = "inner";
-		document.getElementById("mars").className = "inner";
-		document.getElementById("asteroidBelt").className = "inner";
+ 		document.getElementById("spaceRocket").className = "sideTab hidden";
+  		document.getElementById("collapseInner").className ="collapseInner sideTab";
+		document.getElementById("moon").className = "inner sideTab";
+		document.getElementById("mercury").className = "inner sideTab";
+		document.getElementById("venus").className = "inner sideTab";
+		document.getElementById("mars").className = "inner sideTab";
+		document.getElementById("asteroidBelt").className = "inner sideTab";
  	}
  	if(contains(explored, "asteroidBelt")){
- 		document.getElementById("wonderStation").className = "inner";
- 		document.getElementById("collapseOuter").className ="collapseOuter";
- 		document.getElementById("jupiter").className = "outer";
- 		document.getElementById("saturn").className = "outer";
- 		document.getElementById("uranus").className = "outer";
- 		document.getElementById("neptune").className = "outer";
- 		document.getElementById("pluto").className = "outer";
- 		document.getElementById("kuiperBelt").className = "outer";
+ 		document.getElementById("wonderStation").className = "inner sideTab";
+ 		document.getElementById("collapseOuter").className ="collapseOuter sideTab";
+ 		document.getElementById("jupiter").className = "outer sideTab";
+ 		document.getElementById("saturn").className = "outer sideTab";
+ 		document.getElementById("uranus").className = "outer sideTab";
+ 		document.getElementById("neptune").className = "outer sideTab";
+ 		document.getElementById("pluto").className = "outer sideTab";
+ 		document.getElementById("kuiperBelt").className = "outer sideTab";
  	}
  	if(contains(explored, "kuiperBelt")){
- 		document.getElementById("solCenter").className = "outer";
+ 		document.getElementById("solCenter").className = "outer sideTab";
  	}
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
@@ -1701,12 +1702,12 @@ function refreshTabs(){
 $('.collapseEarth').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth";
+        	document.getElementsByClassName("earth")[i].className = "earth sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth hidden";
+        	document.getElementsByClassName("earth")[i].className = "earth sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1715,12 +1716,12 @@ $('.collapseEarth').click(function(){
 $('.collapseInnerPlanet').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet";
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet hidden";
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1729,12 +1730,12 @@ $('.collapseInnerPlanet').click(function(){
 $('.collapseOuterPlanet').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet";
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet hidden";
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1743,12 +1744,12 @@ $('.collapseOuterPlanet').click(function(){
 $('.collapseInner').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner";
+        	document.getElementsByClassName("inner")[i].className = "inner sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner hidden";
+        	document.getElementsByClassName("inner")[i].className = "inner sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1757,12 +1758,12 @@ $('.collapseInner').click(function(){
 $('.collapseOuter').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer";
+        	document.getElementsByClassName("outer")[i].className = "outer sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer hidden";
+        	document.getElementsByClassName("outer")[i].className = "outer sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
