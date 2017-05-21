@@ -199,7 +199,7 @@ function unlockRocketFuelT2(){
 		researched.push("unlockRocketFuelT2");
 		resourcesUnlocked.push("rocketFuelT2");
         Game.statistics.add('techResearched');
-		newUnlock("resources");
+		newUnlock("solarSystem");
 	}
 }
 

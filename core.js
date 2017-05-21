@@ -1275,27 +1275,10 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
 	Game.settings.turnRed(silicon, desertSiliconCost, "desertSiliconCost");
 	Game.settings.turnRed(meteorite, desertMeteoriteCost, "desertMeteoriteCost");
-	
-	if(wood < labWoodCost){
-		document.getElementById("labWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("labWoodCost").className = "";
-	}
-	
-	if(gem < labGemCost){
-		document.getElementById("labGemCost").className = "red";
-	}
-	else{
-		document.getElementById("labGemCost").className = "";
-	}
-	
-	if(metal < labMetalCost){
-		document.getElementById("labMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("labMetalCost").className = "";
-	}
+
+	Game.settings.turnRed(metal, labMetalCost, "labMetalCost");
+	Game.settings.turnRed(gem, labGemCost, "labGemCost");
+	Game.settings.turnRed(wood, labWoodCost, "labWoodCost");
 
 	Game.settings.turnRed(metal, labT2MetalCost, "labT2MetalCost");
 	Game.settings.turnRed(gem, labT2GemCost, "labT2GemCost");
@@ -1305,64 +1288,14 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, labT3GemCost, "labT3GemCost");
 	Game.settings.turnRed(wood, labT3WoodCost, "labT3WoodCost");
 
-	if(science < 5){
-		document.getElementById("unlockStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockStorageCost").className = "";
-	}
-
-	if(science < 20){
-		document.getElementById("unlockBasicEnergyCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockBasicEnergyCost").className = "";
-	}
-
-	if(science < 30){
-		document.getElementById("unlockOilCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockOilCost").className = "";
-	}
-
-	if(science < 30){
-		document.getElementById("unlockOilCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockOilCost").className = "";
-	}
-
-	if(science < 50){
-		document.getElementById("unlockSolarCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockSolarCost").className = "";
-	}
-
-	if(science < 100){
-		document.getElementById("unlockMachinesCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockMachinesCost").className = "";
-	}
-
+	Game.settings.turnRed(science, 5, "unlockStorageCost");
+	Game.settings.turnRed(science, 20, "unlockBasicEnergyCost");
+	Game.settings.turnRed(science, 30, "unlockOilCost");
+	Game.settings.turnRed(science, 50, "unlockSolarCost");
+	Game.settings.turnRed(science, 100, "unlockMachinesCost");
 	Game.settings.turnRed(science, 500, "unlockDestructionCost");
-
-	if(science < 300){
-		document.getElementById("upgradeResourceTechCost").className = "red";
-	}
-	else{
-		document.getElementById("upgradeResourceTechCost").className = "";
-	}
-
-	if(science < 500){
-		document.getElementById("unlockSolarSystemCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockSolarSystemCost").className = "";
-	}
-
+	Game.settings.turnRed(science, 300, "upgradeResourceTechCost");
+	Game.settings.turnRed(science, 500, "unlockSolarSystemCost");
 	Game.settings.turnRed(science, 500, "unlockLabT2Cost");
 	Game.settings.turnRed(science, 1000, "upgradeEngineTechCost");
 	Game.settings.turnRed(science, 3000, "unlockLabT3Cost");
@@ -1378,154 +1311,36 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
 
-	if(metal < 1200){
-		document.getElementById("rocketMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketMetalCost").className = "";
-	}
+	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
+	Game.settings.turnRed(gem, 900, "rocketGemCost");
+	Game.settings.turnRed(oil, 1000, "rocketOilCost");
 
-	if(gem < 900){
-		document.getElementById("rocketGemCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketGemCost").className = "";
-	}
+	Game.settings.turnRed(metal, chemicalPlantMetalCost, "chemicalPlantMetalCost");
+	Game.settings.turnRed(gem, chemicalPlantGemCost, "chemicalPlantGemCost");
+	Game.settings.turnRed(oil, chemicalPlantOilCost, "chemicalPlantOilCost");
 
-	if(oil < 1000){
-		document.getElementById("rocketOilCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketOilCost").className = "";
-	}
+	Game.settings.turnRed(metal, oxidisationMetalCost, "oxidisationMetalCost");
+	Game.settings.turnRed(gem, oxidisationGemCost, "oxidisationGemCost");
+	Game.settings.turnRed(oil, oxidisationOilCost, "oxidisationOilCost");
 
-	if(metal < chemicalPlantMetalCost){
-		document.getElementById("chemicalPlantMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantMetalCost").className = "";
-	}
-	
-	if(gem < chemicalPlantGemCost){
-		document.getElementById("chemicalPlantGemCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantGemCost").className = "";
-	}
-	
-	if(oil < chemicalPlantOilCost){
-		document.getElementById("chemicalPlantOilCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantOilCost").className = "";
-	}
-	
-	if(rocketFuel < 20){
-		document.getElementById("moonRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("moonRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 50){
-		document.getElementById("venusRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("venusRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 80){
-		document.getElementById("marsRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("marsRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 200){
-		document.getElementById("asteroidBeltRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("asteroidBeltRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 500){
-		document.getElementById("wonderStationRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("wonderStationRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 1000){
-		document.getElementById("jupiterRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("jupiterRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 2000){
-		document.getElementById("saturnRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("saturnRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 5000){
-		document.getElementById("plutoRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("plutoRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 6000){
-		document.getElementById("kuiperBeltRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("kuiperBeltRocketFuelCost").className = "";
-	}
-
+	Game.settings.turnRed(rocketFuel, 20, "moonRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 50, "venusRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 80, "marsRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 200, "asteroidBeltRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 500, "wonderStationRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 1000, "jupiterRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 2000, "saturnRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 5000, "plutoRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
 
-	if(titanium < grinderTitaniumCost){
-		document.getElementById("grinderTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderTitaniumCost").className = "";
-	}
-	
-	if(spaceMetal < grinderSpaceMetalCost){
-		document.getElementById("grinderSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderSpaceMetalCost").className = "";
-	}
-	
-	if(gold < grinderGoldCost){
-		document.getElementById("grinderGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderGoldCost").className = "";
-	}
-	
-	if(uranium < cubicUraniumCost){
-		document.getElementById("cubicUraniumCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicUraniumCost").className = "";
-	}
-	
-	if(spaceMetal < cubicSpaceMetalCost){
-		document.getElementById("cubicSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicSpaceMetalCost").className = "";
-	}
-	
-	if(oil < cubicOilCost){
-		document.getElementById("cubicOilCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicOilCost").className = "";
-	}
+	Game.settings.turnRed(spaceMetal, grinderSpaceMetalCost, "grinderSpaceMetalCost");
+	Game.settings.turnRed(titanium, grinderTitaniumCost, "grinderTitaniumCost");
+	Game.settings.turnRed(gold, grinderGoldCost, "grinderGoldCost");
+
+	Game.settings.turnRed(spaceMetal, cubicSpaceMetalCost, "cubicSpaceMetalCost");
+	Game.settings.turnRed(uranium, cubicUraniumCost, "cubicUraniumCost");
+	Game.settings.turnRed(oil, cubicOilCost, "cubicOilCost");
 
 	Game.settings.turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
 	Game.settings.turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
@@ -1535,19 +1350,8 @@ function checkRedCost(){
 	Game.settings.turnRed(methane, recyclerMethaneCost, "recyclerMethaneCost");
 	Game.settings.turnRed(meteorite, recyclerMeteoriteCost, "recyclerMeteoriteCost");
 
-	if(gem < crucibleGemCost){
-		document.getElementById("crucibleGemCost").className = "red";
-	}
-	else{
-		document.getElementById("crucibleGemCost").className = "";
-	}
-	
-	if(spaceMetal < crucibleSpaceMetalCost){
-		document.getElementById("crucibleSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("crucibleSpaceMetalCost").className = "";
-	}
+	Game.settings.turnRed(spaceMetal, crucibleSpaceMetalCost, "crucibleSpaceMetalCost");
+	Game.settings.turnRed(gem, crucibleGemCost, "crucibleGemCost");
 	
 	Game.settings.turnRed(spaceMetal, extractorSpaceMetalCost, "extractorSpaceMetalCost");
 	Game.settings.turnRed(titanium, extractorTitaniumCost, "extractorTitaniumCost");
