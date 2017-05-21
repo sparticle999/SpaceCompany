@@ -17,6 +17,7 @@ v0.5.0 The Interstellar Update
 - Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
+- Machine Overview Tab
 - Space Elevator
 - Second Floor of Wonder Station
 - Unlock Technologies such as reduce the exponental increase of costs
@@ -32,14 +33,25 @@ v0.5.0
 - Game Now Works in an Inactive Tab
 - Tier 2 Batteries
 - Tier 2 Rocket Fuel
+- Sidebar Nav Compression
+- Options For Number Format
+
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
-- Changed Laboratory Names and Descriptions
-
 - Reprogrammed Charcoal Production
+- Changed Laboratory Names and Descriptions
+- Destruction of Rocket Fuel Machines
+- Changed Order of Achievements
+- Prevented Building Multiple Dyson Spheres
+- Made All Numbers >1000 4 Digits Long
+- Changed Ice T4 to use Wood
+- Added Days on Time Stats
+
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
 - Fixed Dyson Section Reset Costs
+- Fixed Cyborg UI Bug
+- Fixed Dyson Costs Resetting
 
 v0.4.3
 - Completed Achievements
