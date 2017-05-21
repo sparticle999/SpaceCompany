@@ -42,7 +42,7 @@ Game.constants = (function(){
 
     instance.enableNotifications = false;
     instance.enableDataDrivenResources = false;
-    instance.enableMachineTab = true;
+    instance.enableMachineTab = false;
 
     return instance;
 }());
