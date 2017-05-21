@@ -531,6 +531,10 @@ function refreshUI(){
 	document.getElementById("chemicalPlantMetalCost").innerHTML = Game.settings.format(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = Game.settings.format(chemicalPlantGemCost);
 	document.getElementById("chemicalPlantOilCost").innerHTML = Game.settings.format(chemicalPlantOilCost);
+	document.getElementById("oxidisation").innerHTML = oxidisation;
+	document.getElementById("oxidisationMetalCost").innerHTML = Game.settings.format(oxidisationMetalCost);
+	document.getElementById("oxidisationGemCost").innerHTML = Game.settings.format(oxidisationGemCost);
+	document.getElementById("oxidisationOilCost").innerHTML = Game.settings.format(oxidisationOilCost);
 	document.getElementById("grinder").innerHTML = grinder;
 	document.getElementById("grinderTitaniumCost").innerHTML = Game.settings.format(grinderTitaniumCost);
 	document.getElementById("grinderSpaceMetalCost").innerHTML = Game.settings.format(grinderSpaceMetalCost);
@@ -1651,10 +1655,8 @@ function refreshResearches(){
 		}
 	}
 
-	if(typeof versionNumber === "undefined" || versionNumber === "0.3.5" || versionNumber === "0.4.0"){
-		swarm = sphere;
-		sphere = 0;
-		versionNumber = "0.4.1";
+	if(typeof versionNumber != "0.4.3"){
+		versionNumber = "0.4.3";
 		refreshUI();
 	}
 }
