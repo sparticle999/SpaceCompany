@@ -240,7 +240,7 @@ function refreshUI(){
 	document.getElementById("uraniumStorage").innerHTML = Game.settings.format(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = Game.settings.format(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = Game.settings.format(uraniumStorage);
-	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumNextStorage/2.5);
+	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumStorage/2.5);
 	document.getElementById("oilStorage").innerHTML = Game.settings.format(oilStorage);
 	document.getElementById("oilNextStorage").innerHTML = Game.settings.format(oilNextStorage);
 	document.getElementById("oilStorageCost").innerHTML = Game.settings.format(oilStorage);
@@ -307,7 +307,7 @@ function refreshUI(){
 	document.getElementById("lava").innerHTML = Game.settings.format(lava);
 	document.getElementById("lavaStorage").innerHTML = Game.settings.format(lavaStorage);
 	document.getElementById("lavaNextStorage").innerHTML = Game.settings.format(lavaNextStorage);
-	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaNextStorage/2.5);
+	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaStorage/2.5);
 	document.getElementById("heater").innerHTML = heater;
 	document.getElementById("heaterSpaceMetalCost").innerHTML = Game.settings.format(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = Game.settings.format(heaterGemCost);
