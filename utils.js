@@ -67,18 +67,11 @@ Game.utils = (function(){
 
             if(notationValue !== '') {
                 var numberCount = valueString.replace(/[^0-9]/g, "").length;
-                if(numberCount === 1) {
-                    // Special case for single digit, otherwise we do have the decimal
-                    valueString = valueString + Game.utils.decimalSeparator + '000';
-                } else {
-                    while (numberCount < 4) {
-                        valueString = valueString + "0";
-                        numberCount++;
-                    }
-
-                    if (numberCount > 4) {
-                        valueString = valueString.slice(0, 4 - numberCount)
-                    }
+                var separator = valueString.indexOf(Game.utils.decimalSeparator) > 0 ? '' : Game.utils.decimalSeparator;
+                switch (numberCount) {
+                    case 1: valueString = valueString + separator + '000'; break;
+                    case 2: valueString = valueString + separator + '00'; break;
+                    case 3: valueString = valueString + separator + '00'; break;
                 }
             }
 
