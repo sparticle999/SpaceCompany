@@ -71,7 +71,7 @@ Game.utils = (function(){
                 switch (numberCount) {
                     case 1: valueString = valueString + separator + '000'; break;
                     case 2: valueString = valueString + separator + '00'; break;
-                    case 3: valueString = valueString + separator + '00'; break;
+                    case 3: valueString = valueString + separator + '0'; break;
                 }
             }
 
