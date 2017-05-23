@@ -1161,6 +1161,35 @@ Game.buildingData = (function () {
             'wood': 9600
         }
     });
+
+    // Solar System
+    instance.rocketFuelT1 = $.extend({}, baseProducerBuilding, {
+        name: 'Chemical Plant',
+        desc: 'Chemical plants are used to make rocket fuel automatically.',
+        resource: 'rocketFuel',
+        resourcePerSecond: {
+            'rocketFuel': 0.2
+        },
+        cost: {
+            'metal': 1000,
+            'gem': 750,
+            'wood': 500
+        }
+    });
+
+    instance.rocketFuelT2 = $.extend({}, baseProducerBuilding, {
+        name: 'Oxidisation Chamber',
+        desc: 'Oxidisation Chambers make rocket fuel faster and more efficiently than chemical plants.',
+        resource: 'rocketFuel',
+        resourcePerSecond: {
+            'rocketFuel': 1.5
+        },
+        cost: {
+            'metal': 12000,
+            'gem': 8300,
+            'wood': 6800
+        }
+    });
     
     return instance;
 }());
