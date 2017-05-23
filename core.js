@@ -131,6 +131,7 @@ function refreshPerSec(delta){
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
 	if(!energyLow) {
+		charcoalps -= (charcoalEngine);
         oilps +=  (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
         metalps +=  (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
         gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
@@ -174,31 +175,49 @@ function refreshPerSec(delta){
         }
     }
 
-	if(meteoriteToggled === true && meteorite < meteoriteStorage){
+	if(meteoriteToggled === true) {
         var plasmaCost = (printer * 3) + (web * 21);
-        var gain = printer + (web * 8);
         if(plasma + plasmaps * delta >= plasmaCost) {
-            meteoriteps += gain;
-            plasmaps -= plasmaCost;
+            var gain = printer + (web * 8);
+
+            var gainAbs = Math.min(gain, meteoriteStorage - meteorite);
+            if (gainAbs > 0) {
+                meteoriteps += gainAbs;
+                plasmaps -= plasmaCost;
+            } else if (meteoriteps < 0 && meteoriteps + gain > 0) {
+                meteoriteps = 0;
+            }
         }
     }
 
-    if(heaterToggled === true && plasma < plasmaStorage) {
-		var hydrogenCost = heater * 10;
-		var gain = heater;
-		if(hydrogen + hydrogenps * delta >= hydrogenCost) {
-			hydrogenps -= hydrogenCost;
-			plasmaps += gain;
+    if(heaterToggled === true) {
+        var hydrogenCost = heater * 10;
+        var gain = heater;
+
+        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        if (gainAbs > 0) {
+            if (hydrogen + hydrogenps * delta >= hydrogenCost) {
+                hydrogenps -= hydrogenCost;
+                plasmaps += gain;
+            }
+        } else if (plasmaps < 0 && plasmaps + gain > 0) {
+            plasmaps = 0;
 		}
 	}
 
-	if(plasmaticToggled === true && plasma < plasmaStorage) {
+	if(plasmaticToggled === true) {
 		var heliumCost = plasmatic * 80;
 		var gain = plasmatic * 10;
-		if(helium + heliumps >= heliumCost) {
-			heliumps -= heliumCost;
-			plasmaps += gain;
-		}
+
+        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        if(gainAbs > 0) {
+            if (helium + heliumps >= heliumCost) {
+                heliumps -= heliumCost;
+                plasmaps += gain;
+            }
+        } else if(plasmaps < 0 && plasmaps + gain > 0) {
+            plasmaps = 0;
+        }
 	}
 
 }
