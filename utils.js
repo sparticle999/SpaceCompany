@@ -73,6 +73,10 @@ Game.utils = (function(){
                     case 2: valueString = valueString + separator + '00'; break;
                     case 3: valueString = valueString + separator + '0'; break;
                 }
+
+                if (numberCount > 4) {
+                    valueString = valueString.slice(0, 4 - numberCount)
+                }
             }
 
             return valueString + notationValue;
