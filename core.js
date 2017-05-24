@@ -1355,6 +1355,7 @@ function checkRedCost(){
 	Game.settings.turnRed(rocketFuel, 1000, "jupiterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 2000, "saturnRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 5000, "plutoRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 6000, "kuiperBeltRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
 
