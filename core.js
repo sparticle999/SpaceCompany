@@ -151,7 +151,7 @@ function refreshPerSec(delta){
 	if(charcoalToggled) {
 		var woodCost = woodburner * 2;
 		if(!energyLow) {
-            woodCost = (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
+            woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
 		}
 
 		if(wood + woodps >= woodCost) {
