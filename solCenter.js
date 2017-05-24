@@ -133,6 +133,22 @@ function convertPlasma(resourceName){
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 
+function refreshDyson(){
+	dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
+	dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
+	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
+	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
+	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
+	document.getElementById("dyson").innerHTML = dyson;
+	document.getElementById("dysonPieces").innerHTML = dyson;
+	document.getElementById("dysonPieces2").innerHTML = dyson;
+	document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
+	document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
+	document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
+	document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
+	document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
+}
+
 function getDyson(){
 	if(titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost){
 		titanium -= dysonTitaniumCost;
@@ -141,19 +157,7 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
-		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
-		dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
-		dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
-		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
-		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
-		document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
-		document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
-		document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
-		document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
-		document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
+		refreshDyson()
 	}
 }
 
@@ -166,10 +170,14 @@ function buildSwarm(){
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
 		document.getElementById("dysonPieces2").innerHTML = dyson;
+		refreshDyson()
 	}
 }
 
 function buildSphere(){
+	if(sphere >= 1){
+		return;
+	}
 	if(dyson >= 250 && rocketFuel >= 1000000){
 		dyson -= 250;
 		rocketFuel -= 1000000;
@@ -178,5 +186,6 @@ function buildSphere(){
 		document.getElementById("dyson").innerHTML = dyson;
 		document.getElementById("dysonPieces").innerHTML = dyson;
 		document.getElementById("dysonPieces2").innerHTML = dyson;
+		refreshDyson()
 	}
 }

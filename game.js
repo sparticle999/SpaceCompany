@@ -149,6 +149,10 @@ var Game = (function() {
         refreshResearches();
         refreshTabs();
 
+        if(Game.constants.enableMachineTab === true){
+            machineTopTab.className = "";
+        }
+
         console.log("Load Successful");
     };
 

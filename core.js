@@ -131,6 +131,7 @@ function refreshPerSec(delta){
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
 	if(!energyLow) {
+		charcoalps -= (charcoalEngine);
         oilps +=  (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
         metalps +=  (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
         gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
@@ -164,41 +165,59 @@ function refreshPerSec(delta){
 		}
 	}
 
-    if(chemicalPlantToggled === true) {
-        var oilCost = chemicalPlant * 20;
-        var charcoalCost = chemicalPlant * 20;
+    if(rocketFuelToggled === true) {
+        var oilCost = (chemicalPlant*20) + (oxidisation*100);
+        var charcoalCost = (chemicalPlant*20) + (oxidisation*100);
         if(oil + oilps >= oilCost && charcoal + charcoalps >= charcoalCost) {
             oilps -= oilCost;
             charcoalps -= charcoalCost;
-            rocketFuelps += chemicalPlant / 5;
+            rocketFuelps += (chemicalPlant/5) + (oxidisation*1.5);
         }
     }
 
-	if(meteoriteToggled === true && meteorite < meteoriteStorage){
+	if(meteoriteToggled === true) {
         var plasmaCost = (printer * 3) + (web * 21);
-        var gain = printer + (web * 8);
         if(plasma + plasmaps * delta >= plasmaCost) {
-            meteoriteps += gain;
-            plasmaps -= plasmaCost;
+            var gain = printer + (web * 8);
+
+            var gainAbs = Math.min(gain, meteoriteStorage - meteorite);
+            if (gainAbs > 0) {
+                meteoriteps += gainAbs;
+                plasmaps -= plasmaCost;
+            } else if (meteoriteps < 0 && meteoriteps + gain > 0) {
+                meteoriteps = 0;
+            }
         }
     }
 
-    if(heaterToggled === true && plasma < plasmaStorage) {
-		var hydrogenCost = heater * 10;
-		var gain = heater;
-		if(hydrogen + hydrogenps * delta >= hydrogenCost) {
-			hydrogenps -= hydrogenCost;
-			plasmaps += gain;
+    if(heaterToggled === true) {
+        var hydrogenCost = heater * 10;
+        var gain = heater;
+
+        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        if (gainAbs > 0) {
+            if (hydrogen + hydrogenps * delta >= hydrogenCost) {
+                hydrogenps -= hydrogenCost;
+                plasmaps += gain;
+            }
+        } else if (plasmaps < 0 && plasmaps + gain > 0) {
+            plasmaps = 0;
 		}
 	}
 
-	if(plasmaticToggled === true && plasma < plasmaStorage) {
+	if(plasmaticToggled === true) {
 		var heliumCost = plasmatic * 80;
 		var gain = plasmatic * 10;
-		if(helium + heliumps >= heliumCost) {
-			heliumps -= heliumCost;
-			plasmaps += gain;
-		}
+
+        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        if(gainAbs > 0) {
+            if (helium + heliumps >= heliumCost) {
+                heliumps -= heliumCost;
+                plasmaps += gain;
+            }
+        } else if(plasmaps < 0 && plasmaps + gain > 0) {
+            plasmaps = 0;
+        }
 	}
 
 }
@@ -222,11 +241,11 @@ function refreshUI(){
 	else{
 		document.getElementById("charcoalToggled").innerHTML = "On";
 	}
-	if(chemicalPlantToggled === true){
-		document.getElementById("chemicalPlantToggled").innerHTML = "Off";
+	if(rocketFuelToggled === true){
+		document.getElementById("rocketFuelToggled").innerHTML = "Off";
 	}
 	else{
-		document.getElementById("chemicalPlantToggled").innerHTML = "On";
+		document.getElementById("rocketFuelToggled").innerHTML = "On";
 	}
 	if(meteoriteToggled === true){
 		document.getElementById("meteoriteToggled").innerHTML = "Off";
@@ -240,7 +259,7 @@ function refreshUI(){
 	document.getElementById("uraniumStorage").innerHTML = Game.settings.format(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = Game.settings.format(uraniumNextStorage);
 	document.getElementById("uraniumStorageCost").innerHTML = Game.settings.format(uraniumStorage);
-	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumNextStorage/2.5);
+	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumStorage/2.5);
 	document.getElementById("oilStorage").innerHTML = Game.settings.format(oilStorage);
 	document.getElementById("oilNextStorage").innerHTML = Game.settings.format(oilNextStorage);
 	document.getElementById("oilStorageCost").innerHTML = Game.settings.format(oilStorage);
@@ -307,7 +326,7 @@ function refreshUI(){
 	document.getElementById("lava").innerHTML = Game.settings.format(lava);
 	document.getElementById("lavaStorage").innerHTML = Game.settings.format(lavaStorage);
 	document.getElementById("lavaNextStorage").innerHTML = Game.settings.format(lavaNextStorage);
-	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaNextStorage/2.5);
+	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaStorage/2.5);
 	document.getElementById("heater").innerHTML = heater;
 	document.getElementById("heaterSpaceMetalCost").innerHTML = Game.settings.format(heaterSpaceMetalCost);
 	document.getElementById("heaterGemCost").innerHTML = Game.settings.format(heaterGemCost);
@@ -531,6 +550,10 @@ function refreshUI(){
 	document.getElementById("chemicalPlantMetalCost").innerHTML = Game.settings.format(chemicalPlantMetalCost);
 	document.getElementById("chemicalPlantGemCost").innerHTML = Game.settings.format(chemicalPlantGemCost);
 	document.getElementById("chemicalPlantOilCost").innerHTML = Game.settings.format(chemicalPlantOilCost);
+	document.getElementById("oxidisation").innerHTML = oxidisation;
+	document.getElementById("oxidisationMetalCost").innerHTML = Game.settings.format(oxidisationMetalCost);
+	document.getElementById("oxidisationGemCost").innerHTML = Game.settings.format(oxidisationGemCost);
+	document.getElementById("oxidisationOilCost").innerHTML = Game.settings.format(oxidisationOilCost);
 	document.getElementById("grinder").innerHTML = grinder;
 	document.getElementById("grinderTitaniumCost").innerHTML = Game.settings.format(grinderTitaniumCost);
 	document.getElementById("grinderSpaceMetalCost").innerHTML = Game.settings.format(grinderSpaceMetalCost);
@@ -1275,27 +1298,10 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
 	Game.settings.turnRed(silicon, desertSiliconCost, "desertSiliconCost");
 	Game.settings.turnRed(meteorite, desertMeteoriteCost, "desertMeteoriteCost");
-	
-	if(wood < labWoodCost){
-		document.getElementById("labWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("labWoodCost").className = "";
-	}
-	
-	if(gem < labGemCost){
-		document.getElementById("labGemCost").className = "red";
-	}
-	else{
-		document.getElementById("labGemCost").className = "";
-	}
-	
-	if(metal < labMetalCost){
-		document.getElementById("labMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("labMetalCost").className = "";
-	}
+
+	Game.settings.turnRed(metal, labMetalCost, "labMetalCost");
+	Game.settings.turnRed(gem, labGemCost, "labGemCost");
+	Game.settings.turnRed(wood, labWoodCost, "labWoodCost");
 
 	Game.settings.turnRed(metal, labT2MetalCost, "labT2MetalCost");
 	Game.settings.turnRed(gem, labT2GemCost, "labT2GemCost");
@@ -1305,66 +1311,17 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, labT3GemCost, "labT3GemCost");
 	Game.settings.turnRed(wood, labT3WoodCost, "labT3WoodCost");
 
-	if(science < 5){
-		document.getElementById("unlockStorageCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockStorageCost").className = "";
-	}
-
-	if(science < 20){
-		document.getElementById("unlockBasicEnergyCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockBasicEnergyCost").className = "";
-	}
-
-	if(science < 30){
-		document.getElementById("unlockOilCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockOilCost").className = "";
-	}
-
-	if(science < 30){
-		document.getElementById("unlockOilCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockOilCost").className = "";
-	}
-
-	if(science < 50){
-		document.getElementById("unlockSolarCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockSolarCost").className = "";
-	}
-
-	if(science < 100){
-		document.getElementById("unlockMachinesCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockMachinesCost").className = "";
-	}
-
+	Game.settings.turnRed(science, 5, "unlockStorageCost");
+	Game.settings.turnRed(science, 20, "unlockBasicEnergyCost");
+	Game.settings.turnRed(science, 30, "unlockOilCost");
+	Game.settings.turnRed(science, 50, "unlockSolarCost");
+	Game.settings.turnRed(science, 100, "unlockMachinesCost");
 	Game.settings.turnRed(science, 500, "unlockDestructionCost");
-
-	if(science < 300){
-		document.getElementById("upgradeResourceTechCost").className = "red";
-	}
-	else{
-		document.getElementById("upgradeResourceTechCost").className = "";
-	}
-
-	if(science < 500){
-		document.getElementById("unlockSolarSystemCost").className = "red";
-	}
-	else{
-		document.getElementById("unlockSolarSystemCost").className = "";
-	}
-
+	Game.settings.turnRed(science, 300, "upgradeResourceTechCost");
+	Game.settings.turnRed(science, 500, "unlockSolarSystemCost");
 	Game.settings.turnRed(science, 500, "unlockLabT2Cost");
 	Game.settings.turnRed(science, 1000, "upgradeEngineTechCost");
+    Game.settings.turnRed(science, 1000, "unlockRocketFuelT2Cost");
 	Game.settings.turnRed(science, 3000, "unlockLabT3Cost");
 	Game.settings.turnRed(science, 5000, "upgradeSolarTechCost");
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
@@ -1378,154 +1335,36 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
 
-	if(metal < 1200){
-		document.getElementById("rocketMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketMetalCost").className = "";
-	}
+	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
+	Game.settings.turnRed(gem, 900, "rocketGemCost");
+	Game.settings.turnRed(oil, 1000, "rocketOilCost");
 
-	if(gem < 900){
-		document.getElementById("rocketGemCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketGemCost").className = "";
-	}
+	Game.settings.turnRed(metal, chemicalPlantMetalCost, "chemicalPlantMetalCost");
+	Game.settings.turnRed(gem, chemicalPlantGemCost, "chemicalPlantGemCost");
+	Game.settings.turnRed(oil, chemicalPlantOilCost, "chemicalPlantOilCost");
 
-	if(oil < 1000){
-		document.getElementById("rocketOilCost").className = "red";
-	}
-	else{
-		document.getElementById("rocketOilCost").className = "";
-	}
+	Game.settings.turnRed(metal, oxidisationMetalCost, "oxidisationMetalCost");
+	Game.settings.turnRed(gem, oxidisationGemCost, "oxidisationGemCost");
+	Game.settings.turnRed(oil, oxidisationOilCost, "oxidisationOilCost");
 
-	if(metal < chemicalPlantMetalCost){
-		document.getElementById("chemicalPlantMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantMetalCost").className = "";
-	}
-	
-	if(gem < chemicalPlantGemCost){
-		document.getElementById("chemicalPlantGemCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantGemCost").className = "";
-	}
-	
-	if(oil < chemicalPlantOilCost){
-		document.getElementById("chemicalPlantOilCost").className = "red";
-	}
-	else{
-		document.getElementById("chemicalPlantOilCost").className = "";
-	}
-	
-	if(rocketFuel < 20){
-		document.getElementById("moonRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("moonRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 50){
-		document.getElementById("venusRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("venusRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 80){
-		document.getElementById("marsRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("marsRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 200){
-		document.getElementById("asteroidBeltRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("asteroidBeltRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 500){
-		document.getElementById("wonderStationRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("wonderStationRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 1000){
-		document.getElementById("jupiterRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("jupiterRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 2000){
-		document.getElementById("saturnRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("saturnRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 5000){
-		document.getElementById("plutoRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("plutoRocketFuelCost").className = "";
-	}
-
-	if(rocketFuel < 6000){
-		document.getElementById("kuiperBeltRocketFuelCost").className = "red";
-	}
-	else{
-		document.getElementById("kuiperBeltRocketFuelCost").className = "";
-	}
-
+	Game.settings.turnRed(rocketFuel, 20, "moonRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 50, "venusRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 80, "marsRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 200, "asteroidBeltRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 500, "wonderStationRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 1000, "jupiterRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 2000, "saturnRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 5000, "plutoRocketFuelCost");
+	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
 
-	if(titanium < grinderTitaniumCost){
-		document.getElementById("grinderTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderTitaniumCost").className = "";
-	}
-	
-	if(spaceMetal < grinderSpaceMetalCost){
-		document.getElementById("grinderSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderSpaceMetalCost").className = "";
-	}
-	
-	if(gold < grinderGoldCost){
-		document.getElementById("grinderGoldCost").className = "red";
-	}
-	else{
-		document.getElementById("grinderGoldCost").className = "";
-	}
-	
-	if(uranium < cubicUraniumCost){
-		document.getElementById("cubicUraniumCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicUraniumCost").className = "";
-	}
-	
-	if(spaceMetal < cubicSpaceMetalCost){
-		document.getElementById("cubicSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicSpaceMetalCost").className = "";
-	}
-	
-	if(oil < cubicOilCost){
-		document.getElementById("cubicOilCost").className = "red";
-	}
-	else{
-		document.getElementById("cubicOilCost").className = "";
-	}
+	Game.settings.turnRed(spaceMetal, grinderSpaceMetalCost, "grinderSpaceMetalCost");
+	Game.settings.turnRed(titanium, grinderTitaniumCost, "grinderTitaniumCost");
+	Game.settings.turnRed(gold, grinderGoldCost, "grinderGoldCost");
+
+	Game.settings.turnRed(spaceMetal, cubicSpaceMetalCost, "cubicSpaceMetalCost");
+	Game.settings.turnRed(uranium, cubicUraniumCost, "cubicUraniumCost");
+	Game.settings.turnRed(oil, cubicOilCost, "cubicOilCost");
 
 	Game.settings.turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
 	Game.settings.turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
@@ -1535,19 +1374,8 @@ function checkRedCost(){
 	Game.settings.turnRed(methane, recyclerMethaneCost, "recyclerMethaneCost");
 	Game.settings.turnRed(meteorite, recyclerMeteoriteCost, "recyclerMeteoriteCost");
 
-	if(gem < crucibleGemCost){
-		document.getElementById("crucibleGemCost").className = "red";
-	}
-	else{
-		document.getElementById("crucibleGemCost").className = "";
-	}
-	
-	if(spaceMetal < crucibleSpaceMetalCost){
-		document.getElementById("crucibleSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("crucibleSpaceMetalCost").className = "";
-	}
+	Game.settings.turnRed(spaceMetal, crucibleSpaceMetalCost, "crucibleSpaceMetalCost");
+	Game.settings.turnRed(gem, crucibleGemCost, "crucibleGemCost");
 	
 	Game.settings.turnRed(spaceMetal, extractorSpaceMetalCost, "extractorSpaceMetalCost");
 	Game.settings.turnRed(titanium, extractorTitaniumCost, "extractorTitaniumCost");
@@ -1677,44 +1505,44 @@ function refreshResources(){
 		document.getElementById(resourcesUnlocked[i]).className = "";
 	}
 	if(contains(resourcesUnlocked, "oilNav")){
-		document.getElementById("oilNav").className = "earth";
+		document.getElementById("oilNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "charcoalNav")){
-		document.getElementById("charcoalNav").className = "earth";
+		document.getElementById("charcoalNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "siliconNav")){
-		document.getElementById("siliconNav").className = "earth";
+		document.getElementById("siliconNav").className = "earth sideTab";
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet";
+		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "methaneNav")){
-		document.getElementById("methaneNav").className = "innerPlanet";
+		document.getElementById("methaneNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "titaniumNav")){
-		document.getElementById("titaniumNav").className = "innerPlanet";
+		document.getElementById("titaniumNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "goldNav")){
-		document.getElementById("goldNav").className = "innerPlanet";
+		document.getElementById("goldNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "silverNav")){
-		document.getElementById("silverNav").className = "innerPlanet";
+		document.getElementById("silverNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "hydrogenNav")){
-		document.getElementById("hydrogenNav").className = "outerPlanet";
+		document.getElementById("hydrogenNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "heliumNav")){
-		document.getElementById("heliumNav").className = "outerPlanet";
+		document.getElementById("heliumNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "iceNav")){
-		document.getElementById("iceNav").className = "outerPlanet";
+		document.getElementById("iceNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "meteoriteNav")){
-		document.getElementById("meteoriteNav").className = "outerPlanet";
+		document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
-		document.getElementById("wonderFloor2Nav").className = "";
-		document.getElementById("portalRoomNav").className = "";
+		document.getElementById("wonderFloor2Nav").className = "sideTab";
+		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
 	for(var i=0; i<noBorder.length; i++){
@@ -1732,7 +1560,7 @@ function refreshResources(){
 		unlockTier4();
 	}
 	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet";
+		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
 	}
 }
 
@@ -1780,6 +1608,12 @@ function refreshResearches(){
 				document.getElementById("unlockDestruction").className = "";
 				available.push("unlockDestruction");
 			}
+		}
+	}
+	if(contains(researched, "unlockSolarSystem")){
+		if(contains(available, "unlockRocketFuelT2") === false){
+			document.getElementById("unlockRocketFuelT2").className = "";
+			available.push("unlockRocketFuelT2");
 		}
 	}
 	if(contains(researched, "unlockSolarSystem")){
@@ -1841,10 +1675,8 @@ function refreshResearches(){
 		}
 	}
 
-	if(typeof versionNumber === "undefined" || versionNumber === "0.3.5" || versionNumber === "0.4.0"){
-		swarm = sphere;
-		sphere = 0;
-		versionNumber = "0.4.1";
+	if(typeof versionNumber != "0.4.3"){
+		versionNumber = "0.4.3";
 		refreshUI();
 	}
 }
@@ -1859,27 +1691,28 @@ function refreshTabs(){
 	for(var i=0; i<tabsUnlocked.length; i++){
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}
+ 	document.getElementById("rocketFuelNav").className = "sideTab";
  	if(rocketLaunched === true){
- 		document.getElementById("spaceRocket").className = "hidden";
-  		document.getElementById("collapseInner").className ="collapseInner";
-		document.getElementById("moon").className = "inner";
-		document.getElementById("mercury").className = "inner";
-		document.getElementById("venus").className = "inner";
-		document.getElementById("mars").className = "inner";
-		document.getElementById("asteroidBelt").className = "inner";
+ 		document.getElementById("spaceRocket").className = "sideTab hidden";
+  		document.getElementById("collapseInner").className ="collapseInner sideTab";
+		document.getElementById("moon").className = "inner sideTab";
+		document.getElementById("mercury").className = "inner sideTab";
+		document.getElementById("venus").className = "inner sideTab";
+		document.getElementById("mars").className = "inner sideTab";
+		document.getElementById("asteroidBelt").className = "inner sideTab";
  	}
  	if(contains(explored, "asteroidBelt")){
- 		document.getElementById("wonderStation").className = "inner";
- 		document.getElementById("collapseOuter").className ="collapseOuter";
- 		document.getElementById("jupiter").className = "outer";
- 		document.getElementById("saturn").className = "outer";
- 		document.getElementById("uranus").className = "outer";
- 		document.getElementById("neptune").className = "outer";
- 		document.getElementById("pluto").className = "outer";
- 		document.getElementById("kuiperBelt").className = "outer";
+ 		document.getElementById("wonderStation").className = "inner sideTab";
+ 		document.getElementById("collapseOuter").className ="collapseOuter sideTab";
+ 		document.getElementById("jupiter").className = "outer sideTab";
+ 		document.getElementById("saturn").className = "outer sideTab";
+ 		document.getElementById("uranus").className = "outer sideTab";
+ 		document.getElementById("neptune").className = "outer sideTab";
+ 		document.getElementById("pluto").className = "outer sideTab";
+ 		document.getElementById("kuiperBelt").className = "outer sideTab";
  	}
  	if(contains(explored, "kuiperBelt")){
- 		document.getElementById("solCenter").className = "outer";
+ 		document.getElementById("solCenter").className = "outer sideTab";
  	}
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
@@ -1891,12 +1724,12 @@ function refreshTabs(){
 $('.collapseEarth').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth";
+        	document.getElementsByClassName("earth")[i].className = "earth sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth hidden";
+        	document.getElementsByClassName("earth")[i].className = "earth sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1905,12 +1738,12 @@ $('.collapseEarth').click(function(){
 $('.collapseInnerPlanet').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet";
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet hidden";
+        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1919,12 +1752,12 @@ $('.collapseInnerPlanet').click(function(){
 $('.collapseOuterPlanet').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet";
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet hidden";
+        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1933,12 +1766,12 @@ $('.collapseOuterPlanet').click(function(){
 $('.collapseInner').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner";
+        	document.getElementsByClassName("inner")[i].className = "inner sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner hidden";
+        	document.getElementsByClassName("inner")[i].className = "inner sideTab hidden";
         }
         $(this).addClass("collapsed");
     }
@@ -1947,12 +1780,12 @@ $('.collapseInner').click(function(){
 $('.collapseOuter').click(function(){
     if($(this).hasClass("collapsed")){
         for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer";
+        	document.getElementsByClassName("outer")[i].className = "outer sideTab";
         }
         $(this).removeClass("collapsed");
     } else {
         for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer hidden";
+        	document.getElementsByClassName("outer")[i].className = "outer sideTab hidden";
         }
         $(this).addClass("collapsed");
     }

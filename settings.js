@@ -11,6 +11,7 @@ Game.settings = (function(){
         entries: {
             formatter: 'shortName',
             boldEnabled: false,
+            sidebarCompressed: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -112,7 +113,19 @@ Game.settings = (function(){
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
+        $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
 
+        if(Game.settings.entries.sidebarCompressed === true){
+            for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
+                document.getElementsByClassName("sideTab")[i].style.height = "30px";
+            }
+        }
+        else{
+            for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
+                document.getElementsByClassName("sideTab")[i].style.height = "60px";
+            }
+        }
+        
         for(var id in autoSaveMapping) {
             var element = $('#' + id);
             if(this.entries.autoSaveInterval === autoSaveMapping[id]) {
@@ -146,6 +159,20 @@ Game.settings = (function(){
 
         $('#boldEnabled').change(function(){
             Game.settings.set('boldEnabled', $(this).is(':checked'));
+        });
+
+        $('#sidebarCompressed').change(function(){
+            Game.settings.set('sidebarCompressed', $(this).is(':checked'));
+            if(Game.settings.entries.sidebarCompressed === true){
+                for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
+                    document.getElementsByClassName("sideTab")[i].style.height = "30px";
+                }
+            }
+            else{
+                for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
+                    document.getElementsByClassName("sideTab")[i].style.height = "60px";
+                }
+            }
         });
 
         for (var id in autoSaveMapping) {
