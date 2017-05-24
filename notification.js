@@ -16,10 +16,10 @@ function activeResourceTab(tab){
 	if(document.getElementById("energyNav").className != "sideTab hidden"){
 		document.getElementById("energyNav").className = "sideTab";
 	}
-	if(document.getElementById("uraniumNav").className === "sideTab info"){
+	if(document.getElementById("uraniumNav").className != "sideTab hidden"){
 		document.getElementById("uraniumNav").className = "sideTab";
 	}
-	if(document.getElementById("lavaNav").className === "sideTab info"){
+	if(document.getElementById("lavaNav").className != "sideTab hidden"){
 		document.getElementById("lavaNav").className = "sideTab";
 	}
 	for(var i = 0; i < resources.length; i++){
