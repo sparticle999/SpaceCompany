@@ -144,7 +144,7 @@ function exploreWonderStation(){
         Game.statistics.add('placesExplored');
 		tabsUnlocked.push("wonderTab");
         Game.statistics.add('tabsUnlocked');
-		newUnlock("resources");
+		newUnlock("wonder");
 		Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 	}
 }
