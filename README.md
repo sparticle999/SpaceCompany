@@ -36,6 +36,8 @@ v0.5.0
 - Sidebar Nav Compression
 - Options For Number Format
 
+
+
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Reprogrammed Charcoal Production
@@ -47,6 +49,8 @@ v0.5.0
 - Changed Ice T4 to use Wood
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
+
+
 
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
@@ -63,6 +67,7 @@ v0.4.3
 - Completed Achievements
 - Changed Achievements System
 - 100,000x Conversion Option
+
 
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
