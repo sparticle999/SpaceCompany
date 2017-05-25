@@ -92,6 +92,7 @@ var Game = (function() {
 
     instance.import = function() {
         var text = $('#impexpField').val();
+        if (!text.trim()) return;
         var decompressed = LZString.decompressFromBase64(text);
         localStorage.setItem("save", decompressed);
 
