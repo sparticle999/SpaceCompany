@@ -190,9 +190,11 @@ function refreshPerSec(delta){
         }
     }
 
+    var absolutePlasmaGain = 0;
     if(heaterToggled === true) {
         var hydrogenCost = heater * 10;
         var gain = heater;
+        absolutePlasmaGain += gain;
 
         var gainAbs = Math.min(gain, plasmaStorage - plasma);
         if (gainAbs > 0) {
@@ -200,14 +202,13 @@ function refreshPerSec(delta){
                 hydrogenps -= hydrogenCost;
                 plasmaps += gain;
             }
-        } else if (plasmaps < 0 && plasmaps + gain > 0) {
-            plasmaps = 0;
-		}
+        }
 	}
 
 	if(plasmaticToggled === true) {
 		var heliumCost = plasmatic * 80;
 		var gain = plasmatic * 10;
+        absolutePlasmaGain += gain;
 
         var gainAbs = Math.min(gain, plasmaStorage - plasma);
         if(gainAbs > 0) {
@@ -215,9 +216,11 @@ function refreshPerSec(delta){
                 heliumps -= heliumCost;
                 plasmaps += gain;
             }
-        } else if(plasmaps < 0 && plasmaps + gain > 0) {
-            plasmaps = 0;
         }
+	}
+
+	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0) {
+        plasmaps = 0;
 	}
 
 }
