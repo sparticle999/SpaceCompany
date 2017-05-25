@@ -37,7 +37,7 @@ v0.5.0 The Interstellar Update
 - Sidebar Nav Compression
 - Options For Number Format
 
-###### Small Changes
+##### Small Changes
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Reprogrammed Charcoal Production
@@ -50,7 +50,7 @@ v0.5.0 The Interstellar Update
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
 
-###### Bug Fixes
+##### Bug Fixes
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
 - Fixed Dyson Section Reset Costs
@@ -67,7 +67,7 @@ v0.5.0 The Interstellar Update
 - Changed Achievements System
 - 100,000x Conversion Option
 
-### Bug Fixes
+##### Bug Fixes
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
