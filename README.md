@@ -46,6 +46,7 @@ v0.5.0
 - Made All Numbers >1000 4 Digits Long
 - Changed Ice T4 to use Wood
 - Added Days on Time Stats
+- Changed Links in FAQ to open in new tab
 
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
