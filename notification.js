@@ -10,27 +10,19 @@ function tabClicked(tab){
 }
 
 function activeResourceTab(tab){
-	if(document.getElementById("plasmaNav").className != "sideTab hidden"){
-		document.getElementById("plasmaNav").className = "sideTab";
-	}
-	if(document.getElementById("energyNav").className != "sideTab hidden"){
-		document.getElementById("energyNav").className = "sideTab";
-	}
-	if(document.getElementById("uraniumNav").className === "sideTab info"){
-		document.getElementById("uraniumNav").className = "sideTab";
-	}
-	if(document.getElementById("lavaNav").className === "sideTab info"){
-		document.getElementById("lavaNav").className = "sideTab";
-	}
-	for(var i = 0; i < resources.length; i++){
-		if(document.getElementById(resources[i] + "Nav").className === "earth sideTab info"){
-			document.getElementById(resources[i] + "Nav").className = "earth sideTab";
-		}
-		if(document.getElementById(resources[i] + "Nav").className === "innerPlanet sideTab info"){
-			document.getElementById(resources[i] + "Nav").className = "innerPlanet sideTab";
-		}
-		if(document.getElementById(resources[i] + "Nav").className === "outerPlanet sideTab info"){
-			document.getElementById(resources[i] + "Nav").className = "outerPlanet sideTab";
+	var navs = ["plasma", "energy", "uranium", "lava"].concat(resources);
+	for(var i = 0; i < navs.length; i++){
+		var parts = document.getElementById(navs[i] + "Nav").className.split(' ');
+		if(parts.indexOf('hidden') === -1) {
+			if(parts.indexOf("earth") > -1) {
+				document.getElementById(navs[i] + "Nav").className = "earth sideTab";
+			} else if(parts.indexOf("innerPlanet") > -1) {
+				document.getElementById(navs[i] + "Nav").className = "innerPlanet sideTab";
+			} else if(parts.indexOf("outerPlanet") > -1) {
+				document.getElementById(navs[i] + "Nav").className = "outerPlanet sideTab";
+			} else {
+				document.getElementById(navs[i] + "Nav").className = "sideTab";
+			}
 		}
 	}
 	document.getElementById(tab).className += " info";

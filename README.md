@@ -46,12 +46,18 @@ v0.5.0
 - Made All Numbers >1000 4 Digits Long
 - Changed Ice T4 to use Wood
 - Added Days on Time Stats
+- Changed Links in FAQ to open in new tab
 
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
 - Fixed Dyson Section Reset Costs
 - Fixed Cyborg UI Bug
 - Fixed Dyson Costs Resetting
+- Fixed Exploring Wonder Showing '!' on Resources Tab
+- Fixed Importing Without Data Wiping Saves
+- Fixed Highlighting Bugs
+- Fixed Charcoal Burners Not Using Wood
+- Fixed Oxidisation UI Bug
 
 v0.4.3
 - Completed Achievements
