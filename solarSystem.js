@@ -62,6 +62,101 @@ function launchRocket(){
 	}
 }
 
+function explore(planet){
+	var planetsData = {
+		Moon: {fuel: 20, area: "innerPlanet", resource: "spaceMetal"},
+		Venus: {fuel: 50, area: "innerPlanet", resource: "methane"},
+		Mars: {fuel: 80, area: "innerPlanet", resource: "titanium,silicon"},
+		AsteroidBelt: {fuel: 200, area: "innerPlanet", resource: "gold,silver"},
+		WonderStation: {fuel: 500},
+		Jupiter: {fuel: 1000, area: "outerPlanet", resource: "hydrogen"},
+		Saturn: {fuel: 2000, area: "outerPlanet", resource: "helium"},
+		Pluto: {fuel: 5000, area: "outerPlanet", resource: "ice"},
+		KuiperBelt: {fuel: 6000, area: "outerPlanet"},
+		SolCenter: {fuel: 7000}
+	};
+	
+	if(!planetsData[planet]) return console.error("Cannot explore \"" + planet + "\", data not found.");
+	if(rocketFuel >= planetsData[planet].fuel) {
+		rocketFuel -= planetsData[planet].fuel;
+		document.getElementById("explore" + planet).className = "hidden";
+		buttonsHidden.push("explore" + planet);
+		explored.push(planet.substring(0, 1).toLowerCase() + planet.substring(1));
+		
+		// Planet/Area specific code
+		switch(planet) {
+			case "Moon":
+				document.getElementById("collapseInnerPlanet").className = "collapseInnerPlanet";
+				resourcesUnlocked.push("collapseInnerPlanet");
+				break;
+			case "Venus":
+				document.getElementById("methanePower").className = "";
+				resourcesUnlocked.push("methanePower");
+				break;
+			case "AsteriodBelt":
+				document.getElementById("wonderStation").className = "inner";
+				document.getElementById("collapseOuter").className ="collapseOuter";
+				document.getElementById("jupiter").className = "outer";
+				document.getElementById("saturn").className = "outer";
+				document.getElementById("uranus").className = "outer";
+				document.getElementById("neptune").className = "outer";
+				document.getElementById("pluto").className = "outer";
+				document.getElementById("kuiperBelt").className = "outer";
+				break;
+			case "WonderStation":
+				document.getElementById("wonderTab").className = "";
+				Game.statistics.add('tabsUnlocked');
+				newUnlock("wonderTab");
+				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
+				break;
+			case "Jupiter":
+				document.getElementById("collapseOuterPlanet").className = "collapseOuterPlanet";
+				document.getElementById("fusionPower").className = "";
+				resourcesUnlocked.push("collapseOuterPlanet", "fusionPower");
+				break;
+			case "KupierBelt":
+				document.getElementById("solCenter").className = "outer";
+				resourcesUnlocked.push("solCenter");
+				refreshResources();
+				break;
+			case "SolCenter":
+				document.getElementById("solCenterTopTab").className = "";
+				resourcesUnlocked.push("solCenterTopTab");
+				refreshResources();
+				Game.statistics.add('tabsUnlocked');
+				newUnlock("solCenter");
+				Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
+				break;
+		}
+		
+		// Resource(s)
+		if (planetsData[planet].resource) {
+			var toAdd = planetsData[planet].resource.split(',');
+			for(let i = 0; i < toAdd.length; i++) {
+				switch(Game.resourceData[toAdd[i]].category) {
+					case "earth":
+						document.getElementById(toAdd[i] + "Nav").className = "earth";
+						break;
+					case "innerSol":
+						document.getElementById(toAdd[i] + "Nav").className = "innerPlanet";
+						break;
+					case "outerSol":
+						document.getElementById(toAdd[i] + "Nav").className = "outerPlanet";
+						break;
+					default:
+						// Should never happen
+						throw new Error("Invalid resource area: \"" + Game.resourceData[toAdd[i]].category + "\" while unlocking resource \"" + toAdd[i] + "\"");
+				}
+				resourcesUnlocked.push(planetsData[planet].resource + "Nav");
+			}
+			refreshResources();
+			newUnlock("resources");
+			Game.statistics.add('resourcesUnlocked', toAdd.length);
+		}
+		Game.statistics.add('placesExplored');
+	}
+}
+
 function exploreMoon(){
 	if(rocketFuel >= 20){
 		rocketFuel -= 20;
