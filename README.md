@@ -27,7 +27,8 @@ v0.5.0 The Interstellar Update
 
 # Changelog:
 
-v0.5.0
+### v0.5.0
+##### Features
 - Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Game Now Works in an Inactive Tab
@@ -36,8 +37,7 @@ v0.5.0
 - Sidebar Nav Compression
 - Options For Number Format
 
-
-
+###### Small Changes
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Reprogrammed Charcoal Production
@@ -50,8 +50,7 @@ v0.5.0
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
 
-
-
+###### Bug Fixes
 - Fixed Oil Rig Costs
 - Fixed Helium T4 Red Costs
 - Fixed Dyson Section Reset Costs
@@ -63,12 +62,12 @@ v0.5.0
 - Fixed Charcoal Burners Not Using Wood
 - Fixed Oxidisation UI Bug
 
-v0.4.3
+### v0.4.3
 - Completed Achievements
 - Changed Achievements System
 - 100,000x Conversion Option
 
-
+### Bug Fixes
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
