@@ -1,4 +1,4 @@
-function checkStorages(){
+/*function checkStorages(){
 	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
 
 		if (Game.constants.enableNotifications === false){
@@ -40,7 +40,7 @@ function checkStorages(){
 			Game.notifyStorage();
 		}
 	}
-}
+}*/
 
 function gainResources(delta){
 
