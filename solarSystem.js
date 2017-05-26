@@ -147,7 +147,7 @@ function explore(planet){
 						// Should never happen
 						throw new Error("Invalid resource area: \"" + Game.resourceData[toAdd[i]].category + "\" while unlocking resource \"" + toAdd[i] + "\"");
 				}
-				resourcesUnlocked.push(planetsData[planet].resource + "Nav");
+				resourcesUnlocked.push(toAdd[i] + "Nav");
 			}
 			refreshResources();
 			newUnlock("resources");
