@@ -29,6 +29,7 @@ v0.5.0 The Interstellar Update
 
 ### v0.5.0
 ##### Features
+- Dyson Ring
 - Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Game Now Works in an Inactive Tab

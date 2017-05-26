@@ -3112,16 +3112,16 @@
 							<tr id="unlockDyson" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Dyson Swarm
+										Dyson Ring
 									</h3>
 									<span>
-										Dysons Swarms produce huge amounts of energy by surrounding the sun in solar stations.
+										Dysons Rings produce huge amounts of energy by surrounding the sun in solar stations.
 										<br>
 										Costs <span id="unlockDysonCost">100,000</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="unlockDyson()" class="btn btn-default">Unlock Dyson Swarm</button>
+									<button onclick="unlockDyson()" class="btn btn-default">Unlock Dyson Rings</button>
 									<br>
 									<br>
 								</td>
@@ -3129,16 +3129,16 @@
 							<tr id="unlockDysonSphere" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Dyson Sphere
+										Dyson Swarms and Spheres
 									</h3>
 									<span>
-										The Dyson Sphere encompasses the sun and allows you to harness enough energy to go interstellar.
+										The Dyson Swarms encapsulate the sun in rings of solar stations, wheras Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
 										<br>
 										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="unlockDysonSphere()" class="btn btn-default">Unlock Dyson Sphere</button>
+									<button onclick="unlockDysonSphere()" class="btn btn-default">Unlock Dyson Swarms/Spheres</button>
 									<br>
 									<br>
 								</td>
@@ -4523,20 +4523,34 @@
 										<br>
 										<br>
 										<h3 class="default btn-link">
-											Swarm: <span id="swarm">0</span>
+											Ring: <span id="ring">0</span>
 										</h3>
 										<span>
-											The swarm is an array of solar stations orbiting the sun, once built, can produce 25,000 energy per second. However, it requires <span id="swarmRocketFuelCost">250,000</span> rocket fuel in total to put the sections in place, 2,500 per piece.
+											The ring is an solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires <span id="ringRocketFuelCost">50,000</span> rocket fuel in total to put the sections in place.
 											<br>
 											<br>
-											You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to create the swarm.
+											You currently have <span id="dysonPieces">0</span> out of 50 Dyson pieces to create the ring.
 											<br>
 											<br>
 										</span>
-										<button onclick="buildSwarm()" class="btn btn-default">Construct Swarm</button>
+										<button onclick="buildRing()" class="btn btn-default">Construct Ring</button>
 										<br>
 										<br>
 										<hide id="dysonSphere" class="hidden">
+											<h3 class="default btn-link">
+												Swarm: <span id="swarm">0</span>
+											</h3>
+											<span>
+												The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires <span id="swarmRocketFuelCost">250,000</span> rocket fuel in total to put the sections in place.
+												<br>
+												<br>
+												You currently have <span id="dysonPieces">0</span> out of 100 Dyson pieces to create the swarm.
+												<br>
+												<br>
+											</span>
+											<button onclick="buildSwarm()" class="btn btn-default">Construct Swarm</button>
+											<br>
+											<br>
 											<h3 class="default btn-link">
 												Sphere: <span id="sphere">0</span>
 											</h3>

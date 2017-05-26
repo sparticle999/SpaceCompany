@@ -161,6 +161,19 @@ function getDyson(){
 	}
 }
 
+function buildRing(){
+	if(dyson >= 50 && rocketFuel >= 50000){
+		dyson -= 50;
+		rocketFuel -= 50000;
+		ring += 1;
+		document.getElementById("ring").innerHTML = ring;
+		document.getElementById("dyson").innerHTML = dyson;
+		document.getElementById("dysonPieces").innerHTML = dyson;
+		document.getElementById("dysonPieces2").innerHTML = dyson;
+		refreshDyson()
+	}
+}
+
 function buildSwarm(){
 	if(dyson >= 100 && rocketFuel >= 250000){
 		dyson -= 100;
