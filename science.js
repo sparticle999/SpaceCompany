@@ -409,7 +409,7 @@ function purchaseEfficiency() {
 function updateEfficiencyDisplay() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
-	if(science > efficiencyBaseCost){
+	if(science > tech.cost['science']) {
 		tech.unlocked = true;
 	}
 

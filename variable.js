@@ -114,8 +114,6 @@ var oxidisation = 0; var oxidisationMetalCost = 12000; var oxidisationGemCost = 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var swarm = 0;
 var sphere = 0;
-var efficiencyResearch = 0;
-var efficiencyBaseCost = 100000;
 
 // Variables not being saved
 
