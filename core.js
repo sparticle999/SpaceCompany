@@ -219,7 +219,7 @@ function refreshPerSec(delta){
         }
 	}
 
-	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0) {
+	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0 && plasma >= plasmaStorage) {
         plasmaps = 0;
 	}
 
