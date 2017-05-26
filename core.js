@@ -40,7 +40,7 @@ function refresh(){
 
 function calculateEnergyOutput(delta) {
 	// Fixed outputs first
-	var output = (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
+	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
 	if(charcoal + charcoalps * delta >= charcoalEngine * delta) {
 		output += charcoalEngine * charcoalEngineOutput;
@@ -648,6 +648,7 @@ function refreshUI(){
 	document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
 	document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
 	document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
+	document.getElementById("ring").innerHTML = Game.settings.format(ring);
 	document.getElementById("swarm").innerHTML = Game.settings.format(swarm);
 	document.getElementById("sphere").innerHTML = Game.settings.format(sphere);
 }
@@ -1451,6 +1452,7 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, dysonMeteoriteCost, "dysonMeteoriteCost");
 	Game.settings.turnRed(ice, dysonIceCost, "dysonIceCost");
 
+	Game.settings.turnRed(rocketFuel, 50000, "ringRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 250000, "swarmRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 1000000, "sphereRocketFuelCost");
 
