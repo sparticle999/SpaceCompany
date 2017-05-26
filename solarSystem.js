@@ -93,9 +93,9 @@ function explore(planet){
 				document.getElementById("methanePower").className = "";
 				resourcesUnlocked.push("methanePower");
 				break;
-			case "AsteriodBelt":
+			case "AsteroidBelt":
 				document.getElementById("wonderStation").className = "inner";
-				document.getElementById("collapseOuter").className ="collapseOuter";
+				document.getElementById("collapseOuter").className = "collapseOuter";
 				document.getElementById("jupiter").className = "outer";
 				document.getElementById("saturn").className = "outer";
 				document.getElementById("uranus").className = "outer";
@@ -106,7 +106,7 @@ function explore(planet){
 			case "WonderStation":
 				document.getElementById("wonderTab").className = "";
 				Game.statistics.add('tabsUnlocked');
-				newUnlock("wonderTab");
+				newUnlock("wonder");
 				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 				break;
 			case "Jupiter":
@@ -114,7 +114,7 @@ function explore(planet){
 				document.getElementById("fusionPower").className = "";
 				resourcesUnlocked.push("collapseOuterPlanet", "fusionPower");
 				break;
-			case "KupierBelt":
+			case "KuiperBelt":
 				document.getElementById("solCenter").className = "outer";
 				resourcesUnlocked.push("solCenter");
 				refreshResources();
