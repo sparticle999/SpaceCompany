@@ -393,6 +393,7 @@ function legacySave(data) {
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
 		swarm: swarm,
+        efficiencyResearch: efficiencyResearch
 	}, data);
 
 	return localSave;
@@ -793,5 +794,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
+        if(typeof savegame.efficiencyResearch !== "undefined") efficiencyResearch = savegame.efficiencyResearch;
 	}
 }

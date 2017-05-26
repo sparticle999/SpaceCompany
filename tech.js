@@ -96,8 +96,6 @@ Game.tech = (function(){
             data.remove(data, Game.resources.getResourceData(data.resource));
             return;
         }
-
-        console.warn("TODO: RemoveTech Effect not implemented for " + id);
     };
 
     instance.applyTechEffect = function(id) {
@@ -106,8 +104,6 @@ Game.tech = (function(){
             data.apply(data, Game.resources.getResourceData(data.resource));
             return;
         }
-
-        console.warn("TODO: ApplyTech Effect not implemented for " + id);
     };
 
     return instance;

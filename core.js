@@ -107,46 +107,51 @@ function refreshPerSec(delta){
         energyLow = false;
 	}
 
+    // calculate multipliers (add prestige etc here)
+    var efficiencyTech = Game.tech.getTechData('efficiencyResearch');
+    var perSecondMultiplier = 1 + (efficiencyTech.current * 0.01);
+
 	// Now we calculate the base per second
-    uraniumps = grinder;
-    oilps = pump;
-    metalps = miner;
-    gemps = gemMiner;
+    uraniumps = grinder * perSecondMultiplier;
+    oilps = pump * perSecondMultiplier;
+    metalps = miner * perSecondMultiplier;
+    gemps = gemMiner * perSecondMultiplier;
     charcoalps = 0;
-    woodps = woodcutter;
-    spaceMetalps = moonWorker;
-    methaneps = vacuum ;
-    titaniumps = explorer;
-    goldps = droid;
-    silverps = scout;
-    siliconps = blowtorch;
-    lavaps = crucible;
-    hydrogenps = collector;
-    heliumps = drone;
-    iceps = icePick;
+    woodps = woodcutter * perSecondMultiplier;
+    spaceMetalps = moonWorker * perSecondMultiplier;
+    methaneps = vacuum * perSecondMultiplier;
+    titaniumps = explorer * perSecondMultiplier;
+    goldps = droid * perSecondMultiplier;
+    silverps = scout * perSecondMultiplier;
+    siliconps = blowtorch * perSecondMultiplier;
+    lavaps = crucible * perSecondMultiplier;
+    hydrogenps = collector * perSecondMultiplier;
+    heliumps = drone * perSecondMultiplier;
+    iceps = icePick * perSecondMultiplier;
     plasmaps = 0;
     meteoriteps = 0;
     rocketFuelps = 0;
 
+    // Science is not multiplied!
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
 	if(!energyLow) {
-		charcoalps -= (charcoalEngine);
-        oilps +=  (pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246);
-        metalps +=  (heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427);
-        gemps +=  (advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358);
-        woodps +=  (laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297);
-        spaceMetalps +=  (moonDrill*10) + (moonQuarry*53) + (planetExcavator*207);
-        methaneps +=  (suctionExcavator*8) + (spaceCow*37) + (vent*149) - (methaneStation * 6);
-        titaniumps +=  (spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197);
-        goldps +=  (destroyer*8) + (deathStar*51) + (actuator*211);
-        silverps +=  (spaceLaser*13) + (bertha*53) + (cannon*208);
-        siliconps +=  (scorcher*9) + (annihilator*40) + (desert*157);
-        uraniumps +=  (cubic*9) +(enricher*61) + (recycler*235) - (nuclearStation * 7);
-        lavaps +=  (extractor*7) + (extruder*43) + (veluptuator*187) - (magmatic * 11);
-        hydrogenps +=  (magnet*5) + (eCell*28) + (hindenburg*113) - (fusionReactor * 10);
-        heliumps +=  (tanker*11) + (compressor*57) + (skimmer*232) - (fusionReactor * 10);
-        iceps +=  (iceDrill*9) + (freezer*65) + (mrFreeze*278);
+		charcoalps -= (charcoalEngine * perSecondMultiplier);
+        oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246)) * perSecondMultiplier;
+        metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
+        gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358)) * perSecondMultiplier;
+        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297)) * perSecondMultiplier;
+        spaceMetalps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
+        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) - (methaneStation * 6)) * perSecondMultiplier;
+        titaniumps +=  ((spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
+        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211)) * perSecondMultiplier;
+        silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208)) * perSecondMultiplier;
+        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157)) * perSecondMultiplier;
+        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) - (nuclearStation * 7)) * perSecondMultiplier;
+        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) - (magmatic * 11)) * perSecondMultiplier;
+        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) - (fusionReactor * 10)) * perSecondMultiplier;
+        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232) - (fusionReactor * 10)) * perSecondMultiplier;
+        iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278)) * perSecondMultiplier;
 	}
 
 	if(charcoalToggled) {
@@ -157,10 +162,10 @@ function refreshPerSec(delta){
 
 		if(wood + woodps >= woodCost) {
 			woodps -= woodCost;
-			charcoalps += woodburner;
+			charcoalps += woodburner * perSecondMultiplier;
 
 			if(!energyLow){
-                charcoalps += (furnace*furnaceOutput) + (kiln*53) + (fryer*210)
+                charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210)) * perSecondMultiplier
 			}
 		}
 	}
@@ -171,18 +176,20 @@ function refreshPerSec(delta){
         if(oil + oilps >= oilCost && charcoal + charcoalps >= charcoalCost) {
             oilps -= oilCost;
             charcoalps -= charcoalCost;
-            rocketFuelps += (chemicalPlant/5) + (oxidisation*1.5);
+            rocketFuelps += ((chemicalPlant/5) + (oxidisation*1.5)) * perSecondMultiplier;
         }
     }
 
+    var absoluteMeteoriteGain = 0;
 	if(meteoriteToggled === true) {
         var plasmaCost = (printer * 3) + (web * 21);
         if(plasma + plasmaps * delta >= plasmaCost) {
             var gain = printer + (web * 8);
+            absoluteMeteoriteGain += gain;
 
             var gainAbs = Math.min(gain, meteoriteStorage - meteorite);
             if (gainAbs > 0) {
-                meteoriteps += gainAbs;
+                meteoriteps += gainAbs * perSecondMultiplier;
                 plasmaps -= plasmaCost;
             } else if (meteoriteps < 0 && meteoriteps + gain > 0) {
                 meteoriteps = 0;
@@ -200,7 +207,7 @@ function refreshPerSec(delta){
         if (gainAbs > 0) {
             if (hydrogen + hydrogenps * delta >= hydrogenCost) {
                 hydrogenps -= hydrogenCost;
-                plasmaps += gain;
+                plasmaps += gain * perSecondMultiplier;
             }
         }
 	}
@@ -214,15 +221,19 @@ function refreshPerSec(delta){
         if(gainAbs > 0) {
             if (helium + heliumps >= heliumCost) {
                 heliumps -= heliumCost;
-                plasmaps += gain;
+                plasmaps += gain * perSecondMultiplier;
             }
         }
 	}
 
+	// Normalize per second gains
+    if(meteoriteps < 0 && meteoriteps + absoluteMeteoriteGain > 0 && meteorite >= meteoriteStorage) {
+        meteoriteps = 0;
+    }
+
 	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0 && plasma >= plasmaStorage) {
         plasmaps = 0;
 	}
-
 }
 
 function refreshUI(){

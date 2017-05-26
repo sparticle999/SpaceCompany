@@ -56,6 +56,8 @@ var Game = (function() {
 
         updateDisplayAfterGainResource();
 
+        updateEfficiencyDisplay();
+
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);

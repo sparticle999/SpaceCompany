@@ -483,5 +483,18 @@ Game.techData = (function () {
         }
     };
 
+    instance.efficiencyResearch = {
+        name: 'Research Efficiency',
+        desc: 'Efficiency increases the income per second by 1% per purchase.',
+        type: TECH_TYPE.UPGRADE,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: -1,
+        cost: {
+            'science': 100000
+        }
+    };
+
     return instance;
 }());

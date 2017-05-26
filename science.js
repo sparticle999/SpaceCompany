@@ -390,3 +390,36 @@ function unlockDysonSphere(){
 		newUnlock("solCenter");
 	}
 }
+
+function getCost(basePrice, amount, multiplier) {
+	if(!multiplier) { multiplier = 1.1; }
+    return Math.floor(basePrice * Math.pow(multiplier, amount));
+}
+
+function purchaseEfficiency() {
+    var tech = Game.tech.getTechData('efficiencyResearch');
+
+	var cost = getCost(tech.cost['science'], tech.current);
+	if(science >= cost) {
+		Game.tech.gainTech(tech.id);
+        science -= cost;
+	}
+}
+
+function updateEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('efficiencyResearch');
+
+	if(science > efficiencyBaseCost){
+		tech.unlocked = true;
+	}
+
+	if(tech.unlocked === false) {
+        $('#scienceEfficiencyUpgrade').hide();
+		return;
+	} else {
+        $('#scienceEfficiencyUpgrade').show();
+	}
+
+	$('#scienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+	$('#scienceEfficiencyUpgradeCost').text(Game.settings.format(getCost(tech.cost['science'], tech.current)));
+}
