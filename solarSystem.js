@@ -105,6 +105,7 @@ function explore(planet){
 				break;
 			case "WonderStation":
 				document.getElementById("wonderTab").className = "";
+				tabsUnlocked.push("wonderTab");
 				Game.statistics.add('tabsUnlocked');
 				newUnlock("wonder");
 				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
