@@ -420,6 +420,9 @@ function updateEfficiencyDisplay() {
         $('#scienceEfficiencyUpgrade').show();
 	}
 
+	var cost = getCost(tech.cost['science'], tech.current);
+	Game.settings.turnRed(science, cost, 'scienceEfficiencyUpgradeCost');
+
 	$('#scienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
-	$('#scienceEfficiencyUpgradeCost').text(Game.settings.format(getCost(tech.cost['science'], tech.current)));
+	$('#scienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
 }
