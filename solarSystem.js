@@ -9,12 +9,6 @@ function getChemicalPlant(){
 		chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
 		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
 		chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant));
-		document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
-		document.getElementById("chemicalPlantMetalCost").innerHTML = Game.settings.format(chemicalPlantMetalCost);
-		document.getElementById("chemicalPlantGemCost").innerHTML = Game.settings.format(chemicalPlantGemCost);
-		document.getElementById("chemicalPlantOilCost").innerHTML = Game.settings.format(chemicalPlantOilCost);
-		refresh();
-		refreshPerSec();
 	}
 }
 
@@ -27,12 +21,6 @@ function getOxidisation(){
 		oxidisationOilCost = Math.floor(6800 * Math.pow(1.1,oxidisation));
 		oxidisationGemCost = Math.floor(8300 * Math.pow(1.1,oxidisation));
 		oxidisationMetalCost = Math.floor(12000 * Math.pow(1.1,oxidisation));
-		document.getElementById("oxidisation").innerHTML = oxidisation;
-		document.getElementById("oxidisationMetalCost").innerHTML = Game.settings.format(oxidisationMetalCost);
-		document.getElementById("oxidisationGemCost").innerHTML = Game.settings.format(oxidisationGemCost);
-		document.getElementById("oxidisationOilCost").innerHTML = Game.settings.format(oxidisationOilCost);
-		refresh();
-		refreshPerSec();
 	}
 }
 
@@ -43,7 +31,6 @@ function getRocket(){
 		oil -= 1000;
 		rocket = 1;
 		document.getElementById("rocket").innerHTML = "Built";
-		refresh();
 	}
 }
 

@@ -1,43 +1,3 @@
-function refresh(){
-	if(energy < 250 && energy > -250){
-		document.getElementById("energy").innerHTML = Game.settings.format(energy*2)/2;
-	}
-	else{
-		document.getElementById("energy").innerHTML = Game.settings.format(energy);
-	}
-	document.getElementById("plasma").innerHTML = Game.settings.format(plasma);
-	document.getElementById("oil").innerHTML = Game.settings.format(oil);
-	document.getElementById("metal").innerHTML = Game.settings.format(metal);
-	document.getElementById("gem").innerHTML = Game.settings.format(gem);
-	document.getElementById("charcoal").innerHTML = Game.settings.format(charcoal);
-	document.getElementById("wood").innerHTML = Game.settings.format(wood);
-	document.getElementById("spaceMetal").innerHTML = Game.settings.format(spaceMetal);
-	document.getElementById("methane").innerHTML = Game.settings.format(methane);
-	document.getElementById("titanium").innerHTML = Game.settings.format(titanium);
-	document.getElementById("gold").innerHTML = Game.settings.format(gold);
-	document.getElementById("silver").innerHTML = Game.settings.format(silver);
-	document.getElementById("silicon").innerHTML = Game.settings.format(silicon);
-	document.getElementById("uranium").innerHTML = Game.settings.format(uranium);
-	document.getElementById("lava").innerHTML = Game.settings.format(lava);
-	document.getElementById("hydrogen").innerHTML = Game.settings.format(hydrogen);
-	document.getElementById("helium").innerHTML = Game.settings.format(helium);
-	document.getElementById("ice").innerHTML = Game.settings.format(ice);
-	document.getElementById("meteorite").innerHTML = Game.settings.format(meteorite);
-
-	if(science < 100){
-		document.getElementById("science").innerHTML = Game.settings.format(science, 1);
-	}
-	else{
-		document.getElementById("science").innerHTML = Game.settings.format(science);
-	}
-
-    if(rocketFuel < 100) {
-        document.getElementById("rocketFuel").innerHTML = Game.settings.format(rocketFuel, 1);
-    } else {
-        document.getElementById("rocketFuel").innerHTML = Game.settings.format(rocketFuel);
-    }
-}
-
 function calculateEnergyOutput(delta) {
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
@@ -236,433 +196,7 @@ function refreshPerSec(delta){
 	}
 }
 
-function refreshUI(){
-	if(heaterToggled === true){
-		document.getElementById("heaterToggled").innerHTML = "Off";
-	}
-	else{
-		document.getElementById("heaterToggled").innerHTML = "On";
-	}
-	if(plasmaticToggled === true){
-		document.getElementById("plasmaticToggled").innerHTML = "Off";
-	}
-	else{
-		document.getElementById("plasmaticToggled").innerHTML = "On";
-	}
-	if(charcoalToggled === true){
-		document.getElementById("charcoalToggled").innerHTML = "Off";
-	}
-	else{
-		document.getElementById("charcoalToggled").innerHTML = "On";
-	}
-	if(rocketFuelToggled === true){
-		document.getElementById("rocketFuelToggled").innerHTML = "Off";
-	}
-	else{
-		document.getElementById("rocketFuelToggled").innerHTML = "On";
-	}
-	if(meteoriteToggled === true){
-		document.getElementById("meteoriteToggled").innerHTML = "Off";
-	}
-	else{
-		document.getElementById("meteoriteToggled").innerHTML = "On";
-	}
 
-	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
-	document.getElementById("energyStorage").innerHTML = Game.settings.format(getMaxEnergy());
-	document.getElementById("uraniumStorage").innerHTML = Game.settings.format(uraniumStorage);
-	document.getElementById("uraniumNextStorage").innerHTML = Game.settings.format(uraniumNextStorage);
-	document.getElementById("uraniumStorageCost").innerHTML = Game.settings.format(uraniumStorage);
-	document.getElementById("uraniumStorageSpaceMetalCost").innerHTML = Game.settings.format(uraniumStorage/2.5);
-	document.getElementById("oilStorage").innerHTML = Game.settings.format(oilStorage);
-	document.getElementById("oilNextStorage").innerHTML = Game.settings.format(oilNextStorage);
-	document.getElementById("oilStorageCost").innerHTML = Game.settings.format(oilStorage);
-	document.getElementById("oilStorageMetalCost").innerHTML = Game.settings.format(oilStorage/2.5);
-	document.getElementById("metalStorage").innerHTML = Game.settings.format(metalStorage);
-	document.getElementById("metalNextStorage").innerHTML = Game.settings.format(metalNextStorage);
-	document.getElementById("metalStorageCost").innerHTML = Game.settings.format(metalStorage);
-	document.getElementById("gemStorage").innerHTML = Game.settings.format(gemStorage);
-	document.getElementById("gemNextStorage").innerHTML = Game.settings.format(gemNextStorage);
-	document.getElementById("gemStorageCost").innerHTML = Game.settings.format(gemStorage);
-	document.getElementById("gemStorageMetalCost").innerHTML = Game.settings.format(gemStorage/2.5);
-	document.getElementById("charcoalStorage").innerHTML = Game.settings.format(charcoalStorage);
-	document.getElementById("charcoalNextStorage").innerHTML = Game.settings.format(charcoalNextStorage);
-	document.getElementById("charcoalStorageCost").innerHTML = Game.settings.format(charcoalStorage);
-	document.getElementById("charcoalStorageMetalCost").innerHTML = Game.settings.format(charcoalStorage/2.5);
-	document.getElementById("woodStorage").innerHTML = Game.settings.format(woodStorage);
-	document.getElementById("woodNextStorage").innerHTML = Game.settings.format(woodNextStorage);
-	document.getElementById("woodStorageCost").innerHTML = Game.settings.format(woodStorage);
-	document.getElementById("woodStorageMetalCost").innerHTML = Game.settings.format(woodStorage/2.5);
-	document.getElementById("spaceMetalStorage").innerHTML = Game.settings.format(spaceMetalStorage);
-	document.getElementById("spaceMetalNextStorage").innerHTML = Game.settings.format(spaceMetalNextStorage);
-	document.getElementById("spaceMetalStorageCost").innerHTML = Game.settings.format(spaceMetalStorage);
-	document.getElementById("spaceMetalStorageMetalCost").innerHTML = Game.settings.format(spaceMetalStorage*4);
-	document.getElementById("methaneStorage").innerHTML = Game.settings.format(methaneStorage);
-	document.getElementById("methaneNextStorage").innerHTML = Game.settings.format(methaneNextStorage);
-	document.getElementById("methaneStorageCost").innerHTML = Game.settings.format(methaneStorage);
-	document.getElementById("methaneStorageSpaceMetalCost").innerHTML = Game.settings.format(methaneStorage/2.5);
-	document.getElementById("titaniumStorage").innerHTML = Game.settings.format(titaniumStorage);
-	document.getElementById("titaniumNextStorage").innerHTML = Game.settings.format(titaniumNextStorage);
-	document.getElementById("titaniumStorageCost").innerHTML = Game.settings.format(titaniumStorage);
-	document.getElementById("titaniumStorageSpaceMetalCost").innerHTML = Game.settings.format(titaniumStorage/2.5);
-	document.getElementById("goldStorage").innerHTML = Game.settings.format(goldStorage);
-	document.getElementById("goldNextStorage").innerHTML = Game.settings.format(goldNextStorage);
-	document.getElementById("goldStorageCost").innerHTML = Game.settings.format(goldStorage);
-	document.getElementById("goldStorageSpaceMetalCost").innerHTML = Game.settings.format(goldStorage/2.5);
-	document.getElementById("silverStorage").innerHTML = Game.settings.format(silverStorage);
-	document.getElementById("silverNextStorage").innerHTML = Game.settings.format(silverNextStorage);
-	document.getElementById("silverStorageCost").innerHTML = Game.settings.format(silverStorage);
-	document.getElementById("silverStorageSpaceMetalCost").innerHTML = Game.settings.format(silverStorage/2.5);
-	document.getElementById("siliconStorage").innerHTML = Game.settings.format(siliconStorage);
-	document.getElementById("siliconNextStorage").innerHTML = Game.settings.format(siliconNextStorage);
-	document.getElementById("siliconStorageCost").innerHTML = Game.settings.format(siliconStorage);
-	document.getElementById("siliconStorageSpaceMetalCost").innerHTML = Game.settings.format(siliconStorage/2.5);
-	document.getElementById("lavaStorage").innerHTML = Game.settings.format(lavaStorage);
-	document.getElementById("lavaNextStorage").innerHTML = Game.settings.format(lavaNextStorage);
-	document.getElementById("lavaStorageCost").innerHTML = Game.settings.format(lavaStorage);
-	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaStorage/2.5);
-	document.getElementById("hydrogenStorage").innerHTML = Game.settings.format(hydrogenStorage);
-	document.getElementById("hydrogenNextStorage").innerHTML = Game.settings.format(hydrogenNextStorage);
-	document.getElementById("hydrogenStorageCost").innerHTML = Game.settings.format(hydrogenStorage);
-	document.getElementById("hydrogenStorageSpaceMetalCost").innerHTML = Game.settings.format(hydrogenStorage/2.5);
-	document.getElementById("heliumStorage").innerHTML = Game.settings.format(heliumStorage);
-	document.getElementById("heliumNextStorage").innerHTML = Game.settings.format(heliumNextStorage);
-	document.getElementById("heliumStorageCost").innerHTML = Game.settings.format(heliumStorage);
-	document.getElementById("heliumStorageSpaceMetalCost").innerHTML = Game.settings.format(heliumStorage/2.5);
-	document.getElementById("iceStorage").innerHTML = Game.settings.format(iceStorage);
-	document.getElementById("iceNextStorage").innerHTML = Game.settings.format(iceNextStorage);
-	document.getElementById("iceStorageCost").innerHTML = Game.settings.format(iceStorage);
-	document.getElementById("iceStorageSpaceMetalCost").innerHTML = Game.settings.format(iceStorage/2.5);
-	document.getElementById("meteoriteStorage").innerHTML = Game.settings.format(meteoriteStorage);
-	document.getElementById("meteoriteNextStorage").innerHTML = Game.settings.format(meteoriteNextStorage);
-	document.getElementById("meteoriteStorageCost").innerHTML = Game.settings.format(meteoriteStorage);
-	document.getElementById("meteoriteStorageSpaceMetalCost").innerHTML = Game.settings.format(meteoriteStorage*4);
-	document.getElementById("lava").innerHTML = Game.settings.format(lava);
-	document.getElementById("lavaStorage").innerHTML = Game.settings.format(lavaStorage);
-	document.getElementById("lavaNextStorage").innerHTML = Game.settings.format(lavaNextStorage);
-	document.getElementById("lavaStorageSpaceMetalCost").innerHTML = Game.settings.format(lavaStorage/2.5);
-	document.getElementById("heater").innerHTML = heater;
-	document.getElementById("heaterSpaceMetalCost").innerHTML = Game.settings.format(heaterSpaceMetalCost);
-	document.getElementById("heaterGemCost").innerHTML = Game.settings.format(heaterGemCost);
-	document.getElementById("heaterSiliconCost").innerHTML = Game.settings.format(heaterSiliconCost);
-	document.getElementById("plasmatic").innerHTML = plasmatic;
-	document.getElementById("plasmaticSpaceMetalCost").innerHTML = Game.settings.format(plasmaticSpaceMetalCost);
-	document.getElementById("plasmaticSiliconCost").innerHTML = Game.settings.format(plasmaticSiliconCost);
-	document.getElementById("plasmaticMeteoriteCost").innerHTML = Game.settings.format(plasmaticMeteoriteCost);
-	document.getElementById("battery").innerHTML = battery;
-	document.getElementById("batteryMetalCost").innerHTML = Game.settings.format(batteryMetalCost);
-	document.getElementById("batteryGemCost").innerHTML = Game.settings.format(batteryGemCost);
-	document.getElementById("batterySpaceMetalCost").innerHTML = Game.settings.format(batterySpaceMetalCost);
-	document.getElementById("batteryT2").innerHTML = batteryT2;
-	document.getElementById("batteryT2MetalCost").innerHTML = Game.settings.format(batteryT2MetalCost);
-	document.getElementById("batteryT2GemCost").innerHTML = Game.settings.format(batteryT2GemCost);
-	document.getElementById("batteryT2SpaceMetalCost").innerHTML = Game.settings.format(batteryT2SpaceMetalCost);
-	document.getElementById("charcoalEngine").innerHTML = charcoalEngine;
-	document.getElementById("charcoalEngineMetalCost").innerHTML = Game.settings.format(charcoalEngineMetalCost);
-	document.getElementById("charcoalEngineGemCost").innerHTML = Game.settings.format(charcoalEngineGemCost);
-	document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
-	document.getElementById("solarPanel").innerHTML = solarPanel;
-	document.getElementById("solarPanelMetalCost").innerHTML = Game.settings.format(solarPanelMetalCost);
-	document.getElementById("solarPanelGemCost").innerHTML = Game.settings.format(solarPanelGemCost);
-	document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
-	document.getElementById("methaneStation").innerHTML = methaneStation;
-	document.getElementById("methaneStationSpaceMetalCost").innerHTML = Game.settings.format(methaneStationSpaceMetalCost);
-	document.getElementById("methaneStationTitaniumCost").innerHTML = Game.settings.format(methaneStationTitaniumCost);
-	document.getElementById("nuclearStation").innerHTML = nuclearStation;
-	document.getElementById("nuclearStationSpaceMetalCost").innerHTML = Game.settings.format(nuclearStationSpaceMetalCost);
-	document.getElementById("nuclearStationTitaniumCost").innerHTML = Game.settings.format(nuclearStationTitaniumCost);
-	document.getElementById("magmatic").innerHTML = magmatic;
-	document.getElementById("magmaticSpaceMetalCost").innerHTML = Game.settings.format(magmaticSpaceMetalCost);
-	document.getElementById("magmaticGemCost").innerHTML = Game.settings.format(magmaticGemCost);
-	document.getElementById("magmaticSilverCost").innerHTML = Game.settings.format(magmaticSilverCost);
-	document.getElementById("fusionReactor").innerHTML = fusionReactor;
-	document.getElementById("fusionReactorSpaceMetalCost").innerHTML = Game.settings.format(fusionReactorSpaceMetalCost);
-	document.getElementById("fusionReactorTitaniumCost").innerHTML = Game.settings.format(fusionReactorTitaniumCost);
-	document.getElementById("fusionReactorSiliconCost").innerHTML = Game.settings.format(fusionReactorSiliconCost);
-	document.getElementById("pump").innerHTML = pump;
-	document.getElementById("pumpMetalCost").innerHTML = Game.settings.format(pumpMetalCost);
-	document.getElementById("pumpGemCost").innerHTML = Game.settings.format(pumpGemCost);
-	document.getElementById("pumpjack").innerHTML = pumpjack;
-	document.getElementById("pumpjackOilCost").innerHTML = Game.settings.format(pumpjackOilCost);
-	document.getElementById("pumpjackGemCost").innerHTML = Game.settings.format(pumpjackGemCost);
-	document.getElementById("pumpjackMetalCost").innerHTML = Game.settings.format(pumpjackMetalCost);
-	document.getElementById("pumpjackOutput").innerHTML = Game.settings.format(pumpjackOutput);
-	document.getElementById("oilField").innerHTML = oilField;
-	document.getElementById("oilFieldTitaniumCost").innerHTML = Game.settings.format(oilFieldTitaniumCost);
-	document.getElementById("oilFieldSpaceMetalCost").innerHTML = Game.settings.format(oilFieldSpaceMetalCost);
-	document.getElementById("oilFieldSiliconCost").innerHTML = Game.settings.format(oilFieldSiliconCost);
-	document.getElementById("oilRig").innerHTML = oilRig;
-	document.getElementById("oilRigTitaniumCost").innerHTML = Game.settings.format(oilRigTitaniumCost);
-	document.getElementById("oilRigSpaceMetalCost").innerHTML = Game.settings.format(oilRigSpaceMetalCost);
-	document.getElementById("oilRigMeteoriteCost").innerHTML = Game.settings.format(oilRigMeteoriteCost);
-	document.getElementById("miner").innerHTML = miner;
-	document.getElementById("minerMetalCost").innerHTML = Game.settings.format(minerMetalCost);
-	document.getElementById("minerWoodCost").innerHTML = Game.settings.format(minerWoodCost);
-	document.getElementById("heavyDrill").innerHTML = heavyDrill;
-	document.getElementById("heavyDrillMetalCost").innerHTML = Game.settings.format(heavyDrillMetalCost);
-	document.getElementById("heavyDrillGemCost").innerHTML = Game.settings.format(heavyDrillGemCost);
-	document.getElementById("heavyDrillOilCost").innerHTML = Game.settings.format(heavyDrillOilCost);
-	document.getElementById("heavyDrillOutput").innerHTML = Game.settings.format(heavyDrillOutput);
-	document.getElementById("gigaDrill").innerHTML = gigaDrill;
-	document.getElementById("gigaDrillSpaceMetalCost").innerHTML = Game.settings.format(gigaDrillSpaceMetalCost);
-	document.getElementById("gigaDrillGemCost").innerHTML = Game.settings.format(gigaDrillGemCost);
-	document.getElementById("gigaDrillSiliconCost").innerHTML = Game.settings.format(gigaDrillSiliconCost);
-	document.getElementById("quantumDrill").innerHTML = quantumDrill;
-	document.getElementById("quantumDrillSpaceMetalCost").innerHTML = Game.settings.format(quantumDrillSpaceMetalCost);
-	document.getElementById("quantumDrillGoldCost").innerHTML = Game.settings.format(quantumDrillGoldCost);
-	document.getElementById("quantumDrillMeteoriteCost").innerHTML = Game.settings.format(quantumDrillMeteoriteCost);
-	document.getElementById("gemMiner").innerHTML = gemMiner;
-	document.getElementById("gemMinerMetalCost").innerHTML = Game.settings.format(gemMinerMetalCost);
-	document.getElementById("gemMinerGemCost").innerHTML = Game.settings.format(gemMinerGemCost);
-	document.getElementById("advancedDrill").innerHTML = advancedDrill;
-	document.getElementById("advancedDrillMetalCost").innerHTML = Game.settings.format(advancedDrillMetalCost);
-	document.getElementById("advancedDrillGemCost").innerHTML = Game.settings.format(advancedDrillGemCost);
-	document.getElementById("advancedDrillOilCost").innerHTML = Game.settings.format(advancedDrillOilCost);
-	document.getElementById("advancedDrillOutput").innerHTML = Game.settings.format(advancedDrillOutput);
-	document.getElementById("diamondDrill").innerHTML = diamondDrill;
-	document.getElementById("diamondDrillSpaceMetalCost").innerHTML = Game.settings.format(diamondDrillSpaceMetalCost);
-	document.getElementById("diamondDrillGemCost").innerHTML = Game.settings.format(diamondDrillGemCost);
-	document.getElementById("diamondDrillSiliconCost").innerHTML = Game.settings.format(diamondDrillSiliconCost);
-	document.getElementById("carbyneDrill").innerHTML = carbyneDrill;
-	document.getElementById("carbyneDrillSpaceMetalCost").innerHTML = Game.settings.format(carbyneDrillSpaceMetalCost);
-	document.getElementById("carbyneDrillGemCost").innerHTML = Game.settings.format(carbyneDrillGemCost);
-	document.getElementById("carbyneDrillMeteoriteCost").innerHTML = Game.settings.format(carbyneDrillMeteoriteCost);
-	document.getElementById("woodburner").innerHTML = woodburner;
-	document.getElementById("woodburnerMetalCost").innerHTML = Game.settings.format(woodburnerMetalCost);
-	document.getElementById("woodburnerWoodCost").innerHTML = Game.settings.format(woodburnerWoodCost);
-	document.getElementById("furnace").innerHTML = furnace;
-	document.getElementById("furnaceMetalCost").innerHTML = Game.settings.format(furnaceMetalCost);
-	document.getElementById("furnaceWoodCost").innerHTML = Game.settings.format(furnaceWoodCost);
-	document.getElementById("furnaceOilCost").innerHTML = Game.settings.format(furnaceOilCost);
-	document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
-	document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
-	document.getElementById("kiln").innerHTML = Game.settings.format(kiln);
-	document.getElementById("kilnSpaceMetalCost").innerHTML = Game.settings.format(kilnSpaceMetalCost);
-	document.getElementById("kilnGemCost").innerHTML = Game.settings.format(kilnGemCost);
-	document.getElementById("kilnSiliconCost").innerHTML = Game.settings.format(kilnSiliconCost);
-	document.getElementById("fryer").innerHTML = Game.settings.format(fryer);
-	document.getElementById("fryerSpaceMetalCost").innerHTML = Game.settings.format(fryerSpaceMetalCost);
-	document.getElementById("fryerLavaCost").innerHTML = Game.settings.format(fryerLavaCost);
-	document.getElementById("fryerMeteoriteCost").innerHTML = Game.settings.format(fryerMeteoriteCost);
-	document.getElementById("woodcutter").innerHTML = woodcutter;
-	document.getElementById("woodcutterMetalCost").innerHTML = Game.settings.format(woodcutterMetalCost);
-	document.getElementById("woodcutterWoodCost").innerHTML = Game.settings.format(woodcutterWoodCost);
-	document.getElementById("laserCutter").innerHTML = laserCutter;
-	document.getElementById("laserCutterMetalCost").innerHTML = Game.settings.format(laserCutterMetalCost);
-	document.getElementById("laserCutterGemCost").innerHTML = Game.settings.format(laserCutterGemCost);
-	document.getElementById("laserCutterOilCost").innerHTML = Game.settings.format(laserCutterOilCost);
-	document.getElementById("laserCutterOutput").innerHTML = Game.settings.format(laserCutterOutput);
-	document.getElementById("deforester").innerHTML = deforester;
-	document.getElementById("deforesterSpaceMetalCost").innerHTML = Game.settings.format(deforesterSpaceMetalCost);
-	document.getElementById("deforesterTitaniumCost").innerHTML = Game.settings.format(deforesterTitaniumCost);
-	document.getElementById("deforesterSiliconCost").innerHTML = Game.settings.format(deforesterSiliconCost);
-	document.getElementById("infuser").innerHTML = infuser;
-	document.getElementById("infuserSpaceMetalCost").innerHTML = Game.settings.format(infuserSpaceMetalCost);
-	document.getElementById("infuserOilCost").innerHTML = Game.settings.format(infuserOilCost);
-	document.getElementById("infuserMeteoriteCost").innerHTML = Game.settings.format(infuserMeteoriteCost);
-	document.getElementById("moonWorker").innerHTML = moonWorker;
-	document.getElementById("moonWorkerGemCost").innerHTML = Game.settings.format(moonWorkerGemCost);
-	document.getElementById("moonDrill").innerHTML = moonDrill;
-	document.getElementById("moonDrillMetalCost").innerHTML = Game.settings.format(moonDrillMetalCost);
-	document.getElementById("moonDrillGemCost").innerHTML = Game.settings.format(moonDrillGemCost);
-	document.getElementById("moonDrillOilCost").innerHTML = Game.settings.format(moonDrillOilCost);
-	document.getElementById("moonQuarry").innerHTML = moonQuarry;
-	document.getElementById("moonQuarrySpaceMetalCost").innerHTML = Game.settings.format(moonQuarrySpaceMetalCost);
-	document.getElementById("moonQuarryGemCost").innerHTML = Game.settings.format(moonQuarryGemCost);
-	document.getElementById("moonQuarrySiliconCost").innerHTML = Game.settings.format(moonQuarrySiliconCost);
-	document.getElementById("planetExcavator").innerHTML = planetExcavator;
-	document.getElementById("planetExcavatorTitaniumCost").innerHTML = Game.settings.format(planetExcavatorTitaniumCost);
-	document.getElementById("planetExcavatorIceCost").innerHTML = Game.settings.format(planetExcavatorIceCost);
-	document.getElementById("planetExcavatorMeteoriteCost").innerHTML = Game.settings.format(planetExcavatorMeteoriteCost);
-	document.getElementById("vacuum").innerHTML = vacuum;
-	document.getElementById("vacuumSpaceMetalCost").innerHTML = Game.settings.format(vacuumSpaceMetalCost);
-	document.getElementById("vacuumGemCost").innerHTML = Game.settings.format(vacuumGemCost);
-	document.getElementById("suctionExcavator").innerHTML = suctionExcavator;
-	document.getElementById("suctionExcavatorSpaceMetalCost").innerHTML = Game.settings.format(suctionExcavatorSpaceMetalCost);
-	document.getElementById("suctionExcavatorGemCost").innerHTML = Game.settings.format(suctionExcavatorGemCost);
-	document.getElementById("suctionExcavatorOilCost").innerHTML = Game.settings.format(suctionExcavatorOilCost);
-	document.getElementById("spaceCow").innerHTML = spaceCow;
-	document.getElementById("spaceCowTitaniumCost").innerHTML = Game.settings.format(spaceCowTitaniumCost);
-	document.getElementById("spaceCowSpaceMetalCost").innerHTML = Game.settings.format(spaceCowSpaceMetalCost);
-	document.getElementById("spaceCowSiliconCost").innerHTML = Game.settings.format(spaceCowSiliconCost);
-	document.getElementById("vent").innerHTML = vent;
-	document.getElementById("ventHeliumCost").innerHTML = Game.settings.format(ventHeliumCost);
-	document.getElementById("ventSpaceMetalCost").innerHTML = Game.settings.format(ventSpaceMetalCost);
-	document.getElementById("ventMeteoriteCost").innerHTML = Game.settings.format(ventMeteoriteCost);
-	document.getElementById("explorer").innerHTML = explorer;
-	document.getElementById("explorerGemCost").innerHTML = Game.settings.format(explorerGemCost);
-	document.getElementById("spaceMetalDrill").innerHTML = spaceMetalDrill;
-	document.getElementById("spaceMetalDrillSpaceMetalCost").innerHTML = Game.settings.format(spaceMetalDrillSpaceMetalCost);
-	document.getElementById("spaceMetalDrillGemCost").innerHTML = Game.settings.format(spaceMetalDrillGemCost);
-	document.getElementById("spaceMetalDrillOilCost").innerHTML = Game.settings.format(spaceMetalDrillOilCost);
-	document.getElementById("pentaDrill").innerHTML = pentaDrill;
-	document.getElementById("pentaDrillSpaceMetalCost").innerHTML = Game.settings.format(pentaDrillSpaceMetalCost);
-	document.getElementById("pentaDrillGemCost").innerHTML = Game.settings.format(pentaDrillGemCost);
-	document.getElementById("pentaDrillSiliconCost").innerHTML = Game.settings.format(pentaDrillSiliconCost);
-	document.getElementById("titanDrill").innerHTML = titanDrill;
-	document.getElementById("titanDrillSpaceMetalCost").innerHTML = Game.settings.format(titanDrillSpaceMetalCost);
-	document.getElementById("titanDrillGoldCost").innerHTML = Game.settings.format(titanDrillGoldCost);
-	document.getElementById("titanDrillMeteoriteCost").innerHTML = Game.settings.format(titanDrillMeteoriteCost);
-	document.getElementById("droid").innerHTML = droid;
-	document.getElementById("droidSpaceMetalCost").innerHTML = Game.settings.format(droidSpaceMetalCost);
-	document.getElementById("droidMethaneCost").innerHTML = Game.settings.format(droidMethaneCost);
-	document.getElementById("destroyer").innerHTML = destroyer;
-	document.getElementById("destroyerSpaceMetalCost").innerHTML = Game.settings.format(destroyerSpaceMetalCost);
-	document.getElementById("destroyerGemCost").innerHTML = Game.settings.format(destroyerGemCost);
-	document.getElementById("destroyerOilCost").innerHTML = Game.settings.format(destroyerOilCost);
-	document.getElementById("deathStar").innerHTML = deathStar;
-	document.getElementById("deathStarSpaceMetalCost").innerHTML = Game.settings.format(deathStarSpaceMetalCost);
-	document.getElementById("deathStarSilverCost").innerHTML = Game.settings.format(deathStarSilverCost);
-	document.getElementById("deathStarSiliconCost").innerHTML = Game.settings.format(deathStarSiliconCost);
-	document.getElementById("actuator").innerHTML = actuator;
-	document.getElementById("actuatorSpaceMetalCost").innerHTML = Game.settings.format(actuatorSpaceMetalCost);
-	document.getElementById("actuatorHeliumCost").innerHTML = Game.settings.format(actuatorHeliumCost);
-	document.getElementById("actuatorMeteoriteCost").innerHTML = Game.settings.format(actuatorMeteoriteCost);
-	document.getElementById("scout").innerHTML = scout;
-	document.getElementById("scoutSpaceMetalCost").innerHTML = Game.settings.format(scoutSpaceMetalCost);
-	document.getElementById("scoutTitaniumCost").innerHTML = Game.settings.format(scoutTitaniumCost);
-	document.getElementById("spaceLaser").innerHTML = spaceLaser;
-	document.getElementById("spaceLaserSpaceMetalCost").innerHTML = Game.settings.format(spaceLaserSpaceMetalCost);
-	document.getElementById("spaceLaserGemCost").innerHTML = Game.settings.format(spaceLaserGemCost);
-	document.getElementById("spaceLaserOilCost").innerHTML = Game.settings.format(spaceLaserOilCost);
-	document.getElementById("bertha").innerHTML = bertha;
-	document.getElementById("berthaTitaniumCost").innerHTML = Game.settings.format(berthaTitaniumCost);
-	document.getElementById("berthaSpaceMetalCost").innerHTML = Game.settings.format(berthaSpaceMetalCost);
-	document.getElementById("berthaSiliconCost").innerHTML = Game.settings.format(berthaSiliconCost);
-	document.getElementById("cannon").innerHTML = cannon;
-	document.getElementById("cannonOilCost").innerHTML = Game.settings.format(cannonOilCost);
-	document.getElementById("cannonSpaceMetalCost").innerHTML = Game.settings.format(cannonSpaceMetalCost);
-	document.getElementById("cannonMeteoriteCost").innerHTML = Game.settings.format(cannonMeteoriteCost);
-	document.getElementById("blowtorch").innerHTML = blowtorch;
-	document.getElementById("blowtorchSpaceMetalCost").innerHTML = Game.settings.format(blowtorchSpaceMetalCost);
-	document.getElementById("blowtorchTitaniumCost").innerHTML = Game.settings.format(blowtorchTitaniumCost);
-	document.getElementById("scorcher").innerHTML = scorcher;
-	document.getElementById("scorcherSpaceMetalCost").innerHTML = Game.settings.format(scorcherSpaceMetalCost);
-	document.getElementById("scorcherGemCost").innerHTML = Game.settings.format(scorcherGemCost);
-	document.getElementById("scorcherOilCost").innerHTML = Game.settings.format(scorcherOilCost);
-	document.getElementById("annihilator").innerHTML = Game.settings.format(annihilator);
-	document.getElementById("annihilatorSpaceMetalCost").innerHTML = Game.settings.format(annihilatorSpaceMetalCost);
-	document.getElementById("annihilatorGemCost").innerHTML = Game.settings.format(annihilatorGemCost);
-	document.getElementById("annihilatorSilverCost").innerHTML = Game.settings.format(annihilatorSilverCost);
-	document.getElementById("desert").innerHTML = Game.settings.format(desert);
-	document.getElementById("desertSpaceMetalCost").innerHTML = Game.settings.format(desertSpaceMetalCost);
-	document.getElementById("desertSiliconCost").innerHTML = Game.settings.format(desertSiliconCost);
-	document.getElementById("desertMeteoriteCost").innerHTML = Game.settings.format(desertMeteoriteCost);
-	document.getElementById("lab").innerHTML = lab;
-	document.getElementById("labWoodCost").innerHTML = Game.settings.format(labWoodCost);
-	document.getElementById("labGemCost").innerHTML = Game.settings.format(labGemCost);
-	document.getElementById("labMetalCost").innerHTML = Game.settings.format(labMetalCost);
-	document.getElementById("labT2").innerHTML = labT2;
-	document.getElementById("labT2WoodCost").innerHTML = Game.settings.format(labT2WoodCost);
-	document.getElementById("labT2GemCost").innerHTML = Game.settings.format(labT2GemCost);
-	document.getElementById("labT2MetalCost").innerHTML = Game.settings.format(labT2MetalCost);
-	document.getElementById("labT3").innerHTML = labT3;
-	document.getElementById("labT3WoodCost").innerHTML = Game.settings.format(labT3WoodCost);
-	document.getElementById("labT3GemCost").innerHTML = Game.settings.format(labT3GemCost);
-	document.getElementById("labT3MetalCost").innerHTML = Game.settings.format(labT3MetalCost);
-	document.getElementById("chemicalPlant").innerHTML = chemicalPlant;
-	document.getElementById("chemicalPlantMetalCost").innerHTML = Game.settings.format(chemicalPlantMetalCost);
-	document.getElementById("chemicalPlantGemCost").innerHTML = Game.settings.format(chemicalPlantGemCost);
-	document.getElementById("chemicalPlantOilCost").innerHTML = Game.settings.format(chemicalPlantOilCost);
-	document.getElementById("oxidisation").innerHTML = oxidisation;
-	document.getElementById("oxidisationMetalCost").innerHTML = Game.settings.format(oxidisationMetalCost);
-	document.getElementById("oxidisationGemCost").innerHTML = Game.settings.format(oxidisationGemCost);
-	document.getElementById("oxidisationOilCost").innerHTML = Game.settings.format(oxidisationOilCost);
-	document.getElementById("grinder").innerHTML = grinder;
-	document.getElementById("grinderTitaniumCost").innerHTML = Game.settings.format(grinderTitaniumCost);
-	document.getElementById("grinderSpaceMetalCost").innerHTML = Game.settings.format(grinderSpaceMetalCost);
-	document.getElementById("grinderGoldCost").innerHTML = Game.settings.format(grinderGoldCost);
-	document.getElementById("cubic").innerHTML = cubic;
-	document.getElementById("cubicUraniumCost").innerHTML = Game.settings.format(cubicUraniumCost);
-	document.getElementById("cubicSpaceMetalCost").innerHTML = Game.settings.format(cubicSpaceMetalCost);
-	document.getElementById("cubicOilCost").innerHTML = Game.settings.format(cubicOilCost);
-	document.getElementById("enricher").innerHTML = enricher;
-	document.getElementById("enricherTitaniumCost").innerHTML = Game.settings.format(enricherTitaniumCost);
-	document.getElementById("enricherSpaceMetalCost").innerHTML = Game.settings.format(enricherSpaceMetalCost);
-	document.getElementById("enricherSiliconCost").innerHTML = Game.settings.format(enricherSiliconCost);
-	document.getElementById("recycler").innerHTML = recycler;
-	document.getElementById("recyclerMethaneCost").innerHTML = Game.settings.format(recyclerMethaneCost);
-	document.getElementById("recyclerSpaceMetalCost").innerHTML = Game.settings.format(recyclerSpaceMetalCost);
-	document.getElementById("recyclerMeteoriteCost").innerHTML = Game.settings.format(recyclerMeteoriteCost);
-	document.getElementById("crucible").innerHTML = crucible;
-	document.getElementById("crucibleGemCost").innerHTML = Game.settings.format(crucibleGemCost);
-	document.getElementById("crucibleSpaceMetalCost").innerHTML = Game.settings.format(crucibleSpaceMetalCost);
-	document.getElementById("extractor").innerHTML = extractor;
-	document.getElementById("extractorTitaniumCost").innerHTML = Game.settings.format(extractorTitaniumCost);
-	document.getElementById("extractorSpaceMetalCost").innerHTML = Game.settings.format(extractorSpaceMetalCost);
-	document.getElementById("extractorSiliconCost").innerHTML = Game.settings.format(extractorSiliconCost);
-	document.getElementById("extruder").innerHTML = extruder;
-	document.getElementById("extruderTitaniumCost").innerHTML = Game.settings.format(extruderTitaniumCost);
-	document.getElementById("extruderSpaceMetalCost").innerHTML = Game.settings.format(extruderSpaceMetalCost);
-	document.getElementById("extruderSiliconCost").innerHTML = Game.settings.format(extruderSiliconCost);
-	document.getElementById("veluptuator").innerHTML = veluptuator;
-	document.getElementById("veluptuatorGoldCost").innerHTML = Game.settings.format(veluptuatorGoldCost);
-	document.getElementById("veluptuatorSpaceMetalCost").innerHTML = Game.settings.format(veluptuatorSpaceMetalCost);
-	document.getElementById("veluptuatorMeteoriteCost").innerHTML = Game.settings.format(veluptuatorMeteoriteCost);
-	document.getElementById("collector").innerHTML = Game.settings.format(collector);
-	document.getElementById("collectorSpaceMetalCost").innerHTML = Game.settings.format(collectorSpaceMetalCost);
-	document.getElementById("collectorTitaniumCost").innerHTML = Game.settings.format(collectorTitaniumCost);
-	document.getElementById("magnet").innerHTML = Game.settings.format(magnet);
-	document.getElementById("magnetSpaceMetalCost").innerHTML = Game.settings.format(magnetSpaceMetalCost);
-	document.getElementById("magnetTitaniumCost").innerHTML = Game.settings.format(magnetTitaniumCost);
-	document.getElementById("magnetGoldCost").innerHTML = Game.settings.format(magnetGoldCost);
-	document.getElementById("eCell").innerHTML = Game.settings.format(eCell);
-	document.getElementById("eCellSilverCost").innerHTML = Game.settings.format(eCellSilverCost);
-	document.getElementById("eCellGoldCost").innerHTML = Game.settings.format(eCellGoldCost);
-	document.getElementById("eCellSiliconCost").innerHTML = Game.settings.format(eCellSiliconCost);
-	document.getElementById("hindenburg").innerHTML = Game.settings.format(hindenburg);
-	document.getElementById("hindenburgSpaceMetalCost").innerHTML = Game.settings.format(hindenburgSpaceMetalCost);
-	document.getElementById("hindenburgMethaneCost").innerHTML = Game.settings.format(hindenburgMethaneCost);
-	document.getElementById("hindenburgMeteoriteCost").innerHTML = Game.settings.format(hindenburgMeteoriteCost);
-	document.getElementById("drone").innerHTML = Game.settings.format(drone);
-	document.getElementById("droneSpaceMetalCost").innerHTML = Game.settings.format(droneSpaceMetalCost);
-	document.getElementById("droneSiliconCost").innerHTML = Game.settings.format(droneSiliconCost);
-	document.getElementById("tanker").innerHTML = Game.settings.format(tanker);
-	document.getElementById("tankerSpaceMetalCost").innerHTML = Game.settings.format(tankerSpaceMetalCost);
-	document.getElementById("tankerTitaniumCost").innerHTML = Game.settings.format(tankerTitaniumCost);
-	document.getElementById("tankerSiliconCost").innerHTML = Game.settings.format(tankerSiliconCost);
-	document.getElementById("compressor").innerHTML = Game.settings.format(compressor);
-	document.getElementById("compressorSpaceMetalCost").innerHTML = Game.settings.format(compressorSpaceMetalCost);
-	document.getElementById("compressorTitaniumCost").innerHTML = Game.settings.format(compressorTitaniumCost);
-	document.getElementById("compressorSiliconCost").innerHTML = Game.settings.format(compressorSiliconCost);
-	document.getElementById("skimmer").innerHTML = Game.settings.format(skimmer);
-	document.getElementById("skimmerSpaceMetalCost").innerHTML = Game.settings.format(skimmerSpaceMetalCost);
-	document.getElementById("skimmerTitaniumCost").innerHTML = Game.settings.format(skimmerTitaniumCost);
-	document.getElementById("skimmerMeteoriteCost").innerHTML = Game.settings.format(skimmerMeteoriteCost);
-	document.getElementById("icePick").innerHTML = Game.settings.format(icePick);
-	document.getElementById("icePickSpaceMetalCost").innerHTML = Game.settings.format(icePickSpaceMetalCost);
-	document.getElementById("icePickGemCost").innerHTML = Game.settings.format(icePickGemCost);
-	document.getElementById("iceDrill").innerHTML = Game.settings.format(iceDrill);
-	document.getElementById("iceDrillSpaceMetalCost").innerHTML = Game.settings.format(iceDrillSpaceMetalCost);
-	document.getElementById("iceDrillTitaniumCost").innerHTML = Game.settings.format(iceDrillTitaniumCost);
-	document.getElementById("iceDrillSiliconCost").innerHTML = Game.settings.format(iceDrillSiliconCost);
-	document.getElementById("freezer").innerHTML = Game.settings.format(freezer);
-	document.getElementById("freezerSpaceMetalCost").innerHTML = Game.settings.format(freezerSpaceMetalCost);
-	document.getElementById("freezerTitaniumCost").innerHTML = Game.settings.format(freezerTitaniumCost);
-	document.getElementById("freezerSiliconCost").innerHTML = Game.settings.format(freezerSiliconCost);
-	document.getElementById("mrFreeze").innerHTML = Game.settings.format(mrFreeze);
-	document.getElementById("mrFreezeWoodCost").innerHTML = Game.settings.format(mrFreezeWoodCost);
-	document.getElementById("mrFreezeHeliumCost").innerHTML = Game.settings.format(mrFreezeHeliumCost);
-	document.getElementById("mrFreezeMeteoriteCost").innerHTML = Game.settings.format(mrFreezeMeteoriteCost);
-	document.getElementById("printer").innerHTML = Game.settings.format(printer);
-	document.getElementById("printerSpaceMetalCost").innerHTML = Game.settings.format(printerSpaceMetalCost);
-	document.getElementById("printerSiliconCost").innerHTML = Game.settings.format(printerSiliconCost);
-	document.getElementById("web").innerHTML = Game.settings.format(web);
-	document.getElementById("webSpaceMetalCost").innerHTML = Game.settings.format(webSpaceMetalCost);
-	document.getElementById("webUraniumCost").innerHTML = Game.settings.format(webUraniumCost);
-	document.getElementById("webSiliconCost").innerHTML = Game.settings.format(webSiliconCost);
-	document.getElementById("dyson").innerHTML = Game.settings.format(dyson);
-	document.getElementById("dysonPieces").innerHTML = Game.settings.format(dyson);
-	document.getElementById("dysonPieces2").innerHTML = Game.settings.format(dyson);
-	document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
-	document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
-	document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
-	document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
-	document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
-	document.getElementById("ring").innerHTML = Game.settings.format(ring);
-	document.getElementById("swarm").innerHTML = Game.settings.format(swarm);
-	document.getElementById("sphere").innerHTML = Game.settings.format(sphere);
-}
 
 function checkRedCost(){
 
@@ -784,89 +318,18 @@ function checkRedCost(){
 	Game.settings.turnRed(metal, solarPanelMetalCost, "solarPanelMetalCost");
 	Game.settings.turnRed(gem, solarPanelGemCost, "solarPanelGemCost");
 
-	if(spaceMetal < methaneStationSpaceMetalCost){
-		document.getElementById("methaneStationSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("methaneStationSpaceMetalCost").className = "";
-	}
-
-	if(titanium < methaneStationTitaniumCost){
-		document.getElementById("methaneStationTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("methaneStationTitaniumCost").className = "";
-	}
-
-	if(spaceMetal < nuclearStationSpaceMetalCost){
-		document.getElementById("nuclearStationSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("nuclearStationSpaceMetalCost").className = "";
-	}
-
-	if(titanium < nuclearStationTitaniumCost){
-		document.getElementById("nuclearStationTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("nuclearStationTitaniumCost").className = "";
-	}
-	
-	if(spaceMetal < magmaticSpaceMetalCost){
-		document.getElementById("magmaticSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("magmaticSpaceMetalCost").className = "";
-	}
-
-	if(gem < magmaticGemCost){
-		document.getElementById("magmaticGemCost").className = "red";
-	}
-	else{
-		document.getElementById("magmaticGemCost").className = "";
-	}
-
-	if(silver < magmaticSilverCost){
-		document.getElementById("magmaticSilverCost").className = "red";
-	}
-	else{
-		document.getElementById("magmaticSilverCost").className = "";
-	}
-
-	if(spaceMetal < fusionReactorSpaceMetalCost){
-		document.getElementById("fusionReactorSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("fusionReactorSpaceMetalCost").className = "";
-	}
-
-	if(titanium < fusionReactorTitaniumCost){
-		document.getElementById("fusionReactorTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("fusionReactorTitaniumCost").className = "";
-	}
-
-	if(silicon < fusionReactorSiliconCost){
-		document.getElementById("fusionReactorSiliconCost").className = "red";
-	}
-	else{
-		document.getElementById("fusionReactorSiliconCost").className = "";
-	}
-
-	if(metal < pumpMetalCost){
-		document.getElementById("pumpMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("pumpMetalCost").className = "";
-	}
-	
-	if(gem < pumpGemCost){
-		document.getElementById("pumpGemCost").className = "red";
-	}
-	else{
-		document.getElementById("pumpGemCost").className = "";
-	}
+    Game.settings.turnRed(spaceMetal, methaneStationSpaceMetalCost, "methaneStationSpaceMetalCost");
+    Game.settings.turnRed(titanium, methaneStationTitaniumCost, "methaneStationTitaniumCost");
+    Game.settings.turnRed(spaceMetal, nuclearStationSpaceMetalCost, "nuclearStationSpaceMetalCost");
+    Game.settings.turnRed(titanium, nuclearStationTitaniumCost, "nuclearStationTitaniumCost");
+    Game.settings.turnRed(spaceMetal, magmaticSpaceMetalCost, "magmaticSpaceMetalCost");
+    Game.settings.turnRed(gem, magmaticGemCost, "magmaticGemCost");
+    Game.settings.turnRed(silver, magmaticSilverCost, "magmaticSilverCost");
+    Game.settings.turnRed(spaceMetal, fusionReactorSpaceMetalCost, "fusionReactorSpaceMetalCost");
+    Game.settings.turnRed(titanium, fusionReactorTitaniumCost, "fusionReactorTitaniumCost");
+    Game.settings.turnRed(silicon, fusionReactorSiliconCost, "fusionReactorSiliconCost");
+    Game.settings.turnRed(metal, pumpMetalCost, "pumpMetalCost");
+    Game.settings.turnRed(gem, pumpGemCost, "pumpGemCost");
 
 	Game.settings.turnRed(metal, pumpjackMetalCost, "pumpjackMetalCost");
 	Game.settings.turnRed(gem, pumpjackGemCost, "pumpjackGemCost");
@@ -880,40 +343,11 @@ function checkRedCost(){
 	Game.settings.turnRed(titanium, oilRigTitaniumCost, "oilRigTitaniumCost");
 	Game.settings.turnRed(meteorite, oilRigMeteoriteCost, "oilRigMeteoriteCost");
 
-	if(metal < minerMetalCost){
-		document.getElementById("minerMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("minerMetalCost").className = "";
-	}
-	
-	if(wood < minerWoodCost){
-		document.getElementById("minerWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("minerWoodCost").className = "";
-	}
-	
-	if(metal < heavyDrillMetalCost){
-		document.getElementById("heavyDrillMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("heavyDrillMetalCost").className = "";
-	}
-	
-	if(gem < heavyDrillGemCost){
-		document.getElementById("heavyDrillGemCost").className = "red";
-	}
-	else{
-		document.getElementById("heavyDrillGemCost").className = "";
-	}
-	
-	if(oil < heavyDrillOilCost){
-		document.getElementById("heavyDrillOilCost").className = "red";
-	}
-	else{
-		document.getElementById("heavyDrillOilCost").className = "";
-	}
+    Game.settings.turnRed(metal, minerMetalCost, "minerMetalCost");
+    Game.settings.turnRed(wood, minerWoodCost, "minerWoodCost");
+    Game.settings.turnRed(metal, heavyDrillMetalCost, "heavyDrillMetalCost");
+    Game.settings.turnRed(gem, heavyDrillGemCost, "heavyDrillGemCost");
+    Game.settings.turnRed(oil, heavyDrillOilCost, "heavyDrillOilCost");
 	
 	Game.settings.turnRed(spaceMetal, gigaDrillSpaceMetalCost, "gigaDrillSpaceMetalCost");
 	Game.settings.turnRed(gem, gigaDrillGemCost, "gigaDrillGemCost");
@@ -923,40 +357,11 @@ function checkRedCost(){
 	Game.settings.turnRed(gold, quantumDrillGoldCost, "quantumDrillGoldCost");
 	Game.settings.turnRed(meteorite, quantumDrillMeteoriteCost, "quantumDrillMeteoriteCost");
 
-	if(metal < gemMinerMetalCost){
-		document.getElementById("gemMinerMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("gemMinerMetalCost").className = "";
-	}
-	
-	if(gem < gemMinerGemCost){
-		document.getElementById("gemMinerGemCost").className = "red";
-	}
-	else{
-		document.getElementById("gemMinerGemCost").className = "";
-	}
-	
-	if(metal < advancedDrillMetalCost){
-		document.getElementById("advancedDrillMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("advancedDrillMetalCost").className = "";
-	}
-	
-	if(gem < advancedDrillGemCost){
-		document.getElementById("advancedDrillGemCost").className = "red";
-	}
-	else{
-		document.getElementById("advancedDrillGemCost").className = "";
-	}
-	
-	if(oil < advancedDrillOilCost){
-		document.getElementById("advancedDrillOilCost").className = "red";
-	}
-	else{
-		document.getElementById("advancedDrillOilCost").className = "";
-	}
+    Game.settings.turnRed(metal, gemMinerMetalCost, "gemMinerMetalCost");
+    Game.settings.turnRed(gem, gemMinerGemCost, "gemMinerGemCost");
+    Game.settings.turnRed(metal, advancedDrillMetalCost, "advancedDrillMetalCost");
+    Game.settings.turnRed(gem, advancedDrillGemCost, "advancedDrillGemCost");
+    Game.settings.turnRed(oil, advancedDrillOilCost, "advancedDrillOilCost");
 
 	Game.settings.turnRed(spaceMetal, diamondDrillSpaceMetalCost, "diamondDrillSpaceMetalCost");
 	Game.settings.turnRed(gem, diamondDrillGemCost, "diamondDrillGemCost");
@@ -965,41 +370,12 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, carbyneDrillSpaceMetalCost, "carbyneDrillSpaceMetalCost");
 	Game.settings.turnRed(gem, carbyneDrillGemCost, "carbyneDrillGemCost");
 	Game.settings.turnRed(meteorite, carbyneDrillMeteoriteCost, "carbyneDrillMeteoriteCost");
-	
-	if(metal < woodburnerMetalCost){
-		document.getElementById("woodburnerMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("woodburnerMetalCost").className = "";
-	}
-	
-	if(wood < woodburnerWoodCost){
-		document.getElementById("woodburnerWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("woodburnerWoodCost").className = "";
-	}
-	
-	if(metal < furnaceMetalCost){
-		document.getElementById("furnaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("furnaceMetalCost").className = "";
-	}
-	
-	if(wood < furnaceWoodCost){
-		document.getElementById("furnaceWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("furnaceWoodCost").className = "";
-	}
-	
-	if(oil < furnaceOilCost){
-		document.getElementById("furnaceOilCost").className = "red";
-	}
-	else{
-		document.getElementById("furnaceOilCost").className = "";
-	}
+
+    Game.settings.turnRed(metal, woodburnerMetalCost, "woodburnerMetalCost");
+    Game.settings.turnRed(wood, woodburnerWoodCost, "woodburnerWoodCost");
+    Game.settings.turnRed(metal, furnaceMetalCost, "furnaceMetalCost");
+    Game.settings.turnRed(wood, furnaceWoodCost, "furnaceWoodCost");
+    Game.settings.turnRed(oil, furnaceOilCost, "furnaceOilCost");
 	
 	Game.settings.turnRed(spaceMetal, kilnSpaceMetalCost, "kilnSpaceMetalCost");
 	Game.settings.turnRed(gem, kilnGemCost, "kilnGemCost");
@@ -1009,40 +385,11 @@ function checkRedCost(){
 	Game.settings.turnRed(lava, fryerLavaCost, "fryerLavaCost");
 	Game.settings.turnRed(meteorite, fryerMeteoriteCost, "fryerMeteoriteCost");
 
-	if(metal < woodcutterMetalCost){
-		document.getElementById("woodcutterMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("woodcutterMetalCost").className = "";
-	}
-	
-	if(wood < woodcutterWoodCost){
-		document.getElementById("woodcutterWoodCost").className = "red";
-	}
-	else{
-		document.getElementById("woodcutterWoodCost").className = "";
-	}
-
-	if(metal < laserCutterMetalCost){
-		document.getElementById("laserCutterMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("laserCutterMetalCost").className = "";
-	}
-	
-	if(gem < laserCutterGemCost){
-		document.getElementById("laserCutterGemCost").className = "red";
-	}
-	else{
-		document.getElementById("laserCutterGemCost").className = "";
-	}
-	
-	if(oil < laserCutterOilCost){
-		document.getElementById("laserCutterOilCost").className = "red";
-	}
-	else{
-		document.getElementById("laserCutterOilCost").className = "";
-	}
+    Game.settings.turnRed(metal, woodcutterMetalCost, "woodcutterMetalCost");
+    Game.settings.turnRed(wood, woodcutterWoodCost, "woodcutterWoodCost");
+    Game.settings.turnRed(metal, laserCutterMetalCost, "laserCutterMetalCost");
+    Game.settings.turnRed(gem, laserCutterGemCost, "laserCutterGemCost");
+    Game.settings.turnRed(oil, laserCutterOilCost, "laserCutterOilCost");
 
 	Game.settings.turnRed(spaceMetal, deforesterSpaceMetalCost, "deforesterSpaceMetalCost");
 	Game.settings.turnRed(titanium, deforesterTitaniumCost, "deforesterTitaniumCost");
@@ -1052,33 +399,10 @@ function checkRedCost(){
 	Game.settings.turnRed(oil, infuserOilCost, "infuserOilCost");
 	Game.settings.turnRed(meteorite, infuserMeteoriteCost, "infuserMeteoriteCost");
 
-	if(gem < moonWorkerGemCost){
-		document.getElementById("moonWorkerGemCost").className = "red";
-	}
-	else{
-		document.getElementById("moonWorkerGemCost").className = "";
-	}
-	
-	if(metal < moonDrillMetalCost){
-		document.getElementById("moonDrillMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("moonDrillMetalCost").className = "";
-	}
-	
-	if(gem < moonDrillGemCost){
-		document.getElementById("moonDrillGemCost").className = "red";
-	}
-	else{
-		document.getElementById("moonDrillGemCost").className = "";
-	}
-	
-	if(oil < moonDrillOilCost){
-		document.getElementById("moonDrillOilCost").className = "red";
-	}
-	else{
-		document.getElementById("moonDrillOilCost").className = "";
-	}
+    Game.settings.turnRed(gem, moonWorkerGemCost, "moonWorkerGemCost");
+    Game.settings.turnRed(metal, moonDrillMetalCost, "moonDrillMetalCost");
+    Game.settings.turnRed(gem, moonDrillGemCost, "moonDrillGemCost");
+    Game.settings.turnRed(oil, moonDrillOilCost, "moonDrillOilCost");
 	
 	Game.settings.turnRed(spaceMetal, moonQuarrySpaceMetalCost, "moonQuarrySpaceMetalCost");
 	Game.settings.turnRed(gem, moonQuarryGemCost, "moonQuarryGemCost");
@@ -1088,41 +412,11 @@ function checkRedCost(){
 	Game.settings.turnRed(ice, planetExcavatorIceCost, "planetExcavatorIceCost");
 	Game.settings.turnRed(meteorite, planetExcavatorMeteoriteCost, "planetExcavatorMeteoriteCost");
 
-
-	if(spaceMetal < vacuumSpaceMetalCost){
-		document.getElementById("vacuumSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("vacuumSpaceMetalCost").className = "";
-	}
-	
-	if(gem < vacuumGemCost){
-		document.getElementById("vacuumGemCost").className = "red";
-	}
-	else{
-		document.getElementById("vacuumGemCost").className = "";
-	}
-	
-	if(spaceMetal < suctionExcavatorSpaceMetalCost){
-		document.getElementById("suctionExcavatorSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("suctionExcavatorSpaceMetalCost").className = "";
-	}
-
-	if(gem < suctionExcavatorGemCost){
-		document.getElementById("suctionExcavatorGemCost").className = "red";
-	}
-	else{
-		document.getElementById("suctionExcavatorGemCost").className = "";
-	}
-
-	if(oil < suctionExcavatorOilCost){
-		document.getElementById("suctionExcavatorOilCost").className = "red";
-	}
-	else{
-		document.getElementById("suctionExcavatorOilCost").className = "";
-	}
+    Game.settings.turnRed(spaceMetal, vacuumSpaceMetalCost, "vacuumSpaceMetalCost");
+    Game.settings.turnRed(gem, vacuumGemCost, "vacuumGemCost");
+    Game.settings.turnRed(spaceMetal, suctionExcavatorSpaceMetalCost, "suctionExcavatorSpaceMetalCost");
+    Game.settings.turnRed(gem, suctionExcavatorGemCost, "suctionExcavatorGemCost");
+    Game.settings.turnRed(oil, suctionExcavatorOilCost, "suctionExcavatorOilCost");
 	
 	Game.settings.turnRed(spaceMetal, spaceCowSpaceMetalCost, "spaceCowSpaceMetalCost");
 	Game.settings.turnRed(titanium, spaceCowTitaniumCost, "spaceCowTitaniumCost");
@@ -1132,33 +426,10 @@ function checkRedCost(){
 	Game.settings.turnRed(helium, ventHeliumCost, "ventHeliumCost");
 	Game.settings.turnRed(meteorite, ventMeteoriteCost, "ventMeteoriteCost");
 
-	if(gem < explorerGemCost){
-		document.getElementById("explorerGemCost").className = "red";
-	}
-	else{
-		document.getElementById("explorerGemCost").className = "";
-	}
-	
-	if(spaceMetal < spaceMetalDrillSpaceMetalCost){
-		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceMetalDrillSpaceMetalCost").className = "";
-	}
-	
-	if(gem < spaceMetalDrillGemCost){
-		document.getElementById("spaceMetalDrillGemCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceMetalDrillGemCost").className = "";
-	}
-	
-	if(oil < spaceMetalDrillOilCost){
-		document.getElementById("spaceMetalDrillOilCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceMetalDrillOilCost").className = "";
-	}
+    Game.settings.turnRed(gem, explorerGemCost, "explorerGemCost");
+    Game.settings.turnRed(spaceMetal, spaceMetalDrillSpaceMetalCost, "spaceMetalDrillSpaceMetalCost");
+    Game.settings.turnRed(gem, spaceMetalDrillGemCost, "spaceMetalDrillGemCost");
+    Game.settings.turnRed(oil, spaceMetalDrillOilCost, "spaceMetalDrillOilCost");
 	
 	Game.settings.turnRed(spaceMetal, pentaDrillSpaceMetalCost, "pentaDrillSpaceMetalCost");
 	Game.settings.turnRed(gem, pentaDrillGemCost, "pentaDrillGemCost");
@@ -1168,40 +439,11 @@ function checkRedCost(){
 	Game.settings.turnRed(gold, titanDrillGoldCost, "titanDrillGoldCost");
 	Game.settings.turnRed(meteorite, titanDrillMeteoriteCost, "titanDrillMeteoriteCost");
 
-	if(spaceMetal < droidSpaceMetalCost){
-		document.getElementById("droidSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("droidSpaceMetalCost").className = "";
-	}
-	
-	if(methane < droidMethaneCost){
-		document.getElementById("droidMethaneCost").className = "red";
-	}
-	else{
-		document.getElementById("droidMethaneCost").className = "";
-	}
-	
-	if(spaceMetal < destroyerSpaceMetalCost){
-		document.getElementById("destroyerSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("destroyerSpaceMetalCost").className = "";
-	}
-
-	if(gem < destroyerGemCost){
-		document.getElementById("destroyerGemCost").className = "red";
-	}
-	else{
-		document.getElementById("destroyerGemCost").className = "";
-	}
-	
-	if(oil < destroyerOilCost){
-		document.getElementById("destroyerOilCost").className = "red";
-	}
-	else{
-		document.getElementById("destroyerOilCost").className = "";
-	}
+    Game.settings.turnRed(spaceMetal, droidSpaceMetalCost, "droidSpaceMetalCost");
+    Game.settings.turnRed(methane, droidMethaneCost, "droidMethaneCost");
+    Game.settings.turnRed(spaceMetal, destroyerSpaceMetalCost, "destroyerSpaceMetalCost");
+    Game.settings.turnRed(gem, destroyerGemCost, "destroyerGemCost");
+    Game.settings.turnRed(oil, destroyerOilCost, "destroyerOilCost");
 
 	Game.settings.turnRed(spaceMetal, deathStarSpaceMetalCost, "deathStarSpaceMetalCost");
 	Game.settings.turnRed(silver, deathStarSilverCost, "deathStarSilverCost");
@@ -1210,41 +452,12 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, actuatorSpaceMetalCost, "actuatorSpaceMetalCost");
 	Game.settings.turnRed(helium, actuatorHeliumCost, "actuatorHeliumCost");
 	Game.settings.turnRed(meteorite, actuatorMeteoriteCost, "actuatorMeteoriteCost");
-	
-	if(spaceMetal < scoutSpaceMetalCost){
-		document.getElementById("scoutSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("scoutSpaceMetalCost").className = "";
-	}
-	
-	if(titanium < scoutTitaniumCost){
-		document.getElementById("scoutTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("scoutTitaniumCost").className = "";
-	}
-	
-	if(spaceMetal < spaceLaserSpaceMetalCost){
-		document.getElementById("spaceLaserSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceLaserSpaceMetalCost").className = "";
-	}
-	
-	if(gem < spaceLaserGemCost){
-		document.getElementById("spaceLaserGemCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceLaserGemCost").className = "";
-	}
-	
-	if(oil < spaceLaserOilCost){
-		document.getElementById("spaceLaserOilCost").className = "red";
-	}
-	else{
-		document.getElementById("spaceLaserOilCost").className = "";
-	}
+
+    Game.settings.turnRed(spaceMetal, scoutSpaceMetalCost, "scoutSpaceMetalCost");
+    Game.settings.turnRed(titanium, scoutTitaniumCost, "scoutTitaniumCost");
+    Game.settings.turnRed(spaceMetal, spaceLaserSpaceMetalCost, "spaceLaserSpaceMetalCost");
+    Game.settings.turnRed(gem, spaceLaserGemCost, "spaceLaserGemCost");
+    Game.settings.turnRed(oil, spaceLaserOilCost, "spaceLaserOilCost");
 
 	Game.settings.turnRed(spaceMetal, berthaSpaceMetalCost, "berthaSpaceMetalCost");
 	Game.settings.turnRed(titanium, berthaTitaniumCost, "berthaTitaniumCost");
@@ -1253,62 +466,15 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, cannonSpaceMetalCost, "cannonSpaceMetalCost");
 	Game.settings.turnRed(oil, cannonOilCost, "cannonOilCost");
 	Game.settings.turnRed(meteorite, cannonMeteoriteCost, "cannonMeteoriteCost");
-	
-	if(spaceMetal < blowtorchSpaceMetalCost){
-		document.getElementById("blowtorchSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("blowtorchSpaceMetalCost").className = "";
-	}
-	
-	if(titanium < blowtorchTitaniumCost){
-		document.getElementById("blowtorchTitaniumCost").className = "red";
-	}
-	else{
-		document.getElementById("blowtorchTitaniumCost").className = "";
-	}
-	
-	if(spaceMetal < scorcherSpaceMetalCost){
-		document.getElementById("scorcherSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("scorcherSpaceMetalCost").className = "";
-	}
-	
-	if(gem < scorcherGemCost){
-		document.getElementById("scorcherGemCost").className = "red";
-	}
-	else{
-		document.getElementById("scorcherGemCost").className = "";
-	}
-	
-	if(oil < scorcherOilCost){
-		document.getElementById("scorcherOilCost").className = "red";
-	}
-	else{
-		document.getElementById("scorcherOilCost").className = "";
-	}
 
-	if(spaceMetal < annihilatorSpaceMetalCost){
-		document.getElementById("annihilatorSpaceMetalCost").className = "red";
-	}
-	else{
-		document.getElementById("annihilatorSpaceMetalCost").className = "";
-	}
-	
-	if(gem < annihilatorGemCost){
-		document.getElementById("annihilatorGemCost").className = "red";
-	}
-	else{
-		document.getElementById("annihilatorGemCost").className = "";
-	}
-	
-	if(silver < annihilatorSilverCost){
-		document.getElementById("annihilatorSilverCost").className = "red";
-	}
-	else{
-		document.getElementById("annihilatorSilverCost").className = "";
-	}
+    Game.settings.turnRed(spaceMetal, blowtorchSpaceMetalCost, "blowtorchSpaceMetalCost");
+    Game.settings.turnRed(titanium, blowtorchTitaniumCost, "blowtorchTitaniumCost");
+    Game.settings.turnRed(spaceMetal, scorcherSpaceMetalCost, "scorcherSpaceMetalCost");
+    Game.settings.turnRed(gem, scorcherGemCost, "scorcherGemCost");
+    Game.settings.turnRed(oil, scorcherOilCost, "scorcherOilCost");
+    Game.settings.turnRed(spaceMetal, annihilatorSpaceMetalCost, "annihilatorSpaceMetalCost");
+    Game.settings.turnRed(gem, annihilatorGemCost, "annihilatorGemCost");
+    Game.settings.turnRed(silver, annihilatorSilverCost, "annihilatorSilverCost");
 
 	Game.settings.turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
 	Game.settings.turnRed(silicon, desertSiliconCost, "desertSiliconCost");
@@ -1694,7 +860,6 @@ function refreshResearches(){
 
 	if(typeof versionNumber != "0.4.3"){
 		versionNumber = "0.4.3";
-		refreshUI();
 	}
 }
 
