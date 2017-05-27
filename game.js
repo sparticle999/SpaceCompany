@@ -180,6 +180,7 @@ var Game = (function() {
         self.deleteInterval("Loading");
 
         registerLegacyBindings();
+        self.ui.updateAutoDataBindings();
 
         // Initialize first
         self.achievements.initialize();
