@@ -476,6 +476,7 @@ function legacyRefreshUI() {
     }
 
     if(sphere > 0) {
+        $('#buildSphereInfo').hide();
         $('#buildSphereButton').hide();
     }
 
