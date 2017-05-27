@@ -127,7 +127,7 @@ var Game = (function() {
         data = legacySave(data);
 
         localStorage.setItem("save",JSON.stringify(data));
-
+        Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
         console.log('Game Saved');
 
         return data;

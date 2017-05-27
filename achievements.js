@@ -136,7 +136,7 @@ Game.achievements = (function() {
             var data = this.entries[id];
 
             if(data.unlocked < data.brackets.length - 1 && data.evaluator(data.brackets[data.unlocked + 1])) {
-                Game.notifyInfo("Achievement Reached", this.getAchievementTitle(data));
+                Game.notifySuccess("Achievement Reached", this.getAchievementTitle(data));
 
                 this.unlock(id, data.unlocked + 1);
 
