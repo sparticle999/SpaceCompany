@@ -50,6 +50,7 @@ v0.5.0 The Interstellar Update
 - Changed Ice T4 to use Wood
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
+- Added Notifications for Achievements and Autosaving and for when Storage is full
 
 ##### Bug Fixes
 - Fixed Oil Rig Costs
