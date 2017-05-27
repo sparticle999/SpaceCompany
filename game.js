@@ -75,6 +75,8 @@ var Game = (function() {
 
         checkStorages();
 
+        refreshUI();
+
         self.updateTime(delta);
 
         self.achievements.update(delta);

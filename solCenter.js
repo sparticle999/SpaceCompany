@@ -139,6 +139,8 @@ function refreshDyson(){
 	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
 	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
 	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
+
+    refreshUI();
 }
 
 function getDyson(){
@@ -149,7 +151,7 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
-		
+
 		refreshDyson()
 	}
 }
