@@ -1,7 +1,7 @@
 function checkStorages(){
-	/*if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
+	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
 
-		if (Game.constants.enableNotifications === false){
+		if (Game.constants.enableStorageNotifications === false){
 			return;
 		}
 		if (Game.constants.enableDataDrivenResources === false){
@@ -39,7 +39,7 @@ function checkStorages(){
 		if(resourcesFull >= Game.statistics.get("resourcesUnlocked")){
 			Game.notifyStorage();
 		}
-	}*/
+	}
 }
 
 function gainResources(delta){

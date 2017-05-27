@@ -226,10 +226,6 @@ var Game = (function() {
     instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
 
     instance.notifyInfo = function(title, message) {
-        if (this.constants.enableNotifications === false){
-            return;
-        }
-
         this.activeNotifications.info = new PNotify({
             title: title,
             text: message,
@@ -242,10 +238,6 @@ var Game = (function() {
     };
 
     instance.notifySuccess = function(title, message) {
-        if (this.constants.enableNotifications === false){
-            return;
-        }
-
         this.activeNotifications.success = new PNotify({
             title: title,
             text: message,
@@ -258,10 +250,6 @@ var Game = (function() {
     };
 
     instance.notifyStorage = function() {
-        if (this.constants.enableNotifications === false){
-            return;
-        }
-
         this.activeNotifications.storage = new PNotify({
             title: "Storage Full!",
             text: 'You will no longer collect resources when they are full.',
