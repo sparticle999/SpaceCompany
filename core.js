@@ -268,7 +268,6 @@ function refreshUI(){
 		document.getElementById("meteoriteToggled").innerHTML = "On";
 	}
 
-	document.getElementById("autoSaveTimer").innerHTML = "Autosaving in 2 minutes";
 	document.getElementById("energyStorage").innerHTML = Game.settings.format(getMaxEnergy());
 	document.getElementById("uraniumStorage").innerHTML = Game.settings.format(uraniumStorage);
 	document.getElementById("uraniumNextStorage").innerHTML = Game.settings.format(uraniumNextStorage);
