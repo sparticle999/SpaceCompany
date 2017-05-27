@@ -9,12 +9,6 @@ function getLab(){
 		labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
 		labGemCost = Math.floor(15 * Math.pow(1.1,lab));
 		labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
-		document.getElementById("lab").innerHTML = lab;
-		document.getElementById("labWoodCost").innerHTML = Game.settings.format(labWoodCost);
-		document.getElementById("labGemCost").innerHTML = Game.settings.format(labGemCost);
-		document.getElementById("labMetalCost").innerHTML = Game.settings.format(labMetalCost);
-		refresh();
-		refreshPerSec();
 	}
 }
 
@@ -27,12 +21,6 @@ function getLabT2(){
 		labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
 		labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
 		labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
-		document.getElementById("labT2").innerHTML = labT2;
-		document.getElementById("labT2WoodCost").innerHTML = Game.settings.format(labT2WoodCost);
-		document.getElementById("labT2GemCost").innerHTML = Game.settings.format(labT2GemCost);
-		document.getElementById("labT2MetalCost").innerHTML = Game.settings.format(labT2MetalCost);
-		refresh();
-		refreshPerSec();
 	}
 }
 
@@ -45,12 +33,6 @@ function getLabT3(){
 		labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
 		labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
 		labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
-		document.getElementById("labT3").innerHTML = labT3;
-		document.getElementById("labT3WoodCost").innerHTML = Game.settings.format(labT3WoodCost);
-		document.getElementById("labT3GemCost").innerHTML = Game.settings.format(labT3GemCost);
-		document.getElementById("labT3MetalCost").innerHTML = Game.settings.format(labT3MetalCost);
-		refresh();
-		refreshPerSec();
 	}
 }
 
@@ -96,7 +78,6 @@ function unlockOil(){
 		science -= 30;
 		document.getElementById("unlockOil").className = "hidden";
 		document.getElementById("oilNav").className = "earth";
-		refresh();
 		resourcesUnlocked.push("oilNav");
 		researched.push("unlockOil");
         Game.statistics.add('techResearched');
@@ -148,12 +129,6 @@ function upgradeResourceTech(){
 		furnaceOutput *= 2;
 		laserCutterOutput *= 2;
 		document.getElementById("upgradeResourceTech").className = "hidden";
-		document.getElementById("pumpjackOutput").innerHTML = pumpjackOutput;
-		document.getElementById("heavyDrillOutput").innerHTML = heavyDrillOutput;
-		document.getElementById("advancedDrillOutput").innerHTML = advancedDrillOutput;
-		document.getElementById("furnaceWoodInput").innerHTML = furnaceWoodInput;
-		document.getElementById("furnaceOutput").innerHTML = furnaceOutput;
-		document.getElementById("laserCutterOutput").innerHTML = laserCutterOutput;
 		researched.push("upgradeResourceTech");
         Game.statistics.add('techResearched');
 		newUnlock("resources");
@@ -220,7 +195,6 @@ function upgradeEngineTech(){
 		science -= 1000;
 		document.getElementById("upgradeEngineTech").className = "hidden";
 		charcoalEngineOutput = 4;
-		document.getElementById("charcoalEngineOutput").innerHTML = charcoalEngineOutput;
 		researched.push("upgradeEngineTech");
         Game.statistics.add('techResearched');
 		newUnlock("resources");
@@ -243,7 +217,6 @@ function upgradeSolarTech(){
 		document.getElementById("upgradeSolarTech").className = "hidden";
 		document.getElementById("unlockBatteries").className = "";
 		solarPanelOutput = 3;
-		document.getElementById("solarPanelOutput").innerHTML = solarPanelOutput;
 		available.push("unlockBatteries");
 		researched.push("upgradeSolarTech");
         Game.statistics.add('techResearched');

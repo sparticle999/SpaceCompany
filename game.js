@@ -50,13 +50,14 @@ var Game = (function() {
     };
 
     instance.fastUpdate = function(self, delta) {
-        refresh();
         refreshWonderBars();
         checkRedCost();
 
-        updateDisplayAfterGainResource();
-
         updateEfficiencyDisplay();
+
+        legacyRefreshUI();
+
+        self.ui.updateBoundElements(delta);
 
         self.resources.update(delta);
         self.buildings.update(delta);
@@ -74,8 +75,6 @@ var Game = (function() {
         refreshConversionDisplay();
 
         checkStorages();
-
-        refreshUI();
 
         self.updateTime(delta);
 
@@ -149,7 +148,6 @@ var Game = (function() {
             legacyLoad(data);
         }
 
-        refreshUI();
         refreshResources();
         refreshResearches();
         refreshTabs();
@@ -180,6 +178,8 @@ var Game = (function() {
         document.getElementById("game").className = "container";
 
         self.deleteInterval("Loading");
+
+        registerLegacyBindings();
 
         // Initialize first
         self.achievements.initialize();

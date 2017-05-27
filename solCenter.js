@@ -139,8 +139,6 @@ function refreshDyson(){
 	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
 	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
 	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
-
-    refreshUI();
 }
 
 function getDyson(){
@@ -177,9 +175,10 @@ function buildSwarm(){
 }
 
 function buildSphere(){
-	if(sphere >= 1){
+	if(sphere > 0){
 		return;
 	}
+
 	if(dyson >= 250 && rocketFuel >= 1000000){
 		dyson -= 250;
 		rocketFuel -= 1000000;
