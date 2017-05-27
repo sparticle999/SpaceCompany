@@ -654,6 +654,7 @@ function refreshUI(){
 	document.getElementById("dyson").innerHTML = Game.settings.format(dyson);
 	document.getElementById("dysonPieces").innerHTML = Game.settings.format(dyson);
 	document.getElementById("dysonPieces2").innerHTML = Game.settings.format(dyson);
+    document.getElementById("dysonPieces3").innerHTML = dyson;
 	document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
 	document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
 	document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);

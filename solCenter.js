@@ -139,14 +139,6 @@ function refreshDyson(){
 	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
 	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
 	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
-	document.getElementById("dyson").innerHTML = dyson;
-	document.getElementById("dysonPieces").innerHTML = dyson;
-	document.getElementById("dysonPieces2").innerHTML = dyson;
-	document.getElementById("dysonTitaniumCost").innerHTML = Game.settings.format(dysonTitaniumCost);
-	document.getElementById("dysonGoldCost").innerHTML = Game.settings.format(dysonGoldCost);
-	document.getElementById("dysonSiliconCost").innerHTML = Game.settings.format(dysonSiliconCost);
-	document.getElementById("dysonMeteoriteCost").innerHTML = Game.settings.format(dysonMeteoriteCost);
-	document.getElementById("dysonIceCost").innerHTML = Game.settings.format(dysonIceCost);
 }
 
 function getDyson(){
@@ -157,6 +149,7 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
+		
 		refreshDyson()
 	}
 }
@@ -166,10 +159,7 @@ function buildRing(){
 		dyson -= 50;
 		rocketFuel -= 50000;
 		ring += 1;
-		document.getElementById("ring").innerHTML = ring;
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
+
 		refreshDyson()
 	}
 }
@@ -179,10 +169,7 @@ function buildSwarm(){
 		dyson -= 100;
 		rocketFuel -= 250000;
 		swarm += 1;
-		document.getElementById("swarm").innerHTML = swarm;
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
+
 		refreshDyson()
 	}
 }
@@ -195,10 +182,7 @@ function buildSphere(){
 		dyson -= 250;
 		rocketFuel -= 1000000;
 		sphere += 1;
-		document.getElementById("sphere").innerHTML = sphere;
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
+
 		refreshDyson()
 	}
 }
