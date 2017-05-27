@@ -40,6 +40,7 @@ function registerLegacyBindings() {
         }
     });
 
+    Game.ui.bindElement('energy', function(){ return Game.settings.format(energy); });
     Game.ui.bindElement('plasma', function(){ return Game.settings.format(plasma); });
     Game.ui.bindElement('oil', function(){ return Game.settings.format(oil); });
     Game.ui.bindElement('metal', function(){ return Game.settings.format(metal); });
