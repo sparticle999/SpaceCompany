@@ -372,7 +372,7 @@ Game.buildingData = (function () {
     });
 
     // Gem
-    instance.gemlT1 = $.extend({}, baseProducerBuilding, {
+    instance.gemT1 = $.extend({}, baseProducerBuilding, {
         name: 'Gem Miner',
         desc: 'Build an improved pickaxe to mine Gems.',
         resource: 'gem',
@@ -495,7 +495,7 @@ Game.buildingData = (function () {
     });
 
     // Wood
-    instance.woodlT1 = $.extend({}, baseProducerBuilding, {
+    instance.woodT1 = $.extend({}, baseProducerBuilding, {
         name: 'Woodcutter',
         desc: 'Build an axe for your woodcutter.',
         resource: 'wood',
