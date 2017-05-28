@@ -4389,14 +4389,134 @@
 									<h3 class="default btn-link">
 										Uses
 									</h3>
-									<span>
+									<p>
 										This is where you can convert your energy and plasma into resources.
-										<br>
-										<button class="btn btn-default" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
-										<br>
-									</span>
-									<br>
-									<table style="width:775px">
+									</p>
+									<div class="row">
+										<div class="col-md-12">
+											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
+											<button class="btn btn-default pull-right" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+											<table class="table table-striped">
+												<thead>
+													<th>Cost (Energy)</th>
+													<th>Material</th>
+													<th>Current amount / Storage</th>
+													<th></th>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span id="uraniumEmcVal">37</span> Energy</td>
+														<td><span class="emcAmount">1</span> Uranium</td>
+														<td><span id="uraniumConv"><span data-bind="uranium">N/A</span> / <span data-bind="uraniumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('uranium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="lavaEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Lava</td>
+														<td><span id="lavaConv"><span data-bind="lava">N/A</span> / <span data-bind="lavaStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lava')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="oilEmcVal">3</span> Energy</td>
+														<td><span class="emcAmount">1</span> Oil</td>
+														<td><span id="oilConv"><span data-bind="oil">N/A</span> / <span data-bind="oilStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('oil')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="metalEmcVal">1</span> Energy</td>
+														<td><span class="emcAmount">1</span> Metal</td>
+														<td><span id="metalConv"><span data-bind="metal">N/A</span> / <span data-bind="metalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('metal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="gemEmcVal">3</span> Energy</td>
+														<td><span class="emcAmount">1</span> Gems</td>
+														<td><span id="gemConv"><span data-bind="gem">N/A</span> / <span data-bind="gemStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gem')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="charcoalEmcVal">2</span> Energy</td>
+														<td><span class="emcAmount">1</span> Charcoal</td>
+														<td><span id="charcoalConv"><span data-bind="charcoal">N/A</span> / <span data-bind="charcoalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('charcoal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="woodEmcVal">1</span> Energy</td>
+														<td><span class="emcAmount">1</span> Wood</td>
+														<td><span id="woodConv"><span data-bind="wood">N/A</span> / <span data-bind="woodStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('wood')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="siliconEmcVal">23</span> Energy</td>
+														<td><span class="emcAmount">1</span> Silicon</td>
+														<td><span id="siliconConv"><span data-bind="silicon">N/A</span> / <span data-bind="siliconStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silicon')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="spaceMetalEmcVal">15</span> Energy</td>
+														<td><span class="emcAmount">1</span> Space Metal</td>
+														<td><span id="spaceMetalConv"><span data-bind="spaceMetal">N/A</span> / <span data-bind="spaceMetalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('spaceMetal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="methaneEmcVal">12</span> Energy</td>
+														<td><span class="emcAmount">1</span> Methane</td>
+														<td><span id="methaneConv"><span data-bind="methane">N/A</span> / <span data-bind="methaneStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('methane')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="titaniumEmcVal">17</span> Energy</td>
+														<td><span class="emcAmount">1</span> Titanium</td>
+														<td><span id="titaniumConv"><span data-bind="titanium">N/A</span> / <span data-bind="titaniumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('titanium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="goldEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Gold</td>
+														<td><span id="goldConv"><span data-bind="gold">N/A</span> / <span data-bind="goldStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gold')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="silverEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Silver</td>
+														<td><span id="silverConv"><span data-bind="silver">N/A</span> / <span data-bind="silverStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silver')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="hydrogenEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Hydrogen</td>
+														<td><span id="hydrogenConv"><span data-bind="hydrogen">N/A</span> / <span data-bind="hydrogenStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('hydrogen')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="heliumEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Helium</td>
+														<td><span id="heliumConv"><span data-bind="helium">N/A</span> / <span data-bind="heliumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('helium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="iceEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Ice</td>
+														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="meteoriteEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Meteorite</td>
+														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertPlasma('meteorite')" role="button">Convert</button></td>
+													</tr>
+												</tbody>
+											</table>
+											</div>
+										</div>
+									</div>
+									<table style="width:775px; display: none">
 										<tr>
 											<td colspan="3">
 												<button id="uraniumConv" onclick="convertEnergy('uranium')" class="btn btn-default" style="width:100%"><span id="uraniumEmcVal">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
