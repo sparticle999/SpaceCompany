@@ -230,7 +230,7 @@ Game.resourceData = (function () {
         name: 'Science Production',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
-        baseCapacity: 1000000,
+        baseCapacity: -1,
         unlocked: false
     };
 

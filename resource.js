@@ -90,7 +90,12 @@ Game.resources = (function(){
 
         // Add the resource and clamp to the maximum
         var newValue = this.entries[id].current + count;
-        this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
+        if(this.entries[id].capacity === -1) {
+            this.entries[id].current = newValue;
+        } else {
+            this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
+        }
+
         this.entries[id].displayNeedsUpdate = true;
     };
 
