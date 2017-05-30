@@ -1,91 +1,7 @@
-function autosave(){
-	if(Game.statistics.get('sessionTime') <= 60){
-		saveTimer = 0;
-	}
-
-	if(saved === true){
-		timer += 1;
-		if(timer >= 2){
-			saved = false;
-			document.getElementById("saveButton").className = "btn btn-primary";
-			timer = 0;
-		}
-	}
-	if(loaded === true){
-		timer2 += 1;
-		if(timer2 >= 2){
-			loaded = false;
-			document.getElementById("loadButton").className = "btn btn-primary";
-			timer2 = 0;
-		}
-	}
-	if(document.getElementById("30secs").checked){
-		if(saveTimer >= 30){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 30 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-	if(document.getElementById("2mins").checked){
-		if(saveTimer >= 120){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 120 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-	if(document.getElementById("10mins").checked){
-		if(saveTimer >= 600){
-			save("local");
-			saveTimer = 0;
-		}
-		else{
-			secondsLeft = 600 - saveTimer;
-			if(saveTimer < 3){
-				document.getElementById("autoSaveTimer").innerHTML = "Saved";
-			}
-			else if(secondsLeft <= 15){
-				document.getElementById("autoSaveTimer").className = "";
-				document.getElementById("autoSaveTimer").innerHTML = "Autosaving in " + secondsLeft + " seconds";
-			}
-			else{
-				document.getElementById("autoSaveTimer").className = "hidden";
-			}
-			saveTimer += 1;
-		}
-	}
-}
-
-function save(type){
+function legacySave(data) {
 	"use strict";
-	var localSave = {
+	var localSave = $.extend({
 		versionNumber: versionNumber,
-		currentTheme: currentTheme,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -102,6 +18,10 @@ function save(type){
 		batteryMetalCost: batteryMetalCost,
 		batteryGemCost: batteryGemCost,
 		batterySpaceMetalCost: batterySpaceMetalCost,
+		batteryT2: batteryT2,
+		batteryT2MetalCost: batteryT2MetalCost,
+		batteryT2GemCost: batteryT2GemCost,
+		batteryT2SpaceMetalCost: batteryT2SpaceMetalCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -236,11 +156,15 @@ function save(type){
 		labT3MetalCost: labT3MetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
+		rocketFuelToggled: rocketFuelToggled,
 		chemicalPlant: chemicalPlant,
 		chemicalPlantMetalCost: chemicalPlantMetalCost,
 		chemicalPlantGemCost: chemicalPlantGemCost,
 		chemicalPlantOilCost: chemicalPlantOilCost,
-		chemicalPlantToggled: chemicalPlantToggled,
+		oxidisation: oxidisation,
+		oxidisationMetalCost: oxidisationMetalCost,
+		oxidisationGemCost: oxidisationGemCost,
+		oxidisationOilCost: oxidisationOilCost,
 		spaceMetal: spaceMetal,
 		spaceMetalStorage: spaceMetalStorage,
 		spaceMetalNextStorage: spaceMetalNextStorage,
@@ -447,7 +371,7 @@ function save(type){
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
 		mrFreeze: mrFreeze,
-		mrFreezeSpaceMetalCost: mrFreezeSpaceMetalCost,
+		mrFreezeWoodCost: mrFreezeWoodCost,
 		mrFreezeHeliumCost: mrFreezeHeliumCost,
 		mrFreezeMeteoriteCost: mrFreezeMeteoriteCost,
 		meteorite: meteorite,
@@ -469,42 +393,17 @@ function save(type){
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
 		swarm: swarm,
-	};
+		ring: ring
+	}, data);
 
-	Game.save(localSave);
-
-	if(type === "local"){
-		localStorage.setItem("save",JSON.stringify(localSave));
-	}
-	if(type === "export"){
-		localStorage.setItem("save",JSON.stringify(localSave));
-		var string = JSON.stringify(localSave);
-		var compressed = LZString.compressToBase64(string);
-		console.log('Compressing Save');
-		console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
-		document.getElementById('impexpField').value = compressed;
-	}
-	document.getElementById("saveButton").className = "btn btn-primary disabled";
-	saved = true;
-	console.log("Save Successful");
+	return localSave;
 }
 
-function load(type){
+function legacyLoad(savegame){
 	"use strict";
-	if(type === "local"){
-		var savegame = JSON.parse(localStorage.getItem("save"));
-	}
-	if(type === "import"){
-		var compressed = document.getElementById('impexpField').value;
-		var decompressed = LZString.decompressFromBase64(compressed);
-		var revived = JSON.parse(decompressed);
-		var savegame = revived;
-		console.log("Imported Saved Game");
-		console.log(revived);
-	}
+
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
-		if(typeof savegame.currentTheme !== "undefined") currentTheme = savegame.currentTheme;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
@@ -521,6 +420,10 @@ function load(type){
 		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;
 		if(typeof savegame.batteryGemCost !== "undefined") batteryGemCost = savegame.batteryGemCost;
 		if(typeof savegame.batterySpaceMetalCost !== "undefined") batterySpaceMetalCost = savegame.batterySpaceMetalCost;
+		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;
+		if(typeof savegame.batteryT2MetalCost !== "undefined") batteryT2MetalCost = savegame.batteryT2MetalCost;
+		if(typeof savegame.batteryT2GemCost !== "undefined") batteryT2GemCost = savegame.batteryT2GemCost;
+		if(typeof savegame.batteryT2SpaceMetalCost !== "undefined") batteryT2SpaceMetalCost = savegame.batteryT2SpaceMetalCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
@@ -655,11 +558,15 @@ function load(type){
 		if(typeof savegame.labT3MetalCost !== "undefined") labT3MetalCost = savegame.labT3MetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
+		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
 		if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
 		if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
 		if(typeof savegame.chemicalPlantOilCost !== "undefined") chemicalPlantOilCost = savegame.chemicalPlantOilCost;
-		if(typeof savegame.chemicalPlantToggled !== "undefined") chemicalPlantToggled = savegame.chemicalPlantToggled;
+		if(typeof savegame.oxidisation !== "undefined") oxidisation = savegame.oxidisation;
+		if(typeof savegame.oxidisationMetalCost !== "undefined") oxidisationMetalCost = savegame.oxidisationMetalCost;
+		if(typeof savegame.oxidisationGemCost !== "undefined") oxidisationGemCost = savegame.oxidisationGemCost;
+		if(typeof savegame.oxidisationOilCost !== "undefined") oxidisationOilCost = savegame.oxidisationOilCost;
 		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
 		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
 		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;
@@ -869,7 +776,7 @@ function load(type){
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
-		if(typeof savegame.mrFreezeSpaceMetalCost !== "undefined") mrFreezeSpaceMetalCost = savegame.mrFreezeSpaceMetalCost;
+		if(typeof savegame.mrFreezeWoodCost !== "undefined") mrFreezeWoodCost = savegame.mrFreezeWoodCost;
 		if(typeof savegame.mrFreezeHeliumCost !== "undefined") mrFreezeHeliumCost = savegame.mrFreezeHeliumCost;
 		if(typeof savegame.mrFreezeMeteoriteCost !== "undefined") mrFreezeMeteoriteCost = savegame.mrFreezeMeteoriteCost;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
@@ -887,41 +794,6 @@ function load(type){
 		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
-
-		Game.load(savegame);
-	}
-	if(currentTheme === "base"){
-		document.getElementById("themeSelector").selectedIndex = 0;
-	}
-	if(currentTheme === "cyborg"){
-		document.getElementById("themeSelector").selectedIndex = 1;
-	}
-	if(currentTheme === "solar"){
-		document.getElementById("themeSelector").selectedIndex = 2;
-	}
-	if(currentTheme === "united"){
-		document.getElementById("themeSelector").selectedIndex = 3;
-	}
-	updateTheme();
-	refreshUI();
-	refreshResources();
-	refreshResearches();
-	refreshTabs();
-
-	document.getElementById("loadButton").className = "btn btn-primary disabled";
-	loaded = true;
-	console.log("Load Successful");
-}
-
-function deleteSave(){
-	"use strict";
-	var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
-	if(deleteSave === "DELETE"){
-		localStorage.removeItem("save");
-		alert("Deleted Save");
-		window.location.reload();
-	}
-	else{
-		alert("Deletion Cancelled");
+		if(typeof savegame.ring !== "undefined") ring = savegame.ring;
 	}
 }

@@ -16,7 +16,7 @@ function refreshWonderBars(){
 		else{preciousGold = gold;}
 		var preciousBar = (preciousGem+preciousSilver+preciousGold)/225;
 		if(preciousBar <= 100){
-			document.getElementById("preciousBar").innerHTML = commafy(preciousBar) + "%";
+			document.getElementById("preciousBar").innerHTML = Game.settings.format(preciousBar) + "%";
 			document.getElementById("preciousBar").style.width = preciousBar + "%";
 		}
 		else{
@@ -39,7 +39,7 @@ function refreshWonderBars(){
 		else{preciousActivateGold = gold;}
 		var preciousActivateBar = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/600;
 		if(preciousActivateBar <= 100){
-			document.getElementById("preciousActivateBar").innerHTML = commafy(preciousActivateBar) + "%";
+			document.getElementById("preciousActivateBar").innerHTML = Game.settings.format(preciousActivateBar) + "%";
 			document.getElementById("preciousActivateBar").style.width = preciousActivateBar + "%";
 		}
 		else{
@@ -62,7 +62,7 @@ function refreshWonderBars(){
 		else{energeticUranium = uranium;}
 		var energeticBar = (energeticWood+energeticCharcoal+energeticUranium)/152;
 		if(energeticBar <= 100){
-			document.getElementById("energeticBar").innerHTML = commafy(energeticBar) + "%";
+			document.getElementById("energeticBar").innerHTML = Game.settings.format(energeticBar) + "%";
 			document.getElementById("energeticBar").style.width = energeticBar + "%";
 		}
 		else{
@@ -85,7 +85,7 @@ function refreshWonderBars(){
 		else{energeticActivateUranium = uranium;}
 		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/455;
 		if(energeticActivateBar <= 100){
-			document.getElementById("energeticActivateBar").innerHTML = commafy(energeticActivateBar) + "%";
+			document.getElementById("energeticActivateBar").innerHTML = Game.settings.format(energeticActivateBar) + "%";
 			document.getElementById("energeticActivateBar").style.width = energeticActivateBar + "%";
 		}
 		else{
@@ -108,7 +108,7 @@ function refreshWonderBars(){
 		else{techGem = gem;}
 		var techBar = (techSilicon+techGold+techGem)/880;
 		if(techBar <= 100){
-			document.getElementById("techBar").innerHTML = commafy(techBar) + "%";
+			document.getElementById("techBar").innerHTML = Game.settings.format(techBar) + "%";
 			document.getElementById("techBar").style.width = techBar + "%";
 		}
 		else{
@@ -131,7 +131,7 @@ function refreshWonderBars(){
 		else{techActivateGem = gem;}
 		var techActivateBar = (techActivateSilicon+techActivateGold+techActivateGem)/1400;
 		if(techActivateBar <= 100){
-			document.getElementById("techActivateBar").innerHTML = commafy(techActivateBar) + "%";
+			document.getElementById("techActivateBar").innerHTML = Game.settings.format(techActivateBar) + "%";
 			document.getElementById("techActivateBar").style.width = techActivateBar + "%";
 		}
 		else{
@@ -154,7 +154,7 @@ function refreshWonderBars(){
 		else{meteoriteSilicon = silicon;}
 		var meteoriteBar = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/18050;
 		if(meteoriteBar <= 100){
-			document.getElementById("meteoriteBar").innerHTML = commafy(meteoriteBar) + "%";
+			document.getElementById("meteoriteBar").innerHTML = Game.settings.format(meteoriteBar) + "%";
 			document.getElementById("meteoriteBar").style.width = meteoriteBar + "%";
 		}
 		else{
@@ -177,7 +177,7 @@ function refreshWonderBars(){
 		else{meteoriteActivateSilicon = silicon;}
 		var meteoriteActivateBar = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/60100;
 		if(meteoriteActivateBar <= 100){
-			document.getElementById("meteoriteActivateBar").innerHTML = commafy(meteoriteActivateBar) + "%";
+			document.getElementById("meteoriteActivateBar").innerHTML = Game.settings.format(meteoriteActivateBar) + "%";
 			document.getElementById("meteoriteActivateBar").style.width = meteoriteActivateBar + "%";
 		}
 		else{
@@ -345,5 +345,9 @@ function activateMeteoriteWonder(){
 		activated.push("meteorite");
         Game.statistics.add('wondersActivated');
 		newUnlock("resources");
+
+		document.getElementById("wonderFloor2Nav").className = "";
+		document.getElementById("portalRoomNav").className = "";
+		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
 }

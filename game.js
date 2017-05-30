@@ -1,13 +1,16 @@
 var Game = (function() {
     'use strict';
 
-    var instance = {};
-    instance.lastUpdateTime = 0;
-
-    instance.intervals = {};
-    instance.uiComponents = [];
-
-    instance.logoAnimating = false;
+    var instance = {
+        ui: {},
+        lastUpdateTime: 0,
+        intervals: {},
+        uiComponents: [],
+        logoAnimating: false,
+        timeSinceAutoSave: 0,
+        activeNotifications: {},
+        lastFixedUpdate: new Date().getTime()
+    };
 
     instance.update_frame = function(time) {
         Game.update(time - Game.lastUpdateTime);
@@ -36,20 +39,50 @@ var Game = (function() {
         delete this.intervals[name];
     };
 
+    instance.fixedUpdate = function() {
+        var currentTime = new Date().getTime();
+        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
+
+        refreshPerSec(delta);
+        gainResources(delta);
+
+        Game.lastFixedUpdate = currentTime;
+    };
+
     instance.fastUpdate = function(self, delta) {
-        refresh();
         refreshWonderBars();
         checkRedCost();
+
+        updateEfficiencyDisplay();
+
+        legacyRefreshUI();
+
+        self.ui.updateBoundElements(delta);
+
+        self.resources.update(delta);
+        self.buildings.update(delta);
+        self.tech.update(delta);
+        self.settings.update(delta);
+
+        self.updateAutoSave(delta);
+
+        if(delta > 1) {
+            console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
+        }
     };
 
     instance.slowUpdate = function(self, delta) {
-        autosave();
+        refreshConversionDisplay();
+
+        checkStorages();
 
         self.updateTime(delta);
 
         self.achievements.update(delta);
         self.statistics.update(delta);
+    };
 
+    instance.uiUpdate = function(self, delta) {
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].update(delta);
         }
@@ -60,14 +93,84 @@ var Game = (function() {
         Game.statistics.add('timePlayed', delta);
     };
 
-    instance.save = function(data) {
-        this.achievements.save(data);
-        this.statistics.save(data);
+    instance.import = function() {
+        var text = $('#impexpField').val();
+        if (!text.trim()) return console.warn("No save to import provided.");
+        var decompressed = LZString.decompressFromBase64(text);
+        localStorage.setItem("save", decompressed);
+
+        console.log("Imported Saved Game");
+
+        window.location.reload();
     };
 
-    instance.load = function(data) {
-        this.achievements.load(data);
-        this.statistics.load(data);
+    instance.export = function() {
+        var data = this.save();
+
+        var string = JSON.stringify(data);
+        var compressed = LZString.compressToBase64(string);
+
+        console.log('Compressing Save');
+        console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
+        $('#impexpField').val(compressed);
+    };
+
+    instance.save = function() {
+        var data = {};
+
+        this.achievements.save(data);
+        this.statistics.save(data);
+        this.resources.save(data);
+        this.buildings.save(data);
+        this.tech.save(data);
+        this.settings.save(data);
+
+        data = legacySave(data);
+
+        localStorage.setItem("save",JSON.stringify(data));
+        Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
+        console.log('Game Saved');
+
+        return data;
+    };
+
+    instance.load = function() {
+        var data = JSON.parse(localStorage.getItem("save"));
+
+        if(data && data !== null) {
+            this.achievements.load(data);
+            this.statistics.load(data);
+            this.resources.load(data);
+            this.buildings.load(data);
+            this.tech.load(data);
+            this.settings.load(data);
+
+            legacyLoad(data);
+        }
+
+        refreshResources();
+        refreshResearches();
+        refreshTabs();
+
+        if(Game.constants.enableMachineTab === true){
+            machineTopTab.className = "";
+        }
+
+        console.log("Load Successful");
+    };
+
+    instance.deleteSave = function() {
+        var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
+
+        if(deleteSave === "DELETE") {
+            localStorage.removeItem("save");
+
+            alert("Deleted Save");
+            window.location.reload();
+        }
+        else {
+            alert("Deletion Cancelled");
+        }
     };
 
     instance.loadDelay = function (self, delta) {
@@ -76,23 +179,33 @@ var Game = (function() {
 
         self.deleteInterval("Loading");
 
+        registerLegacyBindings();
+        self.ui.updateAutoDataBindings();
+
         // Initialize first
         self.achievements.initialize();
         self.statistics.initialize();
+        self.resources.initialize();
+        self.buildings.initialize();
+        self.tech.initialize();
+        self.settings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
         }
 
         // Now load
-        load('local');
+        self.load();
 
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
         self.createInterval("Slow Update", self.slowUpdate, 1000);
+        self.createInterval("UI Update", self.uiUpdate, 10);
 
         // Do this in a setInterval so it gets called even when the window is inactive
-        window.setInterval(function(){ refreshPerSec(); gainResources(); },100);
+        window.setInterval(function(){ Game.fixedUpdate(); },100);
+
+        console.debug("Load Complete");
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -111,18 +224,79 @@ var Game = (function() {
         }
     };
 
-    instance.formatTime = function(seconds) {
-        var date = new Date(null);
-        date.setSeconds(seconds);
-        return date.toISOString().substr(11, 8);
+    instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
+
+    instance.notifyInfo = function(title, message) {
+        this.activeNotifications.info = new PNotify({
+            title: title,
+            text: message,
+            type: 'info',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
+    instance.notifySuccess = function(title, message) {
+        this.activeNotifications.success = new PNotify({
+            title: title,
+            text: message,
+            type: 'success',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
+    instance.notifyStorage = function() {
+        this.activeNotifications.storage = new PNotify({
+            title: "Storage Full!",
+            text: 'You will no longer collect resources when they are full.',
+            type: 'warning',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+
+        this.activeNotifications.storage.get().click(function() {
+            Game.activeNotifications.storage.remove();
+            Game.activeNotifications.storage = undefined;
+        });
+    };
+
+    instance.updateAutoSave = function(delta) {
+        this.timeSinceAutoSave += delta;
+
+        var element = $('#autoSaveTimer');
+        var timeSinceSaveInMS = this.timeSinceAutoSave * 1000;
+        var timeLeft = Game.settings.entries.autoSaveInterval - timeSinceSaveInMS;
+
+        if (timeLeft <= 15000) {
+            element.show();
+            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+        } else {
+            element.hide();
+        }
+
+        if(timeLeft <= 0) {
+            this.save();
+            this.timeSinceAutoSave = 0;
+        }
     };
 
     instance.start = function() {
+        PNotify.prototype.options.styling = "bootstrap3";
+        PNotify.prototype.options.delay = 3500;
+
+        console.debug("Loading Game");
+      
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 
         this.update_frame(0);
-        console.debug("Starting Game");
     };
 
     return instance;

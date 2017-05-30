@@ -54,10 +54,10 @@
         var valueSpan = $('#' + id + "_val");
 
         if(data.max > 0) {
-            valueSpan.text(commafy(data.value) + " / " + commafy(data.max));
+            valueSpan.text(Game.settings.format(data.value) + " / " + Game.settings.format(data.max));
         } else {
             if (data.type === STATISTIC_TYPE.TIME) {
-                valueSpan.text(Game.formatTime(data.value));
+                valueSpan.text(Game.utils.getFullTimeDisplay(data.value));
             } else {
                 valueSpan.text(data.value);
             }

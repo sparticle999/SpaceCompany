@@ -13,19 +13,68 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
-- Some sort of prestige
+- Some sort of prestige (Amnesia?)
+- Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
+- Machine Overview Tab
+- Space Elevator
+- Second Floor of Wonder Station
+- Unlock Technologies such as reduce the exponental increase of costs
+- Third Floor of Wonder Station - Research Portal Tech: 3M science
+- Mass to Energy Conversion
+- Plasma Storage Units (PSUs)
 
 # Changelog:
 
-v0.4.3
+### v0.5.0
+##### Features
+- Dyson Ring
+- Overhauled Behind The Scenes Stuff - Made everything data driven
+- Added Notifications
+- Game Now Works in an Inactive Tab
+- Tier 2 Batteries
+- Tier 2 Rocket Fuel
+- Sidebar Nav Compression
+- Options For Number Format
+
+##### Small Changes
+- Energy Conversion Changes
+- Reworded Chemical Plant Description
+- Reprogrammed Charcoal Production
+- Changed Laboratory Names and Descriptions
+- Destruction of Rocket Fuel Machines
+- Changed Order of Achievements
+- Prevented Building Multiple Dyson Spheres
+- Made All Numbers >1000 4 Digits Long
+- Changed Ice T4 to use Wood
+- Added Days on Time Stats
+- Changed Links in FAQ to open in new tab
+- Added Notifications for Achievements and Autosaving and for when Storage is full
+
+##### Bug Fixes
+- Fixed Oil Rig Costs
+- Fixed Helium T4 Red Costs
+- Fixed Dyson Section Reset Costs
+- Fixed Cyborg UI Bug
+- Fixed Dyson Costs Resetting
+- Fixed Exploring Wonder Showing '!' on Resources Tab
+- Fixed Importing Without Data Wiping Saves
+- Fixed Highlighting Bugs
+- Fixed Charcoal Burners Not Using Wood
+- Fixed Oxidisation UI Bug
+
+### v0.4.3
+- Completed Achievements
+- Changed Achievements System
+- 100,000x Conversion Option
+
+##### Bug Fixes
 - Fixed Destruction of Machines Research Red Cost Bug
 - Fixed Meteorite Wonder Cost Bug
 - Fixed Titanium T4 Energy Costs
 - Fixed Dyson Costs Jumping to 3rd from 1st
-- Completed Achievements
-- Changed Achievements System
+- Fixed Metal Icon not being transparent
 
 v0.4.2
 - Added option for bold text on red costs

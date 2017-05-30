@@ -8,6 +8,8 @@ Game.achievements = (function() {
     instance.nextId = 0;
 
     instance.entries = {};
+    instance.achievementCount = 0;
+    instance.achievementCountIncludingTiers = 0;
 
     instance.initialize = function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
@@ -32,9 +34,12 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Charcoal Engines", "EnergyIcon", function(x) { return charcoalEngine >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Solar Panels", "EnergyIcon", function(x) { return solarPanel >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Methane Power Stations", "EnergyIcon", function(x) { return methaneStation >= x}, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Reactors", "EnergyIcon", function(x) { return nuclearStation >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Fusion Reactors", "EnergyIcon", function(x) { return fusionReactor >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Reactors", "EnergyIcon", function(x) { return nuclearStation >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Magmatic Reactors", "EnergyIcon", function(x) { return magmatic >= x}, Game.constants.achievementProducerBrackets);
+
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Woodburners", "charcoalIcon", function(x) { return woodburner >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Furnaces", "charcoalIcon", function(x) { return furnace >= x}, Game.constants.achievementProducerBrackets);
@@ -91,7 +96,7 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Big Berthas", "silverIcon", function(x) { return bertha >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Atomic Cannons", "silverIcon", function(x) { return cannon >= x}, Game.constants.achievementProducerBrackets);
 
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Extruders", "lavaIcon", function(x) { return crucible >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Heat Resistant Crucibles", "lavaIcon", function(x) { return crucible >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Lava Extractors", "lavaIcon", function(x) { return extractor >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Igneous Extruders", "lavaIcon", function(x) { return extruder >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Volcanic Veluptuators", "lavaIcon", function(x) { return veluptuator >= x}, Game.constants.achievementProducerBrackets);
@@ -111,12 +116,19 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ocean Freezers", "iceIcon", function(x) { return freezer >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mr Freeze", "iceIcon", function(x) { return mrFreeze >= x}, Game.constants.achievementProducerBrackets);
 
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, Game.constants.achievementProducerBrackets);
-
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, Game.constants.achievementProducerBrackets);
+
+        console.debug("Loaded " + this.achievementCount + " (" + this.achievementCountIncludingTiers +") Achievements");
+    };
+
+    instance.getAchievementTitle = function(data) {
+        if(data.unlocked === data.brackets.length - 1) {
+            return data.title.replace('%s', data.brackets[data.unlocked]) + " Completed";
+        } else {
+            return data.title.replace('%s', data.brackets[data.unlocked + 1]);
+        }
     };
 
     instance.update = function(delta) {
@@ -124,7 +136,10 @@ Game.achievements = (function() {
             var data = this.entries[id];
 
             if(data.unlocked < data.brackets.length - 1 && data.evaluator(data.brackets[data.unlocked + 1])) {
+                Game.notifySuccess("Achievement Reached", this.getAchievementTitle(data));
+
                 this.unlock(id, data.unlocked + 1);
+
                 newUnlock('more');
             }
         }
@@ -151,6 +166,8 @@ Game.achievements = (function() {
             displayNeedsUpdate: true
         };
 
+        this.achievementCount++;
+        this.achievementCountIncludingTiers += brackets.length;
         this.entries[data.id] = data;
     };
 
@@ -165,7 +182,7 @@ Game.achievements = (function() {
 
     instance.load = function(data) {
         if(data.achievements) {
-            if(data.achievements.version && data.achievements.version == this.dataVersion) {
+            if(data.achievements.version && data.achievements.version === this.dataVersion) {
                 for(var id in data.achievements.entries) {
                     if(this.entries[id]){
                         this.unlock(id, data.achievements.entries[id]);

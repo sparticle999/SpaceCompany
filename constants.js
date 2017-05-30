@@ -1,3 +1,24 @@
+COST_TYPE = {
+    FIXED: 0,
+    PERCENT: 1
+};
+
+TECH_TYPE = {
+    UPGRADE: 0,
+    UNLOCK: 1
+};
+
+BUILDING_TYPE = {
+    PRODUCER: 0
+};
+
+RESOURCE_OBSERVER_TYPE = {
+    CURRENT_VALUE: 0,
+    SPECIFIC_VALUE: 1,
+    CAPACITY: 2,
+    PER_SECOND: 3
+};
+
 Game.constants = (function(){
 
     var instance = {};
@@ -18,6 +39,10 @@ Game.constants = (function(){
     instance.statisticCategoryTiming = "Timing";
 
     instance.maxTier = 6;
+
+    instance.enableStorageNotifications = false;
+    instance.enableDataDrivenResources = false;
+    instance.enableMachineTab = false;
 
     return instance;
 }());

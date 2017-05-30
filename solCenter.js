@@ -36,47 +36,110 @@ function unlockDysonResearch(){
 }
 
 function changeEmcAmount(){
-	if(emcAmount === 1){
-		emcAmount = 100;
-	}
-	else if(emcAmount === 100){
-		emcAmount = 1000;
-	}
-	else if(emcAmount === 1000){
-		emcAmount = 10000;
-	}
-	else{
-		emcAmount = 1;
-	}
+    emcAmount *= 10;
+    if(emcAmount > getMaxEnergy())
+    {
+        emcAmount = 1;
+    }
+
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = commafy(emcAmount);
+		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
 	}
-	for(var i = 0; i < resources.length; i++){
-		document.getElementById(resources[i] + "EmcVal").innerHTML = commafy(window[resources[i]+"EmcVal"]*emcAmount);
-		if(window[resources[i]+"EmcVal"]*emcAmount > window[resources[i]+"Storage"]){
-			document.getElementById(resources[i] + "Conv").className = "btn btn-default green";
-		}
-		else{
-			document.getElementById(resources[i] + "Conv").className = "btn btn-default";
-		}
+
+    refreshConversionDisplay();
+}
+
+function refreshConversionDisplay() {
+    var maxEnergy = getMaxEnergy();
+    for(var i = 0; i < resources.length; i++){
+        var element = $('#' + resources[i] + "EmcVal");
+        var buttonElement = $('#' + resources[i] + "Conv");
+
+        var value = window[resources[i]+"EmcVal"];
+        var emcValue = value * emcAmount;
+        var current = window[resources[i]];
+        var capacity = window[resources[i]+"Storage"];
+        element.text(Game.settings.format(emcValue));
+
+        var disabled = false;
+        if(maxEnergy < emcValue) {
+            buttonElement.addClass('red');
+            disabled = true;
+        } else {
+            buttonElement.removeClass('red');
+        }
+
+        if(emcAmount > capacity || current >= capacity){
+            buttonElement.addClass('green');
+            disabled = true;
+        }
+        else{
+            buttonElement.removeClass('green');
+        }
+
+        buttonElement.prop('disabled', disabled);
+    }
+
+    refreshPlasmaConversionDisplay();
+}
+
+function refreshPlasmaConversionDisplay() {
+    // special case for plasma
+    var disabled = false;
+    var meteoriteConvElement = $('#meteoriteConv');
+    var meteoriteEmcValue = emcAmount * meteoriteEmcVal;
+    if (plasma < meteoriteEmcValue) {
+        meteoriteConvElement.addClass('red');
+        disabled = true;
+    } else {
+        meteoriteConvElement.removeClass('red');
+    }
+
+    if(meteorite >= meteoriteStorage) {
+        meteoriteConvElement.addClass('green');
+        disabled = true;
+    } else {
+        meteoriteConvElement.removeClass('green');
+    }
+
+    meteoriteConvElement.prop('disabled', disabled);
+}
+
+function convertEnergy(resourceName){
+	var current = window[resourceName];
+	var capacity = window[resourceName+"Storage"];
+
+	var amount = Math.floor(Math.min(emcAmount, capacity - current));
+	var requiredEnergy = amount * window[resourceName + "EmcVal"];
+
+	if(amount > 0 && energy >= requiredEnergy){
+		energy -= requiredEnergy;
+		window[resourceName] += amount;
+
+		Game.notifyInfo('Energy Conversion', 'Gained ' + amount + ' ' + resourceName);
+
+        refreshConversionDisplay();
 	}
 }
 
-function convertEnergy(resource, resourceName){
-	if(energy >= emcAmount*window[resourceName + "EmcVal"]){
-		energy -= emcAmount*window[resourceName + "EmcVal"];
-		window[resourceName] += emcAmount;
-	}
-}
-
-function convertPlasma(resource, resourceName){
+function convertPlasma(resourceName){
 	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
 		plasma -= emcAmount*window[resourceName + "EmcVal"];
 		window[resourceName] += emcAmount;
+
+        refreshPlasmaConversionDisplay();
 	}
 }
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
+
+function refreshDyson(){
+	dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
+	dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
+	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
+	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
+	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
+}
 
 function getDyson(){
 	if(titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost){
@@ -86,19 +149,18 @@ function getDyson(){
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
-		dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
-		dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
-		dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
-		dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
-		dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
-		document.getElementById("dysonTitaniumCost").innerHTML = commafy(dysonTitaniumCost);
-		document.getElementById("dysonGoldCost").innerHTML = commafy(dysonGoldCost);
-		document.getElementById("dysonSiliconCost").innerHTML = commafy(dysonSiliconCost);
-		document.getElementById("dysonMeteoriteCost").innerHTML = commafy(dysonMeteoriteCost);
-		document.getElementById("dysonIceCost").innerHTML = commafy(dysonIceCost);
+
+		refreshDyson()
+	}
+}
+
+function buildRing(){
+	if(dyson >= 50 && rocketFuel >= 50000){
+		dyson -= 50;
+		rocketFuel -= 50000;
+		ring += 1;
+
+		refreshDyson()
 	}
 }
 
@@ -107,21 +169,21 @@ function buildSwarm(){
 		dyson -= 100;
 		rocketFuel -= 250000;
 		swarm += 1;
-		document.getElementById("swarm").innerHTML = swarm;
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
+
+		refreshDyson()
 	}
 }
 
 function buildSphere(){
+	if(sphere > 0){
+		return;
+	}
+
 	if(dyson >= 250 && rocketFuel >= 1000000){
 		dyson -= 250;
 		rocketFuel -= 1000000;
 		sphere += 1;
-		document.getElementById("sphere").innerHTML = sphere;
-		document.getElementById("dyson").innerHTML = dyson;
-		document.getElementById("dysonPieces").innerHTML = dyson;
-		document.getElementById("dysonPieces2").innerHTML = dyson;
+
+		refreshDyson()
 	}
 }

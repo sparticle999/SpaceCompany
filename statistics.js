@@ -9,6 +9,7 @@ Game.statistics = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
+    instance.statisticTypeCount = 0;
 
     instance.initialize = function() {
         this.createStatistic("manualResources", Game.constants.statisticCategoryGeneral, "Resources Mined By Hand");
@@ -19,7 +20,7 @@ Game.statistics = (function(){
 
         this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 6);
         this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);
-        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 21);
+        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 22);
         this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places Explored", 10);
         this.createStatistic("wondersBuilt", Game.constants.statisticCategoryUnlockable, "Wonders Built", 4);
         this.createStatistic("wondersActivated", Game.constants.statisticCategoryUnlockable, "Wonders Activated", 4);
@@ -30,6 +31,8 @@ Game.statistics = (function(){
         // Set some defaults
         this.add('tabsUnlocked', 3);
         this.add('resourcesUnlocked', 3);
+
+        console.debug("Loaded " + this.statisticTypeCount + " Statistics");
     };
 
     instance.update = function(delta) {
@@ -77,6 +80,7 @@ Game.statistics = (function(){
             displayNeedsUpdate: true
         };
 
+        this.statisticTypeCount++;
         this.entries[data.id] = data;
     };
 
@@ -93,7 +97,7 @@ Game.statistics = (function(){
         this.loadLegacy(data);
 
         if(data.statistics) {
-            if(data.statistics.version && data.statistics.version == this.dataVersion) {
+            if(data.statistics.version && data.statistics.version === this.dataVersion) {
                 for(var id in data.statistics.entries) {
                     if(this.entries[id]){
                         this.setValue(id, data.statistics.entries[id].v, data.statistics.entries[id].va);
