@@ -59,7 +59,8 @@ Game.resources = (function(){
     instance.load = function(data) {
         if(data.resources) {
             if(data.resources.v && data.resources.v === this.dataVersion) {
-                for(var id in data.resources.i) {
+                console.log(data.resources)
+                for(var id in data.resources.r) {
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.r[id].n);
                         this.entries[id].unlocked = data.resources.r[id].u;
