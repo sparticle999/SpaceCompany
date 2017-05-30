@@ -16,7 +16,24 @@ RESOURCE_OBSERVER_TYPE = {
     CURRENT_VALUE: 0,
     SPECIFIC_VALUE: 1,
     CAPACITY: 2,
-    PER_SECOND: 3
+    PER_SECOND: 3,
+    LEGACY_VALUE: 4,
+    LEGACY_TARGET_VALUE: 5,
+};
+
+BUILDING_OBSERVER_TYPE = {
+    CURRENT_VALUE: 0,
+    MAXIMUM: 1,
+    COST: 2,
+    RESOURCE_PRODUCTION: 3,
+};
+
+SPACESHIP_PART = {
+    SPACE_DOCK: 0,
+    STRUCTURE: 1,
+    ENGINE_ROOM: 1,
+    SICK_BAY: 2,
+    BRIDGE: 3
 };
 
 Game.constants = (function(){
@@ -41,7 +58,7 @@ Game.constants = (function(){
     instance.maxTier = 6;
 
     instance.enableStorageNotifications = false;
-    instance.enableDataDrivenResources = false;
+    instance.enableDataDrivenResources = true;
     instance.enableMachineTab = false;
 
     return instance;

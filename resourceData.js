@@ -222,11 +222,23 @@ Game.resourceData = (function () {
         unlocked: false
     };
 
+    /******************************
+     * Special Resources  *
+     ******************************/
+
     instance.science = {
         name: 'Science Production',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
         baseCapacity: 1000000,
+        unlocked: false
+    };
+
+    instance.rocketFuel = {
+        name: 'Rocket Fuel',
+        desc: 'Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.',
+        icon: 'rocketFuelIcon',
+        baseCapacity: -1,
         unlocked: false
     };
 

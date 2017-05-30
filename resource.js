@@ -69,13 +69,26 @@ Game.resources = (function(){
         }
     };
 
+    instance.addResourceManual = function(id, count) {
+        if(!count) {
+            count = 1;
+        }
+
+        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+            return;
+        }
+
+        this.addResource(id, count);
+        Game.statistics.add('manualResources', count);
+    };
+
     instance.addResource = function(id, count) {
         if(isNaN(count) || count === null || Math.abs(count) <= 0) {
             return;
         }
 
         // Add the resource and clamp to the maximum
-        var newValue = Math.floor(this.entries[id].current + count);
+        var newValue = this.entries[id].current + count;
         this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
         this.entries[id].displayNeedsUpdate = true;
     };
@@ -91,13 +104,33 @@ Game.resources = (function(){
         this.entries[id].displayNeedsUpdate = true;
     };
 
+    instance.resetPerSecondProduction = function() {
+        for(var id in this.entries) {
+            this.entries[id].perSecond = 0;
+        }
+    };
+
+    instance.modifyPerSecondProduction = function (id, value) {
+        if(!this.entries[id]) {
+            console.error("Unknown Resource: " + id);
+            return;
+        }
+
+        if (isNaN(value) || value === undefined) {
+            console.error("Invalid per second value: " + value + " for " + id);
+            return;
+        }
+
+        this.entries[id].perSecond += value;
+    };
+
     instance.setPerSecondProduction = function(id, value) {
         if(!this.entries[id]) {
             console.error("Unknown Resource: " + id);
             return;
         }
 
-        if (value < 0 || isNaN(value) || value === undefined) {
+        if (isNaN(value) || value === undefined) {
             console.error("Invalid per second value: " + value + " for " + id);
             return;
         }

@@ -218,7 +218,7 @@
 
         // Update the cost display
         if(data.cost) {
-            var costDisplayData = this.buildCostDisplay(this.resourceTechObservers[data.id], data);
+            var costDisplayData = Game.ui.utils.buildCostDisplay(this.resourceTechObservers[data.id], data.htmlId, data.cost);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));
@@ -237,48 +237,13 @@
 
         // Update the cost display
         if(data.cost) {
-            var costDisplayData = this.buildCostDisplay(this.resourceBuildingObservers[data.id], data);
+            var costDisplayData = Game.ui.utils.buildCostDisplay(this.resourceBuildingObservers[data.id], data.htmlId, data.cost);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));
         }
 
         data.displayNeedsUpdate = false;
-    };
-
-    instance.buildCostDisplay = function(observerArray, data) {
-        for(var i = 0; i < observerArray.length; i++) {
-            observerArray[i].delete();
-        }
-
-        // Empty but keep the reference
-        observerArray.length = 0;
-
-        var segments = [];
-        for(var id in data.cost) {
-            var resourceData = Game.resources.getResourceData(id);
-            if(!data) {
-                console.error("Unknown Resource in cost: " + id);
-                continue;
-            }
-
-            segments.push({i: id, h: data.htmlId + '_' + id + '_c', n: resourceData.name, c: data.cost[id]});
-        }
-
-        var resultHtml = '<span>Cost: </span>';
-        for(var i = 0; i < segments.length; i++) {
-            var segmentData = segments[i];
-            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
-            resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
-            if(i < segments.length - 1) {
-                resultHtml = resultHtml + '<span>, </span>';
-            }
-
-            var observer = Game.ui.createResourceObserver({htmlId: segmentData.h, value: segmentData.c, res: segmentData.i, type: RESOURCE_OBSERVER_TYPE.SPECIFIC_VALUE});
-            observerArray.push(observer);
-        }
-
-        return resultHtml;
     };
 
     instance.updateDisplay = function(data) {

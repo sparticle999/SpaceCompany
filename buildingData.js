@@ -6,7 +6,8 @@ Game.buildingData = (function () {
         type: BUILDING_TYPE.PRODUCER,
         unlocked: false,
         maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED
+        costType: COST_TYPE.FIXED,
+        costMultiplier: 1.1
     };
 
     // Energy
