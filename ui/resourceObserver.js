@@ -82,29 +82,6 @@
 
                 break;
             }
-
-            case RESOURCE_OBSERVER_TYPE.LEGACY_VALUE: {
-                var value = window[this.resource];
-                element.text(Game.settings.format(value));
-
-                if(this.enableColoring) {
-                    this.colorElementZero(element, value);
-                }
-
-                break;
-            }
-
-            case RESOURCE_OBSERVER_TYPE.LEGACY_TARGET_VALUE: {
-                var value = window[this.resource];
-
-                element.text(Game.settings.format(this.value));
-
-                if(this.enableColoring) {
-                    this.colorElementTarget(element, value, this.value || 0);
-                }
-
-                break;
-            }
         }
     };
 

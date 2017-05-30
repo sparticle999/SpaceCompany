@@ -53,21 +53,20 @@
 
         instance.buildingTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"></ter><td style="border:none;">',
-                '<h3 class="default btn-link">{{name}}</h3>',
+                '<h3 class="default btn-link">{{name}} <span id="{{htmlId}}_count"></span></h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_prod"></p>',
-                    '<p id="{{htmlId}}_rcost"></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div id="{{htmlId}}_buy" class="btn btn-default">Buy 1</div>',
-                '<div id="{{htmlId}}_buy10" class="btn btn-default">Buy 10</div>',
-                '<div id="{{htmlId}}_buy100" class="btn btn-default">Buy 100</div>',
+                '<div id="{{htmlId}}_buy1" class="btn btn-default" disabled="true">Buy 1</div>',
+                '<div id="{{htmlId}}_buy10" class="btn btn-default" disabled="true">Buy 10</div>',
+                '<div id="{{htmlId}}_buy100" class="btn btn-default" disabled="true">Buy 100</div>',
                 '<br>',
-                '<div id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
-                '<div id="{{htmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
-                '<div id="{{htmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
+                '<div id="{{htmlId}}_destroy1" class="btn btn-default" disabled="true">Destroy 1</div>',
+                '<div id="{{htmlId}}_destroy10" class="btn btn-default" disabled="true">Destroy 10</div>',
+                '<div id="{{htmlId}}_destroy100" class="btn btn-default" disabled="true">Destroy 100</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
@@ -151,6 +150,18 @@
 
         this.resourceBuildingEntries[buildingData.id] = data.id;
         this.resourceBuildingObservers[buildingData.id] = [];
+
+        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_count', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.CURRENT_VALUE});
+        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_prod', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.RESOURCE_PRODUCTION});
+        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_cost', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.COST});
+
+        for(var i = 1; i <= 100; i*= 10) {
+            var buyButton = $('#' + buildingData.htmlId + '_buy' + i);
+            buyButton.click({id: buildingData.id, count: i}, this.buildingBuyClick);
+
+            var destroyButton = $('#' + buildingData.htmlId + '_destroy' + i);
+            destroyButton.click({id: buildingData.id, count: i}, this.buildingDestroyClick);
+        }
     };
 
     instance.createResourceContent = function(data) {
@@ -235,15 +246,15 @@
             element.hide();
         }
 
-        // Update the cost display
-        if(data.cost) {
-            var costDisplayData = Game.ui.utils.buildCostDisplay(this.resourceBuildingObservers[data.id], data.htmlId, data.cost);
-            var costElement = $('#' + data.htmlId + '_cost');
-            costElement.empty();
-            costElement.append($(costDisplayData));
-        }
+        for(var i = 1; i <= 100; i*= 10) {
+            var buyButton = $('#' + data.htmlId + '_buy' + i);
+            var canAfford = Game.buildings.canAfford(data.id, i);
+            buyButton.attr('disabled', !canAfford);
 
-        data.displayNeedsUpdate = false;
+
+            var destroyButton = $('#' + data.htmlId + '_destroy' + i);
+            destroyButton.attr('disabled', data.current < i);
+        }
     };
 
     instance.updateDisplay = function(data) {
@@ -297,6 +308,18 @@
             Game.statistics.add('manualResources', value);
             Game.resources.addResource(data.id, value);
         }
+    };
+
+    instance.buildingBuyClick = function(args) {
+        var id = args.data.id;
+        var count = args.data.count;
+        Game.buildings.constructBuildings(id, count);
+    };
+
+    instance.buildingDestroyClick = function (args) {
+        var id = args.data.id;
+        var count = args.data.count;
+        Game.buildings.destroyBuildings(id, count);
     };
 
     Game.uiComponents.push(instance);

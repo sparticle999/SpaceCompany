@@ -6,7 +6,7 @@ Game.techData = (function () {
     var baseUpgradeData = {
         name: 'Storage Upgrade:',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.PERCENT,
         current: 0,
         maxLevel: -1,

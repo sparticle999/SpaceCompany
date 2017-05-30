@@ -49,7 +49,7 @@ Game.buildings = (function(){
                 for(var id in data.buildings.i) {
                     var count = data.buildings.i[id];
                     if(this.entries[id] && count && count > 0) {
-                        this.constructBuildings(id, count);
+                        this.constructBuildings(id, count, true);
                     }
                 }
             }
@@ -98,20 +98,28 @@ Game.buildings = (function(){
                 return false;
             }
         }
+
+        return true;
     };
 
-    instance.constructBuildings = function(id, count) {
+    instance.constructBuildings = function(id, count, disregardCost) {
         if(!count) {
             count = 1;
         }
 
-        if(this.canAfford(id, count) === false) {
+        if (count <= 0) {
             return;
         }
 
-        var totalCost = this.getTotalBuildingCost(id, count);
-        for(var resourceId in totalCost) {
-            Game.resources.takeResource(resourceId, totalCost[resourceId]);
+        if(disregardCost !== true) {
+            if (this.canAfford(id, count) === false) {
+                return;
+            }
+
+            var totalCost = this.getTotalBuildingCost(id, count);
+            for (var resourceId in totalCost) {
+                Game.resources.takeResource(resourceId, totalCost[resourceId]);
+            }
         }
 
         var data = this.entries[id];
@@ -132,6 +140,13 @@ Game.buildings = (function(){
         }
 
         var data = this.entries[id];
+        if(data.current < count) {
+            count = data.current;
+        }
+
+        if(count <= 0) {
+            return;
+        }
 
         // Remove the buildings and ensure we can not go below 0
         var newValue = Math.floor(data.current - count);
