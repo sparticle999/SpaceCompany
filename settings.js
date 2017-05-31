@@ -105,9 +105,7 @@ Game.settings = (function(){
         if(data.statistics) {
             if(data.statistics.version && data.statistics.version === this.dataVersion) {
                 for(var id in data.statistics.entries) {
-                    if(id != "sessionTime"){
-                        this.entries[id] = data.statistics.entries[id];
-                    }
+                    this.entries[id] = data.statistics.entries[id];
                 }
             }
         }

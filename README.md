@@ -24,6 +24,8 @@ v0.5.0 The Interstellar Update
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Plasma Storage Units (PSUs)
+- Buy X buttons
+- Buy Max/Custom Buttons
 
 # Changelog:
 
@@ -39,6 +41,7 @@ v0.5.0 The Interstellar Update
 - Options For Number Format
 
 ##### Small Changes
+- Reworked EMC UI
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Reprogrammed Charcoal Production
@@ -51,6 +54,7 @@ v0.5.0 The Interstellar Update
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
 - Added Notifications for Achievements and Autosaving and for when Storage is full
+- Reduced Info Overload on Getting Started Tab
 
 ##### Bug Fixes
 - Fixed Oil Rig Costs
