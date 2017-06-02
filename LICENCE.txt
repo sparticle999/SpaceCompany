@@ -8,7 +8,7 @@ not agree with these terms, please do not use, modify or
 redistribute this game.
 
 In consideration of your agreement to abide by the following terms, and
-subject to these terms, Apple grants you a personal, non-exclusive
+subject to these terms, the development team grants you a personal, non-exclusive
 license, to use, reproduce, modify and redistribute SpaceCompany, 
 with or without modifications, in source and/or binary forms;
 provided that if you redistribute SpacecComapany in its entirety and
