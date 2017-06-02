@@ -96,22 +96,30 @@ function refreshPerSec(delta){
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
 	if(!energyLow) {
-		charcoalps -= (charcoalEngine * perSecondMultiplier);
+		// Add resource gain from machines
         oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246)) * perSecondMultiplier;
         metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
         gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358)) * perSecondMultiplier;
         woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297)) * perSecondMultiplier;
         spaceMetalps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
-        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) - (methaneStation * 6)) * perSecondMultiplier;
+        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149)) * perSecondMultiplier;
         titaniumps +=  ((spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
         goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208)) * perSecondMultiplier;
         siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157)) * perSecondMultiplier;
-        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) - (nuclearStation * 7)) * perSecondMultiplier;
-        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) - (magmatic * 11)) * perSecondMultiplier;
-        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) - (fusionReactor * 10)) * perSecondMultiplier;
-        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232) - (fusionReactor * 10)) * perSecondMultiplier;
+        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235)) * perSecondMultiplier;
+        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187)) * perSecondMultiplier;
+        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113)) * perSecondMultiplier;
+        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232)) * perSecondMultiplier;
         iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278)) * perSecondMultiplier;
+
+        // Deduct resource use from machines
+        charcoalps -= charcoalEngine;
+        methaneps -= methaneStation * 6;
+        uraniumps -= nuclearStation * 7;
+        lavaps -= magmatic * 11;
+        hydrogenps -= fusionReactor * 10;
+        heliumps -= fusionReactor * 10;
 	}
 
 	if(charcoalToggled) {
@@ -167,7 +175,7 @@ function refreshPerSec(delta){
         if (gainAbs > 0) {
             if (hydrogen + hydrogenps * delta >= hydrogenCost) {
                 hydrogenps -= hydrogenCost;
-                plasmaps += gain * perSecondMultiplier;
+                plasmaps += gainAbs * perSecondMultiplier;
             }
         }
 	}
@@ -181,7 +189,7 @@ function refreshPerSec(delta){
         if(gainAbs > 0) {
             if (helium + heliumps >= heliumCost) {
                 heliumps -= heliumCost;
-                plasmaps += gain * perSecondMultiplier;
+                plasmaps += gainAbs * perSecondMultiplier;
             }
         }
 	}
