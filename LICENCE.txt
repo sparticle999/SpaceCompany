@@ -1,0 +1,28 @@
+Version: 0.4.3
+
+IMPORTANT:  This game is supplied to you by the SpaceCompany
+development team in consideration of your agreement to the
+following terms, and your use, modification or redistribution
+of this game constitutes acceptance of these terms. If you do
+not agree with these terms, please do not use, modify or
+redistribute this game.
+
+In consideration of your agreement to abide by the following terms, and
+subject to these terms, Apple grants you a personal, non-exclusive
+license, to use, reproduce, modify and redistribute SpaceCompany, 
+with or without modifications, in source and/or binary forms;
+provided that if you redistribute SpacecComapany in its entirety and
+without modifications, you must retain this notice and the following
+text and disclaimers in all such redistributions of SpaceCompany.
+
+Except as expressly stated in this notice, no other rights or licenses,
+express or implied, are granted by the development team herein, including
+but not limited to any patent rights that may be infringed by your
+derivative works or by other works in which Space Company may be incorporated.
+
+While this is open-source, you may not copy the content directly and pass it
+off as your own without prior permission from the development team.
+You are not allowed to distribute Space Company commercially without similar
+permission.
+
+2017 SpaceCompanyDevTeam. All Rights Reserved.
