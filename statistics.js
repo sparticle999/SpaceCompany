@@ -105,6 +105,9 @@ Game.statistics = (function(){
                 }
             }
         }
+
+        // Reset some statistics that we don't care about being persistent, might have to add a flag for em later
+        this.setValue('sessionTime', 0, 0);
     };
 
     // backwards compatibility with the old stats
