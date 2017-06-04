@@ -869,8 +869,8 @@ function refreshResearches(){
 		}
 	}
 
-	if(typeof versionNumber != "0.4.3"){
-		versionNumber = "0.4.3";
+	if(typeof versionNumber != "0.4.4"){
+		versionNumber = "0.4.4";
 	}
 }
 

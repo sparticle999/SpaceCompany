@@ -31,6 +31,13 @@ v0.5.0 The Interstellar Update
 
 ### v0.5.0
 ##### Features
+
+##### Small Changes
+
+##### Bug Fixes
+
+### v0.4.4
+##### Features
 - Dyson Ring
 - Infinite Research
 - Overhauled Behind The Scenes Stuff - Made everything data driven
@@ -69,7 +76,9 @@ v0.5.0 The Interstellar Update
 - Fixed Highlighting Bugs
 - Fixed Charcoal Burners Not Using Wood
 - Fixed Oxidisation UI Bug
+- Fixed Session Time Not Resetting
 - Fixed Meteorite Filling Storage Bug
+- Fixed Typos
 
 ### v0.4.3
 - Completed Achievements
