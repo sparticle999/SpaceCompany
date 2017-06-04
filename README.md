@@ -32,6 +32,7 @@ v0.5.0 The Interstellar Update
 ### v0.5.0
 ##### Features
 - Dyson Ring
+- Infinite Research
 - Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Game Now Works in an Inactive Tab
@@ -55,6 +56,7 @@ v0.5.0 The Interstellar Update
 - Changed Links in FAQ to open in new tab
 - Added Notifications for Achievements and Autosaving and for when Storage is full
 - Reduced Info Overload on Getting Started Tab
+- Added LICENCE.txt
 
 ##### Bug Fixes
 - Fixed Oil Rig Costs
@@ -67,6 +69,7 @@ v0.5.0 The Interstellar Update
 - Fixed Highlighting Bugs
 - Fixed Charcoal Burners Not Using Wood
 - Fixed Oxidisation UI Bug
+- Fixed Meteorite Filling Storage Bug
 
 ### v0.4.3
 - Completed Achievements
