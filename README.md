@@ -10,6 +10,9 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # RoadMap
 
+v0.6.0 The Lore Update
+- Adding Lore onto every Building and an introduction to your Space Company
+
 v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
@@ -35,6 +38,7 @@ v0.5.0 The Interstellar Update
 ##### Small Changes
 
 ##### Bug Fixes
+- Fixed Bug with Solar System Sidebar
 
 ### v0.4.4
 ##### Features
