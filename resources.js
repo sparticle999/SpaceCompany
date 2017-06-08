@@ -614,7 +614,6 @@ function getMiner(){
 			if(miner >= 1){
 				document.getElementById("researchTab").className = "";
 				researchUnlocked = true;
-                Game.statistics.add('tabsUnlocked');
 				tabsUnlocked.push("researchTab");
 				newUnlock("research");
 				Game.notifySuccess("New Tab!", "You've unlocked the Research Tab!");

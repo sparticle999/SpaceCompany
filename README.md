@@ -10,6 +10,9 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # RoadMap
 
+v0.6.0 The Lore Update
+- Adding Lore onto every Building and an introduction to your Space Company
+
 v0.5.0 The Interstellar Update
 - Exotic Matter for intersteller travel
 - Dark Matter
@@ -24,12 +27,23 @@ v0.5.0 The Interstellar Update
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Plasma Storage Units (PSUs)
+- Buy X buttons
+- Buy Max/Custom Buttons
 
 # Changelog:
 
 ### v0.5.0
 ##### Features
+
+##### Small Changes
+
+##### Bug Fixes
+- Fixed Bug with Solar System Sidebar
+
+### v0.4.4
+##### Features
 - Dyson Ring
+- Infinite Research
 - Overhauled Behind The Scenes Stuff - Made everything data driven
 - Added Notifications
 - Game Now Works in an Inactive Tab
@@ -39,6 +53,7 @@ v0.5.0 The Interstellar Update
 - Options For Number Format
 
 ##### Small Changes
+- Reworked EMC UI
 - Energy Conversion Changes
 - Reworded Chemical Plant Description
 - Reprogrammed Charcoal Production
@@ -51,6 +66,8 @@ v0.5.0 The Interstellar Update
 - Added Days on Time Stats
 - Changed Links in FAQ to open in new tab
 - Added Notifications for Achievements and Autosaving and for when Storage is full
+- Reduced Info Overload on Getting Started Tab
+- Added LICENCE.txt
 
 ##### Bug Fixes
 - Fixed Oil Rig Costs
@@ -63,6 +80,9 @@ v0.5.0 The Interstellar Update
 - Fixed Highlighting Bugs
 - Fixed Charcoal Burners Not Using Wood
 - Fixed Oxidisation UI Bug
+- Fixed Session Time Not Resetting
+- Fixed Meteorite Filling Storage Bug
+- Fixed Typos
 
 ### v0.4.3
 - Completed Achievements

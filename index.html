@@ -44,7 +44,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.4.3 Beta
+						v0.4.4 Beta
 					</span>
 				</a>
 				<a class="navbar-brand">
@@ -73,7 +73,7 @@
     	<li role="presentation" id="solarSystemTab" class="hidden"><a href="#solarSystem" aria-controls="solarSystem" role="tab" data-toggle="tab"onclick="tabClicked('solarSystem')"><div id="solarSystemTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Solar System</a></li>
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
-    	<li role="presentation" id="machineTopTab" class="hidden"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
+    	<li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
@@ -600,6 +600,7 @@
 									</span>
 									<br>
 									<br>
+									<button onclick="toggleEnergy()" class="btn btn-default">Toggle All Energy Production + Consumption</button>
 								</td>
 							</tr>
 							<tr id="batteries" class="hidden">
@@ -3027,7 +3028,7 @@
 							<tr id="unlockPlasmaTier2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Plasma Tier 2 Technology
+										Plasma Tier 2
 									</h3>
 									<span>
 										This research unlocks the second tier of Plasma production, the Plasmatic Pit.
@@ -3126,23 +3127,6 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="unlockDysonSphere" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										Dyson Swarms and Spheres
-									</h3>
-									<span>
-										The Dyson Swarms encapsulate the sun in rings of solar stations, wheras Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
-										<br>
-										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
-									</span>
-									<br>
-									<br>
-									<button onclick="unlockDysonSphere()" class="btn btn-default">Unlock Dyson Swarms/Spheres</button>
-									<br>
-									<br>
-								</td>
-							</tr>
 							<tr id="unlockBatteriesT2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3156,6 +3140,23 @@
 									<br>
 									<br>
 									<button onclick="unlockBatteriesT2()" class="btn btn-default">Unlock T2 Batteries</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockDysonSphere" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Dyson Swarms and Spheres
+									</h3>
+									<span>
+										The Dyson Swarms encapsulate the sun in rings of solar stations, wheras Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
+										<br>
+										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockDysonSphere()" class="btn btn-default">Unlock Dyson Swarms/Spheres</button>
 									<br>
 									<br>
 								</td>
@@ -3224,7 +3225,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/moonIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								The Moon
 							</span>
@@ -3234,7 +3235,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/mercuryIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Mercury
 							</span>
@@ -3244,7 +3245,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/venusIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Venus
 							</span>
@@ -3254,7 +3255,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/marsIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Mars
 							</span>
@@ -3264,7 +3265,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/asteroidBeltIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Asteroid Belt
 							</span>
@@ -3274,14 +3275,14 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/wonderStationIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								The Wonder Station
 							</span>
 						</td>
 					</tr>
 					<tr id="collapseOuter" class="collapseOuter hidden" style="border:none;">
-						<td colspan="4">
+						<td colspan="3">
 							<span>Collapse Outer Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
@@ -3289,7 +3290,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/jupiterIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Jupiter
 							</span>
@@ -3299,7 +3300,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/saturnIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Saturn
 							</span>
@@ -3309,7 +3310,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/uranusIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Uranus
 							</span>
@@ -3319,7 +3320,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/neptuneIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Neptune
 							</span>
@@ -3329,7 +3330,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/plutoIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Pluto
 							</span>
@@ -3339,7 +3340,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/kuiperBeltIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Kuiper Belt
 							</span>
@@ -3349,7 +3350,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/solCenterIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Sol Scientific Center
 							</span>
@@ -4389,14 +4390,134 @@
 									<h3 class="default btn-link">
 										Uses
 									</h3>
-									<span>
+									<p>
 										This is where you can convert your energy and plasma into resources.
-										<br>
-										<button class="btn btn-default" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
-										<br>
-									</span>
-									<br>
-									<table style="width:775px">
+									</p>
+									<div class="row">
+										<div class="col-md-12">
+											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
+											<button class="btn btn-default pull-right" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+											<table class="table table-striped">
+												<thead>
+													<th>Cost (Energy)</th>
+													<th>Material</th>
+													<th>Current amount / Storage</th>
+													<th></th>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span id="uraniumEmcVal">37</span> Energy</td>
+														<td><span class="emcAmount">1</span> Uranium</td>
+														<td><span id="uraniumConv"><span data-bind="uranium">N/A</span> / <span data-bind="uraniumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('uranium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="lavaEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Lava</td>
+														<td><span id="lavaConv"><span data-bind="lava">N/A</span> / <span data-bind="lavaStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lava')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="oilEmcVal">3</span> Energy</td>
+														<td><span class="emcAmount">1</span> Oil</td>
+														<td><span id="oilConv"><span data-bind="oil">N/A</span> / <span data-bind="oilStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('oil')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="metalEmcVal">1</span> Energy</td>
+														<td><span class="emcAmount">1</span> Metal</td>
+														<td><span id="metalConv"><span data-bind="metal">N/A</span> / <span data-bind="metalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('metal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="gemEmcVal">3</span> Energy</td>
+														<td><span class="emcAmount">1</span> Gems</td>
+														<td><span id="gemConv"><span data-bind="gem">N/A</span> / <span data-bind="gemStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gem')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="charcoalEmcVal">2</span> Energy</td>
+														<td><span class="emcAmount">1</span> Charcoal</td>
+														<td><span id="charcoalConv"><span data-bind="charcoal">N/A</span> / <span data-bind="charcoalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('charcoal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="woodEmcVal">1</span> Energy</td>
+														<td><span class="emcAmount">1</span> Wood</td>
+														<td><span id="woodConv"><span data-bind="wood">N/A</span> / <span data-bind="woodStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('wood')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="siliconEmcVal">23</span> Energy</td>
+														<td><span class="emcAmount">1</span> Silicon</td>
+														<td><span id="siliconConv"><span data-bind="silicon">N/A</span> / <span data-bind="siliconStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silicon')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="spaceMetalEmcVal">15</span> Energy</td>
+														<td><span class="emcAmount">1</span> Space Metal</td>
+														<td><span id="spaceMetalConv"><span data-bind="spaceMetal">N/A</span> / <span data-bind="spaceMetalStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('spaceMetal')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="methaneEmcVal">12</span> Energy</td>
+														<td><span class="emcAmount">1</span> Methane</td>
+														<td><span id="methaneConv"><span data-bind="methane">N/A</span> / <span data-bind="methaneStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('methane')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="titaniumEmcVal">17</span> Energy</td>
+														<td><span class="emcAmount">1</span> Titanium</td>
+														<td><span id="titaniumConv"><span data-bind="titanium">N/A</span> / <span data-bind="titaniumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('titanium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="goldEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Gold</td>
+														<td><span id="goldConv"><span data-bind="gold">N/A</span> / <span data-bind="goldStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gold')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="silverEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Silver</td>
+														<td><span id="silverConv"><span data-bind="silver">N/A</span> / <span data-bind="silverStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silver')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="hydrogenEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Hydrogen</td>
+														<td><span id="hydrogenConv"><span data-bind="hydrogen">N/A</span> / <span data-bind="hydrogenStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('hydrogen')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="heliumEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Helium</td>
+														<td><span id="heliumConv"><span data-bind="helium">N/A</span> / <span data-bind="heliumStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('helium')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="iceEmcVal">42</span> Energy</td>
+														<td><span class="emcAmount">1</span> Ice</td>
+														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
+													</tr>
+													<tr>
+														<td><span id="meteoriteEmcVal">42</span> Plasma</td>
+														<td><span class="emcAmount">1</span> Meteorite</td>
+														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertPlasma('meteorite')" role="button">Convert</button></td>
+													</tr>
+												</tbody>
+											</table>
+											</div>
+										</div>
+									</div>
+									<table style="width:775px; display: none">
 										<tr>
 											<td colspan="3">
 												<button id="uraniumConv" onclick="convertEnergy('uranium')" class="btn btn-default" style="width:100%"><span id="uraniumEmcVal">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
@@ -4655,14 +4776,14 @@
 							</tr>
 							<tr>
 								<td colspan="1">
-									<span>
+									<button class="btn btn-default">
 										++
-									</span>
+									</button>
 								</td>
 								<td colspan="1">
-									<span>
+									<button class="btn btn-default">
 										+
-									</span>
+									</button>
 								</td>
 								<td colspan="3">
 									<span>
@@ -4670,14 +4791,14 @@
 									</span>
 								</td>
 								<td colspan="1">
-									<span>
+									<button class="btn btn-default">
 										-
-									</span>
+									</button>
 								</td>
 								<td colspan="1">
-									<span>
+									<button class="btn btn-default">
 										--
-									</span>
+									</button>
 								</td>
 								<td colspan="2">
 									<span>
@@ -6232,7 +6353,8 @@
 										<option value="name">Name</option>
 										<option value="shortName" selected>Short Name</option>
 										<option value="shortName2">Short Name (2)</option>
-										<option value="scientific">Scientific</option>
+										<option value="scientific">Scientific (*10^n)</option>
+										<option value="scientific2">Scientific (E+n)</option>
 									</select>
 								</td>
 							</tr>
@@ -6429,30 +6551,10 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Exploring Planets
+										More
 									</h3>
 									<span>
-										There are four exploratory sites in the solar system that you can go to once space-travel is unlocked. These are the Moon, Venus, Mars and the Asteroid Belt. Exploring them will cost more rocket fuel the further it is from Earth and exploring them will give you access to resources found on each planet, such as Space Metal or Titanium.
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
-										The Wonder Station
-									</h3>
-									<span>
-										Once you have travelled to the Asteroid Belt, the Wonder Station becomes available to travel to. It costs 500 rocket fuel to go there, so you may want to build more chemical plants to achieve this. At the Station, there are places to build monuments to dedicate to a galactic overlord in return for him sharing his knowledge to you. This will allow you to get further in the game, gain resources faster and unlock inter-star-system travel.
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
-										Activating Wonders
-									</h3>
-									<span>
-										Activating Wonders costs a hefty amount, but it can give your company a boost when nothing else can. These allow you to find new methods of playing, such as nuclear power to generate large amounts of Energy much more easily.
+										There are more in-depth explanations and a wider variety of documentation on the <a href="https://reddit.com/r/spacecompany/wiki/">Reddit Wiki</a>. Feel free to explore these to learn more about the game, or discover things yourself by playing the game.
 									</span>
 								</td>
 							</tr>

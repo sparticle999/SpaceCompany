@@ -156,7 +156,6 @@ function unlockSolarSystem(){
 		document.getElementById("solarSystemTab").className = "";
 		document.getElementById("unlockLabT2").className = "";
 		document.getElementById("unlockRocketFuelT2").className = "";
-		Game.statistics.add('tabsUnlocked');
 		tabsUnlocked.push("solarSystemTab");
 		available.push("unlockLabT2", "unlockRocketFuelT2");
 		researched.push("unlockSolarSystem");

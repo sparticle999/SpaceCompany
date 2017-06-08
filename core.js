@@ -1,4 +1,8 @@
 function calculateEnergyOutput(delta) {
+	if(globalEnergyLock === true) {
+		return 0;
+	}
+
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
@@ -26,6 +30,10 @@ function calculateEnergyOutput(delta) {
 }
 
 function calculateEnergyUse(delta) {
+	if(globalEnergyLock === true) {
+		return 0;
+	}
+
     var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
     use += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
     use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
@@ -51,6 +59,10 @@ function calculateEnergyUse(delta) {
 	}
 
     return use;
+}
+
+function toggleEnergy() {
+    globalEnergyLock = !globalEnergyLock;
 }
 
 function refreshPerSec(delta){
@@ -95,28 +107,36 @@ function refreshPerSec(delta){
     // Science is not multiplied!
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
-	if(!energyLow) {
-		charcoalps -= (charcoalEngine * perSecondMultiplier);
+	if(!energyLow && globalEnergyLock === false) {
+		// Add resource gain from machines
         oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246)) * perSecondMultiplier;
         metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
         gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358)) * perSecondMultiplier;
         woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297)) * perSecondMultiplier;
         spaceMetalps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
-        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) - (methaneStation * 6)) * perSecondMultiplier;
+        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149)) * perSecondMultiplier;
         titaniumps +=  ((spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
         goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208)) * perSecondMultiplier;
         siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157)) * perSecondMultiplier;
-        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) - (nuclearStation * 7)) * perSecondMultiplier;
-        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) - (magmatic * 11)) * perSecondMultiplier;
-        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) - (fusionReactor * 10)) * perSecondMultiplier;
-        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232) - (fusionReactor * 10)) * perSecondMultiplier;
+        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235)) * perSecondMultiplier;
+        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187)) * perSecondMultiplier;
+        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113)) * perSecondMultiplier;
+        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232)) * perSecondMultiplier;
         iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278)) * perSecondMultiplier;
+
+        // Deduct resource use from machines
+        charcoalps -= charcoalEngine;
+        methaneps -= methaneStation * 6;
+        uraniumps -= nuclearStation * 7;
+        lavaps -= magmatic * 11;
+        hydrogenps -= fusionReactor * 10;
+        heliumps -= fusionReactor * 10;
 	}
 
 	if(charcoalToggled) {
 		var woodCost = woodburner * 2;
-		if(!energyLow) {
+		if(!energyLow && globalEnergyLock === false) {
             woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
 		}
 
@@ -124,7 +144,7 @@ function refreshPerSec(delta){
 			woodps -= woodCost;
 			charcoalps += woodburner * perSecondMultiplier;
 
-			if(!energyLow){
+			if(!energyLow && globalEnergyLock === false){
                 charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210)) * perSecondMultiplier
 			}
 		}
@@ -158,41 +178,53 @@ function refreshPerSec(delta){
     }
 
     var absolutePlasmaGain = 0;
-    if(heaterToggled === true) {
+    if(heaterToggled === true && !energyLow && globalEnergyLock === false) {
+    	var maxGain = plasmaStorage - plasma;
+    	if(plasmaps < 0) {
+    		maxGain -= plasmaps;
+		}
+
         var hydrogenCost = heater * 10;
-        var gain = heater;
+        var gain = heater * perSecondMultiplier;
         absolutePlasmaGain += gain;
 
-        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        var gainAbs = Math.max(1, Math.min(gain, maxGain));
         if (gainAbs > 0) {
             if (hydrogen + hydrogenps * delta >= hydrogenCost) {
                 hydrogenps -= hydrogenCost;
-                plasmaps += gain * perSecondMultiplier;
+                plasmaps += gainAbs;
             }
         }
 	}
 
-	if(plasmaticToggled === true) {
+	if(plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
+        var maxGain = plasmaStorage - plasma;
+        if(plasmaps < 0) {
+            maxGain -= plasmaps;
+        }
+
 		var heliumCost = plasmatic * 80;
-		var gain = plasmatic * 10;
+		var gain = (plasmatic * 10) * perSecondMultiplier;
         absolutePlasmaGain += gain;
 
-        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        var gainAbs = Math.max(1, Math.min(gain, maxGain));
         if(gainAbs > 0) {
             if (helium + heliumps >= heliumCost) {
                 heliumps -= heliumCost;
-                plasmaps += gain * perSecondMultiplier;
+                plasmaps += gainAbs;
             }
         }
 	}
 
 	// Normalize per second gains
-    if(meteoriteps < 0 && meteoriteps + absoluteMeteoriteGain > 0 && meteorite >= meteoriteStorage) {
+    if(Math.round(meteoriteps) <= 0 && meteoriteps + absoluteMeteoriteGain > 0 && Math.round(meteorite) >= meteoriteStorage) {
         meteoriteps = 0;
+        meteorite = meteoriteStorage;
     }
 
-	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0 && plasma >= plasmaStorage) {
+	if(Math.round(plasmaps) <= 0 && plasmaps + absolutePlasmaGain > 0 && Math.round(plasma) >= plasmaStorage) {
         plasmaps = 0;
+        plasma = plasmaStorage;
 	}
 }
 
@@ -858,8 +890,8 @@ function refreshResearches(){
 		}
 	}
 
-	if(typeof versionNumber != "0.4.3"){
-		versionNumber = "0.4.3";
+	if(typeof versionNumber != "0.4.4"){
+		versionNumber = "0.4.4";
 	}
 }
 

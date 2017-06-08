@@ -18,7 +18,7 @@ Game.statistics = (function(){
             this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines Owned");
         }
 
-        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 6);
+        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 5);
         this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);
         this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 22);
         this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places Explored", 10);
@@ -29,18 +29,21 @@ Game.statistics = (function(){
         this.createStatistic("timePlayed", Game.constants.statisticCategoryTiming, "Time Played", 0, STATISTIC_TYPE.TIME);
 
         // Set some defaults
-        this.add('tabsUnlocked', 3);
         this.add('resourcesUnlocked', 3);
 
         console.debug("Loaded " + this.statisticTypeCount + " Statistics");
     };
 
     instance.update = function(delta) {
-        for(var id in this.entries) {
-            var data = this.entries[id];
+        this.updateUnlockedTabs();
+    };
 
-            // TODO
-        }
+    instance.updateUnlockedTabs = function() {
+        // start at 1 for the resources tab
+        var tabCount = 1 + tabsUnlocked.length;
+        tabCount += $.inArray("solCenterTopTab", resourcesUnlocked) >= 0 ? 1 : 0;
+
+        this.setValue('tabsUnlocked', tabCount);
     };
 
     instance.setValue = function(id, value, valueAlltime) {
@@ -105,6 +108,9 @@ Game.statistics = (function(){
                 }
             }
         }
+
+        // Reset some statistics that we don't care about being persistent, might have to add a flag for em later
+        this.setValue('sessionTime', 0, 0);
     };
 
     // backwards compatibility with the old stats
