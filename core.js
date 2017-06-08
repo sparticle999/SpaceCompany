@@ -1,4 +1,8 @@
 function calculateEnergyOutput(delta) {
+	if(globalEnergyLock === true) {
+		return 0;
+	}
+
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
@@ -26,6 +30,10 @@ function calculateEnergyOutput(delta) {
 }
 
 function calculateEnergyUse(delta) {
+	if(globalEnergyLock === true) {
+		return 0;
+	}
+
     var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
     use += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
     use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
@@ -51,6 +59,10 @@ function calculateEnergyUse(delta) {
 	}
 
     return use;
+}
+
+function toggleEnergy() {
+    globalEnergyLock = !globalEnergyLock;
 }
 
 function refreshPerSec(delta){
@@ -95,7 +107,7 @@ function refreshPerSec(delta){
     // Science is not multiplied!
     scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
 
-	if(!energyLow) {
+	if(!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
         oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246)) * perSecondMultiplier;
         metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
@@ -124,7 +136,7 @@ function refreshPerSec(delta){
 
 	if(charcoalToggled) {
 		var woodCost = woodburner * 2;
-		if(!energyLow) {
+		if(!energyLow && globalEnergyLock === false) {
             woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148);
 		}
 
@@ -132,7 +144,7 @@ function refreshPerSec(delta){
 			woodps -= woodCost;
 			charcoalps += woodburner * perSecondMultiplier;
 
-			if(!energyLow){
+			if(!energyLow && globalEnergyLock === false){
                 charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210)) * perSecondMultiplier
 			}
 		}
@@ -166,44 +178,53 @@ function refreshPerSec(delta){
     }
 
     var absolutePlasmaGain = 0;
-    if(heaterToggled === true) {
+    if(heaterToggled === true && !energyLow && globalEnergyLock === false) {
+    	var maxGain = plasmaStorage - plasma;
+    	if(plasmaps < 0) {
+    		maxGain -= plasmaps;
+		}
+
         var hydrogenCost = heater * 10;
-        var gain = heater;
+        var gain = heater * perSecondMultiplier;
         absolutePlasmaGain += gain;
 
-        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        var gainAbs = Math.max(1, Math.min(gain, maxGain));
         if (gainAbs > 0) {
             if (hydrogen + hydrogenps * delta >= hydrogenCost) {
                 hydrogenps -= hydrogenCost;
-                plasmaps += gainAbs * perSecondMultiplier;
+                plasmaps += gainAbs;
             }
         }
 	}
 
-	if(plasmaticToggled === true) {
+	if(plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
+        var maxGain = plasmaStorage - plasma;
+        if(plasmaps < 0) {
+            maxGain -= plasmaps;
+        }
+
 		var heliumCost = plasmatic * 80;
-		var gain = plasmatic * 10;
+		var gain = (plasmatic * 10) * perSecondMultiplier;
         absolutePlasmaGain += gain;
 
-        var gainAbs = Math.min(gain, plasmaStorage - plasma);
+        var gainAbs = Math.max(1, Math.min(gain, maxGain));
         if(gainAbs > 0) {
             if (helium + heliumps >= heliumCost) {
                 heliumps -= heliumCost;
-                plasmaps += gainAbs * perSecondMultiplier;
+                plasmaps += gainAbs;
             }
         }
 	}
 
 	// Normalize per second gains
-    if(meteoriteps < 0 && meteoriteps + absoluteMeteoriteGain > 0 && meteorite >= meteoriteStorage) {
+    if(Math.round(meteoriteps) <= 0 && meteoriteps + absoluteMeteoriteGain > 0 && Math.round(meteorite) >= meteoriteStorage) {
         meteoriteps = 0;
+        meteorite = meteoriteStorage;
     }
 
-	if(plasmaps < 0 && plasmaps + absolutePlasmaGain > 0 && plasma >= plasmaStorage) {
+	if(Math.round(plasmaps) <= 0 && plasmaps + absolutePlasmaGain > 0 && Math.round(plasma) >= plasmaStorage) {
         plasmaps = 0;
-	}
-	if(Math.round(meteorite) === meteoriteStorage){
-		meteorite = meteoriteStorage;
+        plasma = plasmaStorage;
 	}
 }
 
