@@ -153,7 +153,7 @@ var Game = (function() {
         refreshTabs();
 
         if(Game.constants.enableMachineTab === true){
-            machineTopTab.className = "";
+            $('#machineTopTab').show();
         }
 
         console.log("Load Successful");
