@@ -31,6 +31,11 @@ Game.buildings = (function(){
     };
 
     instance.update = function(delta) {
+        if(Game.constants.enableLegacyResourceBridge === true) {
+            // No need to update in legacy bridge mode
+            return;
+        }
+
         if (this.updatePerSecondProduction === true) {
             this.updateProduction();
         }
@@ -57,49 +62,17 @@ Game.buildings = (function(){
     };
 
     instance.getTotalBuildingCost = function(id, count) {
-        if(!count) {
-            count = 1;
-        }
-
         var data = this.entries[id];
         if(!data.cost) {
             return {};
         }
 
-        var result = {};
-        for(var i = 0; i < count; i++) {
-            for (var resourceId in data.cost) {
-                if(!result[resourceId]) {
-                    result[resourceId] = 0;
-                }
-
-                var value = Math.floor(data.cost[resourceId] * Math.pow(data.costMultiplier, data.current + i));
-                result[resourceId] += value;
-            }
-        }
-
-        return result;
+        return Game.resources.getTotalCost(count, data.current, data.cost, data.costMultiplier);
     };
 
     instance.canAfford = function (id, count) {
-        if(!count) {
-            count = 1;
-        }
-
         var totalCost = this.getTotalBuildingCost(id, count);
-        for(var resourceId in totalCost) {
-            var resourceData = Game.resources.getResourceData(resourceId);
-            if(!resourceData) {
-                console.error("Could not find resource for cost: " + resourceId);
-                return false;
-            }
-
-            if(resourceData.current < totalCost[resourceId]) {
-                return false;
-            }
-        }
-
-        return true;
+        return Game.resources.canAfford(totalCost);
     };
 
     instance.constructBuildings = function(id, count, disregardCost) {
@@ -117,9 +90,7 @@ Game.buildings = (function(){
             }
 
             var totalCost = this.getTotalBuildingCost(id, count);
-            for (var resourceId in totalCost) {
-                Game.resources.takeResource(resourceId, totalCost[resourceId]);
-            }
+            Game.resources.pay(totalCost);
         }
 
         var data = this.entries[id];

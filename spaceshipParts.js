@@ -26,13 +26,74 @@ Game.spaceshipParts = (function () {
 
 
     // The actual Part data, most changes should go here
+    instance.spaceBlock = $.extend({}, baseSpacedockData, {
+        name: 'Space Block',
+        desc: 'The base building block of space structures',
+        maxCount: 500,
+        cost: {
+            'metal': 10000000,
+            'spaceMetal': 750000
+        }
+    });
+
     instance.spaceDockRing = $.extend({}, baseSpacedockData, {
         name: 'Space Dock Ring',
         desc: 'The ring structure of a spacedock',
-        maxCount: 4,
+        maxCount: 8,
         cost: {
-            'metal': 5
-        }
+            'titanium': 25000000,
+            'gold': 15000000,
+            'silver': 15000000
+        },
+        partCost: {
+            'spaceBlock': 50,
+        },
+        dependsOn: [ 'spaceBlock' ]
+    });
+
+    instance.spaceDockHull = $.extend({}, baseSpacedockData, {
+        name: 'Space Dock Hull',
+        desc: 'The outer hull structure of a spacedock',
+        maxCount: 1,
+        cost: {
+            'metal': 1000000000,
+            'spaceMetal': 500000000,
+            'titanium': 200000000,
+        },
+        partCost: {
+            'spaceBlock': 300,
+        },
+        dependsOn: [ 'spaceBlock' ]
+    });
+
+    instance.spaceDockBridge = $.extend({}, baseSpacedockData, {
+        name: 'Space Dock Bridge',
+        desc: 'The bridge of a spacedock',
+        maxCount: 1,
+        cost: {
+            'titanium': 100000000,
+            'silicon': 60000000,
+            'gem': 200000000,
+        },
+        partCost: {
+            'spaceBlock': 100,
+        },
+        dependsOn: [ 'spaceBlock' ]
+    });
+
+    instance.spaceDockHabitat = $.extend({}, baseSpacedockData, {
+        name: 'Space Dock Habitat',
+        desc: 'The habitat of a spacedock',
+        maxCount: 1,
+        cost: {
+            'titanium': 75000000,
+            'silicon': 50000000,
+            'gem': 100000000,
+        },
+        partCost: {
+            'spaceBlock': 75,
+        },
+        dependsOn: [ 'spaceBlock' ]
     });
 
     instance.spaceDock = $.extend({}, baseSpacedockData, {
@@ -44,7 +105,15 @@ Game.spaceshipParts = (function () {
             'spaceMetal': 5,
             'titanium': 5
         },
-        dependsOn: [ 'spaceDockRing' ]
+        energyUse: 750000,
+        partCost: {
+            'spaceDockRing': 8,
+            'spaceDockHull': 1,
+            'spaceDockBridge': 1,
+            'spaceDockEngineering': 2,
+            'spaceDockHabitat': 10
+        },
+        dependsOn: [ 'spaceDockRing', 'spaceDockHull', 'spaceDockBridge', 'spaceDockEngineering', 'spaceDockHabitat' ]
     });
 
     instance.structureMain = $.extend({}, baseStructureData, {

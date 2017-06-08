@@ -94,22 +94,7 @@
     instance.updateDisplay = function(data) {
 
         var navPanel = $('#' + this.tab.getNavElementId(data.id));
-        if(data.hidden !== true) {
-            if(data.dependsOn) {
-                for(var i = 0; i < data.dependsOn.length; i++) {
-                    var dependData = Game.spaceship.getPartData(data.dependsOn[i]);
-                    if(!dependData) {
-                        console.error("Could not find dependsOn Part: " + data.dependsOn[i]);
-                        continue;
-                    }
-
-                    if(dependData.unlocked === false || dependData.isComplete === false) {
-                        navPanel.hide();
-                        return;
-                    }
-                }
-            }
-
+        if(data.hidden !== true && data.unlocked === true) {
             navPanel.show();
 
         } else {

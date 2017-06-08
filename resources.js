@@ -89,6 +89,13 @@ function gainUranium(){
 	}
 }
 
+function gainMetal(){
+    if(metal < metalStorage){
+        metal += 1;
+        Game.statistics.add('manualResources');
+    }
+}
+
 function gainOil(){
 	if(oil < oilStorage){
 		oil += 1;

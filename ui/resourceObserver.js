@@ -65,7 +65,7 @@
 
             case RESOURCE_OBSERVER_TYPE.CAPACITY: {
                 if(resourceData.capacity === -1) {
-                    element.text('~');
+                    element.text('∞');
                     break;
                 }
 

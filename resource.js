@@ -144,6 +144,10 @@ Game.resources = (function(){
         this.entries[id].perSecond = value;
     };
 
+    instance.setCapacity = function(id, value) {
+        this.entries[id].capacity = value;
+    };
+
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
@@ -172,6 +176,60 @@ Game.resources = (function(){
             if(data.category === category) {
                 data.hidden = true;
             }
+        }
+    };
+
+    instance.getTotalCost = function(count, current, costData, costMultiplier) {
+        if(!count) {
+            count = 1;
+        }
+
+        if (!costMultiplier) {
+            costMultiplier = 1;
+        }
+
+        if(!costData) {
+            return {};
+        }
+
+        var result = {};
+        for(var i = 0; i < count; i++) {
+            for (var resourceId in costData) {
+                if(!result[resourceId]) {
+                    result[resourceId] = 0;
+                }
+
+                var value = Math.floor(costData[resourceId] * Math.pow(costMultiplier, current + i));
+                result[resourceId] += value;
+            }
+        }
+
+        return result;
+    };
+
+    instance.canAfford = function (costData) {
+        if(!costData) {
+            return false;
+        }
+
+        for(var resourceId in costData) {
+            var resourceData = this.getResourceData(resourceId);
+            if(!resourceData) {
+                console.error("Could not find resource for cost: " + resourceId);
+                return false;
+            }
+
+            if(resourceData.current < costData[resourceId]) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+
+    instance.pay = function(costData) {
+        for (var resourceId in costData) {
+            Game.resources.takeResource(resourceId, costData[resourceId]);
         }
     };
 

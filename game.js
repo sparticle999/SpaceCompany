@@ -59,6 +59,7 @@ var Game = (function() {
 
         self.ui.updateBoundElements(delta);
 
+        self.legacyResourceBridge.update(delta);
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
@@ -188,6 +189,7 @@ var Game = (function() {
         // Initialize first
         self.achievements.initialize();
         self.statistics.initialize();
+        self.legacyResourceBridge.initialize();
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();

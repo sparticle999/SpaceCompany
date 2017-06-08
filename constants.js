@@ -57,6 +57,7 @@ Game.constants = (function(){
 
     instance.enableStorageNotifications = false;
     instance.enableDataDrivenResources = true;
+    instance.enableLegacyResourceBridge = true;
     instance.enableMachineTab = false;
 
     return instance;
