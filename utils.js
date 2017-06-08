@@ -83,7 +83,11 @@ Game.utils = (function(){
         };
     };
 
-    instance.formatScientificNotation = function(value)
+    instance.formatScientificNotation2 = function(value) {
+        return Game.utils.formatScientificNotation(value, true)
+    };
+
+    instance.formatScientificNotation = function(value, useExponentNotation)
     {
         if (value === 0 || (Math.abs(value) > 1 && Math.abs(value) < 100))
         {
@@ -99,6 +103,10 @@ Game.utils = (function(){
             output += '.00';
         } else if (num * 10 === Math.round(num * 10)) {
             output += '0';
+        }
+
+        if(useExponentNotation === true) {
+            return sign + output + 'E+' + exp;
         }
 
         return sign + output + '*10^' + exp;
@@ -126,7 +134,8 @@ Game.utils = (function(){
         ]),
         'shortName': instance.formatEveryThirdPower(['', StrLoc('M'), StrLoc('B'), StrLoc('T'), StrLoc('Qa'), StrLoc('Qi'), StrLoc('Sx'),StrLoc('Sp'), StrLoc('Oc'), StrLoc('No'), StrLoc('De') ]),
         'shortName2': instance.formatEveryThirdPower(['', StrLoc('M'), StrLoc('G'), StrLoc('T'), StrLoc('P'), StrLoc('E'), StrLoc('Z'), StrLoc('Y')]),
-        'scientific': instance.formatScientificNotation
+        'scientific': instance.formatScientificNotation,
+        'scientific2': instance.formatScientificNotation2
     };
 
     instance.pad = function(n, width, z) {
