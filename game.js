@@ -45,6 +45,7 @@ var Game = (function() {
 
         refreshPerSec(delta);
         gainResources(delta);
+        fixStorageRounding();
 
         Game.lastFixedUpdate = currentTime;
     };
