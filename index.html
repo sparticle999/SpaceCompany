@@ -3210,7 +3210,7 @@
 						<td style="vertical-align:middle;">
 							<img src="Icons/rocketIcon.png" style="width:30px; height:auto">
 						</td>
-						<td colspan="2" style="vertical-align:middle;">
+						<td colspan="3" style="vertical-align:middle;">
 							<span>
 								Space Rocket
 							</span>
@@ -3936,6 +3936,13 @@
 							</span>
 						</th>
 					</tr>
+					<tr id="rocketWonderNav" onclick="activeWonderTab('rocketWonderNav')" class="sideTab hidden" href="#rocketWonderTab" aria-controls="rocketWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Rocket Wonder: <span id="rocketWonderActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="sideTab hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -4239,6 +4246,47 @@
 											<br>
 											<div id="meteoriteActivateProgress" class="progress">
 											  <div id="meteoriteActivateBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="rocketWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Rocket Wonder (Coming Soon!)
+									</h2>
+									<span>
+										Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can resemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room: 'Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I'm not sure where the pieces are. You may need additional research to build this once more, but I'm sure you will figure it out just fine.'
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Rocket Wonder
+									</h3>
+									<span>
+										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move whole planets with rockets.
+										<br>
+										<hide id="rebuildRocketWonder">
+											Costs: <span id="rocketWonderMeteoriteCost">XXXX</span> ABC, <span id="rocketWonderIceCost">XXXX</span> ABC, <span id="rocketWonderSiliconCost">XXXX</span> ABC.
+											<br>
+											<br>
+											<button onclick="rebuildRocketWonder()" class="btn btn-default">Rebuild Rocket Wonder</button>
+											<br>
+											<br>
+											<div id="rocketWonderProgress" class="progress">
+											  <div id="rocketWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
