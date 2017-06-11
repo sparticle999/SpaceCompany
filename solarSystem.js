@@ -31,6 +31,7 @@ function getRocket(){
 		oil -= 1000;
 		rocket = 1;
 		document.getElementById("rocket").innerHTML = "Built";
+		document.getElementById("rocketRocketCost").className = "";
 	}
 }
 

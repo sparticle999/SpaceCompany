@@ -531,6 +531,8 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, 900, "rocketGemCost");
 	Game.settings.turnRed(oil, 1000, "rocketOilCost");
 
+	Game.settings.turnRed(rocketFuel, 20, "rocketRocketFuelCost");
+
 	Game.settings.turnRed(metal, chemicalPlantMetalCost, "chemicalPlantMetalCost");
 	Game.settings.turnRed(gem, chemicalPlantGemCost, "chemicalPlantGemCost");
 	Game.settings.turnRed(oil, chemicalPlantOilCost, "chemicalPlantOilCost");

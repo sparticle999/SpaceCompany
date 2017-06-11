@@ -34,6 +34,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Plasma Storage Units (PSUs)
 - Buy X buttons
 - Buy Max/Custom Buttons
+- Reduce Storage Costs
 
 # Changelog:
 
