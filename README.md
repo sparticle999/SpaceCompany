@@ -4,6 +4,7 @@ Space Company is a science-fiction incremental game where you start from humble 
 Currently, the game is in Beta, which means there is frequent, active development on the game and most bugs from existing features will have been fixed. You should not have to worry about your saves being wiped. However, there will be the occasional bug and I will endeavour to amend these.
 
 # Plans for the Future
+- Check https://www.reddit.com/r/SpaceCompany/wiki/futureplans
 - When loading game, the tab you left on is the tab you now start on
 - Random Events
 - [Change UI from bootstrap to my own]
@@ -11,9 +12,13 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 # RoadMap
 
 v0.6.0 The Lore Update
+https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
+- Rebalance all costs to not use as much Space Metal/Gems
 
 v0.5.0 The Interstellar Update
+https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
+- Offline Production
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
@@ -34,11 +39,16 @@ v0.5.0 The Interstellar Update
 
 ### v0.5.0
 ##### Features
+- Added Screen Notifications Graphics Option
 
 ##### Small Changes
+- Added individual buttons to turn off Plasma and Meteorite Machines
+- Added a turn-off switch for all energy producers/consumers
+- Added alternative scientific formatting
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
+- Fixed unlocked tabs statistic bug
 
 ### v0.4.4
 ##### Features

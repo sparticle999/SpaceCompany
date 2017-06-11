@@ -115,7 +115,6 @@ function convertEnergy(resourceName){
 	if(amount > 0 && energy >= requiredEnergy){
 		energy -= requiredEnergy;
 		window[resourceName] += amount;
-
 		Game.notifyInfo('Energy Conversion', 'Gained ' + amount + ' ' + resourceName);
 
         refreshConversionDisplay();

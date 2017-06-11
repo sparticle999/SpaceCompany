@@ -12,6 +12,7 @@ Game.settings = (function(){
             formatter: 'shortName',
             boldEnabled: false,
             sidebarCompressed: false,
+            notificationsEnabled: true,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -114,6 +115,7 @@ Game.settings = (function(){
         $('#themeSelector').val(this.entries.theme);
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
         $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
+        $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
 
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
@@ -173,6 +175,10 @@ Game.settings = (function(){
                     document.getElementsByClassName("sideTab")[i].style.height = "60px";
                 }
             }
+        });
+
+        $('#notificationsEnabled').change(function(){
+            Game.settings.set('notificationsEnabled', $(this).is(':checked'));
         });
 
         for (var id in autoSaveMapping) {
