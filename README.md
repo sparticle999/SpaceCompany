@@ -50,6 +50,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
 - Fixed unlocked tabs statistic bug
+- Fixed Rocket Launching Costs not being red
 
 ### v0.4.4
 ##### Features
