@@ -3943,6 +3943,13 @@
 							</span>
 						</td>
 					</tr>
+					<tr id="antimatterWonderNav" onclick="activeWonderTab('antimatterWonderNav')" class="sideTab hidden" href="#antimatterWonderTab" aria-controls="antimatterWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Antimatter Wonder: <span id="antimatterWonderActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="sideTab hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -4287,6 +4294,47 @@
 											<br>
 											<div id="rocketWonderProgress" class="progress">
 											  <div id="rocketWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="antimatterWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Antimatter Wonder (Coming Soon!)
+									</h2>
+									<span>
+										In the corner of the floor, you see a faintly glowing, large canister, proped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Antimatter Wonder
+									</h3>
+									<span>
+										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
+										<br>
+										<hide id="rebuildAntimatterWonder">
+											Costs: <span id="antimatterWonderMeteoriteCost">XXXX</span> ABC, <span id="antimatterWonderIceCost">XXXX</span> ABC, <span id="antimatterWonderSiliconCost">XXXX</span> ABC.
+											<br>
+											<br>
+											<button onclick="rebuildAntimatterWonder()" class="btn btn-default">Rebuild Antimatter Wonder</button>
+											<br>
+											<br>
+											<div id="antimatterWonderProgress" class="progress">
+											  <div id="antimatterWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
@@ -4659,6 +4707,7 @@
 									</h2>
 									<span>
 										This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost?
+										<br>
 										<br>
 										<b>NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.</b>
 									</span>

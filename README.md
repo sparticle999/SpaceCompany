@@ -40,12 +40,15 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 ### v0.5.0
 ##### Features
-- Added Screen Notifications Graphics Option
+- Screen Notifications Graphics Option
+- Rocket Wonder
+- Antimatter Wonder
 
 ##### Small Changes
-- Added individual buttons to turn off Plasma and Meteorite Machines
-- Added a turn-off switch for all energy producers/consumers
-- Added alternative scientific formatting
+- individual buttons to turn off Plasma and Meteorite Machines
+- a turn-off switch for all energy producers/consumers
+- alternative scientific formatting
+- Made it clear that Dyson Sections Costs reset when used
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
@@ -57,7 +60,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Dyson Ring
 - Infinite Research
 - Overhauled Behind The Scenes Stuff - Made everything data driven
-- Added Notifications
+- Notifications
 - Game Now Works in an Inactive Tab
 - Tier 2 Batteries
 - Tier 2 Rocket Fuel
@@ -75,9 +78,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Prevented Building Multiple Dyson Spheres
 - Made All Numbers >1000 4 Digits Long
 - Changed Ice T4 to use Wood
-- Added Days on Time Stats
+- Days on Time Stats
 - Changed Links in FAQ to open in new tab
-- Added Notifications for Achievements and Autosaving and for when Storage is full
+- Notifications for Achievements and Autosaving and for when Storage is full
 - Reduced Info Overload on Getting Started Tab
 - Added LICENCE.txt
 
@@ -109,7 +112,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Metal Icon not being transparent
 
 v0.4.2
-- Added option for bold text on red costs
+- Option for bold text on red costs
 - Nerfed Battery Costs
 
 v0.4.1
