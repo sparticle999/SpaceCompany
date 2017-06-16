@@ -9,7 +9,7 @@ var Game = (function() {
         logoAnimating: false,
         timeSinceAutoSave: 0,
         activeNotifications: {},
-        lastFixedUpdate: new Date().getTime()
+        //lastFixedUpdate: new Date().getTime()
     };
 
     instance.update_frame = function(time) {
@@ -207,6 +207,7 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
+        Game.notifyOffline();
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -272,6 +273,18 @@ var Game = (function() {
                 Game.activeNotifications.storage = undefined;
             });
         }
+    };
+
+    instance.notifyOffline = function() {
+        this.activeNotifications.success = new PNotify({
+            title: "Offline Gains",
+            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - instance.lastFixedUpdate)/1000, true),
+            type: 'success',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
     };
 
     instance.updateAutoSave = function(delta) {

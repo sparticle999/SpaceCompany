@@ -18,7 +18,6 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
-- Offline Production
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
@@ -27,7 +26,6 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Pushing Planets into the Sun gets prestige currency
 - Machine Overview Tab
 - Space Elevator
-- Second Floor of Wonder Station
 - Unlock Technologies such as reduce the exponental increase of costs
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
