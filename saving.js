@@ -2,6 +2,7 @@ function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
 		versionNumber: versionNumber,
+		lastFixedUpdate: Game.lastFixedUpdate,
 		plasma: plasma,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
@@ -401,9 +402,10 @@ function legacySave(data) {
 
 function legacyLoad(savegame){
 	"use strict";
-
+	
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
+		if(typeof savegame.lastFixedUpdate !== "undefined"){Game.lastFixedUpdate = savegame.lastFixedUpdate;}else{Game.lastFixedUpdate = new Date().getTime();}
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;

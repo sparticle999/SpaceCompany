@@ -3946,6 +3946,13 @@
 							</span>
 						</th>
 					</tr>
+					<tr id="communicationWonderNav" onclick="activeWonderTab('communicationWonderNav')" class="sideTab hidden" href="#communicationWonderTab" aria-controls="communicationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Communication Wonder: <span id="communicationWonderActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 					<tr id="rocketWonderNav" onclick="activeWonderTab('rocketWonderNav')" class="sideTab hidden" href="#rocketWonderTab" aria-controls="rocketWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -4345,6 +4352,47 @@
 											<br>
 											<div id="antimatterWonderProgress" class="progress">
 											  <div id="antimatterWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="communicationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Communication Wonder (Coming Soon!)
+									</h2>
+									<span>
+										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Communication Wonder
+									</h3>
+									<span>
+										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
+										<br>
+										<hide id="rebuildCommunicationWonder">
+											Costs: <span id="communicationWonderMeteoriteCost">XXXX</span> ABC, <span id="communicationWonderIceCost">XXXX</span> ABC, <span id="communicationWonderSiliconCost">XXXX</span> ABC.
+											<br>
+											<br>
+											<button onclick="rebuildCommunicationWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
+											<br>
+											<br>
+											<div id="communicationWonderProgress" class="progress">
+											  <div id="communicationWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>

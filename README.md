@@ -40,14 +40,16 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 ### v0.5.0
 ##### Features
+- Offline Production
 - Screen Notifications Graphics Option
 - Rocket Wonder
 - Antimatter Wonder
+- Kongregate Leaderboard
 
 ##### Small Changes
-- individual buttons to turn off Plasma and Meteorite Machines
-- a turn-off switch for all energy producers/consumers
-- alternative scientific formatting
+- Individual buttons to turn off Plasma and Meteorite Machines
+- Turn-off switch for all energy producers/consumers
+- Alternative scientific formatting
 - Made it clear that Dyson Sections Costs reset when used
 
 ##### Bug Fixes
