@@ -101,6 +101,12 @@ function activeWonderTab(tab){
 	if(document.getElementById("meteoriteWonderNav").className != "sideTab hidden"){
 		document.getElementById("meteoriteWonderNav").className = "sideTab";
 	}
+	if(document.getElementById("rocketWonderNav").className != "sideTab hidden"){
+		document.getElementById("rocketWonderNav").className = "sideTab";
+	}
+	if(document.getElementById("antimatterWonderNav").className != "sideTab hidden"){
+		document.getElementById("antimatterWonderNav").className = "sideTab";
+	}
 	if(document.getElementById("portalRoomNav").className != "sideTab hidden"){
 		document.getElementById("portalRoomNav").className = "sideTab";
 	}

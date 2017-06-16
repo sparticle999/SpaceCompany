@@ -31,6 +31,7 @@ function getRocket(){
 		oil -= 1000;
 		rocket = 1;
 		document.getElementById("rocket").innerHTML = "Built";
+		document.getElementById("rocketRocketCost").className = "";
 	}
 }
 
@@ -93,6 +94,7 @@ function explore(planet){
 			case "WonderStation":
 				document.getElementById("wonderTab").className = "";
 				tabsUnlocked.push("wonderTab");
+				Game.statistics.add('tabsUnlocked');
 				newUnlock("wonder");
 				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 				break;
@@ -110,6 +112,7 @@ function explore(planet){
 				document.getElementById("solCenterTopTab").className = "";
 				resourcesUnlocked.push("solCenterTopTab");
 				refreshResources();
+				Game.statistics.add('tabsUnlocked');
 				newUnlock("solCenter");
 				Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 				break;

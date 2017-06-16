@@ -45,6 +45,7 @@ var Game = (function() {
 
         refreshPerSec(delta);
         gainResources(delta);
+        fixStorageRounding();
 
         Game.lastFixedUpdate = currentTime;
     };
@@ -233,44 +234,50 @@ var Game = (function() {
     instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
 
     instance.notifyInfo = function(title, message) {
-        this.activeNotifications.info = new PNotify({
-            title: title,
-            text: message,
-            type: 'info',
-            animation: 'fade',
-            animate_speed: 'fast',
-            addclass: "stack-bottomright",
-            stack: this.noticeStack
-        });
+        if(Game.settings.entries.notificationsEnabled === true){
+            this.activeNotifications.info = new PNotify({
+                title: title,
+                text: message,
+                type: 'info',
+                animation: 'fade',
+                animate_speed: 'fast',
+                addclass: "stack-bottomright",
+                stack: this.noticeStack
+            });
+        }
     };
 
     instance.notifySuccess = function(title, message) {
-        this.activeNotifications.success = new PNotify({
-            title: title,
-            text: message,
-            type: 'success',
-            animation: 'fade',
-            animate_speed: 'fast',
-            addclass: "stack-bottomright",
-            stack: this.noticeStack
-        });
+        if(Game.settings.entries.notificationsEnabled === true){
+            this.activeNotifications.success = new PNotify({
+                title: title,
+                text: message,
+                type: 'success',
+                animation: 'fade',
+                animate_speed: 'fast',
+                addclass: "stack-bottomright",
+                stack: this.noticeStack
+            });
+        }
     };
 
     instance.notifyStorage = function() {
-        this.activeNotifications.storage = new PNotify({
-            title: "Storage Full!",
-            text: 'You will no longer collect resources when they are full.',
-            type: 'warning',
-            animation: 'fade',
-            animate_speed: 'fast',
-            addclass: "stack-bottomright",
-            stack: this.noticeStack
-        });
+        if(Game.settings.entries.notificationsEnabled === true){
+            this.activeNotifications.storage = new PNotify({
+                title: "Storage Full!",
+                text: 'You will no longer collect resources when they are full.',
+                type: 'warning',
+                animation: 'fade',
+                animate_speed: 'fast',
+                addclass: "stack-bottomright",
+                stack: this.noticeStack
+            });
 
-        this.activeNotifications.storage.get().click(function() {
-            Game.activeNotifications.storage.remove();
-            Game.activeNotifications.storage = undefined;
-        });
+            this.activeNotifications.storage.get().click(function() {
+                Game.activeNotifications.storage.remove();
+                Game.activeNotifications.storage = undefined;
+            });
+        }
     };
 
     instance.updateAutoSave = function(delta) {

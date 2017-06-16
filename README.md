@@ -4,6 +4,7 @@ Space Company is a science-fiction incremental game where you start from humble 
 Currently, the game is in Beta, which means there is frequent, active development on the game and most bugs from existing features will have been fixed. You should not have to worry about your saves being wiped. However, there will be the occasional bug and I will endeavour to amend these.
 
 # Plans for the Future
+- Check https://www.reddit.com/r/SpaceCompany/wiki/futureplans
 - When loading game, the tab you left on is the tab you now start on
 - Random Events
 - [Change UI from bootstrap to my own]
@@ -11,9 +12,13 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 # RoadMap
 
 v0.6.0 The Lore Update
+https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
+- Rebalance all costs to not use as much Space Metal/Gems
 
 v0.5.0 The Interstellar Update
+https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
+- Offline Production
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
@@ -29,23 +34,35 @@ v0.5.0 The Interstellar Update
 - Plasma Storage Units (PSUs)
 - Buy X buttons
 - Buy Max/Custom Buttons
+- Reduce Storage Costs
 
 # Changelog:
 
 ### v0.5.0
 ##### Features
+- Screen Notifications Graphics Option
+- Rocket Wonder
+- Antimatter Wonder
 
 ##### Small Changes
+- individual buttons to turn off Plasma and Meteorite Machines
+- a turn-off switch for all energy producers/consumers
+- alternative scientific formatting
+- Made it clear that Dyson Sections Costs reset when used
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
+- Fixed unlocked tabs statistic bug
+- Fixed Rocket Launching Costs not being red
+- Fixed Antimatter Tab Highlighting Sticking
+- Fixed Typos
 
 ### v0.4.4
 ##### Features
 - Dyson Ring
 - Infinite Research
 - Overhauled Behind The Scenes Stuff - Made everything data driven
-- Added Notifications
+- Notifications
 - Game Now Works in an Inactive Tab
 - Tier 2 Batteries
 - Tier 2 Rocket Fuel
@@ -63,9 +80,9 @@ v0.5.0 The Interstellar Update
 - Prevented Building Multiple Dyson Spheres
 - Made All Numbers >1000 4 Digits Long
 - Changed Ice T4 to use Wood
-- Added Days on Time Stats
+- Days on Time Stats
 - Changed Links in FAQ to open in new tab
-- Added Notifications for Achievements and Autosaving and for when Storage is full
+- Notifications for Achievements and Autosaving and for when Storage is full
 - Reduced Info Overload on Getting Started Tab
 - Added LICENCE.txt
 
@@ -97,7 +114,7 @@ v0.5.0 The Interstellar Update
 - Fixed Metal Icon not being transparent
 
 v0.4.2
-- Added option for bold text on red costs
+- Option for bold text on red costs
 - Nerfed Battery Costs
 
 v0.4.1

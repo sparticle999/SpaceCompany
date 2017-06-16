@@ -65,6 +65,17 @@ function toggleEnergy() {
     globalEnergyLock = !globalEnergyLock;
 }
 
+function fixStorageRounding() {
+	const precision = 100;
+	if(Math.round(meteorite * precision) / precision === meteoriteStorage) {
+		meteorite = meteoriteStorage;
+	}
+
+	if(Math.round(plasma * precision) / precision === plasmaStorage) {
+		plasma = plasmaStorage;
+	}
+}
+
 function refreshPerSec(delta){
 
 	// First we update and check the energy
@@ -160,75 +171,43 @@ function refreshPerSec(delta){
         }
     }
 
-    var absoluteMeteoriteGain = 0;
-	if(meteoriteToggled === true) {
-        var plasmaCost = (printer * 3) + (web * 21);
-        if(plasma + plasmaps * delta >= plasmaCost) {
-            var gain = printer + (web * 8);
-            absoluteMeteoriteGain += gain;
-
-            var gainAbs = Math.min(gain, meteoriteStorage - meteorite);
-            if (gainAbs > 0) {
-                meteoriteps += gainAbs * perSecondMultiplier;
-                plasmaps -= plasmaCost;
-            } else if (meteoriteps < 0 && meteoriteps + gain > 0) {
-                meteoriteps = 0;
-            }
+    if(meteoriteToggled === true) {
+        var adjustment = adjustCost(meteoriteStorage, meteorite, meteoriteps, (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
+        if(adjustment.g > 0 && plasma + plasmaps * delta >= adjustment.c) {
+            plasmaps -= adjustment.c;
+            meteoriteps += adjustment.g;
         }
     }
 
-    var absolutePlasmaGain = 0;
     if(heaterToggled === true && !energyLow && globalEnergyLock === false) {
-    	var maxGain = plasmaStorage - plasma;
-    	if(plasmaps < 0) {
-    		maxGain -= plasmaps;
+        var adjustment = adjustCost(plasmaStorage, plasma, plasmaps, heater * 10, heater * perSecondMultiplier);
+        if(adjustment.g > 0 && hydrogen + hydrogenps * delta >= adjustment.c) {
+        	hydrogenps -= adjustment.c;
+        	plasmaps += adjustment.g;
 		}
-
-        var hydrogenCost = heater * 10;
-        var gain = heater * perSecondMultiplier;
-        absolutePlasmaGain += gain;
-
-        var gainAbs = Math.max(1, Math.min(gain, maxGain));
-        if (gainAbs > 0) {
-            if (hydrogen + hydrogenps * delta >= hydrogenCost) {
-                hydrogenps -= hydrogenCost;
-                plasmaps += gainAbs;
-            }
-        }
 	}
 
-	if(plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-        var maxGain = plasmaStorage - plasma;
-        if(plasmaps < 0) {
-            maxGain -= plasmaps;
+    if(plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
+        var adjustment = adjustCost(plasmaStorage, plasma, plasmaps, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
+        if(adjustment.g > 0 && helium + heliumps * delta >= adjustment.c) {
+            heliumps -= adjustment.c;
+            plasmaps += adjustment.g;
         }
-
-		var heliumCost = plasmatic * 80;
-		var gain = (plasmatic * 10) * perSecondMultiplier;
-        absolutePlasmaGain += gain;
-
-        var gainAbs = Math.max(1, Math.min(gain, maxGain));
-        if(gainAbs > 0) {
-            if (helium + heliumps >= heliumCost) {
-                heliumps -= heliumCost;
-                plasmaps += gainAbs;
-            }
-        }
-	}
-
-	// Normalize per second gains
-    if(Math.round(meteoriteps) <= 0 && meteoriteps + absoluteMeteoriteGain > 0 && Math.round(meteorite) >= meteoriteStorage) {
-        meteoriteps = 0;
-        meteorite = meteoriteStorage;
     }
 
-	if(Math.round(plasmaps) <= 0 && plasmaps + absolutePlasmaGain > 0 && Math.round(plasma) >= plasmaStorage) {
-        plasmaps = 0;
-        plasma = plasmaStorage;
+	function adjustCost(targetStorage, targetCurrent, targetPs, cost, gain) {
+        var maxGain = targetStorage - targetCurrent;
+        if(targetPs < 0) {
+            maxGain -= targetPs;
+        }
+
+        var gainAbs = Math.min(gain, maxGain);
+        var gainRatio = gainAbs / gain;
+        var costAbs = cost * gainRatio;
+
+		return {g: gainAbs, c: costAbs};
 	}
 }
-
-
 
 function checkRedCost(){
 
@@ -552,6 +531,8 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, 900, "rocketGemCost");
 	Game.settings.turnRed(oil, 1000, "rocketOilCost");
 
+	Game.settings.turnRed(rocketFuel, 20, "rocketRocketFuelCost");
+
 	Game.settings.turnRed(metal, chemicalPlantMetalCost, "chemicalPlantMetalCost");
 	Game.settings.turnRed(gem, chemicalPlantGemCost, "chemicalPlantGemCost");
 	Game.settings.turnRed(oil, chemicalPlantOilCost, "chemicalPlantOilCost");
@@ -757,6 +738,8 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
+		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}
@@ -767,6 +750,7 @@ function refreshResources(){
 	}
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
+		document.getElementById(activated[i] + "Activation").className += " green";
 	}
 	if(techUnlocked === true){
 		unlockTier3();
