@@ -279,7 +279,7 @@ var Game = (function() {
         this.activeNotifications.success = new PNotify({
             title: "Offline Gains",
             text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - instance.lastFixedUpdate)/1000, true),
-            type: 'success',
+            type: 'info',
             animation: 'fade',
             animate_speed: 'fast',
             addclass: "stack-bottomright",
