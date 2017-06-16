@@ -296,14 +296,19 @@ var Game = (function() {
 
         if (timeLeft <= 15000) {
             element.show();
-            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+            if(timeLeft <= 5000){
+                element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
+            }
+            else{
+                element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+            }
         } else {
             element.hide();
         }
 
-        if(timeLeft <= 0) {
+        if(timeLeft < 100) {
             this.save();
-            this.timeSinceAutoSave = 0;
+            this.timeSinceAutoSave = 1;
         }
     };
 

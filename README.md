@@ -49,6 +49,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Turn-off switch for all energy producers/consumers
 - Alternative scientific formatting
 - Made it clear that Dyson Sections Costs reset when used
+- 'Off' option for autosaving
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
