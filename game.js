@@ -41,13 +41,13 @@ var Game = (function() {
 
     instance.fixedUpdate = function() {
         var currentTime = new Date().getTime();
-        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
+        var delta = (currentTime - lastFixedUpdate) / 1000;
 
         refreshPerSec(delta);
         gainResources(delta);
         fixStorageRounding();
 
-        Game.lastFixedUpdate = currentTime;
+        lastFixedUpdate = currentTime;
     };
 
     instance.fastUpdate = function(self, delta) {
@@ -278,7 +278,7 @@ var Game = (function() {
     instance.notifyOffline = function() {
         this.activeNotifications.success = new PNotify({
             title: "Offline Gains",
-            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - instance.lastFixedUpdate)/1000, true),
+            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - lastFixedUpdate)/1000, true),
             type: 'info',
             animation: 'fade',
             animate_speed: 'fast',

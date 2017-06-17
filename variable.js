@@ -1,6 +1,7 @@
 // Variables in save function
 
 var versionNumber = "0.4.3";
+var lastFixedUpdate = new Date().getTime();
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
