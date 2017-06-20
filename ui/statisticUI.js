@@ -35,7 +35,7 @@
                 this.updateDisplay(id);
             }
         }
-        //kongregate.stats.submit("timePlayed",Game.statistics.entries.timePlayed.value);
+        kongregate.stats.submit("timePlayed",Game.statistics.entries.timePlayed.value);
     };
 
     instance.createDisplay = function(id) {
