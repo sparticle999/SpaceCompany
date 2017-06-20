@@ -43,6 +43,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Rocket Wonder
 - Antimatter Wonder
 - Kongregate Leaderboard
+- 7 New Themes
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -50,6 +51,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Alternative scientific formatting
 - Made it clear that Dyson Sections Costs reset when used
 - 'Off' option for autosaving
+- Science forced 1 decimal until 100
+- Cleared up misconceptions with 'NB:' notes
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
