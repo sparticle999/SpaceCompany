@@ -384,7 +384,7 @@ function rebuildRocketWonder(){
 		titanium -= 6000000;
 		metal -= 12000000;
 		document.getElementById("rebuildRocketWonder").className = "hidden";
-		document.getElementById("rocketWonderActivation").innerHTML = "Activated";
+		document.getElementById("rocketActivation").innerHTML = "Activated";
 		buttonsHidden.push("rebuildRocketWonder");
 		activated.push("rocket");
         Game.statistics.add('wondersActivated');
