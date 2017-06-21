@@ -15,6 +15,7 @@ v0.6.0 The Lore Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
 - Rebalance all costs to not use as much Space Metal/Gems
+- Loading screen flavour text changes as you progress
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
@@ -44,6 +45,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Antimatter Wonder
 - Kongregate Leaderboard
 - 7 New Themes
+- Random Loading Messages
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -53,6 +55,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - 'Off' option for autosaving
 - Science forced 1 decimal until 100
 - Cleared up misconceptions with 'NB:' notes
+- Uranium + Plasma Achievements
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
