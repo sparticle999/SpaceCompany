@@ -185,6 +185,29 @@ function refreshWonderBars(){
 			document.getElementById("meteoriteActivateBar").style.width = 100 + "%";
 		}
 	}
+	if((document.getElementById("rebuildRocketWonder").className === "hidden") === false){
+		if(spaceMetal >= 8000000){
+			var rebuildRocketSpaceMetal = 8000000;
+		}
+		else{rebuildRocketSpaceMetal = spaceMetal;}
+		if(titanium >= 6000000){
+			var rebuildRocketTitanium = 6000000;
+		}
+		else{rebuildRocketTitanium = titanium;}
+		if(metal >= 12000000){
+			var rebuildRocketMetal = 12000000;
+		}
+		else{rebuildRocketMetal = metal;}
+		var rocketWonderBar = (rebuildRocketSpaceMetal+rebuildRocketTitanium+rebuildRocketMetal)/260000;
+		if(rocketWonderBar <= 100){
+			document.getElementById("rocketWonderBar").innerHTML = Game.settings.format(rocketWonderBar) + "%";
+			document.getElementById("rocketWonderBar").style.width = rocketWonderBar + "%";
+		}
+		else{
+			document.getElementById("rocketWonderBar").innerHTML = "100%";
+			document.getElementById("rocketWonderBar").style.width = 100 + "%";
+		}
+	}
 }
 
 function unlockTier3(){
@@ -346,8 +369,28 @@ function activateMeteoriteWonder(){
         Game.statistics.add('wondersActivated');
 		newUnlock("resources");
 
-		document.getElementById("wonderFloor2Nav").className = "";
-		document.getElementById("portalRoomNav").className = "";
-		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
+		document.getElementById("wonderFloor2Nav").className = "sideTab";
+		document.getElementById("communicationWonderNav").className = "sideTab";
+		document.getElementById("rocketWonderNav").className = "sideTab";
+		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("portalRoomNav").className = "sideTab";
+		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
+	}
+}
+
+function rebuildRocketWonder(){
+	if(spaceMetal >= 8000000 && titanium >= 6000000 && metal >= 12000000){
+		spaceMetal -= 8000000;
+		titanium -= 6000000;
+		metal -= 12000000;
+		document.getElementById("rebuildRocketWonder").className = "hidden";
+		document.getElementById("rocketWonderActivation").innerHTML = "Activated";
+		buttonsHidden.push("rebuildRocketWonder");
+		activated.push("rocket");
+        Game.statistics.add('wondersActivated');
+		document.getElementById("interstellarTab").className = "";
+		tabsUnlocked.push("interstellarTab");
+		newUnlock("interstellarTab");
+		Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
 	}
 }

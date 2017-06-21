@@ -688,6 +688,10 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
 	Game.settings.turnRed(ice, meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
+
+	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
+	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
 }
 
 function refreshResources(){
@@ -736,14 +740,18 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteNav")){
 		document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
 	}
-	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
+	if(contains(resourcesUnlocked, "meteoriteWonderNav") && (contains(resourcesUnlocked, "portalRoomNav") === false)){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
 		document.getElementById("communicationWonderNav").className = "sideTab";
 		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
-		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
+		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
 	}
+
+	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
+	Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";

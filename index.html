@@ -91,6 +91,7 @@
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
+    	<li role="presentation" id="interstellarTab" class="hidden"><a href="#interstellar" aria-control="interstellar" role="tab" data-toggle="tab"onclick="tabClicked('interstellar')"><div id="interstellarTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Interstellar</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
@@ -3957,8 +3958,8 @@
 					</tr>
 					<tr id="communicationWonderNav" onclick="activeWonderTab('communicationWonderNav')" class="sideTab hidden" href="#communicationWonderTab" aria-controls="communicationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
-								Communication Wonder: <span id="communicationWonderActivation">Dormant</span>
+							<span class="red">
+								Comms Wonder: <span id="communicationWonderActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -3971,14 +3972,14 @@
 					</tr>
 					<tr id="antimatterWonderNav" onclick="activeWonderTab('antimatterWonderNav')" class="sideTab hidden" href="#antimatterWonderTab" aria-controls="antimatterWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
+							<span class="red">
 								Antimatter Wonder: <span id="antimatterWonderActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="sideTab hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
+							<span class="red">
 								Portal Room: <span id="portalRoomActivation">Dormant</span>
 							</span>
 						</td>
@@ -4298,7 +4299,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Rocket Wonder (Coming Soon!)
+										The Rocket Wonder
 									</h2>
 									<span>
 										Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can reassemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room: 'Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I'm not sure where the pieces are. You may need additional research to build this once more, but I'm sure you will figure it out just fine.'
@@ -4311,10 +4312,10 @@
 										Rebuild Rocket Wonder
 									</h3>
 									<span>
-										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move whole planets with rockets.
+										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move beyond your tiny star system.
 										<br>
 										<hide id="rebuildRocketWonder">
-											Costs: <span id="rocketWonderMeteoriteCost">XXXX</span> ABC, <span id="rocketWonderIceCost">XXXX</span> ABC, <span id="rocketWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="rocketWonderSpaceMetalCost">8,000,000</span> Space Metal, <span id="rocketWonderTitaniumCost">6,000,000</span> Titanium, <span id="rocketWonderMetalCost">12,000,000</span> Metal.
 											<br>
 											<br>
 											<button onclick="rebuildRocketWonder()" class="btn btn-default">Rebuild Rocket Wonder</button>
@@ -4355,7 +4356,7 @@
 										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
-											Costs: <span id="antimatterWonderMeteoriteCost">XXXX</span> ABC, <span id="antimatterWonderIceCost">XXXX</span> ABC, <span id="antimatterWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="antimatterWonderUraniumCost">XXXX</span> Uranium, <span id="antimatterWonderLavaCost">XXXX</span> Lava, <span id="antimatterWonderOilCost">XXXX</span> Oil, <span id="antimatterWonderMethaneCost">XXXX</span> Methane.
 											<br>
 											<br>
 											<button onclick="rebuildAntimatterWonder()" class="btn btn-default">Rebuild Antimatter Wonder</button>
@@ -4396,7 +4397,7 @@
 										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
 										<br>
 										<hide id="rebuildCommunicationWonder">
-											Costs: <span id="communicationWonderMeteoriteCost">XXXX</span> ABC, <span id="communicationWonderIceCost">XXXX</span> ABC, <span id="communicationWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="communicationWonderGoldCost">XXXX</span> Gold, <span id="communicationWonderSiliconCost">XXXX</span> Silicon, <span id="communicationWonderIceCost">XXXX</span> Ice.
 											<br>
 											<br>
 											<button onclick="rebuildCommunicationWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
@@ -6341,7 +6342,38 @@
 			</div>
 		</div>
 
-
+		<!-- Interstellar Tab -->
+		<div role="tabpanel" class="tab-pane fade" id="interstellar">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#interRocketTab" aria-controls="savingTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Interstellar Rockets
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="interRocketTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Interstellar Rockets
+									</h2>
+									<span>
+										This is where you can contruct your transport to the stars.
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- More Tab -->
 		<div role="tabpanel" class="tab-pane fade" id="more">
