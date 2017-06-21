@@ -7,7 +7,6 @@
 	<link href="SpaceCompanyFavicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="lib/bootstrap.min.css" rel="stylesheet" type="text/css" id="theme_css"/>
 	<link href="lib/pnotify.custom.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 	<!--<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 	<script>
@@ -34,17 +33,11 @@
 <div id="loadScreen" style="width:100%; height:100%">
 	<div style="margin-left:31%; margin-top:3%;">
 		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
-		<br>
-	</div>
-	<div id="loadingText" style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center;">
-		Reticulating Splines...
+		<!-- <div style="margin-left:10%; font-size: 36px; font-family: 'Courgette', cursive;">
+			Loading ...
+		</div> -->
 	</div>
 </div>
-<script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Consts", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
-	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
-	document.getElementById("loadingText").innerHTML = loadingText;
-</script>
 <div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
@@ -101,7 +94,7 @@
 	<div class="tab-content" id="tabContent">
 			<!-- Resources -->
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-			<div class="container col-xs-1" style="width:380px; padding:0; float:left;">
+			<div class="container" style="width:380px; padding:0; float:left;">
 				<table class="table table-hover text-primary no-select pointer" id="resourceNavParent">
 					<tr id="plasmaNav" onclick="activeResourceTab('plasmaNav')" class="sideTab hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
@@ -538,7 +531,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="tab-content col-xs-4" id="resourceTabParent">
+			<div class="tab-content" id="resourceTabParent">
 				<div id="plasmaTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -3451,8 +3444,6 @@
 									</h2>
 									<span>
 										Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.
-										<br>
-										<b>NB: You only need 1 Rocket. You can reuse the same one by just using fuel.</b>
 									</span>
 									<br>
 									<br>
@@ -3955,13 +3946,6 @@
 							</span>
 						</th>
 					</tr>
-					<tr id="communicationWonderNav" onclick="activeWonderTab('communicationWonderNav')" class="sideTab hidden" href="#communicationWonderTab" aria-controls="communicationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td colspan="2" style="vertical-align:middle;">
-							<span>
-								Communication Wonder: <span id="communicationWonderActivation">Dormant</span>
-							</span>
-						</td>
-					</tr>
 					<tr id="rocketWonderNav" onclick="activeWonderTab('rocketWonderNav')" class="sideTab hidden" href="#rocketWonderTab" aria-controls="rocketWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
@@ -4010,8 +3994,6 @@
 									</h2>
 									<span>
 										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
-										<br>
-										<b>NB: You must activate the wonders after building them to recieve their effects</b>
 									</span>
 									<br>
 									<br>
@@ -4363,47 +4345,6 @@
 											<br>
 											<div id="antimatterWonderProgress" class="progress">
 											  <div id="antimatterWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
-											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-											    0%
-											  </div>
-											</div>
-										</hide>
-									</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				<div id="communicationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="default btn-link">
-										The Communication Wonder (Coming Soon!)
-									</h2>
-									<span>
-										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
-										Rebuild Communication Wonder
-									</h3>
-									<span>
-										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
-										<br>
-										<hide id="rebuildCommunicationWonder">
-											Costs: <span id="communicationWonderMeteoriteCost">XXXX</span> ABC, <span id="communicationWonderIceCost">XXXX</span> ABC, <span id="communicationWonderSiliconCost">XXXX</span> ABC.
-											<br>
-											<br>
-											<button onclick="rebuildCommunicationWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
-											<br>
-											<br>
-											<div id="communicationWonderProgress" class="progress">
-											  <div id="communicationWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
@@ -6425,9 +6366,6 @@
 										<label class="btn btn-default">
 											<input type="radio" name="autosaves" id="10mins" autocomplete="off"> 10 Minutes
 										</label>
-										<label class="btn btn-default">
-											<input type="radio" name="autosaves" id="off" autocomplete="off"> Off
-										</label>
 									</div>
 								</td>
 							</tr>
@@ -6497,15 +6435,8 @@
 									</h3>
 				                	<select id="themeSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
 				                		<option value="base">Base</option>
-				                		<option value="cerulean">Cerulean</option>
 				                		<option value="cyborg">Cyborg</option>
-				                		<option value="darkly">Darkly</option>
-				                		<option value="flatly">Flatly</option>
-				                		<option value="paper">Paper</option>
-				                		<option value="readable">Readable</option>
-				                		<option value="simplex">Simplex</option>
 				                		<option value="solar">Solar</option>
-				                		<option value="spacelab">Spacelab</option>
 				                		<option value="united">United</option>
 				                	</select>
 				                </td>
@@ -6631,15 +6562,13 @@
 										<br>
 										<a href="http://reddit.com/r/spacecompany">Sub-Reddit</a>
 										<br>
-										<a href="http://www.kongregate.com">Kongregate: </a><a href="http://www.kongregate.com/games/sparticle999/space-company">Game</a>
+										<a href="http://reddit.com">Reddit Posts: </a><a href="https://www.reddit.com/r/incremental_games/comments/62jpr6/space_company_public_release/">V0.2 </a><a href="https://www.reddit.com/r/incremental_games/comments/65xap3/space_company_v030_beta_release/">V0.3 </a>
 										<br>
 										<a href="http://github.com">GitHub: </a><a href="https://github.com/sparticle999/SpaceCompany/">Source Code</a>
 										<br>
 										<a href="https://plaza.dsolver.ca/">The Plaza: </a><a href="https://plaza.dsolver.ca/games/space-company">Game</a>
 										<br>
-										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a> / <a href="hhttps://www.reddit.com/r/SpaceCompany/wiki/futureplans">Future Plans</a>
-										<br>
-										<a href="https://www.reddit.com/r/SpaceCompany/wiki/index">Wiki</a>
+										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a>
 									</span>
 								</td>
 							</tr>
