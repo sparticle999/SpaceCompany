@@ -740,7 +740,7 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteNav")){
 		document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
 	}
-	if(contains(resourcesUnlocked, "meteoriteWonderNav") && (contains(resourcesUnlocked, "portalRoomNav") === false)){
+	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
 		document.getElementById("communicationWonderNav").className = "sideTab";
 		document.getElementById("rocketWonderNav").className = "sideTab";

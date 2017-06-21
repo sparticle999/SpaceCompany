@@ -63,6 +63,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Rocket Launching Costs not being red
 - Fixed Antimatter Tab Highlighting Sticking
 - Fixed Typos
+- Fixed Rocket Wonder Not Working
 
 ### v0.4.4
 ##### Features
