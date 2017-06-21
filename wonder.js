@@ -185,6 +185,29 @@ function refreshWonderBars(){
 			document.getElementById("meteoriteActivateBar").style.width = 100 + "%";
 		}
 	}
+	if((document.getElementById("rebuildCommsWonder").className === "hidden") === false){
+		if(gold >= 6000000){
+			var rebuildCommsGold = 6000000;
+		}
+		else{rebuildCommsGold = gold;}
+		if(silicon >= 10000000){
+			var rebuildCommsSilicon = 10000000;
+		}
+		else{rebuildCommsSilicon = silicon;}
+		if(ice >= 6000000){
+			var rebuildCommsIce = 6000000;
+		}
+		else{rebuildCommsIce = ice;}
+		var commsWonderBar = (rebuildCommsGold+rebuildCommsSilicon+rebuildCommsIce)/220000;
+		if(commsWonderBar <= 100){
+			document.getElementById("commsWonderBar").innerHTML = Game.settings.format(commsWonderBar) + "%";
+			document.getElementById("commsWonderBar").style.width = commsWonderBar + "%";
+		}
+		else{
+			document.getElementById("commsWonderBar").innerHTML = "100%";
+			document.getElementById("commsWonderBar").style.width = 100 + "%";
+		}
+	}
 	if((document.getElementById("rebuildRocketWonder").className === "hidden") === false){
 		if(spaceMetal >= 8000000){
 			var rebuildRocketSpaceMetal = 8000000;
@@ -378,6 +401,22 @@ function activateMeteoriteWonder(){
 	}
 }
 
+function rebuildCommsWonder(){
+	if(gold >= 6000000 && silicon >= 10000000 && ice >= 6000000){
+		gold -= 6000000;
+		silicon -= 10000000;
+		ice -= 6000000;
+		document.getElementById("rebuildCommsWonder").className = "hidden";
+		document.getElementById("communicationWonderActivation").innerHTML = "Activated";
+		document.getElementById("commsNav").className = "sideTab";
+		buttonsHidden.push("rebuildCommsWonder");
+		activated.push("comms");
+        Game.statistics.add('wondersActivated');
+		document.getElementById("interstellarTab").className = "";
+		newUnlock("interstellar");
+	}
+}
+
 function rebuildRocketWonder(){
 	if(spaceMetal >= 8000000 && titanium >= 6000000 && metal >= 12000000){
 		spaceMetal -= 8000000;
@@ -389,6 +428,7 @@ function rebuildRocketWonder(){
 		activated.push("rocket");
         Game.statistics.add('wondersActivated');
 		document.getElementById("interstellarTab").className = "";
+		document.getElementById("interRocketNav").className = "sideTab";
 		tabsUnlocked.push("interstellarTab");
 		newUnlock("interstellar");
 		Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");

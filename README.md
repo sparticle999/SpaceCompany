@@ -22,6 +22,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
+- Unknown Planets that you have to explore to know what it holds
 - Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency

@@ -689,6 +689,10 @@ function checkRedCost(){
 	Game.settings.turnRed(ice, meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 
+	Game.settings.turnRed(gold, 6000000, "commsWonderGoldCost");
+	Game.settings.turnRed(silicon, 10000000, "commsWonderSiliconCost");
+	Game.settings.turnRed(ice, 6000000, "commsWonderIceCost");
+
 	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
 	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
 	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
@@ -751,6 +755,16 @@ function refreshResources(){
 
 	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
 	Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+
+	if(contains(buttonsHidden, "rebuildCommsWonder")){
+		document.getElementById("commsNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildRocketWonder")){
+		document.getElementById("interRocketNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
+		document.getElementById("antimatterNav").className = "sideTab";
+	}
 
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
