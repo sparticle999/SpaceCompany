@@ -407,7 +407,7 @@ function rebuildCommsWonder(){
 		silicon -= 10000000;
 		ice -= 6000000;
 		document.getElementById("rebuildCommsWonder").className = "hidden";
-		document.getElementById("communicationWonderActivation").innerHTML = "Activated";
+		document.getElementById("commsActivation").innerHTML = "Activated";
 		document.getElementById("commsNav").className = "sideTab";
 		buttonsHidden.push("rebuildCommsWonder");
 		activated.push("comms");
