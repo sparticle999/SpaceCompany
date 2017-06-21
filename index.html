@@ -7,6 +7,7 @@
 	<link href="SpaceCompanyFavicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="lib/bootstrap.min.css" rel="stylesheet" type="text/css" id="theme_css"/>
 	<link href="lib/pnotify.custom.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 	<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 	<script>
@@ -33,11 +34,17 @@
 <div id="loadScreen" style="width:100%; height:100%">
 	<div style="margin-left:31%; margin-top:3%;">
 		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
-		<!-- <div style="margin-left:10%; font-size: 36px; font-family: 'Courgette', cursive;">
-			Loading ...
-		</div> -->
+		<br>
+	</div>
+	<div id="loadingText" style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center;">
+		Reticulating Splines...
 	</div>
 </div>
+<script>
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Consts", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
+	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
+	document.getElementById("loadingText").innerHTML = loadingText;
+</script>
 <div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
@@ -94,7 +101,7 @@
 	<div class="tab-content" id="tabContent">
 			<!-- Resources -->
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-			<div class="container" style="width:380px; padding:0; float:left;">
+			<div class="container col-xs-1" style="width:380px; padding:0; float:left;">
 				<table class="table table-hover text-primary no-select pointer" id="resourceNavParent">
 					<tr id="plasmaNav" onclick="activeResourceTab('plasmaNav')" class="sideTab hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
@@ -531,7 +538,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="tab-content" id="resourceTabParent">
+			<div class="tab-content col-xs-4" id="resourceTabParent">
 				<div id="plasmaTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -6624,13 +6631,15 @@
 										<br>
 										<a href="http://reddit.com/r/spacecompany">Sub-Reddit</a>
 										<br>
-										<a href="http://reddit.com">Reddit Posts: </a><a href="https://www.reddit.com/r/incremental_games/comments/62jpr6/space_company_public_release/">V0.2 </a><a href="https://www.reddit.com/r/incremental_games/comments/65xap3/space_company_v030_beta_release/">V0.3 </a>
+										<a href="http://www.kongregate.com">Kongregate: </a><a href="http://www.kongregate.com/games/sparticle999/space-company">Game</a>
 										<br>
 										<a href="http://github.com">GitHub: </a><a href="https://github.com/sparticle999/SpaceCompany/">Source Code</a>
 										<br>
 										<a href="https://plaza.dsolver.ca/">The Plaza: </a><a href="https://plaza.dsolver.ca/games/space-company">Game</a>
 										<br>
-										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a>
+										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a> / <a href="hhttps://www.reddit.com/r/SpaceCompany/wiki/futureplans">Future Plans</a>
+										<br>
+										<a href="https://www.reddit.com/r/SpaceCompany/wiki/index">Wiki</a>
 									</span>
 								</td>
 							</tr>
