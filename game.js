@@ -9,7 +9,7 @@ var Game = (function() {
         logoAnimating: false,
         timeSinceAutoSave: 0,
         activeNotifications: {},
-        //lastFixedUpdate: new Date().getTime()
+        lastFixedUpdate: new Date().getTime()
     };
 
     instance.update_frame = function(time) {
@@ -41,13 +41,13 @@ var Game = (function() {
 
     instance.fixedUpdate = function() {
         var currentTime = new Date().getTime();
-        var delta = (currentTime - lastFixedUpdate) / 1000;
+        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
 
         refreshPerSec(delta);
         gainResources(delta);
         fixStorageRounding();
 
-        lastFixedUpdate = currentTime;
+        Game.lastFixedUpdate = currentTime;
     };
 
     instance.fastUpdate = function(self, delta) {
@@ -213,7 +213,6 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
-        Game.notifyOffline();
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -281,18 +280,6 @@ var Game = (function() {
         }
     };
 
-    instance.notifyOffline = function() {
-        this.activeNotifications.success = new PNotify({
-            title: "Offline Gains",
-            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - lastFixedUpdate)/1000, true),
-            type: 'info',
-            animation: 'fade',
-            animate_speed: 'fast',
-            addclass: "stack-bottomright",
-            stack: this.noticeStack
-        });
-    };
-
     instance.updateAutoSave = function(delta) {
         this.timeSinceAutoSave += delta;
 
@@ -302,19 +289,14 @@ var Game = (function() {
 
         if (timeLeft <= 15000) {
             element.show();
-            if(timeLeft <= 5000){
-                element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
-            }
-            else{
-                element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
-            }
+            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
         } else {
             element.hide();
         }
 
-        if(timeLeft < 100) {
+        if(timeLeft <= 0) {
             this.save();
-            this.timeSinceAutoSave = 1;
+            this.timeSinceAutoSave = 0;
         }
     };
 
