@@ -96,6 +96,11 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Big Berthas", "silverIcon", function(x) { return bertha >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Atomic Cannons", "silverIcon", function(x) { return cannon >= x}, Game.constants.achievementProducerBrackets);
 
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Grinders", "uraniumIcon", function(x) { return grinder >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Cubic Teleposers", "uraniumIcon", function(x) { return cubic >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Uranium Enrichers", "uraniumIcon", function(x) { return enricher >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Yellowcake Recyclers", "uraniumIcon", function(x) { return recycler >= x}, Game.constants.achievementProducerBrackets);
+
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Heat Resistant Crucibles", "lavaIcon", function(x) { return crucible >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Lava Extractors", "lavaIcon", function(x) { return extractor >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Igneous Extruders", "lavaIcon", function(x) { return extruder >= x}, Game.constants.achievementProducerBrackets);
