@@ -38,8 +38,8 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Reactors", "EnergyIcon", function(x) { return nuclearStation >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Magmatic Reactors", "EnergyIcon", function(x) { return magmatic >= x}, Game.constants.achievementProducerBrackets);
 
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Super-Heaters", "plasmaIcon", function(x) { return heater >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Plasmatic Pits", "plasmaIcon", function(x) { return plasmatic >= x}, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Woodburners", "charcoalIcon", function(x) { return woodburner >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Furnaces", "charcoalIcon", function(x) { return furnace >= x}, Game.constants.achievementProducerBrackets);
@@ -120,6 +120,9 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ice Drills", "iceIcon", function(x) { return iceDrill >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ocean Freezers", "iceIcon", function(x) { return freezer >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mr Freeze", "iceIcon", function(x) { return mrFreeze >= x}, Game.constants.achievementProducerBrackets);
+
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, Game.constants.achievementProducerBrackets);
