@@ -738,8 +738,9 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
-		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("communicationWonderNav").className = "sideTab";
 		document.getElementById("rocketWonderNav").className = "sideTab";
+		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
 	}

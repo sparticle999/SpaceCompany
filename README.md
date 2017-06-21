@@ -15,10 +15,10 @@ v0.6.0 The Lore Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
 - Rebalance all costs to not use as much Space Metal/Gems
+- Loading screen flavour text changes as you progress
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
-- Offline Production
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
@@ -27,7 +27,6 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Pushing Planets into the Sun gets prestige currency
 - Machine Overview Tab
 - Space Elevator
-- Second Floor of Wonder Station
 - Unlock Technologies such as reduce the exponental increase of costs
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
@@ -40,15 +39,23 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 ### v0.5.0
 ##### Features
+- Offline Production
 - Screen Notifications Graphics Option
 - Rocket Wonder
 - Antimatter Wonder
+- Kongregate Leaderboard
+- 7 New Themes
+- Random Loading Messages
 
 ##### Small Changes
-- individual buttons to turn off Plasma and Meteorite Machines
-- a turn-off switch for all energy producers/consumers
-- alternative scientific formatting
+- Individual buttons to turn off Plasma and Meteorite Machines
+- Turn-off switch for all energy producers/consumers
+- Alternative scientific formatting
 - Made it clear that Dyson Sections Costs reset when used
+- 'Off' option for autosaving
+- Science forced 1 decimal until 100
+- Cleared up misconceptions with 'NB:' notes
+- Uranium + Plasma Achievements
 
 ##### Bug Fixes
 - Fixed Bug with Solar System Sidebar
