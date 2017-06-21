@@ -390,7 +390,7 @@ function rebuildRocketWonder(){
         Game.statistics.add('wondersActivated');
 		document.getElementById("interstellarTab").className = "";
 		tabsUnlocked.push("interstellarTab");
-		newUnlock("interstellarTab");
+		newUnlock("interstellar");
 		Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
 	}
 }
