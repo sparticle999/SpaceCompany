@@ -696,6 +696,11 @@ function checkRedCost(){
 	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
 	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
 	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
+
+	Game.settings.turnRed(uranium, 6000000, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(lava, 10000000, "antimatterWonderLavaCost");
+	Game.settings.turnRed(oil, 8000000, "antimatterWonderOilCost");
+	Game.settings.turnRed(methane, 6000000, "antimatterWonderMethaneCost");
 }
 
 function refreshResources(){
