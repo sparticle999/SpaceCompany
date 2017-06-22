@@ -35,6 +35,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buy X buttons
 - Buy Max/Custom Buttons
 - Reduce Storage Costs
+- Achievements with Bonuses
 
 # Changelog:
 
@@ -42,8 +43,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 ##### Features
 - Offline Production
 - Screen Notifications Graphics Option
+- Communication Wonder
 - Rocket Wonder
-- Antimatter Wonder
 - Kongregate Leaderboard
 - 7 New Themes
 - Random Loading Messages

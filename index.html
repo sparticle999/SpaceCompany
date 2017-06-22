@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Consts", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -3972,8 +3972,8 @@
 					</tr>
 					<tr id="antimatterWonderNav" onclick="activeWonderTab('antimatterWonderNav')" class="sideTab hidden" href="#antimatterWonderTab" aria-controls="antimatterWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span class="red">
-								Antimatter Wonder: <span id="antimatterWonderActivation">Dormant</span>
+							<span>
+								Antimatter Wonder: <span id="antimatterActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -4397,7 +4397,7 @@
 										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
-											Costs: <span id="antimatterWonderUraniumCost">XXXX</span> Uranium, <span id="antimatterWonderLavaCost">XXXX</span> Lava, <span id="antimatterWonderOilCost">XXXX</span> Oil, <span id="antimatterWonderMethaneCost">XXXX</span> Methane.
+											Costs: <span id="antimatterWonderUraniumCost">6M</span> Uranium, <span id="antimatterWonderLavaCost">10M</span> Lava, <span id="antimatterWonderOilCost">8M</span> Oil, <span id="antimatterWonderMethaneCost">6M</span> Methane.
 											<br>
 											<br>
 											<button onclick="rebuildAntimatterWonder()" class="btn btn-default">Rebuild Antimatter Wonder</button>
@@ -6354,21 +6354,21 @@
 						</td>
 					</tr>
 					<tr id="interRocketNav" onclick="activeInterstellarTab('interRocketNav')" href="#interRocketTab" aria-controls="interRocketTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="border:none; vertical-align:middle;">
+						<td style="vertical-align:middle;">
 							<span>
 								Rocket
 							</span>
 						</td>
 					</tr>
 					<tr id="antimatterNav" onclick="activeInterstellarTab('antimatterNav')" href="#antimatterTab" aria-controls="antimatterTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="border:none; vertical-align:middle;">
+						<td style="vertical-align:middle;">
 							<span>
 								Antimatter
 							</span>
 						</td>
 					</tr>
 					<tr id="travelNav" onclick="activeInterstellarTab('travelNav')" href="#travelTab" aria-controls="travelTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="border:none; vertical-align:middle;">
+						<td style="vertical-align:middle;">
 							<span>
 								Travel
 							</span>
@@ -6377,7 +6377,7 @@
 				</table>
 			</div>
 			<div class="tab-content">
-			<div id="commsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+				<div id="commsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table no-select">
 							<tr>

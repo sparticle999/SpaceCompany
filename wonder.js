@@ -231,6 +231,33 @@ function refreshWonderBars(){
 			document.getElementById("rocketWonderBar").style.width = 100 + "%";
 		}
 	}
+	if((document.getElementById("rebuildAntimatterWonder").className === "hidden") === false){
+		if(uranium >= 6000000){
+			var rebuildAntimatterUranium = 6000000;
+		}
+		else{rebuildAntimatterUranium = uranium;}
+		if(lava >= 10000000){
+			var rebuildAntimatterLava = 10000000;
+		}
+		else{rebuildAntimatterLava = lava;}
+		if(oil >= 8000000){
+			var rebuildAntimatterOil = 8000000;
+		}
+		else{rebuildAntimatterOil = oil;}
+		if(methane >= 6000000){
+			var rebuildAntimatterMethane = 6000000;
+		}
+		else{rebuildAntimatterMethane = methane;}
+		var antimatterWonderBar = (rebuildAntimatterUranium+rebuildAntimatterLava+rebuildAntimatterOil+rebuildAntimatterMethane)/300000;
+		if(antimatterWonderBar <= 100){
+			document.getElementById("antimatterWonderBar").innerHTML = Game.settings.format(antimatterWonderBar) + "%";
+			document.getElementById("antimatterWonderBar").style.width = antimatterWonderBar + "%";
+		}
+		else{
+			document.getElementById("antimatterWonderBar").innerHTML = "100%";
+			document.getElementById("antimatterWonderBar").style.width = 100 + "%";
+		}
+	}
 }
 
 function unlockTier3(){
@@ -295,6 +322,7 @@ function activatePreciousWonder(){
 		document.getElementById("activatePreciousWonder").className = "hidden";
 		document.getElementById("uraniumNav").className = "innerPlanet";
 		document.getElementById("preciousActivation").innerHTML = "Activated";
+		document.getElementById("preciousActivation").className = "green";
 		resourcesUnlocked.push("uraniumNav", "nuclearPower");
 		buttonsHidden.push("activatePreciousWonder");
 		activated.push("precious");
@@ -326,6 +354,7 @@ function activateEnergeticWonder(){
 		document.getElementById("activateEnergeticWonder").className = "hidden";
 		document.getElementById("lavaNav").className = "innerPlanet";
 		document.getElementById("energeticActivation").innerHTML = "Activated";
+		document.getElementById("energeticActivation").className = "green";
 		resourcesUnlocked.push("lavaNav", "magmaticPower");
 		buttonsHidden.push("activateEnergeticWonder");
 		activated.push("energetic");
@@ -356,6 +385,7 @@ function activateTechWonder(){
 		unlockTier3();
 		document.getElementById("activateTechWonder").className = "hidden";
 		document.getElementById("techActivation").innerHTML = "Activated";
+		document.getElementById("techActivation").className = "green";
 		techUnlocked = true;
 		buttonsHidden.push("activateTechWonder");
 		activated.push("tech");
@@ -386,6 +416,7 @@ function activateMeteoriteWonder(){
 		unlockTier4();
 		document.getElementById("activateMeteoriteWonder").className = "hidden";
 		document.getElementById("meteoriteActivation").innerHTML = "Activated";
+		document.getElementById("meteoriteActivation").className = "green";
 		meteoriteUnlocked = true;
 		buttonsHidden.push("activateMeteoriteWonder");
 		activated.push("meteorite");
@@ -408,12 +439,18 @@ function rebuildCommsWonder(){
 		ice -= 6000000;
 		document.getElementById("rebuildCommsWonder").className = "hidden";
 		document.getElementById("commsActivation").innerHTML = "Activated";
+		document.getElementById("commsActivation").className = "green";
 		document.getElementById("commsNav").className = "sideTab";
 		buttonsHidden.push("rebuildCommsWonder");
 		activated.push("comms");
         Game.statistics.add('wondersActivated');
-		document.getElementById("interstellarTab").className = "";
+		if(document.getElementById("interstellarTab").className != ""){
+        	document.getElementById("interstellarTab").className = "";
+        	tabsUnlocked.push("interstellarTab");
+        	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+        }
 		newUnlock("interstellar");
+		Game.removeExcess(tabsUnlocked, "interstellarTab");
 	}
 }
 
@@ -424,13 +461,42 @@ function rebuildRocketWonder(){
 		metal -= 12000000;
 		document.getElementById("rebuildRocketWonder").className = "hidden";
 		document.getElementById("rocketActivation").innerHTML = "Activated";
+		document.getElementById("rocketActivation").className = "green";
 		buttonsHidden.push("rebuildRocketWonder");
 		activated.push("rocket");
         Game.statistics.add('wondersActivated');
-		document.getElementById("interstellarTab").className = "";
+        if(document.getElementById("interstellarTab").className != ""){
+        	document.getElementById("interstellarTab").className = "";
+        	tabsUnlocked.push("interstellarTab");
+        	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+        }
 		document.getElementById("interRocketNav").className = "sideTab";
-		tabsUnlocked.push("interstellarTab");
 		newUnlock("interstellar");
-		Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+		Game.removeExcess(tabsUnlocked, "interstellarTab");
+		
+	}
+}
+
+function rebuildAntimatterWonder(){
+	if(uranium >= 6000000 && lava >= 10000000 && oil >= 8000000 && methane >= 6000000){
+		uranium -= 6000000;
+		lava -= 10000000;
+		oil -= 8000000;
+		methane -= 6000000;
+		document.getElementById("rebuildAntimatterWonder").className = "hidden";
+		document.getElementById("antimatterActivation").innerHTML = "Activated";
+		document.getElementById("antimatterActivation").className = "green";
+		buttonsHidden.push("rebuildAntimatterWonder");
+		activated.push("antimatter");
+        Game.statistics.add('wondersActivated');
+        if(document.getElementById("interstellarTab").className != ""){
+        	document.getElementById("interstellarTab").className = "";
+        	tabsUnlocked.push("interstellarTab");
+        	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+        }
+		document.getElementById("antimatterNav").className = "sideTab";
+		newUnlock("interstellar");
+		Game.removeExcess(tabsUnlocked, "interstellarTab");
+		
 	}
 }
