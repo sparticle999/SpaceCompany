@@ -71,9 +71,9 @@ Game.interstellar = (function(){
 			titanium -= this.machines.shield.titanium;
 			metal -= this.machines.shield.metal;
 			this.machines.shield.count += 1;
-			this.machines.shield.spaceMetal = Math.floor(100000 * Math.pow(1.1,this.machines.shield.count));
-			this.machines.shield.titanium = Math.floor(100000 * Math.pow(1.1,this.machines.shield.count));
-			this.machines.shield.metal = Math.floor(100000 * Math.pow(1.1,this.machines.shield.count));
+			this.machines.shield.spaceMetal = Math.floor(200000 * Math.pow(1.1,this.machines.shield.count));
+			this.machines.shield.titanium = Math.floor(300000 * Math.pow(1.1,this.machines.shield.count));
+			this.machines.shield.metal = Math.floor(250000 * Math.pow(1.1,this.machines.shield.count));
 			this.refreshUI();
 		}
 	};
