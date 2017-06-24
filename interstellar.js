@@ -7,7 +7,12 @@ Game.interstellar = (function(){
 			meteorite: 10000,
 			hydrogen: 250000
 		},
-		aero: 0,
+		aero: {
+			count: 0,
+			silver: 200000,
+			ice: 300000,
+			gem: 250000
+		},
 		shield: {
 			count: 0,
 			spaceMetal: 100000,
@@ -48,8 +53,19 @@ Game.interstellar = (function(){
 	};
 
 	instance.getAero = function(){
-		this.aero += 1;
-		document.getElementById("aero").innerHTML = this.aero;
+		if(silver >= this.aero.silver && ice >= this.aero.ice && gem >= this.aero.gem && this.aero.count < 15){
+			silver -= this.aero.silver;
+			ice -= this.aero.ice;
+			gem -= this.aero.gem;
+			this.aero.count += 1;
+			this.aero.silver = Math.floor(100000 * Math.pow(1.1,this.aero.count));
+			this.aero.ice = Math.floor(100000 * Math.pow(1.1,this.aero.count));
+			this.aero.gem = Math.floor(100000 * Math.pow(1.1,this.aero.count));
+			document.getElementById("aeroSilverCost").innerHTML = Game.settings.format(this.aero.silver);
+			document.getElementById("aeroIceCost").innerHTML = Game.settings.format(this.aero.ice);
+			document.getElementById("aeroGemCost").innerHTML = Game.settings.format(this.aero.gem);
+			document.getElementById("aero").innerHTML = this.aero.count;
+		}
 	};
 
 	instance.getShield = function(){
