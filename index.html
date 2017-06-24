@@ -539,7 +539,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="tab-content col-xs-4" id="resourceTabParent">
+			<div class="tab-content" id="resourceTabParent" style="width:100%">
 				<div id="plasmaTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -4299,7 +4299,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Communication Wonder (Coming Soon!)
+										The Communication Wonder
 									</h2>
 									<span>
 										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
@@ -4381,7 +4381,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Antimatter Wonder (Coming Soon!)
+										The Antimatter Wonder
 									</h2>
 									<span>
 										In the corner of the floor, you see a faintly glowing, large canister, proped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
@@ -4466,7 +4466,7 @@
 										The Stargate Room (Coming Soon!)
 									</h2>
 									<span>
-										[Description]
+										The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table
 									</span>
 								</td>
 							</tr>
@@ -6434,16 +6434,16 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										ABC: <span id="XXXX">0</span>
+										Interstellar Radar Scanner: <span id="IRS">0</span>
 									</h3>
 									<span>
-										ABC
+										The Overlod gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1/2 stars that are close by. Each one increases the range by 5 Light Years.
 										<br>
-										Costs <span id="shieldSpaceMetalCost">XXXX</span> ABC, <span id="shieldTitaniumCost">XXXX</span> ABC, <span id="shieldMetalCost">XXXX</span> ABC.
+										Costs <span id="IRSSpaceMetalCost">XXXX</span> ABC, <span id="IRSTitaniumCost">XXXX</span> ABC, <span id="IRSMetalCost">XXXX</span> ABC.
 									</span>
 									<br>
 									<br>
-									<button onclick="getShield()" class="btn btn-default">Get ABC</button>
+									<button onclick="Game.interstellar.getIRS()" class="btn btn-default">Get IRS</button>
 								</td>
 							</tr>
 						</table>
@@ -6455,7 +6455,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										Rockets (Coming Soon!)
+										Rockets
 									</h2>
 									<span>
 										This is where you can contruct your transport to the stars.
@@ -6465,46 +6465,46 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Shield Plating: <span id="shield">0</span>
+										Shield Plating: <span id="shield">0</span>/50
 									</h3>
 									<span>
 										This plating combats the Sun's radiation, and can protect anyone inside from the frigid cold of space.
 										<br>
-										Costs <span id="shieldSpaceMetalCost">XXXX</span> Space Metal, <span id="shieldTitaniumCost">XXXX</span> Titanium, <span id="shieldMetalCost">XXXX</span> Metal.
+										Costs <span id="shieldSpaceMetalCost">100,000</span> Space Metal, <span id="shieldTitaniumCost">100,000</span> Titanium, <span id="shieldMetalCost">100,000</span> Metal.
 									</span>
 									<br>
 									<br>
-									<button onclick="getShield()" class="btn btn-default">Get Shield Plating</button>
+									<button onclick="Game.interstellar.getShield()" class="btn btn-default">Get Shield Plating</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Engine Units: <span id="engine">0</span>
+										Engine Units: <span id="engine">0</span>/25
 									</h3>
 									<span>
 										These are what allows your rocket to consume antimatter and create propulsion to blast your rocket far into space
 										<br>
-										Costs <span id="engineSiliconCost">XXXX</span> Silicon, <span id="engineMeteoriteCost">XXXX</span> Meteorite, <span id="engineHydrogenCost">XXXX</span> Hydrogen.
+										Costs <span id="engineSiliconCost">500,000</span> Silicon, <span id="engineMeteoriteCost">10,000</span> Meteorite, <span id="engineHydrogenCost">250,000</span> Hydrogen.
 									</span>
 									<br>
 									<br>
-									<button onclick="getEngine()" class="btn btn-default">Get Engine Unit</button>
+									<button onclick="Game.interstellar.getEngine()" class="btn btn-default">Get Engine Unit</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Aerodynamic Sections: <span id="aero">0</span>
+										Aerodynamic Sections: <span id="aero">0</span>/15
 									</h3>
 									<span>
 										These allow for easy takeoff's and landings out of atmospheres so that you don't have to worry about them.
 										<br>
-										Costs <span id="aeroSilverCost">XXXX</span> Silver, <span id="aeroIceCost">XXXX</span> Ice, <span id="aeroGemCost">XXXX</span> Gems.
+										Costs <span id="aeroSilverCost">200,000</span> Silver, <span id="aeroIceCost">300,000</span> Ice, <span id="aeroGemCost">250,000</span> Gems.
 									</span>
 									<br>
 									<br>
-									<button onclick="getAero()" class="btn btn-default">Get Aerodynamic Section</button>
+									<button onclick="Game.interstellar.getAero()" class="btn btn-default">Get Aerodynamic Section</button>
 								</td>
 							</tr>
 						</table>
@@ -6526,7 +6526,7 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Alcubierre Drive: <span id="interDrive">0</span>
+										Alcubierre Drive: <span id="drive">0</span>
 									</h3>
 									<span>
 										This powerful reactor can turn high-energy plasma into an extremely efficient fuel: Antimatter
@@ -6535,11 +6535,11 @@
 										<br>
 										Uses 50 Plasma and 3K Ice per second.
 										<br>
-										Costs <span id="interDriveSpaceMetalCost">XXXX</span> ABC, <span id="interDriveTitaniumCost">XXXX</span> ABC, <span id="interDriveMetalCost">XXXX</span> ABC.
+										Costs <span id="driveSpaceMetalCost">XXXX</span> ABC, <span id="driveTitaniumCost">XXXX</span> ABC, <span id="driveMetalCost">XXXX</span> ABC.
 									</span>
 									<br>
 									<br>
-									<button onclick="getInterDrive()" class="btn btn-default">Get Alcubierre Drive</button>
+									<button onclick="Game.interstellar.getDrive()" class="btn btn-default">Get Alcubierre Drive</button>
 								</td>
 							</tr>
 						</table>
@@ -7169,6 +7169,8 @@
 <script type="text/javascript" src="solarSystem.js"></script>
 <script type="text/javascript" src="wonder.js"></script>
 <script type="text/javascript" src="solCenter.js"></script>
+<script type="text/javascript" src="interstellar.js"></script>
+
 
 <!-- RELEASE -->
 <!--<script type="text/javascript" src="SpaceCompany.min.js"></script>-->

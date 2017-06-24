@@ -56,9 +56,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Turn-off switch for all energy producers/consumers
 - Alternative scientific formatting
 - Made it clear that Dyson Sections Costs reset when used
-- 'Off' option for autosaving
-- Science forced 1 decimal until 100
-- Cleared up misconceptions with 'NB:' notes
+- 'Off' Option For Autosaving
+- Science Forced 1 Decimal Until 100
+- Cleared Up Misconceptions With 'NB:' Notes
 - Uranium + Plasma Achievements
 
 ##### Bug Fixes
@@ -69,6 +69,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Typos
 - Fixed Rocket Wonder Not Working
 - Fixed Solar Panel Showing Incorrect Output
+- Fixed Interstellar Tab Not Loading Values
 
 ### v0.4.4
 ##### Features

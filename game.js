@@ -125,6 +125,7 @@ var Game = (function() {
         this.buildings.save(data);
         this.tech.save(data);
         this.settings.save(data);
+        this.interstellar.save(data);
 
         data = legacySave(data);
 
@@ -145,6 +146,7 @@ var Game = (function() {
             this.buildings.load(data);
             this.tech.load(data);
             this.settings.load(data);
+            this.interstellar.load(data);
 
             legacyLoad(data);
         }

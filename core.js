@@ -636,6 +636,8 @@ function checkRedCost(){
 	Game.settings.turnRed(uranium, webUraniumCost, "webUraniumCost");
 	Game.settings.turnRed(silicon, webSiliconCost, "webSiliconCost");
 
+	// Sol Center
+
 	Game.settings.turnRed(titanium, dysonTitaniumCost, "dysonTitaniumCost");
 	Game.settings.turnRed(gold, dysonGoldCost, "dysonGoldCost");
 	Game.settings.turnRed(silicon, dysonSiliconCost, "dysonSiliconCost");
@@ -656,6 +658,8 @@ function checkRedCost(){
 
 	Game.settings.turnRed(energy, 100000, "unlockDysonResearchEnergyCost");
 	Game.settings.turnRed(plasma, 10000, "unlockDysonResearchPlasmaCost");
+
+	// Wonders
 
 	Game.settings.turnRed(gem, preciousGemCost, "preciousGemCost");
 	Game.settings.turnRed(silver, preciousSilverCost, "preciousSilverCost");
@@ -705,6 +709,21 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, 500000, "portalMeteoriteCost");
 	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
 	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
+
+	// Interstellar
+
+	Game.settings.turnRed(spaceMetal, Game.interstellar.machines.shield.spaceMetal, "shieldSpaceMetalCost");
+	Game.settings.turnRed(titanium, Game.interstellar.machines.shield.titanium, "shieldTitaniumCost");
+	Game.settings.turnRed(metal, Game.interstellar.machines.shield.metal, "shieldMetalCost");
+
+	Game.settings.turnRed(silicon, Game.interstellar.machines.engine.silicon, "engineSiliconCost");
+	Game.settings.turnRed(meteorite, Game.interstellar.machines.engine.meteorite, "engineMeteoriteCost");
+	Game.settings.turnRed(hydrogen, Game.interstellar.machines.engine.hydrogen, "engineHydrogenCost");
+
+	Game.settings.turnRed(silver, Game.interstellar.machines.aero.silver, "aeroSilverCost");
+	Game.settings.turnRed(ice, Game.interstellar.machines.aero.ice, "aeroIceCost");
+	Game.settings.turnRed(gem, Game.interstellar.machines.aero.gem, "aeroGemCost");
+
 }
 
 function refreshResources(){
