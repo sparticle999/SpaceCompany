@@ -711,10 +711,14 @@ function checkRedCost(){
 	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
 
 	// Interstellar
-	
+
 	Game.settings.turnRed(silicon, Game.interstellar.engine.silicon, "engineSiliconCost");
 	Game.settings.turnRed(meteorite, Game.interstellar.engine.meteorite, "engineMeteoriteCost");
 	Game.settings.turnRed(hydrogen, Game.interstellar.engine.hydrogen, "engineHydrogenCost");
+
+	Game.settings.turnRed(spaceMetal, Game.interstellar.shield.spaceMetal, "shieldSpaceMetalCost");
+	Game.settings.turnRed(titanium, Game.interstellar.shield.titanium, "shieldTitaniumCost");
+	Game.settings.turnRed(metal, Game.interstellar.shield.metal, "shieldMetalCost");
 
 }
 

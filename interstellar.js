@@ -8,7 +8,12 @@ Game.interstellar = (function(){
 			hydrogen: 250000
 		},
 		aero: 0,
-		shield: 0,
+		shield: {
+			count: 0,
+			spaceMetal: 100000,
+			titanium: 100000,
+			metal: 100000
+		},
 		drive: 0,
 		IRS: 0,
 		stars: {
@@ -48,8 +53,19 @@ Game.interstellar = (function(){
 	};
 
 	instance.getShield = function(){
-		this.shield += 1;
-		document.getElementById("shield").innerHTML = this.shield;
+		if(spaceMetal >= this.shield.spaceMetal && titanium >= this.shield.titanium && metal >= this.shield.metal && this.shield.count < 50){
+			spaceMetal -= this.shield.spaceMetal;
+			titanium -= this.shield.titanium;
+			metal -= this.shield.metal;
+			this.shield.count += 1;
+			this.shield.spaceMetal = Math.floor(100000 * Math.pow(1.1,this.shield.count));
+			this.shield.titanium = Math.floor(100000 * Math.pow(1.1,this.shield.count));
+			this.shield.metal = Math.floor(100000 * Math.pow(1.1,this.shield.count));
+			document.getElementById("shieldSpaceMetalCost").innerHTML = Game.settings.format(this.shield.spaceMetal);
+			document.getElementById("shieldTitaniumCost").innerHTML = Game.settings.format(this.shield.titanium);
+			document.getElementById("shieldMetalCost").innerHTML = Game.settings.format(this.shield.metal);
+			document.getElementById("shield").innerHTML = this.shield.count;
+		}
 	};
 
 	instance.getDrive = function(){
