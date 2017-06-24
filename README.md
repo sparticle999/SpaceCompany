@@ -22,6 +22,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Exotic Matter for intersteller travel
 - Dark Matter
 - Some sort of prestige (Amnesia?)
+- Unknown Planets that you have to explore to know what it holds
 - Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
@@ -34,6 +35,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buy X buttons
 - Buy Max/Custom Buttons
 - Reduce Storage Costs
+- Achievements with Bonuses
 
 # Changelog:
 
@@ -41,8 +43,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 ##### Features
 - Offline Production
 - Screen Notifications Graphics Option
+- Communication Wonder
 - Rocket Wonder
-- Antimatter Wonder
 - Kongregate Leaderboard
 - 7 New Themes
 - Random Loading Messages
@@ -63,6 +65,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Rocket Launching Costs not being red
 - Fixed Antimatter Tab Highlighting Sticking
 - Fixed Typos
+- Fixed Rocket Wonder Not Working
 
 ### v0.4.4
 ##### Features

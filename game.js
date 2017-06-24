@@ -287,6 +287,21 @@ var Game = (function() {
         });
     };
 
+    instance.removeExcess = function(array, id){
+        var check = false;
+        for(var i = array.length; i > 0 ; i--){
+            if(array[i] === id){
+                if(check === false){
+                    check = true;
+                }
+                else{
+                    check = true;
+                    array.splice(i, 1);
+                }
+            }
+        }
+    }
+
     instance.updateAutoSave = function(delta) {
         this.timeSinceAutoSave += delta;
 

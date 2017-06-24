@@ -125,3 +125,18 @@ function activeSolCenterTab(tab){
 	document.getElementById("unlockDysonNav").className = "sideTab";
 	document.getElementById(tab).className = "info";
 }
+
+function activeInterstellarTab(tab){
+	if(document.getElementById("commsNav").className != "sideTab hidden"){
+		document.getElementById("commsNav").className = "sideTab";
+	}
+	if(document.getElementById("interRocketNav").className != "sideTab hidden"){
+		document.getElementById("interRocketNav").className = "sideTab";
+	}
+	if(document.getElementById("antimatterNav").className != "sideTab hidden"){
+		document.getElementById("antimatterNav").className = "sideTab";
+	}
+	if(document.getElementById("travelNav").className != "sideTab hidden"){
+		document.getElementById("travelNav").className = "sideTab";
+	}	document.getElementById(tab).className = "info";
+}

@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Consts", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown"];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -91,6 +91,7 @@
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
+    	<li role="presentation" id="interstellarTab" class="hidden"><a href="#interstellar" aria-control="interstellar" role="tab" data-toggle="tab"onclick="tabClicked('interstellar')"><div id="interstellarTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Interstellar</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
@@ -3958,21 +3959,21 @@
 					<tr id="communicationWonderNav" onclick="activeWonderTab('communicationWonderNav')" class="sideTab hidden" href="#communicationWonderTab" aria-controls="communicationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Communication Wonder: <span id="communicationWonderActivation">Dormant</span>
+								Comms Wonder: <span id="commsActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="rocketWonderNav" onclick="activeWonderTab('rocketWonderNav')" class="sideTab hidden" href="#rocketWonderTab" aria-controls="rocketWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Rocket Wonder: <span id="rocketWonderActivation">Dormant</span>
+								Rocket Wonder: <span id="rocketActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="antimatterWonderNav" onclick="activeWonderTab('antimatterWonderNav')" class="sideTab hidden" href="#antimatterWonderTab" aria-controls="antimatterWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Antimatter Wonder: <span id="antimatterWonderActivation">Dormant</span>
+								Antimatter Wonder: <span id="antimatterActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -3992,7 +3993,7 @@
 					</tr>
 					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="sideTab hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
+							<span class="red">
 								Stargate: <span id="stargateActivation">Dormant</span>
 							</span>
 						</td>
@@ -4292,13 +4293,54 @@
 						</table>
 					</div>
 				</div>
+				<div id="communicationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Communication Wonder (Coming Soon!)
+									</h2>
+									<span>
+										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Communication Wonder
+									</h3>
+									<span>
+										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
+										<br>
+										<hide id="rebuildCommsWonder">
+											Costs: <span id="commsWonderGoldCost">6M</span> Gold, <span id="commsWonderSiliconCost">10M</span> Silicon, <span id="commsWonderIceCost">6M</span> Ice.
+											<br>
+											<br>
+											<button onclick="rebuildCommsWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
+											<br>
+											<br>
+											<div id="commsWonderProgress" class="progress">
+											  <div id="commsWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="rocketWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Rocket Wonder (Coming Soon!)
+										The Rocket Wonder
 									</h2>
 									<span>
 										Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can reassemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room: 'Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I'm not sure where the pieces are. You may need additional research to build this once more, but I'm sure you will figure it out just fine.'
@@ -4311,10 +4353,10 @@
 										Rebuild Rocket Wonder
 									</h3>
 									<span>
-										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move whole planets with rockets.
+										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move beyond your tiny star system.
 										<br>
 										<hide id="rebuildRocketWonder">
-											Costs: <span id="rocketWonderMeteoriteCost">XXXX</span> ABC, <span id="rocketWonderIceCost">XXXX</span> ABC, <span id="rocketWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="rocketWonderSpaceMetalCost">8M</span> Space Metal, <span id="rocketWonderTitaniumCost">6M</span> Titanium, <span id="rocketWonderMetalCost">12M</span> Metal.
 											<br>
 											<br>
 											<button onclick="rebuildRocketWonder()" class="btn btn-default">Rebuild Rocket Wonder</button>
@@ -4355,7 +4397,7 @@
 										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
-											Costs: <span id="antimatterWonderMeteoriteCost">XXXX</span> ABC, <span id="antimatterWonderIceCost">XXXX</span> ABC, <span id="antimatterWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="antimatterWonderUraniumCost">6M</span> Uranium, <span id="antimatterWonderLavaCost">10M</span> Lava, <span id="antimatterWonderOilCost">8M</span> Oil, <span id="antimatterWonderMethaneCost">6M</span> Methane.
 											<br>
 											<br>
 											<button onclick="rebuildAntimatterWonder()" class="btn btn-default">Rebuild Antimatter Wonder</button>
@@ -4374,57 +4416,16 @@
 						</table>
 					</div>
 				</div>
-				<div id="communicationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="default btn-link">
-										The Communication Wonder (Coming Soon!)
-									</h2>
-									<span>
-										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
-										Rebuild Communication Wonder
-									</h3>
-									<span>
-										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
-										<br>
-										<hide id="rebuildCommunicationWonder">
-											Costs: <span id="communicationWonderMeteoriteCost">XXXX</span> ABC, <span id="communicationWonderIceCost">XXXX</span> ABC, <span id="communicationWonderSiliconCost">XXXX</span> ABC.
-											<br>
-											<br>
-											<button onclick="rebuildCommunicationWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
-											<br>
-											<br>
-											<div id="communicationWonderProgress" class="progress">
-											  <div id="communicationWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
-											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-											    0%
-											  </div>
-											</div>
-										</hide>
-									</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
 				<div id="portalRoomTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Portal Room (Coming Soon!)
+										The Portal Room
 									</h2>
 									<span>
-										[Description]
+										An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It's plaque reads: 'This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos'.
 									</span>
 								</td>
 							</tr>
@@ -4437,7 +4438,7 @@
 										Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.
 										<br>
 										<hide id="activatePortal">
-											Costs: <span id="portalMeteoriteCost">XXXX</span> Meteorite, <span id="portalIceCost">XXXX</span> Ice, <span id="portalSiliconCost">XXXX</span> Silicon.
+											Costs: <span id="portalMeteoriteCost">500K</span> Meteorite, <span id="portalHeliumCost">8M</span> Helium, <span id="portalSiliconCost">6M</span> Silicon.
 											<br>
 											<br>
 											<button onclick="activatePortal()" class="btn btn-default">Activate Portal</button>
@@ -4445,6 +4446,47 @@
 											<br>
 											<div id="portalProgress" class="progress">
 											  <div id="portalBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="stargateTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Stargate Room (Coming Soon!)
+									</h2>
+									<span>
+										[Description]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Stargate Wonder
+									</h3>
+									<span>
+										For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.
+										<br>
+										<hide id="rebuildStargate">
+											Costs: <span id="stargateWonderUraniumCost">XXXX</span> ABC, <span id="stargateWonderLavaCost">XXXX</span> ABC, <span id="stargateWonderOilCost">XXXX</span> ABC, <span id="stargateWonderMethaneCost">XXXX</span> ABC.
+											<br>
+											<br>
+											<button onclick="rebuildStargate()" class="btn btn-default">Rebuild Stargate</button>
+											<br>
+											<br>
+											<div id="stargateWonderProgress" class="progress">
+											  <div id="stargateWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
@@ -6341,7 +6383,197 @@
 			</div>
 		</div>
 
-
+		<!-- Interstellar Tab -->
+		<div role="tabpanel" class="tab-pane fade" id="interstellar">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr id="commsNav" onclick="activeInterstellarTab('commsNav')" href="#commsTab" aria-controls="commsTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Communications
+							</span>
+						</td>
+					</tr>
+					<tr id="interRocketNav" onclick="activeInterstellarTab('interRocketNav')" href="#interRocketTab" aria-controls="interRocketTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Rocket
+							</span>
+						</td>
+					</tr>
+					<tr id="antimatterNav" onclick="activeInterstellarTab('antimatterNav')" href="#antimatterTab" aria-controls="antimatterTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Antimatter
+							</span>
+						</td>
+					</tr>
+					<tr id="travelNav" onclick="activeInterstellarTab('travelNav')" href="#travelTab" aria-controls="travelTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Travel
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="commsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Communications (Coming Soon!)
+									</h2>
+									<span>
+										This is where you learn about other systems to travel to.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										ABC: <span id="XXXX">0</span>
+									</h3>
+									<span>
+										ABC
+										<br>
+										Costs <span id="shieldSpaceMetalCost">XXXX</span> ABC, <span id="shieldTitaniumCost">XXXX</span> ABC, <span id="shieldMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="getShield()" class="btn btn-default">Get ABC</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="interRocketTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Rockets (Coming Soon!)
+									</h2>
+									<span>
+										This is where you can contruct your transport to the stars.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Shield Plating: <span id="shield">0</span>
+									</h3>
+									<span>
+										This plating combats the Sun's radiation, and can protect anyone inside from the frigid cold of space.
+										<br>
+										Costs <span id="shieldSpaceMetalCost">XXXX</span> Space Metal, <span id="shieldTitaniumCost">XXXX</span> Titanium, <span id="shieldMetalCost">XXXX</span> Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="getShield()" class="btn btn-default">Get Shield Plating</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Engine Units: <span id="engine">0</span>
+									</h3>
+									<span>
+										These are what allows your rocket to consume antimatter and create propulsion to blast your rocket far into space
+										<br>
+										Costs <span id="engineSiliconCost">XXXX</span> Silicon, <span id="engineMeteoriteCost">XXXX</span> Meteorite, <span id="engineHydrogenCost">XXXX</span> Hydrogen.
+									</span>
+									<br>
+									<br>
+									<button onclick="getEngine()" class="btn btn-default">Get Engine Unit</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Aerodynamic Sections: <span id="aero">0</span>
+									</h3>
+									<span>
+										These allow for easy takeoff's and landings out of atmospheres so that you don't have to worry about them.
+										<br>
+										Costs <span id="aeroSilverCost">XXXX</span> Silver, <span id="aeroIceCost">XXXX</span> Ice, <span id="aeroGemCost">XXXX</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getAero()" class="btn btn-default">Get Aerodynamic Section</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="antimatterTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Antimatter (Coming Soon!)
+									</h2>
+									<span>
+										Your fuel for interstellar travel is produced here.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Alcubierre Drive: <span id="interDrive">0</span>
+									</h3>
+									<span>
+										ABC
+										<br>
+										Costs <span id="interDriveSpaceMetalCost">XXXX</span> ABC, <span id="interDriveTitaniumCost">XXXX</span> ABC, <span id="interDriveMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="getInterDrive()" class="btn btn-default">Get Alcubierre Drive</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="travelTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Travel (Coming Soon!)
+									</h2>
+									<span>
+										Here, you can travel across the cosmos.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										ABC: <span id="XXXX">0</span>
+									</h3>
+									<span>
+										ABC
+										<br>
+										Costs <span id="shieldSpaceMetalCost">XXXX</span> ABC, <span id="shieldTitaniumCost">XXXX</span> ABC, <span id="shieldMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="getShield()" class="btn btn-default">Get ABC</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- More Tab -->
 		<div role="tabpanel" class="tab-pane fade" id="more">

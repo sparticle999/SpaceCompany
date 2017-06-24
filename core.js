@@ -688,6 +688,23 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
 	Game.settings.turnRed(ice, meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
+
+	Game.settings.turnRed(gold, 6000000, "commsWonderGoldCost");
+	Game.settings.turnRed(silicon, 10000000, "commsWonderSiliconCost");
+	Game.settings.turnRed(ice, 6000000, "commsWonderIceCost");
+
+	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
+	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
+
+	Game.settings.turnRed(uranium, 6000000, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(lava, 10000000, "antimatterWonderLavaCost");
+	Game.settings.turnRed(oil, 8000000, "antimatterWonderOilCost");
+	Game.settings.turnRed(methane, 6000000, "antimatterWonderMethaneCost");
+
+	Game.settings.turnRed(meteorite, 500000, "portalMeteoriteCost");
+	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
+	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
 }
 
 function refreshResources(){
@@ -742,8 +759,22 @@ function refreshResources(){
 		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
-		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
+		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
 	}
+
+	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
+	Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+
+	if(contains(buttonsHidden, "rebuildCommsWonder")){
+		document.getElementById("commsNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildRocketWonder")){
+		document.getElementById("interRocketNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
+		document.getElementById("antimatterNav").className = "sideTab";
+	}
+
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";
