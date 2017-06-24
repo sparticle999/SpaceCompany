@@ -258,6 +258,29 @@ function refreshWonderBars(){
 			document.getElementById("antimatterWonderBar").style.width = 100 + "%";
 		}
 	}
+	if((document.getElementById("activatePortal").className === "hidden") === false){
+		if(meteorite >= 500000){
+			var portalMeteorite = 500000;
+		}
+		else{portalMeteorite = meteorite;}
+		if(helium >= 8000000){
+			var portalHelium = 8000000;
+		}
+		else{portalHelium = helium;}
+		if(silicon >= 6000000){
+			var portalSilicon = 6000000;
+		}
+		else{portalSilicon = silicon;}
+		var portalBar = (portalMeteorite+portalHelium+portalSilicon)/145000;
+		if(portalBar <= 100){
+			document.getElementById("portalBar").innerHTML = Game.settings.format(portalBar) + "%";
+			document.getElementById("portalBar").style.width = portalBar + "%";
+		}
+		else{
+			document.getElementById("portalBar").innerHTML = "100%";
+			document.getElementById("portalBar").style.width = 100 + "%";
+		}
+	}
 }
 
 function unlockTier3(){
@@ -498,5 +521,22 @@ function rebuildAntimatterWonder(){
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 		
+	}
+}
+
+function activatePortal(){
+	if(meteorite >= 500000 && helium >= 80000000 && silicon >= 6000000){
+		meteorite -= 500000;
+		helium -= 80000000;
+		silicon -= 6000000;
+		document.getElementById("activatePortal").className = "hidden";
+		document.getElementById("portalRoomActivation").innerHTML = "Activated";
+		document.getElementById("portalRoomActivation").className = "green";
+		document.getElementById("wonderFloor3Nav").className = "sideTab";
+		document.getElementById("stargateNav").className = "sideTab";
+		resourcesUnlocked.push("wonderFloor3Nav", "stargateNav");
+		buttonsHidden.push("activatePortal");
+		activated.push("portalRoom");
+		newUnlock("wonders");
 	}
 }

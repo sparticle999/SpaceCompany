@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown"];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -3979,7 +3979,7 @@
 					</tr>
 					<tr id="portalRoomNav" onclick="activeWonderTab('portalRoomNav')" class="sideTab hidden" href="#portalRoomTab" aria-controls="portalRoomTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span class="red">
+							<span>
 								Portal Room: <span id="portalRoomActivation">Dormant</span>
 							</span>
 						</td>
@@ -3993,7 +3993,7 @@
 					</tr>
 					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="sideTab hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
+							<span class="red">
 								Stargate: <span id="stargateActivation">Dormant</span>
 							</span>
 						</td>
@@ -4422,10 +4422,10 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Portal Room (Coming Soon!)
+										The Portal Room
 									</h2>
 									<span>
-										[Description]
+										An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It's plaque reads: 'This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos'.
 									</span>
 								</td>
 							</tr>
@@ -4438,7 +4438,7 @@
 										Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.
 										<br>
 										<hide id="activatePortal">
-											Costs: <span id="portalMeteoriteCost">XXXX</span> Meteorite, <span id="portalIceCost">XXXX</span> Ice, <span id="portalSiliconCost">XXXX</span> Silicon.
+											Costs: <span id="portalMeteoriteCost">500K</span> Meteorite, <span id="portalHeliumCost">8M</span> Helium, <span id="portalSiliconCost">6M</span> Silicon.
 											<br>
 											<br>
 											<button onclick="activatePortal()" class="btn btn-default">Activate Portal</button>
@@ -4446,6 +4446,47 @@
 											<br>
 											<div id="portalProgress" class="progress">
 											  <div id="portalBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="stargateTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Stargate Room (Coming Soon!)
+									</h2>
+									<span>
+										[Description]
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Stargate Wonder
+									</h3>
+									<span>
+										For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.
+										<br>
+										<hide id="rebuildStargate">
+											Costs: <span id="stargateWonderUraniumCost">XXXX</span> ABC, <span id="stargateWonderLavaCost">XXXX</span> ABC, <span id="stargateWonderOilCost">XXXX</span> ABC, <span id="stargateWonderMethaneCost">XXXX</span> ABC.
+											<br>
+											<br>
+											<button onclick="rebuildStargate()" class="btn btn-default">Rebuild Stargate</button>
+											<br>
+											<br>
+											<div id="stargateWonderProgress" class="progress">
+											  <div id="stargateWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>

@@ -701,6 +701,10 @@ function checkRedCost(){
 	Game.settings.turnRed(lava, 10000000, "antimatterWonderLavaCost");
 	Game.settings.turnRed(oil, 8000000, "antimatterWonderOilCost");
 	Game.settings.turnRed(methane, 6000000, "antimatterWonderMethaneCost");
+
+	Game.settings.turnRed(meteorite, 500000, "portalMeteoriteCost");
+	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
+	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
 }
 
 function refreshResources(){
