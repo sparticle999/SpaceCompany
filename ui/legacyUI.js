@@ -151,7 +151,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('solarPanel', function(){ return Game.settings.format(solarPanel); });
     Game.ui.bindElement('solarPanelMetalCost', function(){ return Game.settings.format(solarPanelMetalCost); });
     Game.ui.bindElement('solarPanelGemCost', function(){ return Game.settings.format(solarPanelGemCost); });
-    Game.ui.bindElement('solarPanelOutput', function(){ return Game.settings.format(solarPanelOutput); });
+    Game.ui.bindElement('solarPanelOutput', function(){ return solarPanelOutput; });
     Game.ui.bindElement('methaneStation', function(){ return Game.settings.format(methaneStation); });
     Game.ui.bindElement('methaneStationSpaceMetalCost', function(){ return Game.settings.format(methaneStationSpaceMetalCost); });
     Game.ui.bindElement('methaneStationTitaniumCost', function(){ return Game.settings.format(methaneStationTitaniumCost); });
