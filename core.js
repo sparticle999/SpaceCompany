@@ -712,17 +712,17 @@ function checkRedCost(){
 
 	// Interstellar
 
-	Game.settings.turnRed(spaceMetal, Game.interstellar.shield.spaceMetal, "shieldSpaceMetalCost");
-	Game.settings.turnRed(titanium, Game.interstellar.shield.titanium, "shieldTitaniumCost");
-	Game.settings.turnRed(metal, Game.interstellar.shield.metal, "shieldMetalCost");
+	Game.settings.turnRed(spaceMetal, Game.interstellar.machines.shield.spaceMetal, "shieldSpaceMetalCost");
+	Game.settings.turnRed(titanium, Game.interstellar.machines.shield.titanium, "shieldTitaniumCost");
+	Game.settings.turnRed(metal, Game.interstellar.machines.shield.metal, "shieldMetalCost");
 
-	Game.settings.turnRed(silicon, Game.interstellar.engine.silicon, "engineSiliconCost");
-	Game.settings.turnRed(meteorite, Game.interstellar.engine.meteorite, "engineMeteoriteCost");
-	Game.settings.turnRed(hydrogen, Game.interstellar.engine.hydrogen, "engineHydrogenCost");
+	Game.settings.turnRed(silicon, Game.interstellar.machines.engine.silicon, "engineSiliconCost");
+	Game.settings.turnRed(meteorite, Game.interstellar.machines.engine.meteorite, "engineMeteoriteCost");
+	Game.settings.turnRed(hydrogen, Game.interstellar.machines.engine.hydrogen, "engineHydrogenCost");
 
-	Game.settings.turnRed(silver, Game.interstellar.aero.silver, "aeroSilverCost");
-	Game.settings.turnRed(ice, Game.interstellar.aero.ice, "aeroIceCost");
-	Game.settings.turnRed(gem, Game.interstellar.aero.gem, "aeroGemCost");
+	Game.settings.turnRed(silver, Game.interstellar.machines.aero.silver, "aeroSilverCost");
+	Game.settings.turnRed(ice, Game.interstellar.machines.aero.ice, "aeroIceCost");
+	Game.settings.turnRed(gem, Game.interstellar.machines.aero.gem, "aeroGemCost");
 
 }
 

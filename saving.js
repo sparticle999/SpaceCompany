@@ -394,7 +394,7 @@ function legacySave(data) {
 		dysonIceCost: dysonIceCost,
 		sphere: sphere,
 		swarm: swarm,
-		ring: ring
+		ring: ring,
 	}, data);
 
 	return localSave;
