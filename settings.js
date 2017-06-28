@@ -44,6 +44,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
             return false;
         }
     };
@@ -65,6 +66,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
         }
     };
 
@@ -85,6 +87,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
         }
 
         if(value >= target) {
