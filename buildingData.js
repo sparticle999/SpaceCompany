@@ -705,7 +705,7 @@ Game.buildingData = (function () {
 
     instance.methaneT3 = $.extend({}, baseProducerBuilding, {
         name: 'Space Cow Plantation',
-        desc: 'These hold cows genetically modified to produce methane constantly',
+        desc: 'These hold cows genetically moodified to produce methane constantly',
         resource: 'methane',
         resourcePerSecond: {
             'energy': -49,
