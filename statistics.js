@@ -18,9 +18,9 @@ Game.statistics = (function(){
             this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines Owned");
         }
 
-        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 5);
+        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 6);
         this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);
-        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 22);
+        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 23);
         this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places Explored", 10);
         this.createStatistic("wondersBuilt", Game.constants.statisticCategoryUnlockable, "Wonders Built", 4);
         this.createStatistic("wondersActivated", Game.constants.statisticCategoryUnlockable, "Wonders Activated", 4);
