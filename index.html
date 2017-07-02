@@ -643,6 +643,21 @@
 									<button onclick="getBatteryT2()" class="btn btn-default">Get Battery T2</button>
 								</td>
 							</tr>
+							<tr id="batteriesT3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T3 Batteries: <span id="batteryT3">0</span>
+									</h3>
+									<span>
+										Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.
+										<br>
+										Costs <span id="batteryT3MetalCost">5,500,000</span> Metal, <span id="batteryT3GemCost">5,500,000</span> Gems, <span id="batteryT3SpaceMetalCost">3,300,000</span> Space Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBatteryT3()" class="btn btn-default">Get Battery T3</button>
+								</td>
+							</tr>
 							<tr>
 								<td>
 									<h3 class="default btn-link">
@@ -3150,6 +3165,23 @@
 									<br>
 									<br>
 									<button onclick="unlockBatteriesT2()" class="btn btn-default">Unlock T2 Batteries</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockBatteriesT3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 3 Batteries
+									</h3>
+									<span>
+										Tier 3 Batteries improve the amount of energy you can store at once.
+										<br>
+										Costs <span id="unlockBatteriesT3Cost">3,000,000</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockBatteriesT3()" class="btn btn-default">Unlock T3 Batteries</button>
 									<br>
 									<br>
 								</td>
