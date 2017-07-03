@@ -160,6 +160,18 @@ function getDyson(){
 	}
 }
 
+function buildDysonTo(n) {
+	while (dyson < n && titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost) {
+		titanium -= dysonTitaniumCost;
+		gold -= dysonGoldCost;
+		silicon -= dysonSiliconCost;
+		meteorite -= dysonMeteoriteCost;
+		ice -= dysonIceCost;
+		dyson += 1;
+	}
+	refreshDyson();
+}
+
 function buildRing(){
 	if(dyson >= 50 && rocketFuel >= 50000){
 		dyson -= 50;
