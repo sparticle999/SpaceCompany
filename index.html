@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource"];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -121,6 +121,10 @@
 						<td style="border:none; vertical-align:middle; text-align:right;">
 							<span id="plasma">
 								0
+							</span>
+							<span id="plasmaStorageBox" class="hidden">
+								/
+								<span id="plasmaStorage">100,000</span>
 							</span>
 						</td>
 					</tr>
@@ -553,11 +557,43 @@
 										<br>
 										1 Plasma is created by 'attacking' <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnits" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										PSUs: <span id="PSU">0</span>
+									</h3>
+									<span>
+										PSUs increase your plasma storage by 50,000 per PSU built.
+										<br>
+										Costs <span id="PSUSilverCost">770,000</span> Silver, <span id="PSUGoldCost">770,000</span> Gold, <span id="PSUUraniumCost">550,000</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSU()" class="btn btn-default">Get PSU</button>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnitsT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T2 PSUs: <span id="PSUT2">0</span>
+									</h3>
+									<span>
+										Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.
+										<br>
+										Costs <span id="PSUT2SilverCost">9.300M</span> Silver, <span id="PSUT2GoldCost">9.300M</span> Gold, <span id="PSUT2UraniumCost">6.800M</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSUT2()" class="btn btn-default">Get PSU T2</button>
 								</td>
 							</tr>
 							<tr>
@@ -773,9 +809,11 @@
 									<span>
 										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of Energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainUranium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -887,9 +925,11 @@
 									<span>
 										Oil is pumped up from the ground and is used to build Tier 2 resource gatherers.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainOil()" class="btn btn-default">Gain 1</div>
+									</hide>
 								</td>
 							</tr>
 							<tr id="oilStorageUpgrade" class="hidden">
@@ -997,9 +1037,11 @@
 									<span>
 										Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1111,9 +1153,11 @@
 									<span>
 										Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGem()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1177,7 +1221,7 @@
 										Diamond Encrusted Drill: <span id="diamondDrill">0</span>
 									</h3>
 									<span>
-										The Diamond Encrusted Drill is one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.
+										The Diamond Encrusted Drill is the best drill possible that can be made on Earth, meaning it produces Gems at intense speeds.
 										<br>
 										Produces 89 Gems per second.
 										<br>
@@ -1227,7 +1271,9 @@
 										<br>
 									</span>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainCharcoal()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleCharcoal()" class="btn btn-default">Turn Charcoal Production <span id="charcoalToggled">Off</span></button>
 									<br>
 									<br>
@@ -1348,9 +1394,11 @@
 									<span>
 										Wood is one of the primary resources. It is used more often in early game for tools and buildings.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainWood()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1462,9 +1510,11 @@
 									<span>
 										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1576,9 +1626,11 @@
 									<span>
 										Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSpaceMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1690,9 +1742,11 @@
 									<span>
 										Methane is a gas found in abundance on Venus. It can be used to power your company much more effectively than solid fuel.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMethane()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1805,9 +1859,11 @@
 									<span>
 										Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainTitanium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1919,9 +1975,11 @@
 									<span>
 										Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGold()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2033,9 +2091,11 @@
 									<span>
 										Silver is another metal most commonly found in the asteroid belt.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilver()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2147,9 +2207,11 @@
 									<span>
 										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainLava()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2261,9 +2323,11 @@
 									<span>
 										Hydrogen is extremely common on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHydrogen()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2375,9 +2439,11 @@
 									<span>
 										Helium is the second most common element on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHelium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2489,9 +2555,11 @@
 									<span>
 										Ice, although it can be collected on Earth, is not nearly as profitable as flying to Pluto and back with space craft full of the stuff. It is mainly used for super-cooling technology necessary for Tier 4 machines.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainIce()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2607,7 +2675,9 @@
 									</span>
 									<br>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleMeteorite()" class="btn btn-default">Turn Meteorite Production <span id="meteoriteToggled">Off</span></button>
 									<br>
 									<br>
@@ -3043,6 +3113,40 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockPSU" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasma Storage Units
+									</h3>
+									<span>
+										PSUs increase the limit on plasma you can store at once.
+										<br>
+										Costs <span id="unlockPSUCost">9.500M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSU()" class="btn btn-default">Unlock PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPSUT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 2 Plasma Storage Units
+									</h3>
+									<span>
+										Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.
+										<br>
+										Costs <span id="unlockPSUT2Cost">37.00M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSUT2()" class="btn btn-default">Unlock T2 PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="unlockPlasmaTier2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3300,7 +3404,7 @@
 						</td>
 					</tr>
 					<tr id="collapseOuter" class="collapseOuter hidden" style="border:none;">
-						<td colspan="3">
+						<td colspan="4">
 							<span>Collapse Outer Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
@@ -4603,7 +4707,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
-											<button class="btn btn-default pull-right" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
+											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting X<span class="emcAmount">1</span></button>
 										</div>
 									</div>
 									<div class="row">
@@ -4851,6 +4955,9 @@
 										<br>
 										<br>
 										<button onclick="getDyson()" class="btn btn-default">Build Dyson Section</button>
+										<button onclick="buildDysonTo(50)" class="btn btn-default">Build up to 50</button>
+										<button onclick="buildDysonTo(100)" class="btn btn-default">Build up to 100</button>
+										<button onclick="buildDysonTo(250)" class="btn btn-default">Build up to 250</button>
 										<br>
 										<br>
 										<h3 class="default btn-link">
@@ -6437,7 +6544,7 @@
 										Interstellar Radar Scanner: <span id="IRS">0</span>
 									</h3>
 									<span>
-										The Overlod gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1/2 stars that are close by. Each one increases the range by 5 Light Years.
+										The Overlord gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1/2 stars that are close by. Each one increases the range by 5 Light Years.
 										<br>
 										Costs <span id="IRSSpaceMetalCost">XXXX</span> ABC, <span id="IRSTitaniumCost">XXXX</span> ABC, <span id="IRSMetalCost">XXXX</span> ABC.
 									</span>
@@ -6458,7 +6565,7 @@
 										Rockets
 									</h2>
 									<span>
-										This is where you can contruct your transport to the stars.
+										This is where you can construct your transport to the stars.
 									</span>
 								</td>
 							</tr>
@@ -6483,7 +6590,7 @@
 										Engine Units: <span id="engine">0</span>/25
 									</h3>
 									<span>
-										These are what allows your rocket to consume antimatter and create propulsion to blast your rocket far into space
+										These combine antimatter with matter in a controlled reaction to create propulsion that will carry you to the stars.
 										<br>
 										Costs <span id="engineSiliconCost">500,000</span> Silicon, <span id="engineMeteoriteCost">10,000</span> Meteorite, <span id="engineHydrogenCost">250,000</span> Hydrogen.
 									</span>
@@ -6498,7 +6605,7 @@
 										Aerodynamic Sections: <span id="aero">0</span>/15
 									</h3>
 									<span>
-										These allow for easy takeoff's and landings out of atmospheres so that you don't have to worry about them.
+										These allow for easy takeoffs and landings out of atmospheres so that you don't have to worry about air resistance.
 										<br>
 										Costs <span id="aeroSilverCost">200,000</span> Silver, <span id="aeroIceCost">300,000</span> Ice, <span id="aeroGemCost">250,000</span> Gems.
 									</span>
@@ -6789,6 +6896,16 @@
 									</h3>
 				                	<div class="checkbox">
 										<label><input id="notificationsEnabled" type="checkbox" value="">Screen Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Gain Buttons
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="gainButtonsHidden" type="checkbox" value="">Gain Buttons Hidden</label>
 									</div>
 				                </td>
 							</tr>

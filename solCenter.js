@@ -35,12 +35,19 @@ function unlockDysonResearch(){
 	}
 }
 
-function changeEmcAmount(){
-    emcAmount *= 10;
-    if(emcAmount > getMaxEnergy())
-    {
-        emcAmount = 1;
-    }
+function changeEmcAmount(event){
+	if (event.button === 2) {
+		emcAmount /= 10;
+		if (emcAmount < 1) {
+			emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
+		}
+	} else {
+		emcAmount *= 10;
+		if(emcAmount > getMaxEnergy())
+		{
+			emcAmount = 1;
+		}
+	}
 
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
 		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
@@ -151,6 +158,18 @@ function getDyson(){
 
 		refreshDyson()
 	}
+}
+
+function buildDysonTo(n) {
+	while (dyson < n && titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost) {
+		titanium -= dysonTitaniumCost;
+		gold -= dysonGoldCost;
+		silicon -= dysonSiliconCost;
+		meteorite -= dysonMeteoriteCost;
+		ice -= dysonIceCost;
+		dyson += 1;
+	}
+	refreshDyson();
 }
 
 function buildRing(){

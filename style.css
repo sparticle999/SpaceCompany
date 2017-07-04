@@ -15,6 +15,7 @@
 }
 .bold{
 	font-weight:bold;
+	text-decoration: underline;
 }
 .green{
 	color: #00b200 !important;

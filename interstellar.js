@@ -119,7 +119,6 @@ Game.interstellar = (function(){
             if(data.interstellar.version && data.interstellar.version === this.dataVersion) {
                 for(var id in data.interstellar.machines) {
                     this.machines[id] = data.interstellar.machines[id];
-                    console.log(this.machines[id])
                 }
                 for(var id in data.interstellar.stars) {
                     this.stars[id] = data.interstellar.stars[id];

@@ -4,6 +4,14 @@ function legacySave(data) {
 		versionNumber: versionNumber,
 		lastFixedUpdate: lastFixedUpdate,
 		plasma: plasma,
+		PSU: PSU,
+		PSUSilverCost: PSUSilverCost,
+		PSUGoldCost: PSUGoldCost,
+		PSUUraniumCost: PSUUraniumCost,
+		PSUT2: PSUT2,
+		PSUT2SilverCost: PSUT2SilverCost,
+		PSUT2GoldCost: PSUT2GoldCost,
+		PSUT2UraniumCost: PSUT2UraniumCost,
 		heater: heater,
 		heaterSpaceMetalCost: heaterSpaceMetalCost,
 		heaterGemCost: heaterGemCost,
@@ -407,6 +415,14 @@ function legacyLoad(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
 		if(typeof savegame.lastFixedUpdate !== "undefined"){lastFixedUpdate = savegame.lastFixedUpdate;}
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
+		if(typeof savegame.PSU !== "undefined") PSU = savegame.PSU;
+		if(typeof savegame.PSUSilverCost !== "undefined") PSUSilverCost = savegame.PSUSilverCost;
+		if(typeof savegame.PSUGoldCost !== "undefined") PSUGoldCost = savegame.PSUGoldCost;
+		if(typeof savegame.PSUUraniumCost !== "undefined") PSUUraniumCost = savegame.PSUUraniumCost;
+		if(typeof savegame.PSUT2 !== "undefined") PSUT2 = savegame.PSUT2;
+		if(typeof savegame.PSUT2SilverCost !== "undefined") PSUT2SilverCost = savegame.PSUT2SilverCost;
+		if(typeof savegame.PSUT2GoldCost !== "undefined") PSUT2GoldCost = savegame.PSUT2GoldCost;
+		if(typeof savegame.PSUT2UraniumCost !== "undefined") PSUT2UraniumCost = savegame.PSUT2UraniumCost;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
 		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
 		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
