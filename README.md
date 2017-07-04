@@ -30,7 +30,6 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Unlock Technologies such as reduce the exponental increase of costs
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
-- Plasma Storage Units (PSUs)
 - Buy X buttons
 - Buy Max/Custom Buttons
 - Reduce Storage Costs
@@ -51,6 +50,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Antimatter Wonder
 - Portal Room
 - (Stargate)
+- Plasma Storage Units
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines

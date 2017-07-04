@@ -122,6 +122,10 @@
 							<span id="plasma">
 								0
 							</span>
+							<span id="plasmaStorageBox" class="hidden">
+								/
+								<span id="plasmaStorage">100,000</span>
+							</span>
 						</td>
 					</tr>
 					<tr id="energyNav" onclick="activeResourceTab('energyNav')" class="sideTab hidden" href="#energyTab" aria-controls="energyTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -560,6 +564,36 @@
 									</hide>
 									<br>
 									<br>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnits" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										PSUs: <span id="PSU">0</span>
+									</h3>
+									<span>
+										PSUs increase your plasma storage by 50,000 per PSU built.
+										<br>
+										Costs <span id="PSUSilverCost">770,000</span> Silver, <span id="PSUGoldCost">770,000</span> Gold, <span id="PSUUraniumCost">550,000</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSU()" class="btn btn-default">Get PSU</button>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnitsT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T2 PSUs: <span id="PSUT2">0</span>
+									</h3>
+									<span>
+										Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.
+										<br>
+										Costs <span id="PSUT2SilverCost">9.300M</span> Silver, <span id="PSUT2GoldCost">9.300M</span> Gold, <span id="PSUT2UraniumCost">6.800M</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSUT2()" class="btn btn-default">Get PSU T2</button>
 								</td>
 							</tr>
 							<tr>
@@ -3075,6 +3109,40 @@
 									<br>
 									<br>
 									<button onclick="unlockPlasma()" class="btn btn-default">Unlock Plasma</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPSU" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasma Storage Units
+									</h3>
+									<span>
+										PSUs increase the limit on plasma you can store at once.
+										<br>
+										Costs <span id="unlockPSUCost">9.500M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSU()" class="btn btn-default">Unlock PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPSUT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 2 Plasma Storage Units
+									</h3>
+									<span>
+										Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.
+										<br>
+										Costs <span id="unlockPSUT2Cost">37.00M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSUT2()" class="btn btn-default">Unlock T2 PSUs</button>
 									<br>
 									<br>
 								</td>

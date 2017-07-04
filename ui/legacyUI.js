@@ -60,6 +60,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('ice', function(){ return Game.settings.format(ice); });
     Game.ui.bindElement('meteorite', function(){ return Game.settings.format(meteorite); });
 
+    Game.ui.bindElement('plasmaStorage', function(){ return Game.settings.format(getMaxPlasma()); });
     Game.ui.bindElement('energyStorage', function(){ return Game.settings.format(getMaxEnergy()); });
     Game.ui.bindElement('uraniumStorage', function(){ return Game.settings.format(uraniumStorage); });
     Game.ui.bindElement('uraniumNextStorage', function(){ return Game.settings.format(uraniumNextStorage); });
@@ -128,6 +129,14 @@ function registerLegacyBindings() {
     Game.ui.bindElement('meteoriteNextStorage', function(){ return Game.settings.format(meteoriteNextStorage); });
     Game.ui.bindElement('meteoriteStorageCost', function(){ return Game.settings.format(meteoriteStorage); });
     Game.ui.bindElement('meteoriteStorageSpaceMetalCost', function(){ return Game.settings.format(meteoriteStorage*4); });
+    Game.ui.bindElement('PSU', function(){ return Game.settings.format(PSU); });
+    Game.ui.bindElement('PSUSilverCost', function(){ return Game.settings.format(PSUSilverCost); });
+    Game.ui.bindElement('PSUGoldCost', function(){ return Game.settings.format(PSUGoldCost); });
+    Game.ui.bindElement('PSUUraniumCost', function(){ return Game.settings.format(PSUUraniumCost); });
+    Game.ui.bindElement('PSUT2', function(){ return Game.settings.format(PSUT2); });
+    Game.ui.bindElement('PSUT2SilverCost', function(){ return Game.settings.format(PSUT2SilverCost); });
+    Game.ui.bindElement('PSUT2GoldCost', function(){ return Game.settings.format(PSUT2GoldCost); });
+    Game.ui.bindElement('PSUT2UraniumCost', function(){ return Game.settings.format(PSUT2UraniumCost); });
     Game.ui.bindElement('heater', function(){ return Game.settings.format(heater); });
     Game.ui.bindElement('heaterSpaceMetalCost', function(){ return Game.settings.format(heaterSpaceMetalCost); });
     Game.ui.bindElement('heaterGemCost', function(){ return Game.settings.format(heaterGemCost); });

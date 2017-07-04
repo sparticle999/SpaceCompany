@@ -30,7 +30,7 @@ function checkStorages(){
 			// }
 
 			// if(id == "plasma"){
-			// 	if(window[id] >= 100000){
+			// 	if(window[id] >= getMaxPlasma()){
 			// 		resourcesFull += 1;
 			// 	}
 			// }
@@ -63,8 +63,12 @@ function gainResources(delta){
     oil = (oil + oilps * delta).clamp(0, oilStorage);
     wood = (wood + woodps * delta).clamp(0, woodStorage);
     meteorite = (meteorite + meteoriteps * delta).clamp(0, meteoriteStorage);
-    plasma = (plasma + plasmaps * delta).clamp(0, 100000);
+    plasma = (plasma + plasmaps * delta).clamp(0, getMaxPlasma());
     rocketFuel += rocketFuelps * delta;
+}
+
+function getMaxPlasma() {
+	return 100000 + (50000 * PSU) + (500000 * PSUT2);
 }
 
 function getMaxEnergy() {
@@ -382,6 +386,32 @@ function toggleMeteorite(){
 function destroyMachine(machine, id){
 	if(window[id] > 0){
 		window[id] -= 1;
+	}
+}
+
+function getPSU(){
+	if(silver >= PSUSilverCost && gold >= PSUGoldCost && uranium >= PSUUraniumCost ){
+		silver -= PSUSilverCost;
+		gold -= PSUGoldCost;
+		uranium -= PSUUraniumCost;
+		PSU += 1;
+		PSUSilverCost = Math.floor(770000 * Math.pow(1.1,PSU));
+		PSUGoldCost = Math.floor(770000 * Math.pow(1.1,PSU));
+		PSUUraniumCost = Math.floor(550000 * Math.pow(1.1,PSU));
+        Game.statistics.add('tierOwned1');
+	}
+}
+
+function getPSUT2(){
+	if(silver >= PSUT2SilverCost && gold >= PSUT2GoldCost && uranium >= PSUT2UraniumCost ){
+		silver -= PSUT2SilverCost;
+		gold -= PSUT2GoldCost;
+		uranium -= PSUT2UraniumCost;
+		PSUT2 += 1;
+		PSUT2SilverCost = Math.floor(9300000 * Math.pow(1.1,PSUT2));
+		PSUT2GoldCost = Math.floor(9300000 * Math.pow(1.1,PSUT2));
+		PSUT2UraniumCost = Math.floor(6800000 * Math.pow(1.1,PSUT2));
+        Game.statistics.add('tierOwned2');
 	}
 }
 

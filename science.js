@@ -280,6 +280,33 @@ function unlockPlasmaTier2(){
 	}
 }
 
+function unlockPSU(){
+	if(science >= 950000){
+		science -= 950000;
+		document.getElementById("unlockPSU").className = "hidden";
+		document.getElementById("unlockPSUT2").className = "";
+		document.getElementById("plasmaStorageUnits").className = "";
+		document.getElementById("plasmaStorageBox").className = "";
+		available.push("unlockPSUT2");
+		researched.push("unlockPSU");
+		resourcesUnlocked.push("plasmaStorageUnits", "plasmaStorageBox");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
+function unlockPSUT2(){
+	if(science >= 37000000){
+		science -= 37000000;
+		document.getElementById("unlockPSUT2").className = "hidden";
+		document.getElementById("plasmaStorageUnitsT2").className = "";
+		researched.push("unlockPSUT2");
+		resourcesUnlocked.push("plasmaStorageUnitsT2");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
 function unlockEmc(){
 	if(science >= 60000){
 		science -= 60000;
