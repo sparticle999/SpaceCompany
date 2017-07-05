@@ -44,13 +44,16 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Screen Notifications Graphics Option
 - Kongregate Leaderboard
 - 7 New Themes
-- Random Loading Messages
+- Random Loading Messages (41)
 - Communication Wonder
 - Rocket Wonder
 - Antimatter Wonder
 - Portal Room
 - (Stargate)
 - Plasma Storage Units
+- Buying Multiple Dyson Parts
+- Option to Hide Gain Buttons
+- Achievements for Rings and Swarms
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -61,6 +64,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Science Forced 1 Decimal Until 100
 - Cleared Up Misconceptions With 'NB:' Notes
 - Uranium + Plasma Achievements
+- Changed Some Descriptions
+- Made Red Bold Costs Also Underlined
+- Allow decreasing EMC amount with right click
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
