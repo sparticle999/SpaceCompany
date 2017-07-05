@@ -104,7 +104,8 @@ function refreshTimeUntilFull() {
 function setTimeUntilDisplayTest(target, value) {
 	if(value > 0) {
 		$('#' + target).text(Game.utils.getFullTimeDisplay(value));
-	} else {
+	} 
+	else {
         $('#' + target).text('N/A');
 	}
 }

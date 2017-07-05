@@ -80,6 +80,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Interstellar Tab Not Loading Values
 - Fixed Collapse Outer Solar System SideBarTab Visual Bug
 - Fixed Portal Room Helium Bug
+- Fixed Whitespace Bug on Plasma Tab
 
 ### v0.4.4
 ##### Features
