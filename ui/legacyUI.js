@@ -356,6 +356,10 @@ function registerLegacyBindings() {
     Game.ui.bindElement('labT3WoodCost', function(){ return Game.settings.format(labT3WoodCost); });
     Game.ui.bindElement('labT3GemCost', function(){ return Game.settings.format(labT3GemCost); });
     Game.ui.bindElement('labT3MetalCost', function(){ return Game.settings.format(labT3MetalCost); });
+    Game.ui.bindElement('labT4', function(){ return Game.settings.format(labT4); });
+    Game.ui.bindElement('labT4WoodCost', function(){ return Game.settings.format(labT4WoodCost); });
+    Game.ui.bindElement('labT4GemCost', function(){ return Game.settings.format(labT4GemCost); });
+    Game.ui.bindElement('labT4MetalCost', function(){ return Game.settings.format(labT4MetalCost); });
     Game.ui.bindElement('chemicalPlant', function(){ return Game.settings.format(chemicalPlant); });
     Game.ui.bindElement('chemicalPlantMetalCost', function(){ return Game.settings.format(chemicalPlantMetalCost); });
     Game.ui.bindElement('chemicalPlantGemCost', function(){ return Game.settings.format(chemicalPlantGemCost); });

@@ -35,6 +35,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Reduce Storage Costs
 - Achievements with Bonuses
 - Change Letter Formatting To Start At 100K
+- Rebalance Science
 
 # Changelog:
 

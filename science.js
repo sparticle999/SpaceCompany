@@ -36,6 +36,18 @@ function getLabT3(){
 	}
 }
 
+function getLabT4(){
+	if(wood >= labT4WoodCost && gem >= labT4GemCost && metal >= labT4MetalCost){
+		wood -= labT4WoodCost;
+		gem -= labT4GemCost;
+		metal -= labT4MetalCost;
+		labT4 += 1;
+		labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
+		labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
+		labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+	}
+}
+
 function unlockStorage(){
 	if(science >= 5){
 		science -= 5;
@@ -304,6 +316,16 @@ function unlockPSUT2(){
 		resourcesUnlocked.push("plasmaStorageUnitsT2");
         Game.statistics.add('techResearched');
 		newUnlock("resources");
+	}
+}
+
+function unlockLabT4(){
+	if(science >= 50000000){
+		science -= 50000000;
+		document.getElementById("unlockLabT4").className = "hidden";
+		document.getElementById("labTier4").className = "";
+		researched.push("unlockLabT4");
+        Game.statistics.add('techResearched');
 	}
 }
 

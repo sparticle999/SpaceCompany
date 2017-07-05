@@ -2836,7 +2836,9 @@
 										Home Science Kit: <span id="lab">0</span>
 									</h3>
 									<span>
-										Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.
+										Build a small laboratory of your very own to start producing science.
+										<br>
+										Each one produces 0.1 science per second.
 										<br>
 										Costs <span id="labMetalCost">20</span> Metal, <span id="labGemCost">15</span> Gems, <span id="labWoodCost">10</span> Wood.
 									</span>
@@ -2853,7 +2855,9 @@
 										High School Science: <span id="labT2">0</span>
 									</h3>
 									<span>
-										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
+										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed.
+										<br>
+										Each one produces 1 science per second.
 										<br>
 										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
 									</span>
@@ -2870,13 +2874,32 @@
 										University Laboratory: <span id="labT3">0</span>
 									</h3>
 									<span>
-										Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.
+										Build an even better version of the old laboratory to further your exploration of the realm of science.
+										<br>
+										Each one produces 10 science per second.
 										<br>
 										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
 									</span>
 									<br>
 									<br>
 									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
+								</td>
+							</tr>
+							<tr id="labTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Scientific Observatory: <span id="labT4">0</span>
+									</h3>
+									<span>
+										Create an obseravatory to gaze upon the stars and acquire knowledge from them.
+										<br>
+										Each one produces 100 science per second.
+										<br>
+										Costs <span id="labT4MetalCost">610,000</span> Metal, <span id="labT4GemCost">370,000</span> Gems, <span id="labT4WoodCost">926,000</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
 								</td>
 							</tr>
 						</table>
@@ -3198,6 +3221,23 @@
 									<br>
 									<br>
 									<button onclick="unlockPlasmaTier2()" class="btn btn-default">Unlock Plasma Tier 2</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 4 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.
+										<br>
+										Costs <span id="unlockLabT4Cost">50M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT4()" class="btn btn-default">Unlock Tier 4 Science</button>
 									<br>
 									<br>
 								</td>

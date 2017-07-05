@@ -152,7 +152,7 @@ function refreshPerSec(delta){
     // Science
     var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
     var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02);
-    scienceps = ((lab*0.1) + (labT2*1) + (labT3*10)) * scienceMultiplier;
+    scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100)) * scienceMultiplier;
 
 	if(!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
@@ -547,6 +547,10 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, labT3GemCost, "labT3GemCost");
 	Game.settings.turnRed(wood, labT3WoodCost, "labT3WoodCost");
 
+	Game.settings.turnRed(metal, labT4MetalCost, "labT4MetalCost");
+	Game.settings.turnRed(gem, labT4GemCost, "labT4GemCost");
+	Game.settings.turnRed(wood, labT4WoodCost, "labT4WoodCost");
+
 	Game.settings.turnRed(science, 5, "unlockStorageCost");
 	Game.settings.turnRed(science, 20, "unlockBasicEnergyCost");
 	Game.settings.turnRed(science, 30, "unlockOilCost");
@@ -563,6 +567,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
 	Game.settings.turnRed(science, 40000, "unlockPlasmaCost");
 	Game.settings.turnRed(science, 60000, "unlockPlasmaTier2Cost");
+	Game.settings.turnRed(science, 50000000, "unlockLabT4Cost");
 	Game.settings.turnRed(science, 60000, "unlockEmcCost");
 	Game.settings.turnRed(science, 100000, "unlockMeteoriteCost");
 	Game.settings.turnRed(science, 75000, "unlockMeteoriteTier1Cost");
@@ -923,6 +928,15 @@ function refreshResearches(){
 	}
 	if(contains(researched, "unlockLabT3")){
 		document.getElementById("labTier3").className = "";
+	}
+	if(contains(researched, "unlockLabT4")){
+		document.getElementById("labTier4").className = "";
+	}
+	if(contains(researched, "unlockLabT3")){
+		if(contains(available, "unlockLabT4") === false){
+			document.getElementById("unlockLabT4").className = "";
+			available.push("unlockLabT4");
+		}
 	}
 	if(contains(researched, "upgradeSolarTech")){
 		if(contains(available, "unlockBatteries") === false){
