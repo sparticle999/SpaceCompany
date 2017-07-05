@@ -20,7 +20,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Dark Matter
-- Some sort of prestige (Amnesia?)
+- Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
 - Unknown Planets that you have to explore to know what it holds
 - Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
@@ -54,6 +54,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buying Multiple Dyson Parts
 - Option to Hide Gain Buttons
 - Achievements for Rings and Swarms
+- Time Until Storage Full Display
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines

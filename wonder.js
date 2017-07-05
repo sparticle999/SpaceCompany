@@ -537,6 +537,27 @@ function activatePortal(){
 		resourcesUnlocked.push("wonderFloor3Nav", "stargateNav");
 		buttonsHidden.push("activatePortal");
 		activated.push("portalRoom");
-		newUnlock("wonders");
+		newUnlock("wonder");
+	}
+}
+
+function rebuildStargate(){
+	if(plasma >= 500000 && silicon >= 8000000 && meteorite >= 6000000){
+		plasma -= 500000;
+		silicon -= 8000000;
+		meteorite -= 6000000;
+		document.getElementById("rebuildStargate").className = "hidden";
+		document.getElementById("stargateActivation").innerHTML = "Activated";
+		document.getElementById("stargateActivation").className = "green";
+		document.getElementById("travelNav").className = "sideTab";
+		buttonsHidden.push("rebuildStargate");
+		activated.push("stargate");
+        Game.statistics.add('wondersActivated');
+        if(document.getElementById("interstellarTab").className != ""){
+        	document.getElementById("interstellarTab").className = "";
+        	tabsUnlocked.push("interstellarTab");
+        	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+        }
+		newUnlock("interstellar");
 	}
 }

@@ -80,32 +80,32 @@ function fixStorageRounding() {
 }
 
 function refreshTimeUntilFull() {
-    setTimeUntilDisplayTest('plasmaNav', (getMaxPlasma() - plasma) / plasmaps);
-    setTimeUntilDisplayTest('energyNav', (getMaxEnergy() - energy) / energyps);
-    setTimeUntilDisplayTest('uraniumNav', (uraniumStorage - uranium) / uraniumps);
-    setTimeUntilDisplayTest('lavaNav', (lavaStorage - lava) / lavaps);
-    setTimeUntilDisplayTest('oilNav', (oilStorage - oil) / oilps);
-    setTimeUntilDisplayTest('metalNav', (metalStorage - metal) / metalps);
-    setTimeUntilDisplayTest('gemNav', (gemStorage - gem) / gemps);
-    setTimeUntilDisplayTest('charcoalNav', (charcoalStorage - charcoal) / charcoalps);
-    setTimeUntilDisplayTest('woodNav', (woodStorage - wood) / woodps);
-    setTimeUntilDisplayTest('siliconNav', (siliconStorage - silicon) / siliconps);
-    setTimeUntilDisplayTest('spaceMetalNav', (spaceMetalStorage - spaceMetal) / spaceMetalps);
-    setTimeUntilDisplayTest('methaneNav', (methaneStorage - methane) / methaneps);
-    setTimeUntilDisplayTest('titaniumNav', (titaniumStorage - titanium) / titaniumps);
-    setTimeUntilDisplayTest('goldNav', (goldStorage - gold) / goldps);
-    setTimeUntilDisplayTest('silverNav', (silverStorage - silver) / silverps);
-    setTimeUntilDisplayTest('hydrogenNav', (hydrogenStorage - hydrogen) / hydrogenps);
-    setTimeUntilDisplayTest('heliumNav', (heliumStorage - helium) / heliumps);
-    setTimeUntilDisplayTest('iceNav', (iceStorage - ice) / iceps);
-    setTimeUntilDisplayTest('meteoriteNav', (meteoriteStorage - meteorite) / meteoriteps);
+    setTimeUntilDisplayTest('plasmaFullTime', (getMaxPlasma() - plasma) / plasmaps);
+    setTimeUntilDisplayTest('energyFullTime', (getMaxEnergy() - energy) / energyps);
+    setTimeUntilDisplayTest('uraniumFullTime', (uraniumStorage - uranium) / uraniumps);
+    setTimeUntilDisplayTest('lavaFullTime', (lavaStorage - lava) / lavaps);
+    setTimeUntilDisplayTest('oilFullTime', (oilStorage - oil) / oilps);
+    setTimeUntilDisplayTest('metalFullTime', (metalStorage - metal) / metalps);
+    setTimeUntilDisplayTest('gemFullTime', (gemStorage - gem) / gemps);
+    setTimeUntilDisplayTest('charcoalFullTime', (charcoalStorage - charcoal) / charcoalps);
+    setTimeUntilDisplayTest('woodFullTime', (woodStorage - wood) / woodps);
+    setTimeUntilDisplayTest('siliconFullTime', (siliconStorage - silicon) / siliconps);
+    setTimeUntilDisplayTest('spaceMetalFullTime', (spaceMetalStorage - spaceMetal) / spaceMetalps);
+    setTimeUntilDisplayTest('methaneFullTime', (methaneStorage - methane) / methaneps);
+    setTimeUntilDisplayTest('titaniumFullTime', (titaniumStorage - titanium) / titaniumps);
+    setTimeUntilDisplayTest('goldFullTime', (goldStorage - gold) / goldps);
+    setTimeUntilDisplayTest('silverFullTime', (silverStorage - silver) / silverps);
+    setTimeUntilDisplayTest('hydrogenFullTime', (hydrogenStorage - hydrogen) / hydrogenps);
+    setTimeUntilDisplayTest('heliumFullTime', (heliumStorage - helium) / heliumps);
+    setTimeUntilDisplayTest('iceFullTime', (iceStorage - ice) / iceps);
+    setTimeUntilDisplayTest('meteoriteFullTime', (meteoriteStorage - meteorite) / meteoriteps);
 }
 
 function setTimeUntilDisplayTest(target, value) {
 	if(value > 0) {
-		$('#' + target).attr('title', 'Time until full: ' + Game.utils.getFullTimeDisplay(value));
+		$('#' + target).text(Game.utils.getFullTimeDisplay(value));
 	} else {
-        $('#' + target).attr('title', 'Time until full: N/A');
+        $('#' + target).text('N/A');
 	}
 }
 
