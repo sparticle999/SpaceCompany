@@ -395,7 +395,7 @@ function getCost(basePrice, amount, multiplier) {
     return Math.floor(basePrice * Math.pow(multiplier, amount));
 }
 
-function purchaseEfficiency() {
+function purchaseResourceEfficiency() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
 	var cost = getCost(tech.cost['science'], tech.current);
@@ -405,7 +405,7 @@ function purchaseEfficiency() {
 	}
 }
 
-function updateEfficiencyDisplay() {
+function updateResourceEfficiencyDisplay() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
 	if(science > tech.cost['science']) {
@@ -413,15 +413,84 @@ function updateEfficiencyDisplay() {
 	}
 
 	if(tech.unlocked === false) {
-        $('#scienceEfficiencyUpgrade').hide();
+        $('#scienceResourceEfficiencyUpgrade').hide();
 		return;
 	} else {
-        $('#scienceEfficiencyUpgrade').show();
+        $('#scienceResourceEfficiencyUpgrade').show();
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, 'scienceEfficiencyUpgradeCost');
+	Game.settings.turnRed(science, cost, 'scienceResourceEfficiencyUpgradeCost');
 
-	$('#scienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
-	$('#scienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
+	$('#scienceResourceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+	$('#scienceResourceEfficiencyUpgradeCost').text(Game.settings.format(cost));
+}
+
+function purchaseEnergyEfficiency() {
+    var tech = Game.tech.getTechData('energyEfficiencyResearch');
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    if(science >= cost) {
+        Game.tech.gainTech(tech.id);
+        science -= cost;
+    }
+}
+
+function updateEnergyEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('energyEfficiencyResearch');
+
+    if(tech.current >= tech.maxLevel) {
+        $('#scienceScienceEfficiencyUpgrade').hide();
+        return;
+    }
+
+    if(science > tech.cost['science']) {
+        tech.unlocked = true;
+    }
+
+    if(tech.unlocked === false) {
+        $('#scienceEnergyEfficiencyUpgrade').hide();
+        return;
+    } else {
+        $('#scienceEnergyEfficiencyUpgrade').show();
+    }
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    Game.settings.turnRed(science, cost, 'scienceEnergyEfficiencyUpgradeCost');
+
+    $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+    $('#scienceEnergyEfficiencyUpgradeCost').text(Game.settings.format(cost));
+}
+
+function purchaseScienceEfficiency() {
+    var tech = Game.tech.getTechData('scienceEfficiencyResearch');
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    if(science >= cost) {
+        Game.tech.gainTech(tech.id);
+        science -= cost;
+    }
+}
+
+function updateScienceEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('scienceEfficiencyResearch');
+
+
+
+    if(science > tech.cost['science']) {
+        tech.unlocked = true;
+    }
+
+    if(tech.unlocked === false) {
+        $('#scienceScienceEfficiencyUpgrade').hide();
+        return;
+    } else {
+        $('#scienceScienceEfficiencyUpgrade').show();
+    }
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    Game.settings.turnRed(science, cost, 'scienceScienceEfficiencyUpgradeCost');
+
+    $('#scienceScienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+    $('#scienceScienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
 }

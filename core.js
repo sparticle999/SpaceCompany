@@ -58,7 +58,10 @@ function calculateEnergyUse(delta) {
         use += plasmatic * 8500;
 	}
 
-    return use;
+    var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
+	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
+
+    return use * multiplier;
 }
 
 function toggleEnergy() {
@@ -73,6 +76,36 @@ function fixStorageRounding() {
 
 	if(Math.round(plasma * precision) / precision === getMaxPlasma()) {
 		plasma = getMaxPlasma();
+	}
+}
+
+function refreshTimeUntilFull() {
+    setTimeUntilDisplayTest('plasmaNav', (getMaxPlasma() - plasma) / plasmaps);
+    setTimeUntilDisplayTest('energyNav', (getMaxEnergy() - energy) / energyps);
+    setTimeUntilDisplayTest('uraniumNav', (uraniumStorage - uranium) / uraniumps);
+    setTimeUntilDisplayTest('lavaNav', (lavaStorage - lava) / lavaps);
+    setTimeUntilDisplayTest('oilNav', (oilStorage - oil) / oilps);
+    setTimeUntilDisplayTest('metalNav', (metalStorage - metal) / metalps);
+    setTimeUntilDisplayTest('gemNav', (gemStorage - gem) / gemps);
+    setTimeUntilDisplayTest('charcoalNav', (charcoalStorage - charcoal) / charcoalps);
+    setTimeUntilDisplayTest('woodNav', (woodStorage - wood) / woodps);
+    setTimeUntilDisplayTest('siliconNav', (siliconStorage - silicon) / siliconps);
+    setTimeUntilDisplayTest('spaceMetalNav', (spaceMetalStorage - spaceMetal) / spaceMetalps);
+    setTimeUntilDisplayTest('methaneNav', (methaneStorage - methane) / methaneps);
+    setTimeUntilDisplayTest('titaniumNav', (titaniumStorage - titanium) / titaniumps);
+    setTimeUntilDisplayTest('goldNav', (goldStorage - gold) / goldps);
+    setTimeUntilDisplayTest('silverNav', (silverStorage - silver) / silverps);
+    setTimeUntilDisplayTest('hydrogenNav', (hydrogenStorage - hydrogen) / hydrogenps);
+    setTimeUntilDisplayTest('heliumNav', (heliumStorage - helium) / heliumps);
+    setTimeUntilDisplayTest('iceNav', (iceStorage - ice) / iceps);
+    setTimeUntilDisplayTest('meteoriteNav', (meteoriteStorage - meteorite) / meteoriteps);
+}
+
+function setTimeUntilDisplayTest(target, value) {
+	if(value > 0) {
+		$('#' + target).attr('title', 'Time until full: ' + Game.utils.getFullTimeDisplay(value));
+	} else {
+        $('#' + target).attr('title', 'Time until full: N/A');
 	}
 }
 
@@ -91,8 +124,8 @@ function refreshPerSec(delta){
 	}
 
     // calculate multipliers (add prestige etc here)
-    var efficiencyTech = Game.tech.getTechData('efficiencyResearch');
-    var perSecondMultiplier = 1 + (efficiencyTech.current * 0.01);
+    var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
+    var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01);
 
 	// Now we calculate the base per second
     uraniumps = grinder * perSecondMultiplier;
@@ -115,8 +148,10 @@ function refreshPerSec(delta){
     meteoriteps = 0;
     rocketFuelps = 0;
 
-    // Science is not multiplied!
-    scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
+    // Science
+    var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
+    var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02);
+    scienceps = ((lab*0.1) + (labT2*1) + (labT3*10)) * scienceMultiplier;
 
 	if(!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines

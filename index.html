@@ -3283,17 +3283,47 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="scienceEfficiencyUpgrade" style="display: none">
+							<tr id="scienceResourceEfficiencyUpgrade" style="display: none">
 								<td>
-									<h3 class="default btn-link" id="scienceEfficiencyUpgradeTitle">Efficiency</h3>
+									<h3 class="default btn-link" id="scienceResourceEfficiencyUpgradeTitle">Resource Efficiency</h3>
 									<span>
-										Efficiency increases the resource income per second by 1% per purchase.
+										Resource Efficiency increases the income of resources by 1%/s per purchase.
 										<br>
-										Costs <span id="scienceEfficiencyUpgradeCost">N/A</span> Science.
+										Costs <span id="scienceResourceEfficiencyUpgradeCost">N/A</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="purchaseEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<button onclick="purchaseResourceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceScienceEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceScienceEfficiencyUpgradeTitle">Science Efficiency</h3>
+									<span>
+										Science Efficiency increases the science production by 2% per purchase.
+										<br>
+										Costs <span id="scienceScienceEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseScienceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceEnergyEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceEnergyEfficiencyUpgradeTitle">Energy Efficiency</h3>
+									<span>
+										Energy Efficiency decreases the energy consumption of all machines by 1% per purchase (max 50%).
+										<br>
+										Costs <span id="scienceEnergyEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
 									<br>
 									<br>
 								</td>
