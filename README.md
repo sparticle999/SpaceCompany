@@ -72,6 +72,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Solar Panel Showing Incorrect Output
 - Fixed Interstellar Tab Not Loading Values
 - Fixed Collapse Outer Solar System SideBarTab Visual Bug
+- Fixed Portal Room Helium Bug
 
 ### v0.4.4
 ##### Features

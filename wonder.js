@@ -525,7 +525,7 @@ function rebuildAntimatterWonder(){
 }
 
 function activatePortal(){
-	if(meteorite >= 500000 && helium >= 80000000 && silicon >= 6000000){
+	if(meteorite >= 500000 && helium >= 8000000 && silicon >= 6000000){
 		meteorite -= 500000;
 		helium -= 8000000;
 		silicon -= 6000000;
