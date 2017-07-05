@@ -408,7 +408,7 @@ function purchaseResourceEfficiency() {
 function updateResourceEfficiencyDisplay() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
-	if(science > tech.cost['science']) {
+	if(science > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
@@ -444,7 +444,7 @@ function updateEnergyEfficiencyDisplay() {
         return;
     }
 
-    if(science > tech.cost['science']) {
+    if(science > tech.cost['science'] || tech.current > 0) {
         tech.unlocked = true;
     }
 
@@ -475,9 +475,7 @@ function purchaseScienceEfficiency() {
 function updateScienceEfficiencyDisplay() {
     var tech = Game.tech.getTechData('scienceEfficiencyResearch');
 
-
-
-    if(science > tech.cost['science']) {
+    if(science > tech.cost['science'] || tech.current > 0) {
         tech.unlocked = true;
     }
 
