@@ -100,7 +100,17 @@ var Game = (function() {
     instance.import = function() {
         var text = $('#impexpField').val();
         if (!text.trim()) return console.warn("No save to import provided.");
+        if(text.length % 4 !== 0) {
+            console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+            return;
+        }
+
         var decompressed = LZString.decompressFromBase64(text);
+        if(!decompressed) {
+            console.log("Import Game failed, could not decompress!");
+            return;
+        }
+
         localStorage.setItem("save", decompressed);
 
         console.log("Imported Saved Game");
