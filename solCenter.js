@@ -50,7 +50,7 @@ function changeEmcAmount(event){
 	}
 
 	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
+		document.getElementsByClassName("emcAmount")[i].innerHTML = "X" + Game.settings.format(emcAmount);
 	}
 
     refreshConversionDisplay();
