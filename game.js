@@ -158,6 +158,8 @@ var Game = (function() {
         refreshResearches();
         refreshTabs();
 
+        updateCost();
+
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
         }
