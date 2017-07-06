@@ -59,7 +59,8 @@ Game.resources = (function(){
     instance.load = function(data) {
         if(data.resources) {
             if(data.resources.v && data.resources.v === this.dataVersion) {
-                for(var id in data.resources.i) {
+                console.log(data.resources)
+                for(var id in data.resources.r) {
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.r[id].n);
                         this.entries[id].unlocked = data.resources.r[id].u;
@@ -69,14 +70,32 @@ Game.resources = (function(){
         }
     };
 
+    instance.addResourceManual = function(id, count) {
+        if(!count) {
+            count = 1;
+        }
+
+        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+            return;
+        }
+
+        this.addResource(id, count);
+        Game.statistics.add('manualResources', count);
+    };
+
     instance.addResource = function(id, count) {
         if(isNaN(count) || count === null || Math.abs(count) <= 0) {
             return;
         }
 
         // Add the resource and clamp to the maximum
-        var newValue = Math.floor(this.entries[id].current + count);
-        this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
+        var newValue = this.entries[id].current + count;
+        if(this.entries[id].capacity === -1) {
+            this.entries[id].current = newValue;
+        } else {
+            this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
+        }
+
         this.entries[id].displayNeedsUpdate = true;
     };
 
@@ -91,18 +110,42 @@ Game.resources = (function(){
         this.entries[id].displayNeedsUpdate = true;
     };
 
+    instance.resetPerSecondProduction = function() {
+        for(var id in this.entries) {
+            this.entries[id].perSecond = 0;
+        }
+    };
+
+    instance.modifyPerSecondProduction = function (id, value) {
+        if(!this.entries[id]) {
+            console.error("Unknown Resource: " + id);
+            return;
+        }
+
+        if (isNaN(value) || value === undefined) {
+            console.error("Invalid per second value: " + value + " for " + id);
+            return;
+        }
+
+        this.entries[id].perSecond += value;
+    };
+
     instance.setPerSecondProduction = function(id, value) {
         if(!this.entries[id]) {
             console.error("Unknown Resource: " + id);
             return;
         }
 
-        if (value < 0 || isNaN(value) || value === undefined) {
+        if (isNaN(value) || value === undefined) {
             console.error("Invalid per second value: " + value + " for " + id);
             return;
         }
 
         this.entries[id].perSecond = value;
+    };
+
+    instance.setCapacity = function(id, value) {
+        this.entries[id].capacity = value;
     };
 
     instance.unlock = function(id) {
@@ -133,6 +176,60 @@ Game.resources = (function(){
             if(data.category === category) {
                 data.hidden = true;
             }
+        }
+    };
+
+    instance.getTotalCost = function(count, current, costData, costMultiplier) {
+        if(!count) {
+            count = 1;
+        }
+
+        if (!costMultiplier) {
+            costMultiplier = 1;
+        }
+
+        if(!costData) {
+            return {};
+        }
+
+        var result = {};
+        for(var i = 0; i < count; i++) {
+            for (var resourceId in costData) {
+                if(!result[resourceId]) {
+                    result[resourceId] = 0;
+                }
+
+                var value = Math.floor(costData[resourceId] * Math.pow(costMultiplier, current + i));
+                result[resourceId] += value;
+            }
+        }
+
+        return result;
+    };
+
+    instance.canAfford = function (costData) {
+        if(!costData) {
+            return false;
+        }
+
+        for(var resourceId in costData) {
+            var resourceData = this.getResourceData(resourceId);
+            if(!resourceData) {
+                console.error("Could not find resource for cost: " + resourceId);
+                return false;
+            }
+
+            if(resourceData.current < costData[resourceId]) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+
+    instance.pay = function(costData) {
+        for (var resourceId in costData) {
+            Game.resources.takeResource(resourceId, costData[resourceId]);
         }
     };
 

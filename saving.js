@@ -2,7 +2,6 @@ function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
 		versionNumber: versionNumber,
-		lastFixedUpdate: lastFixedUpdate,
 		plasma: plasma,
 		PSU: PSU,
 		PSUSilverCost: PSUSilverCost,
@@ -31,6 +30,10 @@ function legacySave(data) {
 		batteryT2MetalCost: batteryT2MetalCost,
 		batteryT2GemCost: batteryT2GemCost,
 		batteryT2SpaceMetalCost: batteryT2SpaceMetalCost,
+        batteryT3: batteryT3,
+        batteryT3MetalCost: batteryT3MetalCost,
+        batteryT3GemCost: batteryT3GemCost,
+        batteryT3SpaceMetalCost: batteryT3SpaceMetalCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -414,10 +417,9 @@ function legacySave(data) {
 
 function legacyLoad(savegame){
 	"use strict";
-	
+
 	if(savegame){
 		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
-		if(typeof savegame.lastFixedUpdate !== "undefined"){lastFixedUpdate = savegame.lastFixedUpdate;}
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") PSU = savegame.PSU;
 		if(typeof savegame.PSUSilverCost !== "undefined") PSUSilverCost = savegame.PSUSilverCost;
@@ -446,6 +448,10 @@ function legacyLoad(savegame){
 		if(typeof savegame.batteryT2MetalCost !== "undefined") batteryT2MetalCost = savegame.batteryT2MetalCost;
 		if(typeof savegame.batteryT2GemCost !== "undefined") batteryT2GemCost = savegame.batteryT2GemCost;
 		if(typeof savegame.batteryT2SpaceMetalCost !== "undefined") batteryT2SpaceMetalCost = savegame.batteryT2SpaceMetalCost;
+        if(typeof savegame.batteryT3 !== "undefined") batteryT3 = savegame.batteryT3;
+        if(typeof savegame.batteryT3MetalCost !== "undefined") batteryT3MetalCost = savegame.batteryT3MetalCost;
+        if(typeof savegame.batteryT3GemCost !== "undefined") batteryT3GemCost = savegame.batteryT3GemCost;
+        if(typeof savegame.batteryT3SpaceMetalCost !== "undefined") batteryT3SpaceMetalCost = savegame.batteryT3SpaceMetalCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;

@@ -367,6 +367,10 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, batteryT2GemCost, "batteryT2GemCost");
 	Game.settings.turnRed(spaceMetal, batteryT2SpaceMetalCost, "batteryT2SpaceMetalCost");
 
+    Game.settings.turnRed(metal, batteryT3MetalCost, "batteryT3MetalCost");
+    Game.settings.turnRed(gem, batteryT3GemCost, "batteryT3GemCost");
+    Game.settings.turnRed(spaceMetal, batteryT3SpaceMetalCost, "batteryT3SpaceMetalCost");
+
 	Game.settings.turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	Game.settings.turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
 
@@ -575,8 +579,9 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 100000, "unlockDysonCost");
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
-    Game.settings.turnRed(science, 9500000, "unlockPSUCost");
+  Game.settings.turnRed(science, 9500000, "unlockPSUCost");
 	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
+  Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
 
 	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
 	Game.settings.turnRed(gem, 900, "rocketGemCost");
@@ -825,9 +830,8 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
-		document.getElementById("communicationWonderNav").className = "sideTab";
-		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
 	}
@@ -983,6 +987,12 @@ function refreshResearches(){
 			available.push("unlockBatteriesT2");
 		}
 	}
+    if(contains(researched, "unlockBatteriesT2")){
+        if(contains(available, "unlockBatteriesT3") === false){
+            document.getElementById("unlockBatteriesT3").className ="";
+            available.push("unlockBatteriesT3");
+        }
+    }
 	if(contains(researched, "unlockDyson")){
 		if(contains(available, "unlockDysonSphere") === false){
 			document.getElementById("unlockDysonSphere").className ="";
