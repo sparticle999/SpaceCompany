@@ -35,7 +35,46 @@ Game.interstellar = (function(){
 				distance: 5.96,
 				planets: 0
 			},
-
+			star3: {
+				name: "Epsilon Eridani",
+				distance: 10.52,
+				planets: 2
+			},
+			star4: {
+				name: "Tau Ceti",
+				distance: 11.89,
+				planets: 5
+			},
+			star5: {
+				name: "Gliese 674",
+				distance: 14.81,
+				planets: 1
+			},
+			star6: {
+				name: "Gliese 876",
+				distance: 15.34,
+				planets: 4
+			},
+			star7: {
+				name: "Gliese 832",
+				distance: 16.08,
+				planets: 1
+			},
+			star8: {
+				name: "Sirius",
+				distance: 8.58,
+				planets: 0
+			},
+			star9: {
+				name: "Groombridge 1618",
+				distance: 15.85,
+				planets: 0
+			},
+			star10: {
+				name: "DEN 0255-4700",
+				distance: 16.2,
+				planets: 0
+			},
 		},
 	};
 
