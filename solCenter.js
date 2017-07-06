@@ -216,18 +216,17 @@ function getDyson(){
 		dyson += 1;
 
 		refreshDyson()
+
+		return true;
+	}
+	else{
+		return false;
 	}
 }
 
 function buildDysonTo(n) {
-	while (dyson < n && titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost) {
-		titanium -= dysonTitaniumCost;
-		gold -= dysonGoldCost;
-		silicon -= dysonSiliconCost;
-		meteorite -= dysonMeteoriteCost;
-		ice -= dysonIceCost;
-		dyson += 1;
-		refreshDyson();
+	while (dyson < n && getDyson()) {
+		getDyson();
 	}
 }
 
