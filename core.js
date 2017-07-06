@@ -876,7 +876,10 @@ function contains(array, obj) {
 
 function refreshResearches(){
 	for(var i=0; i<available.length; i++){
-		document.getElementById(available[i]).className = "";
+        var element = document.getElementById(available[i]);
+        if(element) {
+        	element.className = "";
+        }
 	}
 	for(var i=0; i<researched.length; i++){
 		document.getElementById(researched[i]).className = "hidden";
