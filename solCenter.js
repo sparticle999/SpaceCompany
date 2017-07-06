@@ -227,8 +227,8 @@ function buildDysonTo(n) {
 		meteorite -= dysonMeteoriteCost;
 		ice -= dysonIceCost;
 		dyson += 1;
+		refreshDyson();
 	}
-	refreshDyson();
 }
 
 function buildRing(){
