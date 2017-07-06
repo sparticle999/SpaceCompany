@@ -3,10 +3,10 @@
     var instance = {};
 
     instance.entries = {};
-    instance.resourceTechEntries = {};
-    instance.resourceTechObservers = {};
-    instance.resourceBuildingEntries = {};
-    instance.resourceBuildingObservers = {};
+    instance.techEntries = {};
+    instance.techObservers = {};
+    instance.buildingEntries = {};
+    instance.buildingObservers = {};
     instance.titleTemplate = null;
     instance.techTemplate = null;
     instance.buildingTemplate = null;
@@ -17,26 +17,18 @@
 
     instance.tab = null;
 
-    instance.categoryNames = {
-        'earth': "Earth Resources",
-        'inner': "Inner Planetary Resources",
-        'outer': "Outer Planetary Resources"
-    };
-
     instance.initialize = function() {
         if(Game.constants.enableDataDrivenResources === false) {
             return;
         }
 
-        this.tab = Game.ui.createTab({id: 'resourcesBETA', title: 'Resources (BETA)'});
+        this.tab = Game.ui.createTab({id: 'scienceBETA', title: 'Science (BETA)'});
         this.tab.initialize();
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<span>{{desc}}</span>',
-                '<br><br>',
-                '<div class="btn btn-default" id="{{htmlId}}_gain" disabled="true">ERR</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -87,13 +79,14 @@
             return;
         }
 
-        for(var id in Game.resources.categoryEntries) {
-            this.tab.addCategory(id, Game.resources.categoryEntries[id].title);
-        }
+        this.tab.addCategory('research', "Research");
+        this.tab.addCategory('tech', "Technologies");
 
-        for(var id in Game.resources.entries) {
-            this.createDisplay(id);
-        }
+        this.createScienceDisplay();
+
+        //for(var id in Game.tech.entries) {
+          //  this.createDisplay(id);
+        //}
     };
 
     instance.update = function(delta) {
@@ -108,25 +101,17 @@
             }
         }
 
-        for(var id in this.resourceTechEntries) {
+        for(var id in this.techEntries) {
             var data = Game.tech.getTechData(id);
             if(data.displayNeedsUpdate === true) {
                 this.updateTechDisplay(data);
             }
         }
 
-        for(var id in this.resourceBuildingEntries) {
+        for(var id in this.buildingEntries) {
             var data = Game.buildings.getBuildingData(id);
             if(data.displayNeedsUpdate === true) {
                 this.updateBuildingDisplay(data);
-            }
-        }
-
-        for(var id in Game.resources.categoryEntries) {
-            if(this.tab.categoryHasVisibleEntries(id) === true) {
-                this.tab.showCategory(id);
-            } else {
-                this.tab.hideCategory(id);
             }
         }
     };
@@ -139,8 +124,8 @@
         var unlockButton = $('#' + techData.htmlId + '_unlock');
         unlockButton.click({id: techData.id}, function(args) { Game.tech.buyTech(args.data.id, 1); });
 
-        this.resourceTechEntries[techData.id] = data.id;
-        this.resourceTechObservers[techData.id] = [];
+        this.techEntries[techData.id] = data.id;
+        this.techObservers[techData.id] = [];
     };
 
     instance.createResourceContentBuilding = function(data, buildingData) {
@@ -148,8 +133,8 @@
         var tech = this.buildingTemplate(buildingData);
         tabContentRoot.append($(tech));
 
-        this.resourceBuildingEntries[buildingData.id] = data.id;
-        this.resourceBuildingObservers[buildingData.id] = [];
+        this.buildingEntries[buildingData.id] = data.id;
+        this.buildingObservers[buildingData.id] = [];
 
         Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_count', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.CURRENT_VALUE});
         Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_prod', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.RESOURCE_PRODUCTION});
@@ -198,14 +183,11 @@
         Game.ui.createResourceObserver({htmlId: data.htmlId + '_perSecond', res: data.id, type: RESOURCE_OBSERVER_TYPE.PER_SECOND});
     };
 
-    instance.createDisplay = function(id) {
+    instance.createScienceDisplay = function() {
+        var id = 'science';
         var data = Game.resources.getResourceData(id);
 
-        if (!Game.resourceCategoryData[data.category]) {
-            return;
-        }
-
-        this.tab.addNavEntry(data.category, id);
+        this.tab.addNavEntry('research', id);
 
         this.createResourceContent(data);
         this.createResourceNav(data);
@@ -229,7 +211,7 @@
 
         // Update the cost display
         if(data.cost) {
-            var costDisplayData = Game.ui.utils.buildCostDisplay(this.resourceTechObservers[data.id], data.htmlId, data.cost);
+            var costDisplayData = Game.ui.utils.buildCostDisplay(this.techObservers[data.id], data.htmlId, data.cost);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));
@@ -266,24 +248,7 @@
             navPanel.hide();
         }
 
-        var gainButton = $('#' + data.htmlId + '_gain');
-        gainButton.attr("disabled", data.current >= data.capacity);
-        gainButton.text('Gain ' + data.perClick);
-
         data.displayNeedsUpdate = false;
-    };
-
-    instance.gainClick = function(args) {
-        var self = args.data.self;
-        var targetId = args.data.id;
-
-        var data = Game.resources.getResourceData(self.entries[targetId].id);
-        var value = data.perClick;
-
-        if(value > 0) {
-            Game.statistics.add('manualResources', value);
-            Game.resources.addResource(data.id, value);
-        }
     };
 
     instance.buildingBuyClick = function(args) {
