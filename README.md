@@ -20,7 +20,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Dark Matter
-- Some sort of prestige (Amnesia?)
+- Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
 - Unknown Planets that you have to explore to know what it holds
 - Each Starsystem is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
@@ -35,6 +35,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Reduce Storage Costs
 - Achievements with Bonuses
 - Change Letter Formatting To Start At 100K
+- Rebalance Science
 
 # Changelog:
 
@@ -44,13 +45,17 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Screen Notifications Graphics Option
 - Kongregate Leaderboard
 - 7 New Themes
-- Random Loading Messages
+- Random Loading Messages (41)
 - Communication Wonder
 - Rocket Wonder
 - Antimatter Wonder
 - Portal Room
 - (Stargate)
 - Plasma Storage Units
+- Buying Multiple Dyson Parts
+- Option to Hide Gain Buttons
+- Achievements for Rings and Swarms
+- Time Until Storage Full Display
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -61,6 +66,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Science Forced 1 Decimal Until 100
 - Cleared Up Misconceptions With 'NB:' Notes
 - Uranium + Plasma Achievements
+- Changed Some Descriptions
+- Made Red Bold Costs Also Underlined
+- Allow decreasing EMC amount with right click
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
@@ -71,6 +79,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Rocket Wonder Not Working
 - Fixed Solar Panel Showing Incorrect Output
 - Fixed Interstellar Tab Not Loading Values
+- Fixed Collapse Outer Solar System SideBarTab Visual Bug
+- Fixed Portal Room Helium Bug
+- Fixed Whitespace Bug on Plasma Tab
 
 ### v0.4.4
 ##### Features

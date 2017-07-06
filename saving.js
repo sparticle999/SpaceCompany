@@ -163,6 +163,10 @@ function legacySave(data) {
 		labT3WoodCost: labT3WoodCost,
 		labT3GemCost: labT3GemCost,
 		labT3MetalCost: labT3MetalCost,
+		labT4: labT4,
+		labT4WoodCost: labT4WoodCost,
+		labT4GemCost: labT4GemCost,
+		labT4MetalCost: labT4MetalCost,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
@@ -574,6 +578,10 @@ function legacyLoad(savegame){
 		if(typeof savegame.labT3WoodCost !== "undefined") labT3WoodCost = savegame.labT3WoodCost;
 		if(typeof savegame.labT3GemCost !== "undefined") labT3GemCost = savegame.labT3GemCost;
 		if(typeof savegame.labT3MetalCost !== "undefined") labT3MetalCost = savegame.labT3MetalCost;
+		if(typeof savegame.labT4 !== "undefined") labT4 = savegame.labT4;
+		if(typeof savegame.labT4WoodCost !== "undefined") labT4WoodCost = savegame.labT4WoodCost;
+		if(typeof savegame.labT4GemCost !== "undefined") labT4GemCost = savegame.labT4GemCost;
+		if(typeof savegame.labT4MetalCost !== "undefined") labT4MetalCost = savegame.labT4MetalCost;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;

@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource", "Adding T3 Batteries. Piece of Cake!", "Launching Rockets", "Thanking The Community", "Identifying Higgs's Boson", "Introducing Turtles", "Converting Mass Back to Energy", "Just One More Piece", "Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to Upgrade Space Metal to", "Transferring Data to NSA", "Implementing AI bug creator", "Initialising Glados", "Initialising J.A.R.V.I.S."];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -555,15 +555,17 @@
 									<span>
 										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.
 										<br>
-										1 Plasma is created by 'attacking' <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
+										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
+										<br>
+										1 Plasma is created by infusing <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
+									<br>
+									<br>
 									<hide class="gainButton">
-									<br>
-									<br>
-									<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+										<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+										<br>
+										<br>
 									</hide>
-									<br>
-									<br>
 								</td>
 							</tr>
 							<tr id="plasmaStorageUnits" class="hidden">
@@ -651,8 +653,10 @@
 									</h2>
 									<span>
 										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
+										<br>
+										Time remaining until full storage: <b><span id="energyFullTime">N/A</span></b>
+										<br>
 									</span>
-									<br>
 									<br>
 									<button onclick="toggleEnergy()" class="btn btn-default">Toggle All Energy Production + Consumption</button>
 								</td>
@@ -826,6 +830,8 @@
 									<span>
 										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
+										<br>
 										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
 									<br>
@@ -940,6 +946,8 @@
 									<span>
 										Upgrade your Oil storage size to <span id="oilNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="oilFullTime">N/A</span></b>
+										<br>
 										Costs <span id="oilStorageCost">50</span> Oil, <span id="oilStorageMetalCost">20</span> Metal.
 									</span>
 									<br>
@@ -1053,6 +1061,8 @@
 									</h3>
 									<span>
 										Upgrade your Metal storage size to <span id="metalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="metalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="metalStorageCost">50</span> Metal.
 									</span>
@@ -1170,6 +1180,8 @@
 									<span>
 										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="gemFullTime">N/A</span></b>
+										<br>
 										Costs <span id="gemStorageCost">50</span> Gems, <span id="gemStorageMetalCost">20</span> Metal.
 									</span>
 									<br>
@@ -1286,6 +1298,8 @@
 									</h3>
 									<span>
 										Upgrade your Charcoal storage size to <span id="charcoalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="charcoalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="charcoalStorageCost">50</span> Charcoal, <span id="charcoalStorageMetalCost">20</span> Metal.
 									</span>
@@ -1411,6 +1425,8 @@
 									<span>
 										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="woodFullTime">N/A</span></b>
+										<br>
 										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> Metal.
 									</span>
 									<br>
@@ -1526,6 +1542,8 @@
 									</h3>
 									<span>
 										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="siliconFullTime">N/A</span></b>
 										<br>
 										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1643,6 +1661,8 @@
 									<span>
 										Upgrade your Space Metal storage size to <span id="spaceMetalNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="spaceMetalFullTime">N/A</span></b>
+										<br>
 										Costs <span id="spaceMetalStorageCost">50</span> Space Metal, <span id="spaceMetalStorageMetalCost">200</span> Metal.
 									</span>
 									<br>
@@ -1758,6 +1778,8 @@
 									</h3>
 									<span>
 										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="methaneFullTime">N/A</span></b>
 										<br>
 										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1876,6 +1898,8 @@
 									<span>
 										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="titaniumFullTime">N/A</span></b>
+										<br>
 										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
 									<br>
@@ -1991,6 +2015,8 @@
 									</h3>
 									<span>
 										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="goldFullTime">N/A</span></b>
 										<br>
 										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2108,6 +2134,8 @@
 									<span>
 										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="silverFullTime">N/A</span></b>
+										<br>
 										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
 									<br>
@@ -2223,6 +2251,8 @@
 									</h3>
 									<span>
 										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="lavaFullTime">N/A</span></b>
 										<br>
 										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2340,6 +2370,8 @@
 									<span>
 										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="hydrogenFullTime">N/A</span></b>
+										<br>
 										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
 									<br>
@@ -2456,6 +2488,8 @@
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="heliumFullTime">N/A</span></b>
+										<br>
 										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
 									<br>
@@ -2571,6 +2605,8 @@
 									</h3>
 									<span>
 										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="iceFullTime">N/A</span></b>
 										<br>
 										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2691,6 +2727,8 @@
 									<span>
 										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
 										<br>
+										Time remaining until full storage: <b><span id="meteoriteFullTime">N/A</span></b>
+										<br>
 										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageSpaceMetalCost">400</span> Space Metal.
 									</span>
 									<br>
@@ -2798,7 +2836,9 @@
 										Home Science Kit: <span id="lab">0</span>
 									</h3>
 									<span>
-										Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.
+										Build a small laboratory of your very own to start producing science.
+										<br>
+										Each one produces 0.1 science per second.
 										<br>
 										Costs <span id="labMetalCost">20</span> Metal, <span id="labGemCost">15</span> Gems, <span id="labWoodCost">10</span> Wood.
 									</span>
@@ -2815,7 +2855,9 @@
 										High School Science: <span id="labT2">0</span>
 									</h3>
 									<span>
-										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
+										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed.
+										<br>
+										Each one produces 1 science per second.
 										<br>
 										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
 									</span>
@@ -2832,13 +2874,32 @@
 										University Laboratory: <span id="labT3">0</span>
 									</h3>
 									<span>
-										Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.
+										Build an even better version of the old laboratory to further your exploration of the realm of science.
+										<br>
+										Each one produces 10 science per second.
 										<br>
 										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
 									</span>
 									<br>
 									<br>
 									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
+								</td>
+							</tr>
+							<tr id="labTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Scientific Observatory: <span id="labT4">0</span>
+									</h3>
+									<span>
+										Create an obseravatory to gaze upon the stars and acquire knowledge from them.
+										<br>
+										Each one produces 100 science per second.
+										<br>
+										Costs <span id="labT4MetalCost">610,000</span> Metal, <span id="labT4GemCost">370,000</span> Gems, <span id="labT4WoodCost">926,000</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
 								</td>
 							</tr>
 						</table>
@@ -3164,6 +3225,23 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockLabT4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 4 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.
+										<br>
+										Costs <span id="unlockLabT4Cost">50M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT4()" class="btn btn-default">Unlock Tier 4 Science</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="unlockEmc" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3283,17 +3361,47 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="scienceEfficiencyUpgrade" style="display: none">
+							<tr id="scienceResourceEfficiencyUpgrade" style="display: none">
 								<td>
-									<h3 class="default btn-link" id="scienceEfficiencyUpgradeTitle">Efficiency</h3>
+									<h3 class="default btn-link" id="scienceResourceEfficiencyUpgradeTitle">Resource Efficiency</h3>
 									<span>
-										Efficiency increases the resource income per second by 1% per purchase.
+										Resource Efficiency increases the income of resources by 1%/s per purchase.
 										<br>
-										Costs <span id="scienceEfficiencyUpgradeCost">N/A</span> Science.
+										Costs <span id="scienceResourceEfficiencyUpgradeCost">N/A</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="purchaseEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<button onclick="purchaseResourceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceScienceEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceScienceEfficiencyUpgradeTitle">Science Efficiency</h3>
+									<span>
+										Science Efficiency increases the science production by 2% per purchase.
+										<br>
+										Costs <span id="scienceScienceEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseScienceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceEnergyEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceEnergyEfficiencyUpgradeTitle">Energy Efficiency</h3>
+									<span>
+										Energy Efficiency decreases the energy consumption of all machines by 1% per purchase (max 50%).
+										<br>
+										Costs <span id="scienceEnergyEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
 									<br>
 									<br>
 								</td>
@@ -4583,7 +4691,7 @@
 										For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.
 										<br>
 										<hide id="rebuildStargate">
-											Costs: <span id="stargateWonderUraniumCost">XXXX</span> ABC, <span id="stargateWonderLavaCost">XXXX</span> ABC, <span id="stargateWonderOilCost">XXXX</span> ABC, <span id="stargateWonderMethaneCost">XXXX</span> ABC.
+											Costs: <span id="stargateWonderPlasmaCost">XXXX</span> Plasma, <span id="stargateWonderSiliconCost">XXXX</span> Silicon, <span id="stargateWonderMeteoriteCost">XXXX</span> Meteorite.
 											<br>
 											<br>
 											<button onclick="rebuildStargate()" class="btn btn-default">Rebuild Stargate</button>
@@ -4707,6 +4815,8 @@
 									<div class="row">
 										<div class="col-md-12">
 											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
+											<br>
+											<label>Remaining plasma: <span data-bind="plasma">N/A</span></label>
 											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting X<span class="emcAmount">1</span></button>
 										</div>
 									</div>
