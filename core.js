@@ -844,6 +844,9 @@ function refreshResources(){
 	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
 		document.getElementById("antimatterNav").className = "sideTab";
 	}
+	if(contains(buttonsHidden, "rebuildStargate")){
+		document.getElementById("travelNav").className = "sideTab";
+	}
 
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
