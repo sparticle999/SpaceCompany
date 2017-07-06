@@ -3,7 +3,8 @@ Game.settings = (function(){
     var autoSaveMapping = {
         '30secs': 30 * 1000,
         '2mins': 2 * 60 * 1000,
-        '10mins': 10 * 60 * 1000
+        '10mins': 10 * 60 * 1000,
+        'off': 10000000000000000000
     };
 
     var instance = {
