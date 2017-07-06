@@ -36,6 +36,18 @@ function getLabT3(){
 	}
 }
 
+function getLabT4(){
+	if(wood >= labT4WoodCost && gem >= labT4GemCost && metal >= labT4MetalCost){
+		wood -= labT4WoodCost;
+		gem -= labT4GemCost;
+		metal -= labT4MetalCost;
+		labT4 += 1;
+		labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
+		labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
+		labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+	}
+}
+
 function unlockStorage(){
 	if(science >= 5){
 		science -= 5;
@@ -250,18 +262,6 @@ function unlockBatteriesT2(){
 	}
 }
 
-function unlockBatteriesT3(){
-    if(science >= 3000000){
-        science -= 3000000;
-        document.getElementById("unlockBatteriesT3").className = "hidden";
-        document.getElementById("batteriesT3").className = "";
-        researched.push("unlockBatteriesT3");
-        resourcesUnlocked.push("batteriesT3");
-        Game.statistics.add('techResearched');
-        newUnlock("resources");
-    }
-}
-
 function unlockPlasma(){
 	if(science >= 40000){
 		science -= 40000;
@@ -289,6 +289,43 @@ function unlockPlasmaTier2(){
         Game.statistics.add('techResearched');
 		resourcesUnlocked.push("plasmaTier2");
 		newUnlock("resources");
+	}
+}
+
+function unlockPSU(){
+	if(science >= 950000){
+		science -= 950000;
+		document.getElementById("unlockPSU").className = "hidden";
+		document.getElementById("unlockPSUT2").className = "";
+		document.getElementById("plasmaStorageUnits").className = "";
+		document.getElementById("plasmaStorageBox").className = "";
+		available.push("unlockPSUT2");
+		researched.push("unlockPSU");
+		resourcesUnlocked.push("plasmaStorageUnits", "plasmaStorageBox");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
+function unlockPSUT2(){
+	if(science >= 37000000){
+		science -= 37000000;
+		document.getElementById("unlockPSUT2").className = "hidden";
+		document.getElementById("plasmaStorageUnitsT2").className = "";
+		researched.push("unlockPSUT2");
+		resourcesUnlocked.push("plasmaStorageUnitsT2");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
+function unlockLabT4(){
+	if(science >= 50000000){
+		science -= 50000000;
+		document.getElementById("unlockLabT4").className = "hidden";
+		document.getElementById("labTier4").className = "";
+		researched.push("unlockLabT4");
+        Game.statistics.add('techResearched');
 	}
 }
 
@@ -380,7 +417,7 @@ function getCost(basePrice, amount, multiplier) {
     return Math.floor(basePrice * Math.pow(multiplier, amount));
 }
 
-function purchaseEfficiency() {
+function purchaseResourceEfficiency() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
 	var cost = getCost(tech.cost['science'], tech.current);
@@ -390,23 +427,90 @@ function purchaseEfficiency() {
 	}
 }
 
-function updateEfficiencyDisplay() {
+function updateResourceEfficiencyDisplay() {
     var tech = Game.tech.getTechData('efficiencyResearch');
 
-	if(science > tech.cost['science']) {
+	if(science > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
 	if(tech.unlocked === false) {
-        $('#scienceEfficiencyUpgrade').hide();
+        $('#scienceResourceEfficiencyUpgrade').hide();
 		return;
 	} else {
-        $('#scienceEfficiencyUpgrade').show();
+        $('#scienceResourceEfficiencyUpgrade').show();
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, 'scienceEfficiencyUpgradeCost');
+	Game.settings.turnRed(science, cost, 'scienceResourceEfficiencyUpgradeCost');
 
-	$('#scienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
-	$('#scienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
+	$('#scienceResourceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+	$('#scienceResourceEfficiencyUpgradeCost').text(Game.settings.format(cost));
+}
+
+function purchaseEnergyEfficiency() {
+    var tech = Game.tech.getTechData('energyEfficiencyResearch');
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    if(science >= cost) {
+        Game.tech.gainTech(tech.id);
+        science -= cost;
+    }
+}
+
+function updateEnergyEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('energyEfficiencyResearch');
+
+    if(tech.current >= tech.maxLevel) {
+        $('#scienceScienceEfficiencyUpgrade').hide();
+        return;
+    }
+
+    if(science > tech.cost['science'] || tech.current > 0) {
+        tech.unlocked = true;
+    }
+
+    if(tech.unlocked === false) {
+        $('#scienceEnergyEfficiencyUpgrade').hide();
+        return;
+    } else {
+        $('#scienceEnergyEfficiencyUpgrade').show();
+    }
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    Game.settings.turnRed(science, cost, 'scienceEnergyEfficiencyUpgradeCost');
+
+    $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+    $('#scienceEnergyEfficiencyUpgradeCost').text(Game.settings.format(cost));
+}
+
+function purchaseScienceEfficiency() {
+    var tech = Game.tech.getTechData('scienceEfficiencyResearch');
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    if(science >= cost) {
+        Game.tech.gainTech(tech.id);
+        science -= cost;
+    }
+}
+
+function updateScienceEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('scienceEfficiencyResearch');
+
+    if(science > tech.cost['science'] || tech.current > 0) {
+        tech.unlocked = true;
+    }
+
+    if(tech.unlocked === false) {
+        $('#scienceScienceEfficiencyUpgrade').hide();
+        return;
+    } else {
+        $('#scienceScienceEfficiencyUpgrade').show();
+    }
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    Game.settings.turnRed(science, cost, 'scienceScienceEfficiencyUpgradeCost');
+
+    $('#scienceScienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+    $('#scienceScienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
 }

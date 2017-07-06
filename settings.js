@@ -3,7 +3,8 @@ Game.settings = (function(){
     var autoSaveMapping = {
         '30secs': 30 * 1000,
         '2mins': 2 * 60 * 1000,
-        '10mins': 10 * 60 * 1000
+        '10mins': 10 * 60 * 1000,
+        'off': 10000000000000000000
     };
 
     var instance = {
@@ -13,6 +14,7 @@ Game.settings = (function(){
             boldEnabled: false,
             sidebarCompressed: false,
             notificationsEnabled: true,
+            gainButtonsHidden: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -43,6 +45,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
             return false;
         }
     };
@@ -64,6 +67,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
         }
     };
 
@@ -84,6 +88,7 @@ Game.settings = (function(){
         }
         else{
             element.removeClass('red');
+            element.removeClass('bold');
         }
 
         if(value >= target) {
@@ -116,6 +121,7 @@ Game.settings = (function(){
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
         $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
         $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
+        $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
 
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
@@ -125,6 +131,17 @@ Game.settings = (function(){
         else{
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
                 document.getElementsByClassName("sideTab")[i].style.height = "60px";
+            }
+        }
+
+        if(Game.settings.entries.gainButtonsHidden === true){
+            for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                document.getElementsByClassName("gainButton")[i].className = "gainButton hidden";
+            }
+        }
+        else{
+            for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                document.getElementsByClassName("gainButton")[i].className = "gainButton";
             }
         }
         
@@ -179,6 +196,20 @@ Game.settings = (function(){
 
         $('#notificationsEnabled').change(function(){
             Game.settings.set('notificationsEnabled', $(this).is(':checked'));
+        });
+
+        $('#gainButtonsHidden').change(function(){
+            Game.settings.set('gainButtonsHidden', $(this).is(':checked'));
+            if(Game.settings.entries.gainButtonsHidden === true){
+                for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                    document.getElementsByClassName("gainButton")[i].className = "gainButton hidden";
+                }
+            }
+            else{
+                for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                    document.getElementsByClassName("gainButton")[i].className = "gainButton";
+                }
+            }
         });
 
         for (var id in autoSaveMapping) {

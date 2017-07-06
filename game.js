@@ -9,7 +9,7 @@ var Game = (function() {
         logoAnimating: false,
         timeSinceAutoSave: 0,
         activeNotifications: {},
-        lastFixedUpdate: new Date().getTime()
+        //lastFixedUpdate: new Date().getTime()
     };
 
     instance.update_frame = function(time) {
@@ -41,31 +41,31 @@ var Game = (function() {
 
     instance.fixedUpdate = function() {
         var currentTime = new Date().getTime();
-        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
+        var delta = (currentTime - lastFixedUpdate) / 1000;
 
         refreshPerSec(delta);
         gainResources(delta);
         fixStorageRounding();
 
-        Game.lastFixedUpdate = currentTime;
+        lastFixedUpdate = currentTime;
     };
 
     instance.fastUpdate = function(self, delta) {
         refreshWonderBars();
         checkRedCost();
 
-        updateEfficiencyDisplay();
+        updateResourceEfficiencyDisplay();
+        updateEnergyEfficiencyDisplay();
+        updateScienceEfficiencyDisplay();
 
         legacyRefreshUI();
 
         self.ui.updateBoundElements(delta);
 
-        self.legacyResourceBridge.update(delta);
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
         self.settings.update(delta);
-        self.spaceship.update(delta);
 
         self.updateAutoSave(delta);
 
@@ -76,6 +76,7 @@ var Game = (function() {
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
+        refreshTimeUntilFull();
 
         checkStorages();
 
@@ -127,7 +128,7 @@ var Game = (function() {
         this.buildings.save(data);
         this.tech.save(data);
         this.settings.save(data);
-        this.spaceship.save(data);
+        this.interstellar.save(data);
 
         data = legacySave(data);
 
@@ -148,7 +149,7 @@ var Game = (function() {
             this.buildings.load(data);
             this.tech.load(data);
             this.settings.load(data);
-            this.spaceship.load(data);
+            this.interstellar.load(data);
 
             legacyLoad(data);
         }
@@ -190,12 +191,10 @@ var Game = (function() {
         // Initialize first
         self.achievements.initialize();
         self.statistics.initialize();
-        self.legacyResourceBridge.initialize();
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
         self.settings.initialize();
-        self.spaceship.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
@@ -213,6 +212,7 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
+        Game.notifyOffline();
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -280,6 +280,33 @@ var Game = (function() {
         }
     };
 
+    instance.notifyOffline = function() {
+        this.activeNotifications.success = new PNotify({
+            title: "Offline Gains",
+            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - lastFixedUpdate)/1000, true),
+            type: 'info',
+            animation: 'fade',
+            animate_speed: 'fast',
+            addclass: "stack-bottomright",
+            stack: this.noticeStack
+        });
+    };
+
+    instance.removeExcess = function(array, id){
+        var check = false;
+        for(var i = array.length; i > 0 ; i--){
+            if(array[i] === id){
+                if(check === false){
+                    check = true;
+                }
+                else{
+                    check = true;
+                    array.splice(i, 1);
+                }
+            }
+        }
+    }
+
     instance.updateAutoSave = function(delta) {
         this.timeSinceAutoSave += delta;
 
@@ -289,20 +316,27 @@ var Game = (function() {
 
         if (timeLeft <= 15000) {
             element.show();
-            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+            if(timeLeft <= 5000){
+                element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
+            }
+            else{
+                element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+            }
         } else {
             element.hide();
         }
 
-        if(timeLeft <= 0) {
+        if(timeLeft < 100) {
             this.save();
-            this.timeSinceAutoSave = 0;
+            this.timeSinceAutoSave = 1;
         }
     };
 
     instance.start = function() {
         PNotify.prototype.options.styling = "bootstrap3";
         PNotify.prototype.options.delay = 3500;
+
+        $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
       

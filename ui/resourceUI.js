@@ -53,20 +53,21 @@
 
         instance.buildingTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"></ter><td style="border:none;">',
-                '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}_count"></span></h3>',
+                '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_prod"></p>',
+                    '<p id="{{htmlId}}_rcost"></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<br><br>',
-                '<div id="{{htmlId}}_buy1" class="btn btn-default" disabled="true">Buy 1</div>',
-                '<div id="{{htmlId}}_buy10" class="btn btn-default" disabled="true">Buy 10</div>',
-                '<div id="{{htmlId}}_buy100" class="btn btn-default" disabled="true">Buy 100</div>',
+                '<div id="{{htmlId}}_buy" class="btn btn-default">Buy 1</div>',
+                '<div id="{{htmlId}}_buy10" class="btn btn-default">Buy 10</div>',
+                '<div id="{{htmlId}}_buy100" class="btn btn-default">Buy 100</div>',
                 '<br>',
-                '<div id="{{htmlId}}_destroy1" class="btn btn-default" disabled="true">Destroy 1</div>',
-                '<div id="{{htmlId}}_destroy10" class="btn btn-default" disabled="true">Destroy 10</div>',
-                '<div id="{{htmlId}}_destroy100" class="btn btn-default" disabled="true">Destroy 100</div>',
+                '<div id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
+                '<div id="{{htmlId}}_destroy10" class="btn btn-default">Destroy 10</div>',
+                '<div id="{{htmlId}}_destroy100" class="btn btn-default">Destroy 100</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
@@ -150,18 +151,6 @@
 
         this.resourceBuildingEntries[buildingData.id] = data.id;
         this.resourceBuildingObservers[buildingData.id] = [];
-
-        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_count', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.CURRENT_VALUE});
-        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_prod', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.RESOURCE_PRODUCTION});
-        Game.ui.createBuildingObserver({htmlId: buildingData.htmlId + '_cost', bld: buildingData.id, type: BUILDING_OBSERVER_TYPE.COST});
-
-        for(var i = 1; i <= 100; i*= 10) {
-            var buyButton = $('#' + buildingData.htmlId + '_buy' + i);
-            buyButton.click({id: buildingData.id, count: i}, this.buildingBuyClick);
-
-            var destroyButton = $('#' + buildingData.htmlId + '_destroy' + i);
-            destroyButton.click({id: buildingData.id, count: i}, this.buildingDestroyClick);
-        }
     };
 
     instance.createResourceContent = function(data) {
@@ -229,7 +218,7 @@
 
         // Update the cost display
         if(data.cost) {
-            var costDisplayData = Game.ui.utils.buildCostDisplay(this.resourceTechObservers[data.id], data.htmlId, data.cost);
+            var costDisplayData = this.buildCostDisplay(this.resourceTechObservers[data.id], data);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));
@@ -246,15 +235,50 @@
             element.hide();
         }
 
-        for(var i = 1; i <= 100; i*= 10) {
-            var buyButton = $('#' + data.htmlId + '_buy' + i);
-            var canAfford = Game.buildings.canAfford(data.id, i);
-            buyButton.attr('disabled', !canAfford);
-
-
-            var destroyButton = $('#' + data.htmlId + '_destroy' + i);
-            destroyButton.attr('disabled', data.current < i);
+        // Update the cost display
+        if(data.cost) {
+            var costDisplayData = this.buildCostDisplay(this.resourceBuildingObservers[data.id], data);
+            var costElement = $('#' + data.htmlId + '_cost');
+            costElement.empty();
+            costElement.append($(costDisplayData));
         }
+
+        data.displayNeedsUpdate = false;
+    };
+
+    instance.buildCostDisplay = function(observerArray, data) {
+        for(var i = 0; i < observerArray.length; i++) {
+            observerArray[i].delete();
+        }
+
+        // Empty but keep the reference
+        observerArray.length = 0;
+
+        var segments = [];
+        for(var id in data.cost) {
+            var resourceData = Game.resources.getResourceData(id);
+            if(!data) {
+                console.error("Unknown Resource in cost: " + id);
+                continue;
+            }
+
+            segments.push({i: id, h: data.htmlId + '_' + id + '_c', n: resourceData.name, c: data.cost[id]});
+        }
+
+        var resultHtml = '<span>Cost: </span>';
+        for(var i = 0; i < segments.length; i++) {
+            var segmentData = segments[i];
+            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
+            resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
+            if(i < segments.length - 1) {
+                resultHtml = resultHtml + '<span>, </span>';
+            }
+
+            var observer = Game.ui.createResourceObserver({htmlId: segmentData.h, value: segmentData.c, res: segmentData.i, type: RESOURCE_OBSERVER_TYPE.SPECIFIC_VALUE});
+            observerArray.push(observer);
+        }
+
+        return resultHtml;
     };
 
     instance.updateDisplay = function(data) {
@@ -270,6 +294,30 @@
         gainButton.attr("disabled", data.current >= data.capacity);
         gainButton.text('Gain ' + data.perClick);
 
+        /*var perSecondSpan = $('#' + data.htmlId + '_perSecond');
+        perSecondSpan.text(data.perSecond);
+        if(data.perSecond < 0) {
+            perSecondSpan.addClass('red');
+        } else {
+            perSecondSpan.removeClass('red');
+        }
+
+        var currentSpan = $('#' + data.htmlId + '_current');
+        if(data.current >= data.capacity) {
+            currentSpan.addClass('green');
+        } else {
+            currentSpan.removeClass('green');
+        }
+
+        if (data.current <= 0) {
+            currentSpan.addClass('red');
+        } else {
+            currentSpan.removeClass('red');
+        }
+
+        currentSpan.text(Game.settings.format(data.current));
+        $('#' + data.htmlId + '_capacity').text(Game.settings.format(data.capacity));*/
+
         data.displayNeedsUpdate = false;
     };
 
@@ -284,18 +332,6 @@
             Game.statistics.add('manualResources', value);
             Game.resources.addResource(data.id, value);
         }
-    };
-
-    instance.buildingBuyClick = function(args) {
-        var id = args.data.id;
-        var count = args.data.count;
-        Game.buildings.constructBuildings(id, count);
-    };
-
-    instance.buildingDestroyClick = function (args) {
-        var id = args.data.id;
-        var count = args.data.count;
-        Game.buildings.destroyBuildings(id, count);
     };
 
     Game.uiComponents.push(instance);

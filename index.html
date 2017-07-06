@@ -7,6 +7,7 @@
 	<link href="SpaceCompanyFavicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="lib/bootstrap.min.css" rel="stylesheet" type="text/css" id="theme_css"/>
 	<link href="lib/pnotify.custom.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 	<!--<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 	<script>
@@ -33,11 +34,17 @@
 <div id="loadScreen" style="width:100%; height:100%">
 	<div style="margin-left:31%; margin-top:3%;">
 		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
-		<!-- <div style="margin-left:10%; font-size: 36px; font-family: 'Courgette', cursive;">
-			Loading ...
-		</div> -->
+		<br>
+	</div>
+	<div id="loadingText" style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center;">
+		Reticulating Splines...
 	</div>
 </div>
+<script>
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource", "Adding T3 Batteries. Piece of Cake!", "Launching Rockets", "Thanking The Community", "Identifying Higgs's Boson", "Introducing Turtles", "Converting Mass Back to Energy", "Just One More Piece", "Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to Upgrade Space Metal to", "Transferring Data to NSA", "Implementing AI bug creator", "Initialising Glados", "Initialising J.A.R.V.I.S."];
+	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
+	document.getElementById("loadingText").innerHTML = loadingText;
+</script>
 <div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
@@ -84,6 +91,7 @@
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
+    	<li role="presentation" id="interstellarTab" class="hidden"><a href="#interstellar" aria-control="interstellar" role="tab" data-toggle="tab"onclick="tabClicked('interstellar')"><div id="interstellarTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Interstellar</a></li>
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
     	<li role="presentation" class="pull-right"><a href="#more" aria-control="more" role="tab" data-toggle="tab" onclick="tabClicked('more')"><div id="moreTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> More...</a></li>
 	</ul>
@@ -94,7 +102,7 @@
 	<div class="tab-content" id="tabContent">
 			<!-- Resources -->
 		<div role="tabpanel" class="tab-pane fade in active" id="resources">
-			<div class="container" style="width:380px; padding:0; float:left;">
+			<div class="container col-xs-1" style="width:380px; padding:0; float:left;">
 				<table class="table table-hover text-primary no-select pointer" id="resourceNavParent">
 					<tr id="plasmaNav" onclick="activeResourceTab('plasmaNav')" class="sideTab hidden" href="#plasmaTab" aria-controls="plasmaTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="border:none; vertical-align:middle;">
@@ -113,6 +121,10 @@
 						<td style="border:none; vertical-align:middle; text-align:right;">
 							<span id="plasma">
 								0
+							</span>
+							<span id="plasmaStorageBox" class="hidden">
+								/
+								<span id="plasmaStorage">100,000</span>
 							</span>
 						</td>
 					</tr>
@@ -531,7 +543,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="tab-content" id="resourceTabParent">
+			<div class="tab-content" id="resourceTabParent" style="width:100%">
 				<div id="plasmaTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
@@ -543,13 +555,47 @@
 									<span>
 										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.
 										<br>
-										1 Plasma is created by 'attacking' <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
+										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
+										<br>
+										1 Plasma is created by infusing <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
 									<br>
 									<br>
-									<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+									<hide class="gainButton">
+										<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+										<br>
+										<br>
+									</hide>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnits" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										PSUs: <span id="PSU">0</span>
+									</h3>
+									<span>
+										PSUs increase your plasma storage by 50,000 per PSU built.
+										<br>
+										Costs <span id="PSUSilverCost">770,000</span> Silver, <span id="PSUGoldCost">770,000</span> Gold, <span id="PSUUraniumCost">550,000</span> Uranium.
+									</span>
 									<br>
 									<br>
+									<button onclick="getPSU()" class="btn btn-default">Get PSU</button>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnitsT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T2 PSUs: <span id="PSUT2">0</span>
+									</h3>
+									<span>
+										Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.
+										<br>
+										Costs <span id="PSUT2SilverCost">9.300M</span> Silver, <span id="PSUT2GoldCost">9.300M</span> Gold, <span id="PSUT2UraniumCost">6.800M</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSUT2()" class="btn btn-default">Get PSU T2</button>
 								</td>
 							</tr>
 							<tr>
@@ -607,8 +653,10 @@
 									</h2>
 									<span>
 										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
+										<br>
+										Time remaining until full storage: <b><span id="energyFullTime">N/A</span></b>
+										<br>
 									</span>
-									<br>
 									<br>
 									<button onclick="toggleEnergy()" class="btn btn-default">Toggle All Energy Production + Consumption</button>
 								</td>
@@ -641,21 +689,6 @@
 									<br>
 									<br>
 									<button onclick="getBatteryT2()" class="btn btn-default">Get Battery T2</button>
-								</td>
-							</tr>
-							<tr id="batteriesT3" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										T3 Batteries: <span id="batteryT3">0</span>
-									</h3>
-									<span>
-										Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.
-										<br>
-										Costs <span id="batteryT3MetalCost">5,500,000</span> Metal, <span id="batteryT3GemCost">5,500,000</span> Gems, <span id="batteryT3SpaceMetalCost">3,300,000</span> Space Metal.
-									</span>
-									<br>
-									<br>
-									<button onclick="getBatteryT3()" class="btn btn-default">Get Battery T3</button>
 								</td>
 							</tr>
 							<tr>
@@ -780,9 +813,11 @@
 									<span>
 										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of Energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainUranium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -794,6 +829,8 @@
 									</h3>
 									<span>
 										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -894,9 +931,11 @@
 									<span>
 										Oil is pumped up from the ground and is used to build Tier 2 resource gatherers.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainOil()" class="btn btn-default">Gain 1</div>
+									</hide>
 								</td>
 							</tr>
 							<tr id="oilStorageUpgrade" class="hidden">
@@ -906,6 +945,8 @@
 									</h3>
 									<span>
 										Upgrade your Oil storage size to <span id="oilNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="oilFullTime">N/A</span></b>
 										<br>
 										Costs <span id="oilStorageCost">50</span> Oil, <span id="oilStorageMetalCost">20</span> Metal.
 									</span>
@@ -1004,9 +1045,11 @@
 									<span>
 										Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1018,6 +1061,8 @@
 									</h3>
 									<span>
 										Upgrade your Metal storage size to <span id="metalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="metalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="metalStorageCost">50</span> Metal.
 									</span>
@@ -1118,9 +1163,11 @@
 									<span>
 										Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGem()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1132,6 +1179,8 @@
 									</h3>
 									<span>
 										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="gemFullTime">N/A</span></b>
 										<br>
 										Costs <span id="gemStorageCost">50</span> Gems, <span id="gemStorageMetalCost">20</span> Metal.
 									</span>
@@ -1184,7 +1233,7 @@
 										Diamond Encrusted Drill: <span id="diamondDrill">0</span>
 									</h3>
 									<span>
-										The Diamond Encrusted Drill is one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.
+										The Diamond Encrusted Drill is the best drill possible that can be made on Earth, meaning it produces Gems at intense speeds.
 										<br>
 										Produces 89 Gems per second.
 										<br>
@@ -1234,7 +1283,9 @@
 										<br>
 									</span>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainCharcoal()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleCharcoal()" class="btn btn-default">Turn Charcoal Production <span id="charcoalToggled">Off</span></button>
 									<br>
 									<br>
@@ -1247,6 +1298,8 @@
 									</h3>
 									<span>
 										Upgrade your Charcoal storage size to <span id="charcoalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="charcoalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="charcoalStorageCost">50</span> Charcoal, <span id="charcoalStorageMetalCost">20</span> Metal.
 									</span>
@@ -1355,9 +1408,11 @@
 									<span>
 										Wood is one of the primary resources. It is used more often in early game for tools and buildings.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainWood()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1369,6 +1424,8 @@
 									</h3>
 									<span>
 										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="woodFullTime">N/A</span></b>
 										<br>
 										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> Metal.
 									</span>
@@ -1469,9 +1526,11 @@
 									<span>
 										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1483,6 +1542,8 @@
 									</h3>
 									<span>
 										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="siliconFullTime">N/A</span></b>
 										<br>
 										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1583,9 +1644,11 @@
 									<span>
 										Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSpaceMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1597,6 +1660,8 @@
 									</h3>
 									<span>
 										Upgrade your Space Metal storage size to <span id="spaceMetalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="spaceMetalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="spaceMetalStorageCost">50</span> Space Metal, <span id="spaceMetalStorageMetalCost">200</span> Metal.
 									</span>
@@ -1697,9 +1762,11 @@
 									<span>
 										Methane is a gas found in abundance on Venus. It can be used to power your company much more effectively than solid fuel.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMethane()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1711,6 +1778,8 @@
 									</h3>
 									<span>
 										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="methaneFullTime">N/A</span></b>
 										<br>
 										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1812,9 +1881,11 @@
 									<span>
 										Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainTitanium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1826,6 +1897,8 @@
 									</h3>
 									<span>
 										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="titaniumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1926,9 +1999,11 @@
 									<span>
 										Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGold()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1940,6 +2015,8 @@
 									</h3>
 									<span>
 										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="goldFullTime">N/A</span></b>
 										<br>
 										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2040,9 +2117,11 @@
 									<span>
 										Silver is another metal most commonly found in the asteroid belt.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilver()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2054,6 +2133,8 @@
 									</h3>
 									<span>
 										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="silverFullTime">N/A</span></b>
 										<br>
 										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2154,9 +2235,11 @@
 									<span>
 										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainLava()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2168,6 +2251,8 @@
 									</h3>
 									<span>
 										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="lavaFullTime">N/A</span></b>
 										<br>
 										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2268,9 +2353,11 @@
 									<span>
 										Hydrogen is extremely common on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHydrogen()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2282,6 +2369,8 @@
 									</h3>
 									<span>
 										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="hydrogenFullTime">N/A</span></b>
 										<br>
 										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2382,9 +2471,11 @@
 									<span>
 										Helium is the second most common element on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHelium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2396,6 +2487,8 @@
 									</h3>
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="heliumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2496,9 +2589,11 @@
 									<span>
 										Ice, although it can be collected on Earth, is not nearly as profitable as flying to Pluto and back with space craft full of the stuff. It is mainly used for super-cooling technology necessary for Tier 4 machines.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainIce()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2510,6 +2605,8 @@
 									</h3>
 									<span>
 										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="iceFullTime">N/A</span></b>
 										<br>
 										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2614,7 +2711,9 @@
 									</span>
 									<br>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleMeteorite()" class="btn btn-default">Turn Meteorite Production <span id="meteoriteToggled">Off</span></button>
 									<br>
 									<br>
@@ -2627,6 +2726,8 @@
 									</h3>
 									<span>
 										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="meteoriteFullTime">N/A</span></b>
 										<br>
 										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageSpaceMetalCost">400</span> Space Metal.
 									</span>
@@ -2735,7 +2836,9 @@
 										Home Science Kit: <span id="lab">0</span>
 									</h3>
 									<span>
-										Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.
+										Build a small laboratory of your very own to start producing science.
+										<br>
+										Each one produces 0.1 science per second.
 										<br>
 										Costs <span id="labMetalCost">20</span> Metal, <span id="labGemCost">15</span> Gems, <span id="labWoodCost">10</span> Wood.
 									</span>
@@ -2752,7 +2855,9 @@
 										High School Science: <span id="labT2">0</span>
 									</h3>
 									<span>
-										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
+										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed.
+										<br>
+										Each one produces 1 science per second.
 										<br>
 										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
 									</span>
@@ -2769,13 +2874,32 @@
 										University Laboratory: <span id="labT3">0</span>
 									</h3>
 									<span>
-										Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.
+										Build an even better version of the old laboratory to further your exploration of the realm of science.
+										<br>
+										Each one produces 10 science per second.
 										<br>
 										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
 									</span>
 									<br>
 									<br>
 									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
+								</td>
+							</tr>
+							<tr id="labTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Scientific Observatory: <span id="labT4">0</span>
+									</h3>
+									<span>
+										Create an obseravatory to gaze upon the stars and acquire knowledge from them.
+										<br>
+										Each one produces 100 science per second.
+										<br>
+										Costs <span id="labT4MetalCost">610,000</span> Metal, <span id="labT4GemCost">370,000</span> Gems, <span id="labT4WoodCost">926,000</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
 								</td>
 							</tr>
 						</table>
@@ -3050,6 +3174,40 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockPSU" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasma Storage Units
+									</h3>
+									<span>
+										PSUs increase the limit on plasma you can store at once.
+										<br>
+										Costs <span id="unlockPSUCost">9.500M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSU()" class="btn btn-default">Unlock PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPSUT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 2 Plasma Storage Units
+									</h3>
+									<span>
+										Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.
+										<br>
+										Costs <span id="unlockPSUT2Cost">37.00M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSUT2()" class="btn btn-default">Unlock T2 PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="unlockPlasmaTier2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3063,6 +3221,23 @@
 									<br>
 									<br>
 									<button onclick="unlockPlasmaTier2()" class="btn btn-default">Unlock Plasma Tier 2</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 4 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.
+										<br>
+										Costs <span id="unlockLabT4Cost">50M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT4()" class="btn btn-default">Unlock Tier 4 Science</button>
 									<br>
 									<br>
 								</td>
@@ -3169,23 +3344,6 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="unlockBatteriesT3" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										Tier 3 Batteries
-									</h3>
-									<span>
-										Tier 3 Batteries improve the amount of energy you can store at once.
-										<br>
-										Costs <span id="unlockBatteriesT3Cost">3,000,000</span> Science.
-									</span>
-									<br>
-									<br>
-									<button onclick="unlockBatteriesT3()" class="btn btn-default">Unlock T3 Batteries</button>
-									<br>
-									<br>
-								</td>
-							</tr>
 							<tr id="unlockDysonSphere" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3203,17 +3361,47 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="scienceEfficiencyUpgrade" style="display: none">
+							<tr id="scienceResourceEfficiencyUpgrade" style="display: none">
 								<td>
-									<h3 class="default btn-link" id="scienceEfficiencyUpgradeTitle">Efficiency</h3>
+									<h3 class="default btn-link" id="scienceResourceEfficiencyUpgradeTitle">Resource Efficiency</h3>
 									<span>
-										Efficiency increases the resource income per second by 1% per purchase.
+										Resource Efficiency increases the income of resources by 1%/s per purchase.
 										<br>
-										Costs <span id="scienceEfficiencyUpgradeCost">N/A</span> Science.
+										Costs <span id="scienceResourceEfficiencyUpgradeCost">N/A</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="purchaseEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<button onclick="purchaseResourceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceScienceEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceScienceEfficiencyUpgradeTitle">Science Efficiency</h3>
+									<span>
+										Science Efficiency increases the science production by 2% per purchase.
+										<br>
+										Costs <span id="scienceScienceEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseScienceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceEnergyEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceEnergyEfficiencyUpgradeTitle">Energy Efficiency</h3>
+									<span>
+										Energy Efficiency decreases the energy consumption of all machines by 1% per purchase (max 50%).
+										<br>
+										Costs <span id="scienceEnergyEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
 									<br>
 									<br>
 								</td>
@@ -3324,7 +3512,7 @@
 						</td>
 					</tr>
 					<tr id="collapseOuter" class="collapseOuter hidden" style="border:none;">
-						<td colspan="3">
+						<td colspan="4">
 							<span>Collapse Outer Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
@@ -3476,6 +3664,8 @@
 									</h2>
 									<span>
 										Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.
+										<br>
+										<b>NB: You only need 1 Rocket. You can reuse the same one by just using fuel.</b>
 									</span>
 									<br>
 									<br>
@@ -3978,17 +4168,24 @@
 							</span>
 						</th>
 					</tr>
+					<tr id="communicationWonderNav" onclick="activeWonderTab('communicationWonderNav')" class="sideTab hidden" href="#communicationWonderTab" aria-controls="communicationWonderTab" role="tab" data-toggle="tab" style="height:60px;">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Comms Wonder: <span id="commsActivation">Dormant</span>
+							</span>
+						</td>
+					</tr>
 					<tr id="rocketWonderNav" onclick="activeWonderTab('rocketWonderNav')" class="sideTab hidden" href="#rocketWonderTab" aria-controls="rocketWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Rocket Wonder: <span id="rocketWonderActivation">Dormant</span>
+								Rocket Wonder: <span id="rocketActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
 					<tr id="antimatterWonderNav" onclick="activeWonderTab('antimatterWonderNav')" class="sideTab hidden" href="#antimatterWonderTab" aria-controls="antimatterWonderTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
 							<span>
-								Antimatter Wonder: <span id="antimatterWonderActivation">Dormant</span>
+								Antimatter Wonder: <span id="antimatterActivation">Dormant</span>
 							</span>
 						</td>
 					</tr>
@@ -4008,7 +4205,7 @@
 					</tr>
 					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="sideTab hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span>
+							<span class="red">
 								Stargate: <span id="stargateActivation">Dormant</span>
 							</span>
 						</td>
@@ -4026,6 +4223,8 @@
 									</h2>
 									<span>
 										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
+										<br>
+										<b>NB: You must activate the wonders after building them to recieve their effects</b>
 									</span>
 									<br>
 									<br>
@@ -4306,13 +4505,54 @@
 						</table>
 					</div>
 				</div>
+				<div id="communicationWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Communication Wonder
+									</h2>
+									<span>
+										In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says 'Original Comms Relay between my first two star systems'. A loud voice booms again from the speakers at the far corners of the floor: 'This is one of my most prized memorabilia, reminding me of the first message I sent between star systems'. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Communication Wonder
+									</h3>
+									<span>
+										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
+										<br>
+										<hide id="rebuildCommsWonder">
+											Costs: <span id="commsWonderGoldCost">6M</span> Gold, <span id="commsWonderSiliconCost">10M</span> Silicon, <span id="commsWonderIceCost">6M</span> Ice.
+											<br>
+											<br>
+											<button onclick="rebuildCommsWonder()" class="btn btn-default">Rebuild Communication Wonder</button>
+											<br>
+											<br>
+											<div id="commsWonderProgress" class="progress">
+											  <div id="commsWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 				<div id="rocketWonderTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Rocket Wonder (Coming Soon!)
+										The Rocket Wonder
 									</h2>
 									<span>
 										Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can reassemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room: 'Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I'm not sure where the pieces are. You may need additional research to build this once more, but I'm sure you will figure it out just fine.'
@@ -4325,10 +4565,10 @@
 										Rebuild Rocket Wonder
 									</h3>
 									<span>
-										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move whole planets with rockets.
+										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move beyond your tiny star system.
 										<br>
 										<hide id="rebuildRocketWonder">
-											Costs: <span id="rocketWonderMeteoriteCost">XXXX</span> ABC, <span id="rocketWonderIceCost">XXXX</span> ABC, <span id="rocketWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="rocketWonderSpaceMetalCost">8M</span> Space Metal, <span id="rocketWonderTitaniumCost">6M</span> Titanium, <span id="rocketWonderMetalCost">12M</span> Metal.
 											<br>
 											<br>
 											<button onclick="rebuildRocketWonder()" class="btn btn-default">Rebuild Rocket Wonder</button>
@@ -4353,7 +4593,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Antimatter Wonder (Coming Soon!)
+										The Antimatter Wonder
 									</h2>
 									<span>
 										In the corner of the floor, you see a faintly glowing, large canister, proped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
@@ -4369,7 +4609,7 @@
 										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
-											Costs: <span id="antimatterWonderMeteoriteCost">XXXX</span> ABC, <span id="antimatterWonderIceCost">XXXX</span> ABC, <span id="antimatterWonderSiliconCost">XXXX</span> ABC.
+											Costs: <span id="antimatterWonderUraniumCost">6M</span> Uranium, <span id="antimatterWonderLavaCost">10M</span> Lava, <span id="antimatterWonderOilCost">8M</span> Oil, <span id="antimatterWonderMethaneCost">6M</span> Methane.
 											<br>
 											<br>
 											<button onclick="rebuildAntimatterWonder()" class="btn btn-default">Rebuild Antimatter Wonder</button>
@@ -4394,10 +4634,10 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Portal Room (Coming Soon!)
+										The Portal Room
 									</h2>
 									<span>
-										[Description]
+										An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It's plaque reads: 'This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos'.
 									</span>
 								</td>
 							</tr>
@@ -4410,7 +4650,7 @@
 										Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.
 										<br>
 										<hide id="activatePortal">
-											Costs: <span id="portalMeteoriteCost">XXXX</span> Meteorite, <span id="portalIceCost">XXXX</span> Ice, <span id="portalSiliconCost">XXXX</span> Silicon.
+											Costs: <span id="portalMeteoriteCost">500K</span> Meteorite, <span id="portalHeliumCost">8M</span> Helium, <span id="portalSiliconCost">6M</span> Silicon.
 											<br>
 											<br>
 											<button onclick="activatePortal()" class="btn btn-default">Activate Portal</button>
@@ -4418,6 +4658,47 @@
 											<br>
 											<div id="portalProgress" class="progress">
 											  <div id="portalBar" class="progress-bar progress-bar-striped active" role="progressbar"
+											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+											    0%
+											  </div>
+											</div>
+										</hide>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="stargateTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										The Stargate Room (Coming Soon!)
+									</h2>
+									<span>
+										The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Rebuild Stargate Wonder
+									</h3>
+									<span>
+										For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.
+										<br>
+										<hide id="rebuildStargate">
+											Costs: <span id="stargateWonderPlasmaCost">XXXX</span> Plasma, <span id="stargateWonderSiliconCost">XXXX</span> Silicon, <span id="stargateWonderMeteoriteCost">XXXX</span> Meteorite.
+											<br>
+											<br>
+											<button onclick="rebuildStargate()" class="btn btn-default">Rebuild Stargate</button>
+											<br>
+											<br>
+											<div id="stargateWonderProgress" class="progress">
+											  <div id="stargateWonderBar" class="progress-bar progress-bar-striped active" role="progressbar"
 											  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 											    0%
 											  </div>
@@ -4534,7 +4815,9 @@
 									<div class="row">
 										<div class="col-md-12">
 											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
-											<button class="btn btn-default pull-right" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
+											<br>
+											<label>Remaining plasma: <span data-bind="plasma">N/A</span></label>
+											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting X<span class="emcAmount">1</span></button>
 										</div>
 									</div>
 									<div class="row">
@@ -4782,6 +5065,9 @@
 										<br>
 										<br>
 										<button onclick="getDyson()" class="btn btn-default">Build Dyson Section</button>
+										<button onclick="buildDysonTo(50)" class="btn btn-default">Build up to 50</button>
+										<button onclick="buildDysonTo(100)" class="btn btn-default">Build up to 100</button>
+										<button onclick="buildDysonTo(250)" class="btn btn-default">Build up to 250</button>
 										<br>
 										<br>
 										<h3 class="default btn-link">
@@ -6314,7 +6600,201 @@
 			</div>
 		</div>
 
-
+		<!-- Interstellar Tab -->
+		<div role="tabpanel" class="tab-pane fade" id="interstellar">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr id="commsNav" onclick="activeInterstellarTab('commsNav')" href="#commsTab" aria-controls="commsTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Communications
+							</span>
+						</td>
+					</tr>
+					<tr id="interRocketNav" onclick="activeInterstellarTab('interRocketNav')" href="#interRocketTab" aria-controls="interRocketTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Rocket
+							</span>
+						</td>
+					</tr>
+					<tr id="antimatterNav" onclick="activeInterstellarTab('antimatterNav')" href="#antimatterTab" aria-controls="antimatterTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Antimatter
+							</span>
+						</td>
+					</tr>
+					<tr id="travelNav" onclick="activeInterstellarTab('travelNav')" href="#travelTab" aria-controls="travelTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
+						<td style="vertical-align:middle;">
+							<span>
+								Travel
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="commsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Communications (Coming Soon!)
+									</h2>
+									<span>
+										This is where you learn about other systems to travel to.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Interstellar Radar Scanner: <span id="IRS">0</span>
+									</h3>
+									<span>
+										The Overlord gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1/2 stars that are close by. Each one increases the range by 5 Light Years.
+										<br>
+										Costs <span id="IRSSpaceMetalCost">XXXX</span> ABC, <span id="IRSTitaniumCost">XXXX</span> ABC, <span id="IRSMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="Game.interstellar.getIRS()" class="btn btn-default">Get IRS</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="interRocketTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Rockets
+									</h2>
+									<span>
+										This is where you can construct your transport to the stars.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Shield Plating: <span id="shield">0</span>/50
+									</h3>
+									<span>
+										This plating combats the Sun's radiation, and can protect anyone inside from the frigid cold of space.
+										<br>
+										Costs <span id="shieldSpaceMetalCost">100,000</span> Space Metal, <span id="shieldTitaniumCost">100,000</span> Titanium, <span id="shieldMetalCost">100,000</span> Metal.
+									</span>
+									<br>
+									<br>
+									<button onclick="Game.interstellar.getShield()" class="btn btn-default">Get Shield Plating</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Engine Units: <span id="engine">0</span>/25
+									</h3>
+									<span>
+										These combine antimatter with matter in a controlled reaction to create propulsion that will carry you to the stars.
+										<br>
+										Costs <span id="engineSiliconCost">500,000</span> Silicon, <span id="engineMeteoriteCost">10,000</span> Meteorite, <span id="engineHydrogenCost">250,000</span> Hydrogen.
+									</span>
+									<br>
+									<br>
+									<button onclick="Game.interstellar.getEngine()" class="btn btn-default">Get Engine Unit</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Aerodynamic Sections: <span id="aero">0</span>/15
+									</h3>
+									<span>
+										These allow for easy takeoffs and landings out of atmospheres so that you don't have to worry about air resistance.
+										<br>
+										Costs <span id="aeroSilverCost">200,000</span> Silver, <span id="aeroIceCost">300,000</span> Ice, <span id="aeroGemCost">250,000</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="Game.interstellar.getAero()" class="btn btn-default">Get Aerodynamic Section</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="antimatterTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Antimatter (Coming Soon!)
+									</h2>
+									<span>
+										Your fuel for interstellar travel is produced here.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Alcubierre Drive: <span id="drive">0</span>
+									</h3>
+									<span>
+										This powerful reactor can turn high-energy plasma into an extremely efficient fuel: Antimatter
+										<br>
+										Produces 0.5 Antimatter per second.
+										<br>
+										Uses 50 Plasma and 3K Ice per second.
+										<br>
+										Costs <span id="driveSpaceMetalCost">XXXX</span> ABC, <span id="driveTitaniumCost">XXXX</span> ABC, <span id="driveMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="Game.interstellar.getDrive()" class="btn btn-default">Get Alcubierre Drive</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="travelTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table no-select">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Travel (Coming Soon!)
+									</h2>
+									<span>
+										Here, you can travel across the cosmos.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										ABC: <span id="XXXX">0</span>
+									</h3>
+									<span>
+										ABC
+										<br>
+										Costs <span id="shieldSpaceMetalCost">XXXX</span> ABC, <span id="shieldTitaniumCost">XXXX</span> ABC, <span id="shieldMetalCost">XXXX</span> ABC.
+									</span>
+									<br>
+									<br>
+									<button onclick="getShield()" class="btn btn-default">Get ABC</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- More Tab -->
 		<div role="tabpanel" class="tab-pane fade" id="more">
@@ -6398,6 +6878,9 @@
 										<label class="btn btn-default">
 											<input type="radio" name="autosaves" id="10mins" autocomplete="off"> 10 Minutes
 										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="autosaves" id="off" autocomplete="off"> Off
+										</label>
 									</div>
 								</td>
 							</tr>
@@ -6467,8 +6950,15 @@
 									</h3>
 				                	<select id="themeSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
 				                		<option value="base">Base</option>
+				                		<option value="cerulean">Cerulean</option>
 				                		<option value="cyborg">Cyborg</option>
+				                		<option value="darkly">Darkly</option>
+				                		<option value="flatly">Flatly</option>
+				                		<option value="paper">Paper</option>
+				                		<option value="readable">Readable</option>
+				                		<option value="simplex">Simplex</option>
 				                		<option value="solar">Solar</option>
+				                		<option value="spacelab">Spacelab</option>
 				                		<option value="united">United</option>
 				                	</select>
 				                </td>
@@ -6516,6 +7006,16 @@
 									</h3>
 				                	<div class="checkbox">
 										<label><input id="notificationsEnabled" type="checkbox" value="">Screen Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Gain Buttons
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="gainButtonsHidden" type="checkbox" value="">Gain Buttons Hidden</label>
 									</div>
 				                </td>
 							</tr>
@@ -6594,13 +7094,15 @@
 										<br>
 										<a href="http://reddit.com/r/spacecompany">Sub-Reddit</a>
 										<br>
-										<a href="http://reddit.com">Reddit Posts: </a><a href="https://www.reddit.com/r/incremental_games/comments/62jpr6/space_company_public_release/">V0.2 </a><a href="https://www.reddit.com/r/incremental_games/comments/65xap3/space_company_v030_beta_release/">V0.3 </a>
+										<a href="http://www.kongregate.com">Kongregate: </a><a href="http://www.kongregate.com/games/sparticle999/space-company">Game</a>
 										<br>
 										<a href="http://github.com">GitHub: </a><a href="https://github.com/sparticle999/SpaceCompany/">Source Code</a>
 										<br>
 										<a href="https://plaza.dsolver.ca/">The Plaza: </a><a href="https://plaza.dsolver.ca/games/space-company">Game</a>
 										<br>
-										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a>
+										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a> / <a href="hhttps://www.reddit.com/r/SpaceCompany/wiki/futureplans">Future Plans</a>
+										<br>
+										<a href="https://www.reddit.com/r/SpaceCompany/wiki/index">Wiki</a>
 									</span>
 								</td>
 							</tr>
@@ -6872,26 +7374,19 @@
 <script type="text/javascript" src="statistics.js"></script>
 <script type="text/javascript" src="resource.js"></script>
 <script type="text/javascript" src="resourceData.js"></script>
-<script type="text/javascript" src="legacyResourceBridge.js"></script>
 <script type="text/javascript" src="building.js"></script>
 <script type="text/javascript" src="buildingData.js"></script>
 <script type="text/javascript" src="tech.js"></script>
 <script type="text/javascript" src="techData.js"></script>
 <script type="text/javascript" src="settings.js"></script>
-<script type="text/javascript" src="spaceship.js"></script>
-<script type="text/javascript" src="spaceshipParts.js"></script>
 
 <script type="text/javascript" src="ui/databoundElement.js"></script>
 <script type="text/javascript" src="ui/gameTabUI.js"></script>
 <script type="text/javascript" src="ui/resourceObserver.js"></script>
-<script type="text/javascript" src="ui/buildingObserver.js"></script>
 <script type="text/javascript" src="ui/achievementUI.js"></script>
 <script type="text/javascript" src="ui/statisticUI.js"></script>
 <script type="text/javascript" src="ui/resourceUI.js"></script>
-<script type="text/javascript" src="ui/techUI.js"></script>
 <script type="text/javascript" src="ui/legacyUI.js"></script>
-<script type="text/javascript" src="ui/spaceshipUI.js"></script>
-<script type="text/javascript" src="ui/utils.js"></script>
 
 <script type="text/javascript" src="core.js"></script>
 <script type="text/javascript" src="notification.js"></script>
@@ -6901,6 +7396,8 @@
 <script type="text/javascript" src="solarSystem.js"></script>
 <script type="text/javascript" src="wonder.js"></script>
 <script type="text/javascript" src="solCenter.js"></script>
+<script type="text/javascript" src="interstellar.js"></script>
+
 
 <!-- RELEASE -->
 <!--<script type="text/javascript" src="SpaceCompany.min.js"></script>-->

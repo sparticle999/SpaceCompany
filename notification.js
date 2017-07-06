@@ -101,6 +101,9 @@ function activeWonderTab(tab){
 	if(document.getElementById("meteoriteWonderNav").className != "sideTab hidden"){
 		document.getElementById("meteoriteWonderNav").className = "sideTab";
 	}
+	if(document.getElementById("communicationWonderNav").className != "sideTab hidden"){
+		document.getElementById("communicationWonderNav").className = "sideTab";
+	}
 	if(document.getElementById("rocketWonderNav").className != "sideTab hidden"){
 		document.getElementById("rocketWonderNav").className = "sideTab";
 	}
@@ -121,4 +124,19 @@ function activeSolCenterTab(tab){
 	document.getElementById("unlockEmcNav").className = "sideTab";
 	document.getElementById("unlockDysonNav").className = "sideTab";
 	document.getElementById(tab).className = "info";
+}
+
+function activeInterstellarTab(tab){
+	if(document.getElementById("commsNav").className != "sideTab hidden"){
+		document.getElementById("commsNav").className = "sideTab";
+	}
+	if(document.getElementById("interRocketNav").className != "sideTab hidden"){
+		document.getElementById("interRocketNav").className = "sideTab";
+	}
+	if(document.getElementById("antimatterNav").className != "sideTab hidden"){
+		document.getElementById("antimatterNav").className = "sideTab";
+	}
+	if(document.getElementById("travelNav").className != "sideTab hidden"){
+		document.getElementById("travelNav").className = "sideTab";
+	}	document.getElementById(tab).className = "info";
 }

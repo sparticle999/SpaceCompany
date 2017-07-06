@@ -6,8 +6,7 @@ Game.buildingData = (function () {
         type: BUILDING_TYPE.PRODUCER,
         unlocked: false,
         maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED,
-        costMultiplier: 1.1
+        costType: COST_TYPE.FIXED
     };
 
     // Energy
@@ -706,7 +705,7 @@ Game.buildingData = (function () {
 
     instance.methaneT3 = $.extend({}, baseProducerBuilding, {
         name: 'Space Cow Plantation',
-        desc: 'These hold cows genetically modified to produce methane constantly',
+        desc: 'These hold cows genetically moodified to produce methane constantly',
         resource: 'methane',
         resourcePerSecond: {
             'energy': -49,

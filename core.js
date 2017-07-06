@@ -58,7 +58,10 @@ function calculateEnergyUse(delta) {
         use += plasmatic * 8500;
 	}
 
-    return use;
+    var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
+	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
+
+    return use * multiplier;
 }
 
 function toggleEnergy() {
@@ -71,8 +74,39 @@ function fixStorageRounding() {
 		meteorite = meteoriteStorage;
 	}
 
-	if(Math.round(plasma * precision) / precision === plasmaStorage) {
-		plasma = plasmaStorage;
+	if(Math.round(plasma * precision) / precision === getMaxPlasma()) {
+		plasma = getMaxPlasma();
+	}
+}
+
+function refreshTimeUntilFull() {
+    setTimeUntilDisplayTest('plasmaFullTime', (getMaxPlasma() - plasma) / plasmaps);
+    setTimeUntilDisplayTest('energyFullTime', (getMaxEnergy() - energy) / energyps);
+    setTimeUntilDisplayTest('uraniumFullTime', (uraniumStorage - uranium) / uraniumps);
+    setTimeUntilDisplayTest('lavaFullTime', (lavaStorage - lava) / lavaps);
+    setTimeUntilDisplayTest('oilFullTime', (oilStorage - oil) / oilps);
+    setTimeUntilDisplayTest('metalFullTime', (metalStorage - metal) / metalps);
+    setTimeUntilDisplayTest('gemFullTime', (gemStorage - gem) / gemps);
+    setTimeUntilDisplayTest('charcoalFullTime', (charcoalStorage - charcoal) / charcoalps);
+    setTimeUntilDisplayTest('woodFullTime', (woodStorage - wood) / woodps);
+    setTimeUntilDisplayTest('siliconFullTime', (siliconStorage - silicon) / siliconps);
+    setTimeUntilDisplayTest('spaceMetalFullTime', (spaceMetalStorage - spaceMetal) / spaceMetalps);
+    setTimeUntilDisplayTest('methaneFullTime', (methaneStorage - methane) / methaneps);
+    setTimeUntilDisplayTest('titaniumFullTime', (titaniumStorage - titanium) / titaniumps);
+    setTimeUntilDisplayTest('goldFullTime', (goldStorage - gold) / goldps);
+    setTimeUntilDisplayTest('silverFullTime', (silverStorage - silver) / silverps);
+    setTimeUntilDisplayTest('hydrogenFullTime', (hydrogenStorage - hydrogen) / hydrogenps);
+    setTimeUntilDisplayTest('heliumFullTime', (heliumStorage - helium) / heliumps);
+    setTimeUntilDisplayTest('iceFullTime', (iceStorage - ice) / iceps);
+    setTimeUntilDisplayTest('meteoriteFullTime', (meteoriteStorage - meteorite) / meteoriteps);
+}
+
+function setTimeUntilDisplayTest(target, value) {
+	if(value > 0) {
+		$('#' + target).text(Game.utils.getFullTimeDisplay(value));
+	} 
+	else {
+        $('#' + target).text('N/A');
 	}
 }
 
@@ -91,8 +125,8 @@ function refreshPerSec(delta){
 	}
 
     // calculate multipliers (add prestige etc here)
-    var efficiencyTech = Game.tech.getTechData('efficiencyResearch');
-    var perSecondMultiplier = 1 + (efficiencyTech.current * 0.01);
+    var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
+    var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01);
 
 	// Now we calculate the base per second
     uraniumps = grinder * perSecondMultiplier;
@@ -115,8 +149,10 @@ function refreshPerSec(delta){
     meteoriteps = 0;
     rocketFuelps = 0;
 
-    // Science is not multiplied!
-    scienceps = (lab*0.1) + (labT2*1) + (labT3*10);
+    // Science
+    var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
+    var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02);
+    scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100)) * scienceMultiplier;
 
 	if(!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
@@ -180,7 +216,7 @@ function refreshPerSec(delta){
     }
 
     if(heaterToggled === true && !energyLow && globalEnergyLock === false) {
-        var adjustment = adjustCost(plasmaStorage, plasma, plasmaps, heater * 10, heater * perSecondMultiplier);
+        var adjustment = adjustCost(getMaxPlasma(), plasma, plasmaps, heater * 10, heater * perSecondMultiplier);
         if(adjustment.g > 0 && hydrogen + hydrogenps * delta >= adjustment.c) {
         	hydrogenps -= adjustment.c;
         	plasmaps += adjustment.g;
@@ -188,7 +224,7 @@ function refreshPerSec(delta){
 	}
 
     if(plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-        var adjustment = adjustCost(plasmaStorage, plasma, plasmaps, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
+        var adjustment = adjustCost(getMaxPlasma(), plasma, plasmaps, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
         if(adjustment.g > 0 && helium + heliumps * delta >= adjustment.c) {
             heliumps -= adjustment.c;
             plasmaps += adjustment.g;
@@ -211,6 +247,7 @@ function refreshPerSec(delta){
 
 function checkRedCost(){
 
+    Game.settings.turnRedOrGreen(plasma, getMaxPlasma(), 'plasma');
     Game.settings.turnRedOrGreen(energy, getMaxEnergy(), 'energy');
 
 	Game.settings.turnRedOrGreen(uranium, uraniumStorage, 'uranium');
@@ -229,7 +266,6 @@ function checkRedCost(){
     Game.settings.turnRedOrGreen(hydrogen, hydrogenStorage, 'hydrogen');
     Game.settings.turnRedOrGreen(helium, heliumStorage, 'helium');
     Game.settings.turnRedOrGreen(ice, iceStorage, 'ice');
-    Game.settings.turnRedOrGreen(plasma, plasmaStorage, 'plasma');
     Game.settings.turnRedOrGreen(meteorite, meteoriteStorage, 'meteorite');
 
     Game.settings.turnRedOnNegative(energyps, 'energyps');
@@ -307,6 +343,14 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, meteoriteStorage, "meteoriteStorageCost");
 	Game.settings.turnRed(spaceMetal, meteoriteStorage*4, "meteoriteStorageSpaceMetalCost");
 	
+	Game.settings.turnRed(silver, PSUSilverCost, "PSUSilverCost");
+	Game.settings.turnRed(gold, PSUGoldCost, "PSUGoldCost");
+	Game.settings.turnRed(uranium, PSUUraniumCost, "PSUUraniumCost");
+
+	Game.settings.turnRed(silver, PSUT2SilverCost, "PSUT2SilverCost");
+	Game.settings.turnRed(gold, PSUT2GoldCost, "PSUT2GoldCost");
+	Game.settings.turnRed(uranium, PSUT2UraniumCost, "PSUT2UraniumCost");
+
 	Game.settings.turnRed(spaceMetal, heaterSpaceMetalCost, "heaterSpaceMetalCost");
 	Game.settings.turnRed(gem, heaterGemCost, "heaterGemCost");
 	Game.settings.turnRed(silicon, heaterSiliconCost, "heaterSiliconCost");
@@ -322,10 +366,6 @@ function checkRedCost(){
 	Game.settings.turnRed(metal, batteryT2MetalCost, "batteryT2MetalCost");
 	Game.settings.turnRed(gem, batteryT2GemCost, "batteryT2GemCost");
 	Game.settings.turnRed(spaceMetal, batteryT2SpaceMetalCost, "batteryT2SpaceMetalCost");
-
-    Game.settings.turnRed(metal, batteryT3MetalCost, "batteryT3MetalCost");
-    Game.settings.turnRed(gem, batteryT3GemCost, "batteryT3GemCost");
-    Game.settings.turnRed(spaceMetal, batteryT3SpaceMetalCost, "batteryT3SpaceMetalCost");
 
 	Game.settings.turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	Game.settings.turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
@@ -507,6 +547,10 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, labT3GemCost, "labT3GemCost");
 	Game.settings.turnRed(wood, labT3WoodCost, "labT3WoodCost");
 
+	Game.settings.turnRed(metal, labT4MetalCost, "labT4MetalCost");
+	Game.settings.turnRed(gem, labT4GemCost, "labT4GemCost");
+	Game.settings.turnRed(wood, labT4WoodCost, "labT4WoodCost");
+
 	Game.settings.turnRed(science, 5, "unlockStorageCost");
 	Game.settings.turnRed(science, 20, "unlockBasicEnergyCost");
 	Game.settings.turnRed(science, 30, "unlockOilCost");
@@ -523,6 +567,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
 	Game.settings.turnRed(science, 40000, "unlockPlasmaCost");
 	Game.settings.turnRed(science, 60000, "unlockPlasmaTier2Cost");
+	Game.settings.turnRed(science, 50000000, "unlockLabT4Cost");
 	Game.settings.turnRed(science, 60000, "unlockEmcCost");
 	Game.settings.turnRed(science, 100000, "unlockMeteoriteCost");
 	Game.settings.turnRed(science, 75000, "unlockMeteoriteTier1Cost");
@@ -530,7 +575,8 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 100000, "unlockDysonCost");
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
-    Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
+    Game.settings.turnRed(science, 9500000, "unlockPSUCost");
+	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
 
 	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
 	Game.settings.turnRed(gem, 900, "rocketGemCost");
@@ -641,6 +687,8 @@ function checkRedCost(){
 	Game.settings.turnRed(uranium, webUraniumCost, "webUraniumCost");
 	Game.settings.turnRed(silicon, webSiliconCost, "webSiliconCost");
 
+	// Sol Center
+
 	Game.settings.turnRed(titanium, dysonTitaniumCost, "dysonTitaniumCost");
 	Game.settings.turnRed(gold, dysonGoldCost, "dysonGoldCost");
 	Game.settings.turnRed(silicon, dysonSiliconCost, "dysonSiliconCost");
@@ -661,6 +709,8 @@ function checkRedCost(){
 
 	Game.settings.turnRed(energy, 100000, "unlockDysonResearchEnergyCost");
 	Game.settings.turnRed(plasma, 10000, "unlockDysonResearchPlasmaCost");
+
+	// Wonders
 
 	Game.settings.turnRed(gem, preciousGemCost, "preciousGemCost");
 	Game.settings.turnRed(silver, preciousSilverCost, "preciousSilverCost");
@@ -693,6 +743,38 @@ function checkRedCost(){
 	Game.settings.turnRed(meteorite, meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
 	Game.settings.turnRed(ice, meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(silicon, meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
+
+	Game.settings.turnRed(gold, 6000000, "commsWonderGoldCost");
+	Game.settings.turnRed(silicon, 10000000, "commsWonderSiliconCost");
+	Game.settings.turnRed(ice, 6000000, "commsWonderIceCost");
+
+	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
+	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
+
+	Game.settings.turnRed(uranium, 6000000, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(lava, 10000000, "antimatterWonderLavaCost");
+	Game.settings.turnRed(oil, 8000000, "antimatterWonderOilCost");
+	Game.settings.turnRed(methane, 6000000, "antimatterWonderMethaneCost");
+
+	Game.settings.turnRed(meteorite, 500000, "portalMeteoriteCost");
+	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
+	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
+
+	// Interstellar
+
+	Game.settings.turnRed(spaceMetal, Game.interstellar.machines.shield.spaceMetal, "shieldSpaceMetalCost");
+	Game.settings.turnRed(titanium, Game.interstellar.machines.shield.titanium, "shieldTitaniumCost");
+	Game.settings.turnRed(metal, Game.interstellar.machines.shield.metal, "shieldMetalCost");
+
+	Game.settings.turnRed(silicon, Game.interstellar.machines.engine.silicon, "engineSiliconCost");
+	Game.settings.turnRed(meteorite, Game.interstellar.machines.engine.meteorite, "engineMeteoriteCost");
+	Game.settings.turnRed(hydrogen, Game.interstellar.machines.engine.hydrogen, "engineHydrogenCost");
+
+	Game.settings.turnRed(silver, Game.interstellar.machines.aero.silver, "aeroSilverCost");
+	Game.settings.turnRed(ice, Game.interstellar.machines.aero.ice, "aeroIceCost");
+	Game.settings.turnRed(gem, Game.interstellar.machines.aero.gem, "aeroGemCost");
+
 }
 
 function refreshResources(){
@@ -743,11 +825,26 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
-		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("communicationWonderNav").className = "sideTab";
 		document.getElementById("rocketWonderNav").className = "sideTab";
+		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
-		resourcesUnlocked.push("wonderFloor2Nav", "portalRoomNav");
+		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
 	}
+
+	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
+	Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+
+	if(contains(buttonsHidden, "rebuildCommsWonder")){
+		document.getElementById("commsNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildRocketWonder")){
+		document.getElementById("interRocketNav").className = "sideTab";
+	}
+	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
+		document.getElementById("antimatterNav").className = "sideTab";
+	}
+
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
 			document.getElementById(noBorder[i] + j).style.border = "";
@@ -832,6 +929,15 @@ function refreshResearches(){
 	if(contains(researched, "unlockLabT3")){
 		document.getElementById("labTier3").className = "";
 	}
+	if(contains(researched, "unlockLabT4")){
+		document.getElementById("labTier4").className = "";
+	}
+	if(contains(researched, "unlockLabT3")){
+		if(contains(available, "unlockLabT4") === false){
+			document.getElementById("unlockLabT4").className = "";
+			available.push("unlockLabT4");
+		}
+	}
 	if(contains(researched, "upgradeSolarTech")){
 		if(contains(available, "unlockBatteries") === false){
 			document.getElementById("unlockBatteries").className ="";
@@ -865,6 +971,11 @@ function refreshResearches(){
 			document.getElementById("unlockPlasmaTier2").className ="";
 			available.push("unlockPlasmaTier2");
 		}
+		if(contains(available, "unlockPSU") === false){
+			document.getElementById("unlockPSU").className ="";
+			available.push("unlockPSU");
+			newUnlock('research');
+		}
 	}
 	if(contains(researched, "unlockBatteries")){
 		if(contains(available, "unlockBatteriesT2") === false){
@@ -872,12 +983,6 @@ function refreshResearches(){
 			available.push("unlockBatteriesT2");
 		}
 	}
-    if(contains(researched, "unlockBatteriesT2")){
-        if(contains(available, "unlockBatteriesT3") === false){
-            document.getElementById("unlockBatteriesT3").className ="";
-            available.push("unlockBatteriesT3");
-        }
-    }
 	if(contains(researched, "unlockDyson")){
 		if(contains(available, "unlockDysonSphere") === false){
 			document.getElementById("unlockDysonSphere").className ="";

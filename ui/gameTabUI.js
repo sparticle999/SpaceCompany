@@ -69,11 +69,11 @@
     };
 
     GameTab.prototype.show = function() {
-        $('#' + this.data.htmlId + '_tab').show();
+        $('#' + this.data.htmlId).show();
     };
 
     GameTab.prototype.hide = function() {
-        $('#' + this.data.htmlId + '_tab').hide();
+        $('#' + this.data.htmlId).hide();
     };
 
     GameTab.prototype.showCategory = function(id) {
@@ -84,12 +84,8 @@
         $('#' + this.data.htmlId + '_' + id + '_collapse').hide();
     };
 
-    GameTab.prototype.markActivated = function () {
-        $('#' + this.data.htmlId + '_glyph').hide();
-    };
-
     GameTab.prototype.activate = function() {
-        this.markActivated();
+        $('#' + this.data.htmlId + '_glyph').addClass('hidden');
 
         if (this.onActivate !== null) {
             this.onActivate(this.data.id);

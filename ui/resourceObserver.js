@@ -64,11 +64,6 @@
             }
 
             case RESOURCE_OBSERVER_TYPE.CAPACITY: {
-                if(resourceData.capacity === -1) {
-                    element.text('∞');
-                    break;
-                }
-
                 element.text(Game.settings.format(resourceData.capacity));
 
                 if(this.enableColoring) {
