@@ -225,9 +225,7 @@ function getDyson(){
 }
 
 function buildDysonTo(n) {
-	while (dyson < n && getDyson()) {
-		getDyson();
-	}
+	while (dyson < n && getDyson()){}
 }
 
 function buildRing(){
