@@ -35,19 +35,19 @@ Game.interstellar = (function(){
 				name: "Barnard's Star",
 				distance: 5.96,
 				planets: 0,
-				tier: 3
+				tier: 4
 			},
 			star3: {
 				name: "Epsilon Eridani",
 				distance: 10.52,
 				planets: 2,
-				tier: 2
+				tier: 1
 			},
 			star4: {
 				name: "Tau Ceti",
 				distance: 11.89,
 				planets: 5,
-				tier: 2
+				tier: 1
 			},
 			star5: {
 				name: "Gliese 674",
@@ -77,13 +77,13 @@ Game.interstellar = (function(){
 				name: "Groombridge 1618",
 				distance: 15.85,
 				planets: 0,
-				tier: 3
+				tier: 1
 			},
 			star10: {
 				name: "DEN 0255-4700",
 				distance: 16.2,
 				planets: 0,
-				tier: 3
+				tier: 4
 			},
 		},
 	};
