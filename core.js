@@ -114,7 +114,6 @@ function setTimeUntilDisplayTest(target, current, max, perSecond) {
 
 	if(value > 0) {
         var formattedTimeTest = Game.utils.getFullTimeDisplay(value);
-        console.log(formattedTimeTest);
         targetElement.text(formattedTimeTest);
 
         if(isDraining){
