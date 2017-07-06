@@ -36,57 +36,111 @@ function unlockDysonResearch(){
 }
 
 function changeEmcAmount(event){
-	if (event.button === 2) {
-		emcAmount /= 10;
-		if (emcAmount < 1) {
-			emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
-		}
-	} else {
-		emcAmount *= 10;
-		if(emcAmount > getMaxEnergy())
-		{
-			emcAmount = 1;
-		}
-	}
+    if (event.button === 2) {
+        emcAmount /= 10;
+       
+        if (emcAmount < 1) {
+            emcAmount = "Max";
+        }
+        if(emcAmount !== emcAmount){ // Checks for NaN
+            emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
+        }
+       
+    } else {
+        emcAmount *= 10;
 
-	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
-	}
-
+        if(emcAmount > getMaxEnergy()){
+            emcAmount = "Max";
+        }
+        if(emcAmount !== emcAmount){ // Checks for NaN
+            emcAmount = 1;
+        }
+       
+    }
+   
+    if(emcAmount === "Max"){
+        for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
+            document.getElementsByClassName("emcAmount")[i].innerHTML = "Max";
+        }
+    }
+    else{
+        for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
+            document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
+        }
+        document.getElementById("globalEmcAmount").innerHTML = "X" + Game.settings.format(emcAmount);
+    }
+ 
     refreshConversionDisplay();
 }
-
+ 
 function refreshConversionDisplay() {
     var maxEnergy = getMaxEnergy();
-    for(var i = 0; i < resources.length; i++){
-        var element = $('#' + resources[i] + "EmcVal");
-        var buttonElement = $('#' + resources[i] + "Conv");
-
-        var value = window[resources[i]+"EmcVal"];
-        var emcValue = value * emcAmount;
-        var current = window[resources[i]];
-        var capacity = window[resources[i]+"Storage"];
-        element.text(Game.settings.format(emcValue));
-
-        var disabled = false;
-        if(maxEnergy < emcValue) {
-            buttonElement.addClass('red');
-            disabled = true;
-        } else {
-            buttonElement.removeClass('red');
+    if(emcAmount === "Max"){
+        for(var i = 0; i < resources.length; i++){
+            var element = $('#' + resources[i] + "EmcVal");
+            var amountElement = $('#' + resources[i] + "EmcAmount");
+            var buttonElement = $('#' + resources[i] + "Conv");
+ 
+            var value = window[resources[i]+"EmcVal"];
+ 
+            var emcAmt = Math.min(Math.floor(energy/value), window[resources[i]+"Storage"]-window[resources[i]]);
+            var emcValue = emcAmt * value;
+ 
+            var current = window[resources[i]];
+            var capacity = window[resources[i]+"Storage"];
+            element.text(Game.settings.format(emcValue));
+            amountElement.text(Game.settings.format(emcAmt));
+            var disabled = false;
+            if(maxEnergy < emcValue) {
+                buttonElement.addClass('red');
+                disabled = true;
+            } else {
+                buttonElement.removeClass('red');
+            }
+ 
+            if(emcAmount > capacity || current >= capacity){
+                buttonElement.addClass('green');
+                disabled = true;
+            }
+            else{
+                buttonElement.removeClass('green');
+            }
+ 
+            buttonElement.prop('disabled', disabled);
         }
-
-        if(emcAmount > capacity || current >= capacity){
-            buttonElement.addClass('green');
-            disabled = true;
-        }
-        else{
-            buttonElement.removeClass('green');
-        }
-
-        buttonElement.prop('disabled', disabled);
     }
-
+    else{
+        for(var i = 0; i < resources.length; i++){
+            var element = $('#' + resources[i] + "EmcVal");
+            var buttonElement = $('#' + resources[i] + "Conv");
+ 
+            var value = window[resources[i]+"EmcVal"];
+            var emcValue = value * emcAmount;
+            var current = window[resources[i]];
+            var capacity = window[resources[i]+"Storage"];
+            element.text(Game.settings.format(emcValue));
+ 
+            var disabled = false;
+            if(maxEnergy < emcValue) {
+                buttonElement.addClass('red');
+                disabled = true;
+            } else {
+                buttonElement.removeClass('red');
+            }
+ 
+            if(emcAmount > capacity || current >= capacity){
+                buttonElement.addClass('green');
+                disabled = true;
+            }
+            else{
+                buttonElement.removeClass('green');
+            }
+ 
+            buttonElement.prop('disabled', disabled);
+        }
+    }
+   
+ 
     refreshPlasmaConversionDisplay();
 }
 
