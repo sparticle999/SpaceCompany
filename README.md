@@ -56,6 +56,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Option to Hide Gain Buttons
 - Achievements for Rings and Swarms
 - Time Until Storage Full Display
+- Max Emc Conversion Button
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -69,6 +70,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Changed Some Descriptions
 - Made Red Bold Costs Also Underlined
 - Allow decreasing EMC amount with right click
+- Changed Verion Number System to include 4th digit
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
