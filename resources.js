@@ -72,7 +72,7 @@ function getMaxPlasma() {
 }
 
 function getMaxEnergy() {
-	return 100000 + (50000 * battery) + (500000 * batteryT2);
+	return 100000 + (50000 * battery) + (500000 * batteryT2) +(5000000 * batteryT3);
 }
 
 // Gain Buttons
@@ -746,6 +746,19 @@ function getBatteryT2(){
 		updateCost();
         Game.statistics.add('tierOwned2');
 	}
+}
+
+function getBatteryT3(){
+    if(metal >= batteryT3MetalCost && gem >= batteryT3GemCost && spaceMetal >= batteryT3SpaceMetalCost ){
+        metal -= batteryT3MetalCost;
+        gem -= batteryT3GemCost;
+        spaceMetal -= batteryT3SpaceMetalCost;
+        batteryT3 += 1;
+        batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+        batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+        batteryT3SpaceMetalCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
+        Game.statistics.add('tierOwned3');
+    }
 }
 
 function getCharcoalEngine(){
