@@ -184,7 +184,7 @@ function convertPlasma(resourceName){
 		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(emcValue) + ' ' + resourceName);
 
 		window[resourceName] += emcValue;
-		plasma -= value;
+		plasma -= emcValue*value;
 	}
 	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
 		plasma -= emcAmount*window[resourceName + "EmcVal"];
