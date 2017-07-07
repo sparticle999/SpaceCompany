@@ -2,7 +2,6 @@ function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
 		versionNumber: versionNumber,
-		lastFixedUpdate: lastFixedUpdate,
 		plasma: plasma,
 		PSU: PSU,
 		PSUSilverCost: PSUSilverCost,
@@ -420,8 +419,6 @@ function legacyLoad(savegame){
 	"use strict";
 	
 	if(savegame){
-		if(typeof savegame.versionNumber !== "undefined") versionNumber = savegame.versionNumber;
-		if(typeof savegame.lastFixedUpdate !== "undefined"){lastFixedUpdate = savegame.lastFixedUpdate;}
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") PSU = savegame.PSU;
 		if(typeof savegame.PSUSilverCost !== "undefined") PSUSilverCost = savegame.PSUSilverCost;
