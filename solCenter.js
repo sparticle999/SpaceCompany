@@ -73,7 +73,6 @@ function refreshConversionDisplay() {
 
 			var current = window[resources[i]];
 			var capacity = window[resources[i]+"Storage"];
-			element.text(Game.settings.format(emcValue*value));
 
 			var disabled = false;
 			if(maxEnergy < emcValue) {
@@ -91,7 +90,15 @@ function refreshConversionDisplay() {
 			    buttonElement.removeClass('green');
 			}
 			document.getElementById("emcButton").innerHTML = "Max";
-			document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(emcValue);
+			if(resources[i] == "meteorite"){
+				console.log(resources[i]);
+				document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(Math.floor(plasma/value));
+				element.text(Game.settings.format(Math.floor(plasma/value)*value));
+			}
+			else{
+				document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(emcValue);
+				element.text(Game.settings.format(emcValue*value));
+			}
 
 			buttonElement.prop('disabled', disabled);
     	}

@@ -22,12 +22,12 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Dark Matter
 - Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
 - Unknown Planets that you have to explore to know what it holds
-- Each Starsystem is more hostile than the last until prestige, where it resets
+- Each star system is more hostile than the last until prestige, where it resets
 - Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
 - Machine Overview Tab
 - Space Elevator
-- Unlock Technologies such as reduce the exponental increase of costs
+- Unlock Technologies such as reduce the exponential increase of costs
 - Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Buy X buttons
@@ -50,7 +50,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Rocket Wonder
 - Antimatter Wonder
 - Portal Room
-- (Stargate)
+- Stargate
 - Plasma Storage Units
 - Buying Multiple Dyson Parts
 - Option to Hide Gain Buttons
@@ -70,7 +70,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Changed Some Descriptions
 - Made Red Bold Costs Also Underlined
 - Allow decreasing EMC amount with right click
-- Changed Verion Number System to include 4th digit
+- Changed Version Number System to include 4th digit
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
@@ -86,6 +86,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Whitespace Bug on Plasma Tab
 - Fixed Infinite Meteorite Bug
 - Fixed Stargate Not Deducting Resources
+- Fixed Dyson Sections Cost Bug
+- Fixed Plasma EMC Display Bug
 
 ### v0.4.4
 ##### Features
