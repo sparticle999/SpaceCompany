@@ -497,8 +497,8 @@ Game.techData = (function () {
     };
 
     instance.efficiencyResearch = {
-        name: 'Research Efficiency',
-        desc: 'Efficiency increases the income per second by 1% per purchase.',
+        name: 'Research Resource Efficiency',
+        desc: 'Resource Efficiency increases the income of resources by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,
         unlocked: false,
         costType: COST_TYPE.FIXED,
@@ -506,6 +506,32 @@ Game.techData = (function () {
         maxLevel: -1,
         cost: {
             'science': 100000
+        }
+    };
+
+    instance.energyEfficiencyResearch = {
+        name: 'Research Energy Efficiency',
+        desc: 'Energy Efficiency decreases the energy consumption of all machines by 1%/s per purchase.',
+        type: TECH_TYPE.UPGRADE,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 50,
+        cost: {
+            'science': 100000000
+        }
+    };
+
+    instance.scienceEfficiencyResearch = {
+        name: 'Research Science Efficiency',
+        desc: 'Science Efficiency increases the science production by 2% per purchase.',
+        type: TECH_TYPE.UPGRADE,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: -1,
+        cost: {
+            'science': 10000000
         }
     };
 

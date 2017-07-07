@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource"];
+	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource", "Adding T3 Batteries. Piece of Cake!", "Launching Rockets", "Thanking The Community", "Identifying Higgs's Boson", "Introducing Turtles", "Converting Mass Back to Energy", "Just One More Piece", "Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to Upgrade Space Metal to", "Transferring Data to NSA", "Implementing AI bug creator", "Initialising Glados", "Initialising J.A.R.V.I.S."];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -61,7 +61,7 @@
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span class="text-muted small ng-binding">
-						v0.4.4 Beta
+						v0.4.4.2 Beta
 					</span>
 				</a>
 				<a class="navbar-brand">
@@ -121,6 +121,10 @@
 						<td style="border:none; vertical-align:middle; text-align:right;">
 							<span id="plasma">
 								0
+							</span>
+							<span id="plasmaStorageBox" class="hidden">
+								/
+								<span id="plasmaStorage">100,000</span>
 							</span>
 						</td>
 					</tr>
@@ -551,13 +555,47 @@
 									<span>
 										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.
 										<br>
-										1 Plasma is created by 'attacking' <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
+										Time remaining until full storage: <b><span id="plasmaFullTime">N/A</span></b>
+										<br>
+										1 Plasma is created by infusing <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
 									<br>
 									<br>
-									<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+									<hide class="gainButton">
+										<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+										<br>
+										<br>
+									</hide>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnits" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										PSUs: <span id="PSU">0</span>
+									</h3>
+									<span>
+										PSUs increase your plasma storage by 50,000 per PSU built.
+										<br>
+										Costs <span id="PSUSilverCost">770,000</span> Silver, <span id="PSUGoldCost">770,000</span> Gold, <span id="PSUUraniumCost">550,000</span> Uranium.
+									</span>
 									<br>
 									<br>
+									<button onclick="getPSU()" class="btn btn-default">Get PSU</button>
+								</td>
+							</tr>
+							<tr id="plasmaStorageUnitsT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										T2 PSUs: <span id="PSUT2">0</span>
+									</h3>
+									<span>
+										Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.
+										<br>
+										Costs <span id="PSUT2SilverCost">9.300M</span> Silver, <span id="PSUT2GoldCost">9.300M</span> Gold, <span id="PSUT2UraniumCost">6.800M</span> Uranium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPSUT2()" class="btn btn-default">Get PSU T2</button>
 								</td>
 							</tr>
 							<tr>
@@ -615,8 +653,10 @@
 									</h2>
 									<span>
 										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
+										<br>
+										Time remaining until full storage: <b><span id="energyFullTime">N/A</span></b>
+										<br>
 									</span>
-									<br>
 									<br>
 									<button onclick="toggleEnergy()" class="btn btn-default">Toggle All Energy Production + Consumption</button>
 								</td>
@@ -788,9 +828,11 @@
 									<span>
 										Uranium is used for nuclear power generation because when it is split, it releases huge amounts of Energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainUranium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -802,6 +844,8 @@
 									</h3>
 									<span>
 										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -902,9 +946,11 @@
 									<span>
 										Oil is pumped up from the ground and is used to build Tier 2 resource gatherers.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainOil()" class="btn btn-default">Gain 1</div>
+									</hide>
 								</td>
 							</tr>
 							<tr id="oilStorageUpgrade" class="hidden">
@@ -914,6 +960,8 @@
 									</h3>
 									<span>
 										Upgrade your Oil storage size to <span id="oilNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="oilFullTime">N/A</span></b>
 										<br>
 										Costs <span id="oilStorageCost">50</span> Oil, <span id="oilStorageMetalCost">20</span> Metal.
 									</span>
@@ -1012,9 +1060,11 @@
 									<span>
 										Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1026,6 +1076,8 @@
 									</h3>
 									<span>
 										Upgrade your Metal storage size to <span id="metalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="metalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="metalStorageCost">50</span> Metal.
 									</span>
@@ -1126,9 +1178,11 @@
 									<span>
 										Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGem()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1140,6 +1194,8 @@
 									</h3>
 									<span>
 										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="gemFullTime">N/A</span></b>
 										<br>
 										Costs <span id="gemStorageCost">50</span> Gems, <span id="gemStorageMetalCost">20</span> Metal.
 									</span>
@@ -1192,7 +1248,7 @@
 										Diamond Encrusted Drill: <span id="diamondDrill">0</span>
 									</h3>
 									<span>
-										The Diamond Encrusted Drill is one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.
+										The Diamond Encrusted Drill is the best drill possible that can be made on Earth, meaning it produces Gems at intense speeds.
 										<br>
 										Produces 89 Gems per second.
 										<br>
@@ -1242,7 +1298,9 @@
 										<br>
 									</span>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainCharcoal()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleCharcoal()" class="btn btn-default">Turn Charcoal Production <span id="charcoalToggled">Off</span></button>
 									<br>
 									<br>
@@ -1255,6 +1313,8 @@
 									</h3>
 									<span>
 										Upgrade your Charcoal storage size to <span id="charcoalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="charcoalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="charcoalStorageCost">50</span> Charcoal, <span id="charcoalStorageMetalCost">20</span> Metal.
 									</span>
@@ -1363,9 +1423,11 @@
 									<span>
 										Wood is one of the primary resources. It is used more often in early game for tools and buildings.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainWood()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1377,6 +1439,8 @@
 									</h3>
 									<span>
 										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="woodFullTime">N/A</span></b>
 										<br>
 										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> Metal.
 									</span>
@@ -1477,9 +1541,11 @@
 									<span>
 										Silicon is useful for automatic mining systems of the third tier. These will be very useful in building your first wonder. Despite being a high tier resource, it is found mainly on Earth by heating sand.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1491,6 +1557,8 @@
 									</h3>
 									<span>
 										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="siliconFullTime">N/A</span></b>
 										<br>
 										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1591,9 +1659,11 @@
 									<span>
 										Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSpaceMetal()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1605,6 +1675,8 @@
 									</h3>
 									<span>
 										Upgrade your Space Metal storage size to <span id="spaceMetalNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="spaceMetalFullTime">N/A</span></b>
 										<br>
 										Costs <span id="spaceMetalStorageCost">50</span> Space Metal, <span id="spaceMetalStorageMetalCost">200</span> Metal.
 									</span>
@@ -1705,9 +1777,11 @@
 									<span>
 										Methane is a gas found in abundance on Venus. It can be used to power your company much more effectively than solid fuel.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainMethane()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1719,6 +1793,8 @@
 									</h3>
 									<span>
 										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="methaneFullTime">N/A</span></b>
 										<br>
 										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1820,9 +1896,11 @@
 									<span>
 										Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainTitanium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1834,6 +1912,8 @@
 									</h3>
 									<span>
 										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="titaniumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -1934,9 +2014,11 @@
 									<span>
 										Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainGold()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -1948,6 +2030,8 @@
 									</h3>
 									<span>
 										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="goldFullTime">N/A</span></b>
 										<br>
 										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2048,9 +2132,11 @@
 									<span>
 										Silver is another metal most commonly found in the asteroid belt.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainSilver()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2062,6 +2148,8 @@
 									</h3>
 									<span>
 										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="silverFullTime">N/A</span></b>
 										<br>
 										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2162,9 +2250,11 @@
 									<span>
 										Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainLava()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2176,6 +2266,8 @@
 									</h3>
 									<span>
 										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="lavaFullTime">N/A</span></b>
 										<br>
 										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2276,9 +2368,11 @@
 									<span>
 										Hydrogen is extremely common on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHydrogen()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2290,6 +2384,8 @@
 									</h3>
 									<span>
 										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="hydrogenFullTime">N/A</span></b>
 										<br>
 										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2390,9 +2486,11 @@
 									<span>
 										Helium is the second most common element on gas giants such as Jupiter and Saturn.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainHelium()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2404,6 +2502,8 @@
 									</h3>
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="heliumFullTime">N/A</span></b>
 										<br>
 										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2504,9 +2604,11 @@
 									<span>
 										Ice, although it can be collected on Earth, is not nearly as profitable as flying to Pluto and back with space craft full of the stuff. It is mainly used for super-cooling technology necessary for Tier 4 machines.
 									</span>
+									<hide class="gainButton">
 									<br>
 									<br>
 									<div onclick="gainIce()" class="btn btn-default">Gain 1</div>
+									</hide>
 									<br>
 									<br>
 								</td>
@@ -2518,6 +2620,8 @@
 									</h3>
 									<span>
 										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="iceFullTime">N/A</span></b>
 										<br>
 										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageSpaceMetalCost">20</span> Space Metal.
 									</span>
@@ -2622,7 +2726,9 @@
 									</span>
 									<br>
 									<br>
+									<hide class="gainButton">
 									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									</hide>
 									<button onclick="toggleMeteorite()" class="btn btn-default">Turn Meteorite Production <span id="meteoriteToggled">Off</span></button>
 									<br>
 									<br>
@@ -2635,6 +2741,8 @@
 									</h3>
 									<span>
 										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
+										<br>
+										Time remaining until full storage: <b><span id="meteoriteFullTime">N/A</span></b>
 										<br>
 										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageSpaceMetalCost">400</span> Space Metal.
 									</span>
@@ -2743,7 +2851,9 @@
 										Home Science Kit: <span id="lab">0</span>
 									</h3>
 									<span>
-										Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.
+										Build a small laboratory of your very own to start producing science.
+										<br>
+										Each one produces 0.1 science per second.
 										<br>
 										Costs <span id="labMetalCost">20</span> Metal, <span id="labGemCost">15</span> Gems, <span id="labWoodCost">10</span> Wood.
 									</span>
@@ -2760,7 +2870,9 @@
 										High School Science: <span id="labT2">0</span>
 									</h3>
 									<span>
-										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed. Each one produces 1 science per second.
+										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed.
+										<br>
+										Each one produces 1 science per second.
 										<br>
 										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
 									</span>
@@ -2777,13 +2889,32 @@
 										University Laboratory: <span id="labT3">0</span>
 									</h3>
 									<span>
-										Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.
+										Build an even better version of the old laboratory to further your exploration of the realm of science.
+										<br>
+										Each one produces 10 science per second.
 										<br>
 										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
 									</span>
 									<br>
 									<br>
 									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
+								</td>
+							</tr>
+							<tr id="labTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Scientific Observatory: <span id="labT4">0</span>
+									</h3>
+									<span>
+										Create an obseravatory to gaze upon the stars and acquire knowledge from them.
+										<br>
+										Each one produces 100 science per second.
+										<br>
+										Costs <span id="labT4MetalCost">610,000</span> Metal, <span id="labT4GemCost">370,000</span> Gems, <span id="labT4WoodCost">926,000</span> Wood.
+									</span>
+									<br>
+									<br>
+									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
 								</td>
 							</tr>
 						</table>
@@ -3058,6 +3189,40 @@
 									<br>
 								</td>
 							</tr>
+							<tr id="unlockPSU" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Plasma Storage Units
+									</h3>
+									<span>
+										PSUs increase the limit on plasma you can store at once.
+										<br>
+										Costs <span id="unlockPSUCost">9.500M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSU()" class="btn btn-default">Unlock PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockPSUT2" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 2 Plasma Storage Units
+									</h3>
+									<span>
+										Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.
+										<br>
+										Costs <span id="unlockPSUT2Cost">37.00M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockPSUT2()" class="btn btn-default">Unlock T2 PSUs</button>
+									<br>
+									<br>
+								</td>
+							</tr>
 							<tr id="unlockPlasmaTier2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
@@ -3071,6 +3236,23 @@
 									<br>
 									<br>
 									<button onclick="unlockPlasmaTier2()" class="btn btn-default">Unlock Plasma Tier 2</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockLabT4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Tier 4 Science
+									</h3>
+									<span>
+										Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.
+										<br>
+										Costs <span id="unlockLabT4Cost">50M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockLabT4()" class="btn btn-default">Unlock Tier 4 Science</button>
 									<br>
 									<br>
 								</td>
@@ -3211,17 +3393,47 @@
 									<br>
 								</td>
 							</tr>
-							<tr id="scienceEfficiencyUpgrade" style="display: none">
+							<tr id="scienceResourceEfficiencyUpgrade" style="display: none">
 								<td>
-									<h3 class="default btn-link" id="scienceEfficiencyUpgradeTitle">Efficiency</h3>
+									<h3 class="default btn-link" id="scienceResourceEfficiencyUpgradeTitle">Resource Efficiency</h3>
 									<span>
-										Efficiency increases the resource income per second by 1% per purchase.
+										Resource Efficiency increases the income of resources by 1%/s per purchase.
 										<br>
-										Costs <span id="scienceEfficiencyUpgradeCost">N/A</span> Science.
+										Costs <span id="scienceResourceEfficiencyUpgradeCost">N/A</span> Science.
 									</span>
 									<br>
 									<br>
-									<button onclick="purchaseEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<button onclick="purchaseResourceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceScienceEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceScienceEfficiencyUpgradeTitle">Science Efficiency</h3>
+									<span>
+										Science Efficiency increases the science production by 2% per purchase.
+										<br>
+										Costs <span id="scienceScienceEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseScienceEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="scienceEnergyEfficiencyUpgrade" style="display: none">
+								<td>
+									<h3 class="default btn-link" id="scienceEnergyEfficiencyUpgradeTitle">Energy Efficiency</h3>
+									<span>
+										Energy Efficiency decreases the energy consumption of all machines by 1% per purchase (max 50%).
+										<br>
+										Costs <span id="scienceEnergyEfficiencyUpgradeCost">N/A</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
 									<br>
 									<br>
 								</td>
@@ -3332,7 +3544,7 @@
 						</td>
 					</tr>
 					<tr id="collapseOuter" class="collapseOuter hidden" style="border:none;">
-						<td colspan="3">
+						<td colspan="4">
 							<span>Collapse Outer Solar System</span> <span class="caret"></span>
 						</td>
 					</tr>
@@ -4025,7 +4237,7 @@
 					</tr>
 					<tr id="stargateNav" onclick="activeWonderTab('stargateNav')" class="sideTab hidden" href="#stargateTab" aria-controls="stargateTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td colspan="2" style="vertical-align:middle;">
-							<span class="red">
+							<span>
 								Stargate: <span id="stargateActivation">Dormant</span>
 							</span>
 						</td>
@@ -4511,7 +4723,7 @@
 										For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.
 										<br>
 										<hide id="rebuildStargate">
-											Costs: <span id="stargateWonderUraniumCost">XXXX</span> ABC, <span id="stargateWonderLavaCost">XXXX</span> ABC, <span id="stargateWonderOilCost">XXXX</span> ABC, <span id="stargateWonderMethaneCost">XXXX</span> ABC.
+											Costs: <span id="stargateWonderPlasmaCost">500,000</span> Plasma, <span id="stargateWonderSiliconCost">920.0M</span> Silicon, <span id="stargateWonderMeteoriteCost">17.00M</span> Meteorite.
 											<br>
 											<br>
 											<button onclick="rebuildStargate()" class="btn btn-default">Rebuild Stargate</button>
@@ -4630,12 +4842,14 @@
 										Uses
 									</h3>
 									<p>
-										This is where you can convert your energy and plasma into resources.
+										This is where you can convert your energy and plasma into resources. (Right click to go back X10)
 									</p>
 									<div class="row">
 										<div class="col-md-12">
 											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
-											<button class="btn btn-default pull-right" onclick="changeEmcAmount()">Converting X<span class="emcAmount">1</span></button>
+											<br>
+											<label>Remaining plasma: <span data-bind="plasma">N/A</span></label>
+											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting <span id="emcButton">X1</span></button>
 										</div>
 									</div>
 									<div class="row">
@@ -4651,103 +4865,103 @@
 												<tbody>
 													<tr>
 														<td><span id="uraniumEmcVal">37</span> Energy</td>
-														<td><span class="emcAmount">1</span> Uranium</td>
+														<td><span id="uraniumEmcAmount">1</span> Uranium</td>
 														<td><span id="uraniumConv"><span data-bind="uranium">N/A</span> / <span data-bind="uraniumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('uranium')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="lavaEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Lava</td>
+														<td><span id="lavaEmcAmount">1</span> Lava</td>
 														<td><span id="lavaConv"><span data-bind="lava">N/A</span> / <span data-bind="lavaStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lava')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="oilEmcVal">3</span> Energy</td>
-														<td><span class="emcAmount">1</span> Oil</td>
+														<td><span id="oilEmcAmount">1</span> Oil</td>
 														<td><span id="oilConv"><span data-bind="oil">N/A</span> / <span data-bind="oilStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('oil')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="metalEmcVal">1</span> Energy</td>
-														<td><span class="emcAmount">1</span> Metal</td>
+														<td><span id="metalEmcAmount">1</span> Metal</td>
 														<td><span id="metalConv"><span data-bind="metal">N/A</span> / <span data-bind="metalStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('metal')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="gemEmcVal">3</span> Energy</td>
-														<td><span class="emcAmount">1</span> Gems</td>
+														<td><span id="gemEmcAmount">1</span> Gems</td>
 														<td><span id="gemConv"><span data-bind="gem">N/A</span> / <span data-bind="gemStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gem')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="charcoalEmcVal">2</span> Energy</td>
-														<td><span class="emcAmount">1</span> Charcoal</td>
+														<td><span id="charcoalEmcAmount">1</span> Charcoal</td>
 														<td><span id="charcoalConv"><span data-bind="charcoal">N/A</span> / <span data-bind="charcoalStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('charcoal')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="woodEmcVal">1</span> Energy</td>
-														<td><span class="emcAmount">1</span> Wood</td>
+														<td><span id="woodEmcAmount">1</span> Wood</td>
 														<td><span id="woodConv"><span data-bind="wood">N/A</span> / <span data-bind="woodStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('wood')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="siliconEmcVal">23</span> Energy</td>
-														<td><span class="emcAmount">1</span> Silicon</td>
+														<td><span id="siliconEmcAmount">1</span> Silicon</td>
 														<td><span id="siliconConv"><span data-bind="silicon">N/A</span> / <span data-bind="siliconStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silicon')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="spaceMetalEmcVal">15</span> Energy</td>
-														<td><span class="emcAmount">1</span> Space Metal</td>
+														<td><span id="spaceMetalEmcAmount">1</span> Space Metal</td>
 														<td><span id="spaceMetalConv"><span data-bind="spaceMetal">N/A</span> / <span data-bind="spaceMetalStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('spaceMetal')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="methaneEmcVal">12</span> Energy</td>
-														<td><span class="emcAmount">1</span> Methane</td>
+														<td><span id="methaneEmcAmount">1</span> Methane</td>
 														<td><span id="methaneConv"><span data-bind="methane">N/A</span> / <span data-bind="methaneStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('methane')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="titaniumEmcVal">17</span> Energy</td>
-														<td><span class="emcAmount">1</span> Titanium</td>
+														<td><span id="titaniumEmcAmount">1</span> Titanium</td>
 														<td><span id="titaniumConv"><span data-bind="titanium">N/A</span> / <span data-bind="titaniumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('titanium')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="goldEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Gold</td>
+														<td><span id="goldEmcAmount">1</span> Gold</td>
 														<td><span id="goldConv"><span data-bind="gold">N/A</span> / <span data-bind="goldStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gold')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="silverEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Silver</td>
+														<td><span id="silverEmcAmount">1</span> Silver</td>
 														<td><span id="silverConv"><span data-bind="silver">N/A</span> / <span data-bind="silverStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silver')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="hydrogenEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Hydrogen</td>
+														<td><span id="hydrogenEmcAmount">1</span> Hydrogen</td>
 														<td><span id="hydrogenConv"><span data-bind="hydrogen">N/A</span> / <span data-bind="hydrogenStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('hydrogen')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="heliumEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Helium</td>
+														<td><span id="heliumEmcAmount">1</span> Helium</td>
 														<td><span id="heliumConv"><span data-bind="helium">N/A</span> / <span data-bind="heliumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('helium')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="iceEmcVal">42</span> Energy</td>
-														<td><span class="emcAmount">1</span> Ice</td>
+														<td><span id="iceEmcAmount">1</span> Ice</td>
 														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="meteoriteEmcVal">42</span> Plasma</td>
-														<td><span class="emcAmount">1</span> Meteorite</td>
+														<td><span id="meteoriteEmcAmount">1</span> Meteorite</td>
 														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertPlasma('meteorite')" role="button">Convert</button></td>
 													</tr>
@@ -4883,6 +5097,9 @@
 										<br>
 										<br>
 										<button onclick="getDyson()" class="btn btn-default">Build Dyson Section</button>
+										<button onclick="buildDysonTo(50)" class="btn btn-default">Build up to 50</button>
+										<button onclick="buildDysonTo(100)" class="btn btn-default">Build up to 100</button>
+										<button onclick="buildDysonTo(250)" class="btn btn-default">Build up to 250</button>
 										<br>
 										<br>
 										<h3 class="default btn-link">
@@ -6469,7 +6686,7 @@
 										Interstellar Radar Scanner: <span id="IRS">0</span>
 									</h3>
 									<span>
-										The Overlord gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1/2 stars that are close by. Each one increases the range by 5 Light Years.
+										The Overlord gifts you with the technology to discorver stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.
 										<br>
 										Costs <span id="IRSSpaceMetalCost">XXXX</span> ABC, <span id="IRSTitaniumCost">XXXX</span> ABC, <span id="IRSMetalCost">XXXX</span> ABC.
 									</span>
@@ -6597,12 +6814,10 @@
 									</h3>
 									<span>
 										ABC
-										<br>
-										Costs <span id="shieldSpaceMetalCost">XXXX</span> ABC, <span id="shieldTitaniumCost">XXXX</span> ABC, <span id="shieldMetalCost">XXXX</span> ABC.
 									</span>
 									<br>
 									<br>
-									<button onclick="getShield()" class="btn btn-default">Get ABC</button>
+									<button onclick="exploreABC()" class="btn btn-default">Explore ABC</button>
 								</td>
 							</tr>
 						</table>
@@ -6821,6 +7036,16 @@
 									</h3>
 				                	<div class="checkbox">
 										<label><input id="notificationsEnabled" type="checkbox" value="">Screen Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Gain Buttons
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="gainButtonsHidden" type="checkbox" value="">Gain Buttons Hidden</label>
 									</div>
 				                </td>
 							</tr>

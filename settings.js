@@ -14,6 +14,7 @@ Game.settings = (function(){
             boldEnabled: false,
             sidebarCompressed: false,
             notificationsEnabled: true,
+            gainButtonsHidden: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -120,6 +121,7 @@ Game.settings = (function(){
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
         $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
         $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
+        $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
 
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
@@ -129,6 +131,17 @@ Game.settings = (function(){
         else{
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
                 document.getElementsByClassName("sideTab")[i].style.height = "60px";
+            }
+        }
+
+        if(Game.settings.entries.gainButtonsHidden === true){
+            for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                document.getElementsByClassName("gainButton")[i].className = "gainButton hidden";
+            }
+        }
+        else{
+            for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                document.getElementsByClassName("gainButton")[i].className = "gainButton";
             }
         }
         
@@ -183,6 +196,20 @@ Game.settings = (function(){
 
         $('#notificationsEnabled').change(function(){
             Game.settings.set('notificationsEnabled', $(this).is(':checked'));
+        });
+
+        $('#gainButtonsHidden').change(function(){
+            Game.settings.set('gainButtonsHidden', $(this).is(':checked'));
+            if(Game.settings.entries.gainButtonsHidden === true){
+                for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                    document.getElementsByClassName("gainButton")[i].className = "gainButton hidden";
+                }
+            }
+            else{
+                for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
+                    document.getElementsByClassName("gainButton")[i].className = "gainButton";
+                }
+            }
         });
 
         for (var id in autoSaveMapping) {
