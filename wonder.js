@@ -567,8 +567,8 @@ function activatePortal(){
 function rebuildStargate(){
 	if(plasma >= 500000 && silicon >= 920000000 && meteorite >= 17000000){
 		plasma -= 500000;
-		silicon -= 8000000;
-		meteorite -= 6000000;
+		silicon -= 920000000;
+		meteorite -= 17000000;
 		document.getElementById("rebuildStargate").className = "hidden";
 		document.getElementById("stargateActivation").innerHTML = "Activated";
 		document.getElementById("stargateActivation").className = "green";

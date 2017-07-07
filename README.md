@@ -84,6 +84,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Collapse Outer Solar System SideBarTab Visual Bug
 - Fixed Portal Room Helium Bug
 - Fixed Whitespace Bug on Plasma Tab
+- Fixed Infinite Meteorite Bug
+- Fixed Stargate Not Deducting Resources
 
 ### v0.4.4
 ##### Features
