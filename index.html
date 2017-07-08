@@ -60,9 +60,7 @@
 					</span>
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
-					<span class="text-muted small ng-binding">
-						v0.4.4.2 Beta
-					</span>
+					<span id="versionLabel" class="text-muted small ng-binding"></span>
 				</a>
 				<a class="navbar-brand">
 					<span id="energyLow" class="text-muted small ng-binding red hidden">
@@ -1268,7 +1266,7 @@
 										Carbyne Drill: <span id="carbyneDrill">0</span>
 									</h3>
 									<span>
-										Carbyne Drills one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.
+										Carbyne Drills are one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.
 										<br>
 										Produces 358 Gems per second.
 										<br>
@@ -1490,7 +1488,7 @@
 							<tr id="woodTier3" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Mass Deforester <span id="deforester">0</span>
+										Mass Deforester: <span id="deforester">0</span>
 									</h3>
 									<span>
 										This machine is the reason we're losing our rainforests. At least we get lots of wood!
@@ -1510,7 +1508,7 @@
 							<tr id="woodTier4" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Biomass Infuser <span id="infuser">0</span>
+										Biomass Infuser: <span id="infuser">0</span>
 									</h3>
 									<span>
 										Creates Wood using old, useless materials found everywhere on Earth by crushing them and packing what remains as densely as possible until it can be used as Wood again.
@@ -3367,7 +3365,7 @@
 									<span>
 										Tier 3 Batteries improve the amount of energy you can store at once.
 										<br>
-										Costs <span id="unlockBatteriesT3Cost">3,000,000</span> Science.
+										Costs <span id="unlockBatteriesT3Cost">3M</span> Science.
 									</span>
 									<br>
 									<br>
@@ -3433,7 +3431,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
+									<button id="scienceEnergyEfficiencyUpgradeButton" onclick="purchaseEnergyEfficiency()" class="btn btn-default">Upgrade Efficiency</button>
 									<br>
 									<br>
 								</td>
@@ -5106,7 +5104,7 @@
 											Ring: <span id="ring">0</span>
 										</h3>
 										<span>
-											The ring is an solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires <span id="ringRocketFuelCost">50,000</span> rocket fuel in total to put the sections in place.
+											The ring is a solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires <span id="ringRocketFuelCost">50,000</span> rocket fuel in total to put the sections in place.
 											<br>
 											<br>
 											You currently have <span id="dysonPieces2">0</span> out of 50 Dyson pieces to create the ring.
@@ -7408,11 +7406,13 @@
 <script type="text/javascript" src="buildingData.js"></script>
 <script type="text/javascript" src="tech.js"></script>
 <script type="text/javascript" src="techData.js"></script>
+<script type="text/javascript" src="starData.js"></script>
 <script type="text/javascript" src="settings.js"></script>
 
 <script type="text/javascript" src="ui/databoundElement.js"></script>
 <script type="text/javascript" src="ui/gameTabUI.js"></script>
 <script type="text/javascript" src="ui/resourceObserver.js"></script>
+<script type="text/javascript" src="ui/interstellarUI.js"></script>
 <script type="text/javascript" src="ui/achievementUI.js"></script>
 <script type="text/javascript" src="ui/statisticUI.js"></script>
 <script type="text/javascript" src="ui/resourceUI.js"></script>

@@ -91,7 +91,6 @@ function refreshConversionDisplay() {
 			}
 			document.getElementById("emcButton").innerHTML = "Max";
 			if(resources[i] == "meteorite"){
-				console.log(resources[i]);
 				document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(Math.floor(plasma/value));
 				element.text(Game.settings.format(Math.floor(plasma/value)*value));
 			}
@@ -165,14 +164,15 @@ function refreshPlasmaConversionDisplay() {
 function convertEnergy(resourceName){
 	var current = window[resourceName];
 	var capacity = window[resourceName+"Storage"];
+	var emcValue = window[resourceName + "EmcVal"];
 	if(emcAmount === "Max"){
-		var amount = Math.floor(Math.min(Math.floor(energy/window[resourceName + "EmcVal"]), capacity - current));
+		var amount = Math.floor(Math.min(Math.floor(energy/emcValue), capacity - current));
 	}
 	else{
 		var amount = Math.floor(Math.min(emcAmount, capacity - current));
 	}
 	
-	var requiredEnergy = amount * window[resourceName + "EmcVal"];
+	var requiredEnergy = amount * emcValue;
 
 	if(amount > 0 && energy >= requiredEnergy){
 		energy -= requiredEnergy;
@@ -184,20 +184,23 @@ function convertEnergy(resourceName){
 }
 
 function convertPlasma(resourceName){
-	if(emcAmount === "Max"){
-		var value = window[resourceName + "EmcVal"];
-		var emcValue = Math.floor(plasma/value);
+    var current = window[resourceName];
+    var capacity = window[resourceName+"Storage"];
+    var emcValue = window[resourceName + "EmcVal"];
+    if(emcAmount === "Max"){
+        var amount = Math.floor(Math.min(Math.floor(plasma/emcValue), capacity - current));
+    }
+    else{
+        var amount = Math.floor(Math.min(emcAmount, capacity - current));
+    }
 
-		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(emcValue) + ' ' + resourceName);
+    var requiredPlasma = amount*emcValue;
 
-		window[resourceName] += emcValue;
-		plasma -= emcValue*value;
-	}
-	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
-		plasma -= emcAmount*window[resourceName + "EmcVal"];
-		window[resourceName] += emcAmount;
+	if(amount > 0 && plasma >= requiredPlasma){
+		plasma -= requiredPlasma;
+		window[resourceName] += amount;
 
-		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(emcAmount) + ' ' + resourceName);
+		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + resourceName);
 
         refreshPlasmaConversionDisplay();
 	}
