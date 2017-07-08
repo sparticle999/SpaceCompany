@@ -9,7 +9,7 @@ var Game = (function() {
         logoAnimating: false,
         timeSinceAutoSave: 0,
         activeNotifications: {},
-        //lastFixedUpdate: new Date().getTime()
+        lastFixedUpdate: new Date().getTime()
     };
 
     instance.update_frame = function(time) {
@@ -41,13 +41,12 @@ var Game = (function() {
 
     instance.fixedUpdate = function() {
         var currentTime = new Date().getTime();
-        var delta = (currentTime - lastFixedUpdate) / 1000;
+        var delta = (currentTime - this.lastFixedUpdate) / 1000;
+        this.lastFixedUpdate = currentTime;
 
         refreshPerSec(delta);
         gainResources(delta);
         fixStorageRounding();
-
-        lastFixedUpdate = currentTime;
     };
 
     instance.fastUpdate = function(self, delta) {
@@ -130,7 +129,9 @@ var Game = (function() {
     };
 
     instance.save = function() {
-        var data = {};
+        var data = {
+            lastFixedUpdate: this.lastFixedUpdate
+        };
 
         this.achievements.save(data);
         this.statistics.save(data);
@@ -174,7 +175,25 @@ var Game = (function() {
             $('#machineTopTab').show();
         }
 
+        $('#versionLabel').text(versionNumber);
+
+        if(data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+            this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
+        }
+
         console.log("Load Successful");
+    };
+
+    instance.handleOfflineGains = function(offlineTime) {
+        if(offlineTime <= 0) {
+            return;
+        }
+
+        refreshPerSec(1);
+        gainResources(offlineTime);
+        fixStorageRounding();
+
+        this.notifyOffline(offlineTime);
     };
 
     instance.deleteSave = function() {
@@ -224,7 +243,6 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
-        Game.notifyOffline();
     };
 
     instance.loadAnimation = function(self, delta) {
@@ -292,10 +310,10 @@ var Game = (function() {
         }
     };
 
-    instance.notifyOffline = function() {
+    instance.notifyOffline = function(time) {
         this.activeNotifications.success = new PNotify({
             title: "Offline Gains",
-            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - lastFixedUpdate)/1000, true),
+            text: "You've been offline for " + Game.utils.getFullTimeDisplay(time, true),
             type: 'info',
             animation: 'fade',
             animate_speed: 'fast',

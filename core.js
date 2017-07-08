@@ -1026,10 +1026,6 @@ function refreshResearches(){
 			available.push("unlockDysonSphere");
 		}
 	}
-
-	if(typeof versionNumber != "0.4.4.1"){
-		versionNumber = "0.4.4.1";
-	}
 }
 
 function refreshTabs(){
