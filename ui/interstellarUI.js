@@ -9,6 +9,13 @@
     instance.categoryElements = {};
     instance.rootElement = null;
 
+    instance.categoryNames = {
+        'starT1': "Tier 1 Stars",
+        'starT2': "Tier 2 Stars",
+        'starT3': "Tier 3 Stars",
+        'starT4': "Tier 4 Stars"
+    };
+
     instance.initialize = function() {
 
     	if(Game.constants.enableInterstellar === false) {
@@ -57,6 +64,20 @@
 		        '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
 		        '</td></tr>'].join('\n'));
 
+	     instance.navTemplate = Handlebars.compile(
+            ['<td style="vertical-align:middle;">',
+                    '<img src="{{iconPath}}{{icon}}.{{iconExtension}}" style="width:30px; height:auto">',
+                '</td>',
+                '<td style="vertical-align:middle;">',
+                    '<span>{{name}}</span>',
+                '</td>',
+                '<td style="vertical-align:middle; text-align:center;">',
+                    '<span id="{{htmlId}}_perSecond">0</span>/Sec',
+                '</td>',
+                '<td style="vertical-align:middle; text-align:center;">',
+                    '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
+                '</td>'].join('\n'));
+
 	    for(var id in Game.starData) {
             this.createDisplay(id);
         }
@@ -70,6 +91,18 @@
 	instance.update = function(){
 
 	}
+
+	instance.createInterstellarNav = function(data) {
+        var target = $('#' + this.tab.getNavElementId(data.id));
+
+        var html = this.navTemplate(data);
+        target.append($(html));
+
+        // Create the resource observers, we don't care about keeping these, always active
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_current', res: data.id, type: RESOURCE_OBSERVER_TYPE.CURRENT_VALUE});
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_capacity', res: data.id, type: RESOURCE_OBSERVER_TYPE.CAPACITY});
+        Game.ui.createResourceObserver({htmlId: data.htmlId + '_perSecond', res: data.id, type: RESOURCE_OBSERVER_TYPE.PER_SECOND});
+    };
 
 	instance.createDisplay = function(id) {
         var data = Game.interstellar.getInterstellarData(id);
