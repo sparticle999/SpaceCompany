@@ -16,6 +16,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
 - Rebalance all costs to not use as much Space Metal/Gems
 - Loading screen flavour text changes as you progress
+- Change Space Metal to a proper name
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
@@ -57,6 +58,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Achievements for Rings and Swarms
 - Time Until Storage Full Display
 - Max Emc Conversion Button
+- Tier 3 Batteries
+- Tier 4 Labs
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -88,6 +91,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Stargate Not Deducting Resources
 - Fixed Dyson Sections Cost Bug
 - Fixed Plasma EMC Display Bug
+- Fixed Stargate Red Costs Bug
 
 ### v0.4.4
 ##### Features

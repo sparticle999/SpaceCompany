@@ -782,9 +782,9 @@ function checkRedCost(){
 	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
 	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
 
-	Game.settings.turnRed(meteorite, 500000, "stargateWonderPlasmaCost");
-	Game.settings.turnRed(helium, 920000000, "stargateWonderSiliconCost");
-	Game.settings.turnRed(silicon, 17000000, "stargateWonderMeteoriteCost");
+	Game.settings.turnRed(plasma, 500000, "stargateWonderPlasmaCost");
+	Game.settings.turnRed(silicon, 920000000, "stargateWonderSiliconCost");
+	Game.settings.turnRed(meteorite, 17000000, "stargateWonderMeteoriteCost");
 
 	// Interstellar
 

@@ -23,70 +23,32 @@ Game.interstellar = (function(){
 			},
 			//drive: 0,
 			//IRS: 0,
-		},
-		stars: {
-			star1: {
-				name: "Alpha Centuri",
-				distance: 4.3,
-				planets: 1,
-				tier: 1
-			},
-			star2: {
-				name: "Barnard's Star",
-				distance: 5.96,
-				planets: 0,
-				tier: 4
-			},
-			star3: {
-				name: "Epsilon Eridani",
-				distance: 10.52,
-				planets: 2,
-				tier: 1
-			},
-			star4: {
-				name: "Tau Ceti",
-				distance: 11.89,
-				planets: 5,
-				tier: 1
-			},
-			star5: {
-				name: "Gliese 674",
-				distance: 14.81,
-				planets: 1,
-				tier: 4
-			},
-			star6: {
-				name: "Gliese 876",
-				distance: 15.34,
-				planets: 4,
-				tier: 4
-			},
-			star7: {
-				name: "Gliese 832",
-				distance: 16.08,
-				planets: 1,
-				tier: 4
-			},
-			star8: {
-				name: "Sirius",
-				distance: 8.58,
-				planets: 0,
-				tier: 2
-			},
-			star9: {
-				name: "Groombridge 1618",
-				distance: 15.85,
-				planets: 0,
-				tier: 1
-			},
-			star10: {
-				name: "DEN 0255-4700",
-				distance: 16.2,
-				planets: 0,
-				tier: 4
-			},
-		},
+		},	
 	};
+
+	instance.entries = {};
+
+	instance.initialise = function(){
+		for (var id in Game.starData) {
+            var data = Game.starData[id];
+            this.starTypeCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'res_' + id,
+                current: 0,
+                perSecond: 0,
+                perClick: 1,
+                iconPath: Game.constants.iconPath,
+                iconExtension: Game.constants.iconExtension,
+                displayNeedsUpdate: true,
+                hidden: false
+            });
+
+            this.entries[id].capacity = data.baseCapacity;
+
+            console.log("Loaded " + this.starTypeCount + " Stars");
+        }
+	}
 
 	instance.getEngine = function(){
 		if(silicon >= this.machines.engine.silicon && meteorite >= this.machines.engine.meteorite && hydrogen >= this.machines.engine.hydrogen && this.machines.engine.count < 25){
@@ -158,8 +120,8 @@ Game.interstellar = (function(){
 		for(var id in this.machines){
 			data.interstellar.machines[id] = this.machines[id];
 		}
-		for(var id in this.stars){
-			data.interstellar.stars[id] = this.stars[id];
+		for(var id in Game.starData){
+			data.interstellar.stars[id] = Game.starData[id];
 		}
 	}
 
@@ -169,8 +131,10 @@ Game.interstellar = (function(){
                 for(var id in data.interstellar.machines) {
                     this.machines[id] = data.interstellar.machines[id];
                 }
+                var i = 0;
                 for(var id in data.interstellar.stars) {
-                    this.stars[id] = data.interstellar.stars[id];
+                	i += 1;
+                    this.entries[i] = data.interstellar.stars[id];
                     
                 }
             }
