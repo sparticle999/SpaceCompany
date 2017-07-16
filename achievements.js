@@ -127,7 +127,8 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, Game.constants.achievementProducerBrackets);
-
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T4", "technologyIcon", function(x) { return labT4 >= x}, Game.constants.achievementProducerBrackets);
+        
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Rings", "EnergyIcon", function(x) {return ring >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Swarms", "EnergyIcon", function(x) {return swarm >= x}, Game.constants.achievementProducerBrackets);
         
