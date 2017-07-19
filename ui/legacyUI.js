@@ -153,7 +153,8 @@ function registerLegacyBindings() {
     Game.ui.bindElement('batteryT2MetalCost', function(){ return Game.settings.format(batteryT2MetalCost); });
     Game.ui.bindElement('batteryT2GemCost', function(){ return Game.settings.format(batteryT2GemCost); });
     Game.ui.bindElement('batteryT2SpaceMetalCost', function(){ return Game.settings.format(batteryT2SpaceMetalCost); });
-    Game.ui.bindElement('batteryT3MetalCost', function(){ return Game.settings.format(battery3MetalCost); });
+    Game.ui.bindElement('batteryT3', function(){ return Game.settings.format(batteryT3); });
+    Game.ui.bindElement('batteryT3MetalCost', function(){ return Game.settings.format(batteryT3MetalCost); });
     Game.ui.bindElement('batteryT3GemCost', function(){ return Game.settings.format(batteryT3GemCost); });
     Game.ui.bindElement('batteryT3SpaceMetalCost', function(){ return Game.settings.format(batteryT3SpaceMetalCost); });
     Game.ui.bindElement('charcoalEngine', function(){ return Game.settings.format(charcoalEngine); });

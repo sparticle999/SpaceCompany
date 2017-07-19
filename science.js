@@ -263,15 +263,15 @@ function unlockBatteriesT2(){
 }
 
 function unlockBatteriesT3(){
-    if(science >= 3000000){
-        science -= 3000000;
-        document.getElementById("unlockBatteriesT3").className = "hidden";
-        document.getElementById("batteriesT3").className = "";
-        researched.push("unlockBatteriesT3");
-        resourcesUnlocked.push("batteriesT3");
-        Game.statistics.add('techResearched');
-        newUnlock("resources");
-    }
+	if(science >= 3000000){
+		science -= 3000000;
+		document.getElementById("unlockBatteriesT3").className = "hidden";
+		document.getElementById("batteriesT3").className = "";
+		researched.push("unlockBatteriesT3");
+		resourcesUnlocked.push("batteriesT3");
+    Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
 }
 
 function unlockPlasma(){
@@ -474,8 +474,7 @@ function updateEnergyEfficiencyDisplay() {
     var tech = Game.tech.getTechData('energyEfficiencyResearch');
 
     if(tech.current >= tech.maxLevel) {
-        $('#scienceScienceEfficiencyUpgrade').hide();
-        return;
+        $('#scienceEnergyEfficiencyUpgradeButton').hide();
     }
 
     if(science > tech.cost['science'] || tech.current > 0) {
@@ -492,8 +491,13 @@ function updateEnergyEfficiencyDisplay() {
     var cost = getCost(tech.cost['science'], tech.current);
     Game.settings.turnRed(science, cost, 'scienceEnergyEfficiencyUpgradeCost');
 
-    $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
-    $('#scienceEnergyEfficiencyUpgradeCost').text(Game.settings.format(cost));
+    if(tech.current == tech.maxLevel) {
+        $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + tech.maxLevel + " (MAX)");
+        $('#scienceEnergyEfficiencyUpgradeCost').text("N/A");
+	} else {
+        $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + (tech.current + 1) + " / " + tech.maxLevel);
+        $('#scienceEnergyEfficiencyUpgradeCost').text(Game.settings.format(cost));
+	}
 }
 
 function purchaseScienceEfficiency() {

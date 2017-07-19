@@ -59,6 +59,7 @@ Game.constants = (function(){
     instance.enableDataDrivenResources = true;
     instance.enableLegacyResourceBridge = true;
     instance.enableMachineTab = false;
+    instance.enableInterstellar = false;
 
     return instance;
 }());

@@ -38,19 +38,23 @@ function unlockDysonResearch(){
 function changeEmcAmount(event){
 	if (event.button === 2) {
 		emcAmount /= 10;
+		
 		if (emcAmount < 1) {
+			emcAmount = "Max";
+		}
+		if(emcAmount !== emcAmount){
 			emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
 		}
+		
 	} else {
 		emcAmount *= 10;
-		if(emcAmount > getMaxEnergy())
-		{
+		if(emcAmount > getMaxEnergy()){
+			emcAmount = "Max";
+		}
+		if(emcAmount !== emcAmount){
 			emcAmount = 1;
 		}
-	}
-
-	for(var i = 0; i < document.getElementsByClassName("emcAmount").length; i++){
-		document.getElementsByClassName("emcAmount")[i].innerHTML = Game.settings.format(emcAmount);
+		
 	}
 
     refreshConversionDisplay();
@@ -58,33 +62,78 @@ function changeEmcAmount(event){
 
 function refreshConversionDisplay() {
     var maxEnergy = getMaxEnergy();
-    for(var i = 0; i < resources.length; i++){
-        var element = $('#' + resources[i] + "EmcVal");
-        var buttonElement = $('#' + resources[i] + "Conv");
+    if(emcAmount === "Max"){
+    	for(var i = 0; i < resources.length; i++){
+			var element = $('#' + resources[i] + "EmcVal");
+			var buttonElement = $('#' + resources[i] + "Conv");
 
-        var value = window[resources[i]+"EmcVal"];
-        var emcValue = value * emcAmount;
-        var current = window[resources[i]];
-        var capacity = window[resources[i]+"Storage"];
-        element.text(Game.settings.format(emcValue));
+			var value = window[resources[i]+"EmcVal"];
 
-        var disabled = false;
-        if(maxEnergy < emcValue) {
-            buttonElement.addClass('red');
-            disabled = true;
-        } else {
-            buttonElement.removeClass('red');
-        }
+			var emcValue = Math.floor(energy/value);
 
-        if(emcAmount > capacity || current >= capacity){
-            buttonElement.addClass('green');
-            disabled = true;
-        }
-        else{
-            buttonElement.removeClass('green');
-        }
+			var current = window[resources[i]];
+			var capacity = window[resources[i]+"Storage"];
 
-        buttonElement.prop('disabled', disabled);
+			var disabled = false;
+			if(maxEnergy < emcValue) {
+			    buttonElement.addClass('red');
+			    disabled = true;
+			} else {
+			    buttonElement.removeClass('red');
+			}
+
+			if(emcAmount > capacity || current >= capacity){
+			    buttonElement.addClass('green');
+			    disabled = true;
+			}
+			else{
+			    buttonElement.removeClass('green');
+			}
+			document.getElementById("emcButton").innerHTML = "Max";
+			if(resources[i] == "meteorite"){
+				document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(Math.floor(plasma/value));
+				element.text(Game.settings.format(Math.floor(plasma/value)*value));
+			}
+			else{
+				document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(emcValue);
+				element.text(Game.settings.format(emcValue*value));
+			}
+
+			buttonElement.prop('disabled', disabled);
+    	}
+    }
+    else{
+    	for(var i = 0; i < resources.length; i++){
+			var element = $('#' + resources[i] + "EmcVal");
+			var buttonElement = $('#' + resources[i] + "Conv");
+
+			var value = window[resources[i]+"EmcVal"];
+			var emcValue = value * emcAmount;
+			var current = window[resources[i]];
+			var capacity = window[resources[i]+"Storage"];
+			element.text(Game.settings.format(emcValue));
+
+			var disabled = false;
+			if(maxEnergy < emcValue) {
+			    buttonElement.addClass('red');
+			    disabled = true;
+			} else {
+			    buttonElement.removeClass('red');
+			}
+
+			if(emcAmount > capacity || current >= capacity){
+			    buttonElement.addClass('green');
+			    disabled = true;
+			}
+			else{
+			    buttonElement.removeClass('green');
+			}
+			document.getElementById("emcButton").innerHTML = "X" + Game.settings.format(emcAmount);
+			document.getElementById(resources[i] + "EmcAmount").innerHTML = Game.settings.format(emcAmount);
+
+
+			buttonElement.prop('disabled', disabled);
+    	}
     }
 
     refreshPlasmaConversionDisplay();
@@ -115,23 +164,43 @@ function refreshPlasmaConversionDisplay() {
 function convertEnergy(resourceName){
 	var current = window[resourceName];
 	var capacity = window[resourceName+"Storage"];
-
-	var amount = Math.floor(Math.min(emcAmount, capacity - current));
-	var requiredEnergy = amount * window[resourceName + "EmcVal"];
+	var emcValue = window[resourceName + "EmcVal"];
+	if(emcAmount === "Max"){
+		var amount = Math.floor(Math.min(Math.floor(energy/emcValue), capacity - current));
+	}
+	else{
+		var amount = Math.floor(Math.min(emcAmount, capacity - current));
+	}
+	
+	var requiredEnergy = amount * emcValue;
 
 	if(amount > 0 && energy >= requiredEnergy){
 		energy -= requiredEnergy;
 		window[resourceName] += amount;
-		Game.notifyInfo('Energy Conversion', 'Gained ' + amount + ' ' + resourceName);
+		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + resourceName);
 
         refreshConversionDisplay();
 	}
 }
 
 function convertPlasma(resourceName){
-	if(plasma >= emcAmount*window[resourceName + "EmcVal"]){
-		plasma -= emcAmount*window[resourceName + "EmcVal"];
-		window[resourceName] += emcAmount;
+    var current = window[resourceName];
+    var capacity = window[resourceName+"Storage"];
+    var emcValue = window[resourceName + "EmcVal"];
+    if(emcAmount === "Max"){
+        var amount = Math.floor(Math.min(Math.floor(plasma/emcValue), capacity - current));
+    }
+    else{
+        var amount = Math.floor(Math.min(emcAmount, capacity - current));
+    }
+
+    var requiredPlasma = amount*emcValue;
+
+	if(amount > 0 && plasma >= requiredPlasma){
+		plasma -= requiredPlasma;
+		window[resourceName] += amount;
+
+		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + resourceName);
 
         refreshPlasmaConversionDisplay();
 	}
@@ -157,19 +226,16 @@ function getDyson(){
 		dyson += 1;
 
 		refreshDyson()
+
+		return true;
+	}
+	else{
+		return false;
 	}
 }
 
 function buildDysonTo(n) {
-	while (dyson < n && titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost) {
-		titanium -= dysonTitaniumCost;
-		gold -= dysonGoldCost;
-		silicon -= dysonSiliconCost;
-		meteorite -= dysonMeteoriteCost;
-		ice -= dysonIceCost;
-		dyson += 1;
-	}
-	refreshDyson();
+	while (dyson < n && getDyson()){}
 }
 
 function buildRing(){

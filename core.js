@@ -80,33 +80,49 @@ function fixStorageRounding() {
 }
 
 function refreshTimeUntilFull() {
-    setTimeUntilDisplayTest('plasmaFullTime', (getMaxPlasma() - plasma) / plasmaps);
-    setTimeUntilDisplayTest('energyFullTime', (getMaxEnergy() - energy) / energyps);
-    setTimeUntilDisplayTest('uraniumFullTime', (uraniumStorage - uranium) / uraniumps);
-    setTimeUntilDisplayTest('lavaFullTime', (lavaStorage - lava) / lavaps);
-    setTimeUntilDisplayTest('oilFullTime', (oilStorage - oil) / oilps);
-    setTimeUntilDisplayTest('metalFullTime', (metalStorage - metal) / metalps);
-    setTimeUntilDisplayTest('gemFullTime', (gemStorage - gem) / gemps);
-    setTimeUntilDisplayTest('charcoalFullTime', (charcoalStorage - charcoal) / charcoalps);
-    setTimeUntilDisplayTest('woodFullTime', (woodStorage - wood) / woodps);
-    setTimeUntilDisplayTest('siliconFullTime', (siliconStorage - silicon) / siliconps);
-    setTimeUntilDisplayTest('spaceMetalFullTime', (spaceMetalStorage - spaceMetal) / spaceMetalps);
-    setTimeUntilDisplayTest('methaneFullTime', (methaneStorage - methane) / methaneps);
-    setTimeUntilDisplayTest('titaniumFullTime', (titaniumStorage - titanium) / titaniumps);
-    setTimeUntilDisplayTest('goldFullTime', (goldStorage - gold) / goldps);
-    setTimeUntilDisplayTest('silverFullTime', (silverStorage - silver) / silverps);
-    setTimeUntilDisplayTest('hydrogenFullTime', (hydrogenStorage - hydrogen) / hydrogenps);
-    setTimeUntilDisplayTest('heliumFullTime', (heliumStorage - helium) / heliumps);
-    setTimeUntilDisplayTest('iceFullTime', (iceStorage - ice) / iceps);
-    setTimeUntilDisplayTest('meteoriteFullTime', (meteoriteStorage - meteorite) / meteoriteps);
+    setTimeUntilDisplayTest('plasmaFullTime', plasma, getMaxPlasma(), plasmaps);
+    setTimeUntilDisplayTest('energyFullTime', energy, getMaxEnergy(), energyps);
+    setTimeUntilDisplayTest('uraniumFullTime', uranium, uraniumStorage, uraniumps);
+    setTimeUntilDisplayTest('lavaFullTime', lava, lavaStorage, lavaps);
+    setTimeUntilDisplayTest('oilFullTime', oil, oilStorage, oilps);
+    setTimeUntilDisplayTest('metalFullTime', metal, metalStorage, metalps);
+    setTimeUntilDisplayTest('gemFullTime', gem, gemStorage, gemps);
+    setTimeUntilDisplayTest('charcoalFullTime', charcoal, charcoalStorage, charcoalps);
+    setTimeUntilDisplayTest('woodFullTime', wood, woodStorage, woodps);
+    setTimeUntilDisplayTest('siliconFullTime', silicon, siliconStorage, siliconps);
+    setTimeUntilDisplayTest('spaceMetalFullTime', spaceMetal, spaceMetalStorage, spaceMetalps);
+    setTimeUntilDisplayTest('methaneFullTime', methane, methaneStorage, methaneps);
+    setTimeUntilDisplayTest('titaniumFullTime', titanium, titaniumStorage, titaniumps);
+    setTimeUntilDisplayTest('goldFullTime', gold, goldStorage, goldps);
+    setTimeUntilDisplayTest('silverFullTime', silver, silverStorage, silverps);
+    setTimeUntilDisplayTest('hydrogenFullTime', hydrogen, hydrogenStorage, hydrogenps);
+    setTimeUntilDisplayTest('heliumFullTime', helium, heliumStorage, heliumps);
+    setTimeUntilDisplayTest('iceFullTime', ice, iceStorage, iceps);
+    setTimeUntilDisplayTest('meteoriteFullTime', meteorite, meteoriteStorage, meteoriteps);
 }
 
-function setTimeUntilDisplayTest(target, value) {
+function setTimeUntilDisplayTest(target, current, max, perSecond) {
+	var targetElement = $('#' + target);
+	var value = 0;
+	var isDraining = false;
+	if(perSecond > 0) {
+		value = (max - current) / perSecond;
+	} else if (perSecond < 0) {
+		value = Math.abs(current / perSecond);
+		isDraining = true;
+	}
+
 	if(value > 0) {
-		$('#' + target).text(Game.utils.getFullTimeDisplay(value));
-	} 
-	else {
-        $('#' + target).text('N/A');
+        var formattedTimeTest = Game.utils.getFullTimeDisplay(value);
+        targetElement.text(formattedTimeTest);
+
+        if(isDraining){
+            targetElement.addClass('red');
+		} else {
+            targetElement.removeClass('red');
+        }
+    } else {
+        targetElement.text('N/A');
 	}
 }
 
@@ -578,6 +594,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 100000, "unlockMeteoriteTier2Cost");
 	Game.settings.turnRed(science, 100000, "unlockDysonCost");
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
+    Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
   Game.settings.turnRed(science, 9500000, "unlockPSUCost");
 	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
@@ -766,6 +783,10 @@ function checkRedCost(){
 	Game.settings.turnRed(helium, 8000000, "portalHeliumCost");
 	Game.settings.turnRed(silicon, 6000000, "portalSiliconCost");
 
+	Game.settings.turnRed(plasma, 500000, "stargateWonderPlasmaCost");
+	Game.settings.turnRed(silicon, 920000000, "stargateWonderSiliconCost");
+	Game.settings.turnRed(meteorite, 17000000, "stargateWonderMeteoriteCost");
+
 	// Interstellar
 
 	Game.settings.turnRed(spaceMetal, Game.interstellar.machines.shield.spaceMetal, "shieldSpaceMetalCost");
@@ -848,6 +869,9 @@ function refreshResources(){
 	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
 		document.getElementById("antimatterNav").className = "sideTab";
 	}
+	if(contains(buttonsHidden, "rebuildStargate")){
+		document.getElementById("travelNav").className = "sideTab";
+	}
 
 	for(var i=0; i<noBorder.length; i++){
 		for(var j=0; j<4; j++){
@@ -880,7 +904,10 @@ function contains(array, obj) {
 
 function refreshResearches(){
 	for(var i=0; i<available.length; i++){
-		document.getElementById(available[i]).className = "";
+        var element = document.getElementById(available[i]);
+        if(element) {
+        	element.className = "";
+        }
 	}
 	for(var i=0; i<researched.length; i++){
 		document.getElementById(researched[i]).className = "hidden";
@@ -998,10 +1025,6 @@ function refreshResearches(){
 			document.getElementById("unlockDysonSphere").className ="";
 			available.push("unlockDysonSphere");
 		}
-	}
-
-	if(typeof versionNumber != "0.4.4"){
-		versionNumber = "0.4.4";
 	}
 }
 

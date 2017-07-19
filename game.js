@@ -41,13 +41,12 @@ var Game = (function() {
 
     instance.fixedUpdate = function() {
         var currentTime = new Date().getTime();
-        var delta = (currentTime - instance.lastFixedUpdate) / 1000;
+        var delta = (currentTime - this.lastFixedUpdate) / 1000;
+        this.lastFixedUpdate = currentTime;
 
         refreshPerSec(delta);
         gainResources(delta);
         fixStorageRounding();
-
-        Game.lastFixedUpdate = currentTime;
     };
 
     instance.fastUpdate = function(self, delta) {
@@ -102,7 +101,17 @@ var Game = (function() {
     instance.import = function() {
         var text = $('#impexpField').val();
         if (!text.trim()) return console.warn("No save to import provided.");
+        if(text.length % 4 !== 0) {
+            console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+            return;
+        }
+
         var decompressed = LZString.decompressFromBase64(text);
+        if(!decompressed) {
+            console.log("Import Game failed, could not decompress!");
+            return;
+        }
+
         localStorage.setItem("save", decompressed);
 
         console.log("Imported Saved Game");
@@ -122,7 +131,9 @@ var Game = (function() {
     };
 
     instance.save = function() {
-        var data = {};
+        var data = {
+            lastFixedUpdate: this.lastFixedUpdate
+        };
 
         this.achievements.save(data);
         this.statistics.save(data);
@@ -162,11 +173,31 @@ var Game = (function() {
         refreshResearches();
         refreshTabs();
 
+        updateCost();
+
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
         }
 
+        $('#versionLabel').text(versionNumber);
+
+        if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+            this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
+        }
+
         console.log("Load Successful");
+    };
+
+    instance.handleOfflineGains = function(offlineTime) {
+        if(offlineTime <= 0) {
+            return;
+        }
+
+        refreshPerSec(1);
+        gainResources(offlineTime);
+        fixStorageRounding();
+
+        this.notifyOffline(offlineTime);
     };
 
     instance.deleteSave = function() {
@@ -199,6 +230,7 @@ var Game = (function() {
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
+        self.interstellar.initialize();
         self.settings.initialize();
         self.spaceship.initialize();
 
@@ -285,10 +317,10 @@ var Game = (function() {
         }
     };
 
-    instance.notifyOffline = function() {
+    instance.notifyOffline = function(time) {
         this.activeNotifications.success = new PNotify({
             title: "Offline Gains",
-            text: "You've been offline for " + Game.utils.getFullTimeDisplay((new Date().getTime() - lastFixedUpdate)/1000, true),
+            text: "You've been offline for " + Game.utils.getFullTimeDisplay(time, true),
             type: 'info',
             animation: 'fade',
             animate_speed: 'fast',

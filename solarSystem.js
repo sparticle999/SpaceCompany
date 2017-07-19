@@ -63,14 +63,14 @@ function explore(planet){
 		KuiperBelt: {fuel: 6000, area: "outerPlanet"},
 		SolCenter: {fuel: 7000}
 	};
-	
+
 	if(!planetsData[planet]) return console.error("Cannot explore \"" + planet + "\", data not found.");
 	if(rocketFuel >= planetsData[planet].fuel) {
 		rocketFuel -= planetsData[planet].fuel;
 		document.getElementById("explore" + planet).className = "hidden";
 		buttonsHidden.push("explore" + planet);
 		explored.push(planet.substring(0, 1).toLowerCase() + planet.substring(1));
-		
+
 		// Planet/Area specific code
 		switch(planet) {
 			case "Moon":
@@ -117,7 +117,7 @@ function explore(planet){
 				Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 				break;
 		}
-		
+
 		// Resource(s)
 		if (planetsData[planet].resource) {
 			var toAdd = planetsData[planet].resource.split(',');

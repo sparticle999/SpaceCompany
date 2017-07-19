@@ -23,21 +23,32 @@ Game.interstellar = (function(){
 			},
 			//drive: 0,
 			//IRS: 0,
-		},
-		stars: {
-			star1: {
-				name: "Alpha Centuri",
-				distance: 4.3,
-				planets: 1
-			},
-			star2: {
-				name: "Barnard's Star",
-				distance: 5.96,
-				planets: 0
-			},
-
-		},
+		},	
 	};
+
+	instance.entries = {};
+
+	instance.initialize = function(){
+		for (var id in Game.starData) {
+            var data = Game.starData[id];
+            this.starTypeCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'res_' + id,
+                current: 0,
+                perSecond: 0,
+                perClick: 1,
+                iconPath: Game.constants.iconPath,
+                iconExtension: Game.constants.iconExtension,
+                displayNeedsUpdate: true,
+                hidden: false
+            });
+
+            this.entries[id].capacity = data.baseCapacity;
+
+            console.log("Loaded " + this.starTypeCount + " Stars");
+        }
+	}
 
 	instance.getEngine = function(){
 		if(silicon >= this.machines.engine.silicon && meteorite >= this.machines.engine.meteorite && hydrogen >= this.machines.engine.hydrogen && this.machines.engine.count < 25){
@@ -109,8 +120,8 @@ Game.interstellar = (function(){
 		for(var id in this.machines){
 			data.interstellar.machines[id] = this.machines[id];
 		}
-		for(var id in this.stars){
-			data.interstellar.stars[id] = this.stars[id];
+		for(var id in Game.starData){
+			data.interstellar.stars[id] = Game.starData[id];
 		}
 	}
 
@@ -120,8 +131,10 @@ Game.interstellar = (function(){
                 for(var id in data.interstellar.machines) {
                     this.machines[id] = data.interstellar.machines[id];
                 }
+                var i = 0;
                 for(var id in data.interstellar.stars) {
-                    this.stars[id] = data.interstellar.stars[id];
+                	i += 1;
+                    this.entries[i] = data.interstellar.stars[id];
                     
                 }
             }

@@ -1,6 +1,6 @@
 // Variables in save function
 
-var versionNumber = "0.4.3";
+var versionNumber = "0.4.4.4 Beta";
 
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
@@ -12,6 +12,7 @@ var plasmatic = 0; var plasmaticSpaceMetalCost = 810000; var plasmaticSiliconCos
 var energy = 0; var energyps = 0;
 var battery = 0; var batteryMetalCost = 50000; var batteryGemCost = 50000; var batterySpaceMetalCost = 30000;
 var batteryT2 = 0; var batteryT2MetalCost = 550000; var batteryT2GemCost = 550000; var batteryT2SpaceMetalCost = 330000;
+var batteryT3 = 0; var batteryT3MetalCost = 5500000; var batteryT3GemCost = 5500000; var batteryT3SpaceMetalCost = 3300000;
 var PSU = 0; var PSUSilverCost = 770000; var PSUGoldCost = 770000; var PSUUraniumCost = 550000;
 var PSUT2 = 0; var PSUT2SilverCost = 9300000; var PSUT2GoldCost = 9300000; var PSUT2UraniumCost = 6800000;
 var batteryT3 = 0; var batteryT3MetalCost = 5500000; var batteryT3GemCost = 5500000; var batteryT3SpaceMetalCost = 3300000;

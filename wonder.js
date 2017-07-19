@@ -16,7 +16,7 @@ function refreshWonderBars(){
 		else{preciousGold = gold;}
 		var preciousBar = (preciousGem+preciousSilver+preciousGold)/225;
 		if(preciousBar <= 100){
-			document.getElementById("preciousBar").innerHTML = Game.settings.format(preciousBar) + "%";
+			document.getElementById("preciousBar").innerHTML = Game.settings.format(preciousBar,2) + "%";
 			document.getElementById("preciousBar").style.width = preciousBar + "%";
 		}
 		else{
@@ -39,7 +39,7 @@ function refreshWonderBars(){
 		else{preciousActivateGold = gold;}
 		var preciousActivateBar = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/600;
 		if(preciousActivateBar <= 100){
-			document.getElementById("preciousActivateBar").innerHTML = Game.settings.format(preciousActivateBar) + "%";
+			document.getElementById("preciousActivateBar").innerHTML = Game.settings.format(preciousActivateBar,2) + "%";
 			document.getElementById("preciousActivateBar").style.width = preciousActivateBar + "%";
 		}
 		else{
@@ -62,7 +62,7 @@ function refreshWonderBars(){
 		else{energeticUranium = uranium;}
 		var energeticBar = (energeticWood+energeticCharcoal+energeticUranium)/152;
 		if(energeticBar <= 100){
-			document.getElementById("energeticBar").innerHTML = Game.settings.format(energeticBar) + "%";
+			document.getElementById("energeticBar").innerHTML = Game.settings.format(energeticBar,2) + "%";
 			document.getElementById("energeticBar").style.width = energeticBar + "%";
 		}
 		else{
@@ -85,7 +85,7 @@ function refreshWonderBars(){
 		else{energeticActivateUranium = uranium;}
 		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/455;
 		if(energeticActivateBar <= 100){
-			document.getElementById("energeticActivateBar").innerHTML = Game.settings.format(energeticActivateBar) + "%";
+			document.getElementById("energeticActivateBar").innerHTML = Game.settings.format(energeticActivateBar,2) + "%";
 			document.getElementById("energeticActivateBar").style.width = energeticActivateBar + "%";
 		}
 		else{
@@ -108,7 +108,7 @@ function refreshWonderBars(){
 		else{techGem = gem;}
 		var techBar = (techSilicon+techGold+techGem)/880;
 		if(techBar <= 100){
-			document.getElementById("techBar").innerHTML = Game.settings.format(techBar) + "%";
+			document.getElementById("techBar").innerHTML = Game.settings.format(techBar,2) + "%";
 			document.getElementById("techBar").style.width = techBar + "%";
 		}
 		else{
@@ -131,7 +131,7 @@ function refreshWonderBars(){
 		else{techActivateGem = gem;}
 		var techActivateBar = (techActivateSilicon+techActivateGold+techActivateGem)/1400;
 		if(techActivateBar <= 100){
-			document.getElementById("techActivateBar").innerHTML = Game.settings.format(techActivateBar) + "%";
+			document.getElementById("techActivateBar").innerHTML = Game.settings.format(techActivateBar,2) + "%";
 			document.getElementById("techActivateBar").style.width = techActivateBar + "%";
 		}
 		else{
@@ -154,7 +154,7 @@ function refreshWonderBars(){
 		else{meteoriteSilicon = silicon;}
 		var meteoriteBar = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/18050;
 		if(meteoriteBar <= 100){
-			document.getElementById("meteoriteBar").innerHTML = Game.settings.format(meteoriteBar) + "%";
+			document.getElementById("meteoriteBar").innerHTML = Game.settings.format(meteoriteBar,2) + "%";
 			document.getElementById("meteoriteBar").style.width = meteoriteBar + "%";
 		}
 		else{
@@ -177,7 +177,7 @@ function refreshWonderBars(){
 		else{meteoriteActivateSilicon = silicon;}
 		var meteoriteActivateBar = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/60100;
 		if(meteoriteActivateBar <= 100){
-			document.getElementById("meteoriteActivateBar").innerHTML = Game.settings.format(meteoriteActivateBar) + "%";
+			document.getElementById("meteoriteActivateBar").innerHTML = Game.settings.format(meteoriteActivateBar,2) + "%";
 			document.getElementById("meteoriteActivateBar").style.width = meteoriteActivateBar + "%";
 		}
 		else{
@@ -200,7 +200,7 @@ function refreshWonderBars(){
 		else{rebuildCommsIce = ice;}
 		var commsWonderBar = (rebuildCommsGold+rebuildCommsSilicon+rebuildCommsIce)/220000;
 		if(commsWonderBar <= 100){
-			document.getElementById("commsWonderBar").innerHTML = Game.settings.format(commsWonderBar) + "%";
+			document.getElementById("commsWonderBar").innerHTML = Game.settings.format(commsWonderBar,2) + "%";
 			document.getElementById("commsWonderBar").style.width = commsWonderBar + "%";
 		}
 		else{
@@ -223,7 +223,7 @@ function refreshWonderBars(){
 		else{rebuildRocketMetal = metal;}
 		var rocketWonderBar = (rebuildRocketSpaceMetal+rebuildRocketTitanium+rebuildRocketMetal)/260000;
 		if(rocketWonderBar <= 100){
-			document.getElementById("rocketWonderBar").innerHTML = Game.settings.format(rocketWonderBar) + "%";
+			document.getElementById("rocketWonderBar").innerHTML = Game.settings.format(rocketWonderBar,2) + "%";
 			document.getElementById("rocketWonderBar").style.width = rocketWonderBar + "%";
 		}
 		else{
@@ -250,7 +250,7 @@ function refreshWonderBars(){
 		else{rebuildAntimatterMethane = methane;}
 		var antimatterWonderBar = (rebuildAntimatterUranium+rebuildAntimatterLava+rebuildAntimatterOil+rebuildAntimatterMethane)/300000;
 		if(antimatterWonderBar <= 100){
-			document.getElementById("antimatterWonderBar").innerHTML = Game.settings.format(antimatterWonderBar) + "%";
+			document.getElementById("antimatterWonderBar").innerHTML = Game.settings.format(antimatterWonderBar,2) + "%";
 			document.getElementById("antimatterWonderBar").style.width = antimatterWonderBar + "%";
 		}
 		else{
@@ -273,12 +273,35 @@ function refreshWonderBars(){
 		else{portalSilicon = silicon;}
 		var portalBar = (portalMeteorite+portalHelium+portalSilicon)/145000;
 		if(portalBar <= 100){
-			document.getElementById("portalBar").innerHTML = Game.settings.format(portalBar) + "%";
+			document.getElementById("portalBar").innerHTML = Game.settings.format(portalBar,2) + "%";
 			document.getElementById("portalBar").style.width = portalBar + "%";
 		}
 		else{
 			document.getElementById("portalBar").innerHTML = "100%";
 			document.getElementById("portalBar").style.width = 100 + "%";
+		}
+	}
+	if((document.getElementById("rebuildStargate").className === "hidden") === false){
+		if(plasma >= 500000){
+			var stargatePlasma = 500000;
+		}
+		else{stargatePlasma = plasma;}
+		if(silicon >= 920000000){
+			var stargateSilicon = 920000000;
+		}
+		else{stargateSilicon = silicon;}
+		if(meteorite >= 17000000){
+			var stargateMeteorite = 17000000;
+		}
+		else{stargateMeteorite = meteorite;}
+		var stargateBar = (stargatePlasma+stargateSilicon+stargateMeteorite)/9375000;
+		if(stargateBar <= 100){
+			document.getElementById("stargateWonderBar").innerHTML = Game.settings.format(stargateBar,2) + "%";
+			document.getElementById("stargateWonderBar").style.width = stargateBar + "%";
+		}
+		else{
+			document.getElementById("stargateWonderBar").innerHTML = "100%";
+			document.getElementById("stargateWonderBar").style.width = 100 + "%";
 		}
 	}
 }
@@ -542,22 +565,22 @@ function activatePortal(){
 }
 
 function rebuildStargate(){
-	// if(plasma >= 500000 && silicon >= 8000000 && meteorite >= 6000000){
-	// 	plasma -= 500000;
-	// 	silicon -= 8000000;
-	// 	meteorite -= 6000000;
-	// 	document.getElementById("rebuildStargate").className = "hidden";
-	// 	document.getElementById("stargateActivation").innerHTML = "Activated";
-	// 	document.getElementById("stargateActivation").className = "green";
-	// 	document.getElementById("travelNav").className = "sideTab";
-	// 	buttonsHidden.push("rebuildStargate");
-	// 	activated.push("stargate");
- //        Game.statistics.add('wondersActivated');
- //        if(document.getElementById("interstellarTab").className != ""){
- //        	document.getElementById("interstellarTab").className = "";
- //        	tabsUnlocked.push("interstellarTab");
- //        	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
- //        }
-	// 	newUnlock("interstellar");
-	// }
+	if(plasma >= 500000 && silicon >= 920000000 && meteorite >= 17000000){
+		plasma -= 500000;
+		silicon -= 920000000;
+		meteorite -= 17000000;
+		document.getElementById("rebuildStargate").className = "hidden";
+		document.getElementById("stargateActivation").innerHTML = "Activated";
+		document.getElementById("stargateActivation").className = "green";
+		document.getElementById("travelNav").className = "sideTab";
+		buttonsHidden.push("rebuildStargate");
+		activated.push("stargate");
+		Game.statistics.add('wondersActivated');
+		if(document.getElementById("interstellarTab").className != ""){
+			document.getElementById("interstellarTab").className = "";
+			tabsUnlocked.push("interstellarTab");
+			Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
+		}
+		newUnlock("interstellar");
+	}
 }
