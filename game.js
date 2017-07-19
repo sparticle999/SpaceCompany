@@ -61,10 +61,12 @@ var Game = (function() {
 
         self.ui.updateBoundElements(delta);
 
+        self.legacyResourceBridge.update(delta);
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
         self.settings.update(delta);
+        self.spaceship.update(delta);
 
         self.updateAutoSave(delta);
 
@@ -140,6 +142,7 @@ var Game = (function() {
         this.tech.save(data);
         this.settings.save(data);
         this.interstellar.save(data);
+        this.spaceship.save(data);
 
         data = legacySave(data);
 
@@ -161,6 +164,7 @@ var Game = (function() {
             this.tech.load(data);
             this.settings.load(data);
             this.interstellar.load(data);
+            this.spaceship.load(data);
 
             legacyLoad(data);
         }
@@ -222,11 +226,13 @@ var Game = (function() {
         // Initialize first
         self.achievements.initialize();
         self.statistics.initialize();
+        self.legacyResourceBridge.initialize();
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
         self.interstellar.initialize();
         self.settings.initialize();
+        self.spaceship.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
@@ -347,19 +353,14 @@ var Game = (function() {
 
         if (timeLeft <= 15000) {
             element.show();
-            if(timeLeft <= 5000){
-                element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
-            }
-            else{
-                element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
-            }
+            element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
         } else {
             element.hide();
         }
 
-        if(timeLeft < 100) {
+        if(timeLeft <= 0) {
             this.save();
-            this.timeSinceAutoSave = 1;
+            this.timeSinceAutoSave = 0;
         }
     };
 

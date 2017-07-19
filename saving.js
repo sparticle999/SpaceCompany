@@ -417,7 +417,7 @@ function legacySave(data) {
 
 function legacyLoad(savegame){
 	"use strict";
-	
+
 	if(savegame){
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") PSU = savegame.PSU;

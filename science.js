@@ -269,7 +269,7 @@ function unlockBatteriesT3(){
 		document.getElementById("batteriesT3").className = "";
 		researched.push("unlockBatteriesT3");
 		resourcesUnlocked.push("batteriesT3");
-        Game.statistics.add('techResearched');
+    Game.statistics.add('techResearched');
 		newUnlock("resources");
 	}
 }
