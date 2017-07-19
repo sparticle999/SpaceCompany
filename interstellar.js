@@ -28,7 +28,7 @@ Game.interstellar = (function(){
 
 	instance.entries = {};
 
-	instance.initialise = function(){
+	instance.initialize = function(){
 		for (var id in Game.starData) {
             var data = Game.starData[id];
             this.starTypeCount++;
