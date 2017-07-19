@@ -177,7 +177,7 @@ var Game = (function() {
 
         $('#versionLabel').text(versionNumber);
 
-        if(data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+        if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
             this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
         }
 

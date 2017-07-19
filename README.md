@@ -92,6 +92,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Dyson Sections Cost Bug
 - Fixed Plasma EMC Display Bug
 - Fixed Stargate Red Costs Bug
+- Fixed T3 Battery Space Metal Cost Not Saving
 
 ### v0.4.4
 ##### Features
