@@ -350,6 +350,18 @@ Game.techData = (function () {
         }
     };
 
+	instance.unlockBatteryT4 = {
+        name: 'Tier 4 Batteries',
+        desc: 'Tier 4 Batteries improve the amount of energy you can store at once',
+        type: TECH_TYPE.UPGRADE,
+        unlocked: true,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: -1,
+        cost: {
+            'science': 30000000
+        }
+    };
 
     instance.unlockPlasmaT1 = {
         name: 'Plasma Tier 1 Technology',
