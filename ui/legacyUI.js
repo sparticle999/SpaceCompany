@@ -487,14 +487,10 @@ function registerLegacyBindings() {
     });
 
     Game.ui.bindElement('antimatter', function(){
-        if(antimatter < 10) {
-            return Game.settings.format(antimatter, 2);
+        if(antimatter < 100) {
+            return Game.settings.format(antimatter, 1);
         } else {
-            if(antimatter < 100){
-                return Game.settings.format(antimatter, 1);
-            } else {
-                return Game.settings.format(antimatter);
-            }
+            return Game.settings.format(antimatter);
         }
     });
 }
