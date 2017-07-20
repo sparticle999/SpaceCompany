@@ -28,7 +28,8 @@ Game.interstellar = (function(){
 				meteorite: 12300000
 			},
 			//IRS: 0,
-		},	
+		},
+		interRocketBuilt: false,
 	};
 
 	instance.entries = {};
@@ -111,6 +112,18 @@ Game.interstellar = (function(){
 	// 	this.machines.IRS += 1;
 	// 	document.getElementById("IRS").innerHTML = this.machines.IRS;
 	// };
+
+	instance.buildRocket = function(){
+		if(this.machines.shield.count === 50 && this.machines.engine.count === 25 && this.machines.aero.count === 15){
+			for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
+				document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
+			}
+			//document.getElementById("T1Rocket").className = "";
+			this.interRocketBuilt = true;
+			document.getElementById("interRocketBuilt").className = "green";
+			document.getElementById("interRocketBuilt").innerHTML = "Built";
+		}
+	}
 
 	instance.refreshUI = function(){
 		document.getElementById("engineSiliconCost").innerHTML = Game.settings.format(this.machines.engine.silicon);

@@ -117,7 +117,6 @@ var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var d
 var ring = 0; var swarm = 0; var sphere = 0;
 
 var antimatter = 0; var antimatterps = 0; var antimatterToggled = true;
-var drive = 0;
 
 // Variables not being saved
 
@@ -130,7 +129,7 @@ var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techA
 var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 1200000;
 var meteoriteActivateMeteoriteCost = 10000; var meteoriteActivateIceCost = 2000000; var meteoriteActivateSiliconCost = 4000000;
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
-var emcAmount = 1;
+var emcAmount = "Max";
 
 var energyLow = false;
 var resources = ["uranium", "lava", "oil", "metal", "gem", "charcoal", "wood", "spaceMetal", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice", "meteorite"]

@@ -4840,14 +4840,14 @@
 										Uses
 									</h3>
 									<p>
-										This is where you can convert your energy and plasma into resources. (Right click to go back X10)
+										This is where you can convert your energy and plasma into resources. <b>(Right click to go back X10)</b>
 									</p>
 									<div class="row">
 										<div class="col-md-12">
 											<label>Remaining energy: <span data-bind="energy">N/A</span></label>
 											<br>
 											<label>Remaining plasma: <span data-bind="plasma">N/A</span></label>
-											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting <span id="emcButton">X1</span></button>
+											<button class="btn btn-default pull-right" onmousedown="changeEmcAmount(event)" oncontextmenu="return false;">Converting <span id="emcButton">Max</span></button>
 										</div>
 									</div>
 									<div class="row">
@@ -6648,7 +6648,7 @@
 							</span>
 						</td>
 						<td style="vertical-align:middle; text-align:right;">
-							<span id="interRocketActivation" class="red">
+							<span id="interRocketBuilt" class="red">
 								Not Built
 							</span>
 						</td>
@@ -6722,9 +6722,24 @@
 									<span>
 										This is where you can construct your transport to the stars.
 									</span>
+									<br>
+									<br>
+									The Tier 1 Rocket can travel a maximum of 5 light years from Earth.
+									<br>
+									It costs 50 Shield Plating, 25 Engine Units, 15 Aerodynamic Wings.
+									<br>
+									<br>
+									<hide class="interRocketBuild">
+										<button onclick="Game.interstellar.buildRocket()" class="btn btn-default">Build Tier 1 Rocket</button>
+										<br>
+										<br>
+									</hide>
+									<!-- <h4 id="T1Rocket" class="hidden">
+										Tier 1 Rocket: Built
+									</h4> -->
 								</td>
 							</tr>
-							<tr>
+							<tr class="interRocketBuild">
 								<td>
 									<h3 class="default btn-link">
 										Shield Plating: <span id="shield">0</span>/50
@@ -6739,7 +6754,7 @@
 									<button onclick="Game.interstellar.getShield()" class="btn btn-default">Get Shield Plating</button>
 								</td>
 							</tr>
-							<tr>
+							<tr class="interRocketBuild">
 								<td>
 									<h3 class="default btn-link">
 										Engine Units: <span id="engine">0</span>/25
@@ -6754,7 +6769,7 @@
 									<button onclick="Game.interstellar.getEngine()" class="btn btn-default">Get Engine Unit</button>
 								</td>
 							</tr>
-							<tr>
+							<tr class="interRocketBuild">
 								<td>
 									<h3 class="default btn-link">
 										Aerodynamic Sections: <span id="aero">0</span>/15
