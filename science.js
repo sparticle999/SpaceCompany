@@ -274,6 +274,18 @@ function unlockBatteriesT3(){
 	}
 }
 
+function unlockBatteriesT4(){
+	if(science >= 30000000){
+		science -= 30000000;
+		document.getElementById("unlockBatteriesT4").className = "hidden";
+		document.getElementById("batteriesT4").className = "";
+		researched.push("unlockBatteriesT4");
+		resourcesUnlocked.push("batteriesT4");
+        Game.statistics.add('techResearched');
+		newUnlock("resources");
+	}
+}
+
 function unlockPlasma(){
 	if(science >= 40000){
 		science -= 40000;
