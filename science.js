@@ -254,7 +254,9 @@ function unlockBatteriesT2(){
 	if(science >= 300000){
 		science -= 300000;
 		document.getElementById("unlockBatteriesT2").className = "hidden";
+		document.getElementById("unlockBatteriesT3").className = "";
 		document.getElementById("batteriesT2").className = "";
+		available.push("unlockBatteriesT3");
 		researched.push("unlockBatteriesT2");
 		resourcesUnlocked.push("batteriesT2");
         Game.statistics.add('techResearched');
@@ -266,7 +268,9 @@ function unlockBatteriesT3(){
 	if(science >= 3000000){
 		science -= 3000000;
 		document.getElementById("unlockBatteriesT3").className = "hidden";
+		document.getElementById("unlockBatteriesT4").className = "";
 		document.getElementById("batteriesT3").className = "";
+		available.push("unlockBatteriesT4");
 		researched.push("unlockBatteriesT3");
 		resourcesUnlocked.push("batteriesT3");
         Game.statistics.add('techResearched');
