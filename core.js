@@ -405,6 +405,10 @@ function checkRedCost(){
     Game.settings.turnRed(gem, batteryT3GemCost, "batteryT3GemCost");
     Game.settings.turnRed(spaceMetal, batteryT3SpaceMetalCost, "batteryT3SpaceMetalCost");
 
+	Game.settings.turnRed(metal, batteryT4MetalCost, "batteryT4MetalCost");
+	Game.settings.turnRed(gem, batteryT4GemCost, "batteryT4GemCost");
+    	Game.settings.turnRed(spaceMetal, batteryT4SpaceMetalCost, "batteryT4SpaceMetalCost");
+	
 	Game.settings.turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	Game.settings.turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
 
@@ -546,11 +550,11 @@ function checkRedCost(){
 	Game.settings.turnRed(helium, actuatorHeliumCost, "actuatorHeliumCost");
 	Game.settings.turnRed(meteorite, actuatorMeteoriteCost, "actuatorMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, scoutSpaceMetalCost, "scoutSpaceMetalCost");
-    Game.settings.turnRed(titanium, scoutTitaniumCost, "scoutTitaniumCost");
-    Game.settings.turnRed(spaceMetal, spaceLaserSpaceMetalCost, "spaceLaserSpaceMetalCost");
-    Game.settings.turnRed(gem, spaceLaserGemCost, "spaceLaserGemCost");
-    Game.settings.turnRed(oil, spaceLaserOilCost, "spaceLaserOilCost");
+    	Game.settings.turnRed(spaceMetal, scoutSpaceMetalCost, "scoutSpaceMetalCost");
+    	Game.settings.turnRed(titanium, scoutTitaniumCost, "scoutTitaniumCost");
+    	Game.settings.turnRed(spaceMetal, spaceLaserSpaceMetalCost, "spaceLaserSpaceMetalCost");
+    	Game.settings.turnRed(gem, spaceLaserGemCost, "spaceLaserGemCost");
+    	Game.settings.turnRed(oil, spaceLaserOilCost, "spaceLaserOilCost");
 
 	Game.settings.turnRed(spaceMetal, berthaSpaceMetalCost, "berthaSpaceMetalCost");
 	Game.settings.turnRed(titanium, berthaTitaniumCost, "berthaTitaniumCost");
@@ -560,14 +564,14 @@ function checkRedCost(){
 	Game.settings.turnRed(oil, cannonOilCost, "cannonOilCost");
 	Game.settings.turnRed(meteorite, cannonMeteoriteCost, "cannonMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, blowtorchSpaceMetalCost, "blowtorchSpaceMetalCost");
-    Game.settings.turnRed(titanium, blowtorchTitaniumCost, "blowtorchTitaniumCost");
-    Game.settings.turnRed(spaceMetal, scorcherSpaceMetalCost, "scorcherSpaceMetalCost");
-    Game.settings.turnRed(gem, scorcherGemCost, "scorcherGemCost");
-    Game.settings.turnRed(oil, scorcherOilCost, "scorcherOilCost");
-    Game.settings.turnRed(spaceMetal, annihilatorSpaceMetalCost, "annihilatorSpaceMetalCost");
-    Game.settings.turnRed(gem, annihilatorGemCost, "annihilatorGemCost");
-    Game.settings.turnRed(silver, annihilatorSilverCost, "annihilatorSilverCost");
+    	Game.settings.turnRed(spaceMetal, blowtorchSpaceMetalCost, "blowtorchSpaceMetalCost");
+    	Game.settings.turnRed(titanium, blowtorchTitaniumCost, "blowtorchTitaniumCost");
+    	Game.settings.turnRed(spaceMetal, scorcherSpaceMetalCost, "scorcherSpaceMetalCost");
+    	Game.settings.turnRed(gem, scorcherGemCost, "scorcherGemCost");
+    	Game.settings.turnRed(oil, scorcherOilCost, "scorcherOilCost");
+    	Game.settings.turnRed(spaceMetal, annihilatorSpaceMetalCost, "annihilatorSpaceMetalCost");
+    	Game.settings.turnRed(gem, annihilatorGemCost, "annihilatorGemCost");
+    	Game.settings.turnRed(silver, annihilatorSilverCost, "annihilatorSilverCost");
 
 	Game.settings.turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
 	Game.settings.turnRed(silicon, desertSiliconCost, "desertSiliconCost");
@@ -599,7 +603,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 500, "unlockSolarSystemCost");
 	Game.settings.turnRed(science, 500, "unlockLabT2Cost");
 	Game.settings.turnRed(science, 1000, "upgradeEngineTechCost");
-    Game.settings.turnRed(science, 1000, "unlockRocketFuelT2Cost");
+    	Game.settings.turnRed(science, 1000, "unlockRocketFuelT2Cost");
 	Game.settings.turnRed(science, 3000, "unlockLabT3Cost");
 	Game.settings.turnRed(science, 5000, "upgradeSolarTechCost");
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
@@ -612,9 +616,10 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 100000, "unlockMeteoriteTier2Cost");
 	Game.settings.turnRed(science, 100000, "unlockDysonCost");
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
-    Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
+    	Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
+	Game.settings.turnRed(science, 30000000, "unlockBatteriesT4Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
-    Game.settings.turnRed(science, 9500000, "unlockPSUCost");
+    	Game.settings.turnRed(science, 9500000, "unlockPSUCost");
 	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
 
 	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
@@ -1040,6 +1045,12 @@ function refreshResearches(){
         if(contains(available, "unlockBatteriesT3") === false){
             document.getElementById("unlockBatteriesT3").className ="";
             available.push("unlockBatteriesT3");
+        }
+    }
+	if(contains(researched, "unlockBatteriesT3")){
+       if(contains(available, "unlockBatteriesT4") === false){
+            document.getElementById("unlockBatteriesT4").className ="";
+            available.push("unlockBatteriesT4");
         }
     }
 	if(contains(researched, "unlockDyson")){
