@@ -410,6 +410,8 @@ function legacySave(data) {
 		sphere: sphere,
 		swarm: swarm,
 		ring: ring,
+		antimatter: antimatter,
+		antimatterToggled: antimatterToggled,
 	}, data);
 
 	return localSave;
@@ -826,5 +828,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") ring = savegame.ring;
+		if(typeof savegame.antimatter !== "undefined") antimatter = savegame.antimatter;
+		if(typeof savegame.antimatterToggled !== "undefined") antimatterToggled = savegame.antimatterToggled;
 	}
 }

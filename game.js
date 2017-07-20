@@ -225,6 +225,7 @@ var Game = (function() {
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
+        self.interstellar.initialize();
         self.settings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {

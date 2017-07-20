@@ -6635,16 +6635,21 @@
 			<div class="container" style="width:250px; float:left">
 				<table class="table table-hover text-primary no-select pointer">
 					<tr id="commsNav" onclick="activeInterstellarTab('commsNav')" href="#commsTab" aria-controls="commsTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="border:none; vertical-align:middle;">
+						<td style="border:none; vertical-align:middle;" colspan="3">
 							<span>
 								Communications
 							</span>
 						</td>
 					</tr>
 					<tr id="interRocketNav" onclick="activeInterstellarTab('interRocketNav')" href="#interRocketTab" aria-controls="interRocketTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="vertical-align:middle;">
+						<td style="vertical-align:middle;" colspan="2">
 							<span>
 								Rocket
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="interRocketActivation" class="red">
+								Not Built
 							</span>
 						</td>
 					</tr>
@@ -6652,6 +6657,16 @@
 						<td style="vertical-align:middle;">
 							<span>
 								Antimatter
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:center;">
+							<span>
+								<span id="antimatterps">0</span>/Sec
+							</span>
+						</td>
+						<td style="vertical-align:middle; text-align:right;">
+							<span id="antimatter">
+								0
 							</span>
 						</td>
 					</tr>
@@ -6763,11 +6778,16 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										Antimatter (Coming Soon!)
+										Antimatter
 									</h2>
 									<span>
-										Your fuel for interstellar travel is produced here.
+										Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.
 									</span>
+									<br>
+									<br>
+									<button onclick="toggleAntimatter()" class="btn btn-default">Turn Antimatter <span id="antimatterToggled">Off</span></button>
+									<br>
+									<br>
 								</td>
 							</tr>
 							<tr>
@@ -6780,9 +6800,9 @@
 										<br>
 										Produces 0.5 Antimatter per second.
 										<br>
-										Uses 50 Plasma and 3K Ice per second.
+										Uses 100 Plasma and 12k Ice per second.
 										<br>
-										Costs <span id="driveSpaceMetalCost">XXXX</span> ABC, <span id="driveTitaniumCost">XXXX</span> ABC, <span id="driveMetalCost">XXXX</span> ABC.
+										Costs <span id="driveSilverCost">163.0M</span> Silver, <span id="driveOilCost">712.0M</span> Oil, <span id="driveMeteoriteCost">12.30M</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -7101,7 +7121,9 @@
 										<br>
 										However, I like the donation system because there is nothing forcing you to donate other than out of the goodness of people's hearts. If you like the game and want more content faster, I would be happy to put more time towards this game if I felt that it is paying off.
 										<br>
-										I have a <a href="https://www.paypal.me/Sparticle999" target="_blank" class="btn-link" style="font-size:16px;">Donation Link</a> if you want to help out and speed the game's progress along.
+										I have a <a href="https://www.paypal.me/Sparticle999" target="_blank" class="btn-link" style="font-size:16px;">PayPal Link</a> if you want to help out and speed the game's progress along.
+										<br>
+										And a <a href="https://www.patreon.com/sparticle999" target="_blank" class="btn-link" style="font-size:16px;">Patreon Page</a>, if you want to have continued support for Space Company development, and for an impact on the game yourself.
 									</span>
 								</td>
 							</tr>

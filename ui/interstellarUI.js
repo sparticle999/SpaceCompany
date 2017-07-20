@@ -1,13 +1,21 @@
 (function(){
 
 	var instance = {};
-
+	
 	instance.entries = {};
-    instance.categoryTemplate = null;
-    instance.entryTemplate = null;
+	instance.machineEntries = {};
+    instance.machineObservers = {};
+    instance.starEntries = {};
+    instance.starObservers = {};
+    instance.titleTemplate = null;
+    instance.machineTemplate = null;
+    instance.navTemplate = null;
+    instance.navTemplate = null;
 
-    instance.categoryElements = {};
-    instance.rootElement = null;
+    instance.tabRoot = null;
+    instance.navRoot = null;
+
+    instance.tab = null;
 
     instance.categoryNames = {
         'starT1': "Tier 1 Stars",
@@ -92,6 +100,30 @@
 
 	}
 
+	instance.createStar = function(data, starData) {
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        var star = this.starTemplate(starData);
+        tabContentRoot.append($(star));
+
+        this.starEntries[starData.id] = data.id;
+        this.starObservers[starData.id] = [];
+    };
+
+	instance.createResourceContent = function(data) {
+        var target = $('#' + this.tab.getContentElementId(data.id));
+
+        var tabTitle = this.titleTemplate(data);
+        target.append(tabTitle);
+        $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
+
+        for (var id in Game.interstellar.entries) {
+            var starData = Game.interstellar.entries[id];
+            if(starData.resource && starData.resource === data.id) {
+                this.createStar(data, starData);
+            }
+        }
+    };
+
 	instance.createInterstellarNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
 
@@ -114,7 +146,7 @@
         this.tab.addNavEntry(data.category, id);
 
         this.createResourceContent(data);
-        this.createResourceNav(data);
+        this.createInterstellarNav(data);
 
         this.entries[data.htmlId] = data;
     };

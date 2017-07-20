@@ -65,6 +65,7 @@ function gainResources(delta){
     meteorite = (meteorite + meteoriteps * delta).clamp(0, meteoriteStorage);
     plasma = (plasma + plasmaps * delta).clamp(0, getMaxPlasma());
     rocketFuel += rocketFuelps * delta;
+    antimatter += antimatterps * delta;
 }
 
 function getMaxPlasma() {
@@ -363,6 +364,15 @@ function upgradeMeteoriteStorage(){
 	}
 }
 
+function upgradeMeteoriteStorage(){
+	if(meteorite >= meteoriteStorage && spaceMetal >= meteoriteStorage*4){
+		meteorite -= meteoriteStorage;
+		spaceMetal -= meteoriteStorage*4;
+		meteoriteStorage = meteoriteNextStorage;
+		meteoriteNextStorage *= 2;
+	}
+}
+
 function toggleCharcoal(){
     charcoalToggled = !charcoalToggled;
 }
@@ -381,6 +391,10 @@ function toggleRocketFuel(){
 
 function toggleMeteorite(){
     meteoriteToggled = !meteoriteToggled;
+}
+
+function toggleAntimatter(){
+    antimatterToggled = !antimatterToggled;
 }
 
 function destroyMachine(machine, id){
