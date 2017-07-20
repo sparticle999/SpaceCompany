@@ -34,6 +34,10 @@ function legacySave(data) {
 		batteryT3MetalCost: batteryT3MetalCost,
 		batteryT3GemCost: batteryT3GemCost,
 		batteryT3SpaceMetalCost: batteryT3SpaceMetalCost,
+		batteryT4: batteryT4,
+		batteryT4MetalCost: batteryT4MetalCost,
+		batteryT4GemCost: batteryT4GemCost,
+		batteryT4SpaceMetalCost: batteryT4SpaceMetalCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -453,6 +457,10 @@ function legacyLoad(savegame){
 		if(typeof savegame.batteryT3MetalCost !== "undefined") batteryT3MetalCost = savegame.batteryT3MetalCost;
 		if(typeof savegame.batteryT3GemCost !== "undefined") batteryT3GemCost = savegame.batteryT3GemCost;
 		if(typeof savegame.batteryT3SpaceMetalCost !== "undefined") batteryT3SpaceMetalCost = savegame.batteryT3SpaceMetalCost;
+		if(typeof savegame.batteryT4 !== "undefined") batteryT4 = savegame.batteryT4;
+		if(typeof savegame.batteryT4MetalCost !== "undefined") batteryT4MetalCost = savegame.batteryT4MetalCost;
+		if(typeof savegame.batteryT4GemCost !== "undefined") batteryT4GemCost = savegame.batteryT4GemCost;
+		if(typeof savegame.batteryT4SpaceMetalCost !== "undefined") batteryT4SpaceMetalCost = savegame.batteryT4SpaceMetalCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
