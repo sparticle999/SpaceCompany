@@ -164,6 +164,7 @@ function refreshPerSec(delta){
     plasmaps = 0;
     meteoriteps = 0;
     rocketFuelps = 0;
+    antimatterps = 0;
 
     // Science
     var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
@@ -247,6 +248,22 @@ function refreshPerSec(delta){
         }
     }
 
+    if(antimatterToggled === true) {
+    	if(antimatter + antimatterps <= 100000){
+	        var plasmaCost = (Game.interstellar.machines.drive.count*100)
+	        var iceCost = (Game.interstellar.machines.drive.count*12000)
+	        if(plasma + plasmaps >= plasmaCost && ice + iceps >= iceCost) {
+	            plasmaps -= plasmaCost;
+	            iceps -= iceCost;
+	            antimatterps += Game.interstellar.machines.drive.count/2;
+	        }
+	    }
+	    else{
+	    	antimatter = 100000;
+	    	antimatterps += Game.interstellar.machines.drive.count/2;
+	    }
+    }
+
 	function adjustCost(targetStorage, targetCurrent, targetPs, cost, gain) {
         var maxGain = targetStorage - targetCurrent;
         if(targetPs < 0) {
@@ -304,6 +321,7 @@ function checkRedCost(){
     Game.settings.turnRedOnNegative(plasmaps, 'plasmaps');
     Game.settings.turnRedOnNegative(meteoriteps, 'meteoriteps');
     Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
+	Game.settings.turnRedOnNegative(antimatterps, 'antimatterps');
 
 	Game.settings.turnRed(wood, 2, "manualCharcoalCost");
 	Game.settings.turnRed(energy, 1000, "manualPlasmaEnergyCost");
@@ -596,9 +614,8 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
     Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
-  Game.settings.turnRed(science, 9500000, "unlockPSUCost");
+    Game.settings.turnRed(science, 9500000, "unlockPSUCost");
 	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
-  Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
 
 	Game.settings.turnRed(metal, 1200, "rocketMetalCost");
 	Game.settings.turnRed(gem, 900, "rocketGemCost");
@@ -801,6 +818,10 @@ function checkRedCost(){
 	Game.settings.turnRed(ice, Game.interstellar.machines.aero.ice, "aeroIceCost");
 	Game.settings.turnRed(gem, Game.interstellar.machines.aero.gem, "aeroGemCost");
 
+	Game.settings.turnRed(silver, Game.interstellar.machines.drive.silver, "driveSilverCost");
+	Game.settings.turnRed(oil, Game.interstellar.machines.drive.oil, "driveOilCost");
+	Game.settings.turnRed(meteorite, Game.interstellar.machines.drive.meteorite, "driveMeteoriteCost");
+
 }
 
 function refreshResources(){
@@ -851,8 +872,9 @@ function refreshResources(){
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
-		document.getElementById("antimatterWonderNav").className = "sideTab";
+		document.getElementById("communicationWonderNav").className = "sideTab";
 		document.getElementById("rocketWonderNav").className = "sideTab";
+		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
 		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
 	}

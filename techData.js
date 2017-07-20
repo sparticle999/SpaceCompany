@@ -6,7 +6,7 @@ Game.techData = (function () {
     var baseUpgradeData = {
         name: 'Storage Upgrade:',
         type: TECH_TYPE.UPGRADE,
-        unlocked: false,
+        unlocked: true,
         costType: COST_TYPE.PERCENT,
         current: 0,
         maxLevel: -1,
@@ -350,19 +350,6 @@ Game.techData = (function () {
         }
     };
 
-
-    instance.unlockBatteryT3 = {
-        name: 'Tier 3 Batteries',
-        desc: 'Tier 3 Batteries improve the amount of energy you can store at once',
-        type: TECH_TYPE.UPGRADE,
-        unlocked: true,
-        costType: COST_TYPE.FIXED,
-        current: 0,
-        maxLevel: -1,
-        cost: {
-            'science': 3000000
-        }
-    };
 
     instance.unlockPlasmaT1 = {
         name: 'Plasma Tier 1 Technology',

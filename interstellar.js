@@ -21,7 +21,12 @@ Game.interstellar = (function(){
 				titanium: 100000,
 				metal: 100000
 			},
-			//drive: 0,
+			drive: {
+				count: 0,
+				silver: 163000000,
+				oil: 712000000,
+				meteorite: 12300000
+			},
 			//IRS: 0,
 		},	
 	};
@@ -89,10 +94,18 @@ Game.interstellar = (function(){
 		}
 	};
 
-	// instance.getDrive = function(){
-	// 	this.machines.drive += 1;
-	// 	document.getElementById("drive").innerHTML = this.machines.drive;
-	// };
+	instance.getDrive = function(){
+		if(silver >= this.machines.drive.silver && oil >= this.machines.drive.oil && meteorite >= this.machines.drive.meteorite){
+			silver -= this.machines.drive.silver;
+			oil -= this.machines.drive.oil;
+			meteorite -= this.machines.drive.meteorite;
+			this.machines.drive.count += 1;
+			this.machines.drive.silver = Math.floor(163000000 * Math.pow(1.1,this.machines.drive.count));
+			this.machines.drive.oil = Math.floor(712000000 * Math.pow(1.1,this.machines.drive.count));
+			this.machines.drive.meteorite = Math.floor(12300000 * Math.pow(1.1,this.machines.drive.count));
+			this.refreshUI();
+		}
+	};
 
 	// instance.getIRS = function(){
 	// 	this.machines.IRS += 1;
@@ -112,6 +125,10 @@ Game.interstellar = (function(){
 		document.getElementById("shieldTitaniumCost").innerHTML = Game.settings.format(this.machines.shield.titanium);
 		document.getElementById("shieldMetalCost").innerHTML = Game.settings.format(this.machines.shield.metal);
 		document.getElementById("shield").innerHTML = this.machines.shield.count;
+		document.getElementById("driveSilverCost").innerHTML = Game.settings.format(this.machines.drive.silver);
+		document.getElementById("driveOilCost").innerHTML = Game.settings.format(this.machines.drive.oil);
+		document.getElementById("driveMeteoriteCost").innerHTML = Game.settings.format(this.machines.drive.meteorite);
+		document.getElementById("drive").innerHTML = this.machines.drive.count;
 	}
 
 	instance.save = function(data){

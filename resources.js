@@ -65,6 +65,7 @@ function gainResources(delta){
     meteorite = (meteorite + meteoriteps * delta).clamp(0, meteoriteStorage);
     plasma = (plasma + plasmaps * delta).clamp(0, getMaxPlasma());
     rocketFuel += rocketFuelps * delta;
+    antimatter += antimatterps * delta;
 }
 
 function getMaxPlasma() {
@@ -72,7 +73,7 @@ function getMaxPlasma() {
 }
 
 function getMaxEnergy() {
-	return 100000 + (50000 * battery) + (500000 * batteryT2) + (5000000 * batteryT3);
+	return 100000 + (50000 * battery) + (500000 * batteryT2) +(5000000 * batteryT3);
 }
 
 // Gain Buttons
@@ -93,16 +94,16 @@ function gainUranium(){
 	}
 }
 
-function gainMetal(){
-    if(metal < metalStorage){
-        metal += 1;
-        Game.statistics.add('manualResources');
-    }
-}
-
 function gainOil(){
 	if(oil < oilStorage){
 		oil += 1;
+        Game.statistics.add('manualResources');
+	}
+}
+
+function gainMetal(){
+	if(metal < metalStorage){
+		metal += 1;
         Game.statistics.add('manualResources');
 	}
 }
@@ -363,6 +364,15 @@ function upgradeMeteoriteStorage(){
 	}
 }
 
+function upgradeMeteoriteStorage(){
+	if(meteorite >= meteoriteStorage && spaceMetal >= meteoriteStorage*4){
+		meteorite -= meteoriteStorage;
+		spaceMetal -= meteoriteStorage*4;
+		meteoriteStorage = meteoriteNextStorage;
+		meteoriteNextStorage *= 2;
+	}
+}
+
 function toggleCharcoal(){
     charcoalToggled = !charcoalToggled;
 }
@@ -381,6 +391,10 @@ function toggleRocketFuel(){
 
 function toggleMeteorite(){
     meteoriteToggled = !meteoriteToggled;
+}
+
+function toggleAntimatter(){
+    antimatterToggled = !antimatterToggled;
 }
 
 function destroyMachine(machine, id){
@@ -744,21 +758,8 @@ function getBatteryT2(){
 		spaceMetal -= batteryT2SpaceMetalCost;
 		batteryT2 += 1;
 		updateCost();
-    Game.statistics.add('tierOwned2');
-    }
-}
-
-function getBatteryT3(){
-    if(metal >= batteryT3MetalCost && gem >= batteryT3GemCost && spaceMetal >= batteryT3SpaceMetalCost ){
-        metal -= batteryT3MetalCost;
-        gem -= batteryT3GemCost;
-        spaceMetal -= batteryT3SpaceMetalCost;
-        batteryT3 += 1;
-        batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-        batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-        batteryT3SpaceMetalCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
-        Game.statistics.add('tierOwned3');
-    }
+        Game.statistics.add('tierOwned2');
+	}
 }
 
 function getBatteryT3(){
