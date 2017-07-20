@@ -169,7 +169,15 @@ Game.interstellar = (function(){
                 }
             }
         }
-        this.refreshUI();
+        if(this.interRocketBuilt === true){
+	        for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
+				document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
+			}
+			//document.getElementById("T1Rocket").className = "";
+			document.getElementById("interRocketBuilt").className = "green";
+			document.getElementById("interRocketBuilt").innerHTML = "Built";
+	    }
+	    this.refreshUI();
 	}
 
 	return instance;
