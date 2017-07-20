@@ -401,6 +401,10 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, batteryT2GemCost, "batteryT2GemCost");
 	Game.settings.turnRed(spaceMetal, batteryT2SpaceMetalCost, "batteryT2SpaceMetalCost");
 
+	Game.settings.turnRed(metal, batteryT4MetalCost, "batteryT4MetalCost");
+ 	Game.settings.turnRed(gem, batteryT4GemCost, "batteryT4GemCost");
+    Game.settings.turnRed(spaceMetal, batteryT4SpaceMetalCost, "batteryT4SpaceMetalCost");
+	
     Game.settings.turnRed(metal, batteryT3MetalCost, "batteryT3MetalCost");
     Game.settings.turnRed(gem, batteryT3GemCost, "batteryT3GemCost");
     Game.settings.turnRed(spaceMetal, batteryT3SpaceMetalCost, "batteryT3SpaceMetalCost");
@@ -1041,6 +1045,12 @@ function refreshResearches(){
             document.getElementById("unlockBatteriesT3").className ="";
             available.push("unlockBatteriesT3");
         }
+    }
+	if(contains(researched, "unlockBatteriesT3")){
+        if(contains(available, "unlockBatteriesT4") === false){
+             document.getElementById("unlockBatteriesT4").className ="";
+             available.push("unlockBatteriesT4");
+         }
     }
 	if(contains(researched, "unlockDyson")){
 		if(contains(available, "unlockDysonSphere") === false){

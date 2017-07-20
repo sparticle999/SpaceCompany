@@ -146,7 +146,7 @@ Game.interstellar = (function(){
 
 	instance.save = function(data){
 
-		data.interstellar = {version: this.dataVersion, machines: {}, stars: {}};
+		data.interstellar = {version: this.dataVersion, machines: {}, stars: {}, interRocketBuilt: this.interRocketBuilt};
 		for(var id in this.machines){
 			data.interstellar.machines[id] = this.machines[id];
 		}
@@ -165,11 +165,19 @@ Game.interstellar = (function(){
                 for(var id in data.interstellar.stars) {
                 	i += 1;
                     this.entries[i] = data.interstellar.stars[id];
-                    
                 }
             }
         }
-        this.refreshUI();
+        if(data.interstellar.interRocketBuilt === true){
+	        for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
+				document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
+			}
+			//document.getElementById("T1Rocket").className = "";
+			this.interRocketBuilt = true;
+			document.getElementById("interRocketBuilt").className = "green";
+			document.getElementById("interRocketBuilt").innerHTML = "Built";
+	    }
+	    this.refreshUI();
 	}
 
 	return instance;
