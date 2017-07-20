@@ -74,6 +74,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Made Red Bold Costs Also Underlined
 - Allow decreasing EMC amount with right click
 - Changed Version Number System to include 4th digit
+- Made EMC Max By Default
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
