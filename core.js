@@ -617,6 +617,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 100000, "unlockDysonCost");
 	Game.settings.turnRed(science, 300000, "unlockBatteriesT2Cost");
     Game.settings.turnRed(science, 3000000, "unlockBatteriesT3Cost");
+    Game.settings.turnRed(science, 30000000, "unlockBatteriesT4Cost");
 	Game.settings.turnRed(science, 500000, "unlockDysonSphereCost");
     Game.settings.turnRed(science, 9500000, "unlockPSUCost");
 	Game.settings.turnRed(science, 37000000, "unlockPSUT2Cost");
@@ -1173,4 +1174,10 @@ $('.collapseOuter').click(function(){
 //ToolTips
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
+});
+
+//Change Company Name
+$('input[name="companyName"]').change(function(){
+	companyName = ($('input[name="companyName"]').val());
+	Game.settings.updateCompanyName();
 });

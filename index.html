@@ -32,7 +32,10 @@
 </head>
 <body>
 <div id="loadScreen" style="width:100%; height:100%">
-	<div style="margin-left:31%; margin-top:3%;">
+	<!-- <div style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center; margin-top:3%;">
+		Space Company
+	</div> -->
+	<div style="margin-left:31%; ">
 		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
 		<br>
 	</div>
@@ -55,9 +58,7 @@
 					<img src="SpaceCompanyFavicon.png" style="width:40px; height:auto; margin-top:-30%;">
 				</a>
 				<a class="navbar-brand page-title" href="#">
-					<span>
-						Space Company
-					</span>
+					<span id="companyName">Space</span> Company
 				</a>
 				<a class="navbar-brand" ng-href="" target="_blank" href="https://github.com/sparticle999/SpaceCompany#changelog">
 					<span id="versionLabel" class="text-muted small ng-binding"></span>
@@ -4737,7 +4738,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										The Stargate Room (Coming Soon!)
+										The Stargate Room
 									</h2>
 									<span>
 										The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table
@@ -6854,6 +6855,7 @@
 									<br>
 									<br>
 									<button onclick="Game.interstellar.getDrive()" class="btn btn-default">Get Alcubierre Drive</button>
+									<button onclick="if(Game.interstellar.machines.drive.count > 0){Game.interstellar.machines.drive.count -= 1; Game.interstellar.refreshUI();}" class="btn btn-default">Destroy Alcubierre Drive</button>
 								</td>
 							</tr>
 						</table>
@@ -7061,16 +7063,6 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Text Decoration
-									</h3>
-				                	<div class="checkbox">
-										<label><input id="boldEnabled" type="checkbox" value="">Red Costs: Bold</label>
-									</div>
-				                </td>
-							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
 										Formatting
 									</h3>
 									<select id="formatSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
@@ -7087,10 +7079,20 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Sidebar Height Compression (Not fully implemented)
+										Change Company Name
 									</h3>
 				                	<div class="checkbox">
-										<label><input id="sidebarCompressed" type="checkbox" value="">Compress Rows in Sidebar to Decrease White Space</label>
+										<input type="text" name="companyName"> Company <input type="submit" value="Submit">
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Text Decoration
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="boldEnabled" type="checkbox" value="">Red Costs: Bold</label>
 									</div>
 				                </td>
 							</tr>
@@ -7101,6 +7103,16 @@
 									</h3>
 				                	<div class="checkbox">
 										<label><input id="notificationsEnabled" type="checkbox" value="">Screen Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Sidebar Height Compression (Not fully implemented)
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="sidebarCompressed" type="checkbox" value="">Compress Rows in Sidebar to Decrease White Space</label>
 									</div>
 				                </td>
 							</tr>

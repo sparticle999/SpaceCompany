@@ -24,12 +24,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
 - Unknown Planets that you have to explore to know what it holds
 - Each star system is more hostile than the last until prestige, where it resets
-- Stargate for other solar systems
 - Pushing Planets into the Sun gets prestige currency
 - Machine Overview Tab
 - Space Elevator
-- Unlock Technologies such as reduce the exponential increase of costs
-- Third Floor of Wonder Station - Research Portal Tech: 3M science
 - Mass to Energy Conversion
 - Buy X buttons
 - Buy Max/Custom Buttons
@@ -60,6 +57,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Max Emc Conversion Button
 - Tier 3 Batteries
 - Tier 4 Labs
+- Tier 4 Batteries
+- Custom Company Name
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines
@@ -75,6 +74,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Allow decreasing EMC amount with right click
 - Changed Version Number System to include 4th digit
 - Made EMC Max By Default
+- Import Checks For Empty Field To Refuse Load
+- Fixed Typos
 
 ##### Bug Fixes
 - Fixed Bug With Solar System Sidebar
@@ -94,6 +95,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Plasma EMC Display Bug
 - Fixed Stargate Red Costs Bug
 - Fixed T3 Battery Space Metal Cost Not Saving
+- Fixed UI Bug With Certain Themes
+- Fixed Rocket Building Not Saving
+- Fixed Antimatter Decimals Not Being Uniform
 
 ### v0.4.4
 ##### Features

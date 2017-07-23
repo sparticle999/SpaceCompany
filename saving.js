@@ -2,6 +2,7 @@ function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
 		versionNumber: versionNumber,
+		companyName: companyName,
 		plasma: plasma,
 		PSU: PSU,
 		PSUSilverCost: PSUSilverCost,
@@ -425,6 +426,7 @@ function legacyLoad(savegame){
 	"use strict";
 	
 	if(savegame){
+		if(typeof savegame.companyName !== "undefined") companyName = savegame.companyName;
 		if(typeof savegame.plasma !== "undefined") plasma = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") PSU = savegame.PSU;
 		if(typeof savegame.PSUSilverCost !== "undefined") PSUSilverCost = savegame.PSUSilverCost;
