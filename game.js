@@ -164,7 +164,7 @@ var Game = (function() {
 
             legacyLoad(data);
         }
-
+        Game.settings.updateCompanyName();
         refreshResources();
         refreshResearches();
         refreshTabs();

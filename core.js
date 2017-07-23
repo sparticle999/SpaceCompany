@@ -1175,3 +1175,9 @@ $('.collapseOuter').click(function(){
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
 });
+
+//Change Company Name
+$('input[name="companyName"]').change(function(){
+	companyName = ($('input[name="companyName"]').val());
+	Game.settings.updateCompanyName();
+});

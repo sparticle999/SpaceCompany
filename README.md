@@ -58,6 +58,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Tier 3 Batteries
 - Tier 4 Labs
 - Tier 4 Batteries
+- Custom Company Name
 
 ##### Small Changes
 - Individual buttons to turn off Plasma and Meteorite Machines

@@ -242,6 +242,10 @@ Game.settings = (function(){
         }
     };
 
+    instance.updateCompanyName = function(){
+        document.getElementById("companyName").innerHTML = companyName;
+    }
+
     return instance;
 
 }());
