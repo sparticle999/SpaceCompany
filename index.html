@@ -32,7 +32,10 @@
 </head>
 <body>
 <div id="loadScreen" style="width:100%; height:100%">
-	<div style="margin-left:31%; margin-top:3%;">
+	<!-- <div style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center; margin-top:3%;">
+		Space Company
+	</div> -->
+	<div style="margin-left:31%; ">
 		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
 		<br>
 	</div>
@@ -6854,6 +6857,7 @@
 									<br>
 									<br>
 									<button onclick="Game.interstellar.getDrive()" class="btn btn-default">Get Alcubierre Drive</button>
+									<button onclick="if(Game.interstellar.machines.drive.count > 0){Game.interstellar.machines.drive.count -= 1; Game.interstellar.refreshUI();}" class="btn btn-default">Destroy Alcubierre Drive</button>
 								</td>
 							</tr>
 						</table>
