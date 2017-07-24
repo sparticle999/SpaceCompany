@@ -50,8 +50,6 @@ Game.interstellar = (function(){
                 hidden: false
             });
 
-            this.entries[id].capacity = data.baseCapacity;
-
             console.log("Loaded " + this.starTypeCount + " Stars");
         }
 	}

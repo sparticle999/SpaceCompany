@@ -6704,7 +6704,7 @@
 						</td>
 					</tr>
 					<tr id="travelNav" onclick="activeInterstellarTab('travelNav')" href="#travelTab" aria-controls="travelTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="vertical-align:middle;">
+						<td style="vertical-align:middle;" colspan="3">
 							<span>
 								Travel
 							</span>
@@ -7014,6 +7014,7 @@
 									</h3>
 									<button class="btn btn-primary" onclick="Game.export()">Export Save</button>
 									<button class="btn btn-primary" onclick="Game.import()">Import Save</button>
+									<button class="btn btn-primary" id="copyExport">Copy Text Below To Clipboard</button>
 									<br>
 									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
 									<br>
