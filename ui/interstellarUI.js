@@ -10,7 +10,6 @@
     instance.titleTemplate = null;
     instance.machineTemplate = null;
     instance.navTemplate = null;
-    instance.navTemplate = null;
 
     instance.tabRoot = null;
     instance.navRoot = null;

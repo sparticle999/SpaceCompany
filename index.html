@@ -32,11 +32,11 @@
 </head>
 <body>
 <div id="loadScreen" style="width:100%; height:100%">
-	<!-- <div style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center; margin-top:3%;">
+	<div style="width:70%; font-size:72px; font-family: 'Orbitron', 'sans-serif'; font-weight: lighter; color:#000000; line-height:72px; text-align:center; margin: auto; margin-top:3%;">
 		Space Company
-	</div> -->
-	<div style="margin-left:31%; ">
-		<img id="loadLogo" style="opacity: 1; width:50%; height:50%; /*margin-left:35%; margin-top:3%;*/" src="loadScreenPic.png">
+	<!-- </div>
+	<div style="margin-left:31%; "> -->
+		<img id="loadLogo" style="opacity: 1; width:50%; height:50%;" src="loadScreenPic.png">
 		<br>
 	</div>
 	<div id="loadingText" style="width:100%; font-size:40px; font-family: 'Orbitron', 'sans-serif'; font-weight: bold; color:#000000; line-height:40px; text-align:center;">
@@ -6704,7 +6704,7 @@
 						</td>
 					</tr>
 					<tr id="travelNav" onclick="activeInterstellarTab('travelNav')" href="#travelTab" aria-controls="travelTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab hidden">
-						<td style="vertical-align:middle;">
+						<td style="vertical-align:middle;" colspan="3">
 							<span>
 								Travel
 							</span>
@@ -6715,7 +6715,7 @@
 			<div class="tab-content">
 				<div id="commsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
-						<table class="table no-select">
+						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
@@ -6746,7 +6746,7 @@
 				</div>
 				<div id="interRocketTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
-						<table class="table no-select">
+						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
@@ -6822,7 +6822,7 @@
 				</div>
 				<div id="antimatterTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
-						<table class="table no-select">
+						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
@@ -6863,7 +6863,7 @@
 				</div>
 				<div id="travelTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
-						<table class="table no-select">
+						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
@@ -7014,6 +7014,7 @@
 									</h3>
 									<button class="btn btn-primary" onclick="Game.export()">Export Save</button>
 									<button class="btn btn-primary" onclick="Game.import()">Import Save</button>
+									<button class="btn btn-primary" id="copyExport">Copy Text Below To Clipboard</button>
 									<br>
 									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
 									<br>

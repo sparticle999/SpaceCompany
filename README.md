@@ -98,6 +98,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed UI Bug With Certain Themes
 - Fixed Rocket Building Not Saving
 - Fixed Antimatter Decimals Not Being Uniform
+- Fixed Interstellar Backwards Compatibility
 
 ### v0.4.4
 ##### Features

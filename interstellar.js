@@ -50,8 +50,6 @@ Game.interstellar = (function(){
                 hidden: false
             });
 
-            this.entries[id].capacity = data.baseCapacity;
-
             console.log("Loaded " + this.starTypeCount + " Stars");
         }
 	}
@@ -169,16 +167,17 @@ Game.interstellar = (function(){
                     this.entries[i] = data.interstellar.stars[id];
                 }
             }
+            if(data.interstellar.interRocketBuilt && data.interstellar.interRocketBuilt === true){
+		        for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
+					document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
+				}
+				//document.getElementById("T1Rocket").className = "";
+				this.interRocketBuilt = true;
+				document.getElementById("interRocketBuilt").className = "green";
+				document.getElementById("interRocketBuilt").innerHTML = "Built";
+		    }
         }
-        if(data.interstellar.interRocketBuilt === true){
-	        for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
-				document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
-			}
-			//document.getElementById("T1Rocket").className = "";
-			this.interRocketBuilt = true;
-			document.getElementById("interRocketBuilt").className = "green";
-			document.getElementById("interRocketBuilt").innerHTML = "Built";
-	    }
+        
 	    this.refreshUI();
 	}
 
