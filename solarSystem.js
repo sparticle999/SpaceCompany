@@ -121,7 +121,7 @@ function explore(planet){
 		// Resource(s)
 		if (planetsData[planet].resource) {
 			var toAdd = planetsData[planet].resource.split(',');
-			for(let i = 0; i < toAdd.length; i++) {
+			for(var i = 0; i < toAdd.length; i++) {
 				switch(Game.resourceData[toAdd[i]].category) {
 					case "earth":
 						document.getElementById(toAdd[i] + "Nav").className = "earth";
