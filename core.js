@@ -69,7 +69,7 @@ function toggleEnergy() {
 }
 
 function fixStorageRounding() {
-	const precision = 100;
+	var precision = 100;
 	if(Math.round(meteorite * precision) / precision === meteoriteStorage) {
 		meteorite = meteoriteStorage;
 	}
