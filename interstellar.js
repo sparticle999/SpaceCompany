@@ -34,26 +34,6 @@ Game.interstellar = (function(){
 
 	instance.entries = {};
 
-	instance.initialize = function(){
-		for (var id in Game.starData) {
-            var data = Game.starData[id];
-            this.starTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'res_' + id,
-                current: 0,
-                perSecond: 0,
-                perClick: 1,
-                iconPath: Game.constants.iconPath,
-                iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
-                hidden: false
-            });
-
-            console.log("Loaded " + this.starTypeCount + " Stars");
-        }
-	}
-
 	instance.getEngine = function(){
 		if(silicon >= this.machines.engine.silicon && meteorite >= this.machines.engine.meteorite && hydrogen >= this.machines.engine.hydrogen && this.machines.engine.count < 25){
 			silicon -= this.machines.engine.silicon;

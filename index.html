@@ -44,7 +44,7 @@
 	</div>
 </div>
 <script>
-	var loadingTextArray = ["Reticulating Splines", "Navigation Systems Initialising", "Initialising Fake Loading Bar", "Initialising Virtual Trump", "Who Needs A Loading Bar Anyway?", "Extracting Resources", "Adding Hidden Agendas", "Giving Power To The Overlord", "Calibrating Rocket Engines", "Computing Exponential Costs", "Deciding What Message to Display Next", "Cloning Other Games", "Let There Be Light! Oh Wait, Dysons.", "Hiding Wally", "Hiding Waldo", "Resolving GUID Conflict", "Fixing Bugs", "Thanking The Developer", "Reverse Engineering The Solar System", "Searching for Llamas", "Sequencing Particles", "Time-Compressing Simulator Clock", "Unable to Reveal Current Activity", "Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource", "Adding T3 Batteries. Piece of Cake!", "Launching Rockets", "Thanking The Community", "Identifying Higgs's Boson", "Introducing Turtles", "Converting Mass Back to Energy", "Just One More Piece", "Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to Upgrade Space Metal to", "Transferring Data to NSA", "Implementing AI bug creator", "Initialising Glados", "Initialising J.A.R.V.I.S."];
+	var loadingTextArray = ["Venturing Into The Unknown", "Installing Virus", "Deleting Windows", "Transferring Data to NSA", "Activating Ludicrous Speed", "Waiting on That One Resource", "Adding T3 Batteries. Piece of Cake!", "Launching Rockets", "Thanking The Community", "Identifying Higgs's Boson", "Introducing Turtles", "Converting Mass Back to Energy", "Just One More Piece", "Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to Upgrade Space Metal to", "Transferring Data to NSA", "Implementing AI bug creator", "Initialising Glados", "Initialising J.A.R.V.I.S."];
 	var loadingText = loadingTextArray[Math.floor(Math.random()*loadingTextArray.length)] + "...";
 	document.getElementById("loadingText").innerHTML = loadingText;
 </script>
@@ -81,6 +81,11 @@
 		<div class="ng-binding"></div>
 	</div>
 	<div height="30"></div>
+	<div id="updateAlert" class="alert alert-info alert-dismissable fade in">
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>
+	    <ul id="updateLog"></ul>
+	 </div>
 
 <!-- Nav tabs -->
 	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">
@@ -7479,6 +7484,7 @@
 
 <script type="text/javascript" src="game.js"></script>
 <script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="updates.js"></script>
 <script type="text/javascript" src="achievements.js"></script>
 <script type="text/javascript" src="constants.js"></script>
 <script type="text/javascript" src="statistics.js"></script>
@@ -7488,8 +7494,14 @@
 <script type="text/javascript" src="buildingData.js"></script>
 <script type="text/javascript" src="tech.js"></script>
 <script type="text/javascript" src="techData.js"></script>
+<script type="text/javascript" src="interstellarData.js"></script>
 <script type="text/javascript" src="starData.js"></script>
 <script type="text/javascript" src="settings.js"></script>
+
+<script type="text/javascript" src="interstellarBETA.js"></script>
+<script type="text/javascript" src="star.js"></script>
+<script type="text/javascript" src="rocketParts.js"></script>
+<script type="text/javascript" src="rocket.js"></script>
 
 <script type="text/javascript" src="ui/databoundElement.js"></script>
 <script type="text/javascript" src="ui/gameTabUI.js"></script>

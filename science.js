@@ -295,6 +295,7 @@ function unlockPlasma(){
 		science -= 40000;
 		document.getElementById("unlockPlasma").className = "hidden";
 		document.getElementById("unlockPlasmaTier2").className = "";
+		document.getElementById("unlockPSU").className = "";
 		document.getElementById("plasmaNav").className = "";
 		for(var i = 0; i < 4; i++){
 			document.getElementById("energyNav" + [i]).style.border = "";

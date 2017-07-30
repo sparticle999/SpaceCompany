@@ -13,6 +13,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 v0.6.0 The Lore Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
+
 - Adding Lore onto every Building and an introduction to your Space Company
 - Rebalance all costs to not use as much Space Metal/Gems
 - Loading screen flavour text changes as you progress
@@ -20,6 +21,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
+
 - Dark Matter
 - Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
 - Unknown Planets that you have to explore to know what it holds
@@ -39,6 +41,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 ### v0.5.0
 ##### Features
+
 - Offline Production
 - Screen Notifications Graphics Option
 - Kongregate Leaderboard
@@ -59,8 +62,11 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Tier 4 Labs
 - Tier 4 Batteries
 - Custom Company Name
+- Copy Export to Clipboard
+- Update Log On Page Load
 
 ##### Small Changes
+
 - Individual buttons to turn off Plasma and Meteorite Machines
 - Turn-off switch for all energy producers/consumers
 - Alternative scientific formatting
@@ -76,8 +82,13 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Made EMC Max By Default
 - Import Checks For Empty Field To Refuse Load
 - Fixed Typos
+- Fixed Interstellar Backwards Compatibility
+- Changed Dyson Parts Buying To Buy Parts And Build Dyson
+- Destroy Alcubierre Drive Button
+- Nerfed Energy Efficiency to be 1000x cheaper, but only go up to 25%
 
 ##### Bug Fixes
+
 - Fixed Bug With Solar System Sidebar
 - Fixed Unlocked Tabs Statistic Bug
 - Fixed Rocket Launching Costs Not Being Red
@@ -98,7 +109,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed UI Bug With Certain Themes
 - Fixed Rocket Building Not Saving
 - Fixed Antimatter Decimals Not Being Uniform
+- Fixed Batteries Not Unlocking Without Refresh
 - Fixed Interstellar Backwards Compatibility
+- Fixed Browser Compatibility Problem
 
 ### v0.4.4
 ##### Features

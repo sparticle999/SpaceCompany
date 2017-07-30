@@ -32,10 +32,10 @@
         }
 
         var resourceData = Game.resources.getResourceData(this.resource);
+        //var resourceData = window[(this.resource).toString()]
         if(!resourceData) {
             return;
         }
-
         switch (this.type) {
             case RESOURCE_OBSERVER_TYPE.CURRENT_VALUE: {
                 element.text(Game.settings.format(resourceData.current));
@@ -54,10 +54,9 @@
                 } else {
                     element.text(Game.settings.format(this.value || 0));
                 }
-
                 if(this.enableColoring) {
                     this.colorElementZero(element, this.value);
-                    this.colorElementTarget(element, resourceData.current, this.value || 0);
+                    this.colorElementTarget(element, window[(resourceData.id).toString()], this.value || 0);
                 }
 
                 break;
