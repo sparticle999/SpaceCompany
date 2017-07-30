@@ -66,8 +66,8 @@ Game.updatesData = (function(){
 		read: false
 	};
 
-	instance.multiResearchLevel = {
-		desc: 'Changed Multibuy researches to show current level instead of next level',
+	instance.effResearchLevel = {
+		desc: 'Changed Efficiency researches to show current level instead of next level',
 		read: false
 	};
 
