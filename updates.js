@@ -76,6 +76,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.redDestroy = {
+		desc: 'More -> Graphics Options. Added option to turn destroy buttons red.',
+		read: false
+	};
+
 	return instance;
 
 }());

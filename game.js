@@ -161,11 +161,13 @@ var Game = (function() {
             this.resources.load(data);
             this.buildings.load(data);
             this.tech.load(data);
-            this.settings.load(data);
+            
             this.interstellar.load(data);
             this.updates.load(data);
 
             legacyLoad(data);
+
+            this.settings.load(data);
         }
         Game.settings.updateCompanyName();
         refreshResources();
@@ -229,7 +231,6 @@ var Game = (function() {
         self.buildings.initialize();
         self.tech.initialize();
         self.interstellarBETA.initialise();
-        self.settings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialize();
@@ -237,6 +238,7 @@ var Game = (function() {
 
         // Now load
         self.load();
+        self.settings.initialize();
 
         // Display what has changed since last time
         self.updates.initialise();
@@ -250,6 +252,7 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.debug("Load Complete");
+
     };
 
     instance.loadAnimation = function(self, delta) {

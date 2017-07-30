@@ -15,6 +15,7 @@ Game.settings = (function(){
             sidebarCompressed: false,
             notificationsEnabled: true,
             gainButtonsHidden: false,
+            redDestroyButtons: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -122,6 +123,7 @@ Game.settings = (function(){
         $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
         $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
         $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
+        $('#redDestroyButtons').prop('checked', this.entries.redDestroyButtons);
 
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
@@ -211,6 +213,37 @@ Game.settings = (function(){
                 }
             }
         });
+
+        $('#redDestroyButtons').change(function(){
+            Game.settings.set('redDestroyButtons', $(this).is(':checked'));
+            if(contains(researched, "unlockDestruction")){
+                if(Game.settings.entries.redDestroyButtons === true){
+                    for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
+                        document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
+                    }
+                }
+                else{
+                    for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
+                        document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
+                    }
+                }
+            }
+        });
+
+        if(contains(researched, "unlockDestruction")){
+            if(Game.settings.entries.redDestroyButtons === true){
+                for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
+                    document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
+                }
+                
+            }
+            else{
+                for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
+                    document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
+                }
+                console.log("hey");
+            }
+        }
 
         for (var id in autoSaveMapping) {
             var element = $('#' + id);

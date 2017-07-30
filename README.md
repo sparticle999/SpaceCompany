@@ -65,6 +65,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Copy Export to Clipboard
 - Update Log On Page Load
 - Battery Efficiency Research
+- Red Destroy Button Option
 
 ##### Small Changes
 
