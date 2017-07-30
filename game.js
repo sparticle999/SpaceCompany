@@ -56,6 +56,7 @@ var Game = (function() {
         updateResourceEfficiencyDisplay();
         updateEnergyEfficiencyDisplay();
         updateScienceEfficiencyDisplay();
+        updateBatteryEfficiencyDisplay();
 
         legacyRefreshUI();
 

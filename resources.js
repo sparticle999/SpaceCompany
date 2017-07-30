@@ -73,7 +73,7 @@ function getMaxPlasma() {
 }
 
 function getMaxEnergy() {
-	return 100000 + (50000 * battery) + (500000 * batteryT2) + (5000000 * batteryT3) + (50000000*batteryT4);
+	return (100000 + (50000 * battery) + (500000 * batteryT2) + (5000000 * batteryT3) + (50000000*batteryT4)) * ((Game.tech.entries.batteryEfficiencyResearch.current/100)+1);
 }
 
 // Gain Buttons
