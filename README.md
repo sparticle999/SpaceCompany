@@ -64,6 +64,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Custom Company Name
 - Copy Export to Clipboard
 - Update Log On Page Load
+- Battery Efficiency Research
 
 ##### Small Changes
 
@@ -86,6 +87,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Changed Dyson Parts Buying To Buy Parts And Build Dyson
 - Destroy Alcubierre Drive Button
 - Nerfed Energy Efficiency to be 1000x cheaper, but only go up to 25%
+- Changed Multibuy researches to show current level instead of next level
 
 ##### Bug Fixes
 

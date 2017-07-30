@@ -66,10 +66,10 @@ Game.updatesData = (function(){
 		read: false
 	};
 
-	// instance.XXXX3 = {
-	// 	desc: 'XXXX3',
-	// 	read: false
-	// };
+	instance.multiResearchLevel = {
+		desc: 'Changed Multibuy researches to show current level instead of next level',
+		read: false
+	};
 
 	// instance.XXXX4 = {
 	// 	desc: 'XXXX4',
