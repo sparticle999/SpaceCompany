@@ -71,10 +71,10 @@ Game.updatesData = (function(){
 		read: false
 	};
 
-	// instance.XXXX4 = {
-	// 	desc: 'XXXX4',
-	// 	read: false
-	// };
+	instance.buffBattEff = {
+		desc: 'Buffed Battery Efficiency to go up to 200 levels instead of 50.',
+		read: false
+	};
 
 	return instance;
 

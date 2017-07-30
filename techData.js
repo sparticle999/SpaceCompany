@@ -554,7 +554,7 @@ Game.techData = (function () {
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: 50,
+        maxLevel: 200,
         cost: {
             'science': 100000000
         }
