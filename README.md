@@ -88,6 +88,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Destroy Alcubierre Drive Button
 - Nerfed Energy Efficiency to be 1000x cheaper, but only go up to 25%
 - Changed Multibuy researches to show current level instead of next level
+- Buffed Battery Efficiency to 200 levels instead of 50
 
 ##### Bug Fixes
 
@@ -114,6 +115,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Batteries Not Unlocking Without Refresh
 - Fixed Interstellar Backwards Compatibility
 - Fixed Browser Compatibility Problem
+- Fixed Antimatter Not Turning Green On Full Storage
 
 ### v0.4.4
 ##### Features
