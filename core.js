@@ -300,6 +300,7 @@ function checkRedCost(){
     Game.settings.turnRedOrGreen(helium, heliumStorage, 'helium');
     Game.settings.turnRedOrGreen(ice, iceStorage, 'ice');
     Game.settings.turnRedOrGreen(meteorite, meteoriteStorage, 'meteorite');
+    Game.settings.turnRedOrGreen(antimatter, 100000, 'antimatter');
 
     Game.settings.turnRedOnNegative(energyps, 'energyps');
     Game.settings.turnRedOnNegative(uraniumps, 'uraniumps');
