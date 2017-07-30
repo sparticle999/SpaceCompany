@@ -547,5 +547,18 @@ Game.techData = (function () {
         }
     };
 
+    instance.batteryEfficiencyResearch = {
+        name: 'Research Battery Efficiency',
+        desc: 'Battery Efficiency improves the storage capabilities of your batteries by 1% per upgrade.',
+        type: TECH_TYPE.UPGRADE,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 50,
+        cost: {
+            'science': 100000000
+        }
+    };
+
     return instance;
 }());

@@ -43,7 +43,7 @@ Game.constants = (function(){
     instance.enableStorageNotifications = false;
     instance.enableDataDrivenResources = false;
     instance.enableMachineTab = false;
-    instance.enableInterstellar = true;
+    instance.enableInterstellar = false;
 
     return instance;
 }());
