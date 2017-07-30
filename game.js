@@ -56,6 +56,7 @@ var Game = (function() {
         updateResourceEfficiencyDisplay();
         updateEnergyEfficiencyDisplay();
         updateScienceEfficiencyDisplay();
+        updateBatteryEfficiencyDisplay();
 
         legacyRefreshUI();
 
@@ -140,6 +141,7 @@ var Game = (function() {
         this.tech.save(data);
         this.settings.save(data);
         this.interstellar.save(data);
+        this.updates.save(data);
 
         data = legacySave(data);
 
@@ -161,6 +163,7 @@ var Game = (function() {
             this.tech.load(data);
             this.settings.load(data);
             this.interstellar.load(data);
+            this.updates.load(data);
 
             legacyLoad(data);
         }
@@ -225,7 +228,7 @@ var Game = (function() {
         self.resources.initialize();
         self.buildings.initialize();
         self.tech.initialize();
-        self.interstellar.initialize();
+        self.interstellarBETA.initialise();
         self.settings.initialize();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
@@ -234,6 +237,9 @@ var Game = (function() {
 
         // Now load
         self.load();
+
+        // Display what has changed since last time
+        self.updates.initialise();
 
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);

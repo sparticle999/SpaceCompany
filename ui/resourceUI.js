@@ -52,7 +52,7 @@
                 '</td></tr>'].join('\n'));
 
         instance.buildingTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></ter><td style="border:none;">',
+            ['<tr id="{{htmlId}}"></tr><td style="border:none;">',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
@@ -256,7 +256,7 @@
 
         var segments = [];
         for(var id in data.cost) {
-            var resourceData = Game.resources.getResourceData(id);
+            var resourceData = Game.resources.getResourceData(id.toString());
             if(!data) {
                 console.error("Unknown Resource in cost: " + id);
                 continue;

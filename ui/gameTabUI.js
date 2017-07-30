@@ -8,7 +8,7 @@
 
     var contentTemplate = Handlebars.compile(
         ['<div role="tabpanel" class="tab-pane fade" id="{{htmlId}}_pane">',
-            '<div class="container" style="width:380px; padding:0; float:left;">',
+            '<div class="container" style="width:250px; padding:0; float:left;">',
             '<table class="table table-hover text-primary no-select pointer" ><tbody id="{{htmlId}}_nav"></tbody></table>',
             '</div>',
             '<div class="tab-content" id="{{htmlId}}_content"></div>',

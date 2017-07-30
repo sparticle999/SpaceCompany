@@ -295,6 +295,7 @@ function unlockPlasma(){
 		science -= 40000;
 		document.getElementById("unlockPlasma").className = "hidden";
 		document.getElementById("unlockPlasmaTier2").className = "";
+		document.getElementById("unlockPSU").className = "";
 		document.getElementById("plasmaNav").className = "";
 		for(var i = 0; i < 4; i++){
 			document.getElementById("energyNav" + [i]).style.border = "";
@@ -472,7 +473,7 @@ function updateResourceEfficiencyDisplay() {
 	var cost = getCost(tech.cost['science'], tech.current);
 	Game.settings.turnRed(science, cost, 'scienceResourceEfficiencyUpgradeCost');
 
-	$('#scienceResourceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+	$('#scienceResourceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current));
 	$('#scienceResourceEfficiencyUpgradeCost').text(Game.settings.format(cost));
 }
 
@@ -511,7 +512,7 @@ function updateEnergyEfficiencyDisplay() {
         $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + tech.maxLevel + " (MAX)");
         $('#scienceEnergyEfficiencyUpgradeCost').text("N/A");
 	} else {
-        $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + (tech.current + 1) + " / " + tech.maxLevel);
+        $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + (tech.current) + " / " + tech.maxLevel);
         $('#scienceEnergyEfficiencyUpgradeCost').text(Game.settings.format(cost));
 	}
 }
@@ -543,6 +544,42 @@ function updateScienceEfficiencyDisplay() {
     var cost = getCost(tech.cost['science'], tech.current);
     Game.settings.turnRed(science, cost, 'scienceScienceEfficiencyUpgradeCost');
 
-    $('#scienceScienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current + 1));
+    $('#scienceScienceEfficiencyUpgradeTitle').text(tech.name + " #" + (tech.current));
     $('#scienceScienceEfficiencyUpgradeCost').text(Game.settings.format(cost));
+}
+
+function purchaseBatteryEfficiency() {
+    var tech = Game.tech.getTechData('batteryEfficiencyResearch');
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    if(science >= cost) {
+        Game.tech.gainTech(tech.id);
+        science -= cost;
+    }
+}
+
+function updateBatteryEfficiencyDisplay() {
+    var tech = Game.tech.getTechData('batteryEfficiencyResearch');
+
+    if(science > tech.cost['science'] || tech.current > 0) {
+        tech.unlocked = true;
+    }
+
+    if(tech.unlocked === false) {
+        $('#scienceBatteryEfficiencyUpgrade').hide();
+        return;
+    } else {
+        $('#scienceBatteryEfficiencyUpgrade').show();
+    }
+
+    var cost = getCost(tech.cost['science'], tech.current);
+    Game.settings.turnRed(science, cost, 'scienceBatteryEfficiencyUpgradeCost');
+
+    if(tech.current == tech.maxLevel) {
+        $('#scienceBatteryEfficiencyUpgradeTitle').text(tech.name + " " + tech.maxLevel + " (MAX)");
+        $('#scienceBatteryEfficiencyUpgradeCost').text("N/A");
+	} else {
+        $('#scienceBatteryEfficiencyUpgradeTitle').text(tech.name + " " + (tech.current) + " / " + tech.maxLevel);
+        $('#scienceBatteryEfficiencyUpgradeCost').text(Game.settings.format(cost));
+	}
 }
