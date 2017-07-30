@@ -2,7 +2,8 @@ Game.updates = (function(){
 	
 	var instance = {};
 
-	instance.versionNumber = 0;
+	instance.versionNumber = 1;
+	instance.updateRead = false;
 
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');
 
@@ -10,15 +11,9 @@ Game.updates = (function(){
 		for(var id in Game.updatesData) {
             this.createDisplay(Game.updatesData[id]);
         }
-        for(var id in Game.updatesData) {
-            if(Game.updatesData[id].read == false){
-            	console.log("exit");
-            	return;
-            }
-            console.log(Game.updatesData[id].read);
-        }
-        
-        //document.getElementById("updateAlert").className = "hidden";
+    	if(this.updateRead === false){
+    		document.getElementById("updateAlert").className = "hidden";
+    	}
 	}
 
 	instance.createDisplay = function(self){
@@ -27,11 +22,12 @@ Game.updates = (function(){
 	        var html = this.updateTemplate(self);
 	        target.append($(html));
 	        self.read = true;
+	        this.updateRead = true;
 		}
 	}
 
 	instance.save = function(data){
-		data.updates = {versionNumber: 0, entries: {}};
+		data.updates = {versionNumber: 1, entries: {}};
 		for(var id in Game.updatesData){
 			data.updates.entries[id] = Game.updatesData[id];
 		}
@@ -39,7 +35,7 @@ Game.updates = (function(){
 
 	instance.load = function(data){
 		if(data.updates) {
-			if(data.updates.versionNumber && data.updates.versionNumber == 0){
+			if(data.updates.versionNumber && data.updates.versionNumber == 1){
 				Game.updates.versionNumber = data.versionNumber;
 				for(var id in data.updates.entries){
 					Game.updatesData[id] = data.updates.entries[id];
@@ -65,10 +61,10 @@ Game.updatesData = (function(){
 		read: false
 	};
 
-	// instance.XXXX2 = {
-	// 	desc: 'XXXX2',
-	// 	read: false
-	// };
+	instance.batteryEff = {
+		desc: 'Battery Efficiency Upgrade increases your battery storage by 1% (max 50)',
+		read: false
+	};
 
 	// instance.XXXX3 = {
 	// 	desc: 'XXXX3',
