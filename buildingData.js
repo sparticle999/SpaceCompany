@@ -896,7 +896,7 @@ Game.buildingData = (function () {
 
     instance.silverT4 = $.extend({}, baseProducerBuilding, {
         name: 'Atomic Cannon',
-        desc: 'This powerful canon orbits Neptune and can atomise the surface of asteroids, revealing the silver within.',
+        desc: 'This powerful cannon orbits Neptune and can atomise the surface of asteroids, revealing the silver within.',
         resource: 'silver',
         resourcePerSecond: {
             'energy': -170,

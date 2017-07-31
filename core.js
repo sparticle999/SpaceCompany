@@ -610,7 +610,7 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 500, "unlockLabT2Cost");
 	Game.settings.turnRed(science, 1000, "upgradeEngineTechCost");
     Game.settings.turnRed(science, 450000, "unlockRocketFuelT2Cost");
-    Game.settings.turnRed(science, 3200000, "unlockRocketFuelT2Cost");
+    Game.settings.turnRed(science, 3200000, "unlockRocketFuelT3Cost");
 	Game.settings.turnRed(science, 3000, "unlockLabT3Cost");
 	Game.settings.turnRed(science, 5000, "upgradeSolarTechCost");
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
