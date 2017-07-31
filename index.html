@@ -3131,11 +3131,28 @@
 									<span>
 										Oxidisation is a more efficient process of creating Rocket Fuel.
 										<br>
-										Costs <span id="unlockRocketFuelT2Cost">1,000</span> Science.
+										Costs <span id="unlockRocketFuelT2Cost">450,000</span> Science.
 									</span>
 									<br>
 									<br>
 									<button onclick="unlockRocketFuelT2()" class="btn btn-default">Unlock Oxidisation</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="unlockRocketFuelT3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Hydrazine
+									</h3>
+									<span>
+										Hydrazine is a compound created by Methane that increases the speed at which rocket fuel can be produced in a Hydrazine Catalyst Machine.
+										<br>
+										Costs <span id="unlockRocketFuelT3Cost">3.200M</span> Science.
+									</span>
+									<br>
+									<br>
+									<button onclick="unlockRocketFuelT3()" class="btn btn-default">Unlock Hydrazine</button>
 									<br>
 									<br>
 								</td>
@@ -3730,6 +3747,28 @@
 									<br>
 									<button onclick="getOxidisation()" class="btn btn-default">Build Oxidisation Chamber</button>
 									<button onclick="destroyMachine(oxidisation, 'oxidisation')" class="btn btn-default destroy hidden">Destroy Oxidisation Chamber</button>
+									<br>
+									<br>
+								</td>
+							</tr>
+							<tr id="rocketFuelT3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Hydrazine Catalyst: <span id="hydrazine">0</span>
+									</h3>
+									<span>
+										These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.
+										<br>
+										They use 1100 Methane each second.
+										<br>
+										They produce 20 Rocket Fuel per second.
+										<br>
+										Costs <span id="hydrazineTitaniumCost">140,000</span> Titanium, <span id="hydrazineSiliconCost">96,300</span> Silicon, <span id="hydrazineGoldCost">78,600</span> Gold.
+									</span>
+									<br>
+									<br>
+									<button onclick="getHydrazine()" class="btn btn-default">Build Hydrazine Catalyst</button>
+									<button onclick="destroyMachine(hydrazine, 'hydrazine')" class="btn btn-default destroy hidden">Destroy Hydrazine Catalyst</button>
 									<br>
 									<br>
 								</td>
@@ -7174,6 +7213,8 @@
 										This is where you can see your progress in a table with each aspect laid out for you to see.
 										<br>
 										Warning: your stats will not have been added if they were implemented after you achieved them.
+										<br>
+										<b>NB: Stats are really buggy at the moment. They are often not accurate and this is because of layers of updates changing them while you guys progressed through the game. They will be fixed on your first prestige by starting over. After the first prestige, you will keep a total stat and a 'this run' stat.</b>
 									</span>
 								</td>
 							</tr>

@@ -186,6 +186,10 @@ function legacySave(data) {
 		oxidisationMetalCost: oxidisationMetalCost,
 		oxidisationGemCost: oxidisationGemCost,
 		oxidisationOilCost: oxidisationOilCost,
+		hydrazine: hydrazine,
+		hydrazineTitaniumCost: hydrazineTitaniumCost,
+		hydrazineSiliconCost: hydrazineSiliconCost,
+		hydrazineGoldCost: hydrazineGoldCost,
 		spaceMetal: spaceMetal,
 		spaceMetalStorage: spaceMetalStorage,
 		spaceMetalNextStorage: spaceMetalNextStorage,
@@ -610,6 +614,10 @@ function legacyLoad(savegame){
 		if(typeof savegame.oxidisationMetalCost !== "undefined") oxidisationMetalCost = savegame.oxidisationMetalCost;
 		if(typeof savegame.oxidisationGemCost !== "undefined") oxidisationGemCost = savegame.oxidisationGemCost;
 		if(typeof savegame.oxidisationOilCost !== "undefined") oxidisationOilCost = savegame.oxidisationOilCost;
+		if(typeof savegame.hydrazine !== "undefined") hydrazine = savegame.hydrazine;
+		if(typeof savegame.hydrazineTitaniumCost !== "undefined") hydrazineTitaniumCost = savegame.hydrazineTitaniumCost;
+		if(typeof savegame.hydrazineSiliconCost !== "undefined") hydrazineSiliconCost = savegame.hydrazineSiliconCost;
+		if(typeof savegame.hydrazineGoldCost !== "undefined") hydrazineGoldCost = savegame.hydrazineGoldCost;
 		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
 		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
 		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;

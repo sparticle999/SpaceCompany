@@ -220,7 +220,12 @@ function refreshPerSec(delta){
         if(oil + oilps >= oilCost && charcoal + charcoalps >= charcoalCost) {
             oilps -= oilCost;
             charcoalps -= charcoalCost;
-            rocketFuelps += ((chemicalPlant/5) + (oxidisation*1.5)) * perSecondMultiplier;
+            rocketFuelps += ((chemicalPlant*0.2) + (oxidisation*1.5)) * perSecondMultiplier;
+        }
+        var methaneCost = hydrazine*1100;
+        if(methane+methaneps >= methaneCost){
+            methaneps -= methaneCost;
+            rocketFuelps += (hydrazine*20);
         }
     }
 
@@ -604,7 +609,8 @@ function checkRedCost(){
 	Game.settings.turnRed(science, 500, "unlockSolarSystemCost");
 	Game.settings.turnRed(science, 500, "unlockLabT2Cost");
 	Game.settings.turnRed(science, 1000, "upgradeEngineTechCost");
-    Game.settings.turnRed(science, 1000, "unlockRocketFuelT2Cost");
+    Game.settings.turnRed(science, 450000, "unlockRocketFuelT2Cost");
+    Game.settings.turnRed(science, 3200000, "unlockRocketFuelT2Cost");
 	Game.settings.turnRed(science, 3000, "unlockLabT3Cost");
 	Game.settings.turnRed(science, 5000, "upgradeSolarTechCost");
 	Game.settings.turnRed(science, 15000, "unlockBatteriesCost");
@@ -636,6 +642,10 @@ function checkRedCost(){
 	Game.settings.turnRed(metal, oxidisationMetalCost, "oxidisationMetalCost");
 	Game.settings.turnRed(gem, oxidisationGemCost, "oxidisationGemCost");
 	Game.settings.turnRed(oil, oxidisationOilCost, "oxidisationOilCost");
+
+    Game.settings.turnRed(titanium, hydrazineTitaniumCost, "hydrazineTitaniumCost");
+    Game.settings.turnRed(silicon, hydrazineSiliconCost, "hydrazineSiliconCost");
+    Game.settings.turnRed(gold, hydrazineGoldCost, "hydrazineGoldCost");
 
 	Game.settings.turnRed(rocketFuel, 20, "moonRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 50, "venusRocketFuelCost");
@@ -975,12 +985,16 @@ function refreshResearches(){
 			document.getElementById("unlockRocketFuelT2").className = "";
 			available.push("unlockRocketFuelT2");
 		}
+        if(contains(available, "unlockLabT2") === false){
+            document.getElementById("unlockLabT2").className = "";
+            available.push("unlockLabT2");
+        }
 	}
-	if(contains(researched, "unlockSolarSystem")){
-		if(contains(available, "unlockLabT2") === false){
-			document.getElementById("unlockLabT2").className = "";
-			available.push("unlockLabT2");
-		}
+	if(contains(researched, "unlockRocketFuelT2")){
+		if(contains(available, "unlockRocketFuelT3") === false){
+            document.getElementById("unlockRocketFuelT3").className = "";
+            available.push("unlockRocketFuelT3");
+        }
 	}
 	if(contains(researched, "unlockLabT2")){
 		document.getElementById("labTier2").className = "";
