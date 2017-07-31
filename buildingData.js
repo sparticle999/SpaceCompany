@@ -1190,6 +1190,20 @@ Game.buildingData = (function () {
             'wood': 6800
         }
     });
+
+    instance.rocketFuelT3 = $.extend({}, baseProducerBuilding, {
+        name: 'Hydrazine Catalyst',
+        desc: 'These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.',
+        resource: 'rocketFuel',
+        resourcePerSecond: {
+            'rocketFuel': 20
+        },
+        cost: {
+            'titanium': 140000,
+            'silicon': 96300,
+            'gold': 78600
+        }
+    });
     
     return instance;
 }());

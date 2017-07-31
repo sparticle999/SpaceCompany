@@ -1,6 +1,6 @@
 // Variables in save function
 
-var versionNumber = "V0.4.4.9 Beta"; var companyName = "Space";
+var versionNumber = "V0.4.4.10 Beta"; var companyName = "Space";
 var researchUnlocked = false; var researched = []; var available = ["unlockStorage", "unlockBasicEnergy"]; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
@@ -113,6 +113,7 @@ var labT4 = 0; var labT4MetalCost = 610000; var labT4GemCost = 370000; var labT4
 var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0; var rocketFuelToggled = true;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
 var oxidisation = 0; var oxidisationMetalCost = 12000; var oxidisationGemCost = 8300; var oxidisationOilCost = 6800;
+var hydrazine = 0; var hydrazineTitaniumCost = 140000; var hydrazineSiliconCost = 96300; var hydrazineGoldCost = 78600;
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var ring = 0; var swarm = 0; var sphere = 0;

@@ -24,6 +24,18 @@ function getOxidisation(){
 	}
 }
 
+function getHydrazine(){
+	if(titanium >= hydrazineTitaniumCost && silicon >= hydrazineSiliconCost && gold >= hydrazineGoldCost){
+		titanium -= hydrazineTitaniumCost;
+		silicon -= hydrazineSiliconCost;
+		gold -= hydrazineGoldCost;
+		hydrazine += 1;
+		hydrazineGoldCost = Math.floor(78600 * Math.pow(1.1,hydrazine));
+		hydrazineSiliconCost = Math.floor(96300 * Math.pow(1.1,hydrazine));
+		hydrazineTitaniumCost = Math.floor(140000 * Math.pow(1.1,hydrazine));
+	}
+}
+
 function getRocket(){
 	if(metal >= 1200 && gem >= 900 && oil >= 1000){
 		metal -= 1200;

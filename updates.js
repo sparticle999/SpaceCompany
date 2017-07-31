@@ -81,6 +81,16 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.nerfRocketFuelResearch = {
+		desc: 'Increased the Science cost of Rocket Fuel researches',
+		read: false
+	};
+
+	instance.rocketFuelT3 = {
+		desc: 'Added Hydrazine Catalyst - T3 Rocket Fuel',
+		read: false
+	};
+
 	return instance;
 
 }());

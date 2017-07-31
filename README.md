@@ -66,6 +66,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Update Log On Page Load
 - Battery Efficiency Research
 - Red Destroy Button Option
+- Hydrazine Catalyst - T3 Rocket Fuel
 
 ##### Small Changes
 
@@ -90,6 +91,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Nerfed Energy Efficiency to be 1000x cheaper, but only go up to 25%
 - Changed Multibuy researches to show current level instead of next level
 - Buffed Battery Efficiency to 200 levels instead of 50
+- Nerfed Rocket Fuel Research Costs
 
 ##### Bug Fixes
 

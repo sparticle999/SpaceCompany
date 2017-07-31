@@ -177,12 +177,26 @@ function unlockSolarSystem(){
 }
 
 function unlockRocketFuelT2(){
-	if(science >= 1000){
-		science -= 1000;
+	if(science >= 450000){
+		science -= 450000;
 		document.getElementById("unlockRocketFuelT2").className = "hidden";
 		document.getElementById("rocketFuelT2").className = "";
+		document.getElementById("unlockRocketFuelT3").className = "";
+		available.push("unlockRocketFuelT3");
 		researched.push("unlockRocketFuelT2");
 		resourcesUnlocked.push("rocketFuelT2");
+        Game.statistics.add('techResearched');
+		newUnlock("solarSystem");
+	}
+}
+
+function unlockRocketFuelT3(){
+	if(science >= 3200000){
+		science -= 3200000;
+		document.getElementById("unlockRocketFuelT3").className = "hidden";
+		document.getElementById("rocketFuelT3").className = "";
+		researched.push("unlockRocketFuelT3");
+		resourcesUnlocked.push("rocketFuelT3");
         Game.statistics.add('techResearched');
 		newUnlock("solarSystem");
 	}

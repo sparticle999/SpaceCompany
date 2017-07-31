@@ -377,6 +377,10 @@ function registerLegacyBindings() {
     Game.ui.bindElement('oxidisationMetalCost', function(){ return Game.settings.format(oxidisationMetalCost); });
     Game.ui.bindElement('oxidisationGemCost', function(){ return Game.settings.format(oxidisationGemCost); });
     Game.ui.bindElement('oxidisationOilCost', function(){ return Game.settings.format(oxidisationOilCost); });
+    Game.ui.bindElement('hydrazine', function(){ return Game.settings.format(hydrazine); });
+    Game.ui.bindElement('hydrazineTitaniumCost', function(){ return Game.settings.format(hydrazineTitaniumCost); });
+    Game.ui.bindElement('hydrazineSiliconCost', function(){ return Game.settings.format(hydrazineSiliconCost); });
+    Game.ui.bindElement('hydrazineGoldCost', function(){ return Game.settings.format(hydrazineGoldCost); });
     Game.ui.bindElement('grinder', function(){ return Game.settings.format(grinder); });
     Game.ui.bindElement('grinderTitaniumCost', function(){ return Game.settings.format(grinderTitaniumCost); });
     Game.ui.bindElement('grinderSpaceMetalCost', function(){ return Game.settings.format(grinderSpaceMetalCost); });
