@@ -92,6 +92,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Changed Multibuy researches to show current level instead of next level
 - Buffed Battery Efficiency to 200 levels instead of 50
 - Nerfed Rocket Fuel Research Costs
+- Buffed Hydrazine Production
 
 ##### Bug Fixes
 
@@ -119,6 +120,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Interstellar Backwards Compatibility
 - Fixed Browser Compatibility Problem
 - Fixed Antimatter Not Turning Green On Full Storage
+- Fixed Hydrazine Research Cost Not Turning Red
 
 ### v0.4.4
 ##### Features

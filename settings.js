@@ -241,7 +241,6 @@ Game.settings = (function(){
                 for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
                     document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
                 }
-                console.log("hey");
             }
         }
 

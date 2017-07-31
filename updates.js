@@ -1,6 +1,7 @@
 Game.updates = (function(){
 	
 	var instance = {};
+	instance.entries = [];
 
 	instance.versionNumber = 1;
 	instance.updateRead = false;
@@ -8,8 +9,22 @@ Game.updates = (function(){
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');
 
 	instance.initialise = function(){
+		var extra = 0;
 		for(var id in Game.updatesData) {
-            this.createDisplay(Game.updatesData[id]);
+			if(this.entries.length < 5){
+				this.createDisplay(Game.updatesData[id]);
+			}
+			else{
+				extra += 1;
+			}
+            
+        }
+        if(extra > 0){
+        	var extraUpdates = {
+        		desc: '+' + extra + ' more. Click the version number to see the full changelog.',
+        		read: false
+        	}
+        	this.createDisplay(extraUpdates);
         }
     	if(this.updateRead === false){
     		document.getElementById("updateAlert").className = "hidden";
@@ -18,6 +33,7 @@ Game.updates = (function(){
 
 	instance.createDisplay = function(self){
 		if(self.read == false){
+			this.entries.push(self);
 			var target = $('#updateLog');
 	        var html = this.updateTemplate(self);
 	        target.append($(html));
