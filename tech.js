@@ -45,6 +45,11 @@ Game.tech = (function(){
                 }
             }
         }
+        var tech = Game.tech.getTechData('energyEfficiencyResearch');
+        if(tech.current == tech.maxLevel){
+            var child = document.getElementById("energyEffButton");
+            child.parentNode.removeChild(child);
+        }
     };
 
     instance.buyTech = function(id, count) {

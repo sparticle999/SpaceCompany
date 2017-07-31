@@ -498,6 +498,10 @@ function purchaseEnergyEfficiency() {
         Game.tech.gainTech(tech.id);
         science -= cost;
     }
+    if(tech.current == tech.maxLevel){
+    	var child = document.getElementById("energyEffButton");
+		child.parentNode.removeChild(child);
+    }
 }
 
 function updateEnergyEfficiencyDisplay() {
