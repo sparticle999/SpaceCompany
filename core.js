@@ -254,7 +254,7 @@ function refreshPerSec(delta){
     }
 
     if(antimatterToggled === true) {
-    	if(antimatter + antimatterps <= 100000){
+    	if(antimatter + antimatterps < 100000){
 	        var plasmaCost = (Game.interstellar.machines.drive.count*100)
 	        var iceCost = (Game.interstellar.machines.drive.count*12000)
 	        if(plasma + plasmaps >= plasmaCost && ice + iceps >= iceCost) {
