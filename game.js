@@ -17,9 +17,22 @@ var Game = (function() {
         Game.lastUpdateTime = time;
 
         // This ensures that we wait for the browser to "catch up" to drawing and other events
-        window.requestAnimationFrame(Game.update_frame);
+        if (window.requestAnimationFrame) {
+            window.requestAnimationFrame(Game.update_frame);
+        } else {
+            window.setTimeout(Game.update_frame, 1000 / 10);
+        }
     };
-
+    
+    instance.saveSupportCheck = function () {
+        if (JSON && localStorage) {
+            return true;
+        } else {
+            Game.notifyInfo('Game Save Failure', 'A browser doesn\'t support JSON or localStorage.\n A game isn\'t supported by save and a load.');
+            return false;
+        }
+    };
+    
     instance.update = function(delta) {
         for (var name in this.intervals) {
             var data = this.intervals[name];
@@ -111,7 +124,9 @@ var Game = (function() {
             return;
         }
 
-        localStorage.setItem("save", decompressed);
+        if (Game.saveSupportCheck()) {
+            localStorage.setItem("save", decompressed);
+        }
 
         console.log("Imported Saved Game");
 
@@ -119,6 +134,10 @@ var Game = (function() {
     };
 
     instance.export = function() {
+        if (!Game.saveSupportCheck()) {
+            return;
+        }
+        
         var data = this.save();
 
         var string = JSON.stringify(data);
@@ -145,30 +164,34 @@ var Game = (function() {
 
         data = legacySave(data);
 
-        localStorage.setItem("save",JSON.stringify(data));
-        Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
-        console.log('Game Saved');
+        if (Game.saveSupportCheck()) {
+            localStorage.setItem("save",JSON.stringify(data));
+            Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
+            console.log('Game Saved');
+        }
 
         return data;
     };
 
     instance.load = function() {
-        var data = JSON.parse(localStorage.getItem("save"));
-
-        if(data && data !== null) {
-            this.achievements.load(data);
-            this.statistics.load(data);
-            this.resources.load(data);
-            this.buildings.load(data);
-            this.tech.load(data);
-            
-            this.interstellar.load(data);
-            this.updates.load(data);
-
-            legacyLoad(data);
-
-            this.settings.load(data);
+        var data = null;
+        if (Game.saveSupportCheck()) {
+            data = JSON.parse(localStorage.getItem("save"));
+            if (data && data !== null) {
+                this.achievements.load(data);
+                this.statistics.load(data);
+                this.resources.load(data);
+                this.buildings.load(data);
+                this.tech.load(data);
+                this.interstellar.load(data);
+                this.updates.load(data);
+                legacyLoad(data);
+                this.settings.load(data);
+            }
+        } else {
+            console.log("A browser doesn't support JSON or localStorage.");
         }
+        
         Game.settings.updateCompanyName();
         refreshResources();
         refreshResearches();
@@ -202,6 +225,10 @@ var Game = (function() {
     };
 
     instance.deleteSave = function() {
+        if (!Game.saveSupportCheck()) {
+            return;
+        }
+
         var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
 
         if(deleteSave === "DELETE") {
