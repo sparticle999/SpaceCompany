@@ -44,6 +44,7 @@ function getRocket(){
 		rocket = 1;
 		document.getElementById("rocket").innerHTML = "Built";
 		document.getElementById("rocketRocketCost").className = "";
+		document.getElementById("solarRocket").className = "hidden";
 	}
 }
 

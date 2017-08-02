@@ -94,6 +94,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Nerfed Rocket Fuel Research Costs
 - Buffed Hydrazine Production
 - Achievement Number Formatting
+- Rocket Fuel Machine Achievements
 
 ##### Bug Fixes
 
@@ -123,6 +124,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Antimatter Not Turning Green On Full Storage
 - Fixed Hydrazine Research Cost Not Turning Red
 - Fixed Antimatter Going Above 100k
+- Fixed Buying Multiple Solar System Rockets
 
 ### v0.4.4
 ##### Features
