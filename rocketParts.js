@@ -4,7 +4,6 @@ Game.interstellarBETA.rocketParts = (function(){
 
 	instance.entries = {};
 	instance.categoryEntries = {};
-	instance.entries = {};
 
 	instance.initialise = function(){
 		for (var id in Game.rocketPartsData) {

@@ -168,7 +168,7 @@ Game.settings = (function(){
         this.entries[key] = value;
     };
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         $('#formatSelector').change(function(){
             Game.settings.set('formatter', $(this).val());
         });

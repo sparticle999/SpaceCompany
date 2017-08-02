@@ -225,20 +225,21 @@ var Game = (function() {
         self.ui.updateAutoDataBindings();
 
         // Initialize first
-        self.achievements.initialize();
-        self.statistics.initialize();
-        self.resources.initialize();
-        self.buildings.initialize();
-        self.tech.initialize();
+        self.achievements.initialise();
+        self.statistics.initialise();
+        self.resources.initialise();
+        self.buildings.initialise();
+        self.tech.initialise();
         self.interstellarBETA.initialise();
+        self.stargaze.initialise();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
-            self.uiComponents[i].initialize();
+            self.uiComponents[i].initialise();
         }
 
         // Now load
         self.load();
-        self.settings.initialize();
+        self.settings.initialise();
 
         // Display what has changed since last time
         self.updates.initialise();

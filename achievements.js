@@ -11,7 +11,7 @@ Game.achievements = (function() {
     instance.achievementCount = 0;
     instance.achievementCountIncludingTiers = 0;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Gems", "gemIcon", function(x) { return gem >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Wood", "woodIcon", function(x) { return wood >= x}, Game.constants.achievementResourceBrackets);
@@ -132,14 +132,18 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Rings", "EnergyIcon", function(x) {return ring >= x}, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Swarms", "EnergyIcon", function(x) {return swarm >= x}, Game.constants.achievementProducerBrackets);
         
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Chemical Plants", "rocketFuelIcon", function(x) { return chemicalPlant >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Oxidisation Chambers", "rocketFuelIcon", function(x) { return oxidisation >= x}, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Hydrazine Catalysts", "rocketFuelIcon", function(x) { return hydrazine >= x}, Game.constants.achievementProducerBrackets);
+        
         console.debug("Loaded " + this.achievementCount + " (" + this.achievementCountIncludingTiers +") Achievements");
     };
 
     instance.getAchievementTitle = function(data) {
         if(data.unlocked === data.brackets.length - 1) {
-            return data.title.replace('%s', data.brackets[data.unlocked]) + " Completed";
+            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked])) + " Completed";
         } else {
-            return data.title.replace('%s', data.brackets[data.unlocked + 1]);
+            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1]));
         }
     };
 

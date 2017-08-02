@@ -93,6 +93,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buffed Battery Efficiency to 200 levels instead of 50
 - Nerfed Rocket Fuel Research Costs
 - Buffed Hydrazine Production
+- Achievement Number Formatting
 
 ##### Bug Fixes
 
@@ -121,6 +122,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Browser Compatibility Problem
 - Fixed Antimatter Not Turning Green On Full Storage
 - Fixed Hydrazine Research Cost Not Turning Red
+- Fixed Antimatter Going Above 100k
 
 ### v0.4.4
 ##### Features

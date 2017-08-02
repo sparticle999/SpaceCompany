@@ -107,6 +107,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.achievFormat = {
+		desc: 'Added Achievement Number Formatting',
+		read: false
+	};
+
 	return instance;
 
 }());
