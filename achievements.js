@@ -11,7 +11,7 @@ Game.achievements = (function() {
     instance.achievementCount = 0;
     instance.achievementCountIncludingTiers = 0;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Metal", "metalIcon", function(x) { return metal >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Gems", "gemIcon", function(x) { return gem >= x}, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Wood", "woodIcon", function(x) { return wood >= x}, Game.constants.achievementResourceBrackets);
@@ -137,9 +137,9 @@ Game.achievements = (function() {
 
     instance.getAchievementTitle = function(data) {
         if(data.unlocked === data.brackets.length - 1) {
-            return data.title.replace('%s', data.brackets[data.unlocked]) + " Completed";
+            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked])) + " Completed";
         } else {
-            return data.title.replace('%s', data.brackets[data.unlocked + 1]);
+            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1]));
         }
     };
 

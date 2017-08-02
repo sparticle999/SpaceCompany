@@ -57,7 +57,7 @@
     // ---------------------------------------------------------------------------
     // basic functions
     // ---------------------------------------------------------------------------
-    GameTab.prototype.initialize = function() {
+    GameTab.prototype.initialise = function() {
         var html = tabTemplate(this.data);
         tabRoot.append($(html));
 

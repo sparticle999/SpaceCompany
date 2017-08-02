@@ -8,7 +8,7 @@
     instance.categoryElements = {};
     instance.rootElement = null;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         this.categoryTemplate = Handlebars.compile(
             ['<td>',
                 '<h3 class="default btn-link">{{name}}</h3>',

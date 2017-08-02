@@ -8,7 +8,7 @@ Game.resources = (function(){
     instance.resourceTypeCount = 0;
     instance.resourceCategoryCount = 0;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         for (var id in Game.resourceData) {
             var data = Game.resourceData[id];
             this.resourceTypeCount++;

@@ -1,16 +1,11 @@
-Game.interstellarUI = (function(){
+Game.stargazeUI = (function(){
 
 	var instance = {};
 	
 	instance.entries = {};
-	instance.rocketPartEntries = {};
-    instance.rocketPartObservers = {};
-    instance.rocketEntries = {};
-    instance.rocketObservers = {};
-    instance.starEntries = {};
-    instance.starObservers = {};
+	instance.prestigeEntries = {};
+    instance.prestigeObservers = {};
     instance.titleTemplate = null;
-    instance.machineTemplate = null;
     instance.navTemplate = null;
 
     instance.tabRoot = null;
@@ -18,19 +13,14 @@ Game.interstellarUI = (function(){
 
     instance.tab = null;
 
-    instance.categoryNames = {
-        'starT1': "Tier 1 Stars",
-        'starT2': "Tier 2 Stars",
-        'starT3': "Tier 3 Stars",
-        'starT4': "Tier 4 Stars"
-    };
+    instance.categoryNames = {};
 
     instance.initialise = function() {
-        if(Game.constants.enableInterstellar === false) {
+        if(Game.constants.enableStargaze === false) {
             return;
         }
 
-        this.tab = Game.ui.createTab({id: 'interstellarBeta', title: 'Interstellar (BETA)'});
+        this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze'});
         this.tab.initialise();
 
         instance.titleTemplate = Handlebars.compile(
@@ -40,110 +30,61 @@ Game.interstellarUI = (function(){
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
-        instance.rocketTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td>',
-                '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Built">Not Built</span></h3>',
-                '<span>',
-                    '<p>{{desc}}</p>',
-                    '<p id="{{htmlId}}_cost"></p>',
-                '</span>',
-                '<div id="{{htmlId}}_buy" onclick="Game.interstellarBETA.rocket.buildRocket(\'tier1Rocket\')" class="btn btn-default">Get {{name}}</div>',
-                '</td></tr>'].join('\n'));
-
-        instance.rocketPartTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td>',
-                '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span>/{{max}}</h3>',
-                '<span>',
-                    '<p>{{desc}}</p>',
-                    '<p id="{{htmlId}}_cost"></p>',
-                '</span>',
-                '<div id="{{htmlId}}_buy" onclick="Game.interstellarBETA.rocketParts.buildPart(\'{{entryName}}\', 1)" class="btn btn-default">Get {{name}}</div>',
-                '<div id="{{htmlId}}_buy10" onclick="Game.interstellarBETA.rocketParts.buildPart(\'{{entryName}}\', 10)" class="btn btn-default">Buy 10</div>',
-                '<div id="{{htmlId}}_buy{{max}}" onclick="Game.interstellarBETA.rocketParts.buildPart(\'{{entryName}}\', {{max}})" class="btn btn-default">Buy {{max}}</div>',
-                '</td></tr>'].join('\n'));
-
-        instance.starTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"><td>',
-                '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
-                '<span>',
-                    '<p>{{desc}}</p>',
-                    '<p id="{{htmlId}}_cost"></p>',
-                '</span>',
-                '<br><br>',
-                '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
-                '</td></tr>'].join('\n'));
-
         instance.navTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="3">',
+            ['<td style="vertical-align:middle;" colspan="3" class="{{hidden}}">',
                     '<span>{{name}}</span>',
                 '</td>',].join('\n'));
 
-        instance.rocketNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="3">',
-                    '<span>{{name}}</span>',
-                '</td>',].join('\n'));
-
-        instance.antimatterNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;">',
-                    '<span>{{name}}</span>',
-                '</td>',
-                '<td style="vertical-align:middle; text-align:center;">',
-                    '<span id="{{htmlId}}_perSecond">0</span>/Sec',
-                '</td>',
-                '<td style="vertical-align:middle; text-align:right;">',
-                    '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
-                '</td>'].join('\n'));
-
-        for(var id in Game.interstellarCategoryData){
-            Game.interstellarBETA.categoryEntries[id] = Game.interstellarCategoryData[id];
+        for(var id in Game.stargazeCategoryData){
+            Game.stargaze.categoryEntries[id] = Game.stargazeCategoryData[id];
         }
 
-        for(var id in Game.interstellarBETA.categoryEntries) {
-            this.tab.addCategory(id, Game.interstellarBETA.categoryEntries[id].title);
+        for(var id in Game.stargaze.categoryEntries) {
+            this.tab.addCategory(id, Game.stargaze.categoryEntries[id].title);
         }
 
-        for(var id in Game.interstellarData) {
+        for(var id in Game.stargazeData) {
             this.createDisplay(id);
         }
     };
 
     instance.update = function(delta) {
 
-    //     for(var id in this.entries) {
-    //         var data = Game.resources.getResourceData(this.entries[id].id);
-    //         if(data.displayNeedsUpdate === true) {
-    //             this.updateDisplay(data);
-    //         }
-    //     }
-        for(var id in this.rocketEntries) {
-            var data = Game.interstellarBETA.rocket.getRocketData(id);
-            if(data.displayNeedsUpdate === true) {
-                this.updateRocketDisplay(data);
-            }
-        }
+        // for(var id in this.entries) {
+        //     var data = Game.resources.getResourceData(this.entries[id].id);
+        //     if(data.displayNeedsUpdate === true) {
+        //         this.updateDisplay(data);
+        //     }
+        // }
+        // for(var id in this.rocketEntries) {
+        //     var data = Game.interstellarBETA.rocket.getRocketData(id);
+        //     if(data.displayNeedsUpdate === true) {
+        //         this.updateRocketDisplay(data);
+        //     }
+        // }
 
-        for(var id in this.rocketPartEntries) {
-            var data = Game.interstellarBETA.rocketParts.getPartData(id);
-            if(data.displayNeedsUpdate === true) {
-                this.updatePartDisplay(data);
-            }
-        }
+        // for(var id in this.rocketPartEntries) {
+        //     var data = Game.interstellarBETA.rocketParts.getPartData(id);
+        //     if(data.displayNeedsUpdate === true) {
+        //         this.updatePartDisplay(data);
+        //     }
+        // }
 
-        for(var id in this.rocketPartEntries) {
-            var data = Game.interstellarBETA.rocketParts.getPartData(id);
-            if(data.displayNeedsUpdate === true) {
-                this.updateRocketPartDisplay(data);
-                console.log(true);
-            }
-        }
+        // for(var id in this.rocketPartEntries) {
+        //     var data = Game.interstellarBETA.rocketParts.getPartData(id);
+        //     if(data.displayNeedsUpdate === true) {
+        //         this.updateRocketPartDisplay(data);
+        //         console.log(true);
+        //     }
+        // }
 
-    //     for(var id in Game.resources.categoryEntries) {
-    //         if(this.tab.categoryHasVisibleEntries(id) === true) {
-    //             this.tab.showCategory(id);
-    //         } else {
-    //             this.tab.hideCategory(id);
-    //         }
-    //     }
+        // for(var id in Game.resources.categoryEntries) {
+        //     if(this.tab.categoryHasVisibleEntries(id) === true) {
+        //         this.tab.showCategory(id);
+        //     } else {
+        //         this.tab.hideCategory(id);
+        //     }
+        // }
     };
 
     instance.createRocket = function(data, rocketData) {
@@ -193,43 +134,19 @@ Game.interstellarUI = (function(){
         }
     }
 
-    instance.createAntimatterContent = function(data){
-        var target = $('#' + this.tab.getContentElementId(data.id));
-
-        var tabTitle = this.titleTemplate(data);
-        target.append(tabTitle);
-
-        // for (var id in Game.buildings.entries) {
-        //     var buildingData = Game.buildings.entries[id];
-        //     if(buildingData.resource && buildingData.resource === data.id) {
-        //         this.createResourceContentBuilding(data, buildingData);
-        //     }
-        // }
-    }
-
-    instance.createInterstellarNav = function(data) {
+    instance.createStargazeNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
-        if(data.id === "antimatter"){
-            var html = this.antimatterNavTemplate(data);
-            this.createAntimatterContent(data);
-        }
-        else if(data.id ==="rocket"){
-            var html = this.rocketNavTemplate(data);
-            this.createRocketContent(data);
-        }
-        else{
-            this.createContent(data);
-            var html = this.navTemplate(data);
-        }
+        this.createContent(data);
+        var html = this.navTemplate(data);
         target.append($(html));
     };
 
     instance.createDisplay = function(id) {
-        var data = Game.interstellarBETA.getInterstellarData(id);
+        var data = Game.stargaze.getStargazeData(id);
         this.tab.addNavEntry(data.category, id);
 
         
-        this.createInterstellarNav(data);
+        this.createStargazeNav(data);
 
         this.entries[data.htmlId] = data;
     };

@@ -244,7 +244,7 @@ function buildRing(){
 		rocketFuel -= 50000;
 		ring += 1;
 
-		refreshDyson()
+		refreshDyson();
 	}
 }
 
@@ -254,7 +254,7 @@ function buildSwarm(){
 		rocketFuel -= 250000;
 		swarm += 1;
 
-		refreshDyson()
+		refreshDyson();
 	}
 }
 
@@ -268,6 +268,9 @@ function buildSphere(){
 		rocketFuel -= 1000000;
 		sphere += 1;
 
-		refreshDyson()
+		refreshDyson();
+
+		Game.stargaze.initialise();
+
 	}
 }

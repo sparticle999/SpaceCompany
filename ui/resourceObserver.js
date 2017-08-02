@@ -21,7 +21,7 @@
     // ---------------------------------------------------------------------------
     // basic functions
     // ---------------------------------------------------------------------------
-    ResourceObserver.prototype.initialize = function() {
+    ResourceObserver.prototype.initialise = function() {
 
     };
 
@@ -121,7 +121,7 @@
 
     var instance = {};
 
-    instance.initialize = function() {
+    instance.initialise = function() {
     };
 
     instance.update = function(delta) {

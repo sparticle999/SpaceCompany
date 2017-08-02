@@ -23,13 +23,13 @@
         'outer': "Outer Planetary Resources"
     };
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         if(Game.constants.enableDataDrivenResources === false) {
             return;
         }
 
         this.tab = Game.ui.createTab({id: 'resourcesBETA', title: 'Resources (BETA)'});
-        this.tab.initialize();
+        this.tab.initialise();
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',

@@ -11,7 +11,7 @@ Game.statistics = (function(){
     instance.entries = {};
     instance.statisticTypeCount = 0;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         this.createStatistic("manualResources", Game.constants.statisticCategoryGeneral, "Resources Mined By Hand");
 
         for(var i = 1; i <= Game.constants.maxTier; i++) {

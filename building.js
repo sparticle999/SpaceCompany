@@ -7,7 +7,7 @@ Game.buildings = (function(){
     instance.updatePerSecondProduction = true;
     instance.techTypeCount = 0;
 
-    instance.initialize = function() {
+    instance.initialise = function() {
         for (var id in Game.buildingData) {
             var data = Game.buildingData[id];
             this.techTypeCount++;

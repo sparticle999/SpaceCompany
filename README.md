@@ -93,6 +93,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buffed Battery Efficiency to 200 levels instead of 50
 - Nerfed Rocket Fuel Research Costs
 - Buffed Hydrazine Production
+- Achievement Number Formatting
 
 ##### Bug Fixes
 
