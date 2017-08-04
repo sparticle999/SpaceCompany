@@ -46,7 +46,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Screen Notifications Graphics Option
 - Kongregate Leaderboard
 - 7 New Themes
-- Random Loading Messages (41)
+- Random Loading Messages (100)
 - Communication Wonder
 - Rocket Wonder
 - Antimatter Wonder

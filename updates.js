@@ -112,6 +112,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.splash = {
+		desc: 'There are now 100 Loading Messages!',
+		read: false
+	};
+
 	return instance;
 
 }());
