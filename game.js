@@ -233,13 +233,13 @@ var Game = (function() {
         self.interstellarBETA.initialise();
         self.stargaze.initialise();
 
-        for(var i = 0; i < self.uiComponents.length; i++) {
-            self.uiComponents[i].initialise();
-        }
-
         // Now load
         self.load();
         self.settings.initialise();
+
+        for(var i = 0; i < self.uiComponents.length; i++) {
+            self.uiComponents[i].initialise();
+        }
 
         // Display what has changed since last time
         self.updates.initialise();

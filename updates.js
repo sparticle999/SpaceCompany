@@ -112,6 +112,17 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.splash = {
+		desc: 'There are now 100 Loading Messages!',
+		read: false
+	};
+
+	instance.stargazeIntro = {
+		desc: 'Barebones + Intro added for Stargaze tab',
+		read: false
+	};
+
+
 	return instance;
 
 }());

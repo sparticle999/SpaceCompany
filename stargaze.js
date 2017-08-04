@@ -3,7 +3,8 @@ Game.stargaze = (function(){
 	var instance = {};
 
 	instance.entries = {};
-	instance.categoryEntries = {empty: "empty",};
+	instance.categoryEntries = {};
+    instance.navCount = 0;
 
 	instance.initialise = function(){
 		for (var id in Game.stargazeData) {
@@ -12,10 +13,11 @@ Game.stargaze = (function(){
             this.navCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'DMup' + id,
+                htmlId: 'stargazeNav' + id,
                 displayNeedsUpdate: true
             });
         }
+        console.log("Loaded " + this.navCount + " Stargaze Navs");
 	};
 
     instance.getStargazeData = function(id) {
