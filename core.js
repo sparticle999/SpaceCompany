@@ -225,7 +225,7 @@ function refreshPerSec(delta){
         var methaneCost = hydrazine*520;
         if(methane+methaneps >= methaneCost){
             methaneps -= methaneCost;
-            rocketFuelps += (hydrazine*20);
+            rocketFuelps += (hydrazine*20) * perSecondMultiplier;
         }
     }
 
