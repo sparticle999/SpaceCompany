@@ -13,7 +13,7 @@ Game.stargaze = (function(){
             this.navCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'rebirthUp' + id,
+                htmlId: 'stargazeNav' + id,
                 displayNeedsUpdate: true
             });
         }

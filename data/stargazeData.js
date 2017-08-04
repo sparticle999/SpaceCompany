@@ -9,7 +9,8 @@ Game.stargazeCategoryData = (function () {
 
     instance.faction = {
         title: 'Factions',
-        category: 'faction'
+        category: 'faction',
+        hidden: 'hidden',
     };
 
     return instance;
@@ -42,37 +43,37 @@ Game.stargazeData = (function(){
 	instance.carnelian = {
 		name: "Carnelian Resistance",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.prasnian = {
 		name: "Prasnian Empire",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.hyacinite = {
 		name: "Hyacinite Congregation",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.kitrinos = {
 		name: "Kitrinos Corporation",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.moviton = {
 		name: "Moviton Syndicate",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.overlord = {
 		name: "Overlord Cult",
 		category: "faction",
-		hidden: "",
+		hidden: "hidden",
 	};
 
 
