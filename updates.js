@@ -117,6 +117,12 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.stargazeIntro = {
+		desc: 'Barebones + Intro added for Stargaze tab',
+		read: false
+	};
+
+
 	return instance;
 
 }());
