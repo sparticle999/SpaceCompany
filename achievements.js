@@ -35,8 +35,8 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Solar Panels", "EnergyIcon", function(x) { return solarPanel >= x}, function(x) { return solarPanel/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Methane Power Stations", "EnergyIcon", function(x) { return methaneStation >= x}, function(x) { return methaneStation/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Fusion Reactors", "EnergyIcon", function(x) { return fusionReactor >= x}, function(x) { return fusionReactor/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Reactors", "EnergyIcon", function(x) { return nuclearStation >= x}, function(x) { return nuclearStation/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Magmatic Reactors", "EnergyIcon", function(x) { return magmatic >= x}, function(x) { return magmatic/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Nuclear Power Stations", "EnergyIcon", function(x) { return nuclearStation >= x}, function(x) { return nuclearStation/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Magmatic Dynamos", "EnergyIcon", function(x) { return magmatic >= x}, function(x) { return magmatic/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Super-Heaters", "plasmaIcon", function(x) { return heater >= x}, function(x) { return heater/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Plasmatic Pits", "plasmaIcon", function(x) { return plasmatic >= x}, function(x) { return plasmatic/x }, Game.constants.achievementProducerBrackets);
@@ -58,23 +58,23 @@ Game.achievements = (function() {
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Gem Miners", "gemIcon", function(x) { return gemMiner >= x}, function(x) { return gemMiner/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Advanced Drills", "gemIcon", function(x) { return advancedDrill >= x}, function(x) { return advancedDrill/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Diamond-Encrusted Drill", "gemIcon", function(x) { return diamondDrill >= x}, function(x) { return diamondDrill/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Carbyne Drill", "gemIcon", function(x) { return carbyneDrill >= x}, function(x) { return carbyneDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Diamond Encrusted Drills", "gemIcon", function(x) { return diamondDrill >= x}, function(x) { return diamondDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Carbyne Drills", "gemIcon", function(x) { return carbyneDrill >= x}, function(x) { return carbyneDrill/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Woodcutters", "woodIcon", function(x) { return woodcutter >= x}, function(x) { return woodcutter/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laser Cutters", "woodIcon", function(x) { return laserCutter >= x}, function(x) { return laserCutter/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mass Deforesters", "woodIcon", function(x) { return deforester >= x}, function(x) { return deforester/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Infusers", "woodIcon", function(x) { return infuser >= x}, function(x) { return infuser/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Biomass Infusers", "woodIcon", function(x) { return infuser >= x}, function(x) { return infuser/x }, Game.constants.achievementProducerBrackets);
 
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Moon Workers", "spaceMetalIcon", function(x) { return moonWorker >= x}, function(x) { return moonWorker/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Low Gravity Drill", "spaceMetalIcon", function(x) { return moonDrill >= x}, function(x) { return moonDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Native Moon Workers", "spaceMetalIcon", function(x) { return moonWorker >= x}, function(x) { return moonWorker/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Low-Gravity Drills", "spaceMetalIcon", function(x) { return moonDrill >= x}, function(x) { return moonDrill/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Moon Quarries", "spaceMetalIcon", function(x) { return moonQuarry >= x}, function(x) { return moonQuarry/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Planet Excavators", "spaceMetalIcon", function(x) { return planetExcavator >= x}, function(x) { return planetExcavator/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Planetary Excavators", "spaceMetalIcon", function(x) { return planetExcavator >= x}, function(x) { return planetExcavator/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Explorers", "titaniumIcon", function(x) { return explorer >= x}, function(x) { return explorer/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Space Metal Drill", "titaniumIcon", function(x) { return spaceMetalDrill >= x}, function(x) { return spaceMetalDrill/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Penta Drill", "titaniumIcon", function(x) { return pentaDrill >= x}, function(x) { return pentaDrill/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Titan Drill", "titaniumIcon", function(x) { return titanDrill >= x}, function(x) { return titanDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Space Metal Drills", "titaniumIcon", function(x) { return spaceMetalDrill >= x}, function(x) { return spaceMetalDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Penta-Drills", "titaniumIcon", function(x) { return pentaDrill >= x}, function(x) { return pentaDrill/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Drills of Titans", "titaniumIcon", function(x) { return titanDrill >= x}, function(x) { return titanDrill/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Empowered Blowtorches", "siliconIcon", function(x) { return blowtorch >= x}, function(x) { return blowtorch/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Seaside Scorchers", "siliconIcon", function(x) { return scorcher >= x}, function(x) { return scorcher/x }, Game.constants.achievementProducerBrackets);
@@ -83,12 +83,12 @@ Game.achievements = (function() {
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Vacuum Cleaners", "methaneIcon", function(x) { return vacuum >= x}, function(x) { return vacuum/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Suction Excavators", "methaneIcon", function(x) { return suctionExcavator >= x}, function(x) { return suctionExcavator/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Space Cow Plantation", "methaneIcon", function(x) { return spaceCow >= x}, function(x) { return spaceCow/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Vents", "methaneIcon", function(x) { return vent >= x}, function(x) { return vent/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Space Cow Plantations", "methaneIcon", function(x) { return spaceCow >= x}, function(x) { return spaceCow/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Hydrothermal Vents", "methaneIcon", function(x) { return vent >= x}, function(x) { return vent/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Rocket Droids", "goldIcon", function(x) { return droid >= x}, function(x) { return droid/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Asteroid Destroyer", "goldIcon", function(x) { return destroyer >= x}, function(x) { return destroyer/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Death Stars", "goldIcon", function(x) { return deathStar >= x}, function(x) { return deathStar/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Asteroid Destroyers", "goldIcon", function(x) { return destroyer >= x}, function(x) { return destroyer/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Death Stars Jr", "goldIcon", function(x) { return deathStar >= x}, function(x) { return deathStar/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Chronal Actuators", "goldIcon", function(x) { return actuator >= x}, function(x) { return actuator/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Recruit %s Scout Ships", "silverIcon", function(x) { return scout >= x}, function(x) { return scout/x }, Game.constants.achievementProducerBrackets);
@@ -119,15 +119,15 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ice Pickaxes", "iceIcon", function(x) { return icePick >= x}, function(x) { return icePick/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ice Drills", "iceIcon", function(x) { return iceDrill >= x}, function(x) { return iceDrill/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Ocean Freezers", "iceIcon", function(x) { return freezer >= x}, function(x) { return freezer/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mr Freeze", "iceIcon", function(x) { return mrFreeze >= x}, function(x) { return mrFreeze/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Mr Freezes", "iceIcon", function(x) { return mrFreeze >= x}, function(x) { return mrFreeze/x }, Game.constants.achievementProducerBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Printers", "meteoriteIcon", function(x) { return printer >= x}, function(x) { return printer/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Web", "meteoriteIcon", function(x) { return web >= x}, function(x) { return web/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Meteorite Webs", "meteoriteIcon", function(x) { return web >= x}, function(x) { return web/x }, Game.constants.achievementProducerBrackets);
 
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories", "technologyIcon", function(x) { return lab >= x}, function(x) { return lab/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T2", "technologyIcon", function(x) { return labT2 >= x}, function(x) { return labT2/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T3", "technologyIcon", function(x) { return labT3 >= x}, function(x) { return labT3/x }, Game.constants.achievementProducerBrackets);
-        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Laboratories T4", "technologyIcon", function(x) { return labT4 >= x}, function(x) { return labT4/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Home Science Kits", "technologyIcon", function(x) { return lab >= x}, function(x) { return lab/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s High School Sciences", "technologyIcon", function(x) { return labT2 >= x}, function(x) { return labT2/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s University Laboratories", "technologyIcon", function(x) { return labT3 >= x}, function(x) { return labT3/x }, Game.constants.achievementProducerBrackets);
+        this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Scientific Observatories", "technologyIcon", function(x) { return labT4 >= x}, function(x) { return labT4/x }, Game.constants.achievementProducerBrackets);
         
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Rings", "EnergyIcon", function(x) {return ring >= x}, function(x) { return ring/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Dyson Swarms", "EnergyIcon", function(x) {return swarm >= x}, function(x) { return swarm/x }, Game.constants.achievementProducerBrackets);
