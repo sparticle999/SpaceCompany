@@ -11,7 +11,7 @@
     instance.initialise = function() {
         this.categoryTemplate = Handlebars.compile(
             ['<td>',
-                '<h3 class="default btn-link">{{name}}</h3>',
+                '<h3 class="default btn-link">{{name}} (<span id="{{id}}_unlocked">0</span>/<span id="{{id}}_total">0</span>)</h3>',
                 '<table class="table" id="{{id}}"></table>',
                 '</td>'].join('\n'));
 
@@ -31,12 +31,31 @@
     };
 
     instance.update = function(delta) {
+        var categoryCounts = {};
+        var updateCategories = false;
+        
+        for(var category in this.categoryElements) {
+          categoryCounts[category] = { unlocked: 0, total: 0 };
+        }
+        
         for(var id in Game.achievements.entries) {
             var data = Game.achievements.entries[id];
+            
+            categoryCounts[data.category].unlocked += data.unlocked + 1;
+            categoryCounts[data.category].total += data.brackets.length;
 
             if(data.displayNeedsUpdate === true) {
                 this.updateDisplay(id);
+                updateCategories = true;
             }
+        }
+        
+        if (updateCategories === true) {
+          for(var category in this.categoryElements) {
+            var id = this.categoryElements[category].id;
+            $('#' + id + '_unlocked').text(categoryCounts[category].unlocked);
+            $('#' + id + '_total').text(categoryCounts[category].total);
+          }
         }
     };
 
