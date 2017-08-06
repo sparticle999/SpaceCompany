@@ -141,7 +141,7 @@ Game.achievements = (function() {
 
     instance.getAchievementTitle = function(data) {
         if(data.unlocked === data.brackets.length - 1) {
-            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked])) + " Completed";
+            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked])) + " (Completed)";
         } else {
             var progress = data.progressEvaluator(data.brackets[data.unlocked+1]);
             return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1])) + ' (' + Math.floor(100 * progress) + '%)';
