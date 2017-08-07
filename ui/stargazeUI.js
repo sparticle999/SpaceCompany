@@ -44,16 +44,28 @@ Game.stargazeUI = (function(){
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
-        instance.titleTemplate = Handlebars.compile(
+        instance.dmTitleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<span>{{desc}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
+        instance.titleTemplate = Handlebars.compile(
+            ['<tr><td style="border:none;">',
+                '<h2 class="default btn-link">{{name}}</h2>',
+                '<h4><b>Relationship: {{opinion}}</b></h4>',
+                '<br>',
+                '<span>{{desc}}</span>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
         instance.navTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="3" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
                     '<span>{{name}}</span>',
+                '</td>',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                    '<span>{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         instance.dmNavTemplate = Handlebars.compile(
@@ -72,6 +84,7 @@ Game.stargazeUI = (function(){
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade({{id}})" class="btn btn-default">Activate {{id}}</div>',
+                '<br><br>',
                 '</td></tr>'].join('\n'));
 
         for(var id in Game.stargazeCategoryData){
@@ -138,6 +151,8 @@ Game.stargazeUI = (function(){
         var target = $('#' + this.tab.getContentElementId(data.id));
         if(data.id == "intro"){
             var tabTitle = this.introTitleTemplate(data);
+        } else if (data.id == "darkMatter"){
+            var tabTitle = this.dmTitleTemplate(data);
         }
         else{
             var tabTitle = this.titleTemplate(data);

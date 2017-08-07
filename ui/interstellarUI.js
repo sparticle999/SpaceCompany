@@ -65,12 +65,13 @@ Game.interstellarUI = (function(){
         instance.starTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
-                '<span>',
-                    '<p>{{desc}}</p>',
-                    '<p id="{{htmlId}}_cost"></p>',
-                '</span>',
-                '<br><br>',
-                '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
+                '<h4>',
+                    '<p>Tier: {{tier}}</p>',
+                    '<p>Distance: {{distance}}</p>',
+                    '<p>Planets: {{planets}}</p>',
+                '</h4>',
+                '<br>',
+                '<div class="btn btn-default" id="{{htmlId}}explore">Explore</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
@@ -109,12 +110,13 @@ Game.interstellarUI = (function(){
 
     instance.update = function(delta) {
 
-    //     for(var id in this.entries) {
-    //         var data = Game.resources.getResourceData(this.entries[id].id);
-    //         if(data.displayNeedsUpdate === true) {
-    //             this.updateDisplay(data);
-    //         }
-    //     }
+        // for(var id in this.entries) {
+        //     var data = Game.resources.getResourceData(this.entries[id].id);
+        //     if(data.displayNeedsUpdate === true) {
+        //         this.updateDisplay(data);
+        //     }
+        // }
+
         for(var id in this.rocketEntries) {
             var data = Game.interstellarBETA.rocket.getRocketData(id);
             if(data.displayNeedsUpdate === true) {
@@ -137,13 +139,13 @@ Game.interstellarUI = (function(){
             }
         }
 
-    //     for(var id in Game.resources.categoryEntries) {
-    //         if(this.tab.categoryHasVisibleEntries(id) === true) {
-    //             this.tab.showCategory(id);
-    //         } else {
-    //             this.tab.hideCategory(id);
-    //         }
-    //     }
+        // for(var id in Game.interstellarBETA.categoryEntries) {
+        //     if(this.tab.categoryHasVisibleEntries(id) === true) {
+        //         this.tab.showCategory(id);
+        //     } else {
+        //         this.tab.hideCategory(id);
+        //     }
+        // }
     };
 
     instance.createRocket = function(data, rocketData) {
@@ -164,25 +166,30 @@ Game.interstellarUI = (function(){
         Game.ui.bindElement("rocpart_" + partData.entryName + "Count", function(){ return Game.settings.format(partData.count); });
     };
 
-    instance.createContent = function(data) {
-        var target = $('#' + this.tab.getContentElementId(data.id));
+    instance.createStar = function(data, starData) {
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        var star = this.starTemplate(starData);
+        tabContentRoot.append($(star));
+        this.starEntries[starData.id] = data.id;
+        this.starObservers[starData.id] = [];
+    };
 
+    instance.createCommsContent = function(data){
+        var target = $('#' + this.tab.getContentElementId(data.id));
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
 
-        // for (var id in Game.buildings.entries) {
-        //     var buildingData = Game.buildings.entries[id];
-        //     if(buildingData.resource && buildingData.resource === data.id) {
-        //         this.createResourceContentBuilding(data, buildingData);
-        //     }
+        // for (var id in Game.interstellarBETA.rocketParts.entries){
+        //     var partData = Game.interstellarBETA.rocketParts.entries[id];
+        //     this.createRocketPart(data, partData);
         // }
-    };
+    }
 
     instance.createRocketContent = function(data){
         var target = $('#' + this.tab.getContentElementId(data.id));
-
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
+
         for (var id in Game.interstellarBETA.rocket.entries){
             var rocketData = Game.interstellarBETA.rocket.entries[id];
             this.createRocket(data, rocketData);
@@ -195,7 +202,6 @@ Game.interstellarUI = (function(){
 
     instance.createAntimatterContent = function(data){
         var target = $('#' + this.tab.getContentElementId(data.id));
-
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
 
@@ -207,8 +213,24 @@ Game.interstellarUI = (function(){
         // }
     }
 
+    instance.createTravelContent = function(data){
+        var target = $('#' + this.tab.getContentElementId(data.id));
+        var tabTitle = this.titleTemplate(data);
+        target.append(tabTitle);
+
+        for (var id in Game.interstellarBETA.stars.entries){
+            var starData = Game.interstellarBETA.stars.entries[id];
+            this.createStar(data, starData);
+        }
+        // for (var id in Game.interstellarBETA.rocketParts.entries){
+        //     var partData = Game.interstellarBETA.rocketParts.entries[id];
+        //     this.createRocketPart(data, partData);
+        // }
+    }
+
     instance.createInterstellarNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
+        var html = this.navTemplate(data);
         if(data.id === "antimatter"){
             var html = this.antimatterNavTemplate(data);
             this.createAntimatterContent(data);
@@ -217,9 +239,11 @@ Game.interstellarUI = (function(){
             var html = this.rocketNavTemplate(data);
             this.createRocketContent(data);
         }
+        else if(data.id ==="travel"){
+            this.createTravelContent(data);
+        }
         else{
-            this.createContent(data);
-            var html = this.navTemplate(data);
+            this.createCommsContent(data);
         }
         target.append($(html));
     };

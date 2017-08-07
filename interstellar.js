@@ -27,7 +27,12 @@ Game.interstellar = (function(){
 				oil: 712000000,
 				meteorite: 12300000
 			},
-			//IRS: 0,
+			IRS: {
+				count: 0,
+				metal: 38600000000,
+				ice: 4320000000,
+				meteorite: 15800000
+			},
 		},
 		interRocketBuilt: false,
 	};
@@ -74,10 +79,15 @@ Game.interstellar = (function(){
 		}
 	};
 
-	// instance.getIRS = function(){
-	// 	this.machines.IRS += 1;
-	// 	document.getElementById("IRS").innerHTML = this.machines.IRS;
-	// };
+	instance.getIRS = function(){
+		if(metal >= this.machines.IRS.metal && ice >= this.machines.IRS.ice && meteorite >= this.machines.IRS.meteorite){
+			metal -= this.machines.IRS.metal;
+			ice -= this.machines.IRS.ice;
+			meteorite -= this.machines.IRS.meteorite;
+			this.machines.IRS.count += 1;
+			this.refreshUI();
+		}
+	};
 
 	instance.buildRocket = function(){
 		if(this.machines.shield.count === 50 && this.machines.engine.count === 25 && this.machines.aero.count === 15){
@@ -106,6 +116,10 @@ Game.interstellar = (function(){
 		this.machines.drive.oil = Math.floor(712000000 * Math.pow(1.1,this.machines.drive.count));
 		this.machines.drive.meteorite = Math.floor(12300000 * Math.pow(1.1,this.machines.drive.count));
 
+		this.machines.IRS.metal = Math.floor(38600000000 * Math.pow(1.1,this.machines.IRS.count));
+		this.machines.IRS.ice = Math.floor(4320000000 * Math.pow(1.1,this.machines.IRS.count));
+		this.machines.IRS.meteorite = Math.floor(15800000 * Math.pow(1.1,this.machines.IRS.count));
+
 		document.getElementById("engineSiliconCost").innerHTML = Game.settings.format(this.machines.engine.silicon);
 		document.getElementById("engineMeteoriteCost").innerHTML = Game.settings.format(this.machines.engine.meteorite);
 		document.getElementById("engineHydrogenCost").innerHTML = Game.settings.format(this.machines.engine.hydrogen);
@@ -122,6 +136,11 @@ Game.interstellar = (function(){
 		document.getElementById("driveOilCost").innerHTML = Game.settings.format(this.machines.drive.oil);
 		document.getElementById("driveMeteoriteCost").innerHTML = Game.settings.format(this.machines.drive.meteorite);
 		document.getElementById("drive").innerHTML = this.machines.drive.count;
+
+		document.getElementById("IRSMetalCost").innerHTML = Game.settings.format(this.machines.IRS.metal);
+		document.getElementById("IRSIceCost").innerHTML = Game.settings.format(this.machines.IRS.ice);
+		document.getElementById("IRSMeteoriteCost").innerHTML = Game.settings.format(this.machines.IRS.meteorite);
+		document.getElementById("IRS").innerHTML = this.machines.IRS.count;
 	}
 
 	instance.save = function(data){

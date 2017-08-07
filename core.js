@@ -838,6 +838,10 @@ function checkRedCost(){
 	Game.settings.turnRed(oil, Game.interstellar.machines.drive.oil, "driveOilCost");
 	Game.settings.turnRed(meteorite, Game.interstellar.machines.drive.meteorite, "driveMeteoriteCost");
 
+    Game.settings.turnRed(metal, Game.interstellar.machines.IRS.metal, "IRSMetalCost");
+    Game.settings.turnRed(ice, Game.interstellar.machines.IRS.ice, "IRSIceCost");
+    Game.settings.turnRed(meteorite, Game.interstellar.machines.IRS.meteorite, "IRSMeteoriteCost");
+
 }
 
 function refreshResources(){

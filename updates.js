@@ -122,6 +122,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.irs = {
+		desc: 'Added Interstellar Radar Scanner (Interstellar -> Comms)',
+		read: false
+	};
+
 
 	return instance;
 

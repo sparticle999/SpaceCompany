@@ -7,7 +7,7 @@ Game.starData = (function(){
 		distance: 4.3,
 		planets: 1,
 		tier: 1,
-		unlocked: false
+		explored: false
 	};
 
 	instance.star2 = {
@@ -15,7 +15,7 @@ Game.starData = (function(){
 		distance: 5.96,
 		planets: 0,
 		tier: 4,
-		unlocked: false
+		explored: false
 	};
 
 	instance.star3 = {
@@ -23,7 +23,7 @@ Game.starData = (function(){
 		distance: 10.52,
 		planets: 2,
 		tier: 1,
-		unlocked: false
+		explored: false
 	};
 
 	instance.star4 = {
@@ -31,7 +31,7 @@ Game.starData = (function(){
 		distance: 11.89,
 		planets: 5,
 		tier: 1,
-		unlocked: false
+		explored: false
 	};
 
 	instance.star5 = {
@@ -39,7 +39,7 @@ Game.starData = (function(){
 		distance: 14.81,
 		planets: 1,
 		tier: 4,
-		unlocked: false
+		explored: false
 	};
 
 

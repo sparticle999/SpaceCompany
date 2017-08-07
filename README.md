@@ -67,6 +67,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Battery Efficiency Research
 - Red Destroy Button Option
 - Hydrazine Catalyst - T3 Rocket Fuel
+- Interstellar Radar Scanner
 
 ##### Small Changes
 
@@ -95,6 +96,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buffed Hydrazine Production
 - Achievement Number Formatting
 - Rocket Fuel Machine Achievements
+- Fixed Hydrazine Not Getting Resource Efficiency
 
 ##### Bug Fixes
 
