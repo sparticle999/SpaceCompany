@@ -25,6 +25,7 @@ Game.constants = (function(){
     instance.iconPath = "Icons/";
     instance.iconExtension = "png";
 
+    instance.rank = ["Space Noob", "Space Explorer", "Solar Traveler", "Spaceship Pilot", "Dyson Sphere Technician", "Wonder Builder", "Overlord Associate", "Interstellar Space Farer", "Console Cheater", "Save File Editor", "Source Code Hacker", "The Prestiged"]
     instance.achievementMax = 1000;
     instance.achievementIconsPerRow = 4;
     instance.achievementResourceBrackets = [50, 5000, 500000, 50000000, 5000000000];

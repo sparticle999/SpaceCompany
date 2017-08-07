@@ -1,4 +1,4 @@
-(function(){
+Game.achievementsUI = (function(){
 
     var instance = {};
 
@@ -9,6 +9,20 @@
     instance.rootElement = null;
 
     instance.initialise = function() {
+        this.rankTemplate = Handlebars.compile(
+            ['<td>',
+                '<h3 class="default btn-link">Current Rank: <br><span id="rankNumber">{{number}}</span> - <span id="rankName">{{name}}</span></h3>',
+                '</td>'].join('\n'));
+
+        this.rankBarTemplate = Handlebars.compile(
+            ['<td colspan="2">',
+                '<div id="rankProgress" class="progress">',
+                    '<div id="rankBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">',
+                        '0%',
+                    '</div>',
+                '</div>',
+                '</td>'].join('\n'));
+
         this.categoryTemplate = Handlebars.compile(
             ['<td>',
                 '<h3 class="default btn-link">{{name}} (<span id="{{id}}_unlocked">0</span>/<span id="{{id}}_total">0</span>)</h3>',
@@ -25,6 +39,8 @@
 
         this.rootElement = $('#achievementContent');
 
+        this.createRank(0);
+
         for(var id in Game.achievements.entries) {
             this.createDisplay(id);
         }
@@ -33,7 +49,9 @@
     instance.update = function(delta) {
         var categoryCounts = {};
         var updateCategories = false;
-        
+        var totalAchieved = 0;
+
+
         for(var category in this.categoryElements) {
           categoryCounts[category] = { unlocked: 0, total: 0 };
         }
@@ -55,8 +73,28 @@
             var id = this.categoryElements[category].id;
             $('#' + id + '_unlocked').text(categoryCounts[category].unlocked);
             $('#' + id + '_total').text(categoryCounts[category].total);
+            
           }
         }
+
+        // Calculating Ranks
+
+        for(var category in this.categoryElements) {
+            totalAchieved += categoryCounts[category].unlocked;
+        }
+        var x = Game.achievements.rank;
+        var xpNeeded = Game.utils.fibonacci(x+7);
+        var xpLeft = Game.utils.fibonacci(x+7) - totalAchieved;
+        if(xpLeft <= 0){
+            Game.achievements.rank += 1;
+        }
+        var percentLeft = Game.settings.format(100-(xpLeft/xpNeeded*100)) + '%';
+        $('#rankBar').text(percentLeft + ' (' + (xpNeeded-xpLeft) + '/' + xpNeeded + ')');
+        $('#rankBar').width(percentLeft);
+        $('#rankNumber').text(x);
+        $('#rankName').text(Game.constants.rank[x]);
+
+        
     };
 
     instance.createDisplay = function(id) {
@@ -111,6 +149,17 @@
         $('#'+data.id).append(data.col);
     };
 
+    instance.createRank = function (x) {
+        var data = {name: Game.constants.rank[x], number: x};
+        var html = this.rankTemplate(data);
+        $('#rankContent').append(html);
+
+        var html = this.rankBarTemplate();
+        $('#rankBarContent').append(html);
+    };
+
     Game.uiComponents.push(instance);
+
+    return instance;
 
 }());

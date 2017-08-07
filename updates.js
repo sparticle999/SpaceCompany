@@ -127,6 +127,10 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.ranks = {
+		desc: 'Added Achievement Ranks',
+		read: false
+	};
 
 	return instance;
 

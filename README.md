@@ -68,6 +68,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Red Destroy Button Option
 - Hydrazine Catalyst - T3 Rocket Fuel
 - Interstellar Radar Scanner
+- Achievement Ranks
 
 ##### Small Changes
 

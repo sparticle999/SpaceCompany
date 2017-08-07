@@ -7,6 +7,9 @@ Game.achievements = (function() {
 
     instance.nextId = 0;
 
+    instance.rank = 1;
+    instance.xp = 0;
+
     instance.entries = {};
     instance.achievementCount = 0;
     instance.achievementCountIncludingTiers = 0;
