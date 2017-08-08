@@ -26,7 +26,7 @@ Game.stargazeUI = (function(){
             return;
         }
 
-        this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze'});
+        this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze (Indev)'});
         this.tab.initialise();
 
         instance.introTitleTemplate = Handlebars.compile(

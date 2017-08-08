@@ -34,7 +34,7 @@ Game.interstellarUI = (function(){
         this.tab.initialise();
 
         instance.titleTemplate = Handlebars.compile(
-            ['<tr><td style="border:none;">',
+            ['<tr><td colspan="2" style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<span>{{desc}}</span>',
                 '<br><br>',
@@ -63,15 +63,17 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.starTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"><td>',
+            ['<tr id="{{htmlId}}"><td style="width:300px;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<h4>',
-                    '<p>Tier: {{tier}}</p>',
-                    '<p>Distance: {{distance}}</p>',
-                    '<p>Planets: {{planets}}</p>',
+                    'Tier: {{tier}}<br>',
+                    'Distance: {{distance}}<br>',
+                    'Planets: {{planets}}<br>',
+                    'Faction: {{faction}}',
                 '</h4>',
-                '<br>',
                 '<div class="btn btn-default" id="{{htmlId}}explore">Explore</div>',
+                '</td><td><br><br>',
+                '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(

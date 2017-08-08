@@ -36,6 +36,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Achievements with Bonuses
 - Change Letter Formatting To Start At 100K
 - Rebalance Science
+- Change Icons (white circle with icon inside)
 
 # Changelog:
 
@@ -65,7 +66,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Copy Export to Clipboard
 - Update Log On Page Load
 - Battery Efficiency Research
-- Red Destroy Button Option
+- Coloured Destroy Button Option
 - Hydrazine Catalyst - T3 Rocket Fuel
 - Interstellar Radar Scanner
 - Achievement Ranks
