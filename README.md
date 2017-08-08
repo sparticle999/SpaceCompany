@@ -129,6 +129,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Hydrazine Research Cost Not Turning Red
 - Fixed Antimatter Going Above 100k
 - Fixed Buying Multiple Solar System Rockets
+- Fixed T4 Science unlocking only after refresh
 
 ### v0.4.4
 ##### Features

@@ -224,10 +224,6 @@ Game.interstellarUI = (function(){
             var starData = Game.interstellarBETA.stars.entries[id];
             this.createStar(data, starData);
         }
-        // for (var id in Game.interstellarBETA.rocketParts.entries){
-        //     var partData = Game.interstellarBETA.rocketParts.entries[id];
-        //     this.createRocketPart(data, partData);
-        // }
     }
 
     instance.createInterstellarNav = function(data) {
