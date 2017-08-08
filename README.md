@@ -15,9 +15,9 @@ v0.6.0 The Lore Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 
 - Adding Lore onto every Building and an introduction to your Space Company
-- Rebalance all costs to not use as much Space Metal/Gems
+- Rebalance all costs to not use as much Lunarite/Gems
 - Loading screen flavour text changes as you progress
-- Change Space Metal to a proper name
+- Change Lunarite to a proper name
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
@@ -70,6 +70,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Hydrazine Catalyst - T3 Rocket Fuel
 - Interstellar Radar Scanner
 - Achievement Ranks
+- Renamed Space Metal as Lunarite
 
 ##### Small Changes
 
@@ -118,7 +119,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Dyson Sections Cost Bug
 - Fixed Plasma EMC Display Bug
 - Fixed Stargate Red Costs Bug
-- Fixed T3 Battery Space Metal Cost Not Saving
+- Fixed T3 Battery Lunarite Cost Not Saving
 - Fixed UI Bug With Certain Themes
 - Fixed Rocket Building Not Saving
 - Fixed Antimatter Decimals Not Being Uniform
@@ -278,7 +279,7 @@ v0.1.1
 
 v0.1.0 The Space Update
 - Space travel to The Moon, Venus, Mars and the Asteroid Belt
-- New resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
+- New resources: Lunarite, Methane Gas, Titanium, Silver, Gold and Silicon
 - Methane-based power
 - Commas to all numbers more than 1000
 - Fixed negative energy

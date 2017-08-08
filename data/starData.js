@@ -3,12 +3,14 @@ Game.starData = (function(){
 	var instance = {};
 
 	instance.alphaCenturi = {
-		name: "Alpha Centuri",
+		name: "Alpha Centauri",
 		distance: 4.3,
 		planets: 1,
 		tier: 1,
 		faction: "Hyacinite Congregation",
 		desc: "The closest star to your solar system, this is the easiest to travel to. Controlled by a science loving society, they permit your exploration in pursuit of knowledge, despite being skeptical of your sincerity about 'just looking'.",
+		resource1: "Ice",
+		resource2: "Hydrogen",
 		explored: false
 	};
 
@@ -18,6 +20,9 @@ Game.starData = (function(){
 		planets: 0,
 		tier: 4,
 		faction: "Carnelian Resistance",
+		desc: "",
+		resource1: "Hydrogen",
+		resource2: "Helium",
 		explored: false
 	};
 
@@ -27,6 +32,9 @@ Game.starData = (function(){
 		planets: 2,
 		tier: 1,
 		faction: "Prasnian Empire",
+		desc: "",
+		resource1: "Lunarite",
+		resource2: "Gems",
 		explored: false
 	};
 
@@ -36,6 +44,9 @@ Game.starData = (function(){
 		planets: 5,
 		tier: 1,
 		faction: "Kitrinos Corporation",
+		desc: "",
+		resource1: "Hydrogen",
+		resource2: "Helium",
 		explored: false
 	};
 
@@ -45,6 +56,9 @@ Game.starData = (function(){
 		planets: 1,
 		tier: 4,
 		faction: "Moviton Syndicate",
+		desc: "",
+		resource1: "Hydrogen",
+		resource2: "Helium",
 		explored: false
 	};
 

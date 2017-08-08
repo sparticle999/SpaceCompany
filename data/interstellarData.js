@@ -84,12 +84,12 @@ Game.rocketPartsData = (function(){
 		unlocked: true,
 		displayNeedsUpdate: true,
 		cost: {
-			'spaceMetal': 100000,
+			'lunarite': 100000,
 			'titanium': 100000,
 			'metal': 100000
 		},
 		defaultCost: {
-			'spaceMetal': 100000,
+			'lunarite': 100000,
 			'titanium': 100000,
 			'metal': 100000
 		}

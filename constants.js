@@ -45,7 +45,6 @@ Game.constants = (function(){
     instance.enableDataDrivenResources = false;
     instance.enableMachineTab = false;
     instance.enableInterstellar = false;
-    instance.enableStargaze = true;
 
     return instance;
 }());

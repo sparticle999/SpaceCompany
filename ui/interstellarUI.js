@@ -70,6 +70,7 @@ Game.interstellarUI = (function(){
                     'Distance: {{distance}}<br>',
                     'Planets: {{planets}}<br>',
                     'Faction: {{faction}}',
+                    'Resources Present: {{resource1}}, {{resource2}}',
                 '</h4>',
                 '<div class="btn btn-default" id="{{htmlId}}explore">Explore</div>',
                 '</td><td><br><br>',

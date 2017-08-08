@@ -65,7 +65,7 @@ function launchRocket(){
 
 function explore(planet){
 	var planetsData = {
-		Moon: {fuel: 20, area: "innerPlanet", resource: "spaceMetal"},
+		Moon: {fuel: 20, area: "innerPlanet", resource: "lunarite"},
 		Venus: {fuel: 50, area: "innerPlanet", resource: "methane"},
 		Mars: {fuel: 80, area: "innerPlanet", resource: "titanium,silicon"},
 		AsteroidBelt: {fuel: 200, area: "innerPlanet", resource: "gold,silver"},

@@ -13,12 +13,12 @@ function legacySave(data) {
 		PSUT2GoldCost: PSUT2GoldCost,
 		PSUT2UraniumCost: PSUT2UraniumCost,
 		heater: heater,
-		heaterSpaceMetalCost: heaterSpaceMetalCost,
+		heaterLunariteCost: heaterLunariteCost,
 		heaterGemCost: heaterGemCost,
 		heaterSiliconCost: heaterSiliconCost,
 		heaterToggled: heaterToggled,
 		plasmatic: plasmatic,
-		plasmaticSpaceMetalCost: plasmaticSpaceMetalCost,
+		plasmaticLunariteCost: plasmaticLunariteCost,
 		plasmaticSiliconCost: plasmaticSiliconCost,
 		plasmaticMeteoriteCost: plasmaticMeteoriteCost,
 		plasmaticToggled: plasmaticToggled,
@@ -26,19 +26,19 @@ function legacySave(data) {
 		battery: battery,
 		batteryMetalCost: batteryMetalCost,
 		batteryGemCost: batteryGemCost,
-		batterySpaceMetalCost: batterySpaceMetalCost,
+		batteryLunariteCost: batteryLunariteCost,
 		batteryT2: batteryT2,
 		batteryT2MetalCost: batteryT2MetalCost,
 		batteryT2GemCost: batteryT2GemCost,
-		batteryT2SpaceMetalCost: batteryT2SpaceMetalCost,
+		batteryT2LunariteCost: batteryT2LunariteCost,
 		batteryT3: batteryT3,
 		batteryT3MetalCost: batteryT3MetalCost,
 		batteryT3GemCost: batteryT3GemCost,
-		batteryT3SpaceMetalCost: batteryT3SpaceMetalCost,
+		batteryT3LunariteCost: batteryT3LunariteCost,
 		batteryT4: batteryT4,
 		batteryT4MetalCost: batteryT4MetalCost,
 		batteryT4GemCost: batteryT4GemCost,
-		batteryT4SpaceMetalCost: batteryT4SpaceMetalCost,
+		batteryT4LunariteCost: batteryT4LunariteCost,
 		charcoalEngine: charcoalEngine,
 		charcoalEngineMetalCost: charcoalEngineMetalCost,
 		charcoalEngineGemCost: charcoalEngineGemCost,
@@ -48,17 +48,17 @@ function legacySave(data) {
 		solarPanelGemCost: solarPanelGemCost,
 		solarPanelOutput: solarPanelOutput,
 		methaneStation: methaneStation,
-		methaneStationSpaceMetalCost: methaneStationSpaceMetalCost,
+		methaneStationLunariteCost: methaneStationLunariteCost,
 		methaneStationTitaniumCost: methaneStationTitaniumCost,
 		nuclearStation: nuclearStation,
-		nuclearStationSpaceMetalCost: nuclearStationSpaceMetalCost,
+		nuclearStationLunariteCost: nuclearStationLunariteCost,
 		nuclearStationTitaniumCost: nuclearStationTitaniumCost,
 		magmatic: magmatic,
-		magmaticSpaceMetalCost: magmaticSpaceMetalCost,
+		magmaticLunariteCost: magmaticLunariteCost,
 		magmaticGemCost: magmaticGemCost,
 		magmaticSilverCost: magmaticSilverCost,
 		fusionReactor: fusionReactor,
-		fusionReactorSpaceMetalCost: fusionReactorSpaceMetalCost,
+		fusionReactorLunariteCost: fusionReactorLunariteCost,
 		fusionReactorTitaniumCost: fusionReactorTitaniumCost,
 		fusionReactorSiliconCost: fusionReactorSiliconCost,
 		oil: oil,
@@ -73,11 +73,11 @@ function legacySave(data) {
 		pumpjackOilCost: pumpjackOilCost,
 		pumpjackOutput: pumpjackOutput,
 		oilField: oilField,
-		oilFieldSpaceMetalCost: oilFieldSpaceMetalCost,
+		oilFieldLunariteCost: oilFieldLunariteCost,
 		oilFieldTitaniumCost: oilFieldTitaniumCost,
 		oilFieldSiliconCost: oilFieldSiliconCost,
 		oilRig: oilRig,
-		oilRigSpaceMetalCost: oilRigSpaceMetalCost,
+		oilRigLunariteCost: oilRigLunariteCost,
 		oilRigTitaniumCost: oilRigTitaniumCost,
 		oilRigMeteoriteCost: oilRigMeteoriteCost,
 		metal: metal,
@@ -92,11 +92,11 @@ function legacySave(data) {
 		heavyDrillOilCost: heavyDrillOilCost,
 		heavyDrillOutput: heavyDrillOutput,
 		gigaDrill: gigaDrill,
-		gigaDrillSpaceMetalCost: gigaDrillSpaceMetalCost,
+		gigaDrillLunariteCost: gigaDrillLunariteCost,
 		gigaDrillGemCost: gigaDrillGemCost,
 		gigaDrillSiliconCost: gigaDrillSiliconCost,
 		quantumDrill: quantumDrill,
-		quantumDrillSpaceMetalCost: quantumDrillSpaceMetalCost,
+		quantumDrillLunariteCost: quantumDrillLunariteCost,
 		quantumDrillGoldCost: quantumDrillGoldCost,
 		quantumDrillMeteoriteCost: quantumDrillMeteoriteCost,
 		gem: gem,
@@ -111,11 +111,11 @@ function legacySave(data) {
 		advancedDrillOilCost: advancedDrillOilCost,
 		advancedDrillOutput: advancedDrillOutput,
 		diamondDrill: diamondDrill,
-		diamondDrillSpaceMetalCost: diamondDrillSpaceMetalCost,
+		diamondDrillLunariteCost: diamondDrillLunariteCost,
 		diamondDrillGemCost: diamondDrillGemCost,
 		diamondDrillSiliconCost: diamondDrillSiliconCost,
 		carbyneDrill: carbyneDrill,
-		carbyneDrillSpaceMetalCost: carbyneDrillSpaceMetalCost,
+		carbyneDrillLunariteCost: carbyneDrillLunariteCost,
 		carbyneDrillGemCost: carbyneDrillGemCost,
 		carbyneDrillMeteoriteCost: carbyneDrillMeteoriteCost,
 		charcoal: charcoal,
@@ -132,11 +132,11 @@ function legacySave(data) {
 		furnaceWoodInput: furnaceWoodInput,
 		furnaceOutput: furnaceOutput,
 		kiln: kiln,
-		kilnSpaceMetalCost: kilnSpaceMetalCost,
+		kilnLunariteCost: kilnLunariteCost,
 		kilnGemCost: kilnGemCost,
 		kilnSiliconCost: kilnSiliconCost,
 		fryer: fryer,
-		fryerSpaceMetalCost: fryerSpaceMetalCost,
+		fryerLunariteCost: fryerLunariteCost,
 		fryerLavaCost: fryerLavaCost,
 		fryerMeteoriteCost: fryerMeteoriteCost,
 		wood: wood,
@@ -151,11 +151,11 @@ function legacySave(data) {
 		laserCutterOilCost: laserCutterOilCost,
 		laserCutterOutput: laserCutterOutput,
 		deforester: deforester,
-		deforesterSpaceMetalCost: deforesterSpaceMetalCost,
+		deforesterLunariteCost: deforesterLunariteCost,
 		deforesterTitaniumCost: deforesterTitaniumCost,
 		deforesterSiliconCost: deforesterSiliconCost,
 		infuser: infuser,
-		infuserSpaceMetalCost: infuserSpaceMetalCost,
+		infuserLunariteCost: infuserLunariteCost,
 		infuserOilCost: infuserOilCost,
 		infuserMeteoriteCost: infuserMeteoriteCost,
 		science: science,
@@ -190,9 +190,9 @@ function legacySave(data) {
 		hydrazineTitaniumCost: hydrazineTitaniumCost,
 		hydrazineSiliconCost: hydrazineSiliconCost,
 		hydrazineGoldCost: hydrazineGoldCost,
-		spaceMetal: spaceMetal,
-		spaceMetalStorage: spaceMetalStorage,
-		spaceMetalNextStorage: spaceMetalNextStorage,
+		lunarite: lunarite,
+		lunariteStorage: lunariteStorage,
+		lunariteNextStorage: lunariteNextStorage,
 		methane: methane,
 		methaneStorage: methaneStorage,
 		methaneNextStorage: methaneNextStorage,
@@ -215,7 +215,7 @@ function legacySave(data) {
 		moonDrillGemCost: moonDrillGemCost,
 		moonDrillOilCost: moonDrillOilCost,
 		moonQuarry: moonQuarry,
-		moonQuarrySpaceMetalCost: moonQuarrySpaceMetalCost,
+		moonQuarryLunariteCost: moonQuarryLunariteCost,
 		moonQuarryGemCost: moonQuarryGemCost,
 		moonQuarrySiliconCost: moonQuarrySiliconCost,
 		planetExcavator: planetExcavator,
@@ -223,77 +223,77 @@ function legacySave(data) {
 		planetExcavatorIceCost: planetExcavatorIceCost,
 		planetExcavatorMeteoriteCost: planetExcavatorMeteoriteCost,
 		vacuum: vacuum,
-		vacuumSpaceMetalCost: vacuumSpaceMetalCost,
+		vacuumLunariteCost: vacuumLunariteCost,
 		vacuumGemCost: vacuumGemCost,
 		suctionExcavator: suctionExcavator,
-		suctionExcavatorSpaceMetalCost: suctionExcavatorSpaceMetalCost,
+		suctionExcavatorLunariteCost: suctionExcavatorLunariteCost,
 		suctionExcavatorGemCost: suctionExcavatorGemCost,
 		suctionExcavatorOilCost: suctionExcavatorOilCost,
 		spaceCow: spaceCow,
-		spaceCowSpaceMetalCost: spaceCowSpaceMetalCost,
+		spaceCowLunariteCost: spaceCowLunariteCost,
 		spaceCowTitaniumCost: spaceCowTitaniumCost,
 		spaceCowSiliconCost: spaceCowSiliconCost,
 		vent: vent,
-		ventSpaceMetalCost: ventSpaceMetalCost,
+		ventLunariteCost: ventLunariteCost,
 		ventHeliumCost: ventHeliumCost,
 		ventMeteoriteCost: ventMeteoriteCost,
 		explorer: explorer,
 		explorerGemCost: explorerGemCost,
-		spaceMetalDrill: spaceMetalDrill,
-		spaceMetalDrillSpaceMetalCost: spaceMetalDrillSpaceMetalCost,
-		spaceMetalDrillGemCost: spaceMetalDrillGemCost,
-		spaceMetalDrillOilCost: spaceMetalDrillOilCost,
+		lunariteDrill: lunariteDrill,
+		lunariteDrillLunariteCost: lunariteDrillLunariteCost,
+		lunariteDrillGemCost: lunariteDrillGemCost,
+		lunariteDrillOilCost: lunariteDrillOilCost,
 		pentaDrill: pentaDrill,
-		pentaDrillSpaceMetalCost: pentaDrillSpaceMetalCost,
+		pentaDrillLunariteCost: pentaDrillLunariteCost,
 		pentaDrillGemCost: pentaDrillGemCost,
 		pentaDrillSiliconCost: pentaDrillSiliconCost,
 		titanDrill: titanDrill,
-		titanDrillSpaceMetalCost: titanDrillSpaceMetalCost,
+		titanDrillLunariteCost: titanDrillLunariteCost,
 		titanDrillGoldCost: titanDrillGoldCost,
 		titanDrillMeteoriteCost: titanDrillMeteoriteCost,
 		droid: droid,
-		droidSpaceMetalCost: droidSpaceMetalCost,
+		droidLunariteCost: droidLunariteCost,
 		droidMethaneCost: droidMethaneCost,
 		destroyer: destroyer,
-		destroyerSpaceMetalCost: destroyerSpaceMetalCost,
+		destroyerLunariteCost: destroyerLunariteCost,
 		destroyerGemCost: destroyerGemCost,
 		destroyerOilCost: destroyerOilCost,
 		deathStar: deathStar,
-		deathStarSpaceMetalCost: deathStarSpaceMetalCost,
+		deathStarLunariteCost: deathStarLunariteCost,
 		deathStarSilverCost: deathStarSilverCost,
 		deathStarSiliconCost: deathStarSiliconCost,
 		actuator: actuator,
-		actuatorSpaceMetalCost: actuatorSpaceMetalCost,
+		actuatorLunariteCost: actuatorLunariteCost,
 		actuatorHeliumCost: actuatorHeliumCost,
 		actuatorMeteoriteCost: actuatorMeteoriteCost,
 		scout: scout,
-		scoutSpaceMetalCost: scoutSpaceMetalCost,
+		scoutLunariteCost: scoutLunariteCost,
 		scoutTitaniumCost: scoutTitaniumCost,
 		spaceLaser: spaceLaser,
-		spaceLaserSpaceMetalCost: spaceLaserSpaceMetalCost,
+		spaceLaserLunariteCost: spaceLaserLunariteCost,
 		spaceLaserGemCost: spaceLaserGemCost,
 		spaceLaserOilCost: spaceLaserOilCost,
 		bertha: bertha,
-		berthaSpaceMetalCost: berthaSpaceMetalCost,
+		berthaLunariteCost: berthaLunariteCost,
 		berthaTitaniumCost: berthaTitaniumCost,
 		berthaSiliconCost: berthaSiliconCost,
 		cannon: cannon,
-		cannonSpaceMetalCost: cannonSpaceMetalCost,
+		cannonLunariteCost: cannonLunariteCost,
 		cannonOilCost: cannonOilCost,
 		cannonMeteoriteCost: cannonMeteoriteCost,
 		blowtorch: blowtorch,
-		blowtorchSpaceMetalCost: blowtorchSpaceMetalCost,
+		blowtorchLunariteCost: blowtorchLunariteCost,
 		blowtorchTitaniumCost: blowtorchTitaniumCost,
 		scorcher: scorcher,
-		scorcherSpaceMetalCost: scorcherSpaceMetalCost,
+		scorcherLunariteCost: scorcherLunariteCost,
 		scorcherGemCost: scorcherGemCost,
 		scorcherOilCost: scorcherOilCost,
 		annihilator: annihilator,
-		annihilatorSpaceMetalCost: annihilatorSpaceMetalCost,
+		annihilatorLunariteCost: annihilatorLunariteCost,
 		annihilatorGemCost: annihilatorGemCost,
 		annihilatorSilverCost: annihilatorSilverCost,
 		desert: desert,
-		desertSpaceMetalCost: desertSpaceMetalCost,
+		desertLunariteCost: desertLunariteCost,
 		desertSiliconCost: desertSiliconCost,
 		desertMeteoriteCost: desertMeteoriteCost,
 		researchUnlocked: researchUnlocked,
@@ -313,46 +313,46 @@ function legacySave(data) {
 		activated: activated,
 		grinder: grinder,
 		grinderTitaniumCost: grinderTitaniumCost,
-		grinderSpaceMetalCost: grinderSpaceMetalCost,
+		grinderLunariteCost: grinderLunariteCost,
 		grinderGoldCost: grinderGoldCost,
 		cubic: cubic,
 		cubicUraniumCost: cubicUraniumCost,
-		cubicSpaceMetalCost: cubicSpaceMetalCost,
+		cubicLunariteCost: cubicLunariteCost,
 		cubicOilCost: cubicOilCost,
 		enricher: enricher,
-		enricherSpaceMetalCost: enricherSpaceMetalCost,
+		enricherLunariteCost: enricherLunariteCost,
 		enricherTitaniumCost: enricherTitaniumCost,
 		enricherSiliconCost: enricherSiliconCost,
 		recycler: recycler,
-		recyclerSpaceMetalCost: recyclerSpaceMetalCost,
+		recyclerLunariteCost: recyclerLunariteCost,
 		recyclerMethaneCost: recyclerMethaneCost,
 		recyclerMeteoriteCost: recyclerMeteoriteCost,
 		lava: lava,
 		lavaStorage: lavaStorage,
 		lavaNextStorage: lavaNextStorage,
 		crucible: crucible,
-		crucibleSpaceMetalCost: crucibleSpaceMetalCost,
+		crucibleLunariteCost: crucibleLunariteCost,
 		crucibleGemCost: crucibleGemCost,
 		extractor: extractor,
-		extractorSpaceMetalCost: extractorSpaceMetalCost,
+		extractorLunariteCost: extractorLunariteCost,
 		extractorTitaniumCost: extractorTitaniumCost,
 		extractorSiliconCost: extractorSiliconCost,
 		extruder: extruder,
-		extruderSpaceMetalCost: extruderSpaceMetalCost,
+		extruderLunariteCost: extruderLunariteCost,
 		extruderTitaniumCost: extruderTitaniumCost,
 		extruderSiliconCost: extruderSiliconCost,
 		veluptuator: veluptuator,
-		veluptuatorSpaceMetalCost: veluptuatorSpaceMetalCost,
+		veluptuatorLunariteCost: veluptuatorLunariteCost,
 		veluptuatorGoldCost: veluptuatorGoldCost,
 		veluptuatorMeteoriteCost: veluptuatorMeteoriteCost,
 		hydrogen: hydrogen,
 		hydrogenStorage: hydrogenStorage,
 		hydrogenNextStorage: hydrogenNextStorage,
 		collector: collector,
-		collectorSpaceMetalCost: collectorSpaceMetalCost,
+		collectorLunariteCost: collectorLunariteCost,
 		collectorTitaniumCost: collectorTitaniumCost,
 		magnet: magnet,
-		magnetSpaceMetalCost: magnetSpaceMetalCost,
+		magnetLunariteCost: magnetLunariteCost,
 		magnetTitaniumCost: magnetTitaniumCost,
 		magnetGoldCost: magnetGoldCost,
 		eCell: eCell,
@@ -360,39 +360,39 @@ function legacySave(data) {
 		eCellGoldCost: eCellGoldCost,
 		eCellSiliconCost: eCellSiliconCost,
 		hindenburg: hindenburg,
-		hindenburgSpaceMetalCost: hindenburgSpaceMetalCost,
+		hindenburgLunariteCost: hindenburgLunariteCost,
 		hindenburgMethaneCost: hindenburgMethaneCost,
 		hindenburgMeteoriteCost: hindenburgMeteoriteCost,
 		helium: helium,
 		heliumStorage: heliumStorage,
 		heliumNextStorage: heliumNextStorage,
 		drone: drone,
-		droneSpaceMetalCost: droneSpaceMetalCost,
+		droneLunariteCost: droneLunariteCost,
 		droneSiliconCost: droneSiliconCost,
 		tanker: tanker,
-		tankerSpaceMetalCost: tankerSpaceMetalCost,
+		tankerLunariteCost: tankerLunariteCost,
 		tankerTitaniumCost: tankerTitaniumCost,
 		tankerSiliconCost: tankerSiliconCost,
 		compressor: compressor,
-		compressorSpaceMetalCost: compressorSpaceMetalCost,
+		compressorLunariteCost: compressorLunariteCost,
 		compressorTitaniumCost: compressorTitaniumCost,
 		compressorSiliconCost: compressorSiliconCost,
 		skimmer: skimmer,
-		skimmerSpaceMetalCost: skimmerSpaceMetalCost,
+		skimmerLunariteCost: skimmerLunariteCost,
 		skimmerTitaniumCost: skimmerTitaniumCost,
 		skimmerMeteoriteCost: skimmerMeteoriteCost,
 		ice: ice,
 		iceStorage: iceStorage,
 		iceNextStorage: iceNextStorage,
 		icePick: icePick,
-		icePickSpaceMetalCost: icePickSpaceMetalCost,
+		icePickLunariteCost: icePickLunariteCost,
 		icePickGemCost: icePickGemCost,
 		iceDrill: iceDrill,
-		iceDrillSpaceMetalCost: iceDrillSpaceMetalCost,
+		iceDrillLunariteCost: iceDrillLunariteCost,
 		iceDrillTitaniumCost: iceDrillTitaniumCost,
 		iceDrillSiliconCost: iceDrillSiliconCost,
 		freezer: freezer,
-		freezerSpaceMetalCost: freezerSpaceMetalCost,
+		freezerLunariteCost: freezerLunariteCost,
 		freezerTitaniumCost: freezerTitaniumCost,
 		freezerSiliconCost: freezerSiliconCost,
 		mrFreeze: mrFreeze,
@@ -404,10 +404,10 @@ function legacySave(data) {
 		meteoriteNextStorage: meteoriteNextStorage,
 		meteoriteToggled: meteoriteToggled,
 		printer: printer,
-		printerSpaceMetalCost: printerSpaceMetalCost,
+		printerLunariteCost: printerLunariteCost,
 		printerSiliconCost: printerSiliconCost,
 		web: web,
-		webSpaceMetalCost: webSpaceMetalCost,
+		webLunariteCost: webLunariteCost,
 		webUraniumCost: webUraniumCost,
 		webSiliconCost: webSiliconCost,
 		dyson: dyson,
@@ -441,12 +441,14 @@ function legacyLoad(savegame){
 		if(typeof savegame.PSUT2GoldCost !== "undefined") PSUT2GoldCost = savegame.PSUT2GoldCost;
 		if(typeof savegame.PSUT2UraniumCost !== "undefined") PSUT2UraniumCost = savegame.PSUT2UraniumCost;
 		if(typeof savegame.heater !== "undefined") heater = savegame.heater;
-		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterSpaceMetalCost = savegame.heaterSpaceMetalCost;
+		if(typeof savegame.heaterSpaceMetalCost !== "undefined") heaterLunariteCost = savegame.heaterSpaceMetalCost;
+		if(typeof savegame.heaterLunariteCost !== "undefined") heaterLunariteCost = savegame.heaterLunariteCost;
 		if(typeof savegame.heaterGemCost !== "undefined") heaterGemCost = savegame.heaterGemCost;
 		if(typeof savegame.heaterSiliconCost !== "undefined") heaterSiliconCost = savegame.heaterSiliconCost;
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.plasmatic !== "undefined") plasmatic = savegame.plasmatic;
-		if(typeof savegame.plasmaticSpaceMetalCost !== "undefined") plasmaticSpaceMetalCost = savegame.plasmaticSpaceMetalCost;
+		if(typeof savegame.plasmaticSpaceMetalCost !== "undefined") plasmaticLunariteCost = savegame.plasmaticSpaceMetalCost;
+		if(typeof savegame.plasmaticLunariteCost !== "undefined") plasmaticLunariteCost = savegame.plasmaticLunariteCost;
 		if(typeof savegame.plasmaticSiliconCost !== "undefined") plasmaticSiliconCost = savegame.plasmaticSiliconCost;
 		if(typeof savegame.plasmaticMeteoriteCost !== "undefined") plasmaticMeteoriteCost = savegame.plasmaticMeteoriteCost;
 		if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
@@ -454,19 +456,23 @@ function legacyLoad(savegame){
 		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
 		if(typeof savegame.batteryMetalCost !== "undefined") batteryMetalCost = savegame.batteryMetalCost;
 		if(typeof savegame.batteryGemCost !== "undefined") batteryGemCost = savegame.batteryGemCost;
-		if(typeof savegame.batterySpaceMetalCost !== "undefined") batterySpaceMetalCost = savegame.batterySpaceMetalCost;
+		if(typeof savegame.batterySpaceMetalCost !== "undefined") batteryLunariteCost = savegame.batterySpaceMetalCost;
+		if(typeof savegame.batteryLunariteCost !== "undefined") batteryLunariteCost = savegame.batteryLunariteCost;
 		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;
 		if(typeof savegame.batteryT2MetalCost !== "undefined") batteryT2MetalCost = savegame.batteryT2MetalCost;
 		if(typeof savegame.batteryT2GemCost !== "undefined") batteryT2GemCost = savegame.batteryT2GemCost;
-		if(typeof savegame.batteryT2SpaceMetalCost !== "undefined") batteryT2SpaceMetalCost = savegame.batteryT2SpaceMetalCost;
+		if(typeof savegame.batteryT2SpaceMetalCost !== "undefined") batteryT2LunariteCost = savegame.batteryT2SpaceMetalCost;
+		if(typeof savegame.batteryT2LunariteCost !== "undefined") batteryT2LunariteCost = savegame.batteryT2LunariteCost;
 		if(typeof savegame.batteryT3 !== "undefined") batteryT3 = savegame.batteryT3;
 		if(typeof savegame.batteryT3MetalCost !== "undefined") batteryT3MetalCost = savegame.batteryT3MetalCost;
 		if(typeof savegame.batteryT3GemCost !== "undefined") batteryT3GemCost = savegame.batteryT3GemCost;
-		if(typeof savegame.batteryT3SpaceMetalCost !== "undefined") batteryT3SpaceMetalCost = savegame.batteryT3SpaceMetalCost;
+		if(typeof savegame.batteryT3SpaceMetalCost !== "undefined") batteryT3LunariteCost = savegame.batteryT3SpaceMetalCost;
+		if(typeof savegame.batteryT3LunariteCost !== "undefined") batteryT3LunariteCost = savegame.batteryT3LunariteCost;
 		if(typeof savegame.batteryT4 !== "undefined") batteryT4 = savegame.batteryT4;
 		if(typeof savegame.batteryT4MetalCost !== "undefined") batteryT4MetalCost = savegame.batteryT4MetalCost;
 		if(typeof savegame.batteryT4GemCost !== "undefined") batteryT4GemCost = savegame.batteryT4GemCost;
-		if(typeof savegame.batteryT4SpaceMetalCost !== "undefined") batteryT4SpaceMetalCost = savegame.batteryT4SpaceMetalCost;
+		if(typeof savegame.batteryT4SpaceMetalCost !== "undefined") batteryT4LunariteCost = savegame.batteryT4SpaceMetalCost;
+		if(typeof savegame.batteryT4LunariteCost !== "undefined") batteryT4LunariteCost = savegame.batteryT4LunariteCost;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.charcoalEngineMetalCost !== "undefined") charcoalEngineMetalCost = savegame.charcoalEngineMetalCost;
 		if(typeof savegame.charcoalEngineGemCost !== "undefined") charcoalEngineGemCost = savegame.charcoalEngineGemCost;
@@ -476,17 +482,21 @@ function legacyLoad(savegame){
 		if(typeof savegame.solarPanelGemCost !== "undefined") solarPanelGemCost = savegame.solarPanelGemCost;
 		if(typeof savegame.solarPanelOutput !== "undefined") solarPanelOutput = savegame.solarPanelOutput;
 		if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;
-		if(typeof savegame.methaneStationSpaceMetalCost !== "undefined") methaneStationSpaceMetalCost = savegame.methaneStationSpaceMetalCost;
+		if(typeof savegame.methaneStationSpaceMetalCost !== "undefined") methaneStationLunariteCost = savegame.methaneStationSpaceMetalCost;
+		if(typeof savegame.methaneStationLunariteCost !== "undefined") methaneStationLunariteCost = savegame.methaneStationLunariteCost;
 		if(typeof savegame.methaneStationTitaniumCost !== "undefined") methaneStationTitaniumCost = savegame.methaneStationTitaniumCost;
 		if(typeof savegame.nuclearStation !== "undefined") nuclearStation = savegame.nuclearStation;
-		if(typeof savegame.nuclearStationSpaceMetalCost !== "undefined") nuclearStationSpaceMetalCost = savegame.nuclearStationSpaceMetalCost;
+		if(typeof savegame.nuclearStationSpaceMetalCost !== "undefined") nuclearStationLunariteCost = savegame.nuclearStationSpaceMetalCost;
+		if(typeof savegame.nuclearStationLunariteCost !== "undefined") nuclearStationLunariteCost = savegame.nuclearStationLunariteCost;
 		if(typeof savegame.nuclearStationTitaniumCost !== "undefined") nuclearStationTitaniumCost = savegame.nuclearStationTitaniumCost;
 		if(typeof savegame.magmatic !== "undefined") magmatic = savegame.magmatic;
-		if(typeof savegame.magmaticSpaceMetalCost !== "undefined") magmaticSpaceMetalCost = savegame.magmaticSpaceMetalCost;
+		if(typeof savegame.magmaticSpaceMetalCost !== "undefined") magmaticLunariteCost = savegame.magmaticSpaceMetalCost;
+		if(typeof savegame.magmaticLunariteCost !== "undefined") magmaticLunariteCost = savegame.magmaticLunariteCost;
 		if(typeof savegame.magmaticGemCost !== "undefined") magmaticGemCost = savegame.magmaticGemCost;
 		if(typeof savegame.magmaticSilverCost !== "undefined") magmaticSilverCost = savegame.magmaticSilverCost;
 		if(typeof savegame.fusionReactor !== "undefined") fusionReactor = savegame.fusionReactor;
-		if(typeof savegame.fusionReactorSpaceMetalCost !== "undefined") fusionReactorSpaceMetalCost = savegame.fusionReactorSpaceMetalCost;
+		if(typeof savegame.fusionReactorSpaceMetalCost !== "undefined") fusionReactorLunariteCost = savegame.fusionReactorSpaceMetalCost;
+		if(typeof savegame.fusionReactorLunariteCost !== "undefined") fusionReactorLunariteCost = savegame.fusionReactorLunariteCost;
 		if(typeof savegame.fusionReactorTitaniumCost !== "undefined") fusionReactorTitaniumCost = savegame.fusionReactorTitaniumCost;
 		if(typeof savegame.fusionReactorSiliconCost !== "undefined") fusionReactorSiliconCost = savegame.fusionReactorSiliconCost;
 		if(typeof savegame.oil !== "undefined") oil = savegame.oil;
@@ -501,11 +511,13 @@ function legacyLoad(savegame){
 		if(typeof savegame.pumpjackOilCost !== "undefined") pumpjackOilCost = savegame.pumpjackOilCost;
 		if(typeof savegame.pumpjackOutput !== "undefined") pumpjackOutput = savegame.pumpjackOutput;
 		if(typeof savegame.oilField !== "undefined") oilField = savegame.oilField;
-		if(typeof savegame.oilFieldSpaceMetalCost !== "undefined") oilFieldSpaceMetalCost = savegame.oilFieldSpaceMetalCost;
+		if(typeof savegame.oilFieldSpaceMetalCost !== "undefined") oilFieldLunariteCost = savegame.oilFieldSpaceMetalCost;
+		if(typeof savegame.oilFieldLunariteCost !== "undefined") oilFieldLunariteCost = savegame.oilFieldLunariteCost;
 		if(typeof savegame.oilFieldTitaniumCost !== "undefined") oilFieldTitaniumCost = savegame.oilFieldTitaniumCost;
 		if(typeof savegame.oilFieldSiliconCost !== "undefined") oilFieldSiliconCost = savegame.oilFieldSiliconCost;
 		if(typeof savegame.oilRig !== "undefined") oilRig = savegame.oilRig;
-		if(typeof savegame.oilRigSpaceMetalCost !== "undefined") oilRigSpaceMetalCost = savegame.oilRigSpaceMetalCost;
+		if(typeof savegame.oilRigSpaceMetalCost !== "undefined") oilRigLunariteCost = savegame.oilRigSpaceMetalCost;
+		if(typeof savegame.oilRigLunariteCost !== "undefined") oilRigLunariteCost = savegame.oilRigLunariteCost;
 		if(typeof savegame.oilRigTitaniumCost !== "undefined") oilRigTitaniumCost = savegame.oilRigTitaniumCost;
 		if(typeof savegame.oilRigMeteoriteCost !== "undefined") oilRigMeteoriteCost = savegame.oilRigMeteoriteCost;
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
@@ -520,11 +532,13 @@ function legacyLoad(savegame){
 		if(typeof savegame.heavyDrillOilCost !== "undefined") heavyDrillOilCost = savegame.heavyDrillOilCost;
 		if(typeof savegame.heavyDrillOutput !== "undefined") heavyDrillOutput = savegame.heavyDrillOutput;
 		if(typeof savegame.gigaDrill !== "undefined") gigaDrill = savegame.gigaDrill;
-		if(typeof savegame.gigaDrillSpaceMetalCost !== "undefined") gigaDrillSpaceMetalCost = savegame.gigaDrillSpaceMetalCost;
+		if(typeof savegame.gigaDrillSpaceMetalCost !== "undefined") gigaDrillLunariteCost = savegame.gigaDrillSpaceMetalCost;
+		if(typeof savegame.gigaDrillLunariteCost !== "undefined") gigaDrillLunariteCost = savegame.gigaDrillLunariteCost;
 		if(typeof savegame.gigaDrillGemCost !== "undefined") gigaDrillGemCost = savegame.gigaDrillGemCost;
 		if(typeof savegame.gigaDrillSiliconCost !== "undefined") gigaDrillSiliconCost = savegame.gigaDrillSiliconCost;
 		if(typeof savegame.quantumDrill !== "undefined") quantumDrill = savegame.quantumDrill;
-		if(typeof savegame.quantumDrillSpaceMetalCost !== "undefined") quantumDrillSpaceMetalCost = savegame.quantumDrillSpaceMetalCost;
+		if(typeof savegame.quantumDrillSpaceMetalCost !== "undefined") quantumDrillLunariteCost = savegame.quantumDrillSpaceMetalCost;
+		if(typeof savegame.quantumDrillLunariteCost !== "undefined") quantumDrillLunariteCost = savegame.quantumDrillLunariteCost;
 		if(typeof savegame.quantumDrillGoldCost !== "undefined") quantumDrillGoldCost = savegame.quantumDrillGoldCost;
 		if(typeof savegame.quantumDrillMeteoriteCost !== "undefined") quantumDrillMeteoriteCost = savegame.quantumDrillMeteoriteCost;
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
@@ -539,11 +553,13 @@ function legacyLoad(savegame){
 		if(typeof savegame.advancedDrillOilCost !== "undefined") advancedDrillOilCost = savegame.advancedDrillOilCost;
 		if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
 		if(typeof savegame.diamondDrill !== "undefined") diamondDrill = savegame.diamondDrill;
-		if(typeof savegame.diamondDrillSpaceMetalCost !== "undefined") diamondDrillSpaceMetalCost = savegame.diamondDrillSpaceMetalCost;
+		if(typeof savegame.diamondDrillSpaceMetalCost !== "undefined") diamondDrillLunariteCost = savegame.diamondDrillSpaceMetalCost;
+		if(typeof savegame.diamondDrillLunariteCost !== "undefined") diamondDrillLunariteCost = savegame.diamondDrillLunariteCost;
 		if(typeof savegame.diamondDrillGemCost !== "undefined") diamondDrillGemCost = savegame.diamondDrillGemCost;
 		if(typeof savegame.diamondDrillSiliconCost !== "undefined") diamondDrillSiliconCost = savegame.diamondDrillSiliconCost;
 		if(typeof savegame.carbyneDrill !== "undefined") carbyneDrill = savegame.carbyneDrill;
-		if(typeof savegame.carbyneDrillSpaceMetalCost !== "undefined") carbyneDrillSpaceMetalCost = savegame.carbyneDrillSpaceMetalCost;
+		if(typeof savegame.carbyneDrillSpaceMetalCost !== "undefined") carbyneDrillLunariteCost = savegame.carbyneDrillSpaceMetalCost;
+		if(typeof savegame.carbyneDrillLunariteCost !== "undefined") carbyneDrillLunariteCost = savegame.carbyneDrillLunariteCost;
 		if(typeof savegame.carbyneDrillGemCost !== "undefined") carbyneDrillGemCost = savegame.carbyneDrillGemCost;
 		if(typeof savegame.carbyneDrillMeteoriteCost !== "undefined") carbyneDrillMeteoriteCost = savegame.carbyneDrillMeteoriteCost;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
@@ -560,11 +576,13 @@ function legacyLoad(savegame){
 		if(typeof savegame.furnaceWoodInput !== "undefined") furnaceWoodInput = savegame.furnaceWoodInput;
 		if(typeof savegame.furnaceOutput !== "undefined") furnaceOutput = savegame.furnaceOutput;
 		if(typeof savegame.kiln !== "undefined") kiln = savegame.kiln;
-		if(typeof savegame.kilnSpaceMetalCost !== "undefined") kilnSpaceMetalCost = savegame.kilnSpaceMetalCost;
+		if(typeof savegame.kilnSpaceMetalCost !== "undefined") kilnLunariteCost = savegame.kilnSpaceMetalCost;
+		if(typeof savegame.kilnLunariteCost !== "undefined") kilnLunariteCost = savegame.kilnLunariteCost;
 		if(typeof savegame.kilnGemCost !== "undefined") kilnGemCost = savegame.kilnGemCost;
 		if(typeof savegame.kilnSiliconCost !== "undefined") kilnSiliconCost = savegame.kilnSiliconCost;
 		if(typeof savegame.fryer !== "undefined") fryer = savegame.fryer;
-		if(typeof savegame.fryerSpaceMetalCost !== "undefined") fryerSpaceMetalCost = savegame.fryerSpaceMetalCost;
+		if(typeof savegame.fryerSpaceMetalCost !== "undefined") fryerLunariteCost = savegame.fryerSpaceMetalCost;
+		if(typeof savegame.fryerLunariteCost !== "undefined") fryerLunariteCost = savegame.fryerLunariteCost;
 		if(typeof savegame.fryerLavaCost !== "undefined") fryerLavaCost = savegame.fryerLavaCost;
 		if(typeof savegame.fryerMeteoriteCost !== "undefined") fryerMeteoriteCost = savegame.fryerMeteoriteCost;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
@@ -579,11 +597,13 @@ function legacyLoad(savegame){
 		if(typeof savegame.laserCutterOilCost !== "undefined") laserCutterOilCost = savegame.laserCutterOilCost;
 		if(typeof savegame.laserCutterOutput !== "undefined") laserCutterOutput = savegame.laserCutterOutput;
 		if(typeof savegame.deforester !== "undefined") deforester = savegame.deforester;
-		if(typeof savegame.deforesterSpaceMetalCost !== "undefined") deforesterSpaceMetalCost = savegame.deforesterSpaceMetalCost;
+		if(typeof savegame.deforesterSpaceMetalCost !== "undefined") deforesterLunariteCost = savegame.deforesterSpaceMetalCost;
+		if(typeof savegame.deforesterLunariteCost !== "undefined") deforesterLunariteCost = savegame.deforesterLunariteCost;
 		if(typeof savegame.deforesterTitaniumCost !== "undefined") deforesterTitaniumCost = savegame.deforesterTitaniumCost;
 		if(typeof savegame.deforesterSiliconCost !== "undefined") deforesterSiliconCost = savegame.deforesterSiliconCost;
 		if(typeof savegame.infuser !== "undefined") infuser = savegame.infuser;
-		if(typeof savegame.infuserSpaceMetalCost !== "undefined") infuserSpaceMetalCost = savegame.infuserSpaceMetalCost;
+		if(typeof savegame.infuserSpaceMetalCost !== "undefined") infuserLunariteCost = savegame.infuserSpaceMetalCost;
+		if(typeof savegame.infuserLunariteCost !== "undefined") infuserLunariteCost = savegame.infuserLunariteCost;
 		if(typeof savegame.infuserOilCost !== "undefined") infuserOilCost = savegame.infuserOilCost;
 		if(typeof savegame.infuserMeteoriteCost !== "undefined") infuserMeteoriteCost = savegame.infuserMeteoriteCost;
 		if(typeof savegame.science !== "undefined") science = savegame.science;
@@ -618,9 +638,12 @@ function legacyLoad(savegame){
 		if(typeof savegame.hydrazineTitaniumCost !== "undefined") hydrazineTitaniumCost = savegame.hydrazineTitaniumCost;
 		if(typeof savegame.hydrazineSiliconCost !== "undefined") hydrazineSiliconCost = savegame.hydrazineSiliconCost;
 		if(typeof savegame.hydrazineGoldCost !== "undefined") hydrazineGoldCost = savegame.hydrazineGoldCost;
-		if(typeof savegame.spaceMetal !== "undefined") spaceMetal = savegame.spaceMetal;
-		if(typeof savegame.spaceMetalStorage !== "undefined") spaceMetalStorage = savegame.spaceMetalStorage;
-		if(typeof savegame.spaceMetalNextStorage !== "undefined") spaceMetalNextStorage = savegame.spaceMetalNextStorage;
+		if(typeof savegame.spaceMetal !== "undefined") lunarite = savegame.spaceMetal;
+		if(typeof savegame.lunarite !== "undefined") lunarite = savegame.lunarite;
+		if(typeof savegame.spaceMetalStorage !== "undefined") lunariteStorage = savegame.spaceMetalStorage;
+		if(typeof savegame.lunariteStorage !== "undefined") lunariteStorage = savegame.lunariteStorage;
+		if(typeof savegame.spaceMetalNextStorage !== "undefined") lunariteNextStorage = savegame.spaceMetalNextStorage;
+		if(typeof savegame.lunariteNextStorage !== "undefined") lunariteNextStorage = savegame.lunariteNextStorage;
 		if(typeof savegame.methane !== "undefined") methane = savegame.methane;
 		if(typeof savegame.methaneStorage !== "undefined") methaneStorage = savegame.methaneStorage;
 		if(typeof savegame.methaneNextStorage !== "undefined") methaneNextStorage = savegame.methaneNextStorage;
@@ -658,7 +681,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.moonDrillGemCost !== "undefined") moonDrillGemCost = savegame.moonDrillGemCost;
 		if(typeof savegame.moonDrillOilCost !== "undefined") moonDrillOilCost = savegame.moonDrillOilCost;
 		if(typeof savegame.moonQuarry !== "undefined") moonQuarry = savegame.moonQuarry;
-		if(typeof savegame.moonQuarrySpaceMetalCost !== "undefined") moonQuarrySpaceMetalCost = savegame.moonQuarrySpaceMetalCost;
+		if(typeof savegame.moonQuarrySpaceMetalCost !== "undefined") moonQuarryLunariteCost = savegame.moonQuarrySpaceMetalCost;
+		if(typeof savegame.moonQuarryLunariteCost !== "undefined") moonQuarryLunariteCost = savegame.moonQuarryLunariteCost;
 		if(typeof savegame.moonQuarryGemCost !== "undefined") moonQuarryGemCost = savegame.moonQuarryGemCost;
 		if(typeof savegame.moonQuarrySiliconCost !== "undefined") moonQuarrySiliconCost = savegame.moonQuarrySiliconCost;
 		if(typeof savegame.planetExcavator !== "undefined") planetExcavator = savegame.planetExcavator;
@@ -666,77 +690,101 @@ function legacyLoad(savegame){
 		if(typeof savegame.planetExcavatorIceCost !== "undefined") planetExcavatorIceCost = savegame.planetExcavatorIceCost;
 		if(typeof savegame.planetExcavatorMeteoriteCost !== "undefined") planetExcavatorMeteoriteCost = savegame.planetExcavatorMeteoriteCost;
 		if(typeof savegame.vacuum !== "undefined") vacuum = savegame.vacuum;
-		if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumSpaceMetalCost = savegame.vacuumSpaceMetalCost;
+		if(typeof savegame.vacuumSpaceMetalCost !== "undefined") vacuumLunariteCost = savegame.vacuumSpaceMetalCost;
+		if(typeof savegame.vacuumLunariteCost !== "undefined") vacuumLunariteCost = savegame.vacuumLunariteCost;
 		if(typeof savegame.vacuumGemCost !== "undefined") vacuumGemCost = savegame.vacuumGemCost;
 		if(typeof savegame.suctionExcavator !== "undefined") suctionExcavator = savegame.suctionExcavator;
-		if(typeof savegame.suctionExcavatorSpaceMetalCost !== "undefined") suctionExcavatorSpaceMetalCost = savegame.suctionExcavatorSpaceMetalCost;
+		if(typeof savegame.suctionExcavatorSpaceMetalCost !== "undefined") suctionExcavatorLunariteCost = savegame.suctionExcavatorSpaceMetalCost;
+		if(typeof savegame.suctionExcavatorLunariteCost !== "undefined") suctionExcavatorLunariteCost = savegame.suctionExcavatorLunariteCost;
 		if(typeof savegame.suctionExcavatorGemCost !== "undefined") suctionExcavatorGemCost = savegame.suctionExcavatorGemCost;
 		if(typeof savegame.suctionExcavatorOilCost !== "undefined") suctionExcavatorOilCost = savegame.suctionExcavatorOilCost;
 		if(typeof savegame.spaceCow !== "undefined") spaceCow = savegame.spaceCow;
-		if(typeof savegame.spaceCowSpaceMetalCost !== "undefined") spaceCowSpaceMetalCost = savegame.spaceCowSpaceMetalCost;
+		if(typeof savegame.spaceCowSpaceMetalCost !== "undefined") spaceCowLunariteCost = savegame.spaceCowSpaceMetalCost;
+		if(typeof savegame.spaceCowLunariteCost !== "undefined") spaceCowLunariteCost = savegame.spaceCowLunariteCost;
 		if(typeof savegame.spaceCowTitaniumCost !== "undefined") spaceCowTitaniumCost = savegame.spaceCowTitaniumCost;
 		if(typeof savegame.spaceCowSiliconCost !== "undefined") spaceCowSiliconCost = savegame.spaceCowSiliconCost;
 		if(typeof savegame.vent !== "undefined") vent = savegame.vent;
-		if(typeof savegame.ventSpaceMetalCost !== "undefined") ventSpaceMetalCost = savegame.ventSpaceMetalCost;
+		if(typeof savegame.ventSpaceMetalCost !== "undefined") ventLunariteCost = savegame.ventSpaceMetalCost;
+		if(typeof savegame.ventLunariteCost !== "undefined") ventLunariteCost = savegame.ventLunariteCost;
 		if(typeof savegame.ventHeliumCost !== "undefined") ventHeliumCost = savegame.ventHeliumCost;
 		if(typeof savegame.ventMeteoriteCost !== "undefined") ventMeteoriteCost = savegame.ventMeteoriteCost;
 		if(typeof savegame.explorer !== "undefined") explorer = savegame.explorer;
 		if(typeof savegame.explorerGemCost !== "undefined") explorerGemCost = savegame.explorerGemCost;
-		if(typeof savegame.spaceMetalDrill !== "undefined") spaceMetalDrill = savegame.spaceMetalDrill;
-		if(typeof savegame.spaceMetalDrillSpaceMetalCost !== "undefined") spaceMetalDrillSpaceMetalCost = savegame.spaceMetalDrillSpaceMetalCost;
-		if(typeof savegame.spaceMetalDrillGemCost !== "undefined") spaceMetalDrillGemCost = savegame.spaceMetalDrillGemCost;
-		if(typeof savegame.spaceMetalDrillOilCost !== "undefined") spaceMetalDrillOilCost = savegame.spaceMetalDrillOilCost;
+		if(typeof savegame.spaceMetalDrill !== "undefined") lunariteDrill = savegame.spaceMetalDrill;
+		if(typeof savegame.spaceMetalDrillSpaceMetalCost !== "undefined") lunariteDrillLunariteCost = savegame.spaceMetalDrillSpaceMetalCost;
+		if(typeof savegame.spaceMetalDrillLunariteCost !== "undefined") lunariteDrillLunariteCost = savegame.spaceMetalDrillLunariteCost;
+		if(typeof savegame.spaceMetalDrillGemCost !== "undefined") lunariteDrillGemCost = savegame.spaceMetalDrillGemCost;
+		if(typeof savegame.spaceMetalDrillOilCost !== "undefined") lunariteDrillOilCost = savegame.spaceMetalDrillOilCost;
+		if(typeof savegame.lunariteDrill !== "undefined") lunariteDrill = savegame.lunariteDrill;
+		if(typeof savegame.lunariteDrillSpaceMetalCost !== "undefined") lunariteDrillLunariteCost = savegame.lunariteDrillSpaceMetalCost;
+		if(typeof savegame.lunariteDrillLunariteCost !== "undefined") lunariteDrillLunariteCost = savegame.lunariteDrillLunariteCost;
+		if(typeof savegame.lunariteDrillGemCost !== "undefined") lunariteDrillGemCost = savegame.lunariteDrillGemCost;
+		if(typeof savegame.lunariteDrillOilCost !== "undefined") lunariteDrillOilCost = savegame.lunariteDrillOilCost;
 		if(typeof savegame.pentaDrill !== "undefined") pentaDrill = savegame.pentaDrill;
-		if(typeof savegame.pentaDrillSpaceMetalCost !== "undefined") pentaDrillSpaceMetalCost = savegame.pentaDrillSpaceMetalCost;
+		if(typeof savegame.pentaDrillSpaceMetalCost !== "undefined") pentaDrillLunariteCost = savegame.pentaDrillSpaceMetalCost;
+		if(typeof savegame.pentaDrillLunariteCost !== "undefined") pentaDrillLunariteCost = savegame.pentaDrillLunariteCost;
 		if(typeof savegame.pentaDrillGemCost !== "undefined") pentaDrillGemCost = savegame.pentaDrillGemCost;
 		if(typeof savegame.pentaDrillSiliconCost !== "undefined") pentaDrillSiliconCost = savegame.pentaDrillSiliconCost;
 		if(typeof savegame.titanDrill !== "undefined") titanDrill = savegame.titanDrill;
-		if(typeof savegame.titanDrillSpaceMetalCost !== "undefined") titanDrillSpaceMetalCost = savegame.titanDrillSpaceMetalCost;
+		if(typeof savegame.titanDrillSpaceMetalCost !== "undefined") titanDrillLunariteCost = savegame.titanDrillSpaceMetalCost;
+		if(typeof savegame.titanDrillLunariteCost !== "undefined") titanDrillLunariteCost = savegame.titanDrillLunariteCost;
 		if(typeof savegame.titanDrillGoldCost !== "undefined") titanDrillGoldCost = savegame.titanDrillGoldCost;
 		if(typeof savegame.titanDrillMeteoriteCost !== "undefined") titanDrillMeteoriteCost = savegame.titanDrillMeteoriteCost;
 		if(typeof savegame.droid !== "undefined") droid = savegame.droid;
-		if(typeof savegame.droidSpaceMetalCost !== "undefined") droidSpaceMetalCost = savegame.droidSpaceMetalCost;
+		if(typeof savegame.droidSpaceMetalCost !== "undefined") droidLunariteCost = savegame.droidSpaceMetalCost;
+		if(typeof savegame.droidLunariteCost !== "undefined") droidLunariteCost = savegame.droidLunariteCost;
 		if(typeof savegame.droidMethaneCost !== "undefined") droidMethaneCost = savegame.droidMethaneCost;
 		if(typeof savegame.destroyer !== "undefined") destroyer = savegame.destroyer;
-		if(typeof savegame.destroyerSpaceMetalCost !== "undefined") destroyerSpaceMetalCost = savegame.destroyerSpaceMetalCost;
+		if(typeof savegame.destroyerSpaceMetalCost !== "undefined") destroyerLunariteCost = savegame.destroyerSpaceMetalCost;
+		if(typeof savegame.destroyerLunariteCost !== "undefined") destroyerLunariteCost = savegame.destroyerLunariteCost;
 		if(typeof savegame.destroyerGemCost !== "undefined") destroyerGemCost = savegame.destroyerGemCost;
 		if(typeof savegame.destroyerOilCost !== "undefined") destroyerOilCost = savegame.destroyerOilCost;
 		if(typeof savegame.deathStar !== "undefined") deathStar = savegame.deathStar;
-		if(typeof savegame.deathStarSpaceMetalCost !== "undefined") deathStarSpaceMetalCost = savegame.deathStarSpaceMetalCost;
+		if(typeof savegame.deathStarSpaceMetalCost !== "undefined") deathStarLunariteCost = savegame.deathStarSpaceMetalCost;
+		if(typeof savegame.deathStarLunariteCost !== "undefined") deathStarLunariteCost = savegame.deathStarLunariteCost;
 		if(typeof savegame.deathStarSilverCost !== "undefined") deathStarSilverCost = savegame.deathStarSilverCost;
 		if(typeof savegame.deathStarSiliconCost !== "undefined") deathStarSiliconCost = savegame.deathStarSiliconCost;
 		if(typeof savegame.actuator !== "undefined") actuator = savegame.actuator;
-		if(typeof savegame.actuatorSpaceMetalCost !== "undefined") actuatorSpaceMetalCost = savegame.actuatorSpaceMetalCost;
+		if(typeof savegame.actuatorSpaceMetalCost !== "undefined") actuatorLunariteCost = savegame.actuatorSpaceMetalCost;
+		if(typeof savegame.actuatorLunariteCost !== "undefined") actuatorLunariteCost = savegame.actuatorLunariteCost;
 		if(typeof savegame.actuatorHeliumCost !== "undefined") actuatorHeliumCost = savegame.actuatorHeliumCost;
 		if(typeof savegame.actuatorMeteoriteCost !== "undefined") actuatorMeteoriteCost = savegame.actuatorMeteoriteCost;
 		if(typeof savegame.scout !== "undefined") scout = savegame.scout;
-		if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutSpaceMetalCost = savegame.scoutSpaceMetalCost;
+		if(typeof savegame.scoutSpaceMetalCost !== "undefined") scoutLunariteCost = savegame.scoutSpaceMetalCost;
+		if(typeof savegame.scoutLunariteCost !== "undefined") scoutLunariteCost = savegame.scoutLunariteCost;
 		if(typeof savegame.scoutTitaniumCost !== "undefined") scoutTitaniumCost = savegame.scoutTitaniumCost;
 		if(typeof savegame.spaceLaser !== "undefined") spaceLaser = savegame.spaceLaser;
-		if(typeof savegame.spaceLaserSpaceMetalCost !== "undefined") spaceLaserSpaceMetalCost = savegame.spaceLaserSpaceMetalCost;
+		if(typeof savegame.spaceLaserSpaceMetalCost !== "undefined") spaceLaserLunariteCost = savegame.spaceLaserSpaceMetalCost;
+		if(typeof savegame.spaceLaserLunariteCost !== "undefined") spaceLaserLunariteCost = savegame.spaceLaserLunariteCost;
 		if(typeof savegame.spaceLaserGemCost !== "undefined") spaceLaserGemCost = savegame.spaceLaserGemCost;
 		if(typeof savegame.spaceLaserOilCost !== "undefined") spaceLaserOilCost = savegame.spaceLaserOilCost;
 		if(typeof savegame.bertha !== "undefined") bertha = savegame.bertha;
-		if(typeof savegame.berthaSpaceMetalCost !== "undefined") berthaSpaceMetalCost = savegame.berthaSpaceMetalCost;
+		if(typeof savegame.berthaSpaceMetalCost !== "undefined") berthaLunariteCost = savegame.berthaSpaceMetalCost;
+		if(typeof savegame.berthaLunariteCost !== "undefined") berthaLunariteCost = savegame.berthaLunariteCost;
 		if(typeof savegame.berthaTitaniumCost !== "undefined") berthaTitaniumCost = savegame.berthaTitaniumCost;
 		if(typeof savegame.berthaSiliconCost !== "undefined") berthaSiliconCost = savegame.berthaSiliconCost;
 		if(typeof savegame.cannon !== "undefined") cannon = savegame.cannon;
-		if(typeof savegame.cannonSpaceMetalCost !== "undefined") cannonSpaceMetalCost = savegame.cannonSpaceMetalCost;
+		if(typeof savegame.cannonSpaceMetalCost !== "undefined") cannonLunariteCost = savegame.cannonSpaceMetalCost;
+		if(typeof savegame.cannonLunariteCost !== "undefined") cannonLunariteCost = savegame.cannonLunariteCost;
 		if(typeof savegame.cannonOilCost !== "undefined") cannonOilCost = savegame.cannonOilCost;
 		if(typeof savegame.cannonMeteoriteCost !== "undefined") cannonMeteoriteCost = savegame.cannonMeteoriteCost;
 		if(typeof savegame.blowtorch !== "undefined") blowtorch = savegame.blowtorch;
-		if(typeof savegame.blowtorchSpaceMetalCost !== "undefined") blowtorchSpaceMetalCost = savegame.blowtorchSpaceMetalCost;
+		if(typeof savegame.blowtorchSpaceMetalCost !== "undefined") blowtorchLunariteCost = savegame.blowtorchSpaceMetalCost;
+		if(typeof savegame.blowtorchLunariteCost !== "undefined") blowtorchLunariteCost = savegame.blowtorchLunariteCost;
 		if(typeof savegame.blowtorchTitaniumCost !== "undefined") blowtorchTitaniumCost = savegame.blowtorchTitaniumCost;
 		if(typeof savegame.scorcher !== "undefined") scorcher = savegame.scorcher;
-		if(typeof savegame.scorcherSpaceMetalCost !== "undefined") scorcherSpaceMetalCost = savegame.scorcherSpaceMetalCost;
+		if(typeof savegame.scorcherSpaceMetalCost !== "undefined") scorcherLunariteCost = savegame.scorcherSpaceMetalCost;
+		if(typeof savegame.scorcherLunariteCost !== "undefined") scorcherLunariteCost = savegame.scorcherLunariteCost;
 		if(typeof savegame.scorcherGemCost !== "undefined") scorcherGemCost = savegame.scorcherGemCost;
 		if(typeof savegame.scorcherOilCost !== "undefined") scorcherOilCost = savegame.scorcherOilCost;
 		if(typeof savegame.annihilator !== "undefined") annihilator = savegame.annihilator;
-		if(typeof savegame.annihilatorSpaceMetalCost !== "undefined") annihilatorSpaceMetalCost = savegame.annihilatorSpaceMetalCost;
+		if(typeof savegame.annihilatorSpaceMetalCost !== "undefined") annihilatorLunariteCost = savegame.annihilatorSpaceMetalCost;
+		if(typeof savegame.annihilatorLunariteCost !== "undefined") annihilatorLunariteCost = savegame.annihilatorLunariteCost;
 		if(typeof savegame.annihilatorGemCost !== "undefined") annihilatorGemCost = savegame.annihilatorGemCost;
 		if(typeof savegame.annihilatorSilverCost !== "undefined") annihilatorSilverCost = savegame.annihilatorSilverCost;
 		if(typeof savegame.desert !== "undefined") desert = savegame.desert;
-		if(typeof savegame.desertSpaceMetalCost !== "undefined") desertSpaceMetalCost = savegame.desertSpaceMetalCost;
+		if(typeof savegame.desertSpaceMetalCost !== "undefined") desertLunariteCost = savegame.desertSpaceMetalCost;
+		if(typeof savegame.desertLunariteCost !== "undefined") desertLunariteCost = savegame.desertLunariteCost;
 		if(typeof savegame.desertSiliconCost !== "undefined") desertSiliconCost = savegame.desertSiliconCost;
 		if(typeof savegame.desertMeteoriteCost !== "undefined") desertMeteoriteCost = savegame.desertMeteoriteCost;
 		if(typeof savegame.researchUnlocked !== "undefined") researchUnlocked = savegame.researchUnlocked;
@@ -756,40 +804,50 @@ function legacyLoad(savegame){
 		if(typeof savegame.activated !== "undefined") activated = savegame.activated;
 		if(typeof savegame.grinder !== "undefined") grinder = savegame.grinder;
 		if(typeof savegame.grinderTitaniumCost !== "undefined") grinderTitaniumCost = savegame.grinderTitaniumCost;
-		if(typeof savegame.grinderSpaceMetalCost !== "undefined") grinderSpaceMetalCost = savegame.grinderSpaceMetalCost;
+		if(typeof savegame.grinderSpaceMetalCost !== "undefined") grinderLunariteCost = savegame.grinderSpaceMetalCost;
+		if(typeof savegame.grinderLunariteCost !== "undefined") grinderLunariteCost = savegame.grinderLunariteCost;
 		if(typeof savegame.grinderGoldCost !== "undefined") grinderGoldCost = savegame.grinderGoldCost;
 		if(typeof savegame.cubic !== "undefined") cubic = savegame.cubic;
 		if(typeof savegame.cubicUraniumCost !== "undefined") cubicUraniumCost = savegame.cubicUraniumCost;
-		if(typeof savegame.cubicSpaceMetalCost !== "undefined") cubicSpaceMetalCost = savegame.cubicSpaceMetalCost;
+		if(typeof savegame.cubicSpaceMetalCost !== "undefined") cubicLunariteCost = savegame.cubicSpaceMetalCost;
+		if(typeof savegame.cubicLunariteCost !== "undefined") cubicLunariteCost = savegame.cubicLunariteCost;
 		if(typeof savegame.cubicOilCost !== "undefined") cubicOilCost = savegame.cubicOilCost;
 		if(typeof savegame.enricher !== "undefined") enricher = savegame.enricher;
-		if(typeof savegame.enricherSpaceMetalCost !== "undefined") enricherSpaceMetalCost = savegame.enricherSpaceMetalCost;
+		if(typeof savegame.enricherSpaceMetalCost !== "undefined") enricherLunariteCost = savegame.enricherSpaceMetalCost;
+		if(typeof savegame.enricherLunariteCost !== "undefined") enricherLunariteCost = savegame.enricherLunariteCost;
 		if(typeof savegame.enricherTitaniumCost !== "undefined") enricherTitaniumCost = savegame.enricherTitaniumCost;
 		if(typeof savegame.enricherSiliconCost !== "undefined") enricherSiliconCost = savegame.enricherSiliconCost;
 		if(typeof savegame.recycler !== "undefined") recycler = savegame.recycler;
-		if(typeof savegame.recyclerSpaceMetalCost !== "undefined") recyclerSpaceMetalCost = savegame.recyclerSpaceMetalCost;
+		if(typeof savegame.recyclerSpaceMetalCost !== "undefined") recyclerLunariteCost = savegame.recyclerSpaceMetalCost;
+		if(typeof savegame.recyclerLunariteCost !== "undefined") recyclerLunariteCost = savegame.recyclerLunariteCost;
 		if(typeof savegame.recyclerMethaneCost !== "undefined") recyclerMethaneCost = savegame.recyclerMethaneCost;
 		if(typeof savegame.recyclerMeteoriteCost !== "undefined") recyclerMeteoriteCost = savegame.recyclerMeteoriteCost;
 		if(typeof savegame.crucible !== "undefined") crucible = savegame.crucible;
 		if(typeof savegame.crucibleGemCost !== "undefined") crucibleGemCost = savegame.crucibleGemCost;
-		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleSpaceMetalCost = savegame.crucibleSpaceMetalCost;
+		if(typeof savegame.crucibleSpaceMetalCost !== "undefined") crucibleLunariteCost = savegame.crucibleSpaceMetalCost;
+		if(typeof savegame.crucibleLunariteCost !== "undefined") crucibleLunariteCost = savegame.crucibleLunariteCost;
 		if(typeof savegame.extractor !== "undefined") extractor = savegame.extractor;
-		if(typeof savegame.extractorSpaceMetalCost !== "undefined") extractorSpaceMetalCost = savegame.extractorSpaceMetalCost;
+		if(typeof savegame.extractorSpaceMetalCost !== "undefined") extractorLunariteCost = savegame.extractorSpaceMetalCost;
+		if(typeof savegame.extractorLunariteCost !== "undefined") extractorLunariteCost = savegame.extractorLunariteCost;
 		if(typeof savegame.extractorTitaniumCost !== "undefined") extractorTitaniumCost = savegame.extractorTitaniumCost;
 		if(typeof savegame.extractorSiliconCost !== "undefined") extractorSiliconCost = savegame.extractorSiliconCost;
 		if(typeof savegame.extruder !== "undefined") extruder = savegame.extruder;
-		if(typeof savegame.extruderSpaceMetalCost !== "undefined") extruderSpaceMetalCost = savegame.extruderSpaceMetalCost;
+		if(typeof savegame.extruderSpaceMetalCost !== "undefined") extruderLunariteCost = savegame.extruderSpaceMetalCost;
+		if(typeof savegame.extruderLunariteCost !== "undefined") extruderLunariteCost = savegame.extruderLunariteCost;
 		if(typeof savegame.extruderTitaniumCost !== "undefined") extruderTitaniumCost = savegame.extruderTitaniumCost;
 		if(typeof savegame.extruderSiliconCost !== "undefined") extruderSiliconCost = savegame.extruderSiliconCost;
 		if(typeof savegame.veluptuator !== "undefined") veluptuator = savegame.veluptuator;
-		if(typeof savegame.veluptuatorSpaceMetalCost !== "undefined") veluptuatorSpaceMetalCost = savegame.veluptuatorSpaceMetalCost;
+		if(typeof savegame.veluptuatorSpaceMetalCost !== "undefined") veluptuatorLunariteCost = savegame.veluptuatorSpaceMetalCost;
+		if(typeof savegame.veluptuatorLunariteCost !== "undefined") veluptuatorLunariteCost = savegame.veluptuatorLunariteCost;
 		if(typeof savegame.veluptuatorGoldCost !== "undefined") veluptuatorGoldCost = savegame.veluptuatorGoldCost;
 		if(typeof savegame.veluptuatorMeteoriteCost !== "undefined") veluptuatorMeteoriteCost = savegame.veluptuatorMeteoriteCost;
 		if(typeof savegame.collector !== "undefined") collector = savegame.collector;
-		if(typeof savegame.collectorSpaceMetalCost !== "undefined") collectorSpaceMetalCost = savegame.collectorSpaceMetalCost;
+		if(typeof savegame.collectorSpaceMetalCost !== "undefined") collectorLunariteCost = savegame.collectorSpaceMetalCost;
+		if(typeof savegame.collectorLunariteCost !== "undefined") collectorLunariteCost = savegame.collectorLunariteCost;
 		if(typeof savegame.collectorTitaniumCost !== "undefined") collectorTitaniumCost = savegame.collectorTitaniumCost;
 		if(typeof savegame.magnet !== "undefined") magnet = savegame.magnet;
-		if(typeof savegame.magnetSpaceMetalCost !== "undefined") magnetSpaceMetalCost = savegame.magnetSpaceMetalCost;
+		if(typeof savegame.magnetSpaceMetalCost !== "undefined") magnetLunariteCost = savegame.magnetSpaceMetalCost;
+		if(typeof savegame.magnetLunariteCost !== "undefined") magnetLunariteCost = savegame.magnetLunariteCost;
 		if(typeof savegame.magnetTitaniumCost !== "undefined") magnetTitaniumCost = savegame.magnetTitaniumCost;
 		if(typeof savegame.magnetGoldCost !== "undefined") magnetGoldCost = savegame.magnetGoldCost;
 		if(typeof savegame.eCell !== "undefined") eCell = savegame.eCell;
@@ -797,33 +855,41 @@ function legacyLoad(savegame){
 		if(typeof savegame.eCellGoldCost !== "undefined") eCellGoldCost = savegame.eCellGoldCost;
 		if(typeof savegame.eCellSiliconCost !== "undefined") eCellSiliconCost = savegame.eCellSiliconCost;
 		if(typeof savegame.hindenburg !== "undefined") hindenburg = savegame.hindenburg;
-		if(typeof savegame.hindenburgSpaceMetalCost !== "undefined") hindenburgSpaceMetalCost = savegame.hindenburgSpaceMetalCost;
+		if(typeof savegame.hindenburgSpaceMetalCost !== "undefined") hindenburgLunariteCost = savegame.hindenburgSpaceMetalCost;
+		if(typeof savegame.hindenburgLunariteCost !== "undefined") hindenburgLunariteCost = savegame.hindenburgLunariteCost;
 		if(typeof savegame.hindenburgMethaneCost !== "undefined") hindenburgMethaneCost = savegame.hindenburgMethaneCost;
 		if(typeof savegame.hindenburgMeteoriteCost !== "undefined") hindenburgMeteoriteCost = savegame.hindenburgMeteoriteCost;
 		if(typeof savegame.drone !== "undefined") drone = savegame.drone;
-		if(typeof savegame.droneSpaceMetalCost !== "undefined") droneSpaceMetalCost = savegame.droneSpaceMetalCost;
+		if(typeof savegame.droneSpaceMetalCost !== "undefined") droneLunariteCost = savegame.droneSpaceMetalCost;
+		if(typeof savegame.droneLunariteCost !== "undefined") droneLunariteCost = savegame.droneLunariteCost;
 		if(typeof savegame.droneSiliconCost !== "undefined") droneSiliconCost = savegame.droneSiliconCost;
 		if(typeof savegame.tanker !== "undefined") tanker = savegame.tanker;
-		if(typeof savegame.tankerSpaceMetalCost !== "undefined") tankerSpaceMetalCost = savegame.tankerSpaceMetalCost;
+		if(typeof savegame.tankerSpaceMetalCost !== "undefined") tankerLunariteCost = savegame.tankerSpaceMetalCost;
+		if(typeof savegame.tankerLunariteCost !== "undefined") tankerLunariteCost = savegame.tankerLunariteCost;
 		if(typeof savegame.tankerTitaniumCost !== "undefined") tankerTitaniumCost = savegame.tankerTitaniumCost;
 		if(typeof savegame.tankerSiliconCost !== "undefined") tankerSiliconCost = savegame.tankerSiliconCost;
 		if(typeof savegame.compressor !== "undefined") compressor = savegame.compressor;
-		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorSpaceMetalCost = savegame.compressorSpaceMetalCost;
+		if(typeof savegame.compressorSpaceMetalCost !== "undefined") compressorLunariteCost = savegame.compressorSpaceMetalCost;
+		if(typeof savegame.compressorLunariteCost !== "undefined") compressorLunariteCost = savegame.compressorLunariteCost;
 		if(typeof savegame.compressorTitaniumCost !== "undefined") compressorTitaniumCost = savegame.compressorTitaniumCost;
 		if(typeof savegame.compressorSiliconCost !== "undefined") compressorSiliconCost = savegame.compressorSiliconCost;
 		if(typeof savegame.skimmer !== "undefined") skimmer = savegame.skimmer;
-		if(typeof savegame.skimmerSpaceMetalCost !== "undefined") skimmerSpaceMetalCost = savegame.skimmerSpaceMetalCost;
+		if(typeof savegame.skimmerSpaceMetalCost !== "undefined") skimmerLunariteCost = savegame.skimmerSpaceMetalCost;
+		if(typeof savegame.skimmerLunariteCost !== "undefined") skimmerLunariteCost = savegame.skimmerLunariteCost;
 		if(typeof savegame.skimmerTitaniumCost !== "undefined") skimmerTitaniumCost = savegame.skimmerTitaniumCost;
 		if(typeof savegame.skimmerMeteoriteCost !== "undefined") skimmerMeteoriteCost = savegame.skimmerMeteoriteCost;
 		if(typeof savegame.icePick !== "undefined") icePick = savegame.icePick;
-		if(typeof savegame.icePickSpaceMetalCost !== "undefined") icePickSpaceMetalCost = savegame.icePickSpaceMetalCost;
+		if(typeof savegame.icePickSpaceMetalCost !== "undefined") icePickLunariteCost = savegame.icePickSpaceMetalCost;
+		if(typeof savegame.icePickLunariteCost !== "undefined") icePickLunariteCost = savegame.icePickLunariteCost;
 		if(typeof savegame.icePickGemCost !== "undefined") icePickGemCost = savegame.icePickGemCost;
 		if(typeof savegame.iceDrill !== "undefined") iceDrill = savegame.iceDrill;
-		if(typeof savegame.iceDrillSpaceMetalCost !== "undefined") iceDrillSpaceMetalCost = savegame.iceDrillSpaceMetalCost;
+		if(typeof savegame.iceDrillSpaceMetalCost !== "undefined") iceDrillLunariteCost = savegame.iceDrillSpaceMetalCost;
+		if(typeof savegame.iceDrillLunariteCost !== "undefined") iceDrillLunariteCost = savegame.iceDrillLunariteCost;
 		if(typeof savegame.iceDrillTitaniumCost !== "undefined") iceDrillTitaniumCost = savegame.iceDrillTitaniumCost;
 		if(typeof savegame.iceDrillSiliconCost !== "undefined") iceDrillSiliconCost = savegame.iceDrillSiliconCost;
 		if(typeof savegame.freezer !== "undefined") freezer = savegame.freezer;
-		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerSpaceMetalCost = savegame.freezerSpaceMetalCost;
+		if(typeof savegame.freezerSpaceMetalCost !== "undefined") freezerLunariteCost = savegame.freezerSpaceMetalCost;
+		if(typeof savegame.freezerLunariteCost !== "undefined") freezerLunariteCost = savegame.freezerLunariteCost;
 		if(typeof savegame.freezerTitaniumCost !== "undefined") freezerTitaniumCost = savegame.freezerTitaniumCost;
 		if(typeof savegame.freezerSiliconCost !== "undefined") freezerSiliconCost = savegame.freezerSiliconCost;
 		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
@@ -831,10 +897,12 @@ function legacyLoad(savegame){
 		if(typeof savegame.mrFreezeHeliumCost !== "undefined") mrFreezeHeliumCost = savegame.mrFreezeHeliumCost;
 		if(typeof savegame.mrFreezeMeteoriteCost !== "undefined") mrFreezeMeteoriteCost = savegame.mrFreezeMeteoriteCost;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
-		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerSpaceMetalCost = savegame.printerSpaceMetalCost;
+		if(typeof savegame.printerSpaceMetalCost !== "undefined") printerLunariteCost = savegame.printerSpaceMetalCost;
+		if(typeof savegame.printerLunariteCost !== "undefined") printerLunariteCost = savegame.printerLunariteCost;
 		if(typeof savegame.printerSiliconCost !== "undefined") printerSiliconCost = savegame.printerSiliconCost;
 		if(typeof savegame.web !== "undefined") web = savegame.web;
-		if(typeof savegame.webSpaceMetalCost !== "undefined") webSpaceMetalCost = savegame.webSpaceMetalCost;
+		if(typeof savegame.webSpaceMetalCost !== "undefined") webLunariteCost = savegame.webSpaceMetalCost;
+		if(typeof savegame.webLunariteCost !== "undefined") webLunariteCost = savegame.webLunariteCost;
 		if(typeof savegame.webUraniumCost !== "undefined") webUraniumCost = savegame.webUraniumCost;
 		if(typeof savegame.webSiliconCost !== "undefined") webSiliconCost = savegame.webSiliconCost;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;

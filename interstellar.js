@@ -17,7 +17,7 @@ Game.interstellar = (function(){
 			},
 			shield: {
 				count: 0,
-				spaceMetal: 100000,
+				lunarite: 100000,
 				titanium: 100000,
 				metal: 100000
 			},
@@ -60,8 +60,8 @@ Game.interstellar = (function(){
 	};
 
 	instance.getShield = function(){
-		if(spaceMetal >= this.machines.shield.spaceMetal && titanium >= this.machines.shield.titanium && metal >= this.machines.shield.metal && this.machines.shield.count < 50){
-			spaceMetal -= this.machines.shield.spaceMetal;
+		if(lunarite >= this.machines.shield.lunarite && titanium >= this.machines.shield.titanium && metal >= this.machines.shield.metal && this.machines.shield.count < 50){
+			lunarite -= this.machines.shield.lunarite;
 			titanium -= this.machines.shield.titanium;
 			metal -= this.machines.shield.metal;
 			this.machines.shield.count += 1;
@@ -109,7 +109,7 @@ Game.interstellar = (function(){
 		this.machines.aero.silver = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
 		this.machines.aero.ice = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
 		this.machines.aero.gem = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
-		this.machines.shield.spaceMetal = Math.floor(200000 * Math.pow(1.1,this.machines.shield.count));
+		this.machines.shield.lunarite = Math.floor(200000 * Math.pow(1.1,this.machines.shield.count));
 		this.machines.shield.titanium = Math.floor(300000 * Math.pow(1.1,this.machines.shield.count));
 		this.machines.shield.metal = Math.floor(250000 * Math.pow(1.1,this.machines.shield.count));
 		this.machines.drive.silver = Math.floor(163000000 * Math.pow(1.1,this.machines.drive.count));
@@ -128,7 +128,7 @@ Game.interstellar = (function(){
 		document.getElementById("aeroIceCost").innerHTML = Game.settings.format(this.machines.aero.ice);
 		document.getElementById("aeroGemCost").innerHTML = Game.settings.format(this.machines.aero.gem);
 		document.getElementById("aero").innerHTML = this.machines.aero.count;
-		document.getElementById("shieldSpaceMetalCost").innerHTML = Game.settings.format(this.machines.shield.spaceMetal);
+		document.getElementById("shieldLunariteCost").innerHTML = Game.settings.format(this.machines.shield.lunarite);
 		document.getElementById("shieldTitaniumCost").innerHTML = Game.settings.format(this.machines.shield.titanium);
 		document.getElementById("shieldMetalCost").innerHTML = Game.settings.format(this.machines.shield.metal);
 		document.getElementById("shield").innerHTML = this.machines.shield.count;

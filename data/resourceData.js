@@ -137,10 +137,10 @@ Game.resourceData = (function () {
      * Inner Planetary Resources  *
      ******************************/
 
-    instance.spaceMetal = {
-        name: 'Space Metal',
-        desc: 'Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.',
-        icon: 'spaceMetalIcon',
+    instance.lunarite = {
+        name: 'Lunarite',
+        desc: 'Lunarite is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.',
+        icon: 'lunariteIcon',
         category: 'innerSol',
         baseCapacity: 50,
         unlocked: false

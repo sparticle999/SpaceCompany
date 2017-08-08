@@ -132,6 +132,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.lunarite = {
+		desc: 'Changed Space Metal to Lunarite',
+		read: false
+	};
+
 	return instance;
 
 }());

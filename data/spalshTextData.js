@@ -12,7 +12,7 @@ var splashTextArray = [
 "Introducing Turtles...", 
 "Converting Mass Back to Energy...", 
 "Just One More Piece!", 
-"Waiting for Titanium to Upgrade Space Metal to Upgrade Titanium to...", 
+"Waiting for Titanium to Upgrade Lunarite to Upgrade Titanium to...", 
 "Transferring Data to NSA...", 
 "Implementing AI bug creator...", 
 "Initialising GLaDOS...", 
