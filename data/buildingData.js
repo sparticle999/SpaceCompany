@@ -662,7 +662,7 @@ Game.buildingData = (function () {
 
     instance.lunariteT4 = $.extend({}, baseProducerBuilding, {
         name: 'Planetary Excavator',
-        desc: 'This large machine dives deep into the Earth to find large pools of Space-Metal found near the core. This is originally where the metal on the Moon comes from.',
+        desc: 'This large machine dives deep into the Earth to find large pools of Lunarite found near the core. This is originally where the metal on the Moon comes from.',
         resource: 'lunarite',
         resourcePerSecond: {
             'energy': -182,

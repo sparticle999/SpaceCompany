@@ -101,6 +101,33 @@ Game.interstellarData = (function(){
 
 }());
 
+Game.commsData = (function(){
+
+	var instance = {};
+
+	instance.irs = {
+		entryName: 'irs',
+		name: 'Interstellar Radar Scanner',
+		desc: 'The Overlord gifts you with the technology to discover stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		cost: {
+			'metal': 38600000000,
+			'ice': 4320000000,
+			'meteorite': 15800000
+		},
+		defaultCost: {
+			'metal': 38600000000,
+			'ice': 4320000000,
+			'meteorite': 15800000
+		}
+	};
+
+	return instance;
+
+}());
+
 Game.rocketData = (function(){
 
 	var instance = {};
@@ -185,6 +212,38 @@ Game.rocketPartsData = (function(){
 			'silver': 200000,
 			'ice': 300000,
 			'gem': 250000
+		}
+	};
+
+	return instance;
+
+}());
+
+Game.antimatterData = (function(){
+
+	var instance = {};
+
+	instance.drive = {
+		entryName: 'drive',
+		name: 'Alcubierre Drive',
+		desc: 'This powerful reactor can turn high-energy plasma into the most efficient fuel we can imagine.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		resourcePerSecond: {
+            'antimatter': 0.5,
+            'plasma': -100,
+            'ice': -12000
+        },
+		cost: {
+			'silver': 163000000,
+			'oil': 712000000,
+			'meteorite': 12300000
+		},
+		defaultCost: {
+			'silver': 163000000,
+			'oil': 712000000,
+			'meteorite': 12300000
 		}
 	};
 
