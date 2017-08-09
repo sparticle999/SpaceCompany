@@ -40,6 +40,14 @@ Game.interstellarUI = (function(){
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
+        instance.factionTitleTemplate = Handlebars.compile(
+            ['<tr><td style="border:none;">',
+                '<h2 class="default btn-link">{{name}}</h2>',
+                '<h4><b>Relationship: {{opinion}}</b></h4>',
+                '<span>{{desc}}</span>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
         instance.rocketTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"></tr><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Built">Not Built</span></h3>',
@@ -97,6 +105,14 @@ Game.interstellarUI = (function(){
                 '<td style="vertical-align:middle; text-align:right;">',
                     '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
                 '</td>'].join('\n'));
+
+        instance.factionNavTemplate = Handlebars.compile(
+            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+                    '<span>{{name}}</span>',
+                '</td>',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                    '<span>{{opinion}}</span>',
+                '</td>',].join('\n'));
 
         for(var id in Game.interstellarCategoryData){
             Game.interstellarBETA.categoryEntries[id] = Game.interstellarCategoryData[id];
@@ -227,6 +243,17 @@ Game.interstellarUI = (function(){
         }
     }
 
+    instance.createFactionContent = function(data){
+        var target = $('#' + this.tab.getContentElementId(data.id));
+        var tabTitle = this.factionTitleTemplate(data);
+        target.append(tabTitle);
+
+        // for (var id in Game.interstellarBETA.stars.entries){
+        //     var starData = Game.interstellarBETA.stars.entries[id];
+        //     this.createStar(data, starData);
+        // }
+    }
+
     instance.createInterstellarNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
         var html = this.navTemplate(data);
@@ -240,6 +267,10 @@ Game.interstellarUI = (function(){
         }
         else if(data.id ==="travel"){
             this.createTravelContent(data);
+        }
+        else if(data.category ==="faction"){
+            var html = this.factionNavTemplate(data);
+            this.createFactionContent(data);
         }
         else{
             this.createCommsContent(data);

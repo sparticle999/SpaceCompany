@@ -8,7 +8,7 @@ Game.stargazeCategoryData = (function () {
     };
 
     instance.faction = {
-        title: 'Factions',
+        title: 'Faction Star Systems',
         category: 'faction',
     };
 

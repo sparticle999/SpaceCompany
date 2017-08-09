@@ -55,7 +55,6 @@ Game.stargazeUI = (function(){
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<h4><b>Relationship: {{opinion}}</b></h4>',
-                '<br>',
                 '<span>{{desc}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));

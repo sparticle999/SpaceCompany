@@ -2,9 +2,14 @@ Game.interstellarCategoryData = (function () {
 
     var instance = {};
 
-    instance.empty = {
+    instance.general = {
         title: 'Interstellar',
-        category: 'empty'
+        category: 'general'
+    };
+
+    instance.faction = {
+        title: 'Factions',
+        category: 'faction',
     };
 
     return instance;
@@ -18,14 +23,14 @@ Game.interstellarData = (function(){
 	instance.comms = {
 		name: 'Communications',
 		desc: 'This is where you learn about other systems to travel to.',
-		category: 'empty',
+		category: 'general',
 		unlocked: false
 	};
 
 	instance.rocket = {
 		name: 'Rockets',
 		desc: 'This is where you can construct your transport to the stars.',
-		category: 'empty',
+		category: 'general',
 		built: 'Not Built',
 		unlocked: false
 	};
@@ -33,15 +38,63 @@ Game.interstellarData = (function(){
 	instance.antimatter = {
 		name: 'Antimatter',
 		desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.',
-		category: 'empty',
+		category: 'general',
 		unlocked: false
 	};
 
 	instance.travel = {
 		name: 'Travel',
 		desc: 'Here, you can travel across the cosmos to your heart\'s desire.',
-		category: 'empty',
+		category: 'general',
 		unlocked: false
+	};
+
+	instance.carnelian = {
+		name: "Carnelian Resistance",
+		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.prasnian = {
+		name: "Prasnian Empire",
+		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.hyacinite = {
+		name: "Hyacinite Congregation",
+		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.kitrinos = {
+		name: "Kitrinos Corporation",
+		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.moviton = {
+		name: "Moviton Syndicate",
+		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.overlord = {
+		name: "Overlord Cult",
+		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
 	};
 
 	return instance;

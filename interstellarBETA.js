@@ -4,7 +4,7 @@ Game.interstellarBETA = (function(){
 
 	instance.dataVersion = 1;
     instance.entries = {};
-    instance.categoryEntries = {empty:"empty"};
+    instance.categoryEntries = {};
     instance.navCount = 0;
 
 	instance.initialise = function (){
