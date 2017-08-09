@@ -1121,6 +1121,11 @@ function refreshTabs(){
  	if(contains(explored, "kuiperBelt")){
  		document.getElementById("solCenter").className = "outer sideTab";
  	}
+    if(contains(buttonsHidden, "rebuildStargate")){
+        if(contains(buttonsHidden, "wonderTab") === false){
+            buttonsHidden.push("wonderTab");
+        }
+    }
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
  	}

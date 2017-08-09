@@ -71,6 +71,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Interstellar Radar Scanner
 - Achievement Ranks
 - Renamed Space Metal as Lunarite
+- The Wonder Tab hides itself when completed (makes space for more tabs)
 
 ##### Small Changes
 

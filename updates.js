@@ -137,6 +137,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.hideWonder = {
+		desc: 'The Wonder Tab hides itself when completed (makes space for more tabs)',
+		read: false
+	};
+
 	return instance;
 
 }());
