@@ -87,9 +87,8 @@ Game.utils = (function(){
         return Game.utils.formatScientificNotation(value, true)
     };
 
-    instance.formatScientificNotation = function(value, useExponentNotation)
-    {
-        if (value === 0 || (Math.abs(value) > 1 && Math.abs(value) < 100))
+    instance.formatScientificNotation = function(value, useExponentNotation){
+        if (value === 0 || (Math.abs(value) > -100 && Math.abs(value) < 100))
         {
             return Game.utils.formatRaw(value);
         }
