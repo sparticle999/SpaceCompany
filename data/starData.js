@@ -45,8 +45,8 @@ Game.starData = (function(){
 		tier: 1,
 		faction: "Kitrinos Corporation",
 		desc: "",
-		resource1: "Hydrogen",
-		resource2: "Helium",
+		resource1: "Titanium",
+		resource2: "Silicon",
 		explored: false
 	};
 
@@ -57,8 +57,8 @@ Game.starData = (function(){
 		tier: 4,
 		faction: "Moviton Syndicate",
 		desc: "",
-		resource1: "Hydrogen",
-		resource2: "Helium",
+		resource1: "Charcoal",
+		resource2: "Methane",
 		explored: false
 	};
 

@@ -99,15 +99,15 @@ Game.interstellarUI = (function(){
         instance.starTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td style="width:300px;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
-                '<h4>',
+                '<h5>',
                     'Tier: {{tier}}<br>',
                     'Distance: {{distance}}<br>',
                     'Planets: {{planets}}<br>',
-                    'Faction: {{faction}}',
+                    'Faction: {{faction}}<br>',
                     'Resources Present: {{resource1}}, {{resource2}}',
-                '</h4>',
+                '</h5>',
                 '<div class="btn btn-default" id="{{htmlId}}explore">Explore</div>',
-                '</td><td><br><br>',
+                '</td><td><br><br><br>',
                 '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
@@ -129,7 +129,7 @@ Game.interstellarUI = (function(){
                     '<span id="{{htmlId}}_perSecond">0</span>/Sec',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;">',
-                    '<span id="{{htmlId}}_current">0</span> / <span id="{{htmlId}}_capacity">0</span>',
+                    '<span id="{{htmlId}}_current">0</span>',
                 '</td>'].join('\n'));
 
         instance.factionNavTemplate = Handlebars.compile(
@@ -137,7 +137,7 @@ Game.interstellarUI = (function(){
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
-                    '<span>{{opinion}}</span>',
+                    '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         for(var id in Game.interstellarCategoryData){
@@ -187,6 +187,28 @@ Game.interstellarUI = (function(){
             var data = Game.interstellarBETA.antimatter.getMachineData(id);
             if(data.displayNeedsUpdate === true) {
                 this.updateMachineDisplay(data);
+            }
+        }
+
+        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
+        $('#intnav_antimatter_perSecond').text(antimatterps);
+        if(antimatter >= 100000){
+            document.getElementById("intnav_antimatter_current").className = "green";
+        } else {
+            document.getElementById("intnav_antimatter_current").className = "";
+        }
+
+
+        for(var id in Game.stargazeData){
+            var data = Game.stargazeData[id];
+            if(data.category == "faction"){
+                $('#intnav_' + id + '_opinion').text(data.opinion);
+            }
+        }
+
+        for(var id in this.antimatterEntries){
+            for (var resource in this.antimatterEntries[id].resourcePerSecond){
+                console.log(resource);
             }
         }
 

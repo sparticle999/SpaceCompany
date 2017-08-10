@@ -105,8 +105,8 @@ Game.commsData = (function(){
 
 	var instance = {};
 
-	instance.irs = {
-		entryName: 'irs',
+	instance.IRS = {
+		entryName: 'IRS',
 		name: 'Interstellar Radar Scanner',
 		desc: 'The Overlord gifts you with the technology to discover stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.',
 		category: '',

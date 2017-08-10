@@ -144,13 +144,9 @@ Game.interstellar = (function(){
 	}
 
 	instance.save = function(data){
-
-		data.interstellar = {version: this.dataVersion, machines: {}, stars: {}, interRocketBuilt: this.interRocketBuilt};
+		data.interstellar = {version: this.dataVersion, machines: {}, interRocketBuilt: this.interRocketBuilt};
 		for(var id in this.machines){
 			data.interstellar.machines[id] = this.machines[id];
-		}
-		for(var id in Game.starData){
-			data.interstellar.stars[id] = Game.starData[id];
 		}
 	}
 
@@ -159,11 +155,6 @@ Game.interstellar = (function(){
             if(data.interstellar.version && data.interstellar.version === this.dataVersion) {
                 for(var id in data.interstellar.machines) {
                     this.machines[id] = data.interstellar.machines[id];
-                }
-                var i = 0;
-                for(var id in data.interstellar.stars) {
-                	i += 1;
-                    this.entries[i] = data.interstellar.stars[id];
                 }
             }
             if(data.interstellar.interRocketBuilt && data.interstellar.interRocketBuilt === true){

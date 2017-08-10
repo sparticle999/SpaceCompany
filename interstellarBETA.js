@@ -33,6 +33,39 @@ Game.interstellarBETA = (function(){
         return this.entries[id];
     };
 
+    instance.save = function(data){
+        data.interstellarBETA = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}};
+        for(id in Game.interstellarBETA.comms.entries){
+            data.interstellarBETA.comms[id] = Game.interstellarBETA.comms.entries[id];
+        }
+        for(id in Game.interstellarBETA.rocket.entries){
+            data.interstellarBETA.rocket[id] = Game.interstellarBETA.rocket.entries[id];
+        }
+        for(id in Game.interstellarBETA.rocketParts.entries){
+            data.interstellarBETA.rocketParts[id] = Game.interstellarBETA.rocketParts.entries[id];
+        }
+        for(id in Game.interstellarBETA.antimatter.entries){
+            data.interstellarBETA.antimatter[id] = Game.interstellarBETA.antimatter.entries[id];
+        }
+    };
+
+    instance.load = function(data){
+        if(data.interstellarBETA){
+            for(id in data.interstellarBETA.comms){
+                Game.interstellarBETA.comms.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in data.interstellarBETA.rocket){
+                Game.interstellarBETA.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
+            }
+            for(id in data.interstellarBETA.rocketParts){
+                Game.interstellarBETA.rocketParts.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in data.interstellarBETA.antimatter){
+                Game.interstellarBETA.antimatter.entries[id].count = data.interstellar.machines[id].count;
+            }
+        }
+    };
+
 	return instance;
 
 
