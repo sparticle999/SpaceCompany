@@ -189,13 +189,14 @@ Game.interstellarUI = (function(){
                 this.updateMachineDisplay(data);
             }
         }
-
-        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
-        $('#intnav_antimatter_perSecond').text(antimatterps);
-        if(antimatter >= 100000){
-            document.getElementById("intnav_antimatter_current").className = "green";
-        } else {
-            document.getElementById("intnav_antimatter_current").className = "";
+        if(Game.constants.enableInterstellar){
+            $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
+            $('#intnav_antimatter_perSecond').text(antimatterps);
+            if(antimatter >= 100000){
+                document.getElementById("intnav_antimatter_current").className = "green";
+            } else {
+                document.getElementById("intnav_antimatter_current").className = "";
+            }
         }
 
 

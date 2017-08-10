@@ -64,7 +64,7 @@ Game.stargazeUI = (function(){
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
-                    '<span>{{opinion}}</span>',
+                    '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         instance.dmNavTemplate = Handlebars.compile(
@@ -128,6 +128,13 @@ Game.stargazeUI = (function(){
         //         console.log(true);
         //     }
         // }
+
+        for(var id in Game.stargazeData){
+            var data = Game.stargazeData[id];
+            if(data.category == "faction"){
+                $('#stargazeNav' + id + '_opinion').text(data.opinion);
+            }
+        }
 
         // for(var id in Game.resources.categoryEntries) {
         //     if(this.tab.categoryHasVisibleEntries(id) === true) {

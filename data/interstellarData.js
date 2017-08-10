@@ -44,7 +44,7 @@ Game.interstellarData = (function(){
 
 	instance.travel = {
 		name: 'Travel',
-		desc: 'Here, you can travel across the cosmos to your heart\'s desire.',
+		desc: 'Here, you can travel across the cosmos to your heart\'s desire. When you explore a star system, it will appear in the respective faction tab, where you can gain control of it for boosts in the resources present.',
 		category: 'general',
 		unlocked: false
 	};
