@@ -26,7 +26,7 @@ var splashTextArray = [
 "Dysons FTW",
 "Overpriced Storage!",
 "Casual gaming!",
-"Ceci n'est pas une title screen!",
+"Ceci n'est pas un titre écran!",
 "Open Source!",
 "Child's play!",
 "Who's the Overlord?",
