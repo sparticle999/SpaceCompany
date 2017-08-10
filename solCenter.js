@@ -177,7 +177,7 @@ function convertEnergy(resourceName){
 	if(amount > 0 && energy >= requiredEnergy){
 		energy -= requiredEnergy;
 		window[resourceName] += amount;
-		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + resourceName);
+		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
 
         refreshConversionDisplay();
 	}
@@ -200,7 +200,7 @@ function convertPlasma(resourceName){
 		plasma -= requiredPlasma;
 		window[resourceName] += amount;
 
-		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + resourceName);
+		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
 
         refreshPlasmaConversionDisplay();
 	}

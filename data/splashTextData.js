@@ -45,7 +45,7 @@ var splashTextArray = [
 "Hard to label!",
 "Does not include fidget spinners.",
 "Dyson Spheres: Better than fidget spinners!",
-"Reversing entropy by making contracts",
+"Reversing entropy by making contracts...",
 "Data is king!",
 "Do you have any grapes?",
 "[Citation Needed]",
