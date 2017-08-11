@@ -106,7 +106,7 @@ Game.achievementsUI = (function(){
 
         var html = this.entryTemplate(data);
         this.categoryElements[data.category].colc++;
-        this.categoryElements[data.category].col.append($(html));
+        this.categoryElements[data.category].col.append($(html)).find('[data-toggle="tooltip"]').tooltip();
 
         if(this.categoryElements[data.category].colc >= Game.constants.achievementIconsPerRow) {
             this.createCategoryRow(data.category);
@@ -118,7 +118,9 @@ Game.achievementsUI = (function(){
         var div = $('#' + id + "_div");
         var bg = $('#' + id + "_bg");
 
+        div.tooltip('destroy');
         div.prop('title', Game.achievements.getAchievementTitle(data));
+        div.tooltip();
 
         div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
 
