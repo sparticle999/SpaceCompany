@@ -2,9 +2,14 @@ Game.interstellarCategoryData = (function () {
 
     var instance = {};
 
-    instance.empty = {
+    instance.general = {
         title: 'Interstellar',
-        category: 'empty'
+        category: 'general'
+    };
+
+    instance.faction = {
+        title: 'Factions',
+        category: 'faction',
     };
 
     return instance;
@@ -18,14 +23,14 @@ Game.interstellarData = (function(){
 	instance.comms = {
 		name: 'Communications',
 		desc: 'This is where you learn about other systems to travel to.',
-		category: 'empty',
+		category: 'general',
 		unlocked: false
 	};
 
 	instance.rocket = {
 		name: 'Rockets',
 		desc: 'This is where you can construct your transport to the stars.',
-		category: 'empty',
+		category: 'general',
 		built: 'Not Built',
 		unlocked: false
 	};
@@ -33,15 +38,90 @@ Game.interstellarData = (function(){
 	instance.antimatter = {
 		name: 'Antimatter',
 		desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.',
-		category: 'empty',
+		category: 'general',
 		unlocked: false
 	};
 
 	instance.travel = {
 		name: 'Travel',
-		desc: 'Here, you can travel across the cosmos to your heart\'s desire.',
-		category: 'empty',
+		desc: 'Here, you can travel across the cosmos to your heart\'s desire. When you explore a star system, it will appear in the respective faction tab, where you can gain control of it for boosts in the resources present.',
+		category: 'general',
 		unlocked: false
+	};
+
+	instance.carnelian = {
+		name: "Carnelian Resistance",
+		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.prasnian = {
+		name: "Prasnian Empire",
+		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.hyacinite = {
+		name: "Hyacinite Congregation",
+		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.kitrinos = {
+		name: "Kitrinos Corporation",
+		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.moviton = {
+		name: "Moviton Syndicate",
+		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	instance.overlord = {
+		name: "Overlord Cult",
+		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
+		category: "faction",
+		opinion: 0,
+		hidden: "",
+	};
+
+	return instance;
+
+}());
+
+Game.commsData = (function(){
+
+	var instance = {};
+
+	instance.IRS = {
+		entryName: 'IRS',
+		name: 'Interstellar Radar Scanner',
+		desc: 'The Overlord gifts you with the technology to discover stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		cost: {
+			'metal': 38600000000,
+			'ice': 4320000000,
+			'meteorite': 15800000
+		},
+		defaultCost: {
+			'metal': 38600000000,
+			'ice': 4320000000,
+			'meteorite': 15800000
+		}
 	};
 
 	return instance;
@@ -84,12 +164,12 @@ Game.rocketPartsData = (function(){
 		unlocked: true,
 		displayNeedsUpdate: true,
 		cost: {
-			'spaceMetal': 100000,
+			'lunarite': 100000,
 			'titanium': 100000,
 			'metal': 100000
 		},
 		defaultCost: {
-			'spaceMetal': 100000,
+			'lunarite': 100000,
 			'titanium': 100000,
 			'metal': 100000
 		}
@@ -132,6 +212,38 @@ Game.rocketPartsData = (function(){
 			'silver': 200000,
 			'ice': 300000,
 			'gem': 250000
+		}
+	};
+
+	return instance;
+
+}());
+
+Game.antimatterData = (function(){
+
+	var instance = {};
+
+	instance.drive = {
+		entryName: 'drive',
+		name: 'Alcubierre Drive',
+		desc: 'This powerful reactor can turn high-energy plasma into the most efficient fuel we can imagine.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		resourcePerSecond: {
+            'antimatter': 0.5,
+            'plasma': -100,
+            'ice': -12000
+        },
+		cost: {
+			'silver': 163000000,
+			'oil': 712000000,
+			'meteorite': 12300000
+		},
+		defaultCost: {
+			'silver': 163000000,
+			'oil': 712000000,
+			'meteorite': 12300000
 		}
 	};
 

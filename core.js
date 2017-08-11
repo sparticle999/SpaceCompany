@@ -35,7 +35,7 @@ function calculateEnergyUse(delta) {
 	}
 
     var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
-    use += (moonDrill*20)+(suctionExcavator*16)+(spaceMetalDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
+    use += (moonDrill*20)+(suctionExcavator*16)+(lunariteDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
     use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
 
     use += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
@@ -90,7 +90,7 @@ function refreshTimeUntilFull() {
     setTimeUntilDisplayTest('charcoalFullTime', charcoal, charcoalStorage, charcoalps);
     setTimeUntilDisplayTest('woodFullTime', wood, woodStorage, woodps);
     setTimeUntilDisplayTest('siliconFullTime', silicon, siliconStorage, siliconps);
-    setTimeUntilDisplayTest('spaceMetalFullTime', spaceMetal, spaceMetalStorage, spaceMetalps);
+    setTimeUntilDisplayTest('lunariteFullTime', lunarite, lunariteStorage, lunariteps);
     setTimeUntilDisplayTest('methaneFullTime', methane, methaneStorage, methaneps);
     setTimeUntilDisplayTest('titaniumFullTime', titanium, titaniumStorage, titaniumps);
     setTimeUntilDisplayTest('goldFullTime', gold, goldStorage, goldps);
@@ -151,7 +151,7 @@ function refreshPerSec(delta){
     gemps = gemMiner * perSecondMultiplier;
     charcoalps = 0;
     woodps = woodcutter * perSecondMultiplier;
-    spaceMetalps = moonWorker * perSecondMultiplier;
+    lunariteps = moonWorker * perSecondMultiplier;
     methaneps = vacuum * perSecondMultiplier;
     titaniumps = explorer * perSecondMultiplier;
     goldps = droid * perSecondMultiplier;
@@ -177,9 +177,9 @@ function refreshPerSec(delta){
         metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
         gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358)) * perSecondMultiplier;
         woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297)) * perSecondMultiplier;
-        spaceMetalps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
+        lunariteps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
         methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149)) * perSecondMultiplier;
-        titaniumps +=  ((spaceMetalDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
+        titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
         goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208)) * perSecondMultiplier;
         siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157)) * perSecondMultiplier;
@@ -294,7 +294,7 @@ function checkRedCost(){
     Game.settings.turnRedOrGreen(gem, gemStorage, 'gem');
     Game.settings.turnRedOrGreen(charcoal, charcoalStorage, 'charcoal');
     Game.settings.turnRedOrGreen(wood, woodStorage, 'wood');
-    Game.settings.turnRedOrGreen(spaceMetal, spaceMetalStorage, 'spaceMetal');
+    Game.settings.turnRedOrGreen(lunarite, lunariteStorage, 'lunarite');
     Game.settings.turnRedOrGreen(methane, methaneStorage, 'methane');
     Game.settings.turnRedOrGreen(titanium, titaniumStorage, 'titanium');
     Game.settings.turnRedOrGreen(gold, goldStorage, 'gold');
@@ -314,7 +314,7 @@ function checkRedCost(){
     Game.settings.turnRedOnNegative(gemps, 'gemps');
     Game.settings.turnRedOnNegative(charcoalps, 'charcoalps');
     Game.settings.turnRedOnNegative(woodps, 'woodps');
-    Game.settings.turnRedOnNegative(spaceMetalps, 'spaceMetalps');
+    Game.settings.turnRedOnNegative(lunariteps, 'lunariteps');
     Game.settings.turnRedOnNegative(methaneps, 'methaneps');
     Game.settings.turnRedOnNegative(titaniumps, 'titaniumps');
     Game.settings.turnRedOnNegative(goldps, 'goldps');
@@ -334,7 +334,7 @@ function checkRedCost(){
 	Game.settings.turnRed(hydrogen, 10, "manualPlasmaHydrogenCost");
 
 	Game.settings.turnRed(uranium, uraniumStorage, "uraniumStorageCost");
-	Game.settings.turnRed(spaceMetal, uraniumStorage/2.5, "uraniumStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, uraniumStorage/2.5, "uraniumStorageLunariteCost");
 	
 	Game.settings.turnRed(oil, oilStorage, "oilStorageCost");
 	Game.settings.turnRed(metal, oilStorage/2.5, "oilStorageMetalCost");
@@ -350,38 +350,38 @@ function checkRedCost(){
 	Game.settings.turnRed(wood, woodStorage, "woodStorageCost");
 	Game.settings.turnRed(metal, woodStorage/2.5, "woodStorageMetalCost");
 	
-	Game.settings.turnRed(spaceMetal, spaceMetalStorage, "spaceMetalStorageCost");
-	Game.settings.turnRed(metal, spaceMetalStorage*4, "spaceMetalStorageMetalCost");
+	Game.settings.turnRed(lunarite, lunariteStorage, "lunariteStorageCost");
+	Game.settings.turnRed(metal, lunariteStorage*4, "lunariteStorageMetalCost");
 
 	Game.settings.turnRed(methane, methaneStorage, "methaneStorageCost");
-	Game.settings.turnRed(spaceMetal, methaneStorage/2.5, "methaneStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, methaneStorage/2.5, "methaneStorageLunariteCost");
 
 	Game.settings.turnRed(titanium, titaniumStorage, "titaniumStorageCost");
-	Game.settings.turnRed(spaceMetal, titaniumStorage/2.5, "titaniumStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, titaniumStorage/2.5, "titaniumStorageLunariteCost");
 
 	Game.settings.turnRed(gold, goldStorage, "goldStorageCost");
-	Game.settings.turnRed(spaceMetal, goldStorage/2.5, "goldStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, goldStorage/2.5, "goldStorageLunariteCost");
 	
 	Game.settings.turnRed(silver, silverStorage, "silverStorageCost");
-	Game.settings.turnRed(spaceMetal, silverStorage/2.5, "silverStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, silverStorage/2.5, "silverStorageLunariteCost");
 
 	Game.settings.turnRed(silicon, siliconStorage, "siliconStorageCost");
-	Game.settings.turnRed(spaceMetal, siliconStorage/2.5, "siliconStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, siliconStorage/2.5, "siliconStorageLunariteCost");
 
 	Game.settings.turnRed(lava, lavaStorage, "lavaStorageCost");
-	Game.settings.turnRed(spaceMetal, lavaStorage/2.5, "lavaStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, lavaStorage/2.5, "lavaStorageLunariteCost");
 
 	Game.settings.turnRed(hydrogen, hydrogenStorage, "hydrogenStorageCost");
-	Game.settings.turnRed(spaceMetal, hydrogenStorage/2.5, "hydrogenStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, hydrogenStorage/2.5, "hydrogenStorageLunariteCost");
 
 	Game.settings.turnRed(helium, heliumStorage, "heliumStorageCost");
-	Game.settings.turnRed(spaceMetal, heliumStorage/2.5, "heliumStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, heliumStorage/2.5, "heliumStorageLunariteCost");
 
 	Game.settings.turnRed(ice, iceStorage, "iceStorageCost");
-	Game.settings.turnRed(spaceMetal, iceStorage/2.5, "iceStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, iceStorage/2.5, "iceStorageLunariteCost");
 
 	Game.settings.turnRed(meteorite, meteoriteStorage, "meteoriteStorageCost");
-	Game.settings.turnRed(spaceMetal, meteoriteStorage*4, "meteoriteStorageSpaceMetalCost");
+	Game.settings.turnRed(lunarite, meteoriteStorage*4, "meteoriteStorageLunariteCost");
 	
 	Game.settings.turnRed(silver, PSUSilverCost, "PSUSilverCost");
 	Game.settings.turnRed(gold, PSUGoldCost, "PSUGoldCost");
@@ -391,29 +391,29 @@ function checkRedCost(){
 	Game.settings.turnRed(gold, PSUT2GoldCost, "PSUT2GoldCost");
 	Game.settings.turnRed(uranium, PSUT2UraniumCost, "PSUT2UraniumCost");
 
-	Game.settings.turnRed(spaceMetal, heaterSpaceMetalCost, "heaterSpaceMetalCost");
+	Game.settings.turnRed(lunarite, heaterLunariteCost, "heaterLunariteCost");
 	Game.settings.turnRed(gem, heaterGemCost, "heaterGemCost");
 	Game.settings.turnRed(silicon, heaterSiliconCost, "heaterSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, plasmaticSpaceMetalCost, "plasmaticSpaceMetalCost");
+	Game.settings.turnRed(lunarite, plasmaticLunariteCost, "plasmaticLunariteCost");
 	Game.settings.turnRed(silicon, plasmaticSiliconCost, "plasmaticSiliconCost");
 	Game.settings.turnRed(meteorite, plasmaticMeteoriteCost, "plasmaticMeteoriteCost");
 
 	Game.settings.turnRed(metal, batteryMetalCost, "batteryMetalCost");
 	Game.settings.turnRed(gem, batteryGemCost, "batteryGemCost");
-	Game.settings.turnRed(spaceMetal, batterySpaceMetalCost, "batterySpaceMetalCost");
+	Game.settings.turnRed(lunarite, batteryLunariteCost, "batteryLunariteCost");
 
 	Game.settings.turnRed(metal, batteryT2MetalCost, "batteryT2MetalCost");
 	Game.settings.turnRed(gem, batteryT2GemCost, "batteryT2GemCost");
-	Game.settings.turnRed(spaceMetal, batteryT2SpaceMetalCost, "batteryT2SpaceMetalCost");
+	Game.settings.turnRed(lunarite, batteryT2LunariteCost, "batteryT2LunariteCost");
 
 	Game.settings.turnRed(metal, batteryT4MetalCost, "batteryT4MetalCost");
  	Game.settings.turnRed(gem, batteryT4GemCost, "batteryT4GemCost");
-    Game.settings.turnRed(spaceMetal, batteryT4SpaceMetalCost, "batteryT4SpaceMetalCost");
+    Game.settings.turnRed(lunarite, batteryT4LunariteCost, "batteryT4LunariteCost");
 	
     Game.settings.turnRed(metal, batteryT3MetalCost, "batteryT3MetalCost");
     Game.settings.turnRed(gem, batteryT3GemCost, "batteryT3GemCost");
-    Game.settings.turnRed(spaceMetal, batteryT3SpaceMetalCost, "batteryT3SpaceMetalCost");
+    Game.settings.turnRed(lunarite, batteryT3LunariteCost, "batteryT3LunariteCost");
 
 	Game.settings.turnRed(metal, charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	Game.settings.turnRed(gem, charcoalEngineGemCost, "charcoalEngineGemCost");
@@ -421,14 +421,14 @@ function checkRedCost(){
 	Game.settings.turnRed(metal, solarPanelMetalCost, "solarPanelMetalCost");
 	Game.settings.turnRed(gem, solarPanelGemCost, "solarPanelGemCost");
 
-    Game.settings.turnRed(spaceMetal, methaneStationSpaceMetalCost, "methaneStationSpaceMetalCost");
+    Game.settings.turnRed(lunarite, methaneStationLunariteCost, "methaneStationLunariteCost");
     Game.settings.turnRed(titanium, methaneStationTitaniumCost, "methaneStationTitaniumCost");
-    Game.settings.turnRed(spaceMetal, nuclearStationSpaceMetalCost, "nuclearStationSpaceMetalCost");
+    Game.settings.turnRed(lunarite, nuclearStationLunariteCost, "nuclearStationLunariteCost");
     Game.settings.turnRed(titanium, nuclearStationTitaniumCost, "nuclearStationTitaniumCost");
-    Game.settings.turnRed(spaceMetal, magmaticSpaceMetalCost, "magmaticSpaceMetalCost");
+    Game.settings.turnRed(lunarite, magmaticLunariteCost, "magmaticLunariteCost");
     Game.settings.turnRed(gem, magmaticGemCost, "magmaticGemCost");
     Game.settings.turnRed(silver, magmaticSilverCost, "magmaticSilverCost");
-    Game.settings.turnRed(spaceMetal, fusionReactorSpaceMetalCost, "fusionReactorSpaceMetalCost");
+    Game.settings.turnRed(lunarite, fusionReactorLunariteCost, "fusionReactorLunariteCost");
     Game.settings.turnRed(titanium, fusionReactorTitaniumCost, "fusionReactorTitaniumCost");
     Game.settings.turnRed(silicon, fusionReactorSiliconCost, "fusionReactorSiliconCost");
     Game.settings.turnRed(metal, pumpMetalCost, "pumpMetalCost");
@@ -438,11 +438,11 @@ function checkRedCost(){
 	Game.settings.turnRed(gem, pumpjackGemCost, "pumpjackGemCost");
 	Game.settings.turnRed(oil, pumpjackOilCost, "pumpjackOilCost");
 	
-	Game.settings.turnRed(spaceMetal, oilFieldSpaceMetalCost, "oilFieldSpaceMetalCost");
+	Game.settings.turnRed(lunarite, oilFieldLunariteCost, "oilFieldLunariteCost");
 	Game.settings.turnRed(titanium, oilFieldTitaniumCost, "oilFieldTitaniumCost");
 	Game.settings.turnRed(silicon, oilFieldSiliconCost, "oilFieldSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, oilRigSpaceMetalCost, "oilRigSpaceMetalCost");
+	Game.settings.turnRed(lunarite, oilRigLunariteCost, "oilRigLunariteCost");
 	Game.settings.turnRed(titanium, oilRigTitaniumCost, "oilRigTitaniumCost");
 	Game.settings.turnRed(meteorite, oilRigMeteoriteCost, "oilRigMeteoriteCost");
 
@@ -452,11 +452,11 @@ function checkRedCost(){
     Game.settings.turnRed(gem, heavyDrillGemCost, "heavyDrillGemCost");
     Game.settings.turnRed(oil, heavyDrillOilCost, "heavyDrillOilCost");
 	
-	Game.settings.turnRed(spaceMetal, gigaDrillSpaceMetalCost, "gigaDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, gigaDrillLunariteCost, "gigaDrillLunariteCost");
 	Game.settings.turnRed(gem, gigaDrillGemCost, "gigaDrillGemCost");
 	Game.settings.turnRed(silicon, gigaDrillSiliconCost, "gigaDrillSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, quantumDrillSpaceMetalCost, "quantumDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, quantumDrillLunariteCost, "quantumDrillLunariteCost");
 	Game.settings.turnRed(gold, quantumDrillGoldCost, "quantumDrillGoldCost");
 	Game.settings.turnRed(meteorite, quantumDrillMeteoriteCost, "quantumDrillMeteoriteCost");
 
@@ -466,11 +466,11 @@ function checkRedCost(){
     Game.settings.turnRed(gem, advancedDrillGemCost, "advancedDrillGemCost");
     Game.settings.turnRed(oil, advancedDrillOilCost, "advancedDrillOilCost");
 
-	Game.settings.turnRed(spaceMetal, diamondDrillSpaceMetalCost, "diamondDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, diamondDrillLunariteCost, "diamondDrillLunariteCost");
 	Game.settings.turnRed(gem, diamondDrillGemCost, "diamondDrillGemCost");
 	Game.settings.turnRed(silicon, diamondDrillSiliconCost, "diamondDrillSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, carbyneDrillSpaceMetalCost, "carbyneDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, carbyneDrillLunariteCost, "carbyneDrillLunariteCost");
 	Game.settings.turnRed(gem, carbyneDrillGemCost, "carbyneDrillGemCost");
 	Game.settings.turnRed(meteorite, carbyneDrillMeteoriteCost, "carbyneDrillMeteoriteCost");
 
@@ -480,11 +480,11 @@ function checkRedCost(){
     Game.settings.turnRed(wood, furnaceWoodCost, "furnaceWoodCost");
     Game.settings.turnRed(oil, furnaceOilCost, "furnaceOilCost");
 	
-	Game.settings.turnRed(spaceMetal, kilnSpaceMetalCost, "kilnSpaceMetalCost");
+	Game.settings.turnRed(lunarite, kilnLunariteCost, "kilnLunariteCost");
 	Game.settings.turnRed(gem, kilnGemCost, "kilnGemCost");
 	Game.settings.turnRed(silicon, kilnSiliconCost, "kilnSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, fryerSpaceMetalCost, "fryerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, fryerLunariteCost, "fryerLunariteCost");
 	Game.settings.turnRed(lava, fryerLavaCost, "fryerLavaCost");
 	Game.settings.turnRed(meteorite, fryerMeteoriteCost, "fryerMeteoriteCost");
 
@@ -494,11 +494,11 @@ function checkRedCost(){
     Game.settings.turnRed(gem, laserCutterGemCost, "laserCutterGemCost");
     Game.settings.turnRed(oil, laserCutterOilCost, "laserCutterOilCost");
 
-	Game.settings.turnRed(spaceMetal, deforesterSpaceMetalCost, "deforesterSpaceMetalCost");
+	Game.settings.turnRed(lunarite, deforesterLunariteCost, "deforesterLunariteCost");
 	Game.settings.turnRed(titanium, deforesterTitaniumCost, "deforesterTitaniumCost");
 	Game.settings.turnRed(silicon, deforesterSiliconCost, "deforesterSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, infuserSpaceMetalCost, "infuserSpaceMetalCost");
+	Game.settings.turnRed(lunarite, infuserLunariteCost, "infuserLunariteCost");
 	Game.settings.turnRed(oil, infuserOilCost, "infuserOilCost");
 	Game.settings.turnRed(meteorite, infuserMeteoriteCost, "infuserMeteoriteCost");
 
@@ -507,7 +507,7 @@ function checkRedCost(){
     Game.settings.turnRed(gem, moonDrillGemCost, "moonDrillGemCost");
     Game.settings.turnRed(oil, moonDrillOilCost, "moonDrillOilCost");
 	
-	Game.settings.turnRed(spaceMetal, moonQuarrySpaceMetalCost, "moonQuarrySpaceMetalCost");
+	Game.settings.turnRed(lunarite, moonQuarryLunariteCost, "moonQuarryLunariteCost");
 	Game.settings.turnRed(gem, moonQuarryGemCost, "moonQuarryGemCost");
 	Game.settings.turnRed(silicon, moonQuarrySiliconCost, "moonQuarrySiliconCost");
 
@@ -515,71 +515,71 @@ function checkRedCost(){
 	Game.settings.turnRed(ice, planetExcavatorIceCost, "planetExcavatorIceCost");
 	Game.settings.turnRed(meteorite, planetExcavatorMeteoriteCost, "planetExcavatorMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, vacuumSpaceMetalCost, "vacuumSpaceMetalCost");
+    Game.settings.turnRed(lunarite, vacuumLunariteCost, "vacuumLunariteCost");
     Game.settings.turnRed(gem, vacuumGemCost, "vacuumGemCost");
-    Game.settings.turnRed(spaceMetal, suctionExcavatorSpaceMetalCost, "suctionExcavatorSpaceMetalCost");
+    Game.settings.turnRed(lunarite, suctionExcavatorLunariteCost, "suctionExcavatorLunariteCost");
     Game.settings.turnRed(gem, suctionExcavatorGemCost, "suctionExcavatorGemCost");
     Game.settings.turnRed(oil, suctionExcavatorOilCost, "suctionExcavatorOilCost");
 	
-	Game.settings.turnRed(spaceMetal, spaceCowSpaceMetalCost, "spaceCowSpaceMetalCost");
+	Game.settings.turnRed(lunarite, spaceCowLunariteCost, "spaceCowLunariteCost");
 	Game.settings.turnRed(titanium, spaceCowTitaniumCost, "spaceCowTitaniumCost");
 	Game.settings.turnRed(silicon, spaceCowSiliconCost, "spaceCowSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, ventSpaceMetalCost, "ventSpaceMetalCost");
+	Game.settings.turnRed(lunarite, ventLunariteCost, "ventLunariteCost");
 	Game.settings.turnRed(helium, ventHeliumCost, "ventHeliumCost");
 	Game.settings.turnRed(meteorite, ventMeteoriteCost, "ventMeteoriteCost");
 
     Game.settings.turnRed(gem, explorerGemCost, "explorerGemCost");
-    Game.settings.turnRed(spaceMetal, spaceMetalDrillSpaceMetalCost, "spaceMetalDrillSpaceMetalCost");
-    Game.settings.turnRed(gem, spaceMetalDrillGemCost, "spaceMetalDrillGemCost");
-    Game.settings.turnRed(oil, spaceMetalDrillOilCost, "spaceMetalDrillOilCost");
+    Game.settings.turnRed(lunarite, lunariteDrillLunariteCost, "lunariteDrillLunariteCost");
+    Game.settings.turnRed(gem, lunariteDrillGemCost, "lunariteDrillGemCost");
+    Game.settings.turnRed(oil, lunariteDrillOilCost, "lunariteDrillOilCost");
 	
-	Game.settings.turnRed(spaceMetal, pentaDrillSpaceMetalCost, "pentaDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, pentaDrillLunariteCost, "pentaDrillLunariteCost");
 	Game.settings.turnRed(gem, pentaDrillGemCost, "pentaDrillGemCost");
 	Game.settings.turnRed(silicon, pentaDrillSiliconCost, "pentaDrillSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, titanDrillSpaceMetalCost, "titanDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, titanDrillLunariteCost, "titanDrillLunariteCost");
 	Game.settings.turnRed(gold, titanDrillGoldCost, "titanDrillGoldCost");
 	Game.settings.turnRed(meteorite, titanDrillMeteoriteCost, "titanDrillMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, droidSpaceMetalCost, "droidSpaceMetalCost");
+    Game.settings.turnRed(lunarite, droidLunariteCost, "droidLunariteCost");
     Game.settings.turnRed(methane, droidMethaneCost, "droidMethaneCost");
-    Game.settings.turnRed(spaceMetal, destroyerSpaceMetalCost, "destroyerSpaceMetalCost");
+    Game.settings.turnRed(lunarite, destroyerLunariteCost, "destroyerLunariteCost");
     Game.settings.turnRed(gem, destroyerGemCost, "destroyerGemCost");
     Game.settings.turnRed(oil, destroyerOilCost, "destroyerOilCost");
 
-	Game.settings.turnRed(spaceMetal, deathStarSpaceMetalCost, "deathStarSpaceMetalCost");
+	Game.settings.turnRed(lunarite, deathStarLunariteCost, "deathStarLunariteCost");
 	Game.settings.turnRed(silver, deathStarSilverCost, "deathStarSilverCost");
 	Game.settings.turnRed(silicon, deathStarSiliconCost, "deathStarSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, actuatorSpaceMetalCost, "actuatorSpaceMetalCost");
+	Game.settings.turnRed(lunarite, actuatorLunariteCost, "actuatorLunariteCost");
 	Game.settings.turnRed(helium, actuatorHeliumCost, "actuatorHeliumCost");
 	Game.settings.turnRed(meteorite, actuatorMeteoriteCost, "actuatorMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, scoutSpaceMetalCost, "scoutSpaceMetalCost");
+    Game.settings.turnRed(lunarite, scoutLunariteCost, "scoutLunariteCost");
     Game.settings.turnRed(titanium, scoutTitaniumCost, "scoutTitaniumCost");
-    Game.settings.turnRed(spaceMetal, spaceLaserSpaceMetalCost, "spaceLaserSpaceMetalCost");
+    Game.settings.turnRed(lunarite, spaceLaserLunariteCost, "spaceLaserLunariteCost");
     Game.settings.turnRed(gem, spaceLaserGemCost, "spaceLaserGemCost");
     Game.settings.turnRed(oil, spaceLaserOilCost, "spaceLaserOilCost");
 
-	Game.settings.turnRed(spaceMetal, berthaSpaceMetalCost, "berthaSpaceMetalCost");
+	Game.settings.turnRed(lunarite, berthaLunariteCost, "berthaLunariteCost");
 	Game.settings.turnRed(titanium, berthaTitaniumCost, "berthaTitaniumCost");
 	Game.settings.turnRed(silicon, berthaSiliconCost, "berthaSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, cannonSpaceMetalCost, "cannonSpaceMetalCost");
+	Game.settings.turnRed(lunarite, cannonLunariteCost, "cannonLunariteCost");
 	Game.settings.turnRed(oil, cannonOilCost, "cannonOilCost");
 	Game.settings.turnRed(meteorite, cannonMeteoriteCost, "cannonMeteoriteCost");
 
-    Game.settings.turnRed(spaceMetal, blowtorchSpaceMetalCost, "blowtorchSpaceMetalCost");
+    Game.settings.turnRed(lunarite, blowtorchLunariteCost, "blowtorchLunariteCost");
     Game.settings.turnRed(titanium, blowtorchTitaniumCost, "blowtorchTitaniumCost");
-    Game.settings.turnRed(spaceMetal, scorcherSpaceMetalCost, "scorcherSpaceMetalCost");
+    Game.settings.turnRed(lunarite, scorcherLunariteCost, "scorcherLunariteCost");
     Game.settings.turnRed(gem, scorcherGemCost, "scorcherGemCost");
     Game.settings.turnRed(oil, scorcherOilCost, "scorcherOilCost");
-    Game.settings.turnRed(spaceMetal, annihilatorSpaceMetalCost, "annihilatorSpaceMetalCost");
+    Game.settings.turnRed(lunarite, annihilatorLunariteCost, "annihilatorLunariteCost");
     Game.settings.turnRed(gem, annihilatorGemCost, "annihilatorGemCost");
     Game.settings.turnRed(silver, annihilatorSilverCost, "annihilatorSilverCost");
 
-	Game.settings.turnRed(spaceMetal, desertSpaceMetalCost, "desertSpaceMetalCost");
+	Game.settings.turnRed(lunarite, desertLunariteCost, "desertLunariteCost");
 	Game.settings.turnRed(silicon, desertSiliconCost, "desertSiliconCost");
 	Game.settings.turnRed(meteorite, desertMeteoriteCost, "desertMeteoriteCost");
 
@@ -659,41 +659,41 @@ function checkRedCost(){
 	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
 
-	Game.settings.turnRed(spaceMetal, grinderSpaceMetalCost, "grinderSpaceMetalCost");
+	Game.settings.turnRed(lunarite, grinderLunariteCost, "grinderLunariteCost");
 	Game.settings.turnRed(titanium, grinderTitaniumCost, "grinderTitaniumCost");
 	Game.settings.turnRed(gold, grinderGoldCost, "grinderGoldCost");
 
-	Game.settings.turnRed(spaceMetal, cubicSpaceMetalCost, "cubicSpaceMetalCost");
+	Game.settings.turnRed(lunarite, cubicLunariteCost, "cubicLunariteCost");
 	Game.settings.turnRed(uranium, cubicUraniumCost, "cubicUraniumCost");
 	Game.settings.turnRed(oil, cubicOilCost, "cubicOilCost");
 
-	Game.settings.turnRed(spaceMetal, enricherSpaceMetalCost, "enricherSpaceMetalCost");
+	Game.settings.turnRed(lunarite, enricherLunariteCost, "enricherLunariteCost");
 	Game.settings.turnRed(titanium, enricherTitaniumCost, "enricherTitaniumCost");
 	Game.settings.turnRed(silicon, enricherSiliconCost, "enricherSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, recyclerSpaceMetalCost, "recyclerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, recyclerLunariteCost, "recyclerLunariteCost");
 	Game.settings.turnRed(methane, recyclerMethaneCost, "recyclerMethaneCost");
 	Game.settings.turnRed(meteorite, recyclerMeteoriteCost, "recyclerMeteoriteCost");
 
-	Game.settings.turnRed(spaceMetal, crucibleSpaceMetalCost, "crucibleSpaceMetalCost");
+	Game.settings.turnRed(lunarite, crucibleLunariteCost, "crucibleLunariteCost");
 	Game.settings.turnRed(gem, crucibleGemCost, "crucibleGemCost");
 	
-	Game.settings.turnRed(spaceMetal, extractorSpaceMetalCost, "extractorSpaceMetalCost");
+	Game.settings.turnRed(lunarite, extractorLunariteCost, "extractorLunariteCost");
 	Game.settings.turnRed(titanium, extractorTitaniumCost, "extractorTitaniumCost");
 	Game.settings.turnRed(silicon, extractorSiliconCost, "extractorSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, extruderSpaceMetalCost, "extruderSpaceMetalCost");
+	Game.settings.turnRed(lunarite, extruderLunariteCost, "extruderLunariteCost");
 	Game.settings.turnRed(titanium, extruderTitaniumCost, "extruderTitaniumCost");
 	Game.settings.turnRed(silicon, extruderSiliconCost, "extruderSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, veluptuatorSpaceMetalCost, "veluptuatorSpaceMetalCost");
+	Game.settings.turnRed(lunarite, veluptuatorLunariteCost, "veluptuatorLunariteCost");
 	Game.settings.turnRed(gold, veluptuatorGoldCost, "veluptuatorGoldCost");
 	Game.settings.turnRed(meteorite, veluptuatorMeteoriteCost, "veluptuatorMeteoriteCost");
 
-	Game.settings.turnRed(spaceMetal, collectorSpaceMetalCost, "collectorSpaceMetalCost");
+	Game.settings.turnRed(lunarite, collectorLunariteCost, "collectorLunariteCost");
 	Game.settings.turnRed(titanium, collectorTitaniumCost, "collectorTitaniumCost");
 
-	Game.settings.turnRed(spaceMetal, magnetSpaceMetalCost, "magnetSpaceMetalCost");
+	Game.settings.turnRed(lunarite, magnetLunariteCost, "magnetLunariteCost");
 	Game.settings.turnRed(titanium, magnetTitaniumCost, "magnetTitaniumCost");
 	Game.settings.turnRed(gold, magnetGoldCost, "magnetGoldCost");
 
@@ -701,33 +701,33 @@ function checkRedCost(){
 	Game.settings.turnRed(gold, eCellGoldCost, "eCellGoldCost");
 	Game.settings.turnRed(silicon, eCellSiliconCost, "eCellSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, hindenburgSpaceMetalCost, "hindenburgSpaceMetalCost");
+	Game.settings.turnRed(lunarite, hindenburgLunariteCost, "hindenburgLunariteCost");
 	Game.settings.turnRed(methane, hindenburgMethaneCost, "hindenburgMethaneCost");
 	Game.settings.turnRed(meteorite, hindenburgMeteoriteCost, "hindenburgMeteoriteCost");
 
-	Game.settings.turnRed(spaceMetal, droneSpaceMetalCost, "droneSpaceMetalCost");
+	Game.settings.turnRed(lunarite, droneLunariteCost, "droneLunariteCost");
 	Game.settings.turnRed(silicon, droneSiliconCost, "droneSiliconCost");
 	
-	Game.settings.turnRed(spaceMetal, tankerSpaceMetalCost, "tankerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, tankerLunariteCost, "tankerLunariteCost");
 	Game.settings.turnRed(titanium, tankerTitaniumCost, "tankerTitaniumCost");
 	Game.settings.turnRed(silicon, tankerSiliconCost, "tankerSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, compressorSpaceMetalCost, "compressorSpaceMetalCost");
+	Game.settings.turnRed(lunarite, compressorLunariteCost, "compressorLunariteCost");
 	Game.settings.turnRed(titanium, compressorTitaniumCost, "compressorTitaniumCost");
 	Game.settings.turnRed(silicon, compressorSiliconCost, "compressorSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, skimmerSpaceMetalCost, "skimmerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, skimmerLunariteCost, "skimmerLunariteCost");
 	Game.settings.turnRed(titanium, skimmerTitaniumCost, "skimmerTitaniumCost");
 	Game.settings.turnRed(meteorite, skimmerMeteoriteCost, "skimmerMeteoriteCost");
 
-	Game.settings.turnRed(spaceMetal, icePickSpaceMetalCost, "icePickSpaceMetalCost");
+	Game.settings.turnRed(lunarite, icePickLunariteCost, "icePickLunariteCost");
 	Game.settings.turnRed(gem, icePickGemCost, "icePickGemCost");
 	
-	Game.settings.turnRed(spaceMetal, iceDrillSpaceMetalCost, "iceDrillSpaceMetalCost");
+	Game.settings.turnRed(lunarite, iceDrillLunariteCost, "iceDrillLunariteCost");
 	Game.settings.turnRed(titanium, iceDrillTitaniumCost, "iceDrillTitaniumCost");
 	Game.settings.turnRed(silicon, iceDrillSiliconCost, "iceDrillSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, freezerSpaceMetalCost, "freezerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, freezerLunariteCost, "freezerLunariteCost");
 	Game.settings.turnRed(titanium, freezerTitaniumCost, "freezerTitaniumCost");
 	Game.settings.turnRed(silicon, freezerSiliconCost, "freezerSiliconCost");
 
@@ -735,10 +735,10 @@ function checkRedCost(){
 	Game.settings.turnRed(helium, mrFreezeHeliumCost, "mrFreezeHeliumCost");
 	Game.settings.turnRed(meteorite, mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
-	Game.settings.turnRed(spaceMetal, printerSpaceMetalCost, "printerSpaceMetalCost");
+	Game.settings.turnRed(lunarite, printerLunariteCost, "printerLunariteCost");
 	Game.settings.turnRed(silicon, printerSiliconCost, "printerSiliconCost");
 
-	Game.settings.turnRed(spaceMetal, webSpaceMetalCost, "webSpaceMetalCost");
+	Game.settings.turnRed(lunarite, webLunariteCost, "webLunariteCost");
 	Game.settings.turnRed(uranium, webUraniumCost, "webUraniumCost");
 	Game.settings.turnRed(silicon, webSiliconCost, "webSiliconCost");
 
@@ -803,7 +803,7 @@ function checkRedCost(){
 	Game.settings.turnRed(silicon, 10000000, "commsWonderSiliconCost");
 	Game.settings.turnRed(ice, 6000000, "commsWonderIceCost");
 
-	Game.settings.turnRed(spaceMetal, 8000000, "rocketWonderSpaceMetalCost");
+	Game.settings.turnRed(lunarite, 8000000, "rocketWonderLunariteCost");
 	Game.settings.turnRed(titanium, 6000000, "rocketWonderTitaniumCost");
 	Game.settings.turnRed(metal, 12000000, "rocketWonderMetalCost");
 
@@ -822,7 +822,7 @@ function checkRedCost(){
 
 	// Interstellar
 
-	Game.settings.turnRed(spaceMetal, Game.interstellar.machines.shield.spaceMetal, "shieldSpaceMetalCost");
+	Game.settings.turnRed(lunarite, Game.interstellar.machines.shield.lunarite, "shieldLunariteCost");
 	Game.settings.turnRed(titanium, Game.interstellar.machines.shield.titanium, "shieldTitaniumCost");
 	Game.settings.turnRed(metal, Game.interstellar.machines.shield.metal, "shieldMetalCost");
 
@@ -838,9 +838,21 @@ function checkRedCost(){
 	Game.settings.turnRed(oil, Game.interstellar.machines.drive.oil, "driveOilCost");
 	Game.settings.turnRed(meteorite, Game.interstellar.machines.drive.meteorite, "driveMeteoriteCost");
 
+    Game.settings.turnRed(metal, Game.interstellar.machines.IRS.metal, "IRSMetalCost");
+    Game.settings.turnRed(ice, Game.interstellar.machines.IRS.ice, "IRSIceCost");
+    Game.settings.turnRed(meteorite, Game.interstellar.machines.IRS.meteorite, "IRSMeteoriteCost");
+
 }
 
 function refreshResources(){
+    if(contains(resourcesUnlocked, "spaceMetalNav")){
+        Game.removeExcess(resourcesUnlocked, "spaceMetalNav");
+        var index = resourcesUnlocked.indexOf("spaceMetalNav");
+        if (index > -1) {
+            resourcesUnlocked.splice(index, 1);
+        }
+        resourcesUnlocked.push("lunariteNav");
+    }
 	if(contains(resourcesUnlocked, "meteoriteWonder")){
 		var index = resourcesUnlocked.indexOf("meteoriteWonder");
  		if (index > -1) {
@@ -859,8 +871,8 @@ function refreshResources(){
 	if(contains(resourcesUnlocked, "siliconNav")){
 		document.getElementById("siliconNav").className = "earth sideTab";
 	}
-	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
+	if(contains(resourcesUnlocked, "lunariteNav")){
+		document.getElementById("lunariteNav").className = "innerPlanet sideTab";
 	}
 	if(contains(resourcesUnlocked, "methaneNav")){
 		document.getElementById("methaneNav").className = "innerPlanet sideTab";
@@ -926,8 +938,8 @@ function refreshResources(){
 	if(meteoriteUnlocked === true){
 		unlockTier4();
 	}
-	if(contains(resourcesUnlocked, "spaceMetalNav")){
-		document.getElementById("spaceMetalNav").className = "innerPlanet sideTab";
+	if(contains(resourcesUnlocked, "lunariteNav")){
+		document.getElementById("lunariteNav").className = "innerPlanet sideTab";
 	}
 }
 
@@ -1109,6 +1121,11 @@ function refreshTabs(){
  	if(contains(explored, "kuiperBelt")){
  		document.getElementById("solCenter").className = "outer sideTab";
  	}
+    if(contains(buttonsHidden, "rebuildStargate")){
+        if(contains(buttonsHidden, "wonderTab") === false){
+            buttonsHidden.push("wonderTab");
+        }
+    }
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";
  	}

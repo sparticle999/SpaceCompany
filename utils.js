@@ -87,9 +87,8 @@ Game.utils = (function(){
         return Game.utils.formatScientificNotation(value, true)
     };
 
-    instance.formatScientificNotation = function(value, useExponentNotation)
-    {
-        if (value === 0 || (Math.abs(value) > 1 && Math.abs(value) < 100))
+    instance.formatScientificNotation = function(value, useExponentNotation){
+        if (value === 0 || (Math.abs(value) > -100 && Math.abs(value) < 100))
         {
             return Game.utils.formatRaw(value);
         }
@@ -200,6 +199,20 @@ Game.utils = (function(){
         var secondResult = this.pad(timeSplit[4], 2);
         return hourResult + minuteResult + secondResult + suffix;
     };
+
+    instance.fibonacci = function(n){
+        var a = 0, b = 1, f = 1;
+        for(var i = 2; i <= n; i++) {
+            f = a + b;
+            a = b;
+            b = f;
+        }
+        return f;
+    };
+
+    instance.capitaliseFirst = function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
     return instance;
 }());

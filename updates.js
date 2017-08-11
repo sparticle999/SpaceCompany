@@ -122,6 +122,25 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.irs = {
+		desc: 'Added Interstellar Radar Scanner (Interstellar -> Comms)',
+		read: false
+	};
+
+	instance.ranks = {
+		desc: 'Added Achievement Ranks',
+		read: false
+	};
+
+	instance.lunarite = {
+		desc: 'Changed Space Metal to Lunarite',
+		read: false
+	};
+
+	instance.hideWonder = {
+		desc: 'The Wonder Tab hides itself when completed (makes space for more tabs)',
+		read: false
+	};
 
 	return instance;
 

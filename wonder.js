@@ -209,10 +209,10 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("rebuildRocketWonder").className === "hidden") === false){
-		if(spaceMetal >= 8000000){
-			var rebuildRocketSpaceMetal = 8000000;
+		if(lunarite >= 8000000){
+			var rebuildRocketLunarite = 8000000;
 		}
-		else{rebuildRocketSpaceMetal = spaceMetal;}
+		else{rebuildRocketLunarite = lunarite;}
 		if(titanium >= 6000000){
 			var rebuildRocketTitanium = 6000000;
 		}
@@ -221,7 +221,7 @@ function refreshWonderBars(){
 			var rebuildRocketMetal = 12000000;
 		}
 		else{rebuildRocketMetal = metal;}
-		var rocketWonderBar = (rebuildRocketSpaceMetal+rebuildRocketTitanium+rebuildRocketMetal)/260000;
+		var rocketWonderBar = (rebuildRocketLunarite+rebuildRocketTitanium+rebuildRocketMetal)/260000;
 		if(rocketWonderBar <= 100){
 			document.getElementById("rocketWonderBar").innerHTML = Game.settings.format(rocketWonderBar,2) + "%";
 			document.getElementById("rocketWonderBar").style.width = rocketWonderBar + "%";
@@ -315,7 +315,7 @@ function unlockTier3(){
 	document.getElementById("charcoalTier3").className = "";
 	document.getElementById("woodTier3").className = "";
 	document.getElementById("siliconTier3").className = "";
-	document.getElementById("spaceMetalTier3").className = "";
+	document.getElementById("lunariteTier3").className = "";
 	document.getElementById("methaneTier3").className = "";
 	document.getElementById("titaniumTier3").className = "";
 	document.getElementById("goldTier3").className = "";
@@ -334,7 +334,7 @@ function unlockTier4(){
 	document.getElementById("charcoalTier4").className = "";
 	document.getElementById("woodTier4").className = "";
 	document.getElementById("siliconTier4").className = "";
-	document.getElementById("spaceMetalTier4").className = "";
+	document.getElementById("lunariteTier4").className = "";
 	document.getElementById("methaneTier4").className = "";
 	document.getElementById("titaniumTier4").className = "";
 	document.getElementById("goldTier4").className = "";
@@ -501,8 +501,8 @@ function rebuildCommsWonder(){
 }
 
 function rebuildRocketWonder(){
-	if(spaceMetal >= 8000000 && titanium >= 6000000 && metal >= 12000000){
-		spaceMetal -= 8000000;
+	if(lunarite >= 8000000 && titanium >= 6000000 && metal >= 12000000){
+		lunarite -= 8000000;
 		titanium -= 6000000;
 		metal -= 12000000;
 		document.getElementById("rebuildRocketWonder").className = "hidden";

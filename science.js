@@ -230,6 +230,8 @@ function unlockLabT3(){
 		science -= 3000;
 		document.getElementById("unlockLabT3").className = "hidden";
 		document.getElementById("labTier3").className = "";
+		document.getElementById("unlockLabT4").className = "";
+		available.push("unlockLabT4");
 		researched.push("unlockLabT3");
         Game.statistics.add('techResearched');
 	}
