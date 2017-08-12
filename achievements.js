@@ -154,13 +154,17 @@ Game.achievements = (function() {
     instance.update = function(delta) {
         for(var id in this.entries) {
             var data = this.entries[id];
+            var bracket = data.brackets[data.unlocked + 1];
 
-            if(data.unlocked < data.brackets.length - 1 && data.evaluator(data.brackets[data.unlocked + 1])) {
                 Game.notifySuccess("Achievement Reached", this.getAchievementTitle(data));
+            if(data.unlocked < data.brackets.length - 1 && data.evaluator(bracket)) {
 
                 this.unlock(id, data.unlocked + 1);
 
                 newUnlock('more');
+            } else if(data.unlocked < data.brackets.length - 1) {
+                var progressDisplay = Math.floor(100 * data.progressEvaluator(bracket));
+                this.updateProgress(id, progressDisplay);
             }
         }
     };
@@ -168,6 +172,13 @@ Game.achievements = (function() {
     instance.unlock = function(id, tier) {
         if(this.entries[id].unlocked < tier) {
             this.entries[id].unlocked = tier;
+            this.entries[id].displayNeedsUpdate = true;
+        }
+    };
+
+    instance.updateProgress = function(id, progress) {
+        if(this.entries[id].progressDisplay != progress) {
+            this.entries[id].progressDisplay = progress;
             this.entries[id].displayNeedsUpdate = true;
         }
     };
@@ -183,6 +194,7 @@ Game.achievements = (function() {
             evaluator: evaluator,
             progressEvaluator: progressEvaluator,
             unlocked: -1,
+            progressDisplay: -1,
             brackets: brackets,
             displayNeedsUpdate: true
         };
