@@ -118,9 +118,7 @@ Game.achievementsUI = (function(){
         var div = $('#' + id + "_div");
         var bg = $('#' + id + "_bg");
 
-        div.tooltip('destroy');
-        div.prop('title', Game.achievements.getAchievementTitle(data));
-        div.tooltip();
+        div.attr('data-original-title', Game.achievements.getAchievementTitle(data));
 
         div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
 
