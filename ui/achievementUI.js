@@ -118,7 +118,7 @@ Game.achievementsUI = (function(){
         var div = $('#' + id + "_div");
         var bg = $('#' + id + "_bg");
 
-        div.attr('data-original-title', Game.achievements.getAchievementTitle(data));
+        div.attr('data-original-title', Game.achievements.getAchievementTitle(data, true));
 
         div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
 

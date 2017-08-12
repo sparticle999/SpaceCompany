@@ -142,12 +142,19 @@ Game.achievements = (function() {
         console.debug("Loaded " + this.achievementCount + " (" + this.achievementCountIncludingTiers +") Achievements");
     };
 
-    instance.getAchievementTitle = function(data) {
+    instance.getAchievementTitle = function(data, for_tooltip) {
         if(data.unlocked === data.brackets.length - 1) {
-            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked])) + " (Completed)";
+            var title = data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked]));
+            if(for_tooltip === true) {
+                title += " (Completed)";
+            }
+            return title;
         } else {
-            var progress = data.progressEvaluator(data.brackets[data.unlocked+1]);
-            return data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1])) + ' (' + Math.floor(100 * progress) + '%)';
+            var title = data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1]));
+            if(for_tooltip === true) {
+                title += ' (' + data.progressDisplay + '%)';
+            }
+            return title;
         }
     };
 
@@ -156,8 +163,8 @@ Game.achievements = (function() {
             var data = this.entries[id];
             var bracket = data.brackets[data.unlocked + 1];
 
-                Game.notifySuccess("Achievement Reached", this.getAchievementTitle(data));
             if(data.unlocked < data.brackets.length - 1 && data.evaluator(bracket)) {
+                Game.notifySuccess("Achievement Reached", this.getAchievementTitle(data, false));
 
                 this.unlock(id, data.unlocked + 1);
 
