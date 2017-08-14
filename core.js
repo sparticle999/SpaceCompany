@@ -79,30 +79,31 @@ function fixStorageRounding() {
 	}
 }
 
-function refreshTimeUntilFull() {
-    setTimeUntilDisplayTest('plasmaFullTime', plasma, getMaxPlasma(), plasmaps);
-    setTimeUntilDisplayTest('energyFullTime', energy, getMaxEnergy(), energyps);
-    setTimeUntilDisplayTest('uraniumFullTime', uranium, uraniumStorage, uraniumps);
-    setTimeUntilDisplayTest('lavaFullTime', lava, lavaStorage, lavaps);
-    setTimeUntilDisplayTest('oilFullTime', oil, oilStorage, oilps);
-    setTimeUntilDisplayTest('metalFullTime', metal, metalStorage, metalps);
-    setTimeUntilDisplayTest('gemFullTime', gem, gemStorage, gemps);
-    setTimeUntilDisplayTest('charcoalFullTime', charcoal, charcoalStorage, charcoalps);
-    setTimeUntilDisplayTest('woodFullTime', wood, woodStorage, woodps);
-    setTimeUntilDisplayTest('siliconFullTime', silicon, siliconStorage, siliconps);
-    setTimeUntilDisplayTest('lunariteFullTime', lunarite, lunariteStorage, lunariteps);
-    setTimeUntilDisplayTest('methaneFullTime', methane, methaneStorage, methaneps);
-    setTimeUntilDisplayTest('titaniumFullTime', titanium, titaniumStorage, titaniumps);
-    setTimeUntilDisplayTest('goldFullTime', gold, goldStorage, goldps);
-    setTimeUntilDisplayTest('silverFullTime', silver, silverStorage, silverps);
-    setTimeUntilDisplayTest('hydrogenFullTime', hydrogen, hydrogenStorage, hydrogenps);
-    setTimeUntilDisplayTest('heliumFullTime', helium, heliumStorage, heliumps);
-    setTimeUntilDisplayTest('iceFullTime', ice, iceStorage, iceps);
-    setTimeUntilDisplayTest('meteoriteFullTime', meteorite, meteoriteStorage, meteoriteps);
+function refreshTimeUntilLimit() {
+    setTimeUntilDisplayTest('plasmaLimitType', 'plasmaLimitTime', plasma, getMaxPlasma(), plasmaps);
+    setTimeUntilDisplayTest('energyLimitType', 'energyLimitTime', energy, getMaxEnergy(), energyps);
+    setTimeUntilDisplayTest('uraniumLimitType', 'uraniumLimitTime', uranium, uraniumStorage, uraniumps);
+    setTimeUntilDisplayTest('lavaLimitType', 'lavaLimitTime', lava, lavaStorage, lavaps);
+    setTimeUntilDisplayTest('oilLimitType', 'oilLimitTime', oil, oilStorage, oilps);
+    setTimeUntilDisplayTest('metalLimitType', 'metalLimitTime', metal, metalStorage, metalps);
+    setTimeUntilDisplayTest('gemLimitType', 'gemLimitTime', gem, gemStorage, gemps);
+    setTimeUntilDisplayTest('charcoalLimitType', 'charcoalLimitTime', charcoal, charcoalStorage, charcoalps);
+    setTimeUntilDisplayTest('woodLimitType', 'woodLimitTime', wood, woodStorage, woodps);
+    setTimeUntilDisplayTest('siliconLimitType', 'siliconLimitTime', silicon, siliconStorage, siliconps);
+    setTimeUntilDisplayTest('lunariteLimitType', 'lunariteLimitTime', lunarite, lunariteStorage, lunariteps);
+    setTimeUntilDisplayTest('methaneLimitType', 'methaneLimitTime', methane, methaneStorage, methaneps);
+    setTimeUntilDisplayTest('titaniumLimitType', 'titaniumLimitTime', titanium, titaniumStorage, titaniumps);
+    setTimeUntilDisplayTest('goldLimitType', 'goldLimitTime', gold, goldStorage, goldps);
+    setTimeUntilDisplayTest('silverLimitType', 'silverLimitTime', silver, silverStorage, silverps);
+    setTimeUntilDisplayTest('hydrogenLimitType', 'hydrogenLimitTime', hydrogen, hydrogenStorage, hydrogenps);
+    setTimeUntilDisplayTest('heliumLimitType', 'heliumLimitTime', helium, heliumStorage, heliumps);
+    setTimeUntilDisplayTest('iceLimitType', 'iceLimitTime', ice, iceStorage, iceps);
+    setTimeUntilDisplayTest('meteoriteLimitType', 'meteoriteLimitTime', meteorite, meteoriteStorage, meteoriteps);
 }
 
-function setTimeUntilDisplayTest(target, current, max, perSecond) {
-	var targetElement = $('#' + target);
+function setTimeUntilDisplayTest(targetLimitType, targetLimitTime, current, max, perSecond) {
+	var targetTypeElement = $('#' + targetLimitType);
+	var targetTimeElement = $('#' + targetLimitTime)
 	var value = 0;
 	var isDraining = false;
 	if(perSecond > 0) {
@@ -114,15 +115,18 @@ function setTimeUntilDisplayTest(target, current, max, perSecond) {
 
 	if(value > 0) {
         var formattedTimeTest = Game.utils.getFullTimeDisplay(value);
-        targetElement.text(formattedTimeTest);
+        targetTimeElement.text(formattedTimeTest);
 
         if(isDraining){
-            targetElement.addClass('red');
+            targetTypeElement.text('empty');
+            targetTimeElement.addClass('red');
 		} else {
-            targetElement.removeClass('red');
+            targetTypeElement.text('full');
+            targetTimeElement.removeClass('red');
         }
     } else {
-        targetElement.text('N/A');
+        targetTypeElement.text('full');
+        targetTimeElement.text('N/A');
 	}
 }
 

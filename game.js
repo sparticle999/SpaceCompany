@@ -76,7 +76,7 @@ var Game = (function() {
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
-        refreshTimeUntilFull();
+        refreshTimeUntilLimit();
 
         checkStorages();
 
