@@ -6,9 +6,7 @@ function getLab(){
 		gem -= labGemCost;
 		metal -= labMetalCost;
 		lab += 1;
-		labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
-		labGemCost = Math.floor(15 * Math.pow(1.1,lab));
-		labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+		updateLabCost();
 	}
 }
 
@@ -18,9 +16,7 @@ function getLabT2(){
 		gem -= labT2GemCost;
 		metal -= labT2MetalCost;
 		labT2 += 1;
-		labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
-		labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
-		labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
+		updateLabCost();
 	}
 }
 
@@ -30,9 +26,7 @@ function getLabT3(){
 		gem -= labT3GemCost;
 		metal -= labT3MetalCost;
 		labT3 += 1;
-		labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
-		labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
-		labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
+		updateLabCost();
 	}
 }
 
@@ -42,10 +36,26 @@ function getLabT4(){
 		gem -= labT4GemCost;
 		metal -= labT4MetalCost;
 		labT4 += 1;
-		labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
-		labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
-		labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+		updateLabCost();
 	}
+}
+
+function updateLabCost(){
+    labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
+    labGemCost = Math.floor(15 * Math.pow(1.1,lab));
+    labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+
+    labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
+    labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
+    labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
+
+    labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
+    labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
+    labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
+
+    labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
+    labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
+    labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
 }
 
 function unlockStorage(){
