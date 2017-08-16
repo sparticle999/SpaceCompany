@@ -74,17 +74,8 @@ function legacySave(data) {
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
 		chemicalPlant: chemicalPlant,
-		chemicalPlantMetalCost: chemicalPlantMetalCost,
-		chemicalPlantGemCost: chemicalPlantGemCost,
-		chemicalPlantOilCost: chemicalPlantOilCost,
 		oxidisation: oxidisation,
-		oxidisationMetalCost: oxidisationMetalCost,
-		oxidisationGemCost: oxidisationGemCost,
-		oxidisationOilCost: oxidisationOilCost,
 		hydrazine: hydrazine,
-		hydrazineTitaniumCost: hydrazineTitaniumCost,
-		hydrazineSiliconCost: hydrazineSiliconCost,
-		hydrazineGoldCost: hydrazineGoldCost,
 		lunarite: lunarite,
 		lunariteStorage: lunariteStorage,
 		lunariteNextStorage: lunariteNextStorage,
@@ -267,17 +258,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
-		if(typeof savegame.chemicalPlantMetalCost !== "undefined") chemicalPlantMetalCost = savegame.chemicalPlantMetalCost;
-		if(typeof savegame.chemicalPlantGemCost !== "undefined") chemicalPlantGemCost = savegame.chemicalPlantGemCost;
-		if(typeof savegame.chemicalPlantOilCost !== "undefined") chemicalPlantOilCost = savegame.chemicalPlantOilCost;
 		if(typeof savegame.oxidisation !== "undefined") oxidisation = savegame.oxidisation;
-		if(typeof savegame.oxidisationMetalCost !== "undefined") oxidisationMetalCost = savegame.oxidisationMetalCost;
-		if(typeof savegame.oxidisationGemCost !== "undefined") oxidisationGemCost = savegame.oxidisationGemCost;
-		if(typeof savegame.oxidisationOilCost !== "undefined") oxidisationOilCost = savegame.oxidisationOilCost;
 		if(typeof savegame.hydrazine !== "undefined") hydrazine = savegame.hydrazine;
-		if(typeof savegame.hydrazineTitaniumCost !== "undefined") hydrazineTitaniumCost = savegame.hydrazineTitaniumCost;
-		if(typeof savegame.hydrazineSiliconCost !== "undefined") hydrazineSiliconCost = savegame.hydrazineSiliconCost;
-		if(typeof savegame.hydrazineGoldCost !== "undefined") hydrazineGoldCost = savegame.hydrazineGoldCost;
 		if(typeof savegame.spaceMetal !== "undefined") lunarite = savegame.spaceMetal;
 		if(typeof savegame.lunarite !== "undefined") lunarite = savegame.lunarite;
 		if(typeof savegame.spaceMetalStorage !== "undefined") lunariteStorage = savegame.spaceMetalStorage;
