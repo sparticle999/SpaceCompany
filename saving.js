@@ -193,11 +193,6 @@ function legacySave(data) {
 		printer: printer,
 		web: web,
 		dyson: dyson,
-		dysonTitaniumCost: dysonTitaniumCost,
-		dysonGoldCost: dysonGoldCost,
-		dysonSiliconCost: dysonSiliconCost,
-		dysonMeteoriteCost: dysonMeteoriteCost,
-		dysonIceCost: dysonIceCost,
 		sphere: sphere,
 		swarm: swarm,
 		ring: ring,
@@ -406,11 +401,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
 		if(typeof savegame.web !== "undefined") web = savegame.web;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
-		if(typeof savegame.dysonTitaniumCost !== "undefined") dysonTitaniumCost = savegame.dysonTitaniumCost;
-		if(typeof savegame.dysonGoldCost !== "undefined") dysonGoldCost = savegame.dysonGoldCost;
-		if(typeof savegame.dysonSiliconCost !== "undefined") dysonSiliconCost = savegame.dysonSiliconCost;
-		if(typeof savegame.dysonMeteoriteCost !== "undefined") dysonMeteoriteCost = savegame.dysonMeteoriteCost;
-		if(typeof savegame.dysonIceCost !== "undefined") dysonIceCost = savegame.dysonIceCost;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") ring = savegame.ring;

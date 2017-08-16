@@ -177,6 +177,7 @@ var Game = (function() {
         refreshTabs();
 
         updateCost();
+        updateDysonCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
