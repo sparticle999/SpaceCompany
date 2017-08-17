@@ -208,7 +208,7 @@ function convertPlasma(resourceName){
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 
-function refreshDyson(){
+function updateDysonCost(){
 	dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
 	dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
 	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
@@ -225,7 +225,7 @@ function getDyson(){
 		ice -= dysonIceCost;
 		dyson += 1;
 
-		refreshDyson()
+		updateDysonCost();
 
 		return true;
 	}
@@ -244,7 +244,7 @@ function buildRing(){
 		rocketFuel -= 50000;
 		ring += 1;
 
-		refreshDyson();
+        updateDysonCost();
 	}
 }
 
@@ -254,7 +254,7 @@ function buildSwarm(){
 		rocketFuel -= 250000;
 		swarm += 1;
 
-		refreshDyson();
+        updateDysonCost();
 	}
 }
 
@@ -268,7 +268,7 @@ function buildSphere(){
 		rocketFuel -= 1000000;
 		sphere += 1;
 
-		refreshDyson();
+        updateDysonCost();
 
 		Game.stargaze.initialise();
 
