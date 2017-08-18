@@ -200,15 +200,24 @@ Game.utils = (function(){
         return hourResult + minuteResult + secondResult + suffix;
     };
 
-    instance.fibonacci = function(n){
+    instance.fibonacci = function(n, multi){
         var a = 0, b = 1, f = 1;
         for(var i = 2; i <= n; i++) {
             f = a + b;
             a = b;
             b = f;
         }
-        return f;
+        return f*(multi||1);
     };
+
+    instance.pascal = function(n){
+        var add = 1, init = 0;
+        for(var i = 0; i < n; i++){
+            init += add;
+            add += 1;
+        }
+        return init;
+    }
 
     instance.capitaliseFirst = function(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

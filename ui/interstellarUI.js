@@ -45,7 +45,7 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.factionTitleTemplate = Handlebars.compile(
-            ['<tr><td style="border:none;">',
+            ['<tr><td colspan="2" style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<h4><b>Relationship: {{opinion}}</b></h4>',
                 '<span>{{desc}}</span>',
@@ -97,17 +97,31 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.starTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"><td style="width:300px;">',
+            ['<tr id="{{htmlId}}" class="hidden"><td style="width:300px;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
+                '<h5>',
+                    'Tier: {{tier}}<br>',
+                    'Distance: {{distance}} (<span id="{{htmlId}}Cost">{{cost}}</span> Antimatter)<br>',
+                    'Planets: {{planets}}<br>',
+                '</h5>',
+                '<div class="btn btn-default" id="{{htmlId}}_explore" onclick="Game.interstellarBETA.stars.exploreSystem(\'{{id}}\');">Explore</div>',
+                '</td><td><br><br><br>',
+                '<p>{{desc}}</p>',
+                '</td></tr>'].join('\n'));
+
+        instance.factionStarTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="2">',
+                '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}: <span id="{{htmlId}}_owned">Protected</span></h3>',
                 '<h5>',
                     'Tier: {{tier}}<br>',
                     'Distance: {{distance}}<br>',
                     'Planets: {{planets}}<br>',
                     'Faction: {{faction}}<br>',
                     'Resources Present: {{resource1}}, {{resource2}}',
-                '</h5>',
-                '<div class="btn btn-default" id="{{htmlId}}explore">Explore</div>',
-                '</td><td><br><br><br>',
+                '</h5><hide id="{{htmlId}}_conquerButtons">',
+                    '<div class="btn btn-default" id="{{htmlId}}_invade" onclick="Game.interstellarBETA.stars.invadeSystem(\'{{id}}\');">Invade</div>',
+                    '<div class="btn btn-default disabled" id="{{htmlId}}_absorb" onclick="Game.interstellarBETA.stars.absorbSystem(\'{{id}}\');">Absorb (10 Opinion)</div>',
+                '</hide></td><td colspan="3"><br><br><br>',
                 '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
@@ -134,6 +148,7 @@ Game.interstellarUI = (function(){
 
         instance.factionNavTemplate = Handlebars.compile(
             ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+                    '<div id="{{htmlId}}NavGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
@@ -151,16 +166,13 @@ Game.interstellarUI = (function(){
         for(var id in Game.interstellarData) {
             this.createDisplay(id);
         }
+
     };
 
     instance.update = function(delta) {
-
-        // for(var id in this.entries) {
-        //     var data = Game.resources.getResourceData(this.entries[id].id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updateDisplay(data);
-        //     }
-        // }
+        if(!Game.constants.enableInterstellar){
+            return;
+        }
 
         for(var id in this.commEntries) {
             var data = Game.interstellarBETA.comms.getMachineData(id);
@@ -189,22 +201,57 @@ Game.interstellarUI = (function(){
                 this.updateMachineDisplay(data);
             }
         }
-        if(Game.constants.enableInterstellar){
-            $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
-            $('#intnav_antimatter_perSecond').text(antimatterps);
-            if(antimatter >= 100000){
-                document.getElementById("intnav_antimatter_current").className = "green";
-            } else {
-                document.getElementById("intnav_antimatter_current").className = "";
-            }
+
+        // Updates Antimatter Nav
+        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
+        $('#intnav_antimatter_perSecond').text(antimatterps);
+        if(antimatter >= 100000){
+            document.getElementById("intnav_antimatter_current").className = "green";
+        } else {
+            document.getElementById("intnav_antimatter_current").className = "";
         }
 
-
-        for(var id in Game.stargazeData){
-            var data = Game.stargazeData[id];
+        for(var id in Game.stargaze.entries){
+            var data = Game.stargaze.getStargazeData(id);
             if(data.category == "faction"){
                 $('#intnav_' + id + '_opinion').text(data.opinion);
             }
+        }
+
+        // Hides all faction tabs
+        for(var id in Game.interstellarBETA.entries){
+            var data = Game.interstellarBETA.getInterstellarData(id);
+            if(data.category == "faction"){
+                document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction hidden";
+            }
+        }
+
+        for(var id in this.starEntries){
+            var data = Game.interstellarBETA.stars.getStarData(id);
+            if(data.explored){
+                // Shows the faction tabs that have explored stars - relevant to previous for loop
+                document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction";
+                // Enables Absorb Button
+                var faction = Game.stargaze.getStargazeData(data.factionId);
+                if(faction.opinion >= 60){
+                    document.getElementById('star_' + id + '_absorb').className = "btn btn-default";
+                } else {
+                    document.getElementById('star_' + id + '_absorb').className = "btn btn-default disabled";
+                }
+                //Update System Status
+                if(data.owned){
+                    $('#star_' + id + '_owned').text("Conquered");
+                    document.getElementById('star_' + id + '_conquerButtons').className = "hidden";
+                } else {
+                    $('#star_' + id + '_owned').text("Protected");
+                    document.getElementById('star_' + id + '_conquerButtons').className = "";
+                }
+                continue;
+            }
+            if(Game.interstellarBETA.comms.entries.IRS.count*5 >= data.distance){
+                document.getElementById('star_' + id).className = "";
+            }
+            $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
         }
 
         for(var id in this.antimatterEntries){
@@ -261,11 +308,22 @@ Game.interstellarUI = (function(){
     };
 
     instance.createStar = function(data, starData) {
-        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        
         var star = this.starTemplate(starData);
+
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         tabContentRoot.append($(star));
-        this.starEntries[starData.id] = data.id;
+
+        this.starEntries[starData.id] = starData.id;
         this.starObservers[starData.id] = [];
+    };
+
+    instance.createFactionStar = function(data, starData) {
+        
+        var factionStar = this.factionStarTemplate(starData);
+
+        var factionTabContentRoot = $('#' + this.tab.getContentElementId(starData.factionId));
+        factionTabContentRoot.append($(factionStar));
     };
 
     instance.createCommsContent = function(data){
@@ -321,10 +379,12 @@ Game.interstellarUI = (function(){
         var tabTitle = this.factionTitleTemplate(data);
         target.append(tabTitle);
 
-        // for (var id in Game.interstellarBETA.stars.entries){
-        //     var starData = Game.interstellarBETA.stars.entries[id];
-        //     this.createStar(data, starData);
-        // }
+        for (var id in Game.interstellarBETA.stars.entries){
+            var starData = Game.interstellarBETA.stars.entries[id];
+            if(starData.factionId == data.id){
+                this.createFactionStar(data, starData);
+            }
+        }
     }
 
     instance.createInterstellarNav = function(data) {
@@ -446,7 +506,7 @@ Game.interstellarUI = (function(){
         var resultHtml = '<span>Cost: </span>';
         for(var i = 0; i < segments.length; i++) {
             var segmentData = segments[i];
-            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
+            resultHtml = resultHtml + '<span id="' + segmentData.h + '"></span> ';
             resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
             if(i < segments.length - 1) {
                 resultHtml = resultHtml + '<span>, </span>';
@@ -493,6 +553,8 @@ Game.interstellarUI = (function(){
 
         return resultHtml;
     };
+
+    
 
     Game.uiComponents.push(instance);
 

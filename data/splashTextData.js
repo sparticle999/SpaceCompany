@@ -102,6 +102,7 @@ var splashTextArray = [
 "0% Sugar!",
 "0% Organic!",
 "JavaScript!",
+"Recruiting Robot Hamsters...",
 ];
 var splashText = splashTextArray[Math.floor(Math.random()*splashTextArray.length)];
 

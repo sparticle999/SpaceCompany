@@ -8,7 +8,7 @@ Game.interstellarCategoryData = (function () {
     };
 
     instance.faction = {
-        title: 'Factions',
+        title: 'Faction Star Systems',
         category: 'faction',
     };
 
@@ -44,7 +44,7 @@ Game.interstellarData = (function(){
 
 	instance.travel = {
 		name: 'Travel',
-		desc: 'Here, you can travel across the cosmos to your heart\'s desire. When you explore a star system, it will appear in the respective faction tab, where you can gain control of it for boosts in the resources present.',
+		desc: 'Here, you can travel across the cosmos to your heart\'s desire. When you explore a star system, it will appear in the respective faction tab, where you can gain control of it for boosts in the resources present. The number in () after the distance is the antimatter needed to travel there.',
 		category: 'general',
 		unlocked: false
 	};

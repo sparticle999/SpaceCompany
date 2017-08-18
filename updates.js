@@ -142,6 +142,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.dmCounter = {
+		desc: 'Dark Matter is now calculated and shown.',
+		read: false
+	}
+
 	return instance;
 
 }());

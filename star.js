@@ -15,7 +15,9 @@ Game.interstellarBETA.stars = (function(){
                 id: id,
                 htmlId: 'star_' + id,
                 current: 0,
-                displayNeedsUpdate: false
+                displayNeedsUpdate: false,
+                explored: false,
+                owned: false,
             });
             
         }
@@ -31,10 +33,27 @@ Game.interstellarBETA.stars = (function(){
         }
     };
 
-    instance.unlock = function(id) {
-        this.entries[id].unlocked = true;
-        this.entries[id].displayNeedsUpdate = true;
+    instance.exploreSystem = function(id){
+        var data = this.entries[id];
+        var exploreCost = data.distance * 10000;
+        if(antimatter >= exploreCost){
+            antimatter -= exploreCost;
+            data.explored = true;
+            document.getElementById('star_' + id).className = "hidden";
+            document.getElementById('star_' + id + '_conquer').className = "";
+            document.getElementById('intnav_' + data.factionId + 'NavGlyph').className = "glyphicon glyphicon-exclamation-sign";
+            document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction"
+        }
     };
+
+    instance.absorbSystem = function(id){
+        var data = this.entries[id];
+        var faction = Game.stargaze.getStargazeData(data.factionId);
+        if(faction.opinion >= 60){
+            faction.opinion -= 10;
+            data.owned = true;
+        }
+    }
 
     instance.getStarData = function(id) {
         return this.entries[id];

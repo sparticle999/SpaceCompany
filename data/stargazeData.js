@@ -8,7 +8,7 @@ Game.stargazeCategoryData = (function () {
     };
 
     instance.faction = {
-        title: 'Faction Star Systems',
+        title: 'Factions',
         category: 'faction',
     };
 
@@ -33,8 +33,9 @@ Game.stargazeData = (function(){
 
 	instance.darkMatter = {
 		name: "Dark Matter",
-		desc: "Here, you can see how much Dark Matter you have acquired and exactly where it has come from. You will be able to find out how it is acquired and can spend it on DM specific upgrades.",
+		desc: "Here, you can see how much Dark Matter you have acquired and the earnings you will recieve upon reset (in brackets). You can find out how DM is gained and can spend it on Dark-Matter-specific upgrades.",
 		current: 0,
+		count: 0,
 		category: "general",
 		hidden: "",
 	};
@@ -44,7 +45,7 @@ Game.stargazeData = (function(){
 		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.prasnian = {
@@ -52,7 +53,7 @@ Game.stargazeData = (function(){
 		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.hyacinite = {
@@ -60,7 +61,7 @@ Game.stargazeData = (function(){
 		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.kitrinos = {
@@ -68,7 +69,7 @@ Game.stargazeData = (function(){
 		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.moviton = {
@@ -76,7 +77,7 @@ Game.stargazeData = (function(){
 		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
 	instance.overlord = {
@@ -84,9 +85,46 @@ Game.stargazeData = (function(){
 		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
 		category: "faction",
 		opinion: 0,
-		hidden: "",
+		hidden: "hidden",
 	};
 
+
+	return instance;
+
+}());
+
+Game.darkMatter = (function(){
+
+	var instance = {};
+
+	/************
+	** DM Gain **
+	************/
+
+	instance.wonders = {
+		name: "Wonders",
+		desc: "You get Dark Matter for the floors of the Wonder Station that you complete. It is likely you will have achieved all of these in your first run before resetting. You get 4 Dark Matter for every floor completed, but 2 for the last floor (only one wonder).",
+	};
+
+	instance.sphere = {
+		name: "Sphere",
+		desc: "For building a sphere in your home system and thus completing it, you get 15 dark matter. Other systems are completed when all stars have dyson spheres surrounding them and the dark matter given is proportional to the star size."
+	};
+
+	instance.research = {
+		name: "Research Efficiency",
+		desc: "For every 25 Research Efficiencies in any of the repurchaseable researches, you will get 2 Dark Matter.",
+	};
+
+	instance.rank = {
+		name: "Achievement Rank",
+		desc: "For every achievement rank attained, you will get 2 dark matter. Due to the easy difficulty in the first few achievement ranks, this will be your primary source of dark matter early in a run.",
+	};
+
+	instance.swarm = {
+		name: "Swarms",
+		desc: "One of the more complex systems, your Dark Matter gained from swarms is judged on an old mathematical sequence: Pascal's Triangle. You will get 1 dark matter for passing each milestone of the pascal triangle sequence and gaining the number of swarms necessary. For example: 1,3,6,10,15,21...",
+	};
 
 	return instance;
 
@@ -105,7 +143,8 @@ Game.prestigeData = (function(){
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
 		cost: 1,
 		category: "intro",
-		achieved: false
+		achieved: false,
+		disabled: "disabled"
 	};
 
 	/**************

@@ -17,7 +17,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Adding Lore onto every Building and an introduction to your Space Company
 - Rebalance all costs to not use as much Lunarite/Gems
 - Loading screen flavour text changes as you progress
-- Change Lunarite to a proper name
+- Machine Overview Tab
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
@@ -27,13 +27,10 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Unknown Planets that you have to explore to know what it holds
 - Each star system is more hostile than the last until prestige, where it resets
 - Pushing Planets into the Sun gets prestige currency
-- Machine Overview Tab
-- Space Elevator
 - Mass to Energy Conversion
 - Buy X buttons
 - Buy Max/Custom Buttons
 - Reduce Storage Costs
-- Achievements with Bonuses
 - Change Letter Formatting To Start At 100K
 - Rebalance Science
 - Change Icons (white circle with icon inside)
@@ -72,6 +69,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Achievement Ranks
 - Renamed Space Metal as Lunarite
 - The Wonder Tab hides itself when completed (makes space for more tabs)
+- Dark Matter
 
 ##### Small Changes
 

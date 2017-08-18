@@ -72,17 +72,23 @@ Game.stargazeUI = (function(){
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
-                    '<span>{{current}}</span>',
+                    '<span id="{{htmlId}}_count">{{count}}</span> (<span id="{{htmlId}}_current">{{current}}</span>)',
                 '</td>',].join('\n'));
 
+        instance.dmInfoTemplate = Handlebars.compile(
+            ['<tr><td>',
+                '<h3 class="default btn-link">{{name}}</h3>',
+                '<p>{{desc}}</p>',
+                '</td></tr>'].join('\n'));
+
         instance.upgradeTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td>',
+            ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Achieved">Dormant</span></h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
-                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade({{id}})" class="btn btn-default">Activate {{id}}</div>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default {{disabled}}">Activate</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -107,30 +113,11 @@ Game.stargazeUI = (function(){
         //         this.updateDisplay(data);
         //     }
         // }
-        // for(var id in this.rocketEntries) {
-        //     var data = Game.interstellarBETA.rocket.getRocketData(id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updateRocketDisplay(data);
-        //     }
-        // }
 
-        // for(var id in this.rocketPartEntries) {
-        //     var data = Game.interstellarBETA.rocketParts.getPartData(id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updatePartDisplay(data);
-        //     }
-        // }
+        this.updateDM();
 
-        // for(var id in this.rocketPartEntries) {
-        //     var data = Game.interstellarBETA.rocketParts.getPartData(id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updateRocketPartDisplay(data);
-        //         console.log(true);
-        //     }
-        // }
-
-        for(var id in Game.stargazeData){
-            var data = Game.stargazeData[id];
+        for(var id in Game.stargaze.entries){
+            var data = Game.stargaze.getStargazeData(id);
             if(data.category == "faction"){
                 $('#stargazeNav' + id + '_opinion').text(data.opinion);
             }
@@ -144,6 +131,12 @@ Game.stargazeUI = (function(){
         //     }
         // }
     };
+
+    instance.createDMInfo = function(data, dmInfoData){
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        var dmInfo = this.dmInfoTemplate(dmInfoData);
+        tabContentRoot.append($(dmInfo));
+    }
 
     instance.createUpgrade = function(data, upgradeData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
@@ -164,12 +157,14 @@ Game.stargazeUI = (function(){
             var tabTitle = this.titleTemplate(data);
         }
         target.append(tabTitle);
-
-        // if(data.id == "intro"){
-        //     this.createUpgrade(data, Game.prestigeData.unlockStargaze);
-        // }
-        for (var id in Game.prestigeData) {
-            var upgradeData = Game.prestigeData[id];
+        if(data.id == "darkMatter"){
+            for (var id in Game.darkMatter) {
+                var infoData = Game.darkMatter[id];
+                this.createDMInfo(data, infoData);
+            }
+        }
+        for (var id in Game.stargaze.upgradeEntries) {
+            var upgradeData = Game.stargaze.upgradeEntries[id];
             if(data.id == upgradeData.category){
                 this.createUpgrade(data, upgradeData);
             }
@@ -198,32 +193,35 @@ Game.stargazeUI = (function(){
         this.entries[data.htmlId] = data;
     };
 
-    instance.updateUpgradeDisplay = function(data) {
-        var element = $('#' + data.htmlId);
-        if(data.unlocked === true) {
-            element.show();
-        } else {
-            element.hide();
+    instance.updateDM = function(){
+        var DM = 0;
+        //Wonders
+        if(contains(activated, "precious"&&"energetic"&&"tech"&&"meteorite")){
+            DM += 4;
         }
-        // Update the cost display
-        if(data.built == true){
-            console.log(document.getElementById('roc_' + data.id + 'Built'));
-            var status = document.getElementById('roc_' + data.id + 'Built');
-            status.innerHTML = "Built";
-            status.className = "green";
-            var costElement = $('#' + data.htmlId + '_cost');
-            costElement.empty();
-        } else {
-            if(data.cost) {
-                var costDisplayData = this.buildRocketCostDisplay(this.rocketObservers[data.id], data);
-                var costElement = $('#' + data.htmlId + '_cost');
-                costElement.empty();
-                costElement.append($(costDisplayData));
-            }
+        if(contains(activated, "comms"&&"rocket"&&"antimatter"&&"portalRoom")){
+            DM += 4;
         }
-
-        data.displayNeedsUpdate = false;
-    };
+        if(contains(activated, "stargate")){
+            DM += 2;
+        }
+        //Sphere
+        DM += sphere * 15; //Temporary//
+        //Research
+        DM += Math.floor((Game.tech.entries.efficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
+        //Rank
+        DM += Game.achievements.rank * 2;
+        //Swarms
+        var x = 1;
+        while (swarm >= Game.utils.pascal(x)){
+            x += 1;
+            DM += 1;
+        }
+        if(Game.stargaze.entries.darkMatter){
+            Game.stargaze.entries.darkMatter.current = DM;
+            $('#stargazeNavdarkMatter_current').text(DM);
+        }
+    }
 
     instance.buildCostDisplay = function(observerArray, data) {
         for(var i = 0; i < observerArray.length; i++) {
