@@ -404,7 +404,7 @@ function destroyMachine(machine, id){
 	}
 }
 
-function updateCost() {
+function updateCost(){
     PSUSilverCost = Math.floor(770000 * Math.pow(1.1,PSU));
     PSUGoldCost = Math.floor(770000 * Math.pow(1.1,PSU));
     PSUUraniumCost = Math.floor(550000 * Math.pow(1.1,PSU));
@@ -429,13 +429,13 @@ function updateCost() {
     batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
     batteryT2LunariteCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
 
- 	 batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-     batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-     batteryT3LunariteCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
+    batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+    batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+    batteryT3LunariteCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
  	
-     batteryT4MetalCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
-     batteryT4GemCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
-     batteryT4LunariteCost = Math.floor(33000000 * Math.pow(1.1,batteryT4));
+    batteryT4MetalCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
+    batteryT4GemCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
+    batteryT4LunariteCost = Math.floor(33000000 * Math.pow(1.1,batteryT4));
 	
     charcoalEngineMetalCost = Math.floor(50 * Math.pow(1.1,charcoalEngine));
     charcoalEngineGemCost = Math.floor(25 * Math.pow(1.1,charcoalEngine));

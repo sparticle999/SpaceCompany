@@ -76,7 +76,7 @@ var Game = (function() {
 
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
-        refreshTimeUntilFull();
+        refreshTimeUntilLimit();
 
         checkStorages();
 
@@ -177,6 +177,9 @@ var Game = (function() {
         refreshTabs();
 
         updateCost();
+        updateDysonCost();
+        updateFuelProductionCost();
+        updateLabCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();

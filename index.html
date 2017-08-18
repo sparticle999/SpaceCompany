@@ -77,7 +77,7 @@
 		<div class="ng-binding"></div>
 	</div>
 	<div height="30"></div>
-	<div id="updateAlert" class="alert alert-info alert-dismissable fade in">
+	<div id="updateAlert" class="alert alert-info alert-dismissible fade in">
 	    <button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>
 	    <strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>
 	    <ul id="updateLog"></ul>
@@ -555,7 +555,7 @@
 									<span>
 										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company. At first you can hold 100,000 plasma at once, but you can unlock and purchase Plasma Storage Units to increase this number.
 										<br>
-										Time remaining until full storage: <b><span id="plasmaFullTime">N/A</span></b>
+										Time remaining until <span id="plasmaLimitType">full</span> storage: <b><span id="plasmaLimitTime">N/A</span></b>
 										<br>
 										1 Plasma is created by infusing <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
@@ -654,7 +654,7 @@
 									<span>
 										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
 										<br>
-										Time remaining until full storage: <b><span id="energyFullTime">N/A</span></b>
+										Time remaining until <span id="energyLimitType">full</span> storage: <b><span id="energyLimitTime">N/A</span></b>
 										<br>
 									</span>
 									<br>
@@ -860,7 +860,7 @@
 									<span>
 										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
+										Time remaining until <span id="uraniumLimitType">full</span> storage: <b><span id="uraniumLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -976,7 +976,7 @@
 									<span>
 										Upgrade your Oil storage size to <span id="oilNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="oilFullTime">N/A</span></b>
+										Time remaining until <span id="oilLimitType">full</span> storage: <b><span id="oilLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="oilStorageCost">50</span> Oil, <span id="oilStorageMetalCost">20</span> Metal.
 									</span>
@@ -1092,7 +1092,7 @@
 									<span>
 										Upgrade your Metal storage size to <span id="metalNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="metalFullTime">N/A</span></b>
+										Time remaining until <span id="metalLimitType">full</span> storage: <b><span id="metalLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="metalStorageCost">50</span> Metal.
 									</span>
@@ -1210,7 +1210,7 @@
 									<span>
 										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="gemFullTime">N/A</span></b>
+										Time remaining until <span id="gemLimitType">full</span> storage: <b><span id="gemLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="gemStorageCost">50</span> Gems, <span id="gemStorageMetalCost">20</span> Metal.
 									</span>
@@ -1329,7 +1329,7 @@
 									<span>
 										Upgrade your Charcoal storage size to <span id="charcoalNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="charcoalFullTime">N/A</span></b>
+										Time remaining until <span id="charcoalLimitType">full</span> storage: <b><span id="charcoalLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="charcoalStorageCost">50</span> Charcoal, <span id="charcoalStorageMetalCost">20</span> Metal.
 									</span>
@@ -1455,7 +1455,7 @@
 									<span>
 										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="woodFullTime">N/A</span></b>
+										Time remaining until <span id="woodLimitType">full</span> storage: <b><span id="woodLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> Metal.
 									</span>
@@ -1573,7 +1573,7 @@
 									<span>
 										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="siliconFullTime">N/A</span></b>
+										Time remaining until <span id="siliconLimitType">full</span> storage: <b><span id="siliconLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -1691,7 +1691,7 @@
 									<span>
 										Upgrade your Lunarite storage size to <span id="lunariteNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="lunariteFullTime">N/A</span></b>
+										Time remaining until <span id="lunariteLimitType">full</span> storage: <b><span id="lunariteLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="lunariteStorageCost">50</span> Lunarite, <span id="lunariteStorageMetalCost">200</span> Metal.
 									</span>
@@ -1809,7 +1809,7 @@
 									<span>
 										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="methaneFullTime">N/A</span></b>
+										Time remaining until <span id="methaneLimitType">full</span> storage: <b><span id="methaneLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -1928,7 +1928,7 @@
 									<span>
 										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="titaniumFullTime">N/A</span></b>
+										Time remaining until <span id="titaniumLimitType">full</span> storage: <b><span id="titaniumLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2001,7 +2001,7 @@
 										Drill of Titans: <span id="titanDrill">0</span>
 									</h3>
 									<span>
-										This mighty drill is said to have been wielded by Titans themselves, many milennia ago.
+										This mighty drill is said to have been wielded by Titans themselves, many millennia ago.
 										<br>
 										Produces 197 Titanium per second.
 										<br>
@@ -2046,7 +2046,7 @@
 									<span>
 										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="goldFullTime">N/A</span></b>
+										Time remaining until <span id="goldLimitType">full</span> storage: <b><span id="goldLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2164,7 +2164,7 @@
 									<span>
 										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="silverFullTime">N/A</span></b>
+										Time remaining until <span id="silverLimitType">full</span> storage: <b><span id="silverLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2217,7 +2217,7 @@
 										Big Bertha: <span id="bertha">0</span>
 									</h3>
 									<span>
-										This large, space drill, named after the World War One Howitzer built almost a milienia ago, is a silver seeking machine specially designed for mining asteroids.
+										This large, space drill, named after the World War One Howitzer built almost a millennia ago, is a silver seeking machine specially designed for mining asteroids.
 										<br>
 										Produces 53 silver per second.
 										<br>
@@ -2282,7 +2282,7 @@
 									<span>
 										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="lavaFullTime">N/A</span></b>
+										Time remaining until <span id="lavaLimitType">full</span> storage: <b><span id="lavaLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2400,7 +2400,7 @@
 									<span>
 										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="hydrogenFullTime">N/A</span></b>
+										Time remaining until <span id="hydrogenLimitType">full</span> storage: <b><span id="hydrogenLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2518,7 +2518,7 @@
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="heliumFullTime">N/A</span></b>
+										Time remaining until <span id="heliumLimitType">full</span> storage: <b><span id="heliumLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2636,7 +2636,7 @@
 									<span>
 										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="iceFullTime">N/A</span></b>
+										Time remaining until <span id="iceLimitType">full</span> storage: <b><span id="iceLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageLunariteCost">20</span> Lunarite.
 									</span>
@@ -2757,7 +2757,7 @@
 									<span>
 										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="meteoriteFullTime">N/A</span></b>
+										Time remaining until <span id="meteoriteLimitType">full</span> storage: <b><span id="meteoriteLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageLunariteCost">400</span> Lunarite.
 									</span>
@@ -3346,7 +3346,7 @@
 										Meteorite Tier 2
 									</h3>
 									<span>
-										Research a more efficient method of getting meteorite than creating it artificialy.
+										Research a more efficient method of getting meteorite than creating it artificially.
 										<br>
 										Costs <span id="unlockMeteoriteTier2Cost">100,000</span> Science.
 									</span>
@@ -3363,7 +3363,7 @@
 										Dyson Ring
 									</h3>
 									<span>
-										Dysons Rings produce huge amounts of energy by surrounding the sun in solar stations.
+										Dyson Rings produce huge amounts of energy by surrounding the sun in solar stations.
 										<br>
 										Costs <span id="unlockDysonCost">100,000</span> Science.
 									</span>
@@ -3431,7 +3431,7 @@
 										Dyson Swarms and Spheres
 									</h3>
 									<span>
-										The Dyson Swarms encapsulate the sun in rings of solar stations, wheras Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
+										The Dyson Swarms encapsulate the sun in rings of solar stations, whereas Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
 										<br>
 										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
 									</span>
@@ -3837,7 +3837,7 @@
 										The Moon
 									</h2>
 									<span>
-										The Moon is our largest satelite, revolving around the Earth once every 27 days. It contains a large quantity of Lunarite, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.
+										The Moon is our largest satellite, revolving around the Earth once every 27 days. It contains a large quantity of Lunarite, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.
 									</span>
 									<br>
 									<br>
@@ -3872,7 +3872,7 @@
 										Mercury
 									</h2>
 									<span>
-										Mercury is a lifeless rock with little to no value. It is not worth exploring on the ground as there are no valuble materials present.
+										Mercury is a lifeless rock with little to no value. It is not worth exploring on the ground as there are no valuable materials present.
 									</span>
 									<br>
 									<br>
@@ -4344,7 +4344,7 @@
 									<span>
 										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
 										<br>
-										<b>NB: You must activate the wonders after building them to recieve their effects</b>
+										<b>NB: You must activate the wonders after building them to receive their effects</b>
 									</span>
 									<br>
 									<br>
@@ -4644,7 +4644,7 @@
 										Rebuild Communication Wonder
 									</h3>
 									<span>
-										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
+										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outside of our solar system.
 										<br>
 										<hide id="rebuildCommsWonder">
 											Costs: <span id="commsWonderGoldCost">6M</span> Gold, <span id="commsWonderSiliconCost">10M</span> Silicon, <span id="commsWonderIceCost">6M</span> Ice.
@@ -4716,7 +4716,7 @@
 										The Antimatter Wonder
 									</h2>
 									<span>
-										In the corner of the floor, you see a faintly glowing, large canister, proped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
+										In the corner of the floor, you see a faintly glowing, large canister, propped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
 									</span>
 								</td>
 							</tr>
@@ -4726,7 +4726,7 @@
 										Rebuild Antimatter Wonder
 									</h3>
 									<span>
-										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
+										For rebuilding the Antimatter Wonder, you will gain access to antimatter production and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
 											Costs: <span id="antimatterWonderUraniumCost">6M</span> Uranium, <span id="antimatterWonderLavaCost">10M</span> Lava, <span id="antimatterWonderOilCost">8M</span> Oil, <span id="antimatterWonderMethaneCost">6M</span> Methane.
@@ -4875,7 +4875,7 @@
 										Plasma
 									</h2>
 									<span>
-										Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutions.
+										Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutations.
 									</span>
 								</td>
 							</tr>
@@ -5048,7 +5048,7 @@
 														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
 													</tr>
-													<tr>
+													<tr id="meteoriteEMC" class="hidden">
 														<td><span id="meteoriteEmcVal">42</span> Plasma</td>
 														<td><span id="meteoriteEmcAmount">1</span> Meteorite</td>
 														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
@@ -5059,85 +5059,6 @@
 											</div>
 										</div>
 									</div>
-									<table style="width:775px; display: none">
-										<tr>
-											<td colspan="3">
-												<button id="uraniumConv" onclick="convertEnergy('uranium')" class="btn btn-default" style="width:100%"><span id="uraniumEmcVal">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
-											</td>
-											<td colspan="3">
-												<button id="lavaConv" onclick="convertEnergy('lava')" class="btn btn-default" style="width:100%"><span id="lavaEmcVal">42</span> Energy -> <span class="emcAmount">1</span> Lava</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="oilConv" onclick="convertEnergy('oil')" class="btn btn-default" style="width:100%"><span id="oilEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Oil</button>
-											</td>
-											<td colspan="2">
-												<button id="metalConv" onclick="convertEnergy('metal')" class="btn btn-default" style="width:100%"><span id="metalEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Metal</button>
-											</td>
-											<td colspan="2">
-												<button id="gemConv" onclick="convertEnergy('gem')" class="btn btn-default" style="width:100%"><span id="gemEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Gems</button>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="charcoalConv" onclick="convertEnergy('charcoal')" class="btn btn-default" style="width:100%"><span id="charcoalEmcVal">2</span> Energy -> <span class="emcAmount">1</span> Charcoal</button>
-											</td>
-											<td colspan="2">
-												<button id="woodConv" onclick="convertEnergy('wood')" class="btn btn-default" style="width:100%"><span id="woodEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Wood</button>
-											</td>
-											<td colspan="2">
-												<button id="siliconConv" onclick="convertEnergy('silicon')" class="btn btn-default" style="width:100%"><span id="siliconEmcVal">23</span> Energy -> <span class="emcAmount">1</span> Silicon</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="lunariteConv" onclick="convertEnergy('lunarite')" class="btn btn-default" style="width:100%"><span id="lunariteEmcVal">15</span> Energy -> <span class="emcAmount">1</span> Lunarite</button>
-											</td>
-											<td colspan="2">
-												<button id="methaneConv" onclick="convertEnergy('methane')" class="btn btn-default" style="width:100%"><span id="methaneEmcVal">12</span> Energy -> <span class="emcAmount">1</span> Methane</button>
-											</td>
-											<td colspan="2">
-												<button id="titaniumConv" onclick="convertEnergy('titanium')" class="btn btn-default" style="width:100%"><span id="titaniumEmcVal">17</span> Energy -> <span class="emcAmount">1</span> Titanium</button>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="3">
-												<button id="goldConv" onclick="convertEnergy('gold')" class="btn btn-default" style="width:100%"><span id="goldEmcVal">14</span> Energy -> <span class="emcAmount">1</span> Gold</button>
-											</td>
-											<td colspan="3">
-												<button id="silverConv" onclick="convertEnergy('silver')" class="btn btn-default" style="width:100%"><span id="silverEmcVal">16</span> Energy -> <span class="emcAmount">1</span> Silver</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="hydrogenConv" onclick="convertEnergy('hydrogen')" class="btn btn-default" style="width:100%"><span id="hydrogenEmcVal">33</span> Energy -> <span class="emcAmount">1</span> Hydrogen</button>
-											</td>
-											<td colspan="2">
-												<button id="heliumConv" onclick="convertEnergy('helium')" class="btn btn-default" style="width:100%"><span id="heliumEmcVal">39</span> Energy -> <span class="emcAmount">1</span> Helium</button>
-											</td>
-											<td colspan="2">
-												<button id="iceConv" onclick="convertEnergy('ice')" class="btn btn-default" style="width:100%"><span id="iceEmcVal">44</span> Energy -> <span class="emcAmount">1</span> Ice</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr id="meteoriteEMC" class="hidden">
-											<td colspan="6">
-												<button id="meteoriteConv" onclick="convertPlasma('meteorite')" class="btn btn-default" style="width:100%"><span id="meteoriteEmcVal">3</span> Plasma -> <span class="emcAmount">1</span> Meteorite</button>
-											</td>
-										</tr>
-									</table>
 								</td>
 							</tr>
 						</table>
@@ -7469,7 +7390,7 @@
 										I want to help. How do I do that?
 									</h4>
 									<span>
-										Help is always appreciated! You can look over my code in <a href="http://github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, sumbit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
+										Help is always appreciated! You can look over my code in <a href="http://github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, submit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
 									</span>
 								</td>
 							</tr>
@@ -7513,7 +7434,7 @@
 									<span>
 										This game is made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
 										<br>
-										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I appologise for any infuriation caused.
+										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I apologise for any infuriation caused.
 									</span>
 								</td>
 							</tr>
@@ -7529,7 +7450,7 @@
 										<a class="pointer btn-link" target="_blank" href="http://bootswatch.com/">Bootswatch</a> is the tool that I used to add the different themes to the game. If anyone wants more themes from this website, I would be happy to add them in.
 										<br>
 										<br>
-										Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shuttershock</a> and retextured and edited by myself to fit the theme of this game.
+										Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shutterstock</a> and retextured and edited by myself to fit the theme of this game.
 									</span>
 								</td>
 							</tr>
