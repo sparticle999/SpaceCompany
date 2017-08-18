@@ -69,6 +69,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Achievement Ranks
 - Renamed Space Metal as Lunarite
 - The Wonder Tab hides itself when completed (makes space for more tabs)
+- Rebuilt Achievement Tooltips
 - Dark Matter
 
 ##### Small Changes
@@ -98,7 +99,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buffed Hydrazine Production
 - Achievement Number Formatting
 - Rocket Fuel Machine Achievements
-- Fixed Hydrazine Not Getting Resource Efficiency
+- Refactored EMC (behind the scenes)
+- Optimised Saving and Loading
+- Time until storage full now shows until empty if negative gain
 
 ##### Bug Fixes
 
@@ -130,6 +133,10 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Antimatter Going Above 100k
 - Fixed Buying Multiple Solar System Rockets
 - Fixed T4 Science unlocking only after refresh
+- Fixed Hydrazine Not Getting Resource Efficiency
+- Fixed Exponential Notation UI
+- Fixed Typos
+- Fixed Stargaze not showing up until refresh
 
 ### v0.4.4
 ##### Features

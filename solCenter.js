@@ -221,7 +221,7 @@ function buildSphere(){
 
         updateDysonCost();
 
-		Game.stargaze.initialise();
+		Game.stargazeUI.initialise();
 
 	}
 }
