@@ -2,7 +2,7 @@ Game.tech = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 1;
+    instance.dataVersion = 2;
     instance.entries = {};
     instance.techTypeCount = 0;
 
@@ -31,24 +31,47 @@ Game.tech = (function(){
     instance.save = function(data) {
         data.tech = { v: this.dataVersion, i: {}};
         for(var key in this.entries) {
-            data.tech.i[key] = this.entries[key].current;
+            data.tech.i[key] = {};
+            data.tech.i[key].current = this.entries[key].current;
+            data.tech.i[key].unlocked = this.entries[key].unlocked;
         }
     };
 
     instance.load = function(data) {
-        if(data.tech) {
-            if(data.tech.v && data.tech.v === this.dataVersion) {
-                for(var id in data.tech.i) {
-                    if(this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
-                        this.gainTech(id, data.tech.i[id]);
-                    }
-                }
+        if (data.tech && data.tech.v && data.tech.i) {
+            if (data.tech.v >= 2) {
+                this.loadV2(data);
+            } else if (data.tech.v === 1) {
+                this.loadV1(data);
             }
         }
         var tech = Game.tech.getTechData('energyEfficiencyResearch');
-        if(tech.current == tech.maxLevel){
+        if (tech.current === tech.maxLevel) {
             var child = document.getElementById("energyEffButton");
             child.parentNode.removeChild(child);
+        }
+    };
+
+    // handle loading a save with dataVersion 1
+    instance.loadV1 = function(data) {
+        for (var id in data.tech.i) {
+            if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
+                this.gainTech(id, data.tech.i[id]);
+            }
+        }
+    };
+
+    // handle loading a save with dataVersion 2 or higher
+    instance.loadV2 = function(data) {
+        for (var id in data.tech.i) {
+            if (typeof this.entries[id] !== 'undefined') {
+                if (typeof data.tech.i[id].unlocked !== 'undefined') {
+                    this.entries[id].unlocked = data.tech.i[id].unlocked;
+                }
+                if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
+                    this.gainTech(id, data.tech.i[id].current);
+                }
+            }
         }
     };
 
