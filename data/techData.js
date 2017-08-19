@@ -47,7 +47,7 @@ Game.techData = (function () {
         resource: 'uranium',
         cost: {
             'uranium': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -56,7 +56,7 @@ Game.techData = (function () {
         resource: 'lava',
         cost: {
             'lava': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -113,7 +113,7 @@ Game.techData = (function () {
         resource: 'silicon',
         cost: {
             'silicon': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -121,11 +121,11 @@ Game.techData = (function () {
      * Inner Planetary Resources  *
      ******************************/
 
-    instance.storageUpgradeSpaceMetal = $.extend({}, baseUpgradeData, {
-        desc: 'Doubles your Space Metal storage size',
-        resource: 'spaceMetal',
+    instance.storageUpgradeLunarite = $.extend({}, baseUpgradeData, {
+        desc: 'Doubles your Lunarite storage size',
+        resource: 'lunarite',
         cost: {
-            'spaceMetal': .95,
+            'lunarite': .95,
             'metal': .4
         }
     });
@@ -135,7 +135,7 @@ Game.techData = (function () {
         resource: 'methane',
         cost: {
             'methane': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -144,7 +144,7 @@ Game.techData = (function () {
         resource: 'titanium',
         cost: {
             'titanium': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -153,7 +153,7 @@ Game.techData = (function () {
         resource: 'gold',
         cost: {
             'gold': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -162,7 +162,7 @@ Game.techData = (function () {
         resource: 'silver',
         cost: {
             'silver': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -175,7 +175,7 @@ Game.techData = (function () {
         resource: 'hydrogen',
         cost: {
             'hydrogen': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -184,7 +184,7 @@ Game.techData = (function () {
         resource: 'helium',
         cost: {
             'helium': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -193,7 +193,7 @@ Game.techData = (function () {
         resource: 'ice',
         cost: {
             'ice': .95,
-            'spaceMetal': .4
+            'lunarite': .4
         }
     });
 
@@ -202,7 +202,7 @@ Game.techData = (function () {
         resource: 'meteorite',
         cost: {
             'meteorite': .95,
-            'spaceMetal': 4
+            'lunarite': 4
         }
     });
 

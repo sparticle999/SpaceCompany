@@ -50,7 +50,7 @@ function gainResources(delta){
 	metal = (metal + metalps * delta).clamp(0, metalStorage);
     gem = (gem + gemps * delta).clamp(0, gemStorage);
 	science += scienceps * delta;
-    spaceMetal = (spaceMetal + spaceMetalps * delta).clamp(0, spaceMetalStorage);
+    lunarite = (lunarite + lunariteps * delta).clamp(0, lunariteStorage);
     methane = (methane + methaneps * delta).clamp(0, methaneStorage);
     titanium = (titanium + titaniumps * delta).clamp(0, titaniumStorage);
     gold = (gold + goldps * delta).clamp(0, goldStorage);
@@ -130,9 +130,9 @@ function gainWood(){
 	}
 }
 
-function gainSpaceMetal(){
-	if(spaceMetal < spaceMetalStorage){
-		spaceMetal += 1;
+function gainLunarite(){
+	if(lunarite < lunariteStorage){
+		lunarite += 1;
         Game.statistics.add('manualResources');
 	}
 }
@@ -213,9 +213,9 @@ function gainMeteorite(){
 // Resources Tab
 
 function upgradeUraniumStorage(){
-	if(uranium >= uraniumStorage && spaceMetal >= uraniumStorage/2.5){
+	if(uranium >= uraniumStorage && lunarite >= uraniumStorage/2.5){
 		uranium -= uraniumStorage;
-		spaceMetal -= uraniumStorage/2.5;
+		lunarite -= uraniumStorage/2.5;
 		uraniumStorage = uraniumNextStorage;
 		uraniumNextStorage *= 2;
 	}
@@ -265,109 +265,109 @@ function upgradeWoodStorage(){
 	}
 }
 
-function upgradeSpaceMetalStorage(){
-	if(spaceMetal >= spaceMetalStorage && metal >= spaceMetalStorage*4){
-		spaceMetal -= spaceMetalStorage;
-		metal -= spaceMetalStorage*4;
-		spaceMetalStorage = spaceMetalNextStorage;
-		spaceMetalNextStorage *= 2;
+function upgradeLunariteStorage(){
+	if(lunarite >= lunariteStorage && metal >= lunariteStorage*4){
+		lunarite -= lunariteStorage;
+		metal -= lunariteStorage*4;
+		lunariteStorage = lunariteNextStorage;
+		lunariteNextStorage *= 2;
 	}
 }
 
 function upgradeMethaneStorage(){
-	if(methane >= methaneStorage && spaceMetal >= methaneStorage/2.5){
+	if(methane >= methaneStorage && lunarite >= methaneStorage/2.5){
 		methane -= methaneStorage;
-		spaceMetal -= methaneStorage/2.5;
+		lunarite -= methaneStorage/2.5;
 		methaneStorage = methaneNextStorage;
 		methaneNextStorage *= 2;
 	}
 }
 
 function upgradeTitaniumStorage(){
-	if(titanium >= titaniumStorage && spaceMetal >= titaniumStorage/2.5){
+	if(titanium >= titaniumStorage && lunarite >= titaniumStorage/2.5){
 		titanium -= titaniumStorage;
-		spaceMetal -= titaniumStorage/2.5;
+		lunarite -= titaniumStorage/2.5;
 		titaniumStorage = titaniumNextStorage;
 		titaniumNextStorage *= 2;
 	}
 }
 
 function upgradeGoldStorage(){
-	if(gold >= goldStorage && spaceMetal >= goldStorage/2.5){
+	if(gold >= goldStorage && lunarite >= goldStorage/2.5){
 		gold -= goldStorage;
-		spaceMetal -= goldStorage/2.5;
+		lunarite -= goldStorage/2.5;
 		goldStorage = goldNextStorage;
 		goldNextStorage *= 2;
 	}
 }
 
 function upgradeSilverStorage(){
-	if(silver >= silverStorage && spaceMetal >= silverStorage/2.5){
+	if(silver >= silverStorage && lunarite >= silverStorage/2.5){
 		silver -= silverStorage;
-		spaceMetal -= silverStorage/2.5;
+		lunarite -= silverStorage/2.5;
 		silverStorage = silverNextStorage;
 		silverNextStorage *= 2;
 	}
 }
 
 function upgradeSiliconStorage(){
-	if(silicon >= siliconStorage && spaceMetal >= siliconStorage/2.5){
+	if(silicon >= siliconStorage && lunarite >= siliconStorage/2.5){
 		silicon -= siliconStorage;
-		spaceMetal -= siliconStorage/2.5;
+		lunarite -= siliconStorage/2.5;
 		siliconStorage = siliconNextStorage;
 		siliconNextStorage *= 2;
 	}
 }
 
 function upgradeLavaStorage(){
-	if(lava >= lavaStorage && spaceMetal >= lavaStorage/2.5){
+	if(lava >= lavaStorage && lunarite >= lavaStorage/2.5){
 		lava -= lavaStorage;
-		spaceMetal -= lavaStorage/2.5;
+		lunarite -= lavaStorage/2.5;
 		lavaStorage = lavaNextStorage;
 		lavaNextStorage *= 2;
 	}
 }
 
 function upgradeHydrogenStorage(){
-	if(hydrogen >= hydrogenStorage && spaceMetal >= hydrogenStorage/2.5){
+	if(hydrogen >= hydrogenStorage && lunarite >= hydrogenStorage/2.5){
 		hydrogen -= hydrogenStorage;
-		spaceMetal -= hydrogenStorage/2.5;
+		lunarite -= hydrogenStorage/2.5;
 		hydrogenStorage = hydrogenNextStorage;
 		hydrogenNextStorage *= 2;
 	}
 }
 
 function upgradeHeliumStorage(){
-	if(helium >= heliumStorage && spaceMetal >= heliumStorage/2.5){
+	if(helium >= heliumStorage && lunarite >= heliumStorage/2.5){
 		helium -= heliumStorage;
-		spaceMetal -= heliumStorage/2.5;
+		lunarite -= heliumStorage/2.5;
 		heliumStorage = heliumNextStorage;
 		heliumNextStorage *= 2;
 	}
 }
 
 function upgradeIceStorage(){
-	if(ice >= iceStorage && spaceMetal >= iceStorage/2.5){
+	if(ice >= iceStorage && lunarite >= iceStorage/2.5){
 		ice -= iceStorage;
-		spaceMetal -= iceStorage/2.5;
+		lunarite -= iceStorage/2.5;
 		iceStorage = iceNextStorage;
 		iceNextStorage *= 2;
 	}
 }
 
 function upgradeMeteoriteStorage(){
-	if(meteorite >= meteoriteStorage && spaceMetal >= meteoriteStorage*4){
+	if(meteorite >= meteoriteStorage && lunarite >= meteoriteStorage*4){
 		meteorite -= meteoriteStorage;
-		spaceMetal -= meteoriteStorage*4;
+		lunarite -= meteoriteStorage*4;
 		meteoriteStorage = meteoriteNextStorage;
 		meteoriteNextStorage *= 2;
 	}
 }
 
 function upgradeMeteoriteStorage(){
-	if(meteorite >= meteoriteStorage && spaceMetal >= meteoriteStorage*4){
+	if(meteorite >= meteoriteStorage && lunarite >= meteoriteStorage*4){
 		meteorite -= meteoriteStorage;
-		spaceMetal -= meteoriteStorage*4;
+		lunarite -= meteoriteStorage*4;
 		meteoriteStorage = meteoriteNextStorage;
 		meteoriteNextStorage *= 2;
 	}
@@ -404,7 +404,7 @@ function destroyMachine(machine, id){
 	}
 }
 
-function updateCost() {
+function updateCost(){
     PSUSilverCost = Math.floor(770000 * Math.pow(1.1,PSU));
     PSUGoldCost = Math.floor(770000 * Math.pow(1.1,PSU));
     PSUUraniumCost = Math.floor(550000 * Math.pow(1.1,PSU));
@@ -413,29 +413,29 @@ function updateCost() {
     PSUT2GoldCost = Math.floor(9300000 * Math.pow(1.1,PSUT2));
     PSUT2UraniumCost = Math.floor(6800000 * Math.pow(1.1,PSUT2));
 
-    heaterSpaceMetalCost = Math.floor(75000 * Math.pow(1.1,heater));
+    heaterLunariteCost = Math.floor(75000 * Math.pow(1.1,heater));
     heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater));
     heaterSiliconCost = Math.floor(59000 * Math.pow(1.1,heater));
 
-    plasmaticSpaceMetalCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
+    plasmaticLunariteCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
     plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
     plasmaticMeteoriteCost = Math.floor(970 * Math.pow(1.1,plasmatic));
 
     batteryMetalCost = Math.floor(50000 * Math.pow(1.1,battery));
     batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
-    batterySpaceMetalCost = Math.floor(30000 * Math.pow(1.1,battery));
+    batteryLunariteCost = Math.floor(30000 * Math.pow(1.1,battery));
 
     batteryT2MetalCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
     batteryT2GemCost = Math.floor(550000 * Math.pow(1.1,batteryT2));
-    batteryT2SpaceMetalCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
+    batteryT2LunariteCost = Math.floor(330000 * Math.pow(1.1,batteryT2));
 
- 	 batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-     batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
-     batteryT3SpaceMetalCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
+    batteryT3MetalCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+    batteryT3GemCost = Math.floor(5500000 * Math.pow(1.1,batteryT3));
+    batteryT3LunariteCost = Math.floor(3300000 * Math.pow(1.1,batteryT3));
  	
-     batteryT4MetalCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
-     batteryT4GemCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
-     batteryT4SpaceMetalCost = Math.floor(33000000 * Math.pow(1.1,batteryT4));
+    batteryT4MetalCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
+    batteryT4GemCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
+    batteryT4LunariteCost = Math.floor(33000000 * Math.pow(1.1,batteryT4));
 	
     charcoalEngineMetalCost = Math.floor(50 * Math.pow(1.1,charcoalEngine));
     charcoalEngineGemCost = Math.floor(25 * Math.pow(1.1,charcoalEngine));
@@ -443,35 +443,35 @@ function updateCost() {
     solarPanelMetalCost = Math.floor(30 * Math.pow(1.1,solarPanel));
     solarPanelGemCost = Math.floor(35 * Math.pow(1.1,solarPanel));
 
-    methaneStationSpaceMetalCost = Math.floor(110 * Math.pow(1.1,methaneStation));
+    methaneStationLunariteCost = Math.floor(110 * Math.pow(1.1,methaneStation));
     methaneStationTitaniumCost = Math.floor(90 * Math.pow(1.1,methaneStation));
 
-    nuclearStationSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,nuclearStation));
+    nuclearStationLunariteCost = Math.floor(20000 * Math.pow(1.1,nuclearStation));
     nuclearStationTitaniumCost = Math.floor(10000 * Math.pow(1.1,nuclearStation));
 
-    magmaticSpaceMetalCost = Math.floor(25000 * Math.pow(1.1,magmatic));
+    magmaticLunariteCost = Math.floor(25000 * Math.pow(1.1,magmatic));
     magmaticGemCost = Math.floor(30000 * Math.pow(1.1,magmatic));
     magmaticSilverCost = Math.floor(20000 * Math.pow(1.1,magmatic));
 
-    fusionReactorSpaceMetalCost = Math.floor(30000 * Math.pow(1.1,fusionReactor));
+    fusionReactorLunariteCost = Math.floor(30000 * Math.pow(1.1,fusionReactor));
     fusionReactorTitaniumCost = Math.floor(20000 * Math.pow(1.1,fusionReactor));
     fusionReactorSiliconCost = Math.floor(15000 * Math.pow(1.1,fusionReactor));
 
     grinderTitaniumCost = Math.floor(2000 * Math.pow(1.1,grinder));
-    grinderSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,grinder));
+    grinderLunariteCost = Math.floor(4000 * Math.pow(1.1,grinder));
     grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder));
 
     cubicUraniumCost = Math.floor(80 * Math.pow(1.1,cubic));
-    cubicSpaceMetalCost = Math.floor(10000 * Math.pow(1.1,cubic));
+    cubicLunariteCost = Math.floor(10000 * Math.pow(1.1,cubic));
     cubicOilCost = Math.floor(10000 * Math.pow(1.1,cubic));
 
     enricherSiliconCost = Math.floor(21700 * Math.pow(1.1,enricher));
     enricherTitaniumCost = Math.floor(23000 * Math.pow(1.1,enricher));
-    enricherSpaceMetalCost = Math.floor(13500 * Math.pow(1.1,enricher));
+    enricherLunariteCost = Math.floor(13500 * Math.pow(1.1,enricher));
 
     recyclerMeteoriteCost = Math.floor(830 * Math.pow(1.1,recycler));
     recyclerMethaneCost = Math.floor(47000 * Math.pow(1.1,recycler));
-    recyclerSpaceMetalCost = Math.floor(93100 * Math.pow(1.1,recycler));
+    recyclerLunariteCost = Math.floor(93100 * Math.pow(1.1,recycler));
 
     pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump));
     pumpGemCost = Math.floor(20 * Math.pow(1.1,pump));
@@ -482,11 +482,11 @@ function updateCost() {
 
     oilFieldSiliconCost = Math.floor(3900 * Math.pow(1.1,oilField));
     oilFieldTitaniumCost = Math.floor(2700 * Math.pow(1.1,oilField));
-    oilFieldSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,oilField));
+    oilFieldLunariteCost = Math.floor(2400 * Math.pow(1.1,oilField));
 
     oilRigMeteoriteCost = Math.floor(760 * Math.pow(1.1,oilRig));
     oilRigTitaniumCost = Math.floor(16800 * Math.pow(1.1,oilRig));
-    oilRigSpaceMetalCost = Math.floor(19400 * Math.pow(1.1,oilRig));
+    oilRigLunariteCost = Math.floor(19400 * Math.pow(1.1,oilRig));
 
     minerWoodCost = Math.floor(5 * Math.pow(1.1,miner));
     minerMetalCost = Math.floor(10 * Math.pow(1.1,miner));
@@ -497,11 +497,11 @@ function updateCost() {
 
     gigaDrillSiliconCost = Math.floor(4100 * Math.pow(1.1,gigaDrill));
     gigaDrillGemCost = Math.floor(3400 * Math.pow(1.1,gigaDrill));
-    gigaDrillSpaceMetalCost = Math.floor(2800 * Math.pow(1.1,gigaDrill));
+    gigaDrillLunariteCost = Math.floor(2800 * Math.pow(1.1,gigaDrill));
 
     quantumDrillMeteoriteCost = Math.floor(900 * Math.pow(1.1,quantumDrill));
     quantumDrillGoldCost = Math.floor(18700 * Math.pow(1.1,quantumDrill));
-    quantumDrillSpaceMetalCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
+    quantumDrillLunariteCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
 
     gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner));
     gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner));
@@ -512,11 +512,11 @@ function updateCost() {
 
     diamondDrillSiliconCost = Math.floor(4500 * Math.pow(1.1,diamondDrill));
     diamondDrillGemCost = Math.floor(8000 * Math.pow(1.1,diamondDrill));
-    diamondDrillSpaceMetalCost = Math.floor(3400 * Math.pow(1.1,diamondDrill));
+    diamondDrillLunariteCost = Math.floor(3400 * Math.pow(1.1,diamondDrill));
 
     carbyneDrillMeteoriteCost = Math.floor(800 * Math.pow(1.1,carbyneDrill));
     carbyneDrillGemCost = Math.floor(27000 * Math.pow(1.1,carbyneDrill));
-    carbyneDrillSpaceMetalCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
+    carbyneDrillLunariteCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
 
     woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner));
     woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner));
@@ -527,11 +527,11 @@ function updateCost() {
 
     kilnSiliconCost = Math.floor(3800 * Math.pow(1.1,kiln));
     kilnGemCost = Math.floor(6200 * Math.pow(1.1,kiln));
-    kilnSpaceMetalCost = Math.floor(3500 * Math.pow(1.1,kiln));
+    kilnLunariteCost = Math.floor(3500 * Math.pow(1.1,kiln));
 
     fryerMeteoriteCost = Math.floor(560 * Math.pow(1.1,fryer));
     fryerLavaCost = Math.floor(12500 * Math.pow(1.1,fryer));
-    fryerSpaceMetalCost = Math.floor(15800 * Math.pow(1.1,fryer));
+    fryerLunariteCost = Math.floor(15800 * Math.pow(1.1,fryer));
 
     woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter));
     woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter));
@@ -540,11 +540,11 @@ function updateCost() {
     laserCutterGemCost = Math.floor(90 * Math.pow(1.1,laserCutter));
     laserCutterMetalCost = Math.floor(50 * Math.pow(1.1,laserCutter));
 
-    deforesterSpaceMetalCost = Math.floor(3000 * Math.pow(1.1,deforester));
+    deforesterLunariteCost = Math.floor(3000 * Math.pow(1.1,deforester));
     deforesterTitaniumCost = Math.floor(2700 * Math.pow(1.1,deforester));
     deforesterSiliconCost = Math.floor(2500 * Math.pow(1.1,deforester));
 
-    infuserSpaceMetalCost = Math.floor(16000 * Math.pow(1.1,infuser));
+    infuserLunariteCost = Math.floor(16000 * Math.pow(1.1,infuser));
     infuserOilCost = Math.floor(31200 * Math.pow(1.1,infuser));
     infuserMeteoriteCost = Math.floor(490 * Math.pow(1.1,infuser));
 
@@ -556,107 +556,107 @@ function updateCost() {
 
     moonQuarrySiliconCost = Math.floor(3500 * Math.pow(1.1,moonQuarry));
     moonQuarryGemCost = Math.floor(5000 * Math.pow(1.1,moonQuarry));
-    moonQuarrySpaceMetalCost = Math.floor(8000 * Math.pow(1.1,moonQuarry));
+    moonQuarryLunariteCost = Math.floor(8000 * Math.pow(1.1,moonQuarry));
 
     planetExcavatorMeteoriteCost = Math.floor(500 * Math.pow(1.1,planetExcavator));
     planetExcavatorIceCost = Math.floor(37000 * Math.pow(1.1,planetExcavator));
     planetExcavatorTitaniumCost = Math.floor(45000 * Math.pow(1.1,planetExcavator));
 
     vacuumGemCost = Math.floor(500 * Math.pow(1.1,vacuum));
-    vacuumSpaceMetalCost = Math.floor(50 * Math.pow(1.1,vacuum));
+    vacuumLunariteCost = Math.floor(50 * Math.pow(1.1,vacuum));
 
     suctionExcavatorOilCost = Math.floor(600 * Math.pow(1.1,suctionExcavator));
     suctionExcavatorGemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator));
-    suctionExcavatorSpaceMetalCost = Math.floor(100 * Math.pow(1.1,suctionExcavator));
+    suctionExcavatorLunariteCost = Math.floor(100 * Math.pow(1.1,suctionExcavator));
 
     spaceCowSiliconCost = Math.floor(3900 * Math.pow(1.1,spaceCow));
     spaceCowTitaniumCost = Math.floor(2700 * Math.pow(1.1,spaceCow));
-    spaceCowSpaceMetalCost = Math.floor(2400 * Math.pow(1.1,spaceCow));
+    spaceCowLunariteCost = Math.floor(2400 * Math.pow(1.1,spaceCow));
 
     ventMeteoriteCost = Math.floor(390 * Math.pow(1.1,vent));
     ventHeliumCost = Math.floor(47000 * Math.pow(1.1,vent));
-    ventSpaceMetalCost = Math.floor(52000 * Math.pow(1.1,vent));
+    ventLunariteCost = Math.floor(52000 * Math.pow(1.1,vent));
 
     explorerGemCost = Math.floor(1000 * Math.pow(1.1,explorer));
 
-    spaceMetalDrillOilCost = Math.floor(1000 * Math.pow(1.1,spaceMetalDrill));
-    spaceMetalDrillGemCost = Math.floor(800 * Math.pow(1.1,spaceMetalDrill));
-    spaceMetalDrillSpaceMetalCost = Math.floor(200 * Math.pow(1.1,spaceMetalDrill));
+    lunariteDrillOilCost = Math.floor(1000 * Math.pow(1.1,lunariteDrill));
+    lunariteDrillGemCost = Math.floor(800 * Math.pow(1.1,lunariteDrill));
+    lunariteDrillLunariteCost = Math.floor(200 * Math.pow(1.1,lunariteDrill));
 
     pentaDrillSiliconCost = Math.floor(5600 * Math.pow(1.1,pentaDrill));
     pentaDrillGemCost = Math.floor(11000 * Math.pow(1.1,pentaDrill));
-    pentaDrillSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,pentaDrill));
+    pentaDrillLunariteCost = Math.floor(14000 * Math.pow(1.1,pentaDrill));
 
-    titanDrillSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,titanDrill));
+    titanDrillLunariteCost = Math.floor(63000 * Math.pow(1.1,titanDrill));
     titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
     titanDrillMeteoriteCost = Math.floor(600 * Math.pow(1.1,titanDrill));
 
     droidMethaneCost = Math.floor(50 * Math.pow(1.1,droid));
-    droidSpaceMetalCost = Math.floor(200 * Math.pow(1.1,droid));
+    droidLunariteCost = Math.floor(200 * Math.pow(1.1,droid));
 
     destroyerOilCost = Math.floor(1000 * Math.pow(1.1,destroyer));
     destroyerGemCost = Math.floor(1500 * Math.pow(1.1,destroyer));
-    destroyerSpaceMetalCost = Math.floor(500 * Math.pow(1.1,destroyer));
+    destroyerLunariteCost = Math.floor(500 * Math.pow(1.1,destroyer));
 
     deathStarSiliconCost = Math.floor(8200 * Math.pow(1.1,deathStar));
     deathStarSilverCost = Math.floor(11500 * Math.pow(1.1,deathStar));
-    deathStarSpaceMetalCost = Math.floor(17000 * Math.pow(1.1,deathStar));
+    deathStarLunariteCost = Math.floor(17000 * Math.pow(1.1,deathStar));
 
     actuatorMeteoriteCost = Math.floor(600 * Math.pow(1.1,actuator));
     actuatorHeliumCost = Math.floor(15700 * Math.pow(1.1,actuator));
-    actuatorSpaceMetalCost = Math.floor(61000 * Math.pow(1.1,actuator));
+    actuatorLunariteCost = Math.floor(61000 * Math.pow(1.1,actuator));
 
     scoutTitaniumCost = Math.floor(20 * Math.pow(1.1,scout));
-    scoutSpaceMetalCost = Math.floor(100 * Math.pow(1.1,scout));
+    scoutLunariteCost = Math.floor(100 * Math.pow(1.1,scout));
 
     spaceLaserOilCost = Math.floor(1200 * Math.pow(1.1,spaceLaser));
     spaceLaserGemCost = Math.floor(900 * Math.pow(1.1,spaceLaser));
-    spaceLaserSpaceMetalCost = Math.floor(350 * Math.pow(1.1,spaceLaser));
+    spaceLaserLunariteCost = Math.floor(350 * Math.pow(1.1,spaceLaser));
 
     berthaSiliconCost = Math.floor(11000 * Math.pow(1.1,bertha));
     berthaTitaniumCost = Math.floor(18200 * Math.pow(1.1,bertha));
-    berthaSpaceMetalCost = Math.floor(19500 * Math.pow(1.1,bertha));
+    berthaLunariteCost = Math.floor(19500 * Math.pow(1.1,bertha));
 
     cannonMeteoriteCost = Math.floor(520 * Math.pow(1.1,cannon));
     cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
-    cannonSpaceMetalCost = Math.floor(85100 * Math.pow(1.1,cannon));
+    cannonLunariteCost = Math.floor(85100 * Math.pow(1.1,cannon));
 
     blowtorchTitaniumCost = Math.floor(30 * Math.pow(1.1,blowtorch));
-    blowtorchSpaceMetalCost = Math.floor(150 * Math.pow(1.1,blowtorch));
+    blowtorchLunariteCost = Math.floor(150 * Math.pow(1.1,blowtorch));
 
     scorcherOilCost = Math.floor(1600 * Math.pow(1.1,scorcher));
     scorcherGemCost = Math.floor(1200 * Math.pow(1.1,scorcher));
-    scorcherSpaceMetalCost = Math.floor(500 * Math.pow(1.1,scorcher));
+    scorcherLunariteCost = Math.floor(500 * Math.pow(1.1,scorcher));
 
-    annihilatorSpaceMetalCost = Math.floor(3000 * Math.pow(1.1,annihilator));
+    annihilatorLunariteCost = Math.floor(3000 * Math.pow(1.1,annihilator));
     annihilatorGemCost = Math.floor(8300 * Math.pow(1.1,annihilator));
     annihilatorSilverCost = Math.floor(2400 * Math.pow(1.1,annihilator));
 
-    desertSpaceMetalCost = Math.floor(20000 * Math.pow(1.1,desert));
+    desertLunariteCost = Math.floor(20000 * Math.pow(1.1,desert));
     desertSiliconCost = Math.floor(17700 * Math.pow(1.1,desert));
     desertMeteoriteCost = Math.floor(400 * Math.pow(1.1,desert));
 
     crucibleGemCost = Math.floor(7000 * Math.pow(1.1,crucible));
-    crucibleSpaceMetalCost = Math.floor(4000 * Math.pow(1.1,crucible));
+    crucibleLunariteCost = Math.floor(4000 * Math.pow(1.1,crucible));
 
     extractorSiliconCost = Math.floor(6000 * Math.pow(1.1,extractor));
     extractorTitaniumCost = Math.floor(12000 * Math.pow(1.1,extractor));
-    extractorSpaceMetalCost = Math.floor(14000 * Math.pow(1.1,extractor));
+    extractorLunariteCost = Math.floor(14000 * Math.pow(1.1,extractor));
 
     extruderSiliconCost = Math.floor(39000 * Math.pow(1.1,extruder));
     extruderTitaniumCost = Math.floor(57000 * Math.pow(1.1,extruder));
-    extruderSpaceMetalCost = Math.floor(69000 * Math.pow(1.1,extruder));
+    extruderLunariteCost = Math.floor(69000 * Math.pow(1.1,extruder));
 
     veluptuatorMeteoriteCost = Math.floor(750 * Math.pow(1.1,veluptuator));
     veluptuatorGoldCost = Math.floor(121000 * Math.pow(1.1,veluptuator));
-    veluptuatorSpaceMetalCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
+    veluptuatorLunariteCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
 
     collectorTitaniumCost = Math.floor(4800 * Math.pow(1.1,collector));
-    collectorSpaceMetalCost = Math.floor(6000 * Math.pow(1.1,collector));
+    collectorLunariteCost = Math.floor(6000 * Math.pow(1.1,collector));
 
     magnetGoldCost = Math.floor(6600 * Math.pow(1.1,magnet));
     magnetTitaniumCost = Math.floor(9600 * Math.pow(1.1,magnet));
-    magnetSpaceMetalCost = Math.floor(10800 * Math.pow(1.1,magnet));
+    magnetLunariteCost = Math.floor(10800 * Math.pow(1.1,magnet));
 
     eCellGoldCost = Math.floor(34200 * Math.pow(1.1,eCell));
     eCellSiliconCost = Math.floor(25800 * Math.pow(1.1,eCell));
@@ -664,42 +664,42 @@ function updateCost() {
 
     hindenburgMeteoriteCost = Math.floor(710 * Math.pow(1.1,hindenburg));
     hindenburgMethaneCost = Math.floor(134000 * Math.pow(1.1,hindenburg));
-    hindenburgSpaceMetalCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
+    hindenburgLunariteCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
 
     droneSiliconCost = Math.floor(6000 * Math.pow(1.1,drone));
-    droneSpaceMetalCost = Math.floor(8400 * Math.pow(1.1,drone));
+    droneLunariteCost = Math.floor(8400 * Math.pow(1.1,drone));
 
     tankerSiliconCost = Math.floor(8400 * Math.pow(1.1,tanker));
     tankerTitaniumCost = Math.floor(10200 * Math.pow(1.1,tanker));
-    tankerSpaceMetalCost = Math.floor(12600 * Math.pow(1.1,tanker));
+    tankerLunariteCost = Math.floor(12600 * Math.pow(1.1,tanker));
 
     compressorSiliconCost = Math.floor(35400 * Math.pow(1.1,compressor));
     compressorTitaniumCost = Math.floor(43800 * Math.pow(1.1,compressor));
-    compressorSpaceMetalCost = Math.floor(63000 * Math.pow(1.1,compressor));
+    compressorLunariteCost = Math.floor(63000 * Math.pow(1.1,compressor));
 
     skimmerMeteoriteCost = Math.floor(770 * Math.pow(1.1,skimmer));
     skimmerTitaniumCost = Math.floor(173000 * Math.pow(1.1,skimmer));
-    skimmerSpaceMetalCost = Math.floor(255000 * Math.pow(1.1,skimmer));
+    skimmerLunariteCost = Math.floor(255000 * Math.pow(1.1,skimmer));
 
     icePickGemCost = Math.floor(19300 * Math.pow(1.1,icePick));
-    icePickSpaceMetalCost = Math.floor(17800 * Math.pow(1.1,icePick));
+    icePickLunariteCost = Math.floor(17800 * Math.pow(1.1,icePick));
 
     iceDrillSiliconCost = Math.floor(19600 * Math.pow(1.1,iceDrill));
     iceDrillTitaniumCost = Math.floor(21200 * Math.pow(1.1,iceDrill));
-    iceDrillSpaceMetalCost = Math.floor(23900 * Math.pow(1.1,iceDrill));
+    iceDrillLunariteCost = Math.floor(23900 * Math.pow(1.1,iceDrill));
 
     freezerSiliconCost = Math.floor(73000 * Math.pow(1.1,freezer));
     freezerTitaniumCost = Math.floor(86000 * Math.pow(1.1,freezer));
-    freezerSpaceMetalCost = Math.floor(117000 * Math.pow(1.1,freezer));
+    freezerLunariteCost = Math.floor(117000 * Math.pow(1.1,freezer));
 
     mrFreezeMeteoriteCost = Math.floor(1500 * Math.pow(1.1,mrFreeze));
     mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
     mrFreezeWoodCost = Math.floor(379000 * Math.pow(1.1,mrFreeze));
 
-    printerSpaceMetalCost = Math.floor(100000 * Math.pow(1.1,printer));
+    printerLunariteCost = Math.floor(100000 * Math.pow(1.1,printer));
     printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer));
 
-    webSpaceMetalCost = Math.floor(940000 * Math.pow(1.1,web));
+    webLunariteCost = Math.floor(940000 * Math.pow(1.1,web));
     webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
     webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
 }
@@ -727,8 +727,8 @@ function getPSUT2(){
 }
 
 function getHeater(){
-	if(spaceMetal >= heaterSpaceMetalCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
-		spaceMetal -= heaterSpaceMetalCost;
+	if(lunarite >= heaterLunariteCost && gem >= heaterGemCost && silicon >= heaterSiliconCost){
+		lunarite -= heaterLunariteCost;
 		gem -= heaterGemCost;
 		silicon -= heaterSiliconCost;
 		heater += 1;
@@ -738,8 +738,8 @@ function getHeater(){
 }
 
 function getPlasmatic(){
-	if(spaceMetal >= plasmaticSpaceMetalCost && silicon >= plasmaticSiliconCost && meteorite >= plasmaticMeteoriteCost){
-		spaceMetal -= plasmaticSpaceMetalCost;
+	if(lunarite >= plasmaticLunariteCost && silicon >= plasmaticSiliconCost && meteorite >= plasmaticMeteoriteCost){
+		lunarite -= plasmaticLunariteCost;
 		silicon -= plasmaticSiliconCost;
 		meteorite -= plasmaticMeteoriteCost;
 		plasmatic += 1;
@@ -749,10 +749,10 @@ function getPlasmatic(){
 }
 
 function getBattery(){
-	if(metal >= batteryMetalCost && gem >= batteryGemCost && spaceMetal >= batterySpaceMetalCost ){
+	if(metal >= batteryMetalCost && gem >= batteryGemCost && lunarite >= batteryLunariteCost ){
 		metal -= batteryMetalCost;
 		gem -= batteryGemCost;
-		spaceMetal -= batterySpaceMetalCost;
+		lunarite -= batteryLunariteCost;
 		battery += 1;
 		updateCost();
         Game.statistics.add('tierOwned1');
@@ -760,10 +760,10 @@ function getBattery(){
 }
 
 function getBatteryT2(){
-	if(metal >= batteryT2MetalCost && gem >= batteryT2GemCost && spaceMetal >= batteryT2SpaceMetalCost ){
+	if(metal >= batteryT2MetalCost && gem >= batteryT2GemCost && lunarite >= batteryT2LunariteCost ){
 		metal -= batteryT2MetalCost;
 		gem -= batteryT2GemCost;
-		spaceMetal -= batteryT2SpaceMetalCost;
+		lunarite -= batteryT2LunariteCost;
 		batteryT2 += 1;
 		updateCost();
         Game.statistics.add('tierOwned2');
@@ -771,10 +771,10 @@ function getBatteryT2(){
 }
 
 function getBatteryT3(){
-    if(metal >= batteryT3MetalCost && gem >= batteryT3GemCost && spaceMetal >= batteryT3SpaceMetalCost ){
+    if(metal >= batteryT3MetalCost && gem >= batteryT3GemCost && lunarite >= batteryT3LunariteCost ){
         metal -= batteryT3MetalCost;
         gem -= batteryT3GemCost;
-        spaceMetal -= batteryT3SpaceMetalCost;
+        lunarite -= batteryT3LunariteCost;
         batteryT3 += 1;
 		updateCost();
         Game.statistics.add('tierOwned3');
@@ -782,10 +782,10 @@ function getBatteryT3(){
 }
 
 function getBatteryT4(){
-	if(metal>=batteryT4MetalCost && gem>=batteryT4GemCost && spaceMetal>=batteryT4SpaceMetalCost){
+	if(metal>=batteryT4MetalCost && gem>=batteryT4GemCost && lunarite>=batteryT4LunariteCost){
 		metal-=batteryT4MetalCost;
 		gem-=batteryT4GemCost;
-		spaceMetal-=batteryT4SpaceMetalCost;
+		lunarite-=batteryT4LunariteCost;
 		batteryT4+=1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -813,8 +813,8 @@ function getSolarPanel(){
 }
 
 function getMethaneStation(){
-	if(spaceMetal >= methaneStationSpaceMetalCost && titanium >= methaneStationTitaniumCost){
-		spaceMetal -= methaneStationSpaceMetalCost;
+	if(lunarite >= methaneStationLunariteCost && titanium >= methaneStationTitaniumCost){
+		lunarite -= methaneStationLunariteCost;
 		titanium -= methaneStationTitaniumCost;
 		methaneStation += 1;
 		updateCost();
@@ -823,8 +823,8 @@ function getMethaneStation(){
 }
 
 function getNuclearStation(){
-	if(spaceMetal >= nuclearStationSpaceMetalCost && titanium >= nuclearStationTitaniumCost){
-		spaceMetal -= nuclearStationSpaceMetalCost;
+	if(lunarite >= nuclearStationLunariteCost && titanium >= nuclearStationTitaniumCost){
+		lunarite -= nuclearStationLunariteCost;
 		titanium -= nuclearStationTitaniumCost;
 		nuclearStation += 1;
 		updateCost();
@@ -834,8 +834,8 @@ function getNuclearStation(){
 
 
 function getMagmatic(){
-	if(spaceMetal >= magmaticSpaceMetalCost && gem >= magmaticGemCost && silver >= magmaticSilverCost){
-		spaceMetal -= magmaticSpaceMetalCost;
+	if(lunarite >= magmaticLunariteCost && gem >= magmaticGemCost && silver >= magmaticSilverCost){
+		lunarite -= magmaticLunariteCost;
 		gem -= magmaticGemCost;
 		silver -= magmaticSilverCost;
 		magmatic += 1;
@@ -845,8 +845,8 @@ function getMagmatic(){
 }
 
 function getFusionReactor(){
-	if(spaceMetal >= fusionReactorSpaceMetalCost && titanium >= fusionReactorTitaniumCost && silicon >= fusionReactorSiliconCost){
-		spaceMetal -= fusionReactorSpaceMetalCost;
+	if(lunarite >= fusionReactorLunariteCost && titanium >= fusionReactorTitaniumCost && silicon >= fusionReactorSiliconCost){
+		lunarite -= fusionReactorLunariteCost;
 		titanium -= fusionReactorTitaniumCost;
 		silicon -= fusionReactorSiliconCost;
 		fusionReactor += 1;
@@ -856,9 +856,9 @@ function getFusionReactor(){
 }
 
 function getGrinder(){
-	if(titanium >= grinderTitaniumCost && spaceMetal >= grinderSpaceMetalCost && gold >= grinderGoldCost){
+	if(titanium >= grinderTitaniumCost && lunarite >= grinderLunariteCost && gold >= grinderGoldCost){
 		titanium -= grinderTitaniumCost;
-		spaceMetal -= grinderSpaceMetalCost;
+		lunarite -= grinderLunariteCost;
 		gold -= grinderGoldCost;
 		grinder += 1;
 		updateCost();
@@ -867,9 +867,9 @@ function getGrinder(){
 }
 
 function getCubic(){
-	if(uranium >= cubicUraniumCost && spaceMetal >= cubicSpaceMetalCost && oil >= cubicOilCost){
+	if(uranium >= cubicUraniumCost && lunarite >= cubicLunariteCost && oil >= cubicOilCost){
 		uranium -= cubicUraniumCost;
-		spaceMetal -= cubicSpaceMetalCost;
+		lunarite -= cubicLunariteCost;
 		oil -= cubicOilCost;
 		cubic += 1;
 		updateCost();
@@ -878,8 +878,8 @@ function getCubic(){
 }
 
 function getEnricher(){
-	if(spaceMetal >= enricherSpaceMetalCost && titanium >= enricherTitaniumCost && silicon >= enricherSiliconCost){
-		spaceMetal -= enricherSpaceMetalCost;
+	if(lunarite >= enricherLunariteCost && titanium >= enricherTitaniumCost && silicon >= enricherSiliconCost){
+		lunarite -= enricherLunariteCost;
 		titanium -= enricherTitaniumCost;
 		silicon -= enricherSiliconCost;
 		enricher += 1;
@@ -889,8 +889,8 @@ function getEnricher(){
 }
 
 function getRecycler(){
-	if(spaceMetal >= recyclerSpaceMetalCost && methane >= recyclerMethaneCost && meteorite >= recyclerMeteoriteCost){
-		spaceMetal -= recyclerSpaceMetalCost;
+	if(lunarite >= recyclerLunariteCost && methane >= recyclerMethaneCost && meteorite >= recyclerMeteoriteCost){
+		lunarite -= recyclerLunariteCost;
 		methane -= recyclerMethaneCost;
 		meteorite -= recyclerMeteoriteCost;
 		recycler += 1;
@@ -921,8 +921,8 @@ function getPumpjack(){
 }
 
 function getOilField(){
-	if(spaceMetal >= oilFieldSpaceMetalCost && titanium >= oilFieldTitaniumCost && silicon >= oilFieldSiliconCost){
-		spaceMetal -= oilFieldSpaceMetalCost;
+	if(lunarite >= oilFieldLunariteCost && titanium >= oilFieldTitaniumCost && silicon >= oilFieldSiliconCost){
+		lunarite -= oilFieldLunariteCost;
 		titanium -= oilFieldTitaniumCost;
 		silicon -= oilFieldSiliconCost;
 		oilField += 1;
@@ -932,8 +932,8 @@ function getOilField(){
 }
 
 function getOilRig(){
-	if(spaceMetal >= oilRigSpaceMetalCost && titanium >= oilRigTitaniumCost && meteorite >= oilRigMeteoriteCost){
-		spaceMetal -= oilRigSpaceMetalCost;
+	if(lunarite >= oilRigLunariteCost && titanium >= oilRigTitaniumCost && meteorite >= oilRigMeteoriteCost){
+		lunarite -= oilRigLunariteCost;
 		titanium -= oilRigTitaniumCost;
 		meteorite -= oilRigMeteoriteCost;
 		oilRig += 1;
@@ -974,8 +974,8 @@ function getHeavyDrill(){
 }
 
 function getGigaDrill(){
-	if(spaceMetal >= gigaDrillSpaceMetalCost && gem >= gigaDrillGemCost && silicon >= gigaDrillSiliconCost){
-		spaceMetal -= gigaDrillSpaceMetalCost;
+	if(lunarite >= gigaDrillLunariteCost && gem >= gigaDrillGemCost && silicon >= gigaDrillSiliconCost){
+		lunarite -= gigaDrillLunariteCost;
 		gem -= gigaDrillGemCost;
 		silicon -= gigaDrillSiliconCost;
 		gigaDrill += 1;
@@ -985,8 +985,8 @@ function getGigaDrill(){
 }
 
 function getQuantumDrill(){
-	if(spaceMetal >= quantumDrillSpaceMetalCost && gold >= quantumDrillGoldCost && meteorite >= quantumDrillMeteoriteCost){
-		spaceMetal -= quantumDrillSpaceMetalCost;
+	if(lunarite >= quantumDrillLunariteCost && gold >= quantumDrillGoldCost && meteorite >= quantumDrillMeteoriteCost){
+		lunarite -= quantumDrillLunariteCost;
 		gold -= quantumDrillGoldCost;
 		meteorite -= quantumDrillMeteoriteCost;
 		quantumDrill += 1;
@@ -1017,8 +1017,8 @@ function getAdvancedDrill(){
 }
 
 function getDiamondDrill(){
-	if(spaceMetal >= diamondDrillSpaceMetalCost && gem >= diamondDrillGemCost && silicon >= diamondDrillSiliconCost){
-		spaceMetal -= diamondDrillSpaceMetalCost;
+	if(lunarite >= diamondDrillLunariteCost && gem >= diamondDrillGemCost && silicon >= diamondDrillSiliconCost){
+		lunarite -= diamondDrillLunariteCost;
 		gem -= diamondDrillGemCost;
 		silicon -= diamondDrillSiliconCost;
 		diamondDrill += 1;
@@ -1028,8 +1028,8 @@ function getDiamondDrill(){
 }
 
 function getCarbyneDrill(){
-	if(spaceMetal >= carbyneDrillSpaceMetalCost && gem >= carbyneDrillGemCost && meteorite >= carbyneDrillMeteoriteCost){
-		spaceMetal -= carbyneDrillSpaceMetalCost;
+	if(lunarite >= carbyneDrillLunariteCost && gem >= carbyneDrillGemCost && meteorite >= carbyneDrillMeteoriteCost){
+		lunarite -= carbyneDrillLunariteCost;
 		gem -= carbyneDrillGemCost;
 		meteorite -= carbyneDrillMeteoriteCost;
 		carbyneDrill += 1;
@@ -1060,8 +1060,8 @@ function getFurnace(){
 }
 
 function getKiln(){
-	if(spaceMetal >= kilnSpaceMetalCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
-		spaceMetal -= kilnSpaceMetalCost;
+	if(lunarite >= kilnLunariteCost && gem >= kilnGemCost && silicon >= kilnSiliconCost){
+		lunarite -= kilnLunariteCost;
 		gem -= kilnGemCost;
 		silicon -= kilnSiliconCost;
 		kiln += 1;
@@ -1071,8 +1071,8 @@ function getKiln(){
 }
 
 function getFryer(){
-	if(spaceMetal >= fryerSpaceMetalCost && lava >= fryerLavaCost && meteorite >= fryerMeteoriteCost){
-		spaceMetal -= fryerSpaceMetalCost;
+	if(lunarite >= fryerLunariteCost && lava >= fryerLavaCost && meteorite >= fryerMeteoriteCost){
+		lunarite -= fryerLunariteCost;
 		lava -= fryerLavaCost;
 		meteorite -= fryerMeteoriteCost;
 		fryer += 1;
@@ -1103,8 +1103,8 @@ function getLaserCutter(){
 }
 
 function getDeforester(){
-	if(spaceMetal >= deforesterSpaceMetalCost && titanium >= deforesterTitaniumCost && silicon >= deforesterSiliconCost){
-		spaceMetal -= deforesterSpaceMetalCost;
+	if(lunarite >= deforesterLunariteCost && titanium >= deforesterTitaniumCost && silicon >= deforesterSiliconCost){
+		lunarite -= deforesterLunariteCost;
 		titanium -= deforesterTitaniumCost;
 		silicon -= deforesterSiliconCost;
 		deforester += 1;
@@ -1114,8 +1114,8 @@ function getDeforester(){
 }
 
 function getInfuser(){
-	if(spaceMetal >= infuserSpaceMetalCost && oil >= infuserOilCost && meteorite >= infuserMeteoriteCost){
-		spaceMetal -= infuserSpaceMetalCost;
+	if(lunarite >= infuserLunariteCost && oil >= infuserOilCost && meteorite >= infuserMeteoriteCost){
+		lunarite -= infuserLunariteCost;
 		oil -= infuserOilCost;
 		meteorite -= infuserMeteoriteCost;
 		infuser += 1;
@@ -1145,8 +1145,8 @@ function getMoonDrill(){
 }
 
 function getMoonQuarry(){
-	if(spaceMetal >= moonQuarrySpaceMetalCost && gem >= moonQuarryGemCost && silicon >= moonQuarrySiliconCost){
-		spaceMetal -= moonQuarrySpaceMetalCost;
+	if(lunarite >= moonQuarryLunariteCost && gem >= moonQuarryGemCost && silicon >= moonQuarrySiliconCost){
+		lunarite -= moonQuarryLunariteCost;
 		gem -= moonQuarryGemCost;
 		silicon -= moonQuarrySiliconCost;
 		moonQuarry += 1;
@@ -1167,8 +1167,8 @@ function getPlanetExcavator(){
 }
 
 function getVacuum(){
-	if(spaceMetal >= vacuumSpaceMetalCost && gem >= vacuumGemCost){
-		spaceMetal -= vacuumSpaceMetalCost;
+	if(lunarite >= vacuumLunariteCost && gem >= vacuumGemCost){
+		lunarite -= vacuumLunariteCost;
 		gem -= vacuumGemCost;
 		vacuum += 1;
 		updateCost();
@@ -1177,8 +1177,8 @@ function getVacuum(){
 }
 
 function getSuctionExcavator(){
-	if(spaceMetal >= suctionExcavatorSpaceMetalCost && gem >= suctionExcavatorGemCost && oil >= suctionExcavatorOilCost){
-		spaceMetal -= suctionExcavatorSpaceMetalCost;
+	if(lunarite >= suctionExcavatorLunariteCost && gem >= suctionExcavatorGemCost && oil >= suctionExcavatorOilCost){
+		lunarite -= suctionExcavatorLunariteCost;
 		gem -= suctionExcavatorGemCost;
 		oil -= suctionExcavatorOilCost;
 		suctionExcavator += 1;
@@ -1188,8 +1188,8 @@ function getSuctionExcavator(){
 }
 
 function getSpaceCow(){
-	if(spaceMetal >= spaceCowSpaceMetalCost && titanium >= spaceCowTitaniumCost && silicon >= spaceCowSiliconCost){
-		spaceMetal -= spaceCowSpaceMetalCost;
+	if(lunarite >= spaceCowLunariteCost && titanium >= spaceCowTitaniumCost && silicon >= spaceCowSiliconCost){
+		lunarite -= spaceCowLunariteCost;
 		titanium -= spaceCowTitaniumCost;
 		silicon -= spaceCowSiliconCost;
 		spaceCow += 1;
@@ -1199,8 +1199,8 @@ function getSpaceCow(){
 }
 
 function getVent(){
-	if(spaceMetal >= ventSpaceMetalCost && helium >= ventHeliumCost && meteorite >= ventMeteoriteCost){
-		spaceMetal -= ventSpaceMetalCost;
+	if(lunarite >= ventLunariteCost && helium >= ventHeliumCost && meteorite >= ventMeteoriteCost){
+		lunarite -= ventLunariteCost;
 		helium -= ventHeliumCost;
 		meteorite -= ventMeteoriteCost;
 		vent += 1;
@@ -1218,20 +1218,20 @@ function getExplorer(){
 	}
 }
 
-function getSpaceMetalDrill(){
-	if(spaceMetal >= spaceMetalDrillSpaceMetalCost && gem >= spaceMetalDrillGemCost && oil >= spaceMetalDrillOilCost){
-		spaceMetal -= spaceMetalDrillSpaceMetalCost;
-		gem -= spaceMetalDrillGemCost;
-		oil -= spaceMetalDrillOilCost;
-		spaceMetalDrill += 1;
+function getLunariteDrill(){
+	if(lunarite >= lunariteDrillLunariteCost && gem >= lunariteDrillGemCost && oil >= lunariteDrillOilCost){
+		lunarite -= lunariteDrillLunariteCost;
+		gem -= lunariteDrillGemCost;
+		oil -= lunariteDrillOilCost;
+		lunariteDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
 	}
 }
 
 function getPentaDrill(){
-	if(spaceMetal >= pentaDrillSpaceMetalCost && gem >= pentaDrillGemCost && silicon >= pentaDrillSiliconCost){
-		spaceMetal -= pentaDrillSpaceMetalCost;
+	if(lunarite >= pentaDrillLunariteCost && gem >= pentaDrillGemCost && silicon >= pentaDrillSiliconCost){
+		lunarite -= pentaDrillLunariteCost;
 		gem -= pentaDrillGemCost;
 		silicon -= pentaDrillSiliconCost;
 		pentaDrill += 1;
@@ -1241,8 +1241,8 @@ function getPentaDrill(){
 }
 
 function getTitanDrill(){
-	if(spaceMetal >= titanDrillSpaceMetalCost && gold >= titanDrillGoldCost && meteorite >= titanDrillMeteoriteCost){
-		spaceMetal -= titanDrillSpaceMetalCost;
+	if(lunarite >= titanDrillLunariteCost && gold >= titanDrillGoldCost && meteorite >= titanDrillMeteoriteCost){
+		lunarite -= titanDrillLunariteCost;
 		gold -= titanDrillGoldCost;
 		meteorite -= titanDrillMeteoriteCost;
 		titanDrill += 1;
@@ -1252,8 +1252,8 @@ function getTitanDrill(){
 }
 
 function getDroid(){
-	if(spaceMetal >= droidSpaceMetalCost && methane >= droidMethaneCost){
-		spaceMetal -= droidSpaceMetalCost;
+	if(lunarite >= droidLunariteCost && methane >= droidMethaneCost){
+		lunarite -= droidLunariteCost;
 		methane -= droidMethaneCost;
 		droid += 1;
 		updateCost();
@@ -1262,8 +1262,8 @@ function getDroid(){
 }
 
 function getDestroyer(){
-	if(spaceMetal >= destroyerSpaceMetalCost && gem >= destroyerGemCost && oil >= destroyerOilCost){
-		spaceMetal -= destroyerSpaceMetalCost;
+	if(lunarite >= destroyerLunariteCost && gem >= destroyerGemCost && oil >= destroyerOilCost){
+		lunarite -= destroyerLunariteCost;
 		gem -= destroyerGemCost;
 		oil -= destroyerOilCost;
 		destroyer += 1;
@@ -1273,8 +1273,8 @@ function getDestroyer(){
 }
 
 function getDeathStar(){
-	if(spaceMetal >= deathStarSpaceMetalCost && silver >= deathStarSilverCost && silicon >= deathStarSiliconCost){
-		spaceMetal -= deathStarSpaceMetalCost;
+	if(lunarite >= deathStarLunariteCost && silver >= deathStarSilverCost && silicon >= deathStarSiliconCost){
+		lunarite -= deathStarLunariteCost;
 		silver -= deathStarSilverCost;
 		silicon -= deathStarSiliconCost;
 		deathStar += 1;
@@ -1284,8 +1284,8 @@ function getDeathStar(){
 }
 
 function getActuator(){
-	if(spaceMetal >= actuatorSpaceMetalCost && helium >= actuatorHeliumCost && meteorite >= actuatorMeteoriteCost){
-		spaceMetal -= actuatorSpaceMetalCost;
+	if(lunarite >= actuatorLunariteCost && helium >= actuatorHeliumCost && meteorite >= actuatorMeteoriteCost){
+		lunarite -= actuatorLunariteCost;
 		helium -= actuatorHeliumCost;
 		meteorite -= actuatorMeteoriteCost;
 		actuator += 1;
@@ -1295,8 +1295,8 @@ function getActuator(){
 }
 
 function getScout(){
-	if(spaceMetal >= scoutSpaceMetalCost && titanium >= scoutTitaniumCost){
-		spaceMetal -= scoutSpaceMetalCost;
+	if(lunarite >= scoutLunariteCost && titanium >= scoutTitaniumCost){
+		lunarite -= scoutLunariteCost;
 		titanium -= scoutTitaniumCost;
 		scout += 1;
 		updateCost();
@@ -1305,8 +1305,8 @@ function getScout(){
 }
 
 function getSpaceLaser(){
-	if(spaceMetal >= spaceLaserSpaceMetalCost && gem >= spaceLaserGemCost && oil >= spaceLaserOilCost){
-		spaceMetal -= spaceLaserSpaceMetalCost;
+	if(lunarite >= spaceLaserLunariteCost && gem >= spaceLaserGemCost && oil >= spaceLaserOilCost){
+		lunarite -= spaceLaserLunariteCost;
 		gem -= spaceLaserGemCost;
 		oil -= spaceLaserOilCost;
 		spaceLaser += 1;
@@ -1316,8 +1316,8 @@ function getSpaceLaser(){
 }
 
 function getBertha(){
-	if(spaceMetal >= berthaSpaceMetalCost && titanium >= berthaTitaniumCost && silicon >= berthaSiliconCost){
-		spaceMetal -= berthaSpaceMetalCost;
+	if(lunarite >= berthaLunariteCost && titanium >= berthaTitaniumCost && silicon >= berthaSiliconCost){
+		lunarite -= berthaLunariteCost;
 		titanium -= berthaTitaniumCost;
 		silicon -= berthaSiliconCost;
 		bertha += 1;
@@ -1327,8 +1327,8 @@ function getBertha(){
 }
 
 function getCannon(){
-	if(spaceMetal >= cannonSpaceMetalCost && oil >= cannonOilCost && meteorite >= cannonMeteoriteCost){
-		spaceMetal -= cannonSpaceMetalCost;
+	if(lunarite >= cannonLunariteCost && oil >= cannonOilCost && meteorite >= cannonMeteoriteCost){
+		lunarite -= cannonLunariteCost;
 		oil -= cannonOilCost;
 		meteorite -= cannonMeteoriteCost;
 		cannon += 1;
@@ -1338,8 +1338,8 @@ function getCannon(){
 }
 
 function getBlowtorch(){
-	if(spaceMetal >= blowtorchSpaceMetalCost && titanium >= blowtorchTitaniumCost){
-		spaceMetal -= blowtorchSpaceMetalCost;
+	if(lunarite >= blowtorchLunariteCost && titanium >= blowtorchTitaniumCost){
+		lunarite -= blowtorchLunariteCost;
 		titanium -= blowtorchTitaniumCost;
 		blowtorch += 1;
 		updateCost();
@@ -1348,8 +1348,8 @@ function getBlowtorch(){
 }
 
 function getScorcher(){
-	if(spaceMetal >= scorcherSpaceMetalCost && gem >= scorcherGemCost && oil >= scorcherOilCost){
-		spaceMetal -= scorcherSpaceMetalCost;
+	if(lunarite >= scorcherLunariteCost && gem >= scorcherGemCost && oil >= scorcherOilCost){
+		lunarite -= scorcherLunariteCost;
 		gem -= scorcherGemCost;
 		oil -= scorcherOilCost;
 		scorcher += 1;
@@ -1359,8 +1359,8 @@ function getScorcher(){
 }
 
 function getAnnihilator(){
-	if(spaceMetal >= annihilatorSpaceMetalCost && gem >= annihilatorGemCost && silver >= annihilatorSilverCost){
-		spaceMetal -= annihilatorSpaceMetalCost;
+	if(lunarite >= annihilatorLunariteCost && gem >= annihilatorGemCost && silver >= annihilatorSilverCost){
+		lunarite -= annihilatorLunariteCost;
 		gem -= annihilatorGemCost;
 		silver -= annihilatorSilverCost;
 		annihilator += 1;
@@ -1370,8 +1370,8 @@ function getAnnihilator(){
 }
 
 function getDesert(){
-	if(spaceMetal >= desertSpaceMetalCost && silicon >= desertSiliconCost && meteorite >= desertMeteoriteCost){
-		spaceMetal -= desertSpaceMetalCost;
+	if(lunarite >= desertLunariteCost && silicon >= desertSiliconCost && meteorite >= desertMeteoriteCost){
+		lunarite -= desertLunariteCost;
 		silicon -= desertSiliconCost;
 		meteorite -= desertMeteoriteCost;
 		desert += 1;
@@ -1381,8 +1381,8 @@ function getDesert(){
 }
 
 function getCrucible(){
-	if(spaceMetal >= crucibleSpaceMetalCost && gem >= crucibleGemCost){
-		spaceMetal -= crucibleSpaceMetalCost;
+	if(lunarite >= crucibleLunariteCost && gem >= crucibleGemCost){
+		lunarite -= crucibleLunariteCost;
 		gem -= crucibleGemCost;
 		crucible += 1;
 		updateCost();
@@ -1391,8 +1391,8 @@ function getCrucible(){
 }
 
 function getExtractor(){
-	if(spaceMetal >= extractorSpaceMetalCost && titanium >= extractorTitaniumCost && silicon >= extractorSiliconCost){
-		spaceMetal -= extractorSpaceMetalCost;
+	if(lunarite >= extractorLunariteCost && titanium >= extractorTitaniumCost && silicon >= extractorSiliconCost){
+		lunarite -= extractorLunariteCost;
 		titanium -= extractorTitaniumCost;
 		silicon -= extractorSiliconCost;
 		extractor += 1;
@@ -1402,8 +1402,8 @@ function getExtractor(){
 }
 
 function getExtruder(){
-	if(spaceMetal >= extruderSpaceMetalCost && titanium >= extruderTitaniumCost && silicon >= extruderSiliconCost){
-		spaceMetal -= extruderSpaceMetalCost;
+	if(lunarite >= extruderLunariteCost && titanium >= extruderTitaniumCost && silicon >= extruderSiliconCost){
+		lunarite -= extruderLunariteCost;
 		titanium -= extruderTitaniumCost;
 		silicon -= extruderSiliconCost;
 		extruder += 1;
@@ -1413,8 +1413,8 @@ function getExtruder(){
 }
 
 function getVeluptuator(){
-	if(spaceMetal >= veluptuatorSpaceMetalCost && gold >= veluptuatorGoldCost && meteorite >= veluptuatorMeteoriteCost){
-		spaceMetal -= veluptuatorSpaceMetalCost;
+	if(lunarite >= veluptuatorLunariteCost && gold >= veluptuatorGoldCost && meteorite >= veluptuatorMeteoriteCost){
+		lunarite -= veluptuatorLunariteCost;
 		gold -= veluptuatorGoldCost;
 		meteorite -= veluptuatorMeteoriteCost;
 		veluptuator += 1;
@@ -1424,8 +1424,8 @@ function getVeluptuator(){
 }
 
 function getCollector(){
-	if(spaceMetal >= collectorSpaceMetalCost && titanium >= collectorTitaniumCost){
-		spaceMetal -= collectorSpaceMetalCost;
+	if(lunarite >= collectorLunariteCost && titanium >= collectorTitaniumCost){
+		lunarite -= collectorLunariteCost;
 		titanium -= collectorTitaniumCost;
 		collector += 1;
 		updateCost();
@@ -1434,8 +1434,8 @@ function getCollector(){
 }
 
 function getMagnet(){
-	if(spaceMetal >= magnetSpaceMetalCost && titanium >= magnetTitaniumCost && gold >= magnetGoldCost){
-		spaceMetal -= magnetSpaceMetalCost;
+	if(lunarite >= magnetLunariteCost && titanium >= magnetTitaniumCost && gold >= magnetGoldCost){
+		lunarite -= magnetLunariteCost;
 		titanium -= magnetTitaniumCost;
 		gold -= magnetGoldCost;
 		magnet += 1;
@@ -1456,8 +1456,8 @@ function getECell(){
 }
 
 function getHindenburg(){
-	if(spaceMetal >= hindenburgSpaceMetalCost && methane >= hindenburgMethaneCost && meteorite >= hindenburgMeteoriteCost){
-		spaceMetal -= hindenburgSpaceMetalCost;
+	if(lunarite >= hindenburgLunariteCost && methane >= hindenburgMethaneCost && meteorite >= hindenburgMeteoriteCost){
+		lunarite -= hindenburgLunariteCost;
 		methane -= hindenburgMethaneCost;
 		meteorite -= hindenburgMeteoriteCost;
 		hindenburg += 1;
@@ -1467,8 +1467,8 @@ function getHindenburg(){
 }
 
 function getDrone(){
-	if(spaceMetal >= droneSpaceMetalCost && silicon >= droneSiliconCost){
-		spaceMetal -= droneSpaceMetalCost;
+	if(lunarite >= droneLunariteCost && silicon >= droneSiliconCost){
+		lunarite -= droneLunariteCost;
 		silicon -= droneSiliconCost;
 		drone += 1;
 		updateCost();
@@ -1477,8 +1477,8 @@ function getDrone(){
 }
 
 function getTanker(){
-	if(spaceMetal >= tankerSpaceMetalCost && titanium >= tankerTitaniumCost && silicon >= tankerSiliconCost){
-		spaceMetal -= tankerSpaceMetalCost;
+	if(lunarite >= tankerLunariteCost && titanium >= tankerTitaniumCost && silicon >= tankerSiliconCost){
+		lunarite -= tankerLunariteCost;
 		titanium -= tankerTitaniumCost;
 		silicon -= tankerSiliconCost;
 		tanker += 1;
@@ -1488,8 +1488,8 @@ function getTanker(){
 }
 
 function getCompressor(){
-	if(spaceMetal >= compressorSpaceMetalCost && titanium >= compressorTitaniumCost && silicon >= compressorSiliconCost){
-		spaceMetal -= compressorSpaceMetalCost;
+	if(lunarite >= compressorLunariteCost && titanium >= compressorTitaniumCost && silicon >= compressorSiliconCost){
+		lunarite -= compressorLunariteCost;
 		titanium -= compressorTitaniumCost;
 		silicon -= compressorSiliconCost;
 		compressor += 1;
@@ -1499,8 +1499,8 @@ function getCompressor(){
 }
 
 function getSkimmer(){
-	if(spaceMetal >= skimmerSpaceMetalCost && titanium >= skimmerTitaniumCost && meteorite >= skimmerMeteoriteCost){
-		spaceMetal -= skimmerSpaceMetalCost;
+	if(lunarite >= skimmerLunariteCost && titanium >= skimmerTitaniumCost && meteorite >= skimmerMeteoriteCost){
+		lunarite -= skimmerLunariteCost;
 		titanium -= skimmerTitaniumCost;
 		meteorite -= skimmerMeteoriteCost;
 		skimmer += 1;
@@ -1510,8 +1510,8 @@ function getSkimmer(){
 }
 
 function getIcePick(){
-	if(spaceMetal >= icePickSpaceMetalCost && gem >= icePickGemCost){
-		spaceMetal -= icePickSpaceMetalCost;
+	if(lunarite >= icePickLunariteCost && gem >= icePickGemCost){
+		lunarite -= icePickLunariteCost;
 		gem -= icePickGemCost;
 		icePick += 1;
 		updateCost();
@@ -1520,8 +1520,8 @@ function getIcePick(){
 }
 
 function getIceDrill(){
-	if(spaceMetal >= iceDrillSpaceMetalCost && titanium >= iceDrillTitaniumCost && silicon >= iceDrillSiliconCost){
-		spaceMetal -= iceDrillSpaceMetalCost;
+	if(lunarite >= iceDrillLunariteCost && titanium >= iceDrillTitaniumCost && silicon >= iceDrillSiliconCost){
+		lunarite -= iceDrillLunariteCost;
 		titanium -= iceDrillTitaniumCost;
 		silicon -= iceDrillSiliconCost;
 		iceDrill += 1;
@@ -1531,8 +1531,8 @@ function getIceDrill(){
 }
 
 function getFreezer(){
-	if(spaceMetal >= freezerSpaceMetalCost && titanium >= freezerTitaniumCost && silicon >= freezerSiliconCost){
-		spaceMetal -= freezerSpaceMetalCost;
+	if(lunarite >= freezerLunariteCost && titanium >= freezerTitaniumCost && silicon >= freezerSiliconCost){
+		lunarite -= freezerLunariteCost;
 		titanium -= freezerTitaniumCost;
 		silicon -= freezerSiliconCost;
 		freezer += 1;
@@ -1553,8 +1553,8 @@ function getMrFreeze(){
 }
 
 function getPrinter(){
-	if(spaceMetal >= printerSpaceMetalCost && silicon >= printerSiliconCost){
-		spaceMetal -= printerSpaceMetalCost;
+	if(lunarite >= printerLunariteCost && silicon >= printerSiliconCost){
+		lunarite -= printerLunariteCost;
 		silicon -= printerSiliconCost;
 		printer += 1;
 		updateCost();
@@ -1563,8 +1563,8 @@ function getPrinter(){
 }
 
 function getWeb(){
-	if(spaceMetal >= webSpaceMetalCost && uranium >= webUraniumCost && silicon >= webSiliconCost){
-		spaceMetal -= webSpaceMetalCost;
+	if(lunarite >= webLunariteCost && uranium >= webUraniumCost && silicon >= webSiliconCost){
+		lunarite -= webLunariteCost;
 		uranium -= webUraniumCost;
 		silicon -= webSiliconCost;
 		web += 1;

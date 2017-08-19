@@ -6,9 +6,7 @@ function getChemicalPlant(){
 		gem -= chemicalPlantGemCost;
 		oil -= chemicalPlantOilCost;
 		chemicalPlant += 1;
-		chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
-		chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
-		chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant));
+		updateFuelProductionCost();
 	}
 }
 
@@ -18,9 +16,7 @@ function getOxidisation(){
 		gem -= oxidisationGemCost;
 		oil -= oxidisationOilCost;
 		oxidisation += 1;
-		oxidisationOilCost = Math.floor(6800 * Math.pow(1.1,oxidisation));
-		oxidisationGemCost = Math.floor(8300 * Math.pow(1.1,oxidisation));
-		oxidisationMetalCost = Math.floor(12000 * Math.pow(1.1,oxidisation));
+		updateFuelProductionCost();
 	}
 }
 
@@ -30,10 +26,22 @@ function getHydrazine(){
 		silicon -= hydrazineSiliconCost;
 		gold -= hydrazineGoldCost;
 		hydrazine += 1;
-		hydrazineGoldCost = Math.floor(78600 * Math.pow(1.1,hydrazine));
-		hydrazineSiliconCost = Math.floor(96300 * Math.pow(1.1,hydrazine));
-		hydrazineTitaniumCost = Math.floor(140000 * Math.pow(1.1,hydrazine));
+		updateFuelProductionCost();
 	}
+}
+
+function updateFuelProductionCost(){
+    chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
+    chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
+    chemicalPlantMetalCost = Math.floor(1000 * Math.pow(1.1,chemicalPlant));
+
+    oxidisationOilCost = Math.floor(6800 * Math.pow(1.1,oxidisation));
+    oxidisationGemCost = Math.floor(8300 * Math.pow(1.1,oxidisation));
+    oxidisationMetalCost = Math.floor(12000 * Math.pow(1.1,oxidisation));
+
+    hydrazineGoldCost = Math.floor(78600 * Math.pow(1.1,hydrazine));
+    hydrazineSiliconCost = Math.floor(96300 * Math.pow(1.1,hydrazine));
+    hydrazineTitaniumCost = Math.floor(140000 * Math.pow(1.1,hydrazine));
 }
 
 function getRocket(){
@@ -65,7 +73,7 @@ function launchRocket(){
 
 function explore(planet){
 	var planetsData = {
-		Moon: {fuel: 20, area: "innerPlanet", resource: "spaceMetal"},
+		Moon: {fuel: 20, area: "innerPlanet", resource: "lunarite"},
 		Venus: {fuel: 50, area: "innerPlanet", resource: "methane"},
 		Mars: {fuel: 80, area: "innerPlanet", resource: "titanium,silicon"},
 		AsteroidBelt: {fuel: 200, area: "innerPlanet", resource: "gold,silver"},

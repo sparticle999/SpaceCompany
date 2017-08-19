@@ -43,7 +43,7 @@
 		Reticulating Splines...
 	</div>
 </div>
-<script type="text/javascript" src="data/spalshTextData.js"></script>
+<script type="text/javascript" src="data/splashTextData.js"></script>
 <div id="game" class="container hidden" style="width:95%; margin: auto;">
 
 	<!--  Bar at top of screen -->
@@ -77,8 +77,8 @@
 		<div class="ng-binding"></div>
 	</div>
 	<div height="30"></div>
-	<div id="updateAlert" class="alert alert-info alert-dismissable fade in">
-	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<div id="updateAlert" class="alert alert-info alert-dismissible fade in">
+	    <button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>
 	    <strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>
 	    <ul id="updateLog"></ul>
 	 </div>
@@ -338,26 +338,26 @@
 							<span>Inner Planetary Resources</span> <span class="caret"></span>
 						</td>
 					</tr>
-					<tr id="spaceMetalNav" onclick="activeResourceTab('spaceMetalNav')" class="sideTab hidden" href="#spaceMetalTab" aria-controls="spaceMetalTab" role="tab" data-toggle="tab" style="height:60px;">
+					<tr id="lunariteNav" onclick="activeResourceTab('lunariteNav')" class="sideTab hidden" href="#lunariteTab" aria-controls="lunariteTab" role="tab" data-toggle="tab" style="height:60px;">
 						<td style="vertical-align:middle;">
-							<img src="Icons/spaceMetalIcon.png" style="width:30px; height:auto">
+							<img src="Icons/lunariteIcon.png" style="width:30px; height:auto">
 						</td>
 						<td style="vertical-align:middle;">
 							<span>
-								Space Metal
+								Lunarite
 							</span>
 						</td>
 						<td style="vertical-align:middle; text-align:center;">
 							<span>
-								<span id="spaceMetalps">0</span>/Sec
+								<span id="lunariteps">0</span>/Sec
 							</span>
 						</td>
 						<td style="vertical-align:middle; text-align:right;">
-							<span id="spaceMetal">
+							<span id="lunarite">
 								0
 							</span>
 							/
-							<span id="spaceMetalStorage">50</span>
+							<span id="lunariteStorage">50</span>
 						</td>
 					</tr>
 					<tr id="methaneNav" onclick="activeResourceTab('methaneNav')" class="sideTab hidden" href="#methaneTab" aria-controls="methaneTab" role="tab" data-toggle="tab" style="height:60px;">
@@ -555,7 +555,7 @@
 									<span>
 										Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company. At first you can hold 100,000 plasma at once, but you can unlock and purchase Plasma Storage Units to increase this number.
 										<br>
-										Time remaining until full storage: <b><span id="plasmaFullTime">N/A</span></b>
+										Time remaining until <span id="plasmaLimitType">full</span> storage: <b><span id="plasmaLimitTime">N/A</span></b>
 										<br>
 										1 Plasma is created by infusing <span id="manualPlasmaHydrogenCost">10</span> Hydrogen with <span id="manualPlasmaEnergyCost">1000</span> Energy.
 									</span>
@@ -610,7 +610,7 @@
 										<br>
 										Produces 1 Plasma per second.
 										<br>
-										Costs <span id="heaterSpaceMetalCost">75,000</span> Space Metal, <span id="heaterGemCost">68,000</span> Gems, <span id="heaterSiliconCost">59,000</span> Silicon.
+										Costs <span id="heaterLunariteCost">75,000</span> Lunarite, <span id="heaterGemCost">68,000</span> Gems, <span id="heaterSiliconCost">59,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -631,7 +631,7 @@
 										<br>
 										Produces 10 Plasma per second.
 										<br>
-										Costs <span id="plasmaticSpaceMetalCost">810,000</span> Space Metal, <span id="plasmaticSiliconCost">720,000</span> Silicon, <span id="plasmaticMeteoriteCost">970</span> Meteorite.
+										Costs <span id="plasmaticLunariteCost">810,000</span> Lunarite, <span id="plasmaticSiliconCost">720,000</span> Silicon, <span id="plasmaticMeteoriteCost">970</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -654,7 +654,7 @@
 									<span>
 										Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.
 										<br>
-										Time remaining until full storage: <b><span id="energyFullTime">N/A</span></b>
+										Time remaining until <span id="energyLimitType">full</span> storage: <b><span id="energyLimitTime">N/A</span></b>
 										<br>
 									</span>
 									<br>
@@ -669,7 +669,7 @@
 									<span>
 										Batteries increase your energy storage by 50,000 per battery built.
 										<br>
-										Costs <span id="batteryMetalCost">50,000</span> Metal, <span id="batteryGemCost">50,000</span> Gems, <span id="batterySpaceMetalCost">30,000</span> Space Metal.
+										Costs <span id="batteryMetalCost">50,000</span> Metal, <span id="batteryGemCost">50,000</span> Gems, <span id="batteryLunariteCost">30,000</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -684,7 +684,7 @@
 									<span>
 										Tier 2 Batteries increase your energy storage by 500,000 per battery built.
 										<br>
-										Costs <span id="batteryT2MetalCost">550,000</span> Metal, <span id="batteryT2GemCost">550,000</span> Gems, <span id="batteryT2SpaceMetalCost">330,000</span> Space Metal.
+										Costs <span id="batteryT2MetalCost">550,000</span> Metal, <span id="batteryT2GemCost">550,000</span> Gems, <span id="batteryT2LunariteCost">330,000</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -699,7 +699,7 @@
 									<span>
 										Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.
 										<br>
-										Costs <span id="batteryT3MetalCost">5,500,000</span> Metal, <span id="batteryT3GemCost">5,500,000</span> Gems, <span id="batteryT3SpaceMetalCost">3,300,000</span> Space Metal.
+										Costs <span id="batteryT3MetalCost">5,500,000</span> Metal, <span id="batteryT3GemCost">5,500,000</span> Gems, <span id="batteryT3LunariteCost">3,300,000</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -714,7 +714,7 @@
 									<span>
 										Tier 4 Batteries increase your energy storage by 50,000,000 per battery built.
 										<br>
-										Costs <span id="batteryT4MetalCost">55,000,000</span> Metal, <span id="batteryT4GemCost">55,000,000</span> Gems, <span id="batteryT4SpaceMetalCost">33,000,000</span> Space Metal.
+										Costs <span id="batteryT4MetalCost">55,000,000</span> Metal, <span id="batteryT4GemCost">55,000,000</span> Gems, <span id="batteryT4LunariteCost">33,000,000</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -767,7 +767,7 @@
 										<br>
 										Each Power Station produces 23 Energy and uses 6 methane per second.
 										<br>
-										Costs <span id="methaneStationSpaceMetalCost">110</span> Space Metal, <span id="methaneStationTitaniumCost">90</span> Titanium.
+										Costs <span id="methaneStationLunariteCost">110</span> Lunarite, <span id="methaneStationTitaniumCost">90</span> Titanium.
 									</span>
 									<br>
 									<br>
@@ -785,7 +785,7 @@
 										<br>
 										Each Power Station produces 153 Energy and uses 7 uranium per second.
 										<br>
-										Costs <span id="nuclearStationSpaceMetalCost">20,000</span> Space Metal, <span id="nuclearStationTitaniumCost">10,000</span> Titanium.
+										Costs <span id="nuclearStationLunariteCost">20,000</span> Lunarite, <span id="nuclearStationTitaniumCost">10,000</span> Titanium.
 									</span>
 									<br>
 									<br>
@@ -803,7 +803,7 @@
 										<br>
 										Each Power Station produces 191 Energy and uses 11 lava per second.
 										<br>
-										Costs <span id="magmaticSpaceMetalCost">25,000</span> Space Metal, <span id="magmaticGemCost">30,000</span> Gems, <span id="magmaticSilverCost">20,000</span> Silver.
+										Costs <span id="magmaticLunariteCost">25,000</span> Lunarite, <span id="magmaticGemCost">30,000</span> Gems, <span id="magmaticSilverCost">20,000</span> Silver.
 									</span>
 									<br>
 									<br>
@@ -821,7 +821,7 @@
 										<br>
 										Each Power Station produces 273 Energy and uses 10 Hydrogen and 10 Helium per second.
 										<br>
-										Costs <span id="fusionReactorSpaceMetalCost">30,000</span> Space Metal, <span id="fusionReactorTitaniumCost">20,000</span> Titanium, <span id="fusionReactorSiliconCost">15,000</span> Silicon.
+										Costs <span id="fusionReactorLunariteCost">30,000</span> Lunarite, <span id="fusionReactorTitaniumCost">20,000</span> Titanium, <span id="fusionReactorSiliconCost">15,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -860,9 +860,9 @@
 									<span>
 										Upgrade your Uranium storage size to <span id="uraniumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="uraniumFullTime">N/A</span></b>
+										Time remaining until <span id="uraniumLimitType">full</span> storage: <b><span id="uraniumLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="uraniumStorageCost">50</span> Uranium, <span id="uraniumStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -879,7 +879,7 @@
 										<br>
 										Produces 1 Uranium per second.
 										<br>
-										Costs <span id="grinderTitaniumCost">2000</span> Titanium, <span id="grinderSpaceMetalCost">4000</span> Space Metal, <span id="grinderGoldCost">2000</span> Gold.
+										Costs <span id="grinderTitaniumCost">2000</span> Titanium, <span id="grinderLunariteCost">4000</span> Lunarite, <span id="grinderGoldCost">2000</span> Gold.
 									</span>
 									<br>
 									<br>
@@ -899,7 +899,7 @@
 										<br>
 										Uses 40 Energy per second.
 										<br>
-										Costs <span id="cubicUraniumCost">80</span> Uranium, <span id="cubicSpaceMetalCost">10000</span> Space Metal, <span id="cubicOilCost">10000</span> Oil.
+										Costs <span id="cubicUraniumCost">80</span> Uranium, <span id="cubicLunariteCost">10000</span> Lunarite, <span id="cubicOilCost">10000</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -919,7 +919,7 @@
 										<br>
 										Uses 180 Energy per second.
 										<br>
-										Costs <span id="enricherSpaceMetalCost">21,700</span> Space Metal, <span id="enricherTitaniumCost">23,000</span> Titanium, <span id="enricherSiliconCost">13,500</span> Silicon.
+										Costs <span id="enricherLunariteCost">21,700</span> Lunarite, <span id="enricherTitaniumCost">23,000</span> Titanium, <span id="enricherSiliconCost">13,500</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -939,7 +939,7 @@
 										<br>
 										Uses 463 Energy per second.
 										<br>
-										Costs <span id="recyclerSpaceMetalCost">93,100</span> Space Metal, <span id="recyclerMethaneCost">47,000</span> Methane, <span id="recyclerMeteoriteCost">830</span> Meteorite.
+										Costs <span id="recyclerLunariteCost">93,100</span> Lunarite, <span id="recyclerMethaneCost">47,000</span> Methane, <span id="recyclerMeteoriteCost">830</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -976,7 +976,7 @@
 									<span>
 										Upgrade your Oil storage size to <span id="oilNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="oilFullTime">N/A</span></b>
+										Time remaining until <span id="oilLimitType">full</span> storage: <b><span id="oilLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="oilStorageCost">50</span> Oil, <span id="oilStorageMetalCost">20</span> Metal.
 									</span>
@@ -1033,7 +1033,7 @@
 										<br>
 										Uses 17 Energy per second.
 										<br>
-										Costs <span id="oilFieldSpaceMetalCost">2,400</span> Space Metal, <span id="oilFieldTitaniumCost">2,700</span> Titanium, <span id="oilFieldSiliconCost">3,900</span> Silicon.
+										Costs <span id="oilFieldLunariteCost">2,400</span> Lunarite, <span id="oilFieldTitaniumCost">2,700</span> Titanium, <span id="oilFieldSiliconCost">3,900</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1053,7 +1053,7 @@
 										<br>
 										Uses 44 Energy per second.
 										<br>
-										Costs <span id="oilRigSpaceMetalCost">19,400</span> Space Metal, <span id="oilRigTitaniumCost">16,800</span> Titanium, <span id="oilRigMeteoriteCost">760</span> Meteorite.
+										Costs <span id="oilRigLunariteCost">19,400</span> Lunarite, <span id="oilRigTitaniumCost">16,800</span> Titanium, <span id="oilRigMeteoriteCost">760</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1092,7 +1092,7 @@
 									<span>
 										Upgrade your Metal storage size to <span id="metalNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="metalFullTime">N/A</span></b>
+										Time remaining until <span id="metalLimitType">full</span> storage: <b><span id="metalLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="metalStorageCost">50</span> Metal.
 									</span>
@@ -1151,7 +1151,7 @@
 										<br>
 										They use 9 Energy per second.
 										<br>
-										Costs <span id="gigaDrillSpaceMetalCost">2,800</span> Space Metal, <span id="gigaDrillGemCost">3,400</span> Gems, <span id="gigaDrillSiliconCost">4,100</span> Silicon.
+										Costs <span id="gigaDrillLunariteCost">2,800</span> Lunarite, <span id="gigaDrillGemCost">3,400</span> Gems, <span id="gigaDrillSiliconCost">4,100</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1171,7 +1171,7 @@
 										<br>
 										They use 24 Energy per second.
 										<br>
-										Costs <span id="quantumDrillSpaceMetalCost">29,000</span> Space Metal, <span id="quantumDrillGoldCost">18,700</span> Gold, <span id="quantumDrillMeteoriteCost">900</span> Meteorite.
+										Costs <span id="quantumDrillLunariteCost">29,000</span> Lunarite, <span id="quantumDrillGoldCost">18,700</span> Gold, <span id="quantumDrillMeteoriteCost">900</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1210,7 +1210,7 @@
 									<span>
 										Upgrade your gem storage size to <span id="gemNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="gemFullTime">N/A</span></b>
+										Time remaining until <span id="gemLimitType">full</span> storage: <b><span id="gemLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="gemStorageCost">50</span> Gems, <span id="gemStorageMetalCost">20</span> Metal.
 									</span>
@@ -1269,7 +1269,7 @@
 										<br>
 										Uses 15 Energy per second.
 										<br>
-										Costs <span id="diamondDrillSpaceMetalCost">3,400</span> Space Metal, <span id="diamondDrillGemCost">8,000</span> Gems, <span id="diamondDrillSiliconCost">4,500</span> Silicon.
+										Costs <span id="diamondDrillLunariteCost">3,400</span> Lunarite, <span id="diamondDrillGemCost">8,000</span> Gems, <span id="diamondDrillSiliconCost">4,500</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1289,7 +1289,7 @@
 										<br>
 										Uses 40 Energy per second.
 										<br>
-										Costs <span id="carbyneDrillSpaceMetalCost">21,000</span> Space Metal, <span id="carbyneDrillGemCost">27,000</span> Gems, <span id="carbyneDrillMeteoriteCost">800</span> Meteorite.
+										Costs <span id="carbyneDrillLunariteCost">21,000</span> Lunarite, <span id="carbyneDrillGemCost">27,000</span> Gems, <span id="carbyneDrillMeteoriteCost">800</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1329,7 +1329,7 @@
 									<span>
 										Upgrade your Charcoal storage size to <span id="charcoalNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="charcoalFullTime">N/A</span></b>
+										Time remaining until <span id="charcoalLimitType">full</span> storage: <b><span id="charcoalLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="charcoalStorageCost">50</span> Charcoal, <span id="charcoalStorageMetalCost">20</span> Metal.
 									</span>
@@ -1394,7 +1394,7 @@
 										<br>
 										Uses 13 Energy per second.
 										<br>
-										Costs <span id="kilnSpaceMetalCost">3,500</span> Space Metal, <span id="kilnGemCost">6,200</span> Gems, <span id="kilnSiliconCost">3,800</span> Silicon.
+										Costs <span id="kilnLunariteCost">3,500</span> Lunarite, <span id="kilnGemCost">6,200</span> Gems, <span id="kilnSiliconCost">3,800</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1416,7 +1416,7 @@
 										<br>
 										Uses 34 Energy per second.
 										<br>
-										Costs <span id="fryerSpaceMetalCost">15,800</span> Space Metal, <span id="fryerLavaCost">12,500</span> Lava, <span id="fryerMeteoriteCost">560</span> Meteorite.
+										Costs <span id="fryerLunariteCost">15,800</span> Lunarite, <span id="fryerLavaCost">12,500</span> Lava, <span id="fryerMeteoriteCost">560</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1455,7 +1455,7 @@
 									<span>
 										Upgrade your wood storage size to <span id="woodNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="woodFullTime">N/A</span></b>
+										Time remaining until <span id="woodLimitType">full</span> storage: <b><span id="woodLimitTime">N/A</span></b>
 										<br>
 										Costs <span id="woodStorageCost">50</span> wood, <span id="woodStorageMetalCost">20</span> Metal.
 									</span>
@@ -1514,7 +1514,7 @@
 										<br>
 										Uses 16 Energy per second.
 										<br>
-										Costs <span id="deforesterSpaceMetalCost">3,000</span> Space Metal, <span id="deforesterTitaniumCost">2,700</span> Titanium, <span id="deforesterSiliconCost">2,500</span> Silicon.
+										Costs <span id="deforesterLunariteCost">3,000</span> Lunarite, <span id="deforesterTitaniumCost">2,700</span> Titanium, <span id="deforesterSiliconCost">2,500</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1534,7 +1534,7 @@
 										<br>
 										Uses 43 Energy per second.
 										<br>
-										Costs <span id="infuserSpaceMetalCost">16,000</span> Space Metal, <span id="infuserOilCost">31,200</span> Oil, <span id="infuserMeteoriteCost">490</span> Meteorite.
+										Costs <span id="infuserLunariteCost">16,000</span> Lunarite, <span id="infuserOilCost">31,200</span> Oil, <span id="infuserMeteoriteCost">490</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1573,9 +1573,9 @@
 									<span>
 										Upgrade your Silicon storage size to <span id="siliconNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="siliconFullTime">N/A</span></b>
+										Time remaining until <span id="siliconLimitType">full</span> storage: <b><span id="siliconLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="siliconStorageCost">50</span> Silicon, <span id="siliconStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -1592,7 +1592,7 @@
 										<br>
 										Produces 1 silicon per second.
 										<br>
-										Costs <span id="blowtorchSpaceMetalCost">150</span> Space Metal, <span id="blowtorchTitaniumCost">30</span> Titanium.
+										Costs <span id="blowtorchLunariteCost">150</span> Lunarite, <span id="blowtorchTitaniumCost">30</span> Titanium.
 									</span>
 									<br>
 									<br>
@@ -1612,7 +1612,7 @@
 										<br>
 										Uses 18 Energy per second.
 										<br>
-										Costs <span id="scorcherSpaceMetalCost">500</span> Space Metal, <span id="scorcherGemCost">1,200</span> Gems, <span id="scorcherOilCost">1,600</span> Oil.
+										Costs <span id="scorcherLunariteCost">500</span> Lunarite, <span id="scorcherGemCost">1,200</span> Gems, <span id="scorcherOilCost">1,600</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -1632,7 +1632,7 @@
 										<br>
 										Uses 53 Energy per second.
 										<br>
-										Costs <span id="annihilatorSpaceMetalCost">3,000</span> Space Metal, <span id="annihilatorGemCost">8,300</span> Gems, <span id="annihilatorSilverCost">2,400</span> Silver.
+										Costs <span id="annihilatorLunariteCost">3,000</span> Lunarite, <span id="annihilatorGemCost">8,300</span> Gems, <span id="annihilatorSilverCost">2,400</span> Silver.
 									</span>
 									<br>
 									<br>
@@ -1652,7 +1652,7 @@
 										<br>
 										Uses 138 Energy per second.
 										<br>
-										Costs <span id="desertSpaceMetalCost">20,000</span> Space Metal, <span id="desertSiliconCost">17,700</span> Silicon, <span id="desertMeteoriteCost">400</span> Meteorite.
+										Costs <span id="desertLunariteCost">20,000</span> Lunarite, <span id="desertSiliconCost">17,700</span> Silicon, <span id="desertMeteoriteCost">400</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1663,41 +1663,41 @@
 						</table>
 					</div>
 				</div>
-				<div id="spaceMetalTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
+				<div id="lunariteTab" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">
 					<div class="container" style="max-width:800px;">
 						<table class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										Space Metal
+										Lunarite
 									</h2>
 									<span>
-										Space Metal is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
+										Lunarite is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.
 									</span>
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainSpaceMetal()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainLunarite()" class="btn btn-default">Gain 1</div>
 									</hide>
 									<br>
 									<br>
 								</td>
 							</tr>
-							<tr id="spaceMetalStorageUpgrade">
+							<tr id="lunariteStorageUpgrade">
 								<td>
 									<h3 class="default btn-link">
 										Storage Upgrade
 									</h3>
 									<span>
-										Upgrade your Space Metal storage size to <span id="spaceMetalNextStorage">100</span>.
+										Upgrade your Lunarite storage size to <span id="lunariteNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="spaceMetalFullTime">N/A</span></b>
+										Time remaining until <span id="lunariteLimitType">full</span> storage: <b><span id="lunariteLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="spaceMetalStorageCost">50</span> Space Metal, <span id="spaceMetalStorageMetalCost">200</span> Metal.
+										Costs <span id="lunariteStorageCost">50</span> Lunarite, <span id="lunariteStorageMetalCost">200</span> Metal.
 									</span>
 									<br>
 									<br>
-									<button onclick="upgradeSpaceMetalStorage()" class="btn btn-default">Upgrade Storage</button>
+									<button onclick="upgradeLunariteStorage()" class="btn btn-default">Upgrade Storage</button>
 								</td>
 							</tr>
 							<tr>
@@ -1706,9 +1706,9 @@
 										Native Moon Worker: <span id="moonWorker">0</span>
 									</h3>
 									<span>
-										Bribe local workers to mine your Space Metal.
+										Bribe local workers to mine your Lunarite.
 										<br>
-										Produces 1 Space Metal per second.
+										Produces 1 Lunarite per second.
 										<br>
 										Costs <span id="moonWorkerGemCost">500</span> Gems.
 									</span>
@@ -1726,7 +1726,7 @@
 									<span>
 										These drills practically float!
 										<br>
-										Produces 10 Space Metal per second.
+										Produces 10 Lunarite per second.
 										<br>
 										Uses 20 Energy per second.
 										<br>
@@ -1738,7 +1738,7 @@
 									<button onclick="destroyMachine(moonDrill, 'moonDrill')" class="btn btn-default destroy hidden">Destroy Low-Gravity Drill</button>
 								</td>
 							</tr>
-							<tr id="spaceMetalTier3" class="hidden">
+							<tr id="lunariteTier3" class="hidden">
 								<td>
 									<h3 class="default btn-link">
 										Moon Quarry: <span id="moonQuarry">0</span>
@@ -1746,11 +1746,11 @@
 									<span>
 										This quarry tears up the surface of the moon so much that it can be seen from Earth.
 										<br>
-										Produces 53 Space Metal per second.
+										Produces 53 Lunarite per second.
 										<br>
 										Uses 70 Energy per second.
 										<br>
-										Costs <span id="moonQuarrySpaceMetalCost">8,000</span> Space Metal, <span id="moonQuarryGemCost">5,000</span> Gems, <span id="moonQuarrySiliconCost">3,500</span> Silicon.
+										Costs <span id="moonQuarryLunariteCost">8,000</span> Lunarite, <span id="moonQuarryGemCost">5,000</span> Gems, <span id="moonQuarrySiliconCost">3,500</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1758,15 +1758,15 @@
 									<button onclick="destroyMachine(moonQuarry, 'moonQuarry')" class="btn btn-default destroy hidden">Destroy Moon Quarry</button>
 								</td>
 							</tr>
-							<tr id="spaceMetalTier4" class="hidden">
+							<tr id="lunariteTier4" class="hidden">
 								<td>
 									<h3 class="default btn-link">
 										Planetary Excavator: <span id="planetExcavator">0</span>
 									</h3>
 									<span>
-										This large machine dives deep into the Earth to find large pools of Space-Metal found near the core. This is originally where the metal on the Moon comes from.
+										This large machine dives deep into the Earth to find large pools of Lunarite found near the core. This is originally where the metal on the Moon comes from.
 										<br>
-										Produces 207 Space Metal per second.
+										Produces 207 Lunarite per second.
 										<br>
 										Uses 182 Energy per second.
 										<br>
@@ -1809,9 +1809,9 @@
 									<span>
 										Upgrade your methane storage size to <span id="methaneNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="methaneFullTime">N/A</span></b>
+										Time remaining until <span id="methaneLimitType">full</span> storage: <b><span id="methaneLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="methaneStorageCost">50</span> Methane, <span id="methaneStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -1828,7 +1828,7 @@
 										<br>
 										Produces 1 methane per second.
 										<br>
-										Costs <span id="vacuumSpaceMetalCost">50</span> Space Metal, <span id="vacuumGemCost">500</span> Gems.
+										Costs <span id="vacuumLunariteCost">50</span> Lunarite, <span id="vacuumGemCost">500</span> Gems.
 									</span>
 									<br>
 									<br>
@@ -1848,7 +1848,7 @@
 										<br>
 										Uses 16 Energy per second.
 										<br>
-										Costs <span id="suctionExcavatorSpaceMetalCost">10,000</span> Space Metal, <span id="suctionExcavatorGemCost">800</span> Gems, <span id="suctionExcavatorOilCost">600</span> Oil.
+										Costs <span id="suctionExcavatorLunariteCost">10,000</span> Lunarite, <span id="suctionExcavatorGemCost">800</span> Gems, <span id="suctionExcavatorOilCost">600</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -1868,7 +1868,7 @@
 										<br>
 										Uses 49 Energy per second.
 										<br>
-										Costs <span id="spaceCowSpaceMetalCost">10,000</span> Space Metal, <span id="spaceCowTitaniumCost">9,000</span> Titanium, <span id="spaceCowSiliconCost">4,100</span> Silicon.
+										Costs <span id="spaceCowLunariteCost">10,000</span> Lunarite, <span id="spaceCowTitaniumCost">9,000</span> Titanium, <span id="spaceCowSiliconCost">4,100</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -1888,7 +1888,7 @@
 										<br>
 										Uses 132 Energy per second.
 										<br>
-										Costs <span id="ventSpaceMetalCost">52,000</span> Space Metal, <span id="ventHeliumCost">47,000</span> Helium, <span id="ventMeteoriteCost">390</span> Meteorite.
+										Costs <span id="ventLunariteCost">52,000</span> Lunarite, <span id="ventHeliumCost">47,000</span> Helium, <span id="ventMeteoriteCost">390</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -1928,9 +1928,9 @@
 									<span>
 										Upgrade your Titanium storage size to <span id="titaniumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="titaniumFullTime">N/A</span></b>
+										Time remaining until <span id="titaniumLimitType">full</span> storage: <b><span id="titaniumLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="titaniumStorageCost">50</span> Titanium, <span id="titaniumStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -1958,21 +1958,21 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Space Metal Drill: <span id="spaceMetalDrill">0</span>
+										Lunarite Drill: <span id="lunariteDrill">0</span>
 									</h3>
 									<span>
-										These Space Metal Drills are extremely powerful, needed to mine out Titanium from inside Mars' crust.
+										These Lunarite Drills are extremely powerful, needed to mine out Titanium from inside Mars' crust.
 										<br>
 										Produces 9 Titanium per second.
 										<br>
 										Uses 13 Energy per second.
 										<br>
-										Costs <span id="spaceMetalDrillSpaceMetalCost">200</span> Space Metal, <span id="spaceMetalDrillGemCost">800</span> Gems, <span id="spaceMetalDrillOilCost">1,000</span> Oil.
+										Costs <span id="lunariteDrillLunariteCost">200</span> Lunarite, <span id="lunariteDrillGemCost">800</span> Gems, <span id="lunariteDrillOilCost">1,000</span> Oil.
 									</span>
 									<br>
 									<br>
-									<button onclick="getSpaceMetalDrill()" class="btn btn-default">Get Space Metal Drill</button>
-									<button onclick="destroyMachine(spaceMetalDrill, 'spaceMetalDrill')" class="btn btn-default destroy hidden">Destroy Space Metal Drill</button>
+									<button onclick="getLunariteDrill()" class="btn btn-default">Get Lunarite Drill</button>
+									<button onclick="destroyMachine(lunariteDrill, 'lunariteDrill')" class="btn btn-default destroy hidden">Destroy Lunarite Drill</button>
 								</td>
 							</tr>
 							<tr id="titaniumTier3" class="hidden">
@@ -1987,7 +1987,7 @@
 										<br>
 										Uses 46 Energy per second.
 										<br>
-										Costs <span id="pentaDrillSpaceMetalCost">14,000</span> Space Metal, <span id="pentaDrillGemCost">11,000</span> Gems, <span id="pentaDrillSiliconCost">5,600</span> Silicon.
+										Costs <span id="pentaDrillLunariteCost">14,000</span> Lunarite, <span id="pentaDrillGemCost">11,000</span> Gems, <span id="pentaDrillSiliconCost">5,600</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2001,13 +2001,13 @@
 										Drill of Titans: <span id="titanDrill">0</span>
 									</h3>
 									<span>
-										This mighty drill is said to have been wielded by Titans themselves, many milennia ago.
+										This mighty drill is said to have been wielded by Titans themselves, many millennia ago.
 										<br>
 										Produces 197 Titanium per second.
 										<br>
 										Uses 123 Energy per second.
 										<br>
-										Costs <span id="titanDrillSpaceMetalCost">63,000</span> Space Metal, <span id="titanDrillGoldCost">27,000</span> Gold, <span id="titanDrillMeteoriteCost">600</span> Meteorite.
+										Costs <span id="titanDrillLunariteCost">63,000</span> Lunarite, <span id="titanDrillGoldCost">27,000</span> Gold, <span id="titanDrillMeteoriteCost">600</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2046,9 +2046,9 @@
 									<span>
 										Upgrade your Gold storage size to <span id="goldNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="goldFullTime">N/A</span></b>
+										Time remaining until <span id="goldLimitType">full</span> storage: <b><span id="goldLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="goldStorageCost">50</span> Gold, <span id="goldStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2065,7 +2065,7 @@
 										<br>
 										Produces 1 Gold per second.
 										<br>
-										Costs <span id="droidSpaceMetalCost">200</span> Space Metal, <span id="droidMethaneCost">50</span> Methane.
+										Costs <span id="droidLunariteCost">200</span> Lunarite, <span id="droidMethaneCost">50</span> Methane.
 									</span>
 									<br>
 									<br>
@@ -2085,7 +2085,7 @@
 										<br>
 										Uses 19 Energy per second.
 										<br>
-										Costs <span id="destroyerSpaceMetalCost">500</span> Space Metal, <span id="destroyerGemCost">1,500</span> Gems, <span id="destroyerOilCost">1,000</span> Oil.
+										Costs <span id="destroyerLunariteCost">500</span> Lunarite, <span id="destroyerGemCost">1,500</span> Gems, <span id="destroyerOilCost">1,000</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -2105,7 +2105,7 @@
 										<br>
 										Uses 81 Energy per second.
 										<br>
-										Costs <span id="deathStarSpaceMetalCost">17,000</span> Space Metal, <span id="deathStarSilverCost">11,500</span> Silver, <span id="deathStarSiliconCost">8,200</span> Silicon.
+										Costs <span id="deathStarLunariteCost">17,000</span> Lunarite, <span id="deathStarSilverCost">11,500</span> Silver, <span id="deathStarSiliconCost">8,200</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2125,7 +2125,7 @@
 										<br>
 										Uses 223 Energy per second.
 										<br>
-										Costs <span id="actuatorSpaceMetalCost">61,000</span> Space Metal, <span id="actuatorHeliumCost">15,700</span> Helium, <span id="actuatorMeteoriteCost">600</span> Meteorite.
+										Costs <span id="actuatorLunariteCost">61,000</span> Lunarite, <span id="actuatorHeliumCost">15,700</span> Helium, <span id="actuatorMeteoriteCost">600</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2164,9 +2164,9 @@
 									<span>
 										Upgrade your silver storage size to <span id="silverNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="silverFullTime">N/A</span></b>
+										Time remaining until <span id="silverLimitType">full</span> storage: <b><span id="silverLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="silverStorageCost">50</span> Silver, <span id="silverStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2183,7 +2183,7 @@
 										<br>
 										Produces 1 silver per second.
 										<br>
-										Costs <span id="scoutSpaceMetalCost">100</span> Space Metal, <span id="scoutTitaniumCost">20</span> Titanium.
+										Costs <span id="scoutLunariteCost">100</span> Lunarite, <span id="scoutTitaniumCost">20</span> Titanium.
 									</span>
 									<br>
 									<br>
@@ -2203,7 +2203,7 @@
 										<br>
 										Uses 24 Energy per second.
 										<br>
-										Costs <span id="spaceLaserSpaceMetalCost">350</span> Space Metal, <span id="spaceLaserGemCost">900</span> Gems, <span id="spaceLaserOilCost">1,200</span> Oil.
+										Costs <span id="spaceLaserLunariteCost">350</span> Lunarite, <span id="spaceLaserGemCost">900</span> Gems, <span id="spaceLaserOilCost">1,200</span> Oil.
 									</span>
 									<br>
 									<br>
@@ -2217,13 +2217,13 @@
 										Big Bertha: <span id="bertha">0</span>
 									</h3>
 									<span>
-										This large, space drill, named after the World War One Howitzer built almost a milienia ago, is a silver seeking machine specially designed for mining asteroids.
+										This large, space drill, named after the World War One Howitzer built almost a millennia ago, is a silver seeking machine specially designed for mining asteroids.
 										<br>
 										Produces 53 silver per second.
 										<br>
 										Uses 65 Energy per second.
 										<br>
-										Costs <span id="berthaSpaceMetalCost">19,500</span> Space Metal, <span id="berthaTitaniumCost">18,200</span> Titanium, <span id="berthaSiliconCost">11,000</span> Silicon.
+										Costs <span id="berthaLunariteCost">19,500</span> Lunarite, <span id="berthaTitaniumCost">18,200</span> Titanium, <span id="berthaSiliconCost">11,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2243,7 +2243,7 @@
 										<br>
 										Uses 170 Energy per second.
 										<br>
-										Costs <span id="cannonSpaceMetalCost">85,100</span> Space Metal, <span id="cannonOilCost">93,800</span> Oil, <span id="cannonMeteoriteCost">520</span> Meteorite.
+										Costs <span id="cannonLunariteCost">85,100</span> Lunarite, <span id="cannonOilCost">93,800</span> Oil, <span id="cannonMeteoriteCost">520</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2282,9 +2282,9 @@
 									<span>
 										Upgrade your Lava storage size to <span id="lavaNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="lavaFullTime">N/A</span></b>
+										Time remaining until <span id="lavaLimitType">full</span> storage: <b><span id="lavaLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="lavaStorageCost">50</span> Lava, <span id="lavaStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2301,7 +2301,7 @@
 										<br>
 										Produces 1 Lava per second.
 										<br>
-										Costs <span id="crucibleGemCost">7,000</span> Gems, <span id="crucibleSpaceMetalCost">4,000</span> Space Metal.
+										Costs <span id="crucibleGemCost">7,000</span> Gems, <span id="crucibleLunariteCost">4,000</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2321,7 +2321,7 @@
 										<br>
 										Uses 58 Energy per second.
 										<br>
-										Costs <span id="extractorSpaceMetalCost">16,000</span> Space Metal, <span id="extractorTitaniumCost">14,000</span> Titanium, <span id="extractorSiliconCost">6,000</span> Silicon.
+										Costs <span id="extractorLunariteCost">16,000</span> Lunarite, <span id="extractorTitaniumCost">14,000</span> Titanium, <span id="extractorSiliconCost">6,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2341,7 +2341,7 @@
 										<br>
 										Uses 237 Energy per second.
 										<br>
-										Costs <span id="extruderSpaceMetalCost">69,000</span> Space Metal, <span id="extruderTitaniumCost">57,000</span> Titanium, <span id="extruderSiliconCost">39,000</span> Silicon.
+										Costs <span id="extruderLunariteCost">69,000</span> Lunarite, <span id="extruderTitaniumCost">57,000</span> Titanium, <span id="extruderSiliconCost">39,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2361,7 +2361,7 @@
 										<br>
 										Uses 689 Energy per second.
 										<br>
-										Costs <span id="veluptuatorSpaceMetalCost">298,000</span> Space Metal, <span id="veluptuatorGoldCost">121,000</span> Gold, <span id="veluptuatorMeteoriteCost">750</span> Meteorite.
+										Costs <span id="veluptuatorLunariteCost">298,000</span> Lunarite, <span id="veluptuatorGoldCost">121,000</span> Gold, <span id="veluptuatorMeteoriteCost">750</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2400,9 +2400,9 @@
 									<span>
 										Upgrade your Hydrogen storage size to <span id="hydrogenNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="hydrogenFullTime">N/A</span></b>
+										Time remaining until <span id="hydrogenLimitType">full</span> storage: <b><span id="hydrogenLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="hydrogenStorageCost">50</span> Hydrogen, <span id="hydrogenStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2419,7 +2419,7 @@
 										<br>
 										Produces 1 Hydrogen per second.
 										<br>
-										Costs <span id="collectorSpaceMetalCost">6,000</span> Space Metal, <span id="collectorTitaniumCost">4,800</span> Titanium.
+										Costs <span id="collectorLunariteCost">6,000</span> Lunarite, <span id="collectorTitaniumCost">4,800</span> Titanium.
 									</span>
 									<br>
 									<br>
@@ -2439,7 +2439,7 @@
 										<br>
 										Uses 63 Energy per second.
 										<br>
-										Costs <span id="magnetSpaceMetalCost">10,800</span> Space Metal, <span id="magnetTitaniumCost">9,600</span> Titanium, <span id="magnetGoldCost">6,600</span> Gold.
+										Costs <span id="magnetLunariteCost">10,800</span> Lunarite, <span id="magnetTitaniumCost">9,600</span> Titanium, <span id="magnetGoldCost">6,600</span> Gold.
 									</span>
 									<br>
 									<br>
@@ -2479,7 +2479,7 @@
 										<br>
 										Uses 613 Energy per second.
 										<br>
-										Costs <span id="hindenburgSpaceMetalCost">172,000</span> Space Metal, <span id="hindenburgMethaneCost">134,000</span> Methane, <span id="hindenburgMeteoriteCost">710</span> Meteorite.
+										Costs <span id="hindenburgLunariteCost">172,000</span> Lunarite, <span id="hindenburgMethaneCost">134,000</span> Methane, <span id="hindenburgMeteoriteCost">710</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2518,9 +2518,9 @@
 									<span>
 										Upgrade your Helium storage size to <span id="heliumNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="heliumFullTime">N/A</span></b>
+										Time remaining until <span id="heliumLimitType">full</span> storage: <b><span id="heliumLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="heliumStorageCost">50</span> Helium, <span id="heliumStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2537,7 +2537,7 @@
 										<br>
 										Produces 1 Helium per second.
 										<br>
-										Costs <span id="droneSpaceMetalCost">8,400</span> Space Metal, <span id="droneSiliconCost">6,000</span> Silicon.
+										Costs <span id="droneLunariteCost">8,400</span> Lunarite, <span id="droneSiliconCost">6,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2557,7 +2557,7 @@
 										<br>
 										Uses 72 Energy per second.
 										<br>
-										Costs <span id="tankerSpaceMetalCost">12,600</span> Space Metal, <span id="tankerTitaniumCost">10,200</span> Titanium, <span id="tankerSiliconCost">8,400</span> Silicon.
+										Costs <span id="tankerLunariteCost">12,600</span> Lunarite, <span id="tankerTitaniumCost">10,200</span> Titanium, <span id="tankerSiliconCost">8,400</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2577,7 +2577,7 @@
 										<br>
 										Uses 248 Energy per second.
 										<br>
-										Costs <span id="compressorSpaceMetalCost">63,000</span> Space Metal, <span id="compressorTitaniumCost">43,800</span> Titanium, <span id="compressorSiliconCost">35,400</span> Silicon.
+										Costs <span id="compressorLunariteCost">63,000</span> Lunarite, <span id="compressorTitaniumCost">43,800</span> Titanium, <span id="compressorSiliconCost">35,400</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2597,7 +2597,7 @@
 										<br>
 										Uses 670 Energy per second.
 										<br>
-										Costs <span id="skimmerSpaceMetalCost">255,000</span> Space Metal, <span id="skimmerTitaniumCost">173,000</span> Titanium, <span id="skimmerMeteoriteCost">770</span> Meteorite.
+										Costs <span id="skimmerLunariteCost">255,000</span> Lunarite, <span id="skimmerTitaniumCost">173,000</span> Titanium, <span id="skimmerMeteoriteCost">770</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -2636,9 +2636,9 @@
 									<span>
 										Upgrade your Ice storage size to <span id="iceNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="iceFullTime">N/A</span></b>
+										Time remaining until <span id="iceLimitType">full</span> storage: <b><span id="iceLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageSpaceMetalCost">20</span> Space Metal.
+										Costs <span id="iceStorageCost">50</span> Ice, <span id="iceStorageLunariteCost">20</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2655,7 +2655,7 @@
 										<br>
 										Produces 1 Ice per second.
 										<br>
-										Costs <span id="icePickSpaceMetalCost">17,800</span> Space Metal, <span id="icePickGemCost">19,300</span> Gems.
+										Costs <span id="icePickLunariteCost">17,800</span> Lunarite, <span id="icePickGemCost">19,300</span> Gems.
 									</span>
 									<br>
 									<br>
@@ -2675,7 +2675,7 @@
 										<br>
 										Uses 83 Energy per second.
 										<br>
-										Costs <span id="iceDrillSpaceMetalCost">23,900</span> Space Metal, <span id="iceDrillTitaniumCost">21,200</span> Titanium, <span id="iceDrillSiliconCost">19,600</span> Silicon.
+										Costs <span id="iceDrillLunariteCost">23,900</span> Lunarite, <span id="iceDrillTitaniumCost">21,200</span> Titanium, <span id="iceDrillSiliconCost">19,600</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2695,7 +2695,7 @@
 										<br>
 										Uses 397 Energy per second.
 										<br>
-										Costs <span id="freezerSpaceMetalCost">117,000</span> Space Metal, <span id="freezerTitaniumCost">86,000</span> Titanium, <span id="freezerSiliconCost">73,000</span> Silicon.
+										Costs <span id="freezerLunariteCost">117,000</span> Lunarite, <span id="freezerTitaniumCost">86,000</span> Titanium, <span id="freezerSiliconCost">73,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2757,9 +2757,9 @@
 									<span>
 										Upgrade your Meteorite storage size to <span id="meteoriteNextStorage">100</span>.
 										<br>
-										Time remaining until full storage: <b><span id="meteoriteFullTime">N/A</span></b>
+										Time remaining until <span id="meteoriteLimitType">full</span> storage: <b><span id="meteoriteLimitTime">N/A</span></b>
 										<br>
-										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageSpaceMetalCost">400</span> Space Metal.
+										Costs <span id="meteoriteStorageCost">50</span> Meteorite, <span id="meteoriteStorageLunariteCost">400</span> Lunarite.
 									</span>
 									<br>
 									<br>
@@ -2776,7 +2776,7 @@
 										<br>
 										Produces 1 Meteorite per second. Uses 3 Plasma per second.
 										<br>
-										Costs <span id="printerSpaceMetalCost">100,000</span> Space Metal, <span id="printerSiliconCost">60,000</span> Silicon.
+										Costs <span id="printerLunariteCost">100,000</span> Lunarite, <span id="printerSiliconCost">60,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -2794,7 +2794,7 @@
 										<br>
 										Produces 8 Meteorite per second. Uses 21 Plasma per second.
 										<br>
-										Costs <span id="webSpaceMetalCost">940,000</span> Space Metal, <span id="webUraniumCost">490,000</span> Uranium, <span id="webSiliconCost">510,000</span> Silicon.
+										Costs <span id="webLunariteCost">940,000</span> Lunarite, <span id="webUraniumCost">490,000</span> Uranium, <span id="webSiliconCost">510,000</span> Silicon.
 									</span>
 									<br>
 									<br>
@@ -3346,7 +3346,7 @@
 										Meteorite Tier 2
 									</h3>
 									<span>
-										Research a more efficient method of getting meteorite than creating it artificialy.
+										Research a more efficient method of getting meteorite than creating it artificially.
 										<br>
 										Costs <span id="unlockMeteoriteTier2Cost">100,000</span> Science.
 									</span>
@@ -3363,7 +3363,7 @@
 										Dyson Ring
 									</h3>
 									<span>
-										Dysons Rings produce huge amounts of energy by surrounding the sun in solar stations.
+										Dyson Rings produce huge amounts of energy by surrounding the sun in solar stations.
 										<br>
 										Costs <span id="unlockDysonCost">100,000</span> Science.
 									</span>
@@ -3431,7 +3431,7 @@
 										Dyson Swarms and Spheres
 									</h3>
 									<span>
-										The Dyson Swarms encapsulate the sun in rings of solar stations, wheras Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
+										The Dyson Swarms encapsulate the sun in rings of solar stations, whereas Spheres completely encompasses it to allows you to harness enough energy to go interstellar.
 										<br>
 										Costs <span id="unlockDysonSphereCost">500,000</span> Science.
 									</span>
@@ -3837,7 +3837,7 @@
 										The Moon
 									</h2>
 									<span>
-										The Moon is our largest satelite, revolving around the Earth once every 27 days. It contains a large quantity of Space Metal, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.
+										The Moon is our largest satellite, revolving around the Earth once every 27 days. It contains a large quantity of Lunarite, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.
 									</span>
 									<br>
 									<br>
@@ -3849,7 +3849,7 @@
 										Exploration
 									</h3>
 									<span>
-										Exploring the Moon will unlock the collection of Space Metal.
+										Exploring the Moon will unlock the collection of Lunarite.
 										<br>
 										Costs <span id="moonRocketFuelCost">20</span> rocket fuel.
 									</span>
@@ -3872,7 +3872,7 @@
 										Mercury
 									</h2>
 									<span>
-										Mercury is a lifeless rock with little to no value. It is not worth exploring on the ground as there are no valuble materials present.
+										Mercury is a lifeless rock with little to no value. It is not worth exploring on the ground as there are no valuable materials present.
 									</span>
 									<br>
 									<br>
@@ -4344,7 +4344,7 @@
 									<span>
 										As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.
 										<br>
-										<b>NB: You must activate the wonders after building them to recieve their effects</b>
+										<b>NB: You must activate the wonders after building them to receive their effects</b>
 									</span>
 									<br>
 									<br>
@@ -4644,7 +4644,7 @@
 										Rebuild Communication Wonder
 									</h3>
 									<span>
-										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outisde of our solar system.
+										For rebuilding the Communication Wonder, you will be able to talk and listen to aliens in other star systems and determine whether there is sentient life outside of our solar system.
 										<br>
 										<hide id="rebuildCommsWonder">
 											Costs: <span id="commsWonderGoldCost">6M</span> Gold, <span id="commsWonderSiliconCost">10M</span> Silicon, <span id="commsWonderIceCost">6M</span> Ice.
@@ -4688,7 +4688,7 @@
 										For rebuilding the Rocket Wonder, you will discover advanced technologies where you can learn how to move beyond your tiny star system.
 										<br>
 										<hide id="rebuildRocketWonder">
-											Costs: <span id="rocketWonderSpaceMetalCost">8M</span> Space Metal, <span id="rocketWonderTitaniumCost">6M</span> Titanium, <span id="rocketWonderMetalCost">12M</span> Metal.
+											Costs: <span id="rocketWonderLunariteCost">8M</span> Lunarite, <span id="rocketWonderTitaniumCost">6M</span> Titanium, <span id="rocketWonderMetalCost">12M</span> Metal.
 											<br>
 											<br>
 											<button onclick="rebuildRocketWonder()" class="btn btn-default">Rebuild Rocket Wonder</button>
@@ -4716,7 +4716,7 @@
 										The Antimatter Wonder
 									</h2>
 									<span>
-										In the corner of the floor, you see a faintly glowing, large canister, proped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
+										In the corner of the floor, you see a faintly glowing, large canister, propped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of "The Interstellar", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.'
 									</span>
 								</td>
 							</tr>
@@ -4726,7 +4726,7 @@
 										Rebuild Antimatter Wonder
 									</h3>
 									<span>
-										For rebuilding the Antimatter Wonder, you will gain access to antimatter prodution and storage.
+										For rebuilding the Antimatter Wonder, you will gain access to antimatter production and storage.
 										<br>
 										<hide id="rebuildAntimatterWonder">
 											Costs: <span id="antimatterWonderUraniumCost">6M</span> Uranium, <span id="antimatterWonderLavaCost">10M</span> Lava, <span id="antimatterWonderOilCost">8M</span> Oil, <span id="antimatterWonderMethaneCost">6M</span> Methane.
@@ -4798,7 +4798,8 @@
 										The Stargate Room
 									</h2>
 									<span>
-										The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table
+										The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table.<br>
+										<strong>NB: The Wonder Tab will disappear after completing this wonder. Make sure all others are completed first.</strong>
 									</span>
 								</td>
 							</tr>
@@ -4874,7 +4875,7 @@
 										Plasma
 									</h2>
 									<span>
-										Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutions.
+										Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutations.
 									</span>
 								</td>
 							</tr>
@@ -5000,10 +5001,10 @@
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silicon')" role="button">Convert</button></td>
 													</tr>
 													<tr>
-														<td><span id="spaceMetalEmcVal">15</span> Energy</td>
-														<td><span id="spaceMetalEmcAmount">1</span> Space Metal</td>
-														<td><span id="spaceMetalConv"><span data-bind="spaceMetal">N/A</span> / <span data-bind="spaceMetalStorage">N/A</span></span></td>
-														<td><button class="btn btn-default pull-right" onclick="convertEnergy('spaceMetal')" role="button">Convert</button></td>
+														<td><span id="lunariteEmcVal">15</span> Energy</td>
+														<td><span id="lunariteEmcAmount">1</span> Lunarite</td>
+														<td><span id="lunariteConv"><span data-bind="lunarite">N/A</span> / <span data-bind="lunariteStorage">N/A</span></span></td>
+														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lunarite')" role="button">Convert</button></td>
 													</tr>
 													<tr>
 														<td><span id="methaneEmcVal">12</span> Energy</td>
@@ -5047,7 +5048,7 @@
 														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
 													</tr>
-													<tr>
+													<tr id="meteoriteEMC" class="hidden">
 														<td><span id="meteoriteEmcVal">42</span> Plasma</td>
 														<td><span id="meteoriteEmcAmount">1</span> Meteorite</td>
 														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
@@ -5058,85 +5059,6 @@
 											</div>
 										</div>
 									</div>
-									<table style="width:775px; display: none">
-										<tr>
-											<td colspan="3">
-												<button id="uraniumConv" onclick="convertEnergy('uranium')" class="btn btn-default" style="width:100%"><span id="uraniumEmcVal">37</span> Energy -> <span class="emcAmount">1</span> Uranium</button>
-											</td>
-											<td colspan="3">
-												<button id="lavaConv" onclick="convertEnergy('lava')" class="btn btn-default" style="width:100%"><span id="lavaEmcVal">42</span> Energy -> <span class="emcAmount">1</span> Lava</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="oilConv" onclick="convertEnergy('oil')" class="btn btn-default" style="width:100%"><span id="oilEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Oil</button>
-											</td>
-											<td colspan="2">
-												<button id="metalConv" onclick="convertEnergy('metal')" class="btn btn-default" style="width:100%"><span id="metalEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Metal</button>
-											</td>
-											<td colspan="2">
-												<button id="gemConv" onclick="convertEnergy('gem')" class="btn btn-default" style="width:100%"><span id="gemEmcVal">3</span> Energy -> <span class="emcAmount">1</span> Gems</button>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="charcoalConv" onclick="convertEnergy('charcoal')" class="btn btn-default" style="width:100%"><span id="charcoalEmcVal">2</span> Energy -> <span class="emcAmount">1</span> Charcoal</button>
-											</td>
-											<td colspan="2">
-												<button id="woodConv" onclick="convertEnergy('wood')" class="btn btn-default" style="width:100%"><span id="woodEmcVal">1</span> Energy -> <span class="emcAmount">1</span> Wood</button>
-											</td>
-											<td colspan="2">
-												<button id="siliconConv" onclick="convertEnergy('silicon')" class="btn btn-default" style="width:100%"><span id="siliconEmcVal">23</span> Energy -> <span class="emcAmount">1</span> Silicon</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="spaceMetalConv" onclick="convertEnergy('spaceMetal')" class="btn btn-default" style="width:100%"><span id="spaceMetalEmcVal">15</span> Energy -> <span class="emcAmount">1</span> Space Metal</button>
-											</td>
-											<td colspan="2">
-												<button id="methaneConv" onclick="convertEnergy('methane')" class="btn btn-default" style="width:100%"><span id="methaneEmcVal">12</span> Energy -> <span class="emcAmount">1</span> Methane</button>
-											</td>
-											<td colspan="2">
-												<button id="titaniumConv" onclick="convertEnergy('titanium')" class="btn btn-default" style="width:100%"><span id="titaniumEmcVal">17</span> Energy -> <span class="emcAmount">1</span> Titanium</button>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="3">
-												<button id="goldConv" onclick="convertEnergy('gold')" class="btn btn-default" style="width:100%"><span id="goldEmcVal">14</span> Energy -> <span class="emcAmount">1</span> Gold</button>
-											</td>
-											<td colspan="3">
-												<button id="silverConv" onclick="convertEnergy('silver')" class="btn btn-default" style="width:100%"><span id="silverEmcVal">16</span> Energy -> <span class="emcAmount">1</span> Silver</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<button id="hydrogenConv" onclick="convertEnergy('hydrogen')" class="btn btn-default" style="width:100%"><span id="hydrogenEmcVal">33</span> Energy -> <span class="emcAmount">1</span> Hydrogen</button>
-											</td>
-											<td colspan="2">
-												<button id="heliumConv" onclick="convertEnergy('helium')" class="btn btn-default" style="width:100%"><span id="heliumEmcVal">39</span> Energy -> <span class="emcAmount">1</span> Helium</button>
-											</td>
-											<td colspan="2">
-												<button id="iceConv" onclick="convertEnergy('ice')" class="btn btn-default" style="width:100%"><span id="iceEmcVal">44</span> Energy -> <span class="emcAmount">1</span> Ice</button>
-											</td>
-										</tr>
-										<tr>
-											<td height="20px"></td>
-										</tr>
-										<tr id="meteoriteEMC" class="hidden">
-											<td colspan="6">
-												<button id="meteoriteConv" onclick="convertPlasma('meteorite')" class="btn btn-default" style="width:100%"><span id="meteoriteEmcVal">3</span> Plasma -> <span class="emcAmount">1</span> Meteorite</button>
-											</td>
-										</tr>
-									</table>
 								</td>
 							</tr>
 						</table>
@@ -6778,7 +6700,7 @@
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
-										Communications (Coming Soon!)
+										Communications
 									</h2>
 									<span>
 										This is where you learn about other systems to travel to.
@@ -6793,7 +6715,7 @@
 									<span>
 										The Overlord gifts you with the technology to discover stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.
 										<br>
-										Costs <span id="IRSSpaceMetalCost">XXXX</span> ABC, <span id="IRSTitaniumCost">XXXX</span> ABC, <span id="IRSMetalCost">XXXX</span> ABC.
+										Costs <span id="IRSMetalCost">38.6B</span> Metal, <span id="IRSIceCost">4.32B</span> Ice, <span id="IRSMeteoriteCost">15.8M</span> Meteorite.
 									</span>
 									<br>
 									<br>
@@ -6839,7 +6761,7 @@
 									<span>
 										This plating combats the Sun's radiation, and can protect anyone inside from the frigid cold of space.
 										<br>
-										Costs <span id="shieldSpaceMetalCost">100,000</span> Space Metal, <span id="shieldTitaniumCost">100,000</span> Titanium, <span id="shieldMetalCost">100,000</span> Metal.
+										Costs <span id="shieldLunariteCost">100,000</span> Lunarite, <span id="shieldTitaniumCost">100,000</span> Titanium, <span id="shieldMetalCost">100,000</span> Metal.
 									</span>
 									<br>
 									<br>
@@ -7189,7 +7111,7 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Red Destroy Buttons
+										Coloured Destroy Buttons
 									</h3>
 				                	<div class="checkbox">
 										<label><input id="redDestroyButtons" type="checkbox" value="">Destroy Buttons Red</label>
@@ -7231,10 +7153,12 @@
 										Achievements
 									</h2>
 									<span>
-										Most resources are implemented but not all.
+										This is where you can see your rank and all of your achievements.
 									</span>
 								</td>
+								<td id="rankContent" style="border:none;"></td>
 							</tr>
+							<tr colspan="2" id="rankBarContent"></tr>
 							<tr id="achievementContent"></tr>
 						</table>
 					</div>
@@ -7466,7 +7390,7 @@
 										I want to help. How do I do that?
 									</h4>
 									<span>
-										Help is always appreciated! You can look over my code in <a href="http://github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, sumbit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
+										Help is always appreciated! You can look over my code in <a href="http://github.com/sparticle999/SpaceCompany">Github</a> and fork it to make changes. Send me a push request, submit an issue or just tell me in reddit and I'll most likely be happy to add it in and give credit where due.
 									</span>
 								</td>
 							</tr>
@@ -7510,7 +7434,7 @@
 									<span>
 										This game is made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
 										<br>
-										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I appologise for any infuriation caused.
+										The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I apologise for any infuriation caused.
 									</span>
 								</td>
 							</tr>
@@ -7526,7 +7450,7 @@
 										<a class="pointer btn-link" target="_blank" href="http://bootswatch.com/">Bootswatch</a> is the tool that I used to add the different themes to the game. If anyone wants more themes from this website, I would be happy to add them in.
 										<br>
 										<br>
-										Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shuttershock</a> and retextured and edited by myself to fit the theme of this game.
+										Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shutterstock</a> and retextured and edited by myself to fit the theme of this game.
 									</span>
 								</td>
 							</tr>

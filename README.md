@@ -15,9 +15,9 @@ v0.6.0 The Lore Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 
 - Adding Lore onto every Building and an introduction to your Space Company
-- Rebalance all costs to not use as much Space Metal/Gems
+- Rebalance all costs to not use as much Lunarite/Gems
 - Loading screen flavour text changes as you progress
-- Change Space Metal to a proper name
+- Machine Overview Tab
 
 v0.5.0 The Interstellar Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
@@ -27,15 +27,13 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Unknown Planets that you have to explore to know what it holds
 - Each star system is more hostile than the last until prestige, where it resets
 - Pushing Planets into the Sun gets prestige currency
-- Machine Overview Tab
-- Space Elevator
 - Mass to Energy Conversion
 - Buy X buttons
 - Buy Max/Custom Buttons
 - Reduce Storage Costs
-- Achievements with Bonuses
 - Change Letter Formatting To Start At 100K
 - Rebalance Science
+- Change Icons (white circle with icon inside)
 
 # Changelog:
 
@@ -65,8 +63,14 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Copy Export to Clipboard
 - Update Log On Page Load
 - Battery Efficiency Research
-- Red Destroy Button Option
+- Coloured Destroy Button Option
 - Hydrazine Catalyst - T3 Rocket Fuel
+- Interstellar Radar Scanner
+- Achievement Ranks
+- Renamed Space Metal as Lunarite
+- The Wonder Tab hides itself when completed (makes space for more tabs)
+- Rebuilt Achievement Tooltips
+- Dark Matter
 
 ##### Small Changes
 
@@ -95,6 +99,9 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Buffed Hydrazine Production
 - Achievement Number Formatting
 - Rocket Fuel Machine Achievements
+- Refactored EMC (behind the scenes)
+- Optimised Saving and Loading
+- Time until storage full now shows until empty if negative gain
 
 ##### Bug Fixes
 
@@ -114,7 +121,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Dyson Sections Cost Bug
 - Fixed Plasma EMC Display Bug
 - Fixed Stargate Red Costs Bug
-- Fixed T3 Battery Space Metal Cost Not Saving
+- Fixed T3 Battery Lunarite Cost Not Saving
 - Fixed UI Bug With Certain Themes
 - Fixed Rocket Building Not Saving
 - Fixed Antimatter Decimals Not Being Uniform
@@ -125,6 +132,11 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Hydrazine Research Cost Not Turning Red
 - Fixed Antimatter Going Above 100k
 - Fixed Buying Multiple Solar System Rockets
+- Fixed T4 Science unlocking only after refresh
+- Fixed Hydrazine Not Getting Resource Efficiency
+- Fixed Exponential Notation UI
+- Fixed Typos
+- Fixed Stargaze not showing up until refresh
 
 ### v0.4.4
 ##### Features
@@ -273,7 +285,7 @@ v0.1.1
 
 v0.1.0 The Space Update
 - Space travel to The Moon, Venus, Mars and the Asteroid Belt
-- New resources: Space Metal, Methane Gas, Titanium, Silver, Gold and Silicon
+- New resources: Lunarite, Methane Gas, Titanium, Silver, Gold and Silicon
 - Methane-based power
 - Commas to all numbers more than 1000
 - Fixed negative energy
