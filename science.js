@@ -128,6 +128,7 @@ function unlockSolarSystem(){
 		Game.statistics.add('techResearched');
 		refreshResources();
 		refreshResearches();
+		refreshTabs();
 		newUnlock("solarSystem");
 		Game.notifySuccess("New Tab!", "You've unlocked the Solar System Tab!");
 	}
@@ -263,7 +264,7 @@ function unlockLabT4(){
 }
 
 function unlockEmc(){
-	if (Game.tech.buyTech('unlockEMC', 1)) {
+	if (Game.tech.buyTech('unlockEmc', 1)) {
 		Game.statistics.add('techResearched');
 		refreshResources();
 		refreshResearches();

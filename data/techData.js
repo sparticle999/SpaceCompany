@@ -446,9 +446,9 @@ Game.techData = (function () {
         },
         apply:  function(self) {
             var resources = ['batteries', 'energyStorageBox'];
-            for (var resource in resources) {
-                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
-                    resourcesUnlocked.push(resource);
+            for (var i = 0; i < resources.length; i++) {
+                if (resourcesUnlocked.indexOf(resources[i]) === INDEX_NONE) {
+                    resourcesUnlocked.push(resources[i]);
                 }
             }
             Game.tech.unlockTech('unlockBatteriesT2');
@@ -564,9 +564,9 @@ Game.techData = (function () {
         },
         apply: function(self) {
             var resources = ['plasmaStorageUnits', 'plasmaStorageBox'];
-            for (var resource in resources) {
-                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
-                    resourcesUnlocked.push(resource);
+            for (var i = 0; i < resources.length; i++) {
+                if (resourcesUnlocked.indexOf(resources[i]) === INDEX_NONE) {
+                    resourcesUnlocked.push(resources[i]);
                 }
             }
             Game.tech.unlockTech('unlockPSUT2');
@@ -623,9 +623,9 @@ Game.techData = (function () {
         },
         apply: function(self) {
             var resources = ['meteoriteNav', 'meteoriteEMC'];
-            for (var resource in resources) {
-                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
-                    resourcesUnlocked.push(resource);
+            for (var i = 0; i < resources.length; i++) {
+                if (resourcesUnlocked.indexOf(resources[i]) === INDEX_NONE) {
+                    resourcesUnlocked.push(resources[i]);
                 }
             }
             Game.tech.unlockTech('unlockMeteoriteTier1');
@@ -769,7 +769,7 @@ Game.techData = (function () {
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: 1,
+        maxLevel: -1,
         cost: {
             'science': 100000
         }
@@ -782,7 +782,7 @@ Game.techData = (function () {
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: 1,
+        maxLevel: -1,
         cost: {
             'science': 10000000
         }

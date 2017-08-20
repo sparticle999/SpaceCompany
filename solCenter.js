@@ -9,6 +9,7 @@ function unlockPlasmaResearch(){
 		document.getElementById("researchPlasma").className = "hidden";
 		document.getElementById("unlockPlasma").className = "";
 		Game.tech.unlockTech("unlockPlasma");
+		newUnlock("research");
 		buttonsHidden.push("researchPlasma");
 	}
 }
@@ -20,6 +21,7 @@ function unlockEmcResearch(){
 		document.getElementById("researchEmc").className = "hidden";
 		document.getElementById("unlockEmc").className = "";
 		Game.tech.unlockTech("unlockEmc");
+		newUnlock("research");
 		buttonsHidden.push("researchEmc");
 	}
 }
@@ -31,6 +33,7 @@ function unlockDysonResearch(){
 		document.getElementById("researchDyson").className = "hidden";
 		document.getElementById("unlockDyson").className = "";
 		Game.tech.unlockTech("unlockDyson");
+		newUnlock("research");
 		buttonsHidden.push("researchDyson");
 	}
 }
