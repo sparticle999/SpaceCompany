@@ -54,6 +54,7 @@ Game.tech = (function(){
 
     // handle loading a save with dataVersion 1
     instance.loadV1 = function(data) {
+        // TODO: handle the contents of available and researched
         for (var id in data.tech.i) {
             if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                 this.gainTech(id, data.tech.i[id]);

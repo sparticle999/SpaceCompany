@@ -8,7 +8,7 @@ function unlockPlasmaResearch(){
 		wood -= 15000;
 		document.getElementById("researchPlasma").className = "hidden";
 		document.getElementById("unlockPlasma").className = "";
-		available.push("unlockPlasma");
+		Game.tech.unlockTech("unlockPlasma");
 		buttonsHidden.push("researchPlasma");
 	}
 }
@@ -19,7 +19,7 @@ function unlockEmcResearch(){
 		plasma -= 100;
 		document.getElementById("researchEmc").className = "hidden";
 		document.getElementById("unlockEmc").className = "";
-		available.push("unlockEmc");
+		Game.tech.unlockTech("unlockEmc");
 		buttonsHidden.push("researchEmc");
 	}
 }
@@ -30,7 +30,7 @@ function unlockDysonResearch(){
 		plasma -= 10000;
 		document.getElementById("researchDyson").className = "hidden";
 		document.getElementById("unlockDyson").className = "";
-		available.push("unlockDyson");
+		Game.tech.unlockTech("unlockDyson");
 		buttonsHidden.push("researchDyson");
 	}
 }

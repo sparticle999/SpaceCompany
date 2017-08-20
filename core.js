@@ -957,13 +957,7 @@ function contains(array, obj) {
 }
 
 function refreshResearches(){
-    for (var i = 0; i < available.length; i++){
-        var element = document.getElementById(available[i]);
-        if (element) {
-            element.className = "";
-        }
-    }
-    for (i = 0; i < researched.length; i++){
+    for (var i = 0; i < researched.length; i++){
        document.getElementById(researched[i]).className = "hidden";
     }
 
@@ -971,7 +965,7 @@ function refreshResearches(){
        if (Game.tech.isMaxLevel(techId)) {
            document.getElementById(techId).className = "hidden";
        } else if (Game.tech.isUnlocked(techId)) {
-           element = document.getElementById(techId);
+           var element = document.getElementById(techId);
            if (element) {
                element.className = "";
            }
