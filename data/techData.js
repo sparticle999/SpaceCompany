@@ -211,10 +211,10 @@ Game.techData = (function () {
         name: 'Basic Energy Production',
         desc: 'You will be able to produce power from steam engines using Charcoal made from wood in a furnace.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 20
         }
@@ -224,10 +224,10 @@ Game.techData = (function () {
         name: 'Oil Processing',
         desc: 'Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means. Unlocking Oil Processing allows you to extract it from the ground.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 30
         }
@@ -237,10 +237,10 @@ Game.techData = (function () {
         name: 'Solar Panels',
         desc: 'Solar Panels produce Energy without the need for fuel, but they do it slower than other forms of Energy production.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 50
         }
@@ -250,10 +250,10 @@ Game.techData = (function () {
         name: 'Resource Machines',
         desc: 'Resource Machines produce more resources than simple methods but require a constant supply of power to work.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 100
         }
@@ -263,10 +263,10 @@ Game.techData = (function () {
         name: 'Destruction of Machines',
         desc: 'This allows you to destroy machines you have already created. It can be useful when there are more efficient methods of gaining resources, or if you don\'t have enough energy to support your machines.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 500
         }
@@ -276,10 +276,10 @@ Game.techData = (function () {
         name: 'Space',
         desc: 'Unlocking space-travel allows for launching of rockets and opens a whole new field of research.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 500
         }
@@ -289,23 +289,23 @@ Game.techData = (function () {
         name: 'Tier 2 Science',
         desc: 'Researching this will allow you to increase your science production drastically.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 500
         }
     };
 
-    instance.unlockLapT3 = {
-        name: 'Tier 3 SCience',
+    instance.unlockLabT3 = {
+        name: 'Tier 3 Science',
         desc: 'Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 3000
         }
@@ -315,10 +315,10 @@ Game.techData = (function () {
         name: 'Tier 1 Batteries',
         desc: 'Tier 1 Batteries improve the amount of energy you can store at once.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 15000
         }
@@ -328,10 +328,10 @@ Game.techData = (function () {
         name: 'Tier 2 Batteries',
         desc: 'Tier 2 Batteries improve the amount of energy you can store at once',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 300000
         }
@@ -341,10 +341,10 @@ Game.techData = (function () {
         name: 'Tier 3 Batteries',
         desc: 'Tier 3 Batteries improve the amount of energy you can store at once',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 3000000
         }
@@ -354,10 +354,10 @@ Game.techData = (function () {
         name: 'Tier 4 Batteries',
         desc: 'Tier 4 Batteries improve the amount of energy you can store at once',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 30000000
         }
@@ -367,10 +367,10 @@ Game.techData = (function () {
         name: 'Plasma Tier 1 Technology',
         desc: 'This allows you to turn your energy and hydrogen into Plasma',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 40000
         }
@@ -380,10 +380,10 @@ Game.techData = (function () {
         name: 'Plasma Tier 2 Technology',
         desc: 'This research unlocks the second tier of Plasma production, the Plasmatic Pit',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 60000
         }
@@ -393,10 +393,10 @@ Game.techData = (function () {
         name: 'Energy-Mass Conversion',
         desc: 'This power technology not only lets you create existing resources, but allows you to make new, and only creatable elements, such as meteorite.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 60000
         }
@@ -406,10 +406,10 @@ Game.techData = (function () {
         name: 'Meteorite',
         desc: 'Meteorite is one of the rare resources in the Galaxy as it is an artificial one. All of the pre-existing Meteorite that once was in the Kuiper Belt, and similar asteroid fields in other solar systems, has all been mined away. Now, the only way to get is to make it in machines from energy.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 100000
         }
@@ -419,10 +419,10 @@ Game.techData = (function () {
         name: 'Meteorite Tier 2',
         desc: 'Research an automated way to gather Meteorite so that you don\'t have to worry about losing out when you\'re not around.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 75000
         }
@@ -430,12 +430,12 @@ Game.techData = (function () {
 
     instance.unlockMeteoriteT3 = {
         name: 'Meteorite Tier 3',
-        desc: 'Research a more efficient method of getting meteorite than creating it artificialy.',
+        desc: 'Research a more efficient method of getting meteorite than creating it artificially.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 75000
         }
@@ -443,12 +443,12 @@ Game.techData = (function () {
 
     instance.unlockDysonSwarm = {
         name: 'Dyson Swarm',
-        desc: 'Dysons Swarms produce huge amounts of energy by surrounding the sun in solar stations.',
+        desc: 'Dyson Swarms produce huge amounts of energy by surrounding the sun in solar stations.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 100000
         }
@@ -458,10 +458,10 @@ Game.techData = (function () {
         name: 'Dyson Sphere',
         desc: 'The Dyson Sphere encompasses the sun and allows you to harness enough energy to go interstellar.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 500000
         }
@@ -473,10 +473,10 @@ Game.techData = (function () {
         name: 'Upgrade Resource Technology',
         desc: 'Make your resource machines produce even more resources than before. This upgrade doubles the amount they produce for each unit of Energy.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 300
         }
@@ -486,10 +486,10 @@ Game.techData = (function () {
         name: 'Upgrade Engine Technology',
         desc: 'Upgrading Engine Technology will make Charcoal engines produce 4 Energy per second instead of 2.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 1000
         }
@@ -499,10 +499,10 @@ Game.techData = (function () {
         name: 'Upgrade Solar Technology',
         desc: 'Upgrading Solar Technology will make solar panels produce 3 Energy per second instead of 1.5.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: true,
+        unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 5000
         }
@@ -515,7 +515,7 @@ Game.techData = (function () {
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 100000
         }
@@ -528,7 +528,7 @@ Game.techData = (function () {
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
-        maxLevel: -1,
+        maxLevel: 1,
         cost: {
             'science': 10000000
         }
