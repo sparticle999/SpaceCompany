@@ -220,12 +220,24 @@ Game.techData = (function () {
         name: 'Basic Energy Production',
         desc: 'You will be able to produce power from steam engines using Charcoal made from wood in a furnace.',
         type: TECH_TYPE.UPGRADE,
-        unlocked: false,
+        unlocked: true,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 20
+        },
+        apply: function(self) {
+            var navIds = ['energyNav', 'charcoalNav'];
+            for (var i = 0; i < navIds.length; i++) {
+                if (resourcesUnlocked.indexOf(navIds[i]) === INDEX_NONE) {
+                    resourcesUnlocked.push(navIds[i]);
+                }
+            }
+            var techIds = ['unlockSolar', 'unlockMachines', 'upgradeEngineTech'];
+            for (i = 0; i < techIds.length; i++) {
+                Game.tech.unlockTech(techIds[i]);
+            }
         }
     };
 

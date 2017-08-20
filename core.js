@@ -957,15 +957,27 @@ function contains(array, obj) {
 }
 
 function refreshResearches(){
-	for(var i=0; i<available.length; i++){
+    for (var i = 0; i < available.length; i++){
         var element = document.getElementById(available[i]);
-        if(element) {
-        	element.className = "";
+        if (element) {
+            element.className = "";
         }
-	}
-	for(var i=0; i<researched.length; i++){
-		document.getElementById(researched[i]).className = "hidden";
-	}
+    }
+    for (i = 0; i < researched.length; i++){
+       document.getElementById(researched[i]).className = "hidden";
+    }
+
+    for (var techId in Game.tech.entries) {
+       if (Game.tech.isMaxLevel(techId)) {
+           document.getElementById(techId).className = "hidden";
+       } else if (Game.tech.isUnlocked(techId)) {
+           element = document.getElementById(techId);
+           if (element) {
+               element.className = "";
+           }
+       }
+    }
+
 	if(contains(researched, "unlockStorage")){
 		document.getElementById("oilStorageUpgrade").className = "";
 		document.getElementById("metalStorageUpgrade").className = "";
@@ -1090,6 +1102,9 @@ function refreshResearches(){
 			available.push("unlockDysonSphere");
 		}
 	}
+	if (Game.tech.isMaxLevel('unlockBasicEnergy')) {
+        document.getElementById('unlockBasicEnergy').className = "hidden";
+    }
 }
 
 function refreshTabs(){

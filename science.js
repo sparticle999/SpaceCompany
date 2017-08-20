@@ -76,23 +76,12 @@ function unlockStorage(){
 }
 
 function unlockBasicEnergy(){
-	if(science >= 20){
-		science -= 20;
-		document.getElementById("charcoalNav").className = "earth";
-		document.getElementById("energyNav").className = "";
-		document.getElementById("collapseEarth").style.border = "";
-		document.getElementById("unlockBasicEnergy").className = "hidden";
-		document.getElementById("unlockSolar").className = "";
-		document.getElementById("unlockMachines").className = "";
-		document.getElementById("upgradeEngineTech").className = "";
-		resourcesUnlocked.push("energyNav", "charcoalNav");
-		available.push("unlockSolar", "unlockMachines", "upgradeEngineTech");
-		researched.push("unlockBasicEnergy");
-        Game.statistics.add('techResearched');
-		Game.statistics.add('resourcesUnlocked', 2);
-		refreshResources();
-		newUnlock("resources");
-	}
+	Game.tech.buyTech('unlockBasicEnergy', 1);
+	Game.statistics.add('techResearched');
+	Game.statistics.add('resourcesUnlocked', 2);
+	refreshResources();
+	refreshResearches();
+	newUnlock("resources");
 }
 
 function unlockOil(){

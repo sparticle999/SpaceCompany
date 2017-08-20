@@ -76,8 +76,15 @@ Game.tech = (function(){
         }
     };
 
+    instance.unlockTech = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            tech.unlocked = true;
+        }
+    };
+
     instance.buyTech = function(id, count) {
-        var tech = getTechData(id);
+        var tech = this.getTechData(id);
         if (typeof tech === 'undefined') {
             return;
         }
@@ -189,12 +196,37 @@ Game.tech = (function(){
                return false;
            }
         }
+        return true;
     };
 
     instance.spendResources = function(resources) {
         for (var resource in resources) {
             window[resource] -= resources[resource];
         }
+    };
+
+    instance.isUnlocked = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            return tech.unlocked;
+        }
+        return false;
+    };
+
+    instance.isPurchased = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            return tech.current > 0;
+        }
+        return false;
+    };
+
+    instance.isMaxLevel = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            return tech.maxLevel > 0 && tech.current >= tech.maxLevel;
+        }
+        return false;
     };
 
     return instance;
