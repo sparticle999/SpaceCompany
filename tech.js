@@ -54,8 +54,20 @@ Game.tech = (function(){
 
     // handle loading a save with dataVersion 1
     instance.loadV1 = function(data) {
-        // TODO: handle the contents of available and researched
-        for (var id in data.tech.i) {
+        // the new tech data matches the old ids stored in the arrays available and researched
+        // anything that was in available before can be considered unlocked
+        for (var id in data.available) {
+            if (typeof this.entries[data.available[id]] !== 'undefined') {
+                this.entries[data.available[id]].unlocked = true;
+            }
+        }
+        // anything that was in researched before can be considered purchased
+        for (id in data.researched) {
+            if (typeof this.entries[data.researched[id]] !== 'undefined') {
+                this.entries[data.researched[id]].current = 1;
+            }
+        }
+        for (id in data.tech.i) {
             if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                 this.gainTech(id, data.tech.i[id]);
             }
