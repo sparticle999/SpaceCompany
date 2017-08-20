@@ -551,6 +551,46 @@ Game.techData = (function () {
         }
     };
 
+    instance.unlockPSU = {
+        name: 'Plasma Storage Units',
+        desc: 'PSUs increase the limit on plasma you can store at once.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 9500000
+        },
+        apply: function(self) {
+            var resources = ['plasmaStorageUnits', 'plasmaStorageBox'];
+            for (var resource in resources) {
+                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
+                    resourcesUnlocked.push(resource);
+                }
+            }
+            Game.tech.unlockTech('unlockPSUT2');
+        }
+    };
+
+    instance.unlockPSUT2 = {
+        name: 'Tier 2 Plasma Storage Units',
+        desc: 'Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 37000000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('plasmaStorageUnitsT2') === INDEX_NONE) {
+                resourcesUnlocked.push('plasmaStorageUnitsT2');
+            }
+        }
+    };
+
     instance.unlockEmc = {
         name: 'Energy-Mass Conversion',
         desc: 'This power technology not only lets you create existing resources, but allows you to make new, and only creatable elements, such as meteorite.',

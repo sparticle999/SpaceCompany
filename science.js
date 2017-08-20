@@ -141,7 +141,7 @@ function unlockSolarSystem(){
 }
 
 function unlockRocketFuelT2(){
-	if (Game.tech.buyTech('unlockRocketFuelT2')) {
+	if (Game.tech.buyTech('unlockRocketFuelT2', 1)) {
 		Game.statistics.add('techResearched');
 		refreshResources();
 		refreshResearches();
@@ -150,7 +150,7 @@ function unlockRocketFuelT2(){
 }
 
 function unlockRocketFuelT3(){
-	if (Game.tech.buyTech('unlockRocketFuelT3')) {
+	if (Game.tech.buyTech('unlockRocketFuelT3', 1)) {
 		Game.statistics.add('techResearched');
 		refreshResources();
 		refreshResearches();
@@ -251,28 +251,19 @@ function unlockPlasmaTier2(){
 }
 
 function unlockPSU(){
-	if(science >= 950000){
-		science -= 950000;
-		document.getElementById("unlockPSU").className = "hidden";
-		document.getElementById("unlockPSUT2").className = "";
-		document.getElementById("plasmaStorageUnits").className = "";
-		document.getElementById("plasmaStorageBox").className = "";
-		available.push("unlockPSUT2");
-		researched.push("unlockPSU");
-		resourcesUnlocked.push("plasmaStorageUnits", "plasmaStorageBox");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockPSU', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockPSUT2(){
-	if(science >= 37000000){
-		science -= 37000000;
-		document.getElementById("unlockPSUT2").className = "hidden";
-		document.getElementById("plasmaStorageUnitsT2").className = "";
-		researched.push("unlockPSUT2");
-		resourcesUnlocked.push("plasmaStorageUnitsT2");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockPSUT2', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }

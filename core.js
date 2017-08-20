@@ -1070,10 +1070,16 @@ function refreshResearches(){
             document.getElementById('unlockPlasmaTier2').className ="";
             Game.tech.unlockTech('unlockPlasmaTier2');
         }
-        if(contains(available, "unlockPSU") === false){
-            document.getElementById("unlockPSU").className ="";
-            available.push("unlockPSU");
+        if (Game.tech.isUnlocked('unlockPSU') === false) {
+            document.getElementById('unlockPSU').className ="";
+            Game.tech.unlockTech('unlockPSU');
             newUnlock('research');
+        }
+    }
+    if (Game.tech.isPurchased('unlockPSU')) {
+        if (Game.tech.isUnlocked('unlockPSUT2') === false) {
+            document.getElementById('unlockPSUT2').className = "";
+            Game.tech.unlockTech('unlockPSUT2');
         }
     }
     if (Game.tech.isPurchased('unlockBatteries')) {
