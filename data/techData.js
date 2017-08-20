@@ -348,6 +348,43 @@ Game.techData = (function () {
         }
     };
 
+    instance.unlockRocketFuelT2 = {
+        name: 'Oxidisation',
+        desc: 'Oxidisation is a more efficient process of creating Rocket Fuel.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 450000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('rocketFuelT2') === INDEX_NONE) {
+                resourcesUnlocked.push('rocketFuelT2');
+            }
+            Game.tech.unlockTech('unlockRocketFuelT3');
+        }
+    };
+
+    instance.unlockRocketFuelT3 = {
+        name: 'Hydrazine',
+        desc: 'Hydrazine is a compound created by Methane that increases the speed at which rocket fuel can be produced in a Hydrazine Catalyst Machine.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 3200000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('rocketFuelT3') === INDEX_NONE) {
+                resourcesUnlocked.push('rocketFuelT3');
+            }
+        }
+    };
+
     instance.unlockLabT2 = {
         name: 'Tier 2 Science',
         desc: 'Researching this will allow you to increase your science production drastically.',

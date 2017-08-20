@@ -1018,10 +1018,10 @@ function refreshResearches(){
             Game.tech.unlockTech('unlockLabT2');
         }
     }
-    if(contains(researched, "unlockRocketFuelT2")){
-        if(contains(available, "unlockRocketFuelT3") === false){
-            document.getElementById("unlockRocketFuelT3").className = "";
-            available.push("unlockRocketFuelT3");
+    if (Game.tech.isPurchased('unlockRocketFuelT2')) {
+        if (Game.tech.isUnlocked('unlockRocketFuelT3') === false) {
+            document.getElementById('unlockRocketFuelT3').className = "";
+            Game.tech.unlockTech('unlockRocketFuelT3');
         }
     }
     if (Game.tech.isPurchased('unlockLabT2')) {
