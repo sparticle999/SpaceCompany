@@ -260,247 +260,372 @@ Game.techData = (function () {
     instance.unlockOil = {
         name: 'Oil Processing',
         desc: 'Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means. Unlocking Oil Processing allows you to extract it from the ground.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 30
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('oilNav') === INDEX_NONE) {
+                resourcesUnlocked.push("oilNav");
+            }
         }
     };
 
     instance.unlockSolar = {
         name: 'Solar Panels',
         desc: 'Solar Panels produce Energy without the need for fuel, but they do it slower than other forms of Energy production.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 50
+        },
+        apply: function(self) {
+            Game.tech.unlockTech('upgradeSolarTech');
         }
     };
 
-    instance.unlockResourceMachines = {
+    instance.unlockMachines = {
         name: 'Resource Machines',
         desc: 'Resource Machines produce more resources than simple methods but require a constant supply of power to work.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 100
+        },
+        apply: function(self) {
+            var techIds = ['unlockSolarSystem', 'upgradeResourceTech', 'unlockDestruction'];
+            for (var i = 0; i < techIds.length; i++) {
+                Game.tech.unlockTech(techIds[i]);
+            }
         }
     };
 
     instance.unlockDestruction = {
         name: 'Destruction of Machines',
         desc: 'This allows you to destroy machines you have already created. It can be useful when there are more efficient methods of gaining resources, or if you don\'t have enough energy to support your machines.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 500
+        },
+        apply: function(self) {
+
         }
     };
 
     instance.unlockSolarSystem = {
         name: 'Space',
         desc: 'Unlocking space-travel allows for launching of rockets and opens a whole new field of research.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 500
+        },
+        apply: function(self) {
+            if (tabsUnlocked.indexOf('solarSystemTab') === INDEX_NONE) {
+                tabsUnlocked.push('solarSystemTab');
+            }
+            var techIds = ['unlockLabT2', 'unlockRocketFuelT2'];
+            for (var i = 0; i < techIds.length; i++) {
+                Game.tech.unlockTech(techIds[i]);
+            }
         }
     };
 
     instance.unlockLabT2 = {
         name: 'Tier 2 Science',
         desc: 'Researching this will allow you to increase your science production drastically.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 500
+        },
+        apply: function(self) {
+            Game.tech.unlockTech('unlockLabT3');
         }
     };
 
     instance.unlockLabT3 = {
         name: 'Tier 3 Science',
         desc: 'Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 3000
+        },
+        apply: function(self) {
+            Game.tech.unlockTech('unlockLabT4');
         }
     };
 
-    instance.unlockBatteryT1 = {
+    instance.unlockLabT4 = {
+        name: 'Tier 4 Science',
+        desc: 'Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: false,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 50000000
+        },
+        apply: function(self) {
+
+        }
+    };
+
+    instance.unlockBatteries = {
         name: 'Tier 1 Batteries',
         desc: 'Tier 1 Batteries improve the amount of energy you can store at once.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 15000
+        },
+        apply:  function(self) {
+            var resources = ['batteries', 'energyStorageBox'];
+            for (var resource in resources) {
+                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
+                    resourcesUnlocked.push(resource);
+                }
+            }
+            Game.tech.unlockTech('unlockBatteriesT2');
         }
     };
 
-    instance.unlockBatteryT2 = {
+    instance.unlockBatteriesT2 = {
         name: 'Tier 2 Batteries',
         desc: 'Tier 2 Batteries improve the amount of energy you can store at once',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 300000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('batteriesT2') === INDEX_NONE) {
+                resourcesUnlocked.push('batteriesT2');
+            }
+            Game.tech.unlockTech('unlockBatteriesT3');
         }
     };
 
-    instance.unlockBatteryT3 = {
+    instance.unlockBatteriesT3 = {
         name: 'Tier 3 Batteries',
         desc: 'Tier 3 Batteries improve the amount of energy you can store at once',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 3000000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('batteriesT3') === INDEX_NONE) {
+                resourcesUnlocked.push('batteriesT3');
+            }
+            Game.tech.unlockTech('unlockBatteriesT4');
         }
     };
 
-	instance.unlockBatteryT4 = {
+    instance.unlockBatteriesT4 = {
         name: 'Tier 4 Batteries',
         desc: 'Tier 4 Batteries improve the amount of energy you can store at once',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 30000000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('batteriesT4') === INDEX_NONE) {
+                resourcesUnlocked.push('batteriesT4');
+            }
         }
     };
 
-    instance.unlockPlasmaT1 = {
+    instance.unlockPlasma = {
         name: 'Plasma Tier 1 Technology',
         desc: 'This allows you to turn your energy and hydrogen into Plasma',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 40000
+        },
+        apply: function(self) {
+            if (noBorder.indexOf('energyNav') === INDEX_NONE) {
+                noBorder.push('energyNav');
+            }
+            if (resourcesUnlocked.indexOf('plasmaNav') === INDEX_NONE) {
+                resourcesUnlocked.push('plasmaNav');
+            }
+            Game.tech.unlockTech('unlockPlasmaTier2');
         }
     };
 
-    instance.unlockPlasmaT2 = {
+    instance.unlockPlasmaTier2 = {
         name: 'Plasma Tier 2 Technology',
         desc: 'This research unlocks the second tier of Plasma production, the Plasmatic Pit',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 60000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('plasmaTier2') === INDEX_NONE) {
+                resourcesUnlocked.push('plasmaTier2');
+            }
         }
     };
 
     instance.unlockEmc = {
         name: 'Energy-Mass Conversion',
         desc: 'This power technology not only lets you create existing resources, but allows you to make new, and only creatable elements, such as meteorite.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 60000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('emcPage') === INDEX_NONE) {
+                resourcesUnlocked.push('emcPage');
+            }
+            Game.tech.unlockTech('unlockMeteorite');
         }
     };
 
-    instance.unlockMeteoriteT1 = {
+    instance.unlockMeteorite = {
         name: 'Meteorite',
         desc: 'Meteorite is one of the rare resources in the Galaxy as it is an artificial one. All of the pre-existing Meteorite that once was in the Kuiper Belt, and similar asteroid fields in other solar systems, has all been mined away. Now, the only way to get is to make it in machines from energy.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 100000
+        },
+        apply: function(self) {
+            var resources = ['meteoriteNav', 'meteoriteEMC'];
+            for (var resource in resources) {
+                if (resourcesUnlocked.indexOf(resource) === INDEX_NONE) {
+                    resourcesUnlocked.push(resource);
+                }
+            }
+            Game.tech.unlockTech('unlockMeteoriteTier1');
         }
     };
 
-    instance.unlockMeteoriteT2 = {
-        name: 'Meteorite Tier 2',
+    instance.unlockMeteoriteTier1 = {
+        name: 'Meteorite Tier 1',
         desc: 'Research an automated way to gather Meteorite so that you don\'t have to worry about losing out when you\'re not around.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 75000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('meteoriteTier1') === INDEX_NONE) {
+                resourcesUnlocked.push('meteoriteTier1');
+            }
+            Game.tech.unlockTech('unlockMeteoriteTier2');
         }
     };
 
-    instance.unlockMeteoriteT3 = {
-        name: 'Meteorite Tier 3',
+    instance.unlockMeteoriteTier2 = {
+        name: 'Meteorite Tier 2',
         desc: 'Research a more efficient method of getting meteorite than creating it artificially.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 75000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('meteoriteTier2') === INDEX_NONE) {
+                resourcesUnlocked.push('meteoriteTier2');
+            }
         }
     };
 
-    instance.unlockDysonSwarm = {
-        name: 'Dyson Swarm',
-        desc: 'Dyson Swarms produce huge amounts of energy by surrounding the sun in solar stations.',
-        type: TECH_TYPE.UPGRADE,
+    instance.unlockDyson = {
+        name: 'Dyson Ring',
+        desc: 'Dyson Rings produce huge amounts of energy by surrounding the sun in solar stations.',
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 100000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('dysonPage') === INDEX_NONE) {
+                resourcesUnlocked.push('dysonPage');
+            }
+            Game.tech.unlockTech('unlockDysonSphere');
         }
     };
 
     instance.unlockDysonSphere = {
         name: 'Dyson Sphere',
         desc: 'The Dyson Sphere encompasses the sun and allows you to harness enough energy to go interstellar.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: false,
         costType: COST_TYPE.FIXED,
         current: 0,
         maxLevel: 1,
         cost: {
             'science': 500000
+        },
+        apply: function(self) {
+            if (resourcesUnlocked.indexOf('dysonSphere') === INDEX_NONE) {
+                resourcesUnlocked.push('dysonSphere');
+            }
         }
     };
 

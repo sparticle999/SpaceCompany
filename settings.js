@@ -216,7 +216,7 @@ Game.settings = (function(){
 
         $('#redDestroyButtons').change(function(){
             Game.settings.set('redDestroyButtons', $(this).is(':checked'));
-            if(contains(researched, "unlockDestruction")){
+            if (Game.tech.isPurchased('unlockDestruction')) {
                 if(Game.settings.entries.redDestroyButtons === true){
                     for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
                         document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
@@ -230,7 +230,7 @@ Game.settings = (function(){
             }
         });
 
-        if(contains(researched, "unlockDestruction")){
+        if (Game.tech.isUnlocked('unlockDestruction')) {
             if(Game.settings.entries.redDestroyButtons === true){
                 for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
                     document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";

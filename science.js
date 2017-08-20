@@ -78,47 +78,29 @@ function unlockBasicEnergy(){
 }
 
 function unlockOil(){
-	if(science >= 30){
-		science -= 30;
-		document.getElementById("unlockOil").className = "hidden";
-		document.getElementById("oilNav").className = "earth";
-		resourcesUnlocked.push("oilNav");
-		researched.push("unlockOil");
-        Game.statistics.add('techResearched');
-        Game.statistics.add('resourcesUnlocked');
+	if (Game.tech.buyTech('unlockOil', 1)) {
+		Game.statistics.add('techResearched');
+		Game.statistics.add('resourcesUnlocked');
 		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockSolar(){
-	if(science >= 50){
-		science -= 50;
-		document.getElementById("unlockSolar").className = "hidden";
-		document.getElementById("solarPower").className = "";
-		document.getElementById("upgradeSolarTech").className = "";
-		available.push("upgradeSolarTech");
-		researched.push("unlockSolar");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockSolar', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockMachines(){
-	if(science >= 100){
-		science -= 100;
-		document.getElementById("unlockMachines").className = "hidden";
-		document.getElementById("upgradeResourceTech").className = "";
-		document.getElementById("oilMachine1").className = "";
-		document.getElementById("metalMachine1").className = "";
-		document.getElementById("gemMachine1").className = "";
-		document.getElementById("charcoalMachine1").className = "";
-		document.getElementById("woodMachine1").className = "";	
-		document.getElementById("unlockSolarSystem").className = "";
-		document.getElementById("unlockDestruction").className = "";
-		available.push("unlockSolarSystem", "upgradeResourceTech", "unlockDestruction");
-		researched.push("unlockMachines");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockMachines', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
@@ -140,29 +122,19 @@ function upgradeResourceTech(){
 }
 
 function unlockDestruction(){
-	if(science >= 500){
-		science -= 500;
-		document.getElementById("unlockDestruction").className = "hidden";
-		for(var i = 0; i < document.getElementsByClassName("destroy").length; i++){
-			document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
-		}
-		researched.push("unlockDestruction");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockDestruction', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockSolarSystem(){
-	if(science >= 500){
-		science -= 500;
-		document.getElementById("unlockSolarSystem").className = "hidden";
-		document.getElementById("solarSystemTab").className = "";
-		document.getElementById("unlockLabT2").className = "";
-		document.getElementById("unlockRocketFuelT2").className = "";
-		tabsUnlocked.push("solarSystemTab");
-		available.push("unlockLabT2", "unlockRocketFuelT2");
-		researched.push("unlockSolarSystem");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockSolarSystem', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("solarSystem");
 		Game.notifySuccess("New Tab!", "You've unlocked the Solar System Tab!");
 	}
@@ -195,14 +167,9 @@ function unlockRocketFuelT3(){
 }
 
 function unlockLabT2(){
-	if(science >= 500){
-		science -= 500;
-		document.getElementById("unlockLabT2").className = "hidden";
-		document.getElementById("unlockLabT3").className = "";
-		document.getElementById("labTier2").className = "";
-		available.push("unlockLabT3");
-		researched.push("unlockLabT2");
+	if (Game.tech.buyTech('unlockLabT2', 1)) {
         Game.statistics.add('techResearched');
+		refreshResearches();
 	}
 }
 
@@ -218,14 +185,9 @@ function upgradeEngineTech(){
 }
 
 function unlockLabT3(){
-	if(science >= 3000){
-		science -= 3000;
-		document.getElementById("unlockLabT3").className = "hidden";
-		document.getElementById("labTier3").className = "";
-		document.getElementById("unlockLabT4").className = "";
-		available.push("unlockLabT4");
-		researched.push("unlockLabT3");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockLabT3', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResearches();
 	}
 }
 
@@ -243,87 +205,55 @@ function upgradeSolarTech(){
 }
 
 function unlockBatteries(){
-	if(science >= 15000){
-		science -= 15000;
-		document.getElementById("unlockBatteries").className = "hidden";
-		document.getElementById("unlockBatteriesT2").className = "";
-		document.getElementById("batteries").className = "";
-		document.getElementById("energyStorageBox").className = "";
-		available.push("unlockBatteriesT2");
-		researched.push("unlockBatteries");
-		resourcesUnlocked.push("batteries", "energyStorageBox");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockBatteries', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockBatteriesT2(){
-	if(science >= 300000){
-		science -= 300000;
-		document.getElementById("unlockBatteriesT2").className = "hidden";
-		document.getElementById("unlockBatteriesT3").className = "";
-		document.getElementById("batteriesT2").className = "";
-		available.push("unlockBatteriesT3");
-		researched.push("unlockBatteriesT2");
-		resourcesUnlocked.push("batteriesT2");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockBatteriesT2', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockBatteriesT3(){
-	if(science >= 3000000){
-		science -= 3000000;
-		document.getElementById("unlockBatteriesT3").className = "hidden";
-		document.getElementById("unlockBatteriesT4").className = "";
-		document.getElementById("batteriesT3").className = "";
-		available.push("unlockBatteriesT4");
-		researched.push("unlockBatteriesT3");
-		resourcesUnlocked.push("batteriesT3");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockBatteriesT3', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockBatteriesT4(){
-	if(science >= 30000000){
-		science -= 30000000;
-		document.getElementById("unlockBatteriesT4").className = "hidden";
-		document.getElementById("batteriesT4").className = "";
-		researched.push("unlockBatteriesT4");
-		resourcesUnlocked.push("batteriesT4");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockBatteriesT4', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockPlasma(){
-	if(science >= 40000){
-		science -= 40000;
-		document.getElementById("unlockPlasma").className = "hidden";
-		document.getElementById("unlockPlasmaTier2").className = "";
-		document.getElementById("unlockPSU").className = "";
-		document.getElementById("plasmaNav").className = "";
-		for(var i = 0; i < 4; i++){
-			document.getElementById("energyNav" + [i]).style.border = "";
-		}
-		available.push("unlockPlasmaTier2");
-		researched.push("unlockPlasma");
-        Game.statistics.add('techResearched');
-		noBorder.push("energyNav");
-		resourcesUnlocked.push("plasmaNav");
+	if (Game.tech.buyTech('unlockPlasma', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockPlasmaTier2(){
-	if(science >= 60000){
-		science -= 60000;
-		document.getElementById("unlockPlasmaTier2").className = "hidden";
-		document.getElementById("plasmaTier2").className = "";
-		researched.push("unlockPlasmaTier2");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("plasmaTier2");
+	if (Game.tech.buyTech('unlockPlasmaTier2', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
@@ -356,94 +286,64 @@ function unlockPSUT2(){
 }
 
 function unlockLabT4(){
-	if(science >= 50000000){
-		science -= 50000000;
-		document.getElementById("unlockLabT4").className = "hidden";
-		document.getElementById("labTier4").className = "";
-		researched.push("unlockLabT4");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('unlockLabT4', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResearches();
 	}
 }
 
 function unlockEmc(){
-	if(science >= 60000){
-		science -= 60000;
-		document.getElementById("unlockEmc").className = "hidden";
-		document.getElementById("emcPage").className = "";
-		document.getElementById("unlockMeteorite").className = "";
-		available.push("unlockMeteorite");
-		researched.push("unlockEmc");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("emcPage");
+	if (Game.tech.buyTech('unlockEMC', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("solCenter");
 	}
 }
 
 function unlockMeteorite(){
-	if(science >= 100000){
-		science -= 100000;
-		document.getElementById("unlockMeteorite").className = "hidden";
-		document.getElementById("unlockMeteoriteTier1").className = "";
-		document.getElementById("meteoriteEMC").className = "";
-		document.getElementById("meteoriteNav").className = "outerPlanet";
-		available.push("unlockMeteoriteTier1");
-		researched.push("unlockMeteorite");
-        Game.statistics.add('techResearched');
-        Game.statistics.add('resourcesUnlocked');
-		resourcesUnlocked.push("meteoriteNav", "meteoriteEMC");
+	if (Game.tech.buyTech('unlockMeteorite', 1)) {
+		Game.statistics.add('techResearched');
+		Game.statistics.add('resourcesUnlocked');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 		newUnlock("wonder");
 	}
 }
 
 function unlockMeteoriteTier1(){
-	if(science >= 75000){
-		science -= 75000;
-		document.getElementById("unlockMeteoriteTier1").className = "hidden";
-		document.getElementById("unlockMeteoriteTier2").className = "";
-		document.getElementById("meteoriteTier1").className = "";
-		available.push("unlockMeteoriteTier2");
-		researched.push("unlockMeteoriteTier1");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("meteoriteTier1");
+	if (Game.tech.buyTech('unlockMeteoriteTier1', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockMeteoriteTier2(){
-	if(science >= 100000){
-		science -= 100000;
-		document.getElementById("unlockMeteoriteTier2").className = "hidden";
-		document.getElementById("meteoriteTier2").className = "";
-		researched.push("unlockMeteoriteTier2");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("meteoriteTier2");
+	if (Game.tech.buyTech('unlockMeteoriteTier2', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockDyson(){
-	if(science >= 100000){
-		science -= 100000;
-		document.getElementById("unlockDyson").className = "hidden";
-		document.getElementById("unlockDysonSphere").className = "";
-		document.getElementById("dysonPage").className = "";
-		available.push("unlockDysonSphere");
-		researched.push("unlockDyson");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("dysonPage");
+	if (Game.tech.buyTech('unlockDyson', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("solCenter");
 	}
 }
 
 function unlockDysonSphere(){
-	if(science >= 500000){
-		science -= 500000;
-		document.getElementById("unlockDysonSphere").className = "hidden";
-		document.getElementById("dysonSphere").className = "";
-		researched.push("unlockDysonSphere");
-        Game.statistics.add('techResearched');
-		resourcesUnlocked.push("dysonSphere");
+	if (Game.tech.buyTech('unlockDysonSphere', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("solCenter");
 	}
 }
