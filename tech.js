@@ -65,11 +65,12 @@ Game.tech = (function(){
     instance.loadV2 = function(data) {
         for (var id in data.tech.i) {
             if (typeof this.entries[id] !== 'undefined') {
-                if (typeof data.tech.i[id].unlocked !== 'undefined') {
-                    this.entries[id].unlocked = data.tech.i[id].unlocked;
-                }
                 if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
                     this.gainTech(id, data.tech.i[id].current);
+                    // we can assume that the tech is unlocked if it has been purchased
+                    this.entries[id].unlocked = true;
+                } else if (typeof data.tech.i[id].unlocked !== 'undefined') {
+                    this.entries[id].unlocked = data.tech.i[id].unlocked;
                 }
             }
         }
