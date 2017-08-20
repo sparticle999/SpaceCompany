@@ -59,29 +59,22 @@ function updateLabCost(){
 }
 
 function unlockStorage(){
-	if(science >= 5){
-		science -= 5;
-		document.getElementById("unlockStorage").className = "hidden";
-		document.getElementById("oilStorageUpgrade").className = "";
-		document.getElementById("metalStorageUpgrade").className = "";
-		document.getElementById("gemStorageUpgrade").className = "";
-		document.getElementById("charcoalStorageUpgrade").className = "";
-		document.getElementById("woodStorageUpgrade").className = "";
-		document.getElementById("unlockOil").className = "";
-		available.push("unlockOil");
-		researched.push("unlockStorage");
+	if (Game.tech.buyTech('unlockStorage', 1)) {
 		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
 
 function unlockBasicEnergy(){
-	Game.tech.buyTech('unlockBasicEnergy', 1);
-	Game.statistics.add('techResearched');
-	Game.statistics.add('resourcesUnlocked', 2);
-	refreshResources();
-	refreshResearches();
-	newUnlock("resources");
+	if (Game.tech.buyTech('unlockBasicEnergy', 1)) {
+		Game.statistics.add('techResearched');
+		Game.statistics.add('resourcesUnlocked', 2);
+		refreshResources();
+		refreshResearches();
+		newUnlock("resources");
+	}
 }
 
 function unlockOil(){

@@ -978,7 +978,7 @@ function refreshResearches(){
        }
     }
 
-	if(contains(researched, "unlockStorage")){
+	if(Game.tech.isPurchased('unlockStorage')){
 		document.getElementById("oilStorageUpgrade").className = "";
 		document.getElementById("metalStorageUpgrade").className = "";
 		document.getElementById("gemStorageUpgrade").className = "";
@@ -996,7 +996,7 @@ function refreshResearches(){
 		document.getElementById("woodMachine1").className = "";	
 	}
 	if(contains(researched, "unlockDestruction")){
-		for(var i = 0; i < document.getElementsByClassName("destroy").length; i++){
+		for(i = 0; i < document.getElementsByClassName("destroy").length; i++){
 			document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
 		}
 	}

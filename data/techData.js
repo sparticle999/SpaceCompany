@@ -215,11 +215,27 @@ Game.techData = (function () {
         }
     });
 
+    instance.unlockStorage = {
+        name: 'Storage Upgrades',
+        desc: 'This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.',
+        type: TECH_TYPE.UNLOCK,
+        unlocked: true,
+        costType: COST_TYPE.FIXED,
+        current: 0,
+        maxLevel: 1,
+        cost: {
+            'science': 5
+        },
+        apply: function(self) {
+            Game.tech.unlockTech('unlockOil');
+        }
+    };
+
     // Other Researches
     instance.unlockBasicEnergy = {
         name: 'Basic Energy Production',
         desc: 'You will be able to produce power from steam engines using Charcoal made from wood in a furnace.',
-        type: TECH_TYPE.UPGRADE,
+        type: TECH_TYPE.UNLOCK,
         unlocked: true,
         costType: COST_TYPE.FIXED,
         current: 0,
@@ -241,7 +257,7 @@ Game.techData = (function () {
         }
     };
 
-    instance.unlockOilProcessing = {
+    instance.unlockOil = {
         name: 'Oil Processing',
         desc: 'Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means. Unlocking Oil Processing allows you to extract it from the ground.',
         type: TECH_TYPE.UPGRADE,
