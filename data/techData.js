@@ -10,22 +10,31 @@ Game.techData = (function () {
         costType: COST_TYPE.PERCENT,
         current: 0,
         maxLevel: -1,
-        apply: function (self, x) {
-            var capacityAddition = x.baseCapacity;
+        resource: undefined,
+        apply: function (self) {
+            if (typeof self.resource === 'undefined') {
+                return;
+            }
+            var res = Game.resources.getResourceData(self.resource);
+            var capacityAddition = res.baseCapacity;
             for (var i = 0; i < self.current; i++) {
                 capacityAddition *= 2;
             }
-            x.capacity += capacityAddition;
-            x.displayNeedsUpdate = true;
+            res.capacity += capacityAddition;
+            res.displayNeedsUpdate = true;
             self.displayNeedsUpdate = true;
         },
-        remove: function (self, x) {
-            var capacityAddition = x.baseCapacity;
+        remove: function (self) {
+            if (typeof self.resource === 'undefined') {
+                return;
+            }
+            var res = Game.resources.getResourceData(self.resource);
+            var capacityAddition = res.baseCapacity;
             for (var i = 0; i < self.current; i++) {
                 capacityAddition *= 2;
             }
-            x.capacity -= capacityAddition;
-            x.displayNeedsUpdate = true;
+            res.capacity -= capacityAddition;
+            res.displayNeedsUpdate = true;
             self.displayNeedsUpdate = true;
         }
     };

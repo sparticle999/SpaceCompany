@@ -77,9 +77,59 @@ Game.tech = (function(){
     };
 
     instance.buyTech = function(id, count) {
-        console.log("TODO: Tech cost");
+        var tech = getTechData(id);
+        if (typeof tech === 'undefined') {
+            return;
+        }
 
-        this.gainTech(id, count);
+        // ensure a valid value for count
+        if(isNaN(count) || count === undefined) {
+            count = 1;
+        }
+        // if there's a max level defined then the count may need to be clamped
+        if (tech.maxLevel > 0) {
+            count = Math.min(tech.maxLevel - tech.current, count);
+            if (count <= 0) {
+                // the tech is at or above max level, can't buy it
+                return;
+            }
+        }
+        // the percent cost items are storages, can't buy more than 1
+        if (tech.costType === COST_TYPE.PERCENT && count > 1) {
+            count = 1;
+        }
+
+        var cost = tech.cost;
+        if (tech.costType === COST_TYPE.FIXED) {
+            if (tech.current > 0 || count > 1) {
+                // clear the array first
+                // this calculation could be done more elegantly with math
+                for (var resource in cost) {
+                    cost[resource] = 0;
+                }
+                for (var i = 0; i < count; i++) {
+                    for (var resource in cost) {
+                        cost[resource] += getCost(tech.cost[resource], tech.current + i);
+                    }
+                }
+            }
+        } else if (tech.costType === COST_TYPE.PERCENT) {
+            if (typeof tech.resource === 'undefined') {
+                // can't calculate a percent cost without a resource
+                return;
+            }
+            var storage = window[tech.resource + 'Storage'];
+            for (var resource in cost) {
+                cost[resource] = Math.floor(tech.cost[resource] * storage)
+            }
+        } else {
+            return;
+        }
+
+        if (this.hasResources(cost)) {
+            this.spendResources(cost);
+            this.gainTech(id, count);
+        }
     };
 
     instance.gainTech = function(id, count) {
@@ -121,17 +171,29 @@ Game.tech = (function(){
 
     instance.removeTechEffect = function(id) {
         var data = this.entries[id];
-        if(data.resource) {
-            data.remove(data, Game.resources.getResourceData(data.resource));
-            return;
+        if(typeof data.remove !== 'undefined') {
+            data.remove(data);
         }
     };
 
     instance.applyTechEffect = function(id) {
         var data = this.entries[id];
-        if(data.resource) {
-            data.apply(data, Game.resources.getResourceData(data.resource));
-            return;
+        if(typeof data.apply !== 'undefined') {
+            data.apply(data);
+        }
+    };
+
+    instance.hasResources = function (resources) {
+        for (var resource in resources) {
+           if (window[resource] < resources[resource]) {
+               return false;
+           }
+        }
+    };
+
+    instance.spendResources = function(resources) {
+        for (var resource in resources) {
+            window[resource] -= resources[resource];
         }
     };
 
