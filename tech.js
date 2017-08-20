@@ -83,10 +83,11 @@ Game.tech = (function(){
         }
     };
 
+    // return true if the tech is purchased successfully, false otherwise
     instance.buyTech = function(id, count) {
         var tech = this.getTechData(id);
         if (typeof tech === 'undefined') {
-            return;
+            return false;
         }
 
         // ensure a valid value for count
@@ -98,7 +99,7 @@ Game.tech = (function(){
             count = Math.min(tech.maxLevel - tech.current, count);
             if (count <= 0) {
                 // the tech is at or above max level, can't buy it
-                return;
+                return false;
             }
         }
         // the percent cost items are storages, can't buy more than 1
@@ -123,20 +124,23 @@ Game.tech = (function(){
         } else if (tech.costType === COST_TYPE.PERCENT) {
             if (typeof tech.resource === 'undefined') {
                 // can't calculate a percent cost without a resource
-                return;
+                return false;
             }
             var storage = window[tech.resource + 'Storage'];
             for (var resource in cost) {
                 cost[resource] = Math.floor(tech.cost[resource] * storage)
             }
         } else {
-            return;
+            return false;
         }
 
-        if (this.hasResources(cost)) {
-            this.spendResources(cost);
-            this.gainTech(id, count);
+        if (!this.hasResources(cost)) {
+            return false;
         }
+
+        this.spendResources(cost);
+        this.gainTech(id, count);
+        return true;
     };
 
     instance.gainTech = function(id, count) {
