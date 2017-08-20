@@ -1037,7 +1037,7 @@ function refreshResearches(){
     if (Game.tech.isPurchased('unlockLabT4')) {
         document.getElementById("labTier4").className = "";
     }
-    if(contains(researched, "upgradeSolarTech")){
+    if (Game.tech.isPurchased('upgradeSolarTech')) {
         if (Game.tech.isUnlocked('unlockBatteries') === false) {
             document.getElementById('unlockBatteries').className ="";
             Game.tech.unlockTech('unlockBatteries');

@@ -106,17 +106,10 @@ function unlockMachines(){
 }
 
 function upgradeResourceTech(){
-	if(science >= 300){
-		science -= 300;
-		pumpjackOutput *= 2;
-		heavyDrillOutput *= 2;
-		advancedDrillOutput *= 2;
-		furnaceWoodInput *= 2;
-		furnaceOutput *= 2;
-		laserCutterOutput *= 2;
-		document.getElementById("upgradeResourceTech").className = "hidden";
-		researched.push("upgradeResourceTech");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('upgradeResourceTech', 1)){
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
@@ -166,12 +159,10 @@ function unlockLabT2(){
 }
 
 function upgradeEngineTech(){
-	if(science >= 1000){
-		science -= 1000;
-		document.getElementById("upgradeEngineTech").className = "hidden";
-		charcoalEngineOutput = 4;
-		researched.push("upgradeEngineTech");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('upgradeEngineTech', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }
@@ -184,14 +175,10 @@ function unlockLabT3(){
 }
 
 function upgradeSolarTech(){
-	if(science >= 5000){
-		science -= 5000;
-		document.getElementById("upgradeSolarTech").className = "hidden";
-		document.getElementById("unlockBatteries").className = "";
-		solarPanelOutput = 3;
-		available.push("unlockBatteries");
-		researched.push("upgradeSolarTech");
-        Game.statistics.add('techResearched');
+	if (Game.tech.buyTech('upgradeSolarTech', 1)) {
+		Game.statistics.add('techResearched');
+		refreshResources();
+		refreshResearches();
 		newUnlock("resources");
 	}
 }

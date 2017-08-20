@@ -16,9 +16,7 @@ function legacySave(data) {
 		batteryT3: batteryT3,
 		batteryT4: batteryT4,
 		charcoalEngine: charcoalEngine,
-		charcoalEngineOutput: charcoalEngineOutput,
 		solarPanel: solarPanel,
-		solarPanelOutput: solarPanelOutput,
 		methaneStation: methaneStation,
 		nuclearStation: nuclearStation,
 		magmatic: magmatic,
@@ -28,7 +26,6 @@ function legacySave(data) {
 		oilNextStorage: oilNextStorage,
 		pump: pump,
 		pumpjack: pumpjack,
-		pumpjackOutput: pumpjackOutput,
 		oilField: oilField,
 		oilRig: oilRig,
 		metal: metal,
@@ -36,7 +33,6 @@ function legacySave(data) {
 		metalNextStorage: metalNextStorage,
 		miner: miner,
 		heavyDrill: heavyDrill,
-		heavyDrillOutput: heavyDrillOutput,
 		gigaDrill: gigaDrill,
 		quantumDrill: quantumDrill,
 		gem: gem,
@@ -44,7 +40,6 @@ function legacySave(data) {
 		gemNextStorage: gemNextStorage,
 		gemMiner: gemMiner,
 		advancedDrill: advancedDrill,
-		advancedDrillOutput: advancedDrillOutput,
 		diamondDrill: diamondDrill,
 		carbyneDrill: carbyneDrill,
 		charcoal: charcoal,
@@ -54,7 +49,6 @@ function legacySave(data) {
 		woodburner: woodburner,
 		furnace: furnace,
 		furnaceWoodInput: furnaceWoodInput,
-		furnaceOutput: furnaceOutput,
 		kiln: kiln,
 		fryer: fryer,
 		wood: wood,
@@ -62,7 +56,6 @@ function legacySave(data) {
 		woodNextStorage: woodNextStorage,
 		woodcutter: woodcutter,
 		laserCutter: laserCutter,
-		laserCutterOutput: laserCutterOutput,
 		deforester: deforester,
 		infuser: infuser,
 		science: science,
@@ -200,9 +193,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.batteryT3 !== "undefined") batteryT3 = savegame.batteryT3;
 		if(typeof savegame.batteryT4 !== "undefined") batteryT4 = savegame.batteryT4;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
-		if(typeof savegame.charcoalEngineOutput !== "undefined") charcoalEngineOutput = savegame.charcoalEngineOutput;
 		if(typeof savegame.solarPanel !== "undefined") solarPanel = savegame.solarPanel;
-		if(typeof savegame.solarPanelOutput !== "undefined") solarPanelOutput = savegame.solarPanelOutput;
 		if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;
 		if(typeof savegame.nuclearStation !== "undefined") nuclearStation = savegame.nuclearStation;
 		if(typeof savegame.magmatic !== "undefined") magmatic = savegame.magmatic;
@@ -212,7 +203,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.oilNextStorage !== "undefined") oilNextStorage = savegame.oilNextStorage;
 		if(typeof savegame.pump !== "undefined") pump = savegame.pump;
 		if(typeof savegame.pumpjack !== "undefined") pumpjack = savegame.pumpjack;
-		if(typeof savegame.pumpjackOutput !== "undefined") pumpjackOutput = savegame.pumpjackOutput;
 		if(typeof savegame.oilField !== "undefined") oilField = savegame.oilField;
 		if(typeof savegame.oilRig !== "undefined") oilRig = savegame.oilRig;
 		if(typeof savegame.metal !== "undefined") metal = savegame.metal;
@@ -220,7 +210,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.metalNextStorage !== "undefined") metalNextStorage = savegame.metalNextStorage;
 		if(typeof savegame.miner !== "undefined") miner = savegame.miner;
 		if(typeof savegame.heavyDrill !== "undefined") heavyDrill = savegame.heavyDrill;
-		if(typeof savegame.heavyDrillOutput !== "undefined") heavyDrillOutput = savegame.heavyDrillOutput;
 		if(typeof savegame.gigaDrill !== "undefined") gigaDrill = savegame.gigaDrill;
 		if(typeof savegame.quantumDrill !== "undefined") quantumDrill = savegame.quantumDrill;
 		if(typeof savegame.gem !== "undefined") gem = savegame.gem;
@@ -228,7 +217,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.gemNextStorage !== "undefined") gemNextStorage = savegame.gemNextStorage;
 		if(typeof savegame.gemMiner !== "undefined") gemMiner = savegame.gemMiner;
 		if(typeof savegame.advancedDrill !== "undefined") advancedDrill = savegame.advancedDrill;
-		if(typeof savegame.advancedDrillOutput !== "undefined") advancedDrillOutput = savegame.advancedDrillOutput;
 		if(typeof savegame.diamondDrill !== "undefined") diamondDrill = savegame.diamondDrill;
 		if(typeof savegame.carbyneDrill !== "undefined") carbyneDrill = savegame.carbyneDrill;
 		if(typeof savegame.charcoal !== "undefined") charcoal = savegame.charcoal;
@@ -238,7 +226,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
 		if(typeof savegame.furnace !== "undefined") furnace = savegame.furnace;
 		if(typeof savegame.furnaceWoodInput !== "undefined") furnaceWoodInput = savegame.furnaceWoodInput;
-		if(typeof savegame.furnaceOutput !== "undefined") furnaceOutput = savegame.furnaceOutput;
 		if(typeof savegame.kiln !== "undefined") kiln = savegame.kiln;
 		if(typeof savegame.fryer !== "undefined") fryer = savegame.fryer;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
@@ -246,7 +233,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.woodNextStorage !== "undefined") woodNextStorage = savegame.woodNextStorage;
 		if(typeof savegame.woodcutter !== "undefined") woodcutter = savegame.woodcutter;
 		if(typeof savegame.laserCutter !== "undefined") laserCutter = savegame.laserCutter;
-		if(typeof savegame.laserCutterOutput !== "undefined") laserCutterOutput = savegame.laserCutterOutput;
 		if(typeof savegame.deforester !== "undefined") deforester = savegame.deforester;
 		if(typeof savegame.infuser !== "undefined") infuser = savegame.infuser;
 		if(typeof savegame.science !== "undefined") science = savegame.science;

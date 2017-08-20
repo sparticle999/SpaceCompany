@@ -718,6 +718,14 @@ Game.techData = (function () {
         maxLevel: 1,
         cost: {
             'science': 300
+        },
+        apply: function(self) {
+            pumpjackOutput *= 2;
+            heavyDrillOutput *= 2;
+            advancedDrillOutput *= 2;
+            furnaceWoodInput *= 2;
+            furnaceOutput *= 2;
+            laserCutterOutput *= 2;
         }
     };
 
@@ -731,6 +739,9 @@ Game.techData = (function () {
         maxLevel: 1,
         cost: {
             'science': 1000
+        },
+        apply: function(self) {
+            charcoalEngineOutput = 4;
         }
     };
 
@@ -744,6 +755,10 @@ Game.techData = (function () {
         maxLevel: 1,
         cost: {
             'science': 5000
+        },
+        apply: function(self) {
+            solarPanelOutput = 3;
+            Game.tech.unlockTech('unlockBatteries');
         }
     };
 
