@@ -19,6 +19,8 @@ RESOURCE_OBSERVER_TYPE = {
     PER_SECOND: 3
 };
 
+INDEX_NONE = -1;
+
 Game.constants = (function(){
 
     var instance = {};
