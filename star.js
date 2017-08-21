@@ -41,19 +41,10 @@ Game.interstellarBETA.stars = (function(){
             data.explored = true;
             document.getElementById('star_' + id).className = "hidden";
             document.getElementById('star_' + id + '_conquer').className = "";
-            document.getElementById('intnav_' + data.factionId + 'NavGlyph').className = "glyphicon glyphicon-exclamation-sign";
+            newNavUnlock('intnav_' + data.factionId);
             document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction"
         }
     };
-
-    instance.absorbSystem = function(id){
-        var data = this.entries[id];
-        var faction = Game.stargaze.getStargazeData(data.factionId);
-        if(faction.opinion >= 60){
-            faction.opinion -= 10;
-            data.owned = true;
-        }
-    }
 
     instance.getStarData = function(id) {
         return this.entries[id];

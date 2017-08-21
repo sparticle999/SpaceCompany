@@ -217,11 +217,15 @@ Game.utils = (function(){
             add += 1;
         }
         return init;
-    }
+    };
 
     instance.capitaliseFirst = function(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    instance.randArb = function(min, max){
+        return Math.random() * (max - min) + min;
+    };
 
     return instance;
 }());

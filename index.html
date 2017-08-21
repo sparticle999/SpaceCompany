@@ -64,6 +64,9 @@
 						Energy Deficit!
 					</span>
 				</a>
+				<a class="navbar-brand">
+					<span class="text-muted small">V0.5 is coming out soon! ETA: September 12th</span>
+				</a>
 				<div class="pull-right" style="width:200px;">
 					<a class="navbar-brand">
 						<span id="autoSaveTimer" class="text-muted small ng-binding" style="font-size:14px;">
@@ -77,11 +80,7 @@
 		<div class="ng-binding"></div>
 	</div>
 	<div height="30"></div>
-	<div id="updateAlert" class="alert alert-info alert-dismissible fade in">
-	    <button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>
-	    <strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>
-	    <ul id="updateLog"></ul>
-	 </div>
+	<span id="updateBox"></span>
 
 <!-- Nav tabs -->
 	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">
@@ -1344,7 +1343,7 @@
 										Woodburner: <span id="woodburner">0</span>
 									</h3>
 									<span>
-										Build an shovel for your woodburner.
+										Build a shovel for your woodburner.
 										<br>
 										Produces 1 Charcoal per second.
 										<br>
@@ -7335,6 +7334,16 @@
 							<tr>
 								<td>
 									<h4>
+										How does the military level work?
+									</h4>
+									<span>
+										The format used is •,••,•••,I,II,III,X,XX,XXX,XXXX,XXXXX,XXXXXX. It is based on the military army hierarchy found on wikipedia at <a href="https://en.wikipedia.org/wiki/Military_organization#Army_hierarchy">https://en.wikipedia.org/wiki/Military_organization#Army_hierarchy</a>.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>
 										I found a bug! What should I do?
 									</h4>
 									<span>
@@ -7367,7 +7376,7 @@
 							<tr>
 								<td>
 									<h4>
-										Help, I'm stuck?
+										Help, I'm stuck!
 									</h4>
 									<span>
 										Have you checked all of the tabs to see if there is anything new? Maybe the guide has something about it? If not, feel free to ask me either on reddit or post it as an issue on github if you think there is a problem with the game.

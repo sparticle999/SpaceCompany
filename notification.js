@@ -5,8 +5,16 @@ function newUnlock(tab){
 	}
 }
 
+function newNavUnlock(nav){
+	document.getElementById(nav + "NavGlyph").className = "glyphicon glyphicon-exclamation-sign";
+}
+
 function tabClicked(tab){
 	document.getElementById(tab + "TabGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign hidden";
+}
+
+function navClicked(nav){
+	document.getElementById(nav + "NavGlyph").className = "pull-right glyphicon glyphicon-exclamation-sign hidden";
 }
 
 function activeResourceTab(tab){
