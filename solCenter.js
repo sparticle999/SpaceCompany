@@ -222,6 +222,6 @@ function buildSphere(){
         updateDysonCost();
 
 		Game.stargazeUI.initialise();
-
+		newUnlock('stargaze');
 	}
 }

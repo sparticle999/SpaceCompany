@@ -12,6 +12,11 @@ Game.starData = (function(){
 		desc: "The closest star to your solar system, this is the easiest to travel to. Controlled by a science loving society, they permit your exploration in pursuit of knowledge, despite being skeptical of your sincerity about 'just looking'.",
 		resource1: "Ice",
 		resource2: "Hydrogen",
+		stats: {
+			"power": 30,
+			"defense": 20,
+			"speed": 5,
+		},
 	};
 
 	instance.barnards = {
@@ -24,6 +29,11 @@ Game.starData = (function(){
 		desc: "",
 		resource1: "Hydrogen",
 		resource2: "Helium",
+		stats: {
+			"power": 0,
+			"defense": 0,
+			"speed": 0,
+		},
 	};
 
 	instance.episilon = {
@@ -36,6 +46,11 @@ Game.starData = (function(){
 		desc: "",
 		resource1: "Lunarite",
 		resource2: "Gems",
+		stats: {
+			"power": 0,
+			"defense": 0,
+			"speed": 0,
+		},
 	};
 
 	instance.tauCeti = {
@@ -48,6 +63,11 @@ Game.starData = (function(){
 		desc: "",
 		resource1: "Titanium",
 		resource2: "Silicon",
+		stats: {
+			"power": 0,
+			"defense": 0,
+			"speed": 0,
+		},
 	};
 
 	instance.gliese674 = {
@@ -60,6 +80,11 @@ Game.starData = (function(){
 		desc: "",
 		resource1: "Charcoal",
 		resource2: "Methane",
+		stats: {
+			"power": 0,
+			"defense": 0,
+			"speed": 0,
+		},
 	};
 
 

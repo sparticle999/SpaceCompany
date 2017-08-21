@@ -1,5 +1,4 @@
-var splashTextArray = [
-"Venturing Into The Unknown...",
+var splashTextArray = ["Venturing Into The Unknown...",
 "Installing Virus...",
 "Deleting Windows...",
 "Transferring Data to NASA...",

@@ -3,7 +3,7 @@
     var tabTemplate = Handlebars.compile(
         ['<li role="presentation" id="{{htmlId}}_tab">',
             '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" aria-controls="{{id}}" role="tab" data-toggle="tab">',
-            '<div id="{{htmlId}}_glyph" class="glyphicon glyphicon-exclamation-sign"></div>',
+            '<div id="{{id}}TabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
             '{{title}}</a></li>'].join('\n'));
 
     var contentTemplate = Handlebars.compile(
@@ -85,7 +85,7 @@
     };
 
     GameTab.prototype.activate = function() {
-        $('#' + this.data.htmlId + '_glyph').addClass('hidden');
+        $('#' + this.data.id + 'TabGlyph').addClass('hidden');
 
         if (this.onActivate !== null) {
             this.onActivate(this.data.id);
