@@ -120,18 +120,23 @@ Game.tech = (function(){
             count = 1;
         }
 
-        var cost = tech.cost;
+        // create a new object for cost to avoid reference issues
+        var cost = {};
         if (tech.costType === COST_TYPE.FIXED) {
             if (tech.current > 0 || count > 1) {
-                // clear the array first
                 // this calculation could be done more elegantly with math
-                for (var resource in cost) {
+                for (var resource in tech.cost) {
                     cost[resource] = 0;
                 }
                 for (var i = 0; i < count; i++) {
-                    for (var resource in cost) {
+                    for (var resource in tech.cost) {
                         cost[resource] += getCost(tech.cost[resource], tech.current + i);
                     }
+                }
+            } else {
+                // the predefined base cost can be used
+                for (var resource in tech.cost) {
+                    cost[resource] = tech.cost[resource];
                 }
             }
         } else if (tech.costType === COST_TYPE.PERCENT) {
@@ -140,7 +145,11 @@ Game.tech = (function(){
                 return false;
             }
             var storage = window[tech.resource + 'Storage'];
-            for (var resource in cost) {
+            if (typeof storage === 'undefined') {
+                // percent is meaningless without a defined storage
+                return false;
+            }
+            for (var resource in tech.cost) {
                 cost[resource] = Math.floor(tech.cost[resource] * storage)
             }
         } else {
