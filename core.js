@@ -963,9 +963,12 @@ function refreshResearches(){
 
     for (var techId in Game.tech.entries) {
        if (Game.tech.isMaxLevel(techId)) {
-           document.getElementById(techId).className = "hidden";
-       } else if (Game.tech.isUnlocked(techId)) {
            var element = document.getElementById(techId);
+           if (element) {
+               element.className = "hidden";
+           }
+       } else if (Game.tech.isUnlocked(techId)) {
+           element = document.getElementById(techId);
            if (element) {
                element.className = "";
            }

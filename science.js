@@ -325,13 +325,7 @@ function getCost(basePrice, amount, multiplier) {
 }
 
 function purchaseResourceEfficiency() {
-    var tech = Game.tech.getTechData('efficiencyResearch');
-
-	var cost = getCost(tech.cost['science'], tech.current);
-	if(science >= cost) {
-		Game.tech.gainTech(tech.id);
-        science -= cost;
-	}
+	Game.tech.buyTech('efficiencyResearch', 1);
 }
 
 function updateResourceEfficiencyDisplay() {
@@ -356,17 +350,12 @@ function updateResourceEfficiencyDisplay() {
 }
 
 function purchaseEnergyEfficiency() {
-    var tech = Game.tech.getTechData('energyEfficiencyResearch');
-
-    var cost = getCost(tech.cost['science'], tech.current);
-    if(science >= cost) {
-        Game.tech.gainTech(tech.id);
-        science -= cost;
-    }
-    if(tech.current == tech.maxLevel){
-    	var child = document.getElementById("energyEffButton");
-		child.parentNode.removeChild(child);
-    }
+	if (Game.tech.buyTech('energyEfficiencyResearch', 1)) {
+		if (Game.tech.isMaxLevel('energyEfficiencyResearch')) {
+			var child = document.getElementById("energyEffButton");
+			child.parentNode.removeChild(child);
+		}
+	}
 }
 
 function updateEnergyEfficiencyDisplay() {
@@ -390,7 +379,7 @@ function updateEnergyEfficiencyDisplay() {
     var cost = getCost(tech.cost['science'], tech.current);
     Game.settings.turnRed(science, cost, 'scienceEnergyEfficiencyUpgradeCost');
 
-    if(tech.current == tech.maxLevel) {
+    if(tech.current === tech.maxLevel) {
         $('#scienceEnergyEfficiencyUpgradeTitle').text(tech.name + " " + tech.maxLevel + " (MAX)");
         $('#scienceEnergyEfficiencyUpgradeCost').text("N/A");
 	} else {
@@ -400,13 +389,7 @@ function updateEnergyEfficiencyDisplay() {
 }
 
 function purchaseScienceEfficiency() {
-    var tech = Game.tech.getTechData('scienceEfficiencyResearch');
-
-    var cost = getCost(tech.cost['science'], tech.current);
-    if(science >= cost) {
-        Game.tech.gainTech(tech.id);
-        science -= cost;
-    }
+	Game.tech.buyTech('scienceEfficiencyResearch', 1);
 }
 
 function updateScienceEfficiencyDisplay() {
@@ -431,13 +414,7 @@ function updateScienceEfficiencyDisplay() {
 }
 
 function purchaseBatteryEfficiency() {
-    var tech = Game.tech.getTechData('batteryEfficiencyResearch');
-
-    var cost = getCost(tech.cost['science'], tech.current);
-    if(science >= cost) {
-        Game.tech.gainTech(tech.id);
-        science -= cost;
-    }
+	Game.tech.buyTech('batteryEfficiencyResearch', 1);
 }
 
 function updateBatteryEfficiencyDisplay() {
