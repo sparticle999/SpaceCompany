@@ -12,13 +12,30 @@ Game.tech = (function(){
             this.techTypeCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'restech_' + id,
+                htmlId: id,
+                htmlIdCost: id + 'Cost',
+                htmlIdTitle: id + 'Title',
+                htmlIdButton: id + 'Button',
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
                 max: data.maxCount,
-                displayNeedsUpdate: true
+                displayNeedsUpdate: true,
+
+                getBodyElement: function() {
+                    return $('#' + this.htmlId);
+                },
+                getTitleElement: function() {
+                    return $('#' + this.htmlIdTitle);
+                },
+                getCostElement: function() {
+                    return $('#' + this.htmlIdCost);
+                },
+                getButtonElement: function() {
+                    return $('#' + this.htmlIdButton);
+                }
+
             });
         }
 
