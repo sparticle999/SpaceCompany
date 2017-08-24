@@ -5,7 +5,8 @@ COST_TYPE = {
 
 TECH_TYPE = {
     UPGRADE: 0,
-    UNLOCK: 1
+    UNLOCK: 1,
+    STORAGE: 2
 };
 
 BUILDING_TYPE = {

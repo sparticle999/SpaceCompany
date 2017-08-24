@@ -10,33 +10,8 @@ Game.tech = (function(){
         for (var id in Game.techData) {
             var data = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: id,
-                htmlIdCost: id + 'Cost',
-                htmlIdTitle: id + 'Title',
-                htmlIdButton: id + 'Button',
-                current: 0,
-                iconPath: Game.constants.iconPath,
-                iconName: data.icon,
-                iconExtension: Game.constants.iconExtension,
-                max: data.maxCount,
-                displayNeedsUpdate: true,
-
-                getBodyElement: function() {
-                    return $('#' + this.htmlId);
-                },
-                getTitleElement: function() {
-                    return $('#' + this.htmlIdTitle);
-                },
-                getCostElement: function() {
-                    return $('#' + this.htmlIdCost);
-                },
-                getButtonElement: function() {
-                    return $('#' + this.htmlIdButton);
-                }
-
-            });
+            data.setId(id);
+            this.entries[id] = data;
         }
 
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
