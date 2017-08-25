@@ -81,276 +81,11 @@ function purchaseTech(id) {
 	}
 }
 
-function unlockStorage(){
-	if (Game.tech.buyTech('unlockStorage', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockBasicEnergy(){
-	if (Game.tech.buyTech('unlockBasicEnergy', 1)) {
-		Game.statistics.add('techResearched');
-		Game.statistics.add('resourcesUnlocked', 2);
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockOil(){
-	if (Game.tech.buyTech('unlockOil', 1)) {
-		Game.statistics.add('techResearched');
-		Game.statistics.add('resourcesUnlocked');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockSolar(){
-	if (Game.tech.buyTech('unlockSolar', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockMachines(){
-	if (Game.tech.buyTech('unlockMachines', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function upgradeResourceTech(){
-	if (Game.tech.buyTech('upgradeResourceTech', 1)){
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockDestruction(){
-	if (Game.tech.buyTech('unlockDestruction', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockSolarSystem(){
-	if (Game.tech.buyTech('unlockSolarSystem', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		refreshTabs();
-		newUnlock("solarSystem");
-		Game.notifySuccess("New Tab!", "You've unlocked the Solar System Tab!");
-	}
-}
-
-function unlockRocketFuelT2(){
-	if (Game.tech.buyTech('unlockRocketFuelT2', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("solarSystem");
-	}
-}
-
-function unlockRocketFuelT3(){
-	if (Game.tech.buyTech('unlockRocketFuelT3', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("solarSystem");
-	}
-}
-
-function unlockLabT2(){
-	if (Game.tech.buyTech('unlockLabT2', 1)) {
-        Game.statistics.add('techResearched');
-		refreshResearches();
-	}
-}
-
-function upgradeEngineTech(){
-	if (Game.tech.buyTech('upgradeEngineTech', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockLabT3(){
-	if (Game.tech.buyTech('unlockLabT3', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResearches();
-	}
-}
-
-function upgradeSolarTech(){
-	if (Game.tech.buyTech('upgradeSolarTech', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockBatteries(){
-	if (Game.tech.buyTech('unlockBatteries', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockBatteriesT2(){
-	if (Game.tech.buyTech('unlockBatteriesT2', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockBatteriesT3(){
-	if (Game.tech.buyTech('unlockBatteriesT3', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockBatteriesT4(){
-	if (Game.tech.buyTech('unlockBatteriesT4', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockPlasma(){
-	if (Game.tech.buyTech('unlockPlasma', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockPlasmaTier2(){
-	if (Game.tech.buyTech('unlockPlasmaTier2', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockPSU(){
-	if (Game.tech.buyTech('unlockPSU', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockPSUT2(){
-	if (Game.tech.buyTech('unlockPSUT2', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockLabT4(){
-	if (Game.tech.buyTech('unlockLabT4', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResearches();
-	}
-}
-
-function unlockEmc(){
-	if (Game.tech.buyTech('unlockEmc', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("solCenter");
-	}
-}
-
-function unlockMeteorite(){
-	if (Game.tech.buyTech('unlockMeteorite', 1)) {
-		Game.statistics.add('techResearched');
-		Game.statistics.add('resourcesUnlocked');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-		newUnlock("wonder");
-	}
-}
-
-function unlockMeteoriteTier1(){
-	if (Game.tech.buyTech('unlockMeteoriteTier1', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockMeteoriteTier2(){
-	if (Game.tech.buyTech('unlockMeteoriteTier2', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("resources");
-	}
-}
-
-function unlockDyson(){
-	if (Game.tech.buyTech('unlockDyson', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("solCenter");
-	}
-}
-
-function unlockDysonSphere(){
-	if (Game.tech.buyTech('unlockDysonSphere', 1)) {
-		Game.statistics.add('techResearched');
-		refreshResources();
-		refreshResearches();
-		newUnlock("solCenter");
-	}
-}
-
 function getCost(basePrice, amount, multiplier) {
 	if(!multiplier) {
 		multiplier = 1.1;
 	}
 	return Math.floor(basePrice * Math.pow(multiplier, amount));
-}
-
-function purchaseResourceEfficiency() {
-	Game.tech.buyTech('efficiencyResearch', 1);
 }
 
 function updateResourceEfficiencyDisplay() {
@@ -372,10 +107,6 @@ function updateResourceEfficiencyDisplay() {
 
 	tech.getTitleElement().text(tech.name + " #" + (tech.current));
 	tech.getCostElement().text(Game.settings.format(cost));
-}
-
-function purchaseEnergyEfficiency() {
-	Game.tech.buyTech('energyEfficiencyResearch', 1);
 }
 
 function updateEnergyEfficiencyDisplay() {
@@ -408,10 +139,6 @@ function updateEnergyEfficiencyDisplay() {
 	}
 }
 
-function purchaseScienceEfficiency() {
-	Game.tech.buyTech('scienceEfficiencyResearch', 1);
-}
-
 function updateScienceEfficiencyDisplay() {
 	var tech = Game.tech.getTechData('scienceEfficiencyResearch');
 
@@ -431,10 +158,6 @@ function updateScienceEfficiencyDisplay() {
 
 	tech.getTitleElement().text(tech.name + " #" + (tech.current));
 	tech.getCostElement().text(Game.settings.format(cost));
-}
-
-function purchaseBatteryEfficiency() {
-	Game.tech.buyTech('batteryEfficiencyResearch', 1);
 }
 
 function updateBatteryEfficiencyDisplay() {

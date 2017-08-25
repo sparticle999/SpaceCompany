@@ -10,6 +10,12 @@ Game.techData = (function () {
         htmlIdButton: null,
         displayNeedsUpdate: true,
 
+        name: 'Research',
+        desc: 'Purchase to unlock something.',
+        notifyTitle: null,
+        notifyText: null,
+        buttonText: 'Unlock',
+
         current: 0,
         maxLevel: 1,
         unlocked: false,
@@ -18,9 +24,6 @@ Game.techData = (function () {
         newTechs: [],
         newTabs: [],
         tabAlerts: [],
-
-        notifyTitle: null,
-        notifyText: null,
 
         setId: function(id) {
             this.id = id;
@@ -281,6 +284,7 @@ Game.techData = (function () {
     instance.unlockStorage = $.extend({}, techBase, {
         name: 'Storage Upgrades',
         desc: 'This will allow you to build storage upgrades to increase the maximum on the amount of resource you can have at once.',
+        buttonText: 'Unlock Storage',
         type: TECH_TYPE.UNLOCK,
         unlocked: true,
         costType: COST_TYPE.FIXED,
@@ -295,6 +299,7 @@ Game.techData = (function () {
     instance.unlockBasicEnergy = $.extend({}, techBase, {
         name: 'Basic Energy Production',
         desc: 'You will be able to produce power from steam engines using Charcoal made from wood in a furnace.',
+        buttonText: 'Unlock Basic Energy Production',
         type: TECH_TYPE.UNLOCK,
         unlocked: true,
         costType: COST_TYPE.FIXED,
@@ -309,6 +314,7 @@ Game.techData = (function () {
     instance.unlockOil = $.extend({}, techBase, {
         name: 'Oil Processing',
         desc: 'Oil used to fuel more advanced machines that gather resources and also to produce more power than basic means. Unlocking Oil Processing allows you to extract it from the ground.',
+        buttonText: 'Unlock Oil',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -321,6 +327,7 @@ Game.techData = (function () {
     instance.unlockSolar = $.extend({}, techBase, {
         name: 'Solar Panels',
         desc: 'Solar Panels produce Energy without the need for fuel, but they do it slower than other forms of Energy production.',
+        buttonText: 'Unlock Solar Panels',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -333,6 +340,7 @@ Game.techData = (function () {
     instance.unlockMachines = $.extend({}, techBase, {
         name: 'Resource Machines',
         desc: 'Resource Machines produce more resources than simple methods but require a constant supply of power to work.',
+        buttonText: 'Unlock Resource Machines',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -345,6 +353,7 @@ Game.techData = (function () {
     instance.unlockDestruction = $.extend({}, techBase, {
         name: 'Destruction of Machines',
         desc: 'This allows you to destroy machines you have already created. It can be useful when there are more efficient methods of gaining resources, or if you don\'t have enough energy to support your machines.',
+        buttonText: 'Unlock Destruction',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -356,6 +365,7 @@ Game.techData = (function () {
     instance.unlockSolarSystem = $.extend({}, techBase, {
         name: 'Space',
         desc: 'Unlocking space-travel allows for launching of rockets and opens a whole new field of research.',
+        buttonText: 'Unlock Space Travel',
         notifyTitle: 'new Tab!',
         notifyText: 'You\'ve unlocked the Solar System Tab!',
         type: TECH_TYPE.UNLOCK,
@@ -371,6 +381,7 @@ Game.techData = (function () {
     instance.unlockRocketFuelT2 = $.extend({}, techBase, {
         name: 'Oxidisation',
         desc: 'Oxidisation is a more efficient process of creating Rocket Fuel.',
+        buttonText: 'Unlock Oxidisation',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -384,6 +395,7 @@ Game.techData = (function () {
     instance.unlockRocketFuelT3 = $.extend({}, techBase, {
         name: 'Hydrazine',
         desc: 'Hydrazine is a compound created by Methane that increases the speed at which rocket fuel can be produced in a Hydrazine Catalyst Machine.',
+        buttonText: 'Unlock Hydrazine',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -396,6 +408,7 @@ Game.techData = (function () {
     instance.unlockLabT2 = $.extend({}, techBase, {
         name: 'Tier 2 Science',
         desc: 'Researching this will allow you to increase your science production drastically.',
+        buttonText: 'Unlock Tier 2 Science',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -407,6 +420,7 @@ Game.techData = (function () {
     instance.unlockLabT3 = $.extend({}, techBase, {
         name: 'Tier 3 Science',
         desc: 'Researching this will allow you to access the third tier of science production, creating much more science than the previous tiers.',
+        buttonText: 'Unlock Tier 3 Science',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -418,6 +432,7 @@ Game.techData = (function () {
     instance.unlockLabT4 = $.extend({}, techBase, {
         name: 'Tier 4 Science',
         desc: 'Researching this will allow you to access the fourth tier of science production, creating 10 times as much science as the previous tier.',
+        buttonText: 'Unlock Tier 4 Science',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -428,6 +443,7 @@ Game.techData = (function () {
     instance.unlockBatteries = $.extend({}, techBase, {
         name: 'Tier 1 Batteries',
         desc: 'Tier 1 Batteries improve the amount of energy you can store at once.',
+        buttonText: 'Unlock Batteries',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -441,6 +457,7 @@ Game.techData = (function () {
     instance.unlockBatteriesT2 = $.extend({}, techBase, {
         name: 'Tier 2 Batteries',
         desc: 'Tier 2 Batteries improve the amount of energy you can store at once',
+        buttonText: 'Unlock T2 Batteries',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -454,6 +471,7 @@ Game.techData = (function () {
     instance.unlockBatteriesT3 = $.extend({}, techBase, {
         name: 'Tier 3 Batteries',
         desc: 'Tier 3 Batteries improve the amount of energy you can store at once',
+        buttonText: 'Unlock T3 Batteries',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -467,6 +485,7 @@ Game.techData = (function () {
     instance.unlockBatteriesT4 = $.extend({}, techBase, {
         name: 'Tier 4 Batteries',
         desc: 'Tier 4 Batteries improve the amount of energy you can store at once',
+        buttonText: 'Unlock T4 Batteries',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -479,6 +498,7 @@ Game.techData = (function () {
     instance.unlockPlasma = $.extend({}, techBase, {
         name: 'Plasma Tier 1 Technology',
         desc: 'This allows you to turn your energy and hydrogen into Plasma',
+        buttonText: 'Unlock Plasma',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -497,6 +517,7 @@ Game.techData = (function () {
     instance.unlockPlasmaTier2 = $.extend({}, techBase, {
         name: 'Plasma Tier 2 Technology',
         desc: 'This research unlocks the second tier of Plasma production, the Plasmatic Pit',
+        buttonText: 'Unlock Plasma Tier 2',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -509,6 +530,7 @@ Game.techData = (function () {
     instance.unlockPSU = $.extend({}, techBase, {
         name: 'Plasma Storage Units',
         desc: 'PSUs increase the limit on plasma you can store at once.',
+        buttonText: 'Unlock PSUs',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -522,6 +544,7 @@ Game.techData = (function () {
     instance.unlockPSUT2 = $.extend({}, techBase, {
         name: 'Tier 2 Plasma Storage Units',
         desc: 'Tier 2 PSUs are more efficient at storing plasma but they are significantly larger and require more resources to make.',
+        buttonText: 'Unlock T2 PSUs',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -534,6 +557,7 @@ Game.techData = (function () {
     instance.unlockEmc = $.extend({}, techBase, {
         name: 'Energy-Mass Conversion',
         desc: 'This power technology not only lets you create existing resources, but allows you to make new, and only creatable elements, such as meteorite.',
+        buttonText: 'Unlock EMC',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -547,6 +571,7 @@ Game.techData = (function () {
     instance.unlockMeteorite = $.extend({}, techBase, {
         name: 'Meteorite',
         desc: 'Meteorite is one of the rare resources in the Galaxy as it is an artificial one. All of the pre-existing Meteorite that once was in the Kuiper Belt, and similar asteroid fields in other solar systems, has all been mined away. Now, the only way to get is to make it in machines from energy.',
+        buttonText: 'Unlock Meteorite',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -560,6 +585,7 @@ Game.techData = (function () {
     instance.unlockMeteoriteTier1 = $.extend({}, techBase, {
         name: 'Meteorite Tier 1',
         desc: 'Research an automated way to gather Meteorite so that you don\'t have to worry about losing out when you\'re not around.',
+        buttonText: 'Unlock Meteorite Tier 1',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -574,6 +600,7 @@ Game.techData = (function () {
     instance.unlockMeteoriteTier2 = $.extend({}, techBase, {
         name: 'Meteorite Tier 2',
         desc: 'Research a more efficient method of getting meteorite than creating it artificially.',
+        buttonText: 'Unlock Meteorite Tier 2',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -586,6 +613,7 @@ Game.techData = (function () {
     instance.unlockDyson = $.extend({}, techBase, {
         name: 'Dyson Ring',
         desc: 'Dyson Rings produce huge amounts of energy by surrounding the sun in solar stations.',
+        buttonText: 'Unlock Dyson Rings',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -597,8 +625,9 @@ Game.techData = (function () {
     });
 
     instance.unlockDysonSphere = $.extend({}, techBase, {
-        name: 'Dyson Sphere',
-        desc: 'The Dyson Sphere encompasses the sun and allows you to harness enough energy to go interstellar.',
+        name: 'Dyson Swarms and Spheres',
+        desc: 'The Dyson Swarms encapsulate the sun in rings of solar stations, whereas Spheres completely encompasses it to allows you to harness enough energy to go interstellar.',
+        buttonText: 'Unlock Dyson Swarms/Spheres',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -613,6 +642,7 @@ Game.techData = (function () {
     instance.upgradeResourceTech = $.extend({}, techBase, {
         name: 'Upgrade Resource Technology',
         desc: 'Make your resource machines produce even more resources than before. This upgrade doubles the amount they produce for each unit of Energy.',
+        buttonText: 'Upgrade Resource Tech',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -632,6 +662,7 @@ Game.techData = (function () {
     instance.upgradeEngineTech = $.extend({}, techBase, {
         name: 'Upgrade Engine Technology',
         desc: 'Upgrading Engine Technology will make Charcoal engines produce 4 Energy per second instead of 2.',
+        buttonText: 'Upgrade Charcoal Engines',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {
@@ -646,6 +677,7 @@ Game.techData = (function () {
     instance.upgradeSolarTech = $.extend({}, techBase, {
         name: 'Upgrade Solar Technology',
         desc: 'Upgrading Solar Technology will make solar panels produce 3 Energy per second instead of 1.5.',
+        buttonText: 'Upgrade Solar Panels',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {

@@ -7,11 +7,22 @@ Game.tech = (function(){
     instance.techTypeCount = 0;
 
     instance.initialise = function() {
+        var techTable = $('#techTable');
         for (var id in Game.techData) {
             var data = Game.techData[id];
             this.techTypeCount++;
             data.setId(id);
             this.entries[id] = data;
+
+            Game.techUI.initialise();
+            // the storage techs are currently unused
+            if (data.type !== TECH_TYPE.STORAGE) {
+                var html = Game.techUI.techTemplate(data);
+                techTable.append(html);
+                // all currently used techs cost only science
+                var cost = Game.settings.format(data.cost['science']);
+                data.getCostElement().text(cost);
+            }
         }
 
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
@@ -40,7 +51,9 @@ Game.tech = (function(){
         var tech = Game.tech.getTechData('energyEfficiencyResearch');
         if (tech.current === tech.maxLevel) {
             var child = document.getElementById("energyEffButton");
-            child.parentNode.removeChild(child);
+            if (child !== null) {
+                child.parentNode.removeChild(child);
+            }
         }
     };
 
