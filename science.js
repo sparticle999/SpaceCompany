@@ -75,8 +75,8 @@ function purchaseTech(id) {
 		for (var i = 0; i < tech.tabAlerts.length; i++) {
 			newUnlock(tech.tabAlerts[i]);
 		}
-		if (tech.notifyText !== null) {
-			Game.notifySuccess(tech.notifyText);
+		if (tech.notifyTitle !== null && tech.notifyText !== null) {
+			Game.notifySuccess(tech.notifyTitle, tech.notifyText);
 		}
 	}
 }

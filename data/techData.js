@@ -19,6 +19,7 @@ Game.techData = (function () {
         newTabs: [],
         tabAlerts: [],
 
+        notifyTitle: null,
         notifyText: null,
 
         setId: function(id) {
@@ -286,7 +287,8 @@ Game.techData = (function () {
         cost: {
             'science': 5
         },
-        newTechs: ['unlockOil']
+        newTechs: ['unlockOil'],
+        tabAlerts: ['resources']
     });
 
     // Other Researches
@@ -300,7 +302,8 @@ Game.techData = (function () {
             'science': 20
         },
         newResources: ['energyNav', 'charcoalNav'],
-        newTechs: ['unlockSolar', 'unlockMachines', 'upgradeEngineTech']
+        newTechs: ['unlockSolar', 'unlockMachines', 'upgradeEngineTech'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockOil = $.extend({}, techBase, {
@@ -311,7 +314,8 @@ Game.techData = (function () {
         cost: {
             'science': 30
         },
-        newResources: ['oilNav']
+        newResources: ['oilNav'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockSolar = $.extend({}, techBase, {
@@ -322,7 +326,8 @@ Game.techData = (function () {
         cost: {
             'science': 50
         },
-        newTechs: ['upgradeSolarTech']
+        newTechs: ['upgradeSolarTech'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockMachines = $.extend({}, techBase, {
@@ -334,6 +339,7 @@ Game.techData = (function () {
             'science': 100
         },
         newTechs: ['unlockSolarSystem', 'upgradeResourceTech', 'unlockDestruction'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockDestruction = $.extend({}, techBase, {
@@ -343,19 +349,23 @@ Game.techData = (function () {
         costType: COST_TYPE.FIXED,
         cost: {
             'science': 500
-        }
+        },
+        tabAlerts: ['resources']
     });
 
     instance.unlockSolarSystem = $.extend({}, techBase, {
         name: 'Space',
         desc: 'Unlocking space-travel allows for launching of rockets and opens a whole new field of research.',
+        notifyTitle: 'new Tab!',
+        notifyText: 'You\'ve unlocked the Solar System Tab!',
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
             'science': 500
         },
         newTabs: ['solarSystemTab'],
-        newTechs: ['unlockLabT2', 'unlockRocketFuelT2']
+        newTechs: ['unlockLabT2', 'unlockRocketFuelT2'],
+        tabAlerts: ['solarSystem']
     });
 
     instance.unlockRocketFuelT2 = $.extend({}, techBase, {
@@ -367,7 +377,8 @@ Game.techData = (function () {
             'science': 450000
         },
         newResources: ['rocketFuelT2'],
-        newTechs: ['unlockRocketFuelT3']
+        newTechs: ['unlockRocketFuelT3'],
+        tabAlerts: ['solarSystem']
     });
 
     instance.unlockRocketFuelT3 = $.extend({}, techBase, {
@@ -378,7 +389,8 @@ Game.techData = (function () {
         cost: {
             'science': 3200000
         },
-        newResources: ['rocketFuelT3']
+        newResources: ['rocketFuelT3'],
+        tabAlerts: ['solarSystem']
     });
 
     instance.unlockLabT2 = $.extend({}, techBase, {
@@ -422,7 +434,8 @@ Game.techData = (function () {
             'science': 15000
         },
         newResources: ['batteries', 'energyStorageBox'],
-        newTechs: ['unlockBatteriesT2']
+        newTechs: ['unlockBatteriesT2'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockBatteriesT2 = $.extend({}, techBase, {
@@ -434,7 +447,8 @@ Game.techData = (function () {
             'science': 300000
         },
         newResources: ['batteriesT2'],
-        newTechs: ['unlockBatteriesT3']
+        newTechs: ['unlockBatteriesT3'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockBatteriesT3 = $.extend({}, techBase, {
@@ -446,7 +460,8 @@ Game.techData = (function () {
             'science': 3000000
         },
         newResources: ['batteriesT3'],
-        newTechs: ['unlockBatteriesT4']
+        newTechs: ['unlockBatteriesT4'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockBatteriesT4 = $.extend({}, techBase, {
@@ -457,7 +472,8 @@ Game.techData = (function () {
         cost: {
             'science': 30000000
         },
-        newResources: ['batteriesT4']
+        newResources: ['batteriesT4'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockPlasma = $.extend({}, techBase, {
@@ -470,6 +486,7 @@ Game.techData = (function () {
         },
         newResources: ['plasmaNav'],
         newTechs: ['unlockPlasmaTier2'],
+        tabAlerts: ['resources'],
         onApply: function() {
             if (noBorder.indexOf('energyNav') === INDEX_NONE) {
                 noBorder.push('energyNav');
@@ -485,7 +502,8 @@ Game.techData = (function () {
         cost: {
             'science': 60000
         },
-        newResources: ['plasmaTier2']
+        newResources: ['plasmaTier2'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockPSU = $.extend({}, techBase, {
@@ -497,7 +515,8 @@ Game.techData = (function () {
             'science': 9500000
         },
         newResources: ['plasmaStorageUnits', 'plasmaStorageBox'],
-        newTechs: ['unlockPSUT2']
+        newTechs: ['unlockPSUT2'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockPSUT2 = $.extend({}, techBase, {
@@ -508,7 +527,8 @@ Game.techData = (function () {
         cost: {
             'science': 37000000
         },
-        newResources: ['plasmaStorageUnitsT2']
+        newResources: ['plasmaStorageUnitsT2'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockEmc = $.extend({}, techBase, {
@@ -520,7 +540,8 @@ Game.techData = (function () {
             'science': 60000
         },
         newResources: ['emcPage'],
-        newTechs: ['unlockMeteorite']
+        newTechs: ['unlockMeteorite'],
+        tabAlerts: ['solCenter']
     });
 
     instance.unlockMeteorite = $.extend({}, techBase, {
@@ -532,7 +553,8 @@ Game.techData = (function () {
             'science': 100000
         },
         newResources: ['meteoriteNav', 'meteoriteEMC'],
-        newTechs: ['unlockMeteoriteTier1']
+        newTechs: ['unlockMeteoriteTier1'],
+        tabAlerts: ['resources', 'wonder']
     });
 
     instance.unlockMeteoriteTier1 = $.extend({}, techBase, {
@@ -544,7 +566,8 @@ Game.techData = (function () {
             'science': 75000
         },
         newResources: ['meteoriteTier1'],
-        newTechs: ['unlockMeteoriteTier2']
+        newTechs: ['unlockMeteoriteTier2'],
+        tabAlerts: ['resources']
 
     });
 
@@ -556,7 +579,8 @@ Game.techData = (function () {
         cost: {
             'science': 75000
         },
-        newResources: ['meteoriteTier2']
+        newResources: ['meteoriteTier2'],
+        tabAlerts: ['resources']
     });
 
     instance.unlockDyson = $.extend({}, techBase, {
@@ -568,7 +592,8 @@ Game.techData = (function () {
             'science': 100000
         },
         newResources: ['dysonPage'],
-        newTechs: ['unlockDysonSphere']
+        newTechs: ['unlockDysonSphere'],
+        tabAlerts: ['solCenter']
     });
 
     instance.unlockDysonSphere = $.extend({}, techBase, {
@@ -579,7 +604,8 @@ Game.techData = (function () {
         cost: {
             'science': 500000
         },
-        newResources: ['dysonSphere']
+        newResources: ['dysonSphere'],
+        tabAlerts: ['solCenter']
     });
 
     //Upgrades
@@ -592,6 +618,7 @@ Game.techData = (function () {
         cost: {
             'science': 300
         },
+        tabAlerts: ['resources'],
         onApply: function() {
             pumpjackOutput *= 2;
             heavyDrillOutput *= 2;
@@ -610,6 +637,7 @@ Game.techData = (function () {
         cost: {
             'science': 1000
         },
+        tabAlerts: ['resources'],
         onApply: function() {
             charcoalEngineOutput = 4;
         }
@@ -624,6 +652,7 @@ Game.techData = (function () {
             'science': 5000
         },
         newTechs: ['unlockBatteries'],
+        tabAlerts: ['resources'],
         onApply: function() {
             solarPanelOutput = 3;
         }
