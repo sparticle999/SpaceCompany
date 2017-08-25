@@ -7,19 +7,23 @@ Game.tech = (function(){
     instance.techTypeCount = 0;
 
     instance.initialise = function() {
+        var techTable = $('#techTable');
+        Game.techUI.initialise();
         for (var id in Game.techData) {
             var data = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'restech_' + id,
-                current: 0,
-                iconPath: Game.constants.iconPath,
-                iconName: data.icon,
-                iconExtension: Game.constants.iconExtension,
-                max: data.maxCount,
-                displayNeedsUpdate: true
-            });
+            data.setId(id);
+            this.entries[id] = data;
+
+            // the storage techs are currently unused
+            if (data.type !== TECH_TYPE.STORAGE) {
+                var html = Game.techUI.techTemplate(data);
+                techTable.append(html);
+                
+                // all currently used techs cost only science
+                var cost = Game.settings.format(data.cost['science']);
+                data.getCostElement().text(cost);
+            }
         }
 
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
@@ -48,7 +52,9 @@ Game.tech = (function(){
         var tech = Game.tech.getTechData('energyEfficiencyResearch');
         if (tech.current === tech.maxLevel) {
             var child = document.getElementById("energyEffButton");
-            child.parentNode.removeChild(child);
+            if (child !== null) {
+                child.parentNode.removeChild(child);
+            }
         }
     };
 
@@ -70,6 +76,7 @@ Game.tech = (function(){
         for (id in data.tech.i) {
             if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                 this.gainTech(id, data.tech.i[id]);
+                this.entries[id].unlocked = true;
             }
         }
     };
