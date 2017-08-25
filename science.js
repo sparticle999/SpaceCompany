@@ -66,7 +66,7 @@ function purchaseTech(id) {
 
 	if (Game.tech.buyTech(id, 1)) {
 		Game.statistics.add('techResearched', 1);
-		Game.statistics.add('resourcesUnlocked', tech.resourcesUnlocked.length);
+		Game.statistics.add('resourcesUnlocked', tech.newResources.length);
 
 		refreshResources();
 		refreshResearches();
