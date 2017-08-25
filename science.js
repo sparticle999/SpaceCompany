@@ -96,10 +96,10 @@ function updateResourceEfficiencyDisplay() {
 	}
 
 	if(tech.unlocked === false) {
-		tech.getBodyElement().hide();
+		tech.getBodyElement().class = 'hidden';
 		return;
 	} else {
-		tech.getBodyElement().show();
+		tech.getBodyElement().class = '';
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
@@ -113,7 +113,7 @@ function updateEnergyEfficiencyDisplay() {
 	var tech = Game.tech.getTechData('energyEfficiencyResearch');
 
 	if(tech.current >= tech.maxLevel) {
-		tech.getButtonElement().hide();
+		tech.getButtonElement().class = '';
 	}
 
 	if(science > tech.cost['science'] || tech.current > 0) {
@@ -121,10 +121,10 @@ function updateEnergyEfficiencyDisplay() {
 	}
 
 	if(tech.unlocked === false) {
-		tech.getBodyElement().hide();
+		tech.getBodyElement().className = 'hidden';
 		return;
 	} else {
-		tech.getBodyElement().show();
+		tech.getBodyElement().className= '';
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
@@ -147,10 +147,10 @@ function updateScienceEfficiencyDisplay() {
 	}
 
 	if(tech.unlocked === false) {
-		tech.getBodyElement().hide();
+		tech.getBodyElement().className = 'hidden';
 		return;
 	} else {
-		tech.getBodyElement().show();
+		tech.getBodyElement().className = '';
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
@@ -168,10 +168,10 @@ function updateBatteryEfficiencyDisplay() {
 	}
 
 	if(tech.unlocked === false) {
-		tech.getBodyElement().hide();
+		tech.getBodyElement().className = 'hidden';
 		return;
 	} else {
-		tech.getBodyElement().show();
+		tech.getBodyElement().className = '';
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);

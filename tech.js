@@ -75,6 +75,7 @@ Game.tech = (function(){
         for (id in data.tech.i) {
             if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                 this.gainTech(id, data.tech.i[id]);
+                this.entries[id].unlocked = true;
             }
         }
     };
