@@ -8,17 +8,18 @@ Game.tech = (function(){
 
     instance.initialise = function() {
         var techTable = $('#techTable');
+        Game.techUI.initialise();
         for (var id in Game.techData) {
             var data = Game.techData[id];
             this.techTypeCount++;
             data.setId(id);
             this.entries[id] = data;
 
-            Game.techUI.initialise();
             // the storage techs are currently unused
             if (data.type !== TECH_TYPE.STORAGE) {
                 var html = Game.techUI.techTemplate(data);
                 techTable.append(html);
+                
                 // all currently used techs cost only science
                 var cost = Game.settings.format(data.cost['science']);
                 data.getCostElement().text(cost);
