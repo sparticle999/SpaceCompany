@@ -14,6 +14,11 @@ Game.techData = (function () {
         maxLevel: 1,
         unlocked: false,
 
+        resourcesUnlocked: [],
+        tabAlerts: [],
+
+        notifyText: null,
+
         setId: function(id) {
             this.id = id;
             this.htmlId = id;

@@ -41,21 +41,44 @@ function getLabT4(){
 }
 
 function updateLabCost(){
-    labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
-    labGemCost = Math.floor(15 * Math.pow(1.1,lab));
-    labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+	labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
+	labGemCost = Math.floor(15 * Math.pow(1.1,lab));
+	labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
 
-    labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
-    labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
-    labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
+	labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
+	labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
+	labT2MetalCost = Math.floor(1000 * Math.pow(1.1,labT2));
 
-    labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
-    labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
-    labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
+	labT3WoodCost = Math.floor(9600 * Math.pow(1.1,labT3));
+	labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
+	labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
 
-    labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
-    labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
-    labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+	labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
+	labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
+	labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+}
+
+function purchaseTech(id) {
+	var tech = Game.tech.getTechData(id);
+	if (typeof tech === 'undefined') {
+		return;
+	}
+
+	if (Game.tech.buyTech(id, 1)) {
+		Game.statistics.add('techResearched', 1);
+		Game.statistics.add('resourcesUnlocked', tech.resourcesUnlocked.length);
+
+		refreshResources();
+		refreshResearches();
+		refreshTabs();
+
+		for (var i = 0; i < tech.tabAlerts.length; i++) {
+			newUnlock(tech.tabAlerts[i]);
+		}
+		if (tech.notifyText !== null) {
+			Game.notifySuccess(tech.notifyText);
+		}
+	}
 }
 
 function unlockStorage(){
@@ -352,12 +375,7 @@ function updateResourceEfficiencyDisplay() {
 }
 
 function purchaseEnergyEfficiency() {
-	if (Game.tech.buyTech('energyEfficiencyResearch', 1)) {
-		if (Game.tech.isMaxLevel('energyEfficiencyResearch')) {
-			var child = document.getElementById("energyEffButton");
-			child.parentNode.removeChild(child);
-		}
-	}
+	Game.tech.buyTech('energyEfficiencyResearch', 1);
 }
 
 function updateEnergyEfficiencyDisplay() {
