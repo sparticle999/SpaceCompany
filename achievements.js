@@ -89,7 +89,9 @@ Game.achievements = (function() {
 		data.achievements = {version: this.dataVersion, entries: {}};
 		for(var id in this.entries) {
 			if(this.entries[id].unlocked >= 0) {
-				data.achievements.entries[id] = this.entries[id].unlocked;
+				data.achievements.entries[id] = {
+				  unlocked: this.entries[id].unlocked
+				};
 			}
 		}
 	};
@@ -108,7 +110,9 @@ Game.achievements = (function() {
 		if (data.achievements) {
 			for (var id in data.achievements.entries) {
 				if (this.entries[id]) {
-					this.unlock(id, data.achievements.entries[id]);
+				  if (data.achievements.entries[id].unlocked) {
+					  this.unlock(id, data.achievements.entries[id].unlocked);
+					}
 				}
 			}
 		}
