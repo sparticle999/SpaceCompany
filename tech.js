@@ -29,8 +29,7 @@ Game.tech = (function(){
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
 
-    instance.update = function(delta) {
-    };
+    instance.update = function(delta) {};
 
     instance.save = function(data) {
         data.tech = { v: this.dataVersion, i: {}};

@@ -99,7 +99,7 @@ Game.interstellar = (function(){
 			document.getElementById("interRocketBuilt").className = "green";
 			document.getElementById("interRocketBuilt").innerHTML = "Built";
 		}
-	}
+	};
 
 	instance.refreshUI = function(){
 
@@ -141,14 +141,14 @@ Game.interstellar = (function(){
 		document.getElementById("IRSIceCost").innerHTML = Game.settings.format(this.machines.IRS.ice);
 		document.getElementById("IRSMeteoriteCost").innerHTML = Game.settings.format(this.machines.IRS.meteorite);
 		document.getElementById("IRS").innerHTML = this.machines.IRS.count;
-	}
+	};
 
 	instance.save = function(data){
 		data.interstellar = {version: this.dataVersion, machines: {}, interRocketBuilt: this.interRocketBuilt};
 		for(var id in this.machines){
 			data.interstellar.machines[id] = this.machines[id];
 		}
-	}
+	};
 
 	instance.load = function(data){
 		if(data.interstellar) {
@@ -169,7 +169,7 @@ Game.interstellar = (function(){
         }
         
 	    this.refreshUI();
-	}
+	};
 
 	return instance;
 
