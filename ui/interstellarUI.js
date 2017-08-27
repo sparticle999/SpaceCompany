@@ -24,12 +24,7 @@ Game.interstellarUI = (function(){
 
     instance.tab = null;
 
-    instance.categoryNames = {
-        'starT1': "Tier 1 Stars",
-        'starT2': "Tier 2 Stars",
-        'starT3': "Tier 3 Stars",
-        'starT4': "Tier 4 Stars"
-    };
+    instance.categoryNames = {};
 
     instance.initialise = function() {
         if(Game.constants.enableInterstellar === false) {
@@ -118,7 +113,6 @@ Game.interstellarUI = (function(){
             ['<tr id="{{htmlId}}" class="hidden"><td style="width:300px;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<h5>',
-                    'Tier: {{tier}}<br>',
                     'Distance: {{distance}} (<span id="{{htmlId}}Cost">{{cost}}</span> Antimatter)<br>',
                     'Planets: {{planets}}<br>',
                 '</h5>',
@@ -131,7 +125,6 @@ Game.interstellarUI = (function(){
             ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="1">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}: <span id="{{htmlId}}_owned">Protected</span></h3>',
                 '<h5>',
-                    'Tier: {{tier}}<br>',
                     'Distance: {{distance}}<br>',
                     'Planets: {{planets}}<br>',
                     'Faction: {{faction}}<br>',
@@ -148,7 +141,7 @@ Game.interstellarUI = (function(){
                                     '<h2 class="modal-title">{{name}}: Espionage</h2>',
                                 '</div>',
                                 '<div class="modal-body">',
-                                    '<span>This is where you can send ships to find information about your enemies\' fleets. There are two levels of knowledge: Stats, and Breakdown. At the first, you will be able to see the attributes of the fleet as a whole, whereas the second allows you to see which individual ships belong to the enemy.</span>',
+                                    '<span>This is where you can send ships to find information about your enemies\' fleets. At the first level, you will be able to see the number of digits in the enemy fleet statistics, with the second revealing the first digit in all three stats and each successive level will reveal the next digit.</span>',
                                 '</div>',
                                 '<div class="modal-body">',
                                     '<table class="table"><tr><td>',
@@ -160,16 +153,16 @@ Game.interstellarUI = (function(){
                                         '<button style="width:40px;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'scout\', \'none\')">--</button></div>',
                                         '<br><h4>Success Chance: <span id="{{htmlId}}_spyChance">90</span>%',
                                     '</td><td style="text-align:center;">',
-                                        '<h4>System Fleet Status:</h4>',
-                                        '<span id="{{htmlId}}_power}}">??</span> Power,',
-                                        '<span id="{{htmlId}}_defense}}">??</span> Defense,',
-                                        '<span id="{{htmlId}}_speed}}">??</span> Speed',
+                                        '<h4>System Fleet Statistics:</h4>',
+                                        '<span class="{{htmlId}}_power">??</span> Power,',
+                                        '<span class="{{htmlId}}_defense">??</span> Defense,',
+                                        '<span class="{{htmlId}}_speed">??</span> Speed',
                                         '<br><br>',
-                                        '<h4>Fleet Breakdown</h4>',
-                                        '<span id="{{htmlId}}_ships">???</span>',
+                                        // '<h4>Fleet Breakdown</h4>',
+                                        // '<span class="{{htmlId}}_ships">???</span>',
                                     '</td><td style="text-align:center;">',
-                                        '<h4>Threat Level: (<span id="{{htmlId}}_threat">•</span>)<br><br>',
-                                        '<button class="btn btn-default">Send Scouts</button>',
+                                        '<h4>Threat Level: (<span class="{{htmlId}}_threat">•</span>)<br><br>',
+                                        '<button class="btn btn-default" data-dismiss="modal" onclick="Game.interstellarBETA.military.spy(\'{{id}}\');">Send Scouts</button>',
                                     '</td></tr></table>',
                                 '</div>',
                                 '<div class="modal-footer">',
@@ -189,7 +182,7 @@ Game.interstellarUI = (function(){
                                     '<h2 class="modal-title">{{name}}: Invasion</h2>',
                                 '</div>',
                                 '<div class="modal-body">',
-                                    '<span>This is where you can send ships to find information about your enemies\' fleets. There are two levels of knowledge: Stats, and Breakdown. At the first, you will be able to see the attributes of the fleet as a whole, whereas the second allows you to see which individual ships belong to the enemy.</span>',
+                                    '<span>Here, you can activate ships within your fleet and attempt to invade the faction\' star system. You reputation with them affects how prepared they are to a possible invasion. The star system\' fleet statistics take this into account already, so no extra calculation is needed. Invading has a bad effect on your reputation with the faction in question, reducing it by 10 for a successful invasion. However, due to their large ego, they take pity on failed attempts and reputation is not changed in the result of a loss.</span>',
                                 '</div>',
                                 '<div class="modal-body">',
                                     '<table class="table"><tr><td id="{{htmlId}}_invadeShips" style="width:33%">',
@@ -198,17 +191,25 @@ Game.interstellarUI = (function(){
                                         ** Add Ships Procedurally **
                                         ***************************/
                                     '</td><td style="text-align:center; width:33%">',
-                                        '<h4>System Fleet Status:</h4>',
-                                        '<span id="{{htmlId}}_power}}">??</span> Power,',
-                                        '<span id="{{htmlId}}_defense}}">??</span> Defense,',
-                                        '<span id="{{htmlId}}_speed}}">??</span> Speed',
+                                        '<h4>Your Active Fleet Statistics:</h4>',
+                                        '<span class="activeFleetPower">0</span> Power,',
+                                        '<span class="activeFleetDefense">0</span> Defense,',
+                                        '<span class="activeFleetSpeed">0</span> Speed',
                                         '<br><br>',
-                                        '<h4>Fleet Breakdown</h4>',
-                                        '<span id="{{htmlId}}_ships">???</span>',
+                                        '<h4>System Fleet Statistics:</h4>',
+                                        '<span class="{{htmlId}}_power">??</span> Power,',
+                                        '<span class="{{htmlId}}_defense">??</span> Defense,',
+                                        '<span class="{{htmlId}}_speed">??</span> Speed',
+                                        '<br><br>',
+                                        '<h4>System Fleet Power/Defense Multiplier (Reputation)</h4>',
+                                        'X<span class="{{factionId}}_multiplier">1</span>',
+                                        '<br><br>',
+                                        // '<h4>Fleet Breakdown</h4>',
+                                        // '<span class="{{htmlId}}_ships">???</span>',
                                     '</td><td style="text-align:center; width:33%">',
-                                        '<h4>Threat Level: (<span id="{{htmlId}}_threat">•</span>)</h4>',
-                                        '<h4>Chance of Victory: <span id="{{htmlId}}_invadeChance">0</span>%</h4>',
-                                        '<button class="btn btn-default" data-dismiss="modal" onclick="Game.interstellarBETA.military.invadeSystem(\'{{id}}\');">Attack!</button>',
+                                        '<h4>Threat Level: (<span class="{{htmlId}}_threat">•</span>)</h4>',
+                                        '<h4>Chance of Victory: <span class="{{htmlId}}_invadeChance">0</span>%</h4>',
+                                        '<button class="btn btn-default" id="{{htmlId}}_invadeButton" data-dismiss="modal" onclick="Game.interstellarBETA.military.invadeSystem(\'{{id}}\');">Attack!</button>',
                                     '</td></tr></table>',
                                 '</div>',
                                 '<div class="modal-footer">',
@@ -228,28 +229,11 @@ Game.interstellarUI = (function(){
                                     '<h2 class="modal-title">{{name}}: Absorbtion</h2>',
                                 '</div>',
                                 '<div class="modal-body">',
-                                    '<span>This is where you can send ships to find information about your enemies\' fleets. There are two levels of knowledge: Stats, and Breakdown. At the first, you will be able to see the attributes of the fleet as a whole, whereas the second allows you to see which individual ships belong to the enemy.</span>',
+                                    '<span>Absorbing is the simplest way of conquering a star system. Unfortunately, you must be on good terms with the faction in control, with over 60 reputation with them. When Absorbing, you will lose 5 reputation in doing so, which is half the amount you would lose in an invasion.</span>',
                                 '</div>',
                                 '<div class="modal-body">',
-                                    '<table class="table"><tr><td>',
-                                        '<h4>Active Scouts: <span class="scoutActive">0</span>/<span class="scoutNum">0</span></h4>',
-                                        '<button class="btn btn-default" onclick="Game.interstellarBETA.military.addScout(\'max\');">++</button>',
-                                        '<button class="btn btn-default" onclick="Game.interstellarBETA.military.addScout(1);">+</button>',
-                                        '<button class="btn btn-default" onclick="Game.interstellarBETA.military.addScout(-1);">-</button>',
-                                        '<button class="btn btn-default" onclick="Game.interstellarBETA.military.addScout(\'none\')">--</button>',
+                                    '<table style="height:100%" class="table"><tr><td style="text-align:center;" vertical-align="middle">',
                                         '<div class="btn btn-default disabled" id="{{htmlId}}_absorbButton" onclick="Game.interstellarBETA.military.absorbSystem(\'{{id}}\');">Absorb (5 Opinion)</div>',
-                                        '<br><h4>Success Chance: <span id="{{htmlId}}_spyChance">90</span>%',
-                                    '</td><td style="text-align:center;">',
-                                        '<h4>System Fleet Status:</h4>',
-                                        '<span id="{{htmlId}}_power}}">??</span> Power,',
-                                        '<span id="{{htmlId}}_defense}}">??</span> Defense,',
-                                        '<span id="{{htmlId}}_speed}}">??</span> Speed',
-                                        '<br><br>',
-                                        '<h4>Fleet Breakdown</h4>',
-                                        '<span id="{{htmlId}}_ships">???</span>',
-                                    '</td><td style="text-align:center;">',
-                                        '<h4>Threat Level: (<span id="{{htmlId}}_threat">•</span>)<br><br>',
-                                        '<button class="btn btn-default">Send Scouts</button>',
                                     '</td></tr></table>',
                                 '</div>',
                                 '<div class="modal-footer">',
@@ -260,8 +244,12 @@ Game.interstellarUI = (function(){
                     '</div>',
 
 
-                '</hide></td><td colspan="1"><br><br><br>',
-                '<p>{{desc}}</p>',
+                '</hide></td><td colspan="1">',
+                '<h3 class="btn-link">Resource Production:</h3>',
+                '<h4>{{resource1}}:</h4>',
+                '<span class="star_{{resource1}}_prod">0</span> / Second',
+                '<h4>{{resource2}}:</h4>',
+                '<span class="star_{{resource2}}_prod">0</span> / Second',
                 '</td></tr>'].join('\n'));
 
         instance.invadeShipsTemplate = Handlebars.compile(
@@ -379,6 +367,7 @@ Game.interstellarUI = (function(){
             document.getElementById("intnav_antimatter_current").className = "";
         }
 
+        //displayNeedsUpdate
         for(var id in Game.stargaze.entries){
             var data = Game.stargaze.getStargazeData(id);
             if(data.category == "faction"){
@@ -400,13 +389,6 @@ Game.interstellarUI = (function(){
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
                 document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction";
-                // Enables Absorb Button
-                var faction = Game.stargaze.getStargazeData(data.factionId);
-                if(faction.opinion >= 60){
-                    document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default";
-                } else {
-                    document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default disabled";
-                }
                 //Update System Status
                 if(data.owned){
                     $('#star_' + id + '_owned').text("Conquered");
@@ -414,6 +396,62 @@ Game.interstellarUI = (function(){
                 } else {
                     $('#star_' + id + '_owned').text("Protected");
                     document.getElementById('star_' + id + '_conquerButtons').className = "";
+
+                    var multi = Game.interstellarBETA.military.getMultiplier(data.factionId);
+
+                    // Updates Spy Chance
+                    var spyChance = Game.interstellarBETA.military.getSpyChance(data, multi);
+                    $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
+
+                    // Updates Threat Level
+                    var threat = Game.interstellarBETA.military.getThreat(data.stats.power*multi);
+                    $('.star_' + data.id + '_threat').text(threat);
+
+                    // Updates Victory Chance
+                    var chance = Game.interstellarBETA.military.getChance(data);
+                    if(chance > 1){
+                        chance = 100;
+                    } else {
+                        chance *= 100;
+                    }
+                    $('.star_' + data.id + '_invadeChance').text(Game.settings.format(chance,2));
+
+
+                    // Updates Multiplier
+                    $('.' + data.factionId + '_multiplier').text(multi);
+
+                    // Updates System Stats
+                    if(data.spy != 0){
+                        for(var stat in data.stats){
+                            var unknown = "";
+                            if(stat == "speed"){
+                                var val = (data.stats[stat]).toString();
+                                for(var i = 0; i < val.length - (data.spy-1); i++){
+                                    unknown += "?";
+                                }
+                                $('.star_' + data.id + '_' + stat).text(val.substring(0,data.spy-1) + unknown);
+                            } else {
+                                var val = (data.stats[stat]*multi).toString();
+                                for(var i = 0; i < val.length - (data.spy-1); i++){
+                                    unknown += "?";
+                                }
+                                $('.star_' + data.id + '_' + stat).text(val.substring(0,data.spy-1) + unknown);
+                            }
+                        }
+                    } else {
+                        for(var stat in data.stats){
+                            $('.star_' + data.id + '_' + stat).text("???");
+                        }
+                    }
+
+                    // Enables Absorb Button
+                    if(multi == 0){
+                        document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default";
+                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default disabled";
+                    } else {
+                        document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default disabled";
+                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default";
+                    }
                 }
                 continue;
             }
@@ -732,7 +770,7 @@ Game.interstellarUI = (function(){
             costElement.empty();
             costElement.append($(costDisplayData));
         }
-
+        Game.interstellarBETA.military.updateCost(data.entryName);
         data.displayNeedsUpdate = false;
     };
 

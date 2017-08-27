@@ -1126,9 +1126,7 @@ function refreshTabs(){
  		document.getElementById("solCenter").className = "outer sideTab";
  	}
     if(contains(buttonsHidden, "rebuildStargate")){
-        if(contains(buttonsHidden, "wonderTab") === false){
-            buttonsHidden.push("wonderTab");
-        }
+        document.getElementById("wonderTab").className = "completed";
     }
  	for(var i=0; i<buttonsHidden.length; i++){
  		document.getElementById(buttonsHidden[i]).className += " hidden";

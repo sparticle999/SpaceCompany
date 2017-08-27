@@ -15,9 +15,10 @@ Game.interstellarBETA.stars = (function(){
                 id: id,
                 htmlId: 'star_' + id,
                 current: 0,
-                displayNeedsUpdate: false,
+                spy: 0,
                 explored: false,
                 owned: false,
+                displayNeedsUpdate: false,
             });
             
         }

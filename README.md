@@ -71,6 +71,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - The Wonder Tab hides itself when completed (makes space for more tabs)
 - Rebuilt Achievement Tooltips
 - Dark Matter
+- Hide Completed Tabs Button
 
 ##### Small Changes
 

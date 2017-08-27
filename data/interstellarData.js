@@ -376,9 +376,9 @@ Game.militaryData = (function(){
 			'meteorite': 1700000000
 		},
 		defaultCost: {
-			'metal': 38600000000,
-			'ice': 4320000000,
-			'meteorite': 15800000
+			'lunarite': 5300000000,
+			'helium': 4600000000,
+			'meteorite': 1700000000
 		}
 	};
 

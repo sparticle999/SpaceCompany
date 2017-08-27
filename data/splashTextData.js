@@ -112,6 +112,9 @@ if(currentDate.indexOf("Jan 01") !== -1){
 if(currentDate.indexOf("Feb 14") !== -1){
 	splashText = "Happy Valentines!";
 }
+if(currentDate.indexOf("Sep 12") !== -1){
+	splashText = "6 Month Anniversary! V0.5 Released!";
+}
 if(currentDate.indexOf("Dec 25") !== -1){
 	splashText = "Merry Christmas!";
 }

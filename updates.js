@@ -160,7 +160,12 @@ Game.updatesData = (function(){
 	instance.dmCounter = {
 		desc: 'Dark Matter is now calculated and shown.',
 		read: false
-	}
+	};
+
+	instance.hideButton = {
+		desc: 'You can unhide completed tabs if wanted. More -> Graphics Options.',
+		read: false
+	};
 
 	return instance;
 
