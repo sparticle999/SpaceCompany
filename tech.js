@@ -7,25 +7,36 @@ Game.tech = (function(){
     instance.techTypeCount = 0;
 
     instance.initialise = function() {
-        var techTable = $('#techTable');
         Game.techUI.initialise();
         for (var id in Game.techData) {
-            var data = Game.techData[id];
+            var data = this.initTech(id);
             this.techTypeCount++;
-            data.setId(id);
             this.entries[id] = data;
 
             // the storage techs are currently unused
             if (data.type !== TECH_TYPE.STORAGE) {
-                var html = Game.techUI.techTemplate(data);
-                techTable.append(html);
-                
-                // all currently used techs cost only science
-                var cost = Game.settings.format(data.cost['science']);
-                data.getCostElement().text(cost);
+                Game.techUI.addTech(data);
             }
         }
+        console.debug("Loaded " + this.techTypeCount + " Tech Types");
+    };
 
+    instance.initTech = function(id) {
+        var data = jQuery.extend({}, Game.techData[id]);
+        data.setId(id);
+        return data;
+    };
+
+    instance.reset = function() {
+        for (var id in Game.techData) {
+            var data = this.initTech(id);
+            this.entries[id] = data;
+
+            // the storage techs are currently unused
+            if (data.type !== TECH_TYPE.STORAGE) {
+                Game.techUI.replaceTech(data);
+            }
+        }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
 
