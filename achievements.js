@@ -33,6 +33,7 @@ Game.achievements = (function() {
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Helium", "heliumIcon", function(x) { return helium >= x}, function(x) { return helium/x }, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Ice", "iceIcon", function(x) { return ice >= x}, function(x) { return ice/x }, Game.constants.achievementResourceBrackets);
         this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Meteorite", "meteoriteIcon", function(x) { return meteorite >= x}, function(x) { return meteorite/x }, Game.constants.achievementResourceBrackets);
+        this.createAchievements(Game.constants.achievementCategoryResources, "Collect %s Silicon", "siliconIcon", function(x) { return silicon >= x}, function(x) { return silicon/x }, Game.constants.achievementResourceBrackets);
 
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Charcoal Engines", "EnergyIcon", function(x) { return charcoalEngine >= x}, function(x) { return charcoalEngine/x }, Game.constants.achievementProducerBrackets);
         this.createAchievements(Game.constants.achievementCategoryProducers, "Build %s Solar Panels", "EnergyIcon", function(x) { return solarPanel >= x}, function(x) { return solarPanel/x }, Game.constants.achievementProducerBrackets);
