@@ -13,6 +13,8 @@ Game.interstellarUI = (function(){
     instance.antimatterObservers = {};
     instance.starEntries = {};
     instance.starObservers = {};
+    instance.militaryEntries = {};
+    instance.militaryObservers = {};
     instance.titleTemplate = null;
     instance.machineTemplate = null;
     instance.navTemplate = null;
@@ -22,12 +24,7 @@ Game.interstellarUI = (function(){
 
     instance.tab = null;
 
-    instance.categoryNames = {
-        'starT1': "Tier 1 Stars",
-        'starT2': "Tier 2 Stars",
-        'starT3': "Tier 3 Stars",
-        'starT4': "Tier 4 Stars"
-    };
+    instance.categoryNames = {};
 
     instance.initialise = function() {
         if(Game.constants.enableInterstellar === false) {
@@ -44,12 +41,27 @@ Game.interstellarUI = (function(){
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
-        instance.factionTitleTemplate = Handlebars.compile(
+        instance.militaryTitleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',
+                '<h2 class="default btn-link">{{name}}</h2>',
+                '<h4><b>Total Fleet Attributes:</b></h4>',
+                '<span class="fleetPower">0</span> Power,',
+                '<span class="fleetDefense">0</span> Defense,',
+                '<span class="fleetSpeed">0</span> Speed',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
+        instance.factionTitleTemplate = Handlebars.compile(
+            ['<tr><td style="border:none; width:50%;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<h4><b>Relationship: {{opinion}}</b></h4>',
                 '<span>{{desc}}</span>',
                 '<br><br>',
+                '</td><td style="border:none; width:50%;">',
+                '<br><br><br><h4><b>Your Invasion Fleet:</b></h4>',
+                '<h4><span class="fleetPower">0</span> Power,',
+                '<span class="fleetDefense">0</span> Defense,',
+                '<span class="fleetSpeed">0</span> Speed</h4>',
                 '</td></tr>'].join('\n'));
 
         instance.commMachineTemplate = Handlebars.compile(
@@ -63,11 +75,12 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.machineTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td style="border:none;">',
+            ['<tr id="{{htmlId}}"></tr><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_prod"></p>',
+                    '<p id="{{htmlId}}_use"></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.interstellarBETA.antimatter.buildMachine(\'{{entryName}}\')" class="btn btn-default">Get 1</div>',
@@ -100,7 +113,6 @@ Game.interstellarUI = (function(){
             ['<tr id="{{htmlId}}" class="hidden"><td style="width:300px;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<h5>',
-                    'Tier: {{tier}}<br>',
                     'Distance: {{distance}} (<span id="{{htmlId}}Cost">{{cost}}</span> Antimatter)<br>',
                     'Planets: {{planets}}<br>',
                 '</h5>',
@@ -110,19 +122,154 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.factionStarTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="2">',
+            ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="1">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}: <span id="{{htmlId}}_owned">Protected</span></h3>',
                 '<h5>',
-                    'Tier: {{tier}}<br>',
                     'Distance: {{distance}}<br>',
                     'Planets: {{planets}}<br>',
                     'Faction: {{faction}}<br>',
                     'Resources Present: {{resource1}}, {{resource2}}',
                 '</h5><hide id="{{htmlId}}_conquerButtons">',
-                    '<div class="btn btn-default" id="{{htmlId}}_invade" onclick="Game.interstellarBETA.stars.invadeSystem(\'{{id}}\');">Invade</div>',
-                    '<div class="btn btn-default disabled" id="{{htmlId}}_absorb" onclick="Game.interstellarBETA.stars.absorbSystem(\'{{id}}\');">Absorb (10 Opinion)</div>',
-                '</hide></td><td colspan="3"><br><br><br>',
-                '<p>{{desc}}</p>',
+
+                    // Espionage
+                    '<div class="btn btn-default" data-toggle="modal" data-target="#{{htmlId}}_spy">Espionage</div>',
+                    '<div id="{{htmlId}}_spy" class="modal fade" role="dialog">',
+                        '<div class="modal-dialog modal-lg">',
+                            '<div class="modal-content">',
+                                '<div class="modal-header">',
+                                    '<button type="button" class="close" data-dismiss="modal">&times;</button>',
+                                    '<h2 class="modal-title">{{name}}: Espionage</h2>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<span>This is where you can send ships to find information about your enemies\' fleets. At the first level, you will be able to see the number of digits in the enemy fleet statistics, with the second revealing the first digit in all three stats and each successive level will reveal the next digit.</span>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<table class="table"><tr><td>',
+                                        '<h4>Active Scouts: <span class="scoutActive">0</span>/<span class="scoutCount">0</span></h4>',
+                                        '<div class="btn-group">',
+                                        '<button style="width:40px;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'scout\', \'max\');">++</button>',
+                                        '<button style="width:40px;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'scout\', 1);">+</button>',
+                                        '<button style="width:40px;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'scout\', -1);">-</button>',
+                                        '<button style="width:40px;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'scout\', \'none\')">--</button></div>',
+                                        '<br><h4>Success Chance: <span id="{{htmlId}}_spyChance">90</span>%',
+                                    '</td><td style="text-align:center;">',
+                                        '<h4>System Fleet Statistics:</h4>',
+                                        '<span class="{{htmlId}}_power">??</span> Power,',
+                                        '<span class="{{htmlId}}_defense">??</span> Defense,',
+                                        '<span class="{{htmlId}}_speed">??</span> Speed',
+                                        '<br><br>',
+                                        // '<h4>Fleet Breakdown</h4>',
+                                        // '<span class="{{htmlId}}_ships">???</span>',
+                                    '</td><td style="text-align:center;">',
+                                        '<h4>Threat Level: (<span class="{{htmlId}}_threat">•</span>)<br><br>',
+                                        '<button class="btn btn-default" data-dismiss="modal" onclick="Game.interstellarBETA.military.spy(\'{{id}}\');">Send Scouts</button>',
+                                    '</td></tr></table>',
+                                '</div>',
+                                '<div class="modal-footer">',
+                                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</div>',
+
+                    // Invade
+                    '<div class="btn btn-default" data-toggle="modal" data-target="#{{htmlId}}_invade">Invade</div>',
+                    '<div id="{{htmlId}}_invade" class="modal fade" role="dialog">',
+                        '<div class="modal-dialog modal-lg">',
+                            '<div class="modal-content">',
+                                '<div class="modal-header">',
+                                    '<button type="button" class="close" data-dismiss="modal">&times;</button>',
+                                    '<h2 class="modal-title">{{name}}: Invasion</h2>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<span>Here, you can activate ships within your fleet and attempt to invade the faction\' star system. You reputation with them affects how prepared they are to a possible invasion. The star system\' fleet statistics take this into account already, so no extra calculation is needed. Invading has a bad effect on your reputation with the faction in question, reducing it by 10 for a successful invasion. However, due to their large ego, they take pity on failed attempts and reputation is not changed in the result of a loss.</span>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<table class="table"><tr><td id="{{htmlId}}_invadeShips" style="width:33%">',
+                                        '<h4>Active Ships:</h4>',
+                                        /***************************
+                                        ** Add Ships Procedurally **
+                                        ***************************/
+                                    '</td><td style="text-align:center; width:33%">',
+                                        '<h4>Your Active Fleet Statistics:</h4>',
+                                        '<span class="activeFleetPower">0</span> Power,',
+                                        '<span class="activeFleetDefense">0</span> Defense,',
+                                        '<span class="activeFleetSpeed">0</span> Speed',
+                                        '<br><br>',
+                                        '<h4>System Fleet Statistics:</h4>',
+                                        '<span class="{{htmlId}}_power">??</span> Power,',
+                                        '<span class="{{htmlId}}_defense">??</span> Defense,',
+                                        '<span class="{{htmlId}}_speed">??</span> Speed',
+                                        '<br><br>',
+                                        '<h4>System Fleet Power/Defense Multiplier (Reputation)</h4>',
+                                        'X<span class="{{factionId}}_multiplier">1</span>',
+                                        '<br><br>',
+                                        // '<h4>Fleet Breakdown</h4>',
+                                        // '<span class="{{htmlId}}_ships">???</span>',
+                                    '</td><td style="text-align:center; width:33%">',
+                                        '<h4>Threat Level: (<span class="{{htmlId}}_threat">•</span>)</h4>',
+                                        '<h4>Chance of Victory: <span class="{{htmlId}}_invadeChance">0</span>%</h4>',
+                                        '<button class="btn btn-default" id="{{htmlId}}_invadeButton" data-dismiss="modal" onclick="Game.interstellarBETA.military.invadeSystem(\'{{id}}\');">Attack!</button>',
+                                    '</td></tr></table>',
+                                '</div>',
+                                '<div class="modal-footer">',
+                                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</div>',
+
+                    // Absorb
+                    '<div class="btn btn-default" data-toggle="modal" data-target="#{{htmlId}}_absorb">Absorb</div>',
+                    '<div id="{{htmlId}}_absorb" class="modal fade" role="dialog">',
+                        '<div class="modal-dialog modal-lg">',
+                            '<div class="modal-content">',
+                                '<div class="modal-header">',
+                                    '<button type="button" class="close" data-dismiss="modal">&times;</button>',
+                                    '<h2 class="modal-title">{{name}}: Absorbtion</h2>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<span>Absorbing is the simplest way of conquering a star system. Unfortunately, you must be on good terms with the faction in control, with over 60 reputation with them. When Absorbing, you will lose 5 reputation in doing so, which is half the amount you would lose in an invasion.</span>',
+                                '</div>',
+                                '<div class="modal-body">',
+                                    '<table style="height:100%" class="table"><tr><td style="text-align:center;" vertical-align="middle">',
+                                        '<div class="btn btn-default disabled" id="{{htmlId}}_absorbButton" onclick="Game.interstellarBETA.military.absorbSystem(\'{{id}}\');">Absorb (5 Opinion)</div>',
+                                    '</td></tr></table>',
+                                '</div>',
+                                '<div class="modal-footer">',
+                                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</div>',
+
+
+                '</hide></td><td colspan="1">',
+                '<h3 class="btn-link">Resource Production:</h3>',
+                '<h4>{{resource1}}:</h4>',
+                '<span class="star_{{resource1}}_prod">0</span> / Second',
+                '<h4>{{resource2}}:</h4>',
+                '<span class="star_{{resource2}}_prod">0</span> / Second',
+                '</td></tr>'].join('\n'));
+
+        instance.invadeShipsTemplate = Handlebars.compile(
+            ['<h5>{{name}}: <span class="{{entryName}}Active">0</span>/<span class="{{entryName}}Count">0</span></h5>',
+                '<div class="btn-group">',
+                '<button style="width:40px; text-align:center;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'{{entryName}}\', \'max\');">++</button>',
+                '<button style="width:40px; text-align:center;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'{{entryName}}\', 1);">+</button>',
+                '<button style="width:40px; text-align:center;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'{{entryName}}\', -1);">-</button>',
+                '<button style="width:40px; text-align:center;" class="btn btn-default" onclick="Game.interstellarBETA.military.addShip(\'{{entryName}}\', \'none\')">--</button></div><br>',].join('\n'));
+
+        instance.militaryShipTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"></tr><td>',
+                '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
+                '<span>',
+                    '<p>{{desc}}</p>',
+                    '<p id="{{htmlId}}_stats">Attributes: {{stats.power}} Power, {{stats.defense}} Defense, {{stats.speed}} Speed</p>',
+                    '<p id="{{htmlId}}_cost"></p>',
+                '</span>',
+                '<div id="{{htmlId}}_buy" onclick="Game.interstellarBETA.military.buildShip(\'{{entryName}}\')" class="btn btn-default">Get 1</div>',
+                '<div id="{{htmlId}}_destroy" onclick="Game.interstellarBETA.military.destroyShip(\'{{entryName}}\')" class="btn btn-default">Destroy 1</div>',
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
@@ -131,9 +278,10 @@ Game.interstellarUI = (function(){
                 '</td>',].join('\n'));
 
         instance.rocketNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="3">',
+            ['<td style="vertical-align:middle;" colspan="1">',
                     '<span>{{name}}</span>',
-                '</td>',].join('\n'));
+                '</td><td style="vertical-align:middle; text-align:right;" colspan="2">',
+                '<span id="interRocketBuilt" class="red">Not Built</span>'].join('\n'));
 
         instance.antimatterNavTemplate = Handlebars.compile(
             ['<td style="vertical-align:middle;">',
@@ -147,7 +295,7 @@ Game.interstellarUI = (function(){
                 '</td>'].join('\n'));
 
         instance.factionNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}" onclick="navClicked(\'{{htmlId}}\')">',
                     '<div id="{{htmlId}}NavGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
                     '<span>{{name}}</span>',
                 '</td>',
@@ -202,7 +350,15 @@ Game.interstellarUI = (function(){
             }
         }
 
+        for(var id in this.militaryEntries) {
+            var data = Game.interstellarBETA.military.getShipData(id);
+            if(data.displayNeedsUpdate === true) {
+                this.updateMilitaryShipDisplay(data);
+            }
+        }
+
         // Updates Antimatter Nav
+        //displayNeedsUpdate
         $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
         $('#intnav_antimatter_perSecond').text(antimatterps);
         if(antimatter >= 100000){
@@ -211,6 +367,7 @@ Game.interstellarUI = (function(){
             document.getElementById("intnav_antimatter_current").className = "";
         }
 
+        //displayNeedsUpdate
         for(var id in Game.stargaze.entries){
             var data = Game.stargaze.getStargazeData(id);
             if(data.category == "faction"){
@@ -227,17 +384,11 @@ Game.interstellarUI = (function(){
         }
 
         for(var id in this.starEntries){
+            //displayNeedsUpdate
             var data = Game.interstellarBETA.stars.getStarData(id);
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
                 document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction";
-                // Enables Absorb Button
-                var faction = Game.stargaze.getStargazeData(data.factionId);
-                if(faction.opinion >= 60){
-                    document.getElementById('star_' + id + '_absorb').className = "btn btn-default";
-                } else {
-                    document.getElementById('star_' + id + '_absorb').className = "btn btn-default disabled";
-                }
                 //Update System Status
                 if(data.owned){
                     $('#star_' + id + '_owned').text("Conquered");
@@ -245,6 +396,62 @@ Game.interstellarUI = (function(){
                 } else {
                     $('#star_' + id + '_owned').text("Protected");
                     document.getElementById('star_' + id + '_conquerButtons').className = "";
+
+                    var multi = Game.interstellarBETA.military.getMultiplier(data.factionId);
+
+                    // Updates Spy Chance
+                    var spyChance = Game.interstellarBETA.military.getSpyChance(data, multi);
+                    $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
+
+                    // Updates Threat Level
+                    var threat = Game.interstellarBETA.military.getThreat(data.stats.power*multi);
+                    $('.star_' + data.id + '_threat').text(threat);
+
+                    // Updates Victory Chance
+                    var chance = Game.interstellarBETA.military.getChance(data);
+                    if(chance > 1){
+                        chance = 100;
+                    } else {
+                        chance *= 100;
+                    }
+                    $('.star_' + data.id + '_invadeChance').text(Game.settings.format(chance,2));
+
+
+                    // Updates Multiplier
+                    $('.' + data.factionId + '_multiplier').text(multi);
+
+                    // Updates System Stats
+                    if(data.spy != 0){
+                        for(var stat in data.stats){
+                            var unknown = "";
+                            if(stat == "speed"){
+                                var val = (data.stats[stat]).toString();
+                                for(var i = 0; i < val.length - (data.spy-1); i++){
+                                    unknown += "?";
+                                }
+                                $('.star_' + data.id + '_' + stat).text(val.substring(0,data.spy-1) + unknown);
+                            } else {
+                                var val = (data.stats[stat]*multi).toString();
+                                for(var i = 0; i < val.length - (data.spy-1); i++){
+                                    unknown += "?";
+                                }
+                                $('.star_' + data.id + '_' + stat).text(val.substring(0,data.spy-1) + unknown);
+                            }
+                        }
+                    } else {
+                        for(var stat in data.stats){
+                            $('.star_' + data.id + '_' + stat).text("???");
+                        }
+                    }
+
+                    // Enables Absorb Button
+                    if(multi == 0){
+                        document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default";
+                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default disabled";
+                    } else {
+                        document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default disabled";
+                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default";
+                    }
                 }
                 continue;
             }
@@ -252,12 +459,6 @@ Game.interstellarUI = (function(){
                 document.getElementById('star_' + id).className = "";
             }
             $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
-        }
-
-        for(var id in this.antimatterEntries){
-            for (var resource in this.antimatterEntries[id].resourcePerSecond){
-                console.log(resource);
-            }
         }
 
         // for(var id in Game.interstellarBETA.categoryEntries) {
@@ -305,6 +506,43 @@ Game.interstellarUI = (function(){
         this.antimatterEntries[machineData.id] = data.id;
         this.antimatterObservers[machineData.id] = [];
         Game.ui.bindElement("antimatter_" + machineData.entryName + "Count", function(){ return Game.settings.format(machineData.count); });
+
+        var segmentsUse = [];
+        var segmentsProd = [];
+        for(var resource in machineData.resourcePerSecond){
+            var segmentX = {n: Game.utils.capitaliseFirst(resource), p: machineData.resourcePerSecond[resource]};
+            if(segmentX.p < 0){
+                segmentsUse.push(segmentX);
+            } else {
+                segmentsProd.push(segmentX);
+            }
+        }
+        var useHtml = "<span>Uses </span>";
+        var prodHtml = "<span>Produces </span>";
+        for(var i = 0; i < segmentsUse.length; i++){
+            var segmentData = segmentsUse[i];
+            var html = '<span id="' + segmentData.n + 'Use">' + (segmentData.p*-1) + " " + segmentData.n + '</span>';
+            useHtml += html;
+            if(i < segmentsUse.length - 1) {
+                useHtml += '<span>, </span>';
+            }
+        }
+        for(var i = 0; i < segmentsProd.length; i++){
+            var segmentData = segmentsProd[i];
+            var html = '<span id="' + segmentData.n + 'Prod">' + segmentData.p + " " + segmentData.n + '</span>';
+            prodHtml += html;
+            if(i < segmentsProd.length - 1) {
+                prodHtml += '<span>, </span>';
+            }
+        }
+        useHtml += '<span> per second.</span>'
+        prodHtml += '<span> per second.</span>'
+        var target = $('#antimatter_' + machineData.id + '_use');
+        target.empty()
+        target.append(useHtml);
+        var target = $('#antimatter_' + machineData.id + '_prod');
+        target.empty()
+        target.append(prodHtml);
     };
 
     instance.createStar = function(data, starData) {
@@ -324,6 +562,23 @@ Game.interstellarUI = (function(){
 
         var factionTabContentRoot = $('#' + this.tab.getContentElementId(starData.factionId));
         factionTabContentRoot.append($(factionStar));
+
+        for(ship in Game.interstellarBETA.military.entries){
+            var shipData = Game.interstellarBETA.military.getShipData(ship);
+            var target = $('#' + starData.htmlId + '_invadeShips');
+            var html = this.invadeShipsTemplate(shipData);
+            target.append($(html));
+        }
+    };
+
+    instance.createMilitaryShip = function(data, shipData) {
+        var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        var ship = this.militaryShipTemplate(shipData);
+        tabContentRoot.append($(ship));
+
+        this.militaryEntries[shipData.id] = data.id;
+        this.militaryObservers[shipData.id] = [];
+        Game.ui.bindElement("milit_" + shipData.entryName + "Count", function(){ return Game.settings.format(shipData.count); });
     };
 
     instance.createCommsContent = function(data){
@@ -374,6 +629,17 @@ Game.interstellarUI = (function(){
         }
     }
 
+    instance.createMilitaryContent = function(data){
+        var target = $('#' + this.tab.getContentElementId(data.id));
+        var tabTitle = this.militaryTitleTemplate(data);
+        target.append(tabTitle);
+
+        for (var id in Game.interstellarBETA.military.entries){
+            var shipData = Game.interstellarBETA.military.entries[id];
+            this.createMilitaryShip(data, shipData);
+        }
+    }
+
     instance.createFactionContent = function(data){
         var target = $('#' + this.tab.getContentElementId(data.id));
         var tabTitle = this.factionTitleTemplate(data);
@@ -390,23 +656,29 @@ Game.interstellarUI = (function(){
     instance.createInterstellarNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
         var html = this.navTemplate(data);
-        if(data.id === "antimatter"){
-            var html = this.antimatterNavTemplate(data);
-            this.createAntimatterContent(data);
+        if(data.id == "comms"){
+            this.createCommsContent(data);
         }
         else if(data.id ==="rocket"){
             var html = this.rocketNavTemplate(data);
             this.createRocketContent(data);
         }
+        else if(data.id === "antimatter"){
+            var html = this.antimatterNavTemplate(data);
+            this.createAntimatterContent(data);
+        }
         else if(data.id ==="travel"){
             this.createTravelContent(data);
+        }
+        else if(data.id == "military"){
+            this.createMilitaryContent(data);
         }
         else if(data.category ==="faction"){
             var html = this.factionNavTemplate(data);
             this.createFactionContent(data);
-        }
-        else{
-            this.createCommsContent(data);
+        } else {
+            console.log(data)
+            console.error(data.id + " is not a valid nav.")
         }
         target.append($(html));
     };
@@ -419,24 +691,6 @@ Game.interstellarUI = (function(){
         this.createInterstellarNav(data);
 
         this.entries[data.htmlId] = data;
-    };
-
-    instance.updateMachineDisplay = function(data) {
-        var element = $('#' + data.htmlId);
-        if(data.unlocked === true) {
-            element.show();
-        } else {
-            element.hide();
-        }
-        // Update the cost display
-        if(data.cost) {
-            var costDisplayData = this.buildCostDisplay(this.commObservers[data.id] || this.antimatterObservers[data.id], data);
-            var costElement = $('#' + data.htmlId + '_cost');
-            costElement.empty();
-            costElement.append($(costDisplayData));
-        }
-
-        data.displayNeedsUpdate = false;
     };
 
     instance.updatePartDisplay = function(data) {
@@ -484,6 +738,42 @@ Game.interstellarUI = (function(){
         data.displayNeedsUpdate = false;
     };
 
+    instance.updateMachineDisplay = function(data) {
+        var element = $('#' + data.htmlId);
+        if(data.unlocked === true) {
+            element.show();
+        } else {
+            element.hide();
+        }
+        // Update the cost display
+        if(data.cost) {
+            var costDisplayData = this.buildCostDisplay(this.commObservers[data.id] || this.antimatterObservers[data.id], data);
+            var costElement = $('#' + data.htmlId + '_cost');
+            costElement.empty();
+            costElement.append($(costDisplayData));
+        }
+
+        data.displayNeedsUpdate = false;
+    };
+
+    instance.updateMilitaryShipDisplay = function(data) {
+        var element = $('#' + data.htmlId);
+        if(data.unlocked === true) {
+            element.show();
+        } else {
+            element.hide();
+        }
+        // Update the cost display
+        if(data.cost) {
+            var costDisplayData = this.buildCostDisplay(this.commObservers[data.id] || this.militaryObservers[data.id], data);
+            var costElement = $('#' + data.htmlId + '_cost');
+            costElement.empty();
+            costElement.append($(costDisplayData));
+        }
+        Game.interstellarBETA.military.updateCost(data.entryName);
+        data.displayNeedsUpdate = false;
+    };
+
     instance.buildCostDisplay = function(observerArray, data) {
         for(var i = 0; i < observerArray.length; i++) {
             observerArray[i].delete();
@@ -494,12 +784,12 @@ Game.interstellarUI = (function(){
 
         var segments = [];
         for(var id in data.cost) {
+
             var resourceData = Game.resources.getResourceData(id);
             if(!data) {
                 console.error("Unknown Resource in cost: " + id);
                 continue;
             }
-
             segments.push({i: id, h: data.htmlId + '_' + id + '_c', n: resourceData.name, c: data.cost[id]});
         }
 

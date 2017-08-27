@@ -49,6 +49,13 @@ Game.interstellarData = (function(){
 		unlocked: false
 	};
 
+	instance.military = {
+		name: 'Military',
+		desc: 'This is where you can build up your fleet of ships to invade other systems. Your total fleet\'s attributes are based on which ships you own.',
+		category: 'general',
+		unlocked: false
+	};
+
 	instance.carnelian = {
 		name: "Carnelian Resistance",
 		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
@@ -244,6 +251,134 @@ Game.antimatterData = (function(){
 			'silver': 163000000,
 			'oil': 712000000,
 			'meteorite': 12300000
+		}
+	};
+
+	return instance;
+
+}());
+
+Game.militaryData = (function(){
+
+	var instance = {};
+
+	instance.scout = {
+		entryName: 'scout',
+		name: 'Scout',
+		desc: 'Scout ships are the smallest and fastest ships and cost the least of all. Despite their seemingly little worth, they are important in battle and in numbers, can be deadly.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		stats: {
+			'power': 3,
+			'defense': 2,
+			'speed': 15
+		},
+		cost: {
+			'metal': 870000000,
+			'gem': 420000000,
+			'silver': 390000000
+		},
+		defaultCost: {
+			'metal': 870000000,
+			'gem': 420000000,
+			'silver': 390000000
+		}
+	};
+
+	instance.frigate = {
+		entryName: 'frigate',
+		name: 'Frigate',
+		desc: 'Larger than scouts, Frigates are among the smaller side of ship warefare. They have more power than scouts, but are significantly slower.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		stats: {
+			'power': 5,
+			'defense': 6,
+			'speed': 12
+		},
+		cost: {
+			'gold': 930000000,
+			'lunarite': 6100000000,
+			'meteorite': 13000000
+		},
+		defaultCost: {
+			'gold': 930000000,
+			'lunarite': 6100000000,
+			'meteorite': 13000000
+		}
+	};
+
+	instance.corvette = {
+		entryName: 'corvette',
+		name: 'Corvette',
+		desc: 'The Corvette is a mid-sized ship with decent speed, given its other attributes. What it lacks in defense, it makes up for in power and speed and is a good ship to populate your fleets with.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		stats: {
+			'power': 8,
+			'defense': 4,
+			'speed': 10
+		},
+		cost: {
+			'titanium': 1620000000,
+			'ice': 1020000000,
+			'silicon': 1140000000
+		},
+		defaultCost: {
+			'titanium': 1620000000,
+			'ice': 1020000000,
+			'silicon': 1140000000
+		}
+	};
+
+	instance.battlecruiser = {
+		entryName: 'battlecruiser',
+		name: 'Battle Cruiser',
+		desc: 'The Battle Cruiser is a costly investment, but pays off with a balanced mix of power, defense and speed. It is a high-end ship, both in terms of attributes and cost.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		stats: {
+			'power': 15,
+			'defense': 13,
+			'speed': 9
+		},
+		cost: {
+			'metal': 4900000000,
+			'uranium': 2300000000,
+			'hydrogen': 3100000000
+		},
+		defaultCost: {
+			'metal': 4900000000,
+			'uranium': 2300000000,
+			'hydrogen': 3100000000
+		}
+	};
+
+	instance.capitalship = {
+		entryName: 'capitalship',
+		name: 'Capital Ship',
+		desc: 'The Capital Ship is a Defense-heavy ship, but can still pack a punch with it\'s large attack force. The main downside is the slow speed, dragging the fleet\'s manouverability down.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		stats: {
+			'power': 18,
+			'defense': 20,
+			'speed': 5
+		},
+		cost: {
+			'lunarite': 5300000000,
+			'helium': 4600000000,
+			'meteorite': 1700000000
+		},
+		defaultCost: {
+			'lunarite': 5300000000,
+			'helium': 4600000000,
+			'meteorite': 1700000000
 		}
 	};
 

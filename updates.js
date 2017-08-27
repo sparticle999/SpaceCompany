@@ -6,29 +6,44 @@ Game.updates = (function(){
 	instance.versionNumber = 1;
 	instance.updateRead = false;
 
+	instance.updateTitleTemplate = Handlebars.compile(['<div id="updateAlert" class="alert alert-info alert-dismissible fade in">',
+	    '<button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>',
+	    '<strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>',
+	    '<ul id="updateLog"></ul>',
+	'</div>'].join('\n'));
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');
 
 	instance.initialise = function(){
-		var extra = 0;
-		for(var id in Game.updatesData) {
-			if(this.entries.length < 5){
-				this.createDisplay(Game.updatesData[id]);
-			}
-			else{
-				extra += 1;
-			}
-            
-        }
-        if(extra > 0){
-        	var extraUpdates = {
-        		desc: '+' + extra + ' more. Click the version number to see the full changelog.',
-        		read: false
-        	}
-        	this.createDisplay(extraUpdates);
-        }
-    	if(this.updateRead === false){
-    		document.getElementById("updateAlert").className = "hidden";
-    	}
+		if(metal != 0){
+			var extra = 0;
+			var target = $('#updateBox');
+			var html = this.updateTitleTemplate();
+			target.append($(html));
+			for(var id in Game.updatesData) {
+				if(this.entries.length < 5){
+					this.createDisplay(Game.updatesData[id]);
+				}
+				else{
+					extra += 1;
+				}
+	            
+	        }
+	        if(extra > 0){
+	        	var extraUpdates = {
+	        		desc: '+' + extra + ' more. Click the version number to see the full changelog.',
+	        		read: false
+	        	}
+	        	this.createDisplay(extraUpdates);
+	        }
+	    	if(this.updateRead === false){
+	    		document.getElementById("updateAlert").className = "hidden";
+	    	}
+	    } else {
+	    	for(var id in Game.updatesData) {
+				Game.updatesData[id].read = true;
+	            
+	        }
+	    }
 	}
 
 	instance.createDisplay = function(self){
@@ -145,7 +160,17 @@ Game.updatesData = (function(){
 	instance.dmCounter = {
 		desc: 'Dark Matter is now calculated and shown.',
 		read: false
-	}
+	};
+
+	instance.hideButton = {
+		desc: 'You can unhide completed tabs if wanted. More -> Graphics Options.',
+		read: false
+	};
+
+	instance.achivementsReset = {
+		desc: 'Achievements have been reset, you will get back any you are currently over the level needed for.',
+		read: false
+	};
 
 	return instance;
 
