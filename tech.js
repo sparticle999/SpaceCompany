@@ -22,6 +22,7 @@ Game.tech = (function(){
     };
 
     instance.initTech = function(id) {
+        // using extend to create a new object and leave the defaults unchanged
         var data = jQuery.extend({}, Game.techData[id]);
         data.setId(id);
         return data;
