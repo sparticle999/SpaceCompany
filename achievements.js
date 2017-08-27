@@ -4,7 +4,7 @@ Game.achievements = (function() {
 
 	var instance = {};
 
-	instance.dataVersion = 5;
+	instance.dataVersion = 6;
 
 	instance.nextId = 0;
 
@@ -100,31 +100,19 @@ Game.achievements = (function() {
 	instance.load = function(data) {
 		if (data.achievements && data.achievements.version) {
 			switch (data.achievements.version) {
-				case 5: this.loadV5(data); break;
-				case 4: this.loadV4(data); break;
+				case 6: this.loadV6(data); break;
 				default: console.debug("Could not load saved achievement data from version " + data.achievements.version); break;
 			}
 		}
 	};
 
-	instance.loadV5 = function(data) {
+	instance.loadV6 = function(data) {
 		if (data.achievements) {
 			for (var id in data.achievements.entries) {
 				if (this.entries[id]) {
-					if (data.achievements.entries[id].unlocked) {
+					if (data.achievements.entries[id].unlocked >= 0) {
 						this.unlock(id, data.achievements.entries[id].unlocked);
 					}
-				}
-			}
-		}
-	};
-
-	instance.loadV4 = function(data) {
-		if (data.achievements && data.achievements.entries) {
-			for (var id in this.entries) {
-				var id_v4 = Game.achievementsData[id].id_v4;
-				if (id_v4 && data.achievements.entries[id_v4]) {
-					this.unlock(id, data.achievements.entries[id_v4]);
 				}
 			}
 		}
