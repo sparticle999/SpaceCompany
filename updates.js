@@ -167,6 +167,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.achivementsReset = {
+		desc: 'Achievements have been reset, you will get back any you are currently over the level needed for.',
+		read: false
+	};
+
 	return instance;
 
 }());

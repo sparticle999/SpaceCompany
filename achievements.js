@@ -3,7 +3,7 @@ Game.achievements = (function() {
 
     var instance = {};
 
-    instance.dataVersion = 4;
+    instance.dataVersion = 5;
 
     instance.nextId = 0;
 

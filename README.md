@@ -103,6 +103,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Refactored EMC (behind the scenes)
 - Optimised Saving and Loading
 - Time until storage full now shows until empty if negative gain
+- Reset achievements
 
 ##### Bug Fixes
 
@@ -138,6 +139,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Exponential Notation UI
 - Fixed Typos
 - Fixed Stargaze not showing up until refresh
+- Fixed Silicon Achievement not existing
 
 ### v0.4.4
 ##### Features
