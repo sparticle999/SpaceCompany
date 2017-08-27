@@ -35,7 +35,7 @@ Game.techUI = (function() {
 	};
 
 	instance.removeTech = function(data) {
-		this.techTable.remove(data.htmlId);
+		$('#' + data.htmlId).remove();
 	};
 
 	instance.replaceTech = function(data) {

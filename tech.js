@@ -37,6 +37,7 @@ Game.tech = (function(){
                 Game.techUI.replaceTech(data);
             }
         }
+        refreshResearches();
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
 
