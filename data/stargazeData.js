@@ -138,6 +138,15 @@ Game.prestigeData = (function(){
 	** General **
 	************/
 
+	instance.rebirth = {
+		name: "Rebirth",
+		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before.",
+		cost: 0,
+		category: "intro",
+		achieved: false,
+		disabled: "disabled"
+	};
+
 	instance.unlockStargaze = {
 		name: "Rebirth Upgrades",
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",

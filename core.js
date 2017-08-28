@@ -986,11 +986,11 @@ function refreshResearches(){
         document.getElementById("solarPower").className = "";
     }
     if (Game.tech.isPurchased('unlockMachines')) {
-        document.getElementById("oilMachine1").className = "";
-        document.getElementById("metalMachine1").className = "";
-        document.getElementById("gemMachine1").className = "";
-        document.getElementById("charcoalMachine1").className = "";
-        document.getElementById("woodMachine1").className = "";
+        document.getElementById("oilTier2").className = "";
+        document.getElementById("metalTier2").className = "";
+        document.getElementById("gemTier2").className = "";
+        document.getElementById("charcoalTier2").className = "";
+        document.getElementById("woodTier2").className = "";
     }
     if (Game.tech.isPurchased('unlockDestruction')) {
         for(i = 0; i < document.getElementsByClassName("destroy").length; i++){
@@ -1121,7 +1121,7 @@ function refreshTabs(){
  	document.getElementById("rocketFuelNav").className = "sideTab";
  	if(rocketLaunched === true){
  		document.getElementById("spaceRocket").className = "sideTab hidden";
-  		document.getElementById("collapseInner").className ="collapseInner sideTab";
+  		document.getElementById("collapseInner").className = "collapseInner sideTab";
 		document.getElementById("moon").className = "inner sideTab";
 		document.getElementById("mercury").className = "inner sideTab";
 		document.getElementById("venus").className = "inner sideTab";

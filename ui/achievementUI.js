@@ -121,6 +121,10 @@ Game.achievementsUI = (function(){
         div.attr('data-original-title', Game.achievements.getAchievementTitle(data, true));
 
         div.css('border-color', Game.constants.achievementBracketColors[data.unlocked]);
+        if(data.unlocked == -1){
+            div.css('border-color', '#ffffff');
+            //div.fadeTo(2, 0.2);
+        }
 
         $('#' + id + '_img').width(12 * (data.unlocked + 1));
 
