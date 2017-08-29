@@ -60,10 +60,10 @@ Game.stargazeUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2" class={{hidden}}>',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1" class={{hidden}}>',
                     '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
@@ -81,6 +81,17 @@ Game.stargazeUI = (function(){
                 '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
+        instance.rebirthTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"><td>',
+                '<h3 class="default btn-link">{{name}}</h3>',
+                '<span>',
+                    '<p>{{desc}}</p>',
+                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
+                '</span>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Rebirth</div>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
         instance.upgradeTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Achieved">Dormant</span></h3>',
@@ -88,7 +99,7 @@ Game.stargazeUI = (function(){
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
-                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default {{disabled}}">Activate</div>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default">Activate</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -123,24 +134,54 @@ Game.stargazeUI = (function(){
             }
         }
 
-        // for(var id in Game.resources.categoryEntries) {
-        //     if(this.tab.categoryHasVisibleEntries(id) === true) {
-        //         this.tab.showCategory(id);
-        //     } else {
-        //         this.tab.hideCategory(id);
-        //     }
-        // }
+        if(Game.stargaze.rebirthNeedsUpdate === true){
+            var stargaze = Game.stargaze;
+            // Unhides relevant elements
+            for(var i = 0; i < stargaze.rebirthUnlocked.length; i++){
+                var string = document.getElementById(stargaze.rebirthUnlocked[i]).className;
+                document.getElementById(stargaze.rebirthUnlocked[i]).className = string.substring(0, string.indexOf("hidden"));
+                console.log(string.substring(0, string.indexOf("hidden")));
+            }
+            for(var i = 0; i < stargaze.rebirthChildUnlocked.length; i++){
+                var children = $('#'+ stargaze.rebirthChildUnlocked[i]).children();
+                for(var j = 0; j < children.length; j++){
+                    children[j].className = "";
+                }
+            }
+            // Hides achieved upgrades // (for later)
+            // for(var id in Game.stargaze.upgradeEntries){
+            //     var data = Game.stargaze.upgradeEntries[id];
+            //     if(data.achieved == true){
+            //         document.getElementById("stargazeUpg" + id).className = "hidden";
+            //     }
+            // }
+
+            // Marks achieved upgrades as 'Activated'
+            for(var id in Game.stargaze.upgradeEntries){
+                var data = Game.stargaze.upgradeEntries[id];
+                if(data.achieved == true){
+                    if(id != 'rebirth'){
+                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
+                    }
+                }
+            }
+            stargaze.rebirthNeedsUpdate = false;
+        }
     };
 
     instance.createDMInfo = function(data, dmInfoData){
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         var dmInfo = this.dmInfoTemplate(dmInfoData);
         tabContentRoot.append($(dmInfo));
-    }
+    };
 
     instance.createUpgrade = function(data, upgradeData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        var upgrade = this.upgradeTemplate(upgradeData);
+        if(upgradeData.name == "Rebirth"){
+            var upgrade = this.rebirthTemplate(upgradeData);
+        } else {
+            var upgrade = this.upgradeTemplate(upgradeData);
+        }
         tabContentRoot.append($(upgrade));
         this[upgradeData.category + "Entries"][upgradeData.id] = upgradeData;
         //this.upgradeObservers[upgradeData.id] = [];
@@ -221,6 +262,8 @@ Game.stargazeUI = (function(){
             Game.stargaze.entries.darkMatter.current = DM;
             $('#stargazeNavdarkMatter_current').text(DM);
         }
+
+        $('#stargazeNavdarkMatter_count').text(Game.stargaze.entries.darkMatter.count);
     }
 
     instance.buildCostDisplay = function(observerArray, data) {

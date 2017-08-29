@@ -143,8 +143,6 @@ Game.prestigeData = (function(){
 		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before.",
 		cost: 0,
 		category: "intro",
-		achieved: false,
-		disabled: "disabled"
 	};
 
 	instance.unlockStargaze = {
@@ -152,8 +150,8 @@ Game.prestigeData = (function(){
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
 		cost: 1,
 		category: "intro",
+		rebirthChildUnlocked: ['tab_stargaze_carnelian_ne', 'tab_stargaze_prasnian_ne', 'tab_stargaze_hyacinite_ne', 'tab_stargaze_kitrinos_ne', 'tab_stargaze_moviton_ne', ],
 		achieved: false,
-		disabled: "disabled"
 	};
 
 	/**************
@@ -255,6 +253,14 @@ Game.prestigeData = (function(){
 		category: "moviton",
 		achieved: false
 	};
+
+	instance.spaceElevator = {
+		name: "Space Elevator",
+		desc: "Build a giant elevator to reduce antimatter costs by 20%",
+		cost: 42,
+		category: "moviton",
+		achieved: false
+	}
 
 	/*************
 	** Overlord **

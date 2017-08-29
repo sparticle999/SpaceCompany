@@ -140,6 +140,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Typos
 - Fixed Stargaze not showing up until refresh
 - Fixed Silicon Achievement not existing
+- Fixed Logo not animating
 
 ### v0.4.4
 ##### Features

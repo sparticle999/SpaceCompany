@@ -6,7 +6,7 @@ var Game = (function() {
         lastUpdateTime: 0,
         intervals: {},
         uiComponents: [],
-        logoAnimating: false,
+        logoAnimating: true,
         timeSinceAutoSave: 0,
         activeNotifications: {},
         lastFixedUpdate: new Date().getTime()
@@ -262,7 +262,7 @@ var Game = (function() {
     };
 
     instance.loadAnimation = function(self, delta) {
-        if (self.logoAnimating === true) {
+        if (self.logoAnimating === false) {
             return;
         }
 
@@ -385,7 +385,7 @@ var Game = (function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-      
+        
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 
