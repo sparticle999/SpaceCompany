@@ -295,7 +295,7 @@ function toggleAntimatter(){
 	antimatterToggled = !antimatterToggled;
 }
 
-function destroyMachine(machine, id){
+function destroyMachine(id){
 	if(window[id] > 0){
 		window[id] -= 1;
 		updateCost();

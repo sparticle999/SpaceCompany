@@ -501,7 +501,7 @@ Game.interstellarBETA.military = (function(){
     };
 
     instance.absorbSystem = function(id){
-        var data = this.entries[id];
+        var data = Game.interstellarBETA.stars.entries[id];
         var faction = Game.stargaze.getStargazeData(data.factionId);
         if(faction.opinion >= 60){
             faction.opinion -= 5;
