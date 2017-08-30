@@ -73,6 +73,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Dark Matter
 - Hide Completed Tabs Button
 - Added Astronomical Breakthrough
+- Seperate Option for Autosave Notifications
 
 ##### Small Changes
 

@@ -282,6 +282,9 @@ var Game = (function() {
     instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
 
     instance.notifyInfo = function(title, message) {
+        if(title == "Game Saved" && Game.settings.entries.saveNotifsEnabled == false){
+            return;
+        }
         if(Game.settings.entries.notificationsEnabled === true){
             this.activeNotifications.info = new PNotify({
                 title: title,
