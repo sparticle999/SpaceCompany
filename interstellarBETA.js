@@ -55,6 +55,7 @@ Game.interstellarBETA = (function(){
 
     instance.load = function(data){
         if(data.interstellarBETA){
+            console.log(data)
             if(data.interstellarBETA.comms !== 'undefined'){
                 for(id in data.interstellarBETA.comms){
                     Game.interstellarBETA.comms.entries[id] = data.interstellarBETA.comms[id];
@@ -80,6 +81,8 @@ Game.interstellarBETA = (function(){
                     Game.interstellarBETA.military.entries[id] = data.interstellarBETA.military[id];
                 }
             }
+        } else {
+            console.log("nay")
         }
     };
 

@@ -60,18 +60,18 @@ Game.stargazeUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class={{hidden}}>',
+            ['<td style="vertical-align:middle;" colspan="2">',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class={{hidden}}>',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
                     '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         instance.dmNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2">',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
                     '<span id="{{htmlId}}_count">{{count}}</span> (<span id="{{htmlId}}_current">{{current}}</span>)',
                 '</td>',].join('\n'));
 
@@ -129,8 +129,18 @@ Game.stargazeUI = (function(){
 
         for(var id in Game.stargaze.entries){
             var data = Game.stargaze.getStargazeData(id);
-            if(data.category == "faction"){
-                $('#stargazeNav' + id + '_opinion').text(data.opinion);
+            if(data.displayNeedsUpdate == true){
+                if(data.category == "faction"){
+                    $('#stargazeNav' + id + '_opinion').text(data.opinion);
+                    $('#intnav_' + id + '_opinion').text(data.opinion);
+                    console.log(data.unlocked, data)
+                    if(data.unlocked == true){
+                        document.getElementById('tab_stargaze_' + id + '_ne').className = "collapse_tab_stargaze_faction";
+                    } else {
+                        document.getElementById('tab_stargaze_' + id + '_ne').className = "collapse_tab_stargaze_faction hidden";
+                    }
+                }
+                data.displayNeedsUpdate = false;
             }
         }
 

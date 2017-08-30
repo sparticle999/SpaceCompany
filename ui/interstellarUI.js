@@ -295,11 +295,11 @@ Game.interstellarUI = (function(){
                 '</td>'].join('\n'));
 
         instance.factionNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}" onclick="navClicked(\'{{htmlId}}\')">',
+            ['<td style="vertical-align:middle;" colspan="2" onclick="navClicked(\'{{htmlId}}\')">',
                     '<div id="{{htmlId}}NavGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
                     '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
@@ -371,19 +371,18 @@ Game.interstellarUI = (function(){
             document.getElementById("intnav_antimatter_current").className = "";
         }
 
-        //displayNeedsUpdate
-        for(var id in Game.stargaze.entries){
-            var data = Game.stargaze.getStargazeData(id);
-            if(data.category == "faction"){
-                $('#intnav_' + id + '_opinion').text(data.opinion);
-            }
-        }
-
         // Hides all faction tabs
         for(var id in Game.interstellarBETA.entries){
             var data = Game.interstellarBETA.getInterstellarData(id);
-            if(data.category == "faction"){
-                document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction hidden";
+            if(data.displayNeedsUpdate == true){
+                if(data.category == "faction"){
+                    if(data.unlocked == true){
+                        document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction";
+                    } else {
+                        document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction hidden";
+                    }
+                }
+                data.displayNeedsUpdate = false;
             }
         }
 
@@ -392,7 +391,11 @@ Game.interstellarUI = (function(){
             var data = Game.interstellarBETA.stars.getStarData(id);
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
-                document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction";
+                var nav = Game.interstellarBETA.entries[data.factionId]
+                if(nav.unlocked != true){
+                    nav.unlocked = true;
+                    nav.displayNeedsUpdate = true;
+                }
                 //Update System Status
                 if(data.owned){
                     $('#star_' + id + '_owned').text("Conquered");
