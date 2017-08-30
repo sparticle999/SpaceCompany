@@ -215,7 +215,7 @@ Game.prestigeData = (function(){
 	instance.energyEff = {
 		name: "Energy Efficiency Cap",
 		desc: "Increase Energy Efficiency research cap to 50% instead of 25%.",
-		cost: 29,
+		cost: 36,
 		category: "hyacinite",
 		achieved: false
 	};
@@ -235,7 +235,7 @@ Game.prestigeData = (function(){
 	instance.T5Machines = {
 		name: "Tier 5 Machines",
 		desc: "Gain access to a fifth tier of machines to produce resources.",
-		cost: 19,
+		cost: 26,
 		category: "kitrinos",
 		achieved: false
 	};

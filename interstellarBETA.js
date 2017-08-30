@@ -35,7 +35,7 @@ Game.interstellarBETA = (function(){
     };
 
     instance.save = function(data){
-        data.interstellarBETA = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}};
+        data.interstellarBETA = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}, military: {}};
         for(id in Game.interstellarBETA.comms.entries){
             data.interstellarBETA.comms[id] = Game.interstellarBETA.comms.entries[id];
         }
@@ -48,21 +48,37 @@ Game.interstellarBETA = (function(){
         for(id in Game.interstellarBETA.antimatter.entries){
             data.interstellarBETA.antimatter[id] = Game.interstellarBETA.antimatter.entries[id];
         }
+        for(id in Game.interstellarBETA.military.entries){
+            data.interstellarBETA.military[id] = Game.interstellarBETA.military.entries[id];
+        }
     };
 
     instance.load = function(data){
         if(data.interstellarBETA){
-            for(id in data.interstellarBETA.comms){
-                Game.interstellarBETA.comms.entries[id].count = data.interstellar.machines[id].count;
+            if(data.interstellarBETA.comms !== 'undefined'){
+                for(id in data.interstellarBETA.comms){
+                    Game.interstellarBETA.comms.entries[id] = data.interstellarBETA.comms[id];
+                }
             }
-            for(id in data.interstellarBETA.rocket){
-                Game.interstellarBETA.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
+            if(typeof data.interstellarBETA.rocket !== 'undefined'){
+                for(id in data.interstellarBETA.rocket){
+                    Game.interstellarBETA.rocket.entries[id] = data.interstellarBETA.rocket[id];
+                }
             }
-            for(id in data.interstellarBETA.rocketParts){
-                Game.interstellarBETA.rocketParts.entries[id].count = data.interstellar.machines[id].count;
+            if(typeof data.interstellarBETA.rocketParts !== 'undefined'){
+                for(id in data.interstellarBETA.rocketParts){
+                    Game.interstellarBETA.rocketParts.entries[id] = data.interstellarBETA.rocketParts[id];
+                }
             }
-            for(id in data.interstellarBETA.antimatter){
-                Game.interstellarBETA.antimatter.entries[id].count = data.interstellar.machines[id].count;
+            if(typeof data.interstellarBETA.antimatter !== 'undefined'){
+                for(id in data.interstellarBETA.antimatter){
+                    Game.interstellarBETA.antimatter.entries[id] = data.interstellarBETA.antimatter[id];
+                }
+            }
+            if(typeof data.interstellarBETA.military !== 'undefined'){
+                for(id in data.interstellarBETA.military){
+                    Game.interstellarBETA.military.entries[id] = data.interstellarBETA.military[id];
+                }
             }
         }
     };
@@ -113,7 +129,6 @@ Game.interstellarBETA.comms = (function(){
         // Add the buildings and clamp to the maximum
         var data = this.entries[entryName];
         if(data.count >= data.max){
-            data.completed = true;
             return;
         }
         var resourcePass = 0;

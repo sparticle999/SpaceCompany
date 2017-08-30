@@ -465,13 +465,13 @@ Game.interstellarUI = (function(){
             $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
         }
 
-        // for(var id in Game.interstellarBETA.categoryEntries) {
-        //     if(this.tab.categoryHasVisibleEntries(id) === true) {
-        //         this.tab.showCategory(id);
-        //     } else {
-        //         this.tab.hideCategory(id);
-        //     }
-        // }
+        for(var i = 0; i < resources.length; i++){
+            var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
+            var perSec = window[resources[i] + "ps"];
+            for(var j = 0; j < updateList.length; j++){
+                updateList[j].innerHTML = Game.settings.format(perSec/4);
+            }
+        }
     };
 
     instance.createCommsMachine = function(data, machineData) {

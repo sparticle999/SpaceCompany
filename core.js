@@ -272,6 +272,19 @@ function refreshPerSec(delta){
 	    	antimatterps += Game.interstellar.machines.drive.count/2;
 	    }
     }
+    var boosts = {}
+
+    for(var i = 0; i < resources.length; i++){
+        boosts[resources[i]] = window[resources[i] + "ps"]/4;
+    }
+
+    for(var id in Game.interstellarBETA.stars.entries){
+        var data = Game.interstellarBETA.stars.getStarData(id);
+        if(data.owned == true){
+            window[data.resource1.toLowerCase() + "ps"] += boosts[data.resource1.toLowerCase()];
+            window[data.resource2.toLowerCase() + "ps"] += boosts[data.resource2.toLowerCase()];
+        }
+    }
 
 	function adjustCost(targetStorage, targetCurrent, targetPs, cost, gain) {
         var maxGain = targetStorage - targetCurrent;
