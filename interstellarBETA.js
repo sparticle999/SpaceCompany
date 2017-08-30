@@ -58,31 +58,48 @@ Game.interstellarBETA = (function(){
             console.log(data)
             if(data.interstellarBETA.comms !== 'undefined'){
                 for(id in data.interstellarBETA.comms){
-                    Game.interstellarBETA.comms.entries[id] = data.interstellarBETA.comms[id];
+                    Game.interstellarBETA.comms.entries[id].count = data.interstellarBETA.comms[id].count;
                 }
             }
             if(typeof data.interstellarBETA.rocket !== 'undefined'){
                 for(id in data.interstellarBETA.rocket){
-                    Game.interstellarBETA.rocket.entries[id] = data.interstellarBETA.rocket[id];
+                    Game.interstellarBETA.rocket.entries[id].count = data.interstellarBETA.rocket[id].count;
                 }
             }
             if(typeof data.interstellarBETA.rocketParts !== 'undefined'){
                 for(id in data.interstellarBETA.rocketParts){
-                    Game.interstellarBETA.rocketParts.entries[id] = data.interstellarBETA.rocketParts[id];
+                    Game.interstellarBETA.rocketParts.entries[id].count = data.interstellarBETA.rocketParts[id].count;
                 }
             }
             if(typeof data.interstellarBETA.antimatter !== 'undefined'){
                 for(id in data.interstellarBETA.antimatter){
-                    Game.interstellarBETA.antimatter.entries[id] = data.interstellarBETA.antimatter[id];
+                    Game.interstellarBETA.antimatter.entries[id].count = data.interstellarBETA.antimatter[id].count;
                 }
             }
             if(typeof data.interstellarBETA.military !== 'undefined'){
                 for(id in data.interstellarBETA.military){
-                    Game.interstellarBETA.military.entries[id] = data.interstellarBETA.military[id];
+                    Game.interstellarBETA.military.entries[id].count = data.interstellarBETA.military[id].count;
                 }
             }
         } else {
             console.log("nay")
+        }
+    };
+
+    instance.redundantChecking = function(){
+        var objects = ["comms", "rocket", "antimatter", "stargate"];
+        for(var i = 0; i < objects.length; i++){
+            if(contains(activated, objects[i]) == true){
+                if(objects[i] == 'stargate'){
+                    this.entries['travel'].unlocked = true;
+                    this.entries['travel'].displayNeedsUpdate = true;
+                    this.entries['military'].unlocked = true;
+                    this.entries['military'].displayNeedsUpdate = true;
+                } else {
+                    this.entries[objects[i]].unlocked = true;
+                    this.entries[objects[i]].displayNeedsUpdate = true;
+                }
+            }
         }
     };
 

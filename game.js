@@ -242,6 +242,8 @@ var Game = (function() {
         self.load();
         self.settings.initialise();
 
+        self.interstellarBETA.redundantChecking();
+
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();
         }

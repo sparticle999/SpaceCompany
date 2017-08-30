@@ -51,9 +51,6 @@ Game.interstellarBETA.rocketParts = (function(){
                     window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
                 }            
                 this.entries[entryName].displayNeedsUpdate = true;
-            } else {
-                this.updateCost(entryName);
-                return;
             }
         }
         this.updateCost(entryName);

@@ -362,7 +362,6 @@ Game.interstellarUI = (function(){
         }
 
         // Updates Antimatter Nav
-        //displayNeedsUpdate
         $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
         $('#intnav_antimatter_perSecond').text(antimatterps);
         if(antimatter >= 100000){
@@ -371,16 +370,18 @@ Game.interstellarUI = (function(){
             document.getElementById("intnav_antimatter_current").className = "";
         }
 
-        // Hides all faction tabs
+        // Hides navs
         for(var id in Game.interstellarBETA.entries){
             var data = Game.interstellarBETA.getInterstellarData(id);
             if(data.displayNeedsUpdate == true){
-                if(data.category == "faction"){
-                    if(data.unlocked == true){
-                        document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction";
-                    } else {
-                        document.getElementById('tab_interstellarBeta_' + id + '_ne').className = "collapse_tab_interstellarBeta_faction hidden";
+                document.getElementById("tab_interstellarBeta_faction_collapse").className = "hidden";
+                if(data.unlocked == true){
+                    if(data.category == "faction"){
+                        document.getElementById("tab_interstellarBeta_faction_collapse").className = "";
                     }
+                    document.getElementById("tab_interstellarBeta_" + id + "_ne").className = "collapse_tab_interstellarBeta_" + data.category;
+                } else {
+                    document.getElementById("tab_interstellarBeta_" + id + "_ne").className = "collapse_tab_interstellarBeta_" + data.category + " hidden";
                 }
                 data.displayNeedsUpdate = false;
             }

@@ -497,6 +497,9 @@ function rebuildCommsWonder(){
         }
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
+
+		Game.interstellarBETA.getInterstellarData('comms').unlocked = true;
+		Game.interstellarBETA.getInterstellarData('comms').displayNeedsUpdate = true;
 	}
 }
 
@@ -519,7 +522,9 @@ function rebuildRocketWonder(){
 		document.getElementById("interRocketNav").className = "sideTab";
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
-		
+
+		Game.interstellarBETA.getInterstellarData('rocket').unlocked = true;
+		Game.interstellarBETA.getInterstellarData('rocket').displayNeedsUpdate = true;
 	}
 }
 
@@ -543,7 +548,9 @@ function rebuildAntimatterWonder(){
 		document.getElementById("antimatterNav").className = "sideTab";
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
-		
+
+		Game.interstellarBETA.getInterstellarData('antimatter').unlocked = true;
+		Game.interstellarBETA.getInterstellarData('antimatter').displayNeedsUpdate = true;
 	}
 }
 
@@ -582,5 +589,8 @@ function rebuildStargate(){
 			Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
 		}
 		newUnlock("interstellar");
+
+		Game.interstellarBETA.getInterstellarData('stargate').unlocked = true;
+		Game.interstellarBETA.getInterstellarData('stargate').displayNeedsUpdate = true;
 	}
 }

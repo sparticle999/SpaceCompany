@@ -118,13 +118,6 @@ Game.stargazeUI = (function(){
 
     instance.update = function(delta) {
 
-        // for(var id in this.entries) {
-        //     var data = Game.resources.getResourceData(this.entries[id].id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updateDisplay(data);
-        //     }
-        // }
-
         this.updateDM();
 
         for(var id in Game.stargaze.entries){
@@ -133,7 +126,6 @@ Game.stargazeUI = (function(){
                 if(data.category == "faction"){
                     $('#stargazeNav' + id + '_opinion').text(data.opinion);
                     $('#intnav_' + id + '_opinion').text(data.opinion);
-                    console.log(data.unlocked, data)
                     if(data.unlocked == true){
                         document.getElementById('tab_stargaze_' + id + '_ne').className = "collapse_tab_stargaze_faction";
                     } else {
@@ -150,7 +142,6 @@ Game.stargazeUI = (function(){
             for(var i = 0; i < stargaze.rebirthUnlocked.length; i++){
                 var string = document.getElementById(stargaze.rebirthUnlocked[i]).className;
                 document.getElementById(stargaze.rebirthUnlocked[i]).className = string.substring(0, string.indexOf("hidden"));
-                console.log(string.substring(0, string.indexOf("hidden")));
             }
             for(var i = 0; i < stargaze.rebirthChildUnlocked.length; i++){
                 var children = $('#'+ stargaze.rebirthChildUnlocked[i]).children();
