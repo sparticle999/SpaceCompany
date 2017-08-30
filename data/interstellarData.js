@@ -112,10 +112,31 @@ Game.commsData = (function(){
 
 	var instance = {};
 
+	instance.astroBreakthrough = {
+		entryName: 'astroBreakthrough',
+		name: 'Astronomical Breakthrough',
+		desc: 'A huge problem with the theory of interstellar space travel is on the verge of being broken. Make it happen with this upgrade. This is a one time upgrade, increasing your exploration range by 5 Light Years.',
+		category: '',
+		unlocked: true,
+		displayNeedsUpdate: true,
+		max: 1,
+		completed: false,
+		cost: {
+			'metal': 60000000000,
+			'ice': 6000000000,
+			'meteorite': 60000000
+		},
+		defaultCost: {
+			'metal': 60000000000,
+			'ice': 6000000000,
+			'meteorite': 60000000
+		}
+	};
+
 	instance.IRS = {
 		entryName: 'IRS',
 		name: 'Interstellar Radar Scanner',
-		desc: 'The Overlord gifts you with the technology to discover stars in outer space by using the IRS. It can find any Tier 1 stars that are close by. Each one increases the range by 5 Light Years.',
+		desc: 'The Overlord gifts you with the technology to discover stars in outer space by using the IRS. Each one increases the exploration range by 1 Light Year.',
 		category: '',
 		unlocked: true,
 		displayNeedsUpdate: true,

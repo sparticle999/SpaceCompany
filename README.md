@@ -72,6 +72,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Rebuilt Achievement Tooltips
 - Dark Matter
 - Hide Completed Tabs Button
+- Added Astronomical Breakthrough
 
 ##### Small Changes
 
