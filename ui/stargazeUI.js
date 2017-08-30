@@ -162,6 +162,7 @@ Game.stargazeUI = (function(){
                 if(data.achieved == true){
                     if(id != 'rebirth'){
                         document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
+                        document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
                     }
                 }
             }

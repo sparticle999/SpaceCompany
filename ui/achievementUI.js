@@ -59,6 +59,7 @@ Game.achievementsUI = (function(){
         for(var id in Game.achievements.entries) {
             var data = Game.achievements.entries[id];
             
+            totalAchieved += Game.utils.pascal(data.unlocked+1);
             categoryCounts[data.category].unlocked += data.unlocked + 1;
             categoryCounts[data.category].total += data.brackets.length;
 
@@ -79,9 +80,6 @@ Game.achievementsUI = (function(){
 
         // Calculating Ranks
 
-        for(var category in this.categoryElements) {
-            totalAchieved += categoryCounts[category].unlocked;
-        }
         var x = Game.achievements.rank;
         var xpNeeded = Game.utils.fibonacci(x+7);
         var xpLeft = Game.utils.fibonacci(x+7) - totalAchieved;

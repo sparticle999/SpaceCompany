@@ -561,7 +561,7 @@
 									<br>
 									<br>
 									<hide class="gainButton">
-										<div onclick="gainPlasma()" class="btn btn-default">Gain 1</div>
+										<div onclick="gainResource('plasma')" class="btn btn-default">Gain <span id="plasmaGain">1</span></div>
 										<br>
 										<br>
 									</hide>
@@ -845,7 +845,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainUranium()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('uranium')" class="btn btn-default">Gain <span id="uraniumGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -963,7 +963,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainOil()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('oil')" class="btn btn-default">Gain <span id="oilGain">1</span></div>
 									</hide>
 								</td>
 							</tr>
@@ -1077,7 +1077,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainMetal()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('metal')" class="btn btn-default">Gain <span id="metalGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1195,7 +1195,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainGem()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('gem')" class="btn btn-default">Gain <span id="gemGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1313,7 +1313,7 @@
 									</span>
 									<br>
 									<hide class="gainButton">
-									<div onclick="gainCharcoal()" class="btn btn-default">Convert 1</div>
+									<div onclick="gainResource('charcoal')" class="btn btn-default">Convert <span id="charcoalGain">1</span></div>
 									</hide>
 									<button onclick="toggleCharcoal()" class="btn btn-default">Turn Charcoal Production <span id="charcoalToggled">Off</span></button>
 									<br>
@@ -1440,7 +1440,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainWood()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('wood')" class="btn btn-default">Gain <span id="woodGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1558,7 +1558,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainSilicon()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('silicon')" class="btn btn-default">Gain <span id="siliconGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1676,7 +1676,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainLunarite()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('lunarite')" class="btn btn-default">Gain <span id="lunariteGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1794,7 +1794,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainMethane()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('methane')" class="btn btn-default">Gain <span id="methaneGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -1913,7 +1913,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainTitanium()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('titanium')" class="btn btn-default">Gain <span id="titaniumGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2031,7 +2031,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainGold()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('gold')" class="btn btn-default">Gain <span id="goldGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2149,7 +2149,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainSilver()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('silver')" class="btn btn-default">Gain <span id="silverGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2267,7 +2267,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainLava()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('lava')" class="btn btn-default">Gain <span id="lavaGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2385,7 +2385,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainHydrogen()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('hydrogen')" class="btn btn-default">Gain <span id="hydrogenGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2503,7 +2503,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainHelium()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource('helium')" class="btn btn-default">Gain <span id="heliumGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2621,7 +2621,7 @@
 									<hide class="gainButton">
 									<br>
 									<br>
-									<div onclick="gainIce()" class="btn btn-default">Gain 1</div>
+									<div onclick="gainResource(ice')" class="btn btn-default">Gain <span id="iceGain">1</span></div>
 									</hide>
 									<br>
 									<br>
@@ -2741,7 +2741,7 @@
 									<br>
 									<br>
 									<hide class="gainButton">
-									<div onclick="gainMeteorite()" class="btn btn-default">Convert 1</div>
+									<div onclick="gainResource('meteorite')" class="btn btn-default">Convert <span id="meteoriteGain">1</span></div>
 									</hide>
 									<button onclick="toggleMeteorite()" class="btn btn-default">Turn Meteorite Production <span id="meteoriteToggled">Off</span></button>
 									<br>
@@ -6604,7 +6604,7 @@
 										Achievements
 									</h2>
 									<span>
-										This is where you can see your rank and all of your achievements.
+										This is where you can see your rank and all of your achievements.<br>XP = Star position: [1,2,3,4,5]
 									</span>
 								</td>
 								<td id="rankContent" style="border:none;"></td>

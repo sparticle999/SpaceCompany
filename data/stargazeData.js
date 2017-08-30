@@ -163,6 +163,12 @@ Game.prestigeData = (function(){
 		desc: "Increase all gain buttons to 20 per click instead of 1.",
 		cost: 5,
 		category: "carnelian",
+		onApply: function(){
+			gainNum = 20;
+			for(var i = 0; i < resources.length; i++){
+				$('#' + resources[i] + 'Gain').text(gainNum);
+			}
+		},
 		achieved: false
 	};
 

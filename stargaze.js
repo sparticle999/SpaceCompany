@@ -108,10 +108,12 @@ Game.stargaze = (function(){
 			console.log('"' + id + '" is not a recognised upgrade.');
 			return;
 		}
-		if(this.entries.darkMatter.count >= upgradeData.cost){
-			this.entries.darkMatter.count -= upgradeData.cost;
-			this.applyUpgradeEffect(id);
-			upgradeData.achieved = true;
+		if(upgradeData.achieved == false){
+			if(this.entries.darkMatter.count >= upgradeData.cost){
+				this.entries.darkMatter.count -= upgradeData.cost;
+				this.applyUpgradeEffect(id);
+				upgradeData.achieved = true;
+			}
 		}
 	};
 

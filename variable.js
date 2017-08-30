@@ -141,3 +141,7 @@ var lunariteEmcVal = 15; var methaneEmcVal = 12; var titaniumEmcVal = 17; var go
 var hydrogenEmcVal = 33; var heliumEmcVal = 39; var iceEmcVal = 44; var meteoriteEmcVal = 3;
 
 var windowLoaded = false;
+
+// Rebirth Vars
+
+var gainNum = 1;

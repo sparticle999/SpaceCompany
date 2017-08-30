@@ -104,6 +104,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Optimised Saving and Loading
 - Time until storage full now shows until empty if negative gain
 - Reset achievements
+- Standardised gainResource() function
+- Achievement Stars are worth their position
 
 ##### Bug Fixes
 
