@@ -33,7 +33,6 @@ Game.interstellarUI = (function(){
 
         this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
-        console.log(this.tab)
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',

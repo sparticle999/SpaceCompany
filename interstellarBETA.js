@@ -55,7 +55,6 @@ Game.interstellarBETA = (function(){
 
     instance.load = function(data){
         if(data.interstellarBETA){
-            console.log(data)
             if(data.interstellarBETA.comms !== 'undefined'){
                 for(id in data.interstellarBETA.comms){
                     Game.interstellarBETA.comms.entries[id].count = data.interstellarBETA.comms[id].count;

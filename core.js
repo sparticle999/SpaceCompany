@@ -1122,7 +1122,6 @@ function refreshResearches(){
 }
 
 function refreshTabs(){
-    console.log("hi")
 	if(contains(tabsUnlocked, "dropdownMenu")){
  		var index = tabsUnlocked.indexOf("dropdownMenu");
  		if (index > -1) {
@@ -1130,7 +1129,6 @@ function refreshTabs(){
 		}
  	}
 	for(var i=0; i<tabsUnlocked.length; i++){
-        console.log(tabsUnlocked[i])
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}
  	document.getElementById("rocketFuelNav").className = "sideTab";
