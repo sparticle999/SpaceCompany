@@ -22,12 +22,13 @@ Game.stargazeUI = (function(){
     instance.categoryNames = {};
 
     instance.initialise = function() {
-        if(sphere == 0) {
-            return;
-        }
 
         this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze (Indev)'});
         this.tab.initialise();
+
+        if(sphere == 0) {
+            document.getElementById("stargazeTab").className = "hidden";
+        }
 
         instance.introTitleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
