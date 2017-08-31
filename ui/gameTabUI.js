@@ -1,8 +1,8 @@
 (function(){
 
     var tabTemplate = Handlebars.compile(
-        ['<li role="presentation" id="{{htmlId}}_tab">',
-            '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" aria-controls="{{id}}" role="tab" data-toggle="tab">',
+        ['<li role="presentation" id="{{htmlId}}">',
+            '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" class="{{hidden}}" aria-controls="{{id}}" role="tab" data-toggle="tab">',
             '<div id="{{id}}TabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
             '{{title}}</a></li>'].join('\n'));
 
@@ -49,7 +49,7 @@
         this.onNavActivate = null;
 
         this.data = data;
-        this.data.htmlId = 'tab_' + data.id;
+        this.data.htmlId = data.id + "Tab";
 
         tabRegister[data.id] = this;
     }

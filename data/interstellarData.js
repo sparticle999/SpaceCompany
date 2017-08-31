@@ -37,7 +37,7 @@ Game.interstellarData = (function(){
 
 	instance.antimatter = {
 		name: 'Antimatter',
-		desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.',
+		desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.<br><br><button class="btn btn-default" onclick="toggleAntimatter()">Toggle Antimatter <span id="antimatterToggled">On</span></button>',
 		category: 'general',
 		unlocked: false
 	};

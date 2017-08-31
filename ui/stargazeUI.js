@@ -127,9 +127,9 @@ Game.stargazeUI = (function(){
                     $('#stargazeNav' + id + '_opinion').text(data.opinion);
                     $('#intnav_' + id + '_opinion').text(data.opinion);
                     if(data.unlocked == true){
-                        document.getElementById('tab_stargaze_' + id + '_ne').className = "collapse_tab_stargaze_faction";
+                        document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction";
                     } else {
-                        document.getElementById('tab_stargaze_' + id + '_ne').className = "collapse_tab_stargaze_faction hidden";
+                        document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction hidden";
                     }
                 }
                 data.displayNeedsUpdate = false;

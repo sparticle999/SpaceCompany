@@ -264,12 +264,12 @@ function refreshPerSec(delta){
 	        if(plasma + plasmaps >= plasmaCost && ice + iceps >= iceCost) {
 	            plasmaps -= plasmaCost;
 	            iceps -= iceCost;
-	            antimatterps += Game.interstellar.machines.drive.count/2;
+	            antimatterps += Game.interstellarBETA.antimatter.entries.drive.count/2;
 	        }
 	    }
 	    else{
 	    	antimatter = 100000;
-	    	antimatterps += Game.interstellar.machines.drive.count/2;
+	    	antimatterps += Game.interstellarBETA.antimatter.entries.drive.count/2;
 	    }
     }
     var boosts = {}
@@ -1122,6 +1122,7 @@ function refreshResearches(){
 }
 
 function refreshTabs(){
+    console.log("hi")
 	if(contains(tabsUnlocked, "dropdownMenu")){
  		var index = tabsUnlocked.indexOf("dropdownMenu");
  		if (index > -1) {
@@ -1129,6 +1130,7 @@ function refreshTabs(){
 		}
  	}
 	for(var i=0; i<tabsUnlocked.length; i++){
+        console.log(tabsUnlocked[i])
  		document.getElementById(tabsUnlocked[i]).className -= "hidden";
  	}
  	document.getElementById("rocketFuelNav").className = "sideTab";

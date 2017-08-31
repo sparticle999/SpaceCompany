@@ -170,7 +170,16 @@ var Game = (function() {
             legacyLoad(data);
 
             this.settings.load(data);
+
+            if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+                this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
+            }
         }
+
+        console.log("Load Successful");
+    };
+
+    instance.updateUI = function(self){
         Game.settings.updateCompanyName();
         refreshResources();
         refreshResearches();
@@ -187,12 +196,8 @@ var Game = (function() {
 
         $('#versionLabel').text(versionNumber);
 
-        if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
-            this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
-        }
-
-        console.log("Load Successful");
-    };
+        self.interstellarBETA.redundantChecking();
+    }
 
     instance.handleOfflineGains = function(offlineTime) {
         if(offlineTime <= 0) {
@@ -240,13 +245,14 @@ var Game = (function() {
 
         // Now load
         self.load();
-        self.settings.initialise();
 
-        self.interstellarBETA.redundantChecking();
+        self.settings.initialise();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();
         }
+
+        self.updateUI(self);
 
         // Display what has changed since last time
         self.updates.initialise();

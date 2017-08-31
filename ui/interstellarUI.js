@@ -31,13 +31,14 @@ Game.interstellarUI = (function(){
             return;
         }
 
-        this.tab = Game.ui.createTab({id: 'interstellarBeta', title: 'Interstellar (BETA)'});
+        this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
+        console.log(this.tab)
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
-                '<span>{{desc}}</span>',
+                '<span>{{{desc}}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -374,14 +375,15 @@ Game.interstellarUI = (function(){
         for(var id in Game.interstellarBETA.entries){
             var data = Game.interstellarBETA.getInterstellarData(id);
             if(data.displayNeedsUpdate == true){
-                document.getElementById("tab_interstellarBeta_faction_collapse").className = "hidden";
+                document.getElementById("interstellarTab_faction_collapse").className = "hidden";
                 if(data.unlocked == true){
                     if(data.category == "faction"){
-                        document.getElementById("tab_interstellarBeta_faction_collapse").className = "";
+                        document.getElementById("interstellarTab_faction_collapse").className = "";
                     }
-                    document.getElementById("tab_interstellarBeta_" + id + "_ne").className = "collapse_tab_interstellarBeta_" + data.category;
+                    document.getElementById("interstellarTab_link").className = "";
+                    document.getElementById("interstellarTab_" + id + "_ne").className = "collapse_interstellarTab_" + data.category;
                 } else {
-                    document.getElementById("tab_interstellarBeta_" + id + "_ne").className = "collapse_tab_interstellarBeta_" + data.category + " hidden";
+                    document.getElementById("interstellarTab_" + id + "_ne").className = "collapse_interstellarTab_" + data.category + " hidden";
                 }
                 data.displayNeedsUpdate = false;
             }

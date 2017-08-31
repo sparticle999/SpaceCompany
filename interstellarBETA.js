@@ -81,8 +81,19 @@ Game.interstellarBETA = (function(){
                     Game.interstellarBETA.military.entries[id].count = data.interstellarBETA.military[id].count;
                 }
             }
-        } else {
-            console.log("nay")
+        } else if(data.interstellar){
+            for(id in Game.interstellarBETA.comms.entries){
+                if(data.interstellar.machines[id])Game.interstellarBETA.comms.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in Game.interstellarBETA.rocket.entries){
+                Game.interstellarBETA.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
+            }
+            for(id in Game.interstellarBETA.rocketParts.entries){
+                Game.interstellarBETA.rocketParts.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in Game.interstellarBETA.antimatter.entries){
+                Game.interstellarBETA.antimatter.entries[id].count = data.interstellar.machines[id].count;
+            }
         }
     };
 
@@ -99,6 +110,7 @@ Game.interstellarBETA = (function(){
                     this.entries[objects[i]].unlocked = true;
                     this.entries[objects[i]].displayNeedsUpdate = true;
                 }
+                document.getElementById("interstellarTab").className = "";
             }
         }
     };
