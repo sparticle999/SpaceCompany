@@ -45,9 +45,8 @@ Game.constants = (function(){
     instance.maxTier = 6;
 
     instance.enableStorageNotifications = false;
-    instance.enableDataDrivenResources = false;
+    instance.enableDataDrivenResources = true;
     instance.enableMachineTab = false;
-    instance.enableInterstellar = true;
 
     return instance;
 }());

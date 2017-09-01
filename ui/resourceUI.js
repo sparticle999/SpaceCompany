@@ -3,12 +3,12 @@
     var instance = {};
 
     instance.entries = {};
-    instance.resourceTechEntries = {};
-    instance.resourceTechObservers = {};
+    instance.storageEntries = {};
+    instance.storageObservers = {};
     instance.resourceBuildingEntries = {};
     instance.resourceBuildingObservers = {};
     instance.titleTemplate = null;
-    instance.techTemplate = null;
+    instance.storageUpgradeTemplate = null;
     instance.buildingTemplate = null;
     instance.navTemplate = null;
 
@@ -40,19 +40,18 @@
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
-        instance.techTemplate = Handlebars.compile(
+        instance.storageUpgradeTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td style="border:none;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<span>',
-                    '<p>{{desc}}</p>',
+                    '<p>{{desc}}<span id="{{htmlId}}">100</span></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
-                '<br><br>',
                 '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
                 '</td></tr>'].join('\n'));
 
         instance.buildingTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td style="border:none;">',
+            ['<tr id="{{htmlId}}"></tr><td>',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
@@ -109,10 +108,10 @@
             }
         }
 
-        for(var id in this.resourceTechEntries) {
-            var data = Game.tech.getTechData(id);
+        for(var id in this.storageEntries) {
+            var data = Game.resources.storageUpgrades[id];
             if(data.displayNeedsUpdate === true) {
-                this.updateTechDisplay(data);
+                this.updateStorageDisplay(data);
             }
         }
 
@@ -132,16 +131,16 @@
         }
     };
 
-    instance.createResourceContentTech = function(data, techData) {
+    instance.createResourceContentTech = function(data, storageData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        var tech = this.techTemplate(techData);
+        var tech = this.storageUpgradeTemplate(storageData);
         tabContentRoot.append($(tech));
 
-        var unlockButton = $('#' + techData.htmlId + '_unlock');
-        unlockButton.click({id: techData.id}, function(args) { Game.tech.buyTech(args.data.id, 1); });
+        var unlockButton = $('#' + storageData.htmlId + '_unlock');
+        unlockButton.click({id: storageData.id}, function(args) { Game.resources.upgradeStorage(args.data.id); });
 
-        this.resourceTechEntries[techData.id] = data.id;
-        this.resourceTechObservers[techData.id] = [];
+        this.storageEntries[storageData.id] = data.id;
+        this.storageObservers[storageData.id] = [];
     };
 
     instance.createResourceContentBuilding = function(data, buildingData) {
@@ -160,10 +159,10 @@
         target.append(tabTitle);
         $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
 
-        for (var id in Game.tech.entries) {
-            var techData = Game.tech.entries[id];
-            if(techData.resource && techData.resource === data.id) {
-                this.createResourceContentTech(data, techData);
+        for (var id in Game.storageData) {
+            var storageData = Game.resources.storageUpgrades[id];
+            if(storageData.resource && storageData.resource === data.id) {
+                this.createResourceContentTech(data, storageData);
             }
         }
 
@@ -202,23 +201,12 @@
         this.entries[data.htmlId] = data;
     };
 
-    instance.updateTechDisplay = function(data) {
+    instance.updateStorageDisplay = function(data) {
         var element = $('#' + data.htmlId);
-        if(data.unlocked === true) {
-            element.show();
-        } else {
-            element.hide();
-        }
-
-        // Update the title if we have a counted tech
-        if (data.maxLevel === -1 || data.maxLevel > 1) {
-            var titleElement = $('#' + data.htmlId + '_name');
-            titleElement.text(data.name + " " + data.current);
-        }
 
         // Update the cost display
         if(data.cost) {
-            var costDisplayData = this.buildCostDisplay(this.resourceTechObservers[data.id], data);
+            var costDisplayData = this.buildCostDisplay(this.storageObservers[data.id], data);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));

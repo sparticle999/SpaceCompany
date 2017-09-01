@@ -27,9 +27,6 @@ Game.interstellarUI = (function(){
     instance.categoryNames = {};
 
     instance.initialise = function() {
-        if(Game.constants.enableInterstellar === false) {
-            return;
-        }
 
         this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
@@ -318,18 +315,15 @@ Game.interstellarUI = (function(){
     };
 
     instance.update = function(delta) {
-        if(!Game.constants.enableInterstellar){
-            return;
-        }
 
         for(var id in this.commEntries) {
             var data = Game.interstellarBETA.comms.getMachineData(id);
             if(data.displayNeedsUpdate === true) {
                 this.updateMachineDisplay(data);
-            }
-            if(data.count >= data.max){
-                document.getElementById("comm_" + id + "_cost").className = "hidden";
-                document.getElementById("comm_" + id + "_buy").className = "hidden";
+                if(data.count >= data.max){
+                    document.getElementById("comm_" + id + "_cost").className = "hidden";
+                    document.getElementById("comm_" + id + "_buy").className = "hidden";
+                }
             }
         }
 
@@ -389,8 +383,17 @@ Game.interstellarUI = (function(){
         }
 
         for(var id in this.starEntries){
-            //displayNeedsUpdate
             var data = Game.interstellarBETA.stars.getStarData(id);
+            if(data.explored == false){
+                if(Game.interstellarBETA.comms.entries.IRS.count + Game.interstellarBETA.comms.entries.astroBreakthrough.count*5 >= data.distance){
+                    document.getElementById('star_' + id).className = "";
+                }
+                $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
+                continue;
+            }
+            if(data.displayNeedsUpdate == false){
+                continue;
+            }
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
                 var nav = Game.interstellarBETA.entries[data.factionId]
@@ -464,10 +467,6 @@ Game.interstellarUI = (function(){
                 }
                 continue;
             }
-            if(Game.interstellarBETA.comms.entries.IRS.count + Game.interstellarBETA.comms.entries.astroBreakthrough.count*5 >= data.distance){
-                document.getElementById('star_' + id).className = "";
-            }
-            $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
         }
 
         for(var i = 0; i < resources.length; i++){

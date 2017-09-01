@@ -87,7 +87,7 @@ Game.stargaze = (function(){
 				Game.interstellarBETA.stars.entries[star].unlocked = false;
 				Game.interstellarBETA.stars.entries[star].explored = false;
 				document.getElementById('star_' + star).className = "";
-				//document.getElementById('star_' + star + '_conquer').className = "hidden";
+				document.getElementById('star_' + star + '_conquer').className = "hidden";
 			}
 			for(achiev in Game.achievements.entries){
 				var data = Game.achievements.entries[achiev]

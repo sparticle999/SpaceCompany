@@ -43,7 +43,7 @@ Game.interstellarBETA.stars = (function(){
             document.getElementById('star_' + id).className = "hidden";
             document.getElementById('star_' + id + '_conquer').className = "";
             newNavUnlock('intnav_' + data.factionId);
-            document.getElementById('tab_interstellarBeta_' + data.factionId + '_ne').className = "collapse_tab_interstellarBeta_faction"
+            data.displayNeedsUpdate = true;
         }
     };
 

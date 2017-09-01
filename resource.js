@@ -5,8 +5,12 @@ Game.resources = (function(){
     instance.dataVersion = 5;
     instance.entries = {};
     instance.categoryEntries = {};
+    instance.storageUpgrades = {};
     instance.resourceTypeCount = 0;
     instance.resourceCategoryCount = 0;
+    instance.storageUpgradeCount = 0;
+
+    
 
     instance.initialise = function() {
         for (var id in Game.resourceData) {
@@ -32,6 +36,15 @@ Game.resources = (function(){
             this.resourceCategoryCount++;
             this.categoryEntries[id] = $.extend({}, data, {
                 id: id
+            });
+        }
+
+        for (var id in Game.storageData) {
+            var data = Game.storageData[id];
+            this.storageUpgradeCount++;
+            this.storageUpgrades[id] = $.extend({}, data, {
+                id: id,
+                htmlId: "store_" + id
             });
         }
 
@@ -104,6 +117,16 @@ Game.resources = (function(){
 
         this.entries[id].perSecond = value;
     };
+
+    instance.upgradeStorage = function(id){
+        var upgradeData = this.storageUpgrades[id];
+        var res = this.getResourceData(upgradeData.resource);
+        if(res.current >= res.capacity){
+            res.current -= res.capacity;
+            res.capacity *= 2;
+            res.displayNeedsUpdate = true;
+        }
+    }
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;

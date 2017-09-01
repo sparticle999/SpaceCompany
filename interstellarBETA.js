@@ -526,6 +526,7 @@ Game.interstellarBETA.military = (function(){
                 }
                 Game.notifyInfo("Failed Invasion!", "Unfortunately, the enemy forces were too strong for you. They have destroyed all of your active ships.");
             }
+            star.displayNeedsUpdate = true;
             this.updateFleetStats();
             this.updateShips();
         }
@@ -537,6 +538,7 @@ Game.interstellarBETA.military = (function(){
         if(faction.opinion >= 60){
             faction.opinion -= 5;
             data.owned = true;
+            data.displayNeedsUpdate = true;
             faction.displayNeedsUpdate = true;
         }
     };

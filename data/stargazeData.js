@@ -170,10 +170,18 @@ Game.prestigeData = (function(){
 		cost: 5,
 		category: "carnelian",
 		onApply: function(){
+			// old
 			gainNum = 20;
 			for(var i = 0; i < resources.length; i++){
 				$('#' + resources[i] + 'Gain').text(gainNum);
 			}
+
+			// new
+			for(var id in Game.resources.entries){
+				Game.resources.entries[id].perClick = 20;
+				Game.resources.entries[id].displayNeedsUpdate = true;
+			}
+
 		},
 		achieved: false
 	};
