@@ -142,6 +142,7 @@ var Game = (function() {
         this.settings.save(data);
         this.interstellar.save(data);
         this.interstellarBETA.save(data);
+        this.stargaze.save(data);
         this.updates.save(data);
 
         data = legacySave(data);
@@ -165,6 +166,7 @@ var Game = (function() {
             
             this.interstellar.load(data);
             this.interstellarBETA.load(data);
+            this.stargaze.load(data);
             this.updates.load(data);
 
             legacyLoad(data);

@@ -36,23 +36,23 @@ Game.interstellarBETA = (function(){
 
     instance.save = function(data){
         data.interstellarBETA = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}, military: {}};
-        for(id in Game.interstellarBETA.comms.entries){
-            data.interstellarBETA.comms[id] = Game.interstellarBETA.comms.entries[id];
+        for(id in this.comms.entries){
+            data.interstellarBETA.comms[id] = this.comms.entries[id];
         }
-        for(id in Game.interstellarBETA.rocket.entries){
-            data.interstellarBETA.rocket[id] = Game.interstellarBETA.rocket.entries[id];
+        for(id in this.rocket.entries){
+            data.interstellarBETA.rocket[id] = this.rocket.entries[id];
         }
-        for(id in Game.interstellarBETA.rocketParts.entries){
-            data.interstellarBETA.rocketParts[id] = Game.interstellarBETA.rocketParts.entries[id];
+        for(id in this.rocketParts.entries){
+            data.interstellarBETA.rocketParts[id] = this.rocketParts.entries[id];
         }
-        for(id in Game.interstellarBETA.antimatter.entries){
-            data.interstellarBETA.antimatter[id] = Game.interstellarBETA.antimatter.entries[id];
+        for(id in this.antimatter.entries){
+            data.interstellarBETA.antimatter[id] = this.antimatter.entries[id];
         }
-        for(id in Game.interstellarBETA.military.entries){
-            data.interstellarBETA.military[id] = Game.interstellarBETA.military.entries[id];
+        for(id in this.military.entries){
+            data.interstellarBETA.military[id] = this.military.entries[id];
         }
-        for(id in Game.interstellarBETA.stars.entries){
-            data.interstellarBETA.stars[id] = Game.interstellarBETA.stars.entries[id];
+        for(id in this.stars.entries){
+            data.interstellarBETA.stars[id] = this.stars.entries[id];
         }
     };
 
@@ -60,46 +60,46 @@ Game.interstellarBETA = (function(){
         if(data.interstellarBETA){
             if(data.interstellarBETA.comms !== 'undefined'){
                 for(id in data.interstellarBETA.comms){
-                    Game.interstellarBETA.comms.entries[id].count = data.interstellarBETA.comms[id].count;
+                    this.comms.entries[id].count = data.interstellarBETA.comms[id].count;
                 }
             }
             if(typeof data.interstellarBETA.rocket !== 'undefined'){
                 for(id in data.interstellarBETA.rocket){
-                    Game.interstellarBETA.rocket.entries[id].count = data.interstellarBETA.rocket[id].count;
+                    this.rocket.entries[id].count = data.interstellarBETA.rocket[id].count;
                 }
             }
             if(typeof data.interstellarBETA.rocketParts !== 'undefined'){
                 for(id in data.interstellarBETA.rocketParts){
-                    Game.interstellarBETA.rocketParts.entries[id].count = data.interstellarBETA.rocketParts[id].count;
+                    this.rocketParts.entries[id].count = data.interstellarBETA.rocketParts[id].count;
                 }
             }
             if(typeof data.interstellarBETA.antimatter !== 'undefined'){
                 for(id in data.interstellarBETA.antimatter){
-                    Game.interstellarBETA.antimatter.entries[id].count = data.interstellarBETA.antimatter[id].count;
+                    this.antimatter.entries[id].count = data.interstellarBETA.antimatter[id].count;
                 }
             }
             if(typeof data.interstellarBETA.military !== 'undefined'){
                 for(id in data.interstellarBETA.military){
-                    Game.interstellarBETA.military.entries[id].count = data.interstellarBETA.military[id].count;
+                    this.military.entries[id].count = data.interstellarBETA.military[id].count;
                 }
             }
             if(typeof data.interstellarBETA.stars !== 'undefined'){
                 for(id in data.interstellarBETA.stars){
-                    Game.interstellarBETA.stars.entries[id] = data.interstellarBETA.stars[id];
+                    this.stars.entries[id] = data.interstellarBETA.stars[id];
                 }
             }
         } else if(data.interstellar){
-            for(id in Game.interstellarBETA.comms.entries){
-                if(data.interstellar.machines[id])Game.interstellarBETA.comms.entries[id].count = data.interstellar.machines[id].count;
+            for(id in this.comms.entries){
+                if(data.interstellar.machines[id])this.comms.entries[id].count = data.interstellar.machines[id].count;
             }
-            for(id in Game.interstellarBETA.rocket.entries){
-                Game.interstellarBETA.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
+            for(id in this.rocket.entries){
+                this.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
             }
-            for(id in Game.interstellarBETA.rocketParts.entries){
-                Game.interstellarBETA.rocketParts.entries[id].count = data.interstellar.machines[id].count;
+            for(id in this.rocketParts.entries){
+                this.rocketParts.entries[id].count = data.interstellar.machines[id].count;
             }
-            for(id in Game.interstellarBETA.antimatter.entries){
-                Game.interstellarBETA.antimatter.entries[id].count = data.interstellar.machines[id].count;
+            for(id in this.antimatter.entries){
+                this.antimatter.entries[id].count = data.interstellar.machines[id].count;
             }
         }
     };
@@ -120,8 +120,8 @@ Game.interstellarBETA = (function(){
                 document.getElementById("interstellarTab").className = "";
             }
         }
-        for(var id in Game.interstellarBETA.stars.entries){
-            var data = Game.interstellarBETA.stars.getStarData(id);
+        for(var id in this.stars.entries){
+            var data = this.stars.getStarData(id);
             if(data.explored == true){
                 document.getElementById('star_' + id + '_conquer').className = "";
             }
@@ -182,7 +182,7 @@ Game.interstellarBETA.comms = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(Game.interstellarBETA.comms.entries[entryName].cost).length){
+        if(resourcePass === Object.keys(this.comms.entries[entryName].cost).length){
             var newValue = Math.floor(data.count + 1);
             data.count = newValue;
             for(var resource in data.cost){
@@ -251,7 +251,7 @@ Game.interstellarBETA.antimatter = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(Game.interstellarBETA.antimatter.entries[entryName].cost).length){
+        if(resourcePass === Object.keys(this.antimatter.entries[entryName].cost).length){
             var newValue = Math.floor(this.entries[entryName].count + 1);
             this.entries[entryName].count = newValue;
             for(var resource in this.entries[entryName].cost){
@@ -336,7 +336,7 @@ Game.interstellarBETA.military = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(Game.interstellarBETA.military.entries[entryName].cost).length){
+        if(resourcePass === Object.keys(this.military.entries[entryName].cost).length){
             var newValue = Math.floor(this.entries[entryName].count + 1);
             this.entries[entryName].count = newValue;
             for(var resource in this.entries[entryName].cost){
@@ -449,7 +449,7 @@ Game.interstellarBETA.military = (function(){
     }
 
     instance.spy = function(starName){
-        var star = Game.interstellarBETA.stars.getStarData(starName);
+        var star = this.stars.getStarData(starName);
         var chance = this.getSpyChance(star)/100;
         var roll = Math.random();
         if(chance >= roll){
@@ -499,7 +499,7 @@ Game.interstellarBETA.military = (function(){
 
     instance.invadeSystem = function(starName){
         if(this.power!=0){
-            var star = Game.interstellarBETA.stars.getStarData(starName);
+            var star = this.stars.getStarData(starName);
             var chance = this.getChance(star);
             if(chance == "peace"){
                 return;
@@ -547,7 +547,7 @@ Game.interstellarBETA.military = (function(){
     };
 
     instance.absorbSystem = function(id){
-        var data = Game.interstellarBETA.stars.entries[id];
+        var data = this.stars.entries[id];
         var faction = Game.stargaze.getStargazeData(data.factionId);
         if(faction.opinion >= 60){
             faction.opinion -= 5;

@@ -135,11 +135,45 @@ Game.stargaze = (function(){
 	};
 
 	instance.save = function(data){
-
+		data.stargaze = {entries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}};
+		for(var id in this.entries){
+			data.stargaze.entries[id] = this.entries[id];
+		}
+		for(var id in this.rebirthStart){
+			data.stargaze.rebirthStart[id] = this.rebirthStart[id];
+		}
+		for(var id in this.rebirthUnlocked){
+			data.stargaze.rebirthUnlocked[id] = this.rebirthUnlocked[id];
+		}
+		for(var id in this.rebirthChildUnlocked){
+			data.stargaze.rebirthChildUnlocked[id] = this.rebirthChildUnlocked[id];
+		}
 	};
 
 	instance.load = function(data){
-
+		if(data.stargaze){
+			if(typeof data.stargaze.entries !== 'undefined'){
+                for(id in data.stargaze.entries){
+                    this.entries[id] = data.stargaze.entries[id];
+                    this.entries[id].displayNeedsUpdate = true;
+                }
+            }
+            if(typeof data.stargaze.rebirthStart !== 'undefined'){
+                for(id in data.stargaze.rebirthStart){
+                    this.rebirthStart[id] = data.stargaze.rebirthStart[id];
+                }
+            }
+            if(typeof data.stargaze.rebirthUnlocked !== 'undefined'){
+                for(id in data.stargaze.rebirthUnlocked){
+                    this.rebirthUnlocked[id] = data.stargaze.rebirthUnlocked[id];
+                }
+            }
+            if(typeof data.stargaze.rebirthChildUnlocked !== 'undefined'){
+                for(id in data.stargaze.rebirthChildUnlocked){
+                    this.rebirthChildUnlocked[id] = data.stargaze.rebirthChildUnlocked[id];
+                }
+            }
+		}
 	};
 
 	instance.getStargazeData = function(id) {
