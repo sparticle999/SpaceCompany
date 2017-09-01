@@ -259,19 +259,6 @@ Game.storageData = (function(){
             res.displayNeedsUpdate = true;
             self.displayNeedsUpdate = true;
         },
-        remove: function (self) {
-            if (typeof self.resource === 'undefined') {
-                return;
-            }
-            var res = Game.resources.getResourceData(self.resource);
-            var capacityAddition = res.baseCapacity;
-            for (var i = 0; i < self.current; i++) {
-                capacityAddition *= 2;
-            }
-            res.capacity -= capacityAddition;
-            res.displayNeedsUpdate = true;
-            self.displayNeedsUpdate = true;
-        }
     };
 
     /*********************

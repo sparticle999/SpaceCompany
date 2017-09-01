@@ -125,6 +125,11 @@ Game.resources = (function(){
             res.current -= res.capacity;
             res.capacity *= 2;
             res.displayNeedsUpdate = true;
+
+            for(var r in upgradeData.cost){
+                upgradeData.cost[r] *= 2;
+            }
+            upgradeData.displayNeedsUpdate = true;
         }
     }
 

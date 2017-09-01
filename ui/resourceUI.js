@@ -44,7 +44,7 @@
             ['<tr id="{{htmlId}}"><td style="border:none;">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}</h3>',
                 '<span>',
-                    '<p>{{desc}}<span id="{{htmlId}}">100</span></p>',
+                    '<p>{{desc}}<span id="{{htmlId}}_target">100</span></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
                 '<div class="btn btn-default" id="{{htmlId}}_unlock">Unlock</div>',
@@ -56,10 +56,9 @@
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_prod"></p>',
-                    '<p id="{{htmlId}}_rcost"></p>',
+                    '<p id="{{htmlId}}_use"></p>',
                     '<p id="{{htmlId}}_cost"></p>',
                 '</span>',
-                '<br><br>',
                 '<div id="{{htmlId}}_buy" class="btn btn-default">Buy 1</div>',
                 '<div id="{{htmlId}}_buy10" class="btn btn-default">Buy 10</div>',
                 '<div id="{{htmlId}}_buy100" class="btn btn-default">Buy 100</div>',
@@ -210,6 +209,8 @@
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
             costElement.append($(costDisplayData));
+
+            $('#' + data.htmlId + '_target').text(data.cost[data.resource]*2);
         }
 
         data.displayNeedsUpdate = false;
@@ -230,6 +231,45 @@
             costElement.empty();
             costElement.append($(costDisplayData));
         }
+
+        var segmentsUse = [];
+        var segmentsProd = [];
+        for(var resource in data.resourcePerSecond){
+            var segmentX = {n: Game.utils.capitaliseFirst(resource), p: data.resourcePerSecond[resource]};
+            if(segmentX.p < 0){
+                segmentsUse.push(segmentX);
+            } else {
+                segmentsProd.push(segmentX);
+            }
+        }
+        var useHtml = "<span>Uses </span>";
+        var prodHtml = "<span>Produces </span>";
+        for(var i = 0; i < segmentsUse.length; i++){
+            var segmentData = segmentsUse[i];
+            var html = '<span id="' + segmentData.n + 'Use">' + (segmentData.p*-1) + " " + segmentData.n + '</span>';
+            useHtml += html;
+            if(i < segmentsUse.length - 1) {
+                useHtml += '<span>, </span>';
+            }
+        }
+        for(var i = 0; i < segmentsProd.length; i++){
+            var segmentData = segmentsProd[i];
+            var html = '<span id="' + segmentData.n + 'Prod">' + segmentData.p + " " + segmentData.n + '</span>';
+            prodHtml += html;
+            if(i < segmentsProd.length - 1) {
+                prodHtml += '<span>, </span>';
+            }
+        }
+        useHtml += '<span> per second.</span>'
+        prodHtml += '<span> per second.</span>'
+        if(segmentsUse[0] != undefined){
+            var target = $('#' + data.htmlId + '_use');
+            target.empty()
+            target.append(useHtml);
+        }
+        var target = $('#' + data.htmlId + '_prod');
+        target.empty()
+        target.append(prodHtml);
 
         data.displayNeedsUpdate = false;
     };

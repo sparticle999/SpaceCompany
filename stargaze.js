@@ -134,6 +134,14 @@ Game.stargaze = (function(){
 		this.rebirthNeedsUpdate = true;
 	};
 
+	instance.save = function(data){
+
+	};
+
+	instance.load = function(data){
+
+	};
+
 	instance.getStargazeData = function(id) {
 		return this.entries[id];
 	};

@@ -51,6 +51,9 @@ Game.interstellarBETA = (function(){
         for(id in Game.interstellarBETA.military.entries){
             data.interstellarBETA.military[id] = Game.interstellarBETA.military.entries[id];
         }
+        for(id in Game.interstellarBETA.stars.entries){
+            data.interstellarBETA.stars[id] = Game.interstellarBETA.stars.entries[id];
+        }
     };
 
     instance.load = function(data){
@@ -78,6 +81,11 @@ Game.interstellarBETA = (function(){
             if(typeof data.interstellarBETA.military !== 'undefined'){
                 for(id in data.interstellarBETA.military){
                     Game.interstellarBETA.military.entries[id].count = data.interstellarBETA.military[id].count;
+                }
+            }
+            if(typeof data.interstellarBETA.stars !== 'undefined'){
+                for(id in data.interstellarBETA.stars){
+                    Game.interstellarBETA.stars.entries[id] = data.interstellarBETA.stars[id];
                 }
             }
         } else if(data.interstellar){
@@ -110,6 +118,12 @@ Game.interstellarBETA = (function(){
                     this.entries[objects[i]].displayNeedsUpdate = true;
                 }
                 document.getElementById("interstellarTab").className = "";
+            }
+        }
+        for(var id in Game.interstellarBETA.stars.entries){
+            var data = Game.interstellarBETA.stars.getStarData(id);
+            if(data.explored == true){
+                document.getElementById('star_' + id + '_conquer').className = "";
             }
         }
     };
