@@ -1,12 +1,10 @@
 COST_TYPE = {
-    FIXED: 0,
-    PERCENT: 1
+    FIXED: 0
 };
 
 TECH_TYPE = {
     UPGRADE: 0,
-    UNLOCK: 1,
-    STORAGE: 2
+    UNLOCK: 1
 };
 
 BUILDING_TYPE = {
