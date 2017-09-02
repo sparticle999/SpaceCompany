@@ -131,7 +131,16 @@ Game.resources = (function(){
             }
             upgradeData.displayNeedsUpdate = true;
         }
-    }
+    };
+
+    instance.buyMachine = function(args, count){
+        var data = args.data;
+        console.log(data)
+    };
+
+    instance.destroyMachine = function(args, count){
+        var data = args.data;
+    };
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;

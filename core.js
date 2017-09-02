@@ -259,8 +259,8 @@ function refreshPerSec(delta){
 
     if(antimatterToggled === true) {
     	if(antimatter + antimatterps < 100000){
-	        var plasmaCost = (Game.interstellar.machines.drive.count*100)
-	        var iceCost = (Game.interstellar.machines.drive.count*12000)
+	        var plasmaCost = (Game.interstellarBETA.antimatter.entries.drive.count*100)
+	        var iceCost = (Game.interstellarBETA.antimatter.entries.drive.count*12000)
 	        if(plasma + plasmaps >= plasmaCost && ice + iceps >= iceCost) {
 	            plasmaps -= plasmaCost;
 	            iceps -= iceCost;
@@ -839,25 +839,25 @@ function checkRedCost(){
 
 	// Interstellar
 
-	Game.settings.turnRed(lunarite, Game.interstellar.machines.shield.lunarite, "shieldLunariteCost");
-	Game.settings.turnRed(titanium, Game.interstellar.machines.shield.titanium, "shieldTitaniumCost");
-	Game.settings.turnRed(metal, Game.interstellar.machines.shield.metal, "shieldMetalCost");
+	Game.settings.turnRed(lunarite, Game.interstellarBETA.rocketParts.entries.shield.cost['lunarite'], "shieldLunariteCost");
+	Game.settings.turnRed(titanium, Game.interstellarBETA.rocketParts.entries.shield.cost['titanium'], "shieldTitaniumCost");
+	Game.settings.turnRed(metal, Game.interstellarBETA.rocketParts.entries.shield.cost['metal'], "shieldMetalCost");
 
-	Game.settings.turnRed(silicon, Game.interstellar.machines.engine.silicon, "engineSiliconCost");
-	Game.settings.turnRed(meteorite, Game.interstellar.machines.engine.meteorite, "engineMeteoriteCost");
-	Game.settings.turnRed(hydrogen, Game.interstellar.machines.engine.hydrogen, "engineHydrogenCost");
+	Game.settings.turnRed(silicon, Game.interstellarBETA.rocketParts.entries.engine.cost['silicon'], "engineSiliconCost");
+	Game.settings.turnRed(meteorite, Game.interstellarBETA.rocketParts.entries.engine.cost['meteorite'], "engineMeteoriteCost");
+	Game.settings.turnRed(hydrogen, Game.interstellarBETA.rocketParts.entries.engine.cost['hydrogen'], "engineHydrogenCost");
 
-	Game.settings.turnRed(silver, Game.interstellar.machines.aero.silver, "aeroSilverCost");
-	Game.settings.turnRed(ice, Game.interstellar.machines.aero.ice, "aeroIceCost");
-	Game.settings.turnRed(gem, Game.interstellar.machines.aero.gem, "aeroGemCost");
+	Game.settings.turnRed(silver, Game.interstellarBETA.rocketParts.entries.aero.cost['silver'], "aeroSilverCost");
+	Game.settings.turnRed(ice, Game.interstellarBETA.rocketParts.entries.aero.cost['ice'], "aeroIceCost");
+	Game.settings.turnRed(gem, Game.interstellarBETA.rocketParts.entries.aero.cost['gem'], "aeroGemCost");
 
-	Game.settings.turnRed(silver, Game.interstellar.machines.drive.silver, "driveSilverCost");
-	Game.settings.turnRed(oil, Game.interstellar.machines.drive.oil, "driveOilCost");
-	Game.settings.turnRed(meteorite, Game.interstellar.machines.drive.meteorite, "driveMeteoriteCost");
+	Game.settings.turnRed(silver, Game.interstellarBETA.antimatter.entries.drive.cost['silver'], "driveSilverCost");
+	Game.settings.turnRed(oil, Game.interstellarBETA.antimatter.entries.drive.cost['oil'], "driveOilCost");
+	Game.settings.turnRed(meteorite, Game.interstellarBETA.antimatter.entries.drive.cost['meteorite'], "driveMeteoriteCost");
 
-    Game.settings.turnRed(metal, Game.interstellar.machines.IRS.metal, "IRSMetalCost");
-    Game.settings.turnRed(ice, Game.interstellar.machines.IRS.ice, "IRSIceCost");
-    Game.settings.turnRed(meteorite, Game.interstellar.machines.IRS.meteorite, "IRSMeteoriteCost");
+    Game.settings.turnRed(metal, Game.interstellarBETA.comms.entries.IRS.cost['metal'], "IRSMetalCost");
+    Game.settings.turnRed(ice, Game.interstellarBETA.comms.entries.IRS.cost['ice'], "IRSIceCost");
+    Game.settings.turnRed(meteorite, Game.interstellarBETA.comms.entries.IRS.cost['meteorite'], "IRSMeteoriteCost");
 
 }
 

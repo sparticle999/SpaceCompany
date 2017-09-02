@@ -58,7 +58,7 @@ Game.interstellarBETA = (function(){
 
     instance.load = function(data){
         if(data.interstellarBETA){
-            if(data.interstellarBETA.comms !== 'undefined'){
+            if(typeof data.interstellarBETA.comms !== 'undefined'){
                 for(id in data.interstellarBETA.comms){
                     this.comms.entries[id].count = data.interstellarBETA.comms[id].count;
                 }
@@ -182,7 +182,7 @@ Game.interstellarBETA.comms = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(this.comms.entries[entryName].cost).length){
+        if(resourcePass === Object.keys(this.entries[entryName].cost).length){
             var newValue = Math.floor(data.count + 1);
             data.count = newValue;
             for(var resource in data.cost){
@@ -251,7 +251,7 @@ Game.interstellarBETA.antimatter = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(this.antimatter.entries[entryName].cost).length){
+        if(resourcePass === Object.keys(this.entries[entryName].cost).length){
             var newValue = Math.floor(this.entries[entryName].count + 1);
             this.entries[entryName].count = newValue;
             for(var resource in this.entries[entryName].cost){
@@ -331,18 +331,19 @@ Game.interstellarBETA.military = (function(){
     instance.buildShip = function(entryName) {
         // Add the buildings and clamp to the maximum
         var resourcePass = 0;
-        for(var resource in this.entries[entryName].cost){
-            if(window[resource.toString()] >= this.entries[entryName].cost[resource.toString()]){
+        var ship = this.entries[entryName];
+        for(var resource in ship.cost){
+            if(window[resource.toString()] >= ship.cost[resource.toString()]){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(this.military.entries[entryName].cost).length){
-            var newValue = Math.floor(this.entries[entryName].count + 1);
-            this.entries[entryName].count = newValue;
-            for(var resource in this.entries[entryName].cost){
-                window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
+        if(resourcePass === Object.keys(ship.cost).length){
+            var newValue = Math.floor(ship.count + 1);
+            ship.count = newValue;
+            for(var resource in ship.cost){
+                window[resource.toString()] -= ship.cost[resource.toString()];
             }            
-            this.entries[entryName].displayNeedsUpdate = true;
+            ship.displayNeedsUpdate = true;
         }
         this.updateCost(entryName);
         this.updateFleetStats();
@@ -401,13 +402,15 @@ Game.interstellarBETA.military = (function(){
 
     instance.updateShips = function(){
         for(var ship in this.entries){
-            var updateList = document.getElementsByClassName(ship + "Count");
-            for(var i = 0; i < updateList.length; i++){
-                updateList[i].innerHTML = this.entries[ship].count;
-            }
-            var activeUpdateList = document.getElementsByClassName(ship + "Active");
-            for(var i = 0; i < activeUpdateList.length; i++){
-                activeUpdateList[i].innerHTML = this.entries[ship].active;
+            if(this.entries[ship].displayNeedsUpdate == true){
+                var updateList = document.getElementsByClassName(ship + "Count");
+                for(var i = 0; i < updateList.length; i++){
+                    updateList[i].innerHTML = this.entries[ship].count;
+                }
+                var activeUpdateList = document.getElementsByClassName(ship + "Active");
+                for(var i = 0; i < activeUpdateList.length; i++){
+                    activeUpdateList[i].innerHTML = this.entries[ship].active;
+                }
             }
         }
     };
@@ -421,6 +424,7 @@ Game.interstellarBETA.military = (function(){
         } else if(ship.active + num <= ship.count && ship.active + num >= 0){
             ship.active += num;
         }
+        ship.displayNeedsUpdate = true;
         this.updateFleetStats();
         this.updateShips();
     };

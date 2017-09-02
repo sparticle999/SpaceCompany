@@ -1,4 +1,4 @@
-(function(){
+Game.resourcesUI = (function(){
 
     var instance = {};
 
@@ -27,8 +27,8 @@
         if(Game.constants.enableDataDrivenResources === false) {
             return;
         }
-
-        this.tab = Game.ui.createTab({id: 'resourcesBETA', title: 'Resources (BETA)'});
+        // Prepends tab, rather than appending
+        this.tab = Game.ui.createTab({id: 'resourcesBETA', title: 'Resources (BETA)', prepend:true});
         this.tab.initialise();
 
         instance.titleTemplate = Handlebars.compile(
@@ -52,7 +52,7 @@
 
         instance.buildingTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"></tr><td>',
-                '<h3 class="default btn-link">{{name}}</h3>',
+                '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}_current">0</span></h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_prod"></p>',
@@ -104,6 +104,13 @@
             var data = Game.resources.getResourceData(this.entries[id].id);
             if(data.displayNeedsUpdate === true) {
                 this.updateDisplay(data);
+                // document.getElementById("resourcesBETATab_" + data.category + "_collapse").className = "hidden";
+                // if(data.unlocked == true){
+                //     document.getElementById("resourcesBETATab_" + data.category + "_collapse").className = "";
+                //     document.getElementById("resourcesBETATab_" + data.id + "_ne").className = "collapse_resourcesBETATab_" + data.category;
+                // } else {
+                //     document.getElementById("resourcesBETATab_" + data.id + "_ne").className = "collapse_resourcesBETATab_" + data.category + " hidden";
+                // }
             }
         }
 
@@ -122,7 +129,7 @@
         }
 
         for(var id in Game.resources.categoryEntries) {
-            if(this.tab.categoryHasVisibleEntries(id) === true) {
+            if(this.tab.categoryHasUnlockedEntries(id) === true) {
                 this.tab.showCategory(id);
             } else {
                 this.tab.hideCategory(id);
@@ -136,7 +143,7 @@
         tabContentRoot.append($(tech));
 
         var unlockButton = $('#' + storageData.htmlId + '_unlock');
-        unlockButton.click({id: storageData.id}, function(args) { Game.resources.upgradeStorage(args.data.id); });
+        unlockButton.click({id: storageData.id}, function(args) {Game.resources.upgradeStorage(args.data.id);});
 
         this.storageEntries[storageData.id] = data.id;
         this.storageObservers[storageData.id] = [];
@@ -157,6 +164,14 @@
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
         $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
+
+        $('#' + data.htmlId + '_buy').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 1);});
+        $('#' + data.htmlId + '_buy10').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 10);});
+        $('#' + data.htmlId + '_buy100').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 100);});
+
+        $('#' + data.htmlId + '_destroy').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 1);});
+        $('#' + data.htmlId + '_destroy10').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 10);});
+        $('#' + data.htmlId + '_destroy100').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 100);});
 
         for (var id in Game.storageData) {
             var storageData = Game.resources.storageUpgrades[id];
@@ -223,6 +238,8 @@
         } else {
             element.hide();
         }
+
+        $('#' + data.htmlId + '_current').text(data.current);
 
         // Update the cost display
         if(data.cost) {
@@ -363,5 +380,7 @@
     };
 
     Game.uiComponents.push(instance);
+
+    return instance;
 
 }());

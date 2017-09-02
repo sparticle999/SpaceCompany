@@ -59,7 +59,11 @@
     // ---------------------------------------------------------------------------
     GameTab.prototype.initialise = function() {
         var html = tabTemplate(this.data);
-        tabRoot.append($(html));
+        if(this.data.prepend == true){
+            tabRoot.prepend($(html));
+        } else{
+            tabRoot.append($(html));
+        }
 
         var contentHtml = contentTemplate(this.data);
         tabContentRoot.append($(contentHtml));
@@ -156,12 +160,10 @@
         return this.categoryEntries[category].length;
     };
 
-    GameTab.prototype.categoryHasVisibleEntries = function(category) {
+    GameTab.prototype.categoryHasUnlockedEntries = function(category) {
         for(var i = 0; i < this.categoryEntries[category].length; i++) {
-            var elementId = this.getNavElementId(this.categoryEntries[category][i]);
-            if($('#' + elementId).is(":visible")) {
-                return true;
-            }
+            var res = Game.resources.getResourceData(this.categoryEntries[category][i]);
+            if(res.unlocked) return true;
         }
 
         return false;
