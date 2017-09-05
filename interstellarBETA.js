@@ -450,7 +450,8 @@ Game.interstellarBETA.military = (function(){
     }
 
     instance.spy = function(starName){
-        var star = this.stars.getStarData(starName);
+        console.log("Spying on " + starName);
+        var star = Game.interstellarBETA.stars.getStarData(starName);
         var chance = this.getSpyChance(star)/100;
         var roll = Math.random();
         if(chance >= roll){
