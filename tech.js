@@ -13,10 +13,7 @@ Game.tech = (function(){
             this.techTypeCount++;
             this.entries[id] = data;
 
-            // the storage techs are currently unused
-            if (data.type !== TECH_TYPE.STORAGE) {
-                Game.techUI.addTech(data);
-            }
+            Game.techUI.addTech(data);
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
@@ -33,10 +30,7 @@ Game.tech = (function(){
             var data = this.initTech(id);
             this.entries[id] = data;
 
-            // the storage techs are currently unused
-            if (data.type !== TECH_TYPE.STORAGE) {
-                Game.techUI.replaceTech(data);
-            }
+            Game.techUI.replaceTech(data);
         }
         refreshResearches();
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
@@ -134,10 +128,6 @@ Game.tech = (function(){
                 return false;
             }
         }
-        // the percent cost items are storages, can't buy more than 1
-        if (tech.costType === COST_TYPE.PERCENT && count > 1) {
-            count = 1;
-        }
 
         // create a new object for cost to avoid reference issues
         var cost = {};
@@ -157,19 +147,6 @@ Game.tech = (function(){
                 for (var resource in tech.cost) {
                     cost[resource] = tech.cost[resource];
                 }
-            }
-        } else if (tech.costType === COST_TYPE.PERCENT) {
-            if (typeof tech.resource === 'undefined') {
-                // can't calculate a percent cost without a resource
-                return false;
-            }
-            var storage = window[tech.resource + 'Storage'];
-            if (typeof storage === 'undefined') {
-                // percent is meaningless without a defined storage
-                return false;
-            }
-            for (var resource in tech.cost) {
-                cost[resource] = Math.floor(tech.cost[resource] * storage)
             }
         } else {
             return false;
