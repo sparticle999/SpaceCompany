@@ -182,9 +182,8 @@ Game.interstellarBETA.comms = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(this.entries[entryName].cost).length){
-            var newValue = Math.floor(data.count + 1);
-            data.count = newValue;
+        if(resourcePass === Object.keys(data.cost).length){
+            data.count += 1;
             for(var resource in data.cost){
                 window[resource.toString()] -= data.cost[resource.toString()];
             }            
@@ -251,9 +250,8 @@ Game.interstellarBETA.antimatter = (function(){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(this.entries[entryName].cost).length){
-            var newValue = Math.floor(this.entries[entryName].count + 1);
-            this.entries[entryName].count = newValue;
+        if(resourcePass === Object.keys(data.cost).length){
+            this.entries[entryName].count += 1;
             for(var resource in this.entries[entryName].cost){
                 window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
             }            
@@ -329,7 +327,7 @@ Game.interstellarBETA.military = (function(){
     };
 
     instance.buildShip = function(entryName) {
-        // Add the buildings and clamp to the maximum
+        // Add the ships and clamp to the maximum
         var resourcePass = 0;
         var ship = this.entries[entryName];
         for(var resource in ship.cost){
@@ -338,8 +336,7 @@ Game.interstellarBETA.military = (function(){
             }
         }
         if(resourcePass === Object.keys(ship.cost).length){
-            var newValue = Math.floor(ship.count + 1);
-            ship.count = newValue;
+            ship.count += 1;
             for(var resource in ship.cost){
                 window[resource.toString()] -= ship.cost[resource.toString()];
             }            

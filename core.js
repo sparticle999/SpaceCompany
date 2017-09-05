@@ -921,7 +921,14 @@ function refreshResources(){
 		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
-		resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
+        if(contains(resourcesUnlocked, "wonderFloor2Nav") == false){
+		  resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
+        } else {
+            Game.removeExcess(resourcesUnlocked, "communicationWonderNav");
+            Game.removeExcess(resourcesUnlocked, "rocketWonderNav");
+            Game.removeExcess(resourcesUnlocked, "antimatterWonderNav");
+            Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+        }
 	}
 
 	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");

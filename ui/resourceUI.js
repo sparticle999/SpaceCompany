@@ -100,6 +100,8 @@ Game.resourcesUI = (function(){
             return;
         }
 
+        this.addResources(delta);
+
         for(var id in this.entries) {
             var data = Game.resources.getResourceData(this.entries[id].id);
             if(data.displayNeedsUpdate === true) {
@@ -154,6 +156,14 @@ Game.resourcesUI = (function(){
         var tech = this.buildingTemplate(buildingData);
         tabContentRoot.append($(tech));
 
+        $('#' + buildingData.htmlId + '_buy').click({self: instance, id: buildingData.id}, function(args) {Game.resources.buyMachine(args.data.id, 1);});
+        $('#' + buildingData.htmlId + '_buy10').click({self: instance, id: buildingData.id}, function(args) {Game.resources.buyMachine(args.data.id, 10);});
+        $('#' + buildingData.htmlId + '_buy100').click({self: instance, id: buildingData.id}, function(args) {Game.resources.buyMachine(args.data.id, 100);});
+
+        $('#' + buildingData.htmlId + '_destroy').click({self: instance, id: buildingData.id}, function(args) {Game.resources.destroyMachine(args.data.id, 1);});
+        $('#' + buildingData.htmlId + '_destroy10').click({self: instance, id: buildingData.id}, function(args) {Game.resources.destroyMachine(args.data.id, 10);});
+        $('#' + buildingData.htmlId + '_destroy100').click({self: instance, id: buildingData.id}, function(args) {Game.resources.destroyMachine(args.data.id, 100);});
+
         this.resourceBuildingEntries[buildingData.id] = data.id;
         this.resourceBuildingObservers[buildingData.id] = [];
     };
@@ -164,14 +174,6 @@ Game.resourcesUI = (function(){
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
         $('#' + data.htmlId + '_gain').click({self: instance, id: data.htmlId}, instance.gainClick);
-
-        $('#' + data.htmlId + '_buy').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 1);});
-        $('#' + data.htmlId + '_buy10').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 10);});
-        $('#' + data.htmlId + '_buy100').click({self: instance, id: data.htmlId}, function(args) {Game.resources.buyMachine(args, 100);});
-
-        $('#' + data.htmlId + '_destroy').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 1);});
-        $('#' + data.htmlId + '_destroy10').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 10);});
-        $('#' + data.htmlId + '_destroy100').click({self: instance, id: data.htmlId}, function(args) {Game.resources.destroyMachine(args, 100);});
 
         for (var id in Game.storageData) {
             var storageData = Game.resources.storageUpgrades[id];
@@ -378,6 +380,13 @@ Game.resourcesUI = (function(){
             Game.resources.addResource(data.id, value);
         }
     };
+
+    instance.addResources = function(delta){
+        for(var id in this.entries){
+            var data = Game.resources.entries[this.entries[id].id];
+            data.current += data.perSecond * delta;
+        }
+    }
 
     Game.uiComponents.push(instance);
 

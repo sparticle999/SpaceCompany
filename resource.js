@@ -88,7 +88,7 @@ Game.resources = (function(){
         }
 
         // Add the resource and clamp to the maximum
-        var newValue = Math.floor(this.entries[id].current + count);
+        var newValue = this.entries[id].current + count;
         this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
         this.entries[id].displayNeedsUpdate = true;
     };
@@ -99,7 +99,7 @@ Game.resources = (function(){
         }
 
         // Remove the resource and ensure we can not go below 0
-        var newValue = Math.floor(this.entries[id].current - count);
+        var newValue = this.entries[id].current - count;
         this.entries[id].current = Math.max(newValue, 0);
         this.entries[id].displayNeedsUpdate = true;
     };
@@ -133,14 +133,68 @@ Game.resources = (function(){
         }
     };
 
-    instance.buyMachine = function(args, count){
-        var data = args.data;
-        console.log(data)
+    instance.calcCost = function(self, resource){
+        return Math.floor(Game.buildingData[self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
     };
 
-    instance.destroyMachine = function(args, count){
-        var data = args.data;
+    instance.updateCost = function(data){
+        for(var resource in data.cost){
+            var target = 0;
+            for(var i = 0; i < Object.keys(Game.resourcesUI.resourceBuildingObservers[data.id]).length; i++){
+                if(resource == Game.resourcesUI.resourceBuildingObservers[data.id][i].resource){
+                    data.cost[resource.toString()] = this.calcCost(data, resource);
+                    Game.resourcesUI.resourceBuildingObservers[data.id][i].value = data.cost[resource.toString()];
+                }
+            }
+        }
     };
+
+    instance.buyMachine = function(id, count){
+        var data = Game.buildings.getBuildingData(id);
+        var resourcePass = 0;
+        for(var resource in data.cost){
+            var res = Game.resources.getResourceData(resource);
+            if(res.current >= data.cost[resource]){
+                resourcePass += 1;
+            }
+        }
+        if(resourcePass === Object.keys(data.cost).length){
+            data.current += 1;
+            for(var resource in data.cost){
+                var res = Game.resources.getResourceData(resource);
+                res.current -= data.cost[resource];
+            }
+            this.updateCost(data);
+            this.updateResourcesPerSecond();
+            data.displayNeedsUpdate = true;
+        }
+    };
+
+    instance.destroyMachine = function(id, count){
+        var data = Game.buildings.getBuildingData(id);
+        if(data.current >= count){
+            data.current -= count;
+            this.updateCost(data);
+            data.displayNeedsUpdate = true;
+        }
+    };
+
+    instance.updateResourcesPerSecond = function(){
+        for(var resource in this.entries){
+            var res = this.entries[resource];
+            var ps = 0;
+            for(var id in Game.buildings.entries){
+                var building = Game.buildings.entries[id];
+                for(var value in building.resourcePerSecond){
+                    if(value == res){
+                        var val = building.resourcePerSecond[value];
+                        ps += val * building.current;
+                    }
+                }
+            }
+            res.perSecond = ps;
+        }
+    }
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
