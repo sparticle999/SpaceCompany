@@ -421,6 +421,9 @@ Game.interstellarUI = (function(){
 
                     // Updates Victory Chance
                     var chance = Game.interstellar.military.getChance(data);
+                    if(chance == undefined){
+                        chance = 0;
+                    }
                     if(chance > 1){
                         chance = 100;
                     } else {
@@ -465,8 +468,8 @@ Game.interstellarUI = (function(){
                         document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default";
                     }
                 }
-                continue;
             }
+            data.displayNeedsUpdate = false;
         }
 
         for(var i = 0; i < resources.length; i++){
@@ -710,6 +713,7 @@ Game.interstellarUI = (function(){
         }
         // Update the cost display
         if(data.cost) {
+            Game.interstellar[data.category].updateCost(data.entryName);
             var costDisplayData = this.buildCostDisplay(this.rocketPartObservers[data.id], data);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
@@ -755,6 +759,7 @@ Game.interstellarUI = (function(){
         }
         // Update the cost display
         if(data.cost) {
+            Game.interstellar[data.category].updateCost(data.entryName);
             var costDisplayData = this.buildCostDisplay(this.commObservers[data.id] || this.antimatterObservers[data.id], data);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();
@@ -773,6 +778,7 @@ Game.interstellarUI = (function(){
         }
         // Update the cost display
         if(data.cost) {
+            Game.interstellar[data.category].updateCost(data.entryName);
             var costDisplayData = this.buildCostDisplay(this.commObservers[data.id] || this.militaryObservers[data.id], data);
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();

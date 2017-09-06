@@ -102,6 +102,8 @@ Game.interstellar = (function(){
                 this.antimatter.entries[id].count = data.interstellar.machines[id].count;
             }
         }
+        this.military.updateShips();
+        this.military.updateFleetStats();
     };
 
     instance.redundantChecking = function(){
@@ -124,6 +126,13 @@ Game.interstellar = (function(){
             var data = this.stars.getStarData(id);
             if(data.explored == true){
                 document.getElementById('star_' + id + '_conquer').className = "";
+            }
+        }
+        for(var id in this.entries){
+            if(id == "rocket" || "travel")continue;
+            console.log(id)
+            for(var entry in Game.interstellar[id].entries){
+                Game.interstellar[id].updateCost[entry];
             }
         }
     };
