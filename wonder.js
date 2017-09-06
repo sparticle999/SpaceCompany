@@ -498,8 +498,8 @@ function rebuildCommsWonder(){
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 
-		Game.interstellarBETA.getInterstellarData('comms').unlocked = true;
-		Game.interstellarBETA.getInterstellarData('comms').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('comms').unlocked = true;
+		Game.interstellar.getInterstellarData('comms').displayNeedsUpdate = true;
 	}
 }
 
@@ -523,8 +523,8 @@ function rebuildRocketWonder(){
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 
-		Game.interstellarBETA.getInterstellarData('rocket').unlocked = true;
-		Game.interstellarBETA.getInterstellarData('rocket').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('rocket').unlocked = true;
+		Game.interstellar.getInterstellarData('rocket').displayNeedsUpdate = true;
 	}
 }
 
@@ -549,8 +549,8 @@ function rebuildAntimatterWonder(){
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 
-		Game.interstellarBETA.getInterstellarData('antimatter').unlocked = true;
-		Game.interstellarBETA.getInterstellarData('antimatter').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('antimatter').unlocked = true;
+		Game.interstellar.getInterstellarData('antimatter').displayNeedsUpdate = true;
 	}
 }
 
@@ -590,7 +590,7 @@ function rebuildStargate(){
 		}
 		newUnlock("interstellar");
 
-		Game.interstellarBETA.getInterstellarData('stargate').unlocked = true;
-		Game.interstellarBETA.getInterstellarData('stargate').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('stargate').unlocked = true;
+		Game.interstellar.getInterstellarData('stargate').displayNeedsUpdate = true;
 	}
 }

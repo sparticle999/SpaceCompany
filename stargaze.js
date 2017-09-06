@@ -65,7 +65,7 @@ Game.stargaze = (function(){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
 			}
 			Game.tech.reset();
-			Game.interstellarBETA.initialise();
+			Game.interstellar.initialise();
 
 			this.resetVars();
 			this.hideMachines();
@@ -78,14 +78,14 @@ Game.stargaze = (function(){
 			// Refreshing Interstellar Tab
 			var objects = ["comms", "rocket", "rocketParts", "antimatter", "military"];
 			for(var i = 0; i < objects.length; i++){
-				var object = Game.interstellarBETA[objects[i]];
+				var object = Game.interstellar[objects[i]];
 				for(var entry in object.entries){
 					$('#' + object.entries[entry].htmlId + 'Count').text(object.entries[entry].count);
 				}
 			}
-			for(var star in Game.interstellarBETA.stars.entries){
-				Game.interstellarBETA.stars.entries[star].unlocked = false;
-				Game.interstellarBETA.stars.entries[star].explored = false;
+			for(var star in Game.interstellar.stars.entries){
+				Game.interstellar.stars.entries[star].unlocked = false;
+				Game.interstellar.stars.entries[star].explored = false;
 				document.getElementById('star_' + star).className = "";
 				document.getElementById('star_' + star + '_conquer').className = "hidden";
 			}

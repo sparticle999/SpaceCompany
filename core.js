@@ -259,17 +259,17 @@ function refreshPerSec(delta){
 
     if(antimatterToggled === true) {
     	if(antimatter + antimatterps < 100000){
-	        var plasmaCost = (Game.interstellarBETA.antimatter.entries.drive.count*100)
-	        var iceCost = (Game.interstellarBETA.antimatter.entries.drive.count*12000)
+	        var plasmaCost = (Game.interstellar.antimatter.entries.drive.count*100)
+	        var iceCost = (Game.interstellar.antimatter.entries.drive.count*12000)
 	        if(plasma + plasmaps >= plasmaCost && ice + iceps >= iceCost) {
 	            plasmaps -= plasmaCost;
 	            iceps -= iceCost;
-	            antimatterps += Game.interstellarBETA.antimatter.entries.drive.count/2;
+	            antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 	        }
 	    }
 	    else{
 	    	antimatter = 100000;
-	    	antimatterps += Game.interstellarBETA.antimatter.entries.drive.count/2;
+	    	antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 	    }
     }
     var boosts = {}
@@ -278,8 +278,8 @@ function refreshPerSec(delta){
         boosts[resources[i]] = window[resources[i] + "ps"]/4;
     }
 
-    for(var id in Game.interstellarBETA.stars.entries){
-        var data = Game.interstellarBETA.stars.getStarData(id);
+    for(var id in Game.interstellar.stars.entries){
+        var data = Game.interstellar.stars.getStarData(id);
         if(data.owned == true){
             window[data.resource1.toLowerCase() + "ps"] += boosts[data.resource1.toLowerCase()];
             window[data.resource2.toLowerCase() + "ps"] += boosts[data.resource2.toLowerCase()];
@@ -322,7 +322,6 @@ function checkRedCost(){
     Game.settings.turnRedOrGreen(helium, heliumStorage, 'helium');
     Game.settings.turnRedOrGreen(ice, iceStorage, 'ice');
     Game.settings.turnRedOrGreen(meteorite, meteoriteStorage, 'meteorite');
-    Game.settings.turnRedOrGreen(antimatter, 100000, 'antimatter');
 
     Game.settings.turnRedOnNegative(energyps, 'energyps');
     Game.settings.turnRedOnNegative(uraniumps, 'uraniumps');
@@ -344,7 +343,6 @@ function checkRedCost(){
     Game.settings.turnRedOnNegative(plasmaps, 'plasmaps');
     Game.settings.turnRedOnNegative(meteoriteps, 'meteoriteps');
     Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
-	Game.settings.turnRedOnNegative(antimatterps, 'antimatterps');
 
 	Game.settings.turnRed(wood, 2, "manualCharcoalCost");
 	Game.settings.turnRed(energy, 1000, "manualPlasmaEnergyCost");
@@ -836,29 +834,6 @@ function checkRedCost(){
 	Game.settings.turnRed(plasma, 500000, "stargateWonderPlasmaCost");
 	Game.settings.turnRed(silicon, 920000000, "stargateWonderSiliconCost");
 	Game.settings.turnRed(meteorite, 17000000, "stargateWonderMeteoriteCost");
-
-	// Interstellar
-
-	Game.settings.turnRed(lunarite, Game.interstellarBETA.rocketParts.entries.shield.cost['lunarite'], "shieldLunariteCost");
-	Game.settings.turnRed(titanium, Game.interstellarBETA.rocketParts.entries.shield.cost['titanium'], "shieldTitaniumCost");
-	Game.settings.turnRed(metal, Game.interstellarBETA.rocketParts.entries.shield.cost['metal'], "shieldMetalCost");
-
-	Game.settings.turnRed(silicon, Game.interstellarBETA.rocketParts.entries.engine.cost['silicon'], "engineSiliconCost");
-	Game.settings.turnRed(meteorite, Game.interstellarBETA.rocketParts.entries.engine.cost['meteorite'], "engineMeteoriteCost");
-	Game.settings.turnRed(hydrogen, Game.interstellarBETA.rocketParts.entries.engine.cost['hydrogen'], "engineHydrogenCost");
-
-	Game.settings.turnRed(silver, Game.interstellarBETA.rocketParts.entries.aero.cost['silver'], "aeroSilverCost");
-	Game.settings.turnRed(ice, Game.interstellarBETA.rocketParts.entries.aero.cost['ice'], "aeroIceCost");
-	Game.settings.turnRed(gem, Game.interstellarBETA.rocketParts.entries.aero.cost['gem'], "aeroGemCost");
-
-	Game.settings.turnRed(silver, Game.interstellarBETA.antimatter.entries.drive.cost['silver'], "driveSilverCost");
-	Game.settings.turnRed(oil, Game.interstellarBETA.antimatter.entries.drive.cost['oil'], "driveOilCost");
-	Game.settings.turnRed(meteorite, Game.interstellarBETA.antimatter.entries.drive.cost['meteorite'], "driveMeteoriteCost");
-
-    Game.settings.turnRed(metal, Game.interstellarBETA.comms.entries.IRS.cost['metal'], "IRSMetalCost");
-    Game.settings.turnRed(ice, Game.interstellarBETA.comms.entries.IRS.cost['ice'], "IRSIceCost");
-    Game.settings.turnRed(meteorite, Game.interstellarBETA.comms.entries.IRS.cost['meteorite'], "IRSMeteoriteCost");
-
 }
 
 function refreshResources(){
@@ -924,27 +899,12 @@ function refreshResources(){
         if(contains(resourcesUnlocked, "wonderFloor2Nav") == false){
 		  resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
         } else {
+            Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
             Game.removeExcess(resourcesUnlocked, "communicationWonderNav");
             Game.removeExcess(resourcesUnlocked, "rocketWonderNav");
             Game.removeExcess(resourcesUnlocked, "antimatterWonderNav");
             Game.removeExcess(resourcesUnlocked, "portalRoomNav");
         }
-	}
-
-	Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
-	Game.removeExcess(resourcesUnlocked, "portalRoomNav");
-
-	if(contains(buttonsHidden, "rebuildCommsWonder")){
-		document.getElementById("commsNav").className = "sideTab";
-	}
-	if(contains(buttonsHidden, "rebuildRocketWonder")){
-		document.getElementById("interRocketNav").className = "sideTab";
-	}
-	if(contains(buttonsHidden, "rebuildAntimatterWonder")){
-		document.getElementById("antimatterNav").className = "sideTab";
-	}
-	if(contains(buttonsHidden, "rebuildStargate")){
-		document.getElementById("travelNav").className = "sideTab";
 	}
 
 	for(var i=0; i<noBorder.length; i++){

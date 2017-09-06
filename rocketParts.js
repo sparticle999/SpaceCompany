@@ -1,4 +1,4 @@
-Game.interstellarBETA.rocketParts = (function(){
+Game.interstellar.rocketParts = (function(){
 
 	var instance = {};
 
@@ -44,7 +44,7 @@ Game.interstellarBETA.rocketParts = (function(){
                     resourcePass += 1;
                 }
             }
-            if(resourcePass === Object.keys(Game.interstellarBETA.rocketParts.entries[entryName].cost).length){
+            if(resourcePass === Object.keys(Game.interstellar.rocketParts.entries[entryName].cost).length){
                 var newValue = Math.floor(this.entries[entryName].count + 1);
                 this.entries[entryName].count = Math.min(newValue, this.entries[entryName].max);
                 for(var resource in this.entries[entryName].cost){

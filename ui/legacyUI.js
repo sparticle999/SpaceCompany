@@ -20,7 +20,6 @@ function registerLegacyBindings() {
     Game.ui.bindElement('plasmaps', function(){ return Game.settings.format(plasmaps); });
     Game.ui.bindElement('meteoriteps', function(){ return Game.settings.format(meteoriteps); });
     Game.ui.bindElement('rocketFuelps', function(){ return Game.settings.format(rocketFuelps, 1); });
-    Game.ui.bindElement('antimatterps', function(){ return Game.settings.format(antimatterps, 1); });
 
     Game.ui.bindElement('energyps', function(){
         if(energyps >= 0){
@@ -491,14 +490,6 @@ function registerLegacyBindings() {
             return Game.settings.format(rocketFuel, 1);
         } else {
             return Game.settings.format(rocketFuel);
-        }
-    });
-
-    Game.ui.bindElement('antimatter', function(){
-        if(antimatter < 100) {
-            return Game.settings.format(antimatter, 1);
-        } else {
-            return Game.settings.format(antimatter);
         }
     });
 }

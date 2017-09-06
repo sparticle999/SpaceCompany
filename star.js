@@ -1,4 +1,4 @@
-Game.interstellarBETA.stars = (function(){
+Game.interstellar.stars = (function(){
 
     var instance = {};
 

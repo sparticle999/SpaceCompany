@@ -314,7 +314,7 @@ Game.stargazeUI = (function(){
 
         var segments = [];
         for(var id in data.cost) {
-            var rocketPartData = Game.interstellarBETA.rocketParts.getPartData(id);
+            var rocketPartData = Game.interstellar.rocketParts.getPartData(id);
             if(!data) {
                 console.error("Unknown Part in cost: " + id);
                 continue;

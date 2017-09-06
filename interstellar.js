@@ -1,4 +1,4 @@
-Game.interstellarBETA = (function(){
+Game.interstellar = (function(){
 
 	var instance = {};
 
@@ -35,57 +35,57 @@ Game.interstellarBETA = (function(){
     };
 
     instance.save = function(data){
-        data.interstellarBETA = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}, military: {}};
+        data.interstellar = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}, military: {}};
         for(id in this.comms.entries){
-            data.interstellarBETA.comms[id] = this.comms.entries[id];
+            data.interstellar.comms[id] = this.comms.entries[id];
         }
         for(id in this.rocket.entries){
-            data.interstellarBETA.rocket[id] = this.rocket.entries[id];
+            data.interstellar.rocket[id] = this.rocket.entries[id];
         }
         for(id in this.rocketParts.entries){
-            data.interstellarBETA.rocketParts[id] = this.rocketParts.entries[id];
+            data.interstellar.rocketParts[id] = this.rocketParts.entries[id];
         }
         for(id in this.antimatter.entries){
-            data.interstellarBETA.antimatter[id] = this.antimatter.entries[id];
+            data.interstellar.antimatter[id] = this.antimatter.entries[id];
         }
         for(id in this.military.entries){
-            data.interstellarBETA.military[id] = this.military.entries[id];
+            data.interstellar.military[id] = this.military.entries[id];
         }
         for(id in this.stars.entries){
-            data.interstellarBETA.stars[id] = this.stars.entries[id];
+            data.interstellar.stars[id] = this.stars.entries[id];
         }
     };
 
     instance.load = function(data){
-        if(data.interstellarBETA){
-            if(typeof data.interstellarBETA.comms !== 'undefined'){
-                for(id in data.interstellarBETA.comms){
-                    this.comms.entries[id].count = data.interstellarBETA.comms[id].count;
+        if(data.interstellar){
+            if(typeof data.interstellar.comms !== 'undefined'){
+                for(id in data.interstellar.comms){
+                    this.comms.entries[id].count = data.interstellar.comms[id].count;
                 }
             }
-            if(typeof data.interstellarBETA.rocket !== 'undefined'){
-                for(id in data.interstellarBETA.rocket){
-                    this.rocket.entries[id].count = data.interstellarBETA.rocket[id].count;
+            if(typeof data.interstellar.rocket !== 'undefined'){
+                for(id in data.interstellar.rocket){
+                    this.rocket.entries[id].count = data.interstellar.rocket[id].count;
                 }
             }
-            if(typeof data.interstellarBETA.rocketParts !== 'undefined'){
-                for(id in data.interstellarBETA.rocketParts){
-                    this.rocketParts.entries[id].count = data.interstellarBETA.rocketParts[id].count;
+            if(typeof data.interstellar.rocketParts !== 'undefined'){
+                for(id in data.interstellar.rocketParts){
+                    this.rocketParts.entries[id].count = data.interstellar.rocketParts[id].count;
                 }
             }
-            if(typeof data.interstellarBETA.antimatter !== 'undefined'){
-                for(id in data.interstellarBETA.antimatter){
-                    this.antimatter.entries[id].count = data.interstellarBETA.antimatter[id].count;
+            if(typeof data.interstellar.antimatter !== 'undefined'){
+                for(id in data.interstellar.antimatter){
+                    this.antimatter.entries[id].count = data.interstellar.antimatter[id].count;
                 }
             }
-            if(typeof data.interstellarBETA.military !== 'undefined'){
-                for(id in data.interstellarBETA.military){
-                    this.military.entries[id].count = data.interstellarBETA.military[id].count;
+            if(typeof data.interstellar.military !== 'undefined'){
+                for(id in data.interstellar.military){
+                    this.military.entries[id].count = data.interstellar.military[id].count;
                 }
             }
-            if(typeof data.interstellarBETA.stars !== 'undefined'){
-                for(id in data.interstellarBETA.stars){
-                    this.stars.entries[id] = data.interstellarBETA.stars[id];
+            if(typeof data.interstellar.stars !== 'undefined'){
+                for(id in data.interstellar.stars){
+                    this.stars.entries[id] = data.interstellar.stars[id];
                 }
             }
         } else if(data.interstellar){
@@ -133,7 +133,7 @@ Game.interstellarBETA = (function(){
 
 }());
 
-Game.interstellarBETA.comms = (function(){
+Game.interstellar.comms = (function(){
 
     var instance = {};
 
@@ -205,7 +205,7 @@ Game.interstellarBETA.comms = (function(){
 
 }());
 
-Game.interstellarBETA.antimatter = (function(){
+Game.interstellar.antimatter = (function(){
 
     var instance = {};
 
@@ -280,7 +280,7 @@ Game.interstellarBETA.antimatter = (function(){
 
 }());
 
-Game.interstellarBETA.military = (function(){
+Game.interstellar.military = (function(){
 
     var instance = {};
 
@@ -451,7 +451,7 @@ Game.interstellarBETA.military = (function(){
 
     instance.spy = function(starName){
         console.log("Spying on " + starName);
-        var star = Game.interstellarBETA.stars.getStarData(starName);
+        var star = Game.interstellar.stars.getStarData(starName);
         var chance = this.getSpyChance(star)/100;
         var roll = Math.random();
         if(chance >= roll){
