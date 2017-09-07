@@ -4,9 +4,6 @@ function checkStorages(){
 		if (Game.constants.enableStorageNotifications === false){
 			return;
 		}
-		if (Game.constants.enableDataDrivenResources === false){
-			return;
-		}
 
 		var resourcesFull = 0;
 		for (var id in Game.resources.entries){
@@ -14,27 +11,6 @@ function checkStorages(){
 			if(Game.resources.getResourceData(id).current >= Game.resources.getResourceData(id).capacity){
 				resourcesFull += 1;
 			}
-
-			// Fallback if data driven doesn't work, but this needs to be tested
-
-			// if(id != "plasma" || "energy" || "science"){
-			// 	if(window[id] >= window[id + "Storage"]){
-			// 		resourcesFull += 1;
-			// 	}
-			// }
-
-			// if(id == "energy"){
-			// 	if(window[id] >= getMaxEnergy()){
-			// 		resourcesFull += 1;
-			// 	}
-			// }
-
-			// if(id == "plasma"){
-			// 	if(window[id] >= getMaxPlasma()){
-			// 		resourcesFull += 1;
-			// 	}
-			// }
-
 		}
 		if(resourcesFull >= Game.statistics.get("resourcesUnlocked")){
 			Game.notifyStorage();

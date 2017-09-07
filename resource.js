@@ -10,8 +10,6 @@ Game.resources = (function(){
     instance.resourceCategoryCount = 0;
     instance.storageUpgradeCount = 0;
 
-    
-
     instance.initialise = function() {
         for (var id in Game.resourceData) {
             var data = Game.resourceData[id];
@@ -138,15 +136,7 @@ Game.resources = (function(){
     };
 
     instance.updateCost = function(data){
-        for(var resource in data.cost){
-            var target = 0;
-            for(var i = 0; i < Object.keys(Game.resourcesUI.resourceBuildingObservers[data.id]).length; i++){
-                if(resource == Game.resourcesUI.resourceBuildingObservers[data.id][i].resource){
-                    data.cost[resource.toString()] = this.calcCost(data, resource);
-                    Game.resourcesUI.resourceBuildingObservers[data.id][i].value = data.cost[resource.toString()];
-                }
-            }
-        }
+        // TODO
     };
 
     instance.buyMachine = function(id, count){
@@ -194,7 +184,7 @@ Game.resources = (function(){
             }
             res.perSecond = ps;
         }
-    }
+    };
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
