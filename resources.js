@@ -1,3 +1,13 @@
+// globally accessible convenience wrapper for Game.resources.getResource()
+function getResource(id) {
+	return Game.resources.getResource(id);
+}
+
+// globally accessible convenience wrapper for Game.resources.getStorage()
+function getStorage(id) {
+	return Game.resources.getStorage(id);
+}
+
 function checkStorages(){
 	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
 
@@ -226,15 +236,6 @@ function upgradeIceStorage(){
 		lunarite -= iceStorage/2.5;
 		iceStorage = iceNextStorage;
 		iceNextStorage *= 2;
-	}
-}
-
-function upgradeMeteoriteStorage(){
-	if(meteorite >= meteoriteStorage && lunarite >= meteoriteStorage*4){
-		meteorite -= meteoriteStorage;
-		lunarite -= meteoriteStorage*4;
-		meteoriteStorage = meteoriteNextStorage;
-		meteoriteNextStorage *= 2;
 	}
 }
 
@@ -705,7 +706,6 @@ function getNuclearStation(){
 		Game.statistics.add('tierOwned4');
 	}
 }
-
 
 function getMagmatic(){
 	if(lunarite >= magmaticLunariteCost && gem >= magmaticGemCost && silver >= magmaticSilverCost){
