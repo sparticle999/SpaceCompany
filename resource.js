@@ -121,7 +121,7 @@ Game.resources = (function(){
 			return;
 		}
 
-		// Add the resource and clamp to the maximum
+		// Add the resource and clamp
 		var newValue = window[id] + count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
@@ -141,8 +141,8 @@ Game.resources = (function(){
 			return;
 		}
 
-		// Add the resource and clamp to the maximum
-		var newValue = window[id] + count;
+		// Subtract the resource and clamp
+		var newValue = window[id] - count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
 			window[id] = Math.max(0, Math.min(newValue, storage));
