@@ -8,6 +8,11 @@ function getStorage(id) {
 	return Game.resources.getStorage(id);
 }
 
+// globally accessible convenience wrapper for Game.resources.getProduction()
+function getProduction(id) {
+	return Game.resources.getProduction(id);
+}
+
 function checkStorages(){
 	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
 
@@ -28,28 +33,10 @@ function checkStorages(){
 	}
 }
 
-function gainResources(delta){
-
-	charcoal = (charcoal + charcoalps * delta).clamp(0, charcoalStorage);
-	energy = (energy + energyps * delta).clamp(0, getMaxEnergy());
-	uranium = (uranium + uraniumps * delta).clamp(0, uraniumStorage);
-	metal = (metal + metalps * delta).clamp(0, metalStorage);
-	gem = (gem + gemps * delta).clamp(0, gemStorage);
-	science += scienceps * delta;
-	lunarite = (lunarite + lunariteps * delta).clamp(0, lunariteStorage);
-	methane = (methane + methaneps * delta).clamp(0, methaneStorage);
-	titanium = (titanium + titaniumps * delta).clamp(0, titaniumStorage);
-	gold = (gold + goldps * delta).clamp(0, goldStorage);
-	silver = (silver + silverps * delta).clamp(0, silverStorage);
-	silicon = (silicon + siliconps * delta).clamp(0, siliconStorage);
-	lava = (lava + lavaps * delta).clamp(0, lavaStorage);
-	hydrogen = (hydrogen + hydrogenps * delta).clamp(0, hydrogenStorage);
-	helium = (helium + heliumps * delta).clamp(0, heliumStorage);
-	ice = (ice + iceps * delta).clamp(0, iceStorage);
-	oil = (oil + oilps * delta).clamp(0, oilStorage);
-	wood = (wood + woodps * delta).clamp(0, woodStorage);
-	meteorite = (meteorite + meteoriteps * delta).clamp(0, meteoriteStorage);
-	plasma = (plasma + plasmaps * delta).clamp(0, getMaxPlasma());
+function gainResources(delta) {
+	for (var id in RESOURCE) {
+		Game.resources.addResource(RESOURCE[id], getProduction(RESOURCE[id]) * delta);
+	}
 	rocketFuel += rocketFuelps * delta;
 	antimatter += antimatterps * delta;
 }

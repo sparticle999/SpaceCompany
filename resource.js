@@ -90,10 +90,25 @@ Game.resources = (function(){
 
 	// TODO: change to data-driven resources when available
 	instance.getStorage = function(id) {
-		if (typeof window[id + 'Storage'] === 'undefined') {
+		if (id === RESOURCE.ENERGY) {
+			return getMaxEnergy();
+		} else if (id === RESOURCE.PLASMA) {
+			return getMaxPlasma();
+		} else if (id === RESOURCE.SCIENCE) {
+			// -1 for unlimited storage
+			return -1;
+		} if (typeof window[id + 'Storage'] === 'undefined') {
 			return 0;
 		}
 		return window[id + 'Storage'];
+	};
+
+	// TODO: change to data-driven resources when available
+	instance.getProduction = function(id) {
+		if (typeof window[id + 'ps'] === 'undefined') {
+			return 0;
+		}
+		return window[id + 'ps'];
 	};
 
 	// TODO: change to data-driven resources when available
@@ -102,13 +117,18 @@ Game.resources = (function(){
 			return;
 		}
 
-		if (typeof window[id] === 'undefined' || typeof window[id + 'Storage'] === 'undefined') {
+		if (typeof window[id] === 'undefined') {
 			return;
 		}
 
 		// Add the resource and clamp to the maximum
 		var newValue = window[id] + count;
-		window[id] = Math.max(0, Math.min(newValue, window[id + 'Storage']));
+		var storage = this.getStorage(id);
+		if (storage >= 0) {
+			window[id] = Math.max(0, Math.min(newValue, storage));
+		} else {
+			window[id] = Math.max(0, newValue);
+		}
 	};
 
 	// TODO: change to data-driven resources when available
@@ -117,13 +137,18 @@ Game.resources = (function(){
 			return;
 		}
 
-		if (typeof window[id] === 'undefined' || typeof window[id + 'Storage'] === 'undefined') {
+		if (typeof window[id] === 'undefined') {
 			return;
 		}
 
-		// Remove the resource and ensure we can not go below 0
-		var newValue = window[id] - count;
-		window[id] = Math.max(0, Math.min(newValue, window[id + 'Storage']));
+		// Add the resource and clamp to the maximum
+		var newValue = window[id] + count;
+		var storage = this.getStorage(id);
+		if (storage >= 0) {
+			window[id] = Math.max(0, Math.min(newValue, storage));
+		} else {
+			window[id] = Math.max(0, newValue);
+		}
 	};
 
     instance.setPerSecondProduction = function(id, value) {
