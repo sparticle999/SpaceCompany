@@ -18,6 +18,29 @@ RESOURCE_OBSERVER_TYPE = {
     PER_SECOND: 3
 };
 
+RESOURCE = {
+	ENERGY: 'energy',
+	PLASMA: 'plasma',
+	URANIUM: 'uranium',
+	LAVA: 'lava',
+	OIL: 'oil',
+	METAL: 'metal',
+	GEM: 'gem',
+	CHARCOAL: 'charcoal',
+	WOOD: 'wood',
+	SILICON: 'silicon',
+	LUNARITE: 'lunarite',
+	METHANE: 'methane',
+	TITANIUM: 'titanium',
+	GOLD: 'gold',
+	SILVER: 'silver',
+	HYDROGEN: 'hydrogen',
+	HELIUM: 'helium',
+	ICE: 'ice',
+	METEORITE: 'meteorite',
+	SCIENCE: 'science'
+};
+
 INDEX_NONE = -1;
 
 Game.constants = (function(){

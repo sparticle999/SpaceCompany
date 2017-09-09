@@ -80,27 +80,76 @@ Game.resources = (function(){
         }
     };
 
-    instance.addResource = function(id, count) {
-        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
-            return;
-        }
+	// TODO: change to data-driven resources when available
+	instance.getResource = function(id) {
+		if (typeof window[id] === 'undefined') {
+			return 0;
+		}
+		return window[id];
+	};
 
-        // Add the resource and clamp to the maximum
-        var newValue = this.entries[id].current + count;
-        this.entries[id].current = Math.min(newValue, this.entries[id].capacity);
-        this.entries[id].displayNeedsUpdate = true;
-    };
+	// TODO: change to data-driven resources when available
+	instance.getStorage = function(id) {
+		if (id === RESOURCE.ENERGY) {
+			return getMaxEnergy();
+		} else if (id === RESOURCE.PLASMA) {
+			return getMaxPlasma();
+		} else if (id === RESOURCE.SCIENCE) {
+			// -1 for unlimited storage
+			return -1;
+		} if (typeof window[id + 'Storage'] === 'undefined') {
+			return 0;
+		}
+		return window[id + 'Storage'];
+	};
 
-    instance.takeResource = function(id, count) {
-        if(isNaN(count) || count === null || Math.abs(count) <= 0) {
-            return;
-        }
+	// TODO: change to data-driven resources when available
+	instance.getProduction = function(id) {
+		if (typeof window[id + 'ps'] === 'undefined') {
+			return 0;
+		}
+		return window[id + 'ps'];
+	};
 
-        // Remove the resource and ensure we can not go below 0
-        var newValue = this.entries[id].current - count;
-        this.entries[id].current = Math.max(newValue, 0);
-        this.entries[id].displayNeedsUpdate = true;
-    };
+	// TODO: change to data-driven resources when available
+	instance.addResource = function(id, count) {
+		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+			return;
+		}
+
+		if (typeof window[id] === 'undefined') {
+			return;
+		}
+
+		// Add the resource and clamp
+		var newValue = window[id] + count;
+		var storage = this.getStorage(id);
+		if (storage >= 0) {
+			window[id] = Math.max(0, Math.min(newValue, storage));
+		} else {
+			window[id] = Math.max(0, newValue);
+		}
+	};
+
+	// TODO: change to data-driven resources when available
+	instance.takeResource = function(id, count) {
+		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+			return;
+		}
+
+		if (typeof window[id] === 'undefined') {
+			return;
+		}
+
+		// Subtract the resource and clamp
+		var newValue = window[id] - count;
+		var storage = this.getStorage(id);
+		if (storage >= 0) {
+			window[id] = Math.max(0, Math.min(newValue, storage));
+		} else {
+			window[id] = Math.max(0, newValue);
+		}
+	};
 
     instance.setPerSecondProduction = function(id, value) {
         if(!this.entries[id]) {
