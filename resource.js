@@ -151,6 +151,7 @@ Game.resources = (function(){
 		}
 	};
 
+	// TODO: change to data-driven resources when available
 	instance.maxResource = function(id) {
 		if (typeof window[id] === 'undefined') {
 			return;

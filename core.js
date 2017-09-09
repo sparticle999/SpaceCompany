@@ -6,24 +6,24 @@ function calculateEnergyOutput(delta) {
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
-	if (getResource(RESOURCE.CHARCOAL) + getProduction(RESOURCE.CHARCOAL) * delta >= charcoalEngine * delta) {
+	if (getResourceAfterTick(RESOURCE.CHARCOAL, delta) >= charcoalEngine * delta) {
 		output += charcoalEngine * charcoalEngineOutput;
 	}
 
-	if (getResource(RESOURCE.METHANE) + getProduction(RESOURCE.METHANE) * delta >= methaneStation * 6 * delta) {
+	if (getResourceAfterTick(RESOURCE.METHANE, delta) >= methaneStation * 6 * delta) {
 		output += methaneStation * 23;
 	}
 
-	if (getResource(RESOURCE.URANIUM) + getProduction(RESOURCE.URANIUM) * delta >= nuclearStation * 7 * delta) {
+	if (getResourceAfterTick(RESOURCE.URANIUM, delta) >= nuclearStation * 7 * delta) {
 		output += nuclearStation * 153;
 	}
 
-	if (getResource(RESOURCE.LAVA) + getProduction(RESOURCE.LAVA) * delta > magmatic * 11 * delta) {
+	if (getResourceAfterTick(RESOURCE.LAVA, delta) > magmatic * 11 * delta) {
 		output += magmatic * 191;
 	}
 
-	if (getResource(RESOURCE.HYDROGEN) + getProduction(RESOURCE.HYDROGEN) * delta >= fusionReactor * 10 * delta &&
-		getResource(RESOURCE.HELIUM) + getProduction(RESOURCE.HELIUM) * delta >= fusionReactor * 10 * delta) {
+	if (getResourceAfterTick(RESOURCE.HYDROGEN, delta) >= fusionReactor * 10 * delta &&
+		getResourceAfterTick(RESOURCE.HELIUM, delta) >= fusionReactor * 10 * delta) {
 		output += fusionReactor * 273;
 	}
 
@@ -223,7 +223,7 @@ function refreshPerSec(delta){
 
 	if (meteoriteToggled === true) {
 		adjustment = adjustCost(getStorage(RESOURCE.METEORITE), getResource(RESOURCE.METEORITE), getProduction(RESOURCE.METEORITE), (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
-		if (adjustment.g > 0 && getResource(RESOURCE.PLASMA) + getProduction(RESOURCE.PLASMA) * delta >= adjustment.c) {
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.PLASMA, delta) >= adjustment.c) {
 			plasmaps -= adjustment.c;
 			meteoriteps += adjustment.g;
 		}
@@ -231,7 +231,7 @@ function refreshPerSec(delta){
 
 	if (heaterToggled === true && !energyLow && globalEnergyLock === false) {
 		var adjustment = adjustCost(getStorage(RESOURCE.PLASMA), getResource(RESOURCE.PLASMA), getProduction(RESOURCE.PLASMA), heater * 10, heater * perSecondMultiplier);
-		if (adjustment.g > 0 && getResource(RESOURCE.HYDROGEN) + getProduction(RESOURCE.HYDROGEN) * delta >= adjustment.c) {
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HYDROGEN, delta) >= adjustment.c) {
 			hydrogenps -= adjustment.c;
 			plasmaps += adjustment.g;
 		}
@@ -239,7 +239,7 @@ function refreshPerSec(delta){
 
 	if (plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
 		var adjustment = adjustCost(getStorage(RESOURCE.PLASMA), getResource(RESOURCE.PLASMA), getProduction(RESOURCE.PLASMA), plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
-		if (adjustment.g > 0 && getResource(RESOURCE.HELIUM) + getProduction(RESOURCE.HELIUM) * delta >= adjustment.c) {
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HELIUM, delta) >= adjustment.c) {
 			heliumps -= adjustment.c;
 			plasmaps += adjustment.g;
 		}
