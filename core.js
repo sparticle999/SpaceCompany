@@ -222,7 +222,7 @@ function refreshPerSec(delta){
 	}
 
 	if (meteoriteToggled === true) {
-		adjustment = adjustCost(getStorage(RESOURCE.METEORITE), getResource(RESOURCE.METEORITE), getProduction(RESOURCE.METEORITE), (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
+		adjustment = adjustCost(RESOURCE.METEORITE, (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.PLASMA, delta) >= adjustment.c) {
 			plasmaps -= adjustment.c;
 			meteoriteps += adjustment.g;
@@ -230,7 +230,7 @@ function refreshPerSec(delta){
 	}
 
 	if (heaterToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(getStorage(RESOURCE.PLASMA), getResource(RESOURCE.PLASMA), getProduction(RESOURCE.PLASMA), heater * 10, heater * perSecondMultiplier);
+		var adjustment = adjustCost(RESOURCE.PLASMA, heater * 10, heater * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HYDROGEN, delta) >= adjustment.c) {
 			hydrogenps -= adjustment.c;
 			plasmaps += adjustment.g;
@@ -238,7 +238,7 @@ function refreshPerSec(delta){
 	}
 
 	if (plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(getStorage(RESOURCE.PLASMA), getResource(RESOURCE.PLASMA), getProduction(RESOURCE.PLASMA), plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
+		var adjustment = adjustCost(RESOURCE.PLASMA, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HELIUM, delta) >= adjustment.c) {
 			heliumps -= adjustment.c;
 			plasmaps += adjustment.g;
@@ -275,7 +275,11 @@ function refreshPerSec(delta){
 		}
 	}
 
-	function adjustCost(targetStorage, targetCurrent, targetPs, cost, gain) {
+	function adjustCost(resource, cost, gain) {
+		var targetStorage = getStorage(resource);
+		var targetCurrent = getResource(resource);
+		var targetPs = getProduction(resource);
+
 		var maxGain = targetStorage - targetCurrent;
 		if(targetPs < 0) {
 			maxGain -= targetPs;
