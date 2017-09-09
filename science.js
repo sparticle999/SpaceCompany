@@ -41,9 +41,9 @@ function getLabT4(){
 }
 
 function updateLabCost(){
-	labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
-	labGemCost = Math.floor(15 * Math.pow(1.1,lab));
-	labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+	labWoodCost = Math.floor(10 * Math.pow(1.1,lab) * labT1Multi);
+	labGemCost = Math.floor(15 * Math.pow(1.1,lab) * labT1Multi);
+	labMetalCost = Math.floor(20 * Math.pow(1.1,lab) * labT1Multi);
 
 	labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
 	labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));

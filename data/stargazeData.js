@@ -177,10 +177,10 @@ Game.prestigeData = (function(){
 			}
 
 			// new
-			for(var id in Game.resources.entries){
-				Game.resources.entries[id].perClick = 20;
-				Game.resources.entries[id].displayNeedsUpdate = true;
-			}
+			// for(var id in Game.resources.entries){
+			// 	Game.resources.entries[id].perClick = 20;
+			// 	Game.resources.entries[id].displayNeedsUpdate = true;
+			// }
 
 		},
 		achieved: false
@@ -191,12 +191,30 @@ Game.prestigeData = (function(){
 		desc: "Start with 6,400 max-storage on everything on rebirth.",
 		cost: 8,
 		category: "carnelian",
+		onApply: function(){
+			// old
+			var newStorage = 6400;
+			for(var i = 0; i < resources.length; i++){
+				window[resources[i] + "Storage"] = newStorage;
+			}
+
+			// new
+
+		},
 		achieved: false
 	};
 
 	/*************
 	** Prasnian **
 	*************/
+
+	instance.T3Plasma = {
+		name: "Tier 3 Plasma",
+		desc: "Unlock the Electron Bath",
+		cost: 11,
+		category: "prasnian",
+		achieved: false
+	};
 
 	/**************
 	** Hyacinite **
@@ -207,6 +225,12 @@ Game.prestigeData = (function(){
 		desc: "Start with 20 T1 Labs on rebirth.",
 		cost: 7,
 		category: "hyacinite",
+		onApply: function(){
+			// old
+			lab += 20;
+
+			// new
+		},
 		achieved: false
 	};
 
@@ -214,6 +238,21 @@ Game.prestigeData = (function(){
 		name: "Lab Discount",
 		desc: "T2+ Labs are 20% cheaper with this upgrade.",
 		cost: 16,
+		category: "hyacinite",
+		onApply: function(){
+			// old
+			labT1Multi -= 0.2;
+			updateLabCost();
+
+			// new
+		},
+		achieved: false
+	};
+
+	instance.T5Labs = {
+		name: "Tier 5 Laboratories",
+		desc: "Unlock the Space Scientific Satellite Station",
+		cost: 24,
 		category: "hyacinite",
 		achieved: false
 	};
@@ -231,8 +270,12 @@ Game.prestigeData = (function(){
 		desc: "Increase Energy Efficiency research cap to 50% instead of 25%.",
 		cost: 36,
 		category: "hyacinite",
+		onApply: function(){
+			Game.tech.entries["energyEfficiencyResearch"].maxLevel += 25;
+		},
 		achieved: false
 	};
+
 
 	/*************
 	** Kitrinos **

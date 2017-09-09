@@ -144,4 +144,4 @@ var windowLoaded = false;
 
 // Rebirth Vars
 
-var gainNum = 1;
+var gainNum = 1; var labT1Multi = 1;
