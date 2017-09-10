@@ -7,7 +7,6 @@ Game.stargaze = (function(){
 	instance.navCount = 0;
 
 	instance.upgradeEntries = {};
-
 	
 	instance.rebirthStart = [];				// Things you start with
 	instance.rebirthUnlocked = [];			// Things that start unhidden
@@ -60,6 +59,13 @@ Game.stargaze = (function(){
 
 			for(var i = 0; i < resourcesUnlocked.length; i++){
 				document.getElementById(resourcesUnlocked[i]).className = "hidden";
+			}
+			for(var i = 0; i < buttonsHidden.length; i++){
+				if(buttonsHidden[i].indexOf("Progress") != -1){
+					document.getElementById(buttonsHidden[i]).className = "progress";
+				} else {
+					document.getElementById(buttonsHidden[i]).className = "btn btn-default";
+				}
 			}
 			for(var i = 0; i < tabsUnlocked.length; i++){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
@@ -135,9 +141,12 @@ Game.stargaze = (function(){
 	};
 
 	instance.save = function(data){
-		data.stargaze = {entries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}};
+		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}};
 		for(var id in this.entries){
 			data.stargaze.entries[id] = this.entries[id];
+		}
+		for(var id in this.upgradeEntries){
+			data.stargaze.upgradeEntries[id] = this.upgradeEntries[id];
 		}
 		for(var id in this.rebirthStart){
 			data.stargaze.rebirthStart[id] = this.rebirthStart[id];
@@ -158,6 +167,12 @@ Game.stargaze = (function(){
                     this.entries[id].displayNeedsUpdate = true;
                 }
             }
+            if(typeof data.stargaze.upgradeEntries !== 'undefined'){
+                for(id in data.stargaze.upgradeEntries){
+                    this.upgradeEntries[id] = data.stargaze.upgradeEntries[id];
+                    this.upgradeEntries[id].displayNeedsUpdate = true;
+                }
+            }
             if(typeof data.stargaze.rebirthStart !== 'undefined'){
                 for(id in data.stargaze.rebirthStart){
                     this.rebirthStart[id] = data.stargaze.rebirthStart[id];
@@ -173,6 +188,15 @@ Game.stargaze = (function(){
                     this.rebirthChildUnlocked[id] = data.stargaze.rebirthChildUnlocked[id];
                 }
             }
+		}
+		for(var id in this.upgradeEntries){
+			var data = this.upgradeEntries[id];
+			if(data.achived == true){
+				data.onApply();
+			}
+		}
+		if(this.unlocked == true){
+			document.getElementById("stargazeTab").className = "";
 		}
 	};
 

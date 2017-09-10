@@ -223,7 +223,8 @@ function buildSphere(){
 
 		updateDysonCost();
 
-		Game.stargazeUI.initialise();
+		document.getElementById("stargazeTab").className = "";
+		Game.stargaze.unlocked = true;
 		newUnlock('stargaze');
 	}
 }

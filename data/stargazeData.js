@@ -196,6 +196,7 @@ Game.prestigeData = (function(){
 			var newStorage = 6400;
 			for(var i = 0; i < resources.length; i++){
 				window[resources[i] + "Storage"] = newStorage;
+				window[resources[i] + "NextStorage"] = newStorage * 2;
 			}
 
 			// new
@@ -254,6 +255,9 @@ Game.prestigeData = (function(){
 		desc: "Unlock the Space Scientific Satellite Station",
 		cost: 24,
 		category: "hyacinite",
+		onApply: function(){
+			document.getElementById("labT5").className = "";
+		},
 		achieved: false
 	};
 
@@ -295,7 +299,7 @@ Game.prestigeData = (function(){
 	instance.T5Machines = {
 		name: "Tier 5 Machines",
 		desc: "Gain access to a fifth tier of machines to produce resources.",
-		cost: 26,
+		cost: 35,
 		category: "kitrinos",
 		onApply: function(){
 			unlockTier5();

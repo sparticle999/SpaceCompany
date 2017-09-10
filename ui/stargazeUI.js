@@ -112,7 +112,7 @@ Game.stargazeUI = (function(){
             this.tab.addCategory(id, Game.stargaze.categoryEntries[id].title);
         }
 
-        for(var id in Game.stargazeData) {
+        for(var id in Game.stargaze.entries) {
             this.createDisplay(id);
         }
     };

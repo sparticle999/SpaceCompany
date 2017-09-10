@@ -1102,7 +1102,7 @@ function getPlanetExcavator(){
 
 function getVacuum(){
 	if(getResource(RESOURCE.Lunarite) >= vacuumLunariteCost * T1Price && getResource(RESOURCE.Gem) >= vacuumGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCost * T1Pricest);
 		Game.resources.takeResource(RESOURCE.Gem, vacuumGemCost * T1Price);
 		vacuum += 1;
 		updateCost();
