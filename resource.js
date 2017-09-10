@@ -151,6 +151,20 @@ Game.resources = (function(){
 		}
 	};
 
+	// TODO: change to data-driven resources when available
+	instance.maxResource = function(id) {
+		if (typeof window[id] === 'undefined') {
+			return;
+		}
+
+		// resources without a storage cap will return -1 so do nothing
+		if (getStorage(id) < 0) {
+			return;
+		}
+
+		window[id] = getStorage(id);
+	};
+
     instance.setPerSecondProduction = function(id, value) {
         if(!this.entries[id]) {
             console.error("Unknown Resource: " + id);
