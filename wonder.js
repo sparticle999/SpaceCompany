@@ -344,6 +344,27 @@ function unlockTier4(){
 	document.getElementById("iceTier4").className = "";
 }
 
+function unlockTier5(){
+	document.getElementById("uraniumTier5").className = "";
+	//document.getElementById("lavaTier5").className = "";
+	document.getElementById("oilTier5").className = "";
+	document.getElementById("metalTier5").className = "";
+	document.getElementById("gemTier5").className = "";
+	document.getElementById("charcoalTier5").className = "";
+	document.getElementById("woodTier5").className = "";
+	document.getElementById("siliconTier5").className = "";
+	document.getElementById("lunariteTier5").className = "";
+	document.getElementById("methaneTier5").className = "";
+	document.getElementById("titaniumTier5").className = "";
+	document.getElementById("goldTier5").className = "";
+	document.getElementById("silverTier5").className = "";
+	document.getElementById("hydrogenTier5").className = "";
+	document.getElementById("heliumTier5").className = "";
+	document.getElementById("iceTier5").className = "";
+}
+
+
+
 function achievePreciousWonder(){
 	if(gem >= 10000 && silver >= 7500 && gold >= 5000){
 		gem-= 10000;

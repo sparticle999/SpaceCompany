@@ -951,13 +951,13 @@
 										Planetary Nuclear Plant: <span id="planetNuke">0</span>
 									</h3>
 									<span>
-										
+										This huge factory is as large as a planet, fusing together Uranium from common elements.
 										<br>
-										Produces 2183 Uranium per second.
+										Produces 2412 Uranium per second.
 										<br>
-										Uses 934 Energy per second.
+										Uses 2719 Energy per second.
 										<br>
-										Costs <span id="planetNukeLunariteCost">93,100</span> Lunarite, <span id="planetNukeMethaneCost">47,000</span> Methane, <span id="planetNukeMeteoriteCost">830</span> Meteorite.
+										Costs <span id='planetNukeTitaniumCost'>486000</span> Titanium, <span id='planetNukeSiliconCost'>266000</span> Silicon, <span id='planetNukeIceCost'>364000</span> Ice
 									</span>
 									<br>
 									<br>
@@ -1079,6 +1079,26 @@
 									<button onclick="destroyMachine('oilRig')" class="btn btn-default destroy hidden">Destroy Offshore Rig</button>
 								</td>
 							</tr>
+							<tr id="oilTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Fossilator 9000: <span id="fossilator">0</span>
+									</h3>
+									<span>
+										Much better than the 8000 version, this fossilator reverses the fossil fuel cycle. Instead of burning, it creates them from carbon in the air.
+										<br>
+										Produces 2627 Oil per second.
+										<br>
+										Uses 258 Energy per second.
+										<br>
+										Costs <span id='fossilatorUraniumCost'>110000</span> Uranium, <span id='fossilatorCharcoalCost'>96000</span> Charcoal, <span id='fossilatorLavaCost'>167000</span> Lava.
+									</span>
+									<br>
+									<br>
+									<button onclick="getFossilator()" class="btn btn-default">Get Fossilator 9000</button>
+									<button onclick="destroyMachine('fossilator')" class="btn btn-default destroy hidden">Destroy Fossilator 9000</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1197,6 +1217,26 @@
 									<button onclick="destroyMachine('quantumDrill')" class="btn btn-default destroy hidden">Destroy Quantum Drill</button>
 								</td>
 							</tr>
+							<tr id="metalTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Multiverse Drill: <span id="multiDrill">0</span>
+									</h3>
+									<span>
+										Drills metal from alternate realities where metal is plentiful .
+										<br>
+										They produce 4768 Metal per second.
+										<br>
+										They use 131 Energy per second.
+										<br>
+										Costs <span id='multiDrillTitaniumCost'>184000</span> Titanium, <span id='multiDrillGoldCost'>133000</span> Gold, <span id='multiDrillOilCost'>170000</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMultiDrill()" class="btn btn-default">Get Multiverse Drill</button>
+									<button onclick="destroyMachine('multiDrill')" class="btn btn-default destroy hidden">Destroy Multiverse Drill</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1313,6 +1353,26 @@
 									<br>
 									<button onclick="getCarbyneDrill()" class="btn btn-default">Get Carbyne Drill</button>
 									<button onclick="destroyMachine('carbyneDrill')" class="btn btn-default destroy hidden">Destroy Carbyne Drill</button>
+								</td>
+							</tr>
+							<tr id="gemTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Diamond Accretion Chamber: <span id="diamondChamber">0</span>
+									</h3>
+									<span>
+										This special container condenses carbon dioxide gas into diamonds, creating gems at a faster rate than any drill.
+										<br>
+										Produces 3747 Gems per second.
+										<br>
+										Uses 260 Energy per second.
+										<br>
+										Costs <span id='diamondChamberTitaniumCost'>184000</span> Titanium, <span id='diamondChamberGoldCost'>133000</span> Gold, <span id='diamondChamberOilCost'>170000</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getDiamondChamber()" class="btn btn-default">Get Diamond Accretion Chamber</button>
+									<button onclick="destroyMachine('diamondChamber')" class="btn btn-default destroy hidden">Destroy Diamond Accretion Chamber</button>
 								</td>
 							</tr>
 						</table>
@@ -1442,6 +1502,28 @@
 									<button onclick="destroyMachine('fryer')" class="btn btn-default destroy hidden">Destroy Forest Fryer</button>
 								</td>
 							</tr>
+							<tr id="charcoalTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Microverse Pollutor: <span id="microPolluter">0</span>
+									</h3>
+									<span>
+										Using Nano-technology, tiny universes can be created, filled with toxic gases from charcoal production and simply deleted. Cross-dimensional pollution at a completely new level!
+										<br>
+										Produces 2267 Charcoal per second.
+										<br>
+										Uses 950 Wood per second.
+										<br>
+										Uses 187 Energy per second.
+										<br>
+										Costs <span id='microPolluterMetalCost'>133000</span> Metal, <span id='microPolluterWoodCost'>189000</span> Wood, <span id='microPolluterLavaCost'>160000</span> Lava.
+									</span>
+									<br>
+									<br>
+									<button onclick="getMicroPollutor()" class="btn btn-default">Get Microverse Pollutor</button>
+									<button onclick="destroyMachine('microPolluter')" class="btn btn-default destroy hidden">Destroy Microverse Pollutor</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1560,6 +1642,26 @@
 									<button onclick="destroyMachine('infuser')" class="btn btn-default destroy hidden">Destroy Biomass Infuser</button>
 								</td>
 							</tr>
+							<tr id="woodTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Russian Forest: <span id="forest">0</span>
+									</h3>
+									<span>
+										The great Russian forrests span thousands of miles. More than enough for at least your lifetime. Let the younger generation deal with running out.
+										<br>
+										Produces 3278 wood per second.
+										<br>
+										Uses 244 Energy per second.
+										<br>
+										Costs <span id='forrestMetalCost'>122000</span> Metal, <span id='forrestGemsCost'>151000</span> Gems, <span id='forrestHydrogenCost'>183000</span> Hydrogen.
+									</span>
+									<br>
+									<br>
+									<button onclick="getForrest()" class="btn btn-default">Get Russian Forrest</button>
+									<button onclick="destroyMachine('forest')" class="btn btn-default destroy hidden">Destroy Russian Forrest</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1664,7 +1766,7 @@
 										Desert Destroyer: <span id="desert">0</span>
 									</h3>
 									<span>
-										This large ship orbits around the planet, focused in the Sahara Desert, tearing up sand from Earth and turning it into Silicon under intense heat.
+										This large ship orbits around the planet, focused on the Sahara Desert, tearing up sand from Earth and turning it into Silicon under intense heat.
 										<br>
 										Produces 157 silicon per second.
 										<br>
@@ -1676,6 +1778,26 @@
 									<br>
 									<button onclick="getDesert()" class="btn btn-default">Get Desert Destroyer</button>
 									<button onclick="destroyMachine('desert')" class="btn btn-default destroy hidden">Destroy Desert Destroyer</button>
+								</td>
+							</tr>
+							<tr id="siliconTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Time And Relative Dimensions In Sand: <span id="tardis">0</span>
+									</h3>
+									<span>
+										The TARDIS, for short, harnesses the power of stars from far away in space-time to heat sand into Silicon at record speeds. 
+										<br>
+										Produces 1487 silicon per second.
+										<br>
+										Uses 746 Energy per second.
+										<br>
+										Costs <span id='fossilatorTitaniumCost'>204000</span> Titanium, <span id='fossilatorSiliconCost'>205000</span> Silicon, <span id='fossilatorMeteroriteCost'>17800</span> Meterorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getTardis()" class="btn btn-default">Get T.A.R.D.I.S.</button>
+									<button onclick="destroyMachine('tardis')" class="btn btn-default destroy hidden">Destroy T.A.R.D.I.S.</button>
 								</td>
 							</tr>
 						</table>
@@ -1796,6 +1918,26 @@
 									<button onclick="destroyMachine('planetExcavator')" class="btn btn-default destroy hidden">Destroy Planetary Excavator</button>
 								</td>
 							</tr>
+							<tr id="lunariteTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Moon Cloner: <span id="cloner">0</span>
+									</h3>
+									<span>
+										And you wondered why we have a hundred moons in the sky?
+										<br>
+										Produces 2122 Lunarite per second.
+										<br>
+										Uses 1216 Energy per second.
+										<br>
+										Costs <span id='clonerTitaniumCost'>204000</span> Titanium, <span id='clonerGoldCost'>150000</span> Gold, <span id='clonerMethaneCost'>195000</span> Methane.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCloner()" class="btn btn-default">Get Moon Cloner</button>
+									<button onclick="destroyMachine('cloner')" class="btn btn-default destroy hidden">Destroy Moon Cloner</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -1914,7 +2056,26 @@
 									<button onclick="destroyMachine('vent')" class="btn btn-default destroy hidden">Destroy Hydrothermal Vent</button>
 								</td>
 							</tr>
-
+							<tr id="methaneTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Interstellar Cow: <span id="interCow">0</span>
+									</h3>
+									<span>
+										An interdimoonsional bovine.
+										<br>
+										Produces 1393 methane per second.
+										<br>
+										Uses 899 Energy per second.
+										<br>
+										Costs <span id='interCowLunariteCost'>140000</span> Lunarite, <span id='interCowGoldCost'>202000</span> Gold, <span id='interCowHydrogenCost'>158000</span> Hydrogen.
+									</span>
+									<br>
+									<br>
+									<button onclick="getInterCow()" class="btn btn-default">Get Interstellar Cow</button>
+									<button onclick="destroyMachine('interCow')" class="btn btn-default destroy hidden">Destroy Interstellar Cow</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -2031,6 +2192,26 @@
 									<br>
 									<button onclick="getTitanDrill()" class="btn btn-default">Get Titan-Drill</button>
 									<button onclick="destroyMachine('titanDrill')" class="btn btn-default destroy hidden">Destroy Titan-Drill</button>
+								</td>
+							</tr>
+							<tr id="titaniumTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										David Guetta's Club: <span id="club">0</span>
+									</h3>
+									<span>
+										You shoot me down, but I won't fall. I am Titanium.
+										<br>
+										Produces 2106 Titanium per second.
+										<br>
+										Uses 690 Energy per second.
+										<br>
+										Costs <span id='clubUraniumCost'>175000</span> Uranium, <span id='clubWoodCost'>164000</span> Wood, <span id='clubHeliumCost'>156000</span> Helium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getClub()" class="btn btn-default">Get Club</button>
+									<button onclick="destroyMachine('club')" class="btn btn-default destroy hidden">Destroy Club</button>
 								</td>
 							</tr>
 						</table>
@@ -2151,6 +2332,26 @@
 									<button onclick="destroyMachine('actuator')" class="btn btn-default destroy hidden">Destroy Chronal Actuator</button>
 								</td>
 							</tr>
+							<tr id="goldTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Philosopher's Stone: <span id="philosopher">0</span>
+									</h3>
+									<span>
+										Transumation has progressed to being able to turn thin air into gold!
+										<br>
+										Produces 211 Gold per second.
+										<br>
+										Uses 223 Energy per second.
+										<br>
+										Costs <span id='philosopherMetalCost'>208000</span> Metal, <span id='philosopherSilverCost'>167000</span> Silver, <span id='philosopherMeteroriteCost'>18000</span> Meterorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getPhilosopher()" class="btn btn-default">Get Philosopher's Stone</button>
+									<button onclick="destroyMachine('philosopher')" class="btn btn-default destroy hidden">Destroy Philosopher's Stone</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -2267,6 +2468,25 @@
 									<br>
 									<button onclick="getCannon()" class="btn btn-default">Get Atomic Cannon</button>
 									<button onclick="destroyMachine('cannon')" class="btn btn-default destroy hidden">Destroy Atomic Cannon</button>
+								</td>
+							</tr>
+							<tr id="silverTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Dead Werewolf Finer: <span id="werewolf">0</span>
+									</h3>
+									<span>
+										The Silver bullets used to kill werewolfs are made from silver that has been compressed well over 1000 times. Extracting them will prove beneficial for your production.
+										<br>
+										Produces 2261 silver per second.
+										<br>
+										Uses 1008 Energy per second.
+										<br>
+										Costs <span id='werewolfUraniumCost'>165000</span> Uranium, <span id='werewolfGemsCost'>209000</span> Gems, <span id='werewolfMethaneCost'>170000</span> Methane.
+									<br>
+									<br>
+									<button onclick="getWerewolf()" class="btn btn-default">Get Dead Werewolf Finder</button>
+									<button onclick="destroyMachine('werewolf')" class="btn btn-default destroy hidden">Destroy Dead Werewolf Finder</button>
 								</td>
 							</tr>
 						</table>
@@ -2387,6 +2607,26 @@
 									<button onclick="destroyMachine('veluptuator')" class="btn btn-default destroy hidden">Destroy Volcanic Veluptuator</button>
 								</td>
 							</tr>
+							<tr id="lavaTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Jupitonian Condensator: <span id="condensator">0</span>
+									</h3>
+									<span>
+										Condense gases from the heart of Jupiter into liquid magma.
+										<br>
+										Produces 2103 Lava per second.
+										<br>
+										Uses 4142 Energy per second.
+										<br>
+										Costs <span id='condensatorLunariteCost'>288000</span> Lunarite, <span id='condensatorGemsCost'>210000</span> Gems, <span id='condensatorIceCost'>238000</span> Ice.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCondensator()" class="btn btn-default">Get Jupitonian Condensator</button>
+									<button onclick="destroyMachine('condensator')" class="btn btn-default destroy hidden">Destroy Jupitonian Condensator</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -2503,6 +2743,26 @@
 									<br>
 									<button onclick="getHindenburg()" class="btn btn-default">Get Hindenburg Excavation</button>
 									<button onclick="destroyMachine('hindenburg')" class="btn btn-default destroy hidden">Destroy Hindenburg Excavation</button>
+								</td>
+							</tr>
+							<tr id="hydrogenTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Star Harvester: <span id="harvester">0</span>
+									</h3>
+									<span>
+										'Stealing' is such a strong word. I prefer 'borrowing without return' when we harvest the outer regions of stars.
+										<br>
+										Produces 3562 Hydrogen per second.
+										<br>
+										Uses 3562 Energy per second.
+										<br>
+										Costs <span id='harvesterLunariteCost'>250000</span> Lunarite, <span id='harvesterWoodCost'>184000</span> Wood, <span id='harvesterOilCost'>146000</span> Oil.
+									</span>
+									<br>
+									<br>
+									<button onclick="getHarvester()" class="btn btn-default">Get Star Harvester</button>
+									<button onclick="destroyMachine('harvester')" class="btn btn-default destroy hidden">Destroy Star Harvester</button>
 								</td>
 							</tr>
 						</table>
@@ -2623,6 +2883,26 @@
 									<button onclick="destroyMachine('skimmer')" class="btn btn-default destroy hidden">Destroy Gas Giant Skimmer</button>
 								</td>
 							</tr>
+							<tr id="heliumTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Caged Star: <span id="cage">0</span>
+									</h3>
+									<span>
+										A contained miniature version of the sun uses nuclear fusion to create massive amounts of helium.
+										<br>
+										Produces 2369 Helium per second.
+										<br>
+										Uses 4075 Energy per second.
+										<br>
+										Costs <span id='cageLunariteCost'>171000</span> Lunarite, <span id='cageSiliconCost'>165000</span> Silicon, <span id='cageMeteroriteCost'>18600</span> Meterorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getCage()" class="btn btn-default">Get Caged Star</button>
+									<button onclick="destroyMachine('cage')" class="btn btn-default destroy hidden">Destroy Caged Star</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -2739,6 +3019,26 @@
 									<br>
 									<button onclick="getMrFreeze()" class="btn btn-default">Get Mr Freeze</button>
 									<button onclick="destroyMachine('mrFreeze')" class="btn btn-default destroy hidden">Destroy Mr Freeze</button>
+								</td>
+							</tr>
+							<tr id="iceTier5" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Overexchange Condenser: <span id="overexchange">0</span>
+									</h3>
+									<span>
+										Drain heat out of the ingredients so fast that you're not sure how to process it safely, but you managed to do it properly anyway.
+										<br>
+										Produces 2973 Ice per second.
+										<br>
+										Uses 7397 Energy per second.
+										<br>
+										Costs <span id='overexchangeMetalCost'>210000</span> Metal, <span id='overexchangeSilverCost'>188000</span> Silver, <span id='overexchangeHeliumCost'>205000</span> Helium.
+									</span>
+									<br>
+									<br>
+									<button onclick="getOverexchange()" class="btn btn-default">Get Overexchange Condenser</button>
+									<button onclick="destroyMachine('overexchange')" class="btn btn-default destroy hidden">Destroy Overexchange Condenser</button>
 								</td>
 							</tr>
 						</table>

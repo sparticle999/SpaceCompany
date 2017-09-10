@@ -105,6 +105,26 @@ var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; va
 var printer = 0; var printerLunariteCost = 100000; var printerSiliconCost = 50000;
 var web = 0; var webLunariteCost = 930000; var webUraniumCost = 490000; var webSiliconCost = 510000;
 
+/********************
+** Tier 5 Machines **
+********************/
+
+var fossilator = 0;
+var multiDrill = 0;
+var diamondChamber = 0;
+var forrest = 0;
+var cloner = 0;
+var interCow = 0;
+var club = 0;
+var philospher = 0;
+var werewolf = 0;
+var tardis = 0;
+var planetNuke = 0; var planetNukeTitaniumCost, planetNukeSiliconCost, planetNukeIceCost;
+var condensator = 0;
+var harvester = 0;
+var cage = 0;
+var overexchange = 0;
+
 var science = 0; var scienceps = 0;
 var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
 var labT2 = 0; var labT2MetalCost = 1000; var labT2GemCost = 200; var labT2WoodCost = 500;

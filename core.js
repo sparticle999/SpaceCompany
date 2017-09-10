@@ -46,8 +46,12 @@ function calculateEnergyUse(delta) {
     use += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
     use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
+    use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forrest*275);
+    use += (cloner*1157)+(interCow*879)+(club*754)+(philospher*1387)+(werewolf*984)+(tardis*923);
+    use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
+
     if(charcoalToggled === true){
-        use += (furnace*3)+(kiln*13)+(fryer*34);
+        use += (furnace*3)+(kiln*13)+(fryer*34)+(microPolluter*212);
     }
 
     if(heaterToggled && hydrogen + hydrogenps >= heater * 10 * delta && plasma + plasmaps >= heater * delta) {
@@ -177,21 +181,21 @@ function refreshPerSec(delta){
 
 	if(!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
-        oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246)) * perSecondMultiplier;
-        metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427)) * perSecondMultiplier;
-        gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358)) * perSecondMultiplier;
-        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297)) * perSecondMultiplier;
-        lunariteps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207)) * perSecondMultiplier;
-        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149)) * perSecondMultiplier;
-        titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197)) * perSecondMultiplier;
-        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211)) * perSecondMultiplier;
-        silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208)) * perSecondMultiplier;
-        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157)) * perSecondMultiplier;
-        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235)) * perSecondMultiplier;
-        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187)) * perSecondMultiplier;
-        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113)) * perSecondMultiplier;
-        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232)) * perSecondMultiplier;
-        iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278)) * perSecondMultiplier;
+        oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246) + (fossilator*2630)) * perSecondMultiplier;
+        metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427) + (multiDrill*4797)) * perSecondMultiplier;
+        gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358) + (diamondChamber*3861)) * perSecondMultiplier;
+        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297) + (forrest*3106)) * perSecondMultiplier;
+        lunariteps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207) + (cloner*2206)) * perSecondMultiplier;
+        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) + (interCow*1356)) * perSecondMultiplier;
+        titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197) + (club*2134)) * perSecondMultiplier;
+        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philospher*1960)) * perSecondMultiplier;
+        silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208) + (werewolf*2245)) * perSecondMultiplier;
+        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1504)) * perSecondMultiplier;
+        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) + (planetNuke*2412)) * perSecondMultiplier;
+        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) + (condensator*2103)) * perSecondMultiplier;
+        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) + (harvester*1292)) * perSecondMultiplier;
+        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232) + (cage*2185)) * perSecondMultiplier;
+        iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278) + (overexchange*2532)) * perSecondMultiplier;
 
         // Deduct resource use from machines
         charcoalps -= charcoalEngine;

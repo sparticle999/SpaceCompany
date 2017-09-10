@@ -90,11 +90,11 @@ Game.resources = (function(){
 
 	// TODO: change to data-driven resources when available
 	instance.getStorage = function(id) {
-		if (id === RESOURCE.ENERGY) {
+		if (id === RESOURCE.Energy) {
 			return getMaxEnergy();
-		} else if (id === RESOURCE.PLASMA) {
+		} else if (id === RESOURCE.Plasma) {
 			return getMaxPlasma();
-		} else if (id === RESOURCE.SCIENCE) {
+		} else if (id === RESOURCE.Science) {
 			// -1 for unlimited storage
 			return -1;
 		} if (typeof window[id + 'Storage'] === 'undefined') {

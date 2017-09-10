@@ -294,6 +294,9 @@ Game.prestigeData = (function(){
 		desc: "Gain access to a fifth tier of machines to produce resources.",
 		cost: 26,
 		category: "kitrinos",
+		onApply: function(){
+			unlockTier5();
+		},
 		achieved: false
 	};
 

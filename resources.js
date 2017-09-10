@@ -52,24 +52,24 @@ function getMaxEnergy() {
 // Gain Buttons
 
 function gainResource(resource){
-	if(resource === RESOURCE.PLASMA){
-		if(getResource(RESOURCE.ENERGY) >= 1000 * gainNum && getResource(RESOURCE.HYDROGEN) >= 10 * gainNum && getResource(RESOURCE.PLASMA) < getMaxPlasma()){
-			Game.resources.addResource(RESOURCE.PLASMA, gainNum);
-			Game.resources.takeResource(RESOURCE.ENERGY, 1000 * gainNum);
-			Game.resources.takeResource(RESOURCE.HYDROGEN, 10 * gainNum);
+	if(resource === RESOURCE.Plasma){
+		if(getResource(RESOURCE.Energy) >= 1000 * gainNum && getResource(RESOURCE.Hydrogen) >= 10 * gainNum && getResource(RESOURCE.Plasma) < getMaxPlasma()){
+			Game.resources.addResource(RESOURCE.Plasma, gainNum);
+			Game.resources.takeResource(RESOURCE.Energy, 1000 * gainNum);
+			Game.resources.takeResource(RESOURCE.Hydrogen, 10 * gainNum);
 			Game.statistics.add('manualResources', gainNum);
 		}
-	} else if(resource === RESOURCE.CHARCOAL){
-		if(getResource(RESOURCE.CHARCOAL) < getStorage(RESOURCE.CHARCOAL) && getResource(RESOURCE.WOOD) >= 2 * gainNum){
-			Game.resources.addResource(RESOURCE.CHARCOAL, gainNum);
-			Game.resources.takeResource(RESOURCE.WOOD, 2 * gainNum);
+	} else if(resource === RESOURCE.Charcoal){
+		if(getResource(RESOURCE.Charcoal) < getStorage(RESOURCE.Charcoal) && getResource(RESOURCE.Wood) >= 2 * gainNum){
+			Game.resources.addResource(RESOURCE.Charcoal, gainNum);
+			Game.resources.takeResource(RESOURCE.Wood, 2 * gainNum);
 			Game.statistics.add('manualResources', gainNum);
 		}
-	} else if(resource === RESOURCE.METEORITE){
-		if(getResource(RESOURCE.METEORITE) < getStorage(RESOURCE.METEORITE)){
-			if(getResource(RESOURCE.PLASMA) >= 3 * gainNum){
-				Game.resources.addResource(RESOURCE.METEORITE, gainNum);
-				Game.resources.takeResource(RESOURCE.PLASMA, 3 * gainNum);
+	} else if(resource === RESOURCE.Meteorite){
+		if(getResource(RESOURCE.Meteorite) < getStorage(RESOURCE.Meteorite)){
+			if(getResource(RESOURCE.Plasma) >= 3 * gainNum){
+				Game.resources.addResource(RESOURCE.Meteorite, gainNum);
+				Game.resources.takeResource(RESOURCE.Plasma, 3 * gainNum);
 				Game.statistics.add('manualResources', gainNum);
 			}
 		}
@@ -84,152 +84,152 @@ function gainResource(resource){
 // Resources Tab
 
 function upgradeUraniumStorage(){
-	if(getResource(RESOURCE.URANIUM) >= getStorage(RESOURCE.URANIUM) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.URANIUM)/2.5){
-		Game.resources.takeResource(RESOURCE.URANIUM, getStorage(RESOURCE.URANIUM));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.URANIUM)/2.5);
+	if(getResource(RESOURCE.Uranium) >= getStorage(RESOURCE.Uranium) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Uranium)/2.5){
+		Game.resources.takeResource(RESOURCE.Uranium, getStorage(RESOURCE.Uranium));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Uranium)/2.5);
 		uraniumStorage = uraniumNextStorage;
 		uraniumNextStorage *= 2;
 	}
 }
 
 function upgradeOilStorage(){
-	if(getResource(RESOURCE.OIL) >= getStorage(RESOURCE.OIL) && getResource(RESOURCE.METAL) >= getStorage(RESOURCE.OIL)/2.5){
-		Game.resources.takeResource(RESOURCE.OIL, getStorage(RESOURCE.OIL));
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.OIL)/2.5);
+	if(getResource(RESOURCE.Oil) >= getStorage(RESOURCE.Oil) && getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Oil)/2.5){
+		Game.resources.takeResource(RESOURCE.Oil, getStorage(RESOURCE.Oil));
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Oil)/2.5);
 		oilStorage = oilNextStorage;
 		oilNextStorage *= 2;
 	}
 }
 
 function upgradeMetalStorage(){
-	if(getResource(RESOURCE.METAL) >= getStorage(RESOURCE.METAL)){
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.METAL));
+	if(getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Metal)){
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Metal));
 		metalStorage = metalNextStorage;
 		metalNextStorage *= 2;
 	}
 }
 
 function upgradeGemStorage(){
-	if(getResource(RESOURCE.GEM) >= getStorage(RESOURCE.GEM) && getResource(RESOURCE.METAL) >= getStorage(RESOURCE.GEM)/2.5){
-		Game.resources.takeResource(RESOURCE.GEM, getStorage(RESOURCE.GEM));
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.GEM)/2.5);
+	if(getResource(RESOURCE.Gem) >= getStorage(RESOURCE.Gem) && getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Gem)/2.5){
+		Game.resources.takeResource(RESOURCE.Gem, getStorage(RESOURCE.Gem));
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Gem)/2.5);
 		gemStorage = gemNextStorage;
 		gemNextStorage *= 2;
 	}
 }
 
 function upgradeCharcoalStorage(){
-	if(getResource(RESOURCE.CHARCOAL) >= getStorage(RESOURCE.CHARCOAL) && getResource(RESOURCE.METAL) >= getStorage(RESOURCE.CHARCOAL)/2.5){
-		Game.resources.takeResource(RESOURCE.CHARCOAL, getStorage(RESOURCE.CHARCOAL));
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.CHARCOAL)/2.5);
+	if(getResource(RESOURCE.Charcoal) >= getStorage(RESOURCE.Charcoal) && getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Charcoal)/2.5){
+		Game.resources.takeResource(RESOURCE.Charcoal, getStorage(RESOURCE.Charcoal));
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Charcoal)/2.5);
 		charcoalStorage = charcoalNextStorage;
 		charcoalNextStorage *= 2;
 	}
 }
 
 function upgradeWoodStorage(){
-	if(getResource(RESOURCE.WOOD) >= getStorage(RESOURCE.WOOD) && getResource(RESOURCE.METAL) >= getStorage(RESOURCE.WOOD)/2.5){
-		Game.resources.takeResource(RESOURCE.WOOD, getStorage(RESOURCE.WOOD));
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.WOOD)/2.5);
+	if(getResource(RESOURCE.Wood) >= getStorage(RESOURCE.Wood) && getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Wood)/2.5){
+		Game.resources.takeResource(RESOURCE.Wood, getStorage(RESOURCE.Wood));
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Wood)/2.5);
 		woodStorage = woodNextStorage;
 		woodNextStorage *= 2;
 	}
 }
 
 function upgradeLunariteStorage(){
-	if(getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.LUNARITE) && getResource(RESOURCE.METAL) >= getStorage(RESOURCE.LUNARITE)*4){
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.LUNARITE));
-		Game.resources.takeResource(RESOURCE.METAL, getStorage(RESOURCE.LUNARITE)*4);
+	if(getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Lunarite) && getResource(RESOURCE.Metal) >= getStorage(RESOURCE.Lunarite)*4){
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Lunarite));
+		Game.resources.takeResource(RESOURCE.Metal, getStorage(RESOURCE.Lunarite)*4);
 		lunariteStorage = lunariteNextStorage;
 		lunariteNextStorage *= 2;
 	}
 }
 
 function upgradeMethaneStorage(){
-	if(getResource(RESOURCE.METHANE) >= getStorage(RESOURCE.METHANE) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.METHANE)/2.5){
-		Game.resources.takeResource(RESOURCE.METHANE, getStorage(RESOURCE.METHANE));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.METHANE)/2.5);
+	if(getResource(RESOURCE.Methane) >= getStorage(RESOURCE.Methane) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Methane)/2.5){
+		Game.resources.takeResource(RESOURCE.Methane, getStorage(RESOURCE.Methane));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Methane)/2.5);
 		methaneStorage = methaneNextStorage;
 		methaneNextStorage *= 2;
 	}
 }
 
 function upgradeTitaniumStorage(){
-	if(getResource(RESOURCE.TITANIUM) >= getStorage(RESOURCE.TITANIUM) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.TITANIUM)/2.5){
-		Game.resources.takeResource(RESOURCE.TITANIUM, getStorage(RESOURCE.TITANIUM));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.TITANIUM)/2.5);
+	if(getResource(RESOURCE.Titanium) >= getStorage(RESOURCE.Titanium) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Titanium)/2.5){
+		Game.resources.takeResource(RESOURCE.Titanium, getStorage(RESOURCE.Titanium));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Titanium)/2.5);
 		titaniumStorage = titaniumNextStorage;
 		titaniumNextStorage *= 2;
 	}
 }
 
 function upgradeGoldStorage(){
-	if(getResource(RESOURCE.GOLD) >= getStorage(RESOURCE.GOLD) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.GOLD)/2.5){
-		Game.resources.takeResource(RESOURCE.GOLD, getStorage(RESOURCE.GOLD));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.GOLD)/2.5);
+	if(getResource(RESOURCE.Gold) >= getStorage(RESOURCE.Gold) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Gold)/2.5){
+		Game.resources.takeResource(RESOURCE.Gold, getStorage(RESOURCE.Gold));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Gold)/2.5);
 		goldStorage = goldNextStorage;
 		goldNextStorage *= 2;
 	}
 }
 
 function upgradeSilverStorage(){
-	if(silver >= getStorage(RESOURCE.SILVER) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.SILVER)/2.5){
-		Game.resources.takeResource(RESOURCE.SILVER, getStorage(RESOURCE.SILVER));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.SILVER)/2.5);
+	if(silver >= getStorage(RESOURCE.Silver) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Silver)/2.5){
+		Game.resources.takeResource(RESOURCE.Silver, getStorage(RESOURCE.Silver));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Silver)/2.5);
 		silverStorage = silverNextStorage;
 		silverNextStorage *= 2;
 	}
 }
 
 function upgradeSiliconStorage(){
-	if(getResource(RESOURCE.SILICON) >= getStorage(RESOURCE.SILICON) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.SILICON)/2.5){
-		Game.resources.takeResource(RESOURCE.SILICON, getStorage(RESOURCE.SILICON));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.SILICON)/2.5);
+	if(getResource(RESOURCE.Silicon) >= getStorage(RESOURCE.Silicon) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Silicon)/2.5){
+		Game.resources.takeResource(RESOURCE.Silicon, getStorage(RESOURCE.Silicon));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Silicon)/2.5);
 		siliconStorage = siliconNextStorage;
 		siliconNextStorage *= 2;
 	}
 }
 
 function upgradeLavaStorage(){
-	if(getResource(RESOURCE.LAVA) >= getStorage(RESOURCE.LAVA) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.LAVA)/2.5){
-		Game.resources.takeResource(RESOURCE.LAVA, getStorage(RESOURCE.LAVA));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.LAVA)/2.5);
+	if(getResource(RESOURCE.Lava) >= getStorage(RESOURCE.Lava) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Lava)/2.5){
+		Game.resources.takeResource(RESOURCE.Lava, getStorage(RESOURCE.Lava));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Lava)/2.5);
 		lavaStorage = lavaNextStorage;
 		lavaNextStorage *= 2;
 	}
 }
 
 function upgradeHydrogenStorage(){
-	if(getResource(RESOURCE.HYDROGEN) >= getStorage(RESOURCE.HYDROGEN) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.HYDROGEN)/2.5){
-		Game.resources.takeResource(RESOURCE.HYDROGEN, getStorage(RESOURCE.HYDROGEN));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.HYDROGEN)/2.5);
+	if(getResource(RESOURCE.Hydrogen) >= getStorage(RESOURCE.Hydrogen) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Hydrogen)/2.5){
+		Game.resources.takeResource(RESOURCE.Hydrogen, getStorage(RESOURCE.Hydrogen));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Hydrogen)/2.5);
 		hydrogenStorage = hydrogenNextStorage;
 		hydrogenNextStorage *= 2;
 	}
 }
 
 function upgradeHeliumStorage(){
-	if(getResource(RESOURCE.HELIUM) >= getStorage(RESOURCE.HELIUM) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.HELIUM)/2.5){
-		Game.resources.takeResource(RESOURCE.HELIUM, getStorage(RESOURCE.HELIUM));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.HELIUM)/2.5);
+	if(getResource(RESOURCE.Helium) >= getStorage(RESOURCE.Helium) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Helium)/2.5){
+		Game.resources.takeResource(RESOURCE.Helium, getStorage(RESOURCE.Helium));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Helium)/2.5);
 		heliumStorage = heliumNextStorage;
 		heliumNextStorage *= 2;
 	}
 }
 
 function upgradeIceStorage(){
-	if(getResource(RESOURCE.ICE) >= getStorage(RESOURCE.ICE) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.ICE)/2.5){
-		Game.resources.takeResource(RESOURCE.ICE, getStorage(RESOURCE.ICE));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.ICE)/2.5);
+	if(getResource(RESOURCE.Ice) >= getStorage(RESOURCE.Ice) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Ice)/2.5){
+		Game.resources.takeResource(RESOURCE.Ice, getStorage(RESOURCE.Ice));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Ice)/2.5);
 		iceStorage = iceNextStorage;
 		iceNextStorage *= 2;
 	}
 }
 
 function upgradeMeteoriteStorage(){
-	if(getResource(RESOURCE.METEORITE) >= getStorage(RESOURCE.METEORITE) && getResource(RESOURCE.LUNARITE) >= getStorage(RESOURCE.METEORITE)*4){
-		Game.resources.takeResource(RESOURCE.METEORITE, getStorage(RESOURCE.METEORITE));
-		Game.resources.takeResource(RESOURCE.LUNARITE, getStorage(RESOURCE.METEORITE)*4);
+	if(getResource(RESOURCE.Meteorite) >= getStorage(RESOURCE.Meteorite) && getResource(RESOURCE.Lunarite) >= getStorage(RESOURCE.Meteorite)*4){
+		Game.resources.takeResource(RESOURCE.Meteorite, getStorage(RESOURCE.Meteorite));
+		Game.resources.takeResource(RESOURCE.Lunarite, getStorage(RESOURCE.Meteorite)*4);
 		meteoriteStorage = meteoriteNextStorage;
 		meteoriteNextStorage *= 2;
 	}
@@ -564,13 +564,21 @@ function updateCost(){
 	webLunariteCost = Math.floor(940000 * Math.pow(1.1,web));
 	webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
 	webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
+
+	/********************
+	** Tier 5 Machines **
+	********************/
+
+	planetNukeTitaniumCost = Math.floor(486000 * Math.pow(1.1,planetNuke));
+	planetNukeSiliconCost = Math.floor(266000 * Math.pow(1.1,planetNuke));
+	planetNukeIceCost = Math.floor(364000 * Math.pow(1.1,planetNuke));
 }
 
 function getPSU(){
-	if(getResource(RESOURCE.SILVER) >= PSUSilverCost && getResource(RESOURCE.GOLD) >= PSUGoldCost && getResource(RESOURCE.URANIUM) >= PSUUraniumCost ){
-		Game.resources.takeResource(RESOURCE.SILVER, PSUSilverCost);
-		Game.resources.takeResource(RESOURCE.GOLD, PSUGoldCost);
-		Game.resources.takeResource(RESOURCE.URANIUM, PSUUraniumCost);
+	if(getResource(RESOURCE.Silver) >= PSUSilverCost && getResource(RESOURCE.Gold) >= PSUGoldCost && getResource(RESOURCE.Uranium) >= PSUUraniumCost ){
+		Game.resources.takeResource(RESOURCE.Silver, PSUSilverCost);
+		Game.resources.takeResource(RESOURCE.Gold, PSUGoldCost);
+		Game.resources.takeResource(RESOURCE.Uranium, PSUUraniumCost);
 		PSU += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -578,10 +586,10 @@ function getPSU(){
 }
 
 function getPSUT2(){
-	if(getResource(RESOURCE.SILVER) >= PSUT2SilverCost && getResource(RESOURCE.GOLD) >= PSUT2GoldCost && getResource(RESOURCE.URANIUM) >= PSUT2UraniumCost ){
-		Game.resources.takeResource(RESOURCE.SILVER, PSUT2SilverCost);
-		Game.resources.takeResource(RESOURCE.GOLD, PSUT2GoldCost);
-		Game.resources.takeResource(RESOURCE.URANIUM, PSUT2UraniumCost);
+	if(getResource(RESOURCE.Silver) >= PSUT2SilverCost && getResource(RESOURCE.Gold) >= PSUT2GoldCost && getResource(RESOURCE.Uranium) >= PSUT2UraniumCost ){
+		Game.resources.takeResource(RESOURCE.Silver, PSUT2SilverCost);
+		Game.resources.takeResource(RESOURCE.Gold, PSUT2GoldCost);
+		Game.resources.takeResource(RESOURCE.Uranium, PSUT2UraniumCost);
 		PSUT2 += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -589,10 +597,10 @@ function getPSUT2(){
 }
 
 function getHeater(){
-	if(getResource(RESOURCE.LUNARITE) >= heaterLunariteCost && getResource(RESOURCE.GEM) >= heaterGemCost && getResource(RESOURCE.SILICON) >= heaterSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, heaterLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, heaterGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, heaterSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= heaterLunariteCost && getResource(RESOURCE.Gem) >= heaterGemCost && getResource(RESOURCE.Silicon) >= heaterSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, heaterLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, heaterGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, heaterSiliconCost);
 		heater += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -600,10 +608,10 @@ function getHeater(){
 }
 
 function getPlasmatic(){
-	if(getResource(RESOURCE.LUNARITE) >= plasmaticLunariteCost && getResource(RESOURCE.SILICON) >= plasmaticSiliconCost && getResource(RESOURCE.METEORITE) >= plasmaticMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, plasmaticLunariteCost);
-		Game.resources.takeResource(RESOURCE.SILICON, plasmaticSiliconCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, plasmaticMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= plasmaticLunariteCost && getResource(RESOURCE.Silicon) >= plasmaticSiliconCost && getResource(RESOURCE.Meteorite) >= plasmaticMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, plasmaticLunariteCost);
+		Game.resources.takeResource(RESOURCE.Silicon, plasmaticSiliconCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, plasmaticMeteoriteCost);
 		plasmatic += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -611,10 +619,10 @@ function getPlasmatic(){
 }
 
 function getBattery(){
-	if(getResource(RESOURCE.METAL) >= batteryMetalCost && getResource(RESOURCE.GEM) >= batteryGemCost && getResource(RESOURCE.LUNARITE) >= batteryLunariteCost ){
-		Game.resources.takeResource(RESOURCE.METAL, batteryMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, batteryGemCost);
-		Game.resources.takeResource(RESOURCE.LUNARITE, batteryLunariteCost);
+	if(getResource(RESOURCE.Metal) >= batteryMetalCost && getResource(RESOURCE.Gem) >= batteryGemCost && getResource(RESOURCE.Lunarite) >= batteryLunariteCost ){
+		Game.resources.takeResource(RESOURCE.Metal, batteryMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryGemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryLunariteCost);
 		battery += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -622,10 +630,10 @@ function getBattery(){
 }
 
 function getBatteryT2(){
-	if(getResource(RESOURCE.METAL) >= batteryT2MetalCost && getResource(RESOURCE.GEM) >= batteryT2GemCost && getResource(RESOURCE.LUNARITE) >= batteryT2LunariteCost ){
-		Game.resources.takeResource(RESOURCE.METAL, batteryT2MetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, batteryT2GemCost);
-		Game.resources.takeResource(RESOURCE.LUNARITE, batteryT2LunariteCost);
+	if(getResource(RESOURCE.Metal) >= batteryT2MetalCost && getResource(RESOURCE.Gem) >= batteryT2GemCost && getResource(RESOURCE.Lunarite) >= batteryT2LunariteCost ){
+		Game.resources.takeResource(RESOURCE.Metal, batteryT2MetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryT2GemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryT2LunariteCost);
 		batteryT2 += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -633,10 +641,10 @@ function getBatteryT2(){
 }
 
 function getBatteryT3(){
-	if(getResource(RESOURCE.METAL) >= batteryT3MetalCost && getResource(RESOURCE.GEM) >= batteryT3GemCost && getResource(RESOURCE.LUNARITE) >= batteryT3LunariteCost ){
-		Game.resources.takeResource(RESOURCE.METAL, batteryT3MetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, batteryT3GemCost);
-		Game.resources.takeResource(RESOURCE.LUNARITE, batteryT3LunariteCost);
+	if(getResource(RESOURCE.Metal) >= batteryT3MetalCost && getResource(RESOURCE.Gem) >= batteryT3GemCost && getResource(RESOURCE.Lunarite) >= batteryT3LunariteCost ){
+		Game.resources.takeResource(RESOURCE.Metal, batteryT3MetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryT3GemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryT3LunariteCost);
 		batteryT3 += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -655,9 +663,9 @@ function getBatteryT4(){
 }
 
 function getCharcoalEngine(){
-	if(getResource(RESOURCE.METAL) >= charcoalEngineMetalCost && getResource(RESOURCE.GEM) >= charcoalEngineGemCost){
-		Game.resources.takeResource(RESOURCE.METAL, charcoalEngineMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, charcoalEngineGemCost);
+	if(getResource(RESOURCE.Metal) >= charcoalEngineMetalCost && getResource(RESOURCE.Gem) >= charcoalEngineGemCost){
+		Game.resources.takeResource(RESOURCE.Metal, charcoalEngineMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, charcoalEngineGemCost);
 		charcoalEngine += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -665,9 +673,9 @@ function getCharcoalEngine(){
 }
 
 function getSolarPanel(){
-	if(getResource(RESOURCE.METAL) >= solarPanelMetalCost && getResource(RESOURCE.GEM) >= solarPanelGemCost){
-		Game.resources.takeResource(RESOURCE.METAL, solarPanelMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, solarPanelGemCost);
+	if(getResource(RESOURCE.Metal) >= solarPanelMetalCost && getResource(RESOURCE.Gem) >= solarPanelGemCost){
+		Game.resources.takeResource(RESOURCE.Metal, solarPanelMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, solarPanelGemCost);
 		solarPanel += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -675,9 +683,9 @@ function getSolarPanel(){
 }
 
 function getMethaneStation(){
-	if(getResource(RESOURCE.LUNARITE) >= methaneStationLunariteCost && getResource(RESOURCE.TITANIUM) >= methaneStationTitaniumCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, methaneStationLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, methaneStationTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= methaneStationLunariteCost && getResource(RESOURCE.Titanium) >= methaneStationTitaniumCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, methaneStationLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, methaneStationTitaniumCost);
 		methaneStation += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -685,9 +693,9 @@ function getMethaneStation(){
 }
 
 function getNuclearStation(){
-	if(getResource(RESOURCE.LUNARITE) >= nuclearStationLunariteCost && getResource(RESOURCE.TITANIUM) >= nuclearStationTitaniumCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, nuclearStationLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, nuclearStationTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= nuclearStationLunariteCost && getResource(RESOURCE.Titanium) >= nuclearStationTitaniumCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, nuclearStationLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, nuclearStationTitaniumCost);
 		nuclearStation += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -695,10 +703,10 @@ function getNuclearStation(){
 }
 
 function getMagmatic(){
-	if(getResource(RESOURCE.LUNARITE) >= magmaticLunariteCost && getResource(RESOURCE.GEM) >= magmaticGemCost && getResource(RESOURCE.SILVER) >= magmaticSilverCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, magmaticLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, magmaticGemCost);
-		Game.resources.takeResource(RESOURCE.SILVER, magmaticSilverCost);
+	if(getResource(RESOURCE.Lunarite) >= magmaticLunariteCost && getResource(RESOURCE.Gem) >= magmaticGemCost && getResource(RESOURCE.Silver) >= magmaticSilverCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, magmaticLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, magmaticGemCost);
+		Game.resources.takeResource(RESOURCE.Silver, magmaticSilverCost);
 		magmatic += 1;
 		updateCost();
 		Game.statistics.add('tierOwned5');
@@ -706,10 +714,10 @@ function getMagmatic(){
 }
 
 function getFusionReactor(){
-	if(getResource(RESOURCE.LUNARITE) >= fusionReactorLunariteCost && getResource(RESOURCE.TITANIUM) >= fusionReactorTitaniumCost && getResource(RESOURCE.SILICON) >= fusionReactorSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, fusionReactorLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, fusionReactorTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, fusionReactorSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= fusionReactorLunariteCost && getResource(RESOURCE.Titanium) >= fusionReactorTitaniumCost && getResource(RESOURCE.Silicon) >= fusionReactorSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, fusionReactorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, fusionReactorTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, fusionReactorSiliconCost);
 		fusionReactor += 1;
 		updateCost();
 		Game.statistics.add('tierOwned6');
@@ -717,10 +725,10 @@ function getFusionReactor(){
 }
 
 function getGrinder(){
-	if(getResource(RESOURCE.TITANIUM) >= grinderTitaniumCost && getResource(RESOURCE.LUNARITE) >= grinderLunariteCost && getResource(RESOURCE.GOLD) >= grinderGoldCost){
-		Game.resources.takeResource(RESOURCE.TITANIUM, grinderTitaniumCost);
-		Game.resources.takeResource(RESOURCE.LUNARITE, grinderLunariteCost);
-		Game.resources.takeResource(RESOURCE.GOLD, grinderGoldCost);
+	if(getResource(RESOURCE.Titanium) >= grinderTitaniumCost && getResource(RESOURCE.Lunarite) >= grinderLunariteCost && getResource(RESOURCE.Gold) >= grinderGoldCost){
+		Game.resources.takeResource(RESOURCE.Titanium, grinderTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, grinderLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gold, grinderGoldCost);
 		grinder += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -728,10 +736,10 @@ function getGrinder(){
 }
 
 function getCubic(){
-	if(getResource(RESOURCE.URANIUM) >= cubicUraniumCost && getResource(RESOURCE.LUNARITE) >= cubicLunariteCost && getResource(RESOURCE.OIL) >= cubicOilCost){
-		Game.resources.takeResource(RESOURCE.URANIUM, cubicUraniumCost);
-		Game.resources.takeResource(RESOURCE.LUNARITE, cubicLunariteCost);
-		Game.resources.takeResource(RESOURCE.OIL, cubicOilCost);
+	if(getResource(RESOURCE.Uranium) >= cubicUraniumCost && getResource(RESOURCE.Lunarite) >= cubicLunariteCost && getResource(RESOURCE.Oil) >= cubicOilCost){
+		Game.resources.takeResource(RESOURCE.Uranium, cubicUraniumCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, cubicLunariteCost);
+		Game.resources.takeResource(RESOURCE.Oil, cubicOilCost);
 		cubic += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -739,10 +747,10 @@ function getCubic(){
 }
 
 function getEnricher(){
-	if(getResource(RESOURCE.LUNARITE) >= enricherLunariteCost && getResource(RESOURCE.TITANIUM) >= enricherTitaniumCost && getResource(RESOURCE.SILICON) >= enricherSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, enricherLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, enricherTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, enricherSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= enricherLunariteCost && getResource(RESOURCE.Titanium) >= enricherTitaniumCost && getResource(RESOURCE.Silicon) >= enricherSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, enricherLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, enricherTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, enricherSiliconCost);
 		enricher += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -750,10 +758,10 @@ function getEnricher(){
 }
 
 function getRecycler(){
-	if(getResource(RESOURCE.LUNARITE) >= recyclerLunariteCost && getResource(RESOURCE.METHANE) >= recyclerMethaneCost && getResource(RESOURCE.METEORITE) >= recyclerMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, recyclerLunariteCost);
-		Game.resources.takeResource(RESOURCE.METHANE, recyclerMethaneCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, recyclerMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= recyclerLunariteCost && getResource(RESOURCE.Methane) >= recyclerMethaneCost && getResource(RESOURCE.Meteorite) >= recyclerMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, recyclerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Methane, recyclerMethaneCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, recyclerMeteoriteCost);
 		recycler += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -761,9 +769,9 @@ function getRecycler(){
 }
 
 function getPump(){
-	if(getResource(RESOURCE.METAL) >= pumpMetalCost && getResource(RESOURCE.GEM) >= pumpGemCost){
-		Game.resources.takeResource(RESOURCE.METAL, pumpMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, pumpGemCost);
+	if(getResource(RESOURCE.Metal) >= pumpMetalCost && getResource(RESOURCE.Gem) >= pumpGemCost){
+		Game.resources.takeResource(RESOURCE.Metal, pumpMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, pumpGemCost);
 		pump += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -771,10 +779,10 @@ function getPump(){
 }
 
 function getPumpjack(){
-	if(getResource(RESOURCE.METAL) >= pumpjackMetalCost && getResource(RESOURCE.GEM) >= pumpjackGemCost && getResource(RESOURCE.OIL) >= pumpjackOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, pumpjackMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, pumpjackGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, pumpjackOilCost);
+	if(getResource(RESOURCE.Metal) >= pumpjackMetalCost && getResource(RESOURCE.Gem) >= pumpjackGemCost && getResource(RESOURCE.Oil) >= pumpjackOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, pumpjackMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, pumpjackGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, pumpjackOilCost);
 		pumpjack += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -782,10 +790,10 @@ function getPumpjack(){
 }
 
 function getOilField(){
-	if(getResource(RESOURCE.LUNARITE) >= oilFieldLunariteCost && getResource(RESOURCE.TITANIUM) >= oilFieldTitaniumCost && getResource(RESOURCE.SILICON) >= oilFieldSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, oilFieldLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, oilFieldTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, oilFieldSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= oilFieldLunariteCost && getResource(RESOURCE.Titanium) >= oilFieldTitaniumCost && getResource(RESOURCE.Silicon) >= oilFieldSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, oilFieldLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, oilFieldTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, oilFieldSiliconCost);
 		oilField += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -793,10 +801,10 @@ function getOilField(){
 }
 
 function getOilRig(){
-	if(getResource(RESOURCE.LUNARITE) >= oilRigLunariteCost && getResource(RESOURCE.TITANIUM) >= oilRigTitaniumCost && getResource(RESOURCE.METEORITE) >= oilRigMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, oilRigLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, oilRigTitaniumCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, oilRigMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= oilRigLunariteCost && getResource(RESOURCE.Titanium) >= oilRigTitaniumCost && getResource(RESOURCE.Meteorite) >= oilRigMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, oilRigLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, oilRigTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, oilRigMeteoriteCost);
 		oilRig += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -804,9 +812,9 @@ function getOilRig(){
 }
 
 function getMiner(){
-	if(getResource(RESOURCE.METAL) >= minerMetalCost && getResource(RESOURCE.WOOD) >= minerWoodCost){
-		Game.resources.takeResource(RESOURCE.METAL, minerMetalCost);
-		Game.resources.takeResource(RESOURCE.WOOD, minerWoodCost);
+	if(getResource(RESOURCE.Metal) >= minerMetalCost && getResource(RESOURCE.Wood) >= minerWoodCost){
+		Game.resources.takeResource(RESOURCE.Metal, minerMetalCost);
+		Game.resources.takeResource(RESOURCE.Wood, minerWoodCost);
 		miner += 1;
 		updateCost();
 		if(researchUnlocked === false){
@@ -824,10 +832,10 @@ function getMiner(){
 }
 
 function getHeavyDrill(){
-	if(getResource(RESOURCE.METAL) >= heavyDrillMetalCost && getResource(RESOURCE.GEM) >= heavyDrillGemCost && getResource(RESOURCE.OIL) >= heavyDrillOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, heavyDrillMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, heavyDrillGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, heavyDrillOilCost);
+	if(getResource(RESOURCE.Metal) >= heavyDrillMetalCost && getResource(RESOURCE.Gem) >= heavyDrillGemCost && getResource(RESOURCE.Oil) >= heavyDrillOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, heavyDrillMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, heavyDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, heavyDrillOilCost);
 		heavyDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -835,10 +843,10 @@ function getHeavyDrill(){
 }
 
 function getGigaDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= gigaDrillLunariteCost && getResource(RESOURCE.GEM) >= gigaDrillGemCost && getResource(RESOURCE.SILICON) >= gigaDrillSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, gigaDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, gigaDrillGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, gigaDrillSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= gigaDrillLunariteCost && getResource(RESOURCE.Gem) >= gigaDrillGemCost && getResource(RESOURCE.Silicon) >= gigaDrillSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, gigaDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, gigaDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, gigaDrillSiliconCost);
 		gigaDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -846,10 +854,10 @@ function getGigaDrill(){
 }
 
 function getQuantumDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= quantumDrillLunariteCost && getResource(RESOURCE.GOLD) >= quantumDrillGoldCost && getResource(RESOURCE.METEORITE) >= quantumDrillMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, quantumDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GOLD, quantumDrillGoldCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, quantumDrillMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= quantumDrillLunariteCost && getResource(RESOURCE.Gold) >= quantumDrillGoldCost && getResource(RESOURCE.Meteorite) >= quantumDrillMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, quantumDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gold, quantumDrillGoldCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, quantumDrillMeteoriteCost);
 		quantumDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -857,9 +865,9 @@ function getQuantumDrill(){
 }
 
 function getGemMiner(){
-	if(getResource(RESOURCE.METAL) >= gemMinerMetalCost && getResource(RESOURCE.GEM) >= gemMinerGemCost){
-		Game.resources.takeResource(RESOURCE.METAL, gemMinerMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, gemMinerGemCost);
+	if(getResource(RESOURCE.Metal) >= gemMinerMetalCost && getResource(RESOURCE.Gem) >= gemMinerGemCost){
+		Game.resources.takeResource(RESOURCE.Metal, gemMinerMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, gemMinerGemCost);
 		gemMiner += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -867,10 +875,10 @@ function getGemMiner(){
 }
 
 function getAdvancedDrill(){
-	if(getResource(RESOURCE.METAL) >= advancedDrillMetalCost && getResource(RESOURCE.GEM) >= advancedDrillGemCost && getResource(RESOURCE.OIL) >= advancedDrillOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, advancedDrillMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, advancedDrillGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, advancedDrillOilCost);
+	if(getResource(RESOURCE.Metal) >= advancedDrillMetalCost && getResource(RESOURCE.Gem) >= advancedDrillGemCost && getResource(RESOURCE.Oil) >= advancedDrillOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, advancedDrillMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, advancedDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, advancedDrillOilCost);
 		advancedDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -878,10 +886,10 @@ function getAdvancedDrill(){
 }
 
 function getDiamondDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= diamondDrillLunariteCost && getResource(RESOURCE.GEM) >= diamondDrillGemCost && getResource(RESOURCE.SILICON) >= diamondDrillSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, diamondDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, diamondDrillGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, diamondDrillSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= diamondDrillLunariteCost && getResource(RESOURCE.Gem) >= diamondDrillGemCost && getResource(RESOURCE.Silicon) >= diamondDrillSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, diamondDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, diamondDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, diamondDrillSiliconCost);
 		diamondDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -889,10 +897,10 @@ function getDiamondDrill(){
 }
 
 function getCarbyneDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= carbyneDrillLunariteCost && getResource(RESOURCE.GEM) >= carbyneDrillGemCost && getResource(RESOURCE.METEORITE) >= carbyneDrillMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, carbyneDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, carbyneDrillGemCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, carbyneDrillMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= carbyneDrillLunariteCost && getResource(RESOURCE.Gem) >= carbyneDrillGemCost && getResource(RESOURCE.Meteorite) >= carbyneDrillMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, carbyneDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, carbyneDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, carbyneDrillMeteoriteCost);
 		carbyneDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -900,9 +908,9 @@ function getCarbyneDrill(){
 }
 
 function getWoodburner(){
-	if(getResource(RESOURCE.METAL) >= woodburnerMetalCost && getResource(RESOURCE.WOOD) >= woodburnerWoodCost){
-		Game.resources.takeResource(RESOURCE.METAL, woodburnerMetalCost);
-		Game.resources.takeResource(RESOURCE.WOOD, woodburnerWoodCost);
+	if(getResource(RESOURCE.Metal) >= woodburnerMetalCost && getResource(RESOURCE.Wood) >= woodburnerWoodCost){
+		Game.resources.takeResource(RESOURCE.Metal, woodburnerMetalCost);
+		Game.resources.takeResource(RESOURCE.Wood, woodburnerWoodCost);
 		woodburner += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -910,10 +918,10 @@ function getWoodburner(){
 }
 
 function getFurnace(){
-	if(getResource(RESOURCE.METAL) >= furnaceMetalCost && getResource(RESOURCE.WOOD) >= furnaceWoodCost && getResource(RESOURCE.OIL) >= furnaceOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, furnaceMetalCost);
-		Game.resources.takeResource(RESOURCE.WOOD, furnaceWoodCost);
-		Game.resources.takeResource(RESOURCE.OIL, furnaceOilCost);
+	if(getResource(RESOURCE.Metal) >= furnaceMetalCost && getResource(RESOURCE.Wood) >= furnaceWoodCost && getResource(RESOURCE.Oil) >= furnaceOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, furnaceMetalCost);
+		Game.resources.takeResource(RESOURCE.Wood, furnaceWoodCost);
+		Game.resources.takeResource(RESOURCE.Oil, furnaceOilCost);
 		furnace += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -921,10 +929,10 @@ function getFurnace(){
 }
 
 function getKiln(){
-	if(getResource(RESOURCE.LUNARITE) >= kilnLunariteCost && getResource(RESOURCE.GEM) >= kilnGemCost && getResource(RESOURCE.SILICON) >= kilnSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, kilnLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, kilnGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, kilnSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= kilnLunariteCost && getResource(RESOURCE.Gem) >= kilnGemCost && getResource(RESOURCE.Silicon) >= kilnSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, kilnLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, kilnGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, kilnSiliconCost);
 		kiln += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -932,10 +940,10 @@ function getKiln(){
 }
 
 function getFryer(){
-	if(getResource(RESOURCE.LUNARITE) >= fryerLunariteCost && getResource(RESOURCE.LAVA) >= fryerLavaCost && getResource(RESOURCE.METEORITE) >= fryerMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, fryerLunariteCost);
-		Game.resources.takeResource(RESOURCE.LAVA, fryerLavaCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, fryerMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= fryerLunariteCost && getResource(RESOURCE.Lava) >= fryerLavaCost && getResource(RESOURCE.Meteorite) >= fryerMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, fryerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Lava, fryerLavaCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, fryerMeteoriteCost);
 		fryer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -943,9 +951,9 @@ function getFryer(){
 }
 
 function getWoodcutter(){
-	if(getResource(RESOURCE.METAL) >= woodcutterMetalCost && getResource(RESOURCE.WOOD) >= woodcutterWoodCost){
-		Game.resources.takeResource(RESOURCE.METAL, woodcutterMetalCost);
-		Game.resources.takeResource(RESOURCE.WOOD, woodcutterWoodCost);
+	if(getResource(RESOURCE.Metal) >= woodcutterMetalCost && getResource(RESOURCE.Wood) >= woodcutterWoodCost){
+		Game.resources.takeResource(RESOURCE.Metal, woodcutterMetalCost);
+		Game.resources.takeResource(RESOURCE.Wood, woodcutterWoodCost);
 		woodcutter += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -953,10 +961,10 @@ function getWoodcutter(){
 }
 
 function getLaserCutter(){
-	if(getResource(RESOURCE.METAL) >= laserCutterMetalCost && getResource(RESOURCE.GEM) >= laserCutterGemCost && getResource(RESOURCE.OIL) >= laserCutterOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, laserCutterMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, laserCutterGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, laserCutterOilCost);
+	if(getResource(RESOURCE.Metal) >= laserCutterMetalCost && getResource(RESOURCE.Gem) >= laserCutterGemCost && getResource(RESOURCE.Oil) >= laserCutterOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, laserCutterMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, laserCutterGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, laserCutterOilCost);
 		laserCutter += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -964,10 +972,10 @@ function getLaserCutter(){
 }
 
 function getDeforester(){
-	if(getResource(RESOURCE.LUNARITE) >= deforesterLunariteCost && getResource(RESOURCE.TITANIUM) >= deforesterTitaniumCost && getResource(RESOURCE.SILICON) >= deforesterSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, deforesterLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, deforesterTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, deforesterSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= deforesterLunariteCost && getResource(RESOURCE.Titanium) >= deforesterTitaniumCost && getResource(RESOURCE.Silicon) >= deforesterSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, deforesterLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, deforesterTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, deforesterSiliconCost);
 		deforester += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -975,10 +983,10 @@ function getDeforester(){
 }
 
 function getInfuser(){
-	if(getResource(RESOURCE.LUNARITE) >= infuserLunariteCost && getResource(RESOURCE.OIL) >= infuserOilCost && getResource(RESOURCE.METEORITE) >= infuserMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, infuserLunariteCost);
-		Game.resources.takeResource(RESOURCE.OIL, infuserOilCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, infuserMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= infuserLunariteCost && getResource(RESOURCE.Oil) >= infuserOilCost && getResource(RESOURCE.Meteorite) >= infuserMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, infuserLunariteCost);
+		Game.resources.takeResource(RESOURCE.Oil, infuserOilCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, infuserMeteoriteCost);
 		infuser += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -986,8 +994,8 @@ function getInfuser(){
 }
 
 function getMoonWorker(){
-	if(getResource(RESOURCE.GEM) >= moonWorkerGemCost){
-		Game.resources.takeResource(RESOURCE.GEM, moonWorkerGemCost);
+	if(getResource(RESOURCE.Gem) >= moonWorkerGemCost){
+		Game.resources.takeResource(RESOURCE.Gem, moonWorkerGemCost);
 		moonWorker += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -995,10 +1003,10 @@ function getMoonWorker(){
 }
 
 function getMoonDrill(){
-	if(getResource(RESOURCE.METAL) >= moonDrillMetalCost && getResource(RESOURCE.GEM) >= moonDrillGemCost && getResource(RESOURCE.OIL) >= moonDrillOilCost){
-		Game.resources.takeResource(RESOURCE.METAL, moonDrillMetalCost);
-		Game.resources.takeResource(RESOURCE.GEM, moonDrillGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, moonDrillOilCost);
+	if(getResource(RESOURCE.Metal) >= moonDrillMetalCost && getResource(RESOURCE.Gem) >= moonDrillGemCost && getResource(RESOURCE.Oil) >= moonDrillOilCost){
+		Game.resources.takeResource(RESOURCE.Metal, moonDrillMetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, moonDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, moonDrillOilCost);
 		moonDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1006,10 +1014,10 @@ function getMoonDrill(){
 }
 
 function getMoonQuarry(){
-	if(getResource(RESOURCE.LUNARITE) >= moonQuarryLunariteCost && getResource(RESOURCE.GEM) >= moonQuarryGemCost && getResource(RESOURCE.SILICON) >= moonQuarrySiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, moonQuarryLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, moonQuarryGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, moonQuarrySiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= moonQuarryLunariteCost && getResource(RESOURCE.Gem) >= moonQuarryGemCost && getResource(RESOURCE.Silicon) >= moonQuarrySiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, moonQuarryLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, moonQuarryGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, moonQuarrySiliconCost);
 		moonQuarry += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1017,10 +1025,10 @@ function getMoonQuarry(){
 }
 
 function getPlanetExcavator(){
-	if(getResource(RESOURCE.TITANIUM) >= planetExcavatorTitaniumCost && getResource(RESOURCE.ICE) >= planetExcavatorIceCost && getResource(RESOURCE.METEORITE) >= planetExcavatorMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.TITANIUM, planetExcavatorTitaniumCost);
-		Game.resources.takeResource(RESOURCE.ICE, planetExcavatorIceCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, planetExcavatorMeteoriteCost);
+	if(getResource(RESOURCE.Titanium) >= planetExcavatorTitaniumCost && getResource(RESOURCE.Ice) >= planetExcavatorIceCost && getResource(RESOURCE.Meteorite) >= planetExcavatorMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetExcavatorTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetExcavatorIceCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, planetExcavatorMeteoriteCost);
 		planetExcavator += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1028,9 +1036,9 @@ function getPlanetExcavator(){
 }
 
 function getVacuum(){
-	if(getResource(RESOURCE.LUNARITE) >= vacuumLunariteCost && getResource(RESOURCE.GEM) >= vacuumGemCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, vacuumLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, vacuumGemCost);
+	if(getResource(RESOURCE.Lunarite) >= vacuumLunariteCost && getResource(RESOURCE.Gem) >= vacuumGemCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, vacuumGemCost);
 		vacuum += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1038,10 +1046,10 @@ function getVacuum(){
 }
 
 function getSuctionExcavator(){
-	if(getResource(RESOURCE.LUNARITE) >= suctionExcavatorLunariteCost && getResource(RESOURCE.GEM) >= suctionExcavatorGemCost && getResource(RESOURCE.OIL) >= suctionExcavatorOilCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, suctionExcavatorLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, suctionExcavatorGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, suctionExcavatorOilCost);
+	if(getResource(RESOURCE.Lunarite) >= suctionExcavatorLunariteCost && getResource(RESOURCE.Gem) >= suctionExcavatorGemCost && getResource(RESOURCE.Oil) >= suctionExcavatorOilCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, suctionExcavatorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, suctionExcavatorGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, suctionExcavatorOilCost);
 		suctionExcavator += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1049,10 +1057,10 @@ function getSuctionExcavator(){
 }
 
 function getSpaceCow(){
-	if(getResource(RESOURCE.LUNARITE) >= spaceCowLunariteCost && getResource(RESOURCE.TITANIUM) >= spaceCowTitaniumCost && getResource(RESOURCE.SILICON) >= spaceCowSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, spaceCowLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, spaceCowTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, spaceCowSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= spaceCowLunariteCost && getResource(RESOURCE.Titanium) >= spaceCowTitaniumCost && getResource(RESOURCE.Silicon) >= spaceCowSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, spaceCowLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, spaceCowTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, spaceCowSiliconCost);
 		spaceCow += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1060,10 +1068,10 @@ function getSpaceCow(){
 }
 
 function getVent(){
-	if(getResource(RESOURCE.LUNARITE) >= ventLunariteCost && getResource(RESOURCE.HELIUM) >= ventHeliumCost && getResource(RESOURCE.METEORITE) >= ventMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, ventLunariteCost);
-		Game.resources.takeResource(RESOURCE.HELIUM, ventHeliumCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, ventMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= ventLunariteCost && getResource(RESOURCE.Helium) >= ventHeliumCost && getResource(RESOURCE.Meteorite) >= ventMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, ventLunariteCost);
+		Game.resources.takeResource(RESOURCE.Helium, ventHeliumCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, ventMeteoriteCost);
 		vent += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1071,8 +1079,8 @@ function getVent(){
 }
 
 function getExplorer(){
-	if(getResource(RESOURCE.GEM) >= explorerGemCost){
-		Game.resources.takeResource(RESOURCE.GEM, explorerGemCost);
+	if(getResource(RESOURCE.Gem) >= explorerGemCost){
+		Game.resources.takeResource(RESOURCE.Gem, explorerGemCost);
 		explorer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1080,10 +1088,10 @@ function getExplorer(){
 }
 
 function getLunariteDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= lunariteDrillLunariteCost && getResource(RESOURCE.GEM) >= lunariteDrillGemCost && getResource(RESOURCE.OIL) >= lunariteDrillOilCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, lunariteDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, lunariteDrillGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, lunariteDrillOilCost);
+	if(getResource(RESOURCE.Lunarite) >= lunariteDrillLunariteCost && getResource(RESOURCE.Gem) >= lunariteDrillGemCost && getResource(RESOURCE.Oil) >= lunariteDrillOilCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, lunariteDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, lunariteDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, lunariteDrillOilCost);
 		lunariteDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1091,10 +1099,10 @@ function getLunariteDrill(){
 }
 
 function getPentaDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= pentaDrillLunariteCost && getResource(RESOURCE.GEM) >= pentaDrillGemCost && getResource(RESOURCE.SILICON) >= pentaDrillSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, pentaDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, pentaDrillGemCost);
-		Game.resources.takeResource(RESOURCE.SILICON, pentaDrillSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= pentaDrillLunariteCost && getResource(RESOURCE.Gem) >= pentaDrillGemCost && getResource(RESOURCE.Silicon) >= pentaDrillSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, pentaDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, pentaDrillGemCost);
+		Game.resources.takeResource(RESOURCE.Silicon, pentaDrillSiliconCost);
 		pentaDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1102,10 +1110,10 @@ function getPentaDrill(){
 }
 
 function getTitanDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= titanDrillLunariteCost && getResource(RESOURCE.GOLD) >= titanDrillGoldCost && getResource(RESOURCE.METEORITE) >= titanDrillMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, titanDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.GOLD, titanDrillGoldCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, titanDrillMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= titanDrillLunariteCost && getResource(RESOURCE.Gold) >= titanDrillGoldCost && getResource(RESOURCE.Meteorite) >= titanDrillMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, titanDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gold, titanDrillGoldCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, titanDrillMeteoriteCost);
 		titanDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1113,9 +1121,9 @@ function getTitanDrill(){
 }
 
 function getDroid(){
-	if(getResource(RESOURCE.LUNARITE) >= droidLunariteCost && getResource(RESOURCE.METHANE) >= droidMethaneCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, droidLunariteCost);
-		Game.resources.takeResource(RESOURCE.METHANE, droidMethaneCost);
+	if(getResource(RESOURCE.Lunarite) >= droidLunariteCost && getResource(RESOURCE.Methane) >= droidMethaneCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, droidLunariteCost);
+		Game.resources.takeResource(RESOURCE.Methane, droidMethaneCost);
 		droid += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1123,10 +1131,10 @@ function getDroid(){
 }
 
 function getDestroyer(){
-	if(getResource(RESOURCE.LUNARITE) >= destroyerLunariteCost && getResource(RESOURCE.GEM) >= destroyerGemCost && getResource(RESOURCE.OIL) >= destroyerOilCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, destroyerLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, destroyerGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, destroyerOilCost);
+	if(getResource(RESOURCE.Lunarite) >= destroyerLunariteCost && getResource(RESOURCE.Gem) >= destroyerGemCost && getResource(RESOURCE.Oil) >= destroyerOilCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, destroyerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, destroyerGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, destroyerOilCost);
 		destroyer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1134,10 +1142,10 @@ function getDestroyer(){
 }
 
 function getDeathStar(){
-	if(getResource(RESOURCE.LUNARITE) >= deathStarLunariteCost && getResource(RESOURCE.SILVER) >= deathStarSilverCost && getResource(RESOURCE.SILICON) >= deathStarSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, deathStarLunariteCost);
-		Game.resources.takeResource(RESOURCE.SILVER, deathStarSilverCost);
-		Game.resources.takeResource(RESOURCE.SILICON, deathStarSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= deathStarLunariteCost && getResource(RESOURCE.Silver) >= deathStarSilverCost && getResource(RESOURCE.Silicon) >= deathStarSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, deathStarLunariteCost);
+		Game.resources.takeResource(RESOURCE.Silver, deathStarSilverCost);
+		Game.resources.takeResource(RESOURCE.Silicon, deathStarSiliconCost);
 		deathStar += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1145,10 +1153,10 @@ function getDeathStar(){
 }
 
 function getActuator(){
-	if(getResource(RESOURCE.LUNARITE) >= actuatorLunariteCost && getResource(RESOURCE.HELIUM) >= actuatorHeliumCost && getResource(RESOURCE.METEORITE) >= actuatorMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, actuatorLunariteCost);
-		Game.resources.takeResource(RESOURCE.HELIUM, actuatorHeliumCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, actuatorMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= actuatorLunariteCost && getResource(RESOURCE.Helium) >= actuatorHeliumCost && getResource(RESOURCE.Meteorite) >= actuatorMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, actuatorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Helium, actuatorHeliumCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, actuatorMeteoriteCost);
 		actuator += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1156,9 +1164,9 @@ function getActuator(){
 }
 
 function getScout(){
-	if(getResource(RESOURCE.LUNARITE) >= scoutLunariteCost && getResource(RESOURCE.TITANIUM) >= scoutTitaniumCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, scoutLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, scoutTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= scoutLunariteCost && getResource(RESOURCE.Titanium) >= scoutTitaniumCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, scoutLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, scoutTitaniumCost);
 		scout += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1166,10 +1174,10 @@ function getScout(){
 }
 
 function getSpaceLaser(){
-	if(getResource(RESOURCE.LUNARITE) >= spaceLaserLunariteCost && getResource(RESOURCE.GEM) >= spaceLaserGemCost && getResource(RESOURCE.OIL) >= spaceLaserOilCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, spaceLaserLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, spaceLaserGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, spaceLaserOilCost);
+	if(getResource(RESOURCE.Lunarite) >= spaceLaserLunariteCost && getResource(RESOURCE.Gem) >= spaceLaserGemCost && getResource(RESOURCE.Oil) >= spaceLaserOilCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, spaceLaserLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, spaceLaserGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, spaceLaserOilCost);
 		spaceLaser += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1177,10 +1185,10 @@ function getSpaceLaser(){
 }
 
 function getBertha(){
-	if(getResource(RESOURCE.LUNARITE) >= berthaLunariteCost && getResource(RESOURCE.TITANIUM) >= berthaTitaniumCost && getResource(RESOURCE.SILICON) >= berthaSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, berthaLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, berthaTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, berthaSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= berthaLunariteCost && getResource(RESOURCE.Titanium) >= berthaTitaniumCost && getResource(RESOURCE.Silicon) >= berthaSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, berthaLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, berthaTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, berthaSiliconCost);
 		bertha += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1188,10 +1196,10 @@ function getBertha(){
 }
 
 function getCannon(){
-	if(getResource(RESOURCE.LUNARITE) >= cannonLunariteCost && getResource(RESOURCE.OIL) >= cannonOilCost && getResource(RESOURCE.METEORITE) >= cannonMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, cannonLunariteCost);
-		Game.resources.takeResource(RESOURCE.OIL, cannonOilCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, cannonMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= cannonLunariteCost && getResource(RESOURCE.Oil) >= cannonOilCost && getResource(RESOURCE.Meteorite) >= cannonMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, cannonLunariteCost);
+		Game.resources.takeResource(RESOURCE.Oil, cannonOilCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, cannonMeteoriteCost);
 		cannon += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1199,9 +1207,9 @@ function getCannon(){
 }
 
 function getBlowtorch(){
-	if(getResource(RESOURCE.LUNARITE) >= blowtorchLunariteCost && getResource(RESOURCE.TITANIUM) >= blowtorchTitaniumCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, blowtorchLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, blowtorchTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= blowtorchLunariteCost && getResource(RESOURCE.Titanium) >= blowtorchTitaniumCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, blowtorchLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, blowtorchTitaniumCost);
 		blowtorch += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1209,10 +1217,10 @@ function getBlowtorch(){
 }
 
 function getScorcher(){
-	if(getResource(RESOURCE.LUNARITE) >= scorcherLunariteCost && getResource(RESOURCE.GEM) >= scorcherGemCost && getResource(RESOURCE.OIL) >= scorcherOilCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, scorcherLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, scorcherGemCost);
-		Game.resources.takeResource(RESOURCE.OIL, scorcherOilCost);
+	if(getResource(RESOURCE.Lunarite) >= scorcherLunariteCost && getResource(RESOURCE.Gem) >= scorcherGemCost && getResource(RESOURCE.Oil) >= scorcherOilCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, scorcherLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, scorcherGemCost);
+		Game.resources.takeResource(RESOURCE.Oil, scorcherOilCost);
 		scorcher += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1220,10 +1228,10 @@ function getScorcher(){
 }
 
 function getAnnihilator(){
-	if(getResource(RESOURCE.LUNARITE) >= annihilatorLunariteCost && getResource(RESOURCE.GEM) >= annihilatorGemCost && getResource(RESOURCE.SILVER) >= annihilatorSilverCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, annihilatorLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, annihilatorGemCost);
-		Game.resources.takeResource(RESOURCE.SILVER, annihilatorSilverCost);
+	if(getResource(RESOURCE.Lunarite) >= annihilatorLunariteCost && getResource(RESOURCE.Gem) >= annihilatorGemCost && getResource(RESOURCE.Silver) >= annihilatorSilverCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, annihilatorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, annihilatorGemCost);
+		Game.resources.takeResource(RESOURCE.Silver, annihilatorSilverCost);
 		annihilator += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1231,10 +1239,10 @@ function getAnnihilator(){
 }
 
 function getDesert(){
-	if(getResource(RESOURCE.LUNARITE) >= desertLunariteCost && getResource(RESOURCE.SILICON) >= desertSiliconCost && getResource(RESOURCE.METEORITE) >= desertMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, desertLunariteCost);
-		Game.resources.takeResource(RESOURCE.SILICON, desertSiliconCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, desertMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= desertLunariteCost && getResource(RESOURCE.Silicon) >= desertSiliconCost && getResource(RESOURCE.Meteorite) >= desertMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, desertLunariteCost);
+		Game.resources.takeResource(RESOURCE.Silicon, desertSiliconCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, desertMeteoriteCost);
 		desert += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1242,9 +1250,9 @@ function getDesert(){
 }
 
 function getCrucible(){
-	if(getResource(RESOURCE.LUNARITE) >= crucibleLunariteCost && getResource(RESOURCE.GEM) >= crucibleGemCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, crucibleLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, crucibleGemCost);
+	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost && getResource(RESOURCE.Gem) >= crucibleGemCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost);
 		crucible += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1252,10 +1260,10 @@ function getCrucible(){
 }
 
 function getExtractor(){
-	if(getResource(RESOURCE.LUNARITE) >= extractorLunariteCost && getResource(RESOURCE.TITANIUM) >= extractorTitaniumCost && getResource(RESOURCE.SILICON) >= extractorSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, extractorLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, extractorTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, extractorSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= extractorLunariteCost && getResource(RESOURCE.Titanium) >= extractorTitaniumCost && getResource(RESOURCE.Silicon) >= extractorSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, extractorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, extractorTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, extractorSiliconCost);
 		extractor += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1263,10 +1271,10 @@ function getExtractor(){
 }
 
 function getExtruder(){
-	if(getResource(RESOURCE.LUNARITE) >= extruderLunariteCost && getResource(RESOURCE.TITANIUM) >= extruderTitaniumCost && getResource(RESOURCE.SILICON) >= extruderSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, extruderLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, extruderTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, extruderSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= extruderLunariteCost && getResource(RESOURCE.Titanium) >= extruderTitaniumCost && getResource(RESOURCE.Silicon) >= extruderSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, extruderLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, extruderTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, extruderSiliconCost);
 		extruder += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1274,10 +1282,10 @@ function getExtruder(){
 }
 
 function getVeluptuator(){
-	if(getResource(RESOURCE.LUNARITE) >= veluptuatorLunariteCost && getResource(RESOURCE.GOLD) >= veluptuatorGoldCost && getResource(RESOURCE.METEORITE) >= veluptuatorMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, veluptuatorLunariteCost);
-		Game.resources.takeResource(RESOURCE.GOLD, veluptuatorGoldCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, veluptuatorMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= veluptuatorLunariteCost && getResource(RESOURCE.Gold) >= veluptuatorGoldCost && getResource(RESOURCE.Meteorite) >= veluptuatorMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, veluptuatorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gold, veluptuatorGoldCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, veluptuatorMeteoriteCost);
 		veluptuator += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1285,9 +1293,9 @@ function getVeluptuator(){
 }
 
 function getCollector(){
-	if(getResource(RESOURCE.LUNARITE) >= collectorLunariteCost && getResource(RESOURCE.TITANIUM) >= collectorTitaniumCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, collectorLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, collectorTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= collectorLunariteCost && getResource(RESOURCE.Titanium) >= collectorTitaniumCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, collectorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, collectorTitaniumCost);
 		collector += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1295,10 +1303,10 @@ function getCollector(){
 }
 
 function getMagnet(){
-	if(getResource(RESOURCE.LUNARITE) >= magnetLunariteCost && getResource(RESOURCE.TITANIUM) >= magnetTitaniumCost && getResource(RESOURCE.GOLD) >= magnetGoldCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, magnetLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, magnetTitaniumCost);
-		Game.resources.takeResource(RESOURCE.GOLD, magnetGoldCost);
+	if(getResource(RESOURCE.Lunarite) >= magnetLunariteCost && getResource(RESOURCE.Titanium) >= magnetTitaniumCost && getResource(RESOURCE.Gold) >= magnetGoldCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, magnetLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, magnetTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Gold, magnetGoldCost);
 		magnet += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1306,10 +1314,10 @@ function getMagnet(){
 }
 
 function getECell(){
-	if(getResource(RESOURCE.SILVER) >= eCellSilverCost && getResource(RESOURCE.SILICON) >= eCellSiliconCost && getResource(RESOURCE.GOLD) >= eCellGoldCost){
-		Game.resources.takeResource(RESOURCE.SILVER, eCellSilverCost);
-		Game.resources.takeResource(RESOURCE.SILICON, eCellSiliconCost);
-		Game.resources.takeResource(RESOURCE.GOLD, eCellGoldCost);
+	if(getResource(RESOURCE.Silver) >= eCellSilverCost && getResource(RESOURCE.Silicon) >= eCellSiliconCost && getResource(RESOURCE.Gold) >= eCellGoldCost){
+		Game.resources.takeResource(RESOURCE.Silver, eCellSilverCost);
+		Game.resources.takeResource(RESOURCE.Silicon, eCellSiliconCost);
+		Game.resources.takeResource(RESOURCE.Gold, eCellGoldCost);
 		eCell += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1317,10 +1325,10 @@ function getECell(){
 }
 
 function getHindenburg(){
-	if(getResource(RESOURCE.LUNARITE) >= hindenburgLunariteCost && getResource(RESOURCE.METHANE) >= hindenburgMethaneCost && getResource(RESOURCE.METEORITE) >= hindenburgMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, hindenburgLunariteCost);
-		Game.resources.takeResource(RESOURCE.METHANE, hindenburgMethaneCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, hindenburgMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= hindenburgLunariteCost && getResource(RESOURCE.Methane) >= hindenburgMethaneCost && getResource(RESOURCE.Meteorite) >= hindenburgMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, hindenburgLunariteCost);
+		Game.resources.takeResource(RESOURCE.Methane, hindenburgMethaneCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, hindenburgMeteoriteCost);
 		hindenburg += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1328,9 +1336,9 @@ function getHindenburg(){
 }
 
 function getDrone(){
-	if(getResource(RESOURCE.LUNARITE) >= droneLunariteCost && getResource(RESOURCE.SILICON) >= droneSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, droneLunariteCost);
-		Game.resources.takeResource(RESOURCE.SILICON, droneSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= droneLunariteCost && getResource(RESOURCE.Silicon) >= droneSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, droneLunariteCost);
+		Game.resources.takeResource(RESOURCE.Silicon, droneSiliconCost);
 		drone += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1338,10 +1346,10 @@ function getDrone(){
 }
 
 function getTanker(){
-	if(getResource(RESOURCE.LUNARITE) >= tankerLunariteCost && getResource(RESOURCE.TITANIUM) >= tankerTitaniumCost && getResource(RESOURCE.SILICON) >= tankerSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, tankerLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, tankerTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, tankerSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= tankerLunariteCost && getResource(RESOURCE.Titanium) >= tankerTitaniumCost && getResource(RESOURCE.Silicon) >= tankerSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, tankerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, tankerTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, tankerSiliconCost);
 		tanker += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1349,10 +1357,10 @@ function getTanker(){
 }
 
 function getCompressor(){
-	if(getResource(RESOURCE.LUNARITE) >= compressorLunariteCost && getResource(RESOURCE.TITANIUM) >= compressorTitaniumCost && getResource(RESOURCE.SILICON) >= compressorSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, compressorLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, compressorTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, compressorSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= compressorLunariteCost && getResource(RESOURCE.Titanium) >= compressorTitaniumCost && getResource(RESOURCE.Silicon) >= compressorSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, compressorLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, compressorTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, compressorSiliconCost);
 		compressor += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1360,10 +1368,10 @@ function getCompressor(){
 }
 
 function getSkimmer(){
-	if(getResource(RESOURCE.LUNARITE) >= skimmerLunariteCost && getResource(RESOURCE.TITANIUM) >= skimmerTitaniumCost && getResource(RESOURCE.METEORITE) >= skimmerMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, skimmerLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, skimmerTitaniumCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, skimmerMeteoriteCost);
+	if(getResource(RESOURCE.Lunarite) >= skimmerLunariteCost && getResource(RESOURCE.Titanium) >= skimmerTitaniumCost && getResource(RESOURCE.Meteorite) >= skimmerMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, skimmerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, skimmerTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, skimmerMeteoriteCost);
 		skimmer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1371,9 +1379,9 @@ function getSkimmer(){
 }
 
 function getIcePick(){
-	if(getResource(RESOURCE.LUNARITE) >= icePickLunariteCost && getResource(RESOURCE.GEM) >= icePickGemCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, icePickLunariteCost);
-		Game.resources.takeResource(RESOURCE.GEM, icePickGemCost);
+	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost && getResource(RESOURCE.Gem) >= icePickGemCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost);
 		icePick += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1381,10 +1389,10 @@ function getIcePick(){
 }
 
 function getIceDrill(){
-	if(getResource(RESOURCE.LUNARITE) >= iceDrillLunariteCost && getResource(RESOURCE.TITANIUM) >= iceDrillTitaniumCost && getResource(RESOURCE.SILICON) >= iceDrillSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, iceDrillLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, iceDrillTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, iceDrillSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= iceDrillLunariteCost && getResource(RESOURCE.Titanium) >= iceDrillTitaniumCost && getResource(RESOURCE.Silicon) >= iceDrillSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, iceDrillLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, iceDrillTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, iceDrillSiliconCost);
 		iceDrill += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
@@ -1392,10 +1400,10 @@ function getIceDrill(){
 }
 
 function getFreezer(){
-	if(getResource(RESOURCE.LUNARITE) >= freezerLunariteCost && getResource(RESOURCE.TITANIUM) >= freezerTitaniumCost && getResource(RESOURCE.SILICON) >= freezerSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, freezerLunariteCost);
-		Game.resources.takeResource(RESOURCE.TITANIUM, freezerTitaniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, freezerSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= freezerLunariteCost && getResource(RESOURCE.Titanium) >= freezerTitaniumCost && getResource(RESOURCE.Silicon) >= freezerSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, freezerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Titanium, freezerTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, freezerSiliconCost);
 		freezer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned3');
@@ -1403,10 +1411,10 @@ function getFreezer(){
 }
 
 function getMrFreeze(){
-	if(getResource(RESOURCE.WOOD) >= mrFreezeWoodCost && getResource(RESOURCE.HELIUM) >= mrFreezeHeliumCost && getResource(RESOURCE.METEORITE) >= mrFreezeMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.WOOD, mrFreezeWoodCost);
-		Game.resources.takeResource(RESOURCE.HELIUM, mrFreezeHeliumCost);
-		Game.resources.takeResource(RESOURCE.METEORITE, mrFreezeMeteoriteCost);
+	if(getResource(RESOURCE.Wood) >= mrFreezeWoodCost && getResource(RESOURCE.Helium) >= mrFreezeHeliumCost && getResource(RESOURCE.Meteorite) >= mrFreezeMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Wood, mrFreezeWoodCost);
+		Game.resources.takeResource(RESOURCE.Helium, mrFreezeHeliumCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, mrFreezeMeteoriteCost);
 		mrFreeze += 1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
@@ -1414,9 +1422,9 @@ function getMrFreeze(){
 }
 
 function getPrinter(){
-	if(getResource(RESOURCE.LUNARITE) >= printerLunariteCost && getResource(RESOURCE.SILICON) >= printerSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, printerLunariteCost);
-		Game.resources.takeResource(RESOURCE.SILICON, printerSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= printerLunariteCost && getResource(RESOURCE.Silicon) >= printerSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, printerLunariteCost);
+		Game.resources.takeResource(RESOURCE.Silicon, printerSiliconCost);
 		printer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1424,12 +1432,215 @@ function getPrinter(){
 }
 
 function getWeb(){
-	if(getResource(RESOURCE.LUNARITE) >= webLunariteCost && getResource(RESOURCE.URANIUM) >= webUraniumCost && getResource(RESOURCE.SILICON) >= webSiliconCost){
-		Game.resources.takeResource(RESOURCE.LUNARITE, webLunariteCost);
-		Game.resources.takeResource(RESOURCE.URANIUM, webUraniumCost);
-		Game.resources.takeResource(RESOURCE.SILICON, webSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= webLunariteCost && getResource(RESOURCE.Uranium) >= webUraniumCost && getResource(RESOURCE.Silicon) >= webSiliconCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, webLunariteCost);
+		Game.resources.takeResource(RESOURCE.Uranium, webUraniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, webSiliconCost);
 		web += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
+	}
+}
+
+
+/********************
+** Tier 5 Machines **
+********************/
+
+function getPlanetNuke(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getCondensator(){
+	if(getResource(RESOURCE.Lunarite) >= planetNukeLunariteCost && getResource(RESOURCE.GemS) >= planetNukeGemsCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, planetNukeLunariteCost);
+		Game.resources.takeResource(RESOURCE.GemS, planetNukeGemsCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getFossilator(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getMultiDrill(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getDiamondChamber(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getMicroPollutor(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getForrest(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getTardis(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getCloner(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getInterCow(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getClub(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getPhilosopher(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getWerewolf(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getHarvester(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getCage(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getOverexchange(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getPlanetNuke(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
+	}
+}
+
+function getPlanetNuke(){
+	if(getResource(RESOURCE.Titanium) >= planetNukeTitaniumCost && getResource(RESOURCE.Silicon) >= planetNukeSiliconCost && getResource(RESOURCE.Ice) >= planetNukeIceCost){
+		Game.resources.takeResource(RESOURCE.Titanium, planetNukeTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Silicon, planetNukeSiliconCost);
+		Game.resources.takeResource(RESOURCE.Ice, planetNukeIceCost);
+		planetNuke += 1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
 	}
 }

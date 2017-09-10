@@ -19,26 +19,26 @@ RESOURCE_OBSERVER_TYPE = {
 };
 
 RESOURCE = {
-	ENERGY: 'energy',
-	PLASMA: 'plasma',
-	URANIUM: 'uranium',
-	LAVA: 'lava',
-	OIL: 'oil',
-	METAL: 'metal',
-	GEM: 'gem',
-	CHARCOAL: 'charcoal',
-	WOOD: 'wood',
-	SILICON: 'silicon',
-	LUNARITE: 'lunarite',
-	METHANE: 'methane',
-	TITANIUM: 'titanium',
-	GOLD: 'gold',
-	SILVER: 'silver',
-	HYDROGEN: 'hydrogen',
-	HELIUM: 'helium',
-	ICE: 'ice',
-	METEORITE: 'meteorite',
-	SCIENCE: 'science'
+	Energy: 'energy',
+	Plasma: 'plasma',
+	Uranium: 'uranium',
+	Lava: 'lava',
+	Oil: 'oil',
+	Metal: 'metal',
+	Gem: 'gem',
+	Charcoal: 'charcoal',
+	Wood: 'wood',
+	Silicon: 'silicon',
+	Lunarite: 'lunarite',
+	Methane: 'methane',
+	Titanium: 'titanium',
+	Gold: 'gold',
+	Silver: 'silver',
+	Hydrogen: 'hydrogen',
+	Helium: 'helium',
+	Ice: 'ice',
+	Meteorite: 'meteorite',
+	Science: 'science'
 };
 
 INDEX_NONE = -1;

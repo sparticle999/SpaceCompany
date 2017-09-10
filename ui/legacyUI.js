@@ -476,6 +476,14 @@ function registerLegacyBindings() {
     Game.ui.bindElement('swarm', function(){ return Game.settings.format(swarm); });
     Game.ui.bindElement('sphere', function(){ return Game.settings.format(sphere); });
 
+    //T5 machines
+
+    Game.ui.bindElement('planetNuke', function(){ return Game.settings.format(planetNuke); });
+    Game.ui.bindElement('planetNukeTitaniumCost', function(){ return Game.settings.format(planetNukeTitaniumCost); });
+    Game.ui.bindElement('planetNukeSiliconCost', function(){ return Game.settings.format(planetNukeSiliconCost); });
+    Game.ui.bindElement('planetNukeIceCost', function(){ return Game.settings.format(planetNukeIceCost); });
+
+
     Game.ui.bindElement('science', function(){
         if(science < 100){
             return Game.settings.format(science, 1);
