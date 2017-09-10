@@ -286,6 +286,9 @@ Game.prestigeData = (function(){
 		desc: "All Tier 1 machines on every resource (in resources tab) are 10% cheaper.",
 		cost: 8,
 		category: "kitrinos",
+		onApply: function(){
+			T1Price -= 0.1;
+		},
 		achieved: false
 	};
 

@@ -279,9 +279,9 @@ function updateCost(){
 	PSUT2GoldCost = Math.floor(9300000 * Math.pow(1.1,PSUT2));
 	PSUT2UraniumCost = Math.floor(6800000 * Math.pow(1.1,PSUT2));
 
-	heaterLunariteCost = Math.floor(75000 * Math.pow(1.1,heater));
-	heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater));
-	heaterSiliconCost = Math.floor(59000 * Math.pow(1.1,heater));
+	heaterLunariteCost = Math.floor(75000 * Math.pow(1.1,heater) * T1Price);
+	heaterGemCost = Math.floor(68000 * Math.pow(1.1,heater) * T1Price);
+	heaterSiliconCost = Math.floor(59000 * Math.pow(1.1,heater) * T1Price);
 
 	plasmaticLunariteCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
 	plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
@@ -323,9 +323,9 @@ function updateCost(){
 	fusionReactorTitaniumCost = Math.floor(20000 * Math.pow(1.1,fusionReactor));
 	fusionReactorSiliconCost = Math.floor(15000 * Math.pow(1.1,fusionReactor));
 
-	grinderTitaniumCost = Math.floor(2000 * Math.pow(1.1,grinder));
-	grinderLunariteCost = Math.floor(4000 * Math.pow(1.1,grinder));
-	grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder));
+	grinderTitaniumCost = Math.floor(2000 * Math.pow(1.1,grinder) * T1Price);
+	grinderLunariteCost = Math.floor(4000 * Math.pow(1.1,grinder) * T1Price);
+	grinderGoldCost = Math.floor(2000 * Math.pow(1.1,grinder) * T1Price);
 
 	cubicUraniumCost = Math.floor(80 * Math.pow(1.1,cubic));
 	cubicLunariteCost = Math.floor(10000 * Math.pow(1.1,cubic));
@@ -339,8 +339,8 @@ function updateCost(){
 	recyclerMethaneCost = Math.floor(47000 * Math.pow(1.1,recycler));
 	recyclerLunariteCost = Math.floor(93100 * Math.pow(1.1,recycler));
 
-	pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump));
-	pumpGemCost = Math.floor(20 * Math.pow(1.1,pump));
+	pumpMetalCost = Math.floor(60 * Math.pow(1.1,pump) * T1Price);
+	pumpGemCost = Math.floor(20 * Math.pow(1.1,pump) * T1Price);
 
 	pumpjackOilCost = Math.floor(50 * Math.pow(1.1,pumpjack));
 	pumpjackGemCost = Math.floor(85 * Math.pow(1.1,pumpjack));
@@ -354,8 +354,8 @@ function updateCost(){
 	oilRigTitaniumCost = Math.floor(16800 * Math.pow(1.1,oilRig));
 	oilRigLunariteCost = Math.floor(19400 * Math.pow(1.1,oilRig));
 
-	minerWoodCost = Math.floor(5 * Math.pow(1.1,miner));
-	minerMetalCost = Math.floor(10 * Math.pow(1.1,miner));
+	minerWoodCost = Math.floor(5 * Math.pow(1.1,miner) * T1Price);
+	minerMetalCost = Math.floor(10 * Math.pow(1.1,miner) * T1Price);
 
 	heavyDrillOilCost = Math.floor(50 * Math.pow(1.1,heavyDrill));
 	heavyDrillGemCost = Math.floor(60 * Math.pow(1.1,heavyDrill));
@@ -369,8 +369,8 @@ function updateCost(){
 	quantumDrillGoldCost = Math.floor(18700 * Math.pow(1.1,quantumDrill));
 	quantumDrillLunariteCost = Math.floor(29000 * Math.pow(1.1,quantumDrill));
 
-	gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner));
-	gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner));
+	gemMinerGemCost = Math.floor(10 * Math.pow(1.1,gemMiner) * T1Price);
+	gemMinerMetalCost = Math.floor(15 * Math.pow(1.1,gemMiner) * T1Price);
 
 	advancedDrillOilCost = Math.floor(60 * Math.pow(1.1,advancedDrill));
 	advancedDrillGemCost = Math.floor(200 * Math.pow(1.1,advancedDrill));
@@ -384,8 +384,8 @@ function updateCost(){
 	carbyneDrillGemCost = Math.floor(27000 * Math.pow(1.1,carbyneDrill));
 	carbyneDrillLunariteCost = Math.floor(21000 * Math.pow(1.1,carbyneDrill));
 
-	woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner));
-	woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner));
+	woodburnerWoodCost = Math.floor(5 * Math.pow(1.1,woodburner) * T1Price);
+	woodburnerMetalCost = Math.floor(10 * Math.pow(1.1,woodburner) * T1Price);
 
 	furnaceWoodCost = Math.floor(40 * Math.pow(1.1,furnace));
 	furnaceOilCost = Math.floor(100 * Math.pow(1.1,furnace));
@@ -399,8 +399,8 @@ function updateCost(){
 	fryerLavaCost = Math.floor(12500 * Math.pow(1.1,fryer));
 	fryerLunariteCost = Math.floor(15800 * Math.pow(1.1,fryer));
 
-	woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter));
-	woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter));
+	woodcutterWoodCost = Math.floor(5 * Math.pow(1.1,woodcutter) * T1Price);
+	woodcutterMetalCost = Math.floor(10 * Math.pow(1.1,woodcutter) * T1Price);
 
 	laserCutterOilCost = Math.floor(40 * Math.pow(1.1,laserCutter));
 	laserCutterGemCost = Math.floor(90 * Math.pow(1.1,laserCutter));
@@ -414,7 +414,7 @@ function updateCost(){
 	infuserOilCost = Math.floor(31200 * Math.pow(1.1,infuser));
 	infuserMeteoriteCost = Math.floor(490 * Math.pow(1.1,infuser));
 
-	moonWorkerGemCost = Math.floor(500 * Math.pow(1.1,moonWorker));
+	moonWorkerGemCost = Math.floor(500 * Math.pow(1.1,moonWorker) * T1Price);
 
 	moonDrillOilCost = Math.floor(400 * Math.pow(1.1,moonDrill));
 	moonDrillGemCost = Math.floor(600 * Math.pow(1.1,moonDrill));
@@ -428,8 +428,8 @@ function updateCost(){
 	planetExcavatorIceCost = Math.floor(37000 * Math.pow(1.1,planetExcavator));
 	planetExcavatorTitaniumCost = Math.floor(45000 * Math.pow(1.1,planetExcavator));
 
-	vacuumGemCost = Math.floor(500 * Math.pow(1.1,vacuum));
-	vacuumLunariteCost = Math.floor(50 * Math.pow(1.1,vacuum));
+	vacuumGemCost = Math.floor(500 * Math.pow(1.1,vacuum) * T1Price);
+	vacuumLunariteCost = Math.floor(50 * Math.pow(1.1,vacuum) * T1Price);
 
 	suctionExcavatorOilCost = Math.floor(600 * Math.pow(1.1,suctionExcavator));
 	suctionExcavatorGemCost = Math.floor(800 * Math.pow(1.1,suctionExcavator));
@@ -443,7 +443,7 @@ function updateCost(){
 	ventHeliumCost = Math.floor(47000 * Math.pow(1.1,vent));
 	ventLunariteCost = Math.floor(52000 * Math.pow(1.1,vent));
 
-	explorerGemCost = Math.floor(1000 * Math.pow(1.1,explorer));
+	explorerGemCost = Math.floor(1000 * Math.pow(1.1,explorer) * T1Price);
 
 	lunariteDrillOilCost = Math.floor(1000 * Math.pow(1.1,lunariteDrill));
 	lunariteDrillGemCost = Math.floor(800 * Math.pow(1.1,lunariteDrill));
@@ -457,8 +457,8 @@ function updateCost(){
 	titanDrillGoldCost = Math.floor(27000 * Math.pow(1.1,titanDrill));
 	titanDrillMeteoriteCost = Math.floor(600 * Math.pow(1.1,titanDrill));
 
-	droidMethaneCost = Math.floor(50 * Math.pow(1.1,droid));
-	droidLunariteCost = Math.floor(200 * Math.pow(1.1,droid));
+	droidMethaneCost = Math.floor(50 * Math.pow(1.1,droid) * T1Price);
+	droidLunariteCost = Math.floor(200 * Math.pow(1.1,droid) * T1Price);
 
 	destroyerOilCost = Math.floor(1000 * Math.pow(1.1,destroyer));
 	destroyerGemCost = Math.floor(1500 * Math.pow(1.1,destroyer));
@@ -472,8 +472,8 @@ function updateCost(){
 	actuatorHeliumCost = Math.floor(15700 * Math.pow(1.1,actuator));
 	actuatorLunariteCost = Math.floor(61000 * Math.pow(1.1,actuator));
 
-	scoutTitaniumCost = Math.floor(20 * Math.pow(1.1,scout));
-	scoutLunariteCost = Math.floor(100 * Math.pow(1.1,scout));
+	scoutTitaniumCost = Math.floor(20 * Math.pow(1.1,scout) * T1Price);
+	scoutLunariteCost = Math.floor(100 * Math.pow(1.1,scout) * T1Price);
 
 	spaceLaserOilCost = Math.floor(1200 * Math.pow(1.1,spaceLaser));
 	spaceLaserGemCost = Math.floor(900 * Math.pow(1.1,spaceLaser));
@@ -487,8 +487,8 @@ function updateCost(){
 	cannonOilCost = Math.floor(93800 * Math.pow(1.1,cannon));
 	cannonLunariteCost = Math.floor(85100 * Math.pow(1.1,cannon));
 
-	blowtorchTitaniumCost = Math.floor(30 * Math.pow(1.1,blowtorch));
-	blowtorchLunariteCost = Math.floor(150 * Math.pow(1.1,blowtorch));
+	blowtorchTitaniumCost = Math.floor(30 * Math.pow(1.1,blowtorch) * T1Price);
+	blowtorchLunariteCost = Math.floor(150 * Math.pow(1.1,blowtorch) * T1Price);
 
 	scorcherOilCost = Math.floor(1600 * Math.pow(1.1,scorcher));
 	scorcherGemCost = Math.floor(1200 * Math.pow(1.1,scorcher));
@@ -502,8 +502,8 @@ function updateCost(){
 	desertSiliconCost = Math.floor(17700 * Math.pow(1.1,desert));
 	desertMeteoriteCost = Math.floor(400 * Math.pow(1.1,desert));
 
-	crucibleGemCost = Math.floor(7000 * Math.pow(1.1,crucible));
-	crucibleLunariteCost = Math.floor(4000 * Math.pow(1.1,crucible));
+	crucibleGemCost = Math.floor(7000 * Math.pow(1.1,crucible) * T1Price);
+	crucibleLunariteCost = Math.floor(4000 * Math.pow(1.1,crucible) * T1Price);
 
 	extractorSiliconCost = Math.floor(6000 * Math.pow(1.1,extractor));
 	extractorTitaniumCost = Math.floor(12000 * Math.pow(1.1,extractor));
@@ -517,8 +517,8 @@ function updateCost(){
 	veluptuatorGoldCost = Math.floor(121000 * Math.pow(1.1,veluptuator));
 	veluptuatorLunariteCost = Math.floor(298000 * Math.pow(1.1,veluptuator));
 
-	collectorTitaniumCost = Math.floor(4800 * Math.pow(1.1,collector));
-	collectorLunariteCost = Math.floor(6000 * Math.pow(1.1,collector));
+	collectorTitaniumCost = Math.floor(4800 * Math.pow(1.1,collector) * T1Price);
+	collectorLunariteCost = Math.floor(6000 * Math.pow(1.1,collector) * T1Price);
 
 	magnetGoldCost = Math.floor(6600 * Math.pow(1.1,magnet));
 	magnetTitaniumCost = Math.floor(9600 * Math.pow(1.1,magnet));
@@ -532,8 +532,8 @@ function updateCost(){
 	hindenburgMethaneCost = Math.floor(134000 * Math.pow(1.1,hindenburg));
 	hindenburgLunariteCost = Math.floor(172000 * Math.pow(1.1,hindenburg));
 
-	droneSiliconCost = Math.floor(6000 * Math.pow(1.1,drone));
-	droneLunariteCost = Math.floor(8400 * Math.pow(1.1,drone));
+	droneSiliconCost = Math.floor(6000 * Math.pow(1.1,drone) * T1Price);
+	droneLunariteCost = Math.floor(8400 * Math.pow(1.1,drone) * T1Price);
 
 	tankerSiliconCost = Math.floor(8400 * Math.pow(1.1,tanker));
 	tankerTitaniumCost = Math.floor(10200 * Math.pow(1.1,tanker));
@@ -547,8 +547,8 @@ function updateCost(){
 	skimmerTitaniumCost = Math.floor(173000 * Math.pow(1.1,skimmer));
 	skimmerLunariteCost = Math.floor(255000 * Math.pow(1.1,skimmer));
 
-	icePickGemCost = Math.floor(19300 * Math.pow(1.1,icePick));
-	icePickLunariteCost = Math.floor(17800 * Math.pow(1.1,icePick));
+	icePickGemCost = Math.floor(19300 * Math.pow(1.1,icePick) * T1Price);
+	icePickLunariteCost = Math.floor(17800 * Math.pow(1.1,icePick) * T1Price);
 
 	iceDrillSiliconCost = Math.floor(19600 * Math.pow(1.1,iceDrill));
 	iceDrillTitaniumCost = Math.floor(21200 * Math.pow(1.1,iceDrill));
@@ -562,8 +562,8 @@ function updateCost(){
 	mrFreezeHeliumCost = Math.floor(14000 * Math.pow(1.1,mrFreeze));
 	mrFreezeWoodCost = Math.floor(379000 * Math.pow(1.1,mrFreeze));
 
-	printerLunariteCost = Math.floor(100000 * Math.pow(1.1,printer));
-	printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer));
+	printerLunariteCost = Math.floor(100000 * Math.pow(1.1,printer) * T1Price);
+	printerSiliconCost = Math.floor(50000 * Math.pow(1.1,printer) * T1Price);
 
 	webLunariteCost = Math.floor(940000 * Math.pow(1.1,web));
 	webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
@@ -576,13 +576,74 @@ function updateCost(){
 	planetNukeTitaniumCost = Math.floor(486000 * Math.pow(1.1,planetNuke));
 	planetNukeSiliconCost = Math.floor(266000 * Math.pow(1.1,planetNuke));
 	planetNukeIceCost = Math.floor(364000 * Math.pow(1.1,planetNuke));
+
+	condensatorLunariteCost = Math.floor(288000 * Math.pow(1.1, condensator)); 
+	condensatorGemsCost = Math.floor(210000 * Math.pow(1.1, condensator)); 
+	condensatorIceCost = Math.floor(238000 * Math.pow(1.1, condensator));
+
+	fossilatorUraniumCost = Math.floor(110000 * Math.pow(1.1, fossilator)); 
+	fossilatorCharcoalCost = Math.floor(96000 * Math.pow(1.1, fossilator)); 
+	fossilatorLavaCost = Math.floor(167000 * Math.pow(1.1, fossilator));
+
+	multiDrillTitaniumCost = Math.floor(184000 * Math.pow(1.1, multiDrill)); 
+	multiDrillGoldCost = Math.floor(184000 * Math.pow(1.1, multiDrill)); 
+	multiDrillOilCost = Math.floor(170000 * Math.pow(1.1, multiDrill));
+
+	diamondChamberUraniumCost = Math.floor(181000 * Math.pow(1.1, diamondChamber)); 
+	diamondChamberCharcoalCost = Math.floor(185000 * Math.pow(1.1, diamondChamber)); 
+	diamondChamberMeteoriteCost = Math.floor(12500 * Math.pow(1.1, diamondChamber));
+
+	microPollutorMetalCost = Math.floor(133000 * Math.pow(1.1, microPollutor)); 
+	microPollutorWoodCost = Math.floor(189000 * Math.pow(1.1, microPollutor)); 
+	microPollutorLavaCost = Math.floor(160000 * Math.pow(1.1, microPollutor));
+
+	forestMetalCost = Math.floor(122000 * Math.pow(1.1, forest)); 
+	forestGemsCost = Math.floor(151000 * Math.pow(1.1, forest)); 
+	forestHydrogenCost = Math.floor(183000 * Math.pow(1.1, forest));
+
+	clonerTitaniumCost = Math.floor(204000 * Math.pow(1.1, cloner)); 
+	clonerGoldCost = Math.floor(150000 * Math.pow(1.1, cloner)); 
+	clonerMethaneCost = Math.floor(195000 * Math.pow(1.1, cloner));
+
+	interCowLunariteCost = Math.floor(140000 * Math.pow(1.1, interCow)); 
+	interCowGoldCost = Math.floor(202000 * Math.pow(1.1, interCow)); 
+	interCowHydrogenCost = Math.floor(158000 * Math.pow(1.1, interCow));
+
+	clubUraniumCost = Math.floor(175000 * Math.pow(1.1, club)); 
+	clubWoodCost = Math.floor(164000 * Math.pow(1.1, club)); 
+	clubHeliumCost = Math.floor(156000 * Math.pow(1.1, club));
+
+	philosopherMetalCost = Math.floor(208000 * Math.pow(1.1, philosopher)); 
+	philosopherSilverCost = Math.floor(167000 * Math.pow(1.1, philosopher)); 
+	philosopherMeteoriteCost = Math.floor(18000 * Math.pow(1.1, philosopher));
+
+	werewolfUraniumCost = Math.floor(165000 * Math.pow(1.1, werewolf)); 
+	werewolfGemsCost = Math.floor(209000 * Math.pow(1.1, werewolf)); 
+	werewolfMethaneCost = Math.floor(170000 * Math.pow(1.1, werewolf));
+
+	tardisTitaniumCost = Math.floor(204000 * Math.pow(1.1, tardis)); 
+	tardisSiliconCost = Math.floor(205000 * Math.pow(1.1, tardis)); 
+	tardisMeteoriteCost = Math.floor(17800 * Math.pow(1.1, tardis));
+
+	harvesterLunariteCost = Math.floor(250000 * Math.pow(1.1, harvester)); 
+	harvesterWoodCost = Math.floor(184000 * Math.pow(1.1, harvester)); 
+	harvesterOilCost = Math.floor(146000 * Math.pow(1.1, harvester));
+
+	cageLunariteCost = Math.floor(171000 * Math.pow(1.1, cage)); 
+	cageSiliconCost = Math.floor(165000 * Math.pow(1.1, cage)); 
+	cageMeteoriteCost = Math.floor(18600 * Math.pow(1.1, cage));
+
+	overexchangeMetalCost = Math.floor(210000 * Math.pow(1.1, overexchange)); 
+	overexchangeSilverCost = Math.floor(188000 * Math.pow(1.1, overexchange)); 
+	overexchangeHeliumCost = Math.floor(205000 * Math.pow(1.1, overexchange));
+
 }
 
 function getPSU(){
-	if(getResource(RESOURCE.Silver) >= PSUSilverCost && getResource(RESOURCE.Gold) >= PSUGoldCost && getResource(RESOURCE.Uranium) >= PSUUraniumCost ){
-		Game.resources.takeResource(RESOURCE.Silver, PSUSilverCost);
-		Game.resources.takeResource(RESOURCE.Gold, PSUGoldCost);
-		Game.resources.takeResource(RESOURCE.Uranium, PSUUraniumCost);
+	if(getResource(RESOURCE.Silver) >= PSUSilverCost * T1Price && getResource(RESOURCE.Gold) >= PSUGoldCost * T1Price && getResource(RESOURCE.Uranium) >= PSUUraniumCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Silver, PSUSilverCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gold, PSUGoldCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Uranium, PSUUraniumCost * T1Price);
 		PSU += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -590,7 +651,7 @@ function getPSU(){
 }
 
 function getPSUT2(){
-	if(getResource(RESOURCE.Silver) >= PSUT2SilverCost && getResource(RESOURCE.Gold) >= PSUT2GoldCost && getResource(RESOURCE.Uranium) >= PSUT2UraniumCost ){
+	if(getResource(RESOURCE.Silver) >= PSUT2SilverCost && getResource(RESOURCE.Gold) >= PSUT2GoldCost && getResource(RESOURCE.Uranium) >= PSUT2UraniumCost){
 		Game.resources.takeResource(RESOURCE.Silver, PSUT2SilverCost);
 		Game.resources.takeResource(RESOURCE.Gold, PSUT2GoldCost);
 		Game.resources.takeResource(RESOURCE.Uranium, PSUT2UraniumCost);
@@ -601,10 +662,10 @@ function getPSUT2(){
 }
 
 function getHeater(){
-	if(getResource(RESOURCE.Lunarite) >= heaterLunariteCost && getResource(RESOURCE.Gem) >= heaterGemCost && getResource(RESOURCE.Silicon) >= heaterSiliconCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, heaterLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gem, heaterGemCost);
-		Game.resources.takeResource(RESOURCE.Silicon, heaterSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= heaterLunariteCost * T1Price && getResource(RESOURCE.Gem) >= heaterGemCost * T1Price && getResource(RESOURCE.Silicon) >= heaterSiliconCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, heaterLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gem, heaterGemCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Silicon, heaterSiliconCost * T1Price);
 		heater += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -623,10 +684,10 @@ function getPlasmatic(){
 }
 
 function getBattery(){
-	if(getResource(RESOURCE.Metal) >= batteryMetalCost && getResource(RESOURCE.Gem) >= batteryGemCost && getResource(RESOURCE.Lunarite) >= batteryLunariteCost ){
-		Game.resources.takeResource(RESOURCE.Metal, batteryMetalCost);
-		Game.resources.takeResource(RESOURCE.Gem, batteryGemCost);
-		Game.resources.takeResource(RESOURCE.Lunarite, batteryLunariteCost);
+	if(getResource(RESOURCE.Metal) >= batteryMetalCost * T1Price && getResource(RESOURCE.Gem) >= batteryGemCost * T1Price && getResource(RESOURCE.Lunarite) >= batteryLunariteCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, batteryMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gem, batteryGemCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryLunariteCost * T1Price);
 		battery += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -667,9 +728,9 @@ function getBatteryT4(){
 }
 
 function getCharcoalEngine(){
-	if(getResource(RESOURCE.Metal) >= charcoalEngineMetalCost && getResource(RESOURCE.Gem) >= charcoalEngineGemCost){
-		Game.resources.takeResource(RESOURCE.Metal, charcoalEngineMetalCost);
-		Game.resources.takeResource(RESOURCE.Gem, charcoalEngineGemCost);
+	if(getResource(RESOURCE.Metal) >= charcoalEngineMetalCost * T1Price && getResource(RESOURCE.Gem) >= charcoalEngineGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, charcoalEngineMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gem, charcoalEngineGemCost * T1Price);
 		charcoalEngine += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -729,10 +790,10 @@ function getFusionReactor(){
 }
 
 function getGrinder(){
-	if(getResource(RESOURCE.Titanium) >= grinderTitaniumCost && getResource(RESOURCE.Lunarite) >= grinderLunariteCost && getResource(RESOURCE.Gold) >= grinderGoldCost){
-		Game.resources.takeResource(RESOURCE.Titanium, grinderTitaniumCost);
-		Game.resources.takeResource(RESOURCE.Lunarite, grinderLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gold, grinderGoldCost);
+	if(getResource(RESOURCE.Titanium) >= grinderTitaniumCost * T1Price && getResource(RESOURCE.Lunarite) >= grinderLunariteCost * T1Price && getResource(RESOURCE.Gold) >= grinderGoldCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Titanium, grinderTitaniumCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Lunarite, grinderLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gold, grinderGoldCost * T1Price);
 		grinder += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -773,9 +834,9 @@ function getRecycler(){
 }
 
 function getPump(){
-	if(getResource(RESOURCE.Metal) >= pumpMetalCost && getResource(RESOURCE.Gem) >= pumpGemCost){
-		Game.resources.takeResource(RESOURCE.Metal, pumpMetalCost);
-		Game.resources.takeResource(RESOURCE.Gem, pumpGemCost);
+	if(getResource(RESOURCE.Metal) >= pumpMetalCost * T1Price && getResource(RESOURCE.Gem) >= pumpGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, pumpMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gem, pumpGemCost * T1Price);
 		pump += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -816,9 +877,9 @@ function getOilRig(){
 }
 
 function getMiner(){
-	if(getResource(RESOURCE.Metal) >= minerMetalCost && getResource(RESOURCE.Wood) >= minerWoodCost){
-		Game.resources.takeResource(RESOURCE.Metal, minerMetalCost);
-		Game.resources.takeResource(RESOURCE.Wood, minerWoodCost);
+	if(getResource(RESOURCE.Metal) >= minerMetalCost * T1Price && getResource(RESOURCE.Wood) >= minerWoodCost){
+		Game.resources.takeResource(RESOURCE.Metal, minerMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Wood, minerWoodCost * T1Price);
 		miner += 1;
 		updateCost();
 		if(researchUnlocked === false){
@@ -869,9 +930,9 @@ function getQuantumDrill(){
 }
 
 function getGemMiner(){
-	if(getResource(RESOURCE.Metal) >= gemMinerMetalCost && getResource(RESOURCE.Gem) >= gemMinerGemCost){
-		Game.resources.takeResource(RESOURCE.Metal, gemMinerMetalCost);
-		Game.resources.takeResource(RESOURCE.Gem, gemMinerGemCost);
+	if(getResource(RESOURCE.Metal) >= gemMinerMetalCost * T1Price && getResource(RESOURCE.Gem) >= gemMinerGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, gemMinerMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Gem, gemMinerGemCost * T1Price);
 		gemMiner += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -912,9 +973,9 @@ function getCarbyneDrill(){
 }
 
 function getWoodburner(){
-	if(getResource(RESOURCE.Metal) >= woodburnerMetalCost && getResource(RESOURCE.Wood) >= woodburnerWoodCost){
-		Game.resources.takeResource(RESOURCE.Metal, woodburnerMetalCost);
-		Game.resources.takeResource(RESOURCE.Wood, woodburnerWoodCost);
+	if(getResource(RESOURCE.Metal) >= woodburnerMetalCost * T1Price && getResource(RESOURCE.Wood) >= woodburnerWoodCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, woodburnerMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Wood, woodburnerWoodCost * T1Price);
 		woodburner += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -955,9 +1016,9 @@ function getFryer(){
 }
 
 function getWoodcutter(){
-	if(getResource(RESOURCE.Metal) >= woodcutterMetalCost && getResource(RESOURCE.Wood) >= woodcutterWoodCost){
-		Game.resources.takeResource(RESOURCE.Metal, woodcutterMetalCost);
-		Game.resources.takeResource(RESOURCE.Wood, woodcutterWoodCost);
+	if(getResource(RESOURCE.Metal) >= woodcutterMetalCost * T1Price && getResource(RESOURCE.Wood) >= woodcutterWoodCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Metal, woodcutterMetalCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Wood, woodcutterWoodCost * T1Price);
 		woodcutter += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -998,8 +1059,8 @@ function getInfuser(){
 }
 
 function getMoonWorker(){
-	if(getResource(RESOURCE.Gem) >= moonWorkerGemCost){
-		Game.resources.takeResource(RESOURCE.Gem, moonWorkerGemCost);
+	if(getResource(RESOURCE.Gem) >= moonWorkerGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Gem, moonWorkerGemCost * T1Price);
 		moonWorker += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1040,9 +1101,9 @@ function getPlanetExcavator(){
 }
 
 function getVacuum(){
-	if(getResource(RESOURCE.Lunarite) >= vacuumLunariteCost && getResource(RESOURCE.Gem) >= vacuumGemCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gem, vacuumGemCost);
+	if(getResource(RESOURCE.Lunarite) >= vacuumLunariteCost * T1Price && getResource(RESOURCE.Gem) >= vacuumGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Gem, vacuumGemCost * T1Price);
 		vacuum += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1083,8 +1144,8 @@ function getVent(){
 }
 
 function getExplorer(){
-	if(getResource(RESOURCE.Gem) >= explorerGemCost){
-		Game.resources.takeResource(RESOURCE.Gem, explorerGemCost);
+	if(getResource(RESOURCE.Gem) >= explorerGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Gem, explorerGemCost * T1Price);
 		explorer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1125,9 +1186,9 @@ function getTitanDrill(){
 }
 
 function getDroid(){
-	if(getResource(RESOURCE.Lunarite) >= droidLunariteCost && getResource(RESOURCE.Methane) >= droidMethaneCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, droidLunariteCost);
-		Game.resources.takeResource(RESOURCE.Methane, droidMethaneCost);
+	if(getResource(RESOURCE.Lunarite) >= droidLunariteCost * T1Price && getResource(RESOURCE.Methane) >= droidMethaneCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, droidLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Methane, droidMethaneCost * T1Price);
 		droid += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1168,9 +1229,9 @@ function getActuator(){
 }
 
 function getScout(){
-	if(getResource(RESOURCE.Lunarite) >= scoutLunariteCost && getResource(RESOURCE.Titanium) >= scoutTitaniumCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, scoutLunariteCost);
-		Game.resources.takeResource(RESOURCE.Titanium, scoutTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= scoutLunariteCost * T1Price && getResource(RESOURCE.Titanium) >= scoutTitaniumCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, scoutLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Titanium, scoutTitaniumCost * T1Price);
 		scout += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1211,9 +1272,9 @@ function getCannon(){
 }
 
 function getBlowtorch(){
-	if(getResource(RESOURCE.Lunarite) >= blowtorchLunariteCost && getResource(RESOURCE.Titanium) >= blowtorchTitaniumCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, blowtorchLunariteCost);
-		Game.resources.takeResource(RESOURCE.Titanium, blowtorchTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= blowtorchLunariteCost * T1Price && getResource(RESOURCE.Titanium) >= blowtorchTitaniumCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, blowtorchLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Titanium, blowtorchTitaniumCost * T1Price);
 		blowtorch += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1254,9 +1315,9 @@ function getDesert(){
 }
 
 function getCrucible(){
-	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost && getResource(RESOURCE.Gem) >= crucibleGemCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost);
+	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost * T1Price && getResource(RESOURCE.Gem) >= crucibleGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost * T1Price);
 		crucible += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1297,9 +1358,9 @@ function getVeluptuator(){
 }
 
 function getCollector(){
-	if(getResource(RESOURCE.Lunarite) >= collectorLunariteCost && getResource(RESOURCE.Titanium) >= collectorTitaniumCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, collectorLunariteCost);
-		Game.resources.takeResource(RESOURCE.Titanium, collectorTitaniumCost);
+	if(getResource(RESOURCE.Lunarite) >= collectorLunariteCost * T1Price && getResource(RESOURCE.Titanium) >= collectorTitaniumCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, collectorLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Titanium, collectorTitaniumCost * T1Price);
 		collector += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1340,9 +1401,9 @@ function getHindenburg(){
 }
 
 function getDrone(){
-	if(getResource(RESOURCE.Lunarite) >= droneLunariteCost && getResource(RESOURCE.Silicon) >= droneSiliconCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, droneLunariteCost);
-		Game.resources.takeResource(RESOURCE.Silicon, droneSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= droneLunariteCost * T1Price && getResource(RESOURCE.Silicon) >= droneSiliconCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, droneLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Silicon, droneSiliconCost * T1Price);
 		drone += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1383,9 +1444,9 @@ function getSkimmer(){
 }
 
 function getIcePick(){
-	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost && getResource(RESOURCE.Gem) >= icePickGemCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost);
+	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost * T1Price && getResource(RESOURCE.Gem) >= icePickGemCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost * T1Price);
 		icePick += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
@@ -1426,9 +1487,9 @@ function getMrFreeze(){
 }
 
 function getPrinter(){
-	if(getResource(RESOURCE.Lunarite) >= printerLunariteCost && getResource(RESOURCE.Silicon) >= printerSiliconCost){
-		Game.resources.takeResource(RESOURCE.Lunarite, printerLunariteCost);
-		Game.resources.takeResource(RESOURCE.Silicon, printerSiliconCost);
+	if(getResource(RESOURCE.Lunarite) >= printerLunariteCost * T1Price && getResource(RESOURCE.Silicon) >= printerSiliconCost * T1Price){
+		Game.resources.takeResource(RESOURCE.Lunarite, printerLunariteCost * T1Price);
+		Game.resources.takeResource(RESOURCE.Silicon, printerSiliconCost * T1Price);
 		printer += 1;
 		updateCost();
 		Game.statistics.add('tierOwned1');
