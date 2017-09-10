@@ -27,7 +27,23 @@ Game.resourcesUI = (function(){
 		var func;
 		if (id === RESOURCE.Science) {
 			func = (function() {
-				return Game.settings.format(getResource(id), 1);
+				var current = getResource(id);
+				if (current < 100) {
+					return Game.settings.format(current, 1);
+				}
+				else {
+					return Game.settings.format(current);
+				}
+			});
+		}
+		else if (id === RESOURCE.RocketFuel) {
+			func = (function() {
+				var current = getResource(id);
+				if (current < 100) {
+					return Game.settings.format(current, 1);
+				} else {
+					return Game.settings.format(current);
+				}
 			});
 		}
 		else {
@@ -62,6 +78,11 @@ Game.resourcesUI = (function(){
 			});
 		}
 		else if (id === RESOURCE.Science) {
+			func = (function() {
+				return Game.settings.format(getProduction(id), 1);
+			});
+		}
+		else if (id === RESOURCE.RocketFuel) {
 			func = (function() {
 				return Game.settings.format(getProduction(id), 1);
 			});

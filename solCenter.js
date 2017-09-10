@@ -192,9 +192,9 @@ function buildDysonTo(n) {
 }
 
 function buildRing(){
-	if(dyson >= 50 && rocketFuel >= 50000){
+	if(dyson >= 50 && getResource(RESOURCE.RocketFuel) >= 50000){
 		dyson -= 50;
-		rocketFuel -= 50000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 50000);
 		ring += 1;
 
 		updateDysonCost();
@@ -202,9 +202,9 @@ function buildRing(){
 }
 
 function buildSwarm(){
-	if(dyson >= 100 && rocketFuel >= 250000){
+	if(dyson >= 100 && getResource(RESOURCE.RocketFuel) >= 250000){
 		dyson -= 100;
-		rocketFuel -= 250000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 250000);
 		swarm += 1;
 
 		updateDysonCost();
@@ -216,9 +216,9 @@ function buildSphere(){
 		return;
 	}
 
-	if(dyson >= 250 && rocketFuel >= 1000000){
+	if(dyson >= 250 && getResource(RESOURCE.RocketFuel) >= 1000000){
 		dyson -= 250;
-		rocketFuel -= 1000000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 1000000);
 		sphere += 1;
 
 		updateDysonCost();
