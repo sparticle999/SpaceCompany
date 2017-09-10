@@ -119,6 +119,10 @@ Game.stargazeUI = (function(){
 
     instance.update = function(delta) {
 
+        if(Game.stargaze.unlocked == true){
+            document.getElementById("stargazeTab").className = "";
+        }
+
         this.updateDM();
 
         for(var id in Game.stargaze.entries){

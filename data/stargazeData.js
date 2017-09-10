@@ -181,7 +181,6 @@ Game.prestigeData = (function(){
 			// 	Game.resources.entries[id].perClick = 20;
 			// 	Game.resources.entries[id].displayNeedsUpdate = true;
 			// }
-
 		},
 		achieved: false
 	};
@@ -200,7 +199,6 @@ Game.prestigeData = (function(){
 			}
 
 			// new
-
 		},
 		achieved: false
 	};
@@ -209,13 +207,13 @@ Game.prestigeData = (function(){
 	** Prasnian **
 	*************/
 
-	instance.T3Plasma = {
-		name: "Tier 3 Plasma",
-		desc: "Unlock the Electron Bath",
-		cost: 11,
-		category: "prasnian",
-		achieved: false
-	};
+	// instance.T3Plasma = {
+	// 	name: "Tier 3 Plasma",
+	// 	desc: "Unlock the Electron Bath",
+	// 	cost: 11,
+	// 	category: "prasnian",
+	// 	achieved: false
+	// };
 
 	/**************
 	** Hyacinite **
@@ -261,13 +259,13 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
-	instance.recycling = {
-		name: "Recycling",
-		desc: "Instead of destroying machines, recycle them for 50% of the cost!",
-		cost: 29,
-		category: "hyacinite",
-		achieved: false
-	};
+	// instance.recycling = {
+	// 	name: "Recycling",
+	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
+	// 	cost: 29,
+	// 	category: "hyacinite",
+	// 	achieved: false
+	// };
 
 	instance.energyEff = {
 		name: "Energy Efficiency Cap",
@@ -316,24 +314,30 @@ Game.prestigeData = (function(){
 		desc: "Produce 100% more rocket fuel per chemical plant.",
 		cost: 11,
 		category: "moviton",
+		onApply: function(){
+			chemicalBoost += 1;
+		},
 		achieved: false
 	};
 
 	instance.rocketDiscount = {
 		name: "Rocket Discount",
-		desc: "Rocket Parts Cost 35% less (includes solar system rocket).",
+		desc: "Rocket Parts Cost 35% less.",
 		cost: 23,
 		category: "moviton",
+		onApply: function(){
+			rocketPrice -= 0.35;
+		},
 		achieved: false
 	};
 
-	instance.spaceElevator = {
-		name: "Space Elevator",
-		desc: "Build a giant elevator to reduce antimatter costs by 20%",
-		cost: 42,
-		category: "moviton",
-		achieved: false
-	}
+	// instance.spaceElevator = {
+	// 	name: "Space Elevator",
+	// 	desc: "Build a giant elevator to reduce antimatter costs by 20%",
+	// 	cost: 42,
+	// 	category: "moviton",
+	// 	achieved: false
+	// }
 
 	/*************
 	** Overlord **

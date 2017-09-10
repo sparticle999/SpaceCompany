@@ -217,7 +217,7 @@ function refreshPerSec(delta){
 			getResource(RESOURCE.Charcoal) + getProduction(RESOURCE.Charcoal) >= charcoalCost) {
 			oilps -= oilCost;
 			charcoalps -= charcoalCost;
-			rocketFuelps += ((chemicalPlant*0.2) + (oxidisation*1.5)) * perSecondMultiplier;
+			rocketFuelps += ((chemicalPlant*0.2*chemicalBoost) + (oxidisation*1.5)) * perSecondMultiplier;
 		}
 		var methaneCost = hydrazine*520;
 		if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {

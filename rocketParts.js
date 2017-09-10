@@ -20,7 +20,7 @@ Game.interstellar.rocketParts = (function(){
 	}
 
     instance.calcCost = function(self, resource){
-        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count) * rocketPrice);
     }
 
     instance.updateCost = function(entryName){

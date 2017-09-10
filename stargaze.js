@@ -14,6 +14,8 @@ Game.stargaze = (function(){
 
 	instance.rebirthNeedsUpdate = true;
 
+	instance.unlocked = false;
+
 	instance.initialise = function(){
 		for (var id in Game.stargazeData) {
 			var data = Game.stargazeData[id];
@@ -141,12 +143,12 @@ Game.stargaze = (function(){
 	};
 
 	instance.save = function(data){
-		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}};
+		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}, unlocked: this.unlocked};
 		for(var id in this.entries){
 			data.stargaze.entries[id] = this.entries[id];
 		}
 		for(var id in this.upgradeEntries){
-			data.stargaze.upgradeEntries[id] = this.upgradeEntries[id];
+			data.stargaze.upgradeEntries[id] = {achiev: this.upgradeEntries[id].achieved};
 		}
 		for(var id in this.rebirthStart){
 			data.stargaze.rebirthStart[id] = this.rebirthStart[id];
@@ -169,7 +171,7 @@ Game.stargaze = (function(){
             }
             if(typeof data.stargaze.upgradeEntries !== 'undefined'){
                 for(id in data.stargaze.upgradeEntries){
-                    this.upgradeEntries[id] = data.stargaze.upgradeEntries[id];
+                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achiev;
                     this.upgradeEntries[id].displayNeedsUpdate = true;
                 }
             }
@@ -188,15 +190,13 @@ Game.stargaze = (function(){
                     this.rebirthChildUnlocked[id] = data.stargaze.rebirthChildUnlocked[id];
                 }
             }
+            this.unlocked = data.stargaze.unlocked;
 		}
 		for(var id in this.upgradeEntries){
 			var data = this.upgradeEntries[id];
-			if(data.achived == true){
+			if(data.achieved == true){
 				data.onApply();
 			}
-		}
-		if(this.unlocked == true){
-			document.getElementById("stargazeTab").className = "";
 		}
 	};
 

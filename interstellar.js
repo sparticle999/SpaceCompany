@@ -136,6 +136,11 @@ Game.interstellar = (function(){
                 Game.interstellar[id].updateCost[entry];
             }
         }
+
+        // stargaze
+        if(sphere != 0){
+            Game.stargaze.unlocked = true;
+        }
     };
 
 	return instance;
