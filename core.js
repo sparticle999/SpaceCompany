@@ -6,24 +6,24 @@ function calculateEnergyOutput(delta) {
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
-	if (getResourceAfterTick(RESOURCE.CHARCOAL, delta) >= charcoalEngine * delta) {
+	if (getResourceAfterTick(RESOURCE.Charcoal, delta) >= charcoalEngine * delta) {
 		output += charcoalEngine * charcoalEngineOutput;
 	}
 
-	if (getResourceAfterTick(RESOURCE.METHANE, delta) >= methaneStation * 6 * delta) {
+	if (getResourceAfterTick(RESOURCE.Methane, delta) >= methaneStation * 6 * delta) {
 		output += methaneStation * 23;
 	}
 
-	if (getResourceAfterTick(RESOURCE.URANIUM, delta) >= nuclearStation * 7 * delta) {
+	if (getResourceAfterTick(RESOURCE.Uranium, delta) >= nuclearStation * 7 * delta) {
 		output += nuclearStation * 153;
 	}
 
-	if (getResourceAfterTick(RESOURCE.LAVA, delta) > magmatic * 11 * delta) {
+	if (getResourceAfterTick(RESOURCE.Lava, delta) > magmatic * 11 * delta) {
 		output += magmatic * 191;
 	}
 
-	if (getResourceAfterTick(RESOURCE.HYDROGEN, delta) >= fusionReactor * 10 * delta &&
-		getResourceAfterTick(RESOURCE.HELIUM, delta) >= fusionReactor * 10 * delta) {
+	if (getResourceAfterTick(RESOURCE.Hydrogen, delta) >= fusionReactor * 10 * delta &&
+		getResourceAfterTick(RESOURCE.Helium, delta) >= fusionReactor * 10 * delta) {
 		output += fusionReactor * 273;
 	}
 
@@ -55,12 +55,12 @@ function calculateEnergyUse(delta) {
         use += (furnace*3)+(kiln*13)+(fryer*34)+(microPollutor*212);
     }
 
-	if (heaterToggled && getResource(RESOURCE.HYDROGEN) + getProduction(RESOURCE.HYDROGEN) >= heater * 10 * delta &&
-		getResource(RESOURCE.PLASMA) + getProduction(RESOURCE.PLASMA) >= heater * delta) {
+	if (heaterToggled && getResource(RESOURCE.Hydrogen) + getProduction(RESOURCE.Hydrogen) >= heater * 10 * delta &&
+		getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= heater * delta) {
 		use += heater * 1000;
 	}
 
-	if (plasmaticToggled && getResource(RESOURCE.PLASMA) + getProduction(RESOURCE.PLASMA) >= plasmatic * 10 * delta) {
+	if (plasmaticToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmatic * 10 * delta) {
 		use += plasmatic * 8500;
 	}
 
@@ -76,12 +76,12 @@ function toggleEnergy() {
 
 function fixStorageRounding() {
 	var precision = 100;
-	if (Math.round(getResource(RESOURCE.METEORITE) * precision) / precision === getStorage(RESOURCE.METEORITE)) {
-		Game.resources.maxResource(RESOURCE.METEORITE);
+	if (Math.round(getResource(RESOURCE.Meteorite) * precision) / precision === getStorage(RESOURCE.Meteorite)) {
+		Game.resources.maxResource(RESOURCE.Meteorite);
 	}
 
-	if (Math.round(getResource(RESOURCE.PLASMA) * precision) / precision === getStorage(RESOURCE.PLASMA)) {
-		Game.resources.maxResource(RESOURCE.PLASMA);
+	if (Math.round(getResource(RESOURCE.Plasma) * precision) / precision === getStorage(RESOURCE.Plasma)) {
+		Game.resources.maxResource(RESOURCE.Plasma);
 	}
 }
 
@@ -133,7 +133,7 @@ function refreshPerSec(delta){
 	energyps = energyOutput - energyUse;
 
 	var deltaEnergyDiff = (energyOutput * delta) - (energyUse * delta);
-	energyLow = deltaEnergyDiff < 0 && (getResource(RESOURCE.ENERGY) <= 0 || getResource(RESOURCE.ENERGY) < deltaEnergyDiff);
+	energyLow = deltaEnergyDiff < 0 && (getResource(RESOURCE.Energy) <= 0 || getResource(RESOURCE.Energy) < deltaEnergyDiff);
 
 	// calculate multipliers (add prestige etc here)
 	var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
@@ -200,7 +200,7 @@ function refreshPerSec(delta){
 			woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148) + (microPollutor*841);
 		}
 
-		if (getResource(RESOURCE.WOOD) + getProduction(RESOURCE.WOOD) >= woodCost) {
+		if (getResource(RESOURCE.Wood) + getProduction(RESOURCE.Wood) >= woodCost) {
 			woodps -= woodCost;
 			charcoalps += woodburner * perSecondMultiplier;
 
@@ -213,38 +213,38 @@ function refreshPerSec(delta){
 	if (rocketFuelToggled === true) {
 		var oilCost = (chemicalPlant*20) + (oxidisation*100);
 		var charcoalCost = (chemicalPlant*20) + (oxidisation*100);
-		if (getResource(RESOURCE.OIL) + getProduction(RESOURCE.OIL) >= oilCost &&
-			getResource(RESOURCE.CHARCOAL) + getProduction(RESOURCE.CHARCOAL) >= charcoalCost) {
+		if (getResource(RESOURCE.Oil) + getProduction(RESOURCE.Oil) >= oilCost &&
+			getResource(RESOURCE.Charcoal) + getProduction(RESOURCE.Charcoal) >= charcoalCost) {
 			oilps -= oilCost;
 			charcoalps -= charcoalCost;
 			rocketFuelps += ((chemicalPlant*0.2) + (oxidisation*1.5)) * perSecondMultiplier;
 		}
 		var methaneCost = hydrazine*520;
-		if (getResource(RESOURCE.METHANE) + getProduction(RESOURCE.METHANE) >= methaneCost) {
+		if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {
 			methaneps -= methaneCost;
 			rocketFuelps += (hydrazine*20) * perSecondMultiplier;
 		}
 	}
 
 	if (meteoriteToggled === true) {
-		adjustment = adjustCost(RESOURCE.METEORITE, (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
-		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.PLASMA, delta) >= adjustment.c) {
+		adjustment = adjustCost(RESOURCE.Meteorite, (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Plasma, delta) >= adjustment.c) {
 			plasmaps -= adjustment.c;
 			meteoriteps += adjustment.g;
 		}
 	}
 
 	if (heaterToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.PLASMA, heater * 10, heater * perSecondMultiplier);
-		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HYDROGEN, delta) >= adjustment.c) {
+		var adjustment = adjustCost(RESOURCE.Plasma, heater * 10, heater * perSecondMultiplier);
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c) {
 			hydrogenps -= adjustment.c;
 			plasmaps += adjustment.g;
 		}
 	}
 
 	if (plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.PLASMA, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
-		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.HELIUM, delta) >= adjustment.c) {
+		var adjustment = adjustCost(RESOURCE.Plasma, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
 			heliumps -= adjustment.c;
 			plasmaps += adjustment.g;
 		}
@@ -254,8 +254,8 @@ function refreshPerSec(delta){
 		if (antimatter + antimatterps < 100000) {
 			var plasmaCost = (Game.interstellar.antimatter.entries.drive.count*100);
 			var iceCost = (Game.interstellar.antimatter.entries.drive.count*12000);
-			if (getResource(RESOURCE.PLASMA) + getProduction(RESOURCE.PLASMA) >= plasmaCost &&
-				getResource(RESOURCE.ICE) + getProduction(RESOURCE.ICE) >= iceCost) {
+			if (getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmaCost &&
+				getResource(RESOURCE.Ice) + getProduction(RESOURCE.Ice) >= iceCost) {
 				plasmaps -= plasmaCost;
 				iceps -= iceCost;
 				antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
@@ -306,323 +306,323 @@ function checkRedCost() {
 
 	Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
 
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), 2, "manualCharcoalCost");
-	Game.settings.turnRed(getResource(RESOURCE.ENERGY), 1000, "manualPlasmaEnergyCost");
-	Game.settings.turnRed(getResource(RESOURCE.HYDROGEN), 10, "manualPlasmaHydrogenCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), 2, "manualCharcoalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Energy), 1000, "manualPlasmaEnergyCost");
+	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), 10, "manualPlasmaHydrogenCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), getStorage(RESOURCE.URANIUM), "uraniumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.URANIUM)/2.5, "uraniumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), getStorage(RESOURCE.Uranium), "uraniumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Uranium)/2.5, "uraniumStorageLunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.OIL), getStorage(RESOURCE.OIL), "oilStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.OIL)/2.5, "oilStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), getStorage(RESOURCE.Oil), "oilStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Oil)/2.5, "oilStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.METAL), "metalStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Metal), "metalStorageCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.GEM), getStorage(RESOURCE.GEM), "gemStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.GEM)/2.5, "gemStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), getStorage(RESOURCE.Gem), "gemStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Gem)/2.5, "gemStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.CHARCOAL), getStorage(RESOURCE.CHARCOAL), "charcoalStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.CHARCOAL)/2.5, "charcoalStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Charcoal), getStorage(RESOURCE.Charcoal), "charcoalStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Charcoal)/2.5, "charcoalStorageMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), getStorage(RESOURCE.WOOD), "woodStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.WOOD)/2.5, "woodStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), getStorage(RESOURCE.Wood), "woodStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Wood)/2.5, "woodStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.LUNARITE), "lunariteStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), getStorage(RESOURCE.LUNARITE)*4, "lunariteStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lunarite), "lunariteStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Lunarite)*4, "lunariteStorageMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METHANE), getStorage(RESOURCE.METHANE), "methaneStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.METHANE)/2.5, "methaneStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), getStorage(RESOURCE.Methane), "methaneStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Methane)/2.5, "methaneStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), getStorage(RESOURCE.TITANIUM), "titaniumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.TITANIUM)/2.5, "titaniumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), getStorage(RESOURCE.Titanium), "titaniumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Titanium)/2.5, "titaniumStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), getStorage(RESOURCE.GOLD), "goldStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.GOLD)/2.5, "goldStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), getStorage(RESOURCE.Gold), "goldStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Gold)/2.5, "goldStorageLunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), getStorage(RESOURCE.SILVER), "silverStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.SILVER)/2.5, "silverStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), getStorage(RESOURCE.Silver), "silverStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silver)/2.5, "silverStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), getStorage(RESOURCE.SILICON), "siliconStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.SILICON)/2.5, "siliconStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), getStorage(RESOURCE.Silicon), "siliconStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silicon)/2.5, "siliconStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LAVA), getStorage(RESOURCE.LAVA), "lavaStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.LAVA)/2.5, "lavaStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), getStorage(RESOURCE.Lava), "lavaStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lava)/2.5, "lavaStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.HYDROGEN), getStorage(RESOURCE.HYDROGEN), "hydrogenStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.HYDROGEN)/2.5, "hydrogenStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), getStorage(RESOURCE.Hydrogen), "hydrogenStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Hydrogen)/2.5, "hydrogenStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.HELIUM), getStorage(RESOURCE.HELIUM), "heliumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.HELIUM)/2.5, "heliumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), getStorage(RESOURCE.Helium), "heliumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Helium)/2.5, "heliumStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.ICE), getStorage(RESOURCE.ICE), "iceStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.ICE)/2.5, "iceStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), getStorage(RESOURCE.Ice), "iceStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Ice)/2.5, "iceStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), getStorage(RESOURCE.METEORITE), "meteoriteStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), getStorage(RESOURCE.METEORITE)*4, "meteoriteStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), getStorage(RESOURCE.Meteorite), "meteoriteStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Meteorite)*4, "meteoriteStorageLunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), PSUSilverCost, "PSUSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), PSUGoldCost, "PSUGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), PSUUraniumCost, "PSUUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), PSUSilverCost, "PSUSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), PSUGoldCost, "PSUGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), PSUUraniumCost, "PSUUraniumCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), PSUT2SilverCost, "PSUT2SilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), PSUT2GoldCost, "PSUT2GoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), PSUT2UraniumCost, "PSUT2UraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), PSUT2SilverCost, "PSUT2SilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), PSUT2GoldCost, "PSUT2GoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), PSUT2UraniumCost, "PSUT2UraniumCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), heaterLunariteCost, "heaterLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), heaterGemCost, "heaterGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), heaterSiliconCost, "heaterSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), heaterLunariteCost, "heaterLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), heaterGemCost, "heaterGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), heaterSiliconCost, "heaterSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), plasmaticLunariteCost, "plasmaticLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), plasmaticSiliconCost, "plasmaticSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), plasmaticMeteoriteCost, "plasmaticMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), plasmaticLunariteCost, "plasmaticLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), plasmaticSiliconCost, "plasmaticSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), plasmaticMeteoriteCost, "plasmaticMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), batteryMetalCost, "batteryMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), batteryGemCost, "batteryGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), batteryLunariteCost, "batteryLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryMetalCost, "batteryMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryGemCost, "batteryGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryLunariteCost, "batteryLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), batteryT2MetalCost, "batteryT2MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), batteryT2GemCost, "batteryT2GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), batteryT2LunariteCost, "batteryT2LunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT2MetalCost, "batteryT2MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT2GemCost, "batteryT2GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT2LunariteCost, "batteryT2LunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), batteryT4MetalCost, "batteryT4MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), batteryT4GemCost, "batteryT4GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), batteryT4LunariteCost, "batteryT4LunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT4MetalCost, "batteryT4MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT4GemCost, "batteryT4GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT4LunariteCost, "batteryT4LunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.METAL), batteryT3MetalCost, "batteryT3MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), batteryT3GemCost, "batteryT3GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), batteryT3LunariteCost, "batteryT3LunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT3MetalCost, "batteryT3MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT3GemCost, "batteryT3GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT3LunariteCost, "batteryT3LunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), charcoalEngineMetalCost, "charcoalEngineMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), charcoalEngineGemCost, "charcoalEngineGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), charcoalEngineMetalCost, "charcoalEngineMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), charcoalEngineGemCost, "charcoalEngineGemCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), solarPanelMetalCost, "solarPanelMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), solarPanelGemCost, "solarPanelGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), solarPanelMetalCost, "solarPanelMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), solarPanelGemCost, "solarPanelGemCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), methaneStationLunariteCost, "methaneStationLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), methaneStationTitaniumCost, "methaneStationTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), nuclearStationLunariteCost, "nuclearStationLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), nuclearStationTitaniumCost, "nuclearStationTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), magmaticLunariteCost, "magmaticLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), magmaticGemCost, "magmaticGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), magmaticSilverCost, "magmaticSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), fusionReactorLunariteCost, "fusionReactorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), fusionReactorTitaniumCost, "fusionReactorTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), fusionReactorSiliconCost, "fusionReactorSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), pumpMetalCost, "pumpMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), pumpGemCost, "pumpGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), methaneStationLunariteCost, "methaneStationLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), methaneStationTitaniumCost, "methaneStationTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), nuclearStationLunariteCost, "nuclearStationLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), nuclearStationTitaniumCost, "nuclearStationTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), magmaticLunariteCost, "magmaticLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), magmaticGemCost, "magmaticGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), magmaticSilverCost, "magmaticSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), fusionReactorLunariteCost, "fusionReactorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), fusionReactorTitaniumCost, "fusionReactorTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), fusionReactorSiliconCost, "fusionReactorSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), pumpMetalCost, "pumpMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), pumpGemCost, "pumpGemCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), pumpjackMetalCost, "pumpjackMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), pumpjackGemCost, "pumpjackGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), pumpjackOilCost, "pumpjackOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), pumpjackMetalCost, "pumpjackMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), pumpjackGemCost, "pumpjackGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), pumpjackOilCost, "pumpjackOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), oilFieldLunariteCost, "oilFieldLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), oilFieldTitaniumCost, "oilFieldTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), oilFieldSiliconCost, "oilFieldSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), oilFieldLunariteCost, "oilFieldLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), oilFieldTitaniumCost, "oilFieldTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), oilFieldSiliconCost, "oilFieldSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), oilRigLunariteCost, "oilRigLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), oilRigTitaniumCost, "oilRigTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), oilRigMeteoriteCost, "oilRigMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), oilRigLunariteCost, "oilRigLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), oilRigTitaniumCost, "oilRigTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), oilRigMeteoriteCost, "oilRigMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), minerMetalCost, "minerMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), minerWoodCost, "minerWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), heavyDrillMetalCost, "heavyDrillMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), heavyDrillGemCost, "heavyDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), heavyDrillOilCost, "heavyDrillOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), minerMetalCost, "minerMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), minerWoodCost, "minerWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), heavyDrillMetalCost, "heavyDrillMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), heavyDrillGemCost, "heavyDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), heavyDrillOilCost, "heavyDrillOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), gigaDrillLunariteCost, "gigaDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), gigaDrillGemCost, "gigaDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), gigaDrillSiliconCost, "gigaDrillSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), gigaDrillLunariteCost, "gigaDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), gigaDrillGemCost, "gigaDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), gigaDrillSiliconCost, "gigaDrillSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), quantumDrillLunariteCost, "quantumDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), quantumDrillGoldCost, "quantumDrillGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), quantumDrillMeteoriteCost, "quantumDrillMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), quantumDrillLunariteCost, "quantumDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), quantumDrillGoldCost, "quantumDrillGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), quantumDrillMeteoriteCost, "quantumDrillMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), gemMinerMetalCost, "gemMinerMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), gemMinerGemCost, "gemMinerGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), advancedDrillMetalCost, "advancedDrillMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), advancedDrillGemCost, "advancedDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), advancedDrillOilCost, "advancedDrillOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), gemMinerMetalCost, "gemMinerMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), gemMinerGemCost, "gemMinerGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), advancedDrillMetalCost, "advancedDrillMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), advancedDrillGemCost, "advancedDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), advancedDrillOilCost, "advancedDrillOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), diamondDrillLunariteCost, "diamondDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), diamondDrillGemCost, "diamondDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), diamondDrillSiliconCost, "diamondDrillSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), diamondDrillLunariteCost, "diamondDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), diamondDrillGemCost, "diamondDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), diamondDrillSiliconCost, "diamondDrillSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), carbyneDrillLunariteCost, "carbyneDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), carbyneDrillGemCost, "carbyneDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), carbyneDrillMeteoriteCost, "carbyneDrillMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), carbyneDrillLunariteCost, "carbyneDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), carbyneDrillGemCost, "carbyneDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), carbyneDrillMeteoriteCost, "carbyneDrillMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), woodburnerMetalCost, "woodburnerMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), woodburnerWoodCost, "woodburnerWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), furnaceMetalCost, "furnaceMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), furnaceWoodCost, "furnaceWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), furnaceOilCost, "furnaceOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), woodburnerMetalCost, "woodburnerMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), woodburnerWoodCost, "woodburnerWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), furnaceMetalCost, "furnaceMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), furnaceWoodCost, "furnaceWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), furnaceOilCost, "furnaceOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), kilnLunariteCost, "kilnLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), kilnGemCost, "kilnGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), kilnSiliconCost, "kilnSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), kilnLunariteCost, "kilnLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), kilnGemCost, "kilnGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), kilnSiliconCost, "kilnSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), fryerLunariteCost, "fryerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.LAVA), fryerLavaCost, "fryerLavaCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), fryerMeteoriteCost, "fryerMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), fryerLunariteCost, "fryerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), fryerLavaCost, "fryerLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), fryerMeteoriteCost, "fryerMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), woodcutterMetalCost, "woodcutterMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), woodcutterWoodCost, "woodcutterWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), laserCutterMetalCost, "laserCutterMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), laserCutterGemCost, "laserCutterGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), laserCutterOilCost, "laserCutterOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), woodcutterMetalCost, "woodcutterMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), woodcutterWoodCost, "woodcutterWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), laserCutterMetalCost, "laserCutterMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), laserCutterGemCost, "laserCutterGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), laserCutterOilCost, "laserCutterOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), deforesterLunariteCost, "deforesterLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), deforesterTitaniumCost, "deforesterTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), deforesterSiliconCost, "deforesterSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), deforesterLunariteCost, "deforesterLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), deforesterTitaniumCost, "deforesterTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), deforesterSiliconCost, "deforesterSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), infuserLunariteCost, "infuserLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), infuserOilCost, "infuserOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), infuserMeteoriteCost, "infuserMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), infuserLunariteCost, "infuserLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), infuserOilCost, "infuserOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), infuserMeteoriteCost, "infuserMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.GEM), moonWorkerGemCost, "moonWorkerGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), moonDrillMetalCost, "moonDrillMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), moonDrillGemCost, "moonDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), moonDrillOilCost, "moonDrillOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), moonWorkerGemCost, "moonWorkerGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), moonDrillMetalCost, "moonDrillMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), moonDrillGemCost, "moonDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), moonDrillOilCost, "moonDrillOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), moonQuarryLunariteCost, "moonQuarryLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), moonQuarryGemCost, "moonQuarryGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), moonQuarrySiliconCost, "moonQuarrySiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), moonQuarryLunariteCost, "moonQuarryLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), moonQuarryGemCost, "moonQuarryGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), moonQuarrySiliconCost, "moonQuarrySiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), planetExcavatorTitaniumCost, "planetExcavatorTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.ICE), planetExcavatorIceCost, "planetExcavatorIceCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), planetExcavatorMeteoriteCost, "planetExcavatorMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), planetExcavatorTitaniumCost, "planetExcavatorTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), planetExcavatorIceCost, "planetExcavatorIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), planetExcavatorMeteoriteCost, "planetExcavatorMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), vacuumLunariteCost, "vacuumLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), vacuumGemCost, "vacuumGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), suctionExcavatorLunariteCost, "suctionExcavatorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), suctionExcavatorGemCost, "suctionExcavatorGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), suctionExcavatorOilCost, "suctionExcavatorOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), vacuumLunariteCost, "vacuumLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), vacuumGemCost, "vacuumGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), suctionExcavatorLunariteCost, "suctionExcavatorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), suctionExcavatorGemCost, "suctionExcavatorGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), suctionExcavatorOilCost, "suctionExcavatorOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), spaceCowLunariteCost, "spaceCowLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), spaceCowTitaniumCost, "spaceCowTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), spaceCowSiliconCost, "spaceCowSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), spaceCowLunariteCost, "spaceCowLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), spaceCowTitaniumCost, "spaceCowTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), spaceCowSiliconCost, "spaceCowSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), ventLunariteCost, "ventLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.HELIUM), ventHeliumCost, "ventHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), ventMeteoriteCost, "ventMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), ventLunariteCost, "ventLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), ventHeliumCost, "ventHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), ventMeteoriteCost, "ventMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.GEM), explorerGemCost, "explorerGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), lunariteDrillLunariteCost, "lunariteDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), lunariteDrillGemCost, "lunariteDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), lunariteDrillOilCost, "lunariteDrillOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), explorerGemCost, "explorerGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), lunariteDrillLunariteCost, "lunariteDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), lunariteDrillGemCost, "lunariteDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), lunariteDrillOilCost, "lunariteDrillOilCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), pentaDrillLunariteCost, "pentaDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), pentaDrillGemCost, "pentaDrillGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), pentaDrillSiliconCost, "pentaDrillSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), pentaDrillLunariteCost, "pentaDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), pentaDrillGemCost, "pentaDrillGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), pentaDrillSiliconCost, "pentaDrillSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), titanDrillLunariteCost, "titanDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), titanDrillGoldCost, "titanDrillGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), titanDrillMeteoriteCost, "titanDrillMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), titanDrillLunariteCost, "titanDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), titanDrillGoldCost, "titanDrillGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), titanDrillMeteoriteCost, "titanDrillMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), droidLunariteCost, "droidLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.METHANE), droidMethaneCost, "droidMethaneCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), destroyerLunariteCost, "destroyerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), destroyerGemCost, "destroyerGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), destroyerOilCost, "destroyerOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), droidLunariteCost, "droidLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), droidMethaneCost, "droidMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), destroyerLunariteCost, "destroyerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), destroyerGemCost, "destroyerGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), destroyerOilCost, "destroyerOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), deathStarLunariteCost, "deathStarLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), deathStarSilverCost, "deathStarSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), deathStarSiliconCost, "deathStarSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), deathStarLunariteCost, "deathStarLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), deathStarSilverCost, "deathStarSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), deathStarSiliconCost, "deathStarSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), actuatorLunariteCost, "actuatorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.HELIUM), actuatorHeliumCost, "actuatorHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), actuatorMeteoriteCost, "actuatorMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), actuatorLunariteCost, "actuatorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), actuatorHeliumCost, "actuatorHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), actuatorMeteoriteCost, "actuatorMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), scoutLunariteCost, "scoutLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), scoutTitaniumCost, "scoutTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), spaceLaserLunariteCost, "spaceLaserLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), spaceLaserGemCost, "spaceLaserGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), spaceLaserOilCost, "spaceLaserOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), scoutLunariteCost, "scoutLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), scoutTitaniumCost, "scoutTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), spaceLaserLunariteCost, "spaceLaserLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), spaceLaserGemCost, "spaceLaserGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), spaceLaserOilCost, "spaceLaserOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), berthaLunariteCost, "berthaLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), berthaTitaniumCost, "berthaTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), berthaSiliconCost, "berthaSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), berthaLunariteCost, "berthaLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), berthaTitaniumCost, "berthaTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), berthaSiliconCost, "berthaSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), cannonLunariteCost, "cannonLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), cannonOilCost, "cannonOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), cannonMeteoriteCost, "cannonMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), cannonLunariteCost, "cannonLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), cannonOilCost, "cannonOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), cannonMeteoriteCost, "cannonMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), blowtorchLunariteCost, "blowtorchLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), blowtorchTitaniumCost, "blowtorchTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), scorcherLunariteCost, "scorcherLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), scorcherGemCost, "scorcherGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), scorcherOilCost, "scorcherOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), annihilatorLunariteCost, "annihilatorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), annihilatorGemCost, "annihilatorGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), annihilatorSilverCost, "annihilatorSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), blowtorchLunariteCost, "blowtorchLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), blowtorchTitaniumCost, "blowtorchTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), scorcherLunariteCost, "scorcherLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), scorcherGemCost, "scorcherGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), scorcherOilCost, "scorcherOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), annihilatorLunariteCost, "annihilatorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), annihilatorGemCost, "annihilatorGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), annihilatorSilverCost, "annihilatorSilverCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), desertLunariteCost, "desertLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), desertSiliconCost, "desertSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), desertMeteoriteCost, "desertMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), desertLunariteCost, "desertLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), desertSiliconCost, "desertSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), desertMeteoriteCost, "desertMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), labMetalCost, "labMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), labGemCost, "labGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), labWoodCost, "labWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), labMetalCost, "labMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), labGemCost, "labGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), labWoodCost, "labWoodCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), labT2MetalCost, "labT2MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), labT2GemCost, "labT2GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), labT2WoodCost, "labT2WoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), labT2MetalCost, "labT2MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), labT2GemCost, "labT2GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), labT2WoodCost, "labT2WoodCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), labT3MetalCost, "labT3MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), labT3GemCost, "labT3GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), labT3WoodCost, "labT3WoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), labT3MetalCost, "labT3MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), labT3GemCost, "labT3GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), labT3WoodCost, "labT3WoodCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), labT4MetalCost, "labT4MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), labT4GemCost, "labT4GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), labT4WoodCost, "labT4WoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), labT4MetalCost, "labT4MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), labT4GemCost, "labT4GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), labT4WoodCost, "labT4WoodCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 5, "unlockStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 20, "unlockBasicEnergyCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 30, "unlockOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 50, "unlockSolarCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 100, "unlockMachinesCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 500, "unlockDestructionCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 300, "upgradeResourceTechCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 500, "unlockSolarSystemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 500, "unlockLabT2Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 1000, "upgradeEngineTechCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 450000, "unlockRocketFuelT2Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 3200000, "unlockRocketFuelT3Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 3000, "unlockLabT3Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 5000, "upgradeSolarTechCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 15000, "unlockBatteriesCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 40000, "unlockPlasmaCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 60000, "unlockPlasmaTier2Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 50000000, "unlockLabT4Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 60000, "unlockEmcCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 100000, "unlockMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 75000, "unlockMeteoriteTier1Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 100000, "unlockMeteoriteTier2Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 100000, "unlockDysonCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 300000, "unlockBatteriesT2Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 3000000, "unlockBatteriesT3Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 30000000, "unlockBatteriesT4Cost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 500000, "unlockDysonSphereCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 9500000, "unlockPSUCost");
-	Game.settings.turnRed(getResource(RESOURCE.SCIENCE), 37000000, "unlockPSUT2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 5, "unlockStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 20, "unlockBasicEnergyCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 30, "unlockOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 50, "unlockSolarCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 100, "unlockMachinesCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 500, "unlockDestructionCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 300, "upgradeResourceTechCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 500, "unlockSolarSystemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 500, "unlockLabT2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 1000, "upgradeEngineTechCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 450000, "unlockRocketFuelT2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 3200000, "unlockRocketFuelT3Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 3000, "unlockLabT3Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 5000, "upgradeSolarTechCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 15000, "unlockBatteriesCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 40000, "unlockPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 60000, "unlockPlasmaTier2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 50000000, "unlockLabT4Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 60000, "unlockEmcCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 100000, "unlockMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 75000, "unlockMeteoriteTier1Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 100000, "unlockMeteoriteTier2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 100000, "unlockDysonCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 300000, "unlockBatteriesT2Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 3000000, "unlockBatteriesT3Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 30000000, "unlockBatteriesT4Cost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 500000, "unlockDysonSphereCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 9500000, "unlockPSUCost");
+	Game.settings.turnRed(getResource(RESOURCE.Science), 37000000, "unlockPSUT2Cost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), 1200, "rocketMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), 900, "rocketGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), 1000, "rocketOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), 1200, "rocketMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), 900, "rocketGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), 1000, "rocketOilCost");
 
 	Game.settings.turnRed(rocketFuel, 20, "rocketRocketFuelCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), chemicalPlantMetalCost, "chemicalPlantMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), chemicalPlantGemCost, "chemicalPlantGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), chemicalPlantOilCost, "chemicalPlantOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), chemicalPlantMetalCost, "chemicalPlantMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), chemicalPlantGemCost, "chemicalPlantGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), chemicalPlantOilCost, "chemicalPlantOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METAL), oxidisationMetalCost, "oxidisationMetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), oxidisationGemCost, "oxidisationGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), oxidisationOilCost, "oxidisationOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), oxidisationMetalCost, "oxidisationMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), oxidisationGemCost, "oxidisationGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), oxidisationOilCost, "oxidisationOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), hydrazineTitaniumCost, "hydrazineTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), hydrazineSiliconCost, "hydrazineSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), hydrazineGoldCost, "hydrazineGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), hydrazineTitaniumCost, "hydrazineTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), hydrazineSiliconCost, "hydrazineSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), hydrazineGoldCost, "hydrazineGoldCost");
 
 	Game.settings.turnRed(rocketFuel, 20, "moonRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 50, "venusRocketFuelCost");
@@ -636,166 +636,217 @@ function checkRedCost() {
 	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), grinderLunariteCost, "grinderLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), grinderTitaniumCost, "grinderTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), grinderGoldCost, "grinderGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), grinderLunariteCost, "grinderLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), grinderTitaniumCost, "grinderTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), grinderGoldCost, "grinderGoldCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), cubicLunariteCost, "cubicLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), cubicUraniumCost, "cubicUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), cubicOilCost, "cubicOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), cubicLunariteCost, "cubicLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), cubicUraniumCost, "cubicUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), cubicOilCost, "cubicOilCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), enricherLunariteCost, "enricherLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), enricherTitaniumCost, "enricherTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), enricherSiliconCost, "enricherSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), enricherLunariteCost, "enricherLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), enricherTitaniumCost, "enricherTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), enricherSiliconCost, "enricherSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), recyclerLunariteCost, "recyclerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.METHANE), recyclerMethaneCost, "recyclerMethaneCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), recyclerMeteoriteCost, "recyclerMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), recyclerLunariteCost, "recyclerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), recyclerMethaneCost, "recyclerMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), recyclerMeteoriteCost, "recyclerMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), crucibleLunariteCost, "crucibleLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), crucibleGemCost, "crucibleGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), crucibleLunariteCost, "crucibleLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), crucibleGemCost, "crucibleGemCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), extractorLunariteCost, "extractorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), extractorTitaniumCost, "extractorTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), extractorSiliconCost, "extractorSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), extractorLunariteCost, "extractorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), extractorTitaniumCost, "extractorTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), extractorSiliconCost, "extractorSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), extruderLunariteCost, "extruderLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), extruderTitaniumCost, "extruderTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), extruderSiliconCost, "extruderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), extruderLunariteCost, "extruderLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), extruderTitaniumCost, "extruderTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), extruderSiliconCost, "extruderSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), veluptuatorLunariteCost, "veluptuatorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), veluptuatorGoldCost, "veluptuatorGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), veluptuatorMeteoriteCost, "veluptuatorMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), veluptuatorLunariteCost, "veluptuatorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), veluptuatorGoldCost, "veluptuatorGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), veluptuatorMeteoriteCost, "veluptuatorMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), collectorLunariteCost, "collectorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), collectorTitaniumCost, "collectorTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), collectorLunariteCost, "collectorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), collectorTitaniumCost, "collectorTitaniumCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), magnetLunariteCost, "magnetLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), magnetTitaniumCost, "magnetTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), magnetGoldCost, "magnetGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), magnetLunariteCost, "magnetLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), magnetTitaniumCost, "magnetTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), magnetGoldCost, "magnetGoldCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), eCellSilverCost, "eCellSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), eCellGoldCost, "eCellGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), eCellSiliconCost, "eCellSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), eCellSilverCost, "eCellSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), eCellGoldCost, "eCellGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), eCellSiliconCost, "eCellSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), hindenburgLunariteCost, "hindenburgLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.METHANE), hindenburgMethaneCost, "hindenburgMethaneCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), hindenburgMeteoriteCost, "hindenburgMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), hindenburgLunariteCost, "hindenburgLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), hindenburgMethaneCost, "hindenburgMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), hindenburgMeteoriteCost, "hindenburgMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), droneLunariteCost, "droneLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), droneSiliconCost, "droneSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), droneLunariteCost, "droneLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), droneSiliconCost, "droneSiliconCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), tankerLunariteCost, "tankerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), tankerTitaniumCost, "tankerTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), tankerSiliconCost, "tankerSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), tankerLunariteCost, "tankerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), tankerTitaniumCost, "tankerTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), tankerSiliconCost, "tankerSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), compressorLunariteCost, "compressorLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), compressorTitaniumCost, "compressorTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), compressorSiliconCost, "compressorSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), compressorLunariteCost, "compressorLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), compressorTitaniumCost, "compressorTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), compressorSiliconCost, "compressorSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), skimmerLunariteCost, "skimmerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), skimmerTitaniumCost, "skimmerTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), skimmerMeteoriteCost, "skimmerMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), skimmerLunariteCost, "skimmerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), skimmerTitaniumCost, "skimmerTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), skimmerMeteoriteCost, "skimmerMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), icePickLunariteCost, "icePickLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), icePickGemCost, "icePickGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), icePickLunariteCost, "icePickLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), icePickGemCost, "icePickGemCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), iceDrillLunariteCost, "iceDrillLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), iceDrillTitaniumCost, "iceDrillTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), iceDrillSiliconCost, "iceDrillSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), iceDrillLunariteCost, "iceDrillLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), iceDrillTitaniumCost, "iceDrillTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), iceDrillSiliconCost, "iceDrillSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), freezerLunariteCost, "freezerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), freezerTitaniumCost, "freezerTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), freezerSiliconCost, "freezerSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), freezerLunariteCost, "freezerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), freezerTitaniumCost, "freezerTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), freezerSiliconCost, "freezerSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), mrFreezeWoodCost, "mrFreezeWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.HELIUM), mrFreezeHeliumCost, "mrFreezeHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), mrFreezeWoodCost, "mrFreezeWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), mrFreezeHeliumCost, "mrFreezeHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), mrFreezeMeteoriteCost, "mrFreezeMeteoriteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), printerLunariteCost, "printerLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), printerSiliconCost, "printerSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), printerLunariteCost, "printerLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), printerSiliconCost, "printerSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), webLunariteCost, "webLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), webUraniumCost, "webUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), webSiliconCost, "webSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), webLunariteCost, "webLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), webUraniumCost, "webUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), webSiliconCost, "webSiliconCost");
+
+	// Tier 5 Machines
+
+    Game.settings.turnRed(getResource(RESOURCE.Titanium), planetNukeTitaniumCost, "planetNukeTitaniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Silicon), planetNukeSiliconCost, "planetNukeSiliconCost");
+    Game.settings.turnRed(getResource(RESOURCE.Ice), planetNukeIceCost, "planetNukeIceCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lunarite), condensatorLunariteCost, "condensatorLunariteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gems), condensatorGemsCost, "condensatorGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Ice), condensatorIceCost, "condensatorIceCost");
+    Game.settings.turnRed(getResource(RESOURCE.Uranium), fossilatorUraniumCost, "fossilatorUraniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Charcoal), fossilatorCharcoalCost, "fossilatorCharcoalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lava), fossilatorLavaCost, "fossilatorLavaCost");
+    Game.settings.turnRed(getResource(RESOURCE.Titanium), multiDrillTitaniumCost, "multiDrillTitaniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gold), multiDrillGoldCost, "multiDrillGoldCost");
+    Game.settings.turnRed(getResource(RESOURCE.Oil), multiDrillOilCost, "multiDrillOilCost");
+    Game.settings.turnRed(getResource(RESOURCE.Uranium), diamondChamberUraniumCost, "diamondChamberUraniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Charcoal), diamondChamberCharcoalCost, "diamondChamberCharcoalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Meteorite), diamondChamberMeteoriteCost, "diamondChamberMeteoriteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Metal), microPollutorMetalCost, "microPollutorMetalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Wood), microPollutorWoodCost, "microPollutorWoodCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lava), microPollutorLavaCost, "microPollutorLavaCost");
+    Game.settings.turnRed(getResource(RESOURCE.Metal), forestMetalCost, "forestMetalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gems), forestGemsCost, "forestGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Hydrogen), forestHydrogenCost, "forestHydrogenCost");
+    Game.settings.turnRed(getResource(RESOURCE.Titanium), clonerTitaniumCost, "clonerTitaniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gold), clonerGoldCost, "clonerGoldCost");
+    Game.settings.turnRed(getResource(RESOURCE.Methane), clonerMethaneCost, "clonerMethaneCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lunarite), interCowLunariteCost, "interCowLunariteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gold), interCowGoldCost, "interCowGoldCost");
+    Game.settings.turnRed(getResource(RESOURCE.Hydrogen), interCowHydrogenCost, "interCowHydrogenCost");
+    Game.settings.turnRed(getResource(RESOURCE.Uranium), clubUraniumCost, "clubUraniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Wood), clubWoodCost, "clubWoodCost");
+    Game.settings.turnRed(getResource(RESOURCE.Helium), clubHeliumCost, "clubHeliumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Metal), philosopherMetalCost, "philosopherMetalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Silver), philosopherSilverCost, "philosopherSilverCost");
+    Game.settings.turnRed(getResource(RESOURCE.Meteorite), philosopherMeteoriteCost, "philosopherMeteoriteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Uranium), werewolfUraniumCost, "werewolfUraniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gems), werewolfGemsCost, "werewolfGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Methane), werewolfMethaneCost, "werewolfMethaneCost");
+    Game.settings.turnRed(getResource(RESOURCE.Titanium), tardisTitaniumCost, "tardisTitaniumCost");
+    Game.settings.turnRed(getResource(RESOURCE.Silicon), tardisSiliconCost, "tardisSiliconCost");
+    Game.settings.turnRed(getResource(RESOURCE.Meteorite), tardisMeteoriteCost, "tardisMeteoriteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lunarite), harvesterLunariteCost, "harvesterLunariteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Wood), harvesterWoodCost, "harvesterWoodCost");
+    Game.settings.turnRed(getResource(RESOURCE.Oil), harvesterOilCost, "harvesterOilCost");
+    Game.settings.turnRed(getResource(RESOURCE.Lunarite), cageLunariteCost, "cageLunariteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Silicon), cageSiliconCost, "cageSiliconCost");
+    Game.settings.turnRed(getResource(RESOURCE.Meteorite), cageMeteoriteCost, "cageMeteoriteCost");
+    Game.settings.turnRed(getResource(RESOURCE.Metal), overexchangeMetalCost, "overexchangeMetalCost");
+    Game.settings.turnRed(getResource(RESOURCE.Silver), overexchangeSilverCost, "overexchangeSilverCost");
+    Game.settings.turnRed(getResource(RESOURCE.Helium), overexchangeHeliumCost, "overexchangeHeliumCost");
 
 	// Sol Center
 
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), dysonTitaniumCost, "dysonTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), dysonGoldCost, "dysonGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), dysonSiliconCost, "dysonSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), dysonMeteoriteCost, "dysonMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.ICE), dysonIceCost, "dysonIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), dysonTitaniumCost, "dysonTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), dysonGoldCost, "dysonGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), dysonSiliconCost, "dysonSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), dysonMeteoriteCost, "dysonMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), dysonIceCost, "dysonIceCost");
 
 	Game.settings.turnRed(rocketFuel, 50000, "ringRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 250000, "swarmRocketFuelCost");
 	Game.settings.turnRed(rocketFuel, 1000000, "sphereRocketFuelCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.HYDROGEN), 1500, "unlockPlasmaResearchHydrogenCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), 1500, "unlockPlasmaResearchUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), 15000, "unlockPlasmaResearchOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), 15000, "unlockPlasmaResearchWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), 1500, "unlockPlasmaResearchHydrogenCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), 1500, "unlockPlasmaResearchUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), 15000, "unlockPlasmaResearchOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), 15000, "unlockPlasmaResearchWoodCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.ENERGY), 75000, "unlockEmcResearchEnergyCost");
-	Game.settings.turnRed(getResource(RESOURCE.PLASMA), 100, "unlockEmcResearchPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Energy), 75000, "unlockEmcResearchEnergyCost");
+	Game.settings.turnRed(getResource(RESOURCE.Plasma), 100, "unlockEmcResearchPlasmaCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.ENERGY), 100000, "unlockDysonResearchEnergyCost");
-	Game.settings.turnRed(getResource(RESOURCE.PLASMA), 10000, "unlockDysonResearchPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Energy), 100000, "unlockDysonResearchEnergyCost");
+	Game.settings.turnRed(getResource(RESOURCE.Plasma), 10000, "unlockDysonResearchPlasmaCost");
 
 	// Wonders
 
-	Game.settings.turnRed(getResource(RESOURCE.GEM), preciousGemCost, "preciousGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), preciousSilverCost, "preciousSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), preciousGoldCost, "preciousGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), preciousGemCost, "preciousGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), preciousSilverCost, "preciousSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), preciousGoldCost, "preciousGoldCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.GEM), preciousActivateGemCost, "preciousActivateGemCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILVER), preciousActivateSilverCost, "preciousActivateSilverCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), preciousActivateGoldCost, "preciousActivateGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), preciousActivateGemCost, "preciousActivateGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), preciousActivateSilverCost, "preciousActivateSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), preciousActivateGoldCost, "preciousActivateGoldCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), energeticWoodCost, "energeticWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.CHARCOAL), energeticCharcoalCost, "energeticCharcoalCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), energeticUraniumCost, "energeticUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), energeticWoodCost, "energeticWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Charcoal), energeticCharcoalCost, "energeticCharcoalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), energeticUraniumCost, "energeticUraniumCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.WOOD), energeticActivateWoodCost, "energeticActivateWoodCost");
-	Game.settings.turnRed(getResource(RESOURCE.CHARCOAL), energeticActivateCharcoalCost, "energeticActivateCharcoalCost");
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), energeticActivateUraniumCost, "energeticActivateUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), energeticActivateWoodCost, "energeticActivateWoodCost");
+	Game.settings.turnRed(getResource(RESOURCE.Charcoal), energeticActivateCharcoalCost, "energeticActivateCharcoalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), energeticActivateUraniumCost, "energeticActivateUraniumCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), techSiliconCost, "techSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), techGoldCost, "techGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), techGemCost, "techGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), techSiliconCost, "techSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), techGoldCost, "techGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), techGemCost, "techGemCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), techActivateSiliconCost, "techActivateSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), techActivateGoldCost, "techActivateGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.GEM), techActivateGemCost, "techActivateGemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), techActivateSiliconCost, "techActivateSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), techActivateGoldCost, "techActivateGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), techActivateGemCost, "techActivateGemCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), meteoriteMeteoriteCost, "meteoriteMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.ICE), meteoriteIceCost, "meteoriteIceCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), meteoriteSiliconCost, "meteoriteSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), meteoriteMeteoriteCost, "meteoriteMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), meteoriteIceCost, "meteoriteIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), meteoriteSiliconCost, "meteoriteSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.ICE), meteoriteActivateIceCost, "meteoriteActivateIceCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), meteoriteActivateMeteoriteCost, "meteoriteActivateMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), meteoriteActivateIceCost, "meteoriteActivateIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.GOLD), 6000000, "commsWonderGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), 10000000, "commsWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.ICE), 6000000, "commsWonderIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), 6000000, "commsWonderGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), 10000000, "commsWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), 6000000, "commsWonderIceCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.LUNARITE), 8000000, "rocketWonderLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.TITANIUM), 6000000, "rocketWonderTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.METAL), 12000000, "rocketWonderMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), 8000000, "rocketWonderLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), 6000000, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), 12000000, "rocketWonderMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.URANIUM), 6000000, "antimatterWonderUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.LAVA), 10000000, "antimatterWonderLavaCost");
-	Game.settings.turnRed(getResource(RESOURCE.OIL), 8000000, "antimatterWonderOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.METHANE), 6000000, "antimatterWonderMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), 6000000, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), 10000000, "antimatterWonderLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), 8000000, "antimatterWonderOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), 6000000, "antimatterWonderMethaneCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), 500000, "portalMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.HELIUM), 8000000, "portalHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), 6000000, "portalSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 500000, "portalMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), 8000000, "portalHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), 6000000, "portalSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.PLASMA), 500000, "stargateWonderPlasmaCost");
-	Game.settings.turnRed(getResource(RESOURCE.SILICON), 920000000, "stargateWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.METEORITE), 17000000, "stargateWonderMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Plasma), 500000, "stargateWonderPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), 920000000, "stargateWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 17000000, "stargateWonderMeteoriteCost");
 }
 
 function refreshResources(){

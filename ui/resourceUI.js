@@ -25,7 +25,7 @@ Game.resourcesUI = (function(){
 
 	instance.createResourceDelegate = function(id) {
 		var func;
-		if (id === RESOURCE.SCIENCE) {
+		if (id === RESOURCE.Science) {
 			func = (function() {
 				return Game.settings.format(getResource(id), 1);
 			});
@@ -40,7 +40,7 @@ Game.resourcesUI = (function(){
 
 	instance.createProductionDelegate = function(id) {
 		var func;
-		if (id === RESOURCE.ENERGY) {
+		if (id === RESOURCE.Energy) {
 			func = (function() {
 				var production = getProduction(id);
 				if (production >= 0) {
@@ -61,7 +61,7 @@ Game.resourcesUI = (function(){
 				}
 			});
 		}
-		else if (id === RESOURCE.SCIENCE) {
+		else if (id === RESOURCE.Science) {
 			func = (function() {
 				return Game.settings.format(getProduction(id), 1);
 			});
