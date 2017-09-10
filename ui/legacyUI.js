@@ -1,134 +1,40 @@
 function registerLegacyBindings() {
-    Game.ui.bindElement('scienceps', function(){ return Game.settings.format(scienceps, 1); });
-    Game.ui.bindElement('uraniumps', function(){ return Game.settings.format(uraniumps); });
-    Game.ui.bindElement('oilps', function(){ return Game.settings.format(oilps); });
-    Game.ui.bindElement('metalps', function(){ return Game.settings.format(metalps); });
-    Game.ui.bindElement('gemps', function(){ return Game.settings.format(gemps); });
-    Game.ui.bindElement('charcoalps', function(){ return Game.settings.format(charcoalps); });
+	Game.ui.bindElement('rocketFuelps', function(){ return Game.settings.format(rocketFuelps, 1); });
 
-    Game.ui.bindElement('woodps', function(){ return Game.settings.format(woodps); });
-    Game.ui.bindElement('lunariteps', function(){ return Game.settings.format(lunariteps); });
-    Game.ui.bindElement('methaneps', function(){ return Game.settings.format(methaneps); });
-    Game.ui.bindElement('titaniumps', function(){ return Game.settings.format(titaniumps); });
-    Game.ui.bindElement('goldps', function(){ return Game.settings.format(goldps); });
-    Game.ui.bindElement('silverps', function(){ return Game.settings.format(silverps); });
-    Game.ui.bindElement('siliconps', function(){ return Game.settings.format(siliconps); });
-    Game.ui.bindElement('lavaps', function(){ return Game.settings.format(lavaps); });
-    Game.ui.bindElement('hydrogenps', function(){ return Game.settings.format(hydrogenps); });
-    Game.ui.bindElement('heliumps', function(){ return Game.settings.format(heliumps); });
-    Game.ui.bindElement('iceps', function(){ return Game.settings.format(iceps); });
-    Game.ui.bindElement('plasmaps', function(){ return Game.settings.format(plasmaps); });
-    Game.ui.bindElement('meteoriteps', function(){ return Game.settings.format(meteoriteps); });
-    Game.ui.bindElement('rocketFuelps', function(){ return Game.settings.format(rocketFuelps, 1); });
+	Game.ui.bindElement('uraniumStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.URANIUM)); });
+	Game.ui.bindElement('uraniumStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.URANIUM)/2.5); });
+	Game.ui.bindElement('oilStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.OIL)); });
+	Game.ui.bindElement('oilStorageMetalCost', function(){ return Game.settings.format(getStorage(RESOURCE.OIL)/2.5); });
+	Game.ui.bindElement('metalStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.METAL)); });
+	Game.ui.bindElement('gemStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.GEM)); });
+	Game.ui.bindElement('gemStorageMetalCost', function(){ return Game.settings.format(getStorage(RESOURCE.GEM)/2.5); });
+	Game.ui.bindElement('charcoalStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.CHARCOAL)); });
+	Game.ui.bindElement('charcoalStorageMetalCost', function(){ return Game.settings.format(getStorage(RESOURCE.CHARCOAL)/2.5); });
+	Game.ui.bindElement('woodStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.WOOD)); });
+	Game.ui.bindElement('woodStorageMetalCost', function(){ return Game.settings.format(getStorage(RESOURCE.WOOD)/2.5); });
+	Game.ui.bindElement('lunariteStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.LUNARITE)); });
+	Game.ui.bindElement('lunariteStorageMetalCost', function(){ return Game.settings.format(getStorage(RESOURCE.LUNARITE)*4); });
+	Game.ui.bindElement('methaneStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.METHANE)); });
+	Game.ui.bindElement('methaneStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.METHANE)/2.5); });
+	Game.ui.bindElement('titaniumStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.TITANIUM)); });
+	Game.ui.bindElement('titaniumStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.TITANIUM)/2.5); });
+	Game.ui.bindElement('goldStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.GOLD)); });
+	Game.ui.bindElement('goldStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.GOLD)/2.5); });
+	Game.ui.bindElement('silverStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.SILVER)); });
+	Game.ui.bindElement('silverStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.SILVER)/2.5); });
+	Game.ui.bindElement('siliconStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.SILICON)); });
+	Game.ui.bindElement('siliconStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.SILICON)/2.5); });
+	Game.ui.bindElement('lavaStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.LAVA)); });
+	Game.ui.bindElement('lavaStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.LAVA)/2.5); });
+	Game.ui.bindElement('hydrogenStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.HYDROGEN)); });
+	Game.ui.bindElement('hydrogenStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.HYDROGEN)/2.5); });
+	Game.ui.bindElement('heliumStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.HELIUM)); });
+	Game.ui.bindElement('heliumStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.HELIUM)/2.5); });
+	Game.ui.bindElement('iceStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.ICE)); });
+	Game.ui.bindElement('iceStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.ICE)/2.5); });
+	Game.ui.bindElement('meteoriteStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.METEORITE)); });
+	Game.ui.bindElement('meteoriteStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.METEORITE)*4); });
 
-    Game.ui.bindElement('energyps', function(){
-        if(energyps >= 0){
-            if(energyps > 250){
-                return Game.settings.format(energyps);
-            }
-            else{
-                return Game.settings.format(energyps*2)/2;
-            }
-        }
-        else{
-            if(energyps < -250){
-                return Math.round(energyps);
-            }
-            else{
-                return Math.round(energyps*2)/2;
-            }
-        }
-    });
-
-    Game.ui.bindElement('energy', function(){ return Game.settings.format(energy); });
-    Game.ui.bindElement('plasma', function(){ return Game.settings.format(plasma); });
-    Game.ui.bindElement('oil', function(){ return Game.settings.format(oil); });
-    Game.ui.bindElement('metal', function(){ return Game.settings.format(metal); });
-    Game.ui.bindElement('gem', function(){ return Game.settings.format(gem); });
-    Game.ui.bindElement('charcoal', function(){ return Game.settings.format(charcoal); });
-    Game.ui.bindElement('wood', function(){ return Game.settings.format(wood); });
-    Game.ui.bindElement('lunarite', function(){ return Game.settings.format(lunarite); });
-    Game.ui.bindElement('methane', function(){ return Game.settings.format(methane); });
-    Game.ui.bindElement('titanium', function(){ return Game.settings.format(titanium); });
-    Game.ui.bindElement('gold', function(){ return Game.settings.format(gold); });
-    Game.ui.bindElement('silver', function(){ return Game.settings.format(silver); });
-    Game.ui.bindElement('silicon', function(){ return Game.settings.format(silicon); });
-    Game.ui.bindElement('uranium', function(){ return Game.settings.format(uranium); });
-    Game.ui.bindElement('lava', function(){ return Game.settings.format(lava); });
-    Game.ui.bindElement('hydrogen', function(){ return Game.settings.format(hydrogen); });
-    Game.ui.bindElement('helium', function(){ return Game.settings.format(helium); });
-    Game.ui.bindElement('ice', function(){ return Game.settings.format(ice); });
-    Game.ui.bindElement('meteorite', function(){ return Game.settings.format(meteorite); });
-
-    Game.ui.bindElement('plasmaStorage', function(){ return Game.settings.format(getMaxPlasma()); });
-    Game.ui.bindElement('energyStorage', function(){ return Game.settings.format(getMaxEnergy()); });
-    Game.ui.bindElement('uraniumStorage', function(){ return Game.settings.format(uraniumStorage); });
-    Game.ui.bindElement('uraniumNextStorage', function(){ return Game.settings.format(uraniumNextStorage); });
-    Game.ui.bindElement('uraniumStorageCost', function(){ return Game.settings.format(uraniumStorage); });
-    Game.ui.bindElement('uraniumStorageLunariteCost', function(){ return Game.settings.format(uraniumStorage/2.5); });
-    Game.ui.bindElement('oilStorage', function(){ return Game.settings.format(oilStorage); });
-    Game.ui.bindElement('oilNextStorage', function(){ return Game.settings.format(oilNextStorage); });
-    Game.ui.bindElement('oilStorageCost', function(){ return Game.settings.format(oilStorage); });
-    Game.ui.bindElement('oilStorageMetalCost', function(){ return Game.settings.format(oilStorage/2.5); });
-    Game.ui.bindElement('metalStorage', function(){ return Game.settings.format(metalStorage); });
-    Game.ui.bindElement('metalNextStorage', function(){ return Game.settings.format(metalNextStorage); });
-    Game.ui.bindElement('metalStorageCost', function(){ return Game.settings.format(metalStorage); });
-    Game.ui.bindElement('gemStorage', function(){ return Game.settings.format(gemStorage); });
-    Game.ui.bindElement('gemNextStorage', function(){ return Game.settings.format(gemNextStorage); });
-    Game.ui.bindElement('gemStorageCost', function(){ return Game.settings.format(gemStorage); });
-    Game.ui.bindElement('gemStorageMetalCost', function(){ return Game.settings.format(gemStorage/2.5); });
-    Game.ui.bindElement('charcoalStorage', function(){ return Game.settings.format(charcoalStorage); });
-    Game.ui.bindElement('charcoalNextStorage', function(){ return Game.settings.format(charcoalNextStorage); });
-    Game.ui.bindElement('charcoalStorageCost', function(){ return Game.settings.format(charcoalStorage); });
-    Game.ui.bindElement('charcoalStorageMetalCost', function(){ return Game.settings.format(charcoalStorage/2.5); });
-    Game.ui.bindElement('woodStorage', function(){ return Game.settings.format(woodStorage); });
-    Game.ui.bindElement('woodNextStorage', function(){ return Game.settings.format(woodNextStorage); });
-    Game.ui.bindElement('woodStorageCost', function(){ return Game.settings.format(woodStorage); });
-    Game.ui.bindElement('woodStorageMetalCost', function(){ return Game.settings.format(woodStorage/2.5); });
-    Game.ui.bindElement('lunariteStorage', function(){ return Game.settings.format(lunariteStorage); });
-    Game.ui.bindElement('lunariteNextStorage', function(){ return Game.settings.format(lunariteNextStorage); });
-    Game.ui.bindElement('lunariteStorageCost', function(){ return Game.settings.format(lunariteStorage); });
-    Game.ui.bindElement('lunariteStorageMetalCost', function(){ return Game.settings.format(lunariteStorage*4); });
-    Game.ui.bindElement('methaneStorage', function(){ return Game.settings.format(methaneStorage); });
-    Game.ui.bindElement('methaneNextStorage', function(){ return Game.settings.format(methaneNextStorage); });
-    Game.ui.bindElement('methaneStorageCost', function(){ return Game.settings.format(methaneStorage); });
-    Game.ui.bindElement('methaneStorageLunariteCost', function(){ return Game.settings.format(methaneStorage/2.5); });
-    Game.ui.bindElement('titaniumStorage', function(){ return Game.settings.format(titaniumStorage); });
-    Game.ui.bindElement('titaniumNextStorage', function(){ return Game.settings.format(titaniumNextStorage); });
-    Game.ui.bindElement('titaniumStorageCost', function(){ return Game.settings.format(titaniumStorage); });
-    Game.ui.bindElement('titaniumStorageLunariteCost', function(){ return Game.settings.format(titaniumStorage/2.5); });
-    Game.ui.bindElement('goldStorage', function(){ return Game.settings.format(goldStorage); });
-    Game.ui.bindElement('goldNextStorage', function(){ return Game.settings.format(goldNextStorage); });
-    Game.ui.bindElement('goldStorageCost', function(){ return Game.settings.format(goldStorage); });
-    Game.ui.bindElement('goldStorageLunariteCost', function(){ return Game.settings.format(goldStorage/2.5); });
-    Game.ui.bindElement('silverStorage', function(){ return Game.settings.format(silverStorage); });
-    Game.ui.bindElement('silverNextStorage', function(){ return Game.settings.format(silverNextStorage); });
-    Game.ui.bindElement('silverStorageCost', function(){ return Game.settings.format(silverStorage); });
-    Game.ui.bindElement('silverStorageLunariteCost', function(){ return Game.settings.format(silverStorage/2.5); });
-    Game.ui.bindElement('siliconStorage', function(){ return Game.settings.format(siliconStorage); });
-    Game.ui.bindElement('siliconNextStorage', function(){ return Game.settings.format(siliconNextStorage); });
-    Game.ui.bindElement('siliconStorageCost', function(){ return Game.settings.format(siliconStorage); });
-    Game.ui.bindElement('siliconStorageLunariteCost', function(){ return Game.settings.format(siliconStorage/2.5); });
-    Game.ui.bindElement('lavaStorage', function(){ return Game.settings.format(lavaStorage); });
-    Game.ui.bindElement('lavaNextStorage', function(){ return Game.settings.format(lavaNextStorage); });
-    Game.ui.bindElement('lavaStorageCost', function(){ return Game.settings.format(lavaStorage); });
-    Game.ui.bindElement('lavaStorageLunariteCost', function(){ return Game.settings.format(lavaStorage/2.5); });
-    Game.ui.bindElement('hydrogenStorage', function(){ return Game.settings.format(hydrogenStorage); });
-    Game.ui.bindElement('hydrogenNextStorage', function(){ return Game.settings.format(hydrogenNextStorage); });
-    Game.ui.bindElement('hydrogenStorageCost', function(){ return Game.settings.format(hydrogenStorage); });
-    Game.ui.bindElement('hydrogenStorageLunariteCost', function(){ return Game.settings.format(hydrogenStorage/2.5); });
-    Game.ui.bindElement('heliumStorage', function(){ return Game.settings.format(heliumStorage); });
-    Game.ui.bindElement('heliumNextStorage', function(){ return Game.settings.format(heliumNextStorage); });
-    Game.ui.bindElement('heliumStorageCost', function(){ return Game.settings.format(heliumStorage); });
-    Game.ui.bindElement('heliumStorageLunariteCost', function(){ return Game.settings.format(heliumStorage/2.5); });
-    Game.ui.bindElement('iceStorage', function(){ return Game.settings.format(iceStorage); });
-    Game.ui.bindElement('iceNextStorage', function(){ return Game.settings.format(iceNextStorage); });
-    Game.ui.bindElement('iceStorageCost', function(){ return Game.settings.format(iceStorage); });
-    Game.ui.bindElement('iceStorageLunariteCost', function(){ return Game.settings.format(iceStorage/2.5); });
-    Game.ui.bindElement('meteoriteStorage', function(){ return Game.settings.format(meteoriteStorage); });
-    Game.ui.bindElement('meteoriteNextStorage', function(){ return Game.settings.format(meteoriteNextStorage); });
-    Game.ui.bindElement('meteoriteStorageCost', function(){ return Game.settings.format(meteoriteStorage); });
-    Game.ui.bindElement('meteoriteStorageLunariteCost', function(){ return Game.settings.format(meteoriteStorage*4); });
     Game.ui.bindElement('PSU', function(){ return Game.settings.format(PSU); });
     Game.ui.bindElement('PSUSilverCost', function(){ return Game.settings.format(PSUSilverCost); });
     Game.ui.bindElement('PSUGoldCost', function(){ return Game.settings.format(PSUGoldCost); });

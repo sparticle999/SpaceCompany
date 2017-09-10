@@ -81,7 +81,7 @@ Game.settings = (function(){
             return;
         }
 
-        if(value == 0){
+        if(value === 0){
             element.addClass('red');
             if(this.entries.boldEnabled === true){
                 element.addClass('bold');
@@ -94,7 +94,7 @@ Game.settings = (function(){
             element.removeClass('bold');
         }
 
-        if(value >= target) {
+        if(value >= target && target >= 0) {
             element.addClass('green');
         } else {
             element.removeClass('green');
