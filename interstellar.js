@@ -125,6 +125,7 @@ Game.interstellar = (function(){
         for(var id in this.stars.entries){
             var data = this.stars.getStarData(id);
             if(data.explored == true){
+                data.displayNeedsUpdate = true;
                 document.getElementById('star_' + id + '_conquer').className = "";
             }
         }
