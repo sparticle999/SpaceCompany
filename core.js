@@ -47,12 +47,12 @@ function calculateEnergyUse(delta) {
 	use += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
 	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
-    use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forrest*275);
-    use += (cloner*1157)+(interCow*879)+(club*754)+(philospher*1387)+(werewolf*984)+(tardis*923);
+    use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
+    use += (cloner*1157)+(interCow*879)+(club*754)+(philosopher*1387)+(werewolf*984)+(tardis*923);
     use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
 
     if(charcoalToggled === true){
-        use += (furnace*3)+(kiln*13)+(fryer*34)+(microPolluter*212);
+        use += (furnace*3)+(kiln*13)+(fryer*34)+(microPollutor*212);
     }
 
 	if (heaterToggled && getResource(RESOURCE.HYDROGEN) + getProduction(RESOURCE.HYDROGEN) >= heater * 10 * delta &&
@@ -172,11 +172,11 @@ function refreshPerSec(delta){
         oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246) + (fossilator*2630)) * perSecondMultiplier;
         metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427) + (multiDrill*4797)) * perSecondMultiplier;
         gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358) + (diamondChamber*3861)) * perSecondMultiplier;
-        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297) + (forrest*3106)) * perSecondMultiplier;
+        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297) + (forest*3106)) * perSecondMultiplier;
         lunariteps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207) + (cloner*2206)) * perSecondMultiplier;
         methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) + (interCow*1356)) * perSecondMultiplier;
         titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197) + (club*2134)) * perSecondMultiplier;
-        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philospher*1960)) * perSecondMultiplier;
+        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philosopher*1960)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208) + (werewolf*2245)) * perSecondMultiplier;
         siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1504)) * perSecondMultiplier;
         uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) + (planetNuke*2412)) * perSecondMultiplier;
@@ -197,7 +197,7 @@ function refreshPerSec(delta){
 	if (charcoalToggled) {
 		var woodCost = woodburner * 2;
 		if (!energyLow && globalEnergyLock === false) {
-			woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148) + (microPolluter*841);
+			woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148) + (microPollutor*841);
 		}
 
 		if (getResource(RESOURCE.WOOD) + getProduction(RESOURCE.WOOD) >= woodCost) {
@@ -205,7 +205,7 @@ function refreshPerSec(delta){
 			charcoalps += woodburner * perSecondMultiplier;
 
 			if (!energyLow && globalEnergyLock === false) {
-				charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210) + (microPolluter*2041)) * perSecondMultiplier
+				charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210) + (microPollutor*2041)) * perSecondMultiplier
 			}
 		}
 	}

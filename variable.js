@@ -109,21 +109,22 @@ var web = 0; var webLunariteCost = 930000; var webUraniumCost = 490000; var webS
 ** Tier 5 Machines **
 ********************/
 
-var fossilator = 0;
-var multiDrill = 0;
-var diamondChamber = 0;
-var forrest = 0;
-var cloner = 0;
-var interCow = 0;
-var club = 0;
-var philospher = 0;
-var werewolf = 0;
-var tardis = 0;
-var planetNuke = 0; var planetNukeTitaniumCost, planetNukeSiliconCost, planetNukeIceCost;
-var condensator = 0;
-var harvester = 0;
-var cage = 0;
-var overexchange = 0;
+var planetNuke = 0; var planetNukeTitaniumCost = 0; planetNukeSiliconCost = 0; planetNukeIceCost = 0;
+var condensator = 0; var condensatorLunariteCost = 0; condensatorGemsCost = 0; condensatorIceCost = 0;
+var fossilator = 0; var fossilatorUraniumCost = 0; fossilatorCharcoalCost = 0; fossilatorLavaCost = 0;
+var multiDrill = 0; var multiDrillTitaniumCost = 0; multiDrillGoldCost = 0; multiDrillOilCost = 0;
+var diamondChamber = 0; var diamondChamberUraniumCost = 0; diamondChamberCharcoalCost = 0; diamondChamberMeteoriteCost = 0;
+var microPollutor = 0; var microPollutorMetalCost = 0; microPollutorWoodCost = 0; microPollutorLavaCost = 0;
+var forest = 0; var forestMetalCost = 0; forestGemsCost = 0; forestHydrogenCost = 0;
+var cloner = 0; var clonerTitaniumCost = 0; clonerGoldCost = 0; clonerMethaneCost = 0;
+var interCow = 0; var interCowLunariteCost = 0; interCowGoldCost = 0; interCowHydrogenCost = 0;
+var club = 0; var clubUraniumCost = 0; clubWoodCost = 0; clubHeliumCost = 0;
+var philosopher = 0; var philosopherMetalCost = 0; philosopherSilverCost = 0; philosopherMeteoriteCost = 0;
+var werewolf = 0; var werewolfUraniumCost = 0; werewolfGemsCost = 0; werewolfMethaneCost = 0;
+var tardis = 0; var tardisTitaniumCost = 0; tardisSiliconCost = 0; tardisMeteoriteCost = 0;
+var harvester = 0; var harvesterLunariteCost = 0; harvesterWoodCost = 0; harvesterOilCost = 0;
+var cage = 0; var cageLunariteCost = 0; cageSiliconCost = 0; cageMeteoriteCost = 0;
+var overexchange = 0; var overexchangeMetalCost = 0; overexchangeSilverCost = 0; overexchangeHeliumCost = 0;
 
 var science = 0; var scienceps = 0;
 var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
