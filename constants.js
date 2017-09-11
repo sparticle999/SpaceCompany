@@ -38,7 +38,8 @@ RESOURCE = {
 	Helium: 'helium',
 	Ice: 'ice',
 	Meteorite: 'meteorite',
-	Science: 'science'
+	Science: 'science',
+	RocketFuel: 'rocketFuel'
 };
 
 INDEX_NONE = -1;
