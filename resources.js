@@ -1463,7 +1463,7 @@ function getSkimmer(){
 
 function getIcePick(){
 	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost * T1Price && getResource(RESOURCE.Gem) >= icePickGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCo * T1Price);
+		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCost * T1Price);
 		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost * T1Price);
 		icePick += 1;
 		updateCost();
