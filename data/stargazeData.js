@@ -218,6 +218,28 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
+	instance.floor1Discount = {
+		name: "Floor 1 Discount",
+		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
+		cost: 25,
+		category: "prasnian",
+		onApply: function(){
+			floor1Price -= 0.15;
+		},
+		achieved: false
+	};
+
+	instance.floor23Discount = {
+		name: "Floor 2 & 3 Discount",
+		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
+		cost: 31,
+		category: "prasnian",
+		onApply: function(){
+			floor23Price -= 0.2;
+		},
+		achieved: false
+	};
+
 	/**************
 	** Hyacinite **
 	**************/
