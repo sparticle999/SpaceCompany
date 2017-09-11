@@ -2,25 +2,25 @@
 
 function refreshWonderBars(){
 	if(contains(resourcesUnlocked, "preciousWonderNav") === false){
-		if (getResource(RESOURCE.Gem) >= 10000) {
-			var preciousGem = 10000;
+		if (getResource(RESOURCE.Gem) >= 10000*floor1Price) {
+			var preciousGem = 10000*floor1Price;
 		}
 		else {
 			preciousGem = getResource(RESOURCE.Gem);
 		}
-		if (getResource(RESOURCE.Silver) >= 7500) {
-			var preciousSilver = 7500;
+		if (getResource(RESOURCE.Silver) >= 7500*floor1Price) {
+			var preciousSilver = 7500*floor1Price;
 		}
 		else {
 			preciousSilver = getResource(RESOURCE.Silver);
 		}
-		if (getResource(RESOURCE.Gold) >= 5000) {
-			var preciousGold = 5000;
+		if (getResource(RESOURCE.Gold) >= 5000*floor1Price) {
+			var preciousGold = 5000*floor1Price;
 		}
 		else {
 			preciousGold = getResource(RESOURCE.Gold);
 		}
-		var preciousDivisor = (preciousGem+preciousSilver+preciousGold)/100*floor1Price;
+		var preciousDivisor = (preciousGem+preciousSilver+preciousGold)/100;
 		var preciousBar = (preciousGem+preciousSilver+preciousGold)/preciousDivisor;
 		if(preciousBar <= 100){
 			document.getElementById("preciousBar").innerHTML = Game.settings.format(preciousBar,2) + "%";
@@ -32,25 +32,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("activatePreciousWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Gem) >= 30000) {
-			var preciousActivateGem = 30000;
+		if (getResource(RESOURCE.Gem) >= 30000*floor1Price) {
+			var preciousActivateGem = 30000*floor1Price;
 		}
 		else {
 			preciousActivateGem = getResource(RESOURCE.Gem);
 		}
-		if (getResource(RESOURCE.Silver) >= 20000) {
-			var preciousActivateSilver = 20000;
+		if (getResource(RESOURCE.Silver) >= 20000*floor1Price) {
+			var preciousActivateSilver = 20000*floor1Price;
 		}
 		else {
 			preciousActivateSilver = getResource(RESOURCE.Silver);
 		}
-		if (getResource(RESOURCE.Gold) >= 10000) {
-			var preciousActivateGold = 10000;
+		if (getResource(RESOURCE.Gold) >= 10000*floor1Price) {
+			var preciousActivateGold = 10000*floor1Price;
 		}
 		else {
 			preciousActivateGold = getResource(RESOURCE.Gold);
 		}
-		var preciousActivateDivisor = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/100*floor1Price;
+		var preciousActivateDivisor = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/100;
 		var preciousActivateBar = (preciousActivateGem+preciousActivateSilver+preciousActivateGold)/preciousActivateDivisor;
 		if(preciousActivateBar <= 100){
 			document.getElementById("preciousActivateBar").innerHTML = Game.settings.format(preciousActivateBar,2) + "%";
@@ -62,25 +62,25 @@ function refreshWonderBars(){
 		}
 	}
 	if(contains(resourcesUnlocked, "energeticWonderNav") === false){
-		if (getResource(RESOURCE.Wood) >= 10000) {
-			var energeticWood = 10000;
+		if (getResource(RESOURCE.Wood) >= 10000*floor1Price) {
+			var energeticWood = 10000*floor1Price;
 		}
 		else {
 			energeticWood = getResource(RESOURCE.Wood);
 		}
-		if (getResource(RESOURCE.Charcoal) >= 5000) {
-			var energeticCharcoal = 5000;
+		if (getResource(RESOURCE.Charcoal) >= 5000*floor1Price) {
+			var energeticCharcoal = 5000*floor1Price;
 		}
 		else {
 			energeticCharcoal = getResource(RESOURCE.Charcoal);
 		}
-		if (getResource(RESOURCE.Uranium) >= 200) {
-			var energeticUranium = 200;
+		if (getResource(RESOURCE.Uranium) >= 200*floor1Price) {
+			var energeticUranium = 200*floor1Price;
 		}
 		else {
 			energeticUranium = getResource(RESOURCE.Uranium);
 		}
-		var energeticDivisor = (energeticWood+energeticCharcoal+energeticUranium)/100*floor1Price;
+		var energeticDivisor = (energeticWood+energeticCharcoal+energeticUranium)/100;
 		var energeticBar = (energeticWood+energeticCharcoal+energeticUranium)/energeticDivisor;
 		if(energeticBar <= 100){
 			document.getElementById("energeticBar").innerHTML = Game.settings.format(energeticBar,2) + "%";
@@ -92,25 +92,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("activateEnergeticWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Wood) >= 30000) {
-			var energeticActivateWood = 30000;
+		if (getResource(RESOURCE.Wood) >= 30000*floor1Price) {
+			var energeticActivateWood = 30000*floor1Price;
 		}
 		else {
 			energeticActivateWood = getResource(RESOURCE.Wood);
 		}
-		if (getResource(RESOURCE.Charcoal) >= 15000) {
-			var energeticActivateCharcoal = 15000;
+		if (getResource(RESOURCE.Charcoal) >= 15000*floor1Price) {
+			var energeticActivateCharcoal = 15000*floor1Price;
 		}
 		else {
 			energeticActivateCharcoal = getResource(RESOURCE.Charcoal);
 		}
-		if (getResource(RESOURCE.Uranium) >= 500) {
-			var energeticActivateUranium = 500;
+		if (getResource(RESOURCE.Uranium) >= 500*floor1Price) {
+			var energeticActivateUranium = 500*floor1Price;
 		}
 		else {
 			energeticActivateUranium = getResource(RESOURCE.Uranium);
 		}
-		var energeticActivateDivisor = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/100*floor1Price;
+		var energeticActivateDivisor = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/100;
 		var energeticActivateBar = (energeticActivateWood+energeticActivateCharcoal+energeticActivateUranium)/energeticActivateDivisor;
 		if(energeticActivateBar <= 100){
 			document.getElementById("energeticActivateBar").innerHTML = Game.settings.format(energeticActivateBar,2) + "%";
@@ -122,25 +122,25 @@ function refreshWonderBars(){
 		}
 	}
 	if(contains(resourcesUnlocked, "techWonderNav") === false){
-		if (getResource(RESOURCE.Silicon) >= 30000) {
-			var techSilicon = 30000;
+		if (getResource(RESOURCE.Silicon) >= 30000*floor1Price) {
+			var techSilicon = 30000*floor1Price;
 		}
 		else {
 			techSilicon = getResource(RESOURCE.Silicon);
 		}
-		if (getResource(RESOURCE.Gold) >= 18000) {
-			var techGold = 18000;
+		if (getResource(RESOURCE.Gold) >= 18000*floor1Price) {
+			var techGold = 18000*floor1Price;
 		}
 		else {
 			techGold = getResource(RESOURCE.Gold);
 		}
-		if (getResource(RESOURCE.Gem) >= 40000) {
-			var techGem = 40000;
+		if (getResource(RESOURCE.Gem) >= 40000*floor1Price) {
+			var techGem = 40000*floor1Price;
 		}
 		else {
 			techGem = getResource(RESOURCE.Gem);
 		}
-		var techDivisor = (techSilicon+techGold+techGem)/100*floor1Price;
+		var techDivisor = (techSilicon+techGold+techGem)/100;
 		var techBar = (techSilicon+techGold+techGem)/techDivisor;
 		if(techBar <= 100){
 			document.getElementById("techBar").innerHTML = Game.settings.format(techBar,2) + "%";
@@ -152,25 +152,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("activateTechWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Silicon) >= 50000) {
-			var techActivateSilicon = 50000;
+		if (getResource(RESOURCE.Silicon) >= 50000*floor1Price) {
+			var techActivateSilicon = 50000*floor1Price;
 		}
 		else {
 			techActivateSilicon = getResource(RESOURCE.Silicon);
 		}
-		if (getResource(RESOURCE.Gold) >= 30000) {
-			var techActivateGold = 30000;
+		if (getResource(RESOURCE.Gold) >= 30000*floor1Price) {
+			var techActivateGold = 30000*floor1Price;
 		}
 		else {
 			techActivateGold = getResource(RESOURCE.Gold);
 		}
-		if (getResource(RESOURCE.Gem) >= 60000) {
-			var techActivateGem = 60000;
+		if (getResource(RESOURCE.Gem) >= 60000*floor1Price) {
+			var techActivateGem = 60000*floor1Price;
 		}
 		else {
 			techActivateGem = getResource(RESOURCE.Gem);
 		}
-		var techActivateDivisor = (techActivateSilicon+techActivateGold+techActivateGem)/100*floor1Price;
+		var techActivateDivisor = (techActivateSilicon+techActivateGold+techActivateGem)/100;
 		var techActivateBar = (techActivateSilicon+techActivateGold+techActivateGem)/techActivateDivisor;
 		if(techActivateBar <= 100){
 			document.getElementById("techActivateBar").innerHTML = Game.settings.format(techActivateBar,2) + "%";
@@ -182,25 +182,25 @@ function refreshWonderBars(){
 		}
 	}
 	if(contains(resourcesUnlocked, "meteoriteWonderNav") === false){
-		if (getResource(RESOURCE.Meteorite) >= 5000) {
-			var meteoriteMeteorite = 5000;
+		if (getResource(RESOURCE.Meteorite) >= 5000*floor1Price) {
+			var meteoriteMeteorite = 5000*floor1Price;
 		}
 		else {
 			meteoriteMeteorite = getResource(RESOURCE.Meteorite);
 		}
-		if (getResource(RESOURCE.Ice) >= 600000) {
-			var meteoriteIce = 600000;
+		if (getResource(RESOURCE.Ice) >= 600000*floor1Price) {
+			var meteoriteIce = 600000*floor1Price;
 		}
 		else {
 			meteoriteIce = getResource(RESOURCE.Ice);
 		}
-		if (getResource(RESOURCE.Silicon) >= 1200000) {
-			var meteoriteSilicon = 1200000;
+		if (getResource(RESOURCE.Silicon) >= 1200000*floor1Price) {
+			var meteoriteSilicon = 1200000*floor1Price;
 		}
 		else {
 			meteoriteSilicon = getResource(RESOURCE.Silicon);
 		}
-		var meteoriteDivisor = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/100*floor1Price;
+		var meteoriteDivisor = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/100;
 		var meteoriteBar = (meteoriteMeteorite+meteoriteIce+meteoriteSilicon)/meteoriteDivisor;
 		if(meteoriteBar <= 100){
 			document.getElementById("meteoriteBar").innerHTML = Game.settings.format(meteoriteBar,2) + "%";
@@ -212,25 +212,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("activateMeteoriteWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Meteorite) >= 10000) {
-			var meteoriteActivateMeteorite = 10000;
+		if (getResource(RESOURCE.Meteorite) >= 10000*floor1Price) {
+			var meteoriteActivateMeteorite = 10000*floor1Price;
 		}
 		else {
 			meteoriteActivateMeteorite = getResource(RESOURCE.Meteorite);
 		}
-		if (getResource(RESOURCE.Ice) >= 2000000) {
-			var meteoriteActivateIce = 2000000;
+		if (getResource(RESOURCE.Ice) >= 2000000*floor1Price) {
+			var meteoriteActivateIce = 2000000*floor1Price;
 		}
 		else {
 			meteoriteActivateIce = getResource(RESOURCE.Ice);
 		}
-		if (getResource(RESOURCE.Silicon) >= 4000000) {
-			var meteoriteActivateSilicon = 4000000;
+		if (getResource(RESOURCE.Silicon) >= 4000000*floor1Price) {
+			var meteoriteActivateSilicon = 4000000*floor1Price;
 		}
 		else {
 			meteoriteActivateSilicon = getResource(RESOURCE.Silicon);
 		}
-		var meteoriteActivateDivisor = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/100*floor1Price;;
+		var meteoriteActivateDivisor = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/100;;
 		var meteoriteActivateBar = (meteoriteActivateMeteorite+meteoriteActivateIce+meteoriteActivateSilicon)/meteoriteActivateDivisor;
 		if(meteoriteActivateBar <= 100){
 			document.getElementById("meteoriteActivateBar").innerHTML = Game.settings.format(meteoriteActivateBar,2) + "%";
@@ -242,25 +242,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("rebuildCommsWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Gold) >= 6000000) {
-			var rebuildCommsGold = 6000000;
+		if (getResource(RESOURCE.Gold) >= 6000000*floor23Price) {
+			var rebuildCommsGold = 6000000*floor23Price;
 		}
 		else {
 			rebuildCommsGold = getResource(RESOURCE.Gold);
 		}
-		if (getResource(RESOURCE.Silicon) >= 10000000) {
-			var rebuildCommsSilicon = 10000000;
+		if (getResource(RESOURCE.Silicon) >= 10000000*floor23Price) {
+			var rebuildCommsSilicon = 10000000*floor23Price;
 		}
 		else {
 			rebuildCommsSilicon = getResource(RESOURCE.Silicon);
 		}
-		if (getResource(RESOURCE.Ice) >= 6000000) {
-			var rebuildCommsIce = 6000000;
+		if (getResource(RESOURCE.Ice) >= 6000000*floor23Price) {
+			var rebuildCommsIce = 6000000*floor23Price;
 		}
 		else {
 			rebuildCommsIce = getResource(RESOURCE.Ice);
 		}
-		var commsDivisor = (rebuildCommsGold+rebuildCommsSilicon+rebuildCommsIce)/100*floor23Price;;
+		var commsDivisor = (rebuildCommsGold+rebuildCommsSilicon+rebuildCommsIce)/100;;
 		var commsWonderBar = (rebuildCommsGold+rebuildCommsSilicon+rebuildCommsIce)/commsDivisor;
 		if(commsWonderBar <= 100){
 			document.getElementById("commsWonderBar").innerHTML = Game.settings.format(commsWonderBar,2) + "%";
@@ -272,25 +272,25 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("rebuildRocketWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Lunarite) >= 8000000) {
-			var rebuildRocketLunarite = 8000000;
+		if (getResource(RESOURCE.Lunarite) >= 8000000*floor23Price) {
+			var rebuildRocketLunarite = 8000000*floor23Price;
 		}
 		else {
 			rebuildRocketLunarite = getResource(RESOURCE.Lunarite);
 		}
-		if (getResource(RESOURCE.Titanium) >= 6000000) {
-			var rebuildRocketTitanium = 6000000;
+		if (getResource(RESOURCE.Titanium) >= 6000000*floor23Price) {
+			var rebuildRocketTitanium = 6000000*floor23Price;
 		}
 		else {
 			rebuildRocketTitanium = getResource(RESOURCE.Titanium);
 		}
-		if (getResource(RESOURCE.Metal) >= 12000000) {
-			var rebuildRocketMetal = 12000000;
+		if (getResource(RESOURCE.Metal) >= 12000000*floor23Price) {
+			var rebuildRocketMetal = 12000000*floor23Price;
 		}
 		else {
 			rebuildRocketMetal = getResource(RESOURCE.Metal);
 		}
-		var rocketDivisor = (rebuildRocketLunarite+rebuildRocketTitanium+rebuildRocketMetal)/100*floor23Price;;
+		var rocketDivisor = (rebuildRocketLunarite+rebuildRocketTitanium+rebuildRocketMetal)/100;;
 		var rocketWonderBar = (rebuildRocketLunarite+rebuildRocketTitanium+rebuildRocketMetal)/rocketDivisor;
 		if(rocketWonderBar <= 100){
 			document.getElementById("rocketWonderBar").innerHTML = Game.settings.format(rocketWonderBar,2) + "%";
@@ -302,31 +302,31 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("rebuildAntimatterWonder").className === "hidden") === false){
-		if (getResource(RESOURCE.Uranium) >= 6000000) {
-			var rebuildAntimatterUranium = 6000000;
+		if (getResource(RESOURCE.Uranium) >= 6000000*floor23Price) {
+			var rebuildAntimatterUranium = 6000000*floor23Price;
 		}
 		else {
 			rebuildAntimatterUranium = getResource(RESOURCE.Uranium);
 		}
-		if (getResource(RESOURCE.Lava) >= 10000000) {
-			var rebuildAntimatterLava = 10000000;
+		if (getResource(RESOURCE.Lava) >= 10000000*floor23Price) {
+			var rebuildAntimatterLava = 10000000*floor23Price;
 		}
 		else {
 			rebuildAntimatterLava = getResource(RESOURCE.Lava);
 		}
-		if (getResource(RESOURCE.Oil) >= 8000000) {
-			var rebuildAntimatterOil = 8000000;
+		if (getResource(RESOURCE.Oil) >= 8000000*floor23Price) {
+			var rebuildAntimatterOil = 8000000*floor23Price;
 		}
 		else {
 			rebuildAntimatterOil = getResource(RESOURCE.Oil);
 		}
-		if (getResource(RESOURCE.Methane) >= 6000000) {
-			var rebuildAntimatterMethane = 6000000;
+		if (getResource(RESOURCE.Methane) >= 6000000*floor23Price) {
+			var rebuildAntimatterMethane = 6000000*floor23Price;
 		}
 		else {
 			rebuildAntimatterMethane = getResource(RESOURCE.Methane);
 		}
-		var antimatterDivisor = (rebuildAntimatterUranium+rebuildAntimatterLava+rebuildAntimatterOil+rebuildAntimatterMethane)/100*floor23Price;;
+		var antimatterDivisor = (rebuildAntimatterUranium+rebuildAntimatterLava+rebuildAntimatterOil+rebuildAntimatterMethane)/100;;
 		var antimatterWonderBar = (rebuildAntimatterUranium+rebuildAntimatterLava+rebuildAntimatterOil+rebuildAntimatterMethane)/antimatterDivisor;
 		if(antimatterWonderBar <= 100){
 			document.getElementById("antimatterWonderBar").innerHTML = Game.settings.format(antimatterWonderBar,2) + "%";
@@ -338,20 +338,20 @@ function refreshWonderBars(){
 		}
 	}
 	if((document.getElementById("activatePortal").className === "hidden") === false){
-		if (getResource(RESOURCE.Meteorite) >= 500000) {
-			var portalMeteorite = 500000;
+		if (getResource(RESOURCE.Meteorite) >= 500000*floor23Price) {
+			var portalMeteorite = 500000*floor23Price;
 		}
 		else {
 			portalMeteorite = getResource(RESOURCE.Meteorite);
 		}
-		if (getResource(RESOURCE.Helium) >= 8000000) {
-			var portalHelium = 8000000;
+		if (getResource(RESOURCE.Helium) >= 8000000*floor23Price) {
+			var portalHelium = 8000000*floor23Price;
 		}
 		else {
 			portalHelium = getResource(RESOURCE.Helium);
 		}
-		if (getResource(RESOURCE.Silicon) >= 6000000) {
-			var portalSilicon = 6000000;
+		if (getResource(RESOURCE.Silicon) >= 6000000*floor23Price) {
+			var portalSilicon = 6000000*floor23Price;
 		}
 		else {
 			portalSilicon = getResource(RESOURCE.Silicon);
@@ -386,7 +386,7 @@ function refreshWonderBars(){
 		else {
 			stargateMeteorite = getResource(RESOURCE.Meteorite);
 		}
-		var stargateDivisor = (stargatePlasma+stargateSilicon+stargateMeteorite)/100*floor23Price;
+		var stargateDivisor = (stargatePlasma+stargateSilicon+stargateMeteorite)/100;
 		var stargateBar = (stargatePlasma+stargateSilicon+stargateMeteorite)/stargateDivisor;
 		if(stargateBar <= 100){
 			document.getElementById("stargateWonderBar").innerHTML = Game.settings.format(stargateBar,2) + "%";
