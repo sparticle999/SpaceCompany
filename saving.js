@@ -10,6 +10,8 @@ function legacySave(data) {
 		heaterToggled: heaterToggled,
 		plasmatic: plasmatic,
 		plasmaticToggled: plasmaticToggled,
+		bath: bath,
+		bathToggled: bathToggled,
 		energy: energy,
 		battery: battery,
 		batteryT2: batteryT2,
@@ -204,6 +206,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.plasmatic !== "undefined") plasmatic = savegame.plasmatic;
 		if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
+		if(typeof savegame.bath !== "undefined") bath = savegame.bath;
+		if(typeof savegame.bathToggled !== "undefined") bathToggled = savegame.bathToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
 		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;

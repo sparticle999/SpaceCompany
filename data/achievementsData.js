@@ -305,6 +305,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return plasmatic/x }
 	};
 
+	instance.prodPlasma3 = {
+		id_v4: 'ach_102',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'plasmaIcon',
+		title: 'Build %s Electron Baths',
+		evaluator: function(x) { return bath >= x },
+		progressEvaluator: function(x) { return bath/x }
+	};
+
 	instance.prodUranium1 = {
 		id_v4: 'ach_70',
 		categoryInstance: Game.achievementsCategoryData.producers,

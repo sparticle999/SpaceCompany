@@ -207,13 +207,16 @@ Game.prestigeData = (function(){
 	** Prasnian **
 	*************/
 
-	// instance.T3Plasma = {
-	// 	name: "Tier 3 Plasma",
-	// 	desc: "Unlock the Electron Bath",
-	// 	cost: 11,
-	// 	category: "prasnian",
-	// 	achieved: false
-	// };
+	instance.T3Plasma = {
+		name: "Tier 3 Plasma",
+		desc: "Unlock the Electron Bath",
+		cost: 11,
+		category: "prasnian",
+		onApply: function(){
+			document.getElementById("plasmaTier3").className = "";
+		},
+		achieved: false
+	};
 
 	/**************
 	** Hyacinite **

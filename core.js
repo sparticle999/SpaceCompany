@@ -64,6 +64,10 @@ function calculateEnergyUse(delta) {
 		use += plasmatic * 8500;
 	}
 
+	if (bathToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= bath * 10 * delta) {
+		use += bath * 15000;
+	}
+
 	var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
 	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
 
@@ -250,6 +254,14 @@ function refreshPerSec(delta){
 		}
 	}
 
+	if (bathToggled === true && !energyLow && globalEnergyLock === false) {
+		var adjustment = adjustCost(RESOURCE.Plasma, bath * 80, (bath * 10) * perSecondMultiplier);
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
+			heliumps -= adjustment.c;
+			plasmaps += adjustment.g;
+		}
+	}
+
 	if (antimatterToggled === true) {
 		if (antimatter + antimatterps < 100000) {
 			var plasmaCost = (Game.interstellar.antimatter.entries.drive.count*100);
@@ -375,6 +387,10 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Lunarite), plasmaticLunariteCost, "plasmaticLunariteCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), plasmaticSiliconCost, "plasmaticSiliconCost");
 	Game.settings.turnRed(getResource(RESOURCE.Meteorite), plasmaticMeteoriteCost, "plasmaticMeteoriteCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Lava), bathLavaCost, "bathLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), bathGoldCost, "bathGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), bathMeteoriteCost, "bathMeteoriteCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryMetalCost, "batteryMetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryGemCost, "batteryGemCost");

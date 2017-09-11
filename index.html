@@ -604,7 +604,7 @@
 									<span>
 										The Super-Heater throws electricity at Hydrogen to turn it into a plasmatic substance.
 										<br>
-										Uses 1000 Energy and 10 Hydrogen per second.
+										Uses 1,000 Energy and 10 Hydrogen per second.
 										<br>
 										Produces 1 Plasma per second.
 										<br>
@@ -625,7 +625,7 @@
 									<span>
 										This contraption converts Helium into Plasma through firing intensive energy bolts at the gas cloud.
 										<br>
-										Uses 8500 Energy and 80 Helium per second.
+										Uses 8,500 Energy and 80 Helium per second.
 										<br>
 										Produces 10 Plasma per second.
 										<br>
@@ -636,6 +636,27 @@
 									<button onclick="getPlasmatic()" class="btn btn-default">Get Plasmatic Pit</button>
 									<button onclick="togglePlasmatic()" class="btn btn-default">Turn Plasmatic Pit <span id="plasmaticToggled">Off</span></button>
 									<button onclick="destroyMachine('plasmatic')" class="btn btn-default destroy hidden">Destroy Plasmatic Pit</button>
+								</td>
+							</tr>
+							<tr id="plasmaTier3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Electron Bath: <span id="bath">0</span>
+									</h3>
+									<span>
+										Bathing in Electrons. What could go wrong?
+										<br>
+										Uses 15,000 Energy and 100 Helium and 100 Hydrogen per second.
+										<br>
+										Produces 140 Plasma per second.
+										<br>
+										Costs <span id="bathLavaCost">6.20M</span> Lava, <span id="bathGoldCost">5.90M</span> Silicon, <span id="bathMeteoriteCost">12,100</span> Meteorite.
+									</span>
+									<br>
+									<br>
+									<button onclick="getBath()" class="btn btn-default">Get Electron Bath</button>
+									<button onclick="toggleBath()" class="btn btn-default">Turn Electron Bath <span id="bathToggled">Off</span></button>
+									<button onclick="destroyMachine('bath')" class="btn btn-default destroy hidden">Destroy Electron Bath</button>
 								</td>
 							</tr>
 						</table>

@@ -50,6 +50,10 @@ function registerLegacyBindings() {
     Game.ui.bindElement('plasmaticLunariteCost', function(){ return Game.settings.format(plasmaticLunariteCost); });
     Game.ui.bindElement('plasmaticSiliconCost', function(){ return Game.settings.format(plasmaticSiliconCost); });
     Game.ui.bindElement('plasmaticMeteoriteCost', function(){ return Game.settings.format(plasmaticMeteoriteCost); });
+    Game.ui.bindElement('bath', function(){ return Game.settings.format(bath); });
+    Game.ui.bindElement('bathLavaCost', function(){ return Game.settings.format(bathLavaCost); });
+    Game.ui.bindElement('bathGoldCost', function(){ return Game.settings.format(bathGoldCost); });
+    Game.ui.bindElement('bathMeteoriteCost', function(){ return Game.settings.format(bathMeteoriteCost); });
     Game.ui.bindElement('battery', function(){ return Game.settings.format(battery); });
     Game.ui.bindElement('batteryMetalCost', function(){ return Game.settings.format(batteryMetalCost); });
     Game.ui.bindElement('batteryGemCost', function(){ return Game.settings.format(batteryGemCost); });
@@ -467,6 +471,7 @@ function legacyRefreshUI() {
 
     $('#heaterToggled').text(heaterToggled === true ? "Off" : "On");
     $('#plasmaticToggled').text(plasmaticToggled === true ? "Off" : "On");
+    $('#bathToggled').text(bathToggled === true ? "Off" : "On");
     $('#charcoalToggled').text(charcoalToggled === true ? "Off" : "On");
     $('#rocketFuelToggled').text(rocketFuelToggled === true ? "Off" : "On");
     $('#meteoriteToggled').text(meteoriteToggled === true ? "Off" : "On");

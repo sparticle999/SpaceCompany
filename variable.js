@@ -8,6 +8,7 @@ var globalEnergyLock = false;
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterLunariteCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
 var plasmatic = 0; var plasmaticLunariteCost = 810000; var plasmaticSiliconCost = 720000; var plasmaticMeteoriteCost = 970; var plasmaticToggled = true;
+var bath = 0; var bathLunariteCost = 6200000; var bathSiliconCost = 5900000; var bathMeteoriteCost = 12100; var bathToggled = true;
 var energy = 0; var energyps = 0;
 var battery = 0; var batteryMetalCost = 50000; var batteryGemCost = 50000; var batteryLunariteCost = 30000;
 var batteryT2 = 0; var batteryT2MetalCost = 550000; var batteryT2GemCost = 550000; var batteryT2LunariteCost = 330000;

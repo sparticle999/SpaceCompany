@@ -250,6 +250,10 @@ function togglePlasmatic(){
 	plasmaticToggled = !plasmaticToggled;
 }
 
+function togglePlasmatic(){
+	bathToggled = !bathToggled;
+}
+
 function toggleRocketFuel(){
 	rocketFuelToggled = !rocketFuelToggled;
 }
@@ -285,6 +289,10 @@ function updateCost(){
 	plasmaticLunariteCost = Math.floor(810000 * Math.pow(1.1,plasmatic));
 	plasmaticSiliconCost = Math.floor(720000 * Math.pow(1.1,plasmatic));
 	plasmaticMeteoriteCost = Math.floor(970 * Math.pow(1.1,plasmatic));
+
+	bathLavaCost = Math.floor(6200000 * Math.pow(1.1,bath));
+	bathGoldCost = Math.floor(5900000 * Math.pow(1.1,bath));
+	bathMeteoriteCost = Math.floor(12100 * Math.pow(1.1,bath));
 
 	batteryMetalCost = Math.floor(50000 * Math.pow(1.1,battery));
 	batteryGemCost = Math.floor(50000 * Math.pow(1.1,battery));
@@ -679,6 +687,17 @@ function getPlasmatic(){
 		plasmatic += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
+	}
+}
+
+function getBath(){
+	if(getResource(RESOURCE.Lava) >= bathLavaCost && getResource(RESOURCE.Gold) >= bathGoldCost && getResource(RESOURCE.Meteorite) >= bathMeteoriteCost){
+		Game.resources.takeResource(RESOURCE.Lava, bathLunariteCost);
+		Game.resources.takeResource(RESOURCE.Gold, bathSiliconCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, bathMeteoriteCost);
+		bath += 1;
+		updateCost();
+		Game.statistics.add('tierOwned3');
 	}
 }
 
