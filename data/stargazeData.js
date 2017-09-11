@@ -148,8 +148,19 @@ Game.prestigeData = (function(){
 	instance.unlockStargaze = {
 		name: "Rebirth Upgrades",
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
-		cost: 1,
+		cost: 30,
 		category: "intro",
+		onApply: function(){
+			dmBoost += 0.01;
+	    },
+		achieved: false,
+	};
+
+	instance.increaseProd1 = {
+		name: "Increase Dark Matter Boost",
+		desc: "This adds 1% to your per Dark Matter production boost",
+		cost: 1,
+		category: "darkMatter",
 		onApply: function(){
 			for(var id in Game.stargaze.entries){
 	            var data = Game.stargaze.getStargazeData(id);
@@ -284,14 +295,6 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
-	// instance.recycling = {
-	// 	name: "Recycling",
-	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
-	// 	cost: 29,
-	// 	category: "hyacinite",
-	// 	achieved: false
-	// };
-
 	instance.energyEff = {
 		name: "Energy Efficiency Cap",
 		desc: "Increase Energy Efficiency research cap to 50% instead of 25%.",
@@ -329,6 +332,14 @@ Game.prestigeData = (function(){
 		},
 		achieved: false
 	};
+
+	// instance.recycling = {
+	// 	name: "Recycling",
+	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
+	// 	cost: 29,
+	// 	category: "hyacinite",
+	// 	achieved: false
+	// };
 
 	/************
 	** Moviton **

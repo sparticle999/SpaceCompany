@@ -141,7 +141,7 @@ function refreshPerSec(delta){
 
 	// calculate multipliers (add prestige etc here)
 	var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
-	var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01);
+	var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01) + (Game.stargaze.entries.darkMatter.count * dmBoost);
 
 	// Now we calculate the base per second
 	uraniumps = grinder * perSecondMultiplier;
