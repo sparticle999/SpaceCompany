@@ -167,7 +167,7 @@ function refreshPerSec(delta){
 
 	// Science
 	var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
-	var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02);
+	var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02) + (Game.stargaze.entries.darkMatter.count * dmBoost);
 	scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100) + labT5*1000) * scienceMultiplier;
 
 	if (!energyLow && globalEnergyLock === false) {
