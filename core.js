@@ -3,6 +3,8 @@ function calculateEnergyOutput(delta) {
 		return 0;
 	}
 
+	var multiplier = 1 + (Game.stargaze.entries.darkMatter.count * dmBoost);
+
 	// Fixed outputs first
 	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
 
@@ -27,7 +29,7 @@ function calculateEnergyOutput(delta) {
 		output += fusionReactor * 273;
 	}
 
-	return output;
+	return output * multiplier;
 }
 
 function calculateEnergyUse(delta) {
