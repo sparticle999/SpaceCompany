@@ -35,15 +35,17 @@ Game.interstellar.stars = (function(){
     };
 
     instance.exploreSystem = function(id){
-        var data = this.entries[id];
-        var exploreCost = data.distance * 10000;
-        if(antimatter >= exploreCost){
-            antimatter -= exploreCost;
-            data.explored = true;
-            document.getElementById('star_' + id).className = "hidden";
-            document.getElementById('star_' + id + '_conquer').className = "";
-            newNavUnlock('intnav_' + data.factionId);
-            data.displayNeedsUpdate = true;
+        if(Game.interstellar.rocket.entries.tier1Rocket.built == true){
+            var data = this.entries[id];
+            var exploreCost = data.distance * 10000;
+            if(antimatter >= exploreCost){
+                antimatter -= exploreCost;
+                data.explored = true;
+                document.getElementById('star_' + id).className = "hidden";
+                document.getElementById('star_' + id + '_conquer').className = "";
+                newNavUnlock('intnav_' + data.factionId);
+                data.displayNeedsUpdate = true;
+            }
         }
     };
 

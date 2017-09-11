@@ -63,6 +63,7 @@ function legacySave(data) {
 		labT2: labT2,
 		labT3: labT3,
 		labT4: labT4,
+		labT5: labT5,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
@@ -240,6 +241,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.labT2 !== "undefined") labT2 = savegame.labT2;
 		if(typeof savegame.labT3 !== "undefined") labT3 = savegame.labT3;
 		if(typeof savegame.labT4 !== "undefined") labT4 = savegame.labT4;
+		if(typeof savegame.labT5 !== "undefined") labT5 = savegame.labT5;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;

@@ -254,7 +254,7 @@ Game.prestigeData = (function(){
 		cost: 24,
 		category: "hyacinite",
 		onApply: function(){
-			document.getElementById("labT5").className = "";
+			document.getElementById("labTier5").className = "";
 		},
 		achieved: false
 	};

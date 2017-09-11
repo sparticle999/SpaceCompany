@@ -935,6 +935,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return labT4/x }
 	};
 
+	instance.prodScience5 = {
+		id_v4: 'ach_101',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'technologyIcon',
+		title: 'Build %s Space Scientific Satellite Stations',
+		evaluator: function(x) { return labT5 >= x },
+		progressEvaluator: function(x) { return labT5/x }
+	};
+
 	instance.prodRocketFuel1 = {
 		id_v4: 'ach_98',
 		categoryInstance: Game.achievementsCategoryData.producers,

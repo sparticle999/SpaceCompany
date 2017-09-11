@@ -162,7 +162,7 @@ Game.rocketData = (function(){
 
 	instance.tier1Rocket = {
 		name: 'Tier 1 Rocket',
-		desc: 'The Tier 1 Rocket can travel a maximum of 5 light years from Earth.',
+		desc: 'The Tier 1 Rocket can travel to Stars in the Milky Way, but cannot land on objects within the systems.',
 		category: 'rocket',
 		max: 1,
 		unlocked: true,

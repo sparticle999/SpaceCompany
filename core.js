@@ -164,7 +164,7 @@ function refreshPerSec(delta){
 	// Science
 	var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
 	var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02);
-	scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100)) * scienceMultiplier;
+	scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100) + labT5*1000) * scienceMultiplier;
 
 	if (!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
@@ -575,6 +575,10 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Metal), labT4MetalCost, "labT4MetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), labT4GemCost, "labT4GemCost");
 	Game.settings.turnRed(getResource(RESOURCE.Wood), labT4WoodCost, "labT4WoodCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Metal), labT5MetalCost, "labT5MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), labT5GemCost, "labT5GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), labT5WoodCost, "labT5WoodCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Science), 5, "unlockStorageCost");
 	Game.settings.turnRed(getResource(RESOURCE.Science), 20, "unlockBasicEnergyCost");
