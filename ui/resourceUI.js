@@ -17,6 +17,9 @@ Game.resourcesUI = (function(){
 				Game.ui.bindElement(RESOURCE[id] + 'NextStorage', this.createNextStorageDelegate(RESOURCE[id]));
 			}
 		}
+
+		// the auto bindings need to be updated after this is done
+		Game.ui.updateAutoDataBindings();
 	};
 
 	instance.update = function(delta) {
