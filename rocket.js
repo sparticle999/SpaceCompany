@@ -28,7 +28,6 @@ Game.interstellar.rocket = (function(){
         }
         if(partPass === Object.keys(Game.interstellar.rocket.entries[entryName].cost).length){
             for(var part in this.entries[entryName].cost){
-                console.log(window[part.toString()]);
             }
             this.entries[entryName].built = true;
             this.entries[entryName].displayNeedsUpdate = true;

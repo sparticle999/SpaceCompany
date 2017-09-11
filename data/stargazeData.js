@@ -140,7 +140,7 @@ Game.prestigeData = (function(){
 
 	instance.rebirth = {
 		name: "Rebirth",
-		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before.",
+		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades.",
 		cost: 0,
 		category: "intro",
 	};
@@ -151,22 +151,22 @@ Game.prestigeData = (function(){
 		cost: 30,
 		category: "intro",
 		onApply: function(){
-			dmBoost += 0.01;
-	    },
-		achieved: false,
-	};
-
-	instance.increaseProd1 = {
-		name: "Increase Dark Matter Boost",
-		desc: "This adds 1% to your per Dark Matter production boost",
-		cost: 1,
-		category: "darkMatter",
-		onApply: function(){
 			for(var id in Game.stargaze.entries){
 	            var data = Game.stargaze.getStargazeData(id);
 	            data.unlocked = true;
 	            data.displayNeedsUpdate = true;
 	        }
+	    },
+		achieved: false,
+	};
+
+	instance.increaseProd1 = {
+		name: "Dark Matter Boost",
+		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
+		cost: 1,
+		category: "darkMatter",
+		onApply: function(){
+	        dmBoost += 0.01;
 	    },
 		achieved: false,
 	};

@@ -95,7 +95,7 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.rocketPartTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"></tr><td>',
+            ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span>/{{max}}</h3>',
                 '<span>',
                     '<p>{{desc}}</p>',
@@ -732,8 +732,15 @@ Game.interstellarUI = (function(){
         }
         // Update the cost display
         if(data.built == true){
-            console.log(document.getElementById('roc_' + data.id + 'Built'));
             var status = document.getElementById('roc_' + data.id + 'Built');
+            document.getElementById("interRocketBuilt").className = "green";
+            document.getElementById("interRocketBuilt").innerHTML = "Built";
+            for(var id in this.rocketPartEntries){
+                var data = Game.interstellar.rocketParts.entries[id];
+                if(data.entryName == "shield" || "engine" || "aero"){
+                    document.getElementById("rocpart_" + data.entryName).className = "hidden";
+                }
+            }
             status.innerHTML = "Built";
             status.className = "green";
             var costElement = $('#' + data.htmlId + '_cost');
