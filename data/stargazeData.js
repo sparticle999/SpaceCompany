@@ -148,7 +148,7 @@ Game.prestigeData = (function(){
 	instance.unlockStargaze = {
 		name: "Rebirth Upgrades",
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
-		cost: 30,
+		cost: 1,
 		category: "intro",
 		onApply: function(){
 			for(var id in Game.stargaze.entries){
@@ -163,7 +163,7 @@ Game.prestigeData = (function(){
 	instance.increaseProd1 = {
 		name: "Dark Matter Boost",
 		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
-		cost: 1,
+		cost: 30,
 		category: "darkMatter",
 		onApply: function(){
 	        dmBoost += 0.01;
