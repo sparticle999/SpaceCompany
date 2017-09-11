@@ -41,7 +41,6 @@ function gainResources(delta) {
 	for (var id in RESOURCE) {
 		Game.resources.addResource(RESOURCE[id], getProduction(RESOURCE[id]) * delta);
 	}
-	rocketFuel += rocketFuelps * delta;
 	antimatter += antimatterps * delta;
 }
 

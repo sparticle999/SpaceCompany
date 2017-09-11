@@ -1,5 +1,4 @@
 function registerLegacyBindings() {
-	Game.ui.bindElement('rocketFuelps', function(){ return Game.settings.format(rocketFuelps, 1); });
 
 	Game.ui.bindElement('uraniumStorageCost', function(){ return Game.settings.format(getStorage(RESOURCE.Uranium)); });
 	Game.ui.bindElement('uraniumStorageLunariteCost', function(){ return Game.settings.format(getStorage(RESOURCE.Uranium)/2.5); });
@@ -452,24 +451,6 @@ function registerLegacyBindings() {
     Game.ui.bindElement('overexchangeMetalCost', function(){ return Game.settings.format(overexchangeMetalCost); });
     Game.ui.bindElement('overexchangeSilverCost', function(){ return Game.settings.format(overexchangeSilverCost); });
     Game.ui.bindElement('overexchangeHeliumCost', function(){ return Game.settings.format(overexchangeHeliumCost); });
-
-
-    Game.ui.bindElement('science', function(){
-        if(science < 100){
-            return Game.settings.format(science, 1);
-        }
-        else{
-            return Game.settings.format(science);
-        }
-    });
-
-    Game.ui.bindElement('rocketFuel', function(){
-        if(rocketFuel < 100) {
-            return Game.settings.format(rocketFuel, 1);
-        } else {
-            return Game.settings.format(rocketFuel);
-        }
-    });
 }
 
 function legacyRefreshUI() {

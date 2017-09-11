@@ -614,7 +614,7 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Gem), 900, "rocketGemCost");
 	Game.settings.turnRed(getResource(RESOURCE.Oil), 1000, "rocketOilCost");
 
-	Game.settings.turnRed(rocketFuel, 20, "rocketRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 20, "rocketRocketFuelCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Metal), chemicalPlantMetalCost, "chemicalPlantMetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), chemicalPlantGemCost, "chemicalPlantGemCost");
@@ -628,17 +628,17 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), hydrazineSiliconCost, "hydrazineSiliconCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gold), hydrazineGoldCost, "hydrazineGoldCost");
 
-	Game.settings.turnRed(rocketFuel, 20, "moonRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 50, "venusRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 80, "marsRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 200, "asteroidBeltRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 500, "wonderStationRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 1000, "jupiterRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 2000, "saturnRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 5000, "plutoRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 6000, "kuiperBeltRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 6000, "solCenterRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 7000, "solCenterRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 20, "moonRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 50, "venusRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 80, "marsRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 200, "asteroidBeltRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 500, "wonderStationRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 1000, "jupiterRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 2000, "saturnRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 5000, "plutoRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 6000, "kuiperBeltRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 6000, "solCenterRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 7000, "solCenterRocketFuelCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Lunarite), grinderLunariteCost, "grinderLunariteCost");
 	Game.settings.turnRed(getResource(RESOURCE.Titanium), grinderTitaniumCost, "grinderTitaniumCost");
@@ -782,9 +782,9 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Meteorite), dysonMeteoriteCost, "dysonMeteoriteCost");
 	Game.settings.turnRed(getResource(RESOURCE.Ice), dysonIceCost, "dysonIceCost");
 
-	Game.settings.turnRed(rocketFuel, 50000, "ringRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 250000, "swarmRocketFuelCost");
-	Game.settings.turnRed(rocketFuel, 1000000, "sphereRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 50000, "ringRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 250000, "swarmRocketFuelCost");
+	Game.settings.turnRed(getResource(RESOURCE.RocketFuel), 1000000, "sphereRocketFuelCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), 1500, "unlockPlasmaResearchHydrogenCost");
 	Game.settings.turnRed(getResource(RESOURCE.Uranium), 1500, "unlockPlasmaResearchUraniumCost");

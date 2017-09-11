@@ -97,7 +97,9 @@ Game.resources = (function(){
 		} else if (id === RESOURCE.Science) {
 			// -1 for unlimited storage
 			return -1;
-		} if (typeof window[id + 'Storage'] === 'undefined') {
+		} else if (id === RESOURCE.RocketFuel) {
+			return -1;
+		} else if (typeof window[id + 'Storage'] === 'undefined') {
 			return 0;
 		}
 		return window[id + 'Storage'];
