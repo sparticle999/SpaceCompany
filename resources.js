@@ -1120,7 +1120,7 @@ function getPlanetExcavator(){
 
 function getVacuum(){
 	if(getResource(RESOURCE.Lunarite) >= vacuumLunariteCost * T1Price && getResource(RESOURCE.Gem) >= vacuumGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCost * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Lunarite, vacuumLunariteCost * T1Price);
 		Game.resources.takeResource(RESOURCE.Gem, vacuumGemCost * T1Price);
 		vacuum += 1;
 		updateCost();
@@ -1334,7 +1334,7 @@ function getDesert(){
 
 function getCrucible(){
 	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost * T1Price && getResource(RESOURCE.Gem) >= crucibleGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost * T1Price);
 		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost * T1Price);
 		crucible += 1;
 		updateCost();
@@ -1463,7 +1463,7 @@ function getSkimmer(){
 
 function getIcePick(){
 	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost * T1Price && getResource(RESOURCE.Gem) >= icePickGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCo * T1Price);
 		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost * T1Price);
 		icePick += 1;
 		updateCost();
