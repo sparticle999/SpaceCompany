@@ -1334,7 +1334,7 @@ function getDesert(){
 
 function getCrucible(){
 	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost * T1Price && getResource(RESOURCE.Gem) >= crucibleGemCost * T1Price){
-		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCo * T1Pricest);
+		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost * T1Pricest);
 		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost * T1Price);
 		crucible += 1;
 		updateCost();
