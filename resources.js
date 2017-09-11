@@ -87,6 +87,23 @@ function gainPlasma(){
 	}
 }
 
+function gainMaxPlasma(){
+	var energyCost = 1000;
+	var hydrogenCost = 10;
+	var current = plasma;
+	var current2 = hydrogen;
+	var capacity = getMaxPlasma();
+	var amount = Math.floor(Math.min(Math.floor(Math.min(energy/energyCost,energy/hydrogenCost)), capacity - current));
+	var requiredEnergy = amount * energyCost;
+	var requiredHydrogen = amount * hydrogenCost;
+	if(amount > 0 && energy >= requiredEnergy && hydrogen >= requiredHydrogen){
+		energy -= requiredEnergy;
+		hydrogen -= requiredHydrogen;
+		plasma += amount;
+		Game.statistics.add('manualResources');
+	}
+}
+
 function gainUranium(){
 	if(uranium < uraniumStorage){
 		uranium += 1;
