@@ -1334,11 +1334,7 @@ function getDesert(){
 
 function getCrucible(){
 	if(getResource(RESOURCE.Lunarite) >= crucibleLunariteCost * T1Price && getResource(RESOURCE.Gem) >= crucibleGemCost * T1Price){
-<<<<<<< HEAD
-		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost * T1Pricest);
-=======
 		Game.resources.takeResource(RESOURCE.Lunarite, crucibleLunariteCost * T1Price);
->>>>>>> 957987ed7cb173f66e4631487d5a2fc014218ae3
 		Game.resources.takeResource(RESOURCE.Gem, crucibleGemCost * T1Price);
 		crucible += 1;
 		updateCost();
@@ -1467,11 +1463,7 @@ function getSkimmer(){
 
 function getIcePick(){
 	if(getResource(RESOURCE.Lunarite) >= icePickLunariteCost * T1Price && getResource(RESOURCE.Gem) >= icePickGemCost * T1Price){
-<<<<<<< HEAD
-		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCost * T1Pricest);
-=======
 		Game.resources.takeResource(RESOURCE.Lunarite, icePickLunariteCo * T1Price);
->>>>>>> 957987ed7cb173f66e4631487d5a2fc014218ae3
 		Game.resources.takeResource(RESOURCE.Gem, icePickGemCost * T1Price);
 		icePick += 1;
 		updateCost();
