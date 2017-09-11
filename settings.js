@@ -16,6 +16,7 @@ Game.settings = (function(){
             notificationsEnabled: true,
             gainButtonsHidden: false,
             redDestroyButtons: false,
+            hideCompleted: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -109,6 +110,8 @@ Game.settings = (function(){
     instance.load = function(data) {
         this.loadLegacy(data);
 
+        console.log(this.entries.hideCompleted)
+
         if(data.statistics) {
             if(data.statistics.version && data.statistics.version === this.dataVersion) {
                 for(var id in data.statistics.entries) {
@@ -117,6 +120,8 @@ Game.settings = (function(){
             }
         }
 
+        console.log(this.entries.hideCompleted)
+
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
@@ -124,6 +129,7 @@ Game.settings = (function(){
         $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
         $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
         $('#redDestroyButtons').prop('checked', this.entries.redDestroyButtons);
+        $('#hideCompleted').prop('checked', this.entries.hideCompleted);
 
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
@@ -144,6 +150,17 @@ Game.settings = (function(){
         else{
             for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
                 document.getElementsByClassName("gainButton")[i].className = "gainButton";
+            }
+        }
+
+        if(Game.settings.entries.hideCompleted === true){
+            for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
+                document.getElementsByClassName("completed")[i].className = "completed hidden";
+            }
+        }
+        else{
+            for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
+                document.getElementsByClassName("completed")[i].className = "completed";
             }
         }
         
@@ -216,7 +233,7 @@ Game.settings = (function(){
 
         $('#redDestroyButtons').change(function(){
             Game.settings.set('redDestroyButtons', $(this).is(':checked'));
-            if(contains(researched, "unlockDestruction")){
+            if (Game.tech.isPurchased('unlockDestruction')) {
                 if(Game.settings.entries.redDestroyButtons === true){
                     for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
                         document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
@@ -230,7 +247,7 @@ Game.settings = (function(){
             }
         });
 
-        if(contains(researched, "unlockDestruction")){
+        if (Game.tech.isUnlocked('unlockDestruction')) {
             if(Game.settings.entries.redDestroyButtons === true){
                 for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
                     document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
@@ -243,6 +260,20 @@ Game.settings = (function(){
                 }
             }
         }
+
+        $('#hideCompleted').change(function(){
+            Game.settings.set('hideCompleted', $(this).is(':checked'));
+            if(Game.settings.entries.hideCompleted === true){
+                for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
+                    document.getElementsByClassName("completed")[i].className = "completed hidden";
+                }
+            }
+            else{
+                for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
+                    document.getElementsByClassName("completed")[i].className = "completed";
+                }
+            }
+        });
 
         for (var id in autoSaveMapping) {
             var element = $('#' + id);

@@ -160,7 +160,17 @@ Game.updatesData = (function(){
 	instance.dmCounter = {
 		desc: 'Dark Matter is now calculated and shown.',
 		read: false
-	}
+	};
+
+	instance.hideButton = {
+		desc: 'You can unhide completed tabs if wanted. More -> Graphics Options.',
+		read: false
+	};
+
+	instance.achivementsReset = {
+		desc: 'Achievements have been reset, you will get back any you are currently over the level needed for.',
+		read: false
+	};
 
 	return instance;
 

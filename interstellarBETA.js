@@ -229,6 +229,10 @@ Game.interstellarBETA.military = (function(){
     instance.defense = 0;
     instance.speed = 0;
 
+    instance.activePower = 0;
+    instance.activeDefense = 0;
+    instance.activeSpeed = 0;
+
     instance.initialise = function(){
         for (var id in Game.militaryData) {
             var data = Game.militaryData[id];
@@ -281,8 +285,9 @@ Game.interstellarBETA.military = (function(){
     };
 
     instance.updateFleetStats = function(){
+        // Total Ships
         var number = 0;
-        var stats = {power: 0, defense: 0, speed: 1};
+        var stats = {power: 0, defense: 0, speed: 0};
         for(var shipClass in this.entries){
             var data = this.entries[shipClass];
             var count = data.count;
@@ -302,6 +307,30 @@ Game.interstellarBETA.military = (function(){
             this.power = stats.power;
             this.defense = stats.defense;
             this.speed = stats.speed;
+        }
+
+        //Active Ships
+        var number = 0;
+        stats = {power: 0, defense: 0, speed: 0};
+        for(var shipClass in this.entries){
+            var data = this.entries[shipClass];
+            var count = data.active;
+            stats.power += data.stats.power*count;
+            stats.defense += data.stats.defense*count;
+            stats.speed += data.stats.speed*count;
+            number += count;
+        }
+        if(number != 0){
+            stats.speed = Math.floor(stats.speed/number);
+            for(var stat in stats){
+                var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
+                for(var j = 0; j < updateList.length; j++){
+                    updateList[j].innerHTML = stats[stat];
+                }
+            }
+            this.activePower = stats.power;
+            this.activeDefense = stats.defense;
+            this.activeSpeed = stats.speed;
         }
     };
 
@@ -327,48 +356,127 @@ Game.interstellarBETA.military = (function(){
         } else if(ship.active + num <= ship.count && ship.active + num >= 0){
             ship.active += num;
         }
+        this.updateFleetStats();
         this.updateShips();
     };
 
-    instance.getThreat = function(starData){
+    instance.getThreat = function(power, num){
         var threatLevels = ["•", "••", "•••", "I", "II", "III", "X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"];
-        /*******************************
-        ** Some stuff figuring it out **
-        *******************************/
-
-        var l = 0;
-        return threatLevels[l];
+        var threshholds = [40,100,180,280,400,540,700,880,1080,1300,1540,1800];
+        var level = 0;
+        for(var i = 0; i < threshholds.length; i++){
+            if(power >= threshholds[i]){
+                level += 1;
+            } else {
+                continue;
+            }
+        }
+        if(num){
+            return level;
+        } else {
+            return threatLevels[level];
+        }
     };
+
+    instance.getSpyChance = function(star, multi){
+        var threat = this.getThreat(star.stats.power*(multi||1), true)+1;
+        return chance = this.entries.scout.active/threat*(20/(star.spy+1));
+    }
+
+    instance.spy = function(starName){
+        var star = Game.interstellarBETA.stars.getStarData(starName);
+        var chance = this.getSpyChance(star)/100;
+        var roll = Math.random();
+        if(chance >= roll){
+            star.spy += 1;
+            Game.notifyInfo("Successful Espionage!", "You have found out more about the star system!");
+        } else {
+            var scout = this.entries.scout;
+            scout.count -= scout.active;
+            scout.active = 0;
+            Game.notifyInfo("Espionage Failed!", "You lost all of your active scouts.");
+        }
+        this.updateFleetStats();
+        this.updateShips();
+    };
+
+    instance.getMultiplier = function(factionId){
+        var op=Game.stargaze.getStargazeData(factionId).opinion;
+        if(op>=20&&op<60){
+            return 0.5;
+        } else if(op>=-20&&op<20){
+            return 1;
+        } else if(op>=-60&&op<-20){
+            return 2;
+        } else if(op<-60){
+            return 3;
+        } else{
+            return 0;
+        }
+    };
+
+
+    instance.getChance = function(star){
+        if(this.power!=0){
+            var multi = this.getMultiplier(star.factionId);
+            if(multi == 0){
+                return "peace";
+            }
+            var damage = (this.activePower/star.stats.defense*multi)*this.activeSpeed;
+            var starDamage = (star.stats.power*multi/Math.max(this.activeDefense,1))*star.stats.speed;
+            if(damage > starDamage){
+                return (damage/starDamage)-0.5;
+            } else {
+                return Math.max(0, 1.5-(starDamage/damage));
+            }
+        }
+    }
 
     instance.invadeSystem = function(starName){
         if(this.power!=0){
             var star = Game.interstellarBETA.stars.getStarData(starName);
-            var damage = (this.power/star.stats.defense)*this.speed; // -, not /, because then goes <1
-            var starDamage = (star.stats.power/Math.max(this.defense,1))*star.stats.speed;
-            if(damage > starDamage){
-                var chance = (damage/starDamage)-0.5;
-            } else {
-                var chance = Math.max(0, 1.5-(starDamage/damage));
+            var chance = this.getChance(star);
+            if(chance == "peace"){
+                return;
             }
             var roll = Math.random();
             if(chance >= roll){
-                //star.owned = true;
+                star.owned = true;
                 var randomShips = Game.utils.randArb(0,chance);
                 if(randomShips < 1){
-
+                    for(var ship in this.entries){
+                        var shipData = this.getShipData(ship);
+                        for(var i = 0; i < shipData.active; i++){
+                            // Chance to keep the ship
+                            var destroyChance = Math.random();
+                            if(destroyChance > chance){
+                                shipData.active -= 1;
+                                shipData.count -= 1;
+                            }
+                        }
+                        shipData.displayNeedsUpdate = true;
+                    }
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
+                } else {
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    
                 }
-                console.log(randomShips);
-                // Lose random roll up to (chance of winning) ships
-                // use that chance for each ship, so that it's random which is lost
-                // Notify Win
+                var faction = Game.stargaze.getStargazeData(star.factionId);
+                faction.opinion -= 10;
+                faction.displayNeedsUpdate = true;
             } else {
-                // Lose all active ships
+                for(var ship in this.entries){
+                    var shipData = this.getShipData(ship);
+                    for(var i = shipData.active; i > 0; i--){
+                        // Destroy all active ships
+                        shipData.active -= 1;
+                        shipData.count -= 1;
+                    }
+                    shipData.displayNeedsUpdate = true;
+                }
+                Game.notifyInfo("Failed Invasion!", "Unfortunately, the enemy forces were too strong for you. They have destroyed all of your active ships.");
             }
-            console.log("Star Dam: " + starDamage);
-            console.log("Dam: " + damage);
-            console.log("Percent keep: " + (randomShips || "loss"));
-            console.log("Chance: " + chance);
-            console.log("Rand Roll: " + roll);
+            this.updateFleetStats();
+            this.updateShips();
         }
     };
 
@@ -378,6 +486,7 @@ Game.interstellarBETA.military = (function(){
         if(faction.opinion >= 60){
             faction.opinion -= 5;
             data.owned = true;
+            faction.displayNeedsUpdate = true;
         }
     };
 
