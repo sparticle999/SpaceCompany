@@ -171,6 +171,22 @@ function legacySave(data) {
 		ring: ring,
 		antimatter: antimatter,
 		antimatterToggled: antimatterToggled,
+		planetNuke: planetNuke,
+		condensator: condensator,
+		fossilator: fossilator,
+		multiDrill: multiDrill,
+		diamondChamber: diamondChamber,
+		microPollutor: microPollutor,
+		forest: forest,
+		cloner: cloner,
+		interCow: interCow,
+		club: club,
+		philosopher: philosopher,
+		werewolf: werewolf,
+		tardis: tardis,
+		harvester: harvester,
+		cage: cage,
+		overexchange: overexchange,
 	}, data);
 
 	return localSave;
@@ -352,5 +368,21 @@ function legacyLoad(savegame){
 		if(typeof savegame.ring !== "undefined") ring = savegame.ring;
 		if(typeof savegame.antimatter !== "undefined") antimatter = savegame.antimatter;
 		if(typeof savegame.antimatterToggled !== "undefined") antimatterToggled = savegame.antimatterToggled;
+		if(typeof savegame.planetNuke !== "undefined") planetNuke = savegame.planetNuke;
+		if(typeof savegame.condensator !== "undefined") condensator = savegame.condensator;
+		if(typeof savegame.fossilator !== "undefined") fossilator = savegame.fossilator;
+		if(typeof savegame.multiDrill !== "undefined") multiDrill = savegame.multiDrill;
+		if(typeof savegame.diamondChamber !== "undefined") diamondChamber = savegame.diamondChamber;
+		if(typeof savegame.microPollutor !== "undefined") microPollutor = savegame.microPollutor;
+		if(typeof savegame.forest !== "undefined") forest = savegame.forest;
+		if(typeof savegame.cloner !== "undefined") cloner = savegame.cloner;
+		if(typeof savegame.interCow !== "undefined") interCow = savegame.interCow;
+		if(typeof savegame.club !== "undefined") club = savegame.club;
+		if(typeof savegame.philosopher !== "undefined") philosopher = savegame.philosopher;
+		if(typeof savegame.werewolf !== "undefined") werewolf = savegame.werewolf;
+		if(typeof savegame.tardis !== "undefined") tardis = savegame.tardis;
+		if(typeof savegame.harvester !== "undefined") harvester = savegame.harvester;
+		if(typeof savegame.cage !== "undefined") cage = savegame.cage;
+		if(typeof savegame.overexchange !== "undefined") overexchange = savegame.overexchange;
 	}
 }
