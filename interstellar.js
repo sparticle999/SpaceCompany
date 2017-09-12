@@ -504,7 +504,7 @@ Game.interstellar.military = (function(){
 
     instance.invadeSystem = function(starName){
         if(this.power!=0){
-            var star = this.stars.getStarData(starName);
+            var star = Game.interstellar.stars.getStarData(starName);
             var chance = this.getChance(star);
             if(chance == "peace"){
                 return;

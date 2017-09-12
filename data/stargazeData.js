@@ -180,6 +180,7 @@ Game.prestigeData = (function(){
 		desc: "Increase all gain buttons to 20 per click instead of 1.",
 		cost: 5,
 		category: "carnelian",
+		opinion: 3,
 		onApply: function(){
 			// old
 			gainNum = 20;
@@ -201,6 +202,7 @@ Game.prestigeData = (function(){
 		desc: "Start with 6,400 max-storage on everything on rebirth.",
 		cost: 8,
 		category: "carnelian",
+		opinion: 6,
 		onApply: function(){
 			// old
 			var newStorage = 6400;
@@ -223,6 +225,7 @@ Game.prestigeData = (function(){
 		desc: "Unlock the Electron Bath",
 		cost: 11,
 		category: "prasnian",
+		opinion: 4,
 		onApply: function(){
 			document.getElementById("plasmaTier3").className = "";
 		},
@@ -234,6 +237,7 @@ Game.prestigeData = (function(){
 		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
 		cost: 25,
 		category: "prasnian",
+		opinion: 10,
 		onApply: function(){
 			floor1Price -= 0.15;
 		},
@@ -245,6 +249,7 @@ Game.prestigeData = (function(){
 		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
 		cost: 31,
 		category: "prasnian",
+		opinion: 15,
 		onApply: function(){
 			floor23Price -= 0.2;
 		},
@@ -260,6 +265,7 @@ Game.prestigeData = (function(){
 		desc: "Start with 20 T1 Labs on rebirth.",
 		cost: 7,
 		category: "hyacinite",
+		opinion: 3,
 		onApply: function(){
 			// old
 			lab += 20;
@@ -274,6 +280,7 @@ Game.prestigeData = (function(){
 		desc: "T2+ Labs are 20% cheaper with this upgrade.",
 		cost: 16,
 		category: "hyacinite",
+		opinion: 12,
 		onApply: function(){
 			// old
 			labT1Multi -= 0.2;
@@ -289,6 +296,7 @@ Game.prestigeData = (function(){
 		desc: "Unlock the Space Scientific Satellite Station",
 		cost: 24,
 		category: "hyacinite",
+		opinion: 14,
 		onApply: function(){
 			document.getElementById("labTier5").className = "";
 		},
@@ -300,6 +308,7 @@ Game.prestigeData = (function(){
 		desc: "Increase Energy Efficiency research cap to 50% instead of 25%.",
 		cost: 36,
 		category: "hyacinite",
+		opinion: 25,
 		onApply: function(){
 			Game.tech.entries["energyEfficiencyResearch"].maxLevel += 25;
 		},
@@ -316,6 +325,7 @@ Game.prestigeData = (function(){
 		desc: "All Tier 1 machines on every resource (in resources tab) are 10% cheaper.",
 		cost: 8,
 		category: "kitrinos",
+		opinion: 4,
 		onApply: function(){
 			T1Price -= 0.1;
 		},
@@ -327,6 +337,7 @@ Game.prestigeData = (function(){
 		desc: "Gain access to a fifth tier of machines to produce resources.",
 		cost: 35,
 		category: "kitrinos",
+		opinion: 20,
 		onApply: function(){
 			unlockTier5();
 		},
@@ -350,6 +361,7 @@ Game.prestigeData = (function(){
 		desc: "Produce 100% more rocket fuel per chemical plant.",
 		cost: 11,
 		category: "moviton",
+		opinion: 7,
 		onApply: function(){
 			chemicalBoost += 1;
 		},
@@ -361,6 +373,7 @@ Game.prestigeData = (function(){
 		desc: "Rocket Parts Cost 35% less.",
 		cost: 23,
 		category: "moviton",
+		opinion: 28,
 		onApply: function(){
 			rocketPrice -= 0.35;
 		},
