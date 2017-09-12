@@ -412,7 +412,7 @@ Game.interstellarUI = (function(){
                     var multi = Game.interstellar.military.getMultiplier(data.factionId);
 
                     // Updates Spy Chance
-                    var spyChance = Game.interstellar.military.getSpyChance(data, multi);
+                    var spyChance = Math.min(100, Game.interstellar.military.getSpyChance(data, multi));
                     $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
 
                     // Updates Threat Level

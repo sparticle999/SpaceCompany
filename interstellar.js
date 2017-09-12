@@ -497,7 +497,6 @@ Game.interstellar.military = (function(){
     instance.getChance = function(star){
         if(this.power!=0){
             var multi = this.getMultiplier(star.factionId);
-            console.log(multi)
             if(multi == 0){
                 return "peace";
             }
