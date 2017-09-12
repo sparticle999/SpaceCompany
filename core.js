@@ -50,7 +50,7 @@ function calculateEnergyUse(delta) {
 	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
     use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
-    use += (cloner*1157)+(interCow*879)+(club*754)+(philosopher*1387)+(werewolf*984)+(tardis*923);
+    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*923);
     use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
 
     if(charcoalToggled === true){
