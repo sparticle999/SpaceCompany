@@ -1641,9 +1641,9 @@ function getInterCow(){
 }
 
 function getClub(){
-	if(getResource(RESOURCE.Uranium) >= clubUraniumCost && getResource(RESOURCE.Wood) >= clubSiliconCost && getResource(RESOURCE.Helium) >= clubHeliumCost){
+	if(getResource(RESOURCE.Uranium) >= clubUraniumCost && getResource(RESOURCE.Wood) >= clubWoodCost && getResource(RESOURCE.Helium) >= clubHeliumCost){
 		Game.resources.takeResource(RESOURCE.Uranium, clubUraniumCost);
-		Game.resources.takeResource(RESOURCE.Silicon, clubSiliconCost);
+		Game.resources.takeResource(RESOURCE.Wood, clubWoodCost);
 		Game.resources.takeResource(RESOURCE.Helium, clubHeliumCost);
 		club += 1;
 		updateCost();
