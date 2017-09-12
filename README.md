@@ -74,6 +74,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Hide Completed Tabs Button
 - Added Astronomical Breakthrough
 - Seperate Option for Autosave Notifications
+- Rebirth (a huge number of features here)
 
 ##### Small Changes
 

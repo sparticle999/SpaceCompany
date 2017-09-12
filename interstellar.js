@@ -259,18 +259,19 @@ Game.interstellar.antimatter = (function(){
 
     instance.buildMachine = function(entryName) {
         // Add the buildings and clamp to the maximum
+        var data = this.entries[entryName];
         var resourcePass = 0;
-        for(var resource in this.entries[entryName].cost){
-            if(window[resource.toString()] >= this.entries[entryName].cost[resource.toString()]){
+        for(var resource in data.cost){
+            if(window[resource.toString()] >= data.cost[resource.toString()]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
-            this.entries[entryName].count += 1;
-            for(var resource in this.entries[entryName].cost){
-                window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
+            data.count += 1;
+            for(var resource in data.cost){
+                window[resource.toString()] -= data.cost[resource.toString()];
             }            
-            this.entries[entryName].displayNeedsUpdate = true;
+            data.displayNeedsUpdate = true;
         }
         this.updateCost(entryName);
     };
