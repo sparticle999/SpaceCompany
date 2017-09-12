@@ -389,13 +389,14 @@ Game.interstellar.military = (function(){
             number += count;
         }
         stats.speed = Math.floor(stats.speed/number);
-        if(number = 0)stats.speed = 0;
+        if(number == 0)stats.speed = 0;
         for(var stat in stats){
             var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
             for(var j = 0; j < updateList.length; j++){
                 updateList[j].innerHTML = stats[stat];
             }
         }
+        console.log(stats.speed)
         this.activePower = stats.power;
         this.activeDefense = stats.defense;
         this.activeSpeed = stats.speed;
@@ -428,6 +429,12 @@ Game.interstellar.military = (function(){
         ship.displayNeedsUpdate = true;
         this.updateFleetStats();
         this.updateShips();
+        for(var star in Game.interstellar.stars.entries){
+            var data = Game.interstellar.stars.entries[star];
+            if(data.explored == true && data.owned == false){
+                data.displayNeedsUpdate = true;
+            }
+        }
     };
 
     instance.getThreat = function(power, num){
@@ -490,6 +497,7 @@ Game.interstellar.military = (function(){
     instance.getChance = function(star){
         if(this.power!=0){
             var multi = this.getMultiplier(star.factionId);
+            console.log(multi)
             if(multi == 0){
                 return "peace";
             }
