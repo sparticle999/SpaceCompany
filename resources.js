@@ -1667,7 +1667,7 @@ function getWerewolf(){
 		Game.resources.takeResource(RESOURCE.Uranium, werewolfUraniumCost);
 		Game.resources.takeResource(RESOURCE.Gem, werewolfGemCost);
 		Game.resources.takeResource(RESOURCE.Methane, werewolfMethaneCost);
-		planetNuke += 1;
+		werewolf += 1;
 		updateCost();
 		Game.statistics.add('tierOwned5');
 	}
