@@ -80,7 +80,7 @@ Game.buildings = (function(){
                 continue;
             }
 
-            var buildingData = Game.buildingData[id];
+            var buildingData = this.entries[id];
             if (!buildingData.resource) {
                 continue;
             }

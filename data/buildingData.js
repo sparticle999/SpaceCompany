@@ -129,6 +129,23 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.plasmaT3 = $.extend({}, baseProducerBuilding, {
+        name: 'Electron Bath',
+        desc: 'Bathing in Electrons. What could go wrong?',
+        resource: 'plasma',
+        resourcePerSecond: {
+            'energy': -15000,
+            'helium': -100,
+            'hydrogen': -100,
+            'plasma': 140
+        },
+        cost: {
+            'lunarite': 6200000,
+            'silicon': 5900000,
+            'meteorite': 12100
+        }
+    });
+
     // Uranium
     instance.uraniumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Grinder',

@@ -14,6 +14,7 @@ Game.settings = (function(){
             boldEnabled: false,
             sidebarCompressed: false,
             notificationsEnabled: true,
+            saveNotifsEnabled: true,
             gainButtonsHidden: false,
             redDestroyButtons: false,
             hideCompleted: false,
@@ -80,7 +81,7 @@ Game.settings = (function(){
             return;
         }
 
-        if(value == 0){
+        if(value === 0){
             element.addClass('red');
             if(this.entries.boldEnabled === true){
                 element.addClass('bold');
@@ -93,7 +94,7 @@ Game.settings = (function(){
             element.removeClass('bold');
         }
 
-        if(value >= target) {
+        if(value >= target && target >= 0) {
             element.addClass('green');
         } else {
             element.removeClass('green');
@@ -127,6 +128,7 @@ Game.settings = (function(){
         $('#boldEnabled').prop('checked', this.entries.boldEnabled);
         $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
         $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
+        $('#saveNotifsEnabled').prop('checked', this.entries.saveNotifsEnabled);
         $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
         $('#redDestroyButtons').prop('checked', this.entries.redDestroyButtons);
         $('#hideCompleted').prop('checked', this.entries.hideCompleted);
@@ -215,6 +217,10 @@ Game.settings = (function(){
 
         $('#notificationsEnabled').change(function(){
             Game.settings.set('notificationsEnabled', $(this).is(':checked'));
+        });
+
+        $('#saveNotifsEnabled').change(function(){
+            Game.settings.set('saveNotifsEnabled', $(this).is(':checked'));
         });
 
         $('#gainButtonsHidden').change(function(){
