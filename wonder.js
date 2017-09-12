@@ -426,7 +426,7 @@ function unlockTier4(){
 
 function unlockTier5(){
 	document.getElementById("uraniumTier5").className = "";
-	//document.getElementById("lavaTier5").className = "";
+	document.getElementById("lavaTier5").className = "";
 	document.getElementById("oilTier5").className = "";
 	document.getElementById("metalTier5").className = "";
 	document.getElementById("gemTier5").className = "";
