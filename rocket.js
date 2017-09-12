@@ -19,6 +19,18 @@ Game.interstellar.rocket = (function(){
         }
 	}
 
+    instance.updateCost = function(entryName){
+        var data = this.entries[entryName];
+        for(var part in data.cost){
+            var target = 0;
+            for(var i = 0; i < Object.keys(Game.interstellarUI.rocketPartObservers[entryName]).length; i++){
+                if(part == Game.interstellarUI.rocketPartObservers[entryName][i].part){
+                    Game.interstellarUI.rocketPartObservers[entryName][i].value = data.cost[part.toString()];
+                }
+            }
+        }
+    }
+
     instance.buildRocket = function(entryName){
         var partPass = 0;
         for(var part in this.entries[entryName].cost){

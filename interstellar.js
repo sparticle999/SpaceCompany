@@ -65,7 +65,7 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.rocket !== 'undefined'){
                 for(id in data.interstellar.rocket){
-                    this.rocket.entries[id].count = data.interstellar.rocket[id].count;
+                    this.rocket.entries[id].built = data.interstellar.rocket[id].built;
                 }
             }
             if(typeof data.interstellar.rocketParts !== 'undefined'){
@@ -87,19 +87,6 @@ Game.interstellar = (function(){
                 for(id in data.interstellar.stars){
                     this.stars.entries[id] = data.interstellar.stars[id];
                 }
-            }
-        } else if(data.interstellar){
-            for(id in this.comms.entries){
-                if(data.interstellar.machines[id])this.comms.entries[id].count = data.interstellar.machines[id].count;
-            }
-            for(id in this.rocket.entries){
-                this.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
-            }
-            for(id in this.rocketParts.entries){
-                this.rocketParts.entries[id].count = data.interstellar.machines[id].count;
-            }
-            for(id in this.antimatter.entries){
-                this.antimatter.entries[id].count = data.interstellar.machines[id].count;
             }
         }
         this.military.updateShips();
