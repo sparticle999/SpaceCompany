@@ -1,12 +1,10 @@
 COST_TYPE = {
-    FIXED: 0,
-    PERCENT: 1
+    FIXED: 0
 };
 
 TECH_TYPE = {
     UPGRADE: 0,
-    UNLOCK: 1,
-    STORAGE: 2
+    UNLOCK: 1
 };
 
 BUILDING_TYPE = {
@@ -20,6 +18,30 @@ RESOURCE_OBSERVER_TYPE = {
     PER_SECOND: 3
 };
 
+RESOURCE = {
+	Energy: 'energy',
+	Plasma: 'plasma',
+	Uranium: 'uranium',
+	Lava: 'lava',
+	Oil: 'oil',
+	Metal: 'metal',
+	Gem: 'gem',
+	Charcoal: 'charcoal',
+	Wood: 'wood',
+	Silicon: 'silicon',
+	Lunarite: 'lunarite',
+	Methane: 'methane',
+	Titanium: 'titanium',
+	Gold: 'gold',
+	Silver: 'silver',
+	Hydrogen: 'hydrogen',
+	Helium: 'helium',
+	Ice: 'ice',
+	Meteorite: 'meteorite',
+	Science: 'science',
+	RocketFuel: 'rocketFuel'
+};
+
 INDEX_NONE = -1;
 
 Game.constants = (function(){
@@ -28,7 +50,7 @@ Game.constants = (function(){
     instance.iconPath = "Icons/";
     instance.iconExtension = "png";
 
-    instance.rank = ["Space Noob", "Space Explorer", "Solar Traveler", "Spaceship Pilot", "Dyson Sphere Technician", "Wonder Builder", "Overlord Associate", "Interstellar Space Farer", "Console Cheater", "Save File Editor", "Source Code Hacker", "The Prestiged"]
+    instance.rank = ["Space Noob", "Space Explorer", "Solar Traveler", "Spaceship Pilot", "Dyson Sphere Technician", "Wonder Builder", "Overlord Associate", "Antimatter Tester", "Rocket Engineer", "Interstellar Space Farer", "Fleet Commander", "Faction Diplomat", "Console Cheater", "Save File Editor", "Source Code Hacker", "The Prestiged"]
     instance.achievementMax = 1000;
     instance.achievementIconsPerRow = 4;
     instance.achievementResourceBrackets = [50, 5000, 500000, 50000000, 5000000000];
@@ -45,9 +67,7 @@ Game.constants = (function(){
     instance.maxTier = 6;
 
     instance.enableStorageNotifications = false;
-    instance.enableDataDrivenResources = false;
     instance.enableMachineTab = false;
-    instance.enableInterstellar = false;
 
     return instance;
 }());

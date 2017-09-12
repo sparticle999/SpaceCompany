@@ -72,6 +72,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Rebuilt Achievement Tooltips
 - Dark Matter
 - Hide Completed Tabs Button
+- Added Astronomical Breakthrough
+- Seperate Option for Autosave Notifications
 
 ##### Small Changes
 
@@ -104,6 +106,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Optimised Saving and Loading
 - Time until storage full now shows until empty if negative gain
 - Reset achievements
+- Standardised gainResource() function
+- Achievement Stars are worth their position
 
 ##### Bug Fixes
 
@@ -140,6 +144,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Typos
 - Fixed Stargaze not showing up until refresh
 - Fixed Silicon Achievement not existing
+- Fixed Logo not animating
 
 ### v0.4.4
 ##### Features

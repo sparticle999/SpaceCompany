@@ -57,8 +57,8 @@ function getRocket(){
 }
 
 function launchRocket(){
-	if(rocket >= 1 && rocketFuel >= 20){
-		rocketFuel -= 20;
+	if(rocket >= 1 && getResource(RESOURCE.RocketFuel) >= 20){
+		Game.resources.takeResource(RESOURCE.RocketFuel, 20);
 		rocket -= 1;
 		document.getElementById("spaceRocket").className = "hidden";
 		document.getElementById("collapseInner").className ="collapseInner";
@@ -86,8 +86,8 @@ function explore(planet){
 	};
 
 	if(!planetsData[planet]) return console.error("Cannot explore \"" + planet + "\", data not found.");
-	if(rocketFuel >= planetsData[planet].fuel) {
-		rocketFuel -= planetsData[planet].fuel;
+	if (getResource(RESOURCE.RocketFuel) >= planetsData[planet].fuel) {
+		Game.resources.takeResource(RESOURCE.RocketFuel, planetsData[planet].fuel);
 		document.getElementById("explore" + planet).className = "hidden";
 		buttonsHidden.push("explore" + planet);
 		explored.push(planet.substring(0, 1).toLowerCase() + planet.substring(1));

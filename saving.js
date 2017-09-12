@@ -10,6 +10,8 @@ function legacySave(data) {
 		heaterToggled: heaterToggled,
 		plasmatic: plasmatic,
 		plasmaticToggled: plasmaticToggled,
+		bath: bath,
+		bathToggled: bathToggled,
 		energy: energy,
 		battery: battery,
 		batteryT2: batteryT2,
@@ -63,6 +65,7 @@ function legacySave(data) {
 		labT2: labT2,
 		labT3: labT3,
 		labT4: labT4,
+		labT5: labT5,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
@@ -170,6 +173,22 @@ function legacySave(data) {
 		ring: ring,
 		antimatter: antimatter,
 		antimatterToggled: antimatterToggled,
+		planetNuke: planetNuke,
+		condensator: condensator,
+		fossilator: fossilator,
+		multiDrill: multiDrill,
+		diamondChamber: diamondChamber,
+		microPollutor: microPollutor,
+		forest: forest,
+		cloner: cloner,
+		interCow: interCow,
+		club: club,
+		philosopher: philosopher,
+		werewolf: werewolf,
+		tardis: tardis,
+		harvester: harvester,
+		cage: cage,
+		overexchange: overexchange,
 	}, data);
 
 	return localSave;
@@ -187,6 +206,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.plasmatic !== "undefined") plasmatic = savegame.plasmatic;
 		if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
+		if(typeof savegame.bath !== "undefined") bath = savegame.bath;
+		if(typeof savegame.bathToggled !== "undefined") bathToggled = savegame.bathToggled;
 		if(typeof savegame.energy !== "undefined") energy = savegame.energy;
 		if(typeof savegame.battery !== "undefined") battery = savegame.battery;
 		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;
@@ -240,6 +261,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.labT2 !== "undefined") labT2 = savegame.labT2;
 		if(typeof savegame.labT3 !== "undefined") labT3 = savegame.labT3;
 		if(typeof savegame.labT4 !== "undefined") labT4 = savegame.labT4;
+		if(typeof savegame.labT5 !== "undefined") labT5 = savegame.labT5;
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
@@ -350,5 +372,21 @@ function legacyLoad(savegame){
 		if(typeof savegame.ring !== "undefined") ring = savegame.ring;
 		if(typeof savegame.antimatter !== "undefined") antimatter = savegame.antimatter;
 		if(typeof savegame.antimatterToggled !== "undefined") antimatterToggled = savegame.antimatterToggled;
+		if(typeof savegame.planetNuke !== "undefined") planetNuke = savegame.planetNuke;
+		if(typeof savegame.condensator !== "undefined") condensator = savegame.condensator;
+		if(typeof savegame.fossilator !== "undefined") fossilator = savegame.fossilator;
+		if(typeof savegame.multiDrill !== "undefined") multiDrill = savegame.multiDrill;
+		if(typeof savegame.diamondChamber !== "undefined") diamondChamber = savegame.diamondChamber;
+		if(typeof savegame.microPollutor !== "undefined") microPollutor = savegame.microPollutor;
+		if(typeof savegame.forest !== "undefined") forest = savegame.forest;
+		if(typeof savegame.cloner !== "undefined") cloner = savegame.cloner;
+		if(typeof savegame.interCow !== "undefined") interCow = savegame.interCow;
+		if(typeof savegame.club !== "undefined") club = savegame.club;
+		if(typeof savegame.philosopher !== "undefined") philosopher = savegame.philosopher;
+		if(typeof savegame.werewolf !== "undefined") werewolf = savegame.werewolf;
+		if(typeof savegame.tardis !== "undefined") tardis = savegame.tardis;
+		if(typeof savegame.harvester !== "undefined") harvester = savegame.harvester;
+		if(typeof savegame.cage !== "undefined") cage = savegame.cage;
+		if(typeof savegame.overexchange !== "undefined") overexchange = savegame.overexchange;
 	}
 }

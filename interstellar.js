@@ -1,176 +1,588 @@
 Game.interstellar = (function(){
 
-	var instance = {
-		dataVersion: 1,
-		machines:{
-			engine: {
-				count: 0,
-				silicon: 500000,
-				meteorite: 10000,
-				hydrogen: 250000
-			},
-			aero: {
-				count: 0,
-				silver: 200000,
-				ice: 300000,
-				gem: 250000
-			},
-			shield: {
-				count: 0,
-				lunarite: 100000,
-				titanium: 100000,
-				metal: 100000
-			},
-			drive: {
-				count: 0,
-				silver: 163000000,
-				oil: 712000000,
-				meteorite: 12300000
-			},
-			IRS: {
-				count: 0,
-				metal: 38600000000,
-				ice: 4320000000,
-				meteorite: 15800000
-			},
-		},
-		interRocketBuilt: false,
-	};
+	var instance = {};
 
-	instance.entries = {};
+	instance.dataVersion = 1;
+    instance.entries = {};
+    instance.categoryEntries = {};
+    instance.navCount = 0;
 
-	instance.getEngine = function(){
-		if(silicon >= this.machines.engine.silicon && meteorite >= this.machines.engine.meteorite && hydrogen >= this.machines.engine.hydrogen && this.machines.engine.count < 25){
-			silicon -= this.machines.engine.silicon;
-			meteorite -= this.machines.engine.meteorite;
-			hydrogen -= this.machines.engine.hydrogen;
-			this.machines.engine.count += 1;
-			this.refreshUI();
-		}
-	};
+	instance.initialise = function (){
+		for (var id in Game.interstellarData) {
+            var data = Game.interstellarData[id];
+            
+            this.navCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'intnav_' + id,
+                current: 0,
+                displayNeedsUpdate: true
+            });
+            
+        }
 
-	instance.getAero = function(){
-		if(silver >= this.machines.aero.silver && ice >= this.machines.aero.ice && gem >= this.machines.aero.gem && this.machines.aero.count < 15){
-			silver -= this.machines.aero.silver;
-			ice -= this.machines.aero.ice;
-			gem -= this.machines.aero.gem;
-			this.machines.aero.count += 1;
-			this.refreshUI();
-		}
-	};
-
-	instance.getShield = function(){
-		if(lunarite >= this.machines.shield.lunarite && titanium >= this.machines.shield.titanium && metal >= this.machines.shield.metal && this.machines.shield.count < 50){
-			lunarite -= this.machines.shield.lunarite;
-			titanium -= this.machines.shield.titanium;
-			metal -= this.machines.shield.metal;
-			this.machines.shield.count += 1;
-			this.refreshUI();
-		}
-	};
-
-	instance.getDrive = function(){
-		if(silver >= this.machines.drive.silver && oil >= this.machines.drive.oil && meteorite >= this.machines.drive.meteorite){
-			silver -= this.machines.drive.silver;
-			oil -= this.machines.drive.oil;
-			meteorite -= this.machines.drive.meteorite;
-			this.machines.drive.count += 1;
-			this.refreshUI();
-		}
-	};
-
-	instance.getIRS = function(){
-		if(metal >= this.machines.IRS.metal && ice >= this.machines.IRS.ice && meteorite >= this.machines.IRS.meteorite){
-			metal -= this.machines.IRS.metal;
-			ice -= this.machines.IRS.ice;
-			meteorite -= this.machines.IRS.meteorite;
-			this.machines.IRS.count += 1;
-			this.refreshUI();
-		}
-	};
-
-	instance.buildRocket = function(){
-		if(this.machines.shield.count === 50 && this.machines.engine.count === 25 && this.machines.aero.count === 15){
-			for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
-				document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
-			}
-			//document.getElementById("T1Rocket").className = "";
-			this.interRocketBuilt = true;
-			document.getElementById("interRocketBuilt").className = "green";
-			document.getElementById("interRocketBuilt").innerHTML = "Built";
-		}
+        console.log("Loaded " + this.navCount + " Interstellar Navs");
+        this.comms.initialise();
+        this.rocketParts.initialise();
+        this.rocket.initialise();
+        this.antimatter.initialise();
+        this.military.initialise();
+        this.stars.initialise();
 	}
 
-	instance.refreshUI = function(){
+	instance.getInterstellarData = function(id) {
+        return this.entries[id];
+    };
 
-		this.machines.engine.silicon = Math.floor(500000 * Math.pow(1.1,this.machines.engine.count));
-		this.machines.engine.meteorite = Math.floor(10000 * Math.pow(1.1,this.machines.engine.count));
-		this.machines.engine.hydrogen = Math.floor(250000 * Math.pow(1.1,this.machines.engine.count));
-		this.machines.aero.silver = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
-		this.machines.aero.ice = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
-		this.machines.aero.gem = Math.floor(100000 * Math.pow(1.1,this.machines.aero.count));
-		this.machines.shield.lunarite = Math.floor(200000 * Math.pow(1.1,this.machines.shield.count));
-		this.machines.shield.titanium = Math.floor(300000 * Math.pow(1.1,this.machines.shield.count));
-		this.machines.shield.metal = Math.floor(250000 * Math.pow(1.1,this.machines.shield.count));
-		this.machines.drive.silver = Math.floor(163000000 * Math.pow(1.1,this.machines.drive.count));
-		this.machines.drive.oil = Math.floor(712000000 * Math.pow(1.1,this.machines.drive.count));
-		this.machines.drive.meteorite = Math.floor(12300000 * Math.pow(1.1,this.machines.drive.count));
+    instance.save = function(data){
+        data.interstellar = {comms: {}, rocket: {}, rocketParts: {}, antimatter: {}, stars: {}, military: {}};
+        for(id in this.comms.entries){
+            data.interstellar.comms[id] = this.comms.entries[id];
+        }
+        for(id in this.rocket.entries){
+            data.interstellar.rocket[id] = this.rocket.entries[id];
+        }
+        for(id in this.rocketParts.entries){
+            data.interstellar.rocketParts[id] = this.rocketParts.entries[id];
+        }
+        for(id in this.antimatter.entries){
+            data.interstellar.antimatter[id] = this.antimatter.entries[id];
+        }
+        for(id in this.military.entries){
+            data.interstellar.military[id] = this.military.entries[id];
+        }
+        for(id in this.stars.entries){
+            data.interstellar.stars[id] = this.stars.entries[id];
+        }
+    };
 
-		this.machines.IRS.metal = Math.floor(38600000000 * Math.pow(1.1,this.machines.IRS.count));
-		this.machines.IRS.ice = Math.floor(4320000000 * Math.pow(1.1,this.machines.IRS.count));
-		this.machines.IRS.meteorite = Math.floor(15800000 * Math.pow(1.1,this.machines.IRS.count));
-
-		document.getElementById("engineSiliconCost").innerHTML = Game.settings.format(this.machines.engine.silicon);
-		document.getElementById("engineMeteoriteCost").innerHTML = Game.settings.format(this.machines.engine.meteorite);
-		document.getElementById("engineHydrogenCost").innerHTML = Game.settings.format(this.machines.engine.hydrogen);
-		document.getElementById("engine").innerHTML = this.machines.engine.count;
-		document.getElementById("aeroSilverCost").innerHTML = Game.settings.format(this.machines.aero.silver);
-		document.getElementById("aeroIceCost").innerHTML = Game.settings.format(this.machines.aero.ice);
-		document.getElementById("aeroGemCost").innerHTML = Game.settings.format(this.machines.aero.gem);
-		document.getElementById("aero").innerHTML = this.machines.aero.count;
-		document.getElementById("shieldLunariteCost").innerHTML = Game.settings.format(this.machines.shield.lunarite);
-		document.getElementById("shieldTitaniumCost").innerHTML = Game.settings.format(this.machines.shield.titanium);
-		document.getElementById("shieldMetalCost").innerHTML = Game.settings.format(this.machines.shield.metal);
-		document.getElementById("shield").innerHTML = this.machines.shield.count;
-		document.getElementById("driveSilverCost").innerHTML = Game.settings.format(this.machines.drive.silver);
-		document.getElementById("driveOilCost").innerHTML = Game.settings.format(this.machines.drive.oil);
-		document.getElementById("driveMeteoriteCost").innerHTML = Game.settings.format(this.machines.drive.meteorite);
-		document.getElementById("drive").innerHTML = this.machines.drive.count;
-
-		document.getElementById("IRSMetalCost").innerHTML = Game.settings.format(this.machines.IRS.metal);
-		document.getElementById("IRSIceCost").innerHTML = Game.settings.format(this.machines.IRS.ice);
-		document.getElementById("IRSMeteoriteCost").innerHTML = Game.settings.format(this.machines.IRS.meteorite);
-		document.getElementById("IRS").innerHTML = this.machines.IRS.count;
-	}
-
-	instance.save = function(data){
-		data.interstellar = {version: this.dataVersion, machines: {}, interRocketBuilt: this.interRocketBuilt};
-		for(var id in this.machines){
-			data.interstellar.machines[id] = this.machines[id];
-		}
-	}
-
-	instance.load = function(data){
-		if(data.interstellar) {
-            if(data.interstellar.version && data.interstellar.version === this.dataVersion) {
-                for(var id in data.interstellar.machines) {
-                    this.machines[id] = data.interstellar.machines[id];
+    instance.load = function(data){
+        if(data.interstellar){
+            if(typeof data.interstellar.comms !== 'undefined'){
+                for(id in data.interstellar.comms){
+                    this.comms.entries[id].count = data.interstellar.comms[id].count;
                 }
             }
-            if(data.interstellar.interRocketBuilt && data.interstellar.interRocketBuilt === true){
-		        for(var i = 0; i < document.getElementsByClassName("interRocketBuild").length; i++){
-					document.getElementsByClassName("interRocketBuild")[i].className = "interRocketBuild hidden";
-				}
-				//document.getElementById("T1Rocket").className = "";
-				this.interRocketBuilt = true;
-				document.getElementById("interRocketBuilt").className = "green";
-				document.getElementById("interRocketBuilt").innerHTML = "Built";
-		    }
+            if(typeof data.interstellar.rocket !== 'undefined'){
+                for(id in data.interstellar.rocket){
+                    this.rocket.entries[id].count = data.interstellar.rocket[id].count;
+                }
+            }
+            if(typeof data.interstellar.rocketParts !== 'undefined'){
+                for(id in data.interstellar.rocketParts){
+                    this.rocketParts.entries[id].count = data.interstellar.rocketParts[id].count;
+                }
+            }
+            if(typeof data.interstellar.antimatter !== 'undefined'){
+                for(id in data.interstellar.antimatter){
+                    this.antimatter.entries[id].count = data.interstellar.antimatter[id].count;
+                }
+            }
+            if(typeof data.interstellar.military !== 'undefined'){
+                for(id in data.interstellar.military){
+                    this.military.entries[id].count = data.interstellar.military[id].count;
+                }
+            }
+            if(typeof data.interstellar.stars !== 'undefined'){
+                for(id in data.interstellar.stars){
+                    this.stars.entries[id] = data.interstellar.stars[id];
+                }
+            }
+        } else if(data.interstellar){
+            for(id in this.comms.entries){
+                if(data.interstellar.machines[id])this.comms.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in this.rocket.entries){
+                this.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
+            }
+            for(id in this.rocketParts.entries){
+                this.rocketParts.entries[id].count = data.interstellar.machines[id].count;
+            }
+            for(id in this.antimatter.entries){
+                this.antimatter.entries[id].count = data.interstellar.machines[id].count;
+            }
         }
-        
-	    this.refreshUI();
-	}
+        this.military.updateShips();
+        this.military.updateFleetStats();
+    };
+
+    instance.redundantChecking = function(){
+        var objects = ["comms", "rocket", "antimatter", "stargate"];
+        for(var i = 0; i < objects.length; i++){
+            if(contains(activated, objects[i]) == true){
+                if(objects[i] == 'stargate'){
+                    this.entries['travel'].unlocked = true;
+                    this.entries['travel'].displayNeedsUpdate = true;
+                    this.entries['military'].unlocked = true;
+                    this.entries['military'].displayNeedsUpdate = true;
+                } else {
+                    this.entries[objects[i]].unlocked = true;
+                    this.entries[objects[i]].displayNeedsUpdate = true;
+                }
+                document.getElementById("interstellarTab").className = "";
+            }
+        }
+        for(var id in this.stars.entries){
+            var data = this.stars.getStarData(id);
+            if(data.explored == true){
+                data.displayNeedsUpdate = true;
+                document.getElementById('star_' + id + '_conquer').className = "";
+            }
+        }
+        for(var id in this.entries){
+            if(id == "rocket" || "travel")continue;
+            console.log(id)
+            for(var entry in Game.interstellar[id].entries){
+                Game.interstellar[id].updateCost[entry];
+            }
+        }
+
+        // stargaze
+        if(sphere != 0){
+            Game.stargaze.unlocked = true;
+        }
+    };
 
 	return instance;
+
+
+}());
+
+Game.interstellar.comms = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.categoryEntries = {};
+    instance.entries = {};
+
+    instance.initialise = function(){
+        for (var id in Game.commsData) {
+            var data = Game.commsData[id];
+            this.navCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'comm_' + id,
+                count: 0,
+                displayNeedsUpdate: true
+            });
+        }
+    };
+
+    instance.calcCost = function(self, resource){
+        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+    };
+
+    instance.updateCost = function(entryName){
+        for(var resource in this.entries[entryName].cost){
+            var target = 0;
+            for(var i = 0; i < Object.keys(Game.interstellarUI.commObservers[entryName]).length; i++){
+                if(resource == Game.interstellarUI.commObservers[entryName][i].resource){
+                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.commObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                }
+            }
+        }
+    };
+
+    instance.buildMachine = function(entryName) {
+        // Add the buildings and clamp to the maximum
+        var data = this.entries[entryName];
+        if(data.count >= data.max){
+            return;
+        }
+        var resourcePass = 0;
+        for(var resource in data.cost){
+            if(window[resource.toString()] >= data.cost[resource.toString()]){
+                resourcePass += 1;
+            }
+        }
+        if(resourcePass === Object.keys(data.cost).length){
+            data.count += 1;
+            for(var resource in data.cost){
+                window[resource.toString()] -= data.cost[resource.toString()];
+            }            
+            data.displayNeedsUpdate = true;
+        }
+        this.updateCost(entryName);
+    };
+
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
+    };
+
+    instance.getMachineData = function(id) {
+        return this.entries[id];
+    };
+
+    return instance;
+
+}());
+
+Game.interstellar.antimatter = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.categoryEntries = {};
+    instance.entries = {};
+
+    instance.initialise = function(){
+        for (var id in Game.antimatterData) {
+            var data = Game.antimatterData[id];
+            this.navCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'antimatter_' + id,
+                count: 0,
+                displayNeedsUpdate: true
+            });
+        }
+    };
+
+    instance.calcCost = function(self, resource){
+        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+    };
+
+    instance.updateCost = function(entryName){
+        for(var resource in this.entries[entryName].cost){
+            var target = 0;
+            for(var i = 0; i < Object.keys(Game.interstellarUI.antimatterObservers[entryName]).length; i++){
+                if(resource == Game.interstellarUI.antimatterObservers[entryName][i].resource){
+                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.antimatterObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                }
+            }
+        }
+    };
+
+    instance.buildMachine = function(entryName) {
+        // Add the buildings and clamp to the maximum
+        var resourcePass = 0;
+        for(var resource in this.entries[entryName].cost){
+            if(window[resource.toString()] >= this.entries[entryName].cost[resource.toString()]){
+                resourcePass += 1;
+            }
+        }
+        if(resourcePass === Object.keys(data.cost).length){
+            this.entries[entryName].count += 1;
+            for(var resource in this.entries[entryName].cost){
+                window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
+            }            
+            this.entries[entryName].displayNeedsUpdate = true;
+        }
+        this.updateCost(entryName);
+    };
+
+    instance.destroyMachine = function(entryName){
+        if(this.entries[entryName].count > 0){
+            this.entries[entryName].count -= 1;
+            this.updateCost(entryName);
+        }
+    };
+
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
+    };
+
+    instance.getMachineData = function(id) {
+        return this.entries[id];
+    };
+
+    return instance;
+
+}());
+
+Game.interstellar.military = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.categoryEntries = {};
+    instance.entries = {};
+
+    instance.power = 0;
+    instance.defense = 0;
+    instance.speed = 0;
+
+    instance.activePower = 0;
+    instance.activeDefense = 0;
+    instance.activeSpeed = 0;
+
+    instance.initialise = function(){
+        for (var id in Game.militaryData) {
+            var data = Game.militaryData[id];
+            this.navCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'milit_' + id,
+                count: 0,
+                active: 0,
+                displayNeedsUpdate: true
+            });
+        }
+    };
+
+    instance.calcCost = function(self, resource){
+        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+    };
+
+    instance.updateCost = function(entryName){
+        for(var resource in this.entries[entryName].cost){
+            var target = 0;
+            for(var i = 0; i < Object.keys(Game.interstellarUI.militaryObservers[entryName]).length; i++){
+                if(resource == Game.interstellarUI.militaryObservers[entryName][i].resource){
+                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.militaryObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                }
+            }
+        }
+    };
+
+    instance.buildShip = function(entryName) {
+        // Add the ships and clamp to the maximum
+        var resourcePass = 0;
+        var ship = this.entries[entryName];
+        for(var resource in ship.cost){
+            if(window[resource.toString()] >= ship.cost[resource.toString()]){
+                resourcePass += 1;
+            }
+        }
+        if(resourcePass === Object.keys(ship.cost).length){
+            ship.count += 1;
+            for(var resource in ship.cost){
+                window[resource.toString()] -= ship.cost[resource.toString()];
+            }            
+            ship.displayNeedsUpdate = true;
+        }
+        this.updateCost(entryName);
+        this.updateFleetStats();
+        this.updateShips();
+    };
+
+    instance.updateFleetStats = function(){
+        // Total Ships
+        var number = 0;
+        var stats = {power: 0, defense: 0, speed: 0};
+        for(var shipClass in this.entries){
+            var data = this.entries[shipClass];
+            var count = data.count;
+            stats.power += data.stats.power*count;
+            stats.defense += data.stats.defense*count;
+            stats.speed += data.stats.speed*count;
+            number += count;
+        }
+        if(number != 0){
+            stats.speed = Math.floor(stats.speed/number);
+            for(var stat in stats){
+                var updateList = document.getElementsByClassName("fleet" + Game.utils.capitaliseFirst(stat));
+                for(var j = 0; j < updateList.length; j++){
+                    updateList[j].innerHTML = stats[stat];
+                }
+            }
+            this.power = stats.power;
+            this.defense = stats.defense;
+            this.speed = stats.speed;
+        }
+
+        //Active Ships
+        var number = 0;
+        stats = {power: 0, defense: 0, speed: 0};
+        for(var shipClass in this.entries){
+            var data = this.entries[shipClass];
+            var count = data.active;
+            stats.power += data.stats.power*count;
+            stats.defense += data.stats.defense*count;
+            stats.speed += data.stats.speed*count;
+            number += count;
+        }
+        if(number != 0){
+            stats.speed = Math.floor(stats.speed/number);
+            for(var stat in stats){
+                var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
+                for(var j = 0; j < updateList.length; j++){
+                    updateList[j].innerHTML = stats[stat];
+                }
+            }
+            this.activePower = stats.power;
+            this.activeDefense = stats.defense;
+            this.activeSpeed = stats.speed;
+        }
+    };
+
+    instance.updateShips = function(){
+        for(var ship in this.entries){
+            if(this.entries[ship].displayNeedsUpdate == true){
+                var updateList = document.getElementsByClassName(ship + "Count");
+                for(var i = 0; i < updateList.length; i++){
+                    updateList[i].innerHTML = this.entries[ship].count;
+                }
+                var activeUpdateList = document.getElementsByClassName(ship + "Active");
+                for(var i = 0; i < activeUpdateList.length; i++){
+                    activeUpdateList[i].innerHTML = this.entries[ship].active;
+                }
+            }
+        }
+    };
+
+    instance.addShip = function(shipName, num){
+        var ship = this.entries[shipName];
+        if(num == "max"){
+            ship.active = ship.count;
+        } else if(num == "none"){
+            ship.active = 0;
+        } else if(ship.active + num <= ship.count && ship.active + num >= 0){
+            ship.active += num;
+        }
+        ship.displayNeedsUpdate = true;
+        this.updateFleetStats();
+        this.updateShips();
+    };
+
+    instance.getThreat = function(power, num){
+        var threatLevels = ["•", "••", "•••", "I", "II", "III", "X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"];
+        var threshholds = [40,100,180,280,400,540,700,880,1080,1300,1540,1800];
+        var level = 0;
+        for(var i = 0; i < threshholds.length; i++){
+            if(power >= threshholds[i]){
+                level += 1;
+            } else {
+                continue;
+            }
+        }
+        if(num){
+            return level;
+        } else {
+            return threatLevels[level];
+        }
+    };
+
+    instance.getSpyChance = function(star, multi){
+        var threat = this.getThreat(star.stats.power*(multi||1), true)+1;
+        return chance = this.entries.scout.active/threat*(20/(star.spy+1));
+    }
+
+    instance.spy = function(starName){
+        console.log("Spying on " + starName);
+        var star = Game.interstellar.stars.getStarData(starName);
+        var chance = this.getSpyChance(star)/100;
+        var roll = Math.random();
+        if(chance >= roll){
+            star.spy += 1;
+            Game.notifyInfo("Successful Espionage!", "You have found out more about the star system!");
+        } else {
+            var scout = this.entries.scout;
+            scout.count -= scout.active;
+            scout.active = 0;
+            Game.notifyInfo("Espionage Failed!", "You lost all of your active scouts.");
+        }
+        this.updateFleetStats();
+        this.updateShips();
+    };
+
+    instance.getMultiplier = function(factionId){
+        var op=Game.stargaze.getStargazeData(factionId).opinion;
+        if(op>=20&&op<60){
+            return 0.5;
+        } else if(op>=-20&&op<20){
+            return 1;
+        } else if(op>=-60&&op<-20){
+            return 2;
+        } else if(op<-60){
+            return 3;
+        } else{
+            return 0;
+        }
+    };
+
+
+    instance.getChance = function(star){
+        if(this.power!=0){
+            var multi = this.getMultiplier(star.factionId);
+            if(multi == 0){
+                return "peace";
+            }
+            var damage = (this.activePower/star.stats.defense*multi)*this.activeSpeed;
+            var starDamage = (star.stats.power*multi/Math.max(this.activeDefense,1))*star.stats.speed;
+            if(damage > starDamage){
+                return (damage/starDamage)-0.5;
+            } else {
+                return Math.max(0, 1.5-(starDamage/damage));
+            }
+        }
+    }
+
+    instance.invadeSystem = function(starName){
+        if(this.power!=0){
+            var star = this.stars.getStarData(starName);
+            var chance = this.getChance(star);
+            if(chance == "peace"){
+                return;
+            }
+            var roll = Math.random();
+            if(chance >= roll){
+                star.owned = true;
+                var randomShips = Game.utils.randArb(0,chance);
+                if(randomShips < 1){
+                    for(var ship in this.entries){
+                        var shipData = this.getShipData(ship);
+                        for(var i = 0; i < shipData.active; i++){
+                            // Chance to keep the ship
+                            var destroyChance = Math.random();
+                            if(destroyChance > chance){
+                                shipData.active -= 1;
+                                shipData.count -= 1;
+                            }
+                        }
+                        shipData.displayNeedsUpdate = true;
+                    }
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
+                } else {
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    
+                }
+                var faction = Game.stargaze.getStargazeData(star.factionId);
+                faction.opinion -= 10;
+                faction.displayNeedsUpdate = true;
+            } else {
+                for(var ship in this.entries){
+                    var shipData = this.getShipData(ship);
+                    for(var i = shipData.active; i > 0; i--){
+                        // Destroy all active ships
+                        shipData.active -= 1;
+                        shipData.count -= 1;
+                    }
+                    shipData.displayNeedsUpdate = true;
+                }
+                Game.notifyInfo("Failed Invasion!", "Unfortunately, the enemy forces were too strong for you. They have destroyed all of your active ships.");
+            }
+            star.displayNeedsUpdate = true;
+            this.updateFleetStats();
+            this.updateShips();
+        }
+    };
+
+    instance.absorbSystem = function(id){
+        var data = this.stars.entries[id];
+        var faction = Game.stargaze.getStargazeData(data.factionId);
+        if(faction.opinion >= 60){
+            faction.opinion -= 5;
+            data.owned = true;
+            data.displayNeedsUpdate = true;
+            faction.displayNeedsUpdate = true;
+        }
+    };
+
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
+    };
+
+    instance.getShipData = function(id) {
+        return this.entries[id];
+    };
+
+    return instance;
 
 }());

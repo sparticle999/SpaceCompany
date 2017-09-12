@@ -22,12 +22,13 @@ Game.stargazeUI = (function(){
     instance.categoryNames = {};
 
     instance.initialise = function() {
-        if(sphere == 0) {
-            return;
-        }
 
         this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze (Indev)'});
         this.tab.initialise();
+
+        if(sphere == 0) {
+            document.getElementById("stargazeTab").className = "hidden";
+        }
 
         instance.introTitleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
@@ -60,18 +61,18 @@ Game.stargazeUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.navTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2">',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
                     '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         instance.dmNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2" class="{{hidden}}">',
+            ['<td style="vertical-align:middle;" colspan="2">',
                     '<span>{{name}}</span>',
                 '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1" class="{{hidden}}">',
+                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
                     '<span id="{{htmlId}}_count">{{count}}</span> (<span id="{{htmlId}}_current">{{current}}</span>)',
                 '</td>',].join('\n'));
 
@@ -81,6 +82,17 @@ Game.stargazeUI = (function(){
                 '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
+        instance.rebirthTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"><td>',
+                '<h3 class="default btn-link">{{name}}</h3>',
+                '<span>',
+                    '<p>{{desc}}</p>',
+                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
+                '</span>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Rebirth</div>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
         instance.upgradeTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Achieved">Dormant</span></h3>',
@@ -88,7 +100,7 @@ Game.stargazeUI = (function(){
                     '<p>{{desc}}</p>',
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
-                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default {{disabled}}">Activate</div>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default">Activate</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -100,47 +112,83 @@ Game.stargazeUI = (function(){
             this.tab.addCategory(id, Game.stargaze.categoryEntries[id].title);
         }
 
-        for(var id in Game.stargazeData) {
+        for(var id in Game.stargaze.entries) {
             this.createDisplay(id);
         }
     };
 
     instance.update = function(delta) {
 
-        // for(var id in this.entries) {
-        //     var data = Game.resources.getResourceData(this.entries[id].id);
-        //     if(data.displayNeedsUpdate === true) {
-        //         this.updateDisplay(data);
-        //     }
-        // }
+        if(Game.stargaze.unlocked == true){
+            document.getElementById("stargazeTab").className = "";
+        }
 
         this.updateDM();
 
         for(var id in Game.stargaze.entries){
             var data = Game.stargaze.getStargazeData(id);
-            if(data.category == "faction"){
-                $('#stargazeNav' + id + '_opinion').text(data.opinion);
+            if(data.displayNeedsUpdate == true){
+                if(data.category == "faction"){
+                    $('#stargazeNav' + id + '_opinion').text(data.opinion);
+                    $('#intnav_' + id + '_opinion').text(data.opinion);
+                    if(data.unlocked == true){
+                        document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction";
+                    } else {
+                        document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction hidden";
+                    }
+                }
+                data.displayNeedsUpdate = false;
             }
         }
 
-        // for(var id in Game.resources.categoryEntries) {
-        //     if(this.tab.categoryHasVisibleEntries(id) === true) {
-        //         this.tab.showCategory(id);
-        //     } else {
-        //         this.tab.hideCategory(id);
-        //     }
-        // }
+        if(Game.stargaze.rebirthNeedsUpdate === true){
+            var stargaze = Game.stargaze;
+            // Unhides relevant elements
+            for(var i = 0; i < stargaze.rebirthUnlocked.length; i++){
+                var string = document.getElementById(stargaze.rebirthUnlocked[i]).className;
+                document.getElementById(stargaze.rebirthUnlocked[i]).className = string.substring(0, string.indexOf("hidden"));
+            }
+            for(var i = 0; i < stargaze.rebirthChildUnlocked.length; i++){
+                var children = $('#'+ stargaze.rebirthChildUnlocked[i]).children();
+                for(var j = 0; j < children.length; j++){
+                    children[j].className = "";
+                }
+            }
+            // Hides achieved upgrades // (for later)
+            // for(var id in Game.stargaze.upgradeEntries){
+            //     var data = Game.stargaze.upgradeEntries[id];
+            //     if(data.achieved == true){
+            //         document.getElementById("stargazeUpg" + id).className = "hidden";
+            //     }
+            // }
+
+            // Marks achieved upgrades as 'Activated'
+            for(var id in Game.stargaze.upgradeEntries){
+                var data = Game.stargaze.upgradeEntries[id];
+                if(data.achieved == true){
+                    if(id != 'rebirth'){
+                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
+                        document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
+                    }
+                }
+            }
+            stargaze.rebirthNeedsUpdate = false;
+        }
     };
 
     instance.createDMInfo = function(data, dmInfoData){
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         var dmInfo = this.dmInfoTemplate(dmInfoData);
         tabContentRoot.append($(dmInfo));
-    }
+    };
 
     instance.createUpgrade = function(data, upgradeData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        var upgrade = this.upgradeTemplate(upgradeData);
+        if(upgradeData.name == "Rebirth"){
+            var upgrade = this.rebirthTemplate(upgradeData);
+        } else {
+            var upgrade = this.upgradeTemplate(upgradeData);
+        }
         tabContentRoot.append($(upgrade));
         this[upgradeData.category + "Entries"][upgradeData.id] = upgradeData;
         //this.upgradeObservers[upgradeData.id] = [];
@@ -221,6 +269,8 @@ Game.stargazeUI = (function(){
             Game.stargaze.entries.darkMatter.current = DM;
             $('#stargazeNavdarkMatter_current').text(DM);
         }
+
+        $('#stargazeNavdarkMatter_count').text(Game.stargaze.entries.darkMatter.count);
     }
 
     instance.buildCostDisplay = function(observerArray, data) {
@@ -268,7 +318,7 @@ Game.stargazeUI = (function(){
 
         var segments = [];
         for(var id in data.cost) {
-            var rocketPartData = Game.interstellarBETA.rocketParts.getPartData(id);
+            var rocketPartData = Game.interstellar.rocketParts.getPartData(id);
             if(!data) {
                 console.error("Unknown Part in cost: " + id);
                 continue;

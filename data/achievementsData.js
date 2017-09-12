@@ -64,8 +64,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'uraniumIcon',
 		title: 'Collect %s Uranium',
-		evaluator: function(x) { return uranium >= x },
-		progressEvaluator: function(x) { return uranium/x }
+		evaluator: function(x) { return getResource(RESOURCE.Uranium) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Uranium) / x }
 	};
 	
 	instance.resLava = {
@@ -73,8 +73,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'lavaIcon',
 		title: 'Collect %s Lava',
-		evaluator: function(x) { return lava >= x },
-		progressEvaluator: function(x) { return lava/x }
+		evaluator: function(x) { return getResource(RESOURCE.Lava) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Lava) / x }
 	};
 	
 	instance.resOil = {
@@ -82,8 +82,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'oilIcon',
 		title: 'Collect %s Oil',
-		evaluator: function(x) { return oil >= x },
-		progressEvaluator: function(x) { return oil/x }
+		evaluator: function(x) { return getResource(RESOURCE.Oil) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Oil) / x }
 	};
 	
 	instance.resMetal = {
@@ -91,8 +91,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'metalIcon',
 		title: 'Collect %s Metal',
-		evaluator: function(x) { return metal >= x },
-		progressEvaluator: function(x) { return metal/x }
+		evaluator: function(x) { return getResource(RESOURCE.Metal) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Metal) / x }
 	};
 	
 	instance.resGems = {
@@ -100,8 +100,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'gemIcon',
 		title: 'Collect %s Gems',
-		evaluator: function(x) { return gem >= x },
-		progressEvaluator: function(x) { return gem/x }
+		evaluator: function(x) { return getResource(RESOURCE.Gem) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Gem) / x }
 	};
 
 	instance.resCharcoal = {
@@ -109,8 +109,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'charcoalIcon',
 		title: 'Collect %s Charcoal',
-		evaluator: function(x) { return charcoal >= x },
-		progressEvaluator: function(x) { return charcoal/x }
+		evaluator: function(x) { return getResource(RESOURCE.Charcoal) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Charcoal) / x }
 	};
 
 	instance.resWood = {
@@ -118,16 +118,16 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'woodIcon',
 		title: 'Collect %s Wood',
-		evaluator: function(x) { return wood >= x },
-		progressEvaluator: function(x) { return wood/x }
+		evaluator: function(x) { return getResource(RESOURCE.Wood) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Wood) / x }
 	};
 
 	instance.resSilicon = {
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'siliconIcon',
 		title: 'Collect %s Silicon',
-		evaluator: function(x) { return silicon >= x },
-		progressEvaluator: function(x) { return silicon/x }
+		evaluator: function(x) { return getResource(RESOURCE.Silicon) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Silicon) / x }
 	};
 
 	instance.resLunarite = {
@@ -135,8 +135,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'lunariteIcon',
 		title: 'Collect %s Lunarite',
-		evaluator: function(x) { return lunarite >= x },
-		progressEvaluator: function(x) { return lunarite/x }
+		evaluator: function(x) { return getResource(RESOURCE.Lunarite) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Lunarite) / x }
 	};
 	
 	instance.resMethane = {
@@ -144,8 +144,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'methaneIcon',
 		title: 'Collect %s Methane',
-		evaluator: function(x) { return methane >= x },
-		progressEvaluator: function(x) { return methane/x }
+		evaluator: function(x) { return getResource(RESOURCE.Methane) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Methane) / x }
 	};
 	
 	instance.resTitanium = {
@@ -153,8 +153,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'titaniumIcon',
 		title: 'Collect %s Titanium',
-		evaluator: function(x) { return titanium >= x },
-		progressEvaluator: function(x) { return titanium/x }
+		evaluator: function(x) { return getResource(RESOURCE.Titanium) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Titanium) / x }
 	};
 	
 	instance.resGold = {
@@ -162,8 +162,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'goldIcon',
 		title: 'Collect %s Gold',
-		evaluator: function(x) { return gold >= x },
-		progressEvaluator: function(x) { return gold/x }
+		evaluator: function(x) { return getResource(RESOURCE.Gold) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Gold) / x }
 	};
 	
 	instance.resSilver = {
@@ -171,8 +171,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'silverIcon',
 		title: 'Collect %s Silver',
-		evaluator: function(x) { return silver >= x },
-		progressEvaluator: function(x) { return silver/x }
+		evaluator: function(x) { return getResource(RESOURCE.Silver) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Silver) / x }
 	};
 	
 	instance.resHydrogen = {
@@ -180,8 +180,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'hydrogenIcon',
 		title: 'Collect %s Hydrogen',
-		evaluator: function(x) { return hydrogen >= x },
-		progressEvaluator: function(x) { return hydrogen/x }
+		evaluator: function(x) { return getResource(RESOURCE.Hydrogen) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Hydrogen) / x }
 	};
 	
 	instance.resHelium = {
@@ -189,8 +189,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'heliumIcon',
 		title: 'Collect %s Helium',
-		evaluator: function(x) { return helium >= x },
-		progressEvaluator: function(x) { return helium/x }
+		evaluator: function(x) { return getResource(RESOURCE.Helium) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Helium) / x }
 	};
 	
 	instance.resIce = {
@@ -198,8 +198,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'iceIcon',
 		title: 'Collect %s Ice',
-		evaluator: function(x) { return ice >= x },
-		progressEvaluator: function(x) { return ice/x }
+		evaluator: function(x) { return getResource(RESOURCE.Ice) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Ice) / x }
 	};
 	
 	instance.resMeteorite = {
@@ -207,8 +207,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'meteoriteIcon',
 		title: 'Collect %s Meteorite',
-		evaluator: function(x) { return meteorite >= x },
-		progressEvaluator: function(x) { return meteorite/x }
+		evaluator: function(x) { return getResource(RESOURCE.Meteorite) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Meteorite) / x }
 	};
 	
 	instance.resScience = {
@@ -216,8 +216,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'technologyIcon',
 		title: 'Collect %s Science',
-		evaluator: function(x) { return science >= x },
-		progressEvaluator: function(x) { return science/x }
+		evaluator: function(x) { return getResource(RESOURCE.Science) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Science) / x }
 	};
 
 	instance.resRocketFuel = {
@@ -225,8 +225,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'rocketFuelIcon',
 		title: 'Collect %s Rocket Fuel',
-		evaluator: function(x) { return rocketFuel >= x },
-		progressEvaluator: function(x) { return rocketFuel/x }
+		evaluator: function(x) { return getResource(RESOURCE.RocketFuel) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.RocketFuel) / x }
 	};
 	
 	/**************
@@ -303,6 +303,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Plasmatic Pits',
 		evaluator: function(x) { return plasmatic >= x },
 		progressEvaluator: function(x) { return plasmatic/x }
+	};
+
+	instance.prodPlasma3 = {
+		id_v4: 'ach_102',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'plasmaIcon',
+		title: 'Build %s Electron Baths',
+		evaluator: function(x) { return bath >= x },
+		progressEvaluator: function(x) { return bath/x }
 	};
 
 	instance.prodUranium1 = {
@@ -933,6 +942,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Scientific Observatories',
 		evaluator: function(x) { return labT4 >= x },
 		progressEvaluator: function(x) { return labT4/x }
+	};
+
+	instance.prodScience5 = {
+		id_v4: 'ach_101',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'technologyIcon',
+		title: 'Build %s Space Scientific Satellite Stations',
+		evaluator: function(x) { return labT5 >= x },
+		progressEvaluator: function(x) { return labT5/x }
 	};
 
 	instance.prodRocketFuel1 = {

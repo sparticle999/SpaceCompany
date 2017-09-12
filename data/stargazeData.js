@@ -28,7 +28,7 @@ Game.stargazeData = (function(){
 		para4: '"You will have many chances to impress me, as I will give you the ability of redemption when you feel the time has come and sacrifice is necessary. Your empire will grow even greater than before every time you rebirth, and as long as your alliegence lies with me, I will show you the way to galactic domination."',
 		para5: '"You will start over, a new life, but in exchange for your soul, I will reward your next self with the knowledge you have gained during your time in this universe and some of the most valuble material in this side of the multiverse: Dark Matter."',
 		category: "general",
-		hidden: "",
+		unlocked: true
 	};
 
 	instance.darkMatter = {
@@ -37,7 +37,7 @@ Game.stargazeData = (function(){
 		current: 0,
 		count: 0,
 		category: "general",
-		hidden: "",
+		unlocked: true
 	};
 
 	instance.carnelian = {
@@ -45,7 +45,7 @@ Game.stargazeData = (function(){
 		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 	instance.prasnian = {
@@ -53,7 +53,7 @@ Game.stargazeData = (function(){
 		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 	instance.hyacinite = {
@@ -61,7 +61,7 @@ Game.stargazeData = (function(){
 		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 	instance.kitrinos = {
@@ -69,7 +69,7 @@ Game.stargazeData = (function(){
 		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 	instance.moviton = {
@@ -77,7 +77,7 @@ Game.stargazeData = (function(){
 		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 	instance.overlord = {
@@ -85,7 +85,7 @@ Game.stargazeData = (function(){
 		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
 		category: "faction",
 		opinion: 0,
-		hidden: "hidden",
+		unlocked: false
 	};
 
 
@@ -138,13 +138,37 @@ Game.prestigeData = (function(){
 	** General **
 	************/
 
+	instance.rebirth = {
+		name: "Rebirth",
+		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades.",
+		cost: 0,
+		category: "intro",
+	};
+
 	instance.unlockStargaze = {
 		name: "Rebirth Upgrades",
 		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
 		cost: 1,
 		category: "intro",
+		onApply: function(){
+			for(var id in Game.stargaze.entries){
+	            var data = Game.stargaze.getStargazeData(id);
+	            data.unlocked = true;
+	            data.displayNeedsUpdate = true;
+	        }
+	    },
 		achieved: false,
-		disabled: "disabled"
+	};
+
+	instance.increaseProd1 = {
+		name: "Dark Matter Boost",
+		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
+		cost: 30,
+		category: "darkMatter",
+		onApply: function(){
+	        dmBoost += 0.01;
+	    },
+		achieved: false,
 	};
 
 	/**************
@@ -156,6 +180,19 @@ Game.prestigeData = (function(){
 		desc: "Increase all gain buttons to 20 per click instead of 1.",
 		cost: 5,
 		category: "carnelian",
+		onApply: function(){
+			// old
+			gainNum = 20;
+			for(var i = 0; i < resources.length; i++){
+				$('#' + resources[i] + 'Gain').text(gainNum);
+			}
+
+			// new
+			// for(var id in Game.resources.entries){
+			// 	Game.resources.entries[id].perClick = 20;
+			// 	Game.resources.entries[id].displayNeedsUpdate = true;
+			// }
+		},
 		achieved: false
 	};
 
@@ -164,12 +201,55 @@ Game.prestigeData = (function(){
 		desc: "Start with 6,400 max-storage on everything on rebirth.",
 		cost: 8,
 		category: "carnelian",
+		onApply: function(){
+			// old
+			var newStorage = 6400;
+			for(var i = 0; i < resources.length; i++){
+				window[resources[i] + "Storage"] = newStorage;
+				window[resources[i] + "NextStorage"] = newStorage * 2;
+			}
+
+			// new
+		},
 		achieved: false
 	};
 
 	/*************
 	** Prasnian **
 	*************/
+
+	instance.T3Plasma = {
+		name: "Tier 3 Plasma",
+		desc: "Unlock the Electron Bath",
+		cost: 11,
+		category: "prasnian",
+		onApply: function(){
+			document.getElementById("plasmaTier3").className = "";
+		},
+		achieved: false
+	};
+
+	instance.floor1Discount = {
+		name: "Floor 1 Discount",
+		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
+		cost: 25,
+		category: "prasnian",
+		onApply: function(){
+			floor1Price -= 0.15;
+		},
+		achieved: false
+	};
+
+	instance.floor23Discount = {
+		name: "Floor 2 & 3 Discount",
+		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
+		cost: 31,
+		category: "prasnian",
+		onApply: function(){
+			floor23Price -= 0.2;
+		},
+		achieved: false
+	};
 
 	/**************
 	** Hyacinite **
@@ -180,6 +260,12 @@ Game.prestigeData = (function(){
 		desc: "Start with 20 T1 Labs on rebirth.",
 		cost: 7,
 		category: "hyacinite",
+		onApply: function(){
+			// old
+			lab += 20;
+
+			// new
+		},
 		achieved: false
 	};
 
@@ -188,24 +274,38 @@ Game.prestigeData = (function(){
 		desc: "T2+ Labs are 20% cheaper with this upgrade.",
 		cost: 16,
 		category: "hyacinite",
+		onApply: function(){
+			// old
+			labT1Multi -= 0.2;
+			updateLabCost();
+
+			// new
+		},
 		achieved: false
 	};
 
-	instance.recycling = {
-		name: "Recycling",
-		desc: "Instead of destroying machines, recycle them for 50% of the cost!",
-		cost: 29,
+	instance.T5Labs = {
+		name: "Tier 5 Laboratories",
+		desc: "Unlock the Space Scientific Satellite Station",
+		cost: 24,
 		category: "hyacinite",
+		onApply: function(){
+			document.getElementById("labTier5").className = "";
+		},
 		achieved: false
 	};
 
 	instance.energyEff = {
 		name: "Energy Efficiency Cap",
 		desc: "Increase Energy Efficiency research cap to 50% instead of 25%.",
-		cost: 29,
+		cost: 36,
 		category: "hyacinite",
+		onApply: function(){
+			Game.tech.entries["energyEfficiencyResearch"].maxLevel += 25;
+		},
 		achieved: false
 	};
+
 
 	/*************
 	** Kitrinos **
@@ -216,16 +316,30 @@ Game.prestigeData = (function(){
 		desc: "All Tier 1 machines on every resource (in resources tab) are 10% cheaper.",
 		cost: 8,
 		category: "kitrinos",
+		onApply: function(){
+			T1Price -= 0.1;
+		},
 		achieved: false
 	};
 
 	instance.T5Machines = {
 		name: "Tier 5 Machines",
 		desc: "Gain access to a fifth tier of machines to produce resources.",
-		cost: 19,
+		cost: 35,
 		category: "kitrinos",
+		onApply: function(){
+			unlockTier5();
+		},
 		achieved: false
 	};
+
+	// instance.recycling = {
+	// 	name: "Recycling",
+	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
+	// 	cost: 29,
+	// 	category: "hyacinite",
+	// 	achieved: false
+	// };
 
 	/************
 	** Moviton **
@@ -236,16 +350,30 @@ Game.prestigeData = (function(){
 		desc: "Produce 100% more rocket fuel per chemical plant.",
 		cost: 11,
 		category: "moviton",
+		onApply: function(){
+			chemicalBoost += 1;
+		},
 		achieved: false
 	};
 
 	instance.rocketDiscount = {
 		name: "Rocket Discount",
-		desc: "Rocket Parts Cost 35% less (includes solar system rocket).",
+		desc: "Rocket Parts Cost 35% less.",
 		cost: 23,
 		category: "moviton",
+		onApply: function(){
+			rocketPrice -= 0.35;
+		},
 		achieved: false
 	};
+
+	// instance.spaceElevator = {
+	// 	name: "Space Elevator",
+	// 	desc: "Build a giant elevator to reduce antimatter costs by 20%",
+	// 	cost: 42,
+	// 	category: "moviton",
+	// 	achieved: false
+	// }
 
 	/*************
 	** Overlord **

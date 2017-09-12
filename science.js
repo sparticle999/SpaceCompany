@@ -40,10 +40,20 @@ function getLabT4(){
 	}
 }
 
+function getLabT5(){
+	if(wood >= labT5WoodCost && gem >= labT5GemCost && metal >= labT5MetalCost){
+		wood -= labT5WoodCost;
+		gem -= labT5GemCost;
+		metal -= labT5MetalCost;
+		labT5 += 1;
+		updateLabCost();
+	}
+}
+
 function updateLabCost(){
-	labWoodCost = Math.floor(10 * Math.pow(1.1,lab));
-	labGemCost = Math.floor(15 * Math.pow(1.1,lab));
-	labMetalCost = Math.floor(20 * Math.pow(1.1,lab));
+	labWoodCost = Math.floor(10 * Math.pow(1.1,lab) * labT1Multi);
+	labGemCost = Math.floor(15 * Math.pow(1.1,lab) * labT1Multi);
+	labMetalCost = Math.floor(20 * Math.pow(1.1,lab) * labT1Multi);
 
 	labT2WoodCost = Math.floor(500 * Math.pow(1.1,labT2));
 	labT2GemCost = Math.floor(200 * Math.pow(1.1,labT2));
@@ -53,9 +63,13 @@ function updateLabCost(){
 	labT3GemCost = Math.floor(4700 * Math.pow(1.1,labT3));
 	labT3MetalCost = Math.floor(17000 * Math.pow(1.1,labT3));
 
-	labT4WoodCost = Math.floor(610000 * Math.pow(1.1,labT4));
+	labT4MetalCost = Math.floor(610000 * Math.pow(1.1,labT4));
 	labT4GemCost = Math.floor(37000 * Math.pow(1.1,labT4));
-	labT4MetalCost = Math.floor(926000 * Math.pow(1.1,labT4));
+	labT4WoodCost = Math.floor(926000 * Math.pow(1.1,labT4));
+
+	labT5MetalCost = Math.floor(12400000 * Math.pow(1.1,labT5));
+	labT5GemCost = Math.floor(7300000 * Math.pow(1.1,labT5));
+	labT5WoodCost = Math.floor(15900000 * Math.pow(1.1,labT5));
 }
 
 function purchaseTech(id) {

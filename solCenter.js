@@ -1,11 +1,11 @@
 // Sol Center Tab
 
 function unlockPlasmaResearch(){
-	if(hydrogen >= 1500 && uranium >= 1500 && oil >= 15000 && wood >= 15000){
-		hydrogen -= 1500;
-		uranium -= 1500;
-		oil -= 15000;
-		wood -= 15000;
+	if(getResource(RESOURCE.Hydrogen) >= 1500 && getResource(RESOURCE.Uranium) >= 1500 && getResource(RESOURCE.Oil) >= 15000 && getResource(RESOURCE.Wood) >= 15000){
+		Game.resources.takeResource(RESOURCE.Hydrogen, 1500);
+		Game.resources.takeResource(RESOURCE.Uranium, 1500);
+		Game.resources.takeResource(RESOURCE.Oil, 15000);
+		Game.resources.takeResource(RESOURCE.Wood, 15000);
 		document.getElementById("researchPlasma").className = "hidden";
 		document.getElementById("unlockPlasma").className = "";
 		Game.tech.unlockTech("unlockPlasma");
@@ -15,9 +15,9 @@ function unlockPlasmaResearch(){
 }
 
 function unlockEmcResearch(){
-	if(energy >= 75000 && plasma >= 100){
-		energy -= 75000;
-		plasma -= 100;
+	if(getResource(RESOURCE.Energy) >= 75000 && getResource(RESOURCE.Plasma) >= 100){
+		Game.resources.takeResource(RESOURCE.Energy, 75000);
+		Game.resources.takeResource(RESOURCE.Plasma, 100);
 		document.getElementById("researchEmc").className = "hidden";
 		document.getElementById("unlockEmc").className = "";
 		Game.tech.unlockTech("unlockEmc");
@@ -27,9 +27,9 @@ function unlockEmcResearch(){
 }
 
 function unlockDysonResearch(){
-	if(energy >= 100000 && plasma >= 10000){
-		energy -= 100000;
-		plasma -= 10000;
+	if(getResource(RESOURCE.Energy) >= 100000 && getResource(RESOURCE.Plasma) >= 10000){
+		Game.resources.takeResource(RESOURCE.Energy, 100000);
+		Game.resources.takeResource(RESOURCE.Plasma, 10000);
 		document.getElementById("researchDyson").className = "hidden";
 		document.getElementById("unlockDyson").className = "";
 		Game.tech.unlockTech("unlockDyson");
@@ -75,16 +75,16 @@ function refreshConversionDisplay() {
 		var emcCostResource;
 		var emcCostMax;
 		if (resources[i] === 'meteorite') {
-			emcCostResource = plasma;
+			emcCostResource = getResource(RESOURCE.Plasma);
 			emcCostMax = maxPlasma;
 		} else {
-			emcCostResource = energy;
+			emcCostResource = getResource(RESOURCE.Energy);
 			emcCostMax = maxEnergy;
 		}
 
 		var value = window[resources[i] + 'EmcVal'];
-		var current = window[resources[i]];
-		var capacity = window[resources[i] + 'Storage'];
+		var current = getResource(resources[i]);
+		var capacity = getStorage(resources[i]);
 		var emcValue;
 		if (emcAmount === 'Max') {
 			emcValue = Math.floor(emcCostResource / value);
@@ -114,12 +114,12 @@ function refreshConversionDisplay() {
 }
 
 function convertEnergy(resourceName){
-	var current = window[resourceName];
-	var capacity = window[resourceName+"Storage"];
+	var current = getResource(resourceName);
+	var capacity = getStorage(resourceName);
 	var emcValue = window[resourceName + "EmcVal"];
 	var amount;
 	if(emcAmount === "Max"){
-		amount = Math.floor(Math.min(Math.floor(energy/emcValue), capacity - current));
+		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Energy)/emcValue), capacity - current));
 	}
 	else{
 		amount = Math.floor(Math.min(emcAmount, capacity - current));
@@ -127,33 +127,32 @@ function convertEnergy(resourceName){
 	
 	var requiredEnergy = amount * emcValue;
 
-	if(amount > 0 && energy >= requiredEnergy){
-		energy -= requiredEnergy;
-		window[resourceName] += amount;
+	if(amount > 0 && getResource(RESOURCE.Energy) >= requiredEnergy){
+		Game.resources.takeResource(RESOURCE.Energy, requiredEnergy);
+		Game.resources.addResource(resourceName, amount);
 		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
 
-        refreshConversionDisplay();
+		refreshConversionDisplay();
 	}
 }
 
 function convertPlasma(resourceName){
-    var current = window[resourceName];
-    var capacity = window[resourceName+"Storage"];
-    var emcValue = window[resourceName + "EmcVal"];
-    var amount;
-    if(emcAmount === "Max"){
-        amount = Math.floor(Math.min(Math.floor(plasma/emcValue), capacity - current));
-    }
-    else{
-        amount = Math.floor(Math.min(emcAmount, capacity - current));
-    }
+	var current = getResource(resourceName);
+	var capacity = getStorage(resourceName);
+	var emcValue = window[resourceName + "EmcVal"];
+	var amount;
+	if(emcAmount === "Max"){
+		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Plasma)/emcValue), capacity - current));
+	}
+	else{
+		amount = Math.floor(Math.min(emcAmount, capacity - current));
+	}
 
-    var requiredPlasma = amount*emcValue;
+	var requiredPlasma = amount*emcValue;
 
-	if(amount > 0 && plasma >= requiredPlasma){
-		plasma -= requiredPlasma;
-		window[resourceName] += amount;
-
+	if(amount > 0 && getResource(RESOURCE.Plasma) >= requiredPlasma){
+		Game.resources.takeResource(RESOURCE.Plasma, requiredPlasma);
+		Game.resources.addResource(resourceName, amount);
 		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
 
 		refreshConversionDisplay();
@@ -171,12 +170,12 @@ function updateDysonCost(){
 }
 
 function getDyson(){
-	if(titanium >= dysonTitaniumCost && gold >= dysonGoldCost && silicon >= dysonSiliconCost && meteorite >= dysonMeteoriteCost && ice >= dysonIceCost){
-		titanium -= dysonTitaniumCost;
-		gold -= dysonGoldCost;
-		silicon -= dysonSiliconCost;
-		meteorite -= dysonMeteoriteCost;
-		ice -= dysonIceCost;
+	if (getResource(RESOURCE.Titanium) >= dysonTitaniumCost && getResource(RESOURCE.Gold) >= dysonGoldCost && getResource(RESOURCE.Silicon) >= dysonSiliconCost && getResource(RESOURCE.Meteorite) >= dysonMeteoriteCost && getResource(RESOURCE.Ice) >= dysonIceCost) {
+		Game.resources.takeResource(RESOURCE.Titanium, dysonTitaniumCost);
+		Game.resources.takeResource(RESOURCE.Gold, dysonGoldCost);
+		Game.resources.takeResource(RESOURCE.Silicon, dysonSiliconCost);
+		Game.resources.takeResource(RESOURCE.Meteorite, dysonMeteoriteCost);
+		Game.resources.takeResource(RESOURCE.Ice, dysonIceCost);
 		dyson += 1;
 
 		updateDysonCost();
@@ -193,22 +192,22 @@ function buildDysonTo(n) {
 }
 
 function buildRing(){
-	if(dyson >= 50 && rocketFuel >= 50000){
+	if(dyson >= 50 && getResource(RESOURCE.RocketFuel) >= 50000){
 		dyson -= 50;
-		rocketFuel -= 50000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 50000);
 		ring += 1;
 
-        updateDysonCost();
+		updateDysonCost();
 	}
 }
 
 function buildSwarm(){
-	if(dyson >= 100 && rocketFuel >= 250000){
+	if(dyson >= 100 && getResource(RESOURCE.RocketFuel) >= 250000){
 		dyson -= 100;
-		rocketFuel -= 250000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 250000);
 		swarm += 1;
 
-        updateDysonCost();
+		updateDysonCost();
 	}
 }
 
@@ -217,14 +216,15 @@ function buildSphere(){
 		return;
 	}
 
-	if(dyson >= 250 && rocketFuel >= 1000000){
+	if(dyson >= 250 && getResource(RESOURCE.RocketFuel) >= 1000000){
 		dyson -= 250;
-		rocketFuel -= 1000000;
+		Game.resources.takeResource(RESOURCE.RocketFuel, 1000000);
 		sphere += 1;
 
-        updateDysonCost();
+		updateDysonCost();
 
-		Game.stargazeUI.initialise();
+		document.getElementById("stargazeTab").className = "";
+		Game.stargaze.unlocked = true;
 		newUnlock('stargaze');
 	}
 }

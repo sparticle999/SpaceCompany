@@ -1,6 +1,6 @@
 // Variables in save function
 
-var versionNumber = "V0.4.4.11 Beta"; var companyName = "Space";
+var versionNumber = "V0.5.0.0 Beta"; var companyName = "Space";
 var researchUnlocked = false; var researched = []; var available = []; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
@@ -8,6 +8,7 @@ var globalEnergyLock = false;
 var plasma = 0; var plasmaps = 0;
 var heater = 0; var heaterLunariteCost = 75000; var heaterGemCost = 68000; var heaterSiliconCost = 59000; var heaterToggled = true;
 var plasmatic = 0; var plasmaticLunariteCost = 810000; var plasmaticSiliconCost = 720000; var plasmaticMeteoriteCost = 970; var plasmaticToggled = true;
+var bath = 0; var bathLunariteCost = 6200000; var bathSiliconCost = 5900000; var bathMeteoriteCost = 12100; var bathToggled = true;
 var energy = 0; var energyps = 0;
 var battery = 0; var batteryMetalCost = 50000; var batteryGemCost = 50000; var batteryLunariteCost = 30000;
 var batteryT2 = 0; var batteryT2MetalCost = 550000; var batteryT2GemCost = 550000; var batteryT2LunariteCost = 330000;
@@ -105,11 +106,33 @@ var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; va
 var printer = 0; var printerLunariteCost = 100000; var printerSiliconCost = 50000;
 var web = 0; var webLunariteCost = 930000; var webUraniumCost = 490000; var webSiliconCost = 510000;
 
+/********************
+** Tier 5 Machines **
+********************/
+
+var planetNuke = 0; var planetNukeTitaniumCost = 0; var planetNukeSiliconCost = 0; var planetNukeIceCost = 0;
+var condensator = 0; var condensatorLunariteCost = 0; var condensatorGemCost = 0; var condensatorIceCost = 0;
+var fossilator = 0; var fossilatorUraniumCost = 0; var fossilatorCharcoalCost = 0; var fossilatorLavaCost = 0;
+var multiDrill = 0; var multiDrillTitaniumCost = 0; var multiDrillGoldCost = 0; var multiDrillOilCost = 0;
+var diamondChamber = 0; var diamondChamberUraniumCost = 0; var diamondChamberCharcoalCost = 0; var diamondChamberMeteoriteCost = 0;
+var microPollutor = 0; var microPollutorMetalCost = 0; var microPollutorWoodCost = 0; var microPollutorLavaCost = 0;
+var forest = 0; var forestMetalCost = 0; var forestGemCost = 0; var forestHydrogenCost = 0;
+var cloner = 0; var clonerTitaniumCost = 0; var clonerGoldCost = 0; var clonerMethaneCost = 0;
+var interCow = 0; var interCowLunariteCost = 0; var interCowGoldCost = 0; var interCowHydrogenCost = 0;
+var club = 0; var clubUraniumCost = 0; var clubWoodCost = 0; var clubHeliumCost = 0;
+var philosopher = 0; var philosopherMetalCost = 0; var philosopherSilverCost = 0; var philosopherMeteoriteCost = 0;
+var werewolf = 0; var werewolfUraniumCost = 0; var werewolfGemCost = 0; var werewolfMethaneCost = 0;
+var tardis = 0; var tardisTitaniumCost = 0; var tardisSiliconCost = 0; var tardisMeteoriteCost = 0;
+var harvester = 0; var harvesterLunariteCost = 0; var harvesterWoodCost = 0; var harvesterOilCost = 0;
+var cage = 0; var cageLunariteCost = 0; var cageSiliconCost = 0; var cageMeteoriteCost = 0;
+var overexchange = 0; var overexchangeMetalCost = 0; var overexchangeSilverCost = 0; var overexchangeHeliumCost = 0;
+
 var science = 0; var scienceps = 0;
 var lab = 0; var labMetalCost = 20; var labGemCost = 15; var labWoodCost = 10;
 var labT2 = 0; var labT2MetalCost = 1000; var labT2GemCost = 200; var labT2WoodCost = 500;
 var labT3 = 0; var labT3MetalCost = 17000; var labT3GemCost = 4700; var labT3WoodCost = 9600;
 var labT4 = 0; var labT4MetalCost = 610000; var labT4GemCost = 370000; var labT4WoodCost = 926000;
+var labT5 = 0; var labT5MetalCost = 12400000; var labT5GemCost = 7300000; var labT5WoodCost = 15900000;
 var rocket = 0; var rocketFuel = 0; var rocketFuelps = 0; var rocketFuelToggled = true;
 var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCost = 750; var chemicalPlantOilCost = 500;
 var oxidisation = 0; var oxidisationMetalCost = 12000; var oxidisationGemCost = 8300; var oxidisationOilCost = 6800;
@@ -141,3 +164,8 @@ var lunariteEmcVal = 15; var methaneEmcVal = 12; var titaniumEmcVal = 17; var go
 var hydrogenEmcVal = 33; var heliumEmcVal = 39; var iceEmcVal = 44; var meteoriteEmcVal = 3;
 
 var windowLoaded = false;
+
+// Rebirth Vars
+
+var dmBoost = 0;
+var gainNum = 1; var labT1Multi = 1; var T1Price = 1; var chemicalBoost = 1; var rocketPrice = 1; var floor1Price = 1; var floor23Price = 1;
