@@ -747,7 +747,7 @@ function checkRedCost() {
     Game.settings.turnRed(getResource(RESOURCE.Silicon), planetNukeSiliconCost, "planetNukeSiliconCost");
     Game.settings.turnRed(getResource(RESOURCE.Ice), planetNukeIceCost, "planetNukeIceCost");
     Game.settings.turnRed(getResource(RESOURCE.Lunarite), condensatorLunariteCost, "condensatorLunariteCost");
-    Game.settings.turnRed(getResource(RESOURCE.Gems), condensatorGemsCost, "condensatorGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gem), condensatorGemCost, "condensatorGemCost");
     Game.settings.turnRed(getResource(RESOURCE.Ice), condensatorIceCost, "condensatorIceCost");
     Game.settings.turnRed(getResource(RESOURCE.Uranium), fossilatorUraniumCost, "fossilatorUraniumCost");
     Game.settings.turnRed(getResource(RESOURCE.Charcoal), fossilatorCharcoalCost, "fossilatorCharcoalCost");
@@ -762,7 +762,7 @@ function checkRedCost() {
     Game.settings.turnRed(getResource(RESOURCE.Wood), microPollutorWoodCost, "microPollutorWoodCost");
     Game.settings.turnRed(getResource(RESOURCE.Lava), microPollutorLavaCost, "microPollutorLavaCost");
     Game.settings.turnRed(getResource(RESOURCE.Metal), forestMetalCost, "forestMetalCost");
-    Game.settings.turnRed(getResource(RESOURCE.Gems), forestGemsCost, "forestGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gem), forestGemCost, "forestGemCost");
     Game.settings.turnRed(getResource(RESOURCE.Hydrogen), forestHydrogenCost, "forestHydrogenCost");
     Game.settings.turnRed(getResource(RESOURCE.Titanium), clonerTitaniumCost, "clonerTitaniumCost");
     Game.settings.turnRed(getResource(RESOURCE.Gold), clonerGoldCost, "clonerGoldCost");
@@ -777,7 +777,7 @@ function checkRedCost() {
     Game.settings.turnRed(getResource(RESOURCE.Silver), philosopherSilverCost, "philosopherSilverCost");
     Game.settings.turnRed(getResource(RESOURCE.Meteorite), philosopherMeteoriteCost, "philosopherMeteoriteCost");
     Game.settings.turnRed(getResource(RESOURCE.Uranium), werewolfUraniumCost, "werewolfUraniumCost");
-    Game.settings.turnRed(getResource(RESOURCE.Gems), werewolfGemsCost, "werewolfGemsCost");
+    Game.settings.turnRed(getResource(RESOURCE.Gem), werewolfGemCost, "werewolfGemCost");
     Game.settings.turnRed(getResource(RESOURCE.Methane), werewolfMethaneCost, "werewolfMethaneCost");
     Game.settings.turnRed(getResource(RESOURCE.Titanium), tardisTitaniumCost, "tardisTitaniumCost");
     Game.settings.turnRed(getResource(RESOURCE.Silicon), tardisSiliconCost, "tardisSiliconCost");

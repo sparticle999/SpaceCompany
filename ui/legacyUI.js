@@ -397,7 +397,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('planetNukeIceCost', function(){ return Game.settings.format(planetNukeIceCost); });
     Game.ui.bindElement('condensator', function(){ return Game.settings.format(condensator); });
     Game.ui.bindElement('condensatorLunariteCost', function(){ return Game.settings.format(condensatorLunariteCost); });
-    Game.ui.bindElement('condensatorGemsCost', function(){ return Game.settings.format(condensatorGemsCost); });
+    Game.ui.bindElement('condensatorGemCost', function(){ return Game.settings.format(condensatorGemCost); });
     Game.ui.bindElement('condensatorIceCost', function(){ return Game.settings.format(condensatorIceCost); });
     Game.ui.bindElement('fossilator', function(){ return Game.settings.format(fossilator); });
     Game.ui.bindElement('fossilatorUraniumCost', function(){ return Game.settings.format(fossilatorUraniumCost); });
@@ -417,7 +417,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('microPollutorLavaCost', function(){ return Game.settings.format(microPollutorLavaCost); });
     Game.ui.bindElement('forest', function(){ return Game.settings.format(forest); });
     Game.ui.bindElement('forestMetalCost', function(){ return Game.settings.format(forestMetalCost); });
-    Game.ui.bindElement('forestGemsCost', function(){ return Game.settings.format(forestGemsCost); });
+    Game.ui.bindElement('forestGemCost', function(){ return Game.settings.format(forestGemCost); });
     Game.ui.bindElement('forestHydrogenCost', function(){ return Game.settings.format(forestHydrogenCost); });
     Game.ui.bindElement('cloner', function(){ return Game.settings.format(cloner); });
     Game.ui.bindElement('clonerTitaniumCost', function(){ return Game.settings.format(clonerTitaniumCost); });
@@ -437,7 +437,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('philosopherMeteoriteCost', function(){ return Game.settings.format(philosopherMeteoriteCost); });
     Game.ui.bindElement('werewolf', function(){ return Game.settings.format(werewolf); });
     Game.ui.bindElement('werewolfUraniumCost', function(){ return Game.settings.format(werewolfUraniumCost); });
-    Game.ui.bindElement('werewolfGemsCost', function(){ return Game.settings.format(werewolfGemsCost); });
+    Game.ui.bindElement('werewolfGemCost', function(){ return Game.settings.format(werewolfGemCost); });
     Game.ui.bindElement('werewolfMethaneCost', function(){ return Game.settings.format(werewolfMethaneCost); });
     Game.ui.bindElement('tardis', function(){ return Game.settings.format(tardis); });
     Game.ui.bindElement('tardisTitaniumCost', function(){ return Game.settings.format(tardisTitaniumCost); });

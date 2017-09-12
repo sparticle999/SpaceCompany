@@ -1542,9 +1542,9 @@ function getPlanetNuke(){
 }
 
 function getCondensator(){
-	if(getResource(RESOURCE.Lunarite) >= condensatorLunariteCost && getResource(RESOURCE.Gem) >= condensatorGemsCost && getResource(RESOURCE.Ice) >= condensatorIceCost){
+	if(getResource(RESOURCE.Lunarite) >= condensatorLunariteCost && getResource(RESOURCE.Gem) >= condensatorGemCost && getResource(RESOURCE.Ice) >= condensatorIceCost){
 		Game.resources.takeResource(RESOURCE.Lunarite, condensatorLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gem, condensatorGemsCost);
+		Game.resources.takeResource(RESOURCE.Gem, condensatorGemCost);
 		Game.resources.takeResource(RESOURCE.Ice, condensatorIceCost);
 		condensator += 1;
 		updateCost();
@@ -1597,9 +1597,9 @@ function getMicroPollutor(){
 }
 
 function getForest(){
-	if(getResource(RESOURCE.Metal) >= forestMetalCost && getResource(RESOURCE.Gem) >= forestGemsCost && getResource(RESOURCE.Hydrogen) >= forestHydrogenCost){
+	if(getResource(RESOURCE.Metal) >= forestMetalCost && getResource(RESOURCE.Gem) >= forestGemCost && getResource(RESOURCE.Hydrogen) >= forestHydrogenCost){
 		Game.resources.takeResource(RESOURCE.Metal, forestMetalCost);
-		Game.resources.takeResource(RESOURCE.Gem, forestGemsCost);
+		Game.resources.takeResource(RESOURCE.Gem, forestGemCost);
 		Game.resources.takeResource(RESOURCE.Hydrogen, forestHydrogenCost);
 		forest += 1;
 		updateCost();
@@ -1663,9 +1663,9 @@ function getPhilosopher(){
 }
 
 function getWerewolf(){
-	if(getResource(RESOURCE.Uranium) >= werewolfUraniumCost && getResource(RESOURCE.Gem) >= werewolfGemsCost && getResource(RESOURCE.Methane) >= werewolfMethaneCost){
+	if(getResource(RESOURCE.Uranium) >= werewolfUraniumCost && getResource(RESOURCE.Gem) >= werewolfGemCost && getResource(RESOURCE.Methane) >= werewolfMethaneCost){
 		Game.resources.takeResource(RESOURCE.Uranium, werewolfUraniumCost);
-		Game.resources.takeResource(RESOURCE.Gem, werewolfGemsCost);
+		Game.resources.takeResource(RESOURCE.Gem, werewolfGemCost);
 		Game.resources.takeResource(RESOURCE.Methane, planetNukeMethaneCost);
 		planetNuke += 1;
 		updateCost();

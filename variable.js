@@ -111,17 +111,17 @@ var web = 0; var webLunariteCost = 930000; var webUraniumCost = 490000; var webS
 ********************/
 
 var planetNuke = 0; var planetNukeTitaniumCost = 0; var planetNukeSiliconCost = 0; var planetNukeIceCost = 0;
-var condensator = 0; var condensatorLunariteCost = 0; var condensatorGemsCost = 0; var condensatorIceCost = 0;
+var condensator = 0; var condensatorLunariteCost = 0; var condensatorGemCost = 0; var condensatorIceCost = 0;
 var fossilator = 0; var fossilatorUraniumCost = 0; var fossilatorCharcoalCost = 0; var fossilatorLavaCost = 0;
 var multiDrill = 0; var multiDrillTitaniumCost = 0; var multiDrillGoldCost = 0; var multiDrillOilCost = 0;
 var diamondChamber = 0; var diamondChamberUraniumCost = 0; var diamondChamberCharcoalCost = 0; var diamondChamberMeteoriteCost = 0;
 var microPollutor = 0; var microPollutorMetalCost = 0; var microPollutorWoodCost = 0; var microPollutorLavaCost = 0;
-var forest = 0; var forestMetalCost = 0; var forestGemsCost = 0; var forestHydrogenCost = 0;
+var forest = 0; var forestMetalCost = 0; var forestGemCost = 0; var forestHydrogenCost = 0;
 var cloner = 0; var clonerTitaniumCost = 0; var clonerGoldCost = 0; var clonerMethaneCost = 0;
 var interCow = 0; var interCowLunariteCost = 0; var interCowGoldCost = 0; var interCowHydrogenCost = 0;
 var club = 0; var clubUraniumCost = 0; var clubWoodCost = 0; var clubHeliumCost = 0;
 var philosopher = 0; var philosopherMetalCost = 0; var philosopherSilverCost = 0; var philosopherMeteoriteCost = 0;
-var werewolf = 0; var werewolfUraniumCost = 0; var werewolfGemsCost = 0; var werewolfMethaneCost = 0;
+var werewolf = 0; var werewolfUraniumCost = 0; var werewolfGemCost = 0; var werewolfMethaneCost = 0;
 var tardis = 0; var tardisTitaniumCost = 0; var tardisSiliconCost = 0; var tardisMeteoriteCost = 0;
 var harvester = 0; var harvesterLunariteCost = 0; var harvesterWoodCost = 0; var harvesterOilCost = 0;
 var cage = 0; var cageLunariteCost = 0; var cageSiliconCost = 0; var cageMeteoriteCost = 0;
