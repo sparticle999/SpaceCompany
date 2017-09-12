@@ -85,7 +85,9 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.stars !== 'undefined'){
                 for(id in data.interstellar.stars){
-                    this.stars.entries[id] = data.interstellar.stars[id];
+                    this.stars.entries[id].explored = data.interstellar.stars[id].explored;
+                    this.stars.entries[id].owned = data.interstellar.stars[id].owned;
+                    this.stars.entries[id].spy = data.interstellar.stars[id].spy;
                 }
             }
         }
@@ -386,18 +388,17 @@ Game.interstellar.military = (function(){
             stats.speed += data.stats.speed*count;
             number += count;
         }
-        if(number != 0){
-            stats.speed = Math.floor(stats.speed/number);
-            for(var stat in stats){
-                var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
-                for(var j = 0; j < updateList.length; j++){
-                    updateList[j].innerHTML = stats[stat];
-                }
+        stats.speed = Math.floor(stats.speed/number);
+        if(number = 0)stats.speed = 0;
+        for(var stat in stats){
+            var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
+            for(var j = 0; j < updateList.length; j++){
+                updateList[j].innerHTML = stats[stat];
             }
-            this.activePower = stats.power;
-            this.activeDefense = stats.defense;
-            this.activeSpeed = stats.speed;
         }
+        this.activePower = stats.power;
+        this.activeDefense = stats.defense;
+        this.activeSpeed = stats.speed;
     };
 
     instance.updateShips = function(){
@@ -497,7 +498,7 @@ Game.interstellar.military = (function(){
             if(damage > starDamage){
                 return (damage/starDamage)-0.5;
             } else {
-                return Math.max(0, 1.5-(starDamage/damage));
+                if(damage != 0)return Math.max(0, 1.5-(starDamage/damage));
             }
         }
     }
