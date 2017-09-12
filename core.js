@@ -257,8 +257,9 @@ function refreshPerSec(delta){
 	}
 
 	if (bathToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.Plasma, bath * 80, (bath * 10) * perSecondMultiplier);
-		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
+		var adjustment = adjustCost(RESOURCE.Plasma, bath * 100, (bath * 140) * perSecondMultiplier);
+		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
+			hydrogenps -= adjustment.c;
 			heliumps -= adjustment.c;
 			plasmaps += adjustment.g;
 		}
