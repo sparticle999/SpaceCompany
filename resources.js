@@ -585,7 +585,7 @@ function updateCost(){
 	planetNukeIceCost = Math.floor(364000 * Math.pow(1.1,planetNuke));
 
 	condensatorLunariteCost = Math.floor(288000 * Math.pow(1.1, condensator)); 
-	condensatorGemsCost = Math.floor(210000 * Math.pow(1.1, condensator)); 
+	condensatorGemCost = Math.floor(210000 * Math.pow(1.1, condensator)); 
 	condensatorIceCost = Math.floor(238000 * Math.pow(1.1, condensator));
 
 	fossilatorUraniumCost = Math.floor(110000 * Math.pow(1.1, fossilator)); 
@@ -605,7 +605,7 @@ function updateCost(){
 	microPollutorLavaCost = Math.floor(160000 * Math.pow(1.1, microPollutor));
 
 	forestMetalCost = Math.floor(122000 * Math.pow(1.1, forest)); 
-	forestGemsCost = Math.floor(151000 * Math.pow(1.1, forest)); 
+	forestGemCost = Math.floor(151000 * Math.pow(1.1, forest)); 
 	forestHydrogenCost = Math.floor(183000 * Math.pow(1.1, forest));
 
 	clonerTitaniumCost = Math.floor(204000 * Math.pow(1.1, cloner)); 
@@ -625,7 +625,7 @@ function updateCost(){
 	philosopherMeteoriteCost = Math.floor(18000 * Math.pow(1.1, philosopher));
 
 	werewolfUraniumCost = Math.floor(165000 * Math.pow(1.1, werewolf)); 
-	werewolfGemsCost = Math.floor(209000 * Math.pow(1.1, werewolf)); 
+	werewolfGemCost = Math.floor(209000 * Math.pow(1.1, werewolf)); 
 	werewolfMethaneCost = Math.floor(170000 * Math.pow(1.1, werewolf));
 
 	tardisTitaniumCost = Math.floor(204000 * Math.pow(1.1, tardis)); 
