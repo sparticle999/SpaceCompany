@@ -852,7 +852,7 @@ Game.interstellarUI = (function(){
         var resultHtml = '<span>Cost: </span>';
         for(var i = 0; i < segments.length; i++) {
             var segmentData = segments[i];
-            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
+            resultHtml = resultHtml + '<span id="' + segmentData.h + '">' + segmentData.c + '</span> ';
             resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
             if(i < segments.length - 1) {
                 resultHtml = resultHtml + '<span>, </span>';
