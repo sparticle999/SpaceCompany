@@ -1666,7 +1666,7 @@ function getWerewolf(){
 	if(getResource(RESOURCE.Uranium) >= werewolfUraniumCost && getResource(RESOURCE.Gem) >= werewolfGemCost && getResource(RESOURCE.Methane) >= werewolfMethaneCost){
 		Game.resources.takeResource(RESOURCE.Uranium, werewolfUraniumCost);
 		Game.resources.takeResource(RESOURCE.Gem, werewolfGemCost);
-		Game.resources.takeResource(RESOURCE.Methane, planetNukeMethaneCost);
+		Game.resources.takeResource(RESOURCE.Methane, werewolfMethaneCost);
 		planetNuke += 1;
 		updateCost();
 		Game.statistics.add('tierOwned5');
