@@ -250,7 +250,7 @@ function togglePlasmatic(){
 	plasmaticToggled = !plasmaticToggled;
 }
 
-function togglePlasmatic(){
+function toggleBath(){
 	bathToggled = !bathToggled;
 }
 
@@ -1666,8 +1666,8 @@ function getWerewolf(){
 	if(getResource(RESOURCE.Uranium) >= werewolfUraniumCost && getResource(RESOURCE.Gem) >= werewolfGemCost && getResource(RESOURCE.Methane) >= werewolfMethaneCost){
 		Game.resources.takeResource(RESOURCE.Uranium, werewolfUraniumCost);
 		Game.resources.takeResource(RESOURCE.Gem, werewolfGemCost);
-		Game.resources.takeResource(RESOURCE.Methane, planetNukeMethaneCost);
-		planetNuke += 1;
+		Game.resources.takeResource(RESOURCE.Methane, werewolfMethaneCost);
+		werewolf += 1;
 		updateCost();
 		Game.statistics.add('tierOwned5');
 	}
