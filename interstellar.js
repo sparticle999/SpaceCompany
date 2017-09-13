@@ -396,7 +396,6 @@ Game.interstellar.military = (function(){
                 updateList[j].innerHTML = stats[stat];
             }
         }
-        console.log(stats.speed)
         this.activePower = stats.power;
         this.activeDefense = stats.defense;
         this.activeSpeed = stats.speed;

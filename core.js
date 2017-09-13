@@ -266,7 +266,7 @@ function refreshPerSec(delta){
 	}
 
 	if (antimatterToggled === true) {
-		if (antimatter + antimatterps < 100000) {
+		if (antimatter + antimatterps < antimatterStorage) {
 			var plasmaCost = (Game.interstellar.antimatter.entries.drive.count*100);
 			var iceCost = (Game.interstellar.antimatter.entries.drive.count*12000);
 			if (getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmaCost &&
@@ -277,7 +277,7 @@ function refreshPerSec(delta){
 			}
 		}
 		else {
-			antimatter = 100000;
+			antimatter = antimatterStorage;
 			antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 		}
 	}

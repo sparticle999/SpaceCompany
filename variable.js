@@ -141,7 +141,7 @@ var hydrazine = 0; var hydrazineTitaniumCost = 140000; var hydrazineSiliconCost 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var ring = 0; var swarm = 0; var sphere = 0;
 
-var antimatter = 0; var antimatterps = 0; var antimatterToggled = true;
+var antimatter = 0; var antimatterps = 0; var antimatterStorage = 100000; var antimatterToggled = true;
 
 // Variables not being saved
 

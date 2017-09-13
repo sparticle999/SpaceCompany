@@ -355,15 +355,6 @@ Game.interstellarUI = (function(){
             }
         }
 
-        // Updates Antimatter Nav
-        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
-        $('#intnav_antimatter_perSecond').text(antimatterps);
-        if(antimatter >= 100000){
-            document.getElementById("intnav_antimatter_current").className = "green";
-        } else {
-            document.getElementById("intnav_antimatter_current").className = "";
-        }
-
         // Hides navs
         for(var id in Game.interstellar.entries){
             var data = Game.interstellar.getInterstellarData(id);
@@ -382,8 +373,13 @@ Game.interstellarUI = (function(){
             }
         }
 
+        var systemsConquered = 0;
+
         for(var id in this.starEntries){
             var data = Game.interstellar.stars.getStarData(id);
+            if(data.owned){
+                systemsConquered += 1;
+            }
             if(data.explored == false){
                 if(Game.interstellar.comms.entries.IRS.count + Game.interstellar.comms.entries.astroBreakthrough.count*5 >= data.distance){
                     document.getElementById('star_' + id).className = "";
@@ -470,6 +466,16 @@ Game.interstellarUI = (function(){
                 }
             }
             data.displayNeedsUpdate = false;
+        }
+
+        // Updates Antimatter Nav
+        antimatterStorage = 100000*(systemsConquered+1);
+        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
+        $('#intnav_antimatter_perSecond').text(antimatterps);
+        if(antimatter >= antimatterStorage){
+            document.getElementById("intnav_antimatter_current").className = "green";
+        } else {
+            document.getElementById("intnav_antimatter_current").className = "";
         }
 
         for(var i = 0; i < resources.length; i++){
