@@ -40,11 +40,12 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 ### v0.5.1
 ##### Features
 
--
+- Storage Upgrade Discounts
 
 ##### Small Changes
 
 - Made Alpha Centauri distance clear
+- You cannot rebirth without a sphere
 
 ##### Bug Fixed
 
