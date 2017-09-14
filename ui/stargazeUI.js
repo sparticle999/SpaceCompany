@@ -23,7 +23,7 @@ Game.stargazeUI = (function(){
 
     instance.initialise = function() {
 
-        this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze (Indev)'});
+        this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze'});
         this.tab.initialise();
 
         if(sphere == 0) {
@@ -56,7 +56,7 @@ Game.stargazeUI = (function(){
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
                 '<h4><b>Relationship: {{opinion}}</b></h4>',
-                '<span>{{desc}}</span>',
+                '<span>{{{desc}}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -86,7 +86,7 @@ Game.stargazeUI = (function(){
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}</h3>',
                 '<span>',
-                    '<p>{{desc}}</p>',
+                    '<p>{{{desc}}}</p>',
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Rebirth</div>',
@@ -97,7 +97,7 @@ Game.stargazeUI = (function(){
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Achieved">Dormant</span></h3>',
                 '<span>',
-                    '<p>{{desc}}</p>',
+                    '<p>{{{desc}}}</p>',
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default">Activate</div>',

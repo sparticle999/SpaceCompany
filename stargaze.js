@@ -54,6 +54,7 @@ Game.stargaze = (function(){
 	};
 
 	instance.rebirth = function(){
+		if(sphere < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
 			Game.stargaze.entries.darkMatter.count += Game.stargaze.entries.darkMatter.current;

@@ -37,6 +37,21 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 # Changelog:
 
+### v0.5.1
+##### Features
+
+- Storage Upgrade Discounts
+
+##### Small Changes
+
+- Made Alpha Centauri distance clear
+- You cannot rebirth without a sphere
+
+##### Bug Fixed
+
+- Fixed Comms wonder not showing interstellar tab
+- Fixed TARDIS production being incorrect
+
 ### v0.5.0
 ##### Features
 

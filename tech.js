@@ -92,6 +92,7 @@ Game.tech = (function(){
         for (var id in data.tech.i) {
             if (typeof this.entries[id] !== 'undefined') {
                 if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
+                    this.entries[id].current = 0;
                     this.gainTech(id, data.tech.i[id].current);
                     // we can assume that the tech is unlocked if it has been purchased
                     this.entries[id].unlocked = true;

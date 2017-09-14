@@ -587,12 +587,12 @@ function rebuildCommsWonder(){
 		document.getElementById("rebuildCommsWonder").className = "hidden";
 		document.getElementById("commsActivation").innerHTML = "Activated";
 		document.getElementById("commsActivation").className = "green";
-		document.getElementById("commsNav").className = "sideTab";
+		document.getElementById("interstellarTab_comms_ne").className = "collapse_interstellarTab_general";
 		buttonsHidden.push("rebuildCommsWonder");
 		activated.push("comms");
         Game.statistics.add('wondersActivated');
+        document.getElementById("interstellarTab").className = "";
 		if(document.getElementById("interstellarTab").className != ""){
-        	document.getElementById("interstellarTab").className = "";
         	tabsUnlocked.push("interstellarTab");
         	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
         }
@@ -620,7 +620,7 @@ function rebuildRocketWonder(){
         	tabsUnlocked.push("interstellarTab");
         	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
         }
-		document.getElementById("interRocketNav").className = "sideTab";
+		document.getElementById("interstellarTab_rocket_ne").className = "collapse_interstellarTab_general";
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 
@@ -646,7 +646,7 @@ function rebuildAntimatterWonder(){
         	tabsUnlocked.push("interstellarTab");
         	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
         }
-		document.getElementById("antimatterNav").className = "sideTab";
+		document.getElementById("interstellarTab_antimatter_ne").className = "collapse_interstellarTab_general";
 		newUnlock("interstellar");
 		Game.removeExcess(tabsUnlocked, "interstellarTab");
 
@@ -680,7 +680,7 @@ function rebuildStargate(){
 		document.getElementById("rebuildStargate").className = "hidden";
 		document.getElementById("stargateActivation").innerHTML = "Activated";
 		document.getElementById("stargateActivation").className = "green";
-		document.getElementById("travelNav").className = "sideTab";
+		document.getElementById("interstellarTab_travel_ne").className = "collapse_interstellarTab_general";
 		buttonsHidden.push("rebuildStargate");
 		activated.push("stargate");
 		Game.statistics.add('wondersActivated');
