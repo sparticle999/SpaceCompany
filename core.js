@@ -50,7 +50,7 @@ function calculateEnergyUse(delta) {
 	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
     use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
-    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*923);
+    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*746);
     use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
 
     if(charcoalToggled === true){
@@ -184,7 +184,7 @@ function refreshPerSec(delta){
         titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197) + (club*2134)) * perSecondMultiplier;
         goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philosopher*1960)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208) + (werewolf*2245)) * perSecondMultiplier;
-        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1504)) * perSecondMultiplier;
+        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1487)) * perSecondMultiplier;
         uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) + (planetNuke*2412)) * perSecondMultiplier;
         lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) + (condensator*2103)) * perSecondMultiplier;
         hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) + (harvester*1292)) * perSecondMultiplier;

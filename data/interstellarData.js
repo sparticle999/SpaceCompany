@@ -22,7 +22,7 @@ Game.interstellarData = (function(){
 
 	instance.comms = {
 		name: 'Communications',
-		desc: 'This is where you learn about other systems to travel to.',
+		desc: 'This is where you learn about other systems to travel to. <br><b>NB: The first star, Alpha Centauri is 4.3 LY away. 1 IRS will not get you there.</b>',
 		category: 'general',
 		unlocked: false
 	};
@@ -171,7 +171,7 @@ Game.rocketData = (function(){
 		cost: {
 			'shield': 50,
 			'engine': 25,
-			'aero': 10
+			'aero': 15
 		}
 	};
 

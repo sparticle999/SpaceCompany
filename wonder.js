@@ -591,8 +591,8 @@ function rebuildCommsWonder(){
 		buttonsHidden.push("rebuildCommsWonder");
 		activated.push("comms");
         Game.statistics.add('wondersActivated');
+        document.getElementById("interstellarTab").className = "";
 		if(document.getElementById("interstellarTab").className != ""){
-        	document.getElementById("interstellarTab").className = "";
         	tabsUnlocked.push("interstellarTab");
         	Game.notifySuccess("New Tab!", "You've unlocked the Interstellar Tab!");
         }
