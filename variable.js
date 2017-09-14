@@ -168,4 +168,4 @@ var windowLoaded = false;
 // Rebirth Vars
 
 var dmBoost = 0;
-var gainNum = 1; var labT1Multi = 1; var T1Price = 1; var chemicalBoost = 1; var rocketPrice = 1; var floor1Price = 1; var floor23Price = 1;
+var gainNum = 1; var labT1Multi = 1; var T1Price = 1; var chemicalBoost = 1; var rocketPrice = 1; var floor1Price = 1; var floor23Price = 1; var storagePrice = 1;

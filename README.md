@@ -37,6 +37,20 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 # Changelog:
 
+### v0.5.1
+##### Features
+
+-
+
+##### Small Changes
+
+- Made Alpha Centauri distance clear
+
+##### Bug Fixed
+
+- Fixed Comms wonder not showing interstellar tab
+- Fixed TARDIS production being incorrect
+
 ### v0.5.0
 ##### Features
 

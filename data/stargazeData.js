@@ -216,6 +216,21 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
+	instance.storageDiscount = {
+		name: "Storage Discount",
+		desc: "All Storages no longer cost 100% of the main resource, but instead, 75%.",
+		cost: 21,
+		category: "carnelian",
+		opinion: 14,
+		onApply: function(){
+			// old
+			storagePrice -= 0.25;
+
+			// new
+		},
+		achieved: false
+	};
+
 	/*************
 	** Prasnian **
 	*************/
