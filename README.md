@@ -46,6 +46,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 - Made Alpha Centauri distance clear
 - You cannot rebirth without a sphere
+- Fixed higher antimatter storages not saving
 
 ##### Bug Fixed
 

@@ -172,6 +172,7 @@ function legacySave(data) {
 		swarm: swarm,
 		ring: ring,
 		antimatter: antimatter,
+		antimatterStorage: antimatterStorage,
 		antimatterToggled: antimatterToggled,
 		planetNuke: planetNuke,
 		condensator: condensator,
@@ -371,6 +372,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") ring = savegame.ring;
 		if(typeof savegame.antimatter !== "undefined") antimatter = savegame.antimatter;
+		if(typeof savegame.antimatterStorage !== "undefined") antimatterStorage = savegame.antimatterStorage;
 		if(typeof savegame.antimatterToggled !== "undefined") antimatterToggled = savegame.antimatterToggled;
 		if(typeof savegame.planetNuke !== "undefined") planetNuke = savegame.planetNuke;
 		if(typeof savegame.condensator !== "undefined") condensator = savegame.condensator;
