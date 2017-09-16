@@ -104,13 +104,23 @@ Game.stargaze = (function(){
 				document.getElementById('star_' + star).className = "";
 				document.getElementById('star_' + star + '_conquer').className = "hidden";
 			}
-			for(achiev in Game.achievements.entries){
+			for(var achiev in Game.achievements.entries){
 				var data = Game.achievements.entries[achiev]
 				data.unlocked = -1;
 				data.displayNeedsUpdate = true;
 				document.getElementById(data.id + '_bg').style = "width: 50px; height: 40px; background: url(" + data.iconPath + data.iconName + "." + data.iconExtension + ") no-repeat center; -webkit-background-size: contain;background-size: contain; margin-left: 5px;opacity: 0.2";
 			}
 			Game.achievements.rank = 0;
+			for(var upgrade in Game.stargaze.upgradeEntries){
+				Game.stargaze.upgradeEntries[upgrade].achieved = false;
+				Game.stargaze.upgradeEntries[upgrade].displayNeedsUpdate = true;
+			}
+			for(nav in this.entries){
+				if(this.entries[nav].opinion){
+					this.entries[nav].opinion = 0;
+					this.entries[nav].displayNeedsUpdate = true;
+				}
+			}
 		}
 	};
 
@@ -128,6 +138,7 @@ Game.stargaze = (function(){
 				this.entries.darkMatter.count -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
 				if(upgradeData.category != "intro" || "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
+				this.entries[upgradeData.category].displayNeedsUpdate = true;
 				upgradeData.achieved = true;
 			}
 		}

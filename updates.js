@@ -177,6 +177,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.fixSecondRebirth = {
+		desc: 'Fixed Subsequent Rebirths. You can now rebirth more than once without fear of save corruption!',
+		read: false
+	}
+
 	return instance;
 
 }());

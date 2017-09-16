@@ -166,10 +166,13 @@ Game.stargazeUI = (function(){
             // Marks achieved upgrades as 'Activated'
             for(var id in Game.stargaze.upgradeEntries){
                 var data = Game.stargaze.upgradeEntries[id];
-                if(data.achieved == true){
-                    if(id != 'rebirth'){
+                if(id != 'rebirth'){
+                    if(data.achieved == true){
                         document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
+                    } else{
+                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Dormant";
+                        document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default";
                     }
                 }
                 if((data.category == "intro" || data.category == "darkMatter") && data.htmlId != "stargazeUpgrebirth"){
