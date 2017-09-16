@@ -184,8 +184,8 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			// old
 			gainNum = 20;
-			for(var i = 0; i < resources.length; i++){
-				$('#' + resources[i] + 'Gain').text(gainNum);
+			for(var resource in RESOURCE){
+				if(RESOURCE[resource] != "science")$('#' + RESOURCE[resource] + 'Gain').text(gainNum);
 			}
 
 			// new
