@@ -265,10 +265,10 @@ Game.resourceData = (function () {
 
 Game.storageData = (function(){
 
-    var instance = {};
+	var instance = {};
 
-    // Storage Upgrades
-    var baseUpgradeData = {
+	// Storage Upgrades
+	var baseUpgradeData = {
 		id: null,
 		htmlId: null,
 		htmlIdCosts: [],
@@ -293,6 +293,13 @@ Game.storageData = (function(){
 				else {
 					this.htmlIdCosts[resource] = this.resource + 'Storage' + Game.utils.capitaliseFirst(resource) + 'Cost';
 				}
+			}
+		},
+
+		updateCost: function(capacity) {
+			var baseCapacity = 50;
+			for (var costResource in this.cost) {
+				this.cost[costResource] = capacity * (Game.storageData[this.id].cost[costResource] / baseCapacity) * storagePrice;
 			}
 		}
 	};
@@ -385,7 +392,7 @@ Game.storageData = (function(){
         resource: 'lunarite',
         cost: {
             'lunarite': 50,
-            'metal': 400
+            'metal': 200
         }
     });
 
@@ -461,7 +468,7 @@ Game.storageData = (function(){
         resource: 'meteorite',
         cost: {
             'meteorite': 50,
-            'lunarite': 4
+            'lunarite': 200
         }
     });
 

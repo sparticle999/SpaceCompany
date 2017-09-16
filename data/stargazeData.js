@@ -227,6 +227,7 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			// old
 			storagePrice -= 0.25;
+			Game.resources.updateStorageCosts();
 
 			// new
 		},
