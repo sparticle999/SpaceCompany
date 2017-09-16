@@ -107,7 +107,7 @@ Game.resourcesUI = (function(){
 
 	instance.createNextStorageDelegate = function(id) {
 		return (function() {
-			return Game.settings.format(getStorage(id) * 2 * storagePrice);
+			return Game.settings.format(getStorage(id) * 2);
 		});
 	};
 

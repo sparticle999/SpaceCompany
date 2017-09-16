@@ -172,6 +172,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.relationUpgrades = {
+		desc: 'Rebirth Upgrades now give relationship for upgrading them.',
+		read: false
+	}
+
 	return instance;
 
 }());

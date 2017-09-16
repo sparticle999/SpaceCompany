@@ -46,11 +46,14 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 - Made Alpha Centauri distance clear
 - You cannot rebirth without a sphere
+- Fixed higher antimatter storages not saving
 
 ##### Bug Fixed
 
 - Fixed Comms wonder not showing interstellar tab
 - Fixed TARDIS production being incorrect
+- Fixed Storage Discount not working
+- Fixed Storage Upgrade overwriting old storages if greater than 6400
 
 ### v0.5.0
 ##### Features

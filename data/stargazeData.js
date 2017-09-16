@@ -199,7 +199,7 @@ Game.prestigeData = (function(){
 
 	instance.startingStorage = {
 		name: "Starting Storage",
-		desc: "Start with 6,400 max-storage on everything on rebirth.",
+		desc: "Start with 6,400 max-storage on everything on rebirth. (Does not affect if over 6,400)",
 		cost: 8,
 		category: "carnelian",
 		opinion: 6,
@@ -207,8 +207,10 @@ Game.prestigeData = (function(){
 			// old
 			var newStorage = 6400;
 			for(var i = 0; i < resources.length; i++){
-				window[resources[i] + "Storage"] = newStorage;
-				window[resources[i] + "NextStorage"] = newStorage * 2;
+				if(window[resources[i] + "Storage"] <= 6400){
+					window[resources[i] + "Storage"] = newStorage;
+					window[resources[i] + "NextStorage"] = newStorage * 2;
+				}
 			}
 
 			// new
