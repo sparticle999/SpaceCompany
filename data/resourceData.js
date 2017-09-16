@@ -271,7 +271,7 @@ Game.storageData = (function(){
 	var baseUpgradeData = {
 		id: null,
 		htmlId: null,
-		htmlIdCosts: [],
+		htmlIdCosts: null,
 
 		name: 'Storage Upgrade:',
 		unlocked: true,
@@ -286,6 +286,7 @@ Game.storageData = (function(){
 		setId: function(id) {
 			this.id = id;
 			this.htmlId = id;
+			this.htmlIdCosts = {};
 			for (var resource in this.cost) {
 				if (resource === this.resource) {
 					this.htmlIdCosts[resource] = resource + 'StorageCost';
