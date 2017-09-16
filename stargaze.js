@@ -71,6 +71,14 @@ Game.stargaze = (function(){
 					document.getElementById(buttonsHidden[i]).className = "btn btn-default";
 				}
 			}
+			for(var i = 0; i < explored.length; i++){
+				document.getElementById(explored[i]).className = "inner sideTab hidden";
+				if(explored[i] != "moon", explored[i] != "venus", explored[i] != "mars", explored[i] != "asteroidBelt")document.getElementById(explored[i]).className = "outer sideTab hidden";
+			}
+			document.getElementById("spaceRocket").className = "sideTab";
+			document.getElementById("mercury").className = "sideTab hidden";
+			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
+			document.getElementById("collapseOuter").className = "collapseOuter sideTab hidden";
 			for(var i = 0; i < tabsUnlocked.length; i++){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
 			}
