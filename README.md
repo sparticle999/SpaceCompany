@@ -57,6 +57,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Tier 1 Rocket not showing red costs when inadequate
 - Fixed Subsequent Rebirths
 - Fixed Plasma not showing Gain 20
+- Fixed Wonders showing up as activated after rebirth
 
 ### v0.5.0
 ##### Features

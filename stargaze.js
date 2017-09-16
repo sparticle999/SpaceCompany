@@ -62,6 +62,7 @@ Game.stargaze = (function(){
 
 			for(var i = 0; i < resourcesUnlocked.length; i++){
 				document.getElementById(resourcesUnlocked[i]).className = "hidden";
+				if(resourcesUnlocked[i].indexOf("Nav") != -1)document.getElementById(resourcesUnlocked[i]).className = "sideTab hidden";
 			}
 			for(var i = 0; i < buttonsHidden.length; i++){
 				if(buttonsHidden[i].indexOf("Progress") != -1){
@@ -72,6 +73,10 @@ Game.stargaze = (function(){
 			}
 			for(var i = 0; i < tabsUnlocked.length; i++){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
+			}
+			for(var i = 0; i < activated.length; i++){
+				$(document.getElementById(activated[i] + "Activation")).text("Dormant");
+				document.getElementById(activated[i] + "Activation").className = "red";
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
