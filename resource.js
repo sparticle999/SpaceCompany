@@ -1,54 +1,55 @@
 Game.resources = (function(){
 
-    var instance = {};
+	var instance = {};
 
-    instance.dataVersion = 5;
-    instance.entries = {};
-    instance.categoryEntries = {};
-    instance.storageUpgrades = {};
-    instance.resourceTypeCount = 0;
-    instance.resourceCategoryCount = 0;
-    instance.storageUpgradeCount = 0;
+	instance.dataVersion = 5;
+	instance.entries = {};
+	instance.categoryEntries = {};
+	instance.storageUpgrades = {};
 
-    instance.initialise = function() {
-        for (var id in Game.resourceData) {
-            var data = Game.resourceData[id];
-            this.resourceTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'res_' + id,
-                current: 0,
-                perSecond: 0,
-                perClick: 1,
-                iconPath: Game.constants.iconPath,
-                iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
-                hidden: false
-            });
+	instance.initialise = function() {
+		var numResources = 0;
+		for (var id in Game.resourceData) {
+			numResources++;
+			this.entries[id] = this.initResource(id);
+		}
 
-            this.entries[id].capacity = data.baseCapacity;
-        }
+		var numCategories = 0;
+		for (id in Game.resourceCategoryData) {
+			numCategories++;
+			this.categoryEntries[id] = this.initResourceCategory(id);
+		}
 
-        for (var id in Game.resourceCategoryData) {
-            var data = Game.resourceCategoryData[id];
-            this.resourceCategoryCount++;
-            this.categoryEntries[id] = $.extend({}, data, {
-                id: id
-            });
-        }
+		for (id in Game.storageData) {
+			var data = this.initStorage(id);
+			this.storageUpgrades[id] = id;
+			this.entries[data.resource].storage = data;
+		}
 
-        for (var id in Game.storageData) {
-            var data = Game.storageData[id];
-            this.storageUpgradeCount++;
-            this.storageUpgrades[id] = $.extend({}, data, {
-                id: id,
-                htmlId: "store_" + id
-            });
-        }
+		console.debug("Loaded " + numCategories + " Resource Categories");
+		console.debug("Loaded " + numResources + " Resource Types");
+	};
 
-        console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
-        console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
-    };
+	instance.initResource = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.resourceData[id]);
+		data.setId(id);
+		return data;
+	};
+
+	instance.initResourceCategory = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.resourceCategoryData[id]);
+		data.setId(id);
+		return data;
+	};
+
+	instance.initStorage = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.storageData[id]);
+		data.setId(id);
+		return data;
+	};
 
     instance.update = function(delta) {
         for(var id in this.entries) {
@@ -165,6 +166,13 @@ Game.resources = (function(){
 		}
 
 		window[id] = getStorage(id);
+	};
+
+	instance.getStorageData = function(id) {
+		if (typeof this.entries[id] === 'undefined') {
+			return null;
+		}
+		return this.entries[id].storage;
 	};
 
     instance.setPerSecondProduction = function(id, value) {
