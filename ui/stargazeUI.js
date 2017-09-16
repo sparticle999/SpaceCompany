@@ -98,7 +98,8 @@ Game.stargazeUI = (function(){
                 '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Achieved">Dormant</span></h3>',
                 '<span>',
                     '<p>{{{desc}}}</p>',
-                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
+                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',
+                    '<p id="{{htmlId}}_opinion">Improves relationship by {{opinion}}</p>',
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-default">Activate</div>',
                 '<br><br>',
@@ -170,6 +171,9 @@ Game.stargazeUI = (function(){
                         document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
                     }
+                }
+                if((data.category == "intro" || data.category == "darkMatter") && data.htmlId != "stargazeUpgrebirth"){
+                    document.getElementById(data.htmlId + "_opinion").className = "hidden";
                 }
             }
             stargaze.rebirthNeedsUpdate = false;

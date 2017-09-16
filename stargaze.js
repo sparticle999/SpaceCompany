@@ -127,6 +127,7 @@ Game.stargaze = (function(){
 			if(this.entries.darkMatter.count >= upgradeData.cost){
 				this.entries.darkMatter.count -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
+				if(upgradeData.category != "intro" || "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
 				upgradeData.achieved = true;
 			}
 		}
