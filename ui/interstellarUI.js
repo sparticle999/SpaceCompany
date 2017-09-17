@@ -355,15 +355,6 @@ Game.interstellarUI = (function(){
             }
         }
 
-        // Updates Antimatter Nav
-        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
-        $('#intnav_antimatter_perSecond').text(antimatterps);
-        if(antimatter >= 100000){
-            document.getElementById("intnav_antimatter_current").className = "green";
-        } else {
-            document.getElementById("intnav_antimatter_current").className = "";
-        }
-
         // Hides navs
         for(var id in Game.interstellar.entries){
             var data = Game.interstellar.getInterstellarData(id);
@@ -382,8 +373,13 @@ Game.interstellarUI = (function(){
             }
         }
 
+        var systemsConquered = 0;
+
         for(var id in this.starEntries){
             var data = Game.interstellar.stars.getStarData(id);
+            if(data.owned){
+                systemsConquered += 1;
+            }
             if(data.explored == false){
                 if(Game.interstellar.comms.entries.IRS.count + Game.interstellar.comms.entries.astroBreakthrough.count*5 >= data.distance){
                     document.getElementById('star_' + id).className = "";
@@ -394,6 +390,7 @@ Game.interstellarUI = (function(){
             if(data.displayNeedsUpdate == false){
                 continue;
             }
+            
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
                 var nav = Game.interstellar.entries[data.factionId]
@@ -412,7 +409,7 @@ Game.interstellarUI = (function(){
                     var multi = Game.interstellar.military.getMultiplier(data.factionId);
 
                     // Updates Spy Chance
-                    var spyChance = Game.interstellar.military.getSpyChance(data, multi);
+                    var spyChance = Math.min(100, Game.interstellar.military.getSpyChance(data, multi));
                     $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
 
                     // Updates Threat Level
@@ -470,6 +467,16 @@ Game.interstellarUI = (function(){
                 }
             }
             data.displayNeedsUpdate = false;
+        }
+
+        // Updates Antimatter Nav
+        antimatterStorage = 100000*(systemsConquered+1);
+        $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
+        $('#intnav_antimatter_perSecond').text(antimatterps);
+        if(antimatter >= antimatterStorage){
+            document.getElementById("intnav_antimatter_current").className = "green";
+        } else {
+            document.getElementById("intnav_antimatter_current").className = "";
         }
 
         for(var i = 0; i < resources.length; i++){
@@ -852,7 +859,7 @@ Game.interstellarUI = (function(){
         var resultHtml = '<span>Cost: </span>';
         for(var i = 0; i < segments.length; i++) {
             var segmentData = segments[i];
-            resultHtml = resultHtml + '<span id="' + segmentData.h + '">ERR</span> ';
+            resultHtml = resultHtml + '<span id="' + segmentData.h + '">' + segmentData.c + '</span> ';
             resultHtml = resultHtml + '<span> ' + segmentData.n + '</span>';
             if(i < segments.length - 1) {
                 resultHtml = resultHtml + '<span>, </span>';

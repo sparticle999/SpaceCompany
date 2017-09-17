@@ -54,6 +54,7 @@ Game.stargaze = (function(){
 	};
 
 	instance.rebirth = function(){
+		if(sphere < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
 			Game.stargaze.entries.darkMatter.count += Game.stargaze.entries.darkMatter.current;
@@ -61,6 +62,7 @@ Game.stargaze = (function(){
 
 			for(var i = 0; i < resourcesUnlocked.length; i++){
 				document.getElementById(resourcesUnlocked[i]).className = "hidden";
+				if(resourcesUnlocked[i].indexOf("Nav") != -1)document.getElementById(resourcesUnlocked[i]).className = "sideTab hidden";
 			}
 			for(var i = 0; i < buttonsHidden.length; i++){
 				if(buttonsHidden[i].indexOf("Progress") != -1){
@@ -69,8 +71,20 @@ Game.stargaze = (function(){
 					document.getElementById(buttonsHidden[i]).className = "btn btn-default";
 				}
 			}
+			for(var i = 0; i < explored.length; i++){
+				document.getElementById(explored[i]).className = "inner sideTab hidden";
+				if(explored[i] != "moon", explored[i] != "venus", explored[i] != "mars", explored[i] != "asteroidBelt")document.getElementById(explored[i]).className = "outer sideTab hidden";
+			}
+			document.getElementById("spaceRocket").className = "sideTab";
+			document.getElementById("mercury").className = "sideTab hidden";
+			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
+			document.getElementById("collapseOuter").className = "collapseOuter sideTab hidden";
 			for(var i = 0; i < tabsUnlocked.length; i++){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
+			}
+			for(var i = 0; i < activated.length; i++){
+				$(document.getElementById(activated[i] + "Activation")).text("Dormant");
+				document.getElementById(activated[i] + "Activation").className = "red";
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
@@ -103,13 +117,23 @@ Game.stargaze = (function(){
 				document.getElementById('star_' + star).className = "";
 				document.getElementById('star_' + star + '_conquer').className = "hidden";
 			}
-			for(achiev in Game.achievements.entries){
+			for(var achiev in Game.achievements.entries){
 				var data = Game.achievements.entries[achiev]
 				data.unlocked = -1;
 				data.displayNeedsUpdate = true;
 				document.getElementById(data.id + '_bg').style = "width: 50px; height: 40px; background: url(" + data.iconPath + data.iconName + "." + data.iconExtension + ") no-repeat center; -webkit-background-size: contain;background-size: contain; margin-left: 5px;opacity: 0.2";
 			}
 			Game.achievements.rank = 0;
+			for(var upgrade in Game.stargaze.upgradeEntries){
+				Game.stargaze.upgradeEntries[upgrade].achieved = false;
+				Game.stargaze.upgradeEntries[upgrade].displayNeedsUpdate = true;
+			}
+			for(nav in this.entries){
+				if(this.entries[nav].opinion){
+					this.entries[nav].opinion = 0;
+					this.entries[nav].displayNeedsUpdate = true;
+				}
+			}
 		}
 	};
 
@@ -126,6 +150,8 @@ Game.stargaze = (function(){
 			if(this.entries.darkMatter.count >= upgradeData.cost){
 				this.entries.darkMatter.count -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
+				if(upgradeData.category != "intro" || "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
+				this.entries[upgradeData.category].displayNeedsUpdate = true;
 				upgradeData.achieved = true;
 			}
 		}
@@ -201,7 +227,7 @@ Game.stargaze = (function(){
 		for(var id in this.upgradeEntries){
 			var data = this.upgradeEntries[id];
 			if(data.achieved == true){
-				data.onApply();
+				if(data.onApply)data.onApply();
 			}
 		}
 	};

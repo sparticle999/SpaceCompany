@@ -1,6 +1,6 @@
 // Variables in save function
 
-var versionNumber = "V0.5.0.0 Beta"; var companyName = "Space";
+var versionNumber = "V0.5.0.3 Beta"; var companyName = "Space";
 var researchUnlocked = false; var researched = []; var available = []; var explored = [];
 var tabsUnlocked = []; var resourcesUnlocked = []; var noBorder = []; var rocketLaunched = false; var buttonsHidden = [];
 var activated = []; var techUnlocked = false; var meteoriteUnlocked = false;
@@ -141,7 +141,7 @@ var hydrazine = 0; var hydrazineTitaniumCost = 140000; var hydrazineSiliconCost 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var ring = 0; var swarm = 0; var sphere = 0;
 
-var antimatter = 0; var antimatterps = 0; var antimatterToggled = true;
+var antimatter = 0; var antimatterps = 0; var antimatterStorage = 100000; var antimatterToggled = true;
 
 // Variables not being saved
 
@@ -168,4 +168,4 @@ var windowLoaded = false;
 // Rebirth Vars
 
 var dmBoost = 0;
-var gainNum = 1; var labT1Multi = 1; var T1Price = 1; var chemicalBoost = 1; var rocketPrice = 1; var floor1Price = 1; var floor23Price = 1;
+var gainNum = 1; var labT1Multi = 1; var T1Price = 1; var chemicalBoost = 1; var rocketPrice = 1; var floor1Price = 1; var floor23Price = 1; var storagePrice = 1;

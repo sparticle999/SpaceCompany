@@ -184,8 +184,8 @@ Game.resources = (function(){
     instance.upgradeStorage = function(id){
         var upgradeData = this.storageUpgrades[id];
         var res = this.getResourceData(upgradeData.resource);
-        if(res.current >= res.capacity){
-            res.current -= res.capacity;
+        if(res.current >= res.capacity*storagePrice){
+            res.current -= res.capacity*storagePrice;
             res.capacity *= 2;
             res.displayNeedsUpdate = true;
 

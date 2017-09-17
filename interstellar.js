@@ -65,7 +65,7 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.rocket !== 'undefined'){
                 for(id in data.interstellar.rocket){
-                    this.rocket.entries[id].count = data.interstellar.rocket[id].count;
+                    this.rocket.entries[id].built = data.interstellar.rocket[id].built;
                 }
             }
             if(typeof data.interstellar.rocketParts !== 'undefined'){
@@ -85,21 +85,10 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.stars !== 'undefined'){
                 for(id in data.interstellar.stars){
-                    this.stars.entries[id] = data.interstellar.stars[id];
+                    this.stars.entries[id].explored = data.interstellar.stars[id].explored;
+                    this.stars.entries[id].owned = data.interstellar.stars[id].owned;
+                    this.stars.entries[id].spy = data.interstellar.stars[id].spy;
                 }
-            }
-        } else if(data.interstellar){
-            for(id in this.comms.entries){
-                if(data.interstellar.machines[id])this.comms.entries[id].count = data.interstellar.machines[id].count;
-            }
-            for(id in this.rocket.entries){
-                this.rocket.entries.tier1Rocket.built = data.interstellar.interRocketBuilt;
-            }
-            for(id in this.rocketParts.entries){
-                this.rocketParts.entries[id].count = data.interstellar.machines[id].count;
-            }
-            for(id in this.antimatter.entries){
-                this.antimatter.entries[id].count = data.interstellar.machines[id].count;
             }
         }
         this.military.updateShips();
@@ -399,18 +388,17 @@ Game.interstellar.military = (function(){
             stats.speed += data.stats.speed*count;
             number += count;
         }
-        if(number != 0){
-            stats.speed = Math.floor(stats.speed/number);
-            for(var stat in stats){
-                var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
-                for(var j = 0; j < updateList.length; j++){
-                    updateList[j].innerHTML = stats[stat];
-                }
+        stats.speed = Math.floor(stats.speed/number);
+        if(number == 0)stats.speed = 0;
+        for(var stat in stats){
+            var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
+            for(var j = 0; j < updateList.length; j++){
+                updateList[j].innerHTML = stats[stat];
             }
-            this.activePower = stats.power;
-            this.activeDefense = stats.defense;
-            this.activeSpeed = stats.speed;
         }
+        this.activePower = stats.power;
+        this.activeDefense = stats.defense;
+        this.activeSpeed = stats.speed;
     };
 
     instance.updateShips = function(){
@@ -440,6 +428,12 @@ Game.interstellar.military = (function(){
         ship.displayNeedsUpdate = true;
         this.updateFleetStats();
         this.updateShips();
+        for(var star in Game.interstellar.stars.entries){
+            var data = Game.interstellar.stars.entries[star];
+            if(data.explored == true && data.owned == false){
+                data.displayNeedsUpdate = true;
+            }
+        }
     };
 
     instance.getThreat = function(power, num){
@@ -510,14 +504,14 @@ Game.interstellar.military = (function(){
             if(damage > starDamage){
                 return (damage/starDamage)-0.5;
             } else {
-                return Math.max(0, 1.5-(starDamage/damage));
+                if(damage != 0)return Math.max(0, 1.5-(starDamage/damage));
             }
         }
     }
 
     instance.invadeSystem = function(starName){
         if(this.power!=0){
-            var star = this.stars.getStarData(starName);
+            var star = Game.interstellar.stars.getStarData(starName);
             var chance = this.getChance(star);
             if(chance == "peace"){
                 return;

@@ -50,7 +50,7 @@ function calculateEnergyUse(delta) {
 	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
 
     use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
-    use += (cloner*1157)+(interCow*879)+(club*754)+(philosopher*1387)+(werewolf*984)+(tardis*923);
+    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*746);
     use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
 
     if(charcoalToggled === true){
@@ -184,7 +184,7 @@ function refreshPerSec(delta){
         titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197) + (club*2134)) * perSecondMultiplier;
         goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philosopher*1960)) * perSecondMultiplier;
         silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208) + (werewolf*2245)) * perSecondMultiplier;
-        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1504)) * perSecondMultiplier;
+        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1487)) * perSecondMultiplier;
         uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) + (planetNuke*2412)) * perSecondMultiplier;
         lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) + (condensator*2103)) * perSecondMultiplier;
         hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) + (harvester*1292)) * perSecondMultiplier;
@@ -266,7 +266,7 @@ function refreshPerSec(delta){
 	}
 
 	if (antimatterToggled === true) {
-		if (antimatter + antimatterps < 100000) {
+		if (antimatter + antimatterps < antimatterStorage) {
 			var plasmaCost = (Game.interstellar.antimatter.entries.drive.count*100);
 			var iceCost = (Game.interstellar.antimatter.entries.drive.count*12000);
 			if (getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmaCost &&
@@ -277,7 +277,7 @@ function refreshPerSec(delta){
 			}
 		}
 		else {
-			antimatter = 100000;
+			antimatter = antimatterStorage;
 			antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 		}
 	}
@@ -325,55 +325,55 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Energy), 1000, "manualPlasmaEnergyCost");
 	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), 10, "manualPlasmaHydrogenCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Uranium), getStorage(RESOURCE.Uranium), "uraniumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Uranium)/2.5, "uraniumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), getStorage(RESOURCE.Uranium)*storagePrice, "uraniumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Uranium)/2.5*storagePrice, "uraniumStorageLunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Oil), getStorage(RESOURCE.Oil), "oilStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Oil)/2.5, "oilStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), getStorage(RESOURCE.Oil)*storagePrice, "oilStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Oil)/2.5*storagePrice, "oilStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Metal), "metalStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Metal)*storagePrice, "metalStorageCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Gem), getStorage(RESOURCE.Gem), "gemStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Gem)/2.5, "gemStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), getStorage(RESOURCE.Gem)*storagePrice, "gemStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Gem)/2.5*storagePrice, "gemStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Charcoal), getStorage(RESOURCE.Charcoal), "charcoalStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Charcoal)/2.5, "charcoalStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Charcoal), getStorage(RESOURCE.Charcoal)*storagePrice, "charcoalStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Charcoal)/2.5*storagePrice, "charcoalStorageMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Wood), getStorage(RESOURCE.Wood), "woodStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Wood)/2.5, "woodStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Wood), getStorage(RESOURCE.Wood)*storagePrice, "woodStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Wood)/2.5*storagePrice, "woodStorageMetalCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lunarite), "lunariteStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Lunarite)*4, "lunariteStorageMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lunarite)*storagePrice, "lunariteStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), getStorage(RESOURCE.Lunarite)*4*storagePrice, "lunariteStorageMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Methane), getStorage(RESOURCE.Methane), "methaneStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Methane)/2.5, "methaneStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), getStorage(RESOURCE.Methane)*storagePrice, "methaneStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Methane)/2.5*storagePrice, "methaneStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Titanium), getStorage(RESOURCE.Titanium), "titaniumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Titanium)/2.5, "titaniumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), getStorage(RESOURCE.Titanium)*storagePrice, "titaniumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Titanium)/2.5*storagePrice, "titaniumStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Gold), getStorage(RESOURCE.Gold), "goldStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Gold)/2.5, "goldStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), getStorage(RESOURCE.Gold)*storagePrice, "goldStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Gold)/2.5*storagePrice, "goldStorageLunariteCost");
 	
-	Game.settings.turnRed(getResource(RESOURCE.Silver), getStorage(RESOURCE.Silver), "silverStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silver)/2.5, "silverStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), getStorage(RESOURCE.Silver)*storagePrice, "silverStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silver)/2.5*storagePrice, "silverStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), getStorage(RESOURCE.Silicon), "siliconStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silicon)/2.5, "siliconStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), getStorage(RESOURCE.Silicon)*storagePrice, "siliconStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Silicon)/2.5*storagePrice, "siliconStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Lava), getStorage(RESOURCE.Lava), "lavaStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lava)/2.5, "lavaStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), getStorage(RESOURCE.Lava)*storagePrice, "lavaStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Lava)/2.5*storagePrice, "lavaStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), getStorage(RESOURCE.Hydrogen), "hydrogenStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Hydrogen)/2.5, "hydrogenStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Hydrogen), getStorage(RESOURCE.Hydrogen)*storagePrice, "hydrogenStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Hydrogen)/2.5*storagePrice, "hydrogenStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Helium), getStorage(RESOURCE.Helium), "heliumStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Helium)/2.5, "heliumStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), getStorage(RESOURCE.Helium)*storagePrice, "heliumStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Helium)/2.5*storagePrice, "heliumStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Ice), getStorage(RESOURCE.Ice), "iceStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Ice)/2.5, "iceStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), getStorage(RESOURCE.Ice)*storagePrice, "iceStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Ice)/2.5*storagePrice, "iceStorageLunariteCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Meteorite), getStorage(RESOURCE.Meteorite), "meteoriteStorageCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Meteorite)*4, "meteoriteStorageLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), getStorage(RESOURCE.Meteorite)*storagePrice, "meteoriteStorageCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), getStorage(RESOURCE.Meteorite)*4*storagePrice, "meteoriteStorageLunariteCost");
 	
 	Game.settings.turnRed(getResource(RESOURCE.Silver), PSUSilverCost, "PSUSilverCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gold), PSUGoldCost, "PSUGoldCost");
@@ -870,6 +870,12 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Plasma), 500000, "stargateWonderPlasmaCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), 920000000, "stargateWonderSiliconCost");
 	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 17000000, "stargateWonderMeteoriteCost");
+
+	if(document.getElementById("roc_tier1Rocket_shield_c") != null){
+		Game.settings.turnRed(Game.interstellar.rocketParts.entries.shield.count, 50, "roc_tier1Rocket_shield_c");
+		Game.settings.turnRed(Game.interstellar.rocketParts.entries.engine.count, 25, "roc_tier1Rocket_engine_c");
+		Game.settings.turnRed(Game.interstellar.rocketParts.entries.aero.count, 15, "roc_tier1Rocket_aero_c");
+	}
 }
 
 function refreshResources(){

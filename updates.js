@@ -172,6 +172,16 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.relationUpgrades = {
+		desc: 'Rebirth Upgrades now give relationship for upgrading them.',
+		read: false
+	}
+
+	instance.fixSecondRebirth = {
+		desc: 'Fixed Subsequent Rebirths. You can now rebirth more than once without fear of save corruption!',
+		read: false
+	}
+
 	return instance;
 
 }());

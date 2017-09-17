@@ -39,7 +39,7 @@ Game.starData = (function(){
 		faction: "Prasnian Empire",
 		factionId: "prasnian",
 		resource1: "Lunarite",
-		resource2: "Gems",
+		resource2: "Gem",
 		stats: {
 			"power": 86,
 			"defense": 71,
