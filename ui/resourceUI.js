@@ -16,6 +16,13 @@ Game.resourcesUI = (function(){
 			if ($('#' + RESOURCE[id] + 'NextStorage').length > 0) {
 				Game.ui.bindElement(RESOURCE[id] + 'NextStorage', this.createNextStorageDelegate(RESOURCE[id]));
 			}
+
+			var storageData = Game.resources.getStorageData(RESOURCE[id]);
+			if (storageData !== null) {
+				for (var costResource in storageData.cost) {
+					Game.ui.bindElement(storageData.htmlIdCosts[costResource], this.createStorageCostDelegate(RESOURCE[id], costResource));
+				}
+			}
 		}
 
 		// the auto bindings need to be updated after this is done
@@ -108,6 +115,12 @@ Game.resourcesUI = (function(){
 	instance.createNextStorageDelegate = function(id) {
 		return (function() {
 			return Game.settings.format(getStorage(id) * 2);
+		});
+	};
+
+	instance.createStorageCostDelegate = function(id, costResource) {
+		return (function() {
+			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource] * storagePrice);
 		});
 	};
 

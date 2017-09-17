@@ -1,54 +1,56 @@
 Game.resources = (function(){
 
-    var instance = {};
+	var instance = {};
 
-    instance.dataVersion = 5;
-    instance.entries = {};
-    instance.categoryEntries = {};
-    instance.storageUpgrades = {};
-    instance.resourceTypeCount = 0;
-    instance.resourceCategoryCount = 0;
-    instance.storageUpgradeCount = 0;
+	instance.dataVersion = 5;
+	instance.entries = {};
+	instance.categoryEntries = {};
+	instance.storageUpgrades = {};
 
-    instance.initialise = function() {
-        for (var id in Game.resourceData) {
-            var data = Game.resourceData[id];
-            this.resourceTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'res_' + id,
-                current: 0,
-                perSecond: 0,
-                perClick: 1,
-                iconPath: Game.constants.iconPath,
-                iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
-                hidden: false
-            });
+	instance.initialise = function() {
+		var numResources = 0;
+		for (var id in Game.resourceData) {
+			numResources++;
+			this.entries[id] = this.initResource(id);
+		}
 
-            this.entries[id].capacity = data.baseCapacity;
-        }
+		var numCategories = 0;
+		for (id in Game.resourceCategoryData) {
+			numCategories++;
+			this.categoryEntries[id] = this.initResourceCategory(id);
+		}
 
-        for (var id in Game.resourceCategoryData) {
-            var data = Game.resourceCategoryData[id];
-            this.resourceCategoryCount++;
-            this.categoryEntries[id] = $.extend({}, data, {
-                id: id
-            });
-        }
+		for (id in Game.storageData) {
+			var data = this.initStorage(id);
+			this.storageUpgrades[id] = data;
+			this.entries[data.resource].storage = data;
+		}
 
-        for (var id in Game.storageData) {
-            var data = Game.storageData[id];
-            this.storageUpgradeCount++;
-            this.storageUpgrades[id] = $.extend({}, data, {
-                id: id,
-                htmlId: "store_" + id
-            });
-        }
+		console.debug("Loaded " + numCategories + " Resource Categories");
+		console.debug("Loaded " + numResources + " Resource Types");
+	};
 
-        console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
-        console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
-    };
+	instance.initResource = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.resourceData[id]);
+		data.setId(id);
+		data.capacity = data.baseCapacity;
+		return data;
+	};
+
+	instance.initResourceCategory = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.resourceCategoryData[id]);
+		data.setId(id);
+		return data;
+	};
+
+	instance.initStorage = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.storageData[id]);
+		data.setId(id);
+		return data;
+	};
 
     instance.update = function(delta) {
         for(var id in this.entries) {
@@ -78,6 +80,16 @@ Game.resources = (function(){
                 }
             }
         }
+
+		// Load the old storage values
+		for (id in RESOURCE) {
+			var capacity = data[RESOURCE[id] + 'Storage'];
+			if (typeof capacity === 'undefined') {
+				continue;
+			}
+			this.entries[RESOURCE[id]].capacity = capacity;
+			this.entries[RESOURCE[id]].storage.updateCost(capacity);
+		}
     };
 
 	// TODO: change to data-driven resources when available
@@ -167,6 +179,13 @@ Game.resources = (function(){
 		window[id] = getStorage(id);
 	};
 
+	instance.getStorageData = function(resourceId) {
+		if (typeof this.entries[resourceId] === 'undefined') {
+			return null;
+		}
+		return this.entries[resourceId].storage;
+	};
+
     instance.setPerSecondProduction = function(id, value) {
         if(!this.entries[id]) {
             console.error("Unknown Resource: " + id);
@@ -181,20 +200,39 @@ Game.resources = (function(){
         this.entries[id].perSecond = value;
     };
 
-    instance.upgradeStorage = function(id){
-        var upgradeData = this.storageUpgrades[id];
-        var res = this.getResourceData(upgradeData.resource);
-        if(res.current >= res.capacity*storagePrice){
-            res.current -= res.capacity*storagePrice;
-            res.capacity *= 2;
-            res.displayNeedsUpdate = true;
+	instance.upgradeStorage = function(resourceId) {
+		var upgradeData = this.getStorageData(resourceId);
+		if (upgradeData === null) {
+			return;
+		}
 
-            for(var r in upgradeData.cost){
-                upgradeData.cost[r] *= 2;
-            }
-            upgradeData.displayNeedsUpdate = true;
-        }
-    };
+		// make sure we have the required resources
+		for (var costResource in upgradeData.cost) {
+			if (this.getResource(costResource) < upgradeData.cost[costResource]) {
+				return;
+			}
+		}
+
+		// now actually spend the resources
+		for (costResource in upgradeData.cost) {
+			this.takeResource(costResource, upgradeData.cost[costResource]);
+		}
+
+		var res = this.getResourceData(resourceId);
+		res.capacity *= 2;
+		upgradeData.updateCost(res.capacity);
+
+		// still using the old storage variables
+		// TODO: remove this when the transition to data-driven storage is complete
+		window[resourceId + 'Storage'] = res.capacity;
+	};
+
+	instance.updateStorageCosts = function() {
+		for (var id in this.storageUpgrades) {
+			var storageData = this.storageUpgrades[id];
+			storageData.updateCost(this.entries[storageData.resource].capacity);
+		}
+	};
 
     instance.calcCost = function(self, resource){
         return Math.floor(Game.buildingData[self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
