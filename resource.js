@@ -48,6 +48,7 @@ Game.resources = (function(){
 	instance.initStorage = function(id) {
 		// using extend to create a new object and leave the defaults unchanged
 		var data = jQuery.extend({}, Game.storageData[id]);
+		data.cost = jQuery.extend({}, data.cost);
 		data.setId(id);
 		return data;
 	};
