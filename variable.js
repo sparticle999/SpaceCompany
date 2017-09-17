@@ -77,7 +77,7 @@ var woodburner = 0; var woodburnerMetalCost = 10; var woodburnerWoodCost = 5; va
 var furnace = 0; var furnaceMetalCost = 80; var furnaceWoodCost = 40; var furnaceOilCost = 100; var furnaceEnergyInput = 3; var furnaceWoodInput = 6; var furnaceOutput = 4;
 var kiln = 0; var kilnLunariteCost = 3500; var kilnGemCost = 6200; var kilnSiliconCost = 3800; var kilnEnergyInput = 13; var kilnWoodInput = 56; var kilnOutput = 53;
 var fryer = 0; var fryerLunariteCost = 15800; var fryerLavaCost = 12500; var fryerMeteoriteCost = 560; var fryerEnergyInput = 34; var fryerWoodInput = 148; var fryerOutput = 210;
-var microPollutor = 0; var microPollutorMetalCost = 133000; var microPollutorWoodCost = 189000; var microPollutorLavaCost = 160000; var microPollutorEnergyInput = 187; var microPollutorWoodInput = 950; var microPollutorOuput = 2267;
+var microPollutor = 0; var microPollutorMetalCost = 133000; var microPollutorWoodCost = 189000; var microPollutorLavaCost = 160000; var microPollutorEnergyInput = 187; var microPollutorWoodInput = 950; var microPollutorOutput = 2267;
 
 // Wood
 var wood = 0; var woodStorage = 50; var woodNextStorage = 100; var woodps = 0;
@@ -113,9 +113,9 @@ var interCow = 0; var interCowLunariteCost = 14000; var interCowGoldCost = 20200
 
 // Titanium
 var titanium = 0; var titaniumStorage = 50; var titaniumNextStorage = 100; var titaniumps = 0;
-var explorer = 0; var explorerGemCost = 1000; var explorer = 1;
+var explorer = 0; var explorerGemCost = 1000; var explorerOutput = 1;
 var lunariteDrill = 0; var lunariteDrillLunariteCost = 200; var lunariteDrillGemCost = 800; var lunariteDrillOilCost = 1000; var lunariteDrillEnergyInput = 13; var lunariteDrillOutput = 9;
-var pentaDrill = 0; var pentaDrillLunariteCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600; var pentaDrillEnergyInput = 46; var pentaDrillEnergyOutput = 49;
+var pentaDrill = 0; var pentaDrillLunariteCost = 14000; var pentaDrillGemCost = 11000; var pentaDrillSiliconCost = 5600; var pentaDrillEnergyInput = 46; var pentaDrillOutput = 49;
 var titanDrill = 0; var titanDrillLunariteCost = 63000; var titanDrillGoldCost = 27000; var titanDrillMeteoriteCost = 600; var titanDrillEnergyInput = 123; var titanDrillOutput = 197;
 var club = 0; var clubUraniumCost = 175000; var clubWoodCost = 164000; var clubHeliumCost = 156000; var clubEnergyInput = 690; var clubOutput = 2106;
 
@@ -153,7 +153,7 @@ var cage = 0; var cageLunariteCost = 171000; var cageSiliconCost = 165000; var c
 
 // Ice
 var ice = 0; var iceStorage = 50; var iceNextStorage = 100; var iceStorageCost = 100; var iceps = 0;
-var icePick = 0; var icePickLunariteCost = 17800; var icePickGemCost = 19300; var icePickOtput = 1;
+var icePick = 0; var icePickLunariteCost = 17800; var icePickGemCost = 19300; var icePickOutput = 1;
 var iceDrill = 0; var iceDrillLunariteCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600; var iceDrillEnergyInput = 83; var iceDrillOutput = 9;
 var freezer = 0; var freezerLunariteCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000; var freezerEnergyInput = 397; var freezerOutput = 65;
 var mrFreeze = 0; var mrFreezeWoodCost = 379000; var mrFreezeHeliumCost = 14000; var mrFreezeMeteoriteCost = 1500; var mrFreezeEnergyInput = 1135; var mrFreezeOutput = 278;
