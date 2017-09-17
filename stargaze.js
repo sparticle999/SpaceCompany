@@ -227,7 +227,7 @@ Game.stargaze = (function(){
 		for(var id in this.upgradeEntries){
 			var data = this.upgradeEntries[id];
 			if(data.achieved == true){
-				data.onApply();
+				if(data.onApply)data.onApply();
 			}
 		}
 	};
