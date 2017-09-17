@@ -120,7 +120,7 @@ Game.resourcesUI = (function(){
 
 	instance.createStorageCostDelegate = function(id, costResource) {
 		return (function() {
-			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource] * storagePrice);
+			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource]);
 		});
 	};
 
