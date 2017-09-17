@@ -390,6 +390,7 @@ Game.interstellarUI = (function(){
             if(data.displayNeedsUpdate == false){
                 continue;
             }
+            
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
                 var nav = Game.interstellar.entries[data.factionId]

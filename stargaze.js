@@ -62,6 +62,7 @@ Game.stargaze = (function(){
 
 			for(var i = 0; i < resourcesUnlocked.length; i++){
 				document.getElementById(resourcesUnlocked[i]).className = "hidden";
+				if(resourcesUnlocked[i].indexOf("Nav") != -1)document.getElementById(resourcesUnlocked[i]).className = "sideTab hidden";
 			}
 			for(var i = 0; i < buttonsHidden.length; i++){
 				if(buttonsHidden[i].indexOf("Progress") != -1){
@@ -70,8 +71,20 @@ Game.stargaze = (function(){
 					document.getElementById(buttonsHidden[i]).className = "btn btn-default";
 				}
 			}
+			for(var i = 0; i < explored.length; i++){
+				document.getElementById(explored[i]).className = "inner sideTab hidden";
+				if(explored[i] != "moon", explored[i] != "venus", explored[i] != "mars", explored[i] != "asteroidBelt")document.getElementById(explored[i]).className = "outer sideTab hidden";
+			}
+			document.getElementById("spaceRocket").className = "sideTab";
+			document.getElementById("mercury").className = "sideTab hidden";
+			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
+			document.getElementById("collapseOuter").className = "collapseOuter sideTab hidden";
 			for(var i = 0; i < tabsUnlocked.length; i++){
 				document.getElementById(tabsUnlocked[i]).className = "hidden";
+			}
+			for(var i = 0; i < activated.length; i++){
+				$(document.getElementById(activated[i] + "Activation")).text("Dormant");
+				document.getElementById(activated[i] + "Activation").className = "red";
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
@@ -214,7 +227,7 @@ Game.stargaze = (function(){
 		for(var id in this.upgradeEntries){
 			var data = this.upgradeEntries[id];
 			if(data.achieved == true){
-				data.onApply();
+				if(data.onApply)data.onApply();
 			}
 		}
 	};
