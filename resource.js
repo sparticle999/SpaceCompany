@@ -53,6 +53,17 @@ Game.resources = (function(){
 		return data;
 	};
 
+	instance.reset = function() {
+		for (var id in Game.resourceData) {
+			this.entries[id] = this.initResource(id);
+		}
+		for (id in Game.storageData) {
+			var data = this.initStorage(id);
+			this.storageUpgrades[id] = data;
+			this.entries[data.resource].storage = data;
+		}
+	};
+
     instance.update = function(delta) {
         for(var id in this.entries) {
             var addValue = this.entries[id].perSecond * delta;
