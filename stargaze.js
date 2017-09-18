@@ -88,6 +88,7 @@ Game.stargaze = (function(){
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
+			Game.resources.reset();
 
 			this.resetVars();
 			this.hideMachines();

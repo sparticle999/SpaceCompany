@@ -260,7 +260,7 @@ var Game = (function() {
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
         self.createInterval("Slow Update", self.slowUpdate, 1000);
-        self.createInterval("UI Update", self.uiUpdate, 10);
+        self.createInterval("UI Update", self.uiUpdate, 100);
 
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);

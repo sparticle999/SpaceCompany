@@ -30,7 +30,21 @@ Game.resourcesUI = (function(){
 	};
 
 	instance.update = function(delta) {
+		for (var id in RESOURCE) {
+			var current = getResource(RESOURCE[id]);
+			var capacity = getStorage(RESOURCE[id]);
+			var production = getProduction(RESOURCE[id]);
 
+			Game.settings.turnRedOrGreen(current, capacity, RESOURCE[id]);
+			Game.settings.turnRedOnNegative(production, RESOURCE[id] + 'ps');
+
+			var storageData = Game.resources.getStorageData(RESOURCE[id]);
+			if (storageData !== null) {
+				for (var costResource in storageData.cost) {
+					Game.settings.turnRed(getResource(costResource), storageData.cost[costResource], storageData.htmlIdCosts[costResource]);
+				}
+			}
+		}
 	};
 
 	instance.createResourceDelegate = function(id) {
@@ -120,7 +134,7 @@ Game.resourcesUI = (function(){
 
 	instance.createStorageCostDelegate = function(id, costResource) {
 		return (function() {
-			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource] * storagePrice);
+			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource]);
 		});
 	};
 
