@@ -64,34 +64,34 @@ Game.resources = (function(){
 		}
 	};
 
-    instance.update = function(delta) {
-        for(var id in this.entries) {
-            var addValue = this.entries[id].perSecond * delta;
-            this.addResource(id, addValue);
-        }
-    };
+	instance.update = function(delta) {
+		for(var id in this.entries) {
+			var addValue = this.entries[id].perSecond * delta;
+			this.addResource(id, addValue);
+		}
+	};
 
-    instance.save = function(data) {
-        data.resources = { v: this.dataVersion, r: {}};
-        for(var key in this.entries) {
-            data.resources.r[key] = {
-                n: this.entries[key].current,
-                u: this.entries[key].unlocked
-            }
-        }
-    };
+	instance.save = function(data) {
+		data.resources = { v: this.dataVersion, r: {}};
+		for(var key in this.entries) {
+			data.resources.r[key] = {
+				n: this.entries[key].current,
+				u: this.entries[key].unlocked
+			}
+		}
+	};
 
-    instance.load = function(data) {
-        if(data.resources) {
-            if(data.resources.v && data.resources.v === this.dataVersion) {
-                for(var id in data.resources.i) {
-                    if(this.entries[id]) {
-                        this.addResource(id, data.resources.r[id].n);
-                        this.entries[id].unlocked = data.resources.r[id].u;
-                    }
-                }
-            }
-        }
+	instance.load = function(data) {
+		if(data.resources) {
+			if(data.resources.v && data.resources.v === this.dataVersion) {
+				for(var id in data.resources.i) {
+					if(this.entries[id]) {
+						this.addResource(id, data.resources.r[id].n);
+						this.entries[id].unlocked = data.resources.r[id].u;
+					}
+				}
+			}
+		}
 
 		// Load the old storage values
 		for (id in RESOURCE) {
@@ -102,7 +102,7 @@ Game.resources = (function(){
 			this.entries[RESOURCE[id]].capacity = capacity;
 			this.entries[RESOURCE[id]].storage.updateCost(capacity);
 		}
-    };
+	};
 
 	// TODO: change to data-driven resources when available
 	instance.getResource = function(id) {
@@ -246,91 +246,36 @@ Game.resources = (function(){
 		}
 	};
 
-    instance.calcCost = function(self, resource){
-        return Math.floor(Game.buildingData[self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
-    };
+	instance.unlock = function(id) {
+		this.entries[id].unlocked = true;
+		this.entries[id].displayNeedsUpdate = true;
+	};
 
-    instance.updateCost = function(data){
-        // TODO
-    };
+	instance.getResourceData = function(id) {
+		return this.entries[id];
+	};
 
-    instance.buyMachine = function(id, count){
-        var data = Game.buildings.getBuildingData(id);
-        var resourcePass = 0;
-        for(var resource in data.cost){
-            var res = Game.resources.getResourceData(resource);
-            if(res.current >= data.cost[resource]){
-                resourcePass += 1;
-            }
-        }
-        if(resourcePass === Object.keys(data.cost).length){
-            data.current += 1;
-            for(var resource in data.cost){
-                var res = Game.resources.getResourceData(resource);
-                res.current -= data.cost[resource];
-            }
-            this.updateCost(data);
-            this.updateResourcesPerSecond();
-            data.displayNeedsUpdate = true;
-        }
-    };
+	instance.getCategoryData = function(id) {
+		return this.categoryEntries[id];
+	};
 
-    instance.destroyMachine = function(id, count){
-        var data = Game.buildings.getBuildingData(id);
-        if(data.current >= count){
-            data.current -= count;
-            this.updateCost(data);
-            data.displayNeedsUpdate = true;
-        }
-    };
+	instance.showByCategory = function(category) {
+		for(var id in this.entries) {
+			var data = this.entries[id];
+			if(data.category === category) {
+				data.hidden = false;
+			}
+		}
+	};
 
-    instance.updateResourcesPerSecond = function(){
-        for(var resource in this.entries){
-            var res = this.entries[resource];
-            var ps = 0;
-            for(var id in Game.buildings.entries){
-                var building = Game.buildings.entries[id];
-                for(var value in building.resourcePerSecond){
-                    if(value == res){
-                        var val = building.resourcePerSecond[value];
-                        ps += val * building.current;
-                    }
-                }
-            }
-            res.perSecond = ps;
-        }
-    };
-
-    instance.unlock = function(id) {
-        this.entries[id].unlocked = true;
-        this.entries[id].displayNeedsUpdate = true;
-    };
-
-    instance.getResourceData = function(id) {
-        return this.entries[id];
-    };
-
-    instance.getCategoryData = function(id) {
-        return this.categoryEntries[id];
-    };
-
-    instance.showByCategory = function(category) {
-        for(var id in this.entries) {
-            var data = this.entries[id];
-            if(data.category === category) {
-                data.hidden = false;
-            }
-        }
-    };
-
-    instance.hideByCategory = function(category) {
-        for(var id in this.entries) {
-            var data = this.entries[id];
-            if(data.category === category) {
-                data.hidden = true;
-            }
-        }
-    };
+	instance.hideByCategory = function(category) {
+		for(var id in this.entries) {
+			var data = this.entries[id];
+			if(data.category === category) {
+				data.hidden = true;
+			}
+		}
+	};
 
     return instance;
 }());
