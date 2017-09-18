@@ -17,6 +17,7 @@ function legacySave(data) {
 		batteryT2: batteryT2,
 		batteryT3: batteryT3,
 		batteryT4: batteryT4,
+		batteryT5: batteryT5,
 		charcoalEngine: charcoalEngine,
 		solarPanel: solarPanel,
 		methaneStation: methaneStation,
@@ -214,6 +215,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.batteryT2 !== "undefined") batteryT2 = savegame.batteryT2;
 		if(typeof savegame.batteryT3 !== "undefined") batteryT3 = savegame.batteryT3;
 		if(typeof savegame.batteryT4 !== "undefined") batteryT4 = savegame.batteryT4;
+		if(typeof savegame.batteryT5 !== "undefined") batteryT5 = savegame.batteryT5;
 		if(typeof savegame.charcoalEngine !== "undefined") charcoalEngine = savegame.charcoalEngine;
 		if(typeof savegame.solarPanel !== "undefined") solarPanel = savegame.solarPanel;
 		if(typeof savegame.methaneStation !== "undefined") methaneStation = savegame.methaneStation;

@@ -175,12 +175,17 @@ Game.updatesData = (function(){
 	instance.relationUpgrades = {
 		desc: 'Rebirth Upgrades now give relationship for upgrading them.',
 		read: false
-	}
+	};
 
 	instance.fixSecondRebirth = {
 		desc: 'Fixed Subsequent Rebirths. You can now rebirth more than once without fear of save corruption!',
 		read: false
-	}
+	};
+
+	instance.T5Batteries = {
+		desc: 'Added Tier 5 Batteries: Stargaze -> Kitrinos Corporation',
+		read: false
+	};
 
 	return instance;
 

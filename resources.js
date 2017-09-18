@@ -49,7 +49,7 @@ function getMaxPlasma() {
 }
 
 function getMaxEnergy() {
-	return (100000 + (50000 * battery) + (500000 * batteryT2) + (5000000 * batteryT3) + (50000000*batteryT4)) * ((Game.tech.entries.batteryEfficiencyResearch.current/100)+1);
+	return (100000 + (50000 * battery) + (500000 * batteryT2) + (5000000 * batteryT3) + (50000000*batteryT4) + (500000000*batteryT5)) * ((Game.tech.entries.batteryEfficiencyResearch.current/100)+1);
 }
 
 // Gain Buttons
@@ -309,6 +309,10 @@ function updateCost(){
 	batteryT4MetalCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
 	batteryT4GemCost = Math.floor(55000000 * Math.pow(1.1,batteryT4));
 	batteryT4LunariteCost = Math.floor(33000000 * Math.pow(1.1,batteryT4));
+
+	batteryT5MetalCost = Math.floor(490000000 * Math.pow(1.1,batteryT5));
+	batteryT5GemCost = Math.floor(490000000 * Math.pow(1.1,batteryT5));
+	batteryT5LunariteCost = Math.floor(270000000 * Math.pow(1.1,batteryT5));
 
 	charcoalEngineMetalCost = Math.floor(50 * Math.pow(1.1,charcoalEngine));
 	charcoalEngineGemCost = Math.floor(25 * Math.pow(1.1,charcoalEngine));
@@ -735,13 +739,24 @@ function getBatteryT3(){
 }
 
 function getBatteryT4(){
-	if(metal>=batteryT4MetalCost && gem>=batteryT4GemCost && lunarite>=batteryT4LunariteCost){
-		metal-=batteryT4MetalCost;
-		gem-=batteryT4GemCost;
-		lunarite-=batteryT4LunariteCost;
+	if(getResource(RESOURCE.Metal)>=batteryT4MetalCost && getResource(RESOURCE.Gem)>=batteryT4GemCost && getResource(RESOURCE.Lunarite)>=batteryT4LunariteCost){
+		Game.resources.takeResource(RESOURCE.Metal, batteryT4MetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryT4GemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryT4LunariteCost);
 		batteryT4+=1;
 		updateCost();
 		Game.statistics.add('tierOwned4');
+	}
+}
+
+function getBatteryT5(){
+	if(getResource(RESOURCE.Metal)>=batteryT5MetalCost && getResource(RESOURCE.Gem)>=batteryT5GemCost && getResource(RESOURCE.Lunarite)>=batteryT5LunariteCost){
+		Game.resources.takeResource(RESOURCE.Metal, batteryT5MetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryT5GemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryT5LunariteCost);
+		batteryT5+=1;
+		updateCost();
+		Game.statistics.add('tierOwned5');
 	}
 }
 

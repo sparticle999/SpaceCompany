@@ -349,6 +349,18 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
+	instance.T5Batteries = {
+		name: "Tier 5 Batteries",
+		desc: "Unlock the fifth tier of batteries for all your energy storage needs.",
+		cost: 14,
+		category: "kitrinos",
+		opinion: 17,
+		onApply: function(){
+			document.getElementById("batteriesT5").className = "";
+		},
+		achieved: false
+	};
+
 	instance.T5Machines = {
 		name: "Tier 5 Machines",
 		desc: "Gain access to a fifth tier of machines to produce resources.",

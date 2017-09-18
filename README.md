@@ -37,16 +37,18 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 # Changelog:
 
-### v0.5.1
+### v0.5.1 (includes all V0.5.0.X)
 ##### Features
 
 - Storage Upgrade Discounts
+- T5 batteries
 
 ##### Small Changes
 
 - Made Alpha Centauri distance clear
 - You cannot rebirth without a sphere
 - Fixed higher antimatter storages not saving
+- Reduced framerate from 100fps to 10fps
 
 ##### Bug Fixed
 
