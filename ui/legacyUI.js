@@ -70,6 +70,10 @@ function registerLegacyBindings() {
     Game.ui.bindElement('batteryT4MetalCost', function(){ return Game.settings.format(batteryT4MetalCost); });
     Game.ui.bindElement('batteryT4GemCost', function(){ return Game.settings.format(batteryT4GemCost); });
     Game.ui.bindElement('batteryT4LunariteCost', function(){ return Game.settings.format(batteryT4LunariteCost); });
+    Game.ui.bindElement('batteryT5', function(){ return Game.settings.format(batteryT5); });
+    Game.ui.bindElement('batteryT5MetalCost', function(){ return Game.settings.format(batteryT5MetalCost); });
+    Game.ui.bindElement('batteryT5GemCost', function(){ return Game.settings.format(batteryT5GemCost); });
+    Game.ui.bindElement('batteryT5LunariteCost', function(){ return Game.settings.format(batteryT5LunariteCost); });
     Game.ui.bindElement('charcoalEngine', function(){ return Game.settings.format(charcoalEngine); });
     Game.ui.bindElement('charcoalEngineMetalCost', function(){ return Game.settings.format(charcoalEngineMetalCost); });
     Game.ui.bindElement('charcoalEngineGemCost', function(){ return Game.settings.format(charcoalEngineGemCost); });

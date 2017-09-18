@@ -402,14 +402,18 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT2MetalCost, "batteryT2MetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT2GemCost, "batteryT2GemCost");
 	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT2LunariteCost, "batteryT2LunariteCost");
-
-	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT4MetalCost, "batteryT4MetalCost");
-	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT4GemCost, "batteryT4GemCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT4LunariteCost, "batteryT4LunariteCost");
 	
 	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT3MetalCost, "batteryT3MetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT3GemCost, "batteryT3GemCost");
 	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT3LunariteCost, "batteryT3LunariteCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT4MetalCost, "batteryT4MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT4GemCost, "batteryT4GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT4LunariteCost, "batteryT4LunariteCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Metal), batteryT5MetalCost, "batteryT5MetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), batteryT5GemCost, "batteryT5GemCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), batteryT5LunariteCost, "batteryT5LunariteCost");
 
 	Game.settings.turnRed(getResource(RESOURCE.Metal), charcoalEngineMetalCost, "charcoalEngineMetalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Gem), charcoalEngineGemCost, "charcoalEngineGemCost");
