@@ -138,6 +138,14 @@ Game.resources = (function(){
 	};
 
 	// TODO: change to data-driven resources when available
+	instance.setProduction = function(id, value) {
+		if (typeof window[id + 'ps'] === 'undefined') {
+			return;
+		}
+		window[id + 'ps'] = value;
+	};
+
+	// TODO: change to data-driven resources when available
 	instance.addResource = function(id, count) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
@@ -197,20 +205,6 @@ Game.resources = (function(){
 		}
 		return this.entries[resourceId].storage;
 	};
-
-    instance.setPerSecondProduction = function(id, value) {
-        if(!this.entries[id]) {
-            console.error("Unknown Resource: " + id);
-            return;
-        }
-
-        if (value < 0 || isNaN(value) || value === undefined) {
-            console.error("Invalid per second value: " + value + " for " + id);
-            return;
-        }
-
-        this.entries[id].perSecond = value;
-    };
 
 	instance.upgradeStorage = function(resourceId) {
 		var upgradeData = this.getStorageData(resourceId);

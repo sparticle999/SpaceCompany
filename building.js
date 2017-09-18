@@ -86,7 +86,7 @@ Game.buildings = (function(){
             }
 
             var baseValue = data.current * buildingData.perSecond;
-            Game.resources.setPerSecondProduction(buildingData.resource, baseValue);
+            Game.resources.setProduction(buildingData.resource, baseValue);
         }
 
         this.updatePerSecondProduction = false;
