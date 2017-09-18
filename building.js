@@ -1,30 +1,27 @@
 Game.buildings = (function(){
 
-    var instance = {};
+	var instance = {};
 
-    instance.dataVersion = 1;
-    instance.entries = {};
-    instance.updatePerSecondProduction = true;
-    instance.techTypeCount = 0;
+	instance.dataVersion = 1;
+	instance.entries = {};
+	instance.updatePerSecondProduction = true;
 
-    instance.initialise = function() {
-        for (var id in Game.buildingData) {
-            var data = Game.buildingData[id];
-            this.techTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'resbld_' + id,
-                current: 0,
-                iconPath: Game.constants.iconPath,
-                iconName: data.icon,
-                iconExtension: Game.constants.iconExtension,
-                max: data.maxCount,
-                displayNeedsUpdate: true
-            });
-        }
+	instance.initialise = function() {
+		var numBuildings = 0;
+		for (var id in Game.buildingData) {
+			numBuildings++;
+			this.entries[id] = this.initBuilding(id);
+		}
 
-        console.debug("Loaded " + this.techTypeCount + " Building Types");
-    };
+		console.debug("Loaded " + numBuildings + " Building Types");
+	};
+
+	instance.initBuilding = function(id) {
+		// using extend to create a new object and leave the defaults unchanged
+		var data = jQuery.extend({}, Game.buildingData[id]);
+		data.setId(id);
+		return data;
+	};
 
     instance.update = function(delta) {
         if (this.updatePerSecondProduction === true) {

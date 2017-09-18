@@ -1,13 +1,24 @@
 Game.buildingData = (function () {
 
-    var instance = {};
+	var instance = {};
 
-    var baseProducerBuilding = {
-        type: BUILDING_TYPE.PRODUCER,
-        unlocked: false,
-        maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED
-    };
+	var baseProducerBuilding = {
+		id: null,
+
+		type: BUILDING_TYPE.PRODUCER,
+		unlocked: false,
+		max: Number.MAX_VALUE,
+		costType: COST_TYPE.FIXED,
+
+		current: 0,
+		iconPath: Game.constants.iconPath,
+		iconExtension: Game.constants.iconExtension,
+		displayNeedsUpdate: true,
+
+		setId: function(id) {
+			this.id = id;
+		}
+	};
 
     // Energy
     instance.energyT1 = $.extend({}, baseProducerBuilding, {
