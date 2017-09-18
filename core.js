@@ -132,11 +132,13 @@ function setTimeUntilDisplayTest(targetLimitType, targetLimitTime, current, max,
 }
 
 function refreshPerSec(delta){
+	// cache production values in a local object
+	var production = {};
 
 	// First we update and check the energy
 	var energyOutput = calculateEnergyOutput(delta);
 	var energyUse = calculateEnergyUse(delta);
-	energyps = energyOutput - energyUse;
+	production[RESOURCE.Energy] = energyOutput - energyUse;
 
 	var deltaEnergyDiff = (energyOutput * delta) - (energyUse * delta);
 	energyLow = deltaEnergyDiff < 0 && (getResource(RESOURCE.Energy) <= 0 || getResource(RESOURCE.Energy) < deltaEnergyDiff);
@@ -146,7 +148,6 @@ function refreshPerSec(delta){
 	var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01) + (Game.stargaze.entries.darkMatter.count * dmBoost);
 
 	// Now we calculate the base per second
-	var production = {};
 	production[RESOURCE.Uranium] = grinder * perSecondMultiplier;
 	production[RESOURCE.Oil] = pump * perSecondMultiplier;
 	production[RESOURCE.Metal] = miner * perSecondMultiplier;
