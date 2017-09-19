@@ -696,8 +696,8 @@ function getPlasmatic(){
 
 function getBath(){
 	if(getResource(RESOURCE.Lava) >= bathLavaCost && getResource(RESOURCE.Gold) >= bathGoldCost && getResource(RESOURCE.Meteorite) >= bathMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.Lava, bathLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gold, bathSiliconCost);
+		Game.resources.takeResource(RESOURCE.Lava, bathLavaCost);
+		Game.resources.takeResource(RESOURCE.Gold, bathGoldCost);
 		Game.resources.takeResource(RESOURCE.Meteorite, bathMeteoriteCost);
 		bath += 1;
 		updateCost();

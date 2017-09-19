@@ -19,18 +19,12 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Loading screen flavour text changes as you progress
 - Machine Overview Tab
 
-v0.5.0 The Interstellar Update
+v0.5.1
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
-- Dark Matter
-- Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
-- Unknown Planets that you have to explore to know what it holds
-- Each star system is more hostile than the last until prestige, where it resets
-- Pushing Planets into the Sun gets prestige currency
-- Mass to Energy Conversion
+- (Mass to Energy Conversion)
 - Buy X buttons
 - Buy Max/Custom Buttons
-- Reduce Storage Costs
 - Change Letter Formatting To Start At 100K
 - Rebalance Science
 - Change Icons (white circle with icon inside)
@@ -62,7 +56,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Wonders showing up as activated after rebirth
 - Fixed Solar System Showing planets before exploring requirements
 
-### v0.5.0
+### v0.5.0 The Interstellar Update
 ##### Features
 
 - Offline Production
