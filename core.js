@@ -1,79 +1,12 @@
 function calculateEnergyOutput(delta) {
-	if (globalEnergyLock === true) {
-		return 0;
-	}
-
 	var multiplier = 1 + (Game.stargaze.entries.darkMatter.count * dmBoost);
-
-	// Fixed outputs first
-	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
-
-	if (getResourceAfterTick(RESOURCE.Charcoal, delta) >= charcoalEngine * delta) {
-		output += charcoalEngine * charcoalEngineOutput;
-	}
-
-	if (getResourceAfterTick(RESOURCE.Methane, delta) >= methaneStation * 6 * delta) {
-		output += methaneStation * 23;
-	}
-
-	if (getResourceAfterTick(RESOURCE.Uranium, delta) >= nuclearStation * 7 * delta) {
-		output += nuclearStation * 153;
-	}
-
-	if (getResourceAfterTick(RESOURCE.Lava, delta) > magmatic * 11 * delta) {
-		output += magmatic * 191;
-	}
-
-	if (getResourceAfterTick(RESOURCE.Hydrogen, delta) >= fusionReactor * 10 * delta &&
-		getResourceAfterTick(RESOURCE.Helium, delta) >= fusionReactor * 10 * delta) {
-		output += fusionReactor * 273;
-	}
-
-	return output * multiplier;
+	return Game.buildings.calculateEnergyOutput(delta) * multiplier;
 }
 
 function calculateEnergyUse(delta) {
-	if (globalEnergyLock === true) {
-		return 0;
-	}
-
-	var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
-	use += (moonDrill*20)+(suctionExcavator*16)+(lunariteDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
-	use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
-
-	use += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
-	use += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
-	use += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
-
-	use += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	use += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
-	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
-
-    use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
-    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*746);
-    use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
-
-    if(charcoalToggled === true){
-        use += (furnace*3)+(kiln*13)+(fryer*34)+(microPollutor*212);
-    }
-
-	if (heaterToggled && getResource(RESOURCE.Hydrogen) + getProduction(RESOURCE.Hydrogen) >= heater * 10 * delta &&
-		getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= heater * delta) {
-		use += heater * 1000;
-	}
-
-	if (plasmaticToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmatic * 10 * delta) {
-		use += plasmatic * 8500;
-	}
-
-	if (bathToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= bath * 10 * delta) {
-		use += bath * 15000;
-	}
-
 	var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
 	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
-
-	return use * multiplier;
+	return Game.buildings.calculateEnergyUse(delta) * multiplier;
 }
 
 function toggleEnergy() {
