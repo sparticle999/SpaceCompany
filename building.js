@@ -50,5 +50,18 @@ Game.buildings = (function(){
 		return this.entries[id];
 	};
 
+	// TODO: change to data-driven buildings when available
+	instance.getNum = function(id) {
+		var count = window[id];
+		if (typeof count === 'undefined') {
+			return 0;
+		}
+		return count;
+	};
 	return instance;
 }());
+
+// globally accessible wrapper for Game.buildings.getNum();
+function getBuildingNum(id) {
+	return Game.buildings.getNum(id);
+}
