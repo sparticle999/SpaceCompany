@@ -23,7 +23,7 @@ Game.interstellar.stars = (function(){
             
         }
 
-        console.log("Loaded " + this.starCount + " Stars");
+        console.debug("Loaded " + this.starCount + " Stars");
 
     };
 

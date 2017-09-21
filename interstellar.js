@@ -21,7 +21,7 @@ Game.interstellar = (function(){
             
         }
 
-        console.log("Loaded " + this.navCount + " Interstellar Navs");
+        console.debug("Loaded " + this.navCount + " Interstellar Navs");
         this.comms.initialise();
         this.rocketParts.initialise();
         this.rocket.initialise();

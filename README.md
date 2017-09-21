@@ -36,6 +36,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 - Storage Upgrade Discounts
 - T5 batteries
+- Fixed Huge Memory Leak
 
 ##### Small Changes
 
