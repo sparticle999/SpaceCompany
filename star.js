@@ -5,6 +5,8 @@ Game.interstellar.stars = (function(){
     instance.dataVersion = 1;
     instance.entries = {};
     instance.starCount = 0;
+
+    instance.systemsConquered = 0;
     
     instance.initialise = function() {
         for (var id in Game.starData) {

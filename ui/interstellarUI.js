@@ -479,6 +479,8 @@ Game.interstellarUI = (function(){
         }
 
         // Updates Antimatter Nav
+        Game.interstellar.stars.systemsConquered = systemsConquered;
+        $('#sphereMax').text(systemsConquered+1)
         antimatterStorage = 100000*(systemsConquered+1);
         $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
         $('#intnav_antimatter_perSecond').text(antimatterps);

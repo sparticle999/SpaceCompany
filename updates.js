@@ -192,6 +192,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.multiSpheres = {
+		desc: 'Each Star System Conquered allows you to build a sphere.',
+		read: false
+	}
+
 	return instance;
 
 }());

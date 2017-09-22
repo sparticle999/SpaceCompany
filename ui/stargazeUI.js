@@ -261,7 +261,8 @@ Game.stargazeUI = (function(){
             DM += 2;
         }
         //Sphere
-        DM += sphere * 15; //Temporary//
+        if(sphere != 0)DM += 10
+        DM += sphere*5; //Temporary//
         //Research
         DM += Math.floor((Game.tech.entries.efficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
         //Rank

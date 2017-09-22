@@ -212,7 +212,7 @@ function buildSwarm(){
 }
 
 function buildSphere(){
-	if(sphere > 0){
+	if(sphere > Game.interstellar.stars.systemsConquered){
 		return;
 	}
 
@@ -223,8 +223,10 @@ function buildSphere(){
 
 		updateDysonCost();
 
-		document.getElementById("stargazeTab").className = "";
-		Game.stargaze.unlocked = true;
-		newUnlock('stargaze');
+		if(Game.stargaze.unlocked != true){
+			document.getElementById("stargazeTab").className = "";
+			Game.stargaze.unlocked = true;
+			newUnlock('stargaze');
+		}
 	}
 }
