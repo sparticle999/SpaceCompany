@@ -13,10 +13,6 @@ function getProduction(id) {
 	return Game.resources.getProduction(id);
 }
 
-function getResourceAfterTick(id, delta) {
-	return getResource(id) + getProduction(id) * delta;
-}
-
 function checkStorages(){
 	if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
 
