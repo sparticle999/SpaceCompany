@@ -188,7 +188,7 @@ Game.updatesData = (function(){
 	};
 
 	instance.memoryLeak = {
-		desc: 'Fixed Huge Memory Leak. The Game should run much smoother now and use much less CPU',
+		desc: 'Fixed Huge Memory Leak. The Game should run much smoother now and use much less CPU' ,
 		read: false
 	};
 
