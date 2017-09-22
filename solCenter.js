@@ -113,7 +113,7 @@ function refreshConversionDisplay() {
 	}
 }
 
-function convertEnergy(resourceName){
+function convertEnergy(resourceName, notification){
 	var current = getResource(resourceName);
 	var capacity = getStorage(resourceName);
 	var emcValue = window[resourceName + "EmcVal"];
@@ -130,13 +130,15 @@ function convertEnergy(resourceName){
 	if(amount > 0 && getResource(RESOURCE.Energy) >= requiredEnergy){
 		Game.resources.takeResource(RESOURCE.Energy, requiredEnergy);
 		Game.resources.addResource(resourceName, amount);
-		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		if(notification != false){
+			Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		}
 
 		refreshConversionDisplay();
 	}
 }
 
-function convertPlasma(resourceName){
+function convertPlasma(resourceName, notification){
 	var current = getResource(resourceName);
 	var capacity = getStorage(resourceName);
 	var emcValue = window[resourceName + "EmcVal"];
@@ -153,9 +155,31 @@ function convertPlasma(resourceName){
 	if(amount > 0 && getResource(RESOURCE.Plasma) >= requiredPlasma){
 		Game.resources.takeResource(RESOURCE.Plasma, requiredPlasma);
 		Game.resources.addResource(resourceName, amount);
-		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		if(notification != false){
+			Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		}
 
 		refreshConversionDisplay();
+	}
+}
+
+$('input[type="checkbox"]').on('change', function() {
+	$('input[class="autoEmc"]').not(this).prop('checked', false);
+	autoResource = this.id.substring(0,this.id.indexOf("Auto"));
+	if($(this).is(":checked") == false){
+		autoResource = null;
+	}
+});
+
+function gainAutoEmc(){
+	if(autoResource == null){
+		return;
+	}
+	emcAmount = "Max";
+	if(autoResource != "plasma"){
+		convertEnergy(autoResource, false);
+	} else {
+		convertPlasma(autoResource, false);
 	}
 }
 

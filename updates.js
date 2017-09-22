@@ -197,6 +197,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.autoEmc = {
+		desc: 'Added Auto Emc! Stargaze -> Prasnian Empire',
+		read: false
+	}
+
 	return instance;
 
 }());

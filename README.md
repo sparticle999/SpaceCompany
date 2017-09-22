@@ -38,6 +38,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - T5 batteries
 - Fixed Huge Memory Leak
 - Multiple Spheres
+- Auto Emc
 
 ##### Small Changes
 

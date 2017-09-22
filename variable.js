@@ -179,7 +179,8 @@ var chemicalPlant = 0; var chemicalPlantMetalCost = 1000; var chemicalPlantGemCo
 var oxidisation = 0; var oxidisationMetalCost = 12000; var oxidisationGemCost = 8300; var oxidisationOilCost = 6800; var oxidisationOilInput = 100; var oxidisationCharcoalInput = 100; var oxidisationOutput = 1.5;
 var hydrazine = 0; var hydrazineTitaniumCost = 140000; var hydrazineSiliconCost = 96300; var hydrazineGoldCost = 78600; var hydrazineMethaneInput = 520; var hydrazineOutput = 20;
 
-// Dyson Structures
+// Sol Centre
+var autoResource = null;
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 var ring = 0; var ringOutput = 5000;
 var swarm = 0; var swarmOutput = 25000;

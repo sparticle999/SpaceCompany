@@ -252,7 +252,7 @@ Game.prestigeData = (function(){
 	instance.floor1Discount = {
 		name: "Floor 1 Discount",
 		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
-		cost: 25,
+		cost: 16,
 		category: "prasnian",
 		opinion: 10,
 		onApply: function(){
@@ -264,7 +264,7 @@ Game.prestigeData = (function(){
 	instance.floor23Discount = {
 		name: "Floor 2 & 3 Discount",
 		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
-		cost: 31,
+		cost: 19,
 		category: "prasnian",
 		opinion: 15,
 		onApply: function(){
@@ -272,6 +272,21 @@ Game.prestigeData = (function(){
 		},
 		achieved: false
 	};
+
+	instance.autoEmc = {
+		name: "Automated EMC",
+		desc: "Check a box on an EMC resource and have that resource be 'EMCed' to the max every second.",
+		cost: 24,
+		category: "prasnian",
+		opinion: 17,
+		onApply: function(){
+			var updateList = document.getElementsByClassName("autoEmcHide");
+			for(var i = updateList.length-1; i >= 0; i--){
+				updateList[i].className = "";
+			}
+		},
+		achieved: false
+	}
 
 	/**************
 	** Hyacinite **
