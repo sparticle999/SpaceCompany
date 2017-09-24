@@ -346,6 +346,7 @@ Game.prestigeData = (function(){
 		opinion: 4,
 		onApply: function(){
 			T1Price -= 0.1;
+			Game.buildings.updateBuildingCosts();
 		},
 		achieved: false
 	};

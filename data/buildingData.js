@@ -27,8 +27,9 @@ Game.buildingData = (function () {
 
 		updateCost: function(count) {
 			var buildingDefault = Game.buildingData[this.id];
+			var costMultiplier = this.tier === 1 ? T1Price : 1;
 			for (var costResource in this.cost) {
-				this.cost[costResource] = Math.floor(buildingDefault.cost[costResource] * Math.pow(1.1, count));
+				this.cost[costResource] = Math.floor(buildingDefault.cost[costResource] * Math.pow(1.1, count) * costMultiplier);
 			}
 		}
 	};
