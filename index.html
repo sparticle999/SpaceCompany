@@ -612,7 +612,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getHeater()" class="btn btn-default">Get Super-Heater</button>
+									<button onclick="buyBuilding(BUILDING.Heater)" class="btn btn-default">Get Super-Heater</button>
 									<button onclick="toggleHeater()" class="btn btn-default">Turn Super-Heater <span id="heaterToggled">Off</span></button>
 									<button onclick="destroyMachine('heater')" class="btn btn-default destroy hidden">Destroy Super-Heater</button>
 								</td>
@@ -633,7 +633,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPlasmatic()" class="btn btn-default">Get Plasmatic Pit</button>
+									<button onclick="buyBuilding(BUILDING.Plasmatic)" class="btn btn-default">Get Plasmatic Pit</button>
 									<button onclick="togglePlasmatic()" class="btn btn-default">Turn Plasmatic Pit <span id="plasmaticToggled">Off</span></button>
 									<button onclick="destroyMachine('plasmatic')" class="btn btn-default destroy hidden">Destroy Plasmatic Pit</button>
 								</td>
@@ -654,7 +654,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getBath()" class="btn btn-default">Get Electron Bath</button>
+									<button onclick="buyBuilding(BUILDING.Bath)" class="btn btn-default">Get Electron Bath</button>
 									<button onclick="toggleBath()" class="btn btn-default">Turn Electron Bath <span id="bathToggled">Off</span></button>
 									<button onclick="destroyMachine('bath')" class="btn btn-default destroy hidden">Destroy Electron Bath</button>
 								</td>
@@ -754,7 +754,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCharcoalEngine()" class="btn btn-default">Get Charcoal Engine</button>
+									<button onclick="buyBuilding(BUILDING.CharcoalEngine)" class="btn btn-default">Get Charcoal Engine</button>
 									<button onclick="destroyMachine('charcoalEngine')" class="btn btn-default destroy hidden">Destroy Charcoal Engine</button>
 								</td>
 							</tr>
@@ -772,7 +772,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getSolarPanel()" class="btn btn-default">Get Solar Panel</button>
+									<button onclick="buyBuilding(BUILDING.SolarPanel)" class="btn btn-default">Get Solar Panel</button>
 									<button onclick="destroyMachine('solarPanel')" class="btn btn-default destroy hidden">Destroy Solar Panel</button>
 								</td>
 							</tr>
@@ -790,7 +790,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMethaneStation()" class="btn btn-default">Get Methane Power Station</button>
+									<button onclick="buyBuilding(BUILDING.MethaneStation)" class="btn btn-default">Get Methane Power Station</button>
 									<button onclick="destroyMachine('methaneStation')" class="btn btn-default destroy hidden">Destroy Methane Station</button>
 								</td>
 							</tr>
@@ -808,7 +808,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getNuclearStation()" class="btn btn-default">Get Nuclear Power Station</button>
+									<button onclick="buyBuilding(BUILDING.NuclearStation)" class="btn btn-default">Get Nuclear Power Station</button>
 									<button onclick="destroyMachine('nuclearStation')" class="btn btn-default destroy hidden">Destroy Nuclear Station</button>
 								</td>
 							</tr>
@@ -826,7 +826,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMagmatic()" class="btn btn-default">Get Magmatic Dynamo</button>
+									<button onclick="buyBuilding(BUILDING.Magmatic)" class="btn btn-default">Get Magmatic Dynamo</button>
 									<button onclick="destroyMachine('magmatic')" class="btn btn-default destroy hidden">Destroy Magmatic Dynamo</button>
 								</td>
 							</tr>
@@ -844,7 +844,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getFusionReactor()" class="btn btn-default">Get Fusion Reactor</button>
+									<button onclick="buyBuilding(BUILDING.FusionReactor)" class="btn btn-default">Get Fusion Reactor</button>
 									<button onclick="destroyMachine('fusionReactor')" class="btn btn-default destroy hidden">Destroy Fusion Reactor</button>
 								</td>
 							</tr>
@@ -902,7 +902,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getGrinder()" class="btn btn-default">Get Grinder</button>
+									<button onclick="buyBuilding(BUILDING.Grinder)" class="btn btn-default">Get Grinder</button>
 									<button onclick="destroyMachine('grinder')" class="btn btn-default destroy hidden">Destroy Grinder</button>
 								</td>
 							</tr>
@@ -922,7 +922,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCubic()" class="btn btn-default">Get Cubic Teleposer</button>
+									<button onclick="buyBuilding(BUILDING.Cubic)" class="btn btn-default">Get Cubic Teleposer</button>
 									<button onclick="destroyMachine('cubic')" class="btn btn-default destroy hidden">Destroy Cubic Teleposer</button>
 								</td>
 							</tr>
@@ -942,7 +942,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getEnricher()" class="btn btn-default">Get Uranium Enricher</button>
+									<button onclick="buyBuilding(BUILDING.Enricher)" class="btn btn-default">Get Uranium Enricher</button>
 									<button onclick="destroyMachine('enricher')" class="btn btn-default destroy hidden">Destroy Uranium Enricher</button>
 								</td>
 							</tr>
@@ -962,7 +962,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getRecycler()" class="btn btn-default">Get Yellowcake Recycler</button>
+									<button onclick="buyBuilding(BUILDING.Recycler)" class="btn btn-default">Get Yellowcake Recycler</button>
 									<button onclick="destroyMachine('recycler')" class="btn btn-default destroy hidden">Destroy Yellowcake Recycler</button>
 								</td>
 							</tr>
@@ -982,7 +982,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPlanetNuke()" class="btn btn-default">Get Planetary Nuclear Plant</button>
+									<button onclick="buyBuilding(BUILDING.PlanetNuke)" class="btn btn-default">Get Planetary Nuclear Plant</button>
 									<button onclick="destroyMachine('planetNuke')" class="btn btn-default destroy hidden">Destroy Planetary Nuclear Plant</button>
 								</td>
 							</tr>
@@ -1038,7 +1038,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPump()" class="btn btn-default">Get Pump</button>
+									<button onclick="buyBuilding(BUILDING.Pump)" class="btn btn-default">Get Pump</button>
 									<button onclick="destroyMachine('pump')" class="btn btn-default destroy hidden">Destroy Small Pump</button>
 								</td>
 							</tr>
@@ -1056,7 +1056,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPumpjack()" class="btn btn-default">Get Pumpjack</button>
+									<button onclick="buyBuilding(BUILDING.Pumpjack)" class="btn btn-default">Get Pumpjack</button>
 									<button onclick="destroyMachine('pumpjack')" class="btn btn-default destroy hidden">Destroy Pumpjack</button>
 								</td>
 							</tr>
@@ -1076,7 +1076,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getOilField()" class="btn btn-default">Get Oil Field</button>
+									<button onclick="buyBuilding(BUILDING.OilField)" class="btn btn-default">Get Oil Field</button>
 									<button onclick="destroyMachine('oilField')" class="btn btn-default destroy hidden">Destroy Oil Field</button>
 								</td>
 							</tr>
@@ -1096,7 +1096,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getOilRig()" class="btn btn-default">Get Offshore Rig</button>
+									<button onclick="buyBuilding(BUILDING.OilRig)" class="btn btn-default">Get Offshore Rig</button>
 									<button onclick="destroyMachine('oilRig')" class="btn btn-default destroy hidden">Destroy Offshore Rig</button>
 								</td>
 							</tr>
@@ -1116,7 +1116,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getFossilator()" class="btn btn-default">Get Fossilator 9000</button>
+									<button onclick="buyBuilding(BUILDING.Fossilator)" class="btn btn-default">Get Fossilator 9000</button>
 									<button onclick="destroyMachine('fossilator')" class="btn btn-default destroy hidden">Destroy Fossilator 9000</button>
 								</td>
 							</tr>
@@ -1174,7 +1174,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMiner()" class="btn btn-default">Get Miner</button>
+									<button onclick="buyBuilding(BUILDING.Miner)" class="btn btn-default">Get Miner</button>
 									<button onclick="destroyMachine('miner')" class="btn btn-default destroy hidden">Destroy Miner</button>
 								</td>
 							</tr>
@@ -1194,7 +1194,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getHeavyDrill()" class="btn btn-default">Get Heavy Drill</button>
+									<button onclick="buyBuilding(BUILDING.HeavyDrill)" class="btn btn-default">Get Heavy Drill</button>
 									<button onclick="destroyMachine('heavyDrill')" class="btn btn-default destroy hidden">Destroy Heavy Drill</button>
 								</td>
 							</tr>
@@ -1214,7 +1214,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getGigaDrill()" class="btn btn-default">Get Giga Drill</button>
+									<button onclick="buyBuilding(BUILDING.GigaDrill)" class="btn btn-default">Get Giga Drill</button>
 									<button onclick="destroyMachine('gigaDrill')" class="btn btn-default destroy hidden">Destroy Giga Drill</button>
 								</td>
 							</tr>
@@ -1234,7 +1234,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getQuantumDrill()" class="btn btn-default">Get Quantum Drill</button>
+									<button onclick="buyBuilding(BUILDING.QuantumDrill)" class="btn btn-default">Get Quantum Drill</button>
 									<button onclick="destroyMachine('quantumDrill')" class="btn btn-default destroy hidden">Destroy Quantum Drill</button>
 								</td>
 							</tr>
@@ -1254,7 +1254,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMultiDrill()" class="btn btn-default">Get Multiverse Drill</button>
+									<button onclick="buyBuilding(BUILDING.MultiDrill)" class="btn btn-default">Get Multiverse Drill</button>
 									<button onclick="destroyMachine('multiDrill')" class="btn btn-default destroy hidden">Destroy Multiverse Drill</button>
 								</td>
 							</tr>
@@ -1312,7 +1312,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getGemMiner()" class="btn btn-default">Get Gem Miner</button>
+									<button onclick="buyBuilding(BUILDING.GemMiner)" class="btn btn-default">Get Gem Miner</button>
 									<button onclick="destroyMachine('gemMiner')" class="btn btn-default destroy hidden">Destroy Gem Miner</button>
 								</td>
 							</tr>
@@ -1332,7 +1332,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getAdvancedDrill()" class="btn btn-default">Get Advanced Drill</button>
+									<button onclick="buyBuilding(BUILDING.AdvancedDrill)" class="btn btn-default">Get Advanced Drill</button>
 									<button onclick="destroyMachine('advancedDrill')" class="btn btn-default destroy hidden">Destroy Advanced Drill</button>
 								</td>
 							</tr>
@@ -1352,7 +1352,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDiamondDrill()" class="btn btn-default">Get Diamond Drill</button>
+									<button onclick="buyBuilding(BUILDING.DiamondDrill)" class="btn btn-default">Get Diamond Drill</button>
 									<button onclick="destroyMachine('diamondDrill')" class="btn btn-default destroy hidden">Destroy Diamond Drill</button>
 								</td>
 							</tr>
@@ -1372,7 +1372,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCarbyneDrill()" class="btn btn-default">Get Carbyne Drill</button>
+									<button onclick="buyBuilding(BUILDING.CarbyneDrill)" class="btn btn-default">Get Carbyne Drill</button>
 									<button onclick="destroyMachine('carbyneDrill')" class="btn btn-default destroy hidden">Destroy Carbyne Drill</button>
 								</td>
 							</tr>
@@ -1392,7 +1392,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDiamondChamber()" class="btn btn-default">Get Diamond Accretion Chamber</button>
+									<button onclick="buyBuilding(BUILDING.DiamondChamber)" class="btn btn-default">Get Diamond Accretion Chamber</button>
 									<button onclick="destroyMachine('diamondChamber')" class="btn btn-default destroy hidden">Destroy Diamond Accretion Chamber</button>
 								</td>
 							</tr>
@@ -1453,7 +1453,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getWoodburner()" class="btn btn-default">Get Woodburner</button>
+									<button onclick="buyBuilding(BUILDING.Woodburner)" class="btn btn-default">Get Woodburner</button>
 									<button onclick="destroyMachine('woodburner')" class="btn btn-default destroy hidden">Destroy Woodburner</button>
 								</td>
 							</tr>
@@ -1475,7 +1475,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getFurnace()" class="btn btn-default">Get Furnace</button>
+									<button onclick="buyBuilding(BUILDING.Furnace)" class="btn btn-default">Get Furnace</button>
 									<button onclick="destroyMachine('furnace')" class="btn btn-default destroy hidden">Destroy Furnace</button>
 								</td>
 							</tr>
@@ -1497,7 +1497,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getKiln()" class="btn btn-default">Get Industrial Kiln</button>
+									<button onclick="buyBuilding(BUILDING.Kiln)" class="btn btn-default">Get Industrial Kiln</button>
 									<button onclick="destroyMachine('kiln')" class="btn btn-default destroy hidden">Destroy Industrial Kiln</button>
 								</td>
 							</tr>
@@ -1519,7 +1519,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getFryer()" class="btn btn-default">Get Forest Fryer</button>
+									<button onclick="buyBuilding(BUILDING.Fryer)" class="btn btn-default">Get Forest Fryer</button>
 									<button onclick="destroyMachine('fryer')" class="btn btn-default destroy hidden">Destroy Forest Fryer</button>
 								</td>
 							</tr>
@@ -1541,7 +1541,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMicroPollutor()" class="btn btn-default">Get Microverse Pollutor</button>
+									<button onclick="buyBuilding(BUILDING.MicroPollutor)" class="btn btn-default">Get Microverse Pollutor</button>
 									<button onclick="destroyMachine('microPollutor')" class="btn btn-default destroy hidden">Destroy Microverse Pollutor</button>
 								</td>
 							</tr>
@@ -1599,7 +1599,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getWoodcutter()" class="btn btn-default">Get Woodcutter</button>
+									<button onclick="buyBuilding(BUILDING.Woodcutter)" class="btn btn-default">Get Woodcutter</button>
 									<button onclick="destroyMachine('woodcutter')" class="btn btn-default destroy hidden">Destroy Woodcutter</button>
 								</td>
 							</tr>
@@ -1619,7 +1619,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLaserCutter()" class="btn btn-default">Get Laser Cutter</button>
+									<button onclick="buyBuilding(BUILDING.LaserCutter)" class="btn btn-default">Get Laser Cutter</button>
 									<button onclick="destroyMachine('laserCutter')" class="btn btn-default destroy hidden">Destroy Laser Cutter</button>
 								</td>
 							</tr>
@@ -1639,7 +1639,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDeforester()" class="btn btn-default">Get Mass Deforester</button>
+									<button onclick="buyBuilding(BUILDING.Deforester)" class="btn btn-default">Get Mass Deforester</button>
 									<button onclick="destroyMachine('deforester')" class="btn btn-default destroy hidden">Destroy Mass Deforester</button>
 								</td>
 							</tr>
@@ -1659,7 +1659,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getInfuser()" class="btn btn-default">Get Biomass Infuser</button>
+									<button onclick="buyBuilding(BUILDING.Infuser)" class="btn btn-default">Get Biomass Infuser</button>
 									<button onclick="destroyMachine('infuser')" class="btn btn-default destroy hidden">Destroy Biomass Infuser</button>
 								</td>
 							</tr>
@@ -1679,7 +1679,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getForest()" class="btn btn-default">Get Russian Forest</button>
+									<button onclick="buyBuilding(BUILDING.Forest)" class="btn btn-default">Get Russian Forest</button>
 									<button onclick="destroyMachine('forest')" class="btn btn-default destroy hidden">Destroy Russian Forest</button>
 								</td>
 							</tr>
@@ -1737,7 +1737,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getBlowtorch()" class="btn btn-default">Get Blowtorch</button>
+									<button onclick="buyBuilding(BUILDING.Blowtorch)" class="btn btn-default">Get Blowtorch</button>
 									<button onclick="destroyMachine('blowtorch')" class="btn btn-default destroy hidden">Destroy Empowered Blowtorch</button>
 								</td>
 							</tr>
@@ -1757,7 +1757,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getScorcher()" class="btn btn-default">Get Seaside Scorcher</button>
+									<button onclick="buyBuilding(BUILDING.Scorcher)" class="btn btn-default">Get Seaside Scorcher</button>
 									<button onclick="destroyMachine('scorcher')" class="btn btn-default destroy hidden">Destroy Scorcher</button>
 								</td>
 							</tr>
@@ -1777,7 +1777,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getAnnihilator()" class="btn btn-default">Get Annihilator</button>
+									<button onclick="buyBuilding(BUILDING.Annihilator)" class="btn btn-default">Get Annihilator</button>
 									<button onclick="destroyMachine('annihilator')" class="btn btn-default destroy hidden">Destroy Beach Annihilator</button>
 								</td>
 							</tr>
@@ -1797,7 +1797,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDesert()" class="btn btn-default">Get Desert Destroyer</button>
+									<button onclick="buyBuilding(BUILDING.Desert)" class="btn btn-default">Get Desert Destroyer</button>
 									<button onclick="destroyMachine('desert')" class="btn btn-default destroy hidden">Destroy Desert Destroyer</button>
 								</td>
 							</tr>
@@ -1817,7 +1817,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getTardis()" class="btn btn-default">Get T.A.R.D.I.S.</button>
+									<button onclick="buyBuilding(BUILDING.Tardis)" class="btn btn-default">Get T.A.R.D.I.S.</button>
 									<button onclick="destroyMachine('tardis')" class="btn btn-default destroy hidden">Destroy T.A.R.D.I.S.</button>
 								</td>
 							</tr>
@@ -1875,7 +1875,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMoonWorker()" class="btn btn-default">Get Moon Worker</button>
+									<button onclick="buyBuilding(BUILDING.MoonWorker)" class="btn btn-default">Get Moon Worker</button>
 									<button onclick="destroyMachine('moonWorker')" class="btn btn-default destroy hidden">Fire Moon Worker</button>
 								</td>
 							</tr>
@@ -1895,7 +1895,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMoonDrill()" class="btn btn-default">Get Low-Gravity Drill</button>
+									<button onclick="buyBuilding(BUILDING.MoonDrill)" class="btn btn-default">Get Low-Gravity Drill</button>
 									<button onclick="destroyMachine('moonDrill')" class="btn btn-default destroy hidden">Destroy Low-Gravity Drill</button>
 								</td>
 							</tr>
@@ -1915,7 +1915,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMoonQuarry()" class="btn btn-default">Get Moon Quarry</button>
+									<button onclick="buyBuilding(BUILDING.MoonQuarry)" class="btn btn-default">Get Moon Quarry</button>
 									<button onclick="destroyMachine('moonQuarry')" class="btn btn-default destroy hidden">Destroy Moon Quarry</button>
 								</td>
 							</tr>
@@ -1935,7 +1935,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPlanetExcavator()" class="btn btn-default">Get Planetary Excavator</button>
+									<button onclick="buyBuilding(BUILDING.PlanetExcavator)" class="btn btn-default">Get Planetary Excavator</button>
 									<button onclick="destroyMachine('planetExcavator')" class="btn btn-default destroy hidden">Destroy Planetary Excavator</button>
 								</td>
 							</tr>
@@ -1955,7 +1955,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCloner()" class="btn btn-default">Get Moon Cloner</button>
+									<button onclick="buyBuilding(BUILDING.Cloner)" class="btn btn-default">Get Moon Cloner</button>
 									<button onclick="destroyMachine('cloner')" class="btn btn-default destroy hidden">Destroy Moon Cloner</button>
 								</td>
 							</tr>
@@ -2013,7 +2013,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getVacuum()" class="btn btn-default">Get Vacuum Cleaner</button>
+									<button onclick="buyBuilding(BUILDING.Vacuum)" class="btn btn-default">Get Vacuum Cleaner</button>
 									<button onclick="destroyMachine('vacuum')" class="btn btn-default destroy hidden">Destroy Vacuum Cleaner</button>
 								</td>
 							</tr>
@@ -2033,7 +2033,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getSuctionExcavator()" class="btn btn-default">Get Suction Excavator</button>
+									<button onclick="buyBuilding(BUILDING.SuctionExcavator)" class="btn btn-default">Get Suction Excavator</button>
 									<button onclick="destroyMachine('suctionExcavator')" class="btn btn-default destroy hidden">Destroy Suction Excavator</button>
 								</td>
 							</tr>
@@ -2053,7 +2053,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getSpaceCow()" class="btn btn-default">Get Space Cow</button>
+									<button onclick="buyBuilding(BUILDING.SpaceCow)" class="btn btn-default">Get Space Cow</button>
 									<button onclick="destroyMachine('spaceCow')" class="btn btn-default destroy hidden">Destroy Space Cow</button>
 								</td>
 							</tr>
@@ -2073,7 +2073,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getVent()" class="btn btn-default">Get Hydrothermal Vent</button>
+									<button onclick="buyBuilding(BUILDING.Vent)" class="btn btn-default">Get Hydrothermal Vent</button>
 									<button onclick="destroyMachine('vent')" class="btn btn-default destroy hidden">Destroy Hydrothermal Vent</button>
 								</td>
 							</tr>
@@ -2093,7 +2093,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getInterCow()" class="btn btn-default">Get Interstellar Cow</button>
+									<button onclick="buyBuilding(BUILDING.InterCow)" class="btn btn-default">Get Interstellar Cow</button>
 									<button onclick="destroyMachine('interCow')" class="btn btn-default destroy hidden">Destroy Interstellar Cow</button>
 								</td>
 							</tr>
@@ -2151,7 +2151,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getExplorer()" class="btn btn-default">Get Explorer</button>
+									<button onclick="buyBuilding(BUILDING.Explorer)" class="btn btn-default">Get Explorer</button>
 									<button onclick="destroyMachine('explorer')" class="btn btn-default destroy hidden">Destroy Explorer</button>
 								</td>
 							</tr>
@@ -2171,7 +2171,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLunariteDrill()" class="btn btn-default">Get Lunarite Drill</button>
+									<button onclick="buyBuilding(BUILDING.LunariteDrill)" class="btn btn-default">Get Lunarite Drill</button>
 									<button onclick="destroyMachine('lunariteDrill')" class="btn btn-default destroy hidden">Destroy Lunarite Drill</button>
 								</td>
 							</tr>
@@ -2191,7 +2191,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPentaDrill()" class="btn btn-default">Get Penta-Drill</button>
+									<button onclick="buyBuilding(BUILDING.PentaDrill)" class="btn btn-default">Get Penta-Drill</button>
 									<button onclick="destroyMachine('pentaDrill')" class="btn btn-default destroy hidden">Destroy Penta-Drill</button>
 								</td>
 							</tr>
@@ -2211,7 +2211,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getTitanDrill()" class="btn btn-default">Get Titan-Drill</button>
+									<button onclick="buyBuilding(BUILDING.TitanDrill)" class="btn btn-default">Get Titan-Drill</button>
 									<button onclick="destroyMachine('titanDrill')" class="btn btn-default destroy hidden">Destroy Titan-Drill</button>
 								</td>
 							</tr>
@@ -2231,7 +2231,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getClub()" class="btn btn-default">Get Club</button>
+									<button onclick="buyBuilding(BUILDING.Club)" class="btn btn-default">Get Club</button>
 									<button onclick="destroyMachine('club')" class="btn btn-default destroy hidden">Destroy Club</button>
 								</td>
 							</tr>
@@ -2289,7 +2289,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDroid()" class="btn btn-default">Get Rocket Droid</button>
+									<button onclick="buyBuilding(BUILDING.Droid)" class="btn btn-default">Get Rocket Droid</button>
 									<button onclick="destroyMachine('droid')" class="btn btn-default destroy hidden">Destroy Droid</button>
 								</td>
 							</tr>
@@ -2309,7 +2309,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDestroyer()" class="btn btn-default">Get Asteroid Destroyer</button>
+									<button onclick="buyBuilding(BUILDING.Destroyer)" class="btn btn-default">Get Asteroid Destroyer</button>
 									<button onclick="destroyMachine('destroyer')" class="btn btn-default destroy hidden">Destroy Destroyer</button>
 								</td>
 							</tr>
@@ -2329,7 +2329,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDeathStar()" class="btn btn-default">Get Death Star Jr</button>
+									<button onclick="buyBuilding(BUILDING.DeathStar)" class="btn btn-default">Get Death Star Jr</button>
 									<button onclick="destroyMachine('deathStar')" class="btn btn-default destroy hidden">Destroy Death Star Jr</button>
 								</td>
 							</tr>
@@ -2349,7 +2349,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getActuator()" class="btn btn-default">Get Chronal Actuator</button>
+									<button onclick="buyBuilding(BUILDING.Actuator)" class="btn btn-default">Get Chronal Actuator</button>
 									<button onclick="destroyMachine('actuator')" class="btn btn-default destroy hidden">Destroy Chronal Actuator</button>
 								</td>
 							</tr>
@@ -2369,7 +2369,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPhilosopher()" class="btn btn-default">Get Philosopher's Stone</button>
+									<button onclick="buyBuilding(BUILDING.Philosopher)" class="btn btn-default">Get Philosopher's Stone</button>
 									<button onclick="destroyMachine('philosopher')" class="btn btn-default destroy hidden">Destroy Philosopher's Stone</button>
 								</td>
 							</tr>
@@ -2427,7 +2427,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getScout()" class="btn btn-default">Get Scout Ship</button>
+									<button onclick="buyBuilding(BUILDING.Scout)" class="btn btn-default">Get Scout Ship</button>
 									<button onclick="destroyMachine('scout')" class="btn btn-default destroy hidden">Destroy Scout</button>
 								</td>
 							</tr>
@@ -2447,7 +2447,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getSpaceLaser()" class="btn btn-default">Get Interplanetary Laser</button>
+									<button onclick="buyBuilding(BUILDING.SpaceLaser)" class="btn btn-default">Get Interplanetary Laser</button>
 									<button onclick="destroyMachine('spaceLaser')" class="btn btn-default destroy hidden">Destroy Space Laser</button>
 								</td>
 							</tr>
@@ -2467,7 +2467,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getBertha()" class="btn btn-default">Get Big Bertha</button>
+									<button onclick="buyBuilding(BUILDING.Bertha)" class="btn btn-default">Get Big Bertha</button>
 									<button onclick="destroyMachine('bertha')" class="btn btn-default destroy hidden">Destroy Big Bertha</button>
 								</td>
 							</tr>
@@ -2487,7 +2487,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCannon()" class="btn btn-default">Get Atomic Cannon</button>
+									<button onclick="buyBuilding(BUILDING.Cannon)" class="btn btn-default">Get Atomic Cannon</button>
 									<button onclick="destroyMachine('cannon')" class="btn btn-default destroy hidden">Destroy Atomic Cannon</button>
 								</td>
 							</tr>
@@ -2504,9 +2504,10 @@
 										Uses 1008 Energy per second.
 										<br>
 										Costs <span id='werewolfUraniumCost'>165000</span> Uranium, <span id='werewolfGemCost'>209000</span> Gems, <span id='werewolfMethaneCost'>170000</span> Methane.
+									</span>
 									<br>
 									<br>
-									<button onclick="getWerewolf()" class="btn btn-default">Get Dead Werewolf Finder</button>
+									<button onclick="buyBuilding(BUILDING.Werewolf)" class="btn btn-default">Get Dead Werewolf Finder</button>
 									<button onclick="destroyMachine('werewolf')" class="btn btn-default destroy hidden">Destroy Dead Werewolf Finder</button>
 								</td>
 							</tr>
@@ -2564,7 +2565,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCrucible()" class="btn btn-default">Get Crucible</button>
+									<button onclick="buyBuilding(BUILDING.Crucible)" class="btn btn-default">Get Crucible</button>
 									<button onclick="destroyMachine('crucible')" class="btn btn-default destroy hidden">Destroy Heat Resistant Crucible</button>
 								</td>
 							</tr>
@@ -2584,7 +2585,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getExtractor()" class="btn btn-default">Get Extractor</button>
+									<button onclick="buyBuilding(BUILDING.Extractor)" class="btn btn-default">Get Extractor</button>
 									<button onclick="destroyMachine('extractor')" class="btn btn-default destroy hidden">Destroy Lava Extractor</button>
 								</td>
 							</tr>
@@ -2604,7 +2605,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getExtruder()" class="btn btn-default">Get Igneous Extruder</button>
+									<button onclick="buyBuilding(BUILDING.Extruder)" class="btn btn-default">Get Igneous Extruder</button>
 									<button onclick="destroyMachine('extruder')" class="btn btn-default destroy hidden">Destroy Igneous Extruder</button>
 								</td>
 							</tr>
@@ -2624,7 +2625,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getVeluptuator()" class="btn btn-default">Get Volcanic Veluptuator</button>
+									<button onclick="buyBuilding(BUILDING.Veluptuator)" class="btn btn-default">Get Volcanic Veluptuator</button>
 									<button onclick="destroyMachine('veluptuator')" class="btn btn-default destroy hidden">Destroy Volcanic Veluptuator</button>
 								</td>
 							</tr>
@@ -2644,7 +2645,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCondensator()" class="btn btn-default">Get Jupitonian Condensator</button>
+									<button onclick="buyBuilding(BUILDING.Condensator)" class="btn btn-default">Get Jupitonian Condensator</button>
 									<button onclick="destroyMachine('condensator')" class="btn btn-default destroy hidden">Destroy Jupitonian Condensator</button>
 								</td>
 							</tr>
@@ -2702,7 +2703,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCollector()" class="btn btn-default">Get Collector</button>
+									<button onclick="buyBuilding(BUILDING.Collector)" class="btn btn-default">Get Collector</button>
 									<button onclick="destroyMachine('collector')" class="btn btn-default destroy hidden">Destroy Collector</button>
 								</td>
 							</tr>
@@ -2722,7 +2723,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMagnet()" class="btn btn-default">Get Magnet</button>
+									<button onclick="buyBuilding(BUILDING.Magnet)" class="btn btn-default">Get Magnet</button>
 									<button onclick="destroyMachine('magnet')" class="btn btn-default destroy hidden">Destroy Gaseous Magnet</button>
 								</td>
 							</tr>
@@ -2742,7 +2743,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getECell()" class="btn btn-default">Get Electrolytic Cell</button>
+									<button onclick="buyBuilding(BUILDING.ECell)" class="btn btn-default">Get Electrolytic Cell</button>
 									<button onclick="destroyMachine('eCell')" class="btn btn-default destroy hidden">Destroy Electrolytic Cell</button>
 								</td>
 							</tr>
@@ -2762,7 +2763,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getHindenburg()" class="btn btn-default">Get Hindenburg Excavation</button>
+									<button onclick="buyBuilding(BUILDING.Hindenburg)" class="btn btn-default">Get Hindenburg Excavation</button>
 									<button onclick="destroyMachine('hindenburg')" class="btn btn-default destroy hidden">Destroy Hindenburg Excavation</button>
 								</td>
 							</tr>
@@ -2782,7 +2783,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getHarvester()" class="btn btn-default">Get Star Harvester</button>
+									<button onclick="buyBuilding(BUILDING.Harvester)" class="btn btn-default">Get Star Harvester</button>
 									<button onclick="destroyMachine('harvester')" class="btn btn-default destroy hidden">Destroy Star Harvester</button>
 								</td>
 							</tr>
@@ -2840,7 +2841,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getDrone()" class="btn btn-default">Get Drone</button>
+									<button onclick="buyBuilding(BUILDING.Drone)" class="btn btn-default">Get Drone</button>
 									<button onclick="destroyMachine('drone')" class="btn btn-default destroy hidden">Destroy Helium Drone</button>
 								</td>
 							</tr>
@@ -2860,7 +2861,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getTanker()" class="btn btn-default">Get Tanker</button>
+									<button onclick="buyBuilding(BUILDING.Tanker)" class="btn btn-default">Get Tanker</button>
 									<button onclick="destroyMachine('tanker')" class="btn btn-default destroy hidden">Destroy Helium Tanker</button>
 								</td>
 							</tr>
@@ -2880,7 +2881,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCompressor()" class="btn btn-default">Get Morphic Compressor</button>
+									<button onclick="buyBuilding(BUILDING.Compressor)" class="btn btn-default">Get Morphic Compressor</button>
 									<button onclick="destroyMachine('compressor')" class="btn btn-default destroy hidden">Destroy Morphic Compressor</button>
 								</td>
 							</tr>
@@ -2900,7 +2901,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getSkimmer()" class="btn btn-default">Get Gas Giant Skimmer</button>
+									<button onclick="buyBuilding(BUILDING.Skimmer)" class="btn btn-default">Get Gas Giant Skimmer</button>
 									<button onclick="destroyMachine('skimmer')" class="btn btn-default destroy hidden">Destroy Gas Giant Skimmer</button>
 								</td>
 							</tr>
@@ -2920,7 +2921,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getCage()" class="btn btn-default">Get Caged Star</button>
+									<button onclick="buyBuilding(BUILDING.Cage)" class="btn btn-default">Get Caged Star</button>
 									<button onclick="destroyMachine('cage')" class="btn btn-default destroy hidden">Destroy Caged Star</button>
 								</td>
 							</tr>
@@ -2978,7 +2979,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getIcePick()" class="btn btn-default">Get Ice Pickaxe</button>
+									<button onclick="buyBuilding(BUILDING.IcePick)" class="btn btn-default">Get Ice Pickaxe</button>
 									<button onclick="destroyMachine('icePick')" class="btn btn-default destroy hidden">Destroy Ice Pickaxe</button>
 								</td>
 							</tr>
@@ -2998,7 +2999,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getIceDrill()" class="btn btn-default">Get Ice Drill</button>
+									<button onclick="buyBuilding(BUILDING.IceDrill)" class="btn btn-default">Get Ice Drill</button>
 									<button onclick="destroyMachine('iceDrill')" class="btn btn-default destroy hidden">Destroy Ice Drill</button>
 								</td>
 							</tr>
@@ -3018,7 +3019,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getFreezer()" class="btn btn-default">Get Freezer</button>
+									<button onclick="buyBuilding(BUILDING.Freezer)" class="btn btn-default">Get Freezer</button>
 									<button onclick="destroyMachine('freezer')" class="btn btn-default destroy hidden">Destroy Ocean Freezer</button>
 								</td>
 							</tr>
@@ -3038,7 +3039,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getMrFreeze()" class="btn btn-default">Get Mr Freeze</button>
+									<button onclick="buyBuilding(BUILDING.MrFreeze)" class="btn btn-default">Get Mr Freeze</button>
 									<button onclick="destroyMachine('mrFreeze')" class="btn btn-default destroy hidden">Destroy Mr Freeze</button>
 								</td>
 							</tr>
@@ -3058,7 +3059,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getOverexchange()" class="btn btn-default">Get Overexchange Condenser</button>
+									<button onclick="buyBuilding(BUILDING.Overexchange)" class="btn btn-default">Get Overexchange Condenser</button>
 									<button onclick="destroyMachine('overexchange')" class="btn btn-default destroy hidden">Destroy Overexchange Condenser</button>
 								</td>
 							</tr>
@@ -3119,7 +3120,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getPrinter()" class="btn btn-default">Get Meteorite Printer</button>
+									<button onclick="buyBuilding(BUILDING.Printer)" class="btn btn-default">Get Meteorite Printer</button>
 									<button onclick="destroyMachine('printer')" class="btn btn-default destroy hidden">Destroy Meteorite Printer</button>
 								</td>
 							</tr>
@@ -3137,7 +3138,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getWeb()" class="btn btn-default">Get Meteorite Web</button>
+									<button onclick="buyBuilding(BUILDING.Web)" class="btn btn-default">Get Meteorite Web</button>
 									<button onclick="destroyMachine('web')" class="btn btn-default destroy hidden">Destroy Meteorite Web</button>
 								</td>
 							</tr>
@@ -3213,7 +3214,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLab()" class="btn btn-default">Build</button>
+									<button onclick="buyBuilding(BUILDING.Lab)" class="btn btn-default">Build</button>
 									<br>
 									<br>
 								</td>
@@ -3232,7 +3233,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLabT2()" class="btn btn-default">Build Laboratory T2</button>
+									<button onclick="buyBuilding(BUILDING.LabT2)" class="btn btn-default">Build Laboratory T2</button>
 									<br>
 									<br>
 								</td>
@@ -3251,7 +3252,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
+									<button onclick="buyBuilding(BUILDING.LabT3)" class="btn btn-default">Build Laboratory T3</button>
 								</td>
 							</tr>
 							<tr id="labTier4" class="hidden">
@@ -3268,7 +3269,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
+									<button onclick="buyBuilding(BUILDING.LabT4)" class="btn btn-default">Build Laboratory T4</button>
 								</td>
 							</tr>
 							<tr id="labTier5" class="hidden">
@@ -3285,7 +3286,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getLabT5()" class="btn btn-default">Build Laboratory T5</button>
+									<button onclick="buyBuilding(BUILDING.LabT5)" class="btn btn-default">Build Laboratory T5</button>
 								</td>
 							</tr>
 						</table>
@@ -3522,7 +3523,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getChemicalPlant()" class="btn btn-default">Build Chemical Plant</button>
+									<button onclick="buyBuilding(BUILDING.ChemicalPlant)" class="btn btn-default">Build Chemical Plant</button>
 									<button onclick="destroyMachine('chemicalPlant')" class="btn btn-default destroy hidden">Destroy Chemical Plant</button>
 									<br>
 									<br>
@@ -3544,7 +3545,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getOxidisation()" class="btn btn-default">Build Oxidisation Chamber</button>
+									<button onclick="buyBuilding(BUILDING.Oxidisation)" class="btn btn-default">Build Oxidisation Chamber</button>
 									<button onclick="destroyMachine('oxidisation')" class="btn btn-default destroy hidden">Destroy Oxidisation Chamber</button>
 									<br>
 									<br>
@@ -3566,7 +3567,7 @@
 									</span>
 									<br>
 									<br>
-									<button onclick="getHydrazine()" class="btn btn-default">Build Hydrazine Catalyst</button>
+									<button onclick="buyBuilding(BUILDING.Hydrazine)" class="btn btn-default">Build Hydrazine Catalyst</button>
 									<button onclick="destroyMachine('hydrazine')" class="btn btn-default destroy hidden">Destroy Hydrazine Catalyst</button>
 									<br>
 									<br>

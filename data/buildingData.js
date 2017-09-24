@@ -4,6 +4,7 @@ Game.buildingData = (function () {
 
 	var baseProducerBuilding = {
 		id: null,
+		htmlIdCosts: null,
 
 		type: BUILDING_TYPE.PRODUCER,
 		unlocked: false,
@@ -17,6 +18,10 @@ Game.buildingData = (function () {
 
 		setId: function(id) {
 			this.id = id;
+			this.htmlIdCosts = {};
+			for (var resource in this.cost) {
+				this.htmlIdCosts[resource] = id + Game.utils.capitaliseFirst(resource) + 'Cost';
+			}
 		},
 
 		updateCost: function(count) {
@@ -158,8 +163,8 @@ Game.buildingData = (function () {
             'plasma': 140
         },
         cost: {
-            'lunarite': 6200000,
-            'silicon': 5900000,
+            'lava': 6200000,
+            'gold': 5900000,
             'meteorite': 12100
         }
     });
@@ -1001,7 +1006,7 @@ Game.buildingData = (function () {
             'gold': 1
         },
         cost: {
-            'gem': 200,
+            'lunarite': 200,
             'methane': 50
         }
     });
@@ -1105,7 +1110,7 @@ Game.buildingData = (function () {
         },
         cost: {
             'lunarite': 19500,
-            'silver': 18200,
+            'titanium': 18200,
             'silicon': 11000
         }
     });
@@ -1169,7 +1174,7 @@ Game.buildingData = (function () {
         cost: {
             'lunarite': 10800,
             'titanium': 9600,
-            'silicon': 6600
+            'gold': 6600
         }
     });
 
@@ -1227,7 +1232,7 @@ Game.buildingData = (function () {
         },
         cost: {
             'lunarite': 8400,
-            'titanium': 6000
+            'silicon': 6000
         }
     });
 
@@ -1477,7 +1482,7 @@ Game.buildingData = (function () {
         cost: {
             'metal': 1000,
             'gem': 750,
-            'wood': 500
+            'oil': 500
         }
     });
 
@@ -1491,7 +1496,7 @@ Game.buildingData = (function () {
         cost: {
             'metal': 12000,
             'gem': 8300,
-            'wood': 6800
+            'oil': 6800
         }
     });
 

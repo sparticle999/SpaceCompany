@@ -58,7 +58,11 @@ Game.buildings = (function(){
 	};
 
 	instance.getBuildingData = function(id) {
-		return this.entries[id];
+		var data = this.entries[id];
+		if (typeof data === 'undefined') {
+			return null;
+		}
+		return data;
 	};
 
 	// TODO: change to data-driven buildings when available
@@ -459,10 +463,64 @@ Game.buildings = (function(){
 		}
 	};
 
+	instance.buyBuilding = function(buildingId) {
+		var buildingData = this.getBuildingData(buildingId);
+		if (buildingData === null) {
+			return;
+		}
+
+		// make sure we have the required resources
+		for (var costResource in buildingData.cost) {
+			if (getResource(costResource) < buildingData.cost[costResource]) {
+				return;
+			}
+		}
+
+		// now actually spend the resources
+		for (costResource in buildingData.cost) {
+			Game.resources.takeResource(costResource, buildingData.cost[costResource]);
+		}
+
+		buildingData.current++;
+		buildingData.updateCost(buildingData.current);
+
+		// still using the old building variables
+		// TODO: remove this when the transition to data-driven buildings is complete
+		window[buildingId] = buildingData.current;
+	};
+
+	instance.destroyBuilding = function(buildingId) {
+		var buildingData = this.getBuildingData(buildingId);
+		if (buildingData === null) {
+			return;
+		}
+
+		if (buildingData.current <= 0) {
+			return;
+		}
+
+		buildingData.current--;
+		buildingData.updateCost(buildingData.current);
+
+		// still using the old building variables
+		// TODO: remove this when the transition to data-driven buildings is complete
+		window[buildingId] = buildingData.current;
+	};
+
 	return instance;
 }());
 
 // globally accessible wrapper for Game.buildings.getNum();
 function getBuildingNum(id) {
 	return Game.buildings.getNum(id);
+}
+
+// globally accessible wrapper for Game.buildings.buyBuilding();
+function buyBuilding(id) {
+	return Game.buildings.buyBuilding(id);
+}
+
+// globally accessible wrapper for Game.buildings.destroyBuilding();
+function destroyMachine(id){
+	Game.buildings.destroyBuilding(id);
 }
