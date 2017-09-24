@@ -12,6 +12,8 @@ Game.stargaze = (function(){
 	instance.rebirthUnlocked = [];			// Things that start unhidden
 	instance.rebirthChildUnlocked = [];		// Things that have children that start unhidden
 
+	instance.respecCount = 3;				// Respecs available
+
 	instance.rebirthNeedsUpdate = true;
 
 	instance.unlocked = false;
@@ -57,8 +59,8 @@ Game.stargaze = (function(){
 		if(sphere < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
-			Game.stargaze.entries.darkMatter.count += Game.stargaze.entries.darkMatter.current;
-			Game.notifySuccess("Dark Matter!", "You have gained " + Game.stargaze.entries.darkMatter.current + " Dark Matter from rebirthing into your new life!");
+			this.entries.darkMatter.count += this.entries.darkMatter.current;
+			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.current + " Dark Matter from rebirthing into your new life!");
 
 			for(var i = 0; i < resourcesUnlocked.length; i++){
 				document.getElementById(resourcesUnlocked[i]).className = "hidden";
@@ -124,18 +126,25 @@ Game.stargaze = (function(){
 				document.getElementById(data.id + '_bg').style = "width: 50px; height: 40px; background: url(" + data.iconPath + data.iconName + "." + data.iconExtension + ") no-repeat center; -webkit-background-size: contain;background-size: contain; margin-left: 5px;opacity: 0.2";
 			}
 			Game.achievements.rank = 0;
-			for(var upgrade in Game.stargaze.upgradeEntries){
-				var upgradeData = Game.stargaze.upgradeEntries[upgrade];
-				// if(upgradeData.category != "intro" && upgradeData.category != "darkMatter"){
-				// 	if(upgradeData.achieved == true)this.entries[upgradeData.category].opinion += upgradeData.opinion;
-				// }
-				Game.stargaze.upgradeEntries[upgrade].achieved = false;
-				Game.stargaze.upgradeEntries[upgrade].displayNeedsUpdate = true;
-			}
 			for(nav in this.entries){
 				if(this.entries[nav].opinion){
 					this.entries[nav].opinion = 0;
 					this.entries[nav].displayNeedsUpdate = true;
+				}
+			}
+
+			// Adding starting things
+			for(var upgrade in this.upgradeEntries){
+				var upgradeData = this.upgradeEntries[upgrade];
+				if(upgradeData.achieved == true){
+					upgradeData.onApply();
+					if(upgradeData.category != "intro" && upgradeData.category != "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
+				}
+				upgradeData.displayNeedsUpdate = true;
+			}
+			for(var i = 0; i < this.rebirthStart.length; i++){
+    			for(var object in this.rebirthStart[i]){
+					window[object] += this.rebirthStart[i][object];
 				}
 			}
 		}
@@ -144,6 +153,10 @@ Game.stargaze = (function(){
 	instance.upgrade = function(id){
 		if(id == 'rebirth'){
 			this.rebirth();
+		}
+		if(id == 'respec'){
+			this.respec();
+			return;
 		}
 		var upgradeData = this.upgradeEntries[id];
 		if(!upgradeData) {
@@ -170,13 +183,50 @@ Game.stargaze = (function(){
 			this.rebirthChildUnlocked.push(data.rebirthChildUnlocked[i]);
 		}
 		for(var object in data.rebirthStart){
-			this.rebirthStart.push(data.rebirthStart[object]);
+			this.rebirthStart.push(data.rebirthStart);
 		}
 		if(data.onApply !== null) {
 			data.onApply();
 		}
 		this.rebirthNeedsUpdate = true;
 	};
+
+	instance.respec = function(){
+		if(this.respecCount <= 0){
+			return;
+		}
+		if(confirm('Warning! You will still lose the respec if you have no upgrades.') == false){
+			return;
+		}
+		this.respecCount -= 1;
+		$('#respecCount').text(this.respecCount);
+		for(var upgrade in this.upgradeEntries){
+			var upgradeData = this.upgradeEntries[upgrade];
+			if(upgradeData.achieved == true){
+				this.entries.darkMatter.count += upgradeData.cost;
+				if(upgradeData.category != "intro" && upgradeData.category != "darkMatter"){
+					if(upgradeData.achieved == true)this.entries[upgradeData.category].opinion -= upgradeData.opinion;this.entries[upgradeData.category].displayNeedsUpdate = true;
+				}
+				upgradeData.remove();
+				upgradeData.achieved = false;
+			}
+			this.rebirthNeedsUpdate = true;
+		}
+		for(var i = 0; i < this.rebirthUnlocked.length; i++){
+			// Unused So Far
+		}
+		for(var i = 0; i < this.rebirthChildUnlocked.length; i++){
+			// Unused So Far
+		}
+		for(var i = 0; i < this.rebirthStart; i++){
+			for(var object in this.rebirthStart[i]){
+				window[object] -= this.rebirthStart[i][object];
+			}
+		}
+		this.rebirthUnlocked = {};
+		this.rebirthChildUnlocked = {};
+		this.rebirthStart = {};
+	}
 
 	instance.save = function(data){
 		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}, unlocked: this.unlocked};

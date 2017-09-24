@@ -202,6 +202,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.respec = {
+		desc: 'Keep your DM upgrades and have the ability to respec.',
+		read: false
+	}
+
 	return instance;
 
 }());

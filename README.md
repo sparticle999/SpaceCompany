@@ -39,6 +39,8 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Huge Memory Leak
 - Multiple Spheres
 - Auto Emc
+- Redid Rebirth
+- Respec
 
 ##### Small Changes
 

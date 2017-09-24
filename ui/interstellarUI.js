@@ -422,7 +422,7 @@ Game.interstellarUI = (function(){
                     $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
 
                     // Updates Threat Level
-                    var threat = Game.interstellar.military.getThreat(data.stats.power*multi);
+                    var threat = Game.interstellar.military.getThreat(data.stats.power*multi, data.stats.speed);
                     $('.star_' + data.id + '_threat').text(threat);
 
                     // Updates Victory Chance

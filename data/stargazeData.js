@@ -157,7 +157,21 @@ Game.prestigeData = (function(){
 	            data.displayNeedsUpdate = true;
 	        }
 	    },
+	    remove: function(){
+	    	for(var id in Game.stargaze.entries){
+	            var data = Game.stargaze.getStargazeData(id);
+	            data.unlocked = false;
+	            data.displayNeedsUpdate = true;
+	        }
+	    },
 		achieved: false,
+	};
+
+	instance.respec = {
+		name: "Respec",
+		desc: "When you have made a mistake or want to change your upgrades, you can respec and refund every upgrade for dark matter. Unfortunately, this huge amount of power can only be unleashed a finite number of times. The Overlord graciously gives you 3 free chances at redemption, but the rest will have to be earned through rebirth (1 extra every 3 times). <br><b>NB: You will lose machines gained with these ugprades, including all T5 machines. You will also divide your storage by 128 if you have the starting storage. (6400/50 = 128).</b>",
+		cost: 0,
+		category: "intro",
 	};
 
 	instance.increaseProd1 = {
@@ -167,6 +181,9 @@ Game.prestigeData = (function(){
 		category: "darkMatter",
 		onApply: function(){
 	        dmBoost += 0.01;
+	    },
+	    remove: function(){
+	    	dmBoost -= 0.01;
 	    },
 		achieved: false,
 	};
@@ -194,6 +211,12 @@ Game.prestigeData = (function(){
 			// 	Game.resources.entries[id].displayNeedsUpdate = true;
 			// }
 		},
+		remove: function(){
+	    	gainNum = 1;
+			for(var resource in RESOURCE){
+				if(RESOURCE[resource] != "science")$('#' + RESOURCE[resource] + 'Gain').text(gainNum);
+			}
+	    },
 		achieved: false
 	};
 
@@ -215,6 +238,17 @@ Game.prestigeData = (function(){
 
 			// new
 		},
+		remove: function(){
+	    	for(var i = 0; i < resources.length; i++){
+				if(window[resources[i] + "Storage"] <= 6400){
+					window[resources[i] + "Storage"] = 50;
+					window[resources[i] + "NextStorage"] = 50 * 2;
+				} else {
+					window[resources[i] + "Storage"] /= 128;
+					window[resources[i] + "NextStorage"] /= 128;
+				}
+			}
+	    },
 		achieved: false
 	};
 
@@ -230,6 +264,9 @@ Game.prestigeData = (function(){
 
 			// new
 		},
+		remove: function(){
+	    	storagePrice += 0.25;
+	    },
 		achieved: false
 	};
 
@@ -246,6 +283,11 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			document.getElementById("plasmaTier3").className = "";
 		},
+		remove: function(){
+	    	document.getElementById("plasmaTier3").className = "hidden";
+	    	bath = 0;
+	    	updateCost();
+	    },
 		achieved: false
 	};
 
@@ -258,6 +300,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			floor1Price -= 0.15;
 		},
+		remove: function(){
+	    	floor1Price += 0.15;
+	    },
 		achieved: false
 	};
 
@@ -270,6 +315,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			floor23Price -= 0.2;
 		},
+		remove: function(){
+	    	floor23Price += 0.2;
+	    },
 		achieved: false
 	};
 
@@ -282,9 +330,15 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			var updateList = document.getElementsByClassName("autoEmcHide");
 			for(var i = updateList.length-1; i >= 0; i--){
-				updateList[i].className = "";
+				updateList[i].className = "autoEmcHide";
 			}
 		},
+		remove: function(){
+	    	var updateList = document.getElementsByClassName("autoEmcHide");
+			for(var i = updateList.length-1; i >= 0; i--){
+				updateList[i].className = "autoEmcHide hidden";
+			}
+	    },
 		achieved: false
 	}
 
@@ -298,12 +352,13 @@ Game.prestigeData = (function(){
 		cost: 7,
 		category: "hyacinite",
 		opinion: 3,
+		rebirthStart: {lab:20},
 		onApply: function(){
-			// old
 			lab += 20;
-
-			// new
 		},
+		remove: function(){
+	    	lab -= 20
+	    },
 		achieved: false
 	};
 
@@ -320,6 +375,10 @@ Game.prestigeData = (function(){
 
 			// new
 		},
+		remove: function(){
+	    	labT1Multi += 0.2;
+			updateLabCost();
+	    },
 		achieved: false
 	};
 
@@ -332,6 +391,11 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			document.getElementById("labTier5").className = "";
 		},
+		remove: function(){
+	    	document.getElementById("labTier5").className = "hidden";
+	    	labT5 = 0;
+	    	updateLabCost();
+	    },
 		achieved: false
 	};
 
@@ -344,6 +408,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			Game.tech.entries["energyEfficiencyResearch"].maxLevel += 25;
 		},
+		remove: function(){
+	    	Game.tech.entries["energyEfficiencyResearch"].maxLevel = 25;
+	    },
 		achieved: false
 	};
 
@@ -361,6 +428,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			T1Price -= 0.1;
 		},
+		remove: function(){
+	    	T1Price += 0.1;
+	    },
 		achieved: false
 	};
 
@@ -373,6 +443,11 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			document.getElementById("batteriesT5").className = "";
 		},
+		remove: function(){
+	    	document.getElementById("batteriesT5").className = "hidden";
+	    	batteryT5 = 0;
+	    	updateCost();
+	    },
 		achieved: false
 	};
 
@@ -385,6 +460,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			unlockTier5();
 		},
+		remove: function(){
+	    	removeTier5();
+	    },
 		achieved: false
 	};
 
@@ -409,6 +487,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			chemicalBoost += 1;
 		},
+		remove: function(){
+	    	chemicalBoost -= 1;
+	    },
 		achieved: false
 	};
 
@@ -421,6 +502,9 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			rocketPrice -= 0.35;
 		},
+		remove: function(){
+	    	rocketPrice += 0.35;
+	    },
 		achieved: false
 	};
 

@@ -55,7 +55,7 @@ Game.stargazeUI = (function(){
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
-                '<h4><b>Relationship: {{opinion}}</b></h4>',
+                '<h4><b>Relationship: <span id="{{htmlId}}_pageOpinion">{{opinion}}</span></b></h4>',
                 '<span>{{{desc}}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
@@ -90,6 +90,17 @@ Game.stargazeUI = (function(){
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Rebirth</div>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
+        instance.respecTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"><td>',
+                '<h3 class="default btn-link">{{name}}: <span id=\'respecCount\'>3</span></h3>',
+                '<span>',
+                    '<p>{{{desc}}}</p>',
+                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
+                '</span>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Respec</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -131,6 +142,7 @@ Game.stargazeUI = (function(){
             if(data.displayNeedsUpdate == true){
                 if(data.category == "faction"){
                     $('#stargazeNav' + id + '_opinion').text(data.opinion);
+                    $('#stargazeNav' + id + '_pageOpinion').text(data.opinion);
                     $('#intnav_' + id + '_opinion').text(data.opinion);
                     if(data.unlocked == true){
                         document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction";
@@ -166,7 +178,7 @@ Game.stargazeUI = (function(){
             // Marks achieved upgrades as 'Activated'
             for(var id in Game.stargaze.upgradeEntries){
                 var data = Game.stargaze.upgradeEntries[id];
-                if(id != 'rebirth'){
+                if(id != 'rebirth' && id != 'respec'){
                     if(data.achieved == true){
                         document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
@@ -175,7 +187,7 @@ Game.stargazeUI = (function(){
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default";
                     }
                 }
-                if((data.category == "intro" || data.category == "darkMatter") && data.htmlId != "stargazeUpgrebirth"){
+                if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "stargazeUpgrebirth" && data.htmlId != "stargazeUpgrespec")){
                     document.getElementById(data.htmlId + "_opinion").className = "hidden";
                 }
             }
@@ -191,8 +203,10 @@ Game.stargazeUI = (function(){
 
     instance.createUpgrade = function(data, upgradeData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        if(upgradeData.name == "Rebirth"){
+        if(upgradeData.id == "rebirth"){
             var upgrade = this.rebirthTemplate(upgradeData);
+        } else if(upgradeData.id == "respec"){
+            var upgrade = this.respecTemplate(upgradeData);
         } else {
             var upgrade = this.upgradeTemplate(upgradeData);
         }

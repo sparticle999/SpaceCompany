@@ -443,6 +443,42 @@ function unlockTier5(){
 	document.getElementById("iceTier5").className = "";
 }
 
+function removeTier5(){
+	document.getElementById("uraniumTier5").className = "hidden";
+	document.getElementById("lavaTier5").className = "hidden";
+	document.getElementById("oilTier5").className = "hidden";
+	document.getElementById("metalTier5").className = "hidden";
+	document.getElementById("gemTier5").className = "hidden";
+	document.getElementById("charcoalTier5").className = "hidden";
+	document.getElementById("woodTier5").className = "hidden";
+	document.getElementById("siliconTier5").className = "hidden";
+	document.getElementById("lunariteTier5").className = "hidden";
+	document.getElementById("methaneTier5").className = "hidden";
+	document.getElementById("titaniumTier5").className = "hidden";
+	document.getElementById("goldTier5").className = "hidden";
+	document.getElementById("silverTier5").className = "hidden";
+	document.getElementById("hydrogenTier5").className = "hidden";
+	document.getElementById("heliumTier5").className = "hidden";
+	document.getElementById("iceTier5").className = "hidden";
+
+	planetNuke = 0;
+	condensator = 0;
+	fossilator = 0;
+	multiDrill = 0;
+	diamondChamber = 0;
+	microPollutor = 0;
+	forest = 0;
+	cloner = 0;
+	interCow = 0;
+	club = 0;
+	philosopher = 0;
+	werewolf = 0;
+	tardis = 0;
+	harvester = 0;
+	cage = 0;
+	overexchange = 0;
+	updateCost();
+}
 
 
 function achievePreciousWonder(){
