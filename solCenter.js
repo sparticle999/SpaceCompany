@@ -176,7 +176,7 @@ function gainAutoEmc(){
 		return;
 	}
 	emcAmount = "Max";
-	if(autoResource != "plasma"){
+	if(autoResource != "meteorite"){
 		convertEnergy(autoResource, false);
 	} else {
 		convertPlasma(autoResource, false);

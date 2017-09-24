@@ -60,6 +60,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Plasma not showing Gain 20
 - Fixed Wonders showing up as activated after rebirth
 - Fixed Solar System Showing planets before exploring requirements
+- Fixed AutoEmc using energy for meteorite
 
 ### v0.5.0 The Interstellar Update
 ##### Features
