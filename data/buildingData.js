@@ -17,6 +17,13 @@ Game.buildingData = (function () {
 
 		setId: function(id) {
 			this.id = id;
+		},
+
+		updateCost: function(count) {
+			var buildingDefault = Game.buildingData[this.id];
+			for (var costResource in this.cost) {
+				this.cost[costResource] = Math.floor(buildingDefault.cost[costResource] * Math.pow(1.1, count));
+			}
 		}
 	};
 

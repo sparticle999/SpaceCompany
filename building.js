@@ -19,6 +19,7 @@ Game.buildings = (function(){
 	instance.initBuilding = function(id) {
 		// using extend to create a new object and leave the defaults unchanged
 		var data = jQuery.extend({}, Game.buildingData[id]);
+		data.cost = jQuery.extend({}, data.cost);
 		data.setId(id);
 		return data;
 	};
@@ -43,6 +44,16 @@ Game.buildings = (function(){
 					}
 				}
 			}
+		}
+
+		// Load the old building values
+		for (id in BUILDING) {
+			var current = data[BUILDING[id]];
+			if (typeof current === 'undefined') {
+				continue;
+			}
+			this.entries[BUILDING[id]].current = current;
+			this.entries[BUILDING[id]].updateCost(current);
 		}
 	};
 
@@ -438,6 +449,13 @@ Game.buildings = (function(){
 			var costAbs = cost * gainRatio;
 
 			return {g: gainAbs, c: costAbs};
+		}
+	};
+
+	instance.updateBuildingCosts = function() {
+		for (var id in this.entries) {
+			var buildingData = this.entries[id];
+			buildingData.updateCost(this.getNum(id));
 		}
 	};
 
