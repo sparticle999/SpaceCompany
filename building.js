@@ -487,6 +487,8 @@ Game.buildings = (function(){
 		// still using the old building variables
 		// TODO: remove this when the transition to data-driven buildings is complete
 		window[buildingId] = buildingData.current;
+
+		Game.statistics.add('tierOwned' + buildingData.tier);
 	};
 
 	instance.destroyBuilding = function(buildingId) {
