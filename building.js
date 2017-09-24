@@ -24,6 +24,12 @@ Game.buildings = (function(){
 		return data;
 	};
 
+	instance.reset = function() {
+		for (var id in Game.buildingData) {
+			this.entries[id] = this.initBuilding(id);
+		}
+	};
+
 	instance.update = function(delta) {
 
 	};
