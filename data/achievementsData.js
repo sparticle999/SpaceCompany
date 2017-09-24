@@ -238,8 +238,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Charcoal Engines',
-		evaluator: function(x) { return charcoalEngine >= x },
-		progressEvaluator: function(x) { return charcoalEngine/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.CharcoalEngine) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.CharcoalEngine) / x }
 	};
 
 	instance.prodEnergy2 = {
@@ -247,8 +247,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Solar Panels',
-		evaluator: function(x) { return solarPanel >= x },
-		progressEvaluator: function(x) { return solarPanel/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.SolarPanel) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.SolarPanel) / x }
 	};
 
 	instance.prodEnergy3 = {
@@ -256,8 +256,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Methane Power Stations',
-		evaluator: function(x) { return methaneStation >= x },
-		progressEvaluator: function(x) { return methaneStation/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.MethaneStation) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.MethaneStation) / x }
 	};
 
 	instance.prodEnergy4 = {
@@ -265,8 +265,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Nuclear Power Stations',
-		evaluator: function(x) { return nuclearStation >= x },
-		progressEvaluator: function(x) { return nuclearStation/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.NuclearStation) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.NuclearStation) / x }
 	};
 
 	instance.prodEnergy5 = {
@@ -274,8 +274,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Magmatic Dynamos',
-		evaluator: function(x) { return magmatic >= x },
-		progressEvaluator: function(x) { return magmatic/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Magmatic) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Magmatic) / x }
 	};
 
 	instance.prodEnergy6 = {
@@ -283,8 +283,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'EnergyIcon',
 		title: 'Build %s Fusion Reactors',
-		evaluator: function(x) { return fusionReactor >= x },
-		progressEvaluator: function(x) { return fusionReactor/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.FusionReactor) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.FusionReactor) / x }
 	};
 
 	instance.prodPlasma1 = {
@@ -292,8 +292,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
 		title: 'Build %s Super-Heaters',
-		evaluator: function(x) { return heater >= x },
-		progressEvaluator: function(x) { return heater/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Heater) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Heater) / x }
 	};
 
 	instance.prodPlasma2 = {
@@ -301,8 +301,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
 		title: 'Build %s Plasmatic Pits',
-		evaluator: function(x) { return plasmatic >= x },
-		progressEvaluator: function(x) { return plasmatic/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Plasmatic) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Plasmatic) / x }
 	};
 
 	instance.prodPlasma3 = {
@@ -310,8 +310,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
 		title: 'Build %s Electron Baths',
-		evaluator: function(x) { return bath >= x },
-		progressEvaluator: function(x) { return bath/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Bath) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Bath) / x }
 	};
 
 	instance.prodUranium1 = {
@@ -319,8 +319,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
 		title: 'Build %s Grinders',
-		evaluator: function(x) { return grinder >= x },
-		progressEvaluator: function(x) { return grinder/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Grinder) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Grinder) / x }
 	};
 
 	instance.prodUranium2 = {
@@ -328,8 +328,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
 		title: 'Build %s Cubic Teleposers',
-		evaluator: function(x) { return cubic >= x },
-		progressEvaluator: function(x) { return cubic/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Cubic) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Cubic) / x }
 	};
 
 	instance.prodUranium3 = {
@@ -337,8 +337,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
 		title: 'Build %s Uranium Enrichers',
-		evaluator: function(x) { return enricher >= x },
-		progressEvaluator: function(x) { return enricher/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Enricher) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Enricher) / x }
 	};
 
 	instance.prodUranium4 = {
@@ -346,8 +346,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
 		title: 'Build %s Yellowcake Recyclers',
-		evaluator: function(x) { return recycler >= x },
-		progressEvaluator: function(x) { return recycler/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Recycler) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Recycler) / x }
 	};
 
 	instance.prodLava1 = {
@@ -355,8 +355,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
 		title: 'Build %s Heat Resistant Crucibles',
-		evaluator: function(x) { return crucible >= x },
-		progressEvaluator: function(x) { return crucible/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Crucible) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Crucible) / x }
 	};
 
 	instance.prodLava2 = {
@@ -364,8 +364,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
 		title: 'Build %s Lava Extractors',
-		evaluator: function(x) { return extractor >= x },
-		progressEvaluator: function(x) { return extractor/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Extractor) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Extractor) / x }
 	};
 
 	instance.prodLava3 = {
@@ -373,8 +373,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
 		title: 'Build %s Igneous Extruders',
-		evaluator: function(x) { return extruder >= x },
-		progressEvaluator: function(x) { return extruder/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Extruder) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Extruder) / x }
 	};
 
 	instance.prodLava4 = {
@@ -382,8 +382,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
 		title: 'Build %s Volcanic Veluptuators',
-		evaluator: function(x) { return veluptuator >= x },
-		progressEvaluator: function(x) { return veluptuator/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Veluptuator) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Veluptuator) / x }
 	};
 
 	instance.prodOil1 = {
@@ -391,8 +391,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
 		title: 'Build %s Small Pumps',
-		evaluator: function(x) { return pump >= x },
-		progressEvaluator: function(x) { return pump/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Pump) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Pump) / x }
 	};
 
 	instance.prodOil2 = {
@@ -400,8 +400,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
 		title: 'Build %s Pumpjacks',
-		evaluator: function(x) { return pumpjack >= x },
-		progressEvaluator: function(x) { return pumpjack/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Pumpjack) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Pumpjack) / x }
 	};
 
 	instance.prodOil3 = {
@@ -409,8 +409,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
 		title: 'Build %s Oil Fields',
-		evaluator: function(x) { return oilField >= x },
-		progressEvaluator: function(x) { return oilField/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.OilField) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.OilField) / x }
 	};
 
 	instance.prodOil4 = {
@@ -418,8 +418,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
 		title: 'Build %s Offshore Rigs',
-		evaluator: function(x) { return oilRig >= x },
-		progressEvaluator: function(x) { return oilRig/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.OilRig) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.OilRig) / x }
 	};
 
 	instance.prodMetal1 = {
@@ -427,8 +427,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
 		title: 'Build %s Miners',
-		evaluator: function(x) { return miner >= x },
-		progressEvaluator: function(x) { return miner/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Miner) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Miner) / x }
 	};
 
 	instance.prodMetal2 = {
@@ -436,8 +436,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
 		title: 'Build %s Heavy Drills',
-		evaluator: function(x) { return heavyDrill >= x },
-		progressEvaluator: function(x) { return heavyDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.HeavyDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.HeavyDrill) / x }
 	};
 
 	instance.prodMetal3 = {
@@ -445,8 +445,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
 		title: 'Build %s Giga Drills',
-		evaluator: function(x) { return gigaDrill >= x },
-		progressEvaluator: function(x) { return gigaDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.GigaDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.GigaDrill) / x }
 	};
 
 	instance.prodMetal4 = {
@@ -454,8 +454,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
 		title: 'Build %s Quantum Drills',
-		evaluator: function(x) { return quantumDrill >= x },
-		progressEvaluator: function(x) { return quantumDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.QuantumDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.QuantumDrill) / x }
 	};
 
 	instance.prodGems1 = {
@@ -463,8 +463,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
 		title: 'Build %s Gem Miners',
-		evaluator: function(x) { return gemMiner >= x },
-		progressEvaluator: function(x) { return gemMiner/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.GemMiner) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.GemMiner) / x }
 	};
 
 	instance.prodGems2 = {
@@ -472,8 +472,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
 		title: 'Build %s Advanced Drills',
-		evaluator: function(x) { return advancedDrill >= x },
-		progressEvaluator: function(x) { return advancedDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.AdvancedDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.AdvancedDrill) / x }
 	};
 
 	instance.prodGems3 = {
@@ -481,8 +481,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
 		title: 'Build %s Diamond Encrusted Drills',
-		evaluator: function(x) { return diamondDrill >= x },
-		progressEvaluator: function(x) { return diamondDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.DiamondDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.DiamondDrill) / x }
 	};
 
 	instance.prodGems4 = {
@@ -490,8 +490,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
 		title: 'Build %s Carbyne Drills',
-		evaluator: function(x) { return carbyneDrill >= x },
-		progressEvaluator: function(x) { return carbyneDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.CarbyneDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.CarbyneDrill) / x }
 	};
 
 	instance.prodCharcoal1 = {
@@ -499,8 +499,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
 		title: 'Build %s Woodburners',
-		evaluator: function(x) { return woodburner >= x },
-		progressEvaluator: function(x) { return woodburner/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Woodburner) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Woodburner) / x }
 	};
 
 	instance.prodCharcoal2 = {
@@ -508,8 +508,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
 		title: 'Build %s Furnaces',
-		evaluator: function(x) { return furnace >= x },
-		progressEvaluator: function(x) { return furnace/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Furnace) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Furnace) / x }
 	};
 
 	instance.prodCharcoal3 = {
@@ -517,8 +517,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
 		title: 'Build %s Industrial Kilns',
-		evaluator: function(x) { return kiln >= x },
-		progressEvaluator: function(x) { return kiln/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Kiln) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Kiln) / x }
 	};
 
 	instance.prodCharcoal4 = {
@@ -526,8 +526,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
 		title: 'Build %s Forest Fryers',
-		evaluator: function(x) { return fryer >= x },
-		progressEvaluator: function(x) { return fryer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Fryer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Fryer) / x }
 	};
 
 	instance.prodWood1 = {
@@ -535,8 +535,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
 		title: 'Build %s Woodcutters',
-		evaluator: function(x) { return woodcutter >= x },
-		progressEvaluator: function(x) { return woodcutter/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Woodcutter) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Woodcutter) / x }
 	};
 
 	instance.prodWood2 = {
@@ -544,8 +544,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
 		title: 'Build %s Laser Cutters',
-		evaluator: function(x) { return laserCutter >= x },
-		progressEvaluator: function(x) { return laserCutter/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LaserCutter) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LaserCutter) / x }
 	};
 
 	instance.prodWood3 = {
@@ -553,8 +553,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
 		title: 'Build %s Mass Deforesters',
-		evaluator: function(x) { return deforester >= x },
-		progressEvaluator: function(x) { return deforester/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Deforester) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Deforester) / x }
 	};
 
 	instance.prodWood4 = {
@@ -562,8 +562,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
 		title: 'Build %s Biomass Infusers',
-		evaluator: function(x) { return infuser >= x },
-		progressEvaluator: function(x) { return infuser/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Infuser) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Infuser) / x }
 	};
 
 	instance.prodSilicon1 = {
@@ -571,8 +571,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
 		title: 'Build %s Empowered Blowtorches',
-		evaluator: function(x) { return blowtorch >= x },
-		progressEvaluator: function(x) { return blowtorch/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Blowtorch) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Blowtorch) / x }
 	};
 
 	instance.prodSilicon2 = {
@@ -580,8 +580,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
 		title: 'Build %s Seaside Scorchers',
-		evaluator: function(x) { return scorcher >= x },
-		progressEvaluator: function(x) { return scorcher/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Scorcher) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Scorcher) / x }
 	};
 
 	instance.prodSilicon3 = {
@@ -589,8 +589,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
 		title: 'Build %s Beach Annihilators',
-		evaluator: function(x) { return annihilator >= x },
-		progressEvaluator: function(x) { return annihilator/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Annihilator) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Annihilator) / x }
 	};
 
 	instance.prodSilicon4 = {
@@ -598,8 +598,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
 		title: 'Build %s Desert Destroyers',
-		evaluator: function(x) { return desert >= x },
-		progressEvaluator: function(x) { return desert/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Desert) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Desert) / x }
 	};
 
 	instance.prodLunarite1 = {
@@ -607,8 +607,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
 		title: 'Build %s Native Moon Workers',
-		evaluator: function(x) { return moonWorker >= x },
-		progressEvaluator: function(x) { return moonWorker/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.MoonWorker) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.MoonWorker) / x }
 	};
 
 	instance.prodLunarite2 = {
@@ -616,8 +616,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
 		title: 'Build %s Low-Gravity Drills',
-		evaluator: function(x) { return moonDrill >= x },
-		progressEvaluator: function(x) { return moonDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.MoonDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.MoonDrill) / x }
 	};
 
 	instance.prodLunarite3 = {
@@ -625,8 +625,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
 		title: 'Build %s Moon Quarries',
-		evaluator: function(x) { return moonQuarry >= x },
-		progressEvaluator: function(x) { return moonQuarry/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.MoonQuarry) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.MoonQuarry) / x }
 	};
 
 	instance.prodLunarite4 = {
@@ -634,8 +634,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
 		title: 'Build %s Planetary Excavators',
-		evaluator: function(x) { return planetExcavator >= x },
-		progressEvaluator: function(x) { return planetExcavator/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.PlanetExcavator) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.PlanetExcavator) / x }
 	};
 
 	instance.prodMethane1 = {
@@ -643,8 +643,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
 		title: 'Build %s Vacuum Cleaners',
-		evaluator: function(x) { return vacuum >= x },
-		progressEvaluator: function(x) { return vacuum/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Vacuum) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Vacuum) / x }
 	};
 
 	instance.prodMethane2 = {
@@ -652,8 +652,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
 		title: 'Build %s Suction Excavators',
-		evaluator: function(x) { return suctionExcavator >= x },
-		progressEvaluator: function(x) { return suctionExcavator/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.SuctionExcavator) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.SuctionExcavator) / x }
 	};
 
 	instance.prodMethane3 = {
@@ -661,8 +661,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
 		title: 'Build %s Space Cow Plantations',
-		evaluator: function(x) { return spaceCow >= x },
-		progressEvaluator: function(x) { return spaceCow/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.SpaceCow) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.SpaceCow) / x }
 	};
 
 	instance.prodMethane4 = {
@@ -670,8 +670,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
 		title: 'Build %s Hydrothermal Vents',
-		evaluator: function(x) { return vent >= x },
-		progressEvaluator: function(x) { return vent/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Vent) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Vent) / x }
 	};
 
 	instance.prodTitanium1 = {
@@ -679,8 +679,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
 		title: 'Build %s Explorers',
-		evaluator: function(x) { return explorer >= x },
-		progressEvaluator: function(x) { return explorer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Explorer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Explorer) / x }
 	};
 
 	instance.prodTitanium2 = {
@@ -688,8 +688,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
 		title: 'Build %s Lunarite Drills',
-		evaluator: function(x) { return lunariteDrill >= x },
-		progressEvaluator: function(x) { return lunariteDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LunariteDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LunariteDrill) / x }
 	};
 
 	instance.prodTitanium3 = {
@@ -697,8 +697,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
 		title: 'Build %s Penta-Drills',
-		evaluator: function(x) { return pentaDrill >= x },
-		progressEvaluator: function(x) { return pentaDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.PentaDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.PentaDrill) / x }
 	};
 
 	instance.prodTitanium4 = {
@@ -706,8 +706,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
 		title: 'Build %s Drills of Titans',
-		evaluator: function(x) { return titanDrill >= x },
-		progressEvaluator: function(x) { return titanDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.TitanDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.TitanDrill) / x }
 	};
 
 	instance.prodGold1 = {
@@ -715,8 +715,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
 		title: 'Build %s Rocket Droids',
-		evaluator: function(x) { return droid >= x },
-		progressEvaluator: function(x) { return droid/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Droid) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Droid) / x }
 	};
 
 	instance.prodGold2 = {
@@ -724,8 +724,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
 		title: 'Build %s Asteroid Destroyers',
-		evaluator: function(x) { return destroyer >= x },
-		progressEvaluator: function(x) { return destroyer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Destroyer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Destroyer) / x }
 	};
 
 	instance.prodGold3 = {
@@ -733,8 +733,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
 		title: 'Build %s Death Stars Jr',
-		evaluator: function(x) { return deathStar >= x },
-		progressEvaluator: function(x) { return deathStar/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.DeathStar) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.DeathStar) / x }
 	};
 
 	instance.prodGold4 = {
@@ -742,8 +742,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
 		title: 'Build %s Chronal Actuators',
-		evaluator: function(x) { return actuator >= x },
-		progressEvaluator: function(x) { return actuator/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Actuator) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Actuator) / x }
 	};
 
 	instance.prodSilver1 = {
@@ -751,8 +751,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
 		title: 'Build %s Scout Ships',
-		evaluator: function(x) { return scout >= x },
-		progressEvaluator: function(x) { return scout/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Scout) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Scout) / x }
 	};
 
 	instance.prodSilver2 = {
@@ -760,8 +760,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
 		title: 'Build %s Interplanetary Lasers',
-		evaluator: function(x) { return spaceLaser >= x },
-		progressEvaluator: function(x) { return spaceLaser/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.SpaceLaser) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.SpaceLaser) / x }
 	};
 
 	instance.prodSilver3 = {
@@ -769,8 +769,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
 		title: 'Build %s Big Berthas',
-		evaluator: function(x) { return bertha >= x },
-		progressEvaluator: function(x) { return bertha/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Bertha) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Bertha) / x }
 	};
 
 	instance.prodSilver4 = {
@@ -778,8 +778,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
 		title: 'Build %s Atomic Cannons',
-		evaluator: function(x) { return cannon >= x },
-		progressEvaluator: function(x) { return cannon/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Cannon) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Cannon) / x }
 	};
 
 	instance.prodHydrogen1 = {
@@ -787,8 +787,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
 		title: 'Build %s Hydrogen Collectors',
-		evaluator: function(x) { return collector >= x },
-		progressEvaluator: function(x) { return collector/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Collector) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Collector) / x }
 	};
 
 	instance.prodHydrogen2 = {
@@ -796,8 +796,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
 		title: 'Build %s Gaseous Magnets',
-		evaluator: function(x) { return magnet >= x },
-		progressEvaluator: function(x) { return magnet/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Magnet) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Magnet) / x }
 	};
 
 	instance.prodHydrogen3 = {
@@ -805,8 +805,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
 		title: 'Build %s Electrolytic Cells',
-		evaluator: function(x) { return eCell >= x },
-		progressEvaluator: function(x) { return eCell/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.ECell) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.ECell) / x }
 	};
 
 	instance.prodHydrogen4 = {
@@ -814,8 +814,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
 		title: 'Build %s Hindenburg Excavations',
-		evaluator: function(x) { return hindenburg >= x },
-		progressEvaluator: function(x) { return hindenburg/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Hindenburg) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Hindenburg) / x }
 	};
 
 	instance.prodHelium1 = {
@@ -823,8 +823,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
 		title: 'Build %s Helium Drones',
-		evaluator: function(x) { return drone >= x },
-		progressEvaluator: function(x) { return drone/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Drone) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Drone) / x }
 	};
 
 	instance.prodHelium2 = {
@@ -832,8 +832,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
 		title: 'Build %s Helium Tankers',
-		evaluator: function(x) { return tanker >= x },
-		progressEvaluator: function(x) { return tanker/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Tanker) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Tanker) / x }
 	};
 
 	instance.prodHelium3 = {
@@ -841,8 +841,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
 		title: 'Build %s Morphic Compressors',
-		evaluator: function(x) { return compressor >= x },
-		progressEvaluator: function(x) { return compressor/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Compressor) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Compressor) / x }
 	};
 
 	instance.prodHelium4 = {
@@ -850,8 +850,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
 		title: 'Build %s Gas Giant Skimmers',
-		evaluator: function(x) { return skimmer >= x },
-		progressEvaluator: function(x) { return skimmer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Skimmer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Skimmer) / x }
 	};
 
 	instance.prodIce1 = {
@@ -859,8 +859,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
 		title: 'Build %s Ice Pickaxes',
-		evaluator: function(x) { return icePick >= x },
-		progressEvaluator: function(x) { return icePick/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.IcePick) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.IcePick) / x }
 	};
 
 	instance.prodIce2 = {
@@ -868,8 +868,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
 		title: 'Build %s Ice Drills',
-		evaluator: function(x) { return iceDrill >= x },
-		progressEvaluator: function(x) { return iceDrill/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.IceDrill) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.IceDrill) / x }
 	};
 
 	instance.prodIce3 = {
@@ -877,8 +877,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
 		title: 'Build %s Ocean Freezers',
-		evaluator: function(x) { return freezer >= x },
-		progressEvaluator: function(x) { return freezer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Freezer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Freezer) / x }
 	};
 
 	instance.prodIce4 = {
@@ -886,8 +886,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
 		title: 'Build %s Mr Freezes',
-		evaluator: function(x) { return mrFreeze >= x },
-		progressEvaluator: function(x) { return mrFreeze/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.MrFreeze) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.MrFreeze) / x }
 	};
 
 	instance.prodMeteorite1 = {
@@ -895,8 +895,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
 		title: 'Build %s Meteorite Printers',
-		evaluator: function(x) { return printer >= x },
-		progressEvaluator: function(x) { return printer/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Printer) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Printer) / x }
 	};
 
 	instance.prodMeteorite2 = {
@@ -904,8 +904,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
 		title: 'Build %s Meteorite Webs',
-		evaluator: function(x) { return web >= x },
-		progressEvaluator: function(x) { return web/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Web) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Web) / x }
 	};
 
 	instance.prodScience1 = {
@@ -913,8 +913,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
 		title: 'Build %s Home Science Kits',
-		evaluator: function(x) { return lab >= x },
-		progressEvaluator: function(x) { return lab/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Lab) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Lab) / x }
 	};
 
 	instance.prodScience2 = {
@@ -922,8 +922,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
 		title: 'Build %s High School Sciences',
-		evaluator: function(x) { return labT2 >= x },
-		progressEvaluator: function(x) { return labT2/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LabT2) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LabT2) / x }
 	};
 
 	instance.prodScience3 = {
@@ -931,8 +931,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
 		title: 'Build %s University Laboratories',
-		evaluator: function(x) { return labT3 >= x },
-		progressEvaluator: function(x) { return labT3/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LabT3) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LabT3) / x }
 	};
 
 	instance.prodScience4 = {
@@ -940,8 +940,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
 		title: 'Build %s Scientific Observatories',
-		evaluator: function(x) { return labT4 >= x },
-		progressEvaluator: function(x) { return labT4/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LabT4) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LabT4) / x }
 	};
 
 	instance.prodScience5 = {
@@ -949,8 +949,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
 		title: 'Build %s Space Scientific Satellite Stations',
-		evaluator: function(x) { return labT5 >= x },
-		progressEvaluator: function(x) { return labT5/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.LabT5) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.LabT5) / x }
 	};
 
 	instance.prodRocketFuel1 = {
@@ -958,8 +958,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Build %s Chemical Plants',
-		evaluator: function(x) { return chemicalPlant >= x },
-		progressEvaluator: function(x) { return chemicalPlant/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.ChemicalPlant) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.ChemicalPlant) / x }
 	};
 
 	instance.prodRocketFuel2 = {
@@ -967,8 +967,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Build %s Oxidisation Chambers',
-		evaluator: function(x) { return oxidisation >= x },
-		progressEvaluator: function(x) { return oxidisation/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Oxidisation) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Oxidisation) / x }
 	};
 
 	instance.prodRocketFuel3 = {
@@ -976,8 +976,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Build %s Hydrazine Catalysts',
-		evaluator: function(x) { return hydrazine >= x },
-		progressEvaluator: function(x) { return hydrazine/x }
+		evaluator: function(x) { return getBuildingNum(BUILDING.Hydrazine) >= x },
+		progressEvaluator: function(x) { return getBuildingNum(BUILDING.Hydrazine) / x }
 	};
 
 	instance.prodDyson1 = {

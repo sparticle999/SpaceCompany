@@ -25,6 +25,19 @@ Game.resourcesUI = (function(){
 			}
 		}
 
+		for (id in BUILDING) {
+			if ($('#' + BUILDING[id]).length > 0) {
+				Game.ui.bindElement(BUILDING[id], this.createBuildingDelegate(BUILDING[id]));
+			}
+
+			var buildingData = Game.buildings.getBuildingData(BUILDING[id]);
+			if (buildingData !== null) {
+				for (costResource in buildingData.cost) {
+					Game.ui.bindElement(buildingData.htmlIdCosts[costResource], this.createBuildingCostDelegate(BUILDING[id], costResource));
+				}
+			}
+		}
+
 		// the auto bindings need to be updated after this is done
 		Game.ui.updateAutoDataBindings();
 	};
@@ -42,6 +55,15 @@ Game.resourcesUI = (function(){
 			if (storageData !== null) {
 				for (var costResource in storageData.cost) {
 					Game.settings.turnRed(getResource(costResource), storageData.cost[costResource], storageData.htmlIdCosts[costResource]);
+				}
+			}
+		}
+
+		for (id in BUILDING) {
+			var buildingData = Game.buildings.getBuildingData(BUILDING[id]);
+			if (buildingData !== null) {
+				for (costResource in buildingData.cost) {
+					Game.settings.turnRed(getResource(costResource), buildingData.cost[costResource], buildingData.htmlIdCosts[costResource]);
 				}
 			}
 		}
@@ -135,6 +157,18 @@ Game.resourcesUI = (function(){
 	instance.createStorageCostDelegate = function(id, costResource) {
 		return (function() {
 			return Game.settings.format(Game.resources.getStorageData(id).cost[costResource]);
+		});
+	};
+
+	instance.createBuildingDelegate = function(id) {
+		return (function() {
+			return Game.settings.format(getBuildingNum(id));
+		});
+	};
+
+	instance.createBuildingCostDelegate = function(id, costResource) {
+		return (function() {
+			return Game.settings.format(Game.buildings.getBuildingData(id).cost[costResource]);
 		});
 	};
 
