@@ -58,6 +58,15 @@ Game.resourcesUI = (function(){
 				}
 			}
 		}
+
+		for (id in BUILDING) {
+			var buildingData = Game.buildings.getBuildingData(BUILDING[id]);
+			if (buildingData !== null) {
+				for (costResource in buildingData.cost) {
+					Game.settings.turnRed(getResource(costResource), buildingData.cost[costResource], buildingData.htmlIdCosts[costResource]);
+				}
+			}
+		}
 	};
 
 	instance.createResourceDelegate = function(id) {

@@ -402,7 +402,7 @@ Game.buildings = (function(){
 			var methaneCost = this.getNum(BUILDING.Hydrazine) * 520;
 			if (getResource(RESOURCE.Methane) >= methaneCost) {
 				outProd[RESOURCE.Methane] -= methaneCost;
-				outProd[RESOURCE.RocketFuel] += this.getNum(BUILDING.Hydrazine * 20) * resourceMultiplier;
+				outProd[RESOURCE.RocketFuel] += this.getNum(BUILDING.Hydrazine) * 20 * resourceMultiplier;
 			}
 		}
 

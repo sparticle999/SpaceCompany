@@ -302,7 +302,7 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			// old
 			labT1Multi -= 0.2;
-			updateLabCost();
+			Game.buildings.updateBuildingCosts();
 
 			// new
 		},
