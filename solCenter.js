@@ -144,7 +144,7 @@ function convertPlasma(resourceName, notification){
 	var emcValue = window[resourceName + "EmcVal"];
 	var amount;
 	if(emcAmount === "Max"){
-		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Plasma)/emcValue), capacity - current));
+		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Plasma)/emcValue), capacity - current) - 3333); // Retains 10,000 plasma
 	}
 	else{
 		amount = Math.floor(Math.min(emcAmount, capacity - current));
