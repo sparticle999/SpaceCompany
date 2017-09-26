@@ -3142,6 +3142,42 @@
 									<button onclick="destroyMachine('web')" class="btn btn-default destroy hidden">Destroy Meteorite Web</button>
 								</td>
 							</tr>
+							<tr id="meteoriteTier3" class="hidden">
+							<td>
+								<h3 class="default btn-link">
+									Planet Smasher: <span id="smasher">0</span>
+								</h3>
+								<span>
+										Get meteorites the old-fashioned way: demolishing uninhabited exoplanets by firing high-energy particle beams at them, then collect the debris.
+										<br>
+										Produces 72 Meteorite per second. Uses 111 Plasma per second.
+										<br>
+										Costs <span id="smasherSiliconCost">3.23M</span> Silicon, <span id="smasherSilverCost">5.89M</span> Silver, <span id="smasherGemCost">8.34M</span> Gems.
+									</span>
+								<br>
+								<br>
+								<button onclick="buyBuilding(BUILDING.Smasher)" class="btn btn-default">Get Planet Smasher</button>
+								<button onclick="destroyMachine('smasher')" class="btn btn-default destroy hidden">Destroy Planet Smasher</button>
+							</td>
+						</tr>
+							<tr id="meteoriteTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Nebulous Synthesizer: <span id="nebulous">0</span>
+									</h3>
+									<span>
+										Bypass the need for demolishing planets entirely by building your own nebula to create meteorites instead of planets.
+										<br>
+										Produces 135 Meteorite per second. Uses 142 Plasma per second.
+										<br>
+										Costs <span id="nebulousLunariteCost">25.8M</span> Lunarite, <span id="nebulousLavaCost">19.7M</span> Lava, <span id="nebulousGoldCost">21.9M</span> Gold.
+									</span>
+									<br>
+									<br>
+									<button onclick="buyBuilding(BUILDING.Nebulous)" class="btn btn-default">Get Nebulous Synthesizer</button>
+									<button onclick="destroyMachine('nebulous')" class="btn btn-default destroy hidden">Destroy Nebulous Synthesizer</button>
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div>

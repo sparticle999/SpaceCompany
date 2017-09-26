@@ -167,6 +167,8 @@ function legacySave(data) {
 		meteoriteToggled: meteoriteToggled,
 		printer: printer,
 		web: web,
+		smasher: smasher,
+		nebulous: nebulous,
 		dyson: dyson,
 		sphere: sphere,
 		swarm: swarm,
@@ -367,6 +369,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.mrFreeze !== "undefined") mrFreeze = savegame.mrFreeze;
 		if(typeof savegame.printer !== "undefined") printer = savegame.printer;
 		if(typeof savegame.web !== "undefined") web = savegame.web;
+		if(typeof savegame.smasher !== "undefined") smasher = savegame.smasher;
+		if(typeof savegame.nebulous !== "undefined") nebulous = savegame.nebulous;
 		if(typeof savegame.dyson !== "undefined") dyson = savegame.dyson;
 		if(typeof savegame.sphere !== "undefined") sphere = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") swarm = savegame.swarm;
