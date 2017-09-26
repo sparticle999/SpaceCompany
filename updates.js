@@ -207,6 +207,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.segmentAndSphere = {
+		desc: 'Build 250 Segments and Dyson Sphere Button',
+		read: false
+	}
+
 	return instance;
 
 }());

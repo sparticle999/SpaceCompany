@@ -48,6 +48,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - You cannot rebirth without a sphere
 - Fixed higher antimatter storages not saving
 - Reduced framerate from 100fps to 10fps
+- Build 250 Segments and Dyson Sphere Button
 
 ##### Bug Fixed
 
