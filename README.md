@@ -41,6 +41,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Auto Emc
 - Redid Rebirth
 - Respec
+- Meteorite Tier 3 and 4
 
 ##### Small Changes
 

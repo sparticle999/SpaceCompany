@@ -212,6 +212,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.meteoriteTier34 = {
+		desc: 'Meteorite Tiers 3 and 4. Stargaze -> Moviton Syndicate',
+		read: false
+	}
+
 	return instance;
 
 }());

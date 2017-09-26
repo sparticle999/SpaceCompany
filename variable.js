@@ -164,6 +164,8 @@ var overexchange = 0; var overexchangeMetalCost = 210000; var overexchangeSilver
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;
 var printer = 0; var printerLunariteCost = 100000; var printerSiliconCost = 50000; var printerPlasmaInput = 3; var printerOutput = 1;
 var web = 0; var webLunariteCost = 930000; var webUraniumCost = 490000; var webSiliconCost = 510000; var webPlasmaInput = 21; var webOutput = 8;
+var smasher = 0; var smasherSiliconCost = 3230000; var smasherSilverCost = 5890000; var smasherGemCost = 8340000; var smasherPlasmaInput = 111; var smasherOutput = 72;
+var nebulous = 0; var nebulousLunariteCost = 25800000; var nebulousLavaCost = 19700000; var nebulousGoldCost = 21900000; var nebulousPlasmaInput = 142; var nebulousOutput = 135;
 
 // Science
 var science = 0; var scienceps = 0;

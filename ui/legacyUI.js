@@ -380,6 +380,14 @@ function registerLegacyBindings() {
     Game.ui.bindElement('webLunariteCost', function(){ return Game.settings.format(webLunariteCost); });
     Game.ui.bindElement('webUraniumCost', function(){ return Game.settings.format(webUraniumCost); });
     Game.ui.bindElement('webSiliconCost', function(){ return Game.settings.format(webSiliconCost); });
+    Game.ui.bindElement('smasher', function(){ return Game.settings.format(smasher); });
+    Game.ui.bindElement('smasherSiliconCost', function(){ return Game.settings.format(smasherSiliconCost); });
+    Game.ui.bindElement('smasherSilverCost', function(){ return Game.settings.format(smasherSilverCost); });
+    Game.ui.bindElement('smasherGemCost', function(){ return Game.settings.format(smasherGemCost); });
+    Game.ui.bindElement('nebulous', function(){ return Game.settings.format(nebulous); });
+    Game.ui.bindElement('nebulousLunariteCost', function(){ return Game.settings.format(nebulousLunariteCost); });
+    Game.ui.bindElement('nebulousLavaCost', function(){ return Game.settings.format(nebulousLavaCost); });
+    Game.ui.bindElement('nebulousGoldCost', function(){ return Game.settings.format(nebulousGoldCost); });
     Game.ui.bindElement('dyson', function(){ return Game.settings.format(dyson); });
     Game.ui.bindElement('dysonPieces', function(){ return Game.settings.format(dyson); });
     Game.ui.bindElement('dysonPieces2', function(){ return Game.settings.format(dyson); });

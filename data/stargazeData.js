@@ -508,6 +508,40 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
+	instance.meteoriteTier3 = {
+		name: "Meteorite Tier 3",
+		desc: "Unlock the Planet Smasher building.",
+		cost: 37,
+		category: "moviton",
+		opinion: 29,
+		onApply: function(){
+			document.getElementById("meteoriteTier3").className = "";
+		},
+		remove: function(){
+	    	document.getElementById("meteoriteTier3").className = "hidden";
+	    	smasher = 0;
+			updateCost();
+	    },
+		achieved: false
+	}
+
+	instance.meteoriteTier4 = {
+		name: "Meteorite Tier 4",
+		desc: "Unlock the Nebulous Synthesizer building.",
+		cost: 49,
+		category: "moviton",
+		opinion: 36,
+		onApply: function(){
+			document.getElementById("meteoriteTier4").className = "";
+		},
+		remove: function(){
+	    	document.getElementById("meteoriteTier4").className = "hidden";
+	    	nebulous = 0;
+			updateCost();
+	    },
+		achieved: false
+	}
+
 	// instance.spaceElevator = {
 	// 	name: "Space Elevator",
 	// 	desc: "Build a giant elevator to reduce antimatter costs by 20%",

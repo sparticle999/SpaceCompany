@@ -267,7 +267,7 @@ function refreshPerSec(delta){
 	}
 
 	if (meteoriteToggled === true) {
-		adjustment = adjustCost(RESOURCE.Meteorite, (printer * printerPlasmaInput) + (web * webPlasmaInput), ((printer * printerOutput) + (web * webOutput)) * perSecondMultiplier);
+		adjustment = adjustCost(RESOURCE.Meteorite, (printer * printerPlasmaInput) + (web * webPlasmaInput) + (smasher * smasherPlasmaInput) + (nebulous * nebulousPlasmaInput), ((printer * printerOutput) + (web * webOutput) + (smasher * smasherOutput) + (nebulous * nebulousOutput)) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Plasma, delta) >= adjustment.c) {
 			plasmaps -= adjustment.c;
 			meteoriteps += adjustment.g;
@@ -779,6 +779,14 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Lunarite), webLunariteCost, "webLunariteCost");
 	Game.settings.turnRed(getResource(RESOURCE.Uranium), webUraniumCost, "webUraniumCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), webSiliconCost, "webSiliconCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), smasherSiliconCost, "smasherSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), smasherSilverCost, "smasherSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), smasherGemCost, "smasherGemCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), nebulousLunariteCost, "nebulousLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), nebulousLavaCost, "nebulousLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), nebulousGoldCost, "nebulousGoldCost");
 
 	// Tier 5 Machines
 
