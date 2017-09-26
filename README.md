@@ -20,7 +20,6 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Machine Overview Tab
 
 v0.5.1
-https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 - (Mass to Energy Conversion)
 - Buy X buttons
@@ -50,6 +49,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed higher antimatter storages not saving
 - Reduced framerate from 100fps to 10fps
 - Build 250 Segments and Dyson Sphere Button
+- Balanced Ice T5 to have cost just below storage level rather than above it
 
 ##### Bug Fixed
 

@@ -158,7 +158,7 @@ var icePick = 0; var icePickLunariteCost = 17800; var icePickGemCost = 19300; va
 var iceDrill = 0; var iceDrillLunariteCost = 23900; var iceDrillTitaniumCost = 21200; var iceDrillSiliconCost = 19600; var iceDrillEnergyInput = 83; var iceDrillOutput = 9;
 var freezer = 0; var freezerLunariteCost = 117000; var freezerTitaniumCost = 86000; var freezerSiliconCost = 73000; var freezerEnergyInput = 397; var freezerOutput = 65;
 var mrFreeze = 0; var mrFreezeWoodCost = 379000; var mrFreezeHeliumCost = 14000; var mrFreezeMeteoriteCost = 1500; var mrFreezeEnergyInput = 1135; var mrFreezeOutput = 278;
-var overexchange = 0; var overexchangeMetalCost = 210000; var overexchangeSilverCost = 188000; var overexchangeHeliumCost = 205000; var overexchangeEnergyInput = 7397; var overexchangeOutput = 2973;
+var overexchange = 0; var overexchangeMetalCost = 210000; var overexchangeSilverCost = 188000; var overexchangeHeliumCost = 204000; var overexchangeEnergyInput = 7397; var overexchangeOutput = 2973;
 
 // Meteorite
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;

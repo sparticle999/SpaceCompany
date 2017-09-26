@@ -654,7 +654,7 @@ function updateCost(){
 
 	overexchangeMetalCost = Math.floor(210000 * Math.pow(1.1, overexchange)); 
 	overexchangeSilverCost = Math.floor(188000 * Math.pow(1.1, overexchange)); 
-	overexchangeHeliumCost = Math.floor(205000 * Math.pow(1.1, overexchange));
+	overexchangeHeliumCost = Math.floor(204000 * Math.pow(1.1, overexchange));
 
 }
 
