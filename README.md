@@ -50,7 +50,8 @@ v0.5.1
 - Reduced framerate from 100fps to 10fps
 - Build 250 Segments and Dyson Sphere Button
 - Balanced Ice T5 to have cost just below storage level rather than above it
-- AutoEmc keeps a 10K bank of plasma to avoid meteorite production depletion due to 0 plasma stored.
+- AutoEmc keeps a 10K bank of plasma to avoid meteorite production depletion due to 0 plasma stored
+Buffed Capital Ship\' power and defense
 
 ##### Bug Fixed
 
