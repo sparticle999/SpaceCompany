@@ -437,7 +437,20 @@ Game.buildings = (function(){
 		if (meteoriteToggled === true) {
 			var numPrinter = this.getNum(BUILDING.Printer);
 			var numWeb = this.getNum(BUILDING.Web);
-			adjustment = adjustCost(RESOURCE.Meteorite, (numPrinter * 3) + (numWeb * 21), (numPrinter + numWeb * 8) * resourceMultiplier);
+			var numSmasher = this.getNum(BUILDING.Smasher);
+			var numNebulous = this.getNum(BUILDING.Nebulous);
+			var plasmaCost =
+				numPrinter * 3 +
+				numWeb * 21 +
+				numSmasher * 111 +
+				numNebulous * 142;
+			var meteoriteGain =
+				numPrinter +
+				numWeb * 8 +
+				numSmasher * 72 +
+				numNebulous * 135;
+			meteoriteGain *= resourceMultiplier;
+			adjustment = adjustCost(RESOURCE.Meteorite, plasmaCost, meteoriteGain);
 			if (adjustment.g > 0 && getResource(RESOURCE.Plasma) >= adjustment.c) {
 				outProd[RESOURCE.Plasma] -= adjustment.c;
 				outProd[RESOURCE.Meteorite] += adjustment.g;

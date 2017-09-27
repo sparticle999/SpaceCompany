@@ -1470,7 +1470,7 @@ Game.buildingData = (function () {
 		cost: {
 			'metal': 210000,
 			'silver': 188000,
-			'helium': 205000
+			'helium': 204000
 		}
 	});
 
@@ -1505,6 +1505,38 @@ Game.buildingData = (function () {
             'silicon': 510000
         }
     });
+
+	instance[BUILDING.Smasher] = $.extend({}, baseProducerBuilding, {
+		name: 'Planet Smasher',
+		desc: 'Get meteorites the old-fashioned way: demolishing uninhabited exoplanets by firing high-energy particle beams at them, then collect the debris.',
+		tier: 2,
+		resource: 'meteorite',
+		resourcePerSecond: {
+			'plasma': -111,
+			'meteorite': 72
+		},
+		cost: {
+			'silicon': 3230000,
+			'silver': 5890000,
+			'gem': 8340000
+		}
+	});
+
+	instance[BUILDING.Nebulous] = $.extend({}, baseProducerBuilding, {
+		name: 'Nebulous Synthesizer',
+		desc: 'Bypass the need for demolishing planets entirely by building your own nebula to create meteorites instead of planets.',
+		tier: 2,
+		resource: 'meteorite',
+		resourcePerSecond: {
+			'plasma': -142,
+			'meteorite': 135
+		},
+		cost: {
+			'lunarite': 25800000,
+			'lava': 19700000,
+			'gold': 21900000
+		}
+	});
 
     // Research
     instance[BUILDING.Lab] = $.extend({}, baseProducerBuilding, {

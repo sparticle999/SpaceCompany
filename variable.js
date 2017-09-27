@@ -105,6 +105,8 @@ var mrFreeze = 0;
 var meteorite = 0; var meteoriteStorage = 50; var meteoriteNextStorage = 100; var meteoriteStorageCost = 100; var meteoriteps = 0; var meteoriteToggled = true;
 var printer = 0;
 var web = 0;
+var smasher = 0; var smasherOutput = 72;
+var nebulous = 0; var nebulousOutput = 135;
 
 /********************
 ** Tier 5 Machines **

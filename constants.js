@@ -141,7 +141,9 @@ BUILDING = {
 	LabT5: 'labT5',
 	ChemicalPlant: 'chemicalPlant',
 	Oxidisation: 'oxidisation',
-	Hydrazine: 'hydrazine'
+	Hydrazine: 'hydrazine',
+	Smasher: 'smasher',
+	Nebulous: 'nebulous'
 };
 
 INDEX_NONE = -1;
