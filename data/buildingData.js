@@ -1470,7 +1470,7 @@ Game.buildingData = (function () {
 		cost: {
 			'metal': 210000,
 			'silver': 188000,
-			'helium': 205000
+			'helium': 204000
 		}
 	});
 
