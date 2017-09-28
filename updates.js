@@ -220,7 +220,12 @@ Game.updatesData = (function(){
 	instance.buffCapitalShip = {
 		desc: 'Buffed Capital Ship\' power and defense.',
 		read: false
-	}
+	};
+
+	instance.dmStats = {
+		desc: 'Live counter showing how much DM you will get from each section',
+		read: false
+	};
 
 	return instance;
 

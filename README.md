@@ -41,6 +41,7 @@ v0.5.1
 - Redid Rebirth
 - Respec
 - Meteorite Tier 3 and 4
+- Live counter showing how much DM you will get from each section
 
 ##### Small Changes
 

@@ -101,7 +101,7 @@ Game.darkMatter = (function(){
 	** DM Gain **
 	************/
 
-	instance.wonders = {
+	instance.wonder = {
 		name: "Wonders",
 		desc: "You get Dark Matter for the floors of the Wonder Station that you complete. It is likely you will have achieved all of these in your first run before resetting. You get 4 Dark Matter for every floor completed, but 2 for the last floor (only one wonder).",
 	};
