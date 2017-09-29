@@ -515,6 +515,7 @@ Game.interstellar.military = (function(){
             var star = Game.interstellar.stars.getStarData(starName);
             var chance = this.getChance(star);
             if(chance == "peace"){
+                instance.absorbSystem(starName);
                 return;
             }
             var roll = Math.random();
@@ -561,13 +562,14 @@ Game.interstellar.military = (function(){
     };
 
     instance.absorbSystem = function(id){
-        var data = this.stars.entries[id];
+        var data = Game.interstellar.stars.entries[id];
         var faction = Game.stargaze.getStargazeData(data.factionId);
         if(faction.opinion >= 60){
             faction.opinion -= 5;
             data.owned = true;
             data.displayNeedsUpdate = true;
             faction.displayNeedsUpdate = true;
+            Game.notifyInfo("Successful Absorbtion!", "You have conquered " + data.name + " peacefully and now gain production boosts from it in " + data.resource1 + " and " + data.resource2 + ". Congratulations!");
         }
     };
 

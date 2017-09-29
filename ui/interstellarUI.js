@@ -429,9 +429,10 @@ Game.interstellarUI = (function(){
                     var chance = Game.interstellar.military.getChance(data);
                     if(chance == undefined){
                         chance = 0;
-                    }
-                    if(chance > 1){
+                    } else if(chance > 1){
                         chance = 100;
+                    } else if(chance == "peace"){
+                        chance = 100
                     } else {
                         chance *= 100;
                     }
@@ -468,10 +469,8 @@ Game.interstellarUI = (function(){
                     // Enables Absorb Button
                     if(multi == 0){
                         document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default";
-                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default disabled";
                     } else {
                         document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default disabled";
-                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default";
                     }
                 }
             }

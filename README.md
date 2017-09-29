@@ -67,6 +67,8 @@ Buffed Capital Ship\' power and defense
 - Fixed Solar System Showing planets before exploring requirements
 - Fixed AutoEmc using energy for meteorite
 - Fixed Fusion Reactor not using enough Hydrogen
+- Fixed Invasion Chance being NaN when reputation is above 60
+- Fixed Absorb not working
 
 ### v0.5.0 The Interstellar Update
 ##### Features
