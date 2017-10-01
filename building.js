@@ -226,6 +226,8 @@ Game.buildings = (function(){
 		buildingData.current++;
 		buildingData.updateCost(buildingData.current);
 
+		buildingData.onPurchase();
+
 		// still using the old building variables
 		// TODO: remove this when the transition to data-driven buildings is complete
 		window[buildingId] = buildingData.current;

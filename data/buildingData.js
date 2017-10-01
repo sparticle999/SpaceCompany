@@ -39,14 +39,18 @@ Game.buildingData = (function () {
 		getCostMultiplier: function() {
 			var result = 1;
 			if (this.tier === 1) {
-				result  *= T1Price;
+				result *= T1Price;
 			}
 			if (this.id === BUILDING.Lab) {
 				result *= labT1Multi;
 			}
 			return result;
-		}
+		},
 
+		// override to allow behaviour such as unlocking new features
+		onPurchase: function() {
+
+		}
 	};
 
     // Energy
@@ -491,7 +495,16 @@ Game.buildingData = (function () {
         cost: {
             'metal': 10,
             'wood': 5
-        }
+        },
+		onPurchase: function() {
+			if (researchUnlocked === false) {
+				document.getElementById("researchTab").className = "";
+				researchUnlocked = true;
+				tabsUnlocked.push("researchTab");
+				newUnlock("research");
+				Game.notifySuccess("New Tab!", "You've unlocked the Research Tab!");
+			}
+		}
     });
 
     instance[BUILDING.HeavyDrill] = $.extend({}, baseProducerBuilding, {
