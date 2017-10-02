@@ -137,6 +137,14 @@ Game.resources = (function(){
 		return window[id + 'ps'];
 	};
 
+	instance.getAllProduction = function() {
+		var result = {};
+		for (var id in RESOURCE) {
+			result[RESOURCE[id]] = this.getProduction(RESOURCE[id]);
+		}
+		return result;
+	};
+
 	// TODO: change to data-driven resources when available
 	instance.setProduction = function(id, value) {
 		if (typeof window[id + 'ps'] === 'undefined') {

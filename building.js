@@ -122,6 +122,9 @@ Game.buildings = (function(){
 		// TODO: make rings/swarms/spheres into buildings
 		var output = (ring*5000) + (swarm*25000) + (sphere*1000000);
 
+		// use the old production as an approximation for current production
+		var oldProd = Game.resources.getAllProduction();
+
 		for (var id in this.entries) {
 			var data = this.entries[id];
 			if (data.output === null || typeof data.output[RESOURCE.Energy] === 'undefined') {
@@ -136,7 +139,7 @@ Game.buildings = (function(){
 			var hasResources = true;
 			if (data.upkeep !== null) {
 				for (var upkeepResource in data.upkeep) {
-					if (getResource(upkeepResource) < data.upkeep[upkeepResource] * data.current) {
+					if (getResource(upkeepResource) + oldProd[upkeepResource] < 0) {
 						// not enough resources available for upkeep
 						hasResources = false;
 						break;
@@ -158,6 +161,9 @@ Game.buildings = (function(){
 
 		var use = 0;
 
+		// use the old production as an approximation for current production
+		var oldProd = Game.resources.getAllProduction();
+
 		for (var id in this.entries) {
 			var data = this.entries[id];
 			if (data.upkeep === null || typeof data.upkeep[RESOURCE.Energy] === 'undefined') {
@@ -175,7 +181,7 @@ Game.buildings = (function(){
 					// don't check energy here because we're calculating energy use
 					continue;
 				}
-				if (getResource(upkeepResource) < data.upkeep[upkeepResource] * data.current) {
+				if (getResource(upkeepResource) + oldProd[upkeepResource] < 0) {
 					// not enough resources available for upkeep
 					hasResources = false;
 					break;
@@ -190,6 +196,9 @@ Game.buildings = (function(){
 	};
 
 	instance.calculateProduction = function(energyLow, resourceMultiplier, outProd) {
+		// use the old production as an approximation for current production
+		var oldProd = Game.resources.getAllProduction();
+
 		for (var id in this.entries) {
 			var data = this.entries[id];
 			if (data.output === null) {
@@ -212,7 +221,7 @@ Game.buildings = (function(){
 					// don't check energy here because it has already been checked
 					continue;
 				}
-				if (getResource(upkeepResource) < data.upkeep[upkeepResource] * data.current) {
+				if (getResource(upkeepResource) + oldProd[upkeepResource] < 0) {
 					// not enough resources available for upkeep
 					hasResources = false;
 					break;
