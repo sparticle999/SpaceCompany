@@ -80,6 +80,22 @@ Game.buildings = (function(){
 		return count;
 	};
 
+	instance.updateProductionMultiplier = function(buildingId, factor) {
+		var data = this.getBuildingData(buildingId);
+		if (data === null) {
+			return;
+		}
+		data.prodMultiplier *= factor;
+	};
+
+	instance.updateUpkeepMultiplier = function(buildingId, factor) {
+		var data = this.getBuildingData(buildingId);
+		if (data === null) {
+			return;
+		}
+		data.upkeepMultiplier *= factor;
+	};
+
 	instance.calculateEnergyOutput = function() {
 		if (globalEnergyLock === true) {
 			return 0;
@@ -107,7 +123,7 @@ Game.buildings = (function(){
 				}
 			}
 			if (hasResources) {
-				output += data.output[RESOURCE.Energy] * data.current;
+				output += data.output[RESOURCE.Energy] * data.current * data.prodMultiplier;
 			}
 		}
 
@@ -181,7 +197,7 @@ Game.buildings = (function(){
 						// don't remove energy here because it has already been removed
 						continue;
 					}
-					outProd[upkeepResource] -= data.upkeep[upkeepResource] * data.current;
+					outProd[upkeepResource] -= data.upkeep[upkeepResource] * data.current * data.upkeepMultiplier;
 				}
 				for (var outputResource in data.output) {
 					if (outputResource === RESOURCE.Energy) {
@@ -192,7 +208,7 @@ Game.buildings = (function(){
 					if (outputResource !== RESOURCE.Science) {
 						multiplier = resourceMultiplier;
 					}
-					outProd[outputResource] += data.output[outputResource] * data.current * multiplier;
+					outProd[outputResource] += data.output[outputResource] * data.current * data.prodMultiplier * multiplier;
 				}
 			}
 		}

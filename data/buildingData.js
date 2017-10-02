@@ -11,8 +11,10 @@ Game.buildingData = (function () {
 		max: Number.MAX_VALUE,
 		costType: COST_TYPE.FIXED,
 		tier: 0,
-
 		current: 0,
+		prodMultiplier: 1,
+		upkeepMultiplier: 1,
+
 		iconPath: Game.constants.iconPath,
 		iconExtension: Game.constants.iconExtension,
 		displayNeedsUpdate: true,

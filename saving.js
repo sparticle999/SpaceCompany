@@ -50,7 +50,6 @@ function legacySave(data) {
 		charcoalToggled: charcoalToggled,
 		woodburner: woodburner,
 		furnace: furnace,
-		furnaceWoodInput: furnaceWoodInput,
 		kiln: kiln,
 		fryer: fryer,
 		wood: wood,
@@ -249,7 +248,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.charcoalToggled !== "undefined") charcoalToggled = savegame.charcoalToggled;
 		if(typeof savegame.woodburner !== "undefined") woodburner = savegame.woodburner;
 		if(typeof savegame.furnace !== "undefined") furnace = savegame.furnace;
-		if(typeof savegame.furnaceWoodInput !== "undefined") furnaceWoodInput = savegame.furnaceWoodInput;
 		if(typeof savegame.kiln !== "undefined") kiln = savegame.kiln;
 		if(typeof savegame.fryer !== "undefined") fryer = savegame.fryer;
 		if(typeof savegame.wood !== "undefined") wood = savegame.wood;
