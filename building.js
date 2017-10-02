@@ -96,6 +96,23 @@ Game.buildings = (function(){
 		data.upkeepMultiplier *= factor;
 	};
 
+	instance.setActive = function(buildingId, active) {
+		var data = this.getBuildingData(buildingId);
+		if (data === null) {
+			return;
+		}
+		data.active = active;
+	};
+
+	instance.setActiveByResource = function(resourceId, active) {
+		for (var id in this.entries) {
+			var data = this.entries[id];
+			if (data.resource === resourceId) {
+				data.active = active;
+			}
+		}
+	};
+
 	instance.calculateEnergyOutput = function() {
 		if (globalEnergyLock === true) {
 			return 0;
@@ -109,6 +126,10 @@ Game.buildings = (function(){
 			var data = this.entries[id];
 			if (data.output === null || typeof data.output[RESOURCE.Energy] === 'undefined') {
 				// this doesn't output energy
+				continue;
+			}
+			if (data.active === false) {
+				// no energy produced when off
 				continue;
 			}
 
@@ -143,6 +164,10 @@ Game.buildings = (function(){
 				// this doesn't require energy
 				continue;
 			}
+			if (data.active === false) {
+				// no energy consumed when off
+				continue;
+			}
 
 			var hasResources = true;
 			for (var upkeepResource in data.upkeep) {
@@ -169,6 +194,10 @@ Game.buildings = (function(){
 			var data = this.entries[id];
 			if (data.output === null) {
 				// this doesn't produce anything
+				continue;
+			}
+			if (data.active === false) {
+				// no resources produced when off
 				continue;
 			}
 			if ((energyLow || globalEnergyLock) && data.upkeep !== null && typeof data.upkeep[RESOURCE.Energy] !== 'undefined') {

@@ -14,6 +14,7 @@ Game.buildingData = (function () {
 		current: 0,
 		prodMultiplier: 1,
 		upkeepMultiplier: 1,
+		active: true,
 
 		iconPath: Game.constants.iconPath,
 		iconExtension: Game.constants.iconExtension,
