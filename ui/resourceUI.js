@@ -38,6 +38,40 @@ Game.resourcesUI = (function(){
 			}
 		}
 
+		Game.ui.bindElement('charcoalEngineOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.CharcoalEngine);
+			return data.output[RESOURCE.Energy] * data.prodMultiplier;
+		});
+		Game.ui.bindElement('solarPanelOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.SolarPanel);
+			return data.output[RESOURCE.Energy] * data.prodMultiplier;
+		});
+
+		Game.ui.bindElement('pumpjackOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.Pumpjack);
+			return data.output[RESOURCE.Oil] * data.prodMultiplier;
+		});
+		Game.ui.bindElement('heavyDrillOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.HeavyDrill);
+			return data.output[RESOURCE.Metal] * data.prodMultiplier;
+		});
+		Game.ui.bindElement('advancedDrillOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.AdvancedDrill);
+			return data.output[RESOURCE.Gem] * data.prodMultiplier;
+		});
+		Game.ui.bindElement('furnaceOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.Furnace);
+			return data.output[RESOURCE.Charcoal] * data.prodMultiplier;
+		});
+		Game.ui.bindElement('furnaceWoodInput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.Furnace);
+			return data.upkeep[RESOURCE.Wood] * data.upkeepMultiplier;
+		});
+		Game.ui.bindElement('laserCutterOutput', function() {
+			var data = Game.buildings.getBuildingData(BUILDING.LaserCutter);
+			return data.output[RESOURCE.Wood] * data.prodMultiplier;
+		});
+
 		// the auto bindings need to be updated after this is done
 		Game.ui.updateAutoDataBindings();
 	};

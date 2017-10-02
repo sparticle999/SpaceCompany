@@ -88,26 +88,32 @@ function upgradeStorage(resource) {
 
 function toggleCharcoal(){
 	charcoalToggled = !charcoalToggled;
+	Game.buildings.setActiveByResource(RESOURCE.Charcoal, charcoalToggled);
 }
 
 function toggleHeater(){
 	heaterToggled = !heaterToggled;
+	Game.buildings.setActive(BUILDING.Heater, heaterToggled);
 }
 
 function togglePlasmatic(){
 	plasmaticToggled = !plasmaticToggled;
+	Game.buildings.setActive(BUILDING.Plasmatic, plasmaticToggled);
 }
 
 function toggleBath(){
 	bathToggled = !bathToggled;
+	Game.buildings.setActive(BUILDING.Bath, bathToggled);
 }
 
 function toggleRocketFuel(){
 	rocketFuelToggled = !rocketFuelToggled;
+	Game.buildings.setActiveByResource(RESOURCE.RocketFuel, rocketFuelToggled);
 }
 
 function toggleMeteorite(){
 	meteoriteToggled = !meteoriteToggled;
+	Game.buildings.setActiveByResource(RESOURCE.Meteorite, meteoriteToggled);
 }
 
 function toggleAntimatter(){
