@@ -1,9 +1,9 @@
 // Solar System Tab
 function getRocket(){
-	if(metal >= 1200 && gem >= 900 && oil >= 1000){
-		metal -= 1200;
-		gem -= 900;
-		oil -= 1000;
+	if(getResource(RESOURCE.Metal) >= 1200 && getResource(RESOURCE.Gem) >= 900 && getResource(RESOURCE.Oil) >= 1000){
+		Game.resources.takeResource(RESOURCE.Metal, 1200);
+		Game.resources.takeResource(RESOURCE.Gem, 900);
+		Game.resources.takeResource(RESOURCE.Oil, 1000);
 		rocket = 1;
 		document.getElementById("rocket").innerHTML = "Built";
 		document.getElementById("rocketRocketCost").className = "";

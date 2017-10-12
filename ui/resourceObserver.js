@@ -56,7 +56,7 @@
                 }
                 if(this.enableColoring) {
                     this.colorElementZero(element, this.value);
-                    this.colorElementTarget(element, window[(resourceData.id).toString()], this.value || 0);
+                    this.colorElementTarget(element, resourceData.current, this.value || 0);
                 }
 
                 break;

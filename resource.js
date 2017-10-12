@@ -2,7 +2,7 @@ Game.resources = (function(){
 
 	var instance = {};
 
-	instance.dataVersion = 5;
+	instance.dataVersion = 6;
 	instance.entries = {};
 	instance.categoryEntries = {};
 	instance.storageUpgrades = {};
@@ -76,43 +76,72 @@ Game.resources = (function(){
 		for(var key in this.entries) {
 			data.resources.r[key] = {
 				n: this.entries[key].current,
-				u: this.entries[key].unlocked
+				u: this.entries[key].unlocked,
+				s: this.entries[key].capacity
 			}
 		}
 	};
 
 	instance.load = function(data) {
-		if(data.resources) {
-			if(data.resources.v && data.resources.v === this.dataVersion) {
-				for(var id in data.resources.i) {
-					if(this.entries[id]) {
-						this.addResource(id, data.resources.r[id].n);
-						this.entries[id].unlocked = data.resources.r[id].u;
-					}
-				}
+		if (data.resources && data.resources.v) {
+			if (data.resources.v >= 6) {
+				this.loadV6(data);
 			}
-		}
-
-		// Load the old storage values
-		for (id in RESOURCE) {
-			var capacity = data[RESOURCE[id] + 'Storage'];
-			if (typeof capacity === 'undefined') {
-				continue;
+			else if (data.resources.v === 5) {
+				this.loadV5(data);
 			}
-			this.entries[RESOURCE[id]].capacity = capacity;
-			this.entries[RESOURCE[id]].storage.updateCost(capacity);
 		}
 	};
 
-	// TODO: change to data-driven resources when available
+	instance.loadV5 = function(data) {
+		for (var id in RESOURCE) {
+			var capacity = data[RESOURCE[id] + 'Storage'];
+			if (typeof capacity !== 'undefined') {
+				this.entries[RESOURCE[id]].capacity = capacity;
+				this.entries[RESOURCE[id]].storage.updateCost(capacity);
+			}
+
+			var amount = data[RESOURCE[id]];
+			if (typeof amount !== 'undefined') {
+				this.entries[RESOURCE[id]].current = amount;
+				this.entries[RESOURCE[id]].unlocked = amount > 0;
+			}
+
+			// check unlocked, only modifying if true because not every resource unlocks this way
+			var unlocked = contains(data.resourcesUnlocked, RESOURCE[id] + 'Nav');
+			if (unlocked) {
+				this.entries[RESOURCE[id]].unlocked = true;
+			}
+			if (contains(data.tabsUnlocked, 'researchTab')) {
+				this.entries[RESOURCE.Science].unlocked = true;
+			}
+			if (contains(data.tabsUnlocked, 'solarSystemTab')) {
+				this.entries[RESOURCE.RocketFuel.unlocked] = true;
+			}
+
+		}
+	};
+
+	instance.loadV6 = function(data) {
+		for (var id in data.resources.r) {
+			if (this.entries[id]) {
+				this.entries[id].capacity = data.resources.r[id].s;
+				if (this.entries[id].storage !== null) {
+					this.entries[id].storage.updateCost(data.resources.r[id].s);
+				}
+				this.entries[id].current = data.resources.r[id].n;
+				this.entries[id].unlocked = data.resources.r[id].u;
+			}
+		}
+	};
+
 	instance.getResource = function(id) {
-		if (typeof window[id] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id];
+		return this.entries[id].current;
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.getStorage = function(id) {
 		if (id === RESOURCE.Energy) {
 			return getMaxEnergy();
@@ -123,18 +152,17 @@ Game.resources = (function(){
 			return -1;
 		} else if (id === RESOURCE.RocketFuel) {
 			return -1;
-		} else if (typeof window[id + 'Storage'] === 'undefined') {
+		} else if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id + 'Storage'];
+		return this.entries[id].capacity;
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.getProduction = function(id) {
-		if (typeof window[id + 'ps'] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id + 'ps'];
+		return this.entries[id].perSecond;
 	};
 
 	instance.getAllProduction = function() {
@@ -145,66 +173,66 @@ Game.resources = (function(){
 		return result;
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.setProduction = function(id, value) {
-		if (typeof window[id + 'ps'] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return;
 		}
-		window[id + 'ps'] = value;
+		this.entries[id].perSecond = value;
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.addResource = function(id, count) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
 		}
 
-		if (typeof window[id] === 'undefined') {
+		var data = this.entries[id];
+		if (typeof data === 'undefined') {
 			return;
 		}
 
 		// Add the resource and clamp
-		var newValue = window[id] + count;
+		var newValue = data.current + count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
-			window[id] = Math.max(0, Math.min(newValue, storage));
+			data.current = Math.max(0, Math.min(newValue, storage));
 		} else {
-			window[id] = Math.max(0, newValue);
+			data.current = Math.max(0, newValue);
 		}
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.takeResource = function(id, count) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
 		}
 
-		if (typeof window[id] === 'undefined') {
+		var data = this.entries[id];
+		if (typeof data === 'undefined') {
 			return;
 		}
 
 		// Subtract the resource and clamp
-		var newValue = window[id] - count;
+		var newValue = data.current - count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
-			window[id] = Math.max(0, Math.min(newValue, storage));
+			data.current = Math.max(0, Math.min(newValue, storage));
 		} else {
-			window[id] = Math.max(0, newValue);
+			data.current = Math.max(0, newValue);
 		}
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.maxResource = function(id) {
-		if (typeof window[id] === 'undefined') {
+		var data = this.entries[id];
+		if (typeof data === 'undefined') {
 			return;
 		}
 
 		// resources without a storage cap will return -1 so do nothing
-		if (getStorage(id) < 0) {
+		var storage = this.getStorage(id);
+		if (storage < 0) {
 			return;
 		}
 
-		window[id] = getStorage(id);
+		data.current = storage;
 	};
 
 	instance.getStorageData = function(resourceId) {
@@ -235,10 +263,6 @@ Game.resources = (function(){
 		var res = this.getResourceData(resourceId);
 		res.capacity *= 2;
 		upgradeData.updateCost(res.capacity);
-
-		// still using the old storage variables
-		// TODO: remove this when the transition to data-driven storage is complete
-		window[resourceId + 'Storage'] = res.capacity;
 	};
 
 	instance.updateStorageCosts = function() {

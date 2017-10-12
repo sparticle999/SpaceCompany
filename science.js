@@ -32,7 +32,7 @@ function getCost(basePrice, amount, multiplier) {
 function updateResourceEfficiencyDisplay() {
 	var tech = Game.tech.getTechData('efficiencyResearch');
 
-	if(science > tech.cost['science'] || tech.current > 0) {
+	if(getResource(RESOURCE.Science) > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
@@ -44,7 +44,7 @@ function updateResourceEfficiencyDisplay() {
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, tech.htmlIdCost);
+	Game.settings.turnRed(getResource(RESOURCE.Science), cost, tech.htmlIdCost);
 
 	tech.getTitleElement().text(tech.name + " #" + (tech.current));
 	tech.getCostElement().text(Game.settings.format(cost));
@@ -57,7 +57,7 @@ function updateEnergyEfficiencyDisplay() {
 		tech.getButtonElement().class = '';
 	}
 
-	if(science > tech.cost['science'] || tech.current > 0) {
+	if(getResource(RESOURCE.Science) > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
@@ -69,7 +69,7 @@ function updateEnergyEfficiencyDisplay() {
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, tech.htmlIdCost);
+	Game.settings.turnRed(getResource(RESOURCE.Science), cost, tech.htmlIdCost);
 
 	if(tech.current === tech.maxLevel) {
 		tech.getTitleElement().text(tech.name + " " + tech.maxLevel + " (MAX)");
@@ -83,7 +83,7 @@ function updateEnergyEfficiencyDisplay() {
 function updateScienceEfficiencyDisplay() {
 	var tech = Game.tech.getTechData('scienceEfficiencyResearch');
 
-	if(science > tech.cost['science'] || tech.current > 0) {
+	if(getResource(RESOURCE.Science) > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
@@ -95,7 +95,7 @@ function updateScienceEfficiencyDisplay() {
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, tech.htmlIdCost);
+	Game.settings.turnRed(getResource(RESOURCE.Science), cost, tech.htmlIdCost);
 
 	tech.getTitleElement().text(tech.name + " #" + (tech.current));
 	tech.getCostElement().text(Game.settings.format(cost));
@@ -104,7 +104,7 @@ function updateScienceEfficiencyDisplay() {
 function updateBatteryEfficiencyDisplay() {
 	var tech = Game.tech.getTechData('batteryEfficiencyResearch');
 
-	if(science > tech.cost['science'] || tech.current > 0) {
+	if(getResource(RESOURCE.Science) > tech.cost['science'] || tech.current > 0) {
 		tech.unlocked = true;
 	}
 
@@ -116,7 +116,7 @@ function updateBatteryEfficiencyDisplay() {
 	}
 
 	var cost = getCost(tech.cost['science'], tech.current);
-	Game.settings.turnRed(science, cost, tech.htmlIdCost);
+	Game.settings.turnRed(getResource(RESOURCE.Science), cost, tech.htmlIdCost);
 
 	if(tech.current === tech.maxLevel) {
 		tech.getTitleElement().text(tech.name + " " + tech.maxLevel + " (MAX)");

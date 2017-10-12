@@ -260,6 +260,14 @@ Game.resourceData = (function () {
         unlocked: false
     });
 
+	instance.rocketFuel = $.extend({}, resourceBase, {
+		name: 'Rocket Fuel',
+		desc: 'Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.',
+		icon: 'rocketFuelIcon',
+		baseCapacity: -1,
+		unlocked: false
+	});
+
     return instance;
 }());
 

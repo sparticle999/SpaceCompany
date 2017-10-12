@@ -215,7 +215,7 @@ Game.tech = (function(){
 
     instance.hasResources = function (resources) {
         for (var resource in resources) {
-           if (window[resource] < resources[resource]) {
+           if (getResource(resource) < resources[resource]) {
                return false;
            }
         }
@@ -224,7 +224,7 @@ Game.tech = (function(){
 
     instance.spendResources = function(resources) {
         for (var resource in resources) {
-            window[resource] -= resources[resource];
+            Game.resources.takeResource(resource, resources[resource]);
         }
     };
 

@@ -204,16 +204,14 @@ Game.prestigeData = (function(){
 		category: "carnelian",
 		opinion: 6,
 		onApply: function(){
-			// old
 			var newStorage = 6400;
-			for(var i = 0; i < resources.length; i++){
-				if(window[resources[i] + "Storage"] <= 6400){
-					window[resources[i] + "Storage"] = newStorage;
-					window[resources[i] + "NextStorage"] = newStorage * 2;
+			for (var id in Game.resources.storageUpgrades) {
+				var resourceData = getResourceData(Game.resources.storageUpgrades[id].resource);
+				if (resourceData.capacity < newStorage) {
+					resourceData.capacity = newStorage;
 				}
 			}
-
-			// new
+			Game.resources.updateStorageCosts();
 		},
 		achieved: false
 	};

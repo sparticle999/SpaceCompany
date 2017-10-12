@@ -481,7 +481,7 @@ Game.interstellarUI = (function(){
 
         for(var i = 0; i < resources.length; i++){
             var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
-            var perSec = window[resources[i] + "ps"];
+            var perSec = getProduction(resources[i]);
             for(var j = 0; j < updateList.length; j++){
                 updateList[j].innerHTML = Game.settings.format(perSec/4);
             }

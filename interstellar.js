@@ -182,14 +182,14 @@ Game.interstellar.comms = (function(){
         }
         var resourcePass = 0;
         for(var resource in data.cost){
-            if(window[resource.toString()] >= data.cost[resource.toString()]){
+            if(getResource(resource) >= data.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             data.count += 1;
             for(var resource in data.cost){
-                window[resource.toString()] -= data.cost[resource.toString()];
+                Game.resources.takeResource(resource, data.cost[resource]);
             }            
             data.displayNeedsUpdate = true;
         }
@@ -251,14 +251,14 @@ Game.interstellar.antimatter = (function(){
         var data = this.entries[entryName];
         var resourcePass = 0;
         for(var resource in data.cost){
-            if(window[resource.toString()] >= data.cost[resource.toString()]){
+            if(getResource(resource) >= data.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             data.count += 1;
             for(var resource in data.cost){
-                window[resource.toString()] -= data.cost[resource.toString()];
+                Game.resources.takeResource(resource, data.cost[resource]);
             }            
             data.displayNeedsUpdate = true;
         }
@@ -336,14 +336,14 @@ Game.interstellar.military = (function(){
         var resourcePass = 0;
         var ship = this.entries[entryName];
         for(var resource in ship.cost){
-            if(window[resource.toString()] >= ship.cost[resource.toString()]){
+            if(getResource(resource) >= ship.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(ship.cost).length){
             ship.count += 1;
             for(var resource in ship.cost){
-                window[resource.toString()] -= ship.cost[resource.toString()];
+                Game.resources.takeResource(resource, ship.cost[resource]);
             }            
             ship.displayNeedsUpdate = true;
         }

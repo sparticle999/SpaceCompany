@@ -202,10 +202,10 @@ function getBatteryT3(){
 }
 
 function getBatteryT4(){
-	if(metal>=batteryT4MetalCost && gem>=batteryT4GemCost && lunarite>=batteryT4LunariteCost){
-		metal-=batteryT4MetalCost;
-		gem-=batteryT4GemCost;
-		lunarite-=batteryT4LunariteCost;
+	if(getResource(RESOURCE.Metal) >= batteryT4MetalCost && getResource(RESOURCE.Gem) >= batteryT4GemCost && getResource(RESOURCE.Lunarite) >= batteryT4LunariteCost){
+		Game.resources.takeResource(RESOURCE.Metal, batteryT4MetalCost);
+		Game.resources.takeResource(RESOURCE.Gem, batteryT4GemCost);
+		Game.resources.takeResource(RESOURCE.Lunarite, batteryT4LunariteCost);
 		batteryT4+=1;
 		updateCost();
 		Game.statistics.add('tierOwned4');

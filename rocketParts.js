@@ -40,7 +40,7 @@ Game.interstellar.rocketParts = (function(){
         for(var i = 0; i < buyNum; i++){
             var resourcePass = 0;
             for(var resource in this.entries[entryName].cost){
-                if(window[resource.toString()] >= this.entries[entryName].cost[resource.toString()]){
+                if(getResource(resource) >= this.entries[entryName].cost[resource]){
                     resourcePass += 1;
                 }
             }
@@ -48,7 +48,7 @@ Game.interstellar.rocketParts = (function(){
                 var newValue = Math.floor(this.entries[entryName].count + 1);
                 this.entries[entryName].count = Math.min(newValue, this.entries[entryName].max);
                 for(var resource in this.entries[entryName].cost){
-                    window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
+                    Game.resources.takeResource(resource, this.entries[entryName].cost[resource]);
                 }            
                 this.entries[entryName].displayNeedsUpdate = true;
             }
