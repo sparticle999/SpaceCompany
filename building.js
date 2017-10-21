@@ -2,7 +2,7 @@ Game.buildings = (function(){
 
 	var instance = {};
 
-	instance.dataVersion = 1;
+	instance.dataVersion = 2;
 	instance.entries = {};
 	instance.updatePerSecondProduction = true;
 
@@ -37,29 +37,51 @@ Game.buildings = (function(){
 	instance.save = function(data) {
 		data.buildings = { v: this.dataVersion, i: {}};
 		for(var key in this.entries) {
-			data.buildings.i[key] = this.entries[key].current;
+			data.buildings.i[key] = {
+				n: this.entries[key].current,
+				u: this.entries[key].unlocked
+			};
 		}
 	};
 
 	instance.load = function(data) {
-		if(data.buildings) {
-			if(data.buildings.v && data.buildings.v === this.dataVersion) {
-				for(var id in data.buildings.i) {
-					if(this.entries[id]) {
-						// TODO
-					}
+		if (data.buildings) {
+			if (data.buildings.v) {
+				if (data.buildings.v >= 2) {
+					this.loadV2(data);
+				}
+				else if (data.buildings.v === 1) {
+					this.loadV1(data);
 				}
 			}
 		}
+	};
 
+	instance.loadV1 = function(data) {
 		// Load the old building values
-		for (id in BUILDING) {
+		for (var id in BUILDING) {
 			var current = data[BUILDING[id]];
 			if (typeof current === 'undefined') {
 				continue;
 			}
 			this.entries[BUILDING[id]].current = current;
 			this.entries[BUILDING[id]].updateCost(current);
+			if (current > 0) {
+				this.entries[BUILDING[id].unlocked] = true;
+			}
+		}
+	};
+
+	instance.loadV2 = function(data) {
+		for (var id in data.buildings.i) {
+			if (typeof this.entries[id] === 'undefined') {
+				continue;
+			}
+
+			var current = data.buildings.i[id].n;
+			this.entries[id].current = current;
+			this.entries[id].updateCost(current);
+			this.entries[id].unlocked = data.buildings.i[id].u || current > 0;
 		}
 	};
 
@@ -71,13 +93,12 @@ Game.buildings = (function(){
 		return data;
 	};
 
-	// TODO: change to data-driven buildings when available
 	instance.getNum = function(id) {
-		var count = window[id];
-		if (typeof count === 'undefined') {
+		var data = this.entries[id];
+		if (typeof data === 'undefined') {
 			return 0;
 		}
-		return count;
+		return data.current;
 	};
 
 	instance.updateProductionMultiplier = function(buildingId, factor) {
@@ -125,8 +146,8 @@ Game.buildings = (function(){
 		// use the old production as an approximation for current production
 		var oldProd = Game.resources.getAllProduction();
 
-		for (var id in this.entries) {
-			var data = this.entries[id];
+		for (var id in BUILDING) {
+			var data = this.entries[BUILDING[id]];
 			if (data.output === null || typeof data.output[RESOURCE.Energy] === 'undefined') {
 				// this doesn't output energy
 				continue;
@@ -164,8 +185,8 @@ Game.buildings = (function(){
 		// use the old production as an approximation for current production
 		var oldProd = Game.resources.getAllProduction();
 
-		for (var id in this.entries) {
-			var data = this.entries[id];
+		for (var id in BUILDING) {
+			var data = this.entries[BUILDING[id]];
 			if (data.upkeep === null || typeof data.upkeep[RESOURCE.Energy] === 'undefined') {
 				// this doesn't require energy
 				continue;
@@ -282,10 +303,6 @@ Game.buildings = (function(){
 
 		buildingData.onPurchase();
 
-		// still using the old building variables
-		// TODO: remove this when the transition to data-driven buildings is complete
-		window[buildingId] = buildingData.current;
-
 		Game.statistics.add('tierOwned' + buildingData.tier);
 	};
 
@@ -301,10 +318,6 @@ Game.buildings = (function(){
 
 		buildingData.current--;
 		buildingData.updateCost(buildingData.current);
-
-		// still using the old building variables
-		// TODO: remove this when the transition to data-driven buildings is complete
-		window[buildingId] = buildingData.current;
 	};
 
 	return instance;
