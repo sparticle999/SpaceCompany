@@ -374,13 +374,13 @@ Game.prestigeData = (function(){
 		opinion: 12,
 		onApply: function(){
 			// old
-			labT1Multi -= 0.2;
+			labT2PlusMulti -= 0.2;
 			updateLabCost();
 
 			// new
 		},
 		remove: function(){
-	    	labT1Multi += 0.2;
+            labT2PlusMulti += 0.2;
 			updateLabCost();
 	    },
 		achieved: false
