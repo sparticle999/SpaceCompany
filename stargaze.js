@@ -101,6 +101,7 @@ Game.stargaze = (function(){
 			updateDysonCost();
 			updateFuelProductionCost();
 			updateLabCost();
+			updateWonderCost();
 
 			Game.settings.entries.gainButtonsHidden = false;
 			for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){

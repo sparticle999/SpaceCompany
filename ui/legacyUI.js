@@ -467,6 +467,52 @@ function registerLegacyBindings() {
     Game.ui.bindElement('overexchangeMetalCost', function(){ return Game.settings.format(overexchangeMetalCost); });
     Game.ui.bindElement('overexchangeSilverCost', function(){ return Game.settings.format(overexchangeSilverCost); });
     Game.ui.bindElement('overexchangeHeliumCost', function(){ return Game.settings.format(overexchangeHeliumCost); });
+    
+    // Wonders - Floor 1
+    Game.ui.bindElement('preciousGemCost', function() { return Game.settings.format(preciousGemCost); });
+    Game.ui.bindElement('preciousSilverCost', function() { return Game.settings.format(preciousSilverCost); });
+    Game.ui.bindElement('preciousGoldCost', function() { return Game.settings.format(preciousGoldCost); });
+    Game.ui.bindElement('preciousActivateGemCost', function() { return Game.settings.format(preciousActivateGemCost); });
+    Game.ui.bindElement('preciousActivateSilverCost', function() { return Game.settings.format(preciousActivateSilverCost); });
+    Game.ui.bindElement('preciousActivateGoldCost', function() { return Game.settings.format(preciousActivateGoldCost); });
+    Game.ui.bindElement('energeticWoodCost', function() { return Game.settings.format(energeticWoodCost); });
+    Game.ui.bindElement('energeticCharcoalCost', function() { return Game.settings.format(energeticCharcoalCost); });
+    Game.ui.bindElement('energeticUraniumCost', function() { return Game.settings.format(energeticUraniumCost); });
+    Game.ui.bindElement('energeticActivateWoodCost', function() { return Game.settings.format(energeticActivateWoodCost); });
+    Game.ui.bindElement('energeticActivateCharcoalCost', function() { return Game.settings.format(energeticActivateCharcoalCost); });
+    Game.ui.bindElement('energeticActivateUraniumCost', function() { return Game.settings.format(energeticActivateUraniumCost); });
+    Game.ui.bindElement('techSiliconCost', function() { return Game.settings.format(techSiliconCost); });
+    Game.ui.bindElement('techGoldCost', function() { return Game.settings.format(techGoldCost); });
+    Game.ui.bindElement('techGemCost', function() { return Game.settings.format(techGemCost); });
+    Game.ui.bindElement('techActivateSiliconCost', function() { return Game.settings.format(techActivateSiliconCost); });
+    Game.ui.bindElement('techActivateGoldCost', function() { return Game.settings.format(techActivateGoldCost); });
+    Game.ui.bindElement('techActivateGemCost', function() { return Game.settings.format(techActivateGemCost); });
+    Game.ui.bindElement('meteoriteMeteoriteCost', function() { return Game.settings.format(meteoriteMeteoriteCost); });
+    Game.ui.bindElement('meteoriteIceCost', function() { return Game.settings.format(meteoriteIceCost); });
+    Game.ui.bindElement('meteoriteSiliconCost', function() { return Game.settings.format(meteoriteSiliconCost); });
+    Game.ui.bindElement('meteoriteActivateMeteoriteCost', function() { return Game.settings.format(meteoriteActivateMeteoriteCost); });
+    Game.ui.bindElement('meteoriteActivateIceCost', function() { return Game.settings.format(meteoriteActivateIceCost); });
+    Game.ui.bindElement('meteoriteActivateSiliconCost', function() { return Game.settings.format(meteoriteActivateSiliconCost); });
+
+    // Wonders - Floor 2
+    Game.ui.bindElement('commsWonderGoldCost', function() { return Game.settings.format(commsWonderGoldCost); });
+    Game.ui.bindElement('commsWonderSiliconCost', function() { return Game.settings.format(commsWonderSiliconCost); });
+    Game.ui.bindElement('commsWonderIceCost', function() { return Game.settings.format(commsWonderIceCost); });
+    Game.ui.bindElement('rocketWonderLunariteCost', function() { return Game.settings.format(rocketWonderLunariteCost); });
+    Game.ui.bindElement('rocketWonderTitaniumCost', function() { return Game.settings.format(rocketWonderTitaniumCost); });
+    Game.ui.bindElement('rocketWonderMetalCost', function() { return Game.settings.format(rocketWonderMetalCost); });
+    Game.ui.bindElement('antimatterWonderUraniumCost', function() { return Game.settings.format(antimatterWonderUraniumCost); });
+    Game.ui.bindElement('antimatterWonderLavaCost', function() { return Game.settings.format(antimatterWonderLavaCost); });
+    Game.ui.bindElement('antimatterWonderOilCost', function() { return Game.settings.format(antimatterWonderOilCost); });
+    Game.ui.bindElement('antimatterWonderMethaneCost', function() { return Game.settings.format(antimatterWonderMethaneCost); });
+    Game.ui.bindElement('portalMeteoriteCost', function() { return Game.settings.format(portalMeteoriteCost); });
+    Game.ui.bindElement('portalHeliumCost', function() { return Game.settings.format(portalHeliumCost); });
+    Game.ui.bindElement('portalSiliconCost', function() { return Game.settings.format(portalSiliconCost); });
+
+    // Wonders - Floor 3
+    Game.ui.bindElement('stargateWonderPlasmaCost', function() { return Game.settings.format(stargateWonderPlasmaCost); });
+    Game.ui.bindElement('stargateWonderSiliconCost', function() { return Game.settings.format(stargateWonderSiliconCost); });
+    Game.ui.bindElement('stargateWonderMeteoriteCost', function() { return Game.settings.format(stargateWonderMeteoriteCost); });
 }
 
 function legacyRefreshUI() {

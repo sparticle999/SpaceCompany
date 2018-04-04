@@ -190,6 +190,7 @@ var Game = (function() {
         updateDysonCost();
         updateFuelProductionCost();
         updateLabCost();
+        updateWonderCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
