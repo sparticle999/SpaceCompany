@@ -299,9 +299,11 @@ Game.prestigeData = (function(){
 		opinion: 10,
 		onApply: function(){
 			floor1Price -= 0.15;
+            updateWonderCost();
 		},
 		remove: function(){
 	    	floor1Price += 0.15;
+            updateWonderCost();
 	    },
 		achieved: false
 	};
@@ -314,9 +316,11 @@ Game.prestigeData = (function(){
 		opinion: 15,
 		onApply: function(){
 			floor23Price -= 0.2;
+			updateWonderCost();
 		},
 		remove: function(){
 	    	floor23Price += 0.2;
+            updateWonderCost();
 	    },
 		achieved: false
 	};

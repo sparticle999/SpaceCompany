@@ -193,14 +193,38 @@ var antimatter = 0; var antimatterps = 0; var antimatterStorage = 100000; var an
 
 // Variables not being saved
 
-var preciousGemCost = 10000; var preciousSilverCost = 7500; var preciousGoldCost = 5000;
-var preciousActivateGemCost = 30000; var preciousActivateSilverCost = 20000; var preciousActivateGoldCost = 10000;
-var energeticWoodCost =  10000; var energeticCharcoalCost = 5000; var energeticUraniumCost = 200;
-var energeticActivateWoodCost = 30000; var energeticActivateCharcoalCost = 15000; var energeticActivateUraniumCost = 500;
-var techSiliconCost =  30000; var techGoldCost = 18000; var techGemCost = 40000;
-var techActivateSiliconCost = 50000; var techActivateGoldCost = 30000; var techActivateGemCost = 60000;
-var meteoriteMeteoriteCost =  5000; var meteoriteIceCost = 600000; var meteoriteSiliconCost = 1200000;
-var meteoriteActivateMeteoriteCost = 10000; var meteoriteActivateIceCost = 2000000; var meteoriteActivateSiliconCost = 4000000;
+var preciousGemBaseCost = 10000; var preciousSilverBaseCost = 7500; var preciousGoldBaseCost = 5000;
+var preciousActivateGemBaseCost = 30000; var preciousActivateSilverBaseCost = 20000; var preciousActivateGoldBaseCost = 10000;
+var energeticWoodBaseCost =  10000; var energeticCharcoalBaseCost = 5000; var energeticUraniumBaseCost = 200;
+var energeticActivateWoodBaseCost = 30000; var energeticActivateCharcoalBaseCost = 15000; var energeticActivateUraniumBaseCost = 500;
+var techSiliconBaseCost =  30000; var techGoldBaseCost = 18000; var techGemBaseCost = 40000;
+var techActivateSiliconBaseCost = 50000; var techActivateGoldBaseCost = 30000; var techActivateGemBaseCost = 60000;
+var meteoriteMeteoriteBaseCost = 5000; var meteoriteIceBaseCost = 600000; var meteoriteSiliconBaseCost = 1200000;
+var meteoriteActivateMeteoriteBaseCost = 10000; var meteoriteActivateIceBaseCost = 2000000; var meteoriteActivateSiliconBaseCost = 4000000;
+
+var commsWonderGoldBaseCost = 6000000; var commsWonderSiliconBaseCost = 10000000; var commsWonderIceBaseCost = 6000000;
+var rocketWonderLunariteBaseCost = 8000000; var rocketWonderTitaniumBaseCost = 6000000; var rocketWonderMetalBaseCost = 12000000;
+var antimatterWonderUraniumBaseCost = 6000000; var antimatterWonderLavaBaseCost = 10000000; var antimatterWonderOilBaseCost = 8000000; var antimatterWonderMethaneBaseCost = 6000000;
+var portalMeteoriteBaseCost = 500000; var portalHeliumBaseCost = 8000000; var portalSiliconBaseCost = 6000000;
+
+var stargateWonderPlasmaBaseCost = 500000; var stargateWonderSiliconBaseCost = 920000000; var stargateWonderMeteoriteBaseCost = 17000000;
+
+var preciousGemCost = preciousGemBaseCost; var preciousSilverCost = preciousSilverBaseCost; var preciousGoldCost = preciousGoldBaseCost;
+var preciousActivateGemCost = preciousActivateGemBaseCost; var preciousActivateSilverCost = preciousActivateSilverBaseCost; var preciousActivateGoldCost = preciousActivateGoldBaseCost;
+var energeticWoodCost = energeticWoodBaseCost; var energeticCharcoalCost = energeticCharcoalBaseCost; var energeticUraniumCost = energeticUraniumBaseCost;
+var energeticActivateWoodCost = energeticActivateWoodBaseCost; var energeticActivateCharcoalCost = energeticActivateCharcoalBaseCost; var energeticActivateUraniumCost = energeticActivateUraniumBaseCost;
+var techSiliconCost = techSiliconBaseCost; var techGoldCost = techGoldBaseCost; var techGemCost = techGemBaseCost;
+var techActivateSiliconCost = techActivateSiliconBaseCost; var techActivateGoldCost = techActivateGoldBaseCost; var techActivateGemCost = techActivateGemBaseCost;
+var meteoriteMeteoriteCost = meteoriteMeteoriteBaseCost; var meteoriteIceCost = meteoriteIceBaseCost; var meteoriteSiliconCost = meteoriteSiliconBaseCost;
+var meteoriteActivateMeteoriteCost = meteoriteActivateMeteoriteBaseCost; var meteoriteActivateIceCost = meteoriteActivateIceBaseCost; var meteoriteActivateSiliconCost = meteoriteActivateSiliconBaseCost;
+
+var commsWonderGoldCost = commsWonderGoldBaseCost; var commsWonderSiliconCost = commsWonderSiliconBaseCost; var commsWonderIceCost = commsWonderIceBaseCost;
+var rocketWonderLunariteCost = rocketWonderLunariteBaseCost; var rocketWonderTitaniumCost = rocketWonderTitaniumBaseCost; var rocketWonderMetalCost = rocketWonderMetalBaseCost;
+var antimatterWonderUraniumCost = antimatterWonderUraniumBaseCost; var antimatterWonderLavaCost = antimatterWonderLavaBaseCost; var antimatterWonderOilCost = antimatterWonderOilBaseCost; var antimatterWonderMethaneCost = antimatterWonderMethaneBaseCost;
+var portalMeteoriteCost = portalMeteoriteBaseCost; var portalHeliumCost = portalHeliumBaseCost; var portalSiliconCost = portalSiliconBaseCost;
+
+var stargateWonderPlasmaCost = stargateWonderPlasmaBaseCost; var stargateWonderSiliconCost = stargateWonderSiliconBaseCost; var stargateWonderMeteoriteCost = stargateWonderMeteoriteBaseCost;
+
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 var emcAmount = "Max";
 
