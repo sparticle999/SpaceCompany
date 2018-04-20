@@ -83,6 +83,10 @@ Game.utils = (function(){
         };
     };
 
+    instance.formatScientificNotation2 = function(value) {
+        return Game.utils.formatEngineeringNotation(value, true)
+    };
+    
     instance.formatScientificNotation = function(value) {
         return Game.utils.formatEngineeringNotation(value, true)
     };
@@ -109,6 +113,8 @@ Game.utils = (function(){
         }
 
         return sign + output + 'E+' + exp;
+      
+        return sign + output + 'e' + exp;
     };
 
     instance.formatRounded = function(value)
