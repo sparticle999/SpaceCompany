@@ -83,11 +83,11 @@ Game.utils = (function(){
         };
     };
 
-    instance.formatScientificNotation2 = function(value) {
-        return Game.utils.formatScientificNotation(value, true)
+    instance.formatScientificNotation = function(value) {
+        return Game.utils.formatEngineeringNotation(value, true)
     };
 
-    instance.formatScientificNotation = function(value, useExponentNotation){
+    instance.formatEngineeringNotation = function(value, useExponentNotation){
         if (value === 0 || (Math.abs(value) > -1000 && Math.abs(value) < 1000))
         {
             return Game.utils.formatRaw(value);
@@ -105,10 +105,10 @@ Game.utils = (function(){
         }
 
         if(useExponentNotation === true) {
-            return sign + output + 'E+' + exp;
+            return sign + output + 'e+' + exp;
         }
 
-        return sign + output + '*10^' + exp;
+        return sign + output + 'E+' + exp;
     };
 
     instance.formatRounded = function(value)
