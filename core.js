@@ -1315,3 +1315,7 @@ $('input[name="companyName"]').change(function(){
 	companyName = ($('input[name="companyName"]').val());
 	Game.settings.updateCompanyName();
 });
+
+function calculateKardashevLevel() {
+	return (Math.log10(calculateEnergyUse(1)-6))/10;
+}
