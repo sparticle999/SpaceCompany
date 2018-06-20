@@ -896,26 +896,26 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Ice), meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Gold), 6000000, "commsWonderGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 10000000, "commsWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.Ice), 6000000, "commsWonderIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), commsWonderGoldCost, "commsWonderGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), commsWonderSiliconCost, "commsWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), commsWonderIceCost, "commsWonderIceCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), 8000000, "rocketWonderLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.Titanium), 6000000, "rocketWonderTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), 12000000, "rocketWonderMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), rocketWonderLunariteCost, "rocketWonderLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), rocketWonderTitaniumCost, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), rocketWonderMetalCost, "rocketWonderMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Uranium), 6000000, "antimatterWonderUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lava), 10000000, "antimatterWonderLavaCost");
-	Game.settings.turnRed(getResource(RESOURCE.Oil), 8000000, "antimatterWonderOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.Methane), 6000000, "antimatterWonderMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), antimatterWonderUraniumCost, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), antimatterWonderLavaCost, "antimatterWonderLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), antimatterWonderOilCost, "antimatterWonderOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), antimatterWonderMethaneCost, "antimatterWonderMethaneCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 500000, "portalMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.Helium), 8000000, "portalHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 6000000, "portalSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), portalMeteoriteCost, "portalMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), portalHeliumCost, "portalHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), portalSiliconCost, "portalSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Plasma), 500000, "stargateWonderPlasmaCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 920000000, "stargateWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 17000000, "stargateWonderMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Plasma), stargateWonderPlasmaCost, "stargateWonderPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), stargateWonderSiliconCost, "stargateWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), stargateWonderMeteoriteCost, "stargateWonderMeteoriteCost");
 
 	if(document.getElementById("roc_tier1Rocket_shield_c") != null){
 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.shield.count, 50, "roc_tier1Rocket_shield_c");
@@ -1315,3 +1315,7 @@ $('input[name="companyName"]').change(function(){
 	companyName = ($('input[name="companyName"]').val());
 	Game.settings.updateCompanyName();
 });
+
+function calculateKardashevLevel() {
+	return (Math.log10(calculateEnergyUse(1)-6))/10;
+}

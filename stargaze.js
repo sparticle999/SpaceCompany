@@ -77,6 +77,9 @@ Game.stargaze = (function(){
 				document.getElementById(explored[i]).className = "inner sideTab hidden";
 				if(explored[i] != "moon", explored[i] != "venus", explored[i] != "mars", explored[i] != "asteroidBelt")document.getElementById(explored[i]).className = "outer sideTab hidden";
 			}
+			document.getElementById("rocket").innerHTML = "Not Built";
+			document.getElementById("rocketRocketCost").className = "red";
+			document.getElementById("solarRocket").className = "";
 			document.getElementById("spaceRocket").className = "sideTab";
 			document.getElementById("mercury").className = "sideTab hidden";
 			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
@@ -98,6 +101,7 @@ Game.stargaze = (function(){
 			updateDysonCost();
 			updateFuelProductionCost();
 			updateLabCost();
+			updateWonderCost();
 
 			Game.settings.entries.gainButtonsHidden = false;
 			for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
@@ -137,6 +141,7 @@ Game.stargaze = (function(){
 			for(var upgrade in this.upgradeEntries){
 				var upgradeData = this.upgradeEntries[upgrade];
 				if(upgradeData.achieved == true){
+					upgradeData.remove();
 					upgradeData.onApply();
 					if(upgradeData.category != "intro" && upgradeData.category != "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
 				}
