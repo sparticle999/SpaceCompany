@@ -315,6 +315,8 @@ Game.interstellarUI = (function(){
     };
 
     instance.update = function(delta) {
+        
+        
 
         for(var id in this.commEntries) {
             var data = Game.interstellar.comms.getMachineData(id);
@@ -323,37 +325,42 @@ Game.interstellarUI = (function(){
                 if(data.count >= data.max){
                     document.getElementById("comm_" + id + "_cost").className = "hidden";
                     document.getElementById("comm_" + id + "_buy").className = "hidden";
-                }
+                }                
             }
         }
+        
 
         for(var id in this.rocketEntries) {
             var data = Game.interstellar.rocket.getRocketData(id);
-            if(data.displayNeedsUpdate === true) {
-                this.updateRocketDisplay(data);
+            if(data.displayNeedsUpdate == true) {
+                this.updateRocketDisplay(data);                
             }
         }
+        
 
         for(var id in this.rocketPartEntries) {
             var data = Game.interstellar.rocketParts.getPartData(id);
             if(data.displayNeedsUpdate === true) {
-                this.updatePartDisplay(data);
+                this.updatePartDisplay(data);                
             }
         }
+        
 
         for(var id in this.antimatterEntries) {
             var data = Game.interstellar.antimatter.getMachineData(id);
             if(data.displayNeedsUpdate === true) {
-                this.updateMachineDisplay(data);
+                this.updateMachineDisplay(data);                
             }
         }
+        
 
         for(var id in this.militaryEntries) {
             var data = Game.interstellar.military.getShipData(id);
             if(data.displayNeedsUpdate === true) {
-                this.updateMilitaryShipDisplay(data);
+                this.updateMilitaryShipDisplay(data);                
             }
         }
+        
 
         // Hides navs
         for(var id in Game.interstellar.entries){
@@ -369,9 +376,10 @@ Game.interstellarUI = (function(){
                 } else {
                     document.getElementById("interstellarTab_" + id + "_ne").className = "collapse_interstellarTab_" + data.category + " hidden";
                 }
-                data.displayNeedsUpdate = false;
+                data.displayNeedsUpdate = false;                
             }
         }
+        
 
         var systemsConquered = 0;
 
@@ -390,6 +398,7 @@ Game.interstellarUI = (function(){
             if(data.displayNeedsUpdate == false){
                 continue;
             }
+            
             
             if(data.explored){
                 // Shows the faction tabs that have explored stars - relevant to previous for loop
@@ -413,16 +422,17 @@ Game.interstellarUI = (function(){
                     $('#star_' + data.id + '_spyChance').text(Game.settings.format(spyChance,2));
 
                     // Updates Threat Level
-                    var threat = Game.interstellar.military.getThreat(data.stats.power*multi);
+                    var threat = Game.interstellar.military.getThreat(data.stats.power*multi, data.stats.speed);
                     $('.star_' + data.id + '_threat').text(threat);
 
                     // Updates Victory Chance
                     var chance = Game.interstellar.military.getChance(data);
                     if(chance == undefined){
                         chance = 0;
-                    }
-                    if(chance > 1){
+                    } else if(chance > 1){
                         chance = 100;
+                    } else if(chance == "peace"){
+                        chance = 100
                     } else {
                         chance *= 100;
                     }
@@ -459,10 +469,8 @@ Game.interstellarUI = (function(){
                     // Enables Absorb Button
                     if(multi == 0){
                         document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default";
-                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default disabled";
                     } else {
                         document.getElementById('star_' + id + '_absorbButton').className = "btn btn-default disabled";
-                        document.getElementById('star_' + id + '_invadeButton').className = "btn btn-default";
                     }
                 }
             }
@@ -470,6 +478,8 @@ Game.interstellarUI = (function(){
         }
 
         // Updates Antimatter Nav
+        Game.interstellar.stars.systemsConquered = systemsConquered;
+        $('#sphereMax').text(systemsConquered+1)
         antimatterStorage = 100000*(systemsConquered+1);
         $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
         $('#intnav_antimatter_perSecond').text(antimatterps);
@@ -478,14 +488,16 @@ Game.interstellarUI = (function(){
         } else {
             document.getElementById("intnav_antimatter_current").className = "";
         }
+        
 
         for(var i = 0; i < resources.length; i++){
             var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
             var perSec = window[resources[i] + "ps"];
             for(var j = 0; j < updateList.length; j++){
                 updateList[j].innerHTML = Game.settings.format(perSec/4);
-            }
+            }            
         }
+        
     };
 
     instance.createCommsMachine = function(data, machineData) {
@@ -743,9 +755,9 @@ Game.interstellarUI = (function(){
             document.getElementById("interRocketBuilt").className = "green";
             document.getElementById("interRocketBuilt").innerHTML = "Built";
             for(var id in this.rocketPartEntries){
-                var data = Game.interstellar.rocketParts.entries[id];
-                if(data.entryName == "shield" || "engine" || "aero"){
-                    document.getElementById("rocpart_" + data.entryName).className = "hidden";
+                var partData = Game.interstellar.rocketParts.entries[id];
+                if(partData.entryName == "shield" || "engine" || "aero"){
+                    document.getElementById("rocpart_" + partData.entryName).className = "hidden";
                 }
             }
             status.innerHTML = "Built";

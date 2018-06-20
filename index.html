@@ -64,8 +64,8 @@
 						Energy Deficit!
 					</span>
 				</a>
-				<a class="navbar-brand">
-					<span class="text-muted small">For full changelog, click the version number</span>
+				<a class="navbar-brand pointer" target="_blank" href="http://discord.gg/277CMCx">
+					<span class="text-muted small">Join our Discord!</span>
 				</a>
 				<div class="pull-right" style="width:200px;">
 					<a class="navbar-brand">
@@ -1624,7 +1624,7 @@
 										Laser Cutter: <span id="laserCutter">0</span>
 									</h3>
 									<span>
-										Laser Cutters slice trees (and fingers) quicker than axes and produce a lot more wood.
+										Laser Cutters slice trees (and fingers) more quickly than axes and produce a lot more wood.
 										<br>
 										Produces <span id="laserCutterOutput">6</span> wood per second.
 										<br>
@@ -3069,7 +3069,7 @@
 										<br>
 										Uses 7397 Energy per second.
 										<br>
-										Costs <span id='overexchangeMetalCost'>210000</span> Metal, <span id='overexchangeSilverCost'>188000</span> Silver, <span id='overexchangeHeliumCost'>205000</span> Helium.
+										Costs <span id='overexchangeMetalCost'>210,000</span> Metal, <span id='overexchangeSilverCost'>188,000</span> Silver, <span id='overexchangeHeliumCost'>205,000</span> Helium.
 									</span>
 									<br>
 									<br>
@@ -3154,6 +3154,42 @@
 									<br>
 									<button onclick="getWeb()" class="btn btn-default">Get Meteorite Web</button>
 									<button onclick="destroyMachine('web')" class="btn btn-default destroy hidden">Destroy Meteorite Web</button>
+								</td>
+							</tr>
+							<tr id="meteoriteTier3" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Planet Smasher: <span id="smasher">0</span>
+									</h3>
+									<span>
+										Get meteorites the old-fashioned way: demolishing uninhabited exoplanets by firing high-energy particle beams at them, then collect the debris.
+										<br>
+										Produces 72 Meteorite per second. Uses 111 Plasma per second.
+										<br>
+										Costs <span id="smasherSiliconCost">3.23M</span> Silicon, <span id="smasherSilverCost">5.89M</span> Silver, <span id="smasherGemCost">8.34M</span> Gems.
+									</span>
+									<br>
+									<br>
+									<button onclick="getSmasher()" class="btn btn-default">Get Planet Smasher</button>
+									<button onclick="destroyMachine('smasher')" class="btn btn-default destroy hidden">Destroy Planet Smasher</button>
+								</td>
+							</tr>
+							<tr id="meteoriteTier4" class="hidden">
+								<td>
+									<h3 class="default btn-link">
+										Nebulous Synthesizer: <span id="nebulous">0</span>
+									</h3>
+									<span>
+										Bypass the need for demolishing planets entirely by building your own nebula to create meteorites instead of planets.
+										<br>
+										Produces 135 Meteorite per second. Uses 142 Plasma per second.
+										<br>
+										Costs <span id="nebulousLunariteCost">25.8M</span> Lunarite, <span id="nebulousLavaCost">19.7M</span> Lava, <span id="nebulousGoldCost">21.9M</span> Gold.
+									</span>
+									<br>
+									<br>
+									<button onclick="getNebulous()" class="btn btn-default">Get Nebulous Synthesizer</button>
+									<button onclick="destroyMachine('nebulous')" class="btn btn-default destroy hidden">Destroy Nebulous Synthesizer</button>
 								</td>
 							</tr>
 						</table>
@@ -4181,7 +4217,7 @@
 											He requires that you donate <span id="preciousGemCost">10,000</span> Gems, <span id="preciousSilverCost">7,500</span> Silver and <span id="preciousGoldCost">5,000</span> Gold for this knowledge.
 											<br>
 											<br>
-											<button onclick="achievePreciousWonder()" class="btn btn-default">Donate Metals</button>
+											<button onclick="achievePreciousWonder()" class="btn btn-default">Donate Resources</button>
 											<br>
 											<br>
 											<div id="preciousProgress" class="progress">
@@ -4201,14 +4237,14 @@
 									<span>
 										A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?
 										<br>
-										"Having drained many stars of their energy, I want a structure build in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."
+										"Having drained many stars of their energy, I want a structure built in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."
 										<br>
 										<br>
 										<hide id="energeticWonderButton">
 											He requests a pyramid containing <span id="energeticWoodCost">10,000</span> Wood, <span id="energeticCharcoalCost">5,000</span> Charcoal and <span id="energeticUraniumCost">200</span> Uranium to acquire his methods.
 											<br>
 											<br>
-											<button onclick="achieveEnergeticWonder()" class="btn btn-default">Donate Energy</button>
+											<button onclick="achieveEnergeticWonder()" class="btn btn-default">Donate Resources</button>
 											<br>
 											<br>
 											<div id="energeticProgress" class="progress">
@@ -4747,6 +4783,7 @@
 									</h3>
 									<p>
 										This is where you can convert your energy and plasma into resources. <b>(Right click to go back X10)</b>
+										<hide class="autoEmcHide hidden"><br>With Auto Emc (unlocked with rebirth), when you can automate multiple, the order will be top to bottom (always Max).</hide>
 									</p>
 									<div class="row">
 										<div class="col-md-12">
@@ -4765,6 +4802,7 @@
 													<th>Material</th>
 													<th>Current amount / Storage</th>
 													<th></th>
+													<th class="autoEmcHide hidden">Auto Emc</th>
 												</thead>
 												<tbody>
 													<tr>
@@ -4772,102 +4810,119 @@
 														<td><span id="uraniumEmcAmount">1</span> Uranium</td>
 														<td><span id="uraniumConv"><span data-bind="uranium">N/A</span> / <span data-bind="uraniumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('uranium')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="uraniumAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="lavaEmcVal">42</span> Energy</td>
 														<td><span id="lavaEmcAmount">1</span> Lava</td>
 														<td><span id="lavaConv"><span data-bind="lava">N/A</span> / <span data-bind="lavaStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lava')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="lavaAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="oilEmcVal">3</span> Energy</td>
 														<td><span id="oilEmcAmount">1</span> Oil</td>
 														<td><span id="oilConv"><span data-bind="oil">N/A</span> / <span data-bind="oilStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('oil')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="oilAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="metalEmcVal">1</span> Energy</td>
 														<td><span id="metalEmcAmount">1</span> Metal</td>
 														<td><span id="metalConv"><span data-bind="metal">N/A</span> / <span data-bind="metalStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('metal')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="metalAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="gemEmcVal">3</span> Energy</td>
 														<td><span id="gemEmcAmount">1</span> Gems</td>
 														<td><span id="gemConv"><span data-bind="gem">N/A</span> / <span data-bind="gemStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gem')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="gemAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="charcoalEmcVal">2</span> Energy</td>
 														<td><span id="charcoalEmcAmount">1</span> Charcoal</td>
 														<td><span id="charcoalConv"><span data-bind="charcoal">N/A</span> / <span data-bind="charcoalStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('charcoal')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="charcoalAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="woodEmcVal">1</span> Energy</td>
 														<td><span id="woodEmcAmount">1</span> Wood</td>
 														<td><span id="woodConv"><span data-bind="wood">N/A</span> / <span data-bind="woodStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('wood')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="woodAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="siliconEmcVal">23</span> Energy</td>
 														<td><span id="siliconEmcAmount">1</span> Silicon</td>
 														<td><span id="siliconConv"><span data-bind="silicon">N/A</span> / <span data-bind="siliconStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silicon')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="siliconAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="lunariteEmcVal">15</span> Energy</td>
 														<td><span id="lunariteEmcAmount">1</span> Lunarite</td>
 														<td><span id="lunariteConv"><span data-bind="lunarite">N/A</span> / <span data-bind="lunariteStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('lunarite')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="lunariteAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="methaneEmcVal">12</span> Energy</td>
 														<td><span id="methaneEmcAmount">1</span> Methane</td>
 														<td><span id="methaneConv"><span data-bind="methane">N/A</span> / <span data-bind="methaneStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('methane')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="methaneAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="titaniumEmcVal">17</span> Energy</td>
 														<td><span id="titaniumEmcAmount">1</span> Titanium</td>
 														<td><span id="titaniumConv"><span data-bind="titanium">N/A</span> / <span data-bind="titaniumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('titanium')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="titaniumAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="goldEmcVal">42</span> Energy</td>
 														<td><span id="goldEmcAmount">1</span> Gold</td>
 														<td><span id="goldConv"><span data-bind="gold">N/A</span> / <span data-bind="goldStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('gold')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="goldAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="silverEmcVal">42</span> Energy</td>
 														<td><span id="silverEmcAmount">1</span> Silver</td>
 														<td><span id="silverConv"><span data-bind="silver">N/A</span> / <span data-bind="silverStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('silver')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="silverAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="hydrogenEmcVal">42</span> Energy</td>
 														<td><span id="hydrogenEmcAmount">1</span> Hydrogen</td>
 														<td><span id="hydrogenConv"><span data-bind="hydrogen">N/A</span> / <span data-bind="hydrogenStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('hydrogen')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="hydrogenAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="heliumEmcVal">42</span> Energy</td>
 														<td><span id="heliumEmcAmount">1</span> Helium</td>
 														<td><span id="heliumConv"><span data-bind="helium">N/A</span> / <span data-bind="heliumStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('helium')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="heliumAutoEmc" class="autoEmc" />
 													</tr>
 													<tr>
 														<td><span id="iceEmcVal">42</span> Energy</td>
 														<td><span id="iceEmcAmount">1</span> Ice</td>
 														<td><span id="iceConv"><span data-bind="ice">N/A</span> / <span data-bind="iceStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertEnergy('ice')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="iceAutoEmc" class="autoEmc" />
 													</tr>
 													<tr id="meteoriteEMC" class="hidden">
 														<td><span id="meteoriteEmcVal">42</span> Plasma</td>
 														<td><span id="meteoriteEmcAmount">1</span> Meteorite</td>
 														<td><span id="meteoriteConv"><span data-bind="meteorite">N/A</span> / <span data-bind="meteoriteStorage">N/A</span></span></td>
 														<td><button class="btn btn-default pull-right" onclick="convertPlasma('meteorite')" role="button">Convert</button></td>
+														<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="meteoriteAutoEmc" class="autoEmc" />
 													</tr>
 												</tbody>
 											</table>
@@ -4959,7 +5014,7 @@
 											<br>
 											<br>
 											<h3 class="default btn-link">
-												Sphere: <span id="sphere">0</span> (Max. 1)
+												Sphere: <span id="sphere">0</span> (Max. <span id="sphereMax">1</span>)
 											</h3>
 											<span>
 												The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.
@@ -4971,7 +5026,10 @@
 												<br>
 												<br>
 											</span>
-											<button id="buildSphereButton" onclick="buildSphere()" class="btn btn-default">Construct Sphere</button>
+											<hide id="buildSphereButton">
+												<button onclick="buildSphere()" class="btn btn-default">Construct Sphere</button>
+												<button onclick="buildDysonTo(250);buildSphere()" class="btn btn-default">Build up to 250 and Sphere</button>
+											</hide>
 										</hide>
 									</span>
 								</td>
@@ -6628,7 +6686,7 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Formatting
+										Notation
 									</h3>
 									<select id="formatSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
 										<option value="raw">Raw</option>
@@ -6812,7 +6870,7 @@
 										<br>
 										<a href="https://www.reddit.com/r/SpaceCompany/wiki/index">Wiki</a>
 										<br>
-										<a href="https://www.discord.gg/cjQBgPW">Discord</a>
+										<a href="https://www.discord.gg/277CMCx">Discord</a>
 									</span>
 								</td>
 							</tr>

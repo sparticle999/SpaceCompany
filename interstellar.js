@@ -21,7 +21,7 @@ Game.interstellar = (function(){
             
         }
 
-        console.log("Loaded " + this.navCount + " Interstellar Navs");
+        console.debug("Loaded " + this.navCount + " Interstellar Navs");
         this.comms.initialise();
         this.rocketParts.initialise();
         this.rocket.initialise();
@@ -436,12 +436,12 @@ Game.interstellar.military = (function(){
         }
     };
 
-    instance.getThreat = function(power, num){
+    instance.getThreat = function(power, speed, num){
         var threatLevels = ["•", "••", "•••", "I", "II", "III", "X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"];
-        var threshholds = [40,100,180,280,400,540,700,880,1080,1300,1540,1800];
+        var threshholds = [320,800,1440,2240,3200,4320,5600,7040,8640,10400,12320,14400];
         var level = 0;
         for(var i = 0; i < threshholds.length; i++){
-            if(power >= threshholds[i]){
+            if(power*speed >= threshholds[i]){
                 level += 1;
             } else {
                 continue;
@@ -455,7 +455,7 @@ Game.interstellar.military = (function(){
     };
 
     instance.getSpyChance = function(star, multi){
-        var threat = this.getThreat(star.stats.power*(multi||1), true)+1;
+        var threat = this.getThreat(star.stats.power*(multi||1), star.stats.speed, true)+1;
         return chance = this.entries.scout.active/threat*(20/(star.spy+1));
     }
 
@@ -473,6 +473,7 @@ Game.interstellar.military = (function(){
             scout.active = 0;
             Game.notifyInfo("Espionage Failed!", "You lost all of your active scouts.");
         }
+        star.displayNeedsUpdate = true;
         this.updateFleetStats();
         this.updateShips();
     };
@@ -514,11 +515,13 @@ Game.interstellar.military = (function(){
             var star = Game.interstellar.stars.getStarData(starName);
             var chance = this.getChance(star);
             if(chance == "peace"){
+                instance.absorbSystem(starName);
                 return;
             }
             var roll = Math.random();
             if(chance >= roll){
                 star.owned = true;
+                newUnlock('solCenter');
                 var randomShips = Game.utils.randArb(0,chance);
                 if(randomShips < 1){
                     for(var ship in this.entries){
@@ -559,13 +562,14 @@ Game.interstellar.military = (function(){
     };
 
     instance.absorbSystem = function(id){
-        var data = this.stars.entries[id];
+        var data = Game.interstellar.stars.entries[id];
         var faction = Game.stargaze.getStargazeData(data.factionId);
         if(faction.opinion >= 60){
             faction.opinion -= 5;
             data.owned = true;
             data.displayNeedsUpdate = true;
             faction.displayNeedsUpdate = true;
+            Game.notifyInfo("Successful Absorbtion!", "You have conquered " + data.name + " peacefully and now gain production boosts from it in " + data.resource1 + " and " + data.resource2 + ". Congratulations!");
         }
     };
 

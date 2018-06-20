@@ -580,6 +580,14 @@ function updateCost(){
 	webUraniumCost = Math.floor(490000 * Math.pow(1.1,web));
 	webSiliconCost = Math.floor(510000 * Math.pow(1.1,web));
 
+	smasherSiliconCost = Math.floor(3230000 * Math.pow(1.1,smasher));
+	smasherSilverCost = Math.floor(5890000 * Math.pow(1.1,smasher));
+	smasherGemCost = Math.floor(8340000 * Math.pow(1.1,smasher));
+
+	nebulousLunariteCost = Math.floor(25800000 * Math.pow(1.1,nebulous));
+	nebulousLavaCost = Math.floor(19700000 * Math.pow(1.1,nebulous));
+	nebulousGoldCost = Math.floor(21900000 * Math.pow(1.1,nebulous));
+
 	/********************
 	** Tier 5 Machines **
 	********************/
@@ -646,7 +654,7 @@ function updateCost(){
 
 	overexchangeMetalCost = Math.floor(210000 * Math.pow(1.1, overexchange)); 
 	overexchangeSilverCost = Math.floor(188000 * Math.pow(1.1, overexchange)); 
-	overexchangeHeliumCost = Math.floor(205000 * Math.pow(1.1, overexchange));
+	overexchangeHeliumCost = Math.floor(204000 * Math.pow(1.1, overexchange));
 
 }
 
@@ -696,8 +704,8 @@ function getPlasmatic(){
 
 function getBath(){
 	if(getResource(RESOURCE.Lava) >= bathLavaCost && getResource(RESOURCE.Gold) >= bathGoldCost && getResource(RESOURCE.Meteorite) >= bathMeteoriteCost){
-		Game.resources.takeResource(RESOURCE.Lava, bathLunariteCost);
-		Game.resources.takeResource(RESOURCE.Gold, bathSiliconCost);
+		Game.resources.takeResource(RESOURCE.Lava, bathLavaCost);
+		Game.resources.takeResource(RESOURCE.Gold, bathGoldCost);
 		Game.resources.takeResource(RESOURCE.Meteorite, bathMeteoriteCost);
 		bath += 1;
 		updateCost();
@@ -1537,6 +1545,28 @@ function getWeb(){
 		web += 1;
 		updateCost();
 		Game.statistics.add('tierOwned2');
+	}
+}
+
+function getSmasher(){
+	if(getResource(RESOURCE.Silicon) >= smasherSiliconCost && getResource(RESOURCE.Silver) >= smasherSilverCost && getResource(RESOURCE.Gem) >= smasherGemCost){
+		Game.resources.takeResource(RESOURCE.Silicon, smasherSiliconCost);
+		Game.resources.takeResource(RESOURCE.Silver, smasherSilverCost);
+		Game.resources.takeResource(RESOURCE.Gem, smasherGemCost);
+		smasher += 1;
+		updateCost();
+		Game.statistics.add('tierOwned3');
+	}
+}
+
+function getNebulous(){
+	if(getResource(RESOURCE.Lunarite) >= nebulousLunariteCost && getResource(RESOURCE.Lava) >= nebulousLavaCost && getResource(RESOURCE.Gold) >= nebulousGoldCost){
+		Game.resources.takeResource(RESOURCE.Lunarite, nebulousLunariteCost);
+		Game.resources.takeResource(RESOURCE.Lava, nebulousLavaCost);
+		Game.resources.takeResource(RESOURCE.Gold, nebulousGoldCost);
+		nebulous += 1;
+		updateCost();
+		Game.statistics.add('tierOwned4');
 	}
 }
 

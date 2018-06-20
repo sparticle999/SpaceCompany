@@ -103,6 +103,8 @@ var splashTextArray = ["Venturing Into The Unknown...",
 "0% Organic!",
 "JavaScript!",
 "Recruiting Robot Hamsters...",
+"Autoclickers strictly discouraged!",
+"Even more in-depth than Kerbal Space Program!",
 ];
 var splashText = splashTextArray[Math.floor(Math.random()*splashTextArray.length)];
 

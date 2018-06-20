@@ -77,6 +77,7 @@ var Game = (function() {
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
         refreshTimeUntilLimit();
+        gainAutoEmc();
 
         checkStorages();
 
@@ -161,10 +162,9 @@ var Game = (function() {
             this.statistics.load(data);
             this.resources.load(data);
             this.buildings.load(data);
-            this.tech.load(data);
-            
-            this.interstellar.load(data);
             this.stargaze.load(data);
+            this.tech.load(data);
+            this.interstellar.load(data); 
             this.updates.load(data);
 
             legacyLoad(data);
@@ -189,6 +189,7 @@ var Game = (function() {
         updateDysonCost();
         updateFuelProductionCost();
         updateLabCost();
+        updateWonderCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();

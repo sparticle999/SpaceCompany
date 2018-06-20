@@ -6,27 +6,27 @@ function calculateEnergyOutput(delta) {
 	var multiplier = 1 + (Game.stargaze.entries.darkMatter.count * dmBoost);
 
 	// Fixed outputs first
-	var output = (ring*5000) + (swarm*25000) + (sphere*1000000) + (solarPanel*solarPanelOutput);
+	var output = (ring*ringOutput) + (swarm*swarmOutput) + (sphere*sphereOutput) + (solarPanel*solarPanelOutput);
 
-	if (getResourceAfterTick(RESOURCE.Charcoal, delta) >= charcoalEngine * delta) {
+	if (getResourceAfterTick(RESOURCE.Charcoal, delta) >= charcoalEngine * charcoalEngineCharcoalInput * delta) {
 		output += charcoalEngine * charcoalEngineOutput;
 	}
 
-	if (getResourceAfterTick(RESOURCE.Methane, delta) >= methaneStation * 6 * delta) {
-		output += methaneStation * 23;
+	if (getResourceAfterTick(RESOURCE.Methane, delta) >= methaneStation * methaneStationMethaneInput * delta) {
+		output += methaneStation * methaneStationOutput;
 	}
 
-	if (getResourceAfterTick(RESOURCE.Uranium, delta) >= nuclearStation * 7 * delta) {
-		output += nuclearStation * 153;
+	if (getResourceAfterTick(RESOURCE.Uranium, delta) >= nuclearStation * nuclearStationUraniumInput * delta) {
+		output += nuclearStation * nuclearStationOutput;
 	}
 
-	if (getResourceAfterTick(RESOURCE.Lava, delta) > magmatic * 11 * delta) {
-		output += magmatic * 191;
+	if (getResourceAfterTick(RESOURCE.Lava, delta) > magmatic * magmaticLavaInput * delta) {
+		output += magmatic * magmaticOutput;
 	}
 
-	if (getResourceAfterTick(RESOURCE.Hydrogen, delta) >= fusionReactor * 10 * delta &&
-		getResourceAfterTick(RESOURCE.Helium, delta) >= fusionReactor * 10 * delta) {
-		output += fusionReactor * 273;
+	if (getResourceAfterTick(RESOURCE.Hydrogen, delta) >= fusionReactor * fusionReactorHydrogenInput * delta &&
+		getResourceAfterTick(RESOURCE.Helium, delta) >= fusionReactor * fusionReactorHeliumInput * delta) {
+		output += fusionReactor * fusionReactorOutput;
 	}
 
 	return output * multiplier;
@@ -36,40 +36,74 @@ function calculateEnergyUse(delta) {
 	if (globalEnergyLock === true) {
 		return 0;
 	}
-
-	var use = (pumpjack*4)+(heavyDrill*2)+(advancedDrill*2)+(laserCutter*4);
-	use += (moonDrill*20)+(suctionExcavator*16)+(lunariteDrill*13)+(destroyer*19)+(spaceLaser*24)+(scorcher*18);
-	use += (cubic*40)+(extractor*58)+(magnet*63)+(tanker*72)+(iceDrill*83);
-
-	use += (oilField*17)+(gigaDrill*9)+(diamondDrill*15)+(deforester*16);
-	use += (moonQuarry*70)+(spaceCow*49)+(pentaDrill*46)+(deathStar*81)+(bertha*65)+(annihilator*53);
-	use += (enricher*180)+(extruder*237)+(eCell*234)+(compressor*248)+(freezer*397);
-
-	use += (oilRig*44)+(quantumDrill*24)+(carbyneDrill*40)+(infuser*43);
-	use += (planetExcavator*182)+(vent*132)+(titanDrill*123)+(actuator*223)+(cannon*170)+(desert*138);
-	use += (recycler*463)+(veluptuator*698)+(hindenburg*631)+(skimmer*670)+(mrFreeze*1135);
-
-    use += (fossilator*258)+(multiDrill*131)+(diamondChamber*273)+(forest*275);
-    use += (cloner*1157)+(interCow*879)+(club*690)+(philosopher*1387)+(werewolf*984)+(tardis*746);
-    use += (planetNuke*2719)+(condensator*4142)+(harvester*3584)+(cage*4462)+(overexchange*6667);
-
-    if(charcoalToggled === true){
-        use += (furnace*3)+(kiln*13)+(fryer*34)+(microPollutor*212);
-    }
-
+	
+	// initializing the variable
+	var use = 0;
+	
+	// Plasma energy consumption
 	if (heaterToggled && getResource(RESOURCE.Hydrogen) + getProduction(RESOURCE.Hydrogen) >= heater * 10 * delta &&
 		getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= heater * delta) {
-		use += heater * 1000;
+		use += heater * heaterEnergyInput;
 	}
 
 	if (plasmaticToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmatic * 10 * delta) {
-		use += plasmatic * 8500;
+		use += plasmatic * plasmaticEnergyInput;
 	}
 
 	if (bathToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= bath * 10 * delta) {
-		use += bath * 15000;
+		use += bath * bathEnergyInput;
 	}
+	
+	// Uranium Energy Consumption
+	use += (cubic * cubicEnergyInput) + (enricher * enricherEnergyInput) + (recycler * recyclerEnergyInput) + (planetNuke * planetNukeEnergyInput);
+	
+	// Lava Energy Consumption
+	use += (extractor * extractorEnergyInput) + (extruder * extruderEnergyInput) + (veluptuator * veluptuatorEnergyInput) + (condensator * condensatorEnergyInput);
+	
+	// Oil Energy Consumption
+	use += (pumpjack * pumpjackEnergyInput) + (oilField * oilFieldEnergyInput) + (oilRig * oilRigEnergyInput) + (fossilator * fossilatorEnergyInput);
+	
+	// Metal Energy Consumption
+	use += (heavyDrill * heavyDrillEnergyInput) + (gigaDrill * gigaDrillEnergyInput) + (quantumDrill * quantumDrillEnergyInput) + (multiDrill * multiDrillEnergyInput);
+	
+	// Gems Energy Consumption
+	use += (advancedDrill * advancedDrillEnergyInput) + (diamondDrill * diamondDrillEnergyInput) + (carbyneDrill * carbyneDrillEnergyInput) + (diamondChamber * diamondChamberEnergyInput);
+	
+	// Charcoal Energy Consumption
+	if(charcoalToggled === true){
+        	use += (furnace*furnaceEnergyInput)+(kiln*kilnEnergyInput)+(fryer*fryerEnergyInput)+(microPollutor*microPollutorEnergyInput);
+    	}
 
+	// Wood Energy Consumption
+	use += (laserCutter * laserCutterEnergyInput) + (deforester * deforesterEnergyInput) + (infuser * infuserEnergyInput) + (forest * forestEnergyInput);
+	
+	// Silicon Energy Consumption
+	use += (scorcher * scorcherEnergyInput) + (annihilator * annihilatorEnergyInput) + (desert * desertEnergyInput) + (tardis * tardisEnergyInput);
+	
+	// Lunarite Energy Consumption
+	use += (moonDrill * moonDrillEnergyInput) + (moonQuarry * moonQuarryEnergyInput) + (planetExcavator * planetExcavatorEnergyInput) + (cloner * clonerEnergyInput);
+	
+	// Methane Energy Consumption
+	use += (suctionExcavator * suctionExcavatorEnergyInput) + (spaceCow * spaceCowEnergyInput) + (vent * ventEnergyInput) + (interCow * interCowEnergyInput);
+	
+	// Titanium Energy Consumption
+	use += (lunariteDrill * lunariteDrillEnergyInput) + (pentaDrill * pentaDrillEnergyInput) + (titanDrill * titanDrillEnergyInput) + (club * clubEnergyInput);
+	
+	// Gold Energy Consumption
+	use += (destroyer * destroyerEnergyInput) + (deathStar * deathStarEnergyInput) + (actuator * actuatorEnergyInput) + (philosopher * philosopherEnergyInput);
+	
+	// Silver Energy Consumption
+	use += (spaceLaser * spaceLaserEnergyInput) + (bertha * berthaEnergyInput) + (cannon * cannonEnergyInput) + (werewolf * werewolfEnergyInput);
+	
+	// Hydrogen Energy Consumption
+	use += (magnet * magnetEnergyInput) + (eCell * eCellEnergyInput) + (hindenburg * hindenburgEnergyInput) + (harvester * harvesterEnergyInput);
+	
+	// Helium Energy Consumption
+	use += (tanker * tankerEnergyInput) + (compressor * compressorEnergyInput) + (skimmer * skimmerEnergyInput) + (cage * cageEnergyInput);
+	
+	// Ice Energy Consumption
+	use += (iceDrill * iceDrillEnergyInput) + (freezer * freezerEnergyInput) + (mrFreeze * mrFreezeEnergyInput) + (overexchange * overexchangeEnergyInput);
+	
 	var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
 	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
 
@@ -138,7 +172,7 @@ function refreshPerSec(delta){
 	var energyUse = calculateEnergyUse(delta);
 	energyps = energyOutput - energyUse;
 
-	var deltaEnergyDiff = (energyOutput * delta) - (energyUse * delta);
+	var deltaEnergyDiff = energyps * delta;
 	energyLow = deltaEnergyDiff < 0 && (getResource(RESOURCE.Energy) <= 0 || getResource(RESOURCE.Energy) < deltaEnergyDiff);
 
 	// calculate multipliers (add prestige etc here)
@@ -146,22 +180,22 @@ function refreshPerSec(delta){
 	var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01) + (Game.stargaze.entries.darkMatter.count * dmBoost);
 
 	// Now we calculate the base per second
-	uraniumps = grinder * perSecondMultiplier;
-	oilps = pump * perSecondMultiplier;
-	metalps = miner * perSecondMultiplier;
-	gemps = gemMiner * perSecondMultiplier;
+	uraniumps = grinder * grinderOutput * perSecondMultiplier;
+	oilps = pump * pumpOutput * perSecondMultiplier;
+	metalps = miner * minerOutput * perSecondMultiplier;
+	gemps = gemMiner * gemMinerOutput * perSecondMultiplier;
 	charcoalps = 0;
-	woodps = woodcutter * perSecondMultiplier;
-	lunariteps = moonWorker * perSecondMultiplier;
-	methaneps = vacuum * perSecondMultiplier;
-	titaniumps = explorer * perSecondMultiplier;
-	goldps = droid * perSecondMultiplier;
-	silverps = scout * perSecondMultiplier;
-	siliconps = blowtorch * perSecondMultiplier;
-	lavaps = crucible * perSecondMultiplier;
-	hydrogenps = collector * perSecondMultiplier;
-	heliumps = drone * perSecondMultiplier;
-	iceps = icePick * perSecondMultiplier;
+	woodps = woodcutter * woodcutterOutput * perSecondMultiplier;
+	lunariteps = moonWorker * moonWorkerOutput * perSecondMultiplier;
+	methaneps = vacuum * vacuumOutput * perSecondMultiplier;
+	titaniumps = explorer * explorerOutput * perSecondMultiplier;
+	goldps = droid * droidOutput * perSecondMultiplier;
+	silverps = scout * scoutOutput * perSecondMultiplier;
+	siliconps = blowtorch * blowtorchOutput * perSecondMultiplier;
+	lavaps = crucible * crucibleOutput * perSecondMultiplier;
+	hydrogenps = collector * collectorOutput * perSecondMultiplier;
+	heliumps = drone * droneOutput * perSecondMultiplier;
+	iceps = icePick * icePickOutput * perSecondMultiplier;
 	plasmaps = 0;
 	meteoriteps = 0;
 	rocketFuelps = 0;
@@ -170,40 +204,40 @@ function refreshPerSec(delta){
 	// Science
 	var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
 	var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02) + (Game.stargaze.entries.darkMatter.count * dmBoost);
-	scienceps = ((lab*0.1) + (labT2*1) + (labT3*10) + (labT4*100) + labT5*1000) * scienceMultiplier;
+	scienceps = ((lab*labOutput) + (labT2*labT2Output) + (labT3*labT3Output) + (labT4*labT4Output) + labT5*labT5Output) * scienceMultiplier;
 
 	if (!energyLow && globalEnergyLock === false) {
 		// Add resource gain from machines
 
-        oilps +=  ((pumpjack*pumpjackOutput) + (oilField*63) + (oilRig*246) + (fossilator*2630)) * perSecondMultiplier;
-        metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*108) + (quantumDrill*427) + (multiDrill*4797)) * perSecondMultiplier;
-        gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*89) + (carbyneDrill*358) + (diamondChamber*3861)) * perSecondMultiplier;
-        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*74) + (infuser*297) + (forest*3106)) * perSecondMultiplier;
-        lunariteps +=  ((moonDrill*10) + (moonQuarry*53) + (planetExcavator*207) + (cloner*2206)) * perSecondMultiplier;
-        methaneps +=  ((suctionExcavator*8) + (spaceCow*37) + (vent*149) + (interCow*1356)) * perSecondMultiplier;
-        titaniumps +=  ((lunariteDrill*9) + (pentaDrill*49) + (titanDrill*197) + (club*2134)) * perSecondMultiplier;
-        goldps +=  ((destroyer*8) + (deathStar*51) + (actuator*211) + (philosopher*1960)) * perSecondMultiplier;
-        silverps +=  ((spaceLaser*13) + (bertha*53) + (cannon*208) + (werewolf*2245)) * perSecondMultiplier;
-        siliconps +=  ((scorcher*9) + (annihilator*40) + (desert*157) + (tardis*1487)) * perSecondMultiplier;
-        uraniumps +=  ((cubic*9) +(enricher*61) + (recycler*235) + (planetNuke*2412)) * perSecondMultiplier;
-        lavaps +=  ((extractor*7) + (extruder*43) + (veluptuator*187) + (condensator*2103)) * perSecondMultiplier;
-        hydrogenps +=  ((magnet*5) + (eCell*28) + (hindenburg*113) + (harvester*1292)) * perSecondMultiplier;
-        heliumps +=  ((tanker*11) + (compressor*57) + (skimmer*232) + (cage*2185)) * perSecondMultiplier;
-        iceps +=  ((iceDrill*9) + (freezer*65) + (mrFreeze*278) + (overexchange*2532)) * perSecondMultiplier;
+        oilps +=  ((pumpjack*pumpjackOutput) + (oilField*oilFieldOutput) + (oilRig*oilRigOutput) + (fossilator*fossilatorOutput)) * perSecondMultiplier;
+        metalps +=  ((heavyDrill*heavyDrillOutput) + (gigaDrill*gigaDrillOutput) + (quantumDrill*quantumDrillOutput) + (multiDrill*multiDrillOutput)) * perSecondMultiplier;
+        gemps +=  ((advancedDrill*advancedDrillOutput) + (diamondDrill*diamondDrillOutput) + (carbyneDrill*carbyneDrillOutput) + (diamondChamber*diamondChamberOutput)) * perSecondMultiplier;
+        woodps +=  ((laserCutter*laserCutterOutput) + (deforester*deforesterOutput) + (infuser*infuserOutput) + (forest*forestOutput)) * perSecondMultiplier;
+        lunariteps +=  ((moonDrill*moonDrillOutput) + (moonQuarry*moonQuarryOutput) + (planetExcavator*planetExcavatorOutput) + (cloner*clonerOutput)) * perSecondMultiplier;
+        methaneps +=  ((suctionExcavator*suctionExcavatorOutput) + (spaceCow*spaceCowOutput) + (vent*ventOutput) + (interCow*interCowOutput)) * perSecondMultiplier;
+        titaniumps +=  ((lunariteDrill*lunariteDrillOutput) + (pentaDrill*pentaDrillOutput) + (titanDrill*titanDrillOutput) + (club*clubOutput)) * perSecondMultiplier;
+        goldps +=  ((destroyer*destroyerOutput) + (deathStar*deathStarOutput) + (actuator*actuatorOutput) + (philosopher*philosopherOutput)) * perSecondMultiplier;
+        silverps +=  ((spaceLaser*spaceLaserOutput) + (bertha*berthaOutput) + (cannon*cannonOutput) + (werewolf*werewolfOutput)) * perSecondMultiplier;
+        siliconps +=  ((scorcher*scorcherOutput) + (annihilator*annihilatorOutput) + (desert*desertOutput) + (tardis*tardisOutput)) * perSecondMultiplier;
+        uraniumps +=  ((cubic*cubicOutput) +(enricher*enricherOutput) + (recycler*recyclerOutput) + (planetNuke*planetNukeOutput)) * perSecondMultiplier;
+        lavaps +=  ((extractor*extractorOutput) + (extruder*extruderOutput) + (veluptuator*veluptuatorOutput) + (condensator*condensatorOutput)) * perSecondMultiplier;
+        hydrogenps +=  ((magnet*magnetOutput) + (eCell*eCellOutput) + (hindenburg*hindenburgOutput) + (harvester*harvesterOutput)) * perSecondMultiplier;
+        heliumps +=  ((tanker*tankerOutput) + (compressor*compressorOutput) + (skimmer*skimmerOutput) + (cage*cageOutput)) * perSecondMultiplier;
+        iceps +=  ((iceDrill*iceDrillOutput) + (freezer*freezerOutput) + (mrFreeze*mrFreezeOutput) + (overexchange*overexchangeOutput)) * perSecondMultiplier;
 
         // Deduct resource use from machines
-        charcoalps -= charcoalEngine;
-        methaneps -= methaneStation * 6;
-        uraniumps -= nuclearStation * 7;
-        lavaps -= magmatic * 11;
-        hydrogenps -= fusionReactor * 10;
-        heliumps -= fusionReactor * 10;
+        charcoalps -= charcoalEngine * charcoalEngineCharcoalInput;
+        methaneps -= methaneStation * methaneStationMethaneInput;
+        uraniumps -= nuclearStation * nuclearStationUraniumInput;
+        lavaps -= magmatic * magmaticLavaInput;
+        hydrogenps -= fusionReactor * fusionReactorHydrogenInput;
+        heliumps -= fusionReactor * fusionReactorHeliumInput;
 	}
 
 	if (charcoalToggled) {
-		var woodCost = woodburner * 2;
+		var woodCost = woodburner * woodburnerWoodInput;
 		if (!energyLow && globalEnergyLock === false) {
-			woodCost += (furnace*furnaceWoodInput) + (kiln*56) + (fryer*148) + (microPollutor*841);
+			woodCost += (furnace*furnaceWoodInput) + (kiln*kilnWoodInput) + (fryer*fryerWoodInput) + (microPollutor*microPollutorWoodInput);
 		}
 
 		if (getResource(RESOURCE.Wood) + getProduction(RESOURCE.Wood) >= woodCost) {
@@ -211,29 +245,29 @@ function refreshPerSec(delta){
 			charcoalps += woodburner * perSecondMultiplier;
 
 			if (!energyLow && globalEnergyLock === false) {
-				charcoalps += ((furnace*furnaceOutput) + (kiln*53) + (fryer*210) + (microPollutor*2041)) * perSecondMultiplier
+				charcoalps += ((furnace*furnaceOutput) + (kiln*kilnOutput) + (fryer*fryerOutput) + (microPollutor*microPollutorOutput)) * perSecondMultiplier
 			}
 		}
 	}
 
 	if (rocketFuelToggled === true) {
-		var oilCost = (chemicalPlant*20) + (oxidisation*100);
-		var charcoalCost = (chemicalPlant*20) + (oxidisation*100);
+		var oilCost = (chemicalPlant*chemicalPlantOilInput) + (oxidisation*oxidisationOilInput);
+		var charcoalCost = (chemicalPlant*chemicalPlantCharcoalInput) + (oxidisation*oxidisationCharcoalInput);
 		if (getResource(RESOURCE.Oil) + getProduction(RESOURCE.Oil) >= oilCost &&
 			getResource(RESOURCE.Charcoal) + getProduction(RESOURCE.Charcoal) >= charcoalCost) {
 			oilps -= oilCost;
 			charcoalps -= charcoalCost;
-			rocketFuelps += ((chemicalPlant*0.2*chemicalBoost) + (oxidisation*1.5)) * perSecondMultiplier;
+			rocketFuelps += ((chemicalPlant*chemicalPlantOutput*chemicalBoost) + (oxidisation*oxidisationOutput)) * perSecondMultiplier;
 		}
-		var methaneCost = hydrazine*520;
+		var methaneCost = hydrazine*hydrazineMethaneInput;
 		if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {
 			methaneps -= methaneCost;
-			rocketFuelps += (hydrazine*20) * perSecondMultiplier;
+			rocketFuelps += (hydrazine*hydrazineOutput) * perSecondMultiplier;
 		}
 	}
 
 	if (meteoriteToggled === true) {
-		adjustment = adjustCost(RESOURCE.Meteorite, (printer * 3) + (web * 21), (printer + (web * 8)) * perSecondMultiplier);
+		adjustment = adjustCost(RESOURCE.Meteorite, (printer * printerPlasmaInput) + (web * webPlasmaInput) + (smasher * smasherPlasmaInput) + (nebulous * nebulousPlasmaInput), ((printer * printerOutput) + (web * webOutput) + (smasher * smasherOutput) + (nebulous * nebulousOutput)) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Plasma, delta) >= adjustment.c) {
 			plasmaps -= adjustment.c;
 			meteoriteps += adjustment.g;
@@ -241,7 +275,7 @@ function refreshPerSec(delta){
 	}
 
 	if (heaterToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.Plasma, heater * 10, heater * perSecondMultiplier);
+		var adjustment = adjustCost(RESOURCE.Plasma, heater * heaterHydrogenInput, heater * heaterOutput * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c) {
 			hydrogenps -= adjustment.c;
 			plasmaps += adjustment.g;
@@ -249,7 +283,7 @@ function refreshPerSec(delta){
 	}
 
 	if (plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.Plasma, plasmatic * 80, (plasmatic * 10) * perSecondMultiplier);
+		var adjustment = adjustCost(RESOURCE.Plasma, plasmatic * plasmaticHeliumInput, (plasmatic * plasmaticOutput) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
 			heliumps -= adjustment.c;
 			plasmaps += adjustment.g;
@@ -257,7 +291,7 @@ function refreshPerSec(delta){
 	}
 
 	if (bathToggled === true && !energyLow && globalEnergyLock === false) {
-		var adjustment = adjustCost(RESOURCE.Plasma, bath * 100, (bath * 140) * perSecondMultiplier);
+		var adjustment = adjustCost(RESOURCE.Plasma, bath * bathHydrogenInput, (bath * bathOutput) * perSecondMultiplier);
 		if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
 			hydrogenps -= adjustment.c;
 			heliumps -= adjustment.c;
@@ -746,6 +780,14 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Uranium), webUraniumCost, "webUraniumCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), webSiliconCost, "webSiliconCost");
 
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), smasherSiliconCost, "smasherSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silver), smasherSilverCost, "smasherSilverCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gem), smasherGemCost, "smasherGemCost");
+
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), nebulousLunariteCost, "nebulousLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), nebulousLavaCost, "nebulousLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), nebulousGoldCost, "nebulousGoldCost");
+
 	// Tier 5 Machines
 
     Game.settings.turnRed(getResource(RESOURCE.Titanium), planetNukeTitaniumCost, "planetNukeTitaniumCost");
@@ -854,26 +896,26 @@ function checkRedCost() {
 	Game.settings.turnRed(getResource(RESOURCE.Ice), meteoriteActivateIceCost, "meteoriteActivateIceCost");
 	Game.settings.turnRed(getResource(RESOURCE.Silicon), meteoriteActivateSiliconCost, "meteoriteActivateSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Gold), 6000000, "commsWonderGoldCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 10000000, "commsWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.Ice), 6000000, "commsWonderIceCost");
+	Game.settings.turnRed(getResource(RESOURCE.Gold), commsWonderGoldCost, "commsWonderGoldCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), commsWonderSiliconCost, "commsWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Ice), commsWonderIceCost, "commsWonderIceCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Lunarite), 8000000, "rocketWonderLunariteCost");
-	Game.settings.turnRed(getResource(RESOURCE.Titanium), 6000000, "rocketWonderTitaniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Metal), 12000000, "rocketWonderMetalCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lunarite), rocketWonderLunariteCost, "rocketWonderLunariteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Titanium), rocketWonderTitaniumCost, "rocketWonderTitaniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Metal), rocketWonderMetalCost, "rocketWonderMetalCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Uranium), 6000000, "antimatterWonderUraniumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Lava), 10000000, "antimatterWonderLavaCost");
-	Game.settings.turnRed(getResource(RESOURCE.Oil), 8000000, "antimatterWonderOilCost");
-	Game.settings.turnRed(getResource(RESOURCE.Methane), 6000000, "antimatterWonderMethaneCost");
+	Game.settings.turnRed(getResource(RESOURCE.Uranium), antimatterWonderUraniumCost, "antimatterWonderUraniumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Lava), antimatterWonderLavaCost, "antimatterWonderLavaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Oil), antimatterWonderOilCost, "antimatterWonderOilCost");
+	Game.settings.turnRed(getResource(RESOURCE.Methane), antimatterWonderMethaneCost, "antimatterWonderMethaneCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 500000, "portalMeteoriteCost");
-	Game.settings.turnRed(getResource(RESOURCE.Helium), 8000000, "portalHeliumCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 6000000, "portalSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), portalMeteoriteCost, "portalMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Helium), portalHeliumCost, "portalHeliumCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), portalSiliconCost, "portalSiliconCost");
 
-	Game.settings.turnRed(getResource(RESOURCE.Plasma), 500000, "stargateWonderPlasmaCost");
-	Game.settings.turnRed(getResource(RESOURCE.Silicon), 920000000, "stargateWonderSiliconCost");
-	Game.settings.turnRed(getResource(RESOURCE.Meteorite), 17000000, "stargateWonderMeteoriteCost");
+	Game.settings.turnRed(getResource(RESOURCE.Plasma), stargateWonderPlasmaCost, "stargateWonderPlasmaCost");
+	Game.settings.turnRed(getResource(RESOURCE.Silicon), stargateWonderSiliconCost, "stargateWonderSiliconCost");
+	Game.settings.turnRed(getResource(RESOURCE.Meteorite), stargateWonderMeteoriteCost, "stargateWonderMeteoriteCost");
 
 	if(document.getElementById("roc_tier1Rocket_shield_c") != null){
 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.shield.count, 50, "roc_tier1Rocket_shield_c");
@@ -1273,3 +1315,7 @@ $('input[name="companyName"]').change(function(){
 	companyName = ($('input[name="companyName"]').val());
 	Game.settings.updateCompanyName();
 });
+
+function calculateKardashevLevel() {
+	return (Math.log10(calculateEnergyUse(1)-6))/10;
+}

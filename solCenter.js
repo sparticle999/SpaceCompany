@@ -113,7 +113,7 @@ function refreshConversionDisplay() {
 	}
 }
 
-function convertEnergy(resourceName){
+function convertEnergy(resourceName, notification){
 	var current = getResource(resourceName);
 	var capacity = getStorage(resourceName);
 	var emcValue = window[resourceName + "EmcVal"];
@@ -130,19 +130,21 @@ function convertEnergy(resourceName){
 	if(amount > 0 && getResource(RESOURCE.Energy) >= requiredEnergy){
 		Game.resources.takeResource(RESOURCE.Energy, requiredEnergy);
 		Game.resources.addResource(resourceName, amount);
-		Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		if(notification != false){
+			Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		}
 
 		refreshConversionDisplay();
 	}
 }
 
-function convertPlasma(resourceName){
+function convertPlasma(resourceName, notification){
 	var current = getResource(resourceName);
 	var capacity = getStorage(resourceName);
 	var emcValue = window[resourceName + "EmcVal"];
 	var amount;
 	if(emcAmount === "Max"){
-		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Plasma)/emcValue), capacity - current));
+		amount = Math.floor(Math.min(Math.floor(getResource(RESOURCE.Plasma)/emcValue), capacity - current) - 3333); // Retains 10,000 plasma
 	}
 	else{
 		amount = Math.floor(Math.min(emcAmount, capacity - current));
@@ -153,9 +155,31 @@ function convertPlasma(resourceName){
 	if(amount > 0 && getResource(RESOURCE.Plasma) >= requiredPlasma){
 		Game.resources.takeResource(RESOURCE.Plasma, requiredPlasma);
 		Game.resources.addResource(resourceName, amount);
-		Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		if(notification != false){
+			Game.notifyInfo('Plasma Conversion', 'Gained ' + Game.settings.format(parseFloat(amount)) + ' ' + Game.utils.capitaliseFirst(resourceName));
+		}
 
 		refreshConversionDisplay();
+	}
+}
+
+$('input[type="checkbox"]').on('change', function() {
+	$('input[class="autoEmc"]').not(this).prop('checked', false);
+	autoResource = this.id.substring(0,this.id.indexOf("Auto"));
+	if($(this).is(":checked") == false){
+		autoResource = null;
+	}
+});
+
+function gainAutoEmc(){
+	if(autoResource == null){
+		return;
+	}
+	emcAmount = "Max";
+	if(autoResource != "meteorite"){
+		convertEnergy(autoResource, false);
+	} else {
+		convertPlasma(autoResource, false);
 	}
 }
 
@@ -212,7 +236,7 @@ function buildSwarm(){
 }
 
 function buildSphere(){
-	if(sphere > 0){
+	if(sphere > Game.interstellar.stars.systemsConquered){
 		return;
 	}
 
@@ -223,8 +247,10 @@ function buildSphere(){
 
 		updateDysonCost();
 
-		document.getElementById("stargazeTab").className = "";
-		Game.stargaze.unlocked = true;
-		newUnlock('stargaze');
+		if(Game.stargaze.unlocked != true){
+			document.getElementById("stargazeTab").className = "";
+			Game.stargaze.unlocked = true;
+			newUnlock('stargaze');
+		}
 	}
 }

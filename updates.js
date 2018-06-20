@@ -187,6 +187,51 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.memoryLeak = {
+		desc: 'Fixed Huge Memory Leak. The Game should run much smoother now and use much less CPU' ,
+		read: false
+	};
+
+	instance.multiSpheres = {
+		desc: 'Each Star System Conquered allows you to build a sphere.',
+		read: false
+	};
+
+	instance.autoEmc = {
+		desc: 'Added Auto Emc! Stargaze -> Prasnian Empire',
+		read: false
+	};
+
+	instance.respec = {
+		desc: 'Keep your DM upgrades and have the ability to respec.',
+		read: false
+	};
+
+	instance.segmentAndSphere = {
+		desc: 'Build 250 Segments and Dyson Sphere Button',
+		read: false
+	};
+
+	instance.meteoriteTier34 = {
+		desc: 'Meteorite Tiers 3 and 4. Stargaze -> Moviton Syndicate',
+		read: false
+	};
+
+	instance.buffCapitalShip = {
+		desc: 'Buffed Capital Ship\' power and defense.',
+		read: false
+	};
+
+	instance.dmStats = {
+		desc: 'Live counter showing how much DM you will get from each section',
+		read: false
+	};
+
+	instance.energyEffBug = {
+		desc: 'Fixed the 25/50 max Energy Efficiency Bug',
+		read: false
+	};
+
 	return instance;
 
 }());

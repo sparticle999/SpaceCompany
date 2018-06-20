@@ -908,6 +908,24 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return web/x }
 	};
 
+	instance.prodMeteorite3 = {
+		id_v4: 'ach_103',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'meteoriteIcon',
+		title: 'Build %s Planet Smashers',
+		evaluator: function(x) { return smasher >= x },
+		progressEvaluator: function(x) { return smasher/x }
+	};
+
+	instance.prodMeteorite4 = {
+		id_v4: 'ach_104',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'meteoriteIcon',
+		title: 'Build %s Nebulous Synthesizers',
+		evaluator: function(x) { return nebulous >= x },
+		progressEvaluator: function(x) { return nebulous/x }
+	};
+
 	instance.prodScience1 = {
 		id_v4: 'ach_92',
 		categoryInstance: Game.achievementsCategoryData.producers,

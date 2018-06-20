@@ -55,7 +55,7 @@ Game.stargazeUI = (function(){
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
-                '<h4><b>Relationship: {{opinion}}</b></h4>',
+                '<h4><b>Relationship: <span id="{{htmlId}}_pageOpinion">{{opinion}}</span></b></h4>',
                 '<span>{{{desc}}}</span>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
@@ -78,7 +78,7 @@ Game.stargazeUI = (function(){
 
         instance.dmInfoTemplate = Handlebars.compile(
             ['<tr><td>',
-                '<h3 class="default btn-link">{{name}}</h3>',
+                '<h3 class="default btn-link">{{name}}: <span id="{{id}}_dmGain">0</span></h3>',
                 '<p>{{desc}}</p>',
                 '</td></tr>'].join('\n'));
 
@@ -90,6 +90,17 @@ Game.stargazeUI = (function(){
                     '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
                 '</span>',
                 '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Rebirth</div>',
+                '<br><br>',
+                '</td></tr>'].join('\n'));
+
+        instance.respecTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"><td>',
+                '<h3 class="default btn-link">{{name}}: <span id=\'respecCount\'>3</span></h3>',
+                '<span>',
+                    '<p>{{{desc}}}</p>',
+                    '<p id="{{htmlId}}_cost">Costs: {{cost}} Dark Matter</p>',,
+                '</span>',
+                '<div id="{{htmlId}}_buy" onclick="Game.stargaze.upgrade(\'{{id}}\')" class="btn btn-warning">Respec</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
@@ -131,6 +142,7 @@ Game.stargazeUI = (function(){
             if(data.displayNeedsUpdate == true){
                 if(data.category == "faction"){
                     $('#stargazeNav' + id + '_opinion').text(data.opinion);
+                    $('#stargazeNav' + id + '_pageOpinion').text(data.opinion);
                     $('#intnav_' + id + '_opinion').text(data.opinion);
                     if(data.unlocked == true){
                         document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction";
@@ -166,7 +178,7 @@ Game.stargazeUI = (function(){
             // Marks achieved upgrades as 'Activated'
             for(var id in Game.stargaze.upgradeEntries){
                 var data = Game.stargaze.upgradeEntries[id];
-                if(id != 'rebirth'){
+                if(id != 'rebirth' && id != 'respec'){
                     if(data.achieved == true){
                         document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
@@ -175,7 +187,7 @@ Game.stargazeUI = (function(){
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default";
                     }
                 }
-                if((data.category == "intro" || data.category == "darkMatter") && data.htmlId != "stargazeUpgrebirth"){
+                if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "stargazeUpgrebirth" && data.htmlId != "stargazeUpgrespec")){
                     document.getElementById(data.htmlId + "_opinion").className = "hidden";
                 }
             }
@@ -191,8 +203,10 @@ Game.stargazeUI = (function(){
 
     instance.createUpgrade = function(data, upgradeData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        if(upgradeData.name == "Rebirth"){
+        if(upgradeData.id == "rebirth"){
             var upgrade = this.rebirthTemplate(upgradeData);
+        } else if(upgradeData.id == "respec"){
+            var upgrade = this.respecTemplate(upgradeData);
         } else {
             var upgrade = this.upgradeTemplate(upgradeData);
         }
@@ -215,7 +229,7 @@ Game.stargazeUI = (function(){
         if(data.id == "darkMatter"){
             for (var id in Game.darkMatter) {
                 var infoData = Game.darkMatter[id];
-                this.createDMInfo(data, infoData);
+                this.createDMInfo(data, $.extend({}, {id: id}, infoData));
             }
         }
         for (var id in Game.stargaze.upgradeEntries) {
@@ -251,27 +265,39 @@ Game.stargazeUI = (function(){
     instance.updateDM = function(){
         var DM = 0;
         //Wonders
+        var wonderDM = 0;
         if(contains(activated, "precious"&&"energetic"&&"tech"&&"meteorite")){
-            DM += 4;
+            wonderDM += 4;
         }
         if(contains(activated, "comms"&&"rocket"&&"antimatter"&&"portalRoom")){
-            DM += 4;
+            wonderDM += 4;
         }
         if(contains(activated, "stargate")){
-            DM += 2;
+            wonderDM += 2;
         }
         //Sphere
-        DM += sphere * 15; //Temporary//
+        var sphereDM = 0;
+        if(sphere != 0)sphereDM += 10
+        sphereDM += sphere*5;
         //Research
-        DM += Math.floor((Game.tech.entries.efficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
+        var researchDM = Math.floor((Game.tech.entries.efficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
         //Rank
-        DM += Game.achievements.rank * 2;
+        var rankDM = Game.achievements.rank * 2;
         //Swarms
+        var swarmDM = 0;
         var x = 1;
         while (swarm >= Game.utils.pascal(x)){
             x += 1;
-            DM += 1;
+            swarmDM += 1;
         }
+
+        $('#wonder_dmGain').text(wonderDM);
+        $('#sphere_dmGain').text(sphereDM);
+        $('#research_dmGain').text(researchDM);
+        $('#rank_dmGain').text(rankDM);
+        $('#swarm_dmGain').text(swarmDM);
+
+        DM += wonderDM + sphereDM + researchDM + rankDM + swarmDM;
         if(Game.stargaze.entries.darkMatter){
             Game.stargaze.entries.darkMatter.current = DM;
             $('#stargazeNavdarkMatter_current').text(DM);

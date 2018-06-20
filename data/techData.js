@@ -479,7 +479,7 @@ Game.techData = (function () {
     });
 
     instance.efficiencyResearch = $.extend({}, techBase, {
-        name: 'Research Resource Efficiency',
+        name: 'Resource Efficiency',
         desc: 'Resource Efficiency increases the income of resources by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
@@ -490,7 +490,7 @@ Game.techData = (function () {
     });
 
     instance.scienceEfficiencyResearch = $.extend({}, techBase, {
-        name: 'Research Science Efficiency',
+        name: 'Science Efficiency',
         desc: 'Science Efficiency increases the science production by 2% per purchase.',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
@@ -501,7 +501,7 @@ Game.techData = (function () {
     });
 
     instance.energyEfficiencyResearch = $.extend({}, techBase, {
-        name: 'Research Energy Efficiency',
+        name: 'Energy Efficiency',
         desc: 'Energy Efficiency decreases the energy consumption of all machines by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
@@ -512,7 +512,7 @@ Game.techData = (function () {
     });
 
     instance.batteryEfficiencyResearch = $.extend({}, techBase, {
-        name: 'Research Battery Efficiency',
+        name: 'Battery Efficiency',
         desc: 'Battery Efficiency improves the storage capabilities of your batteries by 1% per upgrade.',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,

@@ -11,7 +11,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # RoadMap
 
-v0.6.0 The Lore Update
+v1.0 The Overlord Update
 https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 
 - Adding Lore onto every Building and an introduction to your Space Company
@@ -19,18 +19,11 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Loading screen flavour text changes as you progress
 - Machine Overview Tab
 
-v0.5.0 The Interstellar Update
-https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
+v0.5.1
 
-- Dark Matter
-- Prestige (https://www.reddit.com/r/SpaceCompany/comments/6lcgzu/plan_for_prestige/)
-- Unknown Planets that you have to explore to know what it holds
-- Each star system is more hostile than the last until prestige, where it resets
-- Pushing Planets into the Sun gets prestige currency
-- Mass to Energy Conversion
+- (Mass to Energy Conversion)
 - Buy X buttons
 - Buy Max/Custom Buttons
-- Reduce Storage Costs
 - Change Letter Formatting To Start At 100K
 - Rebalance Science
 - Change Icons (white circle with icon inside)
@@ -42,6 +35,14 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 
 - Storage Upgrade Discounts
 - T5 batteries
+- Fixed Huge Memory Leak
+- Multiple Spheres
+- Auto Emc
+- Redid Rebirth
+- Respec
+- Meteorite Tier 3 and 4
+- Live counter showing how much DM you will get from each section
+- Fixed Energy Efficiency 25/50 max bug
 
 ##### Small Changes
 
@@ -49,6 +50,10 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - You cannot rebirth without a sphere
 - Fixed higher antimatter storages not saving
 - Reduced framerate from 100fps to 10fps
+- Build 250 Segments and Dyson Sphere Button
+- Balanced Ice T5 to have cost just below storage level rather than above it
+- AutoEmc keeps a 10K bank of plasma to avoid meteorite production depletion due to 0 plasma stored
+Buffed Capital Ship\' power and defense
 
 ##### Bug Fixed
 
@@ -61,8 +66,12 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.5
 - Fixed Plasma not showing Gain 20
 - Fixed Wonders showing up as activated after rebirth
 - Fixed Solar System Showing planets before exploring requirements
+- Fixed AutoEmc using energy for meteorite
+- Fixed Fusion Reactor not using enough Hydrogen
+- Fixed Invasion Chance being NaN when reputation is above 60
+- Fixed Absorb not working
 
-### v0.5.0
+### v0.5.0 The Interstellar Update
 ##### Features
 
 - Offline Production
