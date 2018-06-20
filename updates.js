@@ -227,6 +227,11 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.energyEffBug = {
+		desc: 'Fixed the 25/50 max Energy Efficiency Bug',
+		read: false
+	};
+
 	return instance;
 
 }());
