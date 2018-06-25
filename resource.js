@@ -173,7 +173,7 @@ Game.resources = (function(){
                 res.capacity *= 2;
                 res.displayNeedsUpdate = true;
             } else if(id == "lunarite"){
-                if(metal.current >= metal.capacity*storagePrice*4){
+                if(metal.current >= res.capacity*storagePrice*4){
                     res.current -= res.capacity*storagePrice;
                     metal.current -= res.capacity*storagePrice*4;
                     res.capacity *= 2;
@@ -191,7 +191,7 @@ Game.resources = (function(){
                 }
                 console.log(id)
             } else {
-                if(metal.current >= metal.capacity*storagePrice*0.4){
+                if(metal.current >= res.capacity*storagePrice*0.4){
                     res.current -= res.capacity*storagePrice;
                     metal.current -= res.capacity*storagePrice*0.4;
                     res.capacity *= 2;
