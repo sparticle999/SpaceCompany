@@ -145,7 +145,7 @@ var Game = (function() {
         this.stargaze.save(data);
         this.updates.save(data);
 
-        data = legacySave(data);
+        data.legacy = legacySave(data);
 
         localStorage.setItem("save",JSON.stringify(data));
         Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
@@ -176,7 +176,7 @@ var Game = (function() {
             }
         }
 
-        console.log("Load Successful");
+        console.log("Data Loaded");
     };
 
     instance.updateUI = function(self){
@@ -235,14 +235,18 @@ var Game = (function() {
         registerLegacyBindings();
         self.ui.updateAutoDataBindings();
 
-        // Initialize first
+        // Initialise first
         self.achievements.initialise();
         self.statistics.initialise();
         self.resources.initialise();
         self.buildings.initialise();
+        self.resourcesUI.initialise();
         self.tech.initialise();
+        self.techUI.initialise();
         self.interstellar.initialise();
+        self.interstellarUI.initialise();
         self.stargaze.initialise();
+        self.stargazeUI.initialise();
 
         // Now load
         self.load();
@@ -266,7 +270,7 @@ var Game = (function() {
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
-        console.debug("Load Complete");
+        console.log("Initialisation Complete");
 
     };
 

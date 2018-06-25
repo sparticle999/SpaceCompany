@@ -28,7 +28,13 @@ Game.buildings = (function(){
 
     instance.update = function(delta) {
         if (this.updatePerSecondProduction === true) {
-            this.updateProduction();
+            Game.resources.updateResourcesPerSecond();
+            this.updatePerSecondProduction = false;
+        }
+        for(id in this.entries){
+            var data = this.entries[id];
+            if(data.displayNeedsUpdate)
+                this.refreshBuildingCost(data);
         }
     };
 
@@ -51,8 +57,43 @@ Game.buildings = (function(){
         }
     };
 
+    instance.buyBuildings = function(id, count){
+        var data = Game.buildings.getBuildingData(id);
+        for(var i = 0; i < (count || 1); i++){
+            var resourcePass = 0;
+            for(var resource in data.cost){
+                var res = Game.resources.getResourceData(resource);
+                if(res.current >= this.calcCost(data, resource)){
+                    resourcePass += 1;
+                }
+            }
+            if(resourcePass === Object.keys(data.cost).length){
+                for(var resource in data.cost){
+                    var res = Game.resources.getResourceData(resource);
+
+                    res.current -= this.calcCost(data, resource);
+                    console.log(this.calcCost(data,resource));
+                }
+                this.updatePerSecondProduction = true;
+                data.displayNeedsUpdate = true;
+            } else {
+                console.log(i)
+                this.constructBuildings(id, i);
+                return;
+            }
+        }
+        this.constructBuildings(id, i);
+    };
+
+    instance.calcCost = function(self, resource){
+        return Math.floor(Game.buildingData[self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
+    };
+
     instance.constructBuildings = function(id, count) {
         // Add the buildings and clamp to the maximum
+        if(count == 0)
+            return;
+        count = count || 1;
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
         this.entries[id].displayNeedsUpdate = true;
@@ -61,35 +102,22 @@ Game.buildings = (function(){
 
     instance.destroyBuildings = function(id, count) {
         // Remove the buildings and ensure we can not go below 0
+        count = count || 1;
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
         this.entries[id].displayNeedsUpdate = true;
         this.updatePerSecondProduction = true;
     };
 
+    instance.refreshBuildingCost = function(data){
+        //console.log(data.id, data.current);
+        // Refresh Cost //
+        data.displayNeedsUpdate = false;
+    }
+
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
-    };
-
-    instance.updateProduction = function() {
-        for(var id in this.entries) {
-            var data = this.entries[id];
-            if(data.current == 0) {
-                // Nothing to be done
-                continue;
-            }
-
-            var buildingData = this.entries[id];
-            if (!buildingData.resource) {
-                continue;
-            }
-
-            var baseValue = data.current * buildingData.perSecond;
-            Game.resources.setPerSecondProduction(buildingData.resource, baseValue);
-        }
-
-        this.updatePerSecondProduction = false;
     };
 
     instance.getBuildingData = function(id) {

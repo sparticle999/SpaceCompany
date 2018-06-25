@@ -1,14 +1,14 @@
 (function(){
 
     var tabTemplate = Handlebars.compile(
-        ['<li role="presentation" id="{{htmlId}}">',
+        ['<li role="presentation" id="{{htmlId}}" class="{{active}}">',
             '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" class="{{hidden}}" aria-controls="{{id}}" role="tab" data-toggle="tab">',
             '<div id="{{id}}TabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
             '{{title}}</a></li>'].join('\n'));
 
     var contentTemplate = Handlebars.compile(
-        ['<div role="tabpanel" class="tab-pane fade" id="{{htmlId}}_pane">',
-            '<div class="container" style="width:250px; padding:0; float:left;">',
+        ['<div role="tabpanel" class="tab-pane fade {{active}} in" id="{{htmlId}}_pane">',
+            '<div class="container" style="width:380px; padding:0; float:left;">',
             '<table class="table table-hover text-primary no-select pointer" ><tbody id="{{htmlId}}_nav"></tbody></table>',
             '</div>',
             '<div class="tab-content" id="{{htmlId}}_content"></div>',
@@ -16,7 +16,7 @@
 
     var categoryTemplate = Handlebars.compile(
         ['<tr id="{{htmlId}}_{{id}}_collapse" style="border:none;">',
-            '<td colspan="4">',
+            '<td colspan="4" style="border:{{border}}">',
             '<span>{{title}}</span> <span class="caret"></span>',
             '</td>',
             '</tr>'].join('\n'));
@@ -59,10 +59,20 @@
     // ---------------------------------------------------------------------------
     GameTab.prototype.initialise = function() {
         var html = tabTemplate(this.data);
-        if(this.data.prepend == true){
-            tabRoot.prepend($(html));
-        } else{
-            tabRoot.append($(html));
+        if(this.data.id == "resources"){
+            if(this.data.append == true){
+                tabRoot.append($(html));
+            } else{
+                tabRoot.prepend($(html));
+            }
+        }
+        else{
+            
+            if(this.data.prepend == true){
+                tabRoot.prepend($(html));
+            } else{
+                tabRoot.append($(html));
+            }
         }
 
         var contentHtml = contentTemplate(this.data);
@@ -97,7 +107,10 @@
     };
 
     GameTab.prototype.addCategory = function(id, title) {
-        var data = {id: id, title: title, htmlId: this.data.htmlId};
+        var border;
+        if(id == "energy")
+            border = "none";
+        var data = {id: id, title: title, htmlId: this.data.htmlId, border: border};
         var html = categoryTemplate(data);
         this.categories[id] = data;
         this.categoryEntries[id] = [];

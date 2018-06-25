@@ -933,51 +933,51 @@ function refreshResources(){
         }
         resourcesUnlocked.push("lunariteNav");
     }
-	if(contains(resourcesUnlocked, "meteoriteWonder")){
-		var index = resourcesUnlocked.indexOf("meteoriteWonder");
- 		if (index > -1) {
-		    resourcesUnlocked.splice(index, 1);
-		}
-	}
-	for(var i=0; i<resourcesUnlocked.length; i++){
-		document.getElementById(resourcesUnlocked[i]).className = "";
-	}
-	if(contains(resourcesUnlocked, "oilNav")){
-		document.getElementById("oilNav").className = "earth sideTab";
-	}
-	if(contains(resourcesUnlocked, "charcoalNav")){
-		document.getElementById("charcoalNav").className = "earth sideTab";
-	}
-	if(contains(resourcesUnlocked, "siliconNav")){
-		document.getElementById("siliconNav").className = "earth sideTab";
-	}
-	if(contains(resourcesUnlocked, "lunariteNav")){
-		document.getElementById("lunariteNav").className = "innerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "methaneNav")){
-		document.getElementById("methaneNav").className = "innerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "titaniumNav")){
-		document.getElementById("titaniumNav").className = "innerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "goldNav")){
-		document.getElementById("goldNav").className = "innerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "silverNav")){
-		document.getElementById("silverNav").className = "innerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "hydrogenNav")){
-		document.getElementById("hydrogenNav").className = "outerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "heliumNav")){
-		document.getElementById("heliumNav").className = "outerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "iceNav")){
-		document.getElementById("iceNav").className = "outerPlanet sideTab";
-	}
-	if(contains(resourcesUnlocked, "meteoriteNav")){
-		document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
-	}
+	// if(contains(resourcesUnlocked, "meteoriteWonder")){
+	// 	var index = resourcesUnlocked.indexOf("meteoriteWonder");
+ // 		if (index > -1) {
+	// 	    resourcesUnlocked.splice(index, 1);
+	// 	}
+	// }
+	// for(var i=0; i<resourcesUnlocked.length; i++){
+	// 	document.getElementById(resourcesUnlocked[i]).className = "";
+	// }
+	// if(contains(resourcesUnlocked, "oilNav")){
+	// 	document.getElementById("oilNav").className = "earth sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "charcoalNav")){
+	// 	document.getElementById("charcoalNav").className = "earth sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "siliconNav")){
+	// 	document.getElementById("siliconNav").className = "earth sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "lunariteNav")){
+	// 	document.getElementById("lunariteNav").className = "innerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "methaneNav")){
+	// 	document.getElementById("methaneNav").className = "innerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "titaniumNav")){
+	// 	document.getElementById("titaniumNav").className = "innerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "goldNav")){
+	// 	document.getElementById("goldNav").className = "innerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "silverNav")){
+	// 	document.getElementById("silverNav").className = "innerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "hydrogenNav")){
+	// 	document.getElementById("hydrogenNav").className = "outerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "heliumNav")){
+	// 	document.getElementById("heliumNav").className = "outerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "iceNav")){
+	// 	document.getElementById("iceNav").className = "outerPlanet sideTab";
+	// }
+	// if(contains(resourcesUnlocked, "meteoriteNav")){
+	// 	document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
+	// }
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
 		document.getElementById("communicationWonderNav").className = "sideTab";
@@ -995,11 +995,11 @@ function refreshResources(){
         }
 	}
 
-	for(var i=0; i<noBorder.length; i++){
-		for(var j=0; j<4; j++){
-			document.getElementById(noBorder[i] + j).style.border = "";
-		}
-	}
+	// for(var i=0; i<noBorder.length; i++){
+	// 	for(var j=0; j<4; j++){
+	// 		document.getElementById(noBorder[i] + j).style.border = "";
+	// 	}
+	// }
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 		document.getElementById(activated[i] + "Activation").className += " green";
@@ -1010,9 +1010,9 @@ function refreshResources(){
 	if(meteoriteUnlocked === true){
 		unlockTier4();
 	}
-	if(contains(resourcesUnlocked, "lunariteNav")){
-		document.getElementById("lunariteNav").className = "innerPlanet sideTab";
-	}
+	// if(contains(resourcesUnlocked, "lunariteNav")){
+	// 	document.getElementById("lunariteNav").className = "innerPlanet sideTab";
+	// }
 }
 
 function contains(array, obj) {
@@ -1044,25 +1044,25 @@ function refreshResearches(){
     }
 
     if (Game.tech.isPurchased('unlockStorage')) {
-        document.getElementById("oilStorageUpgrade").className = "";
-        document.getElementById("metalStorageUpgrade").className = "";
-        document.getElementById("gemStorageUpgrade").className = "";
-        document.getElementById("charcoalStorageUpgrade").className = "";
-        document.getElementById("woodStorageUpgrade").className = "";
+        // document.getElementById("oilStorageUpgrade").className = "";
+        // document.getElementById("metalStorageUpgrade").className = "";
+        // document.getElementById("gemStorageUpgrade").className = "";
+        // document.getElementById("charcoalStorageUpgrade").className = "";
+        // document.getElementById("woodStorageUpgrade").className = "";
     }
     if (Game.tech.isPurchased('unlockSolar')) {
-        document.getElementById("solarPower").className = "";
+        // document.getElementById("solarPower").className = "";
     }
     if (Game.tech.isPurchased('unlockMachines')) {
-        document.getElementById("oilTier2").className = "";
-        document.getElementById("metalTier2").className = "";
-        document.getElementById("gemTier2").className = "";
-        document.getElementById("charcoalTier2").className = "";
-        document.getElementById("woodTier2").className = "";
+        // document.getElementById("oilTier2").className = "";
+        // document.getElementById("metalTier2").className = "";
+        // document.getElementById("gemTier2").className = "";
+        // document.getElementById("charcoalTier2").className = "";
+        // document.getElementById("woodTier2").className = "";
     }
     if (Game.tech.isPurchased('unlockDestruction')) {
         for(i = 0; i < document.getElementsByClassName("destroy").length; i++){
-            document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
+            document.getElementsByClassName("destroy")[i].className = "destroy";
         }
     }
     else {

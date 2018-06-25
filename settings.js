@@ -54,24 +54,24 @@ Game.settings = (function(){
     };
 
     instance.turnRed = function(value, target, id) {
-        var element = $('#' + id);
-        if(element.length === 0) {
-            console.error("Element not found: " + id);
-            return;
-        }
+        // var element = $('#' + id);
+        // if(element.length === 0) {
+        //     console.error("Element not found: " + id);
+        //     return;
+        // }
 
-        if(value < target){
-            element.addClass('red');
-            if(this.entries.boldEnabled === true){
-                element.addClass('bold');
-            } else {
-                element.removeClass('bold');
-            }
-        }
-        else{
-            element.removeClass('red');
-            element.removeClass('bold');
-        }
+        // if(value < target){
+        //     element.addClass('red');
+        //     if(this.entries.boldEnabled === true){
+        //         element.addClass('bold');
+        //     } else {
+        //         element.removeClass('bold');
+        //     }
+        // }
+        // else{
+        //     element.removeClass('red');
+        //     element.removeClass('bold');
+        // }
     };
 
     instance.turnRedOrGreen = function(value, target, id) {
@@ -111,8 +111,6 @@ Game.settings = (function(){
     instance.load = function(data) {
         this.loadLegacy(data);
 
-        console.log(this.entries.hideCompleted)
-
         if(data.statistics) {
             if(data.statistics.version && data.statistics.version === this.dataVersion) {
                 for(var id in data.statistics.entries) {
@@ -120,8 +118,6 @@ Game.settings = (function(){
                 }
             }
         }
-
-        console.log(this.entries.hideCompleted)
 
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);

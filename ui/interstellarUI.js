@@ -886,7 +886,7 @@ Game.interstellarUI = (function(){
 
     
 
-    Game.uiComponents.push(instance);
+    //Game.uiComponents.push(instance);
 
     return instance;
 

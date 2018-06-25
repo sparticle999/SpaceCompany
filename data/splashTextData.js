@@ -1,4 +1,5 @@
-var splashTextArray = ["Venturing Into The Unknown...",
+var splashTextArray = ["Reticulating Splines...",
+"Venturing Into The Unknown...",
 "Installing Virus...",
 "Deleting Windows...",
 "Transferring Data to NASA...",
@@ -39,7 +40,7 @@ var splashTextArray = ["Venturing Into The Unknown...",
 "Does not include batteries.",
 "Don't look directly at the bugs!",
 "Feature packed!",
-"Nearly V0.5!",
+"Nearly V1.0!",
 "Google anlyticsed!",
 "Han shot first!",
 "Hard to label!",
@@ -114,9 +115,6 @@ if(currentDate.indexOf("Jan 01") !== -1){
 }
 if(currentDate.indexOf("Feb 14") !== -1){
 	splashText = "Happy Valentines!";
-}
-if(currentDate.indexOf("Sep 12") !== -1){
-	splashText = "6 Month Anniversary! V0.5 Released!";
 }
 if(currentDate.indexOf("Dec 25") !== -1){
 	splashText = "Merry Christmas!";

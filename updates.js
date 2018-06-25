@@ -232,6 +232,16 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.oopResource = {
+		desc: 'Completely reworked the whole code of the resources tab to make features significantly easier to add and edit',
+		read: false
+	}
+
+	instance.changeResourceOrder = {
+		desc: 'Moved around the resources to a more logical order',
+		read: false
+	}
+
 	return instance;
 
 }());

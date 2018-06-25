@@ -176,79 +176,79 @@ function refreshWonderBars(){
 }
 
 function unlockTier3(){
-	document.getElementById("uraniumTier3").className = "";
-	document.getElementById("lavaTier3").className = "";
-	document.getElementById("oilTier3").className = "";
-	document.getElementById("metalTier3").className = "";
-	document.getElementById("gemTier3").className = "";
-	document.getElementById("charcoalTier3").className = "";
-	document.getElementById("woodTier3").className = "";
-	document.getElementById("siliconTier3").className = "";
-	document.getElementById("lunariteTier3").className = "";
-	document.getElementById("methaneTier3").className = "";
-	document.getElementById("titaniumTier3").className = "";
-	document.getElementById("goldTier3").className = "";
-	document.getElementById("silverTier3").className = "";
-	document.getElementById("hydrogenTier3").className = "";
-	document.getElementById("heliumTier3").className = "";
-	document.getElementById("iceTier3").className = "";
+	// document.getElementById("uraniumTier3").className = "";
+	// document.getElementById("lavaTier3").className = "";
+	// document.getElementById("oilTier3").className = "";
+	// document.getElementById("metalTier3").className = "";
+	// document.getElementById("gemTier3").className = "";
+	// document.getElementById("charcoalTier3").className = "";
+	// document.getElementById("woodTier3").className = "";
+	// document.getElementById("siliconTier3").className = "";
+	// document.getElementById("lunariteTier3").className = "";
+	// document.getElementById("methaneTier3").className = "";
+	// document.getElementById("titaniumTier3").className = "";
+	// document.getElementById("goldTier3").className = "";
+	// document.getElementById("silverTier3").className = "";
+	// document.getElementById("hydrogenTier3").className = "";
+	// document.getElementById("heliumTier3").className = "";
+	// document.getElementById("iceTier3").className = "";
 }
 
 function unlockTier4(){
-	document.getElementById("uraniumTier4").className = "";
-	document.getElementById("lavaTier4").className = "";
-	document.getElementById("oilTier4").className = "";
-	document.getElementById("metalTier4").className = "";
-	document.getElementById("gemTier4").className = "";
-	document.getElementById("charcoalTier4").className = "";
-	document.getElementById("woodTier4").className = "";
-	document.getElementById("siliconTier4").className = "";
-	document.getElementById("lunariteTier4").className = "";
-	document.getElementById("methaneTier4").className = "";
-	document.getElementById("titaniumTier4").className = "";
-	document.getElementById("goldTier4").className = "";
-	document.getElementById("silverTier4").className = "";
-	document.getElementById("hydrogenTier4").className = "";
-	document.getElementById("heliumTier4").className = "";
-	document.getElementById("iceTier4").className = "";
+	// document.getElementById("uraniumTier4").className = "";
+	// document.getElementById("lavaTier4").className = "";
+	// document.getElementById("oilTier4").className = "";
+	// document.getElementById("metalTier4").className = "";
+	// document.getElementById("gemTier4").className = "";
+	// document.getElementById("charcoalTier4").className = "";
+	// document.getElementById("woodTier4").className = "";
+	// document.getElementById("siliconTier4").className = "";
+	// document.getElementById("lunariteTier4").className = "";
+	// document.getElementById("methaneTier4").className = "";
+	// document.getElementById("titaniumTier4").className = "";
+	// document.getElementById("goldTier4").className = "";
+	// document.getElementById("silverTier4").className = "";
+	// document.getElementById("hydrogenTier4").className = "";
+	// document.getElementById("heliumTier4").className = "";
+	// document.getElementById("iceTier4").className = "";
 }
 
 function unlockTier5(){
-	document.getElementById("uraniumTier5").className = "";
-	document.getElementById("lavaTier5").className = "";
-	document.getElementById("oilTier5").className = "";
-	document.getElementById("metalTier5").className = "";
-	document.getElementById("gemTier5").className = "";
-	document.getElementById("charcoalTier5").className = "";
-	document.getElementById("woodTier5").className = "";
-	document.getElementById("siliconTier5").className = "";
-	document.getElementById("lunariteTier5").className = "";
-	document.getElementById("methaneTier5").className = "";
-	document.getElementById("titaniumTier5").className = "";
-	document.getElementById("goldTier5").className = "";
-	document.getElementById("silverTier5").className = "";
-	document.getElementById("hydrogenTier5").className = "";
-	document.getElementById("heliumTier5").className = "";
-	document.getElementById("iceTier5").className = "";
+	// document.getElementById("uraniumTier5").className = "";
+	// document.getElementById("lavaTier5").className = "";
+	// document.getElementById("oilTier5").className = "";
+	// document.getElementById("metalTier5").className = "";
+	// document.getElementById("gemTier5").className = "";
+	// document.getElementById("charcoalTier5").className = "";
+	// document.getElementById("woodTier5").className = "";
+	// document.getElementById("siliconTier5").className = "";
+	// document.getElementById("lunariteTier5").className = "";
+	// document.getElementById("methaneTier5").className = "";
+	// document.getElementById("titaniumTier5").className = "";
+	// document.getElementById("goldTier5").className = "";
+	// document.getElementById("silverTier5").className = "";
+	// document.getElementById("hydrogenTier5").className = "";
+	// document.getElementById("heliumTier5").className = "";
+	// document.getElementById("iceTier5").className = "";
 }
 
 function removeTier5(){
-	document.getElementById("uraniumTier5").className = "hidden";
-	document.getElementById("lavaTier5").className = "hidden";
-	document.getElementById("oilTier5").className = "hidden";
-	document.getElementById("metalTier5").className = "hidden";
-	document.getElementById("gemTier5").className = "hidden";
-	document.getElementById("charcoalTier5").className = "hidden";
-	document.getElementById("woodTier5").className = "hidden";
-	document.getElementById("siliconTier5").className = "hidden";
-	document.getElementById("lunariteTier5").className = "hidden";
-	document.getElementById("methaneTier5").className = "hidden";
-	document.getElementById("titaniumTier5").className = "hidden";
-	document.getElementById("goldTier5").className = "hidden";
-	document.getElementById("silverTier5").className = "hidden";
-	document.getElementById("hydrogenTier5").className = "hidden";
-	document.getElementById("heliumTier5").className = "hidden";
-	document.getElementById("iceTier5").className = "hidden";
+	// document.getElementById("uraniumTier5").className = "hidden";
+	// document.getElementById("lavaTier5").className = "hidden";
+	// document.getElementById("oilTier5").className = "hidden";
+	// document.getElementById("metalTier5").className = "hidden";
+	// document.getElementById("gemTier5").className = "hidden";
+	// document.getElementById("charcoalTier5").className = "hidden";
+	// document.getElementById("woodTier5").className = "hidden";
+	// document.getElementById("siliconTier5").className = "hidden";
+	// document.getElementById("lunariteTier5").className = "hidden";
+	// document.getElementById("methaneTier5").className = "hidden";
+	// document.getElementById("titaniumTier5").className = "hidden";
+	// document.getElementById("goldTier5").className = "hidden";
+	// document.getElementById("silverTier5").className = "hidden";
+	// document.getElementById("hydrogenTier5").className = "hidden";
+	// document.getElementById("heliumTier5").className = "hidden";
+	// document.getElementById("iceTier5").className = "hidden";
 
 	planetNuke = 0;
 	condensator = 0;

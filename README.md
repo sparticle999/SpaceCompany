@@ -43,6 +43,7 @@ v0.5.1
 - Meteorite Tier 3 and 4
 - Live counter showing how much DM you will get from each section
 - Fixed Energy Efficiency 25/50 max bug
+- Completely Reworked the code of the Resources Tab to make features significantly easier to add and edit
 
 ##### Small Changes
 

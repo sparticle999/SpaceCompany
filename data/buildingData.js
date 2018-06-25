@@ -115,7 +115,7 @@ Game.buildingData = (function () {
 
     instance.plasmaT2 = $.extend({}, baseProducerBuilding, {
         name: 'Plasmatic Pit',
-        desc: 'This contraption converts Helium into Plasma through firing intensive energy bolts at the gas cloud.',
+        desc: 'This contraption converts Helium into Plasma by firing intensive energy bolts at the gas cloud.',
         resource: 'plasma',
         resourcePerSecond: {
             'energy': -8500,
@@ -1136,6 +1136,50 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.meteoriteT3 = $.extend({}, baseProducerBuilding, {
+        name: 'Planet Smasher',
+        desc: 'Get meteorites the old-fashioned way: demolishing uninhabited exoplanets by firing high-energy particle beams at them, then collect the debris.',
+        resource: 'meteorite',
+        resourcePerSecond: {
+            'plasma': -111,
+            'meteorite': 72
+        },
+        cost: {
+            'silicon': 3230000,
+            'silver': 5890000,
+            'gem': 8340000
+        }
+    });
+
+    instance.meteoriteT4 = $.extend({}, baseProducerBuilding, {
+        name: 'Nebulous Synthesizer',
+        desc: 'Bypass the need for demolishing planets entirely by building your own nebula to create meteorites instead!',
+        resource: 'meteorite',
+        resourcePerSecond: {
+            'plasma': -135,
+            'meteorite': 142
+        },
+        cost: {
+            'lunarite': 25800000,
+            'lava': 19700000,
+            'gold': 21900000
+        }
+    });
+
+    return instance;
+}());
+
+Game.otherBuildingsData = (function(){
+
+    var instance = {};
+
+    var baseProducerBuilding = {
+        type: BUILDING_TYPE.PRODUCER,
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        costType: COST_TYPE.FIXED
+    };
+
     // Research
     instance.scienceT1 = $.extend({}, baseProducerBuilding, {
         name: 'Home Science Kit',
@@ -1221,6 +1265,4 @@ Game.buildingData = (function () {
             'gold': 78600
         }
     });
-    
-    return instance;
-}());
+})

@@ -7,6 +7,11 @@ Game.resourceCategoryData = (function () {
         category: 'energy'
     };
 
+    instance.fabricated = {
+        title: 'Fabricated',
+        category: 'fabricated'
+    };
+
     instance.earth = {
         class: 'collapseEarth',
         title: 'Earth Resources',
@@ -43,34 +48,42 @@ Game.resourceData = (function () {
         desc: 'Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.',
         icon: 'energyIcon',
         category: 'energy',
-        baseCapacity: 50000,
+        baseCapacity: 100000,
+        gainNum: 1,
         unlocked: false
     };
+
+    /*********************
+     * Fabricated Resources  *
+     *********************/
 
     instance.plasma = {
         name: 'Plasma',
         desc: 'Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.',
         icon: 'plasmaIcon',
-        category: 'energy',
+        category: 'fabricated',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
-    instance.uranium = {
-        name: 'Uranium',
-        desc: 'Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.',
-        icon: 'uraniumIcon',
-        category: 'energy',
+    instance.meteorite = {
+        name: 'Meteorite',
+        desc: 'Creating Meteorite is only possible from purer forms of energy than those created with earth technology. Therefore, Plasma is necessary to make the strong resource.',
+        icon: 'meteoriteIcon',
+        category: 'fabricated',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
-    instance.lava = {
-        name: 'Lava',
-        desc: 'Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.',
-        icon: 'lavaIcon',
-        category: 'energy',
+    instance.charcoal = {
+        name: 'Carbon',
+        desc: 'Carbon is a secondary tier resource and is used by Engines to produce power for your company. 1 Charcoal is created by burning wood',
+        icon: 'charcoalIcon',
+        category: 'fabricated',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -84,6 +97,7 @@ Game.resourceData = (function () {
         icon: 'oilIcon',
         category: 'earth',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -93,6 +107,7 @@ Game.resourceData = (function () {
         icon: 'metalIcon',
         category: 'earth',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: true
     };
 
@@ -102,16 +117,8 @@ Game.resourceData = (function () {
         icon: 'gemIcon',
         category: 'earth',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: true
-    };
-
-    instance.charcoal = {
-        name: 'Charcoal',
-        desc: 'Charcoal is a secondary tier resource and is used by Engines to produce power for your company. 1 Charcoal is created by burning wood',
-        icon: 'charcoalIcon',
-        category: 'earth',
-        baseCapacity: 50,
-        unlocked: false
     };
 
     instance.wood = {
@@ -120,6 +127,7 @@ Game.resourceData = (function () {
         icon: 'woodIcon',
         category: 'earth',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: true
     };
 
@@ -129,6 +137,27 @@ Game.resourceData = (function () {
         icon: 'siliconIcon',
         category: 'earth',
         baseCapacity: 50,
+        gainNum: 1,
+        unlocked: false
+    };
+
+    instance.uranium = {
+        name: 'Uranium',
+        desc: 'Uranium is used for nuclear power generation because when it is split, it releases huge amounts of Energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.',
+        icon: 'uraniumIcon',
+        category: 'earth',
+        baseCapacity: 50,
+        gainNum: 1,
+        unlocked: false
+    };
+
+    instance.lava = {
+        name: 'Lava',
+        desc: 'Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.',
+        icon: 'lavaIcon',
+        category: 'earth',
+        baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -143,6 +172,7 @@ Game.resourceData = (function () {
         icon: 'lunariteIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -152,6 +182,7 @@ Game.resourceData = (function () {
         icon: 'methaneIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -161,6 +192,7 @@ Game.resourceData = (function () {
         icon: 'titaniumIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -170,6 +202,7 @@ Game.resourceData = (function () {
         icon: 'goldIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -179,6 +212,7 @@ Game.resourceData = (function () {
         icon: 'silverIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -192,6 +226,7 @@ Game.resourceData = (function () {
         icon: 'hydrogenIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -201,6 +236,7 @@ Game.resourceData = (function () {
         icon: 'heliumIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
@@ -210,23 +246,20 @@ Game.resourceData = (function () {
         icon: 'iceIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        gainNum: 1,
         unlocked: false
     };
 
-    instance.meteorite = {
-        name: 'Meteorite',
-        desc: 'Creating Meteorite is only possible from purer forms of energy than those created with earth technology. Therefore, Plasma is necessary to make the strong resource.',
-        icon: 'meteoriteIcon',
-        category: 'outerSol',
-        baseCapacity: 50,
-        unlocked: false
-    };
+    /******************************
+     *           Science           *
+     ******************************/
 
     instance.science = {
         name: 'Science Production',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
         baseCapacity: 1000000,
+        gainNum: 1,
         unlocked: false
     };
 

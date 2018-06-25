@@ -80,15 +80,13 @@ Game.resources = (function(){
         }
     };
 
-	// TODO: change to data-driven resources when available
 	instance.getResource = function(id) {
-		if (typeof window[id] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id];
+		return this.entries[id].current
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.getStorage = function(id) {
 		if (id === RESOURCE.Energy) {
 			return getMaxEnergy();
@@ -99,10 +97,10 @@ Game.resources = (function(){
 			return -1;
 		} else if (id === RESOURCE.RocketFuel) {
 			return -1;
-		} else if (typeof window[id + 'Storage'] === 'undefined') {
+		} else if (typeof Game.resources.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id + 'Storage'];
+		return Game.resources.entries[id].capacity;
 	};
 
 	// TODO: change to data-driven resources when available
@@ -113,49 +111,46 @@ Game.resources = (function(){
 		return window[id + 'ps'];
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.addResource = function(id, count) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
 		}
 
-		if (typeof window[id] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return;
 		}
 
 		// Add the resource and clamp
-		var newValue = window[id] + count;
+		var newValue = this.entries[id].current + count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
-			window[id] = Math.max(0, Math.min(newValue, storage));
+			this.entries[id].current = Math.max(0, Math.min(newValue, storage));
 		} else {
-			window[id] = Math.max(0, newValue);
+			this.entries[id].current = Math.max(0, newValue);
 		}
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.takeResource = function(id, count) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
 		}
 
-		if (typeof window[id] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return;
 		}
 
 		// Subtract the resource and clamp
-		var newValue = window[id] - count;
+		var newValue = this.entries[id].current - count;
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
-			window[id] = Math.max(0, Math.min(newValue, storage));
+			this.entries[id].current = Math.max(0, Math.min(newValue, storage));
 		} else {
-			window[id] = Math.max(0, newValue);
+			this.entries[id].current = Math.max(0, newValue);
 		}
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.maxResource = function(id) {
-		if (typeof window[id] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return;
 		}
 
@@ -164,74 +159,48 @@ Game.resources = (function(){
 			return;
 		}
 
-		window[id] = getStorage(id);
+		this.entries[id].current = getStorage(id);
 	};
 
-    instance.setPerSecondProduction = function(id, value) {
-        if(!this.entries[id]) {
-            console.error("Unknown Resource: " + id);
-            return;
-        }
-
-        if (value < 0 || isNaN(value) || value === undefined) {
-            console.error("Invalid per second value: " + value + " for " + id);
-            return;
-        }
-
-        this.entries[id].perSecond = value;
-    };
-
     instance.upgradeStorage = function(id){
-        var upgradeData = this.storageUpgrades[id];
-        var res = this.getResourceData(upgradeData.resource);
+        var res = this.getResourceData(id);
+        var metal = this.getResourceData("metal");
+        var lunarite = this.getResourceData("lunarite");
+        console.log(id)
         if(res.current >= res.capacity*storagePrice){
-            res.current -= res.capacity*storagePrice;
-            res.capacity *= 2;
-            res.displayNeedsUpdate = true;
-
-            for(var r in upgradeData.cost){
-                upgradeData.cost[r] *= 2;
+            if(id == "metal"){
+                res.current -= res.capacity*storagePrice;
+                res.capacity *= 2;
+                res.displayNeedsUpdate = true;
+            } else if(id == "lunarite"){
+                if(metal.current >= metal.capacity*storagePrice*4){
+                    res.current -= res.capacity*storagePrice;
+                    metal.current -= res.capacity*storagePrice*4;
+                    res.capacity *= 2;
+                    res.displayNeedsUpdate = true;
+                    metal.displayNeedsUpdate = true;
+                    console.log(res.current)
+                }
+            } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
+                if(lunarite.current >= res.capacity*storagePrice*0.4){
+                    res.current -= res.capacity*storagePrice;
+                    lunarite.current -= res.capacity*storagePrice*0.4;
+                    res.capacity *= 2;
+                    res.displayNeedsUpdate = true;
+                    lunarite.displayNeedsUpdate = true;
+                }
+                console.log(id)
+            } else {
+                if(metal.current >= metal.capacity*storagePrice*0.4){
+                    res.current -= res.capacity*storagePrice;
+                    metal.current -= res.capacity*storagePrice*0.4;
+                    res.capacity *= 2;
+                    res.displayNeedsUpdate = true;
+                    metal.displayNeedsUpdate = true;
+                }
+                console.log(res.current)
             }
-            upgradeData.displayNeedsUpdate = true;
-        }
-    };
-
-    instance.calcCost = function(self, resource){
-        return Math.floor(Game.buildingData[self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
-    };
-
-    instance.updateCost = function(data){
-        // TODO
-    };
-
-    instance.buyMachine = function(id, count){
-        var data = Game.buildings.getBuildingData(id);
-        var resourcePass = 0;
-        for(var resource in data.cost){
-            var res = Game.resources.getResourceData(resource);
-            if(res.current >= data.cost[resource]){
-                resourcePass += 1;
-            }
-        }
-        if(resourcePass === Object.keys(data.cost).length){
-            data.current += 1;
-            for(var resource in data.cost){
-                var res = Game.resources.getResourceData(resource);
-                res.current -= data.cost[resource];
-            }
-            this.updateCost(data);
-            this.updateResourcesPerSecond();
-            data.displayNeedsUpdate = true;
-        }
-    };
-
-    instance.destroyMachine = function(id, count){
-        var data = Game.buildings.getBuildingData(id);
-        if(data.current >= count){
-            data.current -= count;
-            this.updateCost(data);
-            data.displayNeedsUpdate = true;
-        }
+        } 
     };
 
     instance.updateResourcesPerSecond = function(){
@@ -240,9 +209,14 @@ Game.resources = (function(){
             var ps = 0;
             for(var id in Game.buildings.entries){
                 var building = Game.buildings.entries[id];
+                if(building.current == 0) {
+                    // Nothing to be done
+                    continue;
+                }
                 for(var value in building.resourcePerSecond){
-                    if(value == res){
+                    if(value == resource){
                         var val = building.resourcePerSecond[value];
+                        
                         ps += val * building.current;
                     }
                 }

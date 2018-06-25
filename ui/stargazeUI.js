@@ -376,7 +376,7 @@ Game.stargazeUI = (function(){
         return resultHtml;
     };
 
-    Game.uiComponents.push(instance);
+    //Game.uiComponents.push(instance);
 
     return instance;
 

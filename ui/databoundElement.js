@@ -24,9 +24,10 @@
     DataBoundElement.prototype.update = function(delta) {
         if(this.element === null) {
             if(this.id !== null) {
+
                 this.element = $('#' + this.id);
                 if(this.element.length === 0){
-                    console.error("Could not find bound element: " + this.id);
+                    //console.error("Could not find bound element: " + this.id);
                     this.element = null;
                     return;
                 }

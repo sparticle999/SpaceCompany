@@ -273,7 +273,7 @@ Game.prestigeData = (function(){
 	/*************
 	** Prasnian **
 	*************/
-
+	
 	instance.T3Plasma = {
 		name: "Tier 3 Plasma",
 		desc: "Unlock the Electron Bath",
@@ -281,10 +281,10 @@ Game.prestigeData = (function(){
 		category: "prasnian",
 		opinion: 4,
 		onApply: function(){
-			document.getElementById("plasmaTier3").className = "";
+			document.getElementById("resbld_plasmaT3").className = "";
 		},
 		remove: function(){
-	    	document.getElementById("plasmaTier3").className = "hidden";
+	    	document.getElementById("resbld_plasmaT3").className = "hidden";
 	    	bath = 0;
 	    	updateCost();
 	    },
@@ -451,6 +451,21 @@ Game.prestigeData = (function(){
 	    	document.getElementById("batteriesT5").className = "hidden";
 	    	batteryT5 = 0;
 	    	updateCost();
+	    },
+		achieved: false
+	};
+
+	instance.multiBuy = {
+		name: "Multi-Buy",
+		desc: "Unlock powers of mass destruction (and purchasing!)",
+		cost: 17,
+		category: "kitrinos",
+		opinion: 20,
+		onApply: function(){
+			document.getElementsByClassName("multiBuy").className = "multiBuy";
+		},
+		remove: function(){
+	    	document.getElementsByClassName("multiBuy").className = "multiBuy hidden";
 	    },
 		achieved: false
 	};
