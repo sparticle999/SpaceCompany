@@ -221,7 +221,7 @@ Game.resourcesUI = (function(){
 	        var storage = this.earthStorageUpgradeTemplate(data);
 	        if(data.id == "metal")
 	        	storage = this.metalStorageUpgradeTemplate(data);
-	        if((data.category != "earth" || data.id == "silicon" || data.id == "uranium" || data.id == "lava") && data.id != "lunarite")
+	        if((data.category != "earth" || data.id == "silicon" || data.id == "uranium" || data.id == "lava") && data.id != "lunarite" && data.id != "charcoal")
 	        	storage = this.spaceStorageUpgradeTemplate(data);
 	        target.append(storage);
 	    }
