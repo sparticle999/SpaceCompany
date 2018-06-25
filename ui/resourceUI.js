@@ -273,7 +273,6 @@ Game.resourcesUI = (function(){
         useHtml += '<span> per second.</span>'
         prodHtml += '<span> per second.</span>'
         var target = $('#' + machineData.htmlId + '_use');
-        //console.log('#' + machineData.htmlId + '_' + machineData.id + '_use')
         target.empty()
         target.append(useHtml);
         var target = $('#' + machineData.htmlId + '_prod');
@@ -365,8 +364,6 @@ Game.resourcesUI = (function(){
 			return Game.settings.format(getStorage(id) * 2);
 		});
 	};
-
-	//Game.uiComponents.push(instance);
 
 	return instance;
 

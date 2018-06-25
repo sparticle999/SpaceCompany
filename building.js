@@ -72,12 +72,10 @@ Game.buildings = (function(){
                     var res = Game.resources.getResourceData(resource);
 
                     res.current -= this.calcCost(data, resource);
-                    console.log(this.calcCost(data,resource));
                 }
                 this.updatePerSecondProduction = true;
                 data.displayNeedsUpdate = true;
             } else {
-                console.log(i)
                 this.constructBuildings(id, i);
                 return;
             }
@@ -110,8 +108,23 @@ Game.buildings = (function(){
     };
 
     instance.refreshBuildingCost = function(data){
-        //console.log(data.id, data.current);
-        // Refresh Cost //
+        var segmentsCost = [];
+        for(var resource in data.cost){
+            var segmentX = {n: Game.utils.capitaliseFirst(resource), p: this.calcCost(data, resource)};
+            segmentsCost.push(segmentX);
+        }
+        var costHtml = "<span>Costs </span>";
+        for(var i = 0; i < segmentsCost.length; i++){
+            var segmentData = segmentsCost[i];
+            var html = '<span id="' + segmentData.n + 'Cost">' + segmentData.p + " " + segmentData.n + '</span>';
+            costHtml += html;
+            if(i < segmentsCost.length - 1) {
+                costHtml += '<span>, </span>';
+            }
+        }
+        var target = $('#' + data.htmlId + '_cost');
+        target.empty()
+        target.append(costHtml);
         data.displayNeedsUpdate = false;
     }
 

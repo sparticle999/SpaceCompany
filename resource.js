@@ -216,7 +216,6 @@ Game.resources = (function(){
                 for(var value in building.resourcePerSecond){
                     if(value == resource){
                         var val = building.resourcePerSecond[value];
-                        
                         ps += val * building.current;
                     }
                 }
