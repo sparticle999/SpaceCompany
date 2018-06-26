@@ -19,10 +19,10 @@ Game.resourcesUI = (function(){
 
         console.log("test from start");
         console.log("storage");
-        console.log("cost updating");
-        console.log("cost showing");
         console.log("saving")
         console.log("combine construct and destroy +/-")
+        console.log("multibuy overlord")
+        alert("meteorite storage takes metal")
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',
@@ -132,6 +132,21 @@ Game.resourcesUI = (function(){
 				'</td>',
 			'</tr>'].join('\n'));
 
+        instance.storageBuildingTemplate = Handlebars.compile(
+        	['<tr id="{{htmlId}}" class="">',
+				'<td>',
+					'<h3 class="default btn-link">',
+						'{{name}}: <span id="{{htmlId}}Count">0</span>',
+					'</h3>',
+					'<span>',
+						'{{desc}}',
+						'<br>',
+						'<p id="{{htmlId}}_cost"></p>',
+					'</span>',
+					'<button onclick="getBattery()" class="btn btn-default">Get Battery</button>',
+				'</td>',
+			'</tr>',].join('\n'));
+
         instance.machineTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
             '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
@@ -185,6 +200,11 @@ Game.resourcesUI = (function(){
 			}
 		}
 
+		for(var id in Game.buildings.storageEntries){
+			var data = Game.buildings.storageEntries[id];
+			Game.ui.bindElement('sto_' + id + 'Count', function(){ return Game.settings.format(Game.buildings.storageEntries[this.id.substring(4, this.id.length-5)].current)});
+		}
+
 		for(var id in Game.buildings.entries){
 			var data = Game.buildings.entries[id];
 			Game.ui.bindElement('resbld_' + id + 'Count', function(){ return Game.settings.format(Game.buildings.getBuildingData(this.id.substring(7, this.id.length-5)).current)});
@@ -217,13 +237,21 @@ Game.resourcesUI = (function(){
         var target = $('#' + this.tab.getContentElementId(data.id));
         var tabTitle = this.titleTemplate(data);
         target.append(tabTitle);
-        if(data.id != "energy" && data.id != "plasma" || data.id == "lunarite"){
+        if(data.id != "energy" && data.id != "plasma"){
 	        var storage = this.earthStorageUpgradeTemplate(data);
 	        if(data.id == "metal")
 	        	storage = this.metalStorageUpgradeTemplate(data);
 	        if((data.category != "earth" || data.id == "silicon" || data.id == "uranium" || data.id == "lava") && data.id != "lunarite" && data.id != "charcoal")
 	        	storage = this.spaceStorageUpgradeTemplate(data);
 	        target.append(storage);
+	    } else {
+	    	for (var id in Game.buildings.storageEntries) {
+	    	    var storageData = Game.buildings.storageEntries[id];
+	    	    if(data.id == storageData.resource){
+	    	        this.createTierStorage(data, storageData);
+	    	    }
+
+	    	}
 	    }
         for (var id in Game.buildings.entries) {
             var upgradeData = Game.buildings.entries[id];
@@ -233,10 +261,16 @@ Game.resourcesUI = (function(){
         }
     };
 
+    instance.createTierStorage = function(data, storageData){
+    	var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
+        var storage = this.storageBuildingTemplate(storageData);
+        tabContentRoot.append($(storage));
+    }
+
     instance.createMachine = function(data, machineData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        var part = this.machineTemplate(machineData);
-        tabContentRoot.append($(part));
+        var machine = this.machineTemplate(machineData);
+        tabContentRoot.append($(machine));
 
         // this.machineEntries[machineData.id] = data.id;
         // this.machineObservers[machineData.id] = [];

@@ -62,7 +62,7 @@ Game.resourceData = (function () {
         desc: 'Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.',
         icon: 'plasmaIcon',
         category: 'fabricated',
-        baseCapacity: 50,
+        baseCapacity: 100000,
         gainNum: 1,
         unlocked: false
     };

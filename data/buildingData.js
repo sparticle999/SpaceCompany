@@ -1265,4 +1265,119 @@ Game.otherBuildingsData = (function(){
             'gold': 78600
         }
     });
-})
+
+    return instance;
+}());
+
+Game.storageBuildingData = (function(){
+
+    var instance = {};
+
+    var baseStorage = {
+        type: BUILDING_TYPE.PRODUCER,
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        costType: COST_TYPE.FIXED
+    };
+
+    // Research
+    instance.plasmaT1 = $.extend({}, baseStorage, {
+        name: 'Plasma Storage Unit',
+        desc: 'PSUs increase your plasma storage by 50,000 per PSU built.',
+        resource: 'plasma',
+        storage: {
+            'plasma': 50000
+        },
+        cost: {
+            'silver': 770000,
+            'gold': 770000,
+            'uranium': 550000
+        }
+    });
+
+    instance.plasmaT2 = $.extend({}, baseStorage, {
+        name: 'Plasma Storage Unit Tier 2',
+        desc: 'Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.',
+        resource: 'plasma',
+        storage: {
+            'plasma': 500000
+        },
+        cost: {
+            'silver': 9300000,
+            'gold': 9300000,
+            'uranium': 6800000
+        }
+    });
+
+    // instance.plasmaT3 = $.extend({}, baseStorage, {
+    //     name: 'University Laboratory',
+    //     desc: 'Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.',
+    //     resource: 'science',
+    //     resourcePerSecond: {
+    //         'science': 10
+    //     },
+    //     cost: {
+    //         'metal': 17000,
+    //         'gem': 4700,
+    //         'wood': 9600
+    //     }
+    // });
+
+    instance.energyT1 = $.extend({}, baseStorage, {
+        name: 'Batteries',
+        desc: 'Batteries increase your energy storage by 50,000 per battery built.',
+        resource: 'energy',
+        storage: {
+            'energy': 50000
+        },
+        cost: {
+            'metal': 50000,
+            'gem': 50000,
+            'lunarite': 30000
+        }
+    });
+
+    instance.energyT2 = $.extend({}, baseStorage, {
+        name: 'Batteries T2',
+        desc: 'Tier 2 Batteries increase your energy storage by 500,000 per battery built.',
+        resource: 'energy',
+        storage: {
+            'energy': 500000
+        },
+        cost: {
+            'metal': 550000,
+            'gem': 550000,
+            'lunarite': 330000
+        }
+    });
+
+    instance.energyT3 = $.extend({}, baseStorage, {
+        name: 'Batteries T3',
+        desc: 'Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.',
+        resource: 'energy',
+        storage: {
+            'energy': 5000000
+        },
+        cost: {
+            'metal': 5500000,
+            'gem': 5500000,
+            'lunarite': 3300000
+        }
+    });
+
+    instance.energyT3 = $.extend({}, baseStorage, {
+        name: 'Batteries T3',
+        desc: 'Tier 4 Batteries increase your energy storage by 50,000,000 per battery built.',
+        resource: 'energy',
+        storage: {
+            'energy': 50000000
+        },
+        cost: {
+            'metal': 55000000,
+            'gem': 55000000,
+            'lunarite': 33000000
+        }
+    });
+
+    return instance;
+}());

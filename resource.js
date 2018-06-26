@@ -52,7 +52,8 @@ Game.resources = (function(){
 
     instance.update = function(delta) {
         for(var id in this.entries) {
-            var addValue = this.entries[id].perSecond * delta;
+            var data = this.entries[id];
+            var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
         }
     };
@@ -88,11 +89,7 @@ Game.resources = (function(){
 	};
 
 	instance.getStorage = function(id) {
-		if (id === RESOURCE.Energy) {
-			return getMaxEnergy();
-		} else if (id === RESOURCE.Plasma) {
-			return getMaxPlasma();
-		} else if (id === RESOURCE.Science) {
+		if (id === RESOURCE.Science) {
 			// -1 for unlimited storage
 			return -1;
 		} else if (id === RESOURCE.RocketFuel) {
@@ -103,12 +100,11 @@ Game.resources = (function(){
 		return Game.resources.entries[id].capacity;
 	};
 
-	// TODO: change to data-driven resources when available
 	instance.getProduction = function(id) {
-		if (typeof window[id + 'ps'] === 'undefined') {
+		if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
-		return window[id + 'ps'];
+		return this.entries[id].perSecond;
 	};
 
 	instance.addResource = function(id, count) {
@@ -166,12 +162,12 @@ Game.resources = (function(){
         var res = this.getResourceData(id);
         var metal = this.getResourceData("metal");
         var lunarite = this.getResourceData("lunarite");
-        console.log(id)
         if(res.current >= res.capacity*storagePrice){
             if(id == "metal"){
                 res.current -= res.capacity*storagePrice;
                 res.capacity *= 2;
                 res.displayNeedsUpdate = true;
+                console.log("1")
             } else if(id == "lunarite"){
                 if(metal.current >= res.capacity*storagePrice*4){
                     res.current -= res.capacity*storagePrice;
@@ -179,7 +175,7 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
-                    console.log(res.current)
+                    console.log("2")
                 }
             } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
                 if(lunarite.current >= res.capacity*storagePrice*0.4){
@@ -188,8 +184,8 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
+                    console.log("3")
                 }
-                console.log(id)
             } else {
                 if(metal.current >= res.capacity*storagePrice*0.4){
                     res.current -= res.capacity*storagePrice;
@@ -197,10 +193,25 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
+                    console.log("4")
                 }
-                console.log(res.current)
             }
         } 
+    };
+
+    instance.refreshStorage = function(resource){
+        var res = Game.resources.entries[resource]
+        var cap = res.baseCapacity
+        for(var id in Game.buildings.storageEntries){
+            var data = Game.buildings.storageEntries[id];
+            for(var storageResource in data.storage){
+                if(storageResource == resource){
+                    cap += data.storage[resource] * data.current;
+                }
+            }
+        }
+        res.capacity = cap;
+        res.displayNeedsUpdate = true;
     };
 
     instance.updateResourcesPerSecond = function(){

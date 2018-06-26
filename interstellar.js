@@ -182,14 +182,14 @@ Game.interstellar.comms = (function(){
         }
         var resourcePass = 0;
         for(var resource in data.cost){
-            if(window[resource.toString()] >= data.cost[resource.toString()]){
+            if(Game.resources.entries[resource] >= data.cost[resource.toString()]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             data.count += 1;
             for(var resource in data.cost){
-                window[resource.toString()] -= data.cost[resource.toString()];
+                Game.resources.entries[resource] -= data.cost[resource.toString()];
             }            
             data.displayNeedsUpdate = true;
         }

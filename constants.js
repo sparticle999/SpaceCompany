@@ -54,7 +54,7 @@ Game.constants = (function(){
     instance.achievementMax = 1000;
     instance.achievementIconsPerRow = 4;
     instance.achievementResourceBrackets = [50, 5000, 500000, 50000000, 5000000000];
-    instance.achievementProducerBrackets = [10, 50, 100, 500, 1000];
+    instance.achievementProducerBrackets = [5, 25, 75, 150, 250];
     instance.achievementBracketColors = ["#9d9d9d", "#1eff00", "#0070dd", "#a335ee", "#ff8000"];
 
     instance.achievementCategoryResources = "Resources";

@@ -942,42 +942,6 @@ function refreshResources(){
 	// for(var i=0; i<resourcesUnlocked.length; i++){
 	// 	document.getElementById(resourcesUnlocked[i]).className = "";
 	// }
-	// if(contains(resourcesUnlocked, "oilNav")){
-	// 	document.getElementById("oilNav").className = "earth sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "charcoalNav")){
-	// 	document.getElementById("charcoalNav").className = "earth sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "siliconNav")){
-	// 	document.getElementById("siliconNav").className = "earth sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "lunariteNav")){
-	// 	document.getElementById("lunariteNav").className = "innerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "methaneNav")){
-	// 	document.getElementById("methaneNav").className = "innerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "titaniumNav")){
-	// 	document.getElementById("titaniumNav").className = "innerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "goldNav")){
-	// 	document.getElementById("goldNav").className = "innerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "silverNav")){
-	// 	document.getElementById("silverNav").className = "innerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "hydrogenNav")){
-	// 	document.getElementById("hydrogenNav").className = "outerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "heliumNav")){
-	// 	document.getElementById("heliumNav").className = "outerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "iceNav")){
-	// 	document.getElementById("iceNav").className = "outerPlanet sideTab";
-	// }
-	// if(contains(resourcesUnlocked, "meteoriteNav")){
-	// 	document.getElementById("meteoriteNav").className = "outerPlanet sideTab";
-	// }
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";
 		document.getElementById("communicationWonderNav").className = "sideTab";
