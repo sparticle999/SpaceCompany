@@ -167,7 +167,6 @@ Game.resources = (function(){
                 res.current -= res.capacity*storagePrice;
                 res.capacity *= 2;
                 res.displayNeedsUpdate = true;
-                console.log("1")
             } else if(id == "lunarite"){
                 if(metal.current >= res.capacity*storagePrice*4){
                     res.current -= res.capacity*storagePrice;
@@ -175,7 +174,14 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
-                    console.log("2")
+                }
+            } else if(id == "meteorite"){
+                if(lunarite.current >= res.capacity*storagePrice*4){
+                    res.current -= res.capacity*storagePrice;
+                    lunarite.current -= res.capacity*storagePrice*4;
+                    res.capacity *= 2;
+                    res.displayNeedsUpdate = true;
+                    lunarite.displayNeedsUpdate = true;
                 }
             } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
                 if(lunarite.current >= res.capacity*storagePrice*0.4){
@@ -184,7 +190,6 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
-                    console.log("3")
                 }
             } else {
                 if(metal.current >= res.capacity*storagePrice*0.4){
@@ -193,7 +198,6 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
-                    console.log("4")
                 }
             }
         } 

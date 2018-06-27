@@ -22,7 +22,6 @@ Game.resourcesUI = (function(){
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
-        alert("meteorite storage takes metal")
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',

@@ -199,22 +199,15 @@ Game.prestigeData = (function(){
 		category: "carnelian",
 		opinion: 3,
 		onApply: function(){
-			// old
-			gainNum = 20;
-			for(var resource in RESOURCE){
-				if(RESOURCE[resource] != "science")$('#' + RESOURCE[resource] + 'Gain').text(gainNum);
+			for(var id in Game.resources.entries){
+				Game.resources.entries[id].perClick = 20;
+				Game.resources.entries[id].displayNeedsUpdate = true;
 			}
-
-			// new
-			// for(var id in Game.resources.entries){
-			// 	Game.resources.entries[id].perClick = 20;
-			// 	Game.resources.entries[id].displayNeedsUpdate = true;
-			// }
 		},
 		remove: function(){
-	    	gainNum = 1;
-			for(var resource in RESOURCE){
-				if(RESOURCE[resource] != "science")$('#' + RESOURCE[resource] + 'Gain').text(gainNum);
+	    	for(var id in Game.resources.entries){
+				Game.resources.entries[id].perClick = 1;
+				Game.resources.entries[id].displayNeedsUpdate = true;
 			}
 	    },
 		achieved: false
@@ -222,30 +215,27 @@ Game.prestigeData = (function(){
 
 	instance.startingStorage = {
 		name: "Starting Storage",
-		desc: "Start with 6,400 max-storage on everything on rebirth. (Does not affect if over 6,400)",
+		desc: "Start with 6,400 max-storage on all resources every rebirth. (Does not affect if already over 6,400)",
 		cost: 8,
 		category: "carnelian",
 		opinion: 6,
 		onApply: function(){
-			// old
 			var newStorage = 6400;
-			for(var i = 0; i < resources.length; i++){
-				if(window[resources[i] + "Storage"] <= 6400){
-					window[resources[i] + "Storage"] = newStorage;
-					window[resources[i] + "NextStorage"] = newStorage * 2;
+			for(var id in Game.resources.entries){
+				var data = Game.resources.entries[id];
+				if(data.capacity < 6400){
+					data.capacity = 6400;
+					data.displayNeedsUpdate = true;
 				}
 			}
-
-			// new
 		},
 		remove: function(){
-	    	for(var i = 0; i < resources.length; i++){
-				if(window[resources[i] + "Storage"] <= 6400){
-					window[resources[i] + "Storage"] = 50;
-					window[resources[i] + "NextStorage"] = 50 * 2;
-				} else {
-					window[resources[i] + "Storage"] /= 128;
-					window[resources[i] + "NextStorage"] /= 128;
+	    	var newStorage = 50;
+			for(var id in Game.resources.entries){
+				var data = Game.resources.entries[id];
+				if(data.id != "energy" && data.id != "plasma"){
+					data.capacity = 50;
+					data.displayNeedsUpdate = true;
 				}
 			}
 	    },
@@ -445,10 +435,10 @@ Game.prestigeData = (function(){
 		category: "kitrinos",
 		opinion: 17,
 		onApply: function(){
-			document.getElementById("batteriesT5").className = "";
+			document.getElementById("sto_energyT5").className = "";
 		},
 		remove: function(){
-	    	document.getElementById("batteriesT5").className = "hidden";
+	    	document.getElementById("sto_energyT5").className = "hidden";
 	    	batteryT5 = 0;
 	    	updateCost();
 	    },
@@ -534,10 +524,10 @@ Game.prestigeData = (function(){
 		category: "moviton",
 		opinion: 29,
 		onApply: function(){
-			document.getElementById("meteoriteTier3").className = "";
+			document.getElementById("resbld_meteoriteT3").className = "";
 		},
 		remove: function(){
-	    	document.getElementById("meteoriteTier3").className = "hidden";
+	    	document.getElementById("resbld_meteoriteT3").className = "hidden";
 	    	smasher = 0;
 			updateCost();
 	    },
@@ -551,10 +541,10 @@ Game.prestigeData = (function(){
 		category: "moviton",
 		opinion: 36,
 		onApply: function(){
-			document.getElementById("meteoriteTier4").className = "";
+			document.getElementById("resbld_meteoriteT4").className = "";
 		},
 		remove: function(){
-	    	document.getElementById("meteoriteTier4").className = "hidden";
+	    	document.getElementById("resbld_meteoriteT4").className = "hidden";
 	    	nebulous = 0;
 			updateCost();
 	    },

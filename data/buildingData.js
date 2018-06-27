@@ -1365,8 +1365,8 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.energyT3 = $.extend({}, baseStorage, {
-        name: 'Batteries T3',
+    instance.energyT4 = $.extend({}, baseStorage, {
+        name: 'Batteries T4',
         desc: 'Tier 4 Batteries increase your energy storage by 50,000,000 per battery built.',
         resource: 'energy',
         storage: {
@@ -1376,6 +1376,20 @@ Game.storageBuildingData = (function(){
             'metal': 55000000,
             'gem': 55000000,
             'lunarite': 33000000
+        }
+    });
+
+    instance.energyT5 = $.extend({}, baseStorage, {
+        name: 'Batteries T5',
+        desc: 'Tier 5 Batteries increase your energy storage by 500,000,000 per battery built.',
+        resource: 'energy',
+        storage: {
+            'energy': 500000000
+        },
+        cost: {
+            'metal': 550000000,
+            'gem': 550000000,
+            'lunarite': 330000000
         }
     });
 
