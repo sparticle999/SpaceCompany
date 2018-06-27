@@ -71,9 +71,7 @@ Game.resources = (function(){
                         if(data.unlocked && data.category == category)
                             cat.unlocked = true;
                         var target = $('#resourcesTab_' + category + '_collapse')[0];
-                        console.log(target)
                         target.className = ((cat.unlocked) ? "" : "hidden");
-                        console.log(target)
                     }
                     data.displayNeedsUpdate = false;
                 }

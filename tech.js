@@ -5,6 +5,7 @@ Game.tech = (function(){
     instance.dataVersion = 2;
     instance.entries = {};
     instance.techTypeCount = 0;
+    instance.tabUnlocked = false;
 
     instance.initialise = function() {
         Game.techUI.initialise();
@@ -36,7 +37,10 @@ Game.tech = (function(){
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
 
-    instance.update = function(delta) {};
+    instance.update = function(delta) {
+        if(this.tabUnlocked)
+            $('#researchTab')[0].className = "";
+    };
 
     instance.save = function(data) {
         data.tech = { v: this.dataVersion, i: {}};
