@@ -4,30 +4,32 @@ Game.resourceCategoryData = (function () {
 
     instance.energy = {
         title: 'Energy',
-        category: 'energy'
+        category: 'energy',
+        unlocked: false
     };
 
     instance.fabricated = {
         title: 'Fabricated',
-        category: 'fabricated'
+        category: 'fabricated',
+        unlocked: false
     };
 
     instance.earth = {
-        class: 'collapseEarth',
         title: 'Earth Resources',
-        category: 'earth'
+        category: 'earth',
+        unlocked: false
     };
 
     instance.innerSol = {
-        class: 'collapseInnerPlanetary',
         title: 'Inner Planetary Resources',
-        category: 'innerSol'
+        category: 'innerSol',
+        unlocked: false
     };
 
     instance.outerSol = {
-        class: 'collapseOuterPlanetary',
         title: 'Outer Planetary Resources',
-        category: 'outerSol'
+        category: 'outerSol',
+        unlocked: false
     };
 
     return instance;

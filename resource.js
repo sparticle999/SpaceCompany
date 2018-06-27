@@ -55,6 +55,29 @@ Game.resources = (function(){
             var data = this.entries[id];
             var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
+            if(data.displayNeedsUpdate){
+                if(id != "science"){
+                    var nav = $('#resourcesTab_' + id + '_ne')[0];
+                    var hidden = nav.className.indexOf(" hidden");
+                    if(data.unlocked){
+                        if(hidden > 0)
+                            nav.className = nav.className.substring(0,hidden);
+                    } else {
+                        if(hidden < 0)
+                            nav.className += " hidden";
+                    }
+                    for(var category in this.categoryEntries){
+                        var cat = this.categoryEntries[category];
+                        if(data.unlocked && data.category == category)
+                            cat.unlocked = true;
+                        var target = $('#resourcesTab_' + category + '_collapse')[0];
+                        console.log(target)
+                        target.className = ((cat.unlocked) ? "" : "hidden");
+                        console.log(target)
+                    }
+                    data.displayNeedsUpdate = false;
+                }
+            }
         }
     };
 

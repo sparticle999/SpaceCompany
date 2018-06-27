@@ -61,7 +61,6 @@ var Game = (function() {
         legacyRefreshUI();
 
         self.ui.updateBoundElements(delta);
-
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
