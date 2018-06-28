@@ -199,6 +199,34 @@ var Game = (function() {
         self.interstellar.redundantChecking();
     }
 
+    // Add event listeners to machine related buttons
+    instance.addMachineClickEvents = function() {
+        var amount = [1, 10, 100, 10000];
+        Object.keys(Game.buildings.entries).forEach(function(id) {
+            var htmlId = Game.buildings.entries[id].htmlId;
+            for (var i = 0; i < amount.length; i++) {
+                // Buy buttons
+                console.log(htmlId+"_buy_"+amount[i])
+                var node = document.getElementById(htmlId+"_buy_"+amount[i])
+                Game.addEventListener(
+                    node,
+                    "click",
+                    function () {Game.buildings.buyBuildings(id, amount[i]);});
+                // Destroy buttons
+                console.log(htmlId+"_destroy_"+amount[i]);
+                node = document.getElementById(htmlId+"_destroy_"+amount[i])
+                Game.addEventListener(
+                    node,
+                    "click",
+                    function () {Game.buildings.destroyBuildings(id, amount[i]);});
+            }
+
+        })
+
+        // Storage buttons
+        // TODO
+    }
+
     instance.handleOfflineGains = function(offlineTime) {
         if(offlineTime <= 0) {
             return;
@@ -246,6 +274,11 @@ var Game = (function() {
         self.interstellarUI.initialise();
         self.stargaze.initialise();
         self.stargazeUI.initialise();
+
+        // Add the event listeners
+        Game.addMachineClickEvents();
+ 
+
 
         // Now load
         self.load();

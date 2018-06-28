@@ -12,9 +12,11 @@ Game.resourcesUI = (function(){
 
     instance.tab = null;
 
+    instance.category = 'resources'
+
 	instance.initialise = function() {
 
-		this.tab = Game.ui.createTab({id: 'resources', title: 'Resources BETA', hidden: '', active: "active"});
+		this.tab = Game.ui.createTab({id: this.category, title: Game.utils.capitaliseFirst(this.category)+" BETA", hidden: '', active: "active"});
         this.tab.initialise();
 
         console.log("test from start");
@@ -23,6 +25,52 @@ Game.resourcesUI = (function(){
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
+
+// onclick="activeResourceTab('iceNav')" 
+
+// ice.id = {{id}}
+// Ice.name = {{name}}
+// ice.persecond = {{perSecond}}
+// ice.current = {{current}}
+// ice.capacity = {{capacity}}
+// 
+// 
+/*
+        instance.pageTemplate = Handlebars.compile(
+        	['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">\
+				<div class="container col-xs-1" style="width:380px; padding:0; float:left;">\
+					<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">\
+						<tbody>\
+							LOOP\
+							<tr id="{{id}}Nav" class="outerPlanet sideTab" href="#{{id}}Tab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height: 30px;" aria-expanded="true">\
+								<td style="vertical-align:middle;">\
+									<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">\
+								</td>\
+								<td style="vertical-align:middle;">\
+									<span>{{name}}</span>\
+								</td>\
+								<td style="vertical-align:middle; text-align:center;">\
+									<span><span id="{{id}}ps">{{perSecond}}</span>/Sec</span>\
+								</td>\
+								<td style="vertical-align:middle; text-align:right;">\
+									<span id="{{id}}" class="">{{current}}</span>\
+									/\
+									<span id="{{id}}Storage">3.277M</span>\
+								</td>\
+							</tr>\
+							END LOOP\
+						</tbody>\
+					</table>\
+				</div>']
+
+				'<span id="{{id}}StorageBox" class="hidden">',
+					'/',
+					'<span id="{{id}}Storage">{{capacity}}</span>',
+
+        )
+
+*/
+
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',
@@ -156,19 +204,19 @@ Game.resourcesUI = (function(){
                 '<p id="{{htmlId}}_use"></p>',
                 '<p id="{{htmlId}}_cost"></p>',
             '</span>',
-            '<div id="{{htmlId}}_buy" class="btn btn-default">Get 1</div>',
+            '<div id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</div>',
             '<hide class="multiBuy hidden">',
               '<div id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</div>',
               '<div id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</div>',
-              '<div id="{{htmlId}}_buy_max" class="btn btn-default">Get Max</div>',
+              '<div id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</div>',
             '</hide>',
             '<div style="height:5px"></div>',
             '<hide id="{{id}}_destroy" class="hidden">',
-              '<div id="{{htmlId}}_destroy" class="btn btn-default destroy">Destroy 1</div>',
+              '<div id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</div>',
               '<hide class="multiBuy hidden">',
                 '<div id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</div>',
                 '<div id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</div>',
-                '<div id="{{htmlId}}_destroy_max" class="btn btn-default destroy">Nuke All</div>',
+                '<div id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</div>',
               '</hide>',
             '</hide>',
             '</td></tr>'].join('\n'));
@@ -185,6 +233,7 @@ Game.resourcesUI = (function(){
             this.createDisplay(id);
         }
 
+        // 
         for (var id in RESOURCE) {
 			if ($('#' + RESOURCE[id]).length > 0) {
 				Game.ui.bindElement(RESOURCE[id], this.createResourceDelegate(RESOURCE[id]));
@@ -268,24 +317,6 @@ Game.resourcesUI = (function(){
         tabContentRoot.append($(storage));
     }
 
-    instance.addMachineClickEvents = function(htmlId, id) {
-    	// Buy buttons
-    	var amount = [1, 10, 100, 10000];
-    	var suff = ["_buy", "_buy_10", "_buy_100", "_buy_max"]		
-    	for (var i = 0; i < suff.length; i++) {
-    		var node = document.getElementById(htmlId + suff[i]);
-    		var funct = function () {Game.buildings.buyBuildings(id, amount[i]);}    		
-    		Game.addEventListener(node, "click", funct);
-    	}
- 		// Destroy buttons
-    	var suff = ["_destroy", "_destroy_10", "_destroy_100", "_destroy_max"]
-     	for (var i = 0; i < suff.length; i++) {
-    		var node = document.getElementById(htmlId + suff[i]);
-    		var funct = function () {Game.buildings.destroyBuildings(id, amount[i]);}    		
-    		Game.addEventListener(node, "click", funct);
-    	}
-    }
-
     instance.createMachine = function(data, machineData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
         var machine = this.machineTemplate(machineData);
@@ -331,8 +362,6 @@ Game.resourcesUI = (function(){
         var target = $('#' + machineData.htmlId + '_prod');
         target.empty()
         target.append(prodHtml);
-        // Create the event handlers for this machine
-        this.addMachineClickEvents(machineData.htmlId, machineData.id);
     };
 
 	instance.createResourceDelegate = function(id) {

@@ -6,6 +6,7 @@ Game.techUI = (function() {
 
 		this.tab = Game.ui.createTab({id: 'research', title: 'Research BETA', hidden: ''});
 
+		this.labTable = $('#labTable');
 		this.techTable = $('#techTable');
 		
 		instance.techTemplate = Handlebars.compile([
@@ -34,27 +35,40 @@ Game.techUI = (function() {
                 '<p id="{{htmlId}}_prod"></p>',
                 '<p id="{{htmlId}}_cost"></p>',
             '</span>',
-            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\')" class="btn btn-default">Get 1</div>',
+            '<div id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</div>',
             '<hide class="multiBuy hidden">',
-            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 10)" class="btn btn-default">Get 10</div>',
-            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 100)" class="btn btn-default">Get 100</div>',
-            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 10000)" class="btn btn-default">Get Max</div>',
+            '<div id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</div>',
+            '<div id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</div>',
+            '<div id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</div>',
             '</hide>',
             '<div style="height:5px"></div>',
             '<hide class="destroy hidden">',
-            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\')" class="btn btn-default">Destroy 1</div>',
+            '<div id="{{htmlId}}_destroy_1" class="btn btn-default">Destroy 1</div>',
             '<hide class="multiBuy hidden">',
-            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 10)" class="btn btn-default">Destroy 10</div>',
-            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 100)" class="btn btn-default">Destroy 100</div>',
-            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 10000)" class="btn btn-default">Nuke All</div>',
+            '<div id="{{htmlId}}_destroy_10" class="btn btn-default">Destroy 10</div>',
+            '<div id="{{htmlId}}_destroy_100" class="btn btn-default">Destroy 100</div>',
+            '<div id="{{htmlId}}_destroy_10000" class="btn btn-default">Nuke All</div>',
             '</hide>',
             '</hide>',
             '</td></tr>'].join('\n'));
+
+		// Create a list of labs and loop through it to create the HTML
+		var labs = Object.keys(Game.buildings.entries).filter(
+			building => Game.buildings.entries[building].resource == 'science'
+		)
+		labs.forEach(lab => this.createLab(lab))
+
 
 		for(var id in Game.techData){
 			this.createTech(id);
 		}
 	};
+
+	instance.createLab = function(id) {
+		var data = Game.buildings.entries[id];
+		var html = this.machineTemplate(data);
+		this.labTable.append(html)
+	}
 
 	instance.createTech = function(id) {
 		var data = Game.tech.entries[id];
