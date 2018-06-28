@@ -1,12 +1,13 @@
 Game.techUI = (function() {
 	var instance = {};
 
-	instance.techTable = null;
-	instance.techTemplate = null;
 
 	instance.initialise = function() {
+
+		this.tab = Game.ui.createTab({id: 'research', title: 'Research BETA', hidden: 'hidden'})
+
 		this.techTable = $('#techTable');
-		this.techTemplate = Handlebars.compile([
+		instance.techTemplate = Handlebars.compile([
 			'<tr id="{{htmlId}}" class="hidden">',
 			'<td>',
 			'<h3 class="default btn-link" id="{{htmlIdTitle}}">{{name}}</h3>',
@@ -23,9 +24,39 @@ Game.techUI = (function() {
 			'</td>',
 			'</tr>'
 		].join('\n'));
+
+		instance.machineTemplate = Handlebars.compile(
+            ['<tr id="{{htmlId}}"><td>',
+            '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
+            '<span>',
+                '<p>{{desc}}</p>',
+                '<p id="{{htmlId}}_prod"></p>',
+                '<p id="{{htmlId}}_cost"></p>',
+            '</span>',
+            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\')" class="btn btn-default">Get 1</div>',
+            '<hide class="multiBuy hidden">',
+            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 10)" class="btn btn-default">Get 10</div>',
+            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 100)" class="btn btn-default">Get 100</div>',
+            '<div id="{{htmlId}}_buy" onclick="Game.buildings.buyBuildings(\'{{id}}\', 10000)" class="btn btn-default">Get Max</div>',
+            '</hide>',
+            '<div style="height:5px"></div>',
+            '<hide class="destroy hidden">',
+            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\')" class="btn btn-default">Destroy 1</div>',
+            '<hide class="multiBuy hidden">',
+            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 10)" class="btn btn-default">Destroy 10</div>',
+            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 100)" class="btn btn-default">Destroy 100</div>',
+            '<div id="{{htmlId}}_destroy" onclick="Game.buildings.destroyBuildings(\'{{id}}\', 10000)" class="btn btn-default">Nuke All</div>',
+            '</hide>',
+            '</hide>',
+            '</td></tr>'].join('\n'));
+
+		for(var id in Game.techData){
+			this.createTech(id);
+		}
 	};
 
-	instance.addTech = function(data) {
+	instance.createTech = function(id) {
+		var data = Game.tech.entries[id];
 		var html = this.techTemplate(data);
 		this.techTable.append(html);
 

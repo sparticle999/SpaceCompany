@@ -8,22 +8,14 @@ Game.tech = (function(){
     instance.tabUnlocked = false;
 
     instance.initialise = function() {
-        Game.techUI.initialise();
-        for (var id in Game.techData) {
-            var data = this.initTech(id);
+        for(var id in Game.techData) {
+            var data = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id] = data;
-
-            Game.techUI.addTech(data);
+            this.entries[id] = $.extend({}, data, {
+                id: id
+            });
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
-    };
-
-    instance.initTech = function(id) {
-        // using extend to create a new object and leave the defaults unchanged
-        var data = jQuery.extend({}, Game.techData[id]);
-        data.setId(id);
-        return data;
     };
 
     instance.reset = function() {
