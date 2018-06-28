@@ -19,6 +19,7 @@ Game.resourcesUI = (function(){
 
         console.log("test from start");
         console.log("storage");
+        console.log("add all techData tabAlerts")
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
@@ -75,7 +76,7 @@ Game.resourcesUI = (function(){
 			'</td>'].join('\n'));
 
         instance.metalStorageUpgradeTemplate = Handlebars.compile(
-        	['<tr id="{{id}}StorageUpgrade">',
+        	['<tr id="{{id}}StorageUpgrade" class="hidden">',
 				'<td>',
 					'<h3 class="default btn-link">',
 						'Storage Upgrade',
@@ -94,7 +95,7 @@ Game.resourcesUI = (function(){
 			'</tr>'].join('\n'));
 
         instance.earthStorageUpgradeTemplate = Handlebars.compile(
-        	['<tr id="{{id}}StorageUpgrade">',
+        	['<tr id="{{id}}StorageUpgrade" class="hidden">',
 				'<td>',
 					'<h3 class="default btn-link">',
 						'Storage Upgrade',
@@ -113,7 +114,7 @@ Game.resourcesUI = (function(){
 			'</tr>'].join('\n'));
 
         instance.spaceStorageUpgradeTemplate = Handlebars.compile(
-        	['<tr id="{{id}}StorageUpgrade">',
+        	['<tr id="{{id}}StorageUpgrade" class="hidden">',
 				'<td>',
 					'<h3 class="default btn-link">',
 						'Storage Upgrade',
@@ -132,7 +133,7 @@ Game.resourcesUI = (function(){
 			'</tr>'].join('\n'));
 
         instance.storageBuildingTemplate = Handlebars.compile(
-        	['<tr id="{{htmlId}}" class="">',
+        	['<tr id="{{htmlId}}" class="hidden">',
 				'<td>',
 					'<h3 class="default btn-link">',
 						'{{name}}: <span id="{{htmlId}}Count">0</span>',
@@ -147,7 +148,7 @@ Game.resourcesUI = (function(){
 			'</tr>',].join('\n'));
 
         instance.machineTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}"><td>',
+            ['<tr id="{{htmlId}}" class="hidden"><td>',
             '<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
             '<span>',
                 '<p>{{desc}}</p>',
@@ -162,12 +163,12 @@ Game.resourcesUI = (function(){
               '<div id="{{htmlId}}_buy_max" class="btn btn-default">Get Max</div>',
             '</hide>',
             '<div style="height:5px"></div>',
-            '<hide class="destroy hidden">',
-              '<div id="{{htmlId}}_destroy" class="btn btn-default">Destroy 1</div>',
+            '<hide id="{{id}}_destroy" class="hidden">',
+              '<div id="{{htmlId}}_destroy" class="btn btn-default destroy">Destroy 1</div>',
               '<hide class="multiBuy hidden">',
-                '<div id="{{htmlId}}_destroy_10" class="btn btn-default">Destroy 10</div>',
-                '<div id="{{htmlId}}_destroy_100" class="btn btn-default">Destroy 100</div>',
-                '<div id="{{htmlId}}_destroy_max" class="btn btn-default">Nuke All</div>',
+                '<div id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</div>',
+                '<div id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</div>',
+                '<div id="{{htmlId}}_destroy_max" class="btn btn-default destroy">Nuke All</div>',
               '</hide>',
             '</hide>',
             '</td></tr>'].join('\n'));

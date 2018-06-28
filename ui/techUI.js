@@ -14,10 +14,10 @@ Game.techUI = (function() {
 			'<span>',
 			'{{desc}}',
 			'<br>',
-			'Costs <span id="{{htmlIdCost}}"></span> Science',
+			'Costs <span id="{{htmlId}}Cost"></span> Science',
 			'</span>',
 			'<br><br>',
-			'<button id="{{htmlIdButton}}" onclick="purchaseTech(\'{{id}}\')" class="btn btn-default">',
+			'<button id="{{htmlIdButton}}" onclick="Game.tech.buyTech(\'{{id}}\')" class="btn btn-default">',
 			'{{buttonText}}',
 			'</button>',
 			'<br><br>',
@@ -62,7 +62,7 @@ Game.techUI = (function() {
 
 		// all currently used techs cost only science
 		var cost = Game.settings.format(data.cost['science']);
-		data.getCostElement().text(cost);
+		$('#' + data.htmlId + 'Cost').text(cost);
 	};
 
 	instance.removeTech = function(data) {

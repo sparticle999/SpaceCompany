@@ -12,7 +12,8 @@ Game.tech = (function(){
             var data = Game.techData[id];
             this.techTypeCount++;
             this.entries[id] = $.extend({}, data, {
-                id: id
+                id: id,
+                htmlId: "tec_" + id
             });
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
@@ -58,6 +59,8 @@ Game.tech = (function(){
                 child.parentNode.removeChild(child);
             }
         }
+        if(Game.buildings.entries.metalT1.current > 0)
+            Game.buildings.entries.metalT1.onApply();
     };
 
     // handle loading a save with dataVersion 1
@@ -75,6 +78,7 @@ Game.tech = (function(){
                 this.entries[data.researched[id]].current = 1;
             }
         }
+
         for (id in data.tech.i) {
             if (this.entries[id] && !isNaN(data.tech.i[id]) && data.tech.i[id] > 0) {
                 this.gainTech(id, data.tech.i[id]);
@@ -113,10 +117,14 @@ Game.tech = (function(){
             return false;
         }
 
+        
+
+
         // ensure a valid value for count
         if(isNaN(count) || count === undefined) {
             count = 1;
         }
+
         // if there's a max level defined then the count may need to be clamped
         if (tech.maxLevel > 0) {
             count = Math.min(tech.maxLevel - tech.current, count);
@@ -211,7 +219,7 @@ Game.tech = (function(){
 
     instance.hasResources = function (resources) {
         for (var resource in resources) {
-           if (window[resource] < resources[resource]) {
+           if (Game.resources.entries[resource].current < resources[resource]) {
                return false;
            }
         }
@@ -220,7 +228,7 @@ Game.tech = (function(){
 
     instance.spendResources = function(resources) {
         for (var resource in resources) {
-            window[resource] -= resources[resource];
+            Game.resources.entries[resource].current -= resources[resource];
         }
     };
 

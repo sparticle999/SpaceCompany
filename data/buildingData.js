@@ -340,6 +340,13 @@ Game.buildingData = (function () {
         cost: {
             'metal': 10,
             'wood': 5
+        },
+        onApply: function(){
+            if(!Game.tech.tabUnlocked){
+                newUnlock('research');
+                Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
+            }
+            Game.tech.tabUnlocked = true;
         }
     });
 

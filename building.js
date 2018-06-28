@@ -72,11 +72,13 @@ Game.buildings = (function(){
             var data = this.entries[id];
             if(data.displayNeedsUpdate)
                 this.refreshBuildingCost(data);
+                this.refreshUnlock(data);
         }
         for(id in this.storageEntries){
             var data = this.storageEntries[id];
             if(data.displayNeedsUpdate){
                 this.refreshBuildingCost(data);
+                this.refreshUnlock(data);
                 Game.resources.refreshStorage(data.resource);
             }
         }
@@ -141,10 +143,14 @@ Game.buildings = (function(){
                 this.updatePerSecondProduction = true;
                 data.displayNeedsUpdate = true;
             } else {
+                if(data.onApply)
+                    data.onApply();
                 this.constructBuildings(id, i);
                 return;
             }
         }
+        if(data.onApply)
+            data.onApply();
         this.constructBuildings(id, i);
     };
 
@@ -199,6 +205,17 @@ Game.buildings = (function(){
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
     };
+
+    instance.unlockStorage = function(id){
+        this.storageEntries[id].unlocked = true;
+        this.storageEntries[id].displayNeedsUpdate = true;
+    }
+
+    instance.refreshUnlock = function(data){
+        if(data.unlocked){
+            $('#' + data.htmlId)[0].className = "";
+        }
+    }
 
     instance.getBuildingData = function(id) {
         return this.entries[id];

@@ -1006,37 +1006,6 @@ function refreshResearches(){
            }
        }
     }
-
-    if (Game.tech.isPurchased('unlockStorage')) {
-        // document.getElementById("oilStorageUpgrade").className = "";
-        // document.getElementById("metalStorageUpgrade").className = "";
-        // document.getElementById("gemStorageUpgrade").className = "";
-        // document.getElementById("charcoalStorageUpgrade").className = "";
-        // document.getElementById("woodStorageUpgrade").className = "";
-    }
-    if (Game.tech.isPurchased('unlockSolar')) {
-        // document.getElementById("solarPower").className = "";
-    }
-    if (Game.tech.isPurchased('unlockMachines')) {
-        // document.getElementById("oilTier2").className = "";
-        // document.getElementById("metalTier2").className = "";
-        // document.getElementById("gemTier2").className = "";
-        // document.getElementById("charcoalTier2").className = "";
-        // document.getElementById("woodTier2").className = "";
-    }
-    if (Game.tech.isPurchased('unlockDestruction')) {
-        for(i = 0; i < document.getElementsByClassName("destroy").length; i++){
-            document.getElementsByClassName("destroy")[i].className = "destroy";
-        }
-    }
-    else {
-        if (Game.tech.isUnlocked('unlockDestruction') === false) {
-            if(Game.tech.isPurchased('unlockMachines')) {
-                document.getElementById('unlockDestruction').className = "";
-                Game.tech.unlockTech('unlockDestruction');
-            }
-        }
-    }
     if (Game.tech.isPurchased('unlockSolarSystem')) {
         if (Game.tech.isUnlocked('unlockRocketFuelT2') === false) {
             document.getElementById('unlockRocketFuelT2').className = "";
@@ -1136,7 +1105,7 @@ function refreshResearches(){
         }
     }
     if (Game.tech.isPurchased('unlockBasicEnergy')) {
-        document.getElementById('unlockBasicEnergy').className = "hidden";
+        //document.getElementById('unlockBasicEnergy').className = "hidden";
     }
 }
 
