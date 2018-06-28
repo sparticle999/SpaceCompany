@@ -12,9 +12,11 @@ Game.resourcesUI = (function(){
 
     instance.tab = null;
 
+    instance.category = 'resources'
+
 	instance.initialise = function() {
 
-		this.tab = Game.ui.createTab({id: 'resources', title: 'Resources BETA', hidden: '', active: "active"});
+		this.tab = Game.ui.createTab({id: this.category, title: Game.utils.capitaliseFirst(this.category)+" BETA", hidden: '', active: "active"});
         this.tab.initialise();
 
         console.log("test from start");
@@ -23,6 +25,52 @@ Game.resourcesUI = (function(){
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
+
+// onclick="activeResourceTab('iceNav')" 
+
+// ice.id = {{id}}
+// Ice.name = {{name}}
+// ice.persecond = {{perSecond}}
+// ice.current = {{current}}
+// ice.capacity = {{capacity}}
+// 
+// 
+/*
+        instance.pageTemplate = Handlebars.compile(
+        	['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">\
+				<div class="container col-xs-1" style="width:380px; padding:0; float:left;">\
+					<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">\
+						<tbody>\
+							LOOP\
+							<tr id="{{id}}Nav" class="outerPlanet sideTab" href="#{{id}}Tab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height: 30px;" aria-expanded="true">\
+								<td style="vertical-align:middle;">\
+									<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">\
+								</td>\
+								<td style="vertical-align:middle;">\
+									<span>{{name}}</span>\
+								</td>\
+								<td style="vertical-align:middle; text-align:center;">\
+									<span><span id="{{id}}ps">{{perSecond}}</span>/Sec</span>\
+								</td>\
+								<td style="vertical-align:middle; text-align:right;">\
+									<span id="{{id}}" class="">{{current}}</span>\
+									/\
+									<span id="{{id}}Storage">3.277M</span>\
+								</td>\
+							</tr>\
+							END LOOP\
+						</tbody>\
+					</table>\
+				</div>']
+
+				'<span id="{{id}}StorageBox" class="hidden">',
+					'/',
+					'<span id="{{id}}Storage">{{capacity}}</span>',
+
+        )
+
+*/
+
 
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td colspan="2" style="border:none;">',
@@ -185,6 +233,7 @@ Game.resourcesUI = (function(){
             this.createDisplay(id);
         }
 
+        // 
         for (var id in RESOURCE) {
 			if ($('#' + RESOURCE[id]).length > 0) {
 				Game.ui.bindElement(RESOURCE[id], this.createResourceDelegate(RESOURCE[id]));

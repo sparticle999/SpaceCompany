@@ -20,6 +20,8 @@ Game.resources = (function(){
                 current: 0,
                 perSecond: 0,
                 perClick: 1,
+                buildings: [],
+                storBuildings: [],
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
@@ -44,6 +46,7 @@ Game.resources = (function(){
                 id: id,
                 htmlId: "store_" + id
             });
+
         }
 
         console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");

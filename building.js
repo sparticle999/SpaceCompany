@@ -4,7 +4,6 @@ Game.buildings = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
-    instance.researchBuildings = {}
     instance.storageEntries = {};
     instance.updatePerSecondProduction = true;
     instance.buildingTypeCount = 0;
@@ -25,6 +24,10 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true
             });
+            // Create a list of buildings per resource
+            var resource = this.entries[id].resource;
+            var collector = Game.resources.entries[resource].buildings;
+            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
         }
 
         for (var id in Game.storageBuildingData) {
@@ -40,8 +43,13 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true
             });
+            // Create a list of storage buildings per resource
+            var resource = this.storageEntries[id].resource;
+            var collector = Game.resources.entries[resource].storBuildings;
+            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
         }
 
+        // this can be removed if rocketfuel producers get moved to buildings
         for(var id in Game.otherBuildingsData){
             var data = Game.otherBuildingsData[id];
             if(data.resource == "science"){
