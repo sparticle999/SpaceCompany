@@ -4,7 +4,7 @@ Game.buildings = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
-    instance.researchBuildings = {}
+    instance.researchBuildings = {};
     instance.storageEntries = {};
     instance.updatePerSecondProduction = true;
     instance.buildingTypeCount = 0;

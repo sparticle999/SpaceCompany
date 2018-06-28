@@ -33,6 +33,13 @@ Game.tech = (function(){
     instance.update = function(delta) {
         if(this.tabUnlocked)
             $('#researchTab')[0].className = "";
+        for(var id in this.entries){
+            var data = this.entries[id];
+            if(data.unlocked)
+                $('#' + data.htmlId)[0].className = "";
+            if(data.current >= data.maxLevel && data.maxLevel > 0)
+                $('#' + data.htmlId)[0].className = "hidden";
+        }
     };
 
     instance.save = function(data) {
