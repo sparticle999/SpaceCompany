@@ -4,9 +4,11 @@ Game.buildings = (function(){
 
     instance.dataVersion = 1;
     instance.entries = {};
+    instance.researchBuildings = {}
     instance.storageEntries = {};
     instance.updatePerSecondProduction = true;
     instance.buildingTypeCount = 0;
+    instance.researchBuildingTypeCount = 0;
     instance.storageTypeCount = 0;
 
     instance.initialise = function() {
@@ -38,6 +40,23 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true
             });
+        }
+
+        for(var id in Game.otherBuildingsData){
+            var data = Game.otherBuildingsData[id];
+            if(data.resource == "science"){
+                this.researchBuildingTypeCount++;
+                this.researchBuildings[id] = $.extend({}, data, {
+                    id: id,
+                    htmlId: 'tecbld_' + id,
+                    current: 0,
+                    iconPath: Game.constants.iconPath,
+                    iconName: data.icon,
+                    iconExtension: Game.constants.iconExtension,
+                    max: data.maxCount,
+                    displayNeedsUpdate: true
+                });
+            }
         }
 
         console.debug("Loaded " + this.buildingTypeCount + " Building Types");

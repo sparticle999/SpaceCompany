@@ -3,17 +3,10 @@ Game.techData = (function () {
     var instance = {};
 
     var techBase = {
-        id: null,
-        htmlId: null,
-        htmlIdCost: null,
-        htmlIdTitle: null,
-        htmlIdButton: null,
         displayNeedsUpdate: true,
 
         name: 'Research',
         desc: 'Purchase to unlock something.',
-        notifyTitle: null,
-        notifyText: null,
         buttonText: 'Unlock',
 
         current: 0,
