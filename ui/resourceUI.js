@@ -280,7 +280,6 @@ Game.resourcesUI = (function(){
 
     instance.createMachine = function(data, machineData) {
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        console.log(machineData);
         var machine = this.machineTemplate(machineData);
         tabContentRoot.append($(machine));
 
