@@ -1173,20 +1173,6 @@ Game.buildingData = (function () {
         }
     });
 
-    return instance;
-}());
-
-Game.otherBuildingsData = (function(){
-
-    var instance = {};
-
-    var baseProducerBuilding = {
-        type: BUILDING_TYPE.PRODUCER,
-        unlocked: false,
-        maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED
-    };
-
     // Research
     instance.scienceT1 = $.extend({}, baseProducerBuilding, {
         name: 'Home Science Kit',
@@ -1229,6 +1215,50 @@ Game.otherBuildingsData = (function(){
             'wood': 9600
         }
     });
+
+    instance.scienceT4 = $.extend({}, baseProducerBuilding, {
+        name: 'Scientific Observatory',
+        desc: 'Create an observatory to gaze upon the stars and acquire knowledge from them.',
+        resource: 'science',
+        resourcePerSecond: {
+            'science': 100
+        },
+        cost: {
+            'metal': 610000,
+            'gem': 370000,
+            'wood': 926000
+        }
+    });
+
+    instance.scienceT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Space Scientific Satellite Station',
+        desc: "From outside Earth's orbit, the universe can be understood much more efficiently without an atmosphere obstructing the lab's view.",
+        resource: 'science',
+        resourcePerSecond: {
+            'science': 1000
+        },
+        cost: {
+            'metal': 12400000,
+            'gem': 7300000,
+            'wood': 15900000
+        }
+    });
+
+    return instance;
+}());
+
+
+
+Game.otherBuildingsData = (function(){
+
+    var instance = {};
+
+    var baseProducerBuilding = {
+        type: BUILDING_TYPE.PRODUCER,
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        costType: COST_TYPE.FIXED
+    };
 
     // Solar System
     instance.rocketFuelT1 = $.extend({}, baseProducerBuilding, {

@@ -7,6 +7,7 @@ Game.techUI = (function() {
 		this.tab = Game.ui.createTab({id: 'research', title: 'Research BETA', hidden: ''});
 
 		this.techTable = $('#techTable');
+		
 		instance.techTemplate = Handlebars.compile([
 			'<tr id="{{htmlId}}" class="hidden">',
 			'<td>',
