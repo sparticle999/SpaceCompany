@@ -169,7 +169,7 @@ Game.techData = (function () {
         onApply: function(){
             for(var id in Game.buildings.entries){
                 var data = Game.buildings.entries[id];
-                $('#' + data.htmlId + "_destroy_1").className = "";
+                $('#' + data.htmlId + "_destroy_1")[0].className = "";
             }
         }
     });
