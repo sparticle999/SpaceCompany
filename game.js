@@ -407,9 +407,17 @@ var Game = (function() {
         this.update_frame(0);
     };
 
+    instance.addEventListener = function(target, event, callback) {
+        if (target.addEventListener) {
+            target.addEventListener(event, callback, false);
+        } else if (target.attachEvent) {
+            target.attachEvent("on"+event, callback);
+        } else {
+            target['on'+event] = callback;
+        }
+    };
+
     return instance;
 }());
 
-window.onload = function(){
-    Game.start();
-};
+Game.addEventListener(window, "load", function() {Game.start()});
