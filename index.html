@@ -137,7 +137,7 @@
 			<div class="tab-content">
 				<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
 					<div class="container" style="max-width:800px;">
-						<table class="table">
+						<table id="labTable" class="table">
 							<tr>
 								<td style="border:none;">
 									<h2 class="default btn-link">
@@ -150,95 +150,7 @@
 									<br>
 								</td>
 							</tr>
-							<tr>
-								<td>
-									<h3 class="default btn-link">
-										Home Science Kit: <span id="lab">0</span>
-									</h3>
-									<span>
-										Build a small laboratory of your very own to start producing science.
-										<br>
-										Each one produces 0.1 science per second.
-										<br>
-										Costs <span id="labMetalCost">20</span> Metal, <span id="labGemCost">15</span> Gems, <span id="labWoodCost">10</span> Wood.
-									</span>
-									<br>
-									<br>
-									<button onclick="getLab()" class="btn btn-default">Build</button>
-									<br>
-									<br>
-								</td>
-							</tr>
-							<tr id="labTier2" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										High School Science: <span id="labT2">0</span>
-									</h3>
-									<span>
-										Build a more effective laboratory to continue your quest into the realm of science at a significantly faster speed.
-										<br>
-										Each one produces 1 science per second.
-										<br>
-										Costs <span id="labT2MetalCost">1,000</span> Metal, <span id="labT2GemCost">200</span> Gems, <span id="labT2WoodCost">500</span> Wood.
-									</span>
-									<br>
-									<br>
-									<button onclick="getLabT2()" class="btn btn-default">Build Laboratory T2</button>
-									<br>
-									<br>
-								</td>
-							</tr>
-							<tr id="labTier3" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										University Laboratory: <span id="labT3">0</span>
-									</h3>
-									<span>
-										Build an even better version of the old laboratory to further your exploration of the realm of science.
-										<br>
-										Each one produces 10 science per second.
-										<br>
-										Costs <span id="labT3MetalCost">17,000</span> Metal, <span id="labT3GemCost">4,700</span> Gems, <span id="labT3WoodCost">9,600</span> Wood.
-									</span>
-									<br>
-									<br>
-									<button onclick="getLabT3()" class="btn btn-default">Build Laboratory T3</button>
-								</td>
-							</tr>
-							<tr id="labTier4" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										Scientific Observatory: <span id="labT4">0</span>
-									</h3>
-									<span>
-										Create an observatory to gaze upon the stars and acquire knowledge from them.
-										<br>
-										Each one produces 100 science per second.
-										<br>
-										Costs <span id="labT4MetalCost">610,000</span> Metal, <span id="labT4GemCost">370,000</span> Gems, <span id="labT4WoodCost">926,000</span> Wood.
-									</span>
-									<br>
-									<br>
-									<button onclick="getLabT4()" class="btn btn-default">Build Laboratory T4</button>
-								</td>
-							</tr>
-							<tr id="labTier5" class="hidden">
-								<td>
-									<h3 class="default btn-link">
-										Space Scientific Satellite Station: <span id="labT5">0</span>
-									</h3>
-									<span>
-										From outside Earth's orbit, the universe can be understood much more efficiently without an atmosphere obstructing the lab's view.
-										<br>
-										Each one produces 1000 science per second.
-										<br>
-										Costs <span id="labT5MetalCost">12.40M</span> Metal, <span id="labT5GemCost">7.30M</span> Gems, <span id="labT5WoodCost">15.90M</span> Wood.
-									</span>
-									<br>
-									<br>
-									<button onclick="getLabT5()" class="btn btn-default">Build Laboratory T5</button>
-								</td>
-							</tr>
+							<!-- HTML is dynamically generated to fill this table -->
 						</table>
 					</div>
 				</div>
