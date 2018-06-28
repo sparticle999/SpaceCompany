@@ -4,7 +4,7 @@ Game.techUI = (function() {
 
 	instance.initialise = function() {
 
-		this.tab = Game.ui.createTab({id: 'research', title: 'Research BETA', hidden: 'hidden'})
+		this.tab = Game.ui.createTab({id: 'research', title: 'Research BETA', hidden: ''});
 
 		this.techTable = $('#techTable');
 		
