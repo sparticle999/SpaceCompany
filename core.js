@@ -1023,17 +1023,17 @@ function refreshResearches(){
         }
     }
     if (Game.tech.isPurchased('unlockLabT2')) {
-        document.getElementById("labTier2").className = "";
+        document.getElementById("resbld_scienceT2").className = "";
     }
     if (Game.tech.isPurchased('unlockLabT3')) {
-        document.getElementById('labTier3').className = "";
+        document.getElementById('resbld_scienceT3').className = "";
         if (Game.tech.isUnlocked('unlockLabT4') === false) {
-            document.getElementById('unlockLabT4').className = "";
+            document.getElementById('resbld_scienceT4').className = "";
             Game.tech.unlockTech('unlockLabT4');
         }
     }
     if (Game.tech.isPurchased('unlockLabT4')) {
-        document.getElementById("labTier4").className = "";
+        document.getElementById("resbld_scienceT4").className = "";
     }
     if (Game.tech.isPurchased('upgradeSolarTech')) {
         if (Game.tech.isUnlocked('unlockBatteries') === false) {
