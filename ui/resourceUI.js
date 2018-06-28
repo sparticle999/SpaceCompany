@@ -219,6 +219,7 @@ Game.resourcesUI = (function(){
 	};
 
 	instance.createDisplay = function(id) {
+		if (id == 'science' || id == 'rocketFuel') {return false;}
         var data = Game.resources.getResourceData(id);
         if(id != "science")
         	this.tab.addNavEntry(data.category, id);
@@ -268,13 +269,19 @@ Game.resourcesUI = (function(){
     }
 
     instance.addMachineClickEvents = function(htmlId, id) {
-    	var amount = [1, 10, 100, 10000, 1, 10, 100, 10000];
-    	var suff = ["_buy", "_buy_10", "_buy_100", "_buy_max",
-    				"_destroy", "_destroy_10", "_destroy_100", "_destroy_max"];
-    				
+    	// Buy buttons
+    	var amount = [1, 10, 100, 10000];
+    	var suff = ["_buy", "_buy_10", "_buy_100", "_buy_max"]		
     	for (var i = 0; i < suff.length; i++) {
     		var node = document.getElementById(htmlId + suff[i]);
     		var funct = function () {Game.buildings.buyBuildings(id, amount[i]);}    		
+    		Game.addEventListener(node, "click", funct);
+    	}
+ 		// Destroy buttons
+    	var suff = ["_destroy", "_destroy_10", "_destroy_100", "_destroy_max"]
+     	for (var i = 0; i < suff.length; i++) {
+    		var node = document.getElementById(htmlId + suff[i]);
+    		var funct = function () {Game.buildings.destroyBuildings(id, amount[i]);}    		
     		Game.addEventListener(node, "click", funct);
     	}
     }
