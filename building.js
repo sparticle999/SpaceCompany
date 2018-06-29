@@ -23,11 +23,7 @@ Game.buildings = (function(){
                 iconExtension: Game.constants.iconExtension,
                 max: data.maxCount,
                 displayNeedsUpdate: true
-            });
-            // Create a list of buildings per resource
-            var resource = this.entries[id].resource;
-            var collector = Game.resources.entries[resource].buildings;
-            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
+            });            
         }
 
         for (var id in Game.storageBuildingData) {
@@ -43,10 +39,6 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true
             });
-            // Create a list of storage buildings per resource
-            var resource = this.storageEntries[id].resource;
-            var collector = Game.resources.entries[resource].storBuildings;
-            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
         }
 
         // this can be removed if rocketfuel producers get moved to buildings
@@ -65,6 +57,14 @@ Game.buildings = (function(){
                     displayNeedsUpdate: true
                 });
             }
+        }
+
+        // Link Game.categories.resources to buildings & storBuildings
+        for (building in Game.buildings.entries) {
+            var id = Game.buildings.entries[building].id;
+            var output = Game.buildings.entries[building].resource;
+            Game.resources.entries[output].buildings[building] =
+                Game.buildings.entries[building];
         }
 
         console.debug("Loaded " + this.buildingTypeCount + " Building Types");

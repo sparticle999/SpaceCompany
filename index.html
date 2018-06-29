@@ -372,7 +372,7 @@
 							<tr>
 								<td>
 									<h3 class="default btn-link">
-										Chemical Plant: <span id="chemicalPlant">0</span>
+										Chemical Plant: <span id="resbld_rocketFuelT1Count">0</span>
 									</h3>
 									<span>
 										Chemical plants are used to make rocket fuel automatically.
@@ -383,18 +383,29 @@
 										<br>
 										Costs <span id="chemicalPlantMetalCost">1,000</span> Metal, <span id="chemicalPlantGemCost">750</span> Gems, <span id="chemicalPlantOilCost">500</span> Oil.
 									</span>
-									<br>
-									<br>
-									<button onclick="getChemicalPlant()" class="btn btn-default">Build Chemical Plant</button>
-									<button onclick="destroyMachine('chemicalPlant')" class="btn btn-default destroy hidden">Destroy Chemical Plant</button>
-									<br>
-									<br>
+									<br />
+									<br />
+									<div id="resbld_rocketFuelT1_buy_1" class="btn btn-default">Get 1</div>
+									<hide class="multiBuy hidden">
+										<div id="resbld_rocketFuelT1_buy_10" class="btn btn-default">Get 10</div>
+										<div id="resbld_rocketFuelT1_buy_100" class="btn btn-default">Get 100</div>
+										<div id="resbld_rocketFuelT1_buy_10000" class="btn btn-default">Get Max</div>
+									</hide>
+									<div style="height:5px"></div>
+									<hide id="rocketFuelT1_destroy" class="hidden">
+										<div id="resbld_rocketFuelT1_destroy_1" class="btn btn-default destroy">Destroy 1</div>
+										<hide class="multiBuy hidden">
+											<div id="resbld_rocketFuelT1_destroy_10" class="btn btn-default destroy">Destroy 10</div>
+											<div id="resbld_rocketFuelT1_destroy_100" class="btn btn-default destroy">Destroy 100</div>
+											<div id="resbld_rocketFuelT1_destroy_10000" class="btn btn-default destroy">Nuke All</div>
+										</hide>
+									</hide>
 								</td>
 							</tr>
-							<tr id="rocketFuelT2" class="hidden">
+							<tr id="resbld_rocketFuelT2" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Oxidisation Chamber: <span id="oxidisation">0</span>
+										Oxidisation Chamber: <span id="resbld_rocketFuelT2Count">0</span>
 									</h3>
 									<span>
 										Oxidisation Chambers make rocket fuel faster and more efficiently than chemical plants.
@@ -405,18 +416,29 @@
 										<br>
 										Costs <span id="oxidisationMetalCost">12,000</span> Metal, <span id="oxidisationGemCost">8,300</span> Gems, <span id="oxidisationOilCost">6,800</span> Oil.
 									</span>
-									<br>
-									<br>
-									<button onclick="getOxidisation()" class="btn btn-default">Build Oxidisation Chamber</button>
-									<button onclick="destroyMachine('oxidisation')" class="btn btn-default destroy hidden">Destroy Oxidisation Chamber</button>
-									<br>
-									<br>
+									<br />
+									<br />
+									<div id="resbld_rocketFuelT2_buy_1" class="btn btn-default">Get 1</div>
+									<hide class="multiBuy hidden">
+										<div id="resbld_rocketFuelT2_buy_10" class="btn btn-default">Get 10</div>
+										<div id="resbld_rocketFuelT2_buy_100" class="btn btn-default">Get 100</div>
+										<div id="resbld_rocketFuelT2_buy_10000" class="btn btn-default">Get Max</div>
+									</hide>
+									<div style="height:5px"></div>
+									<hide id="rocketFuelT2_destroy" class="hidden">
+										<div id="resbld_rocketFuelT2_destroy_1" class="btn btn-default destroy">Destroy 1</div>
+										<hide class="multiBuy hidden">
+											<div id="resbld_rocketFuelT2_destroy_10" class="btn btn-default destroy">Destroy 10</div>
+											<div id="resbld_rocketFuelT2_destroy_100" class="btn btn-default destroy">Destroy 100</div>
+											<div id="resbld_rocketFuelT2_destroy_10000" class="btn btn-default destroy">Nuke All</div>
+										</hide>
+									</hide>
 								</td>
 							</tr>
-							<tr id="rocketFuelT3" class="hidden">
+							<tr id="resbld_rocketFuelT3" class="hidden">
 								<td>
 									<h3 class="default btn-link">
-										Hydrazine Catalyst: <span id="hydrazine">0</span>
+										Hydrazine Catalyst: <span id="resbld_rocketFuelT3Count">0</span>
 									</h3>
 									<span>
 										These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.
@@ -427,12 +449,23 @@
 										<br>
 										Costs <span id="hydrazineTitaniumCost">140,000</span> Titanium, <span id="hydrazineSiliconCost">96,300</span> Silicon, <span id="hydrazineGoldCost">78,600</span> Gold.
 									</span>
-									<br>
-									<br>
-									<button onclick="getHydrazine()" class="btn btn-default">Build Hydrazine Catalyst</button>
-									<button onclick="destroyMachine('hydrazine')" class="btn btn-default destroy hidden">Destroy Hydrazine Catalyst</button>
-									<br>
-									<br>
+									<br />
+									<br />
+									<div id="resbld_rocketFuelT3_buy_1" class="btn btn-default">Get 1</div>
+									<hide class="multiBuy hidden">
+										<div id="resbld_rocketFuelT3_buy_10" class="btn btn-default">Get 10</div>
+										<div id="resbld_rocketFuelT3_buy_100" class="btn btn-default">Get 100</div>
+										<div id="resbld_rocketFuelT3_buy_10000" class="btn btn-default">Get Max</div>
+									</hide>
+									<div style="height:5px"></div>
+									<hide id="rocketFuelT3_destroy" class="hidden">
+										<div id="resbld_rocketFuelT3_destroy_1" class="btn btn-default destroy">Destroy 1</div>
+										<hide class="multiBuy hidden">
+											<div id="resbld_rocketFuelT3_destroy_10" class="btn btn-default destroy">Destroy 10</div>
+											<div id="resbld_rocketFuelT3_destroy_100" class="btn btn-default destroy">Destroy 100</div>
+											<div id="resbld_rocketFuelT3_destroy_10000" class="btn btn-default destroy">Nuke All</div>
+										</hide>
+									</hide>
 								</td>
 							</tr>
 						</table>

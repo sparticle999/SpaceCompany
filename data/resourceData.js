@@ -5,30 +5,49 @@ Game.resourceCategoryData = (function () {
     instance.energy = {
         title: 'Energy',
         category: 'energy',
+        page: 'resources',
         unlocked: false
     };
 
     instance.fabricated = {
         title: 'Fabricated',
         category: 'fabricated',
+        page: 'resources',
         unlocked: false
     };
 
     instance.earth = {
         title: 'Earth Resources',
         category: 'earth',
+        page: 'resources',
         unlocked: false
     };
 
     instance.innerSol = {
         title: 'Inner Planetary Resources',
         category: 'innerSol',
+        page: 'resources',
         unlocked: false
     };
 
     instance.outerSol = {
         title: 'Outer Planetary Resources',
         category: 'outerSol',
+        page: 'resources',
+        unlocked: false
+    };
+
+    instance.science = {
+        title: 'Science',
+        category: 'science',
+        page: 'science',
+        unlocked: false
+    };
+
+    instance.rocketFuel = {
+        title: 'Rocket Fuel',
+        category: 'rocketFuel',
+        page: 'solar',
         unlocked: false
     };
 
@@ -260,10 +279,26 @@ Game.resourceData = (function () {
         name: 'Science Production',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
+        category: 'science',
         baseCapacity: 1000000,
         gainNum: 1,
         unlocked: false
     };
+
+    /********************
+     * Rocket Fuel      *
+     ********************/
+
+    instance.rocketFuel = {
+        name: 'Rocket Fuel',
+        desc: 'Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.',
+        icon: 'rocketFuelIcon',
+        category: 'rocketFuel',
+        baseCapacity: 1000000,
+        gainNum: 1,
+        unlocked: false
+    };
+
 
     return instance;
 }());
