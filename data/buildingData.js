@@ -1244,23 +1244,7 @@ Game.buildingData = (function () {
         }
     });
 
-    return instance;
-}());
-
-
-
-Game.otherBuildingsData = (function(){
-
-    var instance = {};
-
-    var baseProducerBuilding = {
-        type: BUILDING_TYPE.PRODUCER,
-        unlocked: false,
-        maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED
-    };
-
-    // Solar System
+   // Solar System
     instance.rocketFuelT1 = $.extend({}, baseProducerBuilding, {
         name: 'Chemical Plant',
         desc: 'Chemical plants are used to make rocket fuel automatically.',
@@ -1305,6 +1289,25 @@ Game.otherBuildingsData = (function(){
 
     return instance;
 }());
+
+
+/*
+Game.otherBuildingsData = (function(){
+
+    var instance = {};
+
+    var baseProducerBuilding = {
+        type: BUILDING_TYPE.PRODUCER,
+        unlocked: false,
+        maxCount: Number.MAX_VALUE,
+        costType: COST_TYPE.FIXED
+    };
+
+ 
+
+    return instance;
+}());
+*/
 
 Game.storageBuildingData = (function(){
 

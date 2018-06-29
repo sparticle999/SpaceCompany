@@ -75,7 +75,7 @@ Game.resources = (function(){
             var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
             if(data.displayNeedsUpdate){
-                if(id != "science"){
+                if(id != "science" && id != "rocketFuel"){
                     var nav = $('#resourcesTab_' + id + '_ne')[0];
                     var hidden = nav.className.indexOf(" hidden");
                     if(data.unlocked){

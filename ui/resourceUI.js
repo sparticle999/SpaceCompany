@@ -95,19 +95,7 @@ Game.resourcesUI = (function(){
 
 		// Loops through the categories and creats the collapsible headers
 		instance.menuWithCategories = Handlebars.registerPartial('menuWithCategories',[
-			'{{#each categories}}',
-				'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
-					'<td colspan="4">',
-						'<span>{{this.title}}</span> <span class="caret"></span>',
-					'</td>',
-				'</tr>',
-				'{{#each items}}',
-					// Add the items per category
-					'{{#logicEquals this.category @index}}',
-						'{{> listMenuItems}}',
-					'{{/logicEquals}}',
-				'{{/each}}',
-			'{{/each}}',
+
 		].join('\n'));
 
 
@@ -121,16 +109,20 @@ Game.resourcesUI = (function(){
 				'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
 					'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
 						'<tbody>',
-					// Render items without categories first
-					'{{#each items}}',
-						'{{#logicEquals this.category ""}}',
-							'{{> listMenuItems}}',
-						'{{/logicEquals}}',
-					'{{/each}}',
 					// If there are categories, render these next
-					'{{#if categories}}',
-						'{{> menuWithCategories}}',
-					'{{/if}}',
+	'{{#each category}}',
+						'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
+							'<td colspan="4">',
+								'<span>{{this.title}}</span> <span class="caret"></span>',
+							'</td>',
+						'</tr>',
+		'{{#each items}}',
+						// Add the items per category
+			'{{#logicEquals this.category @index}}',
+						
+			'{{/logicEquals}}',
+		'{{/each}}',
+	'{{/each}}',
 						'</tbody>',
 					'</table>',
 				'</div>',
@@ -140,13 +132,7 @@ Game.resourcesUI = (function(){
 
 		// Collect the data we need and render the page
 		instance.renderPage = function() {
-			var data = {};
-			// Loop through Game.resources.entries, collect data
-			
-			
-			data.categories = Game.resourceCategoryData;
-			data.items = Game.resources.entries;
-			console.log(data);
+			console.log(Game.categories);
 			return this.resourcePage(data);
 		}
 

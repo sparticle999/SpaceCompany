@@ -285,6 +285,21 @@ Game.resourceData = (function () {
         unlocked: false
     };
 
+    /********************
+     * Rocket Fuel      *
+     ********************/
+
+    instance.rocketFuel = {
+        name: 'Rocket Fuel',
+        desc: 'Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.',
+        icon: 'rocketFuelIcon',
+        category: 'rocketFuel',
+        baseCapacity: 1000000,
+        gainNum: 1,
+        unlocked: false
+    };
+
+
     return instance;
 }());
 
