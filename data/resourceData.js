@@ -66,7 +66,7 @@ Game.resourceData = (function () {
 
     instance.energy = {
         name: 'Energy',
-        desc: 'Energy is created by power sources such as steam engines, solar power and advances even to fusion power and nuclear energy. The maximum you can hold to start with is 100,000 Energy, but batteries are unlockable which can increase this.',
+        desc: 'Energy is created by power sources such as steam engines and solar panels, eventually advancing to fusion and nuclear energy. You can hold a maximum of 100,000 energy, unlocking batteries allows you to increase this.',
         icon: 'energyIcon',
         category: 'energy',
         baseCapacity: 100000,
