@@ -206,19 +206,13 @@ var Game = (function() {
             var htmlId = Game.buildings.entries[id].htmlId;
             for (var i = 0; i < amount.length; i++) {
                 // Buy buttons
-                console.log(htmlId+"_buy_"+amount[i])
-                var node = document.getElementById(htmlId+"_buy_"+amount[i])
                 Game.addEventListener(
-                    node,
-                    "click",
-                    function () {Game.buildings.buyBuildings(id, amount[i]);});
+                    document.getElementById(htmlId+"_buy_"+amount[i]),
+                    "click", function () {Game.buildings.buyBuildings(id, amount[i]);});
                 // Destroy buttons
-                console.log(htmlId+"_destroy_"+amount[i]);
-                node = document.getElementById(htmlId+"_destroy_"+amount[i])
                 Game.addEventListener(
-                    node,
-                    "click",
-                    function () {Game.buildings.destroyBuildings(id, amount[i]);});
+                    document.getElementById(htmlId+"_destroy_"+amount[i]),
+                    "click", function () {Game.buildings.destroyBuildings(id, amount[i]);});
             }
 
         })
