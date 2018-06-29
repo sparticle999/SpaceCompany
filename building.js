@@ -27,7 +27,7 @@ Game.buildings = (function(){
             // Create a list of buildings per resource
             var resource = this.entries[id].resource;
             var collector = Game.resources.entries[resource].buildings;
-            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
+            if (!contains(collector, resource)) {collector.push(this.entries[id].id);}
         }
 
         for (var id in Game.storageBuildingData) {
@@ -46,7 +46,7 @@ Game.buildings = (function(){
             // Create a list of storage buildings per resource
             var resource = this.storageEntries[id].resource;
             var collector = Game.resources.entries[resource].storBuildings;
-            if (!contains(collector, resource)) {collector.push(this.entries[id]);}
+            if (!contains(collector, resource)) {collector.push(this.entries[id].id);}
         }
 
         // this can be removed if rocketfuel producers get moved to buildings
