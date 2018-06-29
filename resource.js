@@ -20,8 +20,8 @@ Game.resources = (function(){
                 current: 0,
                 perSecond: 0,
                 perClick: 1,
-                buildings: [],
-                storBuildings: [],
+                buildings: {},
+                storBuildings: {},
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
@@ -29,6 +29,22 @@ Game.resources = (function(){
             });
 
             this.entries[id].capacity = data.baseCapacity;
+
+        // Compose an hierarchical object
+        // categories -> resources -> buildings & storbuildings
+        Game.categories = {};
+        // Add categories
+        Object.keys(Game.resourceCategoryData).forEach(
+            category => Game.categories[category] = {}
+        )
+        // Link resources to categories
+        Object.keys(Game.resources.entries).forEach(function(resource) {
+            var category = Game.resources.entries[resource].category;
+            var id = Game.resources.entries[resource].id
+            Game.categories[category][id] = Game.resources.entries[resource];           
+        })
+        // Buildings are linked in building.js
+
         }
 
         for (var id in Game.resourceCategoryData) {
