@@ -53,9 +53,11 @@ Game.resourcesUI = (function(){
 									<span><span id="{{id}}ps">{{perSecond}}</span>/Sec</span>\
 								</td>\
 								<td style="vertical-align:middle; text-align:right;">\
+									IF
 									<span id="{{id}}" class="">{{current}}</span>\
 									/\
 									<span id="{{id}}Storage">3.277M</span>\
+									ENDIF
 								</td>\
 							</tr>\
 							END LOOP\
@@ -69,7 +71,90 @@ Game.resourcesUI = (function(){
 
         )
 
+			'{{> listMenuItems}}',
+
+			'{{this.title}}',
+			'{{this.category}}',
+			'{{this.unlocked}}',
+				
+
 */
+		instance.listMenuItems = Handlebars.registerPartial('listMenuItems',[
+			'<tr id="{{this.category}}Nav" class="sideTab" href="#{{this.category}}Tab" aria-controls="{{this.category}}Tab" role="tab" data-toggle="tab" style="height: 30px;" aria-expanded="true">',
+			'Submenu item',
+			'</tr>'
+		].join('\n'));
+
+		Handlebars.registerHelper('logicEquals',
+			function(a, b, options) {
+				console.log(a+ " & " +b);
+				if(a === b) { return options.fn(this); }
+				return options.inverse(this);
+			}
+		);
+
+		// Loops through the categories and creats the collapsible headers
+		instance.menuWithCategories = Handlebars.registerPartial('menuWithCategories',[
+			'{{#each categories}}',
+				'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
+					'<td colspan="4">',
+						'<span>{{this.title}}</span> <span class="caret"></span>',
+					'</td>',
+				'</tr>',
+				'{{#each items}}',
+					// Add the items per category
+					'{{#logicEquals this.category @index}}',
+						'{{> listMenuItems}}',
+					'{{/logicEquals}}',
+				'{{/each}}',
+			'{{/each}}',
+		].join('\n'));
+
+
+// Events:
+// 	onclick="activeResourceTab('{{this.category}}Nav')" 
+// 	
+
+		instance.resourcePage = Handlebars.compile(
+			// Start of the left-side navigation
+			['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
+				'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
+					'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
+						'<tbody>',
+					// Render items without categories first
+					'{{#each items}}',
+						'{{#logicEquals this.category ""}}',
+							'{{> listMenuItems}}',
+						'{{/logicEquals}}',
+					'{{/each}}',
+					// If there are categories, render these next
+					'{{#if categories}}',
+						'{{> menuWithCategories}}',
+					'{{/if}}',
+						'</tbody>',
+					'</table>',
+				'</div>',
+				// Start of the right-side content pane
+				'<div class="tab-content" id="'+this.category+'TabParent" style="width:100%">'
+			].join('\n'));
+
+		// Collect the data we need and render the page
+		instance.renderPage = function() {
+			var data = {};
+			// Loop through Game.resources.entries, collect data
+			
+			
+			data.categories = Game.resourceCategoryData;
+			data.items = Game.resources.entries;
+			console.log(data);
+			return this.resourcePage(data);
+		}
+
+  //'{{language}} is {{adjective}}. You are reading this article on {{website}}.'
+
+//	resourceNavStart
+//		resourceCategories
+//			resourceList
 
 
         instance.titleTemplate = Handlebars.compile(
