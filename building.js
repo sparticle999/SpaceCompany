@@ -44,19 +44,6 @@ Game.buildings = (function(){
         // this can be removed if rocketfuel producers get moved to buildings
         for(var id in Game.otherBuildingsData){
             var data = Game.otherBuildingsData[id];
-            if(data.resource == "science"){
-                this.researchBuildingTypeCount++;
-                this.researchBuildings[id] = $.extend({}, data, {
-                    id: id,
-                    htmlId: 'tecbld_' + id,
-                    current: 0,
-                    iconPath: Game.constants.iconPath,
-                    iconName: data.icon,
-                    iconExtension: Game.constants.iconExtension,
-                    max: data.maxCount,
-                    displayNeedsUpdate: true
-                });
-            }
         }
 
         // Link Game.categories.resources to buildings & storBuildings
@@ -222,6 +209,9 @@ Game.buildings = (function(){
     instance.refreshUnlock = function(data){
         if(data.unlocked)
             $('#' + data.htmlId)[0].className = "";
+        else
+            $('#' + data.htmlId)[0].className = "hidden";
+        
     }
 
     instance.getBuildingData = function(id) {

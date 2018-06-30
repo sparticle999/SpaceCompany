@@ -25,7 +25,7 @@ Game.resourcesUI = (function(){
         console.log("science buildings showing at start")
         console.log("turn red")
         console.log("0 energy, turn resources off")
-        console.log("all upgrades")
+        console.log("all tech upgrades")
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
@@ -41,6 +41,7 @@ Game.resourcesUI = (function(){
         console.log("redo solar system")
         console.log("redo wonder station")
         console.log("implement new resources into interstellar and stargaze")
+        console.log("destruction doesn't work")
 
 // onclick="activeResourceTab('iceNav')" 
 
