@@ -9,12 +9,9 @@ Game.tech = (function(){
 
     instance.initialise = function() {
         for(var id in Game.techData) {
-            var data = Game.techData[id];
+            this.entries[id] = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: "tec_" + id
-            });
+            this.entries[id].setId(id);
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
@@ -206,6 +203,52 @@ Game.tech = (function(){
         this.applyTechEffect(id);
     };
 
+    instance.updateEfficiencies = function(){
+        var techs = ['resourceEfficiencyResearch', 'energyEfficiencyResearch', 'scienceEfficiencyResearch', 'batteryEfficiencyResearch'];
+        for(var i = 0; i < techs.length; i++){
+            var tech = this.entries[techs[i]];
+
+            if(science > tech.cost['science'] || tech.current > 0) {
+                tech.unlocked = true;
+            }
+
+            if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
+                tech.unlocked = true;
+            }
+
+            if(tech.unlocked === false) {
+                tech.getBodyElement().className = 'hidden';
+                return;
+            } else {
+                tech.getBodyElement().className= '';
+            }
+
+            var cost = this.getCost(tech.cost['science'], tech.current);
+            Game.settings.turnRed(science, cost, tech.htmlIdCost);
+
+            tech.getTitleElement().text(tech.name + " #" + (tech.current));
+            tech.getCostElement().text(Game.settings.format(cost));
+
+            if(tech.maxLevel > 0){
+                if(tech.current >= tech.maxLevel && tech.maxLevel > 0) {
+                    tech.getButtonElement().className = 'hidden';
+                }
+
+                if(tech.current === tech.maxLevel) {
+                    tech.getTitleElement().text(tech.name + " " + tech.maxLevel + " (MAX)");
+                    tech.getCostElement().text("N/A");
+                } else {
+                    tech.getTitleElement().text(tech.name + " " + (tech.current) + " / " + tech.maxLevel);
+                    tech.getCostElement().text(Game.settings.format(cost));
+                }
+            }
+        }
+    };
+
+    instance.getCost = function(basePrice, amount, multiplier) {
+        return Math.floor(basePrice * Math.pow(multiplier || 1.1, amount));
+    };
+
     instance.getTechData = function(id) {
         return this.entries[id];
     };
@@ -226,43 +269,43 @@ Game.tech = (function(){
 
     instance.hasResources = function (resources) {
         for (var resource in resources) {
-           if (Game.resources.entries[resource].current < resources[resource]) {
-               return false;
-           }
-        }
-        return true;
-    };
+         if (Game.resources.entries[resource].current < resources[resource]) {
+             return false;
+         }
+     }
+     return true;
+ };
 
-    instance.spendResources = function(resources) {
-        for (var resource in resources) {
-            Game.resources.entries[resource].current -= resources[resource];
-        }
-    };
+ instance.spendResources = function(resources) {
+    for (var resource in resources) {
+        Game.resources.entries[resource].current -= resources[resource];
+    }
+};
 
-    instance.isUnlocked = function(id) {
-        var tech = this.getTechData(id);
-        if (typeof tech !== 'undefined') {
-            return tech.unlocked;
-        }
-        return false;
-    };
+instance.isUnlocked = function(id) {
+    var tech = this.getTechData(id);
+    if (typeof tech !== 'undefined') {
+        return tech.unlocked;
+    }
+    return false;
+};
 
-    instance.isPurchased = function(id) {
-        var tech = this.getTechData(id);
-        if (typeof tech !== 'undefined') {
-            return tech.current > 0;
-        }
-        return false;
-    };
+instance.isPurchased = function(id) {
+    var tech = this.getTechData(id);
+    if (typeof tech !== 'undefined') {
+        return tech.current > 0;
+    }
+    return false;
+};
 
-    instance.isMaxLevel = function(id) {
-        var tech = this.getTechData(id);
-        if (typeof tech !== 'undefined') {
-            if(id == 'energyEfficiencyResearch') return false;
-            return tech.maxLevel > 0 && tech.current >= tech.maxLevel;
-        }
-        return false;
-    };
+instance.isMaxLevel = function(id) {
+    var tech = this.getTechData(id);
+    if (typeof tech !== 'undefined') {
+        if(id == 'energyEfficiencyResearch') return false;
+        return tech.maxLevel > 0 && tech.current >= tech.maxLevel;
+    }
+    return false;
+};
 
-    return instance;
+return instance;
 }());

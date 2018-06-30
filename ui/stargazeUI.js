@@ -280,7 +280,7 @@ Game.stargazeUI = (function(){
         if(sphere != 0)sphereDM += 10
         sphereDM += sphere*5;
         //Research
-        var researchDM = Math.floor((Game.tech.entries.efficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
+        var researchDM = Math.floor((Game.tech.entries.resourceEfficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
         //Rank
         var rankDM = Game.achievements.rank * 2;
         //Swarms

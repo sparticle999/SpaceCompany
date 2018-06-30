@@ -53,10 +53,7 @@ var Game = (function() {
         refreshWonderBars();
         checkRedCost();
 
-        updateResourceEfficiencyDisplay();
-        updateEnergyEfficiencyDisplay();
-        updateScienceEfficiencyDisplay();
-        updateBatteryEfficiencyDisplay();
+        Game.tech.updateEfficiencies();
 
         legacyRefreshUI();
 

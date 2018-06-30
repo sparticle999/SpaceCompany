@@ -20,23 +20,23 @@ Game.techData = (function () {
 
         setId: function(id) {
             this.id = id;
-            this.htmlId = id;
+            this.htmlId = "tec_" + id;
             this.htmlIdCost = id + 'Cost';
             this.htmlIdTitle = id + 'Title';
             this.htmlIdButton = id + 'Button';
         },
 
         getBodyElement: function() {
-            return $('#' + this.htmlId);
+            return $('#' + this.htmlId)[0];
         },
         getTitleElement: function() {
-            return $('#' + this.htmlIdTitle);
+            return $('#' + this.htmlIdTitle)[0];
         },
         getCostElement: function() {
-            return $('#' + this.htmlIdCost);
+            return $('#' + this.htmlIdCost)[0];
         },
         getButtonElement: function() {
-            return $('#' + this.htmlIdButton);
+            return $('#' + this.htmlIdButton)[0];
         },
 
         apply: function(self) {
@@ -287,7 +287,7 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyT1");
-            console.log("energyStorageBox")
+            console.log("energyStorageBox, in energy storage displayNeedsUpdate")
         }
     });
 
@@ -514,12 +514,12 @@ Game.techData = (function () {
         },
         tabAlerts: ['resources'],
         onApply: function() {
-            pumpjackOutput *= 2;
-            heavyDrillOutput *= 2;
-            advancedDrillOutput *= 2;
-            furnaceWoodInput *= 2;
-            furnaceOutput *= 2;
-            laserCutterOutput *= 2;
+            var data = Game.buildings.entries;
+            var resourceList = ["oil", "metal", "gem", "charcoal", "wood"];
+            for(var i = 0; i < resourceList.length; i++){
+                data[resourceList[i] + "T2"].resourcePerSecond[resourceList[i]] *= 2;
+            }
+            data["charcoalT2"].resourcePerSecond.wood *= 2;
         }
     });
 
@@ -554,7 +554,7 @@ Game.techData = (function () {
         }
     });
 
-    instance.efficiencyResearch = $.extend({}, techBase, {
+    instance.resourceEfficiencyResearch = $.extend({}, techBase, {
         name: 'Resource Efficiency',
         desc: 'Resource Efficiency increases the income of resources by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,

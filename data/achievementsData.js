@@ -1,49 +1,49 @@
 Game.achievementsCategoryData = (function () {
 
 	var instance = {};
-		
+
 	instance.resources = {
 		title: 'Resources',
 		brackets: [50, 5000, 500000, 50000000, 5000000000],
 		entries: [
-			'resUranium', 'resLava',
-			'resOil', 'resMetal', 'resGems', 'resCharcoal', 'resWood', 'resSilicon',
-			'resLunarite', 'resMethane', 'resTitanium', 'resGold', 'resSilver',
-			'resHydrogen', 'resHelium', 'resIce', 'resMeteorite',
-			'resScience', 'resRocketFuel' ]
+		'resUranium', 'resLava',
+		'resOil', 'resMetal', 'resGems', 'resCharcoal', 'resWood', 'resSilicon',
+		'resLunarite', 'resMethane', 'resTitanium', 'resGold', 'resSilver',
+		'resHydrogen', 'resHelium', 'resIce', 'resMeteorite',
+		'resScience', 'resRocketFuel' ]
 	};
-		
+
 	instance.producers = {
 		title: 'Producers',
 		brackets: [10, 50, 100, 500, 1000],
 		entries: [
-			'prodPlasma1', 'prodPlasma2',
-			'prodEnergy1', 'prodEnergy2', 'prodEnergy3', 'prodEnergy4', 'prodEnergy5', 'prodEnergy6',
-			'prodUranium1', 'prodUranium2', 'prodUranium3', 'prodUranium4',
-			'prodLava1', 'prodLava2', 'prodLava3', 'prodLava4',
-			
-			'prodOil1', 'prodOil2', 'prodOil3', 'prodOil4',
-			'prodMetal1', 'prodMetal2', 'prodMetal3', 'prodMetal4',
-			'prodGems1', 'prodGems2', 'prodGems3', 'prodGems4',
-			'prodCharcoal1', 'prodCharcoal2', 'prodCharcoal3', 'prodCharcoal4',
-			'prodWood1', 'prodWood2', 'prodWood3', 'prodWood4',
-			'prodSilicon1', 'prodSilicon2', 'prodSilicon3', 'prodSilicon4',
-			
-			'prodLunarite1', 'prodLunarite2', 'prodLunarite3', 'prodLunarite4',
-			'prodMethane1', 'prodMethane2', 'prodMethane3', 'prodMethane4',
-			'prodTitanium1', 'prodTitanium2', 'prodTitanium3', 'prodTitanium4',
-			'prodGold1', 'prodGold2', 'prodGold3', 'prodGold4',
-			'prodSilver1', 'prodSilver2', 'prodSilver3', 'prodSilver4',
-			
-			'prodHydrogen1', 'prodHydrogen2', 'prodHydrogen3', 'prodHydrogen4',
-			'prodHelium1', 'prodHelium2', 'prodHelium3', 'prodHelium4',
-			'prodIce1', 'prodIce2', 'prodIce3', 'prodIce4',
-			'prodMeteorite1', 'prodMeteorite2', 'prodMeteorite3', 'prodMeteorite4',
-			
-			'prodScience1', 'prodScience2', 'prodScience3', 'prodScience4',
-			'prodRocketFuel1', 'prodRocketFuel2', 'prodRocketFuel3',
-			'prodDyson1', 'prodDyson2' ]
-			
+		'prodPlasmaT1', 'prodPlasmaT2',
+		'prodEnergyT1', 'prodEnergyT2', 'prodEnergyT3', 'prodEnergyT4', 'prodEnergyT5', 'prodEnergyT6',
+		'prodUraniumT1', 'prodUraniumT2', 'prodUraniumT3', 'prodUraniumT4',
+		'prodLavaT1', 'prodLavaT2', 'prodLavaT3', 'prodLavaT4',
+
+		'prodOilT1', 'prodOilT2', 'prodOilT3', 'prodOilT4',
+		'prodMetalT1', 'prodMetalT2', 'prodMetalT3', 'prodMetalT4',
+		'prodGemsT1', 'prodGemsT2', 'prodGemsT3', 'prodGemsT4',
+		'prodCharcoalT1', 'prodCharcoalT2', 'prodCharcoalT3', 'prodCharcoalT4',
+		'prodWoodT1', 'prodWoodT2', 'prodWoodT3', 'prodWoodT4',
+		'prodSiliconT1', 'prodSiliconT2', 'prodSiliconT3', 'prodSiliconT4',
+
+		'prodLunariteT1', 'prodLunariteT2', 'prodLunariteT3', 'prodLunariteT4',
+		'prodMethaneT1', 'prodMethaneT2', 'prodMethaneT3', 'prodMethaneT4',
+		'prodTitaniumT1', 'prodTitaniumT2', 'prodTitaniumT3', 'prodTitaniumT4',
+		'prodGoldT1', 'prodGoldT2', 'prodGoldT3', 'prodGoldT4',
+		'prodSilverT1', 'prodSilverT2', 'prodSilverT3', 'prodSilverT4',
+
+		'prodHydrogenT1', 'prodHydrogenT2', 'prodHydrogenT3', 'prodHydrogenT4',
+		'prodHeliumT1', 'prodHeliumT2', 'prodHeliumT3', 'prodHeliumT4',
+		'prodIceT1', 'prodIceT2', 'prodIceT3', 'prodIceT4',
+		'prodMeteoriteT1', 'prodMeteoriteT2', 'prodMeteoriteT3', 'prodMeteoriteT4',
+
+		'prodScienceT1', 'prodScienceT2', 'prodScienceT3', 'prodScienceT4',
+		'prodRocketFuelT1', 'prodRocketFuelT2', 'prodRocketFuelT3',
+		'prodDysonT1', 'prodDysonT2' ]
+
 
 	};
 
@@ -60,7 +60,7 @@ Game.achievementsData = (function(){
 	**************/
 
 	instance.resUranium = {
-		id_v4: 'ach_12',
+		id_v4: 'ach_0',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'uraniumIcon',
 		title: 'Collect %s Uranium',
@@ -69,7 +69,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resLava = {
-		id_v4: 'ach_13',
+		id_v4: 'ach_1',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'lavaIcon',
 		title: 'Collect %s Lava',
@@ -78,7 +78,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resOil = {
-		id_v4: 'ach_5',
+		id_v4: 'ach_2',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'oilIcon',
 		title: 'Collect %s Oil',
@@ -87,7 +87,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resMetal = {
-		id_v4: 'ach_0',
+		id_v4: 'ach_3',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'metalIcon',
 		title: 'Collect %s Metal',
@@ -96,7 +96,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resGems = {
-		id_v4: 'ach_1',
+		id_v4: 'ach_4',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'gemIcon',
 		title: 'Collect %s Gems',
@@ -105,7 +105,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.resCharcoal = {
-		id_v4: 'ach_3',
+		id_v4: 'ach_5',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'charcoalIcon',
 		title: 'Collect %s Charcoal',
@@ -114,7 +114,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.resWood = {
-		id_v4: 'ach_2',
+		id_v4: 'ach_6',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'woodIcon',
 		title: 'Collect %s Wood',
@@ -176,7 +176,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resHydrogen = {
-		id_v4: 'ach_14',
+		id_v4: 'ach_12',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'hydrogenIcon',
 		title: 'Collect %s Hydrogen',
@@ -185,7 +185,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resHelium = {
-		id_v4: 'ach_15',
+		id_v4: 'ach_13',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'heliumIcon',
 		title: 'Collect %s Helium',
@@ -194,7 +194,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resIce = {
-		id_v4: 'ach_16',
+		id_v4: 'ach_14',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'iceIcon',
 		title: 'Collect %s Ice',
@@ -203,7 +203,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resMeteorite = {
-		id_v4: 'ach_17',
+		id_v4: 'ach_15',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'meteoriteIcon',
 		title: 'Collect %s Meteorite',
@@ -212,7 +212,7 @@ Game.achievementsData = (function(){
 	};
 	
 	instance.resScience = {
-		id_v4: 'ach_4',
+		id_v4: 'ach_16',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'technologyIcon',
 		title: 'Collect %s Science',
@@ -221,7 +221,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.resRocketFuel = {
-		id_v4: 'ach_6',
+		id_v4: 'ach_17',
 		categoryInstance: Game.achievementsCategoryData.resources,
 		iconName: 'rocketFuelIcon',
 		title: 'Collect %s Rocket Fuel',
@@ -233,746 +233,890 @@ Game.achievementsData = (function(){
 	** Producers **
 	**************/
 
-	instance.prodEnergy1 = {
-		id_v4: 'ach_18',
+	instance._prodEnergyT1 = {
+		id_v4: "ach_18",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Charcoal Engines',
-		evaluator: function(x) { return charcoalEngine >= x },
-		progressEvaluator: function(x) { return charcoalEngine/x }
+		title: "Own %s Charcoal Engine",
+		evaluator: function(x) { return Game.buildings.entries["energyT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT1"].current/x }
 	};
 
-	instance.prodEnergy2 = {
-		id_v4: 'ach_19',
+	instance._prodEnergyT2 = {
+		id_v4: "ach_19",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Solar Panels',
-		evaluator: function(x) { return solarPanel >= x },
-		progressEvaluator: function(x) { return solarPanel/x }
+		title: "Own %s Solar Panel",
+		evaluator: function(x) { return Game.buildings.entries["energyT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT2"].current/x }
 	};
 
-	instance.prodEnergy3 = {
-		id_v4: 'ach_20',
+	instance._prodEnergyT3 = {
+		id_v4: "ach_20",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Methane Power Stations',
-		evaluator: function(x) { return methaneStation >= x },
-		progressEvaluator: function(x) { return methaneStation/x }
+		title: "Own %s Methane Power Station",
+		evaluator: function(x) { return Game.buildings.entries["energyT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT3"].current/x }
 	};
 
-	instance.prodEnergy4 = {
-		id_v4: 'ach_22',
+	instance._prodEnergyT4 = {
+		id_v4: "ach_21",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Nuclear Power Stations',
-		evaluator: function(x) { return nuclearStation >= x },
-		progressEvaluator: function(x) { return nuclearStation/x }
+		title: "Own %s Nuclear Power Station",
+		evaluator: function(x) { return Game.buildings.entries["energyT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT4"].current/x }
 	};
 
-	instance.prodEnergy5 = {
-		id_v4: 'ach_23',
+	instance._prodEnergyT5 = {
+		id_v4: "ach_22",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Magmatic Dynamos',
-		evaluator: function(x) { return magmatic >= x },
-		progressEvaluator: function(x) { return magmatic/x }
+		title: "Own %s Magmatic Dynamo",
+		evaluator: function(x) { return Game.buildings.entries["energyT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT5"].current/x }
 	};
 
-	instance.prodEnergy6 = {
-		id_v4: 'ach_21',
+	instance._prodEnergyT6 = {
+		id_v4: "ach_23",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: 'Own %s Fusion Reactors',
-		evaluator: function(x) { return fusionReactor >= x },
-		progressEvaluator: function(x) { return fusionReactor/x }
+		title: "Own %s Fusion Reactor",
+		evaluator: function(x) { return Game.buildings.entries["energyT6"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["energyT6"].current/x }
 	};
 
-	instance.prodPlasma1 = {
-		id_v4: 'ach_24',
+	instance._prodPlasmaT1 = {
+		id_v4: "ach_24",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
-		title: 'Own %s Super-Heaters',
-		evaluator: function(x) { return heater >= x },
-		progressEvaluator: function(x) { return heater/x }
+		title: "Own %s Super-Heater",
+		evaluator: function(x) { return Game.buildings.entries["plasmaT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["plasmaT1"].current/x }
 	};
 
-	instance.prodPlasma2 = {
-		id_v4: 'ach_25',
+	instance._prodPlasmaT2 = {
+		id_v4: "ach_25",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
-		title: 'Own %s Plasmatic Pits',
-		evaluator: function(x) { return plasmatic >= x },
-		progressEvaluator: function(x) { return plasmatic/x }
+		title: "Own %s Plasmatic Pit",
+		evaluator: function(x) { return Game.buildings.entries["plasmaT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["plasmaT2"].current/x }
 	};
 
-	instance.prodPlasma3 = {
-		id_v4: 'ach_102',
+	instance._prodPlasmaT3 = {
+		id_v4: "ach_26",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'plasmaIcon',
-		title: 'Own %s Electron Baths',
-		evaluator: function(x) { return bath >= x },
-		progressEvaluator: function(x) { return bath/x }
+		title: "Own %s Electron Bath",
+		evaluator: function(x) { return Game.buildings.entries["plasmaT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["plasmaT3"].current/x }
 	};
 
-	instance.prodUranium1 = {
-		id_v4: 'ach_70',
+	instance._prodUraniumT1 = {
+		id_v4: "ach_27",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
-		title: 'Own %s Grinders',
-		evaluator: function(x) { return grinder >= x },
-		progressEvaluator: function(x) { return grinder/x }
+		title: "Own %s Grinder",
+		evaluator: function(x) { return Game.buildings.entries["uraniumT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["uraniumT1"].current/x }
 	};
 
-	instance.prodUranium2 = {
-		id_v4: 'ach_71',
+	instance._prodUraniumT2 = {
+		id_v4: "ach_28",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
-		title: 'Own %s Cubic Teleposers',
-		evaluator: function(x) { return cubic >= x },
-		progressEvaluator: function(x) { return cubic/x }
+		title: "Own %s Cubic Teleposer",
+		evaluator: function(x) { return Game.buildings.entries["uraniumT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["uraniumT2"].current/x }
 	};
 
-	instance.prodUranium3 = {
-		id_v4: 'ach_72',
+	instance._prodUraniumT3 = {
+		id_v4: "ach_29",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
-		title: 'Own %s Uranium Enrichers',
-		evaluator: function(x) { return enricher >= x },
-		progressEvaluator: function(x) { return enricher/x }
+		title: "Own %s Uranium Enricher",
+		evaluator: function(x) { return Game.buildings.entries["uraniumT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["uraniumT3"].current/x }
 	};
 
-	instance.prodUranium4 = {
-		id_v4: 'ach_73',
+	instance._prodUraniumT4 = {
+		id_v4: "ach_30",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'uraniumIcon',
-		title: 'Own %s Yellowcake Recyclers',
-		evaluator: function(x) { return recycler >= x },
-		progressEvaluator: function(x) { return recycler/x }
+		title: "Own %s Yellowcake Recycler",
+		evaluator: function(x) { return Game.buildings.entries["uraniumT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["uraniumT4"].current/x }
 	};
 
-	instance.prodLava1 = {
-		id_v4: 'ach_74',
+	instance._prodUraniumT5 = {
+		id_v4: "ach_31",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'uraniumIcon',
+		title: "Own %s Planetary Nuclear Plant",
+		evaluator: function(x) { return Game.buildings.entries["uraniumT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["uraniumT5"].current/x }
+	};
+
+	instance._prodLavaT1 = {
+		id_v4: "ach_32",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Own %s Heat Resistant Crucibles',
-		evaluator: function(x) { return crucible >= x },
-		progressEvaluator: function(x) { return crucible/x }
+		title: "Own %s Heat Resistant Crucible",
+		evaluator: function(x) { return Game.buildings.entries["lavaT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lavaT1"].current/x }
 	};
 
-	instance.prodLava2 = {
-		id_v4: 'ach_75',
+	instance._prodLavaT2 = {
+		id_v4: "ach_33",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Own %s Lava Extractors',
-		evaluator: function(x) { return extractor >= x },
-		progressEvaluator: function(x) { return extractor/x }
+		title: "Own %s Lava Extractor",
+		evaluator: function(x) { return Game.buildings.entries["lavaT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lavaT2"].current/x }
 	};
 
-	instance.prodLava3 = {
-		id_v4: 'ach_76',
+	instance._prodLavaT3 = {
+		id_v4: "ach_34",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Own %s Igneous Extruders',
-		evaluator: function(x) { return extruder >= x },
-		progressEvaluator: function(x) { return extruder/x }
+		title: "Own %s Igneous Extruder",
+		evaluator: function(x) { return Game.buildings.entries["lavaT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lavaT3"].current/x }
 	};
 
-	instance.prodLava4 = {
-		id_v4: 'ach_77',
+	instance._prodLavaT4 = {
+		id_v4: "ach_35",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Own %s Volcanic Veluptuators',
-		evaluator: function(x) { return veluptuator >= x },
-		progressEvaluator: function(x) { return veluptuator/x }
+		title: "Own %s Volcanic Veluptuator",
+		evaluator: function(x) { return Game.buildings.entries["lavaT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lavaT4"].current/x }
 	};
 
-	instance.prodOil1 = {
-		id_v4: 'ach_30',
+	instance._prodLavaT5 = {
+		id_v4: "ach_36",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'lavaIcon',
+		title: "Own %s Jupitonian Condensator",
+		evaluator: function(x) { return Game.buildings.entries["lavaT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lavaT5"].current/x }
+	};
+
+	instance._prodOilT1 = {
+		id_v4: "ach_37",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
-		title: 'Own %s Small Pumps',
-		evaluator: function(x) { return pump >= x },
-		progressEvaluator: function(x) { return pump/x }
+		title: "Own %s Small Pump",
+		evaluator: function(x) { return Game.buildings.entries["oilT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["oilT1"].current/x }
 	};
 
-	instance.prodOil2 = {
-		id_v4: 'ach_31',
+	instance._prodOilT2 = {
+		id_v4: "ach_38",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
-		title: 'Own %s Pumpjacks',
-		evaluator: function(x) { return pumpjack >= x },
-		progressEvaluator: function(x) { return pumpjack/x }
+		title: "Own %s Pumpjack",
+		evaluator: function(x) { return Game.buildings.entries["oilT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["oilT2"].current/x }
 	};
 
-	instance.prodOil3 = {
-		id_v4: 'ach_32',
+	instance._prodOilT3 = {
+		id_v4: "ach_39",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
-		title: 'Own %s Oil Fields',
-		evaluator: function(x) { return oilField >= x },
-		progressEvaluator: function(x) { return oilField/x }
+		title: "Own %s Oil Field",
+		evaluator: function(x) { return Game.buildings.entries["oilT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["oilT3"].current/x }
 	};
 
-	instance.prodOil4 = {
-		id_v4: 'ach_33',
+	instance._prodOilT4 = {
+		id_v4: "ach_40",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'oilIcon',
-		title: 'Own %s Offshore Rigs',
-		evaluator: function(x) { return oilRig >= x },
-		progressEvaluator: function(x) { return oilRig/x }
+		title: "Own %s Offshore Rig",
+		evaluator: function(x) { return Game.buildings.entries["oilT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["oilT4"].current/x }
 	};
 
-	instance.prodMetal1 = {
-		id_v4: 'ach_34',
+	instance._prodOilT5 = {
+		id_v4: "ach_41",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'oilIcon',
+		title: "Own %s Fossilator 9000",
+		evaluator: function(x) { return Game.buildings.entries["oilT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["oilT5"].current/x }
+	};
+
+	instance._prodMetalT1 = {
+		id_v4: "ach_42",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
-		title: 'Own %s Miners',
-		evaluator: function(x) { return miner >= x },
-		progressEvaluator: function(x) { return miner/x }
+		title: "Own %s Miner",
+		evaluator: function(x) { return Game.buildings.entries["metalT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["metalT1"].current/x }
 	};
 
-	instance.prodMetal2 = {
-		id_v4: 'ach_35',
+	instance._prodMetalT2 = {
+		id_v4: "ach_43",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
-		title: 'Own %s Heavy Drills',
-		evaluator: function(x) { return heavyDrill >= x },
-		progressEvaluator: function(x) { return heavyDrill/x }
+		title: "Own %s Heavy Drill",
+		evaluator: function(x) { return Game.buildings.entries["metalT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["metalT2"].current/x }
 	};
 
-	instance.prodMetal3 = {
-		id_v4: 'ach_36',
+	instance._prodMetalT3 = {
+		id_v4: "ach_44",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
-		title: 'Own %s Giga Drills',
-		evaluator: function(x) { return gigaDrill >= x },
-		progressEvaluator: function(x) { return gigaDrill/x }
+		title: "Own %s Giga Drill",
+		evaluator: function(x) { return Game.buildings.entries["metalT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["metalT3"].current/x }
 	};
 
-	instance.prodMetal4 = {
-		id_v4: 'ach_37',
+	instance._prodMetalT4 = {
+		id_v4: "ach_45",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'metalIcon',
-		title: 'Own %s Quantum Drills',
-		evaluator: function(x) { return quantumDrill >= x },
-		progressEvaluator: function(x) { return quantumDrill/x }
+		title: "Own %s Quantum Drill",
+		evaluator: function(x) { return Game.buildings.entries["metalT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["metalT4"].current/x }
 	};
 
-	instance.prodGems1 = {
-		id_v4: 'ach_38',
+	instance._prodMetalT5 = {
+		id_v4: "ach_46",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'metalIcon',
+		title: "Own %s Multiverse Drill",
+		evaluator: function(x) { return Game.buildings.entries["metalT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["metalT5"].current/x }
+	};
+
+	instance._prodGemT1 = {
+		id_v4: "ach_47",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
-		title: 'Own %s Gem Miners',
-		evaluator: function(x) { return gemMiner >= x },
-		progressEvaluator: function(x) { return gemMiner/x }
+		title: "Own %s Gem Miner",
+		evaluator: function(x) { return Game.buildings.entries["gemT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gemT1"].current/x }
 	};
 
-	instance.prodGems2 = {
-		id_v4: 'ach_39',
+	instance._prodGemT2 = {
+		id_v4: "ach_48",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
-		title: 'Own %s Advanced Drills',
-		evaluator: function(x) { return advancedDrill >= x },
-		progressEvaluator: function(x) { return advancedDrill/x }
+		title: "Own %s Advanced Drill",
+		evaluator: function(x) { return Game.buildings.entries["gemT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gemT2"].current/x }
 	};
 
-	instance.prodGems3 = {
-		id_v4: 'ach_40',
+	instance._prodGemT3 = {
+		id_v4: "ach_49",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
-		title: 'Own %s Diamond Encrusted Drills',
-		evaluator: function(x) { return diamondDrill >= x },
-		progressEvaluator: function(x) { return diamondDrill/x }
+		title: "Own %s Diamond Encrusted Drill",
+		evaluator: function(x) { return Game.buildings.entries["gemT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gemT3"].current/x }
 	};
 
-	instance.prodGems4 = {
-		id_v4: 'ach_41',
+	instance._prodGemT4 = {
+		id_v4: "ach_50",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
-		title: 'Own %s Carbyne Drills',
-		evaluator: function(x) { return carbyneDrill >= x },
-		progressEvaluator: function(x) { return carbyneDrill/x }
+		title: "Own %s Carbyne Drill",
+		evaluator: function(x) { return Game.buildings.entries["gemT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gemT4"].current/x }
 	};
 
-	instance.prodCharcoal1 = {
-		id_v4: 'ach_26',
+	instance._prodGemT5 = {
+		id_v4: "ach_51",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gemIcon',
+		title: "Own %s Diamond Accretion Chamber",
+		evaluator: function(x) { return Game.buildings.entries["gemT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["gemT5"].current/x }
+	};
+
+	instance._prodCharcoalT1 = {
+		id_v4: "ach_52",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
-		title: 'Own %s Woodburners',
-		evaluator: function(x) { return woodburner >= x },
-		progressEvaluator: function(x) { return woodburner/x }
+		title: "Own %s Woodburner",
+		evaluator: function(x) { return Game.buildings.entries["charcoalT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT1"].current/x }
 	};
 
-	instance.prodCharcoal2 = {
-		id_v4: 'ach_27',
+	instance._prodCharcoalT2 = {
+		id_v4: "ach_53",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
-		title: 'Own %s Furnaces',
-		evaluator: function(x) { return furnace >= x },
-		progressEvaluator: function(x) { return furnace/x }
+		title: "Own %s Furnace",
+		evaluator: function(x) { return Game.buildings.entries["charcoalT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT2"].current/x }
 	};
 
-	instance.prodCharcoal3 = {
-		id_v4: 'ach_28',
+	instance._prodCharcoalT3 = {
+		id_v4: "ach_54",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
-		title: 'Own %s Industrial Kilns',
-		evaluator: function(x) { return kiln >= x },
-		progressEvaluator: function(x) { return kiln/x }
+		title: "Own %s Industrial Kiln",
+		evaluator: function(x) { return Game.buildings.entries["charcoalT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT3"].current/x }
 	};
 
-	instance.prodCharcoal4 = {
-		id_v4: 'ach_29',
+	instance._prodCharcoalT4 = {
+		id_v4: "ach_55",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
-		title: 'Own %s Forest Fryers',
-		evaluator: function(x) { return fryer >= x },
-		progressEvaluator: function(x) { return fryer/x }
+		title: "Own %s Forest Fryer",
+		evaluator: function(x) { return Game.buildings.entries["charcoalT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT4"].current/x }
 	};
 
-	instance.prodWood1 = {
-		id_v4: 'ach_42',
+	instance._prodCharcoalT5 = {
+		id_v4: "ach_56",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'charcoalIcon',
+		title: "Own %s Microverse Pollutor",
+		evaluator: function(x) { return Game.buildings.entries["charcoalT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT5"].current/x }
+	};
+
+	instance._prodWoodT1 = {
+		id_v4: "ach_57",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
-		title: 'Own %s Woodcutters',
-		evaluator: function(x) { return woodcutter >= x },
-		progressEvaluator: function(x) { return woodcutter/x }
+		title: "Own %s Woodcutter",
+		evaluator: function(x) { return Game.buildings.entries["woodT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["woodT1"].current/x }
 	};
 
-	instance.prodWood2 = {
-		id_v4: 'ach_43',
+	instance._prodWoodT2 = {
+		id_v4: "ach_58",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
-		title: 'Own %s Laser Cutters',
-		evaluator: function(x) { return laserCutter >= x },
-		progressEvaluator: function(x) { return laserCutter/x }
+		title: "Own %s Laser Cutter",
+		evaluator: function(x) { return Game.buildings.entries["woodT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["woodT2"].current/x }
 	};
 
-	instance.prodWood3 = {
-		id_v4: 'ach_44',
+	instance._prodWoodT3 = {
+		id_v4: "ach_59",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
-		title: 'Own %s Mass Deforesters',
-		evaluator: function(x) { return deforester >= x },
-		progressEvaluator: function(x) { return deforester/x }
+		title: "Own %s Mass Deforester",
+		evaluator: function(x) { return Game.buildings.entries["woodT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["woodT3"].current/x }
 	};
 
-	instance.prodWood4 = {
-		id_v4: 'ach_45',
+	instance._prodWoodT4 = {
+		id_v4: "ach_60",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'woodIcon',
-		title: 'Own %s Biomass Infusers',
-		evaluator: function(x) { return infuser >= x },
-		progressEvaluator: function(x) { return infuser/x }
+		title: "Own %s Biomass Infuser",
+		evaluator: function(x) { return Game.buildings.entries["woodT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["woodT4"].current/x }
 	};
 
-	instance.prodSilicon1 = {
-		id_v4: 'ach_54',
+	instance._prodWoodT5 = {
+		id_v4: "ach_61",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'woodIcon',
+		title: "Own %s Russian Forest",
+		evaluator: function(x) { return Game.buildings.entries["woodT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["woodT5"].current/x }
+	};
+
+	instance._prodSiliconT1 = {
+		id_v4: "ach_62",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
-		title: 'Own %s Empowered Blowtorches',
-		evaluator: function(x) { return blowtorch >= x },
-		progressEvaluator: function(x) { return blowtorch/x }
+		title: "Own %s Empowered Blowtorch",
+		evaluator: function(x) { return Game.buildings.entries["siliconT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["siliconT1"].current/x }
 	};
 
-	instance.prodSilicon2 = {
-		id_v4: 'ach_55',
+	instance._prodSiliconT2 = {
+		id_v4: "ach_63",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
-		title: 'Own %s Seaside Scorchers',
-		evaluator: function(x) { return scorcher >= x },
-		progressEvaluator: function(x) { return scorcher/x }
+		title: "Own %s Seaside Scorcher",
+		evaluator: function(x) { return Game.buildings.entries["siliconT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["siliconT2"].current/x }
 	};
 
-	instance.prodSilicon3 = {
-		id_v4: 'ach_56',
+	instance._prodSiliconT3 = {
+		id_v4: "ach_64",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
-		title: 'Own %s Beach Annihilators',
-		evaluator: function(x) { return annihilator >= x },
-		progressEvaluator: function(x) { return annihilator/x }
+		title: "Own %s Beach Annihilator",
+		evaluator: function(x) { return Game.buildings.entries["siliconT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["siliconT3"].current/x }
 	};
 
-	instance.prodSilicon4 = {
-		id_v4: 'ach_57',
+	instance._prodSiliconT4 = {
+		id_v4: "ach_65",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'siliconIcon',
-		title: 'Own %s Desert Destroyers',
-		evaluator: function(x) { return desert >= x },
-		progressEvaluator: function(x) { return desert/x }
+		title: "Own %s Desert Destroyer",
+		evaluator: function(x) { return Game.buildings.entries["siliconT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["siliconT4"].current/x }
 	};
 
-	instance.prodLunarite1 = {
-		id_v4: 'ach_46',
+	instance._prodSiliconT5 = {
+		id_v4: "ach_66",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'siliconIcon',
+		title: "Own %s Time And Relative Dimensions In Sand",
+		evaluator: function(x) { return Game.buildings.entries["siliconT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["siliconT5"].current/x }
+	};
+
+	instance._prodLunariteT1 = {
+		id_v4: "ach_67",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
-		title: 'Own %s Native Moon Workers',
-		evaluator: function(x) { return moonWorker >= x },
-		progressEvaluator: function(x) { return moonWorker/x }
+		title: "Own %s Native Moon Worker",
+		evaluator: function(x) { return Game.buildings.entries["lunariteT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lunariteT1"].current/x }
 	};
 
-	instance.prodLunarite2 = {
-		id_v4: 'ach_47',
+	instance._prodLunariteT2 = {
+		id_v4: "ach_68",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
-		title: 'Own %s Low-Gravity Drills',
-		evaluator: function(x) { return moonDrill >= x },
-		progressEvaluator: function(x) { return moonDrill/x }
+		title: "Own %s Low-Gravity Drill",
+		evaluator: function(x) { return Game.buildings.entries["lunariteT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lunariteT2"].current/x }
 	};
 
-	instance.prodLunarite3 = {
-		id_v4: 'ach_48',
+	instance._prodLunariteT3 = {
+		id_v4: "ach_69",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
-		title: 'Own %s Moon Quarries',
-		evaluator: function(x) { return moonQuarry >= x },
-		progressEvaluator: function(x) { return moonQuarry/x }
+		title: "Own %s Moon Quarry",
+		evaluator: function(x) { return Game.buildings.entries["lunariteT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lunariteT3"].current/x }
 	};
 
-	instance.prodLunarite4 = {
-		id_v4: 'ach_49',
+	instance._prodLunariteT4 = {
+		id_v4: "ach_70",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lunariteIcon',
-		title: 'Own %s Planetary Excavators',
-		evaluator: function(x) { return planetExcavator >= x },
-		progressEvaluator: function(x) { return planetExcavator/x }
+		title: "Own %s Planetary Excavator",
+		evaluator: function(x) { return Game.buildings.entries["lunariteT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lunariteT4"].current/x }
 	};
 
-	instance.prodMethane1 = {
-		id_v4: 'ach_58',
+	instance._prodLunariteT5 = {
+		id_v4: "ach_71",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'lunariteIcon',
+		title: "Own %s Moon Cloner",
+		evaluator: function(x) { return Game.buildings.entries["lunariteT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["lunariteT5"].current/x }
+	};
+
+	instance._prodMethaneT1 = {
+		id_v4: "ach_72",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
-		title: 'Own %s Vacuum Cleaners',
-		evaluator: function(x) { return vacuum >= x },
-		progressEvaluator: function(x) { return vacuum/x }
+		title: "Own %s Vacuum Cleaner",
+		evaluator: function(x) { return Game.buildings.entries["methaneT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["methaneT1"].current/x }
 	};
 
-	instance.prodMethane2 = {
-		id_v4: 'ach_59',
+	instance._prodMethaneT2 = {
+		id_v4: "ach_73",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
-		title: 'Own %s Suction Excavators',
-		evaluator: function(x) { return suctionExcavator >= x },
-		progressEvaluator: function(x) { return suctionExcavator/x }
+		title: "Own %s Suction Excavator",
+		evaluator: function(x) { return Game.buildings.entries["methaneT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["methaneT2"].current/x }
 	};
 
-	instance.prodMethane3 = {
-		id_v4: 'ach_60',
+	instance._prodMethaneT3 = {
+		id_v4: "ach_74",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
-		title: 'Own %s Space Cow Plantations',
-		evaluator: function(x) { return spaceCow >= x },
-		progressEvaluator: function(x) { return spaceCow/x }
+		title: "Own %s Space Cow Plantation",
+		evaluator: function(x) { return Game.buildings.entries["methaneT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["methaneT3"].current/x }
 	};
 
-	instance.prodMethane4 = {
-		id_v4: 'ach_61',
+	instance._prodMethaneT4 = {
+		id_v4: "ach_75",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'methaneIcon',
-		title: 'Own %s Hydrothermal Vents',
-		evaluator: function(x) { return vent >= x },
-		progressEvaluator: function(x) { return vent/x }
+		title: "Own %s Hydrothermal Vent",
+		evaluator: function(x) { return Game.buildings.entries["methaneT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["methaneT4"].current/x }
 	};
 
-	instance.prodTitanium1 = {
-		id_v4: 'ach_50',
+	instance._prodMethaneT5 = {
+		id_v4: "ach_76",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'methaneIcon',
+		title: "Own %s Interstellar Cow",
+		evaluator: function(x) { return Game.buildings.entries["methaneT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["methaneT5"].current/x }
+	};
+
+	instance._prodTitaniumT1 = {
+		id_v4: "ach_77",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
-		title: 'Own %s Explorers',
-		evaluator: function(x) { return explorer >= x },
-		progressEvaluator: function(x) { return explorer/x }
+		title: "Own %s Explorer",
+		evaluator: function(x) { return Game.buildings.entries["titaniumT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["titaniumT1"].current/x }
 	};
 
-	instance.prodTitanium2 = {
-		id_v4: 'ach_51',
+	instance._prodTitaniumT2 = {
+		id_v4: "ach_78",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
-		title: 'Own %s Lunarite Drills',
-		evaluator: function(x) { return lunariteDrill >= x },
-		progressEvaluator: function(x) { return lunariteDrill/x }
+		title: "Own %s Lunarite Drill",
+		evaluator: function(x) { return Game.buildings.entries["titaniumT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["titaniumT2"].current/x }
 	};
 
-	instance.prodTitanium3 = {
-		id_v4: 'ach_52',
+	instance._prodTitaniumT3 = {
+		id_v4: "ach_79",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
-		title: 'Own %s Penta-Drills',
-		evaluator: function(x) { return pentaDrill >= x },
-		progressEvaluator: function(x) { return pentaDrill/x }
+		title: "Own %s Penta-Drill",
+		evaluator: function(x) { return Game.buildings.entries["titaniumT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["titaniumT3"].current/x }
 	};
 
-	instance.prodTitanium4 = {
-		id_v4: 'ach_53',
+	instance._prodTitaniumT4 = {
+		id_v4: "ach_80",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'titaniumIcon',
-		title: 'Own %s Drills of Titans',
-		evaluator: function(x) { return titanDrill >= x },
-		progressEvaluator: function(x) { return titanDrill/x }
+		title: "Own %s Drill of Titans",
+		evaluator: function(x) { return Game.buildings.entries["titaniumT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["titaniumT4"].current/x }
 	};
 
-	instance.prodGold1 = {
-		id_v4: 'ach_62',
+	instance._prodTitaniumT5 = {
+		id_v4: "ach_81",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'titaniumIcon',
+		title: "Own %s David Guetta's Club",
+		evaluator: function(x) { return Game.buildings.entries["titaniumT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["titaniumT5"].current/x }
+	};
+
+	instance._prodGoldT1 = {
+		id_v4: "ach_82",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
-		title: 'Own %s Rocket Droids',
-		evaluator: function(x) { return droid >= x },
-		progressEvaluator: function(x) { return droid/x }
+		title: "Own %s Rocket Droid",
+		evaluator: function(x) { return Game.buildings.entries["goldT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["goldT1"].current/x }
 	};
 
-	instance.prodGold2 = {
-		id_v4: 'ach_63',
+	instance._prodGoldT2 = {
+		id_v4: "ach_83",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
-		title: 'Own %s Asteroid Destroyers',
-		evaluator: function(x) { return destroyer >= x },
-		progressEvaluator: function(x) { return destroyer/x }
+		title: "Own %s Asteroid Destroyer",
+		evaluator: function(x) { return Game.buildings.entries["goldT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["goldT2"].current/x }
 	};
 
-	instance.prodGold3 = {
-		id_v4: 'ach_64',
+	instance._prodGoldT3 = {
+		id_v4: "ach_84",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
-		title: 'Own %s Death Stars Jr',
-		evaluator: function(x) { return deathStar >= x },
-		progressEvaluator: function(x) { return deathStar/x }
+		title: "Own %s Death Star Jr",
+		evaluator: function(x) { return Game.buildings.entries["goldT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["goldT3"].current/x }
 	};
 
-	instance.prodGold4 = {
-		id_v4: 'ach_65',
+	instance._prodGoldT4 = {
+		id_v4: "ach_85",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
-		title: 'Own %s Chronal Actuators',
-		evaluator: function(x) { return actuator >= x },
-		progressEvaluator: function(x) { return actuator/x }
+		title: "Own %s Chronal Actuator",
+		evaluator: function(x) { return Game.buildings.entries["goldT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["goldT4"].current/x }
 	};
 
-	instance.prodSilver1 = {
-		id_v4: 'ach_66',
+	instance._prodGoldT5 = {
+		id_v4: "ach_86",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'goldIcon',
+		title: "Own %s Philospher's stone",
+		evaluator: function(x) { return Game.buildings.entries["goldT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["goldT5"].current/x }
+	};
+
+	instance._prodSilverT1 = {
+		id_v4: "ach_87",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
-		title: 'Own %s Scout Ships',
-		evaluator: function(x) { return scout >= x },
-		progressEvaluator: function(x) { return scout/x }
+		title: "Own %s Scout Ship",
+		evaluator: function(x) { return Game.buildings.entries["silverT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["silverT1"].current/x }
 	};
 
-	instance.prodSilver2 = {
-		id_v4: 'ach_67',
+	instance._prodSilverT2 = {
+		id_v4: "ach_88",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
-		title: 'Own %s Interplanetary Lasers',
-		evaluator: function(x) { return spaceLaser >= x },
-		progressEvaluator: function(x) { return spaceLaser/x }
+		title: "Own %s Interplanetary Laser",
+		evaluator: function(x) { return Game.buildings.entries["silverT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["silverT2"].current/x }
 	};
 
-	instance.prodSilver3 = {
-		id_v4: 'ach_68',
+	instance._prodSilverT3 = {
+		id_v4: "ach_89",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
-		title: 'Own %s Big Berthas',
-		evaluator: function(x) { return bertha >= x },
-		progressEvaluator: function(x) { return bertha/x }
+		title: "Own %s Big Bertha",
+		evaluator: function(x) { return Game.buildings.entries["silverT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["silverT3"].current/x }
 	};
 
-	instance.prodSilver4 = {
-		id_v4: 'ach_69',
+	instance._prodSilverT4 = {
+		id_v4: "ach_90",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'silverIcon',
-		title: 'Own %s Atomic Cannons',
-		evaluator: function(x) { return cannon >= x },
-		progressEvaluator: function(x) { return cannon/x }
+		title: "Own %s Atomic Cannon",
+		evaluator: function(x) { return Game.buildings.entries["silverT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["silverT4"].current/x }
 	};
 
-	instance.prodHydrogen1 = {
-		id_v4: 'ach_78',
+	instance._prodSilverT5 = {
+		id_v4: "ach_91",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'silverIcon',
+		title: "Own %s Dead Werewolf Finder",
+		evaluator: function(x) { return Game.buildings.entries["silverT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["silverT5"].current/x }
+	};
+
+	instance._prodHydrogenT1 = {
+		id_v4: "ach_92",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
-		title: 'Own %s Hydrogen Collectors',
-		evaluator: function(x) { return collector >= x },
-		progressEvaluator: function(x) { return collector/x }
+		title: "Own %s Hydrogen Collector",
+		evaluator: function(x) { return Game.buildings.entries["hydrogenT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["hydrogenT1"].current/x }
 	};
 
-	instance.prodHydrogen2 = {
-		id_v4: 'ach_79',
+	instance._prodHydrogenT2 = {
+		id_v4: "ach_93",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
-		title: 'Own %s Gaseous Magnets',
-		evaluator: function(x) { return magnet >= x },
-		progressEvaluator: function(x) { return magnet/x }
+		title: "Own %s Gaseous Magnet",
+		evaluator: function(x) { return Game.buildings.entries["hydrogenT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["hydrogenT2"].current/x }
 	};
 
-	instance.prodHydrogen3 = {
-		id_v4: 'ach_80',
+	instance._prodHydrogenT3 = {
+		id_v4: "ach_94",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
-		title: 'Own %s Electrolytic Cells',
-		evaluator: function(x) { return eCell >= x },
-		progressEvaluator: function(x) { return eCell/x }
+		title: "Own %s Electrolytic Cell",
+		evaluator: function(x) { return Game.buildings.entries["hydrogenT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["hydrogenT3"].current/x }
 	};
 
-	instance.prodHydrogen4 = {
-		id_v4: 'ach_81',
+	instance._prodHydrogenT4 = {
+		id_v4: "ach_95",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'hydrogenIcon',
-		title: 'Own %s Hindenburg Excavations',
-		evaluator: function(x) { return hindenburg >= x },
-		progressEvaluator: function(x) { return hindenburg/x }
+		title: "Own %s Hindenburg Excavation",
+		evaluator: function(x) { return Game.buildings.entries["hydrogenT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["hydrogenT4"].current/x }
 	};
 
-	instance.prodHelium1 = {
-		id_v4: 'ach_82',
+	instance._prodHydrogenT5 = {
+		id_v4: "ach_96",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'hydrogenIcon',
+		title: "Own %s Star Harvester",
+		evaluator: function(x) { return Game.buildings.entries["hydrogenT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["hydrogenT5"].current/x }
+	};
+
+	instance._prodHeliumT1 = {
+		id_v4: "ach_97",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
-		title: 'Own %s Helium Drones',
-		evaluator: function(x) { return drone >= x },
-		progressEvaluator: function(x) { return drone/x }
+		title: "Own %s Helium Drone",
+		evaluator: function(x) { return Game.buildings.entries["heliumT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["heliumT1"].current/x }
 	};
 
-	instance.prodHelium2 = {
-		id_v4: 'ach_83',
+	instance._prodHeliumT2 = {
+		id_v4: "ach_98",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
-		title: 'Own %s Helium Tankers',
-		evaluator: function(x) { return tanker >= x },
-		progressEvaluator: function(x) { return tanker/x }
+		title: "Own %s Helium Tanker",
+		evaluator: function(x) { return Game.buildings.entries["heliumT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["heliumT2"].current/x }
 	};
 
-	instance.prodHelium3 = {
-		id_v4: 'ach_84',
+	instance._prodHeliumT3 = {
+		id_v4: "ach_99",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
-		title: 'Own %s Morphic Compressors',
-		evaluator: function(x) { return compressor >= x },
-		progressEvaluator: function(x) { return compressor/x }
+		title: "Own %s Morphic Compressor",
+		evaluator: function(x) { return Game.buildings.entries["heliumT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["heliumT3"].current/x }
 	};
 
-	instance.prodHelium4 = {
-		id_v4: 'ach_85',
+	instance._prodHeliumT4 = {
+		id_v4: "ach_100",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'heliumIcon',
-		title: 'Own %s Gas Giant Skimmers',
-		evaluator: function(x) { return skimmer >= x },
-		progressEvaluator: function(x) { return skimmer/x }
+		title: "Own %s Gas Giant Skimmer",
+		evaluator: function(x) { return Game.buildings.entries["heliumT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["heliumT4"].current/x }
 	};
 
-	instance.prodIce1 = {
-		id_v4: 'ach_86',
+	instance._prodHeliumT5 = {
+		id_v4: "ach_101",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'heliumIcon',
+		title: "Own %s Caged Star",
+		evaluator: function(x) { return Game.buildings.entries["heliumT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["heliumT5"].current/x }
+	};
+
+	instance._prodIceT1 = {
+		id_v4: "ach_102",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Own %s Ice Pickaxes',
-		evaluator: function(x) { return icePick >= x },
-		progressEvaluator: function(x) { return icePick/x }
+		title: "Own %s Ice Pickaxe",
+		evaluator: function(x) { return Game.buildings.entries["iceT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["iceT1"].current/x }
 	};
 
-	instance.prodIce2 = {
-		id_v4: 'ach_87',
+	instance._prodIceT2 = {
+		id_v4: "ach_103",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Own %s Ice Drills',
-		evaluator: function(x) { return iceDrill >= x },
-		progressEvaluator: function(x) { return iceDrill/x }
+		title: "Own %s Ice Drill",
+		evaluator: function(x) { return Game.buildings.entries["iceT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["iceT2"].current/x }
 	};
 
-	instance.prodIce3 = {
-		id_v4: 'ach_88',
+	instance._prodIceT3 = {
+		id_v4: "ach_104",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Own %s Ocean Freezers',
-		evaluator: function(x) { return freezer >= x },
-		progressEvaluator: function(x) { return freezer/x }
+		title: "Own %s Ocean Freezer",
+		evaluator: function(x) { return Game.buildings.entries["iceT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["iceT3"].current/x }
 	};
 
-	instance.prodIce4 = {
-		id_v4: 'ach_89',
+	instance._prodIceT4 = {
+		id_v4: "ach_105",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Own %s Mr Freezes',
-		evaluator: function(x) { return mrFreeze >= x },
-		progressEvaluator: function(x) { return mrFreeze/x }
+		title: "Own %s Mr Freeze",
+		evaluator: function(x) { return Game.buildings.entries["iceT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["iceT4"].current/x }
 	};
 
-	instance.prodMeteorite1 = {
-		id_v4: 'ach_90',
+	instance._prodIceT5 = {
+		id_v4: "ach_106",
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'iceIcon',
+		title: "Own %s Overexchange Condenser",
+		evaluator: function(x) { return Game.buildings.entries["iceT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["iceT5"].current/x }
+	};
+
+	instance._prodMeteoriteT1 = {
+		id_v4: "ach_107",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
-		title: 'Own %s Meteorite Printers',
-		evaluator: function(x) { return printer >= x },
-		progressEvaluator: function(x) { return printer/x }
+		title: "Own %s Meteorite Printer",
+		evaluator: function(x) { return Game.buildings.entries["meteoriteT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["meteoriteT1"].current/x }
 	};
 
-	instance.prodMeteorite2 = {
-		id_v4: 'ach_91',
+	instance._prodMeteoriteT2 = {
+		id_v4: "ach_108",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
-		title: 'Own %s Meteorite Webs',
-		evaluator: function(x) { return web >= x },
-		progressEvaluator: function(x) { return web/x }
+		title: "Own %s Meteorite Web",
+		evaluator: function(x) { return Game.buildings.entries["meteoriteT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["meteoriteT2"].current/x }
 	};
 
-	instance.prodMeteorite3 = {
-		id_v4: 'ach_103',
+	instance._prodMeteoriteT3 = {
+		id_v4: "ach_109",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
-		title: 'Own %s Planet Smashers',
-		evaluator: function(x) { return smasher >= x },
-		progressEvaluator: function(x) { return smasher/x }
+		title: "Own %s Planet Smasher",
+		evaluator: function(x) { return Game.buildings.entries["meteoriteT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["meteoriteT3"].current/x }
 	};
 
-	instance.prodMeteorite4 = {
-		id_v4: 'ach_104',
+	instance._prodMeteoriteT4 = {
+		id_v4: "ach_110",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'meteoriteIcon',
-		title: 'Own %s Nebulous Synthesizers',
-		evaluator: function(x) { return nebulous >= x },
-		progressEvaluator: function(x) { return nebulous/x }
+		title: "Own %s Nebulous Synthesizer",
+		evaluator: function(x) { return Game.buildings.entries["meteoriteT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["meteoriteT4"].current/x }
 	};
 
-	instance.prodScience1 = {
-		id_v4: 'ach_92',
+	instance._prodScienceT1 = {
+		id_v4: "ach_111",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
-		title: 'Own %s Home Science Kits',
-		evaluator: function(x) { return lab >= x },
-		progressEvaluator: function(x) { return lab/x }
+		title: "Own %s Home Science Kit",
+		evaluator: function(x) { return Game.buildings.entries["scienceT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["scienceT1"].current/x }
 	};
 
-	instance.prodScience2 = {
-		id_v4: 'ach_93',
+	instance._prodScienceT2 = {
+		id_v4: "ach_112",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
-		title: 'Own %s High School Sciences',
-		evaluator: function(x) { return labT2 >= x },
-		progressEvaluator: function(x) { return labT2/x }
+		title: "Own %s High School Science",
+		evaluator: function(x) { return Game.buildings.entries["scienceT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["scienceT2"].current/x }
 	};
 
-	instance.prodScience3 = {
-		id_v4: 'ach_94',
+	instance._prodScienceT3 = {
+		id_v4: "ach_113",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
-		title: 'Own %s University Laboratories',
-		evaluator: function(x) { return labT3 >= x },
-		progressEvaluator: function(x) { return labT3/x }
+		title: "Own %s University Laboratory",
+		evaluator: function(x) { return Game.buildings.entries["scienceT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["scienceT3"].current/x }
 	};
 
-	instance.prodScience4 = {
-		id_v4: 'ach_95',
+	instance._prodScienceT4 = {
+		id_v4: "ach_114",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
-		title: 'Own %s Scientific Observatories',
-		evaluator: function(x) { return labT4 >= x },
-		progressEvaluator: function(x) { return labT4/x }
+		title: "Own %s Scientific Observatory",
+		evaluator: function(x) { return Game.buildings.entries["scienceT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["scienceT4"].current/x }
 	};
 
-	instance.prodScience5 = {
-		id_v4: 'ach_101',
+	instance._prodScienceT5 = {
+		id_v4: "ach_115",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'technologyIcon',
-		title: 'Own %s Space Scientific Satellite Stations',
-		evaluator: function(x) { return labT5 >= x },
-		progressEvaluator: function(x) { return labT5/x }
+		title: "Own %s Space Scientific Satellite Station",
+		evaluator: function(x) { return Game.buildings.entries["scienceT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["scienceT5"].current/x }
 	};
 
 	instance.prodRocketFuel1 = {
-		id_v4: 'ach_98',
+		id_v4: 'ach_116',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Chemical Plants',
@@ -981,7 +1125,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.prodRocketFuel2 = {
-		id_v4: 'ach_99',
+		id_v4: 'ach_117',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Oxidisation Chambers',
@@ -990,7 +1134,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.prodRocketFuel3 = {
-		id_v4: 'ach_100',
+		id_v4: 'ach_118',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Hydrazine Catalysts',
@@ -999,7 +1143,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.prodDyson1 = {
-		id_v4: 'ach_96',
+		id_v4: 'ach_119',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
 		title: 'Own %s Dyson Rings',
@@ -1008,7 +1152,7 @@ Game.achievementsData = (function(){
 	};
 
 	instance.prodDyson2 = {
-		id_v4: 'ach_97',
+		id_v4: 'ach_120',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
 		title: 'Own %s Dyson Swarms',
