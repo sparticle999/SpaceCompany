@@ -189,7 +189,7 @@ Game.techData = (function () {
         tabAlerts: ['solarSystem'],
         onApply: function(){
             $('#solarSystemTab')[0].className = "";
-            console.log("rocketFuel");
+            Game.buildings.entries.rocketFuelT1.unlocked = true;
         }
     });
 
@@ -206,7 +206,7 @@ Game.techData = (function () {
         newTechs: ['unlockRocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
-            console.log("rocketFuel");
+            Game.buildings.entries.rocketFuelT2.unlocked = true;
         }
     });
 
@@ -222,7 +222,7 @@ Game.techData = (function () {
         newResources: ['rocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
-            console.log("rocketFuel");
+            Game.buildings.entries.rocketFuelT3.unlocked = true;
         }
     });
 
@@ -238,7 +238,7 @@ Game.techData = (function () {
         newTechs: ['unlockLabT3'],
         tabAlerts: ['research'],
         onApply: function(){
-            console.log("science");
+            Game.buildings.entries.scienceT2.unlocked = true;
         }
     });
 
@@ -254,7 +254,7 @@ Game.techData = (function () {
         newTechs: ['unlockLabT4'],
         tabAlerts: ['research'],
         onApply: function(){
-            console.log("science");
+            Game.buildings.entries.scienceT3.unlocked = true;
         }
     });
 
@@ -269,7 +269,7 @@ Game.techData = (function () {
         },
         tabAlerts: ['research'],
         onApply: function(){
-            console.log("science");
+            Game.buildings.entries.scienceT4.unlocked = true;
         }
 
     });

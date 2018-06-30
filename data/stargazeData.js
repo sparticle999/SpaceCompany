@@ -271,11 +271,12 @@ Game.prestigeData = (function(){
 		category: "prasnian",
 		opinion: 4,
 		onApply: function(){
-			document.getElementById("resbld_plasmaT3").className = "";
+			Game.buildings.entries.plasmaT3.unlocked = true;
 		},
 		remove: function(){
-	    	document.getElementById("resbld_plasmaT3").className = "hidden";
-	    	bath = 0;
+	    	Game.buildings.entries.plasmaT3.unlocked = false;
+	    	Game.buildings.entries.plasmaT3.current = 0;
+	    	console.log("updateCost()");
 	    	updateCost();
 	    },
 		achieved: false
@@ -289,6 +290,7 @@ Game.prestigeData = (function(){
 		opinion: 10,
 		onApply: function(){
 			floor1Price -= 0.15;
+			console.log("updateWonderCost");
             updateWonderCost();
 		},
 		remove: function(){
@@ -322,6 +324,7 @@ Game.prestigeData = (function(){
 		category: "prasnian",
 		opinion: 17,
 		onApply: function(){
+			console.log("autoEMC");
 			var updateList = document.getElementsByClassName("autoEmcHide");
 			for(var i = updateList.length-1; i >= 0; i--){
 				updateList[i].className = "autoEmcHide";
@@ -383,12 +386,11 @@ Game.prestigeData = (function(){
 		category: "hyacinite",
 		opinion: 14,
 		onApply: function(){
-			document.getElementById("labTier5").className = "";
+			Game.buildings.entries.scienceT5.unlocked = true;
 		},
 		remove: function(){
-	    	document.getElementById("labTier5").className = "hidden";
-	    	labT5 = 0;
-	    	updateLabCost();
+	    	Game.buildings.entries.scienceT5.unlocked = false;
+	    	Game.buildings.entries.scienceT5.current = 0;
 	    },
 		achieved: false
 	};
@@ -467,10 +469,16 @@ Game.prestigeData = (function(){
 		category: "kitrinos",
 		opinion: 20,
 		onApply: function(){
-			unlockTier5();
+			for(var id in Game.resources.entries){
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
+					Game.buildings.entries[id + "T5"].unlocked = true;
+			}
 		},
 		remove: function(){
-	    	removeTier5();
+			for(var id in Game.resources.entries){
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
+					Game.buildings.entries[id + "T5"].unlocked = false;
+			}
 	    },
 		achieved: false
 	};
@@ -524,11 +532,11 @@ Game.prestigeData = (function(){
 		category: "moviton",
 		opinion: 29,
 		onApply: function(){
-			document.getElementById("resbld_meteoriteT3").className = "";
+			Game.buildings.entries.meteoriteT3.unlocked = true;
 		},
 		remove: function(){
-	    	document.getElementById("resbld_meteoriteT3").className = "hidden";
-	    	smasher = 0;
+			Game.buildings.entries.meteoriteT3.unlocked = true;
+	    	Game.buildings.entries.meteoriteT3.current = 0;
 			updateCost();
 	    },
 		achieved: false
@@ -541,11 +549,11 @@ Game.prestigeData = (function(){
 		category: "moviton",
 		opinion: 36,
 		onApply: function(){
-			document.getElementById("resbld_meteoriteT4").className = "";
+			Game.buildings.entries.meteoriteT4.unlocked = true;
 		},
 		remove: function(){
-	    	document.getElementById("resbld_meteoriteT4").className = "hidden";
-	    	nebulous = 0;
+			Game.buildings.entries.meteoriteT4.unlocked = true;
+	    	Game.buildings.entries.meteoriteT4.current = 0;
 			updateCost();
 	    },
 		achieved: false

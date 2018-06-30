@@ -206,6 +206,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.uraniumT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Planetary Nuclear Plant',
+        desc: 'This huge factory is as large as a planet, fusing together Uranium from common elements.',
+        resource: 'uranium',
+        resourcePerSecond: {
+            'energy': -2719,
+            'uranium': 2412
+        },
+        cost: {
+            'titanium': 486000,
+            'silicon': 266000,
+            'ice': 364000
+        }
+    });
+
     // Lava
     instance.lavaT1 = $.extend({}, baseProducerBuilding, {
         name: 'Heat Resistant Crucible',
@@ -262,6 +277,21 @@ Game.buildingData = (function () {
             'lunarite': 298000,
             'gold': 121000,
             'meteorite': 750
+        }
+    });
+
+    instance.lavaT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Jupitonian Condensator',
+        desc: 'Condenses gases from the heart of Jupiter into liquid magma.',
+        resource: 'lava',
+        resourcePerSecond: {
+            'energy': -4142,
+            'lava': 2103
+        },
+        cost: {
+            'lunarite': 288000,
+            'gem': 210000,
+            'ice': 238000
         }
     });
 
@@ -325,6 +355,21 @@ Game.buildingData = (function () {
             'lunarite': 19400,
             'titanium': 16800,
             'meteorite': 760
+        }
+    });
+
+    instance.oilT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Fossilator 9000',
+        desc: 'Much better than the 8000 version, this fossilator reverses the fossil fuel cycle. Instead of burning, it creates them from carbon in the air.',
+        resource: 'oil',
+        resourcePerSecond: {
+            'energy': -258,
+            'oil': 2627
+        },
+        cost: {
+            'uranium': 110000,
+            'charcoal': 96000,
+            'lava': 167000
         }
     });
 
@@ -395,6 +440,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.metalT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Multiverse Drill',
+        desc: 'Drills metal from alternate realities where metal is plentiful.',
+        resource: 'metal',
+        resourcePerSecond: {
+            'energy': -131,
+            'metal': 4768
+        },
+        cost: {
+            'titanium': 184000,
+            'gold': 133000,
+            'oil': 170000
+        }
+    });
+
     // Gem
     instance.gemT1 = $.extend({}, baseProducerBuilding, {
         name: 'Gem Miner',
@@ -452,6 +512,21 @@ Game.buildingData = (function () {
             'lunarite': 21000,
             'gem': 27000,
             'meteorite': 800
+        }
+    });
+
+    instance.gemT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Diamond Accretion Chamber',
+        desc: 'This special container condenses carbon dioxide gas into diamonds, creating gems at a faster rate than any drill.',
+        resource: 'gem',
+        resourcePerSecond: {
+            'energy': -260,
+            'gem': 3747
+        },
+        cost: {
+            'uranium': 181000,
+            'charcoal': 185000,
+            'meteorite': 12500
         }
     });
 
@@ -518,6 +593,22 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.charcoalT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Microverse Pollutor',
+        desc: 'Using Nano-technology, tiny universes can be created, filled with toxic gases from charcoal production and then simply deleted. Cross-dimensional pollution at a completely new level!',
+        resource: 'charcoal',
+        resourcePerSecond: {
+            'energy': -187,
+            'wood': -950,
+            'charcoal': 2267
+        },
+        cost: {
+            'metal': 133000,
+            'wood': 189000,
+            'lava': 160000
+        }
+    });
+
     // Wood
     instance.woodT1 = $.extend({}, baseProducerBuilding, {
         name: 'Woodcutter',
@@ -578,6 +669,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.woodT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Russian Forest',
+        desc: 'The great Russian forests span thousands of miles. More than enough for at least your lifetime. Let the younger generation deal with running out.',
+        resource: 'wood',
+        resourcePerSecond: {
+            'energy': -244,
+            'wood': 3278
+        },
+        cost: {
+            'metal': 122000,
+            'gem': 151000,
+            'hydrogen': 183000
+        }
+    });
+
     // Silicon
     instance.siliconT1 = $.extend({}, baseProducerBuilding, {
         name: 'Empowered Blowtorch',
@@ -634,6 +740,21 @@ Game.buildingData = (function () {
             'lunarite': 20000,
             'silicon': 17700,
             'meteorite': 400
+        }
+    });
+
+    instance.siliconT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Time And Relative Dimensions In Sand',
+        desc: 'The TARDIS, for short, harnesses the power of stars from far away in space-time to heat sand into Silicon at record speeds. Don\'t ask why it has a polished wooden interior.',
+        resource: 'silicon',
+        resourcePerSecond: {
+            'energy': -746,
+            'silicon': 1487
+        },
+        cost: {
+            'titanium': 204000,
+            'wood': 205000,
+            'meteorite': 17800
         }
     });
 
@@ -699,6 +820,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.lunariteT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Moon Cloner',
+        desc: 'And you wondered why we have a hundred moons in the sky?',
+        resource: 'lunarite',
+        resourcePerSecond: {
+            'energy': -1216,
+            'lunarite': 2122
+        },
+        cost: {
+            'titanium': 204000,
+            'gold': 150000,
+            'methane': 195000
+        }
+    });
+
     // Methane
     instance.methaneT1 = $.extend({}, baseProducerBuilding, {
         name: 'Vacuum Cleaner',
@@ -757,6 +893,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.methaneT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Interstellar Cow',
+        desc: 'An interdimoonsional bovine.',
+        resource: 'methane',
+        resourcePerSecond: {
+            'energy': -899,
+            'methane': 1393
+        },
+        cost: {
+            'lunarite': 140000,
+            'gold': 202000,
+            'hydrogen': 158000
+        }
+    });
+
     // Titanium
     instance.titaniumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Explorer',
@@ -812,6 +963,21 @@ Game.buildingData = (function () {
             'lunarite': 63000,
             'gold': 27000,
             'meteorite': 600
+        }
+    });
+
+    instance.titaniumT5 = $.extend({}, baseProducerBuilding, {
+        name: 'David Guetta\'s Club',
+        desc: 'You shoot me down, but I won\'t fall. I am Titanium.',
+        resource: 'titanium',
+        resourcePerSecond: {
+            'energy': -690,
+            'titanium': 2106
+        },
+        cost: {
+            'uranium': 175000,
+            'wood': 164000,
+            'helium': 156000
         }
     });
 
@@ -874,6 +1040,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.goldT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Philospher\'s stone',
+        desc: 'Transmuation has progressed to being able to turn thin air into gold!',
+        resource: 'gold',
+        resourcePerSecond: {
+            'energy': -1324,
+            'gold': 2422
+        },
+        cost: {
+            'metal': 208000,
+            'silver': 167000,
+            'meteorite': 18000
+        }
+    });
+
     // Silver
     instance.silverT1 = $.extend({}, baseProducerBuilding, {
         name: 'Scout Ship',
@@ -930,6 +1111,21 @@ Game.buildingData = (function () {
             'lunarite': 85100,
             'oil': 93800,
             'meteorite': 520
+        }
+    });
+
+    instance.silverT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Dead Werewolf Finder',
+        desc: 'The Silver bullets used to kill werewolfs are made from silver that has been compressed well over 1000 times. Extracting them will prove beneficial for your production.',
+        resource: 'silver',
+        resourcePerSecond: {
+            'energy': -1008,
+            'silver': 2261
+        },
+        cost: {
+            'uranium': 165000,
+            'gem': 209000,
+            'methane': 170000
         }
     });
 
@@ -996,6 +1192,21 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.hydrogenT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Star Harvester',
+        desc: '\'Stealing\' is such a strong word. I prefer \'borrowing without return\' when we harvest the outer regions of stars.',
+        resource: 'hydrogen',
+        resourcePerSecond: {
+            'energy': -4581,
+            'hydrogen': 3562
+        },
+        cost: {
+            'lunarite': 250000,
+            'wood': 184000,
+            'oil': 146000
+        }
+    });
+
     // Helium
     instance.heliumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Helium Drone',
@@ -1051,6 +1262,21 @@ Game.buildingData = (function () {
             'lunarite': 255000,
             'titanium': 173000,
             'meteorite': 770
+        }
+    });
+
+    instance.heliumT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Caged Star',
+        desc: 'A contained miniature version of the sun uses nuclear fusion to create massive amounts of helium.',
+        resource: 'helium',
+        resourcePerSecond: {
+            'energy': -4075,
+            'helium': 2369
+        },
+        cost: {
+            'lunarite': 171000,
+            'silicon': 165000,
+            'meteorite': 18600
         }
     });
 
@@ -1110,6 +1336,21 @@ Game.buildingData = (function () {
             'wood': 379000,
             'helium': 14000,
             'meteorite': 1500
+        }
+    });
+
+    instance.iceT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Overexchange Condenser',
+        desc: 'Drain heat out of the ingredients so fast that you\'re not sure how to process it safely, but you managed to do it properly anyway.',
+        resource: 'ice',
+        resourcePerSecond: {
+            'energy': -7397,
+            'ice': 2973
+        },
+        cost: {
+            'metal': 210000,
+            'silver': 188000,
+            'helium': 205000
         }
     });
 

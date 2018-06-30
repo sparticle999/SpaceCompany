@@ -184,10 +184,8 @@ var Game = (function() {
         refreshResearches();
         refreshTabs();
 
-        updateCost();
         updateDysonCost();
         updateFuelProductionCost();
-        updateLabCost();
         updateWonderCost();
 
         if(Game.constants.enableMachineTab === true){

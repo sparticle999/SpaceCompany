@@ -25,6 +25,7 @@ Game.resourcesUI = (function(){
         console.log("saving")
         console.log("combine construct and destroy +/-")
         console.log("multibuy overlord")
+        console.log("stats")
 
 // onclick="activeResourceTab('iceNav')" 
 

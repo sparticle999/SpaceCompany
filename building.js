@@ -220,9 +220,8 @@ Game.buildings = (function(){
     }
 
     instance.refreshUnlock = function(data){
-        if(data.unlocked){
+        if(data.unlocked)
             $('#' + data.htmlId)[0].className = "";
-        }
     }
 
     instance.getBuildingData = function(id) {
