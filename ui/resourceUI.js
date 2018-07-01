@@ -151,12 +151,10 @@ instance.resourcePage = Handlebars.compile(
 			return this.resourcePage(data);
 		}
 
-  //'{{language}} is {{adjective}}. You are reading this article on {{website}}.'
-
+ 
 //	resourceNavStart
 //		resourceCategories
 //			resourceList
-
 
 instance.titleTemplate = Handlebars.compile(
 	['<tr><td colspan="2" style="border:none;">',
@@ -164,7 +162,7 @@ instance.titleTemplate = Handlebars.compile(
 	'<span>{{{desc}}}</span>',
 	'<br><br>',
 	'<hide class="gainButton">',
-	'<div onclick="Game.resources.addResource(\'{{id}}\', {{gainNum}}, true)" class="btn btn-default">Gain <span id="plasmaGain">1</span></div>',
+	'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="plasmaGain">1</span></button>',
 	'<br>',
 	'<br>',
 	'</hide>',
@@ -290,19 +288,19 @@ instance.machineTemplate = Handlebars.compile(
 	'<p id="{{htmlId}}_use"></p>',
 	'<p id="{{htmlId}}_cost"></p>',
 	'</span>',
-	'<div id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</div>',
+	'<button type="button" id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 	'<hide class="multiBuy hidden">',
-	'<div id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</div>',
-	'<div id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</div>',
-	'<div id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</div>',
+	'<button type="button" id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
+	'<button type="button" id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
+	'<button type="button" id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
 	'</hide>',
-	'<div style="height:5px"></div>',
+	'<button style="height:5px"></div>',
 	'<hide id="{{id}}_destroy" class="hidden">',
-	'<div id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</div>',
+	'<button type="button" id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
 	'<hide class="multiBuy hidden">',
-	'<div id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</div>',
-	'<div id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</div>',
-	'<div id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</div>',
+	'<button type="button" id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
+	'<button type="button" id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
+	'<button type="button" id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
 	'</hide>',
 	'</hide>',
 	'</td></tr>'].join('\n'));
