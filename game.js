@@ -75,6 +75,8 @@ var Game = (function() {
         refreshTimeUntilLimit();
         gainAutoEmc();
 
+        self.buildings.updatePerSecondProduction = true;
+
         checkStorages();
 
         self.updateTime(delta);

@@ -64,13 +64,13 @@ Game.tech = (function(){
             }
         }
         if(Game.buildings.entries.metalT1.current >= 1){
-            Game.buildings.entries.scienceT1.unlocked = true;
-            Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
             if(!Game.tech.tabUnlocked){
+                Game.buildings.entries.scienceT1.unlocked = true;
+                Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
                 newUnlock('research');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
+                Game.tech.tabUnlocked = true;
             }
-            Game.tech.tabUnlocked = true;
         }
     };
 

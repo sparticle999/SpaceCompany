@@ -264,7 +264,8 @@ Game.resources = (function(){
 
     instance.updateResourcesPerSecond = function(){
         var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01)
-
+        var energyDiff = 0;
+        var energy = Game.resources.entries.energy;
         for(var resource in this.entries){
             var res = this.entries[resource];
             var ps = 0;
@@ -278,7 +279,15 @@ Game.resources = (function(){
                     if(value == resource){
                         var val = building.resourcePerSecond[value];
                         if(resource != "science" && resource != "rocketFuel" && resource != "energy"){
-                            ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);;
+                            if(energy.current > energy.perSecond*-1 && energy.perSecond < 0){
+                                ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);
+                            } else {
+                                if(id.indexOf("T1") != -1){
+                                    ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);
+                                } else {
+                                    energyDiff += building.current * building.resourcePerSecond["energy"];
+                                }
+                            }
                         } else {
                             ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);;
                         }
@@ -287,6 +296,7 @@ Game.resources = (function(){
             }
             res.perSecond = ps;
         }
+        energy.perSecond -= energyDiff;
     };
 
     instance.unlock = function(id) {

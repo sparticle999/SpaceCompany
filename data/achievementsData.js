@@ -4,7 +4,7 @@ Game.achievementsCategoryData = (function () {
 
 	instance.resources = {
 		title: 'Resources',
-		brackets: [50, 5000, 500000, 50000000, 5000000000],
+		brackets: Game.constants.achievementResourceBrackets,
 		entries: [
 		'resUranium', 'resLava',
 		'resOil', 'resMetal', 'resGems', 'resCharcoal', 'resWood', 'resSilicon',
@@ -15,7 +15,7 @@ Game.achievementsCategoryData = (function () {
 
 	instance.producers = {
 		title: 'Producers',
-		brackets: [10, 50, 100, 500, 1000],
+		brackets: Game.constants.achievementProducerBrackets,
 		entries: [
 		'prodPlasmaT1', 'prodPlasmaT2',
 		'prodEnergyT1', 'prodEnergyT2', 'prodEnergyT3', 'prodEnergyT4', 'prodEnergyT5', 'prodEnergyT6',

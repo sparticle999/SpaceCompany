@@ -386,6 +386,15 @@ Game.buildingData = (function () {
             'metal': 10,
             'wood': 5
         },
+        onApply: function(){
+            if(!Game.tech.tabUnlocked){
+                Game.buildings.entries.scienceT1.unlocked = true;
+                Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
+                newUnlock('research');
+                Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
+                Game.tech.tabUnlocked = true;
+            }
+        }
     });
 
     instance.metalT2 = $.extend({}, baseProducerBuilding, {

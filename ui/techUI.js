@@ -74,10 +74,9 @@ Game.techUI = (function() {
 		var data = Game.tech.entries[id];
 		var html = this.techTemplate(data);
 		this.techTable.append(html);
-
 		// all currently used techs cost only science
 		var cost = Game.settings.format(data.cost['science']);
-		$('#' + data.htmlId + 'Cost').text(cost);
+		$('#' + data.id + 'Cost').text(cost);
 	};
 
 	instance.removeTech = function(data) {
