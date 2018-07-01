@@ -165,8 +165,6 @@ var Game = (function() {
             this.interstellar.load(data); 
             this.updates.load(data);
 
-            legacyLoad(data);
-
             this.settings.load(data);
 
             if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {

@@ -2,7 +2,7 @@ Game.resources = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 5;
+    instance.dataVersion = 1;
     instance.entries = {};
     instance.categoryEntries = {};
     instance.storageUpgrades = {};
@@ -109,15 +109,18 @@ Game.resources = (function(){
     };
 
     instance.load = function(data) {
+        console.log(data.resources)
         if(data.resources) {
             if(data.resources.v && data.resources.v === this.dataVersion) {
-                for(var id in data.resources.i) {
+                for(var id in data.resources.r) {
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.r[id].n);
                         this.entries[id].unlocked = data.resources.r[id].u;
                     }
                 }
             }
+        } else {
+            legacyLoad(data);
         }
     };
 
