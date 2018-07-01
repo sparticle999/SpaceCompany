@@ -6,6 +6,7 @@ Game.interstellar = (function(){
     instance.entries = {};
     instance.categoryEntries = {};
     instance.navCount = 0;
+    instance.tabUnlocked = false;
 
 	instance.initialise = function (){
 		for (var id in Game.interstellarData) {
@@ -108,6 +109,7 @@ Game.interstellar = (function(){
                     this.entries[objects[i]].unlocked = true;
                     this.entries[objects[i]].displayNeedsUpdate = true;
                 }
+                this.tabUnlocked = true;
                 document.getElementById("interstellarTab").className = "";
             }
         }

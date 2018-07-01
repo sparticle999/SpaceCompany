@@ -28,6 +28,8 @@ Game.interstellarUI = (function(){
 
     instance.initialise = function() {
 
+        console.log("sort out interstellar.update(). too many cycles")
+
         this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
 

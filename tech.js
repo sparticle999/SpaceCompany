@@ -278,43 +278,43 @@ Game.tech = (function(){
 
     instance.hasResources = function (resources) {
         for (var resource in resources) {
-           if (Game.resources.entries[resource].current < resources[resource]) {
-               return false;
-           }
-       }
-       return true;
-   };
+            if (Game.resources.entries[resource].current < resources[resource]) {
+                return false;
+            }
+        }
+        return true;
+    };
 
-   instance.spendResources = function(resources) {
-    for (var resource in resources) {
-        Game.resources.entries[resource].current -= resources[resource];
-    }
-};
+    instance.spendResources = function(resources) {
+        for (var resource in resources) {
+            Game.resources.entries[resource].current -= resources[resource];
+        }
+    };
 
-instance.isUnlocked = function(id) {
-    var tech = this.getTechData(id);
-    if (typeof tech !== 'undefined') {
-        return tech.unlocked;
-    }
-    return false;
-};
+    instance.isUnlocked = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            return tech.unlocked;
+        }
+        return false;
+    };
 
-instance.isPurchased = function(id) {
-    var tech = this.getTechData(id);
-    if (typeof tech !== 'undefined') {
-        return tech.current > 0;
-    }
-    return false;
-};
+    instance.isPurchased = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            return tech.current > 0;
+        }
+        return false;
+    };
 
-instance.isMaxLevel = function(id) {
-    var tech = this.getTechData(id);
-    if (typeof tech !== 'undefined') {
-        if(id == 'energyEfficiencyResearch') return false;
-        return tech.maxLevel > 0 && tech.current >= tech.maxLevel;
-    }
-    return false;
-};
+    instance.isMaxLevel = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') {
+            if(id == 'energyEfficiencyResearch') return false;
+            return tech.maxLevel > 0 && tech.current >= tech.maxLevel;
+        }
+        return false;
+    };
 
-return instance;
+    return instance;
 }());

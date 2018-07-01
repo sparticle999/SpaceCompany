@@ -147,7 +147,7 @@ Game.resources = (function(){
 		return this.entries[id].perSecond;
 	};
 
-	instance.addResource = function(id, count) {
+	instance.addResource = function(id, count, manual) {
 		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
 			return;
 		}
@@ -155,6 +155,10 @@ Game.resources = (function(){
 		if (typeof this.entries[id] === 'undefined') {
 			return;
 		}
+
+        if(manual){
+            Game.statistics.add("manualResources", count);
+        }
 
 		// Add the resource and clamp
 		var newValue = this.entries[id].current + count;

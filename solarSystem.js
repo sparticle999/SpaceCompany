@@ -1,3 +1,14 @@
+Game.solar = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.tabUnlocked = false;
+
+    return instance;
+}());
+
+
 // Solar System Tab
 
 function getChemicalPlant(){

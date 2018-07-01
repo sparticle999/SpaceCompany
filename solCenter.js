@@ -1,3 +1,13 @@
+Game.solCenter = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.tabUnlocked = false;
+
+    return instance;
+}());
+
 // Sol Center Tab
 
 function unlockPlasmaResearch(){

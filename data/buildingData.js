@@ -334,7 +334,7 @@ Game.buildingData = (function () {
         resource: 'oil',
         resourcePerSecond: {
             'energy': -17,
-            'oil': 63
+            'oil': 127
         },
         cost: {
             'lunarite': 2400,
@@ -349,7 +349,7 @@ Game.buildingData = (function () {
         resource: 'oil',
         resourcePerSecond: {
             'energy': -44,
-            'oil': 246
+            'oil': 498
         },
         cost: {
             'lunarite': 19400,
@@ -364,7 +364,7 @@ Game.buildingData = (function () {
         resource: 'oil',
         resourcePerSecond: {
             'energy': -258,
-            'oil': 2627
+            'oil': 4444
         },
         cost: {
             'uranium': 110000,

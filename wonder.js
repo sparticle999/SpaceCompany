@@ -1,3 +1,13 @@
+Game.wonder = (function(){
+
+    var instance = {};
+
+    instance.entries = {};
+    instance.tabUnlocked = false;
+
+    return instance;
+}());
+
 // Wonders Tab
 function updateWonderCost(){
     preciousGemCost = preciousGemBaseCost * floor1Price;

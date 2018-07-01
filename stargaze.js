@@ -16,7 +16,7 @@ Game.stargaze = (function(){
 
 	instance.rebirthNeedsUpdate = true;
 
-	instance.unlocked = false;
+	instance.tabUnlocked = false;
 
 	instance.initialise = function(){
 		for (var id in Game.stargazeData) {
@@ -62,16 +62,15 @@ Game.stargaze = (function(){
 			this.entries.darkMatter.count += this.entries.darkMatter.current;
 			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.current + " Dark Matter from rebirthing into your new life!");
 
-			for(var i = 0; i < resourcesUnlocked.length; i++){
-				document.getElementById(resourcesUnlocked[i]).className = "hidden";
-				if(resourcesUnlocked[i].indexOf("Nav") != -1)document.getElementById(resourcesUnlocked[i]).className = "sideTab hidden";
-			}
-			for(var i = 0; i < buttonsHidden.length; i++){
-				if(buttonsHidden[i].indexOf("Progress") != -1){
-					document.getElementById(buttonsHidden[i]).className = "progress";
-				} else {
-					document.getElementById(buttonsHidden[i]).className = "btn btn-default";
-				}
+			Game.tech.tabUnlocked = false;
+			Game.solar.tabUnlocked = false;
+			Game.wonder.tabUnlocked = false;
+			Game.solCenter.tabUnlocked = false;
+			Game.interstellar.tabUnlocked = false;
+			Game.stargaze.tabUnlocked = true;
+			for(var id in Game.resources.entries){
+				if(id != "metal" && id != "gem" && id != "wood")
+					Game.resources.entries[id].unlocked = false;
 			}
 			for(var i = 0; i < explored.length; i++){
 				document.getElementById(explored[i]).className = "inner sideTab hidden";
@@ -84,23 +83,24 @@ Game.stargaze = (function(){
 			document.getElementById("mercury").className = "sideTab hidden";
 			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
 			document.getElementById("collapseOuter").className = "collapseOuter sideTab hidden";
-			for(var i = 0; i < tabsUnlocked.length; i++){
-				document.getElementById(tabsUnlocked[i]).className = "hidden";
-			}
+
 			for(var i = 0; i < activated.length; i++){
 				$(document.getElementById(activated[i] + "Activation")).text("Dormant");
 				document.getElementById(activated[i] + "Activation").className = "red";
 			}
-			Game.tech.reset();
+
+			Game.resources.initialise();
+			Game.buildings.initialise();
+			Game.tech.initialise();
+			Game.solar.initialise();
+			Game.solCenter.initialise();
 			Game.interstellar.initialise();
 
 			this.resetVars();
 			this.hideMachines();
 
-			updateCost();
 			updateDysonCost();
 			updateFuelProductionCost();
-			updateLabCost();
 			updateWonderCost();
 
 			Game.settings.entries.gainButtonsHidden = false;
@@ -234,7 +234,7 @@ Game.stargaze = (function(){
 	}
 
 	instance.save = function(data){
-		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}, unlocked: this.unlocked};
+		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}, tabUnlocked: this.tabUnlocked};
 		for(var id in this.entries){
 			data.stargaze.entries[id] = this.entries[id];
 		}
@@ -281,7 +281,10 @@ Game.stargaze = (function(){
                     this.rebirthChildUnlocked[id] = data.stargaze.rebirthChildUnlocked[id];
                 }
             }
-            this.unlocked = data.stargaze.unlocked;
+            if(data.stargaze.unlocked)
+            	this.tabUnlocked = data.stargaze.unlocked;
+            else
+            	this.tabUnlocked = data.stargaze.tabUnlocked;
 		}
 		for(var id in this.upgradeEntries){
 			var data = this.upgradeEntries[id];

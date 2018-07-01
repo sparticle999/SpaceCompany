@@ -40,10 +40,15 @@ Game.statistics = (function(){
 
     instance.updateUnlockedTabs = function() {
         // start at 1 for the resources tab
-        var tabCount = 1 + tabsUnlocked.length;
-        tabCount += $.inArray("solCenterTopTab", resourcesUnlocked) >= 0 ? 1 : 0;
+        var tabCount = 1;
+        tabCount += Game.tech.tabUnlocked;
+        tabCount += Game.solar.tabUnlocked;
+        tabCount += Game.wonder.tabUnlocked;
+        tabCount += Game.solCenter.tabUnlocked;
+        tabCount += Game.interstellar.tabUnlocked;
+        tabCount += Game.stargaze.tabUnlocked;
 
-        this.setValue('tabsUnlocked', tabCount);
+        this.setValue('tabsUnlocked', tabCount, tabCount);
     };
 
     instance.setValue = function(id, value, valueAlltime) {

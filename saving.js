@@ -10,14 +10,7 @@ function legacySave(data) {
 		chemicalPlant: chemicalPlant,
 		oxidisation: oxidisation,
 		hydrazine: hydrazine,
-		researchUnlocked: researchUnlocked,
-		researched: researched,
-		available: available,
-		tabsUnlocked: tabsUnlocked,
-		resourcesUnlocked: resourcesUnlocked,
-		noBorder: noBorder,
 		rocketLaunched: rocketLaunched,
-		buttonsHidden: buttonsHidden,
 		explored: explored,
 		activated: activated,
 		dyson: dyson,
@@ -148,17 +141,8 @@ function legacyLoad(savegame){
 		if(typeof savegame.scorcher !== "undefined") Game.buildings.entries.siliconT2.current = savegame.scorcher;
 		if(typeof savegame.annihilator !== "undefined") Game.buildings.entries.siliconT3.current = savegame.annihilator;
 		if(typeof savegame.desert !== "undefined") Game.buildings.entries.siliconT4.current = savegame.desert;
-		if(typeof savegame.researchUnlocked !== "undefined") researchUnlocked = savegame.researchUnlocked;
-		if(typeof savegame.researched !== "undefined") researched = savegame.researched;
-		if(typeof savegame.tabsUnlocked !== "undefined") tabsUnlocked = savegame.tabsUnlocked;
-		if(typeof savegame.available !== "undefined") available = savegame.available;
-		if(typeof savegame.resourcesUnlocked !== "undefined") resourcesUnlocked = savegame.resourcesUnlocked;
-		if(typeof savegame.noBorder !== "undefined") noBorder = savegame.noBorder;
 		if(typeof savegame.rocketLaunched !== "undefined") rocketLaunched = savegame.rocketLaunched;
-		if(typeof savegame.techUnlocked !== "undefined") techUnlocked = savegame.techUnlocked;
-		if(typeof savegame.meteoriteUnlocked !== "undefined") meteoriteUnlocked = savegame.meteoriteUnlocked;
 		if(typeof savegame.explored !== "undefined") explored = savegame.explored;
-		if(typeof savegame.buttonsHidden !== "undefined") buttonsHidden = savegame.buttonsHidden;
 		if(typeof savegame.uranium !== "undefined") Game.resources.entries.uranium.current = savegame.uranium;
 		if(typeof savegame.uraniumStorage !== "undefined") Game.resources.entries.uranium.capacity = savegame.uraniumStorage;
 		if(typeof savegame.activated !== "undefined") activated = savegame.activated;

@@ -178,8 +178,6 @@ var Game = (function() {
     instance.updateUI = function(self){
         Game.settings.updateCompanyName();
         refreshResources();
-        refreshResearches();
-        refreshTabs();
 
         updateDysonCost();
         updateFuelProductionCost();

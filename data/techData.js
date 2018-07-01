@@ -189,6 +189,7 @@ Game.techData = (function () {
         tabAlerts: ['solarSystem'],
         onApply: function(){
             $('#solarSystemTab')[0].className = "";
+            Game.solar.tabUnlocked = true;
             Game.buildings.entries.rocketFuelT1.unlocked = true;
         }
     });
