@@ -461,14 +461,6 @@ function checkRedCost() {
 }
 
 function refreshResources(){
-    if(contains(resourcesUnlocked, "spaceMetalNav")){
-        Game.removeExcess(resourcesUnlocked, "spaceMetalNav");
-        var index = resourcesUnlocked.indexOf("spaceMetalNav");
-        if (index > -1) {
-            resourcesUnlocked.splice(index, 1);
-        }
-        resourcesUnlocked.push("lunariteNav");
-    }
 	// if(contains(resourcesUnlocked, "meteoriteWonder")){
 	// 	var index = resourcesUnlocked.indexOf("meteoriteWonder");
  // 		if (index > -1) {
@@ -494,25 +486,24 @@ function refreshResources(){
             Game.removeExcess(resourcesUnlocked, "portalRoomNav");
         }
 	}
-
-	// for(var i=0; i<noBorder.length; i++){
-	// 	for(var j=0; j<4; j++){
-	// 		document.getElementById(noBorder[i] + j).style.border = "";
-	// 	}
-	// }
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
 		document.getElementById(activated[i] + "Activation").className += " green";
 	}
 	if(techUnlocked === true){
-		unlockTier3();
+		for(var id in Game.resources.entries){
+		    if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
+		        Game.buildings.unlock(id + "T3");
+		    }
+		}
 	}
 	if(meteoriteUnlocked === true){
-		unlockTier4();
+		for(var id in Game.resources.entries){
+            if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
+                Game.buildings.unlock(id + "T4");
+            }
+        }
 	}
-	// if(contains(resourcesUnlocked, "lunariteNav")){
-	// 	document.getElementById("lunariteNav").className = "innerPlanet sideTab";
-	// }
 }
 
 function contains(array, obj) {

@@ -128,7 +128,7 @@ Game.tech = (function(){
             return false;
         }
 
-        
+        tech.displayNeedsUpdate = true;
 
 
         // ensure a valid value for count
@@ -155,7 +155,7 @@ Game.tech = (function(){
                 }
                 for (var i = 0; i < count; i++) {
                     for (var resource in tech.cost) {
-                        cost[resource] += getCost(tech.cost[resource], tech.current + i);
+                        cost[resource] += this.getCost(tech.cost[resource], tech.current + i);
                     }
                 }
             } else {
@@ -214,40 +214,42 @@ Game.tech = (function(){
         var techs = ['resourceEfficiencyResearch', 'energyEfficiencyResearch', 'scienceEfficiencyResearch', 'batteryEfficiencyResearch'];
         for(var i = 0; i < techs.length; i++){
             var tech = this.entries[techs[i]];
-
-            if(science > tech.cost['science'] || tech.current > 0) {
-                tech.unlocked = true;
-            }
-
-            if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
-                tech.unlocked = true;
-            }
-
-            if(tech.unlocked === false) {
-                tech.getBodyElement().className = 'hidden';
-                return;
-            } else {
-                tech.getBodyElement().className= '';
-            }
-
-            var cost = this.getCost(tech.cost['science'], tech.current);
-            Game.settings.turnRed(science, cost, tech.htmlIdCost);
-
-            tech.getTitleElement().text(tech.name + " #" + (tech.current));
-            tech.getCostElement().text(Game.settings.format(cost));
-
-            if(tech.maxLevel > 0){
-                if(tech.current >= tech.maxLevel && tech.maxLevel > 0) {
-                    tech.getButtonElement().className = 'hidden';
+            if(tech.displayNeedsUpdate){
+                if(science > tech.cost['science'] || tech.current > 0) {
+                    tech.unlocked = true;
                 }
 
-                if(tech.current === tech.maxLevel) {
-                    tech.getTitleElement().text(tech.name + " " + tech.maxLevel + " (MAX)");
-                    tech.getCostElement().text("N/A");
+                if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
+                    tech.unlocked = true;
+                }
+
+                if(tech.unlocked === false) {
+                    tech.getBodyElement().className = 'hidden';
+                    return;
                 } else {
-                    tech.getTitleElement().text(tech.name + " " + (tech.current) + " / " + tech.maxLevel);
-                    tech.getCostElement().text(Game.settings.format(cost));
+                    tech.getBodyElement().className= '';
                 }
+
+                var cost = this.getCost(tech.cost['science'], tech.current);
+                Game.settings.turnRed(science, cost, tech.htmlIdCost);
+                tech.getTitleElement().innerHTML = tech.name + " #" + (tech.current);
+                tech.getCostElement().innerHTML = Game.settings.format(cost);
+
+                if(tech.maxLevel > 0){
+                    if(tech.current >= tech.maxLevel && tech.maxLevel > 0) {
+                        tech.getButtonElement().className = 'hidden';
+                    }
+
+                    if(tech.current === tech.maxLevel) {
+                        tech.getTitleElement().innerHTML = tech.name + " " + tech.maxLevel + " (MAX)";
+                        tech.getCostElement().innerHTML = "N/A";
+                    } else {
+                        tech.getTitleElement().innerHTML = tech.name + " " + (tech.current) + " / " + tech.maxLevel;
+                        tech.getCostElement().innerHTML = Game.settings.format(cost);
+                    }
+                }
+
+                tech.displayNeedsUpdate = false;
             }
         }
     };
@@ -276,14 +278,14 @@ Game.tech = (function(){
 
     instance.hasResources = function (resources) {
         for (var resource in resources) {
-         if (Game.resources.entries[resource].current < resources[resource]) {
-             return false;
-         }
-     }
-     return true;
- };
+           if (Game.resources.entries[resource].current < resources[resource]) {
+               return false;
+           }
+       }
+       return true;
+   };
 
- instance.spendResources = function(resources) {
+   instance.spendResources = function(resources) {
     for (var resource in resources) {
         Game.resources.entries[resource].current -= resources[resource];
     }

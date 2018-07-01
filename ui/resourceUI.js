@@ -22,7 +22,6 @@ Game.resourcesUI = (function(){
         console.log("test from start");
         console.log("storage");
         console.log("add all techData tabAlerts")
-        console.log("science buildings showing at start")
         console.log("turn red")
         console.log("0 energy, turn resources off")
         console.log("all tech upgrades")
@@ -41,7 +40,6 @@ Game.resourcesUI = (function(){
         console.log("redo solar system")
         console.log("redo wonder station")
         console.log("implement new resources into interstellar and stargaze")
-        console.log("destruction doesn't work")
 
 // onclick="activeResourceTab('iceNav')" 
 

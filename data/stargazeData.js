@@ -282,6 +282,21 @@ Game.prestigeData = (function(){
 		achieved: false
 	};
 
+	instance.multiBuy = {
+		name: "Multi-Buy",
+		desc: "Unlock Buy X buttons on machines",
+		cost: 14,
+		category: "prasnian",
+		opinion: 9,
+		onApply: function(){
+			document.getElementsByClassName("multiBuy").className = "multiBuy";
+		},
+		remove: function(){
+	    	document.getElementsByClassName("multiBuy").className = "multiBuy hidden";
+	    },
+		achieved: false
+	}
+
 	instance.floor1Discount = {
 		name: "Floor 1 Discount",
 		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
@@ -349,12 +364,11 @@ Game.prestigeData = (function(){
 		cost: 7,
 		category: "hyacinite",
 		opinion: 3,
-		rebirthStart: {lab:20},
 		onApply: function(){
-			lab += 20;
+			Game.buildings.entries.scienceT1.current += 20;
 		},
 		remove: function(){
-	    	lab -= 20
+	    	Game.buildings.entries.scienceT1.current -= 20;
 	    },
 		achieved: false
 	};

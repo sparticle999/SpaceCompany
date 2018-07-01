@@ -149,7 +149,7 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             for(var id in Game.resources.entries){
-                if(id != "energy" && id != "plasma" && id != "science"){
+                if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
                     Game.buildings.unlock(id + "T2");
                 }
             }
@@ -169,7 +169,7 @@ Game.techData = (function () {
         onApply: function(){
             for(var id in Game.buildings.entries){
                 var data = Game.buildings.entries[id];
-                $('#' + data.htmlId + "_destroy_1")[0].className = "";
+                $('#' + data.id + "_destroy")[0].className = "";
             }
         }
     });

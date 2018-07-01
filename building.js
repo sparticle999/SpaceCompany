@@ -211,7 +211,7 @@ Game.buildings = (function(){
             $('#' + data.htmlId)[0].className = "";
         else
             $('#' + data.htmlId)[0].className = "hidden";
-        
+
     }
 
     instance.getBuildingData = function(id) {
