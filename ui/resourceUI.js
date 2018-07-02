@@ -118,32 +118,32 @@ Game.resourcesUI = (function(){
 // 	onclick="activeResourceTab('{{this.category}}Nav')" 
 // 	
 
-instance.resourcePage = Handlebars.compile(
+	instance.resourcePage = Handlebars.compile(
 			// Start of the left-side navigation
-			['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
-			'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
-			'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
-			'<tbody>',
-					// If there are categories, render these next
-					'{{#each category}}',
-					'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
-					'<td colspan="4">',
-					'<span>{{this.title}}</span> <span class="caret"></span>',
-					'</td>',
-					'</tr>',
-					'{{#each items}}',
-						// Add the items per category
-						'{{#logicEquals this.category @index}}',
-						
-						'{{/logicEquals}}',
-						'{{/each}}',
-						'{{/each}}',
-						'</tbody>',
-						'</table>',
-						'</div>',
-				// Start of the right-side content pane
-				'<div class="tab-content" id="'+this.category+'TabParent" style="width:100%">'
-				].join('\n'));
+		['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
+		'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
+		'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
+		'<tbody>',
+				// If there are categories, render these next
+				'{{#each category}}',
+				'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
+				'<td colspan="4">',
+				'<span>{{this.title}}</span> <span class="caret"></span>',
+				'</td>',
+				'</tr>',
+				'{{#each items}}',
+					// Add the items per category
+					'{{#logicEquals this.category @index}}',
+					
+					'{{/logicEquals}}',
+					'{{/each}}',
+					'{{/each}}',
+					'</tbody>',
+					'</table>',
+					'</div>',
+			// Start of the right-side content pane
+			'<div class="tab-content" id="'+this.category+'TabParent" style="width:100%">'
+			].join('\n'));
 
 		// Collect the data we need and render the page
 		instance.renderPage = function() {
@@ -354,7 +354,7 @@ for(var id in Game.resourceData) {
 	};
 
 	instance.createDisplay = function(id) {
-		if (id == 'science' || id == 'rocketFuel') {return false;}
+		if (id == 'science' || id == 'rocketFuel') {return;}
 		var data = Game.resources.getResourceData(id);
 		if(id != "science")
 			this.tab.addNavEntry(data.category, id);

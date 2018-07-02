@@ -61,6 +61,7 @@ var Game = (function() {
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
+        self.solar.update(delta);
         self.settings.update(delta);
 
         self.updateAutoSave(delta);
@@ -138,6 +139,7 @@ var Game = (function() {
         this.resources.save(data);
         this.buildings.save(data);
         this.tech.save(data);
+        this.solar.save(data);
         this.settings.save(data);
         this.interstellar.save(data);
         this.stargaze.save(data);
@@ -162,6 +164,7 @@ var Game = (function() {
             this.buildings.load(data);
             this.stargaze.load(data);
             this.tech.load(data);
+            this.solar.load(data);
             this.interstellar.load(data); 
             this.updates.load(data);
 
@@ -257,6 +260,8 @@ var Game = (function() {
         self.resourcesUI.initialise();
         self.tech.initialise();
         self.techUI.initialise();
+        self.solar.initialise();
+        self.solarUI.initialise();
         self.interstellar.initialise();
         self.interstellarUI.initialise();
         self.stargaze.initialise();
