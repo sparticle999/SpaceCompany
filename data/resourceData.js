@@ -71,6 +71,7 @@ Game.resourceData = (function () {
         category: 'energy',
         baseCapacity: 100000,
         gainNum: 1,
+        manualgain: false,
         unlocked: false
     };
 
@@ -85,6 +86,7 @@ Game.resourceData = (function () {
         category: 'fabricated',
         baseCapacity: 100000,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -95,6 +97,7 @@ Game.resourceData = (function () {
         category: 'fabricated',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -105,6 +108,7 @@ Game.resourceData = (function () {
         category: 'fabricated',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -119,6 +123,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -129,6 +134,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: true
     };
 
@@ -139,6 +145,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: true
     };
 
@@ -149,6 +156,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: true
     };
 
@@ -159,6 +167,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -169,6 +178,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -179,6 +189,7 @@ Game.resourceData = (function () {
         category: 'earth',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -194,6 +205,7 @@ Game.resourceData = (function () {
         category: 'innerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -204,6 +216,7 @@ Game.resourceData = (function () {
         category: 'innerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -214,6 +227,7 @@ Game.resourceData = (function () {
         category: 'innerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -224,6 +238,7 @@ Game.resourceData = (function () {
         category: 'innerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -234,6 +249,7 @@ Game.resourceData = (function () {
         category: 'innerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -248,6 +264,7 @@ Game.resourceData = (function () {
         category: 'outerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -258,6 +275,7 @@ Game.resourceData = (function () {
         category: 'outerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -268,6 +286,7 @@ Game.resourceData = (function () {
         category: 'outerSol',
         baseCapacity: 50,
         gainNum: 1,
+        manualgain: true,
         unlocked: false
     };
 
@@ -282,6 +301,7 @@ Game.resourceData = (function () {
         category: 'science',
         baseCapacity: 1000000,
         gainNum: 1,
+        manualgain: false,
         unlocked: false
     };
 
@@ -296,6 +316,7 @@ Game.resourceData = (function () {
         category: 'rocketFuel',
         baseCapacity: 1000000,
         gainNum: 1,
+        manualgain: false,
         unlocked: false
     };
 

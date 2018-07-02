@@ -174,7 +174,7 @@ Game.resources = (function(){
 	};
 
 	instance.takeResource = function(id, count) {
-		if(isNaN(count) || count === null || Math.abs(count) <= 0) {
+		if(isNaN(count) || count === null || Math.abs(count) == 0) {
 			return;
 		}
 
@@ -183,7 +183,7 @@ Game.resources = (function(){
 		}
 
 		// Subtract the resource and clamp
-		var newValue = this.entries[id].current - count;
+		var newValue = this.entries[id].current - Math.abs(count);
 		var storage = this.getStorage(id);
 		if (storage >= 0) {
 			this.entries[id].current = Math.max(0, Math.min(newValue, storage));
