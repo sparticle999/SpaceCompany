@@ -195,6 +195,17 @@ var Game = (function() {
         self.interstellar.redundantChecking();
     }
 
+    // Add event listeners to resource related buttons
+    instance.addResourceClickEvents = function() {
+        Object.keys(Game.resources.entries).forEach(function(id) {
+            var htmlId = Game.resources.entries[id].htmlId+"_Gain";
+            if (Game.resources.entries[id].manualgain) {
+                // Gain buttons
+                Game.addEventListener(document.getElementById(htmlId), "click", function () {addManualResource(id);});
+            }
+        })
+    }
+
     // Add event listeners to machine related buttons
     instance.addMachineClickEvents = function() {
         var amount = [1, 10, 100, 10000];
@@ -268,7 +279,9 @@ var Game = (function() {
         self.stargazeUI.initialise();
 
         // Add the event listeners
+        Game.addResourceClickEvents();
         Game.addMachineClickEvents();
+
  
 
 
