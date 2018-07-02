@@ -12,11 +12,11 @@ Game.solarUI = (function(){
 
 	instance.tab = null;
 
-	instance.category = 'resources'
+	instance.category = 'solar System';
 
 	instance.initialise = function() {
 
-		this.tab = Game.ui.createTab({id: this.category, title: Game.utils.capitaliseFirst(this.category), hidden: '', active: "active"});
+		this.tab = Game.ui.createTab({id: this.category, title: Game.utils.capitaliseFirst(this.category), hidden: '',});
 		this.tab.initialise();
 
 		instance.titleTemplate = Handlebars.compile(
@@ -51,7 +51,21 @@ Game.solarUI = (function(){
 			'<span id="{{id}}Storage">{{capacity}}</span>',
 			'</td>'].join('\n'));
 
-	
+		for(var id in Game.solarCategoryData){
+			Game.solar.categoryEntries[id] = Game.solarCategoryData[id];
+		}
+
+		for(var id in Game.solar.categoryEntries) {
+			this.tab.addCategory(id, Game.solar.categoryEntries[id].title);
+		}
+
+		for(var id in Game.solarData) {
+			this.createDisplay(id);
+		}
+	};
+
+	instance.createDisplay = function(id){
+
 	};
 
 	return instance;

@@ -51,7 +51,7 @@ Game.buildings = (function(){
             var id = Game.buildings.entries[building].id;
             var output = Game.buildings.entries[building].resource;
             Game.resources.entries[output].buildings[building] =
-                Game.buildings.entries[building];
+            Game.buildings.entries[building];
         }
 
         console.debug("Loaded " + this.buildingTypeCount + " Building Types");
@@ -67,7 +67,7 @@ Game.buildings = (function(){
             var data = this.entries[id];
             if(data.displayNeedsUpdate)
                 this.refreshBuildingCost(data);
-                this.refreshUnlock(data);
+            this.refreshUnlock(data);
         }
         for(id in this.storageEntries){
             var data = this.storageEntries[id];
@@ -207,11 +207,14 @@ Game.buildings = (function(){
     }
 
     instance.refreshUnlock = function(data){
-        if(data.unlocked)
-            $('#' + data.htmlId)[0].className = "";
-        else
-            $('#' + data.htmlId)[0].className = "hidden";
-
+        if(data.id.indexOf("rocketFuel") == -1){
+            if(data.unlocked)
+                $('#' + data.htmlId)[0].className = "";
+            else
+                $('#' + data.htmlId)[0].className = "hidden";
+        } else {
+            console.log("rocketFuel")
+        }
     }
 
     instance.getBuildingData = function(id) {

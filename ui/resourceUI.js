@@ -12,7 +12,7 @@ Game.resourcesUI = (function(){
 
 	instance.tab = null;
 
-	instance.category = 'resources'
+	instance.category = 'resources';
 
 	instance.initialise = function() {
 
@@ -118,12 +118,12 @@ Game.resourcesUI = (function(){
 // 	onclick="activeResourceTab('{{this.category}}Nav')" 
 // 	
 
-	instance.resourcePage = Handlebars.compile(
+		instance.resourcePage = Handlebars.compile(
 			// Start of the left-side navigation
-		['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
-		'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
-		'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
-		'<tbody>',
+			['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
+			'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
+			'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
+			'<tbody>',
 				// If there are categories, render these next
 				'{{#each category}}',
 				'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
@@ -133,14 +133,14 @@ Game.resourcesUI = (function(){
 				'</tr>',
 				'{{#each items}}',
 					// Add the items per category
-					'{{#logicEquals this.category @index}}',
-					
-					'{{/logicEquals}}',
-					'{{/each}}',
-					'{{/each}}',
-					'</tbody>',
-					'</table>',
-					'</div>',
+				'{{#logicEquals this.category @index}}',
+				
+				'{{/logicEquals}}',
+				'{{/each}}',
+				'{{/each}}',
+			'</tbody>',
+			'</table>',
+			'</div>',
 			// Start of the right-side content pane
 			'<div class="tab-content" id="'+this.category+'TabParent" style="width:100%">'
 			].join('\n'));
@@ -152,170 +152,170 @@ Game.resourcesUI = (function(){
 		}
 
  
-//	resourceNavStart
-//		resourceCategories
-//			resourceList
+		//	resourceNavStart
+		//		resourceCategories
+		//			resourceList
 
-instance.titleTemplate = Handlebars.compile(
-	['<tr><td colspan="2" style="border:none;">',
-	'<h2 class="default btn-link">{{name}}</h2>',
-	'<span>{{{desc}}}</span>',
-	'<br><br>',
-	'<hide class="gainButton">',
-	'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="plasmaGain">1</span></button>',
-	'<br>',
-	'<br>',
-	'</hide>',
-	'</td></tr>'].join('\n'));
+		instance.titleTemplate = Handlebars.compile(
+			['<tr><td colspan="2" style="border:none;">',
+			'<h2 class="default btn-link">{{name}}</h2>',
+			'<span>{{{desc}}}</span>',
+			'<br><br>',
+			'<hide class="gainButton">',
+			'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="plasmaGain">1</span></button>',
+			'<br>',
+			'<br>',
+			'</hide>',
+			'</td></tr>'].join('\n'));
 
-instance.navTemplate = Handlebars.compile(
-	['<td style="vertical-align:middle;">',
-	'<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">',
-	'</td>',
-	'<td style="vertical-align:middle;" colspan="1">',
-	'<span>{{name}}</span>',
-	'</td>',
-	'<td style="vertical-align:middle; text-align:center;">',
-	'<span>',
-	'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
-	'</span>',
-	'</td>',
-	'<td style="vertical-align:middle; text-align:right;">',
-	'<span id="{{id}}">',
-	'{{current}}',
-	'</span>',
-	'/',
-	'<span id="{{id}}Storage">{{capacity}}</span>',
-	'</td>'].join('\n'));
+		instance.navTemplate = Handlebars.compile(
+			['<td style="vertical-align:middle;">',
+			'<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">',
+			'</td>',
+			'<td style="vertical-align:middle;" colspan="1">',
+			'<span>{{name}}</span>',
+			'</td>',
+			'<td style="vertical-align:middle; text-align:center;">',
+			'<span>',
+			'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
+			'</span>',
+			'</td>',
+			'<td style="vertical-align:middle; text-align:right;">',
+			'<span id="{{id}}">',
+			'{{current}}',
+			'</span>',
+			'/',
+			'<span id="{{id}}Storage">{{capacity}}</span>',
+			'</td>'].join('\n'));
 
-instance.energyNavTemplate = Handlebars.compile(
-	['<td style="vertical-align:middle;" colspan="1">',
-	'<span>{{name}}</span>',
-	'</td>',
-	'<td style="border: none; vertical-align:middle; text-align:center;">',
-	'<span>',
-	'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
-	'</span>',
-	'</td>',
-	'<td style="border:none; vertical-align:middle; text-align:right;">',
-	'<span id="{{id}}">',
-	'{{current}}',
-	'</span>',
-	'<span id="{{id}}StorageBox" class="hidden">',
-	'/',
-	'<span id="{{id}}Storage">{{capacity}}</span>',
-	'</span>',
-	'</td>'].join('\n'));
+		instance.energyNavTemplate = Handlebars.compile(
+			['<td style="vertical-align:middle;" colspan="1">',
+			'<span>{{name}}</span>',
+			'</td>',
+			'<td style="border: none; vertical-align:middle; text-align:center;">',
+			'<span>',
+			'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
+			'</span>',
+			'</td>',
+			'<td style="border:none; vertical-align:middle; text-align:right;">',
+			'<span id="{{id}}">',
+			'{{current}}',
+			'</span>',
+			'<span id="{{id}}StorageBox" class="hidden">',
+			'/',
+			'<span id="{{id}}Storage">{{capacity}}</span>',
+			'</span>',
+			'</td>'].join('\n'));
 
-instance.metalStorageUpgradeTemplate = Handlebars.compile(
-	['<tr id="{{id}}StorageUpgrade" class="hidden">',
-	'<td>',
-	'<h3 class="default btn-link">',
-	'Storage Upgrade',
-	'</h3>',
-	'<span>',
-	'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-	'<br>',
-	'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-	'<br>',
-	'Costs <span id="{{id}}StorageCost">50</span> {{name}}',
-	'</span>',
-	'<br>',
-	'<br>',
-	'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-	'</td>',
-	'</tr>'].join('\n'));
+		instance.metalStorageUpgradeTemplate = Handlebars.compile(
+			['<tr id="{{id}}StorageUpgrade" class="hidden">',
+			'<td>',
+			'<h3 class="default btn-link">',
+			'Storage Upgrade',
+			'</h3>',
+			'<span>',
+			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
+			'<br>',
+			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
+			'<br>',
+			'Costs <span id="{{id}}StorageCost">50</span> {{name}}',
+			'</span>',
+			'<br>',
+			'<br>',
+			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
+			'</td>',
+			'</tr>'].join('\n'));
 
-instance.earthStorageUpgradeTemplate = Handlebars.compile(
-	['<tr id="{{id}}StorageUpgrade" class="hidden">',
-	'<td>',
-	'<h3 class="default btn-link">',
-	'Storage Upgrade',
-	'</h3>',
-	'<span>',
-	'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-	'<br>',
-	'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-	'<br>',
-	'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageMetalCost">20</span> Metal.',
-	'</span>',
-	'<br>',
-	'<br>',
-	'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-	'</td>',
-	'</tr>'].join('\n'));
+		instance.earthStorageUpgradeTemplate = Handlebars.compile(
+			['<tr id="{{id}}StorageUpgrade" class="hidden">',
+			'<td>',
+			'<h3 class="default btn-link">',
+			'Storage Upgrade',
+			'</h3>',
+			'<span>',
+			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
+			'<br>',
+			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
+			'<br>',
+			'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageMetalCost">20</span> Metal.',
+			'</span>',
+			'<br>',
+			'<br>',
+			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
+			'</td>',
+			'</tr>'].join('\n'));
 
-instance.spaceStorageUpgradeTemplate = Handlebars.compile(
-	['<tr id="{{id}}StorageUpgrade" class="hidden">',
-	'<td>',
-	'<h3 class="default btn-link">',
-	'Storage Upgrade',
-	'</h3>',
-	'<span>',
-	'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-	'<br>',
-	'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-	'<br>',
-	'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageLunariteCost">400</span> Lunarite.',
-	'</span>',
-	'<br>',
-	'<br>',
-	'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-	'</td>',
-	'</tr>'].join('\n'));
+		instance.spaceStorageUpgradeTemplate = Handlebars.compile(
+			['<tr id="{{id}}StorageUpgrade" class="hidden">',
+			'<td>',
+			'<h3 class="default btn-link">',
+			'Storage Upgrade',
+			'</h3>',
+			'<span>',
+			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
+			'<br>',
+			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
+			'<br>',
+			'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageLunariteCost">400</span> Lunarite.',
+			'</span>',
+			'<br>',
+			'<br>',
+			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
+			'</td>',
+			'</tr>'].join('\n'));
 
-instance.storageBuildingTemplate = Handlebars.compile(
-	['<tr id="{{htmlId}}" class="hidden">',
-	'<td>',
-	'<h3 class="default btn-link">',
-	'{{name}}: <span id="{{htmlId}}Count">0</span>',
-	'</h3>',
-	'<span>',
-	'{{desc}}',
-	'<br>',
-	'<p id="{{htmlId}}_cost"></p>',
-	'</span>',
-	'<button onclick="getBattery()" class="btn btn-default">Get Battery</button>',
-	'</td>',
-	'</tr>',].join('\n'));
+		instance.storageBuildingTemplate = Handlebars.compile(
+			['<tr id="{{htmlId}}" class="hidden">',
+			'<td>',
+			'<h3 class="default btn-link">',
+			'{{name}}: <span id="{{htmlId}}Count">0</span>',
+			'</h3>',
+			'<span>',
+			'{{desc}}',
+			'<br>',
+			'<p id="{{htmlId}}_cost"></p>',
+			'</span>',
+			'<button onclick="getBattery()" class="btn btn-default">Get Battery</button>',
+			'</td>',
+			'</tr>',].join('\n'));
 
-instance.machineTemplate = Handlebars.compile(
-	['<tr id="{{htmlId}}" class="hidden"><td>',
-	'<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
-	'<span>',
-	'<p>{{desc}}</p>',
-	'<p id="{{htmlId}}_prod"></p>',
-	'<p id="{{htmlId}}_use"></p>',
-	'<p id="{{htmlId}}_cost"></p>',
-	'</span>',
-	'<button type="button" id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
-	'<hide class="multiBuy hidden">',
-	'<button type="button" id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
-	'<button type="button" id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
-	'<button type="button" id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
-	'</hide>',
-	'<button style="height:5px"></div>',
-	'<hide id="{{id}}_destroy" class="hidden">',
-	'<button type="button" id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
-	'<hide class="multiBuy hidden">',
-	'<button type="button" id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
-	'<button type="button" id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
-	'<button type="button" id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
-	'</hide>',
-	'</hide>',
-	'</td></tr>'].join('\n'));
+		instance.machineTemplate = Handlebars.compile(
+			['<tr id="{{htmlId}}" class="hidden"><td>',
+			'<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
+			'<span>',
+			'<p>{{desc}}</p>',
+			'<p id="{{htmlId}}_prod"></p>',
+			'<p id="{{htmlId}}_use"></p>',
+			'<p id="{{htmlId}}_cost"></p>',
+			'</span>',
+			'<button type="button" id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			'<hide class="multiBuy hidden">',
+			'<button type="button" id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
+			'<button type="button" id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
+			'<button type="button" id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
+			'</hide>',
+			'<button style="height:5px"></div>',
+			'<hide id="{{id}}_destroy" class="hidden">',
+			'<button type="button" id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
+			'<hide class="multiBuy hidden">',
+			'<button type="button" id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
+			'<button type="button" id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
+			'<button type="button" id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
+			'</hide>',
+			'</hide>',
+			'</td></tr>'].join('\n'));
 
-for(var id in Game.resourceCategoryData){
-	Game.resources.categoryEntries[id] = Game.resourceCategoryData[id];
-}
+		for(var id in Game.resourceCategoryData){
+			Game.resources.categoryEntries[id] = Game.resourceCategoryData[id];
+		}
 
-for(var id in Game.resources.categoryEntries) {
-	this.tab.addCategory(id, Game.resources.categoryEntries[id].title);
-}
+		for(var id in Game.resources.categoryEntries) {
+			this.tab.addCategory(id, Game.resources.categoryEntries[id].title);
+		}
 
-for(var id in Game.resourceData) {
-	this.createDisplay(id);
-}
+		for(var id in Game.resourceData) {
+			this.createDisplay(id);
+		}
 
         // 
         for (var id in RESOURCE) {

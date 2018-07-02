@@ -208,10 +208,13 @@ var Game = (function() {
 
     // Add event listeners to machine related buttons
     instance.addMachineClickEvents = function() {
+        console.log("rocketFuel");
         var amount = [1, 10, 100, 10000];
         Object.keys(Game.buildings.entries).forEach(function(id) {
             var htmlId = Game.buildings.entries[id].htmlId;
-            for (var i = 0; i < amount.length; i++) {
+
+            if(id.indexOf("rocketFuel") == -1){
+                for (var i = 0; i < amount.length; i++) {
                 // Buy buttons
                 Game.addEventListener(
                     document.getElementById(htmlId+"_buy_"+amount[i]),
@@ -221,8 +224,9 @@ var Game = (function() {
                     document.getElementById(htmlId+"_destroy_"+amount[i]),
                     "click", function () {Game.buildings.destroyBuildings(id, amount[i]);});
             }
+        }
 
-        })
+    })
 
         // Storage buttons
         // TODO
@@ -282,7 +286,7 @@ var Game = (function() {
         Game.addResourceClickEvents();
         Game.addMachineClickEvents();
 
- 
+
 
 
         // Now load

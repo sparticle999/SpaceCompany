@@ -2,10 +2,10 @@
 // 	if (globalEnergyLock === true) {
 // 		return 0;
 // 	}
-	
+
 // 	// initializing the variable
 // 	var use = 0;
-	
+
 // 	// Plasma energy consumption
 // 	if (heaterToggled && getResource(RESOURCE.Hydrogen) + getProduction(RESOURCE.Hydrogen) >= heater * 10 * delta &&
 // 		getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= heater * delta) {
@@ -19,22 +19,22 @@
 // 	if (bathToggled && getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= bath * 10 * delta) {
 // 		use += bath * bathEnergyInput;
 // 	}
-	
+
 // 	// Uranium Energy Consumption
 // 	use += (cubic * cubicEnergyInput) + (enricher * enricherEnergyInput) + (recycler * recyclerEnergyInput) + (planetNuke * planetNukeEnergyInput);
-	
+
 // 	// Lava Energy Consumption
 // 	use += (extractor * extractorEnergyInput) + (extruder * extruderEnergyInput) + (veluptuator * veluptuatorEnergyInput) + (condensator * condensatorEnergyInput);
-	
+
 // 	// Oil Energy Consumption
 // 	use += (pumpjack * pumpjackEnergyInput) + (oilField * oilFieldEnergyInput) + (oilRig * oilRigEnergyInput) + (fossilator * fossilatorEnergyInput);
-	
+
 // 	// Metal Energy Consumption
 // 	use += (heavyDrill * heavyDrillEnergyInput) + (gigaDrill * gigaDrillEnergyInput) + (quantumDrill * quantumDrillEnergyInput) + (multiDrill * multiDrillEnergyInput);
-	
+
 // 	// Gems Energy Consumption
 // 	use += (advancedDrill * advancedDrillEnergyInput) + (diamondDrill * diamondDrillEnergyInput) + (carbyneDrill * carbyneDrillEnergyInput) + (diamondChamber * diamondChamberEnergyInput);
-	
+
 // 	// Charcoal Energy Consumption
 // 	if(charcoalToggled === true){
 //         	use += (furnace*furnaceEnergyInput)+(kiln*kilnEnergyInput)+(fryer*fryerEnergyInput)+(microPollutor*microPollutorEnergyInput);
@@ -42,34 +42,34 @@
 
 // 	// Wood Energy Consumption
 // 	use += (laserCutter * laserCutterEnergyInput) + (deforester * deforesterEnergyInput) + (infuser * infuserEnergyInput) + (forest * forestEnergyInput);
-	
+
 // 	// Silicon Energy Consumption
 // 	use += (scorcher * scorcherEnergyInput) + (annihilator * annihilatorEnergyInput) + (desert * desertEnergyInput) + (tardis * tardisEnergyInput);
-	
+
 // 	// Lunarite Energy Consumption
 // 	use += (moonDrill * moonDrillEnergyInput) + (moonQuarry * moonQuarryEnergyInput) + (planetExcavator * planetExcavatorEnergyInput) + (cloner * clonerEnergyInput);
-	
+
 // 	// Methane Energy Consumption
 // 	use += (suctionExcavator * suctionExcavatorEnergyInput) + (spaceCow * spaceCowEnergyInput) + (vent * ventEnergyInput) + (interCow * interCowEnergyInput);
-	
+
 // 	// Titanium Energy Consumption
 // 	use += (lunariteDrill * lunariteDrillEnergyInput) + (pentaDrill * pentaDrillEnergyInput) + (titanDrill * titanDrillEnergyInput) + (club * clubEnergyInput);
-	
+
 // 	// Gold Energy Consumption
 // 	use += (destroyer * destroyerEnergyInput) + (deathStar * deathStarEnergyInput) + (actuator * actuatorEnergyInput) + (philosopher * philosopherEnergyInput);
-	
+
 // 	// Silver Energy Consumption
 // 	use += (spaceLaser * spaceLaserEnergyInput) + (bertha * berthaEnergyInput) + (cannon * cannonEnergyInput) + (werewolf * werewolfEnergyInput);
-	
+
 // 	// Hydrogen Energy Consumption
 // 	use += (magnet * magnetEnergyInput) + (eCell * eCellEnergyInput) + (hindenburg * hindenburgEnergyInput) + (harvester * harvesterEnergyInput);
-	
+
 // 	// Helium Energy Consumption
 // 	use += (tanker * tankerEnergyInput) + (compressor * compressorEnergyInput) + (skimmer * skimmerEnergyInput) + (cage * cageEnergyInput);
-	
+
 // 	// Ice Energy Consumption
 // 	use += (iceDrill * iceDrillEnergyInput) + (freezer * freezerEnergyInput) + (mrFreeze * mrFreezeEnergyInput) + (overexchange * overexchangeEnergyInput);
-	
+
 // 	var energyEfficiencyTech = Game.tech.getTechData('energyEfficiencyResearch');
 // 	var multiplier = 1 - (energyEfficiencyTech.current * 0.01);
 
@@ -161,15 +161,15 @@ function refreshPerSec(delta){
 		if (getResource(RESOURCE.Oil) + getProduction(RESOURCE.Oil) >= oilCost &&
 			getResource(RESOURCE.Charcoal) + getProduction(RESOURCE.Charcoal) >= charcoalCost) {
 			oilps -= oilCost;
-			charcoalps -= charcoalCost;
-			rocketFuelps += ((chemicalPlant*chemicalPlantOutput*chemicalBoost) + (oxidisation*oxidisationOutput)) * perSecondMultiplier;
-		}
-		var methaneCost = hydrazine*hydrazineMethaneInput;
-		if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {
-			methaneps -= methaneCost;
-			rocketFuelps += (hydrazine*hydrazineOutput) * perSecondMultiplier;
-		}
+		charcoalps -= charcoalCost;
+		rocketFuelps += ((chemicalPlant*chemicalPlantOutput*chemicalBoost) + (oxidisation*oxidisationOutput)) * perSecondMultiplier;
 	}
+	var methaneCost = hydrazine*hydrazineMethaneInput;
+	if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {
+		methaneps -= methaneCost;
+		rocketFuelps += (hydrazine*hydrazineOutput) * perSecondMultiplier;
+	}
+}
 
 	// if (meteoriteToggled === true) {
 	// 	adjustment = adjustCost(RESOURCE.Meteorite, (printer * printerPlasmaInput) + (web * webPlasmaInput) + (smasher * smasherPlasmaInput) + (nebulous * nebulousPlasmaInput), ((printer * printerOutput) + (web * webOutput) + (smasher * smasherOutput) + (nebulous * nebulousOutput)) * perSecondMultiplier);
@@ -211,54 +211,58 @@ function refreshPerSec(delta){
 			if (getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmaCost &&
 				getResource(RESOURCE.Ice) + getProduction(RESOURCE.Ice) >= iceCost) {
 				plasmaps -= plasmaCost;
-				iceps -= iceCost;
-				antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
-			}
-		}
-		else {
-			antimatter = antimatterStorage;
+			iceps -= iceCost;
 			antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 		}
 	}
-	var boosts = {};
+	else {
+		antimatter = antimatterStorage;
+		antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
+	}
+}
+var boosts = {};
 
-	for(var i = 0; i < resources.length; i++){
-		boosts[resources[i]] = getProduction(resources[i]) / 4;
+for(var i = 0; i < resources.length; i++){
+	boosts[resources[i]] = getProduction(resources[i]) / 4;
+}
+
+for (var id in Game.interstellar.stars.entries) {
+	var data = Game.interstellar.stars.getStarData(id);
+	if (data.owned === true) {
+		window[data.resource1.toLowerCase() + "ps"] += boosts[data.resource1.toLowerCase()];
+		window[data.resource2.toLowerCase() + "ps"] += boosts[data.resource2.toLowerCase()];
+	}
+}
+
+function adjustCost(resource, cost, gain) {
+	var targetStorage = getStorage(resource);
+	var targetCurrent = getResource(resource);
+	var targetPs = getProduction(resource);
+
+	var maxGain = targetStorage - targetCurrent;
+	if(targetPs < 0) {
+		maxGain -= targetPs;
 	}
 
-	for (var id in Game.interstellar.stars.entries) {
-		var data = Game.interstellar.stars.getStarData(id);
-		if (data.owned === true) {
-			window[data.resource1.toLowerCase() + "ps"] += boosts[data.resource1.toLowerCase()];
-			window[data.resource2.toLowerCase() + "ps"] += boosts[data.resource2.toLowerCase()];
-		}
-	}
+	var gainAbs = Math.min(gain, maxGain);
+	var gainRatio = gainAbs / gain;
+	var costAbs = cost * gainRatio;
 
-	function adjustCost(resource, cost, gain) {
-		var targetStorage = getStorage(resource);
-		var targetCurrent = getResource(resource);
-		var targetPs = getProduction(resource);
-
-		var maxGain = targetStorage - targetCurrent;
-		if(targetPs < 0) {
-			maxGain -= targetPs;
-		}
-
-		var gainAbs = Math.min(gain, maxGain);
-		var gainRatio = gainAbs / gain;
-		var costAbs = cost * gainRatio;
-
-		return {g: gainAbs, c: costAbs};
-	}
+	return {g: gainAbs, c: costAbs};
+}
 }
 
 function checkRedCost() {
 	for (var id in RESOURCE) {
-		Game.settings.turnRedOrGreen(getResource(RESOURCE[id]), getStorage(RESOURCE[id]), RESOURCE[id]);
-		Game.settings.turnRedOnNegative(getProduction(RESOURCE[id]), RESOURCE[id] + 'ps');
+		if(id.indexOf("RocketFuel") == -1){
+			Game.settings.turnRedOrGreen(getResource(RESOURCE[id]), getStorage(RESOURCE[id]), RESOURCE[id]);
+			Game.settings.turnRedOnNegative(getProduction(RESOURCE[id]), RESOURCE[id] + 'ps');
+		} else {
+			console.log("rocketFuel")
+		}
 	}
-
-	Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
+	console.log("rocketFuel")
+	//Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
 
 	Game.settings.turnRed(getResource(RESOURCE.Wood), 2, "manualCharcoalCost");
 	Game.settings.turnRed(getResource(RESOURCE.Energy), 1000, "manualPlasmaEnergyCost");
@@ -467,15 +471,15 @@ function refreshResources(){
 		document.getElementById("rocketWonderNav").className = "sideTab";
 		document.getElementById("antimatterWonderNav").className = "sideTab";
 		document.getElementById("portalRoomNav").className = "sideTab";
-        if(contains(resourcesUnlocked, "wonderFloor2Nav") == false){
-		  resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
-        } else {
-            Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
-            Game.removeExcess(resourcesUnlocked, "communicationWonderNav");
-            Game.removeExcess(resourcesUnlocked, "rocketWonderNav");
-            Game.removeExcess(resourcesUnlocked, "antimatterWonderNav");
-            Game.removeExcess(resourcesUnlocked, "portalRoomNav");
-        }
+		if(contains(resourcesUnlocked, "wonderFloor2Nav") == false){
+			resourcesUnlocked.push("wonderFloor2Nav", "communicationWonderNav", "rocketWonderNav", "antimatterWonderNav", "portalRoomNav");
+		} else {
+			Game.removeExcess(resourcesUnlocked, "wonderFloor2Nav");
+			Game.removeExcess(resourcesUnlocked, "communicationWonderNav");
+			Game.removeExcess(resourcesUnlocked, "rocketWonderNav");
+			Game.removeExcess(resourcesUnlocked, "antimatterWonderNav");
+			Game.removeExcess(resourcesUnlocked, "portalRoomNav");
+		}
 	}
 	for(var i=0; i<activated.length; i++){
 		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
@@ -483,120 +487,120 @@ function refreshResources(){
 	}
 	if(techUnlocked === true){
 		for(var id in Game.resources.entries){
-		    if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
-		        Game.buildings.unlock(id + "T3");
-		    }
+			if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
+				Game.buildings.unlock(id + "T3");
+			}
 		}
 	}
 	if(meteoriteUnlocked === true){
 		for(var id in Game.resources.entries){
-            if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
-                Game.buildings.unlock(id + "T4");
-            }
-        }
+			if(id != "energy" && id != "plasma" && id != "science" && id != "rocketFuel"){
+				Game.buildings.unlock(id + "T4");
+			}
+		}
 	}
 }
 
 function contains(array, obj) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i] === obj) {
-            return true;
-        }
-    }
-    return false;
+	for (var i = 0; i < array.length; i++) {
+		if (array[i] === obj) {
+			return true;
+		}
+	}
+	return false;
 }
 
 // Collapses Resources
 
 $('.collapseEarth').click(function(){
-    if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth sideTab";
-        }
-        $(this).removeClass("collapsed");
-    } else {
-        for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-        	document.getElementsByClassName("earth")[i].className = "earth sideTab hidden";
-        }
-        $(this).addClass("collapsed");
-    }
+	if($(this).hasClass("collapsed")){
+		for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+			document.getElementsByClassName("earth")[i].className = "earth sideTab";
+		}
+		$(this).removeClass("collapsed");
+	} else {
+		for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
+			document.getElementsByClassName("earth")[i].className = "earth sideTab hidden";
+		}
+		$(this).addClass("collapsed");
+	}
 });
 
 $('.collapseInnerPlanet').click(function(){
-    if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab";
-        }
-        $(this).removeClass("collapsed");
-    } else {
-        for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-        	document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab hidden";
-        }
-        $(this).addClass("collapsed");
-    }
+	if($(this).hasClass("collapsed")){
+		for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+			document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab";
+		}
+		$(this).removeClass("collapsed");
+	} else {
+		for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
+			document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab hidden";
+		}
+		$(this).addClass("collapsed");
+	}
 });
 
 $('.collapseOuterPlanet').click(function(){
-    if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab";
-        }
-        $(this).removeClass("collapsed");
-    } else {
-        for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-        	document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab hidden";
-        }
-        $(this).addClass("collapsed");
-    }
+	if($(this).hasClass("collapsed")){
+		for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+			document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab";
+		}
+		$(this).removeClass("collapsed");
+	} else {
+		for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
+			document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab hidden";
+		}
+		$(this).addClass("collapsed");
+	}
 });
 
 $('.collapseInner').click(function(){
-    if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner sideTab";
-        }
-        $(this).removeClass("collapsed");
-    } else {
-        for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-        	document.getElementsByClassName("inner")[i].className = "inner sideTab hidden";
-        }
-        $(this).addClass("collapsed");
-    }
+	if($(this).hasClass("collapsed")){
+		for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
+			document.getElementsByClassName("inner")[i].className = "inner sideTab";
+		}
+		$(this).removeClass("collapsed");
+	} else {
+		for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
+			document.getElementsByClassName("inner")[i].className = "inner sideTab hidden";
+		}
+		$(this).addClass("collapsed");
+	}
 });
 
 $('.collapseOuter').click(function(){
-    if($(this).hasClass("collapsed")){
-        for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer sideTab";
-        }
-        $(this).removeClass("collapsed");
-    } else {
-        for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-        	document.getElementsByClassName("outer")[i].className = "outer sideTab hidden";
-        }
-        $(this).addClass("collapsed");
-    }
+	if($(this).hasClass("collapsed")){
+		for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
+			document.getElementsByClassName("outer")[i].className = "outer sideTab";
+		}
+		$(this).removeClass("collapsed");
+	} else {
+		for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
+			document.getElementsByClassName("outer")[i].className = "outer sideTab hidden";
+		}
+		$(this).addClass("collapsed");
+	}
 });
 
 //Copy To Clipboard
 var copyTextareaBtn = document.querySelector('#copyExport');
 
 copyTextareaBtn.addEventListener('click', function(event) {
-  var copyTextarea = document.querySelector('#impexpField');
-  copyTextarea.select();
+	var copyTextarea = document.querySelector('#impexpField');
+	copyTextarea.select();
 
-  try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
-  } catch (err) {
-    console.log('Oops, unable to copy');
-  }
+	try {
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);
+	} catch (err) {
+		console.log('Oops, unable to copy');
+	}
 });
 
 //ToolTips
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
+	$('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
 });
 
 //Change Company Name

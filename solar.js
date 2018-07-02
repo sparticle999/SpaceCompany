@@ -3,7 +3,54 @@ Game.solar = (function(){
     var instance = {};
 
     instance.entries = {};
+    instance.categoryEntries = {};
+    instance.solarTypeCount = 0;
     instance.tabUnlocked = false;
+
+    instance.initialise = function(){
+    	for (var id in Game.solarData) {
+            var data = Game.solarData[id];
+            this.solarTypeCount++;
+            this.entries[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'solar_' + id,
+                current: 0,
+                perSecond: 0,
+                buildings: {},
+                iconPath: Game.constants.iconPath,
+                iconExtension: Game.constants.iconExtension,
+                displayNeedsUpdate: true,
+                hidden: false
+            });
+
+        // Compose an hierarchical object
+        // categories -> resources -> buildings & storbuildings
+        Game.categories = {};
+        // Add categories
+        Object.keys(Game.solarCategoryData).forEach(
+            category => Game.categories[category] = {}
+        )
+        // Link navs to categories
+        Object.keys(Game.solar.entries).forEach(function(nav) {
+            var category = Game.solar.entries[nav].category;
+            var id = Game.solar.entries[nav].id
+            Game.categories[category][id] = Game.solar.entries[nav];           
+        })
+
+        }
+    };
+
+    instance.update = function(){
+
+    };
+
+    instance.save = function(){
+
+    };
+
+    instance.load = function(){
+
+    };
 
     return instance;
 }());

@@ -167,9 +167,12 @@ Game.techData = (function () {
         },
         tabAlerts: ['resources'],
         onApply: function(){
+            console.log("rocketFuel")
             for(var id in Game.buildings.entries){
-                var data = Game.buildings.entries[id];
-                $('#' + data.id + "_destroy")[0].className = "";
+                if(id.indexOf("rocketFuel") == -1){
+                    var data = Game.buildings.entries[id];
+                    $('#' + data.id + "_destroy")[0].className = "";
+                }
             }
         }
     });
