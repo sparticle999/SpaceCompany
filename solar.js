@@ -16,27 +16,11 @@ Game.solar = (function(){
                 htmlId: 'solar_' + id,
                 current: 0,
                 perSecond: 0,
-                buildings: {},
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
                 hidden: false
             });
-
-        // Compose an hierarchical object
-        // categories -> resources -> buildings & storbuildings
-        Game.categories = {};
-        // Add categories
-        Object.keys(Game.solarCategoryData).forEach(
-            category => Game.categories[category] = {}
-        )
-        // Link navs to categories
-        Object.keys(Game.solar.entries).forEach(function(nav) {
-            var category = Game.solar.entries[nav].category;
-            var id = Game.solar.entries[nav].id
-            Game.categories[category][id] = Game.solar.entries[nav];           
-        })
-
         }
     };
 
@@ -57,7 +41,7 @@ Game.solar = (function(){
 
 
 // Solar System Tab
-
+/* Should be covered by the eventsystem already
 function getChemicalPlant(){
 	if(metal >= chemicalPlantMetalCost && gem >= chemicalPlantGemCost && oil >= chemicalPlantOilCost){
 		metal -= chemicalPlantMetalCost;
@@ -87,7 +71,7 @@ function getHydrazine(){
 		updateFuelProductionCost();
 	}
 }
-
+*/
 function updateFuelProductionCost(){
     chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
     chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
