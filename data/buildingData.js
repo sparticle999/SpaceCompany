@@ -9,7 +9,9 @@ Game.buildingData = (function () {
         costType: COST_TYPE.FIXED
     };
 
-    // Energy
+    ////////////
+    // Energy //
+    ////////////
     instance.energyT1 = $.extend({}, baseProducerBuilding, {
         name: 'Charcoal Engine',
         desc: 'Burns Charcoal to produce a steady source of Energy.',
@@ -96,7 +98,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Plasma
+    ////////////
+    // Plasma //
+    ////////////
     instance.plasmaT1 = $.extend({}, baseProducerBuilding, {
         name: 'Super-Heater',
         desc: 'The Super-Heater throws electricity at Hydrogen to turn it into a plasmatic substance.',
@@ -146,7 +150,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Uranium
+    /////////////
+    // Uranium //
+    /////////////
     instance.uraniumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Grinder',
         desc: 'Pulverizes Uranium for easy transportation out of deep mineshafts.',
@@ -221,7 +227,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Lava
+    //////////
+    // Lava //
+    //////////
     instance.lavaT1 = $.extend({}, baseProducerBuilding, {
         name: 'Heat Resistant Crucible',
         desc: 'You can use a modified crucible to pick up lava and to store it for later use.',
@@ -299,7 +307,9 @@ Game.buildingData = (function () {
      * Earth Resources  *
      ********************/
 
-    // Oil
+    /////////
+    // Oil //
+    /////////
     instance.oilT1 = $.extend({}, baseProducerBuilding, {
         name: 'Small Pump',
         desc: 'Build a small pump to extract Oil from the ground.',
@@ -373,7 +383,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Metal
+    ///////////
+    // Metal //
+    ///////////
     instance.metalT1 = $.extend({}, baseProducerBuilding, {
         name: 'Miner',
         desc: 'Build a pickaxe for your miner.',
@@ -457,7 +469,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Gem
+    /////////
+    // Gem //
+    /////////
     instance.gemT1 = $.extend({}, baseProducerBuilding, {
         name: 'Gem Miner',
         desc: 'Build an improved pickaxe to mine Gems.',
@@ -532,7 +546,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Charcoal
+    //////////////
+    // Charcoal //
+    //////////////
     instance.charcoalT1 = $.extend({}, baseProducerBuilding, {
         name: 'Woodburner',
         desc: 'Build a shovel for your woodburner.',
@@ -611,7 +627,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Wood
+    //////////
+    // Wood //
+    //////////
     instance.woodT1 = $.extend({}, baseProducerBuilding, {
         name: 'Woodcutter',
         desc: 'Build an axe for your woodcutter.',
@@ -686,7 +704,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Silicon
+    /////////////
+    // Silicon //
+    /////////////
     instance.siliconT1 = $.extend({}, baseProducerBuilding, {
         name: 'Empowered Blowtorch',
         desc: 'This type of blowtorch instantly turns sand into Silicon, but only on a small scale. To make it, extraterrestrial resources are required.',
@@ -764,7 +784,9 @@ Game.buildingData = (function () {
      * Inner Planetary Resources  *
      ******************************/
 
-    // Lunarite
+    //////////////
+    // Lunarite //
+    //////////////
     instance.lunariteT1 = $.extend({}, baseProducerBuilding, {
         name: 'Native Moon Worker',
         desc: 'Bribe local workers to mine your Lunarite.',
@@ -837,7 +859,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Methane
+    /////////////
+    // Methane //
+    /////////////
     instance.methaneT1 = $.extend({}, baseProducerBuilding, {
         name: 'Vacuum Cleaner',
         desc: 'Sucks in methane and cleans the planet at the same time!',
@@ -910,7 +934,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Titanium
+    //////////////
+    // Titanium //
+    //////////////
     instance.titaniumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Explorer',
         desc: 'Hire explorers to search for Titanium on the surface, uncovered by winds on Mars.',
@@ -983,7 +1009,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Gold
+    //////////
+    // Gold //
+    //////////
     instance.goldT1 = $.extend({}, baseProducerBuilding, {
         name: 'Rocket Droid',
         desc: 'Powered by Methane, this droid scouts the asteroids for gold deposits.',
@@ -1057,7 +1085,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Silver
+    ////////////
+    // Silver //
+    ////////////
     instance.silverT1 = $.extend({}, baseProducerBuilding, {
         name: 'Scout Ship',
         desc: 'The Scout Ship searches through the asteroid field for pieces of silver embedded in asteroids.',
@@ -1135,7 +1165,9 @@ Game.buildingData = (function () {
      * Outer Planetary Resources  *
      ******************************/
 
-    // Hydrogen
+    //////////////
+    // Hydrogen //
+    //////////////
     instance.hydrogenT1 = $.extend({}, baseProducerBuilding, {
         name: 'Hydrogen Collector',
         desc: 'This collector travels around Jupiter seeking Hydrogen to store to bring back to Earth.',
@@ -1209,7 +1241,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Helium
+    ////////////
+    // Helium //
+    ////////////
     instance.heliumT1 = $.extend({}, baseProducerBuilding, {
         name: 'Helium Drone',
         desc: 'The Helium Drone scouts out the area on Saturn and picks out spots high in Helium which are then mined slowly by it.',        resource: 'helium',
@@ -1282,7 +1316,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Ice
+    /////////
+    // Ice //
+    /////////
     instance.iceT1 = $.extend({}, baseProducerBuilding, {
         name: 'Ice Pickaxe',
         desc: 'The Ice Pickaxe is the simplest way of mining frozen water, and although it is the cheapest, it is the slowest.',
@@ -1356,7 +1392,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Meteorite
+    ///////////////
+    // Meteorite //
+    ///////////////
     instance.meteoriteT1 = $.extend({}, baseProducerBuilding, {
         name: 'Meteorite Printer',
         desc: 'Contruct an automated way of producing meteorite without you having to do anything.',
@@ -1416,7 +1454,9 @@ Game.buildingData = (function () {
         }
     });
 
-    // Research
+    //////////////
+    // Research //
+    //////////////
     instance.scienceT1 = $.extend({}, baseProducerBuilding, {
         name: 'Home Science Kit',
         desc: 'Build a small laboratory of your very own to start producing science. Each one produces 0.1 science per second.',
@@ -1487,7 +1527,9 @@ Game.buildingData = (function () {
         }
     });
 
-   // Solar System
+   //////////////////
+   // Solar System //
+   //////////////////
     instance.rocketFuelT1 = $.extend({}, baseProducerBuilding, {
         name: 'Chemical Plant',
         desc: 'Chemical plants are used to make rocket fuel automatically.',
@@ -1530,27 +1572,49 @@ Game.buildingData = (function () {
         }
     });
 
-    return instance;
-}());
+    instance.rocketT1 = $.extend({}, baseProducerBuilding, {
+        name: "Rocket",
+        desc: "To launch the rocket into space, it must first be built.",
+        category: "rocket",
+        resource: "rocket",
+        cost: {
+            'metal': 1200,
+            'gem': 900,
+            'oil': 1000
+        },
+        order: 2,
+        unlocked: true,
+        onApply: function() {
+            // unlock rocketT2
+            // lock rocketT1
+            console.log("Rocket bought Please fix me!");
+        }
+    });
 
-
-/*
-Game.otherBuildingsData = (function(){
-
-    var instance = {};
-
-    var baseProducerBuilding = {
-        type: BUILDING_TYPE.PRODUCER,
+    instance.rocketT2 = $.extend({}, baseProducerBuilding, {
+        name: "Launch Rocket",
+        desc: "Launching the rocket into space will unlock space mining, exploration and other planets.",
+        category: "rocket",
+        resource: "rocket",
+        cost: {
+            'rocket': 1,
+            'rocketFuel': 20
+        },
+        order: 3,
         unlocked: false,
-        maxCount: Number.MAX_VALUE,
-        costType: COST_TYPE.FIXED
-    };
+        onApply: function() {
+            // lock rocketT2
+            // lock rocket category
+            // Unlock inner
+            // Unlock moon
+            console.log("Rocket launched Please fix me!");
+        }
+    });
 
- 
 
     return instance;
 }());
-*/
+
 
 Game.storageBuildingData = (function(){
 
