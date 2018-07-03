@@ -6,6 +6,7 @@ Game.resourceCategoryData = (function () {
         title: 'Energy',
         category: 'energy',
         page: 'resources',
+        order: 1, // 1st category item of the resources page
         unlocked: false
     };
 
@@ -13,6 +14,7 @@ Game.resourceCategoryData = (function () {
         title: 'Fabricated',
         category: 'fabricated',
         page: 'resources',
+        order: 2,
         unlocked: false
     };
 
@@ -20,13 +22,15 @@ Game.resourceCategoryData = (function () {
         title: 'Earth Resources',
         category: 'earth',
         page: 'resources',
-        unlocked: false
+        order: 3,
+        unlocked: true
     };
 
     instance.innerSol = {
         title: 'Inner Planetary Resources',
         category: 'innerSol',
         page: 'resources',
+        order: 4,
         unlocked: false
     };
 
@@ -34,6 +38,7 @@ Game.resourceCategoryData = (function () {
         title: 'Outer Planetary Resources',
         category: 'outerSol',
         page: 'resources',
+        order: 5,
         unlocked: false
     };
 
@@ -41,14 +46,24 @@ Game.resourceCategoryData = (function () {
         title: 'Science',
         category: 'science',
         page: 'science',
+        order: 1, // 1st category item on the science page
         unlocked: false
+    };
+
+    instance.rocket = {
+        title: 'Rocket',
+        category: 'rocket',
+        page: 'solar',
+        order: 1, // 1st category item on the solar page
+        unlocked: true
     };
 
     instance.rocketFuel = {
         title: 'Rocket Fuel',
         category: 'rocketFuel',
         page: 'solar',
-        unlocked: false
+        order: 2,
+        unlocked: true
     };
 
     return instance;
@@ -317,9 +332,22 @@ Game.resourceData = (function () {
         baseCapacity: 1000000,
         gainNum: 1,
         manualgain: false,
-        unlocked: false
+        unlocked: true
     };
 
+    /********************
+     * Rocket           *
+     ********************/
+
+    instance.rocket = {
+        name: "Rocket",
+        desc: "Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.<br><br><br><b>NB: You only need 1 Rocket. You can reuse the same one by just using fuel.</b>",
+        icon: 'rocketIcon',
+        category: "rocket",
+        baseCapacity: 0, // Important to hide the ps & storage
+        manualgain:  false,
+        unlocked: true
+    };
 
     return instance;
 }());
@@ -356,7 +384,7 @@ Game.storageData = (function(){
      * Energy Resources  *
      *********************/
 
-    instance.storageUpgradePlasma = $.extend({}, baseUpgradeData, {
+    instance.plasmaStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Plasma storage size to ',
         resource: 'plasma',
         cost: {
@@ -364,7 +392,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeUranium = $.extend({}, baseUpgradeData, {
+    instance.uraniumStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Uranium storage size to ',
         resource: 'uranium',
         cost: {
@@ -373,7 +401,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeLava = $.extend({}, baseUpgradeData, {
+    instance.lavaStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Lava storage size to ',
         resource: 'lava',
         cost: {
@@ -386,7 +414,7 @@ Game.storageData = (function(){
      * Earth Resources  *
      ********************/
 
-    instance.storageUpgradeOil = $.extend({}, baseUpgradeData, {
+    instance.oilStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Oil storage size to ',
         resource: 'oil',
         cost: {
@@ -395,7 +423,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeMetal = $.extend({}, baseUpgradeData, {
+    instance.metalStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Metal storage size to ',
         resource: 'metal',
         cost: {
@@ -403,7 +431,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeGem = $.extend({}, baseUpgradeData, {
+    instance.gemStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Gem storage size to ',
         resource: 'gem',
         cost: {
@@ -412,7 +440,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeCharcoal = $.extend({}, baseUpgradeData, {
+    instance.charcoalStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Charcoal storage size to ',
         resource: 'charcoal',
         cost: {
@@ -421,7 +449,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeWood = $.extend({}, baseUpgradeData, {
+    instance.woodStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Wood storage size to ',
         resource: 'wood',
         cost: {
@@ -430,7 +458,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeSilicon = $.extend({}, baseUpgradeData, {
+    instance.siliconStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Silicon storage size to ',
         resource: 'silicon',
         cost: {
@@ -443,7 +471,7 @@ Game.storageData = (function(){
      * Inner Planetary Resources  *
      ******************************/
 
-    instance.storageUpgradeLunarite = $.extend({}, baseUpgradeData, {
+    instance.lunariteStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Lunarite storage size to ',
         resource: 'lunarite',
         cost: {
@@ -452,7 +480,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeMethane = $.extend({}, baseUpgradeData, {
+    instance.methaneStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Methane storage size to ',
         resource: 'methane',
         cost: {
@@ -461,7 +489,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeTitanium = $.extend({}, baseUpgradeData, {
+    instance.titaniumStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Titanium storage size to ',
         resource: 'titanium',
         cost: {
@@ -470,7 +498,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeGold = $.extend({}, baseUpgradeData, {
+    instance.goldStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Gold storage size to ',
         resource: 'gold',
         cost: {
@@ -479,7 +507,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeSilver = $.extend({}, baseUpgradeData, {
+    instance.silverStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Silver storage size to ',
         resource: 'silver',
         cost: {
@@ -492,7 +520,7 @@ Game.storageData = (function(){
      * Outer Planetary Resources  *
      ******************************/
 
-    instance.storageUpgradeHydrogen = $.extend({}, baseUpgradeData, {
+    instance.hydrogenStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Hydrogen storage size to ',
         resource: 'hydrogen',
         cost: {
@@ -501,7 +529,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeHelium = $.extend({}, baseUpgradeData, {
+    instance.heliumStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Helium storage size to ',
         resource: 'helium',
         cost: {
@@ -510,7 +538,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeIce = $.extend({}, baseUpgradeData, {
+    instance.iceStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Ice storage size to ',
         resource: 'ice',
         cost: {
@@ -519,7 +547,7 @@ Game.storageData = (function(){
         }
     });
 
-    instance.storageUpgradeMeteorite = $.extend({}, baseUpgradeData, {
+    instance.meteoriteStorageUpgrade = $.extend({}, baseUpgradeData, {
         desc: 'Upgrade your Meteorite storage size to ',
         resource: 'meteorite',
         cost: {

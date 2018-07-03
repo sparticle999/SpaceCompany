@@ -58,6 +58,7 @@
     // basic functions
     // ---------------------------------------------------------------------------
     GameTab.prototype.initialise = function() {
+        console.log("initialising:")
         var html = tabTemplate(this.data);
         if(this.data.id == "resources"){
             if(this.data.append == true){

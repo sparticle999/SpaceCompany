@@ -13,10 +13,11 @@ Game.resourcesUI = (function(){
 	instance.tab = null;
 
 	instance.category = 'resources';
+	instance.title = 'Resources';
 
 	instance.initialise = function() {
 
-		this.tab = Game.ui.createTab({id: this.category, title: Game.utils.capitaliseFirst(this.category), hidden: '', active: "active"});
+		this.tab = Game.ui.createTab({id: this.category, title: this.title, hidden: '', active: "active"});
 		this.tab.initialise();
 
 		console.log("test from start");
@@ -147,7 +148,6 @@ Game.resourcesUI = (function(){
 
 		// Collect the data we need and render the page
 		instance.renderPage = function() {
-			console.log(Game.categories);
 			return this.resourcePage(data);
 		}
 
@@ -162,7 +162,7 @@ Game.resourcesUI = (function(){
 			'<span>{{{desc}}}</span>',
 			'<br><br>',
 			'<hide class="gainButton">',
-			'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="plasmaGain">1</span></button>',
+			'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="manualGain">1</span></button>',
 			'<br>',
 			'<br>',
 			'</hide>',
@@ -294,7 +294,7 @@ Game.resourcesUI = (function(){
 			'<button type="button" id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
 			'<button type="button" id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
 			'</hide>',
-			'<button style="height:5px"></div>',
+			'<div style="height:5px"></div>',
 			'<hide id="{{id}}_destroy" class="hidden">',
 			'<button type="button" id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
 			'<hide class="multiBuy hidden">',

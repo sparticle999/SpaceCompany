@@ -46,14 +46,6 @@ Game.buildings = (function(){
             var data = Game.otherBuildingsData[id];
         }
 
-        // Link Game.categories.resources to buildings & storBuildings
-        for (building in Game.buildings.entries) {
-            var id = Game.buildings.entries[building].id;
-            var output = Game.buildings.entries[building].resource;
-            Game.resources.entries[output].buildings[building] =
-            Game.buildings.entries[building];
-        }
-
         console.debug("Loaded " + this.buildingTypeCount + " Building Types");
         console.debug("Loaded " + this.storageTypeCount + " Storage Types");
     };
@@ -213,7 +205,7 @@ Game.buildings = (function(){
             else
                 $('#' + data.htmlId)[0].className = "hidden";
         } else {
-            console.log("rocketFuel")
+            //console.log("rocketFuel")
         }
     }
 

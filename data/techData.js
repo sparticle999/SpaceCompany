@@ -171,7 +171,7 @@ Game.techData = (function () {
             for(var id in Game.buildings.entries){
                 if(id.indexOf("rocketFuel") == -1){
                     var data = Game.buildings.entries[id];
-                    $('#' + data.id + "_destroy")[0].className = "";
+                    //$('#' + data.id + "_destroy")[0].className = "";
                 }
             }
         }
@@ -191,7 +191,7 @@ Game.techData = (function () {
         newTechs: ['unlockLabT2', 'unlockRocketFuelT2'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
-            $('#solarSystemTab')[0].className = "";
+            $('#solarTab')[0].className = "";
             Game.solar.tabUnlocked = true;
             Game.buildings.entries.rocketFuelT1.unlocked = true;
         }

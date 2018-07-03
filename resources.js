@@ -55,11 +55,11 @@ function addManualResource(id) {
     var capacity = Obj[id].capacity;
     if (current >= capacity) {return false;}
     // Find the input for this resource.
-    if (!contains(Object.keys(Obj[id].buildings), id+'T1')) {
+    if (!contains(Object.keys(Obj[id].items), id+'T1')) {
         console.log("Couldn't find the building '"+id+"T1'.") ; return false;
     }
     var gainNum = Obj[id].gainNum;
-    var transaction = Obj[id].buildings[id+'T1'].resourcePerSecond
+    var transaction = Obj[id].items[id+'T1'].resourcePerSecond
     // Can we afford the cost?
     var affordable = Object.keys(transaction).every(
         res => transaction[res] > 0 || Obj[res].current+(transaction[res]*gainNum) >= 0

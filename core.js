@@ -258,10 +258,10 @@ function checkRedCost() {
 			Game.settings.turnRedOrGreen(getResource(RESOURCE[id]), getStorage(RESOURCE[id]), RESOURCE[id]);
 			Game.settings.turnRedOnNegative(getProduction(RESOURCE[id]), RESOURCE[id] + 'ps');
 		} else {
-			console.log("rocketFuel")
+			//console.log("rocketFuel")
 		}
 	}
-	console.log("rocketFuel")
+	//console.log("rocketFuel")
 	//Game.settings.turnRedOnNegative(rocketFuelps, 'rocketFuelps');
 
 	Game.settings.turnRed(getResource(RESOURCE.Wood), 2, "manualCharcoalCost");
