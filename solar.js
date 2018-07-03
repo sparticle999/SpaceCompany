@@ -74,37 +74,7 @@ Game.solar = (function(){
 
 
 // Solar System Tab
-/* Should be covered by the eventsystem already
-function getChemicalPlant(){
-	if(metal >= chemicalPlantMetalCost && gem >= chemicalPlantGemCost && oil >= chemicalPlantOilCost){
-		metal -= chemicalPlantMetalCost;
-		gem -= chemicalPlantGemCost;
-		oil -= chemicalPlantOilCost;
-		chemicalPlant += 1;
-		updateFuelProductionCost();
-	}
-}
 
-function getOxidisation(){
-	if(metal >= oxidisationMetalCost && gem >= oxidisationGemCost && oil >= oxidisationOilCost){
-		metal -= oxidisationMetalCost;
-		gem -= oxidisationGemCost;
-		oil -= oxidisationOilCost;
-		oxidisation += 1;
-		updateFuelProductionCost();
-	}
-}
-
-function getHydrazine(){
-	if(titanium >= hydrazineTitaniumCost && silicon >= hydrazineSiliconCost && gold >= hydrazineGoldCost){
-		titanium -= hydrazineTitaniumCost;
-		silicon -= hydrazineSiliconCost;
-		gold -= hydrazineGoldCost;
-		hydrazine += 1;
-		updateFuelProductionCost();
-	}
-}
-*/
 function updateFuelProductionCost(){
     chemicalPlantOilCost = Math.floor(500 * Math.pow(1.1,chemicalPlant));
     chemicalPlantGemCost = Math.floor(750 * Math.pow(1.1,chemicalPlant));
