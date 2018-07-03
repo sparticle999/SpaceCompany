@@ -50,8 +50,8 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 * {{itemHidden}} - hidden or null - sets the default hide class
 	 */
 	var TemplateMenuHeader = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{item}}_collapse" style="border:none;" class="{{itemHidden}}">',
-		   '<td colspan="4" style="border:none">',
+		['<tr id="'+this.page+'Tab_{{item}}_collapse" class="{{itemHidden}}">',
+		   '<td colspan="4" style="border:{{border}};">',
 		     '<span>{{name}}</span> <span class="caret">',
 			 '</span>',
 		   '</td>',
@@ -334,8 +334,11 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 			var cItem = data[cat].category;
 			var cName = data[cat].title;
 			var cItemHidden = ''; // Solar is only hidden by the topNav
+			var cBorder = '';
+			if(cItem == "rocket")
+				cBorder = 'none';
 			// Append this row to the menu
-			menuHtml += TemplateMenuHeader({'item': cItem, 'name': cName, 'itemHidden': cItemHidden});
+			menuHtml += TemplateMenuHeader({'item': cItem, 'name': cName, 'itemHidden': cItemHidden, 'border': cBorder,});
 			// Get the items and their order
 			var subitems = Object.keys(data[cat][subcategory]).sort(function(a, b) {
 				return data[cat].items[a].order > data[cat].items[b].order}

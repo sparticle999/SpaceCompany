@@ -111,6 +111,8 @@
         var border;
         if(id == "energy")
             border = "none";
+        else
+            border = "";
         var data = {id: id, title: title, htmlId: this.data.htmlId, border: border};
         var html = categoryTemplate(data);
         this.categories[id] = data;
