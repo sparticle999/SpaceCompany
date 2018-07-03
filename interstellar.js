@@ -161,7 +161,7 @@ Game.interstellar.comms = (function(){
     };
 
     instance.calcCost = function(self, resource){
-        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+        return Math.floor(self.defaultCost[resource] * Math.pow(1.1,self.count));
     };
 
     instance.updateCost = function(entryName){
@@ -169,8 +169,8 @@ Game.interstellar.comms = (function(){
             var target = 0;
             for(var i = 0; i < Object.keys(Game.interstellarUI.commObservers[entryName]).length; i++){
                 if(resource == Game.interstellarUI.commObservers[entryName][i].resource){
-                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
-                    Game.interstellarUI.commObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                    this.entries[entryName].cost[resource] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.commObservers[entryName][i].value = this.entries[entryName].cost[resource];
                 }
             }
         }
@@ -184,14 +184,14 @@ Game.interstellar.comms = (function(){
         }
         var resourcePass = 0;
         for(var resource in data.cost){
-            if(Game.resources.entries[resource] >= data.cost[resource.toString()]){
+            if(Game.resources.entries[resource] >= data.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             data.count += 1;
             for(var resource in data.cost){
-                Game.resources.entries[resource] -= data.cost[resource.toString()];
+                Game.resources.entries[resource] -= data.cost[resource];
             }            
             data.displayNeedsUpdate = true;
         }
@@ -233,7 +233,7 @@ Game.interstellar.antimatter = (function(){
     };
 
     instance.calcCost = function(self, resource){
-        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+        return Math.floor(self.defaultCost[resource] * Math.pow(1.1,self.count));
     };
 
     instance.updateCost = function(entryName){
@@ -241,8 +241,8 @@ Game.interstellar.antimatter = (function(){
             var target = 0;
             for(var i = 0; i < Object.keys(Game.interstellarUI.antimatterObservers[entryName]).length; i++){
                 if(resource == Game.interstellarUI.antimatterObservers[entryName][i].resource){
-                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
-                    Game.interstellarUI.antimatterObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                    this.entries[entryName].cost[resource] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.antimatterObservers[entryName][i].value = this.entries[entryName].cost[resource];
                 }
             }
         }
@@ -253,14 +253,14 @@ Game.interstellar.antimatter = (function(){
         var data = this.entries[entryName];
         var resourcePass = 0;
         for(var resource in data.cost){
-            if(window[resource.toString()] >= data.cost[resource.toString()]){
+            if(Game.resources.entries[resource].current >= data.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             data.count += 1;
             for(var resource in data.cost){
-                window[resource.toString()] -= data.cost[resource.toString()];
+                Game.resources.entries[resource].current -= data.cost[resource];
             }            
             data.displayNeedsUpdate = true;
         }
@@ -318,7 +318,7 @@ Game.interstellar.military = (function(){
     };
 
     instance.calcCost = function(self, resource){
-        return Math.floor(self.defaultCost[resource.toString()] * Math.pow(1.1,self.count));
+        return Math.floor(self.defaultCost[resource] * Math.pow(1.1,self.count));
     };
 
     instance.updateCost = function(entryName){
@@ -326,8 +326,8 @@ Game.interstellar.military = (function(){
             var target = 0;
             for(var i = 0; i < Object.keys(Game.interstellarUI.militaryObservers[entryName]).length; i++){
                 if(resource == Game.interstellarUI.militaryObservers[entryName][i].resource){
-                    this.entries[entryName].cost[resource.toString()] = this.calcCost(this.entries[entryName], resource);
-                    Game.interstellarUI.militaryObservers[entryName][i].value = this.entries[entryName].cost[resource.toString()];
+                    this.entries[entryName].cost[resource] = this.calcCost(this.entries[entryName], resource);
+                    Game.interstellarUI.militaryObservers[entryName][i].value = this.entries[entryName].cost[resource];
                 }
             }
         }
@@ -338,14 +338,14 @@ Game.interstellar.military = (function(){
         var resourcePass = 0;
         var ship = this.entries[entryName];
         for(var resource in ship.cost){
-            if(window[resource.toString()] >= ship.cost[resource.toString()]){
+            if(Game.resources.entries[resource].current >= ship.cost[resource]){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(ship.cost).length){
             ship.count += 1;
             for(var resource in ship.cost){
-                window[resource.toString()] -= ship.cost[resource.toString()];
+                Game.resources.entries[resource].current -= ship.cost[resource];
             }            
             ship.displayNeedsUpdate = true;
         }
