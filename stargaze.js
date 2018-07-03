@@ -59,8 +59,8 @@ Game.stargaze = (function(){
 		if(sphere < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
-			this.entries.darkMatter.count += this.entries.darkMatter.current;
-			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.current + " Dark Matter from rebirthing into your new life!");
+			this.entries.darkMatter.current += this.entries.darkMatter.potential;
+			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.potential + " Dark Matter from rebirthing into your new life!");
 
 			Game.tech.tabUnlocked = false;
 			Game.solar.tabUnlocked = false;
@@ -169,8 +169,8 @@ Game.stargaze = (function(){
 			return;
 		}
 		if(upgradeData.achieved == false){
-			if(this.entries.darkMatter.count >= upgradeData.cost){
-				this.entries.darkMatter.count -= upgradeData.cost;
+			if(this.entries.darkMatter.current >= upgradeData.cost){
+				this.entries.darkMatter.current -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
 				if(upgradeData.category != "intro" || "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
 				this.entries[upgradeData.category].displayNeedsUpdate = true;
@@ -208,7 +208,7 @@ Game.stargaze = (function(){
 		for(var upgrade in this.upgradeEntries){
 			var upgradeData = this.upgradeEntries[upgrade];
 			if(upgradeData.achieved == true){
-				this.entries.darkMatter.count += upgradeData.cost;
+				this.entries.darkMatter.current += upgradeData.cost;
 				if(upgradeData.category != "intro" && upgradeData.category != "darkMatter"){
 					if(upgradeData.achieved == true)this.entries[upgradeData.category].opinion -= upgradeData.opinion;this.entries[upgradeData.category].displayNeedsUpdate = true;
 				}

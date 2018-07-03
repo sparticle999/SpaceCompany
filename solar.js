@@ -36,6 +36,39 @@ Game.solar = (function(){
 
     };
 
+    instance.explore = function(location){
+    	var data = this.entries[location];
+    	if(Game.resources.entries.rocketFuel.current >= data.cost.rocketFuel && !data.explored){
+    		Game.resources.entries.rocketFuel.current -= data.cost.rocketFuel;
+    		data.explored = true;
+    		if(data.resource){
+    			for(var i = 0; i < data.resource.length; i++){
+    				Game.resources.unlock(data.resource[i]);
+    			}
+    		}
+    		if(data.location){
+    			for(var i = 0; i < data.location.length; i++){
+    				this.unlock(data.location[i]);
+    			}
+    		}
+    		if(location == "wonderStation"){
+    			Game.wonder.tabUnlocked = true;
+    			newUnlock("wonder");
+				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
+    		}
+    		if(location == "solCenter"){
+    			Game.solCenter.tabUnlocked = true;
+    			newUnlock("solCenter");
+				Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
+    		}
+    	}
+    };
+
+    instance.unlock = function(location){
+    	this.entries[location].unlocked = true;
+    	this.entries[location].displayNeedsUpdate = true;
+    }
+
     return instance;
 }());
 

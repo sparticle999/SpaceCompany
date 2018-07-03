@@ -133,7 +133,7 @@ function setTimeUntilDisplayTest(targetLimitType, targetLimitTime, current, max,
 
 function refreshPerSec(delta){
 
-	var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01) + (Game.stargaze.entries.darkMatter.count * dmBoost);
+	var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.count * 0.01) + (Game.stargaze.entries.darkMatter.current * dmBoost);
 
 	rocketFuelps = 0;
 	antimatterps = 0;

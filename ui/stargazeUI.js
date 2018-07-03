@@ -299,11 +299,11 @@ Game.stargazeUI = (function(){
 
         DM += wonderDM + sphereDM + researchDM + rankDM + swarmDM;
         if(Game.stargaze.entries.darkMatter){
-            Game.stargaze.entries.darkMatter.current = DM;
-            $('#stargazeNavdarkMatter_current').text(DM);
+            Game.stargaze.entries.darkMatter.potential = DM;
+            $('#stargazeNavdarkMatter_potential').text(DM);
         }
 
-        $('#stargazeNavdarkMatter_count').text(Game.stargaze.entries.darkMatter.count);
+        $('#stargazeNavdarkMatter_current').text(Game.stargaze.entries.darkMatter.current);
     }
 
     instance.buildCostDisplay = function(observerArray, data) {

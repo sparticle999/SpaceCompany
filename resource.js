@@ -265,16 +265,16 @@ Game.resources = (function(){
                         var val = building.resourcePerSecond[value];
                         if(resource != "science" && resource != "rocketFuel" && resource != "energy"){
                             if(energy.current > energy.perSecond*-1 && energy.perSecond < 0){
-                                ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);
+                                ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
                             } else {
                                 if(id.indexOf("T1") != -1){
-                                    ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);
+                                    ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
                                 } else {
                                     energyDiff += building.current * building.resourcePerSecond["energy"];
                                 }
                             }
                         } else {
-                            ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.count * dmBoost);;
+                            ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);;
                         }
                     }
                 }
@@ -287,6 +287,7 @@ Game.resources = (function(){
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
+        newUnlock('resources');
     };
 
     instance.getResourceData = function(id) {
