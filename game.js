@@ -245,8 +245,15 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
-        // Link Game.solar.entries category to Game.resourceCategoryData
+        // Link Game.solar.entries category to Game.solarCategoryData
         this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
+        console.log(Game.machinesCategoryData)
+        // Link Game.machinescategoryData page to Game.pages
+        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        // Link Game.resources.entries category to Game.machinesCategoryData
+        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+
+        console.log(Game.pages)
 
     }
 
@@ -346,10 +353,12 @@ var Game = (function() {
         // Initialise UI
         self.resourcesUI.initialise();
         self.techUI.initialise();
-        self.solarUI = new Templates.solarUI('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar);
+        self.solarUI = new Templates.solarUI('solar', '', 'Solar System BETA', Game.pages.solar);
         self.solarUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
+        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        self.machinesUI.initialise();
 
         // Add the event listeners
         Game.addResourceClickEvents();

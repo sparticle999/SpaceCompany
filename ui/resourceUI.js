@@ -37,7 +37,6 @@ Game.resourcesUI = (function(){
 		console.log("meteorite toggle core.js:172")
 		console.log("toggles legacyUI.js:125")
 		console.log("notify storage")
-		console.log("redo solar system")
 		console.log("redo wonder station")
 		console.log("implement new resources into interstellar and stargaze")
 		console.log("dm boosts antimatter and rocketFuel")

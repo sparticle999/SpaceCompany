@@ -39,14 +39,21 @@ Game.achievements = (function() {
 	};
 
 	instance.getAchievementTitle = function(data, for_tooltip) {
+		var brackets = data.brackets;
 		if(data.unlocked === data.brackets.length - 1) {
-			var title = data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked]));
+			if(data.bracketTitles)
+				var title = data.title.replace('%s', data.bracketTitles[data.unlocked]);
+			else
+				var title = data.title.replace('%s', Game.settings.format(brackets[data.unlocked]));
 			if(for_tooltip === true) {
 				title += " (Completed)";
 			}
 			return title;
 		} else {
-			var title = data.title.replace('%s', Game.settings.format(data.brackets[data.unlocked+1]));
+			if(data.bracketTitles)
+				var title = data.title.replace('%s', data.bracketTitles[data.unlocked+1]);
+			else
+				var title = data.title.replace('%s', Game.settings.format(brackets[data.unlocked+1]));
 			if(for_tooltip === true) {
 				title += ' (' + data.progressDisplay + '%)';
 			}

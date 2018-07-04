@@ -43,9 +43,11 @@ Game.achievementsCategoryData = (function () {
 		'prodScienceT1', 'prodScienceT2', 'prodScienceT3', 'prodScienceT4',
 		'prodRocketFuelT1', 'prodRocketFuelT2', 'prodRocketFuelT3',
 		'prodDysonT1', 'prodDysonT2' ]
-
-
 	};
+
+	instance.other = {
+		title: 'Miscellaneous',
+	}
 
 	return instance;
 
@@ -1158,6 +1160,21 @@ Game.achievementsData = (function(){
 		title: 'Own %s Dyson Swarms',
 		evaluator: function(x) { return swarm >= x },
 		progressEvaluator: function(x) { return swarm/x }
+	};
+
+	/*****************
+	** Miscelaneous **
+	*****************/
+
+	instance.playTime = {
+		id_v4: 'ach_121',
+		categoryInstance: Game.achievementsCategoryData.other,
+		iconName: 'keyboardIcon',
+		title: 'Play for %s',
+		bracketTitles:["1 day", "10 days", "1 month", "3 months", "6 months"],
+		brackets: [86400, 864000, 2.628e+6, 7.884e+6, 1.577e+7],
+		evaluator: function(x) { return Game.statistics.entries.timePlayed.valueAlltime >= x },
+		progressEvaluator: function(x) { return Game.statistics.entries.timePlayed.valueAlltime/x }
 	};
 
 	return instance;

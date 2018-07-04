@@ -2,7 +2,7 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 
-	// solarUI('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar)
+	// solarUI('solar', '', 'Solar System BETA', Game.pages.solar)
 
 	this.page = cPage;
 	this.category = cCategory;
@@ -276,7 +276,6 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 * @param  {Object} data Resource object containing building data
 	 */
 	var createPane = function(data) {
-		console.log(data);
 		var t    = {};
 		t.item   = data.id;
 		t.name   = data.name;
@@ -301,16 +300,16 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 			t.storageBuildings = ('storBuildings' in data)
 			if (t.storageBuildings) {
 				// Attach the storage buildings to the title
-				attachHTML(cPage+'Tab_'+t.item+'_netc', buildMachineCost(data.storBuildings, 'sto_'))
+				attachHTML(cPage+'Tab_'+t.item+'_netc', buildMachineCost(data.storBuildings, 'sto_'));
 			}
 			// 	-> List machines
 			if ('items' in data) {
 				// Attach the buildings to the title
-				attachHTML(cPage+'Tab_'+t.item+'_netc', buildMachineCost(data.items, 'resbld_'))
+				attachHTML(cPage+'Tab_'+t.item+'_netc', buildMachineCost(data.items, 'resbld_'));
 			}
 		// The item is something else.  Do we need a buy button?
 		} else {
-			attachHTML(cPage+'Tab_'+t.item+'_netc', TemplatePaneNonMachine(t))
+			attachHTML(cPage+'Tab_'+t.item+'_netc', TemplatePaneNonMachine(t));
 		}
 		return "";
 	}
@@ -326,8 +325,8 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 */
 	var createPage = function(data, subcategory) {
 		// Get the categories and their order
-		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order})
-		// Loop through the catagories
+		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order});
+		// Loop through the categories
 		var menuHtml = "";
 		categories.forEach(function(cat) {
 			var cStorage = null;
