@@ -29,3 +29,9 @@
 	padding: 0px;
 	background-color: white !important;
 }
+
+.fixed {
+	position: fixed;
+	top: 10;
+	left: 10;
+}
