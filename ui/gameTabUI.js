@@ -1,3 +1,112 @@
+'use strict';
+if (typeof Templates == "undefined") { var Templates = {}; }
+Templates.uiFunctions = function() {
+
+    var instance = {};
+
+    /**
+     * Expands or collapses a menu in an animated way
+     * @param {nodeList} children Contains a list of nodes that are affected
+     * @param {boolean} expand   Will expand if true, collapse is false
+     */
+    instance.AnimateToggle = function(children, expand) {
+        const delay = 30; //delay in ms
+        console.log(children.length)
+        console.log(children)
+        if (expand) {
+            for (var i = 0; i < children.length; i++) {
+                var node = children[i];
+                setTimeout(
+                    (function(node) {node.style.display = ''}), i*delay, node
+                );
+                node.classList.toggle('collapsed')
+                node.setAttribute('aria-expanded', expand);
+            }
+        } else {
+            for (var i = children.length-1; i >= 0; i--) {
+                var node = children[i];
+                setTimeout(
+                    (function(node) {node.style.display = 'none'}), (children.length-i)*delay, node
+                );
+                node.classList.toggle('collapsed')
+                node.setAttribute('aria-expanded', expand);
+            }
+        }
+
+    }
+
+    // Toggles a menu (class: collapsed)
+    instance.toggle = function(DOMid) {
+        console.log("Toggling "+DOMid)
+        var node = document.getElementById(DOMid);
+        var parentNode = node.parentNode;
+        // Get a list of all nodes with the class DOMid
+        var children = parentNode.getElementsByClassName(DOMid)
+        // Send the list to the animator.
+        var expand = node.classList.contains('collapsed')
+        console.log("Need to expand? "+expand)
+        this.AnimateToggle(children, expand)
+        node.classList.toggle('collapsed')
+        // Adjust aria-expanded
+        node.setAttribute('aria-expanded', expand);
+    }
+
+    // shows a single item (class: hidden)
+    instance.show = function(DOMid) {
+        var node = document.getElementById(DOMid);
+        if (node.classList.contains('hidden')) {
+            node.classList.toggle('hidden');
+        }
+    }
+
+    // Hide a single item (class: hidden)
+    instance.hide = function(DOMid) {
+        var node = document.getElementById(DOMid);
+        if (!node.classList.contains('hidden')) {
+            node.classList.toggle('hidden');
+        }
+    }
+
+    // unhides the entire path leading up to DOMid
+    // Setting the object entries to unlocked has to be done
+    // somewhere else. (class: hidden)
+    instance.unlock = function(DOMid) {
+
+    }
+
+    // hides DOMid and all of its subnodes
+    // Setting the object entries to locked has to be done
+    // somewhere else (class: hidden)
+    instance.lock = function(DOMid) {
+
+    }
+
+    // Whenever the player clicks a regular menu item, this function runs.
+    instance.clickItem = function(DOMid) {
+
+    }
+
+    // Whenever the player clicks a tab, this function runs
+    instance.clickNav = function(DOMid) {
+        var node = document.getElementById(DOMid+'Glyph');
+        console.log(DOMid+'Glyph');
+        if (node) {node.classList.add('hidden');}
+
+    }
+/*
+    // Removes the glyph on the top of the page
+    GameTab.prototype.activate = function() {
+        $('#' + this.data.id + 'TabGlyph').addClass('hidden');
+
+        if (this.onActivate !== null) {
+            this.onActivate(this.data.id);
+        }
+    };
+*/
+    return instance;
+}();
+
+
 (function(){
 
     var tabTemplate = Handlebars.compile(

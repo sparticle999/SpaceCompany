@@ -1,15 +1,16 @@
 'use strict';
 if (typeof Templates == "undefined") { var Templates = {}; }
-Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
+Templates.solarUI = function(cPage, cTitle, cObj) {
 
 	// solarUI('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar)
 
 	this.page = cPage;
-	this.category = cCategory;
 	this.title = cTitle;
 	this.data = cObj;
 
-	var storageIDs = [];
+	// Object containing the ID masks 
+	var registeredEvents = {};
+
 
 	/**
 	 * Creates the link to the page of the top menu
@@ -17,7 +18,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 */
 	var TemplateTopMenuNav = Handlebars.compile(
         ['<li role="presentation" id="'+this.page+'Tab" class="hidden">',
-           '<a href="#'+this.page+'Tab_pane" id="{{htmlId}}_link" class="-" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
+           '<a href="#'+this.page+'Tab_pane" id="'+this.page+'Tab_link" class="-" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
              '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign"></div>',
                this.title,
            '</a>',
@@ -46,8 +47,9 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 
 	/**
 	 * Formats a header menu row
-	 * Merges into solarTab_nav
+	 * {{item}} - category: energy, rocketFuel
 	 * {{itemHidden}} - hidden or null - sets the default hide class
+	 * Merges into solarTab_nav
 	 */
 	var TemplateMenuHeader = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{item}}_collapse" class="{{itemHidden}}">',
@@ -61,12 +63,13 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 * Formats a menu row, hides storage
 	 * {{item}} - energy, rocketFuel
 	 * {{name}} - Energy, Rocket Fuel
+	 * {{category}} - category of this item - earth, inner
 	 * {{itemHidden}} - hidden or null - sets the default hide class
 	 * {{Storagehidden}} - hidden or null
 	 * Merges into solarTab_nav
 	 */
 	var TemplateResourceMenuItem = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{item}}_ne" href="#'+this.page+'Tab_{{item}}_nec" class="collapse_'+this.page+'Tab_{{item}} {{itemHidden}}" aria-controls="'+this.page+'Tab_{{item}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		['<tr id="'+this.page+'Tab_{{item}}_ne" href="#'+this.page+'Tab_{{item}}_nec" class="'+this.page+'Tab_{{category}}_collapse {{itemHidden}}" aria-controls="'+this.page+'Tab_{{item}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
 		   '<td style="vertical-align:middle;">',
 		     '<img src="Icons/{{item}}Icon.png" style="width:30px; height:auto">',
 		   '</td>',
@@ -89,7 +92,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 * Merges into solarTab_nav
 	 */
 	var TemplateNonResourceMenuItem = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{item}}_ne" href="#'+this.page+'Tab_{{item}}_nec" class="collapse_'+this.page+'Tab_{{item}} {{itemHidden}}" aria-controls="'+this.page+'Tab_{{item}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		['<tr id="'+this.page+'Tab_{{item}}_ne" href="#'+this.page+'Tab_{{item}}_nec" class="'+this.page+'Tab_{{category}}_collapse {{itemHidden}}" aria-controls="'+this.page+'Tab_{{item}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
 		   '<td style="vertical-align:middle;">',
 		     '<img src="Icons/{{item}}Icon.png" style="width:30px; height:auto">',
 		   '</td>',
@@ -225,17 +228,21 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
+
+	////////////////////////////
+	// Page content functions //
+	////////////////////////////
+
 	/**
 	 * Builds the string describing the cost of increasing storage
 	 * @param  {Object} storageData Resource object containing the storage info
 	 * @return {string}             the joined string describing the cost
 	 */
 	var buildStorageCost = function(storageData) {
-		console.log(storageData)
 		// Create the cost list
 		// <span id="heliumStorageCost"></span> Helium, 
 		// <span id="heliumStorageLunariteCost"></span> Lunarite.
-		var cost = storageData.cost
+		var cost = storageData.cost;
 		var text = [];
 		Object.keys(cost).forEach(function(mat) {
 			if (mat == storageData.resource) {
@@ -243,10 +250,10 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 				text.push('<span id="'+storageData.resource+'StorageCost"></span> '+mat);
 			} else {
 				mat = Game.resources.entries[mat].name;
-				text.push('<span id="'+storageData.resource+'Storage'+mat+'Cost"></span> '+mat)
+				text.push('<span id="'+storageData.resource+'Storage'+mat+'Cost"></span> '+mat);
 			}
 		})
-		return text.join(', ')
+		return text.join(', ');
 	}
 
 	/**
@@ -264,9 +271,9 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 			t.desc = obj.desc;
 			t.id   = obj.resource;
 			t.hidden = null;
-			t.machineId = prefix+build
+			t.machineId = prefix+build;
 			if (obj.unlocked) {t.hidden = 'hidden';}
-			html += TemplatePaneBuilding(t)
+			html += TemplatePaneBuilding(t);
 		})
 		return html;
 	}
@@ -276,7 +283,6 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	 * @param  {Object} data Resource object containing building data
 	 */
 	var createPane = function(data) {
-		console.log(data);
 		var t    = {};
 		t.item   = data.id;
 		t.name   = data.name;
@@ -293,7 +299,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 			// Create the storage cost line
 			t.cost = ""
 			if (t.storageButton && (t.item+'StorageUpgrade' in data)) {
-				t.cost = buildStorageCost(data[t.item+'StorageUpgrade'])
+				t.cost = buildStorageCost(data[t.item+'StorageUpgrade']);
 			}
 			// Attach the title of the pane to the header
 			attachHTML(cPage+'Tab_'+t.item+'_netc', TemplatePaneTitle(t));
@@ -332,6 +338,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 		categories.forEach(function(cat) {
 			var cStorage = null;
 			var cItem = data[cat].category;
+			var cCat = cItem;
 			var cName = data[cat].title;
 			var cItemHidden = ''; // Solar is only hidden by the topNav
 			var cBorder = '';
@@ -352,9 +359,9 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 				if (!(cName+'StorageUpgrade' in data[cat][subcategory][subitem])) {cStorage = "hidden";}
 				// Is this item a resource?  Add the applicable template to the menu
 				if (cItem in Game.resources.entries && data[cat][subcategory][subitem].baseCapacity) {
-					menuHtml += TemplateResourceMenuItem({'item': cItem, 'name': cName, 'Storagehidden': cStorage, 'itemHidden': cItemHidden});
+					menuHtml += TemplateResourceMenuItem({'item': cItem, 'name': cName, 'Storagehidden': cStorage, 'itemHidden': cItemHidden, 'category': cCat});
 				} else {
-					menuHtml += TemplateNonResourceMenuItem({'item': cItem, 'name': cName, 'itemHidden': cItemHidden});
+					menuHtml += TemplateNonResourceMenuItem({'item': cItem, 'name': cName, 'itemHidden': cItemHidden, 'category': cCat});
 				}
 				// Dispatch this item to the function creating the pane
 				createPane(data[cat][subcategory][subitem]);
@@ -363,6 +370,65 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 		// return an array of menuHtml & pageHtml to initialise
 		return menuHtml;
 	}
+
+
+	///////////////////////////
+	// General use functions //
+	///////////////////////////
+// 
+	// registers an event
+	var registerEvent = function() {
+		// Loop through all the ids of the menu and register its events
+		var parentNode = document.getElementById(cPage+'Tab_pane');
+		var nodes = parentNode.querySelectorAll('[id]');
+		var match = [];
+		var unmatched = [];
+		var funct = "";
+		var node = "";
+
+	    function getCase(text, key) {
+	        return text.match(new RegExp(key)) || {};
+	    }
+
+	    nodes.forEach((node) => {
+	        match = [];
+	        var id = node.id;
+	        switch (id) {
+	        	// Match resbld_ITEM_buy_AMOUNT
+	            case (match = getCase(id, "^resbld_(.*)_buy_(.*)$")).input:
+					funct = new Function("Game.buildings.buyBuildings('"+match[1]+"', '"+parseInt(match[2])+"')");
+					Game.addEventListener(node, "click", funct);
+					break;
+				// Match resbld_ITEM_destroy_AMOUNT
+	            case (match = getCase(id, "^resbld_(.*)_destroy_(.*)$")).input:
+					funct = new Function("Game.buildings.destroyBuildings('"+match[1]+"', '"+parseInt(match[2])+"')");
+					Game.addEventListener(node, "click", funct);
+	                break;
+	            // Match solar_PLANET_buy
+	            case (match = getCase(id, "^solar_(.*)_buy$")).input:
+					funct = new Function("Game.buildings.explore('"+match[1]+"')");
+					Game.addEventListener(node, "click", funct);
+					break;
+				// Match the menu headers - #resourcesTab_energy_collapse
+	            case (match = getCase(id, "^(.*)Tab_(.*)_collapse$")).input:
+					funct = new Function("Templates.uiFunctions.toggle('"+id+"')");
+					Game.addEventListener(node, "click", funct);
+	                break;
+
+	        	default:
+	        		unmatched.push(id);
+	        }
+	    });
+	    // Match the navigation menu - solarTab
+	    node = document.getElementById(cPage+"Tab")
+		funct = new Function("Templates.uiFunctions.clickNav('"+cPage+"Tab')");
+		Game.addEventListener(node, "click", funct);
+		console.log(unmatched)
+	}
+
+	// Templates.uiFunctions.toggle
+	
+
 
 	/**
 	 * Attaches HTML strings to an element
@@ -373,7 +439,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 	var attachHTML = function(tag, HTML) {
 		var node = document.getElementById(tag)
 		if (!node) {
-			console.log(cTitle+" - Could not add this tab to the main menu: "+tag);
+			console.log(cTitle+" - Could not add this tag to the game: "+tag);
 			return false;
 		}
 		// Insert the node before the end of tag
@@ -392,6 +458,11 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 		// Link the menu to '+this.page+'Tab_pane
 		attachHTML(this.page+'Tab_nav', createPage(this.data, 'items'));
 		// The content panes are linked through createPage -> createPane
+		
+		// All done generating the page!
+		// Add the event listeners now.
+		console.log("registering events for solar")
+		registerEvent();
 
 	};
 };

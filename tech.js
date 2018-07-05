@@ -29,7 +29,7 @@ Game.tech = (function(){
 
     instance.update = function(delta) {
         if(this.tabUnlocked)
-            $('#researchTab')[0].className = "";
+            $('#techTab')[0].className = "";
         for(var id in this.entries){
             var data = this.entries[id];
             if(data.unlocked)
@@ -64,10 +64,20 @@ Game.tech = (function(){
             }
         }
         if(Game.buildings.entries.metalT1.current >= 1){
-            if(!Game.tech.tabUnlocked){
+            if (!Game.tech.tabUnlocked) {
+                // Unlock the science resourceCategory
+                Game.resourceCategoryData.science.unlocked = true
+                // Unlock the science resource
+                Game.resources.entries.science.unlocked = true;
+                // Unlock scienceT1
                 Game.buildings.entries.scienceT1.unlocked = true;
                 Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
-                newUnlock('research');
+                // Unlock the research category
+                Game.techCategoryData.unlocked = true;
+                Game.techCategoryData.research.unlocked = true;
+                // Unlock the technology type of research items
+                Game.techCategoryData.research.items.technology = true;
+                newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
                 Game.tech.tabUnlocked = true;
             }
@@ -215,7 +225,7 @@ Game.tech = (function(){
         for(var i = 0; i < techs.length; i++){
             var tech = this.entries[techs[i]];
             if(tech.displayNeedsUpdate){
-                if(science > tech.cost['science'] || tech.current > 0) {
+                if(science_current > tech.cost['science'] || tech.current > 0) {
                     tech.unlocked = true;
                 }
 
@@ -231,7 +241,7 @@ Game.tech = (function(){
                 }
 
                 var cost = this.getCost(tech.cost['science'], tech.current);
-                Game.settings.turnRed(science, cost, tech.htmlIdCost);
+                Game.settings.turnRed(science_current, cost, tech.htmlIdCost);
                 tech.getTitleElement().innerHTML = tech.name + " #" + (tech.current);
                 tech.getCostElement().innerHTML = Game.settings.format(cost);
 

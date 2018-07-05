@@ -206,7 +206,7 @@ var Game = (function() {
     instance.combineGameObjects = function(from, cat, to, con) {
         Object.keys(from).map(function(item) {
             if (!contains(Object.keys(from[item]), cat)) {
-                console.log("Object doesn't contain category:"+cat);
+                console.log("Object 'from'->item doesn't contain attribute: "+cat);
                 console.log(from);
                 return false;
             }
@@ -231,6 +231,7 @@ var Game = (function() {
     instance.combineAllGameObjects = function() {
         Game.pages = {};
         // link Game.resourceDataCategories page to Game.pages
+        // This creates the Game.pages.resources.earth
         this.combineGameObjects(Game.resourceCategoryData, 'page', Game.pages, '');
         // link Game.resources.entries category to Game.resourceCategoryData
         this.combineGameObjects(Game.resources.entries, 'category', Game.resourceCategoryData, 'items');
@@ -241,59 +242,16 @@ var Game = (function() {
         // link Game.resources.entries to Game.storageBuildingData to Game
         this.combineGameObjects(Game.storageBuildingData, 'resource', Game.resources.entries, 'storBuildings');
 
-        // techData.js needs minor reworking where research items are combined in a researchCategoryData
+        // Link Game.techCategoryData page to Game.pages
+        this.combineGameObjects(Game.techCategoryData, 'page', Game.pages)
+        // Link Game.techData catgory to Game.techCatgoryData.technology items
+        this.combineGameObjects(Game.techData, 'category', Game.techCategoryData.research.items, 'items')
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
         // Link Game.solar.entries category to Game.resourceCategoryData
         this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
 
-    }
-
-
-
-    // Add event listeners to resource related buttons
-    instance.addResourceClickEvents = function() {
-        Object.keys(Game.resources.entries).forEach(function(id) {
-            var htmlId = Game.resources.entries[id].htmlId+"_Gain";
-            if (Game.resources.entries[id].manualgain) {
-                // Gain buttons
-                var res = Game.addEventListener(document.getElementById(htmlId), "click", function () {addManualResource(id);});
-                if (!res) {
-                    console.log("game.js - Couldn't add the Gain-event for "+id);
-                }
-            }
-        })
-    }
-
-    // Add event listeners to machine related buttons
-    instance.addMachineClickEvents = function() {
-        var amount = [1, 10, 100, 10000]; var res = true;
-        Object.keys(Game.buildings.entries).forEach(function(id) {
-            var htmlId = Game.buildings.entries[id].htmlId;
-
-            if(id.indexOf("rocketFuel") == -1){
-                for (var i = 0; i < amount.length; i++) {
-                    // Buy buttons
-                    res = Game.addEventListener(
-                        document.getElementById(htmlId+"_buy_"+amount[i]),
-                        "click", function () {Game.buildings.buyBuildings(id, amount[i]);});
-                    if (!res) {
-                        console.log("game.js - Couldn't add the buy_"+amount[i]+"-event for "+id);
-                    }
-                    // Destroy buttons
-                    res = Game.addEventListener(
-                        document.getElementById(htmlId+"_destroy_"+amount[i]),
-                        "click", function () {Game.buildings.destroyBuildings(id, amount[i]);});
-                    if (!res) {
-                        console.log("game.js - Couldn't add the destroy_"+amount[i]+"-event for "+id);
-                    }
-                }
-            }
-        })
-
-        // Storage buttons
-        // TODO
     }
 
     instance.handleOfflineGains = function(offlineTime) {
@@ -344,17 +302,14 @@ var Game = (function() {
         // Create the collector Object; page -> categories -> items
         self.combineAllGameObjects()
         // Initialise UI
+        self.resourcesUI = new Templates.resourcesUI('resources', 'Resources BETA', Game.pages.resources);
         self.resourcesUI.initialise();
+        self.techUI = new Templates.techUI('tech', 'Research BETA', Game.pages.tech);
         self.techUI.initialise();
-        self.solarUI = new Templates.solarUI('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar);
+        self.solarUI = new Templates.solarUI('solar', 'Solar System BETA', Game.pages.solar);
         self.solarUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-
-        // Add the event listeners
-        Game.addResourceClickEvents();
-        Game.addMachineClickEvents();
-
 
 
 

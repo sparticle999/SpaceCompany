@@ -30,7 +30,7 @@ Game.settings = (function(){
     };
 
     instance.turnRedOnNegative = function(value, id) {
-        var element = $('#' + id);
+        var element = $('#'+id+'_display');
         if(element.length === 0) {
             console.error("Element not found: " + id);
             return;
@@ -75,7 +75,7 @@ Game.settings = (function(){
     };
 
     instance.turnRedOrGreen = function(value, target, id) {
-        var element = $('#' + id);
+        var element = $('#'+id+'_current');
         if(element.length === 0) {
             console.error("Element not found: " + id);
             return;

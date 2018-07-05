@@ -84,9 +84,7 @@
 	<span id="updateBox"></span>
 
 <!-- Nav tabs -->
-	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">
-		<li role="presentation" id="researchTab" class="hidden"><a href="#research" aria-controls="research" role="tab" data-toggle="tab" onclick="tabClicked('research')"><div id="researchTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Research</a></li>
-    	
+	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">    	
     	<li role="presentation" id="wonderTab" class="hidden"><a href="#wonder" aria-control="wonder" role="tab" data-toggle="tab"onclick="tabClicked('wonder')"><div id="wonderTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Wonders</a></li>
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li>
@@ -98,85 +96,6 @@
 <!-- Tab panes -->
 
 	<div class="tab-content" id="tabContent">
-
-		<!-- Research -->
-		<div role="tabpanel" class="tab-pane fade" id="research">
-			<div class="container" style="width:300px; float:left;">
-				<table class="table table-hover text-primary no-select pointer">
-					<tr id="scienceNav" onclick="activeResearchTab('scienceNav')" href="#scienceTab" aria-controls="scienceTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="border:none; vertical-align:middle;">
-							<img src="Icons/scienceIcon.png" style="width:30px; height:auto">
-						</td>
-						<td style="border:none; vertical-align:middle;">
-							<span>
-								Science Production
-							</span>
-						</td>
-						<td style="border:none; vertical-align:middle; text-align:center;">
-							<span>
-								<span id="scienceps">0</span>/Sec
-							</span>
-						</td>
-						<td style="border:none; vertical-align:middle; text-align:right;">
-							<span id="science">
-								0
-							</span>
-						</td>
-					</tr>
-					<tr id="technologiesNav" onclick="activeResearchTab('technologiesNav')" href="#technologiesTab" aria-controls="technologiesTab" role="tab" data-toggle="tab" style="height:60px;">
-						<td style="vertical-align:middle;">
-							<img src="Icons/technologyIcon.png" style="width:30px; height:auto">
-						</td>
-						<td colspan="3" style="vertical-align:middle;">
-							<span>
-								Technologies
-							</span>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<!-- Research panes -->
-			<div class="tab-content">
-				<div id="scienceTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table id="labTable" class="table">
-							<tr>
-								<td style="border:none;">
-									<h2 class="default btn-link">
-										Science Production
-									</h2>
-									<span>
-										Science is used for researching new technologies to further your progress in the game.
-									</span>
-									<br>
-									<br>
-								</td>
-							</tr>
-							<!-- HTML is dynamically generated to fill this table -->
-						</table>
-					</div>
-				</div>
-				<div id="technologiesTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
-					<div class="container" style="max-width:800px;">
-						<table id="techTable" class="table">
-							<tr>
-								<td style="border: none;">
-									<h2 class="default btn-link">
-										Technologies
-									</h2>
-									<span>
-										Research new technologies to unlock more mechanics and advance through the game.
-									</span>
-								</td>
-							</tr>
-							<!-- HTML is dynamically generated to fill this table -->
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
 
 		<!-- Wonders -->
 		<div role="tabpanel" class="tab-pane fade" id="wonder">

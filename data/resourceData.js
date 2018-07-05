@@ -45,8 +45,8 @@ Game.resourceCategoryData = (function () {
     instance.science = {
         title: 'Science',
         category: 'science',
-        page: 'science',
-        order: 1, // 1st category item on the science page
+        page: 'tech',
+        order: 1, // 1st category item on the tech page
         unlocked: false
     };
 

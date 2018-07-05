@@ -20,6 +20,7 @@ Game.resources = (function(){
                 htmlId: 'res_' + id,
                 current: 0,
                 perSecond: 0,
+                perSecondDisplay: 0,
                 perClick: 1,
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
@@ -52,30 +53,25 @@ Game.resources = (function(){
     };
 
     instance.update = function(delta) {
-        for(var id in this.entries) {
+        for (var id in this.entries) {
             var data = this.entries[id];
             var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
-            if(data.displayNeedsUpdate){
-                if(id != "science" && id != "rocketFuel"){
-                    var nav = $('#resourcesTab_' + id + '_ne')[0];
-                    var hidden = nav.className.indexOf(" hidden");
-                    if(data.unlocked){
-                        if(hidden > 0)
-                            nav.className = nav.className.substring(0,hidden);
-                    } else {
-                        if(hidden < 0)
-                            nav.className += " hidden";
-                    }
-                    for(var category in this.categoryEntries){
-                        var cat = this.categoryEntries[category];
-                        if(data.unlocked && data.category == category)
-                            cat.unlocked = true;
-                        var target = $('#resourcesTab_' + category + '_collapse')[0];
-                        target.className = ((cat.unlocked) ? "" : "hidden");
-                    }
-                    data.displayNeedsUpdate = false;
+            if (id == 'science') {continue;}
+            if (data.displayNeedsUpdate) {
+                var nav = document.querySelector('[id$=Tab_'+id+'_nec]');
+                var hidden = nav.classList.contains("hidden");
+                // Unhide the tab if the resource is unlocked
+                if (data.unlocked && hidden) {
+                    nav.classList.remove("hidden");
                 }
+                var cat = data.category;
+                if(data.unlocked && cat.unlocked == false) {
+                    cat.unlocked = true;
+                    var target = document.querySelector('[id$=Tab_'+cat+'_collapse]');
+                    target.classList.remove("hidden")
+                }
+                data.displayNeedsUpdate = false;
             }
         }
     };
@@ -106,6 +102,31 @@ Game.resources = (function(){
         }
     };
 
+    instance.getDisplayResource = function(id) {
+        if (typeof this.entries[id] === 'undefined') { return 0; }
+        var current = this.entries[id].current;
+        switch (id) {
+            case "science":
+                if (current < 100) {
+                    current = Game.settings.format(current, 1);
+                } else {
+                    current = Game.settings.format(current);
+                }
+                break;
+            case "rocketFuel":
+                if (current < 100) {
+                    current = Game.settings.format(current, 1);
+                } else {
+                    current = Game.settings.format(current);
+                }
+                break;
+            default:
+                current = Game.settings.format(current);
+                break;
+        }
+        return current;
+    };
+
 	instance.getResource = function(id) {
 		if (typeof this.entries[id] === 'undefined') {
 			return 0;
@@ -124,6 +145,32 @@ Game.resources = (function(){
 		}
 		return Game.resources.entries[id].capacity;
 	};
+
+
+    instance.getDisplayProduction = function(id) {
+        //console.log(id);
+        if (typeof this.entries[id] === 'undefined') { return 0; }
+        var ps = this.entries[id].perSecond;
+        switch (id) {
+            case "energy":
+                if (ps > 250 || ps < -250) {
+                    ps = Game.settings.format(ps);
+                } else {
+                    ps = Game.settings.format(ps * 2) / 2;
+                }
+                break;
+            case "science":
+                ps = Game.settings.format(ps, 1);
+                break;
+            case "rocketFuel":
+                ps = Game.settings.format(ps, 1);
+                break;
+            default:
+                ps = Game.settings.format(ps);
+                break;
+        }
+        return ps;
+    };
 
 	instance.getProduction = function(id) {
 		if (typeof this.entries[id] === 'undefined') {
@@ -274,7 +321,7 @@ Game.resources = (function(){
                                 }
                             }
                         } else {
-                            ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);;
+                            ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
                         }
                     }
                 }

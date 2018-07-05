@@ -1,3 +1,31 @@
+Game.techCategoryData = (function () {
+
+    var instance = {};
+
+    instance.research = {
+        title: 'Research',
+        category: 'research',
+        page: 'tech',
+        items: {
+            technology: {
+                title: 'Technologies',
+                id: 'technologies',
+                name: 'Technologies',
+                desc: 'Research new technologies to unlock more mechanics and advance through the game.',
+                category: 'technology',
+                page: 'tech',
+                order: 1, // 1nd category item of the tech page, research menu header
+                unlocked: false
+            }
+        },
+        order: 2, // 2nd category item of the resources page
+        unlocked: false
+    };
+
+    return instance;
+
+}());
+
 Game.techData = (function () {
 
     var instance = {};
@@ -12,6 +40,7 @@ Game.techData = (function () {
         current: 0,
         maxLevel: 1,
         unlocked: false,
+        category: 'technology',
 
         newResources: [],
         newTechs: [],

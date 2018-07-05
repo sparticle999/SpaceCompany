@@ -3,7 +3,7 @@ function legacySave(data) {
 	var localSave = $.extend({
 		versionNumber: versionNumber,
 		companyName: companyName,
-		plasma: plasma,
+		plasma: plasma_current,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
