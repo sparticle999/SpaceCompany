@@ -173,6 +173,7 @@ Game.resources = (function(){
     };
 
 	instance.getProduction = function(id) {
+        //console.log("Checking: "+id)
 		if (typeof this.entries[id] === 'undefined') {
 			return 0;
 		}
@@ -235,9 +236,13 @@ Game.resources = (function(){
 	};
 
     instance.upgradeStorage = function(id){
+        console.log(id)
         var res = this.getResourceData(id);
         var metal = this.getResourceData("metal");
         var lunarite = this.getResourceData("lunarite");
+        // Adjust what {{item}}StorageUpgrade_Cost contains after upgrading
+        //  Costs 5.033B Oil, 2.013B Metal. 
+        // Adjust what <span id="{{item}}NextStorage"></span> contains as well
         if(res.current >= res.capacity*storagePrice){
             if(id == "metal"){
                 res.current -= res.capacity*storagePrice;

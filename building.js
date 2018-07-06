@@ -197,6 +197,7 @@ Game.buildings = (function(){
     }
 
     instance.refreshUnlock = function(data){
+/* Handled by Templates.uiFunctions
         if(data.id.indexOf("rocketFuel") == -1){
             if(data.unlocked)
                 $('#' + data.htmlId)[0].className = "";
@@ -205,6 +206,7 @@ Game.buildings = (function(){
         } else {
             //console.log("rocketFuel")
         }
+*/
     }
 
     instance.getBuildingData = function(id) {

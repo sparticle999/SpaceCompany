@@ -30,6 +30,8 @@ Game.settings = (function(){
     };
 
     instance.turnRedOnNegative = function(value, id) {
+        // have the elementhandler take care of this.
+/*
         var element = $('#'+id+'_display');
         if(element.length === 0) {
             console.error("Element not found: " + id);
@@ -51,6 +53,8 @@ Game.settings = (function(){
             element.removeClass('bold');
             return false;
         }
+*/
+        return true;
     };
 
     instance.turnRed = function(value, target, id) {
@@ -75,6 +79,11 @@ Game.settings = (function(){
     };
 
     instance.turnRedOrGreen = function(value, target, id) {
+        // have the elementhandler take care of this.
+/*
+        console.log(value)
+        console.log(target)
+        console.log(id)
         var element = $('#'+id+'_current');
         if(element.length === 0) {
             console.error("Element not found: " + id);
@@ -99,6 +108,7 @@ Game.settings = (function(){
         } else {
             element.removeClass('green');
         }
+*/
     };
 
     instance.save = function(data) {

@@ -11,10 +11,12 @@ Game.tech = (function(){
         for(var id in Game.techData) {
             this.entries[id] = Game.techData[id];
             this.techTypeCount++;
-            this.entries[id].setId(id);
+            Game.techData[id].htmlId = 'tec_'+id;
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
+
+
 
     instance.reset = function() {
         for (var id in Game.techData) {
@@ -28,14 +30,17 @@ Game.tech = (function(){
     };
 
     instance.update = function(delta) {
-        if(this.tabUnlocked)
-            $('#techTab')[0].className = "";
-        for(var id in this.entries){
+        if(this.tabUnlocked) {
+            document.getElementById('techTab').classList.remove("hidden");
+        }
+        for (var id in this.entries) {
             var data = this.entries[id];
-            if(data.unlocked)
-                $('#' + data.htmlId)[0].className = "";
-            if(data.current >= data.maxLevel && data.maxLevel > 0)
-                $('#' + data.htmlId)[0].className = "hidden";
+            if (data.unlocked) {
+                Templates.uiFunctions.unlock(data.htmlId);
+            }
+            if (data.current >= data.maxLevel && data.maxLevel > 0) {
+                Templates.uiFunctions.hide(data.htmlId)
+            }
         }
     };
 
@@ -221,11 +226,12 @@ Game.tech = (function(){
     };
 
     instance.updateEfficiencies = function(){
+/* Reworked together with the UI
         var techs = ['resourceEfficiencyResearch', 'energyEfficiencyResearch', 'scienceEfficiencyResearch', 'batteryEfficiencyResearch'];
         for(var i = 0; i < techs.length; i++){
             var tech = this.entries[techs[i]];
             if(tech.displayNeedsUpdate){
-                if(science_current > tech.cost['science'] || tech.current > 0) {
+                if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
                     tech.unlocked = true;
                 }
 
@@ -262,6 +268,7 @@ Game.tech = (function(){
                 tech.displayNeedsUpdate = false;
             }
         }
+*/
     };
 
     instance.getCost = function(basePrice, amount, multiplier) {

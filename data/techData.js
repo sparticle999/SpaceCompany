@@ -41,50 +41,8 @@ Game.techData = (function () {
         maxLevel: 1,
         unlocked: false,
         category: 'technology',
+        htmlId: "",
 
-        newResources: [],
-        newTechs: [],
-        newTabs: [],
-        tabAlerts: [],
-
-        setId: function(id) {
-            this.id = id;
-            this.htmlId = "tec_" + id;
-            this.htmlIdCost = id + 'Cost';
-            this.htmlIdTitle = id + 'Title';
-            this.htmlIdButton = id + 'Button';
-        },
-
-        getBodyElement: function() {
-            return $('#' + this.htmlId)[0];
-        },
-        getTitleElement: function() {
-            return $('#' + this.htmlIdTitle)[0];
-        },
-        getCostElement: function() {
-            return $('#' + this.htmlIdCost)[0];
-        },
-        getButtonElement: function() {
-            return $('#' + this.htmlIdButton)[0];
-        },
-
-        apply: function(self) {
-            for (i = 0; i < this.newTabs.length; i++) {
-                if (tabsUnlocked.indexOf(this.newTabs[i]) === INDEX_NONE) {
-                    tabsUnlocked.push(this.newTabs[i]);
-                }
-            }
-            for (i = 0; i < this.newTechs.length; i++) {
-                Game.tech.unlockTech(this.newTechs[i]);
-            }
-            for(var i = 0; i < this.tabAlerts.length; i++){
-                if(!this.unlocked)
-                    newUnlock(this.tabAlerts[i]);
-            }
-            if (this.onApply !== null) {
-                this.onApply();
-            }
-        },
         // for any tech specific apply changes
         onApply: null
 

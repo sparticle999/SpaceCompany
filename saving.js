@@ -1,3 +1,9 @@
+// temp fix
+if (typeof plasma_current == "undefined") {plasma_current = 0;}
+
+
+
+
 function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({

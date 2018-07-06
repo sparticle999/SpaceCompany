@@ -14,7 +14,7 @@ Game.updates = (function(){
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');
 
 	instance.initialise = function(){
-		if(metal_current != 0){
+		if(Game.resources.entries.metal.current != 0){
 			var extra = 0;
 			var target = $('#updateBox');
 			var html = this.updateTitleTemplate();
