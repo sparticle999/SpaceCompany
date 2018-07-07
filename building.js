@@ -129,16 +129,14 @@ Game.buildings = (function(){
                 }
                 this.updatePerSecondProduction = true;
                 data.displayNeedsUpdate = true;
-            } else {
                 if(data.onApply)
                     data.onApply();
                 this.constructBuildings(id, i);
+            } else {
+
                 return;
             }
         }
-        if(data.onApply)
-            data.onApply();
-        this.constructBuildings(id, i);
     };
 
     instance.calcCost = function(self, resource, data){
@@ -199,6 +197,7 @@ Game.buildings = (function(){
     }
 
     instance.refreshUnlock = function(data){
+/* Handled by Templates.uiFunctions
         if(data.id.indexOf("rocketFuel") == -1){
             if(data.unlocked)
                 $('#' + data.htmlId)[0].className = "";
@@ -207,6 +206,7 @@ Game.buildings = (function(){
         } else {
             //console.log("rocketFuel")
         }
+*/
     }
 
     instance.getBuildingData = function(id) {

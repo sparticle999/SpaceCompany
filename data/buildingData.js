@@ -399,10 +399,21 @@ Game.buildingData = (function () {
             'wood': 5
         },
         onApply: function(){
-            if(!Game.tech.tabUnlocked){
+            if (!Game.tech.tabUnlocked) {
+                Templates.uiFunctions.unlock(Game.buildings.entries.scienceT1.htmlId)
+                // Unlock the science resourceCategory
+                Game.resourceCategoryData.science.unlocked = true
+                // Unlock the science resource
+                Game.resources.entries.science.unlocked = true;
+                // Unlock scienceT1
                 Game.buildings.entries.scienceT1.unlocked = true;
                 Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
-                newUnlock('research');
+                // Unlock the research category
+                Game.techCategoryData.unlocked = true;
+                Game.techCategoryData.research.unlocked = true;
+                // Unlock the technology type of research items
+                Game.techCategoryData.research.items.technology = true;
+                newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
                 Game.tech.tabUnlocked = true;
             }

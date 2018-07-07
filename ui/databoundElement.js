@@ -3,6 +3,14 @@
     var elementRegister = {};
     var autoBindingRegister = [];
 
+    this.getElementRegister = function() {
+        return elementRegister;
+    }
+
+    this.getAutoBindingRegister = function() {
+        return autoBindingRegister;
+    }
+
     function DataBoundElement(valueLambda, id, element) {
         if(!id) {
             id = null;
@@ -33,7 +41,6 @@
                 }
             }
         }
-
         var newValue = this.valueLambda();
         if(this.value !== null && this.value === newValue) {
             // No change

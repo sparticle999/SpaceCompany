@@ -33,7 +33,7 @@ Game.solar = (function(){
     };
 
     instance.load = function(){
-
+    	
     };
 
     instance.explore = function(location){
