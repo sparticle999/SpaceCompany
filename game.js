@@ -59,8 +59,8 @@ var Game = (function() {
 
         //self.ui.updateBoundElements(delta);
         Templates.uiFunctions.updateElements('gain');   // can get away with only calling after rebirth
-        Templates.uiFunctions.updateElements('perSecond');
-        Templates.uiFunctions.updateElements('current');
+        
+        
         Templates.uiFunctions.updateElements('storage');    // Can get away with only calling manually after storage bought
         Templates.uiFunctions.updateElements('nextStorage');// Can get away with only calling manually after storage bought
         Templates.uiFunctions.updateElements('resbldCount');// Can get away with only calling manually after building bought
@@ -74,6 +74,7 @@ var Game = (function() {
 
 
         self.resources.update(delta);
+        Game.resources.updateResourcesPerSecond();
         self.buildings.update(delta);
         self.tech.update(delta);
         self.solar.update(delta);
@@ -219,19 +220,27 @@ var Game = (function() {
      * @param  {string} cat  The category we'll base the link on
      * @param  {Object} to   The target Object for linking
      * @param  {string} con  The container to collect the linked Object in
+     * Runthrough: Game.resources.entries, 'category', Game.resourceCategoryData, 'items'
      */
     instance.combineGameObjects = function(from, cat, to, con) {
+        // Obj keys: [metal, energy] -> metal
         Object.keys(from).map(function(item) {
+            // if Game.resources.entries.metal doesn't contain 'category', then complain
             if (!contains(Object.keys(from[item]), cat)) {
                 console.log("Object 'from'->"+item+" doesn't contain attribute: "+cat);
-                //console.log(from);
                 return false;
             }
+            // value = Game.resources.entries.metal.category = earth
             var value = from[item][cat];
+            // if 'con' is set
             if (con) {
+                // If earth not in Game.resourceCategoryData, create Game.resourceCategoryData.earth
                 if (!(value in to)) {to[value] = {};}
+                // If 'items' not in to.earth, create to.earth.items
                 if (!(con in to[value])) {to[value][con] = {};}
+                // if 'metal' not in to.earth.items, create to.earth.items.metal
                 if (!(item in to[value][con])) {to[value][con][item] = {};}
+                // set Game.resourceCategoryData.earth.items.metal to Game.resources.entries.metal
                 to[value][con][item] = from[item]    
             } else {
                 if (!(value in to)) {to[value] = {};}
@@ -265,8 +274,13 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
+        this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
+        this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
         // Link Game.solar.entries category to Game.resourceCategoryData
-        this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
+        //this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
+        // Link it again, a level deeper and link on id
+        //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
+
 
     }
 
@@ -333,6 +347,7 @@ var Game = (function() {
         Templates.uiFunctions.unlock(Game.buildings.entries.metalT1.htmlIdContainer);
         Templates.uiFunctions.unlock(Game.buildings.entries.gemT1.htmlIdContainer);
         Templates.uiFunctions.unlock(Game.buildings.entries.woodT1.htmlIdContainer);
+        document.getElementById('resourcesTab').click();
 
         // Now load
         self.load();
