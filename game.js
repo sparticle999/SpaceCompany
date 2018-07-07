@@ -365,6 +365,28 @@ var Game = (function() {
         Game.addMachineClickEvents();
 
 
+        console.log("test from start");
+        console.log("storage");
+        console.log("add all techData tabAlerts")
+        console.log("turn red")
+        console.log("0 energy, turn resources off")
+        console.log("all tech upgrades")
+        console.log("saving")
+        console.log("combine construct and destroy +/-")
+        console.log("stats")
+        console.log("dmBoost")
+        console.log("efficiencyBoosts")
+        console.log("energy toggle")
+        console.log("plasma toggle core.js:180")
+        console.log("charcoal toggle core.js:140")
+        console.log("meteorite toggle core.js:172")
+        console.log("toggles legacyUI.js:125")
+        console.log("notify storage")
+        console.log("redo solar system")
+        console.log("redo wonder station")
+        console.log("implement new resources into interstellar and stargaze")
+        console.log("dm boosts antimatter and rocketFuel")
+
 
 
         // Now load

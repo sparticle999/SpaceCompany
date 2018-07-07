@@ -85,6 +85,7 @@ Game.resources = (function(){
         for(var key in this.entries) {
             data.resources.r[key] = {
                 n: this.entries[key].current,
+                s: this.entries[key].capacity,
                 u: this.entries[key].unlocked
             }
         }
@@ -98,6 +99,9 @@ Game.resources = (function(){
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.r[id].n);
                         this.entries[id].unlocked = data.resources.r[id].u;
+                        if(typeof data.resources.r[id].capacity != undefined)
+                            console.warn(data.resources.r[id])
+                            this.entries[id].capacity = data.resources.r[id].s;
                     }
                 }
             }

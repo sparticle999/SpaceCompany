@@ -138,10 +138,10 @@ Game.buildingData = (function () {
         desc: 'Bathing in Electrons. What could go wrong?',
         resource: 'plasma',
         resourcePerSecond: {
-            'energy': -15000,
-            'helium': -100,
-            'hydrogen': -100,
-            'plasma': 140
+            'energy': -91000,
+            'helium': -500,
+            'hydrogen': -600,
+            'plasma': 160
         },
         cost: {
             'lunarite': 6200000,

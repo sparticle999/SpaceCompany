@@ -215,7 +215,7 @@ Templates.solarUI = function(cPage, cCategory, cTitle, cObj) {
 		     '<span>',
 		       'Exploring texts need to be added in solarData.js',
 		       '<br>',
-		       'Costs <span id="{{htmlId}}_rocketFuelCost">Not added in solarData.js yet</span> rocket fuel.',
+		       'Costs <span id="{{htmlId}}_rocketFuelCost">0</span> rocket fuel.',
 		     '</span>',
 		     '<br>',
 		     '<br>',
