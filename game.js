@@ -70,9 +70,6 @@ var Game = (function() {
         Templates.uiFunctions.updateElements('storageTime');
         Templates.uiFunctions.updateElements('storageCost');  // Can get away with only calling manually after storage bought
 
-
-
-
         self.resources.update(delta);
         self.buildings.update(delta);
         self.tech.update(delta);
@@ -343,12 +340,6 @@ var Game = (function() {
         Templates.uiFunctions.unlock(Game.buildings.entries.gemT1.htmlIdContainer);
         Templates.uiFunctions.unlock(Game.buildings.entries.woodT1.htmlIdContainer);
 
-        // Add the event listeners
-        Game.addResourceClickEvents();
-        Game.addMachineClickEvents();
-
-<<<<<<< HEAD
-
         console.log("test from start");
         console.log("storage");
         console.log("add all techData tabAlerts")
@@ -370,11 +361,6 @@ var Game = (function() {
         console.log("redo wonder station")
         console.log("implement new resources into interstellar and stargaze")
         console.log("dm boosts antimatter and rocketFuel")
-
-
-
-=======
->>>>>>> 0caa6eb3072b275a4b439966cd28d3c61a8f0185
         // Now load
         self.load();
 

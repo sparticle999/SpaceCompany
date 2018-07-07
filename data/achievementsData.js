@@ -216,7 +216,7 @@ Game.achievementsData = (function(){
 	instance.resScience = {
 		id_v4: 'ach_16',
 		categoryInstance: Game.achievementsCategoryData.resources,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: 'Collect %s Science',
 		evaluator: function(x) { return getResource(RESOURCE.Science) >= x },
 		progressEvaluator: function(x) { return getResource(RESOURCE.Science) / x }
@@ -1075,7 +1075,7 @@ Game.achievementsData = (function(){
 	instance._prodScienceT1 = {
 		id_v4: "ach_111",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: "Own %s Home Science Kit",
 		evaluator: function(x) { return Game.buildings.entries["scienceT1"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["scienceT1"].current/x }
@@ -1084,7 +1084,7 @@ Game.achievementsData = (function(){
 	instance._prodScienceT2 = {
 		id_v4: "ach_112",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: "Own %s High School Science",
 		evaluator: function(x) { return Game.buildings.entries["scienceT2"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["scienceT2"].current/x }
@@ -1093,7 +1093,7 @@ Game.achievementsData = (function(){
 	instance._prodScienceT3 = {
 		id_v4: "ach_113",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: "Own %s University Laboratory",
 		evaluator: function(x) { return Game.buildings.entries["scienceT3"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["scienceT3"].current/x }
@@ -1102,7 +1102,7 @@ Game.achievementsData = (function(){
 	instance._prodScienceT4 = {
 		id_v4: "ach_114",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: "Own %s Scientific Observatory",
 		evaluator: function(x) { return Game.buildings.entries["scienceT4"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["scienceT4"].current/x }
@@ -1111,7 +1111,7 @@ Game.achievementsData = (function(){
 	instance._prodScienceT5 = {
 		id_v4: "ach_115",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'technologyIcon',
+		iconName: 'technologiesIcon',
 		title: "Own %s Space Scientific Satellite Station",
 		evaluator: function(x) { return Game.buildings.entries["scienceT5"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["scienceT5"].current/x }
