@@ -274,6 +274,7 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
+<<<<<<< HEAD
         this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
         this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
         // Link Game.solar.entries category to Game.resourceCategoryData
@@ -281,6 +282,17 @@ var Game = (function() {
         // Link it again, a level deeper and link on id
         //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
 
+=======
+        // Link Game.solar.entries category to Game.solarCategoryData
+        this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
+        console.log(Game.machinesCategoryData)
+        // Link Game.machinescategoryData page to Game.pages
+        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        // Link Game.resources.entries category to Game.machinesCategoryData
+        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+
+        console.log(Game.pages)
+>>>>>>> 0caa6eb3072b275a4b439966cd28d3c61a8f0185
 
     }
 
@@ -340,6 +352,8 @@ var Game = (function() {
         self.solarUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
+        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
         Game.ui.updateAutoDataBindings();
@@ -348,6 +362,10 @@ var Game = (function() {
         Templates.uiFunctions.unlock(Game.buildings.entries.gemT1.htmlIdContainer);
         Templates.uiFunctions.unlock(Game.buildings.entries.woodT1.htmlIdContainer);
         document.getElementById('resourcesTab').click();
+
+        // Add the event listeners
+        Game.addResourceClickEvents();
+        Game.addMachineClickEvents();
 
         // Now load
         self.load();
