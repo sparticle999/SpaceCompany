@@ -196,15 +196,15 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
 	var TemplatePaneNonMachine = Handlebars.compile(
-		['<tr id="'+this.page+'_{{htmlId}}" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
+		['<tr id="'+this.page+'_{{htmlId}}_Container" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
 		   '<td>',
-		     '<h3 id="'+this.page+'_{{htmlIdTitle}}" class="default btn-link">{{name}}: <span id="_{{htmlId}}_Count">0</span></h3>',
+		     '<h3 class="default btn-link">{{name}}: <span id="'+this.page+'_{{htmlId}}_Current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p id="'+this.page+'_{{htmlIdCost}}"></p>',
+		       '<p id="'+this.page+'_{{htmlId}}_Cost"></p>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlIdButton}}" class="btn btn-default">{{buttonText}}</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -244,6 +244,12 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
 			html += TemplatePaneNonMachine(buildingData[build]);
+			// ID of the machine's container
+			buildingData[build].htmlIdContainer = buildingData[build].htmlId+'_Container';
+			// ID of the span displaying the count
+			buildingData[build].htmlIdCount = buildingData[build].htmlId+'_Count';			
+			// ID of the div displaying the cost
+			buildingData[build].htmlIdCost = buildingData[build].htmlId+'_Cost';
 		}); return html;
 	}
 
@@ -309,7 +315,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 			var menuHeader = cPage+'Tab_'+data[cat].category+'_collapse';
 			Templates.uiFunctions.registerMenuHeader(navigation, menuHeader);
 			// Store the general htmlId in this object
-			data[cat].htmlId = "Tab_"+data[cat].category+"_collapse"
+			data[cat].htmlIdMenuHeader = "Tab_"+data[cat].category+"_collapse"
 			// Get the items and their order
 			var subitems = Object.keys(data[cat].items).sort(function(a, b) {
 				return data[cat].items[a].order > data[cat].items[b].order
@@ -326,9 +332,15 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 				var menuItem = cPage+'Tab_'+data[cat].items[subitem].id+'_ne';
 				Templates.uiFunctions.registerMenuItem(navigation, menuHeader, menuItem);
 				// Store the general htmlId in this object
-				data[cat].items[subitem].htmlId = "Tab_"+data[cat].items[subitem].id+"_ne";
-				// Dispatch this item to the function creating the pane
-				createPane(data[cat].items[subitem], navigation, menuHeader, menuItem);
+				data[cat].items[subitem].htmlIdMenuItem = "Tab_"+data[cat].items[subitem].id+"_ne";
+				if ('items' in data[cat].items[subitem]) {
+					// Dispatch this item to the function creating the pane
+					createPane(data[cat].items[subitem], navigation, menuHeader, menuItem);
+				} else {
+					// No subitems, treat data[cat] as the source for the content pane
+					createPane(data[cat], navigation, menuHeader, menuItem);
+				}
+
 			})
 		})
 		// return an array of menuHtml & pageHtml to initialise

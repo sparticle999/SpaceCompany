@@ -36,10 +36,10 @@ Game.tech = (function(){
         for (var id in this.entries) {
             var data = this.entries[id];
             if (data.unlocked) {
-                Templates.uiFunctions.unlock(data.htmlId);
+                Templates.uiFunctions.unlock(data.htmlIdContainer);
             }
             if (data.current >= data.maxLevel && data.maxLevel > 0) {
-                Templates.uiFunctions.hide(data.htmlId)
+                Templates.uiFunctions.hide(data.htmlIdContainer)
             }
         }
     };
@@ -70,21 +70,21 @@ Game.tech = (function(){
         }
         if(Game.buildings.entries.metalT1.current >= 1){
             if (!Game.tech.tabUnlocked) {
+                Templates.uiFunctions.unlock(Game.buildings.entries.scienceT1.htmlIdContainer)
                 // Unlock the science resourceCategory
                 Game.resourceCategoryData.science.unlocked = true
                 // Unlock the science resource
                 Game.resources.entries.science.unlocked = true;
                 // Unlock scienceT1
                 Game.buildings.entries.scienceT1.unlocked = true;
-                Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
                 // Unlock the research category
                 Game.techCategoryData.unlocked = true;
                 Game.techCategoryData.research.unlocked = true;
                 // Unlock the technology type of research items
-                Game.techCategoryData.research.items.technology = true;
+                Game.techCategoryData.research.items.technology.unlocked = true;
                 newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
-                Game.tech.tabUnlocked = true;
+                Game.tech.tabUnlocked = true; 
             }
         }
     };
@@ -136,60 +136,63 @@ Game.tech = (function(){
         }
     };
 
+
+// Create an empty object to create a sum of profits and losses
+// var materials = Object.keys(Obj).reduce((o, key) => Object.assign(o, {[key]: 0}), {});
+
+
+
+    var doPurchase = function(Obj) {
+        // Loop over the costs and subtract them from .current
+        Object.keys(Obj.cost).forEach(c => Game.resources.entries[c].current += cost[c])
+        // increase its current
+        Obj.current++
+        // recalculate tech effects
+
+        // recalculate the costs
+
+        // Update the UI
+    }
+
+    /**
+     * Internal function.  Not accessible from outside so we need less security.
+     * Checks if an object (Obj.cost) is affordable, this can be any object
+     * which costs are all in Game.resources.entries
+     * @param  {Object}  Obj Object like Game.buildings.entries.metalT1
+     * @return {Boolean}     True on affordable, false if not.
+     */
+    var isAffordable = function(Obj) {
+        // Loop over the cost, cost is a negative number, result has to be > 0 for every item.
+        if (Object.keys(Obj.cost).every(c => Game.resources.entries[c].current + cost[c] > 0)) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
     // return true if the tech is purchased successfully, false otherwise
     instance.buyTech = function(id, count) {
-        var tech = this.getTechData(id);
-        if (typeof tech === 'undefined') {
-            return false;
+        if (!(id in this.entries)) {return false;}
+        if (count != parseInt(count) && count <= 0) {return false;}
+        while (count > 0) {
+            // Stop the loop if the next machine isn't affordable
+            if (!isaffordable(this.entries[id])) {break;}
+            // Stop the loop if max level is reached.
+            if (this.entries[id].current == this.entries[id].maxLevel) {break;}
+            // Buy the item
+            doPurchase(this.entries[id]);
+
+            // Perform onBought
+
+            // decrease count
+            count--;
         }
+        // Update the costs display
+        
 
-        tech.displayNeedsUpdate = true;
 
-
-        // ensure a valid value for count
-        if(isNaN(count) || count === undefined) {
-            count = 1;
-        }
-
-        // if there's a max level defined then the count may need to be clamped
-        if (tech.maxLevel > 0) {
-            count = Math.min(tech.maxLevel - tech.current, count);
-            if (count <= 0) {
-                // the tech is at or above max level, can't buy it
-                return false;
-            }
-        }
-
-        // create a new object for cost to avoid reference issues
-        var cost = {};
-        if (tech.costType === COST_TYPE.FIXED) {
-            if (tech.current > 0 || count > 1) {
-                // this calculation could be done more elegantly with math
-                for (var resource in tech.cost) {
-                    cost[resource] = 0;
-                }
-                for (var i = 0; i < count; i++) {
-                    for (var resource in tech.cost) {
-                        cost[resource] += this.getCost(tech.cost[resource], tech.current + i);
-                    }
-                }
-            } else {
-                // the predefined base cost can be used
-                for (var resource in tech.cost) {
-                    cost[resource] = tech.cost[resource];
-                }
-            }
-        } else {
-            return false;
-        }
-
-        if (!this.hasResources(cost)) {
-            return false;
-        }
-
-        this.spendResources(cost);
-        this.gainTech(id, count);
-        return true;
     };
 
     instance.gainTech = function(id, count) {

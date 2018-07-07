@@ -51,10 +51,7 @@ Game.buildings = (function(){
     };
 
     instance.update = function(delta) {
-        if (this.updatePerSecondProduction === true) {
-            Game.resources.updateResourcesPerSecond();
-            this.updatePerSecondProduction = false;
-        }
+
         for(id in this.entries){
             var data = this.entries[id];
             if(data.displayNeedsUpdate)

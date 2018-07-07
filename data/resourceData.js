@@ -50,9 +50,9 @@ Game.resourceCategoryData = (function () {
         unlocked: false
     };
 
-    instance.rocket = {
-        title: 'Rocket',
-        category: 'rocket',
+    instance.spacecraft = {
+        title: 'Spacecraft',
+        category: 'spacecrat',
         page: 'solar',
         order: 1, // 1st category item on the solar page
         unlocked: true
@@ -339,12 +339,24 @@ Game.resourceData = (function () {
      * Rocket           *
      ********************/
 
+    instance.satellite = {
+        name: "Satellite",
+        desc: "We'll need to build satellites to begin exploring the solar system.  We will also need a rocket to launch them.  Don't forget about rocket fuel!</b>",
+        icon: 'satelliteIcon',
+        category: "spacecraft",
+        baseCapacity: 0, // Important to hide the ps & storage
+        order: 1,
+        manualgain:  false,
+        unlocked: true
+    };
+
     instance.rocket = {
         name: "Rocket",
-        desc: "Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.<br><br><br><b>NB: You only need 1 Rocket. You can reuse the same one by just using fuel.</b>",
+        desc: "Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.",
         icon: 'rocketIcon',
-        category: "rocket",
+        category: "spacecraft",
         baseCapacity: 0, // Important to hide the ps & storage
+        order: 2,
         manualgain:  false,
         unlocked: true
     };

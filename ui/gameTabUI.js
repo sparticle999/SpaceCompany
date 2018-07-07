@@ -157,7 +157,14 @@ Templates.uiFunctions = function() {
     instance.clickNav = function(DOMid) {
         var node = document.getElementById(DOMid+'Glyph');
         if (node) {node.classList.add('hidden');}
+        // Store the click
         lastNav = DOMid;
+        // remove the active class from all Navs
+        Object.keys(menuStructure).forEach(
+            id => document.getElementById(id).classList.remove("active")
+        )
+        // Make the clicked tab active
+        node.classList.add("active");
     }
 
     instance.registerNavigation = function(navigation) {
@@ -204,7 +211,6 @@ Templates.uiFunctions = function() {
         this.elementRegister[action][htmlId] = {};
         this.elementRegister[action][htmlId].oldValue = -1;
         this.elementRegister[action][htmlId].item = item
-        if (action == 'current') {console.log("registered current")}
     }
 
 
@@ -309,7 +315,7 @@ Templates.uiFunctions = function() {
             Templates.uiFunctions.addUIEventListener(node, "click", funct);
             break;
         // Match the menu headers - #resourcesTab_energy_collapse
-        case (match = getCase(id, "^resourcesTab_(.*)_ne$")).input:
+        case (match = getCase(id, "^(.*)Tab_(.*)_ne$")).input:
             funct = new Function("Templates.uiFunctions.clickItem('"+id+"')");
             Templates.uiFunctions.addUIEventListener(node, "click", funct);
             break;

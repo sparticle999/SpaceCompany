@@ -400,22 +400,21 @@ Game.buildingData = (function () {
         },
         onApply: function(){
             if (!Game.tech.tabUnlocked) {
-                Templates.uiFunctions.unlock(Game.buildings.entries.scienceT1.htmlId)
+                Templates.uiFunctions.unlock(Game.buildings.entries.scienceT1.htmlIdContainer)
                 // Unlock the science resourceCategory
                 Game.resourceCategoryData.science.unlocked = true
                 // Unlock the science resource
                 Game.resources.entries.science.unlocked = true;
                 // Unlock scienceT1
                 Game.buildings.entries.scienceT1.unlocked = true;
-                Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
                 // Unlock the research category
                 Game.techCategoryData.unlocked = true;
                 Game.techCategoryData.research.unlocked = true;
                 // Unlock the technology type of research items
-                Game.techCategoryData.research.items.technology = true;
+                Game.techCategoryData.research.items.technology.unlocked = true;
                 newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
-                Game.tech.tabUnlocked = true;
+                Game.tech.tabUnlocked = true; 
             }
         }
     });

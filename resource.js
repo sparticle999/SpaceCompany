@@ -57,22 +57,7 @@ Game.resources = (function(){
             var data = this.entries[id];
             var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
-            if (id == 'science') {continue;}
-            if (data.displayNeedsUpdate) {
-                var nav = document.querySelector('[id$=Tab_'+id+'_nec]');
-                var hidden = nav.classList.contains("hidden");
-                // Unhide the tab if the resource is unlocked
-                if (data.unlocked && hidden) {
-                    nav.classList.remove("hidden");
-                }
-                var cat = data.category;
-                if(data.unlocked && cat.unlocked == false) {
-                    cat.unlocked = true;
-                    var target = document.querySelector('[id$=Tab_'+cat+'_collapse]');
-                    target.classList.remove("hidden")
-                }
-                data.displayNeedsUpdate = false;
-            }
+            Templates.uiFunctions.updateElements('current');
         }
     };
 
@@ -102,31 +87,6 @@ Game.resources = (function(){
         }
     };
 
-    instance.getDisplayResource = function(id) {
-        if (typeof this.entries[id] === 'undefined') { return 0; }
-        var current = this.entries[id].current;
-        switch (id) {
-            case "science":
-                if (current < 100) {
-                    current = Game.settings.format(current, 1);
-                } else {
-                    current = Game.settings.format(current);
-                }
-                break;
-            case "rocketFuel":
-                if (current < 100) {
-                    current = Game.settings.format(current, 1);
-                } else {
-                    current = Game.settings.format(current);
-                }
-                break;
-            default:
-                current = Game.settings.format(current);
-                break;
-        }
-        return current;
-    };
-
 	instance.getResource = function(id) {
 		if (typeof this.entries[id] === 'undefined') {
 			return 0;
@@ -145,32 +105,6 @@ Game.resources = (function(){
 		}
 		return Game.resources.entries[id].capacity;
 	};
-
-
-    instance.getDisplayProduction = function(id) {
-        //console.log(id);
-        if (typeof this.entries[id] === 'undefined') { return 0; }
-        var ps = this.entries[id].perSecond;
-        switch (id) {
-            case "energy":
-                if (ps > 250 || ps < -250) {
-                    ps = Game.settings.format(ps);
-                } else {
-                    ps = Game.settings.format(ps * 2) / 2;
-                }
-                break;
-            case "science":
-                ps = Game.settings.format(ps, 1);
-                break;
-            case "rocketFuel":
-                ps = Game.settings.format(ps, 1);
-                break;
-            default:
-                ps = Game.settings.format(ps);
-                break;
-        }
-        return ps;
-    };
 
 	instance.getProduction = function(id) {
         //console.log("Checking: "+id)
@@ -299,6 +233,12 @@ Game.resources = (function(){
         res.displayNeedsUpdate = true;
     };
 
+
+    instance.calcAllBuildingProduction = function() {
+        var energyBonus = 0;
+        var productionBonus = 0;
+    }
+
     instance.updateResourcesPerSecond = function(){
         var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01)
         var energyDiff = 0;
@@ -334,6 +274,7 @@ Game.resources = (function(){
             res.perSecond = ps;
         }
         energy.perSecond -= energyDiff;
+        Templates.uiFunctions.updateElements('perSecond');
     };
 
     instance.unlock = function(id) {
