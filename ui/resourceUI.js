@@ -1,539 +1,355 @@
-Game.resourcesUI = (function(){
+'use strict';
+if (typeof Templates == "undefined") { var Templates = {}; }
+Templates.createPage = function(cPage, cTitle, cObj) {
 
-	var instance = {};
-
-	instance.entries = {};
-
-	instance.machineEntries = {};
-	instance.machineObservers = {};
-
-	instance.tabRoot = null;
-	instance.navRoot = null;
-
-	instance.tab = null;
-
-	instance.category = 'resources';
-	instance.title = 'Resources';
-
-	instance.initialise = function() {
-
-		this.tab = Game.ui.createTab({id: this.category, title: this.title, hidden: '', active: "active"});
-		this.tab.initialise();
-
-		console.log("test from start");
-		console.log("storage");
-		console.log("add all techData tabAlerts")
-		console.log("turn red")
-		console.log("0 energy, turn resources off")
-		console.log("all tech upgrades")
-		console.log("saving")
-		console.log("combine construct and destroy +/-")
-		console.log("stats")
-		console.log("dmBoost")
-		console.log("efficiencyBoosts")
-		console.log("energy toggle")
-		console.log("plasma toggle core.js:180")
-		console.log("charcoal toggle core.js:140")
-		console.log("meteorite toggle core.js:172")
-		console.log("toggles legacyUI.js:125")
-		console.log("notify storage")
-		console.log("redo wonder station")
-		console.log("implement new resources into interstellar and stargaze")
-		console.log("dm boosts antimatter and rocketFuel")
-
-// onclick="activeResourceTab('iceNav')" 
-
-// ice.id = {{id}}
-// Ice.name = {{name}}
-// ice.persecond = {{perSecond}}
-// ice.current = {{current}}
-// ice.capacity = {{capacity}}
-// 
-// 
-/*
-        instance.pageTemplate = Handlebars.compile(
-        	['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">\
-				<div class="container col-xs-1" style="width:380px; padding:0; float:left;">\
-					<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">\
-						<tbody>\
-							LOOP\
-							<tr id="{{id}}Nav" class="outerPlanet sideTab" href="#{{id}}Tab" aria-controls="iceTab" role="tab" data-toggle="tab" style="height: 30px;" aria-expanded="true">\
-								<td style="vertical-align:middle;">\
-									<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">\
-								</td>\
-								<td style="vertical-align:middle;">\
-									<span>{{name}}</span>\
-								</td>\
-								<td style="vertical-align:middle; text-align:center;">\
-									<span><span id="{{id}}ps">{{perSecond}}</span>/Sec</span>\
-								</td>\
-								<td style="vertical-align:middle; text-align:right;">\
-									IF
-									<span id="{{id}}" class="">{{current}}</span>\
-									/\
-									<span id="{{id}}Storage">3.277M</span>\
-									ENDIF
-								</td>\
-							</tr>\
-							END LOOP\
-						</tbody>\
-					</table>\
-				</div>']
-
-				'<span id="{{id}}StorageBox" class="hidden">',
-					'/',
-					'<span id="{{id}}Storage">{{capacity}}</span>',
-
-        )
-
-			'{{> listMenuItems}}',
-
-			'{{this.title}}',
-			'{{this.category}}',
-			'{{this.unlocked}}',
-				
-
-			*/
-			instance.listMenuItems = Handlebars.registerPartial('listMenuItems',[
-				'<tr id="{{this.category}}Nav" class="sideTab" href="#{{this.category}}Tab" aria-controls="{{this.category}}Tab" role="tab" data-toggle="tab" style="height: 30px;" aria-expanded="true">',
-				'Submenu item',
-				'</tr>'
-				].join('\n'));
-
-			Handlebars.registerHelper('logicEquals',
-				function(a, b, options) {
-					console.log(a+ " & " +b);
-					if(a === b) { return options.fn(this); }
-					return options.inverse(this);
-				}
-				);
-
-		// Loops through the categories and creats the collapsible headers
-		instance.menuWithCategories = Handlebars.registerPartial('menuWithCategories',[
-
-			].join('\n'));
+	// createPage('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar)
 
 
-// Events:
-// 	onclick="activeResourceTab('{{this.category}}Nav')" 
-// 	
+	// When creating or adjusting a template, make sure all ids start with'+this.page+'
+	// This is to make sure they're unique regardless of the content
+	// Preferably use the format page_{{item}}_Action, page_{{item}}_CategoryContainer and page_{{item}}_value
+	// For instance: page_metalT1_buy_1, page_metal_StorBuildingContainer and page_metalT1_Cost
+	// Use a class for global unlockables, like in a div around a mechanic that unlocks with research (destroy buttons, upgrade storage, etc)
 
-		instance.resourcePage = Handlebars.compile(
-			// Start of the left-side navigation
-			['<div role="tabpanel" class="tab-pane fade active in" id="'+this.category+'">',
-			'<div class="container col-xs-1" style="width:380px; padding:0; float:left;">',
-			'<table class="table table-hover text-primary no-select pointer" id="'+this.category+'NavParent">',
-			'<tbody>',
-				// If there are categories, render these next
-				'{{#each category}}',
-				'<tr id="collapse{{this.category}}" class="collapse{{this.category}}" style="border:none;">',
-				'<td colspan="4">',
-				'<span>{{this.title}}</span> <span class="caret"></span>',
-				'</td>',
-				'</tr>',
-				'{{#each items}}',
-					// Add the items per category
-				'{{#logicEquals this.category @index}}',
-				
-				'{{/logicEquals}}',
-				'{{/each}}',
-				'{{/each}}',
-			'</tbody>',
-			'</table>',
-			'</div>',
-			// Start of the right-side content pane
-			'<div class="tab-content" id="'+this.category+'TabParent" style="width:100%">'
-			].join('\n'));
+	this.page = cPage;
+	this.title = cTitle;
+	this.data = cObj;
 
-		// Collect the data we need and render the page
-		instance.renderPage = function() {
-			return this.resourcePage(data);
-		}
+	// Object containing the ID masks 
+	var registeredEvents = {};
 
- 
-		//	resourceNavStart
-		//		resourceCategories
-		//			resourceList
 
-		instance.titleTemplate = Handlebars.compile(
-			['<tr><td colspan="2" style="border:none;">',
-			'<h2 class="default btn-link">{{name}}</h2>',
-			'<span>{{{desc}}}</span>',
-			'<br><br>',
-			'<hide class="gainButton">',
-			'<button type="button" id="{{htmlId}}_Gain" class="btn btn-default">Gain <span id="manualGain">1</span></button>',
-			'<br>',
-			'<br>',
-			'</hide>',
-			'</td></tr>'].join('\n'));
+	/**
+	 * Creates the link to the page of the top menu
+	 * Attaches to tabList
+	 */
+	var TemplateTopMenuNav = Handlebars.compile(
+        ['<li role="presentation" id="'+this.page+'Tab" class="hidden">',
+           '<a href="#'+this.page+'Tab_pane" id="'+this.page+'Tab_link" class="-" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
+             '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign"></div>',
+               this.title,
+           '</a>',
+         '</li>',''].join('\n'));
 
-		instance.navTemplate = Handlebars.compile(
-			['<td style="vertical-align:middle;">',
-			'<img src="Icons/{{id}}Icon.png" style="width:30px; height:auto">',
-			'</td>',
-			'<td style="vertical-align:middle;" colspan="1">',
-			'<span>{{name}}</span>',
-			'</td>',
-			'<td style="vertical-align:middle; text-align:center;">',
-			'<span>',
-			'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
-			'</span>',
-			'</td>',
-			'<td style="vertical-align:middle; text-align:right;">',
-			'<span id="{{id}}">',
-			'{{current}}',
-			'</span>',
-			'/',
-			'<span id="{{id}}Storage">{{capacity}}</span>',
-			'</td>'].join('\n'));
+	/**
+	 * Combines the menu & pane content to build the page
+	 * Attaches to tabContent
+	 */
+	var TemplateBuildPage = Handlebars.compile(
+		['<div role="tabpanel" class="tab-pane fade" id="'+this.page+'Tab_pane">',
+		   '<div class="container" style="width:380px; padding:0; float:left;">',
+		     '<table class="table table-hover text-primary no-select pointer">',
+			   '<tbody id="'+this.page+'Tab_nav">',
+		       '</tbody>',
+		     '</table>',
+	       '</div>',
+	       '<div class="tab-content" id="'+this.page+'Tab_content">',
+		   '</div>',
+		 '</div>',''].join('\n'));
 
-		instance.energyNavTemplate = Handlebars.compile(
-			['<td style="vertical-align:middle;" colspan="1">',
-			'<span>{{name}}</span>',
-			'</td>',
-			'<td style="border: none; vertical-align:middle; text-align:center;">',
-			'<span>',
-			'<span id="{{id}}ps">{{perSecond}}</span>/Sec',
-			'</span>',
-			'</td>',
-			'<td style="border:none; vertical-align:middle; text-align:right;">',
-			'<span id="{{id}}">',
-			'{{current}}',
-			'</span>',
-			'<span id="{{id}}StorageBox" class="hidden">',
-			'/',
-			'<span id="{{id}}Storage">{{capacity}}</span>',
-			'</span>',
-			'</td>'].join('\n'));
 
-		instance.metalStorageUpgradeTemplate = Handlebars.compile(
-			['<tr id="{{id}}StorageUpgrade" class="hidden">',
-			'<td>',
-			'<h3 class="default btn-link">',
-			'Storage Upgrade',
-			'</h3>',
-			'<span>',
-			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-			'<br>',
-			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-			'<br>',
-			'Costs <span id="{{id}}StorageCost">50</span> {{name}}',
-			'</span>',
-			'<br>',
-			'<br>',
-			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-			'</td>',
-			'</tr>'].join('\n'));
+	////////////////////
+	// Menu Templates //
+	////////////////////
 
-		instance.earthStorageUpgradeTemplate = Handlebars.compile(
-			['<tr id="{{id}}StorageUpgrade" class="hidden">',
-			'<td>',
-			'<h3 class="default btn-link">',
-			'Storage Upgrade',
-			'</h3>',
-			'<span>',
-			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-			'<br>',
-			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-			'<br>',
-			'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageMetalCost">20</span> Metal.',
-			'</span>',
-			'<br>',
-			'<br>',
-			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-			'</td>',
-			'</tr>'].join('\n'));
+	/**
+	 * Formats a header menu row
+	 * {{category}} - category: energy, rocketFuel
+	 * {{title}} - Science, Energy
+	 * Merges into solarTab_nav
+	 */
+	var TemplateMenuHeader = Handlebars.compile(
+		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="hidden">',
+		   '<td colspan="4" style="border:{{border}};"><span>{{title}}</span> <span class="caret"></span></td>',
+		 '</tr>',''].join('\n'));
+	
+	/**
+	 * Formats a menu row, hides storage
+	 * {{id}} - energy, rocketFuel
+	 * {{name}} - Energy, Rocket Fuel
+	 * {{category}} - category of this item - earth, inner
+	 * Merges into solarTab_nav
+	 */
+	var TemplateResourceMenuItem = Handlebars.compile(
+		['<tr id="'+this.page+'Tab_{{id}}_ne" href="#'+this.page+'Tab_{{id}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden aria-controls="'+this.page+'Tab_{{id}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
+		   '<td style="vertical-align:middle;" colspan="1"><span>{{name}}</span></td>',
+		   '<td style="vertical-align:middle; text-align:center;"><span><span id="'+this.page+'_{{id}}ps_display">0</span>/Sec</span></td>',
+		   '<td style="vertical-align:middle; text-align:right;"><span id="'+this.page+'_{{id}}_current">0</span><span id="'+this.page+'_{{id}}StorageBox" {{#if storBuildings}}class="hidden"{{else}}class=""{{/if}}>/<span id="'+this.page+'_{{id}}Storage">0</span></span></td>',
+		 '</tr>',''].join('\n'));
 
-		instance.spaceStorageUpgradeTemplate = Handlebars.compile(
-			['<tr id="{{id}}StorageUpgrade" class="hidden">',
-			'<td>',
-			'<h3 class="default btn-link">',
-			'Storage Upgrade',
-			'</h3>',
-			'<span>',
-			'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-			'<br>',
-			'Time remaining until <span id="{{id}}LimitType">full</span> storage: <b><span id="{{id}}LimitTime">N/A</span></b>',
-			'<br>',
-			'Costs <span id="{{id}}StorageCost">50</span> {{name}}, <span id="{{id}}StorageLunariteCost">400</span> Lunarite.',
-			'</span>',
-			'<br>',
-			'<br>',
-			'<button onclick="Game.resources.upgradeStorage(\'{{id}}\')" class="btn btn-default">Upgrade Storage</button>',
-			'</td>',
-			'</tr>'].join('\n'));
+	/**
+	 * Formats a menu row of an item that has no ps or storage
+	 * {{id}} - moon, rocket
+	 * {{name}} - The Moon, Space Rocket
+	 * Merges into solarTab_nav
+	 */
+	var TemplateNonResourceMenuItem = Handlebars.compile(
+		['<tr id="'+this.page+'Tab_{{id}}_ne" href="#'+this.page+'Tab_{{id}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{id}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
+		   '<td style="vertical-align:middle;" colspan="3"><span>{{name}}</span></td>',
+		 '</tr>',''].join('\n'));
 
-		instance.storageBuildingTemplate = Handlebars.compile(
-			['<tr id="{{htmlId}}" class="hidden">',
-			'<td>',
-			'<h3 class="default btn-link">',
-			'{{name}}: <span id="{{htmlId}}Count">0</span>',
-			'</h3>',
-			'<span>',
-			'{{desc}}',
-			'<br>',
-			'<p id="{{htmlId}}_cost"></p>',
-			'</span>',
-			'<button onclick="getBattery()" class="btn btn-default">Get Battery</button>',
-			'</td>',
-			'</tr>',].join('\n'));
 
-		instance.machineTemplate = Handlebars.compile(
-			['<tr id="{{htmlId}}" class="hidden"><td>',
-			'<h3 class="default btn-link">{{name}}: <span id="{{htmlId}}Count">0</span></h3>',
-			'<span>',
-			'<p>{{desc}}</p>',
-			'<p id="{{htmlId}}_prod"></p>',
-			'<p id="{{htmlId}}_use"></p>',
-			'<p id="{{htmlId}}_cost"></p>',
-			'</span>',
-			'<button type="button" id="{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
-			'<hide class="multiBuy hidden">',
-			'<button type="button" id="{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
-			'<button type="button" id="{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
-			'<button type="button" id="{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
-			'</hide>',
-			'<div style="height:5px"></div>',
-			'<hide id="{{id}}_destroy" class="hidden">',
-			'<button type="button" id="{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
-			'<hide class="multiBuy hidden">',
-			'<button type="button" id="{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
-			'<button type="button" id="{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
-			'<button type="button" id="{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
-			'</hide>',
-			'</hide>',
-			'</td></tr>'].join('\n'));
+	////////////////////////////
+	// Content Pane Templates //
+	////////////////////////////
 
-		for(var id in Game.resourceCategoryData){
-			Game.resources.categoryEntries[id] = Game.resourceCategoryData[id];
-		}
+	/**
+	 * Creates the table for the content pane
+	 * {{id}} - helium, moon
+	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 */
+	var TemplatePaneHeader = Handlebars.compile(
+		['<div id="'+this.page+'Tab_{{id}}_nec" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">',
+		   '<div class="container" style="max-width:800px;">',
+		     '<table class="table">',
+		       '<tbody id="'+this.page+'Tab_{{id}}_netc">',
+		       // Content comes here
+		       '</tbody>',
+		     '</table>',
+		   '</div>',
+		 '</div>',''].join('\n'));
 
-		for(var id in Game.resources.categoryEntries) {
-			this.tab.addCategory(id, Game.resources.categoryEntries[id].title);
-		}
+	/**
+	 * Creates a row on the content pane with the info and sometimes a gain button
+	 * {{id}} - helium, moon
+	 * {{name}} - Helium, The Moon
+	 * {{desc}} - A short text
+	 * {{storUpgrades}} - contains the storage upgrade costs.
+	 * Merges onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 */
+	var TemplatePaneTitle = Handlebars.compile(
+		['<tr>',
+		   '<td colspan="2" style="border:none;">',
+		   '<h2 class="default btn-link">{{name}}</h2>',
+		   '<span>{{{desc}}}</span>',
+		     '<br>',
+		     '<br>',
+		     '{{#if manualgain}}',
+		     '<div class="gainButton hidden">',
+		       '<button type="button" id="'+this.page+'_{{id}}_Gain" class="btn btn-default">1</button>',
+		       '<br>',
+		       '<br>',
+		     '</div>',
+		     '{{/if}}',
+		   '</td>',
+		 '</tr>',
+		 '{{#if storUpgrades}}',
+		 '<tr class="storageUpgrade hidden">',
+		   '<td>',
+		     '<h3 class="default btn-link">Storage Upgrade</h3>',
+		     '<span>',
+		       'Upgrade your {{name}} storage size to <span id="'+this.page+'_{{id}}_NextStorage">100</span>.',
+		       '<br>',
+		     'Time remaining until <select id="'+this.page+'_{{id}}_SelectStorage_Limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>:',
+ 			 'storage: <b><span id="'+this.page+'_{{id}}_SelectStorage_Time">N/A</span></b>',
+ 			 '<br>',
+		     '<span id="'+this.page+'_{{id}}_StorageUpgrade_Cost"></span>',
+		     '<br>',
+		     '<button id="'+this.page+'_{{id}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
+		   '</td>',
+		 '</tr>',
+		 '{{/if}}',''].join('\n'));
 
-		for(var id in Game.resourceData) {
-			this.createDisplay(id);
-		}
 
-        // 
-        for (var id in RESOURCE) {
-        	if ($('#' + RESOURCE[id]).length > 0) {
-        		Game.ui.bindElement(RESOURCE[id], this.createResourceDelegate(RESOURCE[id]));
-        	}
-        	if ($('#' + RESOURCE[id] + 'ps').length > 0) {
-        		Game.ui.bindElement(RESOURCE[id] + 'ps', this.createProductionDelegate(RESOURCE[id]));
-        	}
-        	if ($('#' + RESOURCE[id] + 'Storage').length > 0) {
-        		Game.ui.bindElement(RESOURCE[id] + 'Storage', this.createStorageDelegate(RESOURCE[id]));
-        	}
-        	if ($('#' + RESOURCE[id] + 'NextStorage').length > 0) {
-        		Game.ui.bindElement(RESOURCE[id] + 'NextStorage', this.createNextStorageDelegate(RESOURCE[id]));
-        	}
-        }
 
-        for(var id in Game.buildings.storageEntries){
-        	var data = Game.buildings.storageEntries[id];
-        	Game.ui.bindElement('sto_' + id + 'Count', function(){ return Game.settings.format(Game.buildings.storageEntries[this.id.substring(4, this.id.length-5)].current)});
-        }
+	/**
+	 * Adds a storBuilding or building to the content pane
+	 * _{{htmlId}}_ - sto_plasmaT1, resbld_rocketFuelT3
+	 * {{unlocked}} - true / false
+	 * {{name}} - full name of the building
+	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 */
+	var TemplatePaneBuilding = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}_Container" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
+		   '<td>',
+		     '<h3 class="default btn-link">{{name}}: <span id="'+this.page+'_{{htmlId}}_Count">0</span></h3>',
+		     '<span>',
+		       '{{desc}}',
+		       '<br>',
+		       '<p id="'+this.page+'_{{htmlId}}_Cost"></p>',
+		     '</span>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			 '<span class="multiBuy hidden">',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
+			 '</span>',
+			 '<div style="height:5px"></div>',
+			 '<span id="'+this.page+'_{{htmlId}}_destroy_Container" class="hidden">',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
+			   '<span class="multiBuy hidden">',
+			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
+			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
+			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
+			   '</span>',
+			 '</span>',
+		   '</td>',
+		 '</tr>',''].join('\n'));
 
-        for(var id in Game.buildings.entries){
-        	var data = Game.buildings.entries[id];
-        	Game.ui.bindElement('resbld_' + id + 'Count', function(){ return Game.settings.format(Game.buildings.getBuildingData(this.id.substring(7, this.id.length-5)).current)});
-        }
+	/**
+	 * Adds a non-building to the content pane
+	 * {{name}} - Full name of the item
+	 * {{desc}} - Description of the item
+	 * _{{htmlId}}_ - solar_moon
+	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 */
+	var TemplatePaneNonMachine = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
+		   '<td>',
+		     '<h3 id="'+this.page+'_{{htmlIdTitle}}" class="default btn-link">{{name}}: <span id="_{{htmlId}}_Count">0</span></h3>',
+		     '<span>',
+		       '{{desc}}',
+		       '<br>',
+		       '<p id="'+this.page+'_{{htmlIdCost}}"></p>',
+		     '</span>',
+			 '<button type="button" id="'+this.page+'_{{htmlIdButton}}" class="btn btn-default">{{buttonText}}</button>',
+		   '</td>',
+		 '</tr>',''].join('\n'));
 
-		// the auto bindings need to be updated after this is done
-		Game.ui.updateAutoDataBindings();
-	};
 
-	instance.update = function(delta) {
+	////////////////////////////
+	// Page content functions //
+	////////////////////////////
 
-	};
-
-	instance.createDisplay = function(id) {
-		if (id == 'science' || id == 'rocketFuel') {return;}
-		var data = Game.resources.getResourceData(id);
-		if(id != "science")
-			this.tab.addNavEntry(data.category, id);
-		this.createResourceNav(data);
-		this.entries[data.htmlId] = data;
-	};
-
-	instance.createResourceNav = function(data) {
-		var target = $('#' + this.tab.getNavElementId(data.id));
-		var html = this.navTemplate(data);
-		this.createContent(data);
-		target.append($(html));
-	};
-
-	instance.createContent = function(data) {
-		var target = $('#' + this.tab.getContentElementId(data.id));
-		var tabTitle = this.titleTemplate(data);
-		target.append(tabTitle);
-		if(data.id != "energy" && data.id != "plasma"){
-			var storage = this.earthStorageUpgradeTemplate(data);
-			if(data.id == "metal")
-				storage = this.metalStorageUpgradeTemplate(data);
-			if((data.category != "earth" || data.id == "silicon" || data.id == "uranium" || data.id == "lava") && data.id != "lunarite" && data.id != "charcoal")
-				storage = this.spaceStorageUpgradeTemplate(data);
-			target.append(storage);
-		} else {
-			for (var id in Game.buildings.storageEntries) {
-				var storageData = Game.buildings.storageEntries[id];
-				if(data.id == storageData.resource){
-					this.createTierStorage(data, storageData);
-				}
-
-			}
-		}
-		for (var id in Game.buildings.entries) {
-			var upgradeData = Game.buildings.entries[id];
-			if(data.id == upgradeData.resource){
-				this.createMachine(data, upgradeData);
-			}
-		}
-	};
-
-	instance.createTierStorage = function(data, storageData){
-		var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-		var storage = this.storageBuildingTemplate(storageData);
-		tabContentRoot.append($(storage));
+	/**
+	 * Collects all the building information under a resource and creates the html
+	 * @param  {Object} buildingData Resource object containing the building info
+	 * @return {string}              generated html containing all buildings producing a resource.
+	 */
+	var buildMachineCost = function(buildingData) {
+		var html = ""
+		Object.keys(buildingData).forEach(function(build) {
+			var data = buildingData[build];
+			html += TemplatePaneBuilding(data);
+			// ID of the machine's container
+			buildingData[build].htmlIdContainer = buildingData[build].htmlId+'_Container';
+			// ID of the span displaying the count
+			buildingData[build].htmlIdCount = buildingData[build].htmlId+'_Count';
+			// ID of the div displaying the cost
+			buildingData[build].htmlIdCost = buildingData[build].htmlId+'_Cost';
+			// ID of the div displaying the destroy button(s)
+ 			buildingData[build].htmlIdDestroy = buildingData[build].htmlId+'_Destroy';
+		}); return html;
 	}
 
-	instance.createMachine = function(data, machineData) {
-		var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-		var machine = this.machineTemplate(machineData);
-		tabContentRoot.append($(machine));
+	/**
+	 * Collects all the building information under a resource and creates the html
+	 * @param  {Object} buildingData Resource object containing the building info
+	 * @return {string}              generated html containing all buildings producing a resource.
+	 */
+	var buildNonMachineCost = function(buildingData) {
+		var html = ""
+		Object.keys(buildingData).forEach(function(build) {
+			var data = buildingData[build];
+			html += TemplatePaneNonMachine(buildingData[build]);
+		}); return html;
+	}
 
-        // this.machineEntries[machineData.id] = data.id;
-        // this.machineObservers[machineData.id] = [];
-        // Game.ui.bindElement(machineData.resource + machineData.id + "Count", function(){ return Game.settings.format(machineData.count); });
+	/**
+	 * Creates the content pane of a page
+	 * @param  {Object} data Resource object containing building data
+	 */
+	var createPane = function(data, navigation, menuHeader, menuItem) {
+		// Attach the content pane table
+		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_content', TemplatePaneHeader(data));
+		var pane = cPage+'Tab_'+data.id+'_nec';
+		Templates.uiFunctions.registerPane(navigation, menuHeader, menuItem, pane);
+		// Is the item a resource?
+		// Attach the title of the pane to the header
+		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', TemplatePaneTitle(data));
+		if (data.id in Game.resources.entries) {
+			// 	-> List storBuildings?
+			if ('storBuildings' in data) {
+				// Attach the storage buildings to the title
+				Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildMachineCost(data.storBuildings));
+			}
+			// 	-> List machines?
+			if ('items' in data) {
+				// Attach the buildings to the title
+				Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildMachineCost(data.items));
+			}
+			// ID of the button containing gainNum
+			data.htmlIdGainButton = data.htmlId+'_'+data.id+'_Gain';
+			// ID of the div displaying the size of the upcoming storage
+			data.htmlIdNextStorage = data.htmlId+'_NextStorage';
+			// ID of the select to calculate the storage limit timer against
+			data.htmlIdStorageLimit = data.htmlId+'_SelectStorage_Limit';
+			// ID of the span displaying the time until the selected level is reached
+			data.htmlIdStorageTime = data.htmlId+'_SelectStorage_Time';
+			// ID of the span displaying the storage cost: Costs <span id="oilStorageCost">5.033B</span> Oil, <span id="oilStorageMetalCost">2.013B</span> Metal
+			data.htmlIdStorageCost = data.htmlId+'_StorageUpgrade_Cost';
+		// The item is something else.
+		} else {
+			var parse = data;
+			// Does this object contain 'items'?
+			if ('items' in data) {parse = data.items}
+			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildNonMachineCost(parse))
+		}
+	}
 
-        var segmentsUse = [];
-        var segmentsProd = [];
-        for(var resource in machineData.resourcePerSecond){
-        	var segmentX = {n: Game.utils.capitaliseFirst(resource), p: machineData.resourcePerSecond[resource]};
-        	if(segmentX.p < 0){
-        		segmentsUse.push(segmentX);
-        	} else {
-        		segmentsProd.push(segmentX);
-        	}
-        }
-        var useHtml = "<span>Uses </span>";
-        var prodHtml = "<span>Produces </span>";
-        for(var i = 0; i < segmentsUse.length; i++){
-        	var segmentData = segmentsUse[i];
-        	var html = '<span id="' + segmentData.n + 'Use">' + (segmentData.p*-1) + " " + segmentData.n + '</span>';
-        	useHtml += html;
-        	if(i < segmentsUse.length - 1) {
-        		useHtml += '<span>, </span>';
-        	}
-        }
-        for(var i = 0; i < segmentsProd.length; i++){
-        	var segmentData = segmentsProd[i];
-        	var html = '<span id="' + segmentData.n + 'Prod">' + segmentData.p + " " + segmentData.n + '</span>';
-        	prodHtml += html;
-        	if(i < segmentsProd.length - 1) {
-        		prodHtml += '<span>, </span>';
-        	}
-        }
-        useHtml += '<span> per second.</span>'
-        prodHtml += '<span> per second.</span>'
-        if(segmentsUse.length != 0){
-        	var target = $('#' + machineData.htmlId + '_use');
-        	target.empty()
-        	target.append(useHtml);
-        }
-        var target = $('#' + machineData.htmlId + '_prod');
-        target.empty()
-        target.append(prodHtml);
-    };
+	/**
+	 * Creates the entire page
+	 * -> Creates the menu headers by looping through the categories
+	 *   -> Creates the menu items by looping through the items under each category
+	 *     -> Dispatches each item to 'createPane' which creates and links the pane content.
+	 * @param  	{Object} data 			Object of the data belonging on the page
+	 * @param 	{string} subcategory 	A string representing the name of the subcategory.
+	 * @return 	{string}      			Returns a string containing all menu rows
+	 */
+	var createPage = function(data, navigation) {
+		// Get the categories and their order
+		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order})
+		// Loop through the catagories
+		var menuHtml = "";
+		categories.forEach(function(cat) {
+			// Append this row to the menu
+			menuHtml += TemplateMenuHeader(data[cat]);
+			var menuHeader = cPage+'Tab_'+data[cat].category+'_collapse';
+			Templates.uiFunctions.registerMenuHeader(navigation, menuHeader);
+			// Store the general htmlId in this object
+			data[cat].htmlId = "Tab_"+data[cat].category+"_collapse"
+			// Get the items and their order
+			var subitems = Object.keys(data[cat].items).sort(function(a, b) {
+				return data[cat].items[a].order > data[cat].items[b].order
+			})
+			// Loop through the items
+			subitems.forEach(function(subitem) {
+				// Is this item a resource?  Add the applicable template to the menu
+				if (data[cat].items[subitem].id in Game.resources.entries &&
+				    data[cat].items[subitem].baseCapacity) {
+					menuHtml += TemplateResourceMenuItem(data[cat].items[subitem]);
+				} else {
+					menuHtml += TemplateNonResourceMenuItem(data[cat].items[subitem]);
+				}
+				var menuItem = cPage+'Tab_'+data[cat].items[subitem].id+'_ne';
+				Templates.uiFunctions.registerMenuItem(navigation, menuHeader, menuItem);
+				// Store the general htmlId in this object
+				data[cat].items[subitem].htmlId = "Tab_"+data[cat].items[subitem].id+"_ne";
+				// Dispatch this item to the function creating the pane
+				createPane(data[cat].items[subitem], navigation, menuHeader, menuItem);
+			})
+		})
+		// return an array of menuHtml & pageHtml to initialise
+		return menuHtml;
+	}
 
-    instance.createResourceDelegate = function(id) {
-    	var func;
-    	if (id === RESOURCE.Science) {
-    		func = (function() {
-    			var current = getResource(id);
-    			if (current < 100) {
-    				return Game.settings.format(current, 1);
-    			}
-    			else {
-    				return Game.settings.format(current);
-    			}
-    		});
-    	}
-    	else if (id === RESOURCE.RocketFuel) {
-    		func = (function() {
-    			var current = getResource(id);
-    			if (current < 100) {
-    				return Game.settings.format(current, 1);
-    			} else {
-    				return Game.settings.format(current);
-    			}
-    		});
-    	}
-    	else {
-    		func = (function() {
-    			return Game.settings.format(getResource(id));
-    		});
-    	}
-    	return func;
-    };
+	///////////////////////////
+	// General use functions //
+	///////////////////////////
 
-    instance.createProductionDelegate = function(id) {
-    	var func;
-    	if (id === RESOURCE.Energy) {
-    		func = (function() {
-    			var production = getProduction(id);
-    			if (production >= 0) {
-    				if (production > 250) {
-    					return Game.settings.format(production);
-    				}
-    				else {
-    					return Game.settings.format(production * 2) / 2;
-    				}
-    			}
-    			else {
-    				if (production < -250) {
-    					return Math.round(production);
-    				}
-    				else {
-    					return Math.round(production * 2) / 2;
-    				}
-    			}
-    		});
-    	}
-    	else if (id === RESOURCE.Science) {
-    		func = (function() {
-    			return Game.settings.format(getProduction(id), 1);
-    		});
-    	}
-    	else if (id === RESOURCE.RocketFuel) {
-    		func = (function() {
-    			return Game.settings.format(getProduction(id), 1);
-    		});
-    	}
-    	else {
-    		func = (function() {
-    			return Game.settings.format(Game.resources.getResourceData(id).perSecond)
-    		});
-    	}
-
-    	return func;
-    };
-
-    instance.createStorageDelegate = function(id) {
-    	return (function() {
-    		return Game.settings.format(getStorage(id));
-    	});
-    };
-
-    instance.createNextStorageDelegate = function(id) {
-    	return (function() {
-    		return Game.settings.format(getStorage(id) * 2);
-    	});
-    };
-
-    return instance;
-
-}());
+	/**
+	 * Composes the page and adds it to the game
+	 */
+	this.initialise = function() {
+		console.log("initialising: "+this.page)
+		// Link this page to the main menu
+		Templates.uiFunctions.attachHTML(this.page, 'tabList', TemplateTopMenuNav());
+		// Link the page table to tabContent
+		Templates.uiFunctions.attachHTML(this.page, 'tabContent', TemplateBuildPage());
+		// Link the menu to '+this.page+'Tab_pane
+		Templates.uiFunctions.attachHTML(this.page, this.page+'Tab_nav', createPage(this.data, this.page+'Tab'));
+		// The content panes are linked through createPage -> createPane
+	};
+};

@@ -155,6 +155,11 @@ function refreshPerSec(delta){
 	// 	}
 	// }
 
+	var oilps = Game.resources.entries.oil.perSecond;
+	var charcoalps = Game.resources.entries.charcoal.perSecond;
+	var methaneps = Game.resources.entries.methane.perSecond;
+
+
 	if (rocketFuelToggled === true) {
 		var oilCost = (chemicalPlant*chemicalPlantOilInput) + (oxidisation*oxidisationOilInput);
 		var charcoalCost = (chemicalPlant*chemicalPlantCharcoalInput) + (oxidisation*oxidisationCharcoalInput);
@@ -203,6 +208,9 @@ function refreshPerSec(delta){
 	// 		plasmaps += adjustment.g;
 	// 	}
 	// }
+
+	var plasmaps = Game.resources.entries.plasma.perSecond;
+	var iceps = Game.resources.entries.ice.perSecond;
 
 	if (antimatterToggled === true) {
 		if (antimatter + antimatterps < antimatterStorage) {
@@ -510,77 +518,6 @@ function contains(array, obj) {
 	return false;
 }
 
-// Collapses Resources
-
-$('.collapseEarth').click(function(){
-	if($(this).hasClass("collapsed")){
-		for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-			document.getElementsByClassName("earth")[i].className = "earth sideTab";
-		}
-		$(this).removeClass("collapsed");
-	} else {
-		for(var i = 0; i < document.getElementsByClassName("earth").length; i++){
-			document.getElementsByClassName("earth")[i].className = "earth sideTab hidden";
-		}
-		$(this).addClass("collapsed");
-	}
-});
-
-$('.collapseInnerPlanet').click(function(){
-	if($(this).hasClass("collapsed")){
-		for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-			document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab";
-		}
-		$(this).removeClass("collapsed");
-	} else {
-		for(var i = 0; i < document.getElementsByClassName("innerPlanet").length; i++){
-			document.getElementsByClassName("innerPlanet")[i].className = "innerPlanet sideTab hidden";
-		}
-		$(this).addClass("collapsed");
-	}
-});
-
-$('.collapseOuterPlanet').click(function(){
-	if($(this).hasClass("collapsed")){
-		for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-			document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab";
-		}
-		$(this).removeClass("collapsed");
-	} else {
-		for(var i = 0; i < document.getElementsByClassName("outerPlanet").length; i++){
-			document.getElementsByClassName("outerPlanet")[i].className = "outerPlanet sideTab hidden";
-		}
-		$(this).addClass("collapsed");
-	}
-});
-
-$('.collapseInner').click(function(){
-	if($(this).hasClass("collapsed")){
-		for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-			document.getElementsByClassName("inner")[i].className = "inner sideTab";
-		}
-		$(this).removeClass("collapsed");
-	} else {
-		for(var i = 0; i < document.getElementsByClassName("inner").length; i++){
-			document.getElementsByClassName("inner")[i].className = "inner sideTab hidden";
-		}
-		$(this).addClass("collapsed");
-	}
-});
-
-$('.collapseOuter').click(function(){
-	if($(this).hasClass("collapsed")){
-		for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-			document.getElementsByClassName("outer")[i].className = "outer sideTab";
-		}
-		$(this).removeClass("collapsed");
-	} else {
-		for(var i = 0; i < document.getElementsByClassName("outer").length; i++){
-			document.getElementsByClassName("outer")[i].className = "outer sideTab hidden";
-		}
-		$(this).addClass("collapsed");
-	}
-});
 
 //Copy To Clipboard
 var copyTextareaBtn = document.querySelector('#copyExport');
