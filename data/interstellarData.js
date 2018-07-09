@@ -285,7 +285,7 @@ Game.militaryData = (function(){
 
 	instance.scout = {
 		entryName: 'scout',
-		name: 'Scout',
+		name: 'Scout Squadron',
 		desc: 'Scout ships are the smallest and fastest ships and cost the least of all. Despite their seemingly little worth, they are important in battle and in numbers, can be deadly.',
 		category: 'military',
 		unlocked: true,
@@ -309,7 +309,7 @@ Game.militaryData = (function(){
 
 	instance.frigate = {
 		entryName: 'frigate',
-		name: 'Frigate',
+		name: 'Frigate Brigade',
 		desc: 'Larger than scouts, Frigates are among the smaller side of ship warefare. They have more power than scouts, but are significantly slower.',
 		category: 'military',
 		unlocked: true,
@@ -333,7 +333,7 @@ Game.militaryData = (function(){
 
 	instance.corvette = {
 		entryName: 'corvette',
-		name: 'Corvette',
+		name: 'Corvette Class',
 		desc: 'The Corvette is a mid-sized ship with decent speed, given its other attributes. What it lacks in defense, it makes up for in power and speed and is a good ship to populate your fleets with.',
 		category: 'military',
 		unlocked: true,
@@ -357,7 +357,7 @@ Game.militaryData = (function(){
 
 	instance.battlecruiser = {
 		entryName: 'battlecruiser',
-		name: 'Battle Cruiser',
+		name: 'Battle Cruiser Fleet',
 		desc: 'The Battle Cruiser is a costly investment, but pays off with a balanced mix of power, defense and speed. It is a high-end ship, both in terms of attributes and cost.',
 		category: 'military',
 		unlocked: true,
@@ -381,7 +381,7 @@ Game.militaryData = (function(){
 
 	instance.capitalship = {
 		entryName: 'capitalship',
-		name: 'Capital Ship',
+		name: 'The Capital Ship',
 		desc: 'The Capital Ship is a Defense-heavy ship, but can still pack a punch with it\'s large attack force. The main downside is the slow speed, dragging the fleet\'s manouverability down.',
 		category: 'military',
 		unlocked: true,
