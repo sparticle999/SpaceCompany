@@ -1,5 +1,72 @@
 Game.resources = (function(){
 
+    // Every time perSecond of a material is impacted, run
+    // Game.resources.entries[material].ui_perSecond.update(); per material (eg metal when buying a Miner)
+    // Or run Templates.uiFunctions.refreshElements('perSecond', 'all') in case of, eg, a power outage
+    // Alternatively, run Templates.uiFunctions.refreshElements('persecond', 'metal') for just one material.
+    // !!! Update the objects perSecond before calling the update. !!!
+    function UpdatePerSecond(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.resources.entries[id];
+            if (obj.perSecond == previous) {return;}
+            var value = Game.settings.doFormat('persecond', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'ps');
+            previous = obj.perSecond;
+            return true;
+        }
+    }
+    var UpdateCurrent = function(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.resources.entries[id];
+            if (obj.current == previous) {return;}
+            var value = Game.settings.doFormat('current', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
+            previous = obj.current;
+            return true;
+        }
+    }
+    var UpdateCapacity = function(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.resources.entries[id];
+            if (obj.capacity == previous) {return;}
+            var value = Game.settings.doFormat('capacity', obj);
+            Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
+            Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
+            // Storage cost
+            if (id in Game.storageData.entries) {
+                var cost = Game.storageData.entries[id].cost;
+                var value = 0;
+                // Find the inflation factor by comparing id's current cost with its base cost
+                Object.keys(cost).forEach(c => {if (c == id) {value = cost[c]}});
+                value = obj.current/value ; var newcost = {};
+                // object with inflated costs
+                Object.keys(cost).forEach(c => newcost[c] = cost[c]*value);
+                console.log(newcost);
+                value = Game.settings.doFormat('cost', {cost: newcost})
+                console.log(value);
+                Templates.uiFunctions.setClassText(value, obj.htmlId+'storageUpgrade_cost')
+            }
+            previous = obj.capacity;
+            return true;
+        }
+    }
+
+/*
+    Templates.uiFunctions.refreshElements('gain', 'all');   // can get away with only calling after rebirth
+    Templates.uiFunctions.refreshElements('nextStorage', 'all');// Can get away with only calling manually after storage bought
+    Templates.uiFunctions.refreshElements('stoCount', 'all');   // Can get away with only calling manually after stobld bought
+    Templates.uiFunctions.refreshElements('resbldCost', 'all'); // Can get away with only calling manually after building bought
+    Templates.uiFunctions.refreshElements('stoCost', 'all');     // Can get away with only calling manually after stobld bought
+    Templates.uiFunctions.refreshElements('storageTime', 'all');
+    Templates.uiFunctions.refreshElements('storageCost', 'all');  // Can get away with only calling manually after storage bought
+*/
+
     var instance = {};
 
     instance.dataVersion = 1;
@@ -25,10 +92,16 @@ Game.resources = (function(){
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
-                hidden: false
+                hidden: false,
+                ui_persecond: new UpdatePerSecond(id),
+                ui_current: new UpdateCurrent(id),
+                ui_capacity: new UpdateCapacity(id),
+
             });
             this.entries[id].capacity = data.baseCapacity;
         }
+
+
 
         for (var id in Game.resourceCategoryData) {
             var data = Game.resourceCategoryData[id];
@@ -57,22 +130,7 @@ Game.resources = (function(){
             var data = this.entries[id];
             var addValue = data.perSecond * delta;
             this.addResource(id, addValue);
-            if (id == 'science') {continue;}
-            if (data.displayNeedsUpdate) {
-                var nav = document.querySelector('[id$=Tab_'+id+'_nec]');
-                var hidden = nav.classList.contains("hidden");
-                // Unhide the tab if the resource is unlocked
-                if (data.unlocked && hidden) {
-                    nav.classList.remove("hidden");
-                }
-                var cat = data.category;
-                if(data.unlocked && cat.unlocked == false) {
-                    cat.unlocked = true;
-                    var target = document.querySelector('[id$=Tab_'+cat+'_collapse]');
-                    target.classList.remove("hidden")
-                }
-                data.displayNeedsUpdate = false;
-            }
+            Templates.uiFunctions.refreshElements('current', id);
         }
     };
 
@@ -106,31 +164,6 @@ Game.resources = (function(){
         }
     };
 
-    instance.getDisplayResource = function(id) {
-        if (typeof this.entries[id] === 'undefined') { return 0; }
-        var current = this.entries[id].current;
-        switch (id) {
-            case "science":
-                if (current < 100) {
-                    current = Game.settings.format(current, 1);
-                } else {
-                    current = Game.settings.format(current);
-                }
-                break;
-            case "rocketFuel":
-                if (current < 100) {
-                    current = Game.settings.format(current, 1);
-                } else {
-                    current = Game.settings.format(current);
-                }
-                break;
-            default:
-                current = Game.settings.format(current);
-                break;
-        }
-        return current;
-    };
-
 	instance.getResource = function(id) {
 		if (typeof this.entries[id] === 'undefined') {
 			return 0;
@@ -149,32 +182,6 @@ Game.resources = (function(){
 		}
 		return Game.resources.entries[id].capacity;
 	};
-
-
-    instance.getDisplayProduction = function(id) {
-        //console.log(id);
-        if (typeof this.entries[id] === 'undefined') { return 0; }
-        var ps = this.entries[id].perSecond;
-        switch (id) {
-            case "energy":
-                if (ps > 250 || ps < -250) {
-                    ps = Game.settings.format(ps);
-                } else {
-                    ps = Game.settings.format(ps * 2) / 2;
-                }
-                break;
-            case "science":
-                ps = Game.settings.format(ps, 1);
-                break;
-            case "rocketFuel":
-                ps = Game.settings.format(ps, 1);
-                break;
-            default:
-                ps = Game.settings.format(ps);
-                break;
-        }
-        return ps;
-    };
 
 	instance.getProduction = function(id) {
         //console.log("Checking: "+id)
@@ -259,6 +266,9 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
+                    Templates.uiFunctions.refreshElements('storage', id);
+                    Templates.uiFunctions.refreshElements('current', id);
+                    Templates.uiFunctions.refreshElements('current', 'metal');
                 }
             } else if(id == "meteorite"){
                 if(lunarite.current >= res.capacity*storagePrice*4){
@@ -267,6 +277,9 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
+                    Templates.uiFunctions.refreshElements('storage', id);
+                    Templates.uiFunctions.refreshElements('current', id);
+                    Templates.uiFunctions.refreshElements('current', 'lunarite');
                 }
             } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
                 if(lunarite.current >= res.capacity*storagePrice*0.4){
@@ -275,6 +288,9 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
+                    Templates.uiFunctions.refreshElements('storage', id);
+                    Templates.uiFunctions.refreshElements('current', id);
+                    Templates.uiFunctions.refreshElements('current', 'lunarite');
                 }
             } else {
                 if(metal.current >= res.capacity*storagePrice*0.4){
@@ -283,9 +299,11 @@ Game.resources = (function(){
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
+                    Templates.uiFunctions.refreshElements('storage', id);
+                    Templates.uiFunctions.refreshElements('current', id);
                 }
             }
-        } 
+        }
     };
 
     instance.refreshStorage = function(resource){
@@ -302,6 +320,12 @@ Game.resources = (function(){
         res.capacity = cap;
         res.displayNeedsUpdate = true;
     };
+
+
+    instance.calcAllBuildingProduction = function() {
+        var energyBonus = 0;
+        var productionBonus = 0;
+    }
 
     instance.updateResourcesPerSecond = function(){
         var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01)
@@ -338,6 +362,7 @@ Game.resources = (function(){
             res.perSecond = ps;
         }
         energy.perSecond -= energyDiff;
+        Templates.uiFunctions.refreshElements('perSecond', 'all');
     };
 
     instance.unlock = function(id) {

@@ -1,5 +1,31 @@
 Game.buildings = (function(){
 
+    function UpdateCurrent(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.entries[id];
+            if (obj.current == previous) {return;}
+            var value = Game.settings.doFormat('current', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
+            previous = obj.current;
+            return true;
+        }
+    }
+
+    function UpdateCost(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.entries[id];
+            if (obj.cost == previous) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = obj.cost;
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.dataVersion = 1;
@@ -16,13 +42,16 @@ Game.buildings = (function(){
             this.buildingTypeCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'resbld_' + id,
+                category: 'buildings',
+                htmlId: 'resbld_'+id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
                 max: data.maxCount,
-                displayNeedsUpdate: true
+                displayNeedsUpdate: true,
+                ui_current: new UpdateCurrent(id),
+                ui_cost: new UpdateCost(id),
             });            
         }
 
@@ -31,7 +60,8 @@ Game.buildings = (function(){
             this.storageTypeCount++;
             this.storageEntries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'sto_' + id,
+                category: 'storageBuildings',
+                htmlId: 'sto_'+id,
                 current: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
@@ -50,26 +80,7 @@ Game.buildings = (function(){
         console.debug("Loaded " + this.storageTypeCount + " Storage Types");
     };
 
-    instance.update = function(delta) {
-        if (this.updatePerSecondProduction === true) {
-            Game.resources.updateResourcesPerSecond();
-            this.updatePerSecondProduction = false;
-        }
-        for(id in this.entries){
-            var data = this.entries[id];
-            if(data.displayNeedsUpdate)
-                this.refreshBuildingCost(data);
-            this.refreshUnlock(data);
-        }
-        for(id in this.storageEntries){
-            var data = this.storageEntries[id];
-            if(data.displayNeedsUpdate){
-                this.refreshBuildingCost(data);
-                this.refreshUnlock(data);
-                Game.resources.refreshStorage(data.resource);
-            }
-        }
-    };
+    instance.update = function(delta) {};
 
     instance.save = function(data) {
         data.buildings = { v: this.dataVersion, i: {}};
@@ -108,10 +119,23 @@ Game.buildings = (function(){
                 Game.resources.entries[resource].capacity += data.storage[resource];
             }
             data.displayNeedsUpdate = true;
+            Templates.uiFunctions.refreshElements('current', 'all');
+            Templates.uiFunctions.refreshElements('capacity', resource);
         }
     }
 
+    instance.updateCosts = function(id) {
+        var cost = {};
+        var obj = Game.buildingData[id].cost
+        Object.keys(obj).forEach(function(c) {
+            cost[c] = Math.floor(obj[c] * Math.pow(1.1, Game.buildings.entries[id].current))
+        })
+        Game.buildings.entries[id].cost = cost;
+        Templates.uiFunctions.refreshElements('cost', id);
+    }
+
     instance.buyBuildings = function(id, count){
+        if (typeof id === 'undefined' || !(id in Game.buildings.entries)) {return false;}
         var data = Game.buildings.getBuildingData(id);
         for(var i = 0; i < (count || 1); i++){
             var resourcePass = 0;
@@ -124,19 +148,20 @@ Game.buildings = (function(){
             if(resourcePass === Object.keys(data.cost).length){
                 for(var resource in data.cost){
                     var res = Game.resources.getResourceData(resource);
-
                     res.current -= this.calcCost(data, resource, "buildingData");
                 }
                 this.updatePerSecondProduction = true;
-                data.displayNeedsUpdate = true;
-                if(data.onApply)
-                    data.onApply();
-                this.constructBuildings(id, i);
+                Templates.uiFunctions.refreshElements('persecond', 'all');
+                if(data.onApply) {data.onApply();}
+                this.constructBuildings(id, 1);
+                this.updateCosts(id);
             } else {
 
                 return;
             }
         }
+        // Recalculate the cost for id
+        
     };
 
     instance.calcCost = function(self, resource, data){
@@ -150,8 +175,8 @@ Game.buildings = (function(){
         count = count || 1;
         var newValue = Math.floor(this.entries[id].current + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
-        this.entries[id].displayNeedsUpdate = true;
-        this.updatePerSecondProduction = true;
+        Templates.uiFunctions.refreshElements('current', 'all');
+        Templates.uiFunctions.refreshElements('persecond', 'all');
     };
 
     instance.destroyBuildings = function(id, count) {
@@ -161,6 +186,8 @@ Game.buildings = (function(){
         this.entries[id].current = Math.max(newValue, 0);
         this.entries[id].displayNeedsUpdate = true;
         this.updatePerSecondProduction = true;
+        Templates.uiFunctions.refreshElements('current', id);
+        Templates.uiFunctions.refreshElements('persecond', id);
     };
 
     instance.refreshBuildingCost = function(data){

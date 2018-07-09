@@ -1,423 +1,544 @@
 'use strict';
 if (typeof Templates == "undefined") { var Templates = {}; }
-Templates.uiFunctions = function() {
+if (!('objectConstructor' in Templates)) { Templates.objectConstructor = {}; }
+Templates.objectConstructor.UiFunctions = function() {
     // Internal storage of links between menu items & panes
-    // This saves on DOM lookups
-    var menuStructure = {};
-    var paneToMenu = {};
+    var topDownDom = {};
+    var downTopDom = {};
+    var menuTopDownDom = {};
+    var pageTopDownDom = {};
+
+    /////////////////////////
+    // NEEDS SAVING EXPORT //
+    //vvvvvvvvvvvvvvvvvvvvv//
+
     // Storage of the last nav & menu item clicked
     var lastNav = "";
     var lastItem = "";
+    // Storage of hidden and unhidden elements
+    var unhidden = [];
+    var hidden = [];
+    // Storage of collapsed and noncollapsed elements
+    var collapsed = [];
+    var noncollapsed = [];
 
+    //^^^^^^^^^^^^^^^^^^^^^//
+    // NEEDS SAVING EXPORT //
+    /////////////////////////
 
+    var registeredElements = {};
 
-    var instance = {};
-    instance.elementRegister = {};
-
+    ///////////////////////////
+    // General Use Functions //
+    ///////////////////////////
 
     /**
-     * Attaches HTML strings to an element
-     * @param  {string} tag  A string representing the parent ID of the HTML
-     * @param  {string} HTML The HTML code that needs to be added under ID
-     * @return {boolean}     True on success
+     * Removes a value from an array
+     * @param  {Array}     array  An array of values
+     * @param  {anything}  value  The value to be removed from the array
+     * @return {Array}            The changed array
      */
-    instance.attachHTML = function(page, tag, HTML) {
+    function removeElement(array, value) {
+        return array.filter(val => val !== value);
+    }
+    /**
+     * Adds a value to an array if the array doesn't have it already
+     * @param  {Array}     array    An array of values
+     * @param  {anything}  element  The value to be added to the array
+     * @return {Array}              The changed array
+     */
+    function addElement(array, element) {
+        if (!contains(array, element)) {array.push(element);}
+        return array;
+    }
+    /**
+     * Counts how many times an array contains a certain value
+     * @param  {Array}     array  An array of values
+     * @param  {anything}  value  The value to be counted
+     * @return {Integer}          A number of the times the value is encountered
+     */
+    function countElement(array, value) {
+        return array.filter(item => item == value).length;
+    }
+    /**
+     * Check which stylesheets can be read by the styleExists function.
+     * Execute this function before even trying to read stylesheets.
+     * @return {Array}          The filtered list containing readable sheets.
+     */
+    function styleSheetReadable(sheet) {
+        try {
+            if (!sheet.cssRules) { return false; }
+        } catch(e) {
+            if (e.name !== 'SecurityError') { console.warn(e); }
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Checks if a classname exists in the stylesheets.
+     * @param  {String}  cssClass  The css classname to look for.
+     * @return {Boolean}           True on found.
+     */
+    function styleExists(cssSheets, cssClass) {
+        for (var i = 0; i < cssSheets.length; i++) {
+             var rules = cssSheets[i].cssRules;
+             for (var j = 0; j < rules.length; j++) {
+                 if (rules[j].cssText.split("{")[0].indexOf(cssClass) > -1 ) { return true; }
+            }
+        }
+        return false;
+    }
+    /**
+     * Attaches HTML strings to an element
+     * @param   {string}  tag   A string representing the parent ID of the HTML
+     * @param   {string}  HTML  The HTML code that needs to be added under ID
+     * @return  {boolean}       True on success
+     */
+    this.attachHTML = function(page, tag, HTML) {
         var node = document.getElementById(tag)
         if (!node) {
-            console.log(page+" - Could not add this tag to the game: "+tag);
+            console.warn(page+" - Could not add this tag to the game: "+tag);
+            //console.warn(HTML);
             return false;
         }
         // Insert the node before the end of tag
         node.insertAdjacentHTML('beforeend', HTML);
         return true;
     }
-
     /**
-     * Expands or collapses a menu in an animated way
-     * @param {nodeList} children Contains a list of nodes that are affected
-     * @param {boolean} expand   Will expand if true, collapse is false
+     * Creates the top-down menu DOM through registerElement
+     * @param  {String}  nav     Page navigation DOM id
+     * @param  {String}  header  Menu header DOM id
+     * @param  {String}  item    Menu item DOM id
      */
-    instance.AnimateToggle = function(children, expand) {
+    function createMenuTopDownDom(nav, header, item) {
+        if (!(nav in menuTopDownDom)) {menuTopDownDom[nav] = {};}
+        if (!(header in menuTopDownDom[nav])) {menuTopDownDom[nav][header] = [];}
+        menuTopDownDom[nav][header].push(item);
+    }
+    /**
+     * Creates the top-down page DOM through registerElement
+     * @param  {String}  nav        Page navigation DOM id
+     * @param  {String}  pane       Pane header DOM id
+     * @param  {String}  container  Pane item DOM id
+     */
+    function createPageTopDownDom(nav, pane, container) {
+        if (!(nav in pageTopDownDom)) {pageTopDownDom[nav] = {};}
+        if (!(pane in pageTopDownDom[nav])) {pageTopDownDom[nav][pane] = [];}
+        pageTopDownDom[nav][pane].push(container);
+    }
+    /**
+     * Holy brackets Batman! - Creates the DOM lookups from the two
+     * composed objects: menuTopDownDom & pageTopDownDom
+     */
+    function combineMenuAndPage() {
+        Object.keys(menuTopDownDom).forEach(function(nav) {
+            var menu = menuTopDownDom[nav];
+            var page = pageTopDownDom[nav];
+            Object.keys(menu).forEach(function(header) {
+                menu[header].forEach(function(item) {
+                    var pane = item+'c';
+                    page[pane].forEach(function(container) {
+                        createTopDownDOM(nav, header, item, pane, container);
+                        createDownTopDOM(nav, header, item, pane, container);
+    })  })  })  })   }
+    /**
+     * Creates the an Object for each important element on the DOM.
+     * and a path from each element to the bottom most element.
+     * @param  {String}   navigation  DOM id of the page navigation element.
+     * @param  {String}   header      DOM id of a menu header on this page.
+     * @param  {String}   item        DOM id of a menu item under this header.
+     * @param  {String}   pane        DOM id of the content pane linked to the menu item.
+     * @param  {String}   container   DOM id of an item on the content pane.
+     * @return {Boolean}              True on success, false on failure.
+     */
+    function createTopDownDOM(navigation, header, item, pane, container) {
+        var arr = [navigation, header, item, pane, container];
+        for (var i = 0; i < (arr.length-1); i++) {
+            if (!(arr[i] in topDownDom)) {topDownDom[arr[i]] = [];}
+            topDownDom[arr[i]] = addElement(topDownDom[arr[i]], arr[i+1]);
+        }
+    }
+    /**
+     * Creats a down-top array from a container to the navigation it's on.
+     * @param  {String}   navigation  DOM id of the navigation item containing the menu.
+     * @param  {String}   header      DOM id of the menu header belonging to the menu item.
+     * @param  {String}   item        DOM id of the menu item belonging to the content pane.
+     * @param  {String}   pane        DOM id of the pane containing the container.
+     * @param  {String}   container   DOM id of an item container on a page.
+     * @return {Boolean}              True on success, false on failure.
+     */
+    function createDownTopDOM(navigation, header, item, pane, container) {
+        if (!contains(downTopDom, container)) {downTopDom[container] = [];}
+        var arr = [pane, item, header, navigation];
+        for (var i = 0; i < arr.length; i++) {
+            downTopDom[container] = addElement(downTopDom[container], arr[i])
+        }
+    }
+    /**
+     * Expands or collapses elements in an animated way
+     * @param  {nodeList}  children  An array of ids to affect
+     * @param  {boolean}   expand    Will expand if true, collapse is false
+     */
+    function AnimateToggle(children, expand) {
         const delay = 30; //delay in ms
-
-        // BUG only unhide/rehide unlocked menu items
-
         if (expand) {
             for (var i = 0; i < children.length; i++) {
                 var node = document.getElementById(children[i]);
                 setTimeout((function(node) {node.style.display = ''}), i*delay, node);
-                node.classList.toggle('collapsed')
+                node.classList.toggle('collapsed');
+                collapsed = removeElement(collapsed, children[i]);
+                noncollapsed = addElement(noncollapsed, children[i]);
                 node.setAttribute('aria-expanded', expand);
             }
         } else {
             for (var i = children.length-1; i >= 0; i--) {
                 var node = document.getElementById(children[i]);
                 setTimeout((function(node) {node.style.display = 'none'}), (children.length-i)*delay, node);
-                node.classList.toggle('collapsed')
+                node.classList.toggle('collapsed');
+                collapsed = addElement(collapsed, children[i]);
+                noncollapsed = removeElement(noncollapsed, children[i]);
                 node.setAttribute('aria-expanded', expand);
             }
         }
-
     }
 
-    // Toggles a menu (class: collapsed)
-    instance.toggle = function(DOMid) {
+    //////////////////////////////
+    // General UI functionality //
+    //////////////////////////////
+
+    /**
+     * Hides a single element (adds class: hidden).
+     * @param  {String}   DOMid  The *id* of the DOM element to hide.
+     * @return {boolean}         True on success.
+     */
+    this.hide = function(itemId) {
+        var node = document.querySelector('.'+itemId+'_Container');
+        if ((node == 'undefined')) {
+            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but couldn't find it.")
+            return false;
+        }
+        if (!node.classList.contains("hidden")) {
+            node.classList.add("hidden");
+            unhidden = removeElement(unhidden, node.id);
+            hidden = addElement(hidden, node.id);
+        } else {
+            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but it's already hidden!")
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Hides all elements with a given className.
+     * @param  {string}   className  The class to hide.
+     * @return {boolean}             True on success.
+     */
+    this.hideClass = function(className) {
+        var nodes = document.querySelectorAll('.'+className);
+        if (nodes == 'undefined') {
+            console.warn("Trying to hide all classes with "+className+", but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) {
+            if (!node.classList.contains("hidden")) {
+                node.classList.add("hidden");
+                unhidden = removeElement(unhidden, node.id);
+                hidden = addElement(hidden, node.id);
+            }   
+        })
+        return true;
+    }
+    /**
+     * Removes a class from an element containing another class
+     * @param  {String}   remove  The classname to hide if found. Defaults to 'hidden'
+     * @param  {String}   from    The class to match against
+     * @return {Boolean}          True on success.
+     */
+    this.removeClass = function(remove, from) {
+        if (typeof remove == 'undefined') {remove == 'hidden';}
+        remove = remove.toLowerCase();
+        var nodes = document.querySelectorAll('.'+from);
+        if (nodes == 'undefined') {
+            console.warn("Trying to remove '"+remove+"' from all elements with the class: '"+from+"', but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) {
+            if (node.classList.contains(remove)) {
+                node.classList.remove(remove);
+                if (remove == 'hidden') {
+                    unhidden = removeElement(unhidden, node.id);
+                    hidden = addElement(hidden, node.id);                   
+                }
+            }   
+        })
+        return true;
+    }
+    /**
+     * Shows a single element (removes class: hidden).
+     * Don't use this to unhide machines, use unlock instead.
+     * @param  {String}   itemId  The *DOM id* of the element to unhide.
+     * @return {boolean}          True on success.
+     */
+    this.show = function(DOMid) {
         var node = document.getElementById(DOMid);
-        // Get a list of all nodes with the class DOMid
-        var children = menuStructure[DOMid];
+        if (node == 'undefined') {
+            console.warn("Trying to show the element with id='"+DOMid+"', but couldn't find it.")
+            return false;
+        }
+        if (node.classList.contains("hidden")) {
+            // If this is a menu item, remove it from hidden, add it to noncollapsed
+            if (DOMid.endsWith("_ne")) {
+                noncollapsed = addElement(noncollapsed, DOMid);
+            // If this is a menu header, uncollapse the entire menu
+            } else if (DOMid.endsWith("_collapse")) {
+                var node = document.getElementById(DOMid);
+                var expand = node.classList.contains('collapsed');
+                if (expand) {this.toggleHeader(DOMid);}
+            } else {
+                unhidden = addElement(unhidden, node.id);
+            }
+            node.classList.remove("hidden");
+            hidden = removeElement(hidden, node.id);
+
+            
+            
+        }
+        return true;
+    }
+    /**
+     * Shows all elements with a given className.
+     * @param  {string}   className  The class to hide.
+     * @return {boolean}             True on success.
+     */
+    this.showClass = function(className) {
+        var nodes = document.querySelectorAll('.'+className);
+        if (nodes == 'undefined') {
+            console.warn("Trying to hide all classes with "+className+", but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) {
+            if (node.classList.contains("hidden")) {
+                node.classList.remove("hidden");
+                hidden = removeElement(hidden, node.id);
+                unhidden = addElement(unhidden, node.id);
+            }   
+        })
+        return true;
+    }
+    /**
+     * Adds a class to an element containing another class
+     * @param  {String}   add  The classname to add if found. Defaults to 'IfYouSeeThisYouMessedUp'
+     * @param  {String}   to   The class to match against
+     * @return {Boolean}       True on success.
+     */
+    this.addClass = function(add, to) {
+        if (typeof add == 'undefined') {add == 'IfYouSeeThisYouMessedUp';}
+        add = add.toLowerCase();
+        var nodes = document.querySelectorAll('.'+to);
+        if (nodes == 'undefined') {
+            console.warn("Trying to add '"+add+"' to all elements with the class: '"+to+"', but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) {
+            if (!node.classList.contains(add)) {
+                node.classList.add(add);
+                if (add == 'hidden') {
+                    hidden = removeElement(hidden, node.id);
+                    unhidden = addElement(unhidden, node.id);                   
+                }
+            }   
+        })
+        return true;
+    }
+    /**
+     * Adds a class to an element containing another class
+     * @param  {String}   setText  The text (or formatted html) to add.
+     * @param  {String}   target   The class to match against
+     * @return {Boolean}           True on success.
+     */
+    this.setClassText = function(setText, target) {
+        //console.log(setText+" - "+target)
+        if (typeof setText == 'undefined') {
+            console.warn("The text set to be added to '"+target+"' is undefined.")
+            return false;
+        }
+        var nodes = document.querySelectorAll('.'+target);
+        if (nodes == 'undefined') {
+            console.warn("Trying to add '"+add+"' to all elements with the class: '"+to+"', but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) { node.innerHTML = setText; })
+        return true;
+    }
+    /**
+     * Unhides the entire path leading up the DOM from itemId.
+     * @param  {String}   itemId  An internal id of an item (metalT1, moon).
+     * @return {Boolean}          True on success, false on failure.
+     */
+    this.unlock = function(itemId) {
+        // Look up all elements containing this item's container element.
+        var nodes = document.querySelectorAll('.'+itemId+'_Container');
+        if (typeof nodes == 'undefined') {
+            console.warn("Trying to unlock "+itemId+"_Container, but can't find any element with this class.");
+            return false;
+        }
+        // Loop through the nodes and process each node's id.
+        nodes.forEach(function(node) {
+            // loop through the downTopDom array and unhide all elements
+            downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));
+            Templates.uiFunctions.show(node.id);
+            // Setting the internal vars is done by the show-function.
+        })
+        return true;
+    }
+    /**
+     * Sets a style on an element containing a certain class
+     * @param  {String}   cl     The classname to add a style to
+     * @param  {String}   style  The style name
+     * @param  {String}   value  The value for the style.
+     * @return {Boolean}         True on success.
+     */
+    this.addStyle = function(cl, style, value) {
+        if (typeof style == 'undefined' || typeof value == 'undefined') {return false;}
+        var nodes = document.querySelectorAll('.'+cl);
+        if (nodes == 'undefined') {
+            console.warn("Trying to add 'style."+style+"='"+value+"'' to all elements with the class: '"+cl+"', but couldn't find any.");
+            return false;
+        }
+        nodes.forEach(node => node.style[style] = value);
+        return true;
+    }
+    /**
+     * Sets a style on an element containing a certain class
+     * @param  {String}   cl     The clname to add if found. Defaults to 'IfYouSeeThisYouMessedUp'
+     * @param  {String}   style  The cl to match against
+     * @return {Boolean}         True on success.
+     */
+    this.removeStyle = function(cl, style) {
+        if (typeof style == 'undefined') {return false;}
+        var nodes = document.querySelectorAll('.'+cl);
+        if (nodes == 'undefined') {
+            console.warn("Trying to remove 'style."+style+"' from all elements with the class: '"+cl+"', but couldn't find any.");
+            return false;
+        }
+        nodes.forEach(node => node.style.removeProperty(style));
+        return true;
+    }
+
+
+    // Do we need a function that hides a page and all of its elements?
+
+
+    ////////////////
+    // Menu Stuff //
+    ////////////////
+
+    /**
+     * Toggles a menu to open or closed
+     * @param  {String} DOMid The id of the node that was clicked
+     */
+    this.toggleHeader = function(DOMid) {
+        console.log(DOMid);
+        // BUG only unhide/rehide unlocked menu items
+        var node = document.getElementById(DOMid);
+        var expand = node.classList.contains('collapsed');
+        var todo = topDownDom[DOMid];
+        // If we need to expand, match topDownDom entries with collapsed, otherwise noncollapsed
+        if (expand) { var whitelist = collapsed; } else { var whitelist = noncollapsed; }
+        // Filter todo against the whitelist.
+        todo = todo.filter( i =>contains(whitelist, i) )
         // Send the list to the animator.
-        var expand = node.classList.contains('collapsed')
-        this.AnimateToggle(children, expand)
-        node.classList.toggle('collapsed')
+        AnimateToggle(todo, expand);
+        node.classList.toggle('collapsed');
         // Adjust aria-expanded
         node.setAttribute('aria-expanded', expand);
     }
-
-    // shows a single item (class: hidden)
-    instance.show = function(DOMid) {
-        Object.keys(Game.pages).forEach(function(page) {
-            var node = document.getElementById(page+'_'+DOMid);
-            if (node && node.classList.contains("hidden")) {
-                node.classList.remove("hidden");
-            }           
-        })
-    }
-
-    // Hide a single item (class: hidden)
-    instance.hide = function(DOMid) {
-        Object.keys(Game.pages).forEach(function(page) {
-            var node = document.getElementById(page+'_'+DOMid);
-            if (node && !node.classList.contains("hidden")) {
-                node.classList.add("hidden");
-            }           
-        })
-    }
-
-// function to remove a given class from all elements containing that class
-
-
-    var unlockMenu = function(id) {
-        paneToMenu[id].forEach(function(htmlId) {
-            var node = document.getElementById(htmlId)
-            if (node) {
-                node.classList.remove("hidden");
-            }
-        })
-        document.getElementById(id).classList.remove("hidden");
-    }
-
-    // unhides the entire path leading up to DOMid
-    // Setting the object entries to unlocked has to be done
-    // somewhere else. (class: hidden)
-    instance.unlock = function(DOMid) {
-        // Loop through all pages to find this ID
-        var found = false;
-        var pages = Object.keys(Game.pages);
-        for (var i = 0; i < pages.length; i++) {
-            var page = pages[i];
-            var topNode = document.getElementById(page+'Tab_content');
-            if (!topNode) {continue;}
-            var node = topNode.querySelector('#'+page+"_"+DOMid);
-            if (node == null) {continue;}
-            // The node is found on this page.
-            found = true;
-            // Loop up the DOM tree until page+'Tab_content' is reached.
-            while (node != topNode) {
-                node.classList.remove("hidden");
-                // Is this node.id linked by the menu?
-                if (node.id in paneToMenu) {unlockMenu(node.id);}
-                node = node.parentNode;
-            }
-            topNode.classList.remove("hidden");
-        }
-        if (found) {
-            return true;
-        } else {
-            console.log("Couldn't find "+DOMid+" on any of the pages.");
-            console.log("Only unlock items on the content pane, the menu and nav are handled automatically.");
-            return false;
-        }
-    }
-
-    // hides DOMid and all of its subnodes
-    // Setting the object entries to locked has to be done
-    // somewhere else (class: hidden)
-    instance.lock = function(DOMid) {
-
-    }
-
-    // Whenever the player clicks a regular menu item, this function runs.
-    instance.clickItem = function(DOMid) {
+    /**
+     * Whenever the player clicks a regular menu item, this function runs.
+     * It's called by the eventHandler
+     * @param  {DOMid}  DOMid  The DOM id of the clicked menu item.
+     */
+    this.clickItem = function(DOMid) {
+        // Remove the glyph if it's visible
         var node = document.getElementById(DOMid+'Glyph');
         if (node) {node.classList.add('hidden');}
+        // Record the last clicked menu item
         lastItem = DOMid;
     }
-
-    // Whenever the player clicks a tab, this function runs
-    instance.clickNav = function(DOMid) {
+    /**
+     * Whenever the player clicks a page tab, this function runs.
+     * It's called by the eventHandler
+     * @param  {DOMid}  DOMid  The DOM id of the clicked nav item
+     */
+    this.clickNav = function(DOMid) {
         var node = document.getElementById(DOMid+'Glyph');
         if (node) {node.classList.add('hidden');}
+        // Store the click
         lastNav = DOMid;
+        // remove the active class from all Navs
+        Object.keys(topDownDom).forEach(
+            id => document.getElementById(id).classList.remove("active")
+        )
+        // Make the clicked tab active
+        node.classList.add("active");
     }
 
-    instance.registerNavigation = function(navigation) {
-        if (!(navigation in menuStructure)) {menuStructure[navigation] = {};}
-    }
 
-    instance.registerMenuHeader = function(navigation, header) {
-        this.registerNavigation(navigation);
-        if (!(header in menuStructure[navigation])) {
-            menuStructure[navigation][header] = {};
+    //////////////////////
+    // Page Interaction //
+    //////////////////////
+    this.refreshElements = function(action, resource) {
+        var refreshActions = [];
+        // If an action is provided, only perform that one.
+        if (typeof action !== 'undefined' && (action in registeredElements)) {
+            refreshActions.push(action);
+        // Otherwise, perform all actions.
+        } else {
+            refreshActions = Object.keys(registeredElements);
         }
-    }
-
-    instance.registerMenuItem = function(navigation, header, item) {
-        // The menuStructure Object lists which items belong to a header
-        this.registerMenuHeader(navigation, header);
-        if (!(item in menuStructure[navigation][header])) {
-            menuStructure[navigation][header][item] = "";
-        }
-    }
-
-    instance.registerPane = function(navigation, header, item, pane) {
-        this.registerMenuItem(navigation, header, item);
-        menuStructure[navigation][header][item] = pane
-        // The paneToMenu objects allows us to travel up the DOM from a pane
-        if (!(pane in paneToMenu)) { paneToMenu[pane] = []; }
-        paneToMenu[pane][0] = item;
-        paneToMenu[pane][1] = header;
-        paneToMenu[pane][2] = navigation;
-    }
-
-    instance.getPaneToMenu = function() {
-        console.log(paneToMenu);
-    }
-    instance.getMenuStructure = function() {
-        console.log(menuStructure);
-    }
-   
-    // 
-    instance.registerElement = function(htmlId, action, item) {
-        if (!(action in this.elementRegister)) {
-            this.elementRegister[action] = {}
-        }
-        this.elementRegister[action][htmlId] = {};
-        this.elementRegister[action][htmlId].oldValue = -1;
-        this.elementRegister[action][htmlId].item = item
-        if (action == 'current') {console.log("registered current")}
-    }
-
-
-
-    instance.updateElements = function(action) {
-        if (!(action in Templates.uiFunctions.elementRegister)) {return false;}
-
-        if (action == "gain") {
-            var process = function(item) {return "Gain: "+Game.resources.entries[item].gainNum;}
-        } else if (action == "perSecond") {
-            var process = function(item) {return Game.resources.getProduction(item);}
-        } else if (action == "current") {
-            var process = function(item) {return Game.resources.getResource(item);}
-        } else if (action == "storage") {
-            var process = function(item) {return Game.resources.getStorage(item);}
-        } else if (action == "nextStorage") {
-            var process = function(item) {return Game.resources.getStorage(item)*2;}
-        } else if (action == "resbldCount") {
-            var process = function(item) {return Game.buildings.entries[item].current;}
-        } else if (action == "stoCount") {
-            var process = function(item) {return Game.buildings.storageEntries[item].current;}
-        } else if (action == "resbldCost") {
-            var process = function(item) {return Game.buildings.entries[item].cost;}
-        } else if (action == "stoCost") {
-            var process = function(item) {return Game.buildings.storageEntries[item].cost;}
-        } else if (action == "storageTime") {
-            var process = function(item) {return "N/A";}
-        } else if (action == "storageCost") {
-            var process = function(item) {return Game.resources.entries[item].storUpgrades;}
-        } else {return false;}
-        
-        Object.keys(Templates.uiFunctions.elementRegister[action]).forEach(function(id) {
-            var obj = Templates.uiFunctions.elementRegister[action][id];
-            var current = process(obj.item);
-            if (obj.oldValue != current) {
-                // TODO FORMATTING
-                document.getElementById(id).innerHTML = '<span>'+current+'</span>';
-                obj.oldValue = current;
-            }
+        if (typeof resource === 'undefined') {resource = 'all'}
+        // Loop through all registeredElements with refreshActions
+        // and execute those which are requested
+        refreshActions.forEach(function(act) {
+            Object.keys(registeredElements[act]).forEach(function(res) {
+                if (res.toLowerCase() === resource.toLowerCase() || resource == 'all') {
+                    var obj = registeredElements[act][res].object;
+                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                }          
+            })
         })
     }
 
-
-
-
-    // registers an event
-    instance.linkEvents = function() {
-        Object.keys(Game.pages).forEach(function(page) {
-            var parentNode = document.getElementById(page+'Tab_pane');
-            var nodes = parentNode.querySelectorAll('[id]');
-            var match = [];
-            var unmatched = [];
-            var funct = "";
-            var node = "";
-            // Loop through all the ids of the menu and register its events
-            function getCase(text, key) {
-                return text.match(new RegExp(key)) || {};
-            }
-
-            nodes.forEach((node) => {
-                match = [];
-                var id = node.id;
-                switch (id) {
-
-
-        //////////////////
-        // Click events //
-        //////////////////
-
-        // These are regex matches. (.*) matches any consecutive pattern of a-z, A-Z, 0-9
-        // Don't use special characters in names (eg: [](),;:_!)
-
-        // Match (resources)_(plasma)_Gain
-        case (match = getCase(id, "^(.*)_(.*)_Gain$")).input:
-            funct = new Function("addManualResource('"+match[2]+"')");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            Templates.uiFunctions.registerElement(id, 'gain', match[2]);
-            break;
-        // Match (resources)_resbld_(energyT1)_buy_(1)
-        case (match = getCase(id, "^(.*)_resbld_(.*)_buy_(.*)$")).input:
-            funct = new Function("Game.buildings.buyBuildings('"+match[2]+"', "+parseInt(match[3])+")");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match (resources)_resbld_(energyT1)_destroy_(1)
-        case (match = getCase(id, "^(.*)_resbld_(.*)_destroy_(.*)$")).input:
-            funct = new Function("Game.buildings.destroyBuildings('"+match[2]+"', "+parseInt(match[3])+")");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match (resources)_sto_(energyT1)_buy_(1)
-        case (match = getCase(id, "^(.*)_sto_(.*)_buy_(.*)$")).input:
-            funct = new Function("Game.buildings.buyBuildings('"+match[2]+"', "+parseInt(match[3])+")");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match (resources)_sto_(energyT1)_destroy_(1)
-        case (match = getCase(id, "^(.*)_sto_(.*)_destroy_(.*)$")).input:
-            funct = new Function("Game.buildings.destroyBuildings('"+match[2]+"', "+parseInt(match[3])+")");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match the menu headers - #resourcesTab_energy_collapse
-        case (match = getCase(id, "^(.*)Tab_(.*)_collapse$")).input:
-            funct = new Function("Templates.uiFunctions.toggle('"+id+"')");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match the menu headers - #resourcesTab_energy_collapse
-        case (match = getCase(id, "^resourcesTab_(.*)_ne$")).input:
-            funct = new Function("Templates.uiFunctions.clickItem('"+id+"')");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-        // Match (resources)_(plasma)_StorageUpgrade
-        case (match = getCase(id, "^(.*)_(.*)_StorageUpgrade$")).input:
-            funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            break;
-
-
-
-        //////////////////
-        // bindElements //
-        //////////////////
-
-
-
-
-        // Match (resources)_(energy)ps_display element and bind it
-        case (match = getCase(id, "^(.*)_(.*)ps_display$")).input:
-            //Game.ui.bindElement(id, new Function('return Game.resources.getDisplayProduction("'+match[1]+'");'));
-            Templates.uiFunctions.registerElement(id, 'perSecond', match[2]);
-            break;
-        // Match the (resources)_(energy)_current element and bind it
-        case (match = getCase(id, "^(.*)_(.*)_current$")).input:
-            Templates.uiFunctions.registerElement(id, 'current', match[2]);
-            break;
-        // Match (resources)_(energy)_Storage
-        case (match = getCase(id, "^(.*)_(.*)Storage$")).input:
-            Templates.uiFunctions.registerElement(id, 'storage', match[2]);
-            break;
-        // Match (resources)_(energy)_NextStorage
-        case (match = getCase(id, "^(.*)_(.*)_NextStorage$")).input:
-            Templates.uiFunctions.registerElement(id, 'nextStorage', match[2]);
-            break;
-        // Match (resources)_resbld_(metalT1)_Count
-        case (match = getCase(id, "^(.*)_resbld_(.*)_Count$")).input:
-            Templates.uiFunctions.registerElement(id, 'resbldCount', match[2]);
-            break;
-        // Match (resources)_sto_(energyT1)_Count
-        case (match = getCase(id, "^(.*)_sto_(.*)_Count$")).input:
-            Templates.uiFunctions.registerElement(id, 'stoCount', match[2]);
-            break;
-        // Match (resources)_resbld_(metalT1)_Cost
-        case (match = getCase(id, "^(.*)_resbld_(.*)_Cost$")).input:
-            Templates.uiFunctions.registerElement(id, 'resbldCost', match[2]);
-            break;
-        // Match (resources)_sto_(energyT1)_Cost
-        case (match = getCase(id, "^(.*)_sto_(.*)_Cost$")).input:
-            Templates.uiFunctions.registerElement(id, 'stoCost', match[2]);
-            break;
-        // Match (resources)_(plasma)_SelectStorage_Time
-        case (match = getCase(id, "^(.*)_(.*)_SelectStorage_Time$")).input:
-            Templates.uiFunctions.registerElement(id, 'storageTime', match[2]);
-            break;
-        // Match (resources)_(plasma)_StorageUpgrade_Cost
-        case (match = getCase(id, "^(.*)_(.*)_StorageUpgrade_Cost$")).input:
-            Templates.uiFunctions.registerElement(id, 'storageCost', match[2]);
-            break;
-
-
-
-
-        ////////////
-        // Unused //
-        ////////////
-
-
-        // Match (resources)Tab_nav
-        case (match = getCase(id, "^(.*)Tab_nav$")).input:
-            break;
-        // Match (resources)_(energy)StorageBox
-        case (match = getCase(id, "^(.*)_(.*)StorageBox$")).input:
-            break;
-        // Match (resources)Tab_content
-        case (match = getCase(id, "^(.*)Tab_content$")).input:
-            break;
-        // Match (resources)Tab_(energy)_nec
-        case (match = getCase(id, "^(.*)Tab_(.*)_nec$")).input:
-            break;
-        // Match (resources)Tab_(energy)_netc
-        case (match = getCase(id, "^(.*)Tab_(.*)_netc$")).input:
-            break;
-        // Match (resources)_(sto)_(energyT1)_Container & (resources)_(resbld)_(energyT1)_Container
-        case (match = getCase(id, "^(.*)_(.*)_(.*)_Container$")).input:
-            break;
-        // Match (resources)_(plasma)_SelectStorage_Limit
-        case (match = getCase(id, "^(.*)_(.*)_SelectStorage_Limit$")).input:
-            break;
-
-
-        default:
-            unmatched.push(id);
-
-                }
-            });
-            // Match the navigation menu - solarTab
-            node = document.getElementById(page+"Tab")
-            funct = new Function("Templates.uiFunctions.clickNav('"+page+"Tab')");
-            Templates.uiFunctions.addUIEventListener(node, "click", funct);
-            if (unmatched.length > 0) {
-                console.log("There are unhandled ids in "+page+":")
-                console.log(unmatched)
-            }
-        })
+    /**
+     * Called from gameUI.js
+     * Adds methods to the given object to update the UI
+     * @param  {Object}   object  The object passed in gameUI.js, (eg Game.buildings.entries.metalT1)
+     * @param  {String}   action  A piece of information this object contains and will need updating
+     * @return {Boolean}          True on success, false on failure.
+     */
+    this.registerElement = function(object, action) {
+        if (typeof object.htmlId == 'undefined' || 
+            typeof object[action] == 'undefined' || 
+            typeof object.id == 'undefined') {
+            console.warn("An invalid object, or object with undefined id/htmlId/action was trying to get registered to perform: "+action+".")
+            console.warn(object);
+            return false;
+        }
+        action = action.toLowerCase();
+        // Store the link between action and object
+        if (!(action in registeredElements)) {registeredElements[action] = {};}
+        var id = object.id;
+        if (!(id in registeredElements[action])) {registeredElements[action][id] = {};}
+        registeredElements[action][id].object = object;
+        return true;
     }
-
-    instance.addUIEventListener = function(target, event, callback) {
+    /**
+     * Creates an event listener. An event can be: https://developer.mozilla.org/en-US/docs/Web/Events
+     * @param {DOMnode}   target    The DOM node that's the target of the event
+     * @param {String}    event     The event to listen for.
+     * @param {Function}  callback  The function which should run when this event is received.
+     */
+    this.addUIEventListener = function(target, event, callback) {
         if (!target) { return false; }
         if (target.addEventListener) {
             target.addEventListener(event, callback, false);
@@ -429,9 +550,191 @@ Templates.uiFunctions = function() {
         return true;
     };
 
-    return instance;
 
-}();
+    /**
+     * This functions examines the entire game's DOM object and
+     * creates eventlisteners. It also collects data needed for the UI to work.
+     */
+    this.linkEvents = function() {
+        var allIds = [];
+        Object.keys(Game.pages).forEach(function(page) {
+            function getCase(text, key) {
+                return text.match(new RegExp(key)) || {};
+            }
+            // Loop through all the ids of the menu and register its events
+            var parentNode = document.getElementById(page+'Tab_pane');
+            var nodes = parentNode.querySelectorAll('[id]');
+            var funct = ""; var node = ""; var nav = page+'Tab';
+            var unmatched = []; var header = ''; var item = ''; var pane = '';
+            // sort the node ids alphabetically
+            nodes.forEach((node) => {
+                // Loop vars
+                var match = []; var id = node.id; allIds.push(id);
+                // Check for the hidden class and add the element to the hidden array
+                if (node.classList.contains("hidden")) {hidden = addElement(hidden, id);}
+
+                switch (id) {
+
+                //////////////////
+                // Click events //
+                //////////////////
+
+                // These are regex matches. (.*) matches any consecutive pattern of a-z, A-Z, 0-9
+                // Don't use special characters in names (eg: [](),;:_!)
+
+                // Match the menu headers - #resourcesTab_energy_collapse
+                case (match = getCase(id, "^(.*)Tab_(.*)_collapse$")).input:
+                    funct = new Function("Templates.uiFunctions.toggleHeader('"+id+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    header = id;
+                    break;
+                // Match the menu items - #resourcesTab_energy_ne
+                case (match = getCase(id, "^(.*)Tab_(.*)_ne$")).input:
+                    funct = new Function("Templates.uiFunctions.clickItem('"+id+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    // if the node isn't hidden, add it to noncollapsed.
+                    if (node.classList.contains("hidden") && node.classList.contains("collapsed")) {
+                        //collapsed = addElement(collapsed, id);
+                    } else {
+                        //noncollapsed = addElement(noncollapsed, id);
+                    }
+                    item = id;
+                    createMenuTopDownDom(page+"Tab", header, item);
+                    break;
+                // Match (resources)Tab_(energy)_nec - The top of a content pane
+                case (match = getCase(id, "^(.*)Tab_(.*)_nec$")).input:
+                    pane = id;
+                    break;
+                case (match = getCase(id, "^(.*)_(.*)_Container$")).input:
+                    createPageTopDownDom(page+"Tab", pane, id);
+                    break;
+                // Match (resources)_(resbld)_(energyT1)_buy_(1)
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_buy_(.*)$")).input:
+                    if (match[1]=='tech') {
+                        funct = new Function("Game.tech.buyTech('"+match[3]+"', "+parseInt(match[4])+")");
+                    } else {
+                        funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
+                    }
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (resources)_(resbld)_(energyT1)_destroy_(1)
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_destroy_(.*)$")).input:
+                    funct = new Function("Game.buildings.destroyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (resources)_(res)_(plasma)_gain
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_gain$")).input:
+                    funct = new Function("addManualResource('"+match[2]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (resources)_(plasma)_StorageUpgrade
+                case (match = getCase(id, "^(.*)_(.*)_StorageUpgrade$")).input:
+                    funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (resources)_energyT1_Container
+
+                ////////////
+                // Unused //
+                ////////////
+
+                // Match (resources)Tab_nav
+                case (match = getCase(id, "^(.*)Tab_nav$")).input:
+                    break;
+                // Match (resources)Tab_(energy)_netc
+                case (match = getCase(id, "^(.*)Tab_(.*)_netc$")).input:
+                    break;
+                // Match (resources)Tab_content
+                case (match = getCase(id, "^(.*)Tab_content$")).input:
+                    break;
+                // Match (resources)_(plasma)_SelectStorage_Limit
+                case (match = getCase(id, "^(.*)_(.*)_SelectStorage_limit$")).input:
+                    break;
+                // Match (resources)_(plasma)_SelectStorage_Limit
+                case (match = getCase(id, "^(.*)_(.*)_SelectStorage_time$")).input:
+                    break;
+
+                default:
+                    unmatched.push(id);
+                }
+            });
+            // Match the navigation menu - solarTab
+            node = document.getElementById(page+"Tab")
+            funct = new Function("Templates.uiFunctions.clickNav('"+page+"Tab')");
+            Templates.uiFunctions.addUIEventListener(node, "click", funct);
+            if (unmatched.length > 0) {
+                console.warn("There are unhandled ids in "+page+":");
+                console.warn(unmatched);
+            }
+        })
+        // Finished checking all ids, combine the collected menu DOM & page DOM
+        combineMenuAndPage();
+        // Perform a sanity check on the ids to make sure there are no doubles.
+        var handled = [];
+        allIds.forEach(function(v) {
+            var count = countElement(allIds, v);
+            if (count > 1 && !contains(handled, v)) {
+                handled.push(v);
+                console.warn('The id="'+v+'" is used '+count+' times in the webpage.');
+                console.warn('Either the templates need fixing, or more than one internal item has the same id.')
+            }
+        })
+    }
+
+
+
+
+    this.getMenuTopDownDom = function() {
+        console.log(menuTopDownDom);
+    }
+    this.getPageTopDownDom = function() {
+        console.log(pageTopDownDom);
+    }
+
+    this.getTopDownDom = function() {
+        console.log(topDownDom);
+    }
+    this.getDownTopDom = function() {
+        console.log(downTopDom);
+    }
+    this.getRegisteredElements = function() {
+        console.log(registeredElements);
+    }
+    // WARNING: very slow execution.  Only use for debugging.
+    this.getCustomClasses = function() {
+        // Check all classes and detect the informational ones
+        var tmpArray = []; var rejected = []; var cl = "";
+        var readable = []; var sheets = document.styleSheets;
+        for (var i = 0; i < sheets.length; i++) {
+            if (styleSheetReadable(sheets[i])) {
+                readable.push(sheets[i]);
+            }
+        }
+        var nodes = document.querySelectorAll('[class]');
+        nodes.forEach(function(node) {
+            for (var i = 0; i < node.classList.length; i++) {
+                cl = node.classList.item(i);
+                if (!contains(rejected, cl)) {
+                    if (styleExists(readable, cl)) {
+                        rejected = addElement(rejected, cl);
+                    } else {
+                        tmpArray = addElement(tmpArray, cl);
+                    }
+                }
+            }
+        })
+        console.log("Found the following custom classes:");
+        console.log(tmpArray);
+    }
+
+    //////////////////////////////////////////////////////////
+    // After loading, run over the collapsed, noncollapsed, //
+    // hidden, unhidden arrays and apply their changes.     //
+    // Also click on lastNav and lastItem                   //
+    //////////////////////////////////////////////////////////
+
+};
+Templates.uiFunctions = new Templates.objectConstructor.UiFunctions();
 Templates.uiFunctions.addUIEventListener(window, "load", function() {Game.start()});
 
 

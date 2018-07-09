@@ -5,12 +5,14 @@ Game.techCategoryData = (function () {
     instance.research = {
         title: 'Research',
         category: 'research',
+        htmlId: 'research',
         page: 'tech',
         items: {
             technology: {
                 title: 'Technologies',
                 id: 'technologies',
                 name: 'Technologies',
+                htmlId: 'technologies',
                 desc: 'Research new technologies to unlock more mechanics and advance through the game.',
                 category: 'technology',
                 page: 'tech',
@@ -41,7 +43,7 @@ Game.techData = (function () {
         maxLevel: 1,
         unlocked: false,
         category: 'technology',
-        htmlId: "",
+        htmlId: "technology",
 
         // for any tech specific apply changes
         onApply: null
@@ -62,12 +64,7 @@ Game.techData = (function () {
         newTechs: ['unlockOil'],
         tabAlerts: ['resources'],
         onApply: function(){
-            for(var id in Game.resources.entries){
-                var upgrade = $('#' + id + 'StorageUpgrade')[0];
-                if(upgrade){
-                    upgrade.className = "";
-                }
-            }
+            Templates.uiFunctions.showClass('storageUpgrade');
         }
     });
     
