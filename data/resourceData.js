@@ -315,6 +315,7 @@ Game.resourceData = (function () {
         icon: 'scienceIcon',
         category: 'science',
         baseCapacity: 1000000,
+        hideCapacity: true,
         gainNum: 1,
         manualgain: false,
         unlocked: false
@@ -330,6 +331,7 @@ Game.resourceData = (function () {
         icon: 'rocketFuelIcon',
         category: 'rocketFuel',
         baseCapacity: 1000000,
+        hideCapacity: true,
         gainNum: 1,
         manualgain: false,
         unlocked: true

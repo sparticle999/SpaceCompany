@@ -58,17 +58,6 @@ var Game = (function() {
         legacyRefreshUI();
 
         //self.ui.updateBoundElements(delta);
-        Templates.uiFunctions.updateElements('gain');   // can get away with only calling after rebirth
-        
-        
-        Templates.uiFunctions.updateElements('storage');    // Can get away with only calling manually after storage bought
-        Templates.uiFunctions.updateElements('nextStorage');// Can get away with only calling manually after storage bought
-        Templates.uiFunctions.updateElements('resbldCount');// Can get away with only calling manually after building bought
-        Templates.uiFunctions.updateElements('stoCount');   // Can get away with only calling manually after stobld bought
-        Templates.uiFunctions.updateElements('resbldCost'); // Can get away with only calling manually after building bought
-        Templates.uiFunctions.updateElements('stoCost');     // Can get away with only calling manually after stobld bought
-        Templates.uiFunctions.updateElements('storageTime');
-        Templates.uiFunctions.updateElements('storageCost');  // Can get away with only calling manually after storage bought
 
         self.resources.update(delta);
         Game.resources.updateResourcesPerSecond();
@@ -244,8 +233,8 @@ var Game = (function() {
                 if (!(item in to[value])) {to[value][item] = {};}
                 to[value][item] = from[item]        
             }
-    })
-  }
+        })
+    }
 
     /**
      * Creates a hierarchical Object with data per page -> category -> subcategory
@@ -271,7 +260,6 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
-<<<<<<< HEAD
         this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
         this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
         // Link Game.solar.entries category to Game.resourceCategoryData
@@ -279,17 +267,18 @@ var Game = (function() {
         // Link it again, a level deeper and link on id
         //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
 
-=======
-        // Link Game.solar.entries category to Game.solarCategoryData
-        this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
-        console.log(Game.machinesCategoryData)
+
         // Link Game.machinescategoryData page to Game.pages
-        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        //this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        // Link Game.solar.entries category to Game.solarCategoryData
+        //this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
+        //console.log(Game.machinesCategoryData)
+
         // Link Game.resources.entries category to Game.machinesCategoryData
-        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+        //this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
 
         console.log(Game.pages)
->>>>>>> 0caa6eb3072b275a4b439966cd28d3c61a8f0185
+
 
     }
 
@@ -325,8 +314,8 @@ var Game = (function() {
 
         self.deleteInterval("Loading");
 
-        registerLegacyBindings();
-        self.ui.updateAutoDataBindings();
+        //registerLegacyBindings();
+        //self.ui.updateAutoDataBindings();
 
 
         // Initialise data first
@@ -349,16 +338,14 @@ var Game = (function() {
         self.solarUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
-        self.machinesUI.initialise();
+        //self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        //self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
-        Game.ui.updateAutoDataBindings();
-        // Show the resource tab:
-        Templates.uiFunctions.unlock(Game.buildings.entries.metalT1.htmlIdContainer);
-        Templates.uiFunctions.unlock(Game.buildings.entries.gemT1.htmlIdContainer);
-        Templates.uiFunctions.unlock(Game.buildings.entries.woodT1.htmlIdContainer);
-        document.getElementById('resourcesTab').click();
+        // Refresh all actions
+
+        //Game.ui.updateAutoDataBindings();
+        
 
         console.log("test from start");
         console.log("storage");
@@ -404,6 +391,11 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.log("Initialisation Complete");
+        Templates.uiFunctions.refreshElements('all', 'all');
+        Templates.uiFunctions.unlock('metalT1');
+        Templates.uiFunctions.unlock('woodT1');
+        Templates.uiFunctions.unlock('gemT1');
+        document.getElementById('resourcesTab').click();
 
     };
 

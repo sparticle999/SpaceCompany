@@ -5,6 +5,7 @@ Game.buildingData = (function () {
     var baseProducerBuilding = {
         type: BUILDING_TYPE.PRODUCER,
         unlocked: false,
+        destroyable: true,
         maxCount: Number.MAX_VALUE,
         costType: COST_TYPE.FIXED
     };
@@ -400,7 +401,7 @@ Game.buildingData = (function () {
         },
         onApply: function(){
             if (!Game.tech.tabUnlocked) {
-                Templates.uiFunctions.unlock(Game.buildings.entries.scienceT1.htmlIdContainer)
+                Templates.uiFunctions.unlock('scienceT1')
                 // Unlock the science resourceCategory
                 Game.resourceCategoryData.science.unlocked = true
                 // Unlock the science resource
@@ -1617,10 +1618,25 @@ Game.buildingData = (function () {
             // lock rocket category
             // Unlock inner
             // Unlock moon
-            console.log("Rocket launched Please fix me!");
         }
     });
 
+    instance.satelliteT1 = $.extend({}, baseProducerBuilding, {
+        name: "Satellite",
+        desc: "Before we can travel anywhere, we'll need to explore. Satellites are a great tool for this.",
+        category: "satellite",
+        resource: "satellite",
+        cost: {
+            'metal': 50,
+            'gem': 100
+        },
+        order: 1,
+        unlocked: true,
+        onApply: function() {
+            // unlock rocketT2
+            // lock rocketT1
+        }
+    });
 
     return instance;
 }());
@@ -1638,7 +1654,7 @@ Game.storageBuildingData = (function(){
     };
 
     // Research
-    instance.plasmaT1 = $.extend({}, baseStorage, {
+    instance.plasmaStorageT1 = $.extend({}, baseStorage, {
         name: 'Plasma Storage Unit',
         desc: 'PSUs increase your plasma storage by 50,000 per PSU built.',
         resource: 'plasma',
@@ -1652,7 +1668,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.plasmaT2 = $.extend({}, baseStorage, {
+    instance.plasmaStorageT2 = $.extend({}, baseStorage, {
         name: 'Plasma Storage Unit Tier 2',
         desc: 'Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.',
         resource: 'plasma',
@@ -1666,7 +1682,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    // instance.plasmaT3 = $.extend({}, baseStorage, {
+    // instance.plasmaStorageT3 = $.extend({}, baseStorage, {
     //     name: 'University Laboratory',
     //     desc: 'Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.',
     //     resource: 'science',
@@ -1680,7 +1696,7 @@ Game.storageBuildingData = (function(){
     //     }
     // });
 
-    instance.energyT1 = $.extend({}, baseStorage, {
+    instance.energyStorageT1 = $.extend({}, baseStorage, {
         name: 'Batteries',
         desc: 'Batteries increase your energy storage by 50,000 per battery built.',
         resource: 'energy',
@@ -1694,7 +1710,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.energyT2 = $.extend({}, baseStorage, {
+    instance.energyStorageT2 = $.extend({}, baseStorage, {
         name: 'Batteries T2',
         desc: 'Tier 2 Batteries increase your energy storage by 500,000 per battery built.',
         resource: 'energy',
@@ -1708,7 +1724,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.energyT3 = $.extend({}, baseStorage, {
+    instance.energyStorageT3 = $.extend({}, baseStorage, {
         name: 'Batteries T3',
         desc: 'Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.',
         resource: 'energy',
@@ -1722,7 +1738,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.energyT4 = $.extend({}, baseStorage, {
+    instance.energyStorageT4 = $.extend({}, baseStorage, {
         name: 'Batteries T4',
         desc: 'Tier 4 Batteries increase your energy storage by 50,000,000 per battery built.',
         resource: 'energy',
@@ -1736,7 +1752,7 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    instance.energyT5 = $.extend({}, baseStorage, {
+    instance.energyStorageT5 = $.extend({}, baseStorage, {
         name: 'Batteries T5',
         desc: 'Tier 5 Batteries increase your energy storage by 500,000,000 per battery built.',
         resource: 'energy',
