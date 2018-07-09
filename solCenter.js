@@ -2,8 +2,76 @@ Game.solCenter = (function(){
 
     var instance = {};
 
+    instance.dataVersion = 1;
     instance.entries = {};
     instance.tabUnlocked = false;
+
+    instance.initialise = function(){
+    	for(var id in Game.solData){
+    		var data = Game.solData[id];
+    		this.entries[id] = $.extend({}, data, {
+				id: id,
+				htmlId: 'solCtr' + id,
+				unlocked: false,
+				displayNeedsUpdate: true,
+			});
+    	}
+    };
+
+    instance.update = function(delta){
+    	for(var id in this.entries){
+    		var data = this.entries[id];
+    		if(data.displayNeedsUpdate){
+    			//updateUI();
+    		}
+    	}
+    };
+
+    instance.save = function(data){
+    	data.solCenter = {v: this.dataVersion, e: {}}
+    	for(var id in this.entries){
+    		var ent = this.entries[id]
+    		data.solCenter.e[id] = {};
+    		data.solCenter.e[id].unlocked = ent.unlocked;
+    		if(id == "nanoswarm"){
+    			data.solCenter.e[id].current = ent.current;
+    			data.solCenter.e[id].resource = ent.resource;
+    		}
+    	}
+    };
+
+    instance.load = function(data){
+    	if(data.solCenter){
+    		for (var id in data.solCenter.e) {
+            	if (typeof this.entries[id] !== 'undefined') {
+            		var ent = data.solCenter.e[id];
+            		for(var prop in ent){
+            			this.entries[id][prop] = ent.prop;
+            			this.entries[id].displayNeedsUpdate = true;
+            		}
+            	}
+        	}
+    	}
+    };
+
+    instance.unlockEMC = function(){
+
+    };
+
+    instance.unlockDyson = function(){
+
+    };
+
+    instance.unlockNano = function(){
+
+    };
+
+    instance.switchNano = function(resource){
+    	var data = this.entries.nanoswarm;
+    	data.resource = resource;
+    	console.log(Game.resources.entries[resource].htmlId);
+    	data.displayNeedsUpdate = true;
+    };
 
     return instance;
 }());

@@ -328,6 +328,8 @@ var Game = (function() {
         self.techUI.initialise();
         self.solarUI = new Templates.createPage('solar', 'Solar System BETA', Game.pages.solar);
         self.solarUI.initialise();
+        self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
+        self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
         self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);

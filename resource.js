@@ -95,9 +95,7 @@ Game.resources = (function(){
                     if(this.entries[id]) {
                         this.addResource(id, data.resources.r[id].n);
                         this.entries[id].unlocked = data.resources.r[id].u;
-                        if(typeof data.resources.r[id].capacity != undefined)
-                            console.warn(data.resources.r[id])
-                            this.entries[id].capacity = data.resources.r[id].s;
+                        this.entries[id].capacity = data.resources.r[id].s;
                     }
                 }
             }
