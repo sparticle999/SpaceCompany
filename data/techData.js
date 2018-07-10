@@ -211,7 +211,6 @@ Game.techData = (function () {
         newResources: ['rocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
-            Game.buildings.entries.rocketFuelT3.unlocked = true;
             Game.buildings.unlock('rocketFuelT3');
         }
     });
@@ -228,8 +227,7 @@ Game.techData = (function () {
         newTechs: ['unlockLabT3'],
         tabAlerts: ['research'],
         onApply: function(){
-            Game.buildings.entries.scienceT2.unlocked = true;
-            Templates.uiFunctions.unlock('scienceT2');
+            Game.buildings.unlock('scienceT2');
         }
     });
 
@@ -245,8 +243,7 @@ Game.techData = (function () {
         newTechs: ['unlockLabT4'],
         tabAlerts: ['research'],
         onApply: function(){
-            Game.buildings.entries.scienceT3.unlocked = true;
-            Templates.uiFunctions.unlock('scienceT3');
+            Game.buildings.unlock('scienceT3');
         }
     });
 
@@ -261,8 +258,7 @@ Game.techData = (function () {
         },
         tabAlerts: ['research'],
         onApply: function(){
-            Game.buildings.entries.scienceT4.unlocked = true;
-            Templates.uiFunctions.unlock('scienceT4');
+            Game.buildings.unlock('scienceT4');
         }
 
     });
@@ -280,7 +276,6 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyStorageT1");
-            Templates.uiFunctions.unlock('energyStorageT1');
             console.log("energyStorageBox, in energy storage displayNeedsUpdate")
         }
     });
@@ -298,7 +293,6 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyStorageT2");
-            Templates.uiFunctions.unlock('energyStorageT2');
         }
     });
 
@@ -315,7 +309,6 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyStorageT3");
-            Templates.uiFunctions.unlock('energyStorageT3');
         }
     });
 
@@ -331,7 +324,6 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyStorageT4");
-            Templates.uiFunctions.unlock('energyStorageT4');
         }
     });
 
