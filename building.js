@@ -241,6 +241,7 @@ Game.buildings = (function(){
     instance.unlockStorage = function(id){
         this.storageEntries[id].unlocked = true;
         this.storageEntries[id].displayNeedsUpdate = true;
+        Templates.uiFunctions.unlock(id, propagate)
     }
 
     instance.refreshUnlock = function(data){
