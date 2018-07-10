@@ -26,10 +26,6 @@ Game.buildings = (function(){
         }
     }
 
-
-
-
-
     var instance = {};
 
     instance.dataVersion = 1;

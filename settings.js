@@ -172,9 +172,14 @@ Game.settings = (function(){
                     var cost = object.cost;
                     var result = '<dl><dt>Cost:</dt>';
                     Object.keys(cost).forEach (function(c) {
-                        var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
-                        time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
-                        result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"
+                        if (cost[c] > Game.resources.entries[c].capacity) {
+                            time = "Insufficient storage".bold();
+                        } else {
+                            var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
+                            time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                        }
+                        result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
+
                     });
                     cost = object.resourcePerSecond;
                     if (!('resourcePerSecond' in object)) {return result+'<dl>';}
@@ -193,8 +198,8 @@ Game.settings = (function(){
                             input += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+tmp+"</dd>";
                         }
                     });
-                    if (output == "") {output += "<dd>&#8227; None.</dd>"}
-                    if (input == "") {input += "<dd>&#8227; None.</dd>"}
+                    if (output == "") {output += "<dd>&#8227; None</dd>"}
+                    if (input == "") {input += "<dd>&#8227; None</dd>"}
                     output = '<dl><dt>Output:</dt>'+output;
                     input = '<dl><dt>Input:</dt>'+input;
                     result += input+output+'</dl>';
