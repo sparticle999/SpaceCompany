@@ -401,7 +401,7 @@ Game.buildingData = (function () {
         },
         onApply: function(){
             if (!Game.tech.tabUnlocked) {
-                Templates.uiFunctions.unlock('scienceT1')
+                Game.buildings.unlock("scienceT1");
                 // Unlock the science resourceCategory
                 Game.resourceCategoryData.science.unlocked = true
                 // Unlock the science resource

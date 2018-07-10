@@ -372,10 +372,12 @@ Templates.objectConstructor.UiFunctions = function() {
     }
     /**
      * Unhides the entire path leading up the DOM from itemId.
-     * @param  {String}   itemId  An internal id of an item (metalT1, moon).
-     * @return {Boolean}          True on success, false on failure.
+     * @param  {String}   itemId     An internal id of an item (metalT1, moon).
+     * @param  {Boolean}  propagate  If false, the elements up the DOM tree won't be unlocked
+     * @return {Boolean}             True on success, false on failure.
      */
-    this.unlock = function(itemId) {
+    this.unlock = function(itemId, propagate) {
+        if (typeof propagate === 'undefined') {propagate = true;}
         // Look up all elements containing this item's container element.
         var nodes = document.querySelectorAll('.'+itemId+'_Container');
         if (typeof nodes == 'undefined') {
@@ -385,7 +387,7 @@ Templates.objectConstructor.UiFunctions = function() {
         // Loop through the nodes and process each node's id.
         nodes.forEach(function(node) {
             // loop through the downTopDom array and unhide all elements
-            downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));
+            if (propagate) {downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));}
             Templates.uiFunctions.show(node.id);
             // Setting the internal vars is done by the show-function.
         })
@@ -610,7 +612,7 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(resbld)_(energyT1)_buy_(1)
                 case (match = getCase(id, "^(.*)_(.*)_(.*)_buy_(.*)$")).input:
-                    if (match[1]=='tech') {
+                    if (match[1]=='tech' && match[2]=='tec') {
                         funct = new Function("Game.tech.buyTech('"+match[3]+"', "+parseInt(match[4])+")");
                     } else {
                         funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
@@ -624,7 +626,7 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(res)_(plasma)_gain
                 case (match = getCase(id, "^(.*)_(.*)_(.*)_gain$")).input:
-                    funct = new Function("addManualResource('"+match[2]+"')");
+                    funct = new Function("addManualResource('"+match[3]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
                 // Match (resources)_(plasma)_StorageUpgrade

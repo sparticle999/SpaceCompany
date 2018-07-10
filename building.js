@@ -14,17 +14,21 @@ Game.buildings = (function(){
     }
 
     function UpdateCost(id) {
-        var previous = -1;
+        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.buildings.entries[id];
-            if (obj.cost == previous) {return;}
+            if (new Date() - previous < 250) {return;}
             var value = Game.settings.doFormat('cost', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
-            previous = obj.cost;
+            previous = new Date();
             return true;
         }
     }
+
+
+
+
 
     var instance = {};
 
@@ -99,6 +103,26 @@ Game.buildings = (function(){
                 }
             }
         }
+        // Update the cost of buildings
+        Object.keys(Game.buildings.entries).forEach(function(building) {
+            let cost = Game.buildings.entries[building].cost;
+            let amount = Game.buildings.entries[building].current;
+            let newCost = {};
+            Object.keys(cost).forEach(c => newCost[c] = Math.floor(cost[c]*Math.pow(1.1, amount)));
+            Game.buildings.entries[building].cost = newCost;
+        })
+
+        // Update the cost of storage buildings
+        Object.keys(Game.buildings.storageEntries).forEach(function(building) {
+            let cost = Game.buildings.storageEntries[building].cost;
+            let amount = Game.buildings.storageEntries[building].current;
+            let newCost = {};
+            Object.keys(cost).forEach(c => newCost[c] = Math.floor(cost[c]*Math.pow(1.1, amount)));
+            Game.buildings.storageEntries[building].cost = newCost;
+        })
+
+        // Update all the costs on the page
+        Templates.uiFunctions.refreshElements('cost', 'all');
     };
 
     instance.buyStorageBuilding = function(id){
@@ -131,7 +155,6 @@ Game.buildings = (function(){
             cost[c] = Math.floor(obj[c] * Math.pow(1.1, Game.buildings.entries[id].current))
         })
         Game.buildings.entries[id].cost = cost;
-        Templates.uiFunctions.refreshElements('cost', id);
     }
 
     instance.buyBuildings = function(id, count){
@@ -213,9 +236,10 @@ Game.buildings = (function(){
         data.displayNeedsUpdate = false;
     }
 
-    instance.unlock = function(id) {
+    instance.unlock = function(id, propagate) {
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
+        Templates.uiFunctions.unlock(id, propagate)
     };
 
     instance.unlockStorage = function(id){

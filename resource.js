@@ -18,23 +18,31 @@ Game.resources = (function(){
         }
     }
     var UpdateCurrent = function(id) {
-        var previous = -1;
+        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.resources.entries[id];
-            if (obj.current == previous) {return;}
+            if (new Date() - previous < 200) {return;}
             var value = Game.settings.doFormat('current', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
-            previous = obj.current;
+            previous = new Date();
+            // Update the storage full timer
+            var node = document.getElementById('resources_res_'+id+'_SelectStorage_limit');
+            if (node) {
+                value = parseInt(node.value)/100;
+                var seconds = Math.max(((obj.capacity*value)-obj.current), 0)/obj.perSecond;
+                value = ((seconds > 0) ? Game.utils.getTimeDisplay(seconds, true) : "Done!".bold());
+                document.getElementById('resources_res_'+id+'_SelectStorage_time').innerHTML = value;
+            }
             return true;
         }
     }
     var UpdateCapacity = function(id) {
-        var previous = -1;
+        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.resources.entries[id];
-            if (obj.capacity == previous) {return;}
+            if (new Date() - previous < 1000) {return;}
             var value = Game.settings.doFormat('capacity', obj);
             Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
@@ -43,16 +51,16 @@ Game.resources = (function(){
                 var cost = Game.storageData.entries[id].cost;
                 var value = 0;
                 // Find the inflation factor by comparing id's current cost with its base cost
+                // This is pretty much a hack and won't work when a material doesn't need itself
+                // to upgrade its storage.
                 Object.keys(cost).forEach(c => {if (c == id) {value = cost[c]}});
-                value = obj.current/value ; var newcost = {};
+                value = obj.capacity/value ; var newcost = {};
                 // object with inflated costs
                 Object.keys(cost).forEach(c => newcost[c] = cost[c]*value);
-                console.log(newcost);
                 value = Game.settings.doFormat('cost', {cost: newcost})
-                console.log(value);
                 Templates.uiFunctions.setClassText(value, obj.htmlId+'storageUpgrade_cost')
             }
-            previous = obj.capacity;
+            previous = new Date();
             return true;
         }
     }
@@ -146,7 +154,6 @@ Game.resources = (function(){
     };
 
     instance.load = function(data) {
-        console.log(data.resources)
         if(data.resources) {
             if(data.resources.v && data.resources.v === this.dataVersion) {
                 for(var id in data.resources.r) {
@@ -162,6 +169,7 @@ Game.resources = (function(){
         } else {
             legacyLoad(data);
         }
+        //Templates.uiFunctions.refreshElements('all', 'all')
     };
 
 	instance.getResource = function(id) {
@@ -247,13 +255,11 @@ Game.resources = (function(){
 	};
 
     instance.upgradeStorage = function(id){
-        console.log(id)
         var res = this.getResourceData(id);
         var metal = this.getResourceData("metal");
         var lunarite = this.getResourceData("lunarite");
         // Adjust what {{item}}StorageUpgrade_Cost contains after upgrading
         //  Costs 5.033B Oil, 2.013B Metal. 
-        // Adjust what <span id="{{item}}NextStorage"></span> contains as well
         if(res.current >= res.capacity*storagePrice){
             if(id == "metal"){
                 res.current -= res.capacity*storagePrice;
