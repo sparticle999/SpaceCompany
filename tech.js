@@ -1,5 +1,32 @@
 Game.tech = (function(){
 
+    function UpdateCurrent(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.tech.entries[id];
+            if (obj.current == previous) {return;}
+            var value = Game.settings.doFormat('current', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
+            previous = obj.current;
+            return true;
+        }
+    }
+
+    function UpdateCost(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.tech.entries[id];
+            if (obj.cost == previous) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = obj.cost;
+            return true;
+        }
+    }
+
+
     var instance = {};
 
     instance.dataVersion = 2;
@@ -12,6 +39,9 @@ Game.tech = (function(){
             this.entries[id] = Game.techData[id];
             this.techTypeCount++;
             Game.techData[id].htmlId = 'tec_'+id;
+            Game.techData[id].id = id;
+            this.entries[id].ui_current = new UpdateCurrent(id);
+            this.entries[id].ui_cost = new UpdateCost(id);
         }
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
@@ -36,10 +66,10 @@ Game.tech = (function(){
         for (var id in this.entries) {
             var data = this.entries[id];
             if (data.unlocked) {
-                Templates.uiFunctions.unlock(data.htmlId);
+                Templates.uiFunctions.unlock(data.id);
             }
             if (data.current >= data.maxLevel && data.maxLevel > 0) {
-                Templates.uiFunctions.hide(data.htmlId)
+                Templates.uiFunctions.hide(data.id)
             }
         }
     };
@@ -70,21 +100,21 @@ Game.tech = (function(){
         }
         if(Game.buildings.entries.metalT1.current >= 1){
             if (!Game.tech.tabUnlocked) {
+                Templates.uiFunctions.unlock('scienceT1');
                 // Unlock the science resourceCategory
-                Game.resourceCategoryData.science.unlocked = true
+                Game.resourceCategoryData.science.unlocked = true;
                 // Unlock the science resource
                 Game.resources.entries.science.unlocked = true;
                 // Unlock scienceT1
                 Game.buildings.entries.scienceT1.unlocked = true;
-                Game.buildings.entries.scienceT1.displayNeedsUpdate = true;
                 // Unlock the research category
                 Game.techCategoryData.unlocked = true;
                 Game.techCategoryData.research.unlocked = true;
                 // Unlock the technology type of research items
-                Game.techCategoryData.research.items.technology = true;
+                Game.techCategoryData.research.items.technology.unlocked = true;
                 newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
-                Game.tech.tabUnlocked = true;
+                Game.tech.tabUnlocked = true; 
             }
         }
     };
@@ -136,60 +166,59 @@ Game.tech = (function(){
         }
     };
 
+
+// Create an empty object to create a sum of profits and losses
+// var materials = Object.keys(Obj).reduce((o, key) => Object.assign(o, {[key]: 0}), {});
+
+
+
+    instance.doPurchase = function(Obj) {
+        // Loop over the costs and subtract them from .current
+        Object.keys(Obj.cost).forEach(c => Game.resources.entries[c].current += this.getCost(Obj.cost[c], Obj.current))
+        // increase its current
+        Obj.current++
+        // Update the UI - Let's recalculate everything in case of efficiency research
+        Templates.uiFunctions.refreshElements('all', 'all');
+    }
+
+    /**
+     * Internal function.  Not accessible from outside so we need less security.
+     * Checks if an object (Obj.cost) is affordable, this can be any object
+     * which costs are all in Game.resources.entries
+     * @param  {Object}  Obj Object like Game.buildings.entries.metalT1
+     * @return {Boolean}     True on affordable, false if not.
+     */
+    instance.isAffordable = function(Obj) {
+        // Loop over the cost, cost for tech is a positive number
+        if (Object.keys(Obj.cost).every(c => (Game.resources.entries[c].current-this.getCost(Obj.cost[c], Obj.current)) > 0)) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
     // return true if the tech is purchased successfully, false otherwise
     instance.buyTech = function(id, count) {
-        var tech = this.getTechData(id);
-        if (typeof tech === 'undefined') {
-            return false;
+        if (!(id in this.entries)) {return false;}
+        if (count != parseInt(count) && count <= 0) {return false;}
+        while (count > 0) {
+            // Stop the loop if the next machine isn't affordable
+            if (!this.isAffordable(this.entries[id])) {break;}
+            // Stop the loop if max level is reached.
+            if (this.entries[id].current == this.entries[id].maxLevel) {break;}
+            // Buy the item
+            this.doPurchase(this.entries[id]);
+            // Perform onBought
+            this.applyTechEffect(id);
+            // decrease count
+            count--;
         }
 
-        tech.displayNeedsUpdate = true;
+        
 
 
-        // ensure a valid value for count
-        if(isNaN(count) || count === undefined) {
-            count = 1;
-        }
-
-        // if there's a max level defined then the count may need to be clamped
-        if (tech.maxLevel > 0) {
-            count = Math.min(tech.maxLevel - tech.current, count);
-            if (count <= 0) {
-                // the tech is at or above max level, can't buy it
-                return false;
-            }
-        }
-
-        // create a new object for cost to avoid reference issues
-        var cost = {};
-        if (tech.costType === COST_TYPE.FIXED) {
-            if (tech.current > 0 || count > 1) {
-                // this calculation could be done more elegantly with math
-                for (var resource in tech.cost) {
-                    cost[resource] = 0;
-                }
-                for (var i = 0; i < count; i++) {
-                    for (var resource in tech.cost) {
-                        cost[resource] += this.getCost(tech.cost[resource], tech.current + i);
-                    }
-                }
-            } else {
-                // the predefined base cost can be used
-                for (var resource in tech.cost) {
-                    cost[resource] = tech.cost[resource];
-                }
-            }
-        } else {
-            return false;
-        }
-
-        if (!this.hasResources(cost)) {
-            return false;
-        }
-
-        this.spendResources(cost);
-        this.gainTech(id, count);
-        return true;
     };
 
     instance.gainTech = function(id, count) {
@@ -209,6 +238,7 @@ Game.tech = (function(){
         this.entries[id].current = finalValue;
 
         this.applyTechEffect(id);
+        Templates.uiFunctions.refreshElements('all', 'all');
     };
 
     instance.removeTech = function(id, count) {
@@ -223,52 +253,10 @@ Game.tech = (function(){
         this.entries[id].current = Math.max(newValue, 0);
 
         this.applyTechEffect(id);
+        Templates.uiFunctions.refreshElements('all', 'all');
     };
 
     instance.updateEfficiencies = function(){
-/* Reworked together with the UI
-        var techs = ['resourceEfficiencyResearch', 'energyEfficiencyResearch', 'scienceEfficiencyResearch', 'batteryEfficiencyResearch'];
-        for(var i = 0; i < techs.length; i++){
-            var tech = this.entries[techs[i]];
-            if(tech.displayNeedsUpdate){
-                if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
-                    tech.unlocked = true;
-                }
-
-                if(Game.resources.entries.science.current > tech.cost['science'] || tech.current > 0) {
-                    tech.unlocked = true;
-                }
-
-                if(tech.unlocked === false) {
-                    tech.getBodyElement().className = 'hidden';
-                    return;
-                } else {
-                    tech.getBodyElement().className= '';
-                }
-
-                var cost = this.getCost(tech.cost['science'], tech.current);
-                Game.settings.turnRed(science_current, cost, tech.htmlIdCost);
-                tech.getTitleElement().innerHTML = tech.name + " #" + (tech.current);
-                tech.getCostElement().innerHTML = Game.settings.format(cost);
-
-                if(tech.maxLevel > 0){
-                    if(tech.current >= tech.maxLevel && tech.maxLevel > 0) {
-                        tech.getButtonElement().className = 'hidden';
-                    }
-
-                    if(tech.current === tech.maxLevel) {
-                        tech.getTitleElement().innerHTML = tech.name + " " + tech.maxLevel + " (MAX)";
-                        tech.getCostElement().innerHTML = "N/A";
-                    } else {
-                        tech.getTitleElement().innerHTML = tech.name + " " + (tech.current) + " / " + tech.maxLevel;
-                        tech.getCostElement().innerHTML = Game.settings.format(cost);
-                    }
-                }
-
-                tech.displayNeedsUpdate = false;
-            }
-        }
-*/
     };
 
     instance.getCost = function(basePrice, amount, multiplier) {
@@ -288,8 +276,8 @@ Game.tech = (function(){
 
     instance.applyTechEffect = function(id) {
         var data = this.entries[id];
-        if(typeof data.apply !== 'undefined') {
-            data.apply(data);
+        if(typeof data.onApply !== 'undefined') {
+            data.onApply(data);
         }
     };
 
@@ -305,6 +293,7 @@ Game.tech = (function(){
     instance.spendResources = function(resources) {
         for (var resource in resources) {
             Game.resources.entries[resource].current -= resources[resource];
+            Templates.uiFunctions.refreshElements('current', resource);
         }
     };
 

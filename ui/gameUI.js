@@ -2,7 +2,7 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.createPage = function(cPage, cTitle, cObj) {
 
-	// createPage('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar)
+	// createPage('solar', 'Solar System BETA', Game.pages.solar)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'
@@ -74,17 +74,17 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="1"><span>{{name}}</span></td>',
 		   '<td style="vertical-align:middle; text-align:center;"><span><span class="{{htmlId}}ps">0</span>/Sec</span></td>',
-		   // If storBuildings is in data, hide the baseCapacity - claasList.remove("hidden") from all classes 'energyBaseCapacityHidden'
+		   // If storBuildings is in data, hide the capacity - claasList.remove("hidden") from all classes 'energyCapacityHidden'
 		   '{{#if storBuildings}}',
 		     '<td style="vertical-align:middle; text-align:right;">',
 		       '<span class="{{htmlId}}current">{{current}}</span>',
-		       '<span class="{{htmlId}}BaseCapacityHidden hidden">',
-		         ',/<span class="{{htmlId}}baseCapacity">{{baseCapacity}}</span>',
+		       '<span class="{{htmlId}}CapacityHidden hidden">',
+		         ',/<span class="{{htmlId}}capacity">{{capacity}}</span>',
 		       '</span>',
 		     '</td>',
 		   '{{else}}',
 		     '<td style="vertical-align:middle; text-align:right;">',
-		       '<span class="{{htmlId}}current">{{current}}</span>/<span class="{{htmlId}}baseCapacity">{{baseCapacity}}</span>',
+		       '<span class="{{htmlId}}current">{{current}}</span>{{#if hideCapacity}}{{else}}/<span class="{{htmlId}}capacity"></span>{{/if}}',
 		     '</td>',
 		   '{{/if}}',
 		 '</tr>',''].join('\n'));
@@ -97,7 +97,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 */
 	var TemplateNonResourceMenuItem = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
-		   '<td style="vertical-align:middle;"><img src="Icons/{{htmlId}}Icon.png" style="width:30px; height:auto"></td>',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="3"><span>{{name}}</span></td>',
 		 '</tr>',''].join('\n'));
 
@@ -140,11 +140,11 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '{{#if manualgain}}',
 		     '<div class="gainButton">',
 		       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
-		         '<span class="{{htmlId}}_gainNum">Gain: {{gainNum}}</span>',
+		         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
 		       '</button>',
 		       '<br>',
 				//Creating 1 Meteorite Costs 3 Plasma.
-			   '<span class="gainButton_cost"></span>',		
+			   '<span class="{{htmlId}}gainbutton_cost"></span>',
 		       '<br>',
 		     '</div>',
 		     '{{/if}}',
@@ -155,12 +155,12 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		   '<td>',
 		     '<h3 class="default btn-link">Storage Upgrade</h3>',
 		     '<span>',
-		       'Upgrade your {{name}} storage size to <span class="{{htmlId}}_nextStorage">100</span>.',
+		       'Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.',
 		       '<br>',
-		     'Time remaining until <select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>:',
+		     'Time remaining until&nbsp;&nbsp;<select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>&nbsp;&nbsp;',
  			 'storage: <b><span id="'+this.page+'_{{htmlId}}_SelectStorage_time">N/A</span></b>',
  			 '<br>',
-		     '<span class="{{htmlId}}_StorageUpgrade_cost"></span>',
+		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
 		     '<br>',
 		     '<button id="'+this.page+'_{{htmlId}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
 		   '</td>',
@@ -179,11 +179,11 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	var TemplatePaneBuilding = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}_current">0</span></h3>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p class="{{htmlId}}_cost"></p>',
+		       '<p class="{{htmlId}}cost"></p>',
 		     '</span>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 			 '<span class="multiBuy hidden">',
@@ -215,13 +215,13 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	var TemplatePaneNonBuilding = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{htmlId}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}_current">0</span></h3>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current"></span></h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p class="{{htmlId}}_Cost"></p>',
+		       '<p class="{{htmlId}}cost"></p>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -310,8 +310,8 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 			console.warn("Called with action: 'current' from 'createResourceMenuItem', while looping over:");
 			console.warn(data)
 		}
-		if (!Templates.uiFunctions.registerElement(data, 'baseCapacity')) {
-			console.warn("Called with action: 'baseCapacity' from 'createResourceMenuItem', while looping over:");
+		if (!Templates.uiFunctions.registerElement(data, 'capacity')) {
+			console.warn("Called with action: 'capacity' from 'createResourceMenuItem', while looping over:");
 			console.warn(data)
 		}
 		return html;
@@ -325,7 +325,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	var createMenuItem = function(data) {
 		// Is this item a resource?  Add the applicable template to the menu
 		var html = "";
-		if (data.id in Game.resources.entries && data.baseCapacity) {
+		if (data.id in Game.resources.entries && data.capacity) {
 			html = createResourceMenuItem(data);
 		} else {
 			html = createNonResourceMenuItem(data);

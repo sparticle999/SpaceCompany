@@ -213,7 +213,7 @@ Templates.objectConstructor.UiFunctions = function() {
      * @return {boolean}         True on success.
      */
     this.hide = function(itemId) {
-        var node = document.querySelector('#'+page+'_'+itemId+'_Container');
+        var node = document.querySelector('.'+itemId+'_Container');
         if ((node == 'undefined')) {
             console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but couldn't find it.")
             return false;
@@ -285,11 +285,23 @@ Templates.objectConstructor.UiFunctions = function() {
             console.warn("Trying to show the element with id='"+DOMid+"', but couldn't find it.")
             return false;
         }
-        console.log("Unhiding: "+node.id)
         if (node.classList.contains("hidden")) {
+            // If this is a menu item, remove it from hidden, add it to noncollapsed
+            if (DOMid.endsWith("_ne")) {
+                noncollapsed = addElement(noncollapsed, DOMid);
+            // If this is a menu header, uncollapse the entire menu
+            } else if (DOMid.endsWith("_collapse")) {
+                var node = document.getElementById(DOMid);
+                var expand = node.classList.contains('collapsed');
+                if (expand) {this.toggleHeader(DOMid);}
+            } else {
+                unhidden = addElement(unhidden, node.id);
+            }
             node.classList.remove("hidden");
             hidden = removeElement(hidden, node.id);
-            unhidden = addElement(unhidden, node.id);
+
+            
+            
         }
         return true;
     }
@@ -345,6 +357,7 @@ Templates.objectConstructor.UiFunctions = function() {
      * @return {Boolean}           True on success.
      */
     this.setClassText = function(setText, target) {
+        //console.log(setText+" - "+target)
         if (typeof setText == 'undefined') {
             console.warn("The text set to be added to '"+target+"' is undefined.")
             return false;
@@ -373,6 +386,7 @@ Templates.objectConstructor.UiFunctions = function() {
         nodes.forEach(function(node) {
             // loop through the downTopDom array and unhide all elements
             downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));
+            Templates.uiFunctions.show(node.id);
             // Setting the internal vars is done by the show-function.
         })
         return true;
@@ -424,6 +438,7 @@ Templates.objectConstructor.UiFunctions = function() {
      * @param  {String} DOMid The id of the node that was clicked
      */
     this.toggleHeader = function(DOMid) {
+        console.log(DOMid);
         // BUG only unhide/rehide unlocked menu items
         var node = document.getElementById(DOMid);
         var expand = node.classList.contains('collapsed');
@@ -431,9 +446,9 @@ Templates.objectConstructor.UiFunctions = function() {
         // If we need to expand, match topDownDom entries with collapsed, otherwise noncollapsed
         if (expand) { var whitelist = collapsed; } else { var whitelist = noncollapsed; }
         // Filter todo against the whitelist.
-        todo = todo.filter( i =>!contains(whitelist, i) )
+        todo = todo.filter( i =>contains(whitelist, i) )
         // Send the list to the animator.
-        this.AnimateToggle(todo, expand);
+        AnimateToggle(todo, expand);
         node.classList.toggle('collapsed');
         // Adjust aria-expanded
         node.setAttribute('aria-expanded', expand);
@@ -472,18 +487,26 @@ Templates.objectConstructor.UiFunctions = function() {
     //////////////////////
     // Page Interaction //
     //////////////////////
-    this.updateElements = function() {};
     this.refreshElements = function(action, resource) {
-        var refresh = [];
+        var refreshActions = [];
         // If an action is provided, only perform that one.
-        if (typeof action != 'undefined' && (action in registeredElements)) {
-            refresh.push(action);
+        if (typeof action !== 'undefined' && (action in registeredElements)) {
+            refreshActions.push(action);
         // Otherwise, perform all actions.
         } else {
-            refresh = Object.keys(registeredElements);
+            refreshActions = Object.keys(registeredElements);
         }
-        // if a resource is provided, only perform its applicable actions
-        //refresh.forEach(function(a) {})
+        if (typeof resource === 'undefined') {resource = 'all'}
+        // Loop through all registeredElements with refreshActions
+        // and execute those which are requested
+        refreshActions.forEach(function(act) {
+            Object.keys(registeredElements[act]).forEach(function(res) {
+                if (res.toLowerCase() === resource.toLowerCase() || resource == 'all') {
+                    var obj = registeredElements[act][res].object;
+                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                }          
+            })
+        })
     }
 
     /**
@@ -501,52 +524,12 @@ Templates.objectConstructor.UiFunctions = function() {
             console.warn(object);
             return false;
         }
+        action = action.toLowerCase();
         // Store the link between action and object
         if (!(action in registeredElements)) {registeredElements[action] = {};}
         var id = object.id;
         if (!(id in registeredElements[action])) {registeredElements[action][id] = {};}
         registeredElements[action][id].object = object;
-        registeredElements[action][id].category = object.category;
-        registeredElements[action][id].resource = object.resource;
-        // Create the update objects
-        if (!('ui' in object)) {object.uiUpdate = {};}
-        switch (action) {
-            case 'perSecond':
-                // Special cases here
-                if (object.resource == "energy") {
-                    // The function that formats the ps number
-                    object.uiUpdate.perSecondMask = Game.settings.getMask(action, object.resource);
-
-
-                } else if (object.resource == "science") {
-                    object.uiUpdate.perSecondMask = function(number) {
-
-                    }
-                }
-
-
-                // Format the ps number
-                object.uiUpdate.perSecondCurrent = function() {return this.perSecondMask(object.perSecond);}
-                // Refresh the ps number on 
-                object.uiUpdate.perSecondRefresh = function() {
-
-                }
-                break;
-            case 'current':
-                break;
-            case 'baseCapacity':
-                // update nextStorage as well
-                break;
-            case 'cost':
-                break;
-            case 'perClick':
-                break;
-            case 'capacity':
-                break;
-            default:
-                console.warn("There are no methods defined for the action: "+action+". Please add some in gameTabUI.js - registerElement.");
-                return false;
-        }
         return true;
     }
     /**
@@ -601,7 +584,7 @@ Templates.objectConstructor.UiFunctions = function() {
 
                 // Match the menu headers - #resourcesTab_energy_collapse
                 case (match = getCase(id, "^(.*)Tab_(.*)_collapse$")).input:
-                    funct = new Function("Templates.uiFunctions.toggleHeader('"+page+"', '"+id+"')");
+                    funct = new Function("Templates.uiFunctions.toggleHeader('"+id+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     header = id;
                     break;
@@ -610,7 +593,11 @@ Templates.objectConstructor.UiFunctions = function() {
                     funct = new Function("Templates.uiFunctions.clickItem('"+id+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     // if the node isn't hidden, add it to noncollapsed.
-                    if (!node.classList.contains("hidden")) {noncollapsed = Templates.uiFunctions.addElement(noncollapsed, id);}
+                    if (node.classList.contains("hidden") && node.classList.contains("collapsed")) {
+                        //collapsed = addElement(collapsed, id);
+                    } else {
+                        //noncollapsed = addElement(noncollapsed, id);
+                    }
                     item = id;
                     createMenuTopDownDom(page+"Tab", header, item);
                     break;
@@ -623,7 +610,11 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(resbld)_(energyT1)_buy_(1)
                 case (match = getCase(id, "^(.*)_(.*)_(.*)_buy_(.*)$")).input:
-                    funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
+                    if (match[1]=='tech') {
+                        funct = new Function("Game.tech.buyTech('"+match[3]+"', "+parseInt(match[4])+")");
+                    } else {
+                        funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
+                    }
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
                 // Match (resources)_(resbld)_(energyT1)_destroy_(1)

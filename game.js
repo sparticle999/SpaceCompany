@@ -58,19 +58,9 @@ var Game = (function() {
         legacyRefreshUI();
 
         //self.ui.updateBoundElements(delta);
-        Templates.uiFunctions.updateElements('gain');   // can get away with only calling after rebirth
-        Templates.uiFunctions.updateElements('perSecond');
-        Templates.uiFunctions.updateElements('current');
-        Templates.uiFunctions.updateElements('storage');    // Can get away with only calling manually after storage bought
-        Templates.uiFunctions.updateElements('nextStorage');// Can get away with only calling manually after storage bought
-        Templates.uiFunctions.updateElements('resbldCount');// Can get away with only calling manually after building bought
-        Templates.uiFunctions.updateElements('stoCount');   // Can get away with only calling manually after stobld bought
-        Templates.uiFunctions.updateElements('resbldCost'); // Can get away with only calling manually after building bought
-        Templates.uiFunctions.updateElements('stoCost');     // Can get away with only calling manually after stobld bought
-        Templates.uiFunctions.updateElements('storageTime');
-        Templates.uiFunctions.updateElements('storageCost');  // Can get away with only calling manually after storage bought
 
         self.resources.update(delta);
+        Game.resources.updateResourcesPerSecond();
         self.buildings.update(delta);
         self.tech.update(delta);
         self.solar.update(delta);
@@ -216,27 +206,35 @@ var Game = (function() {
      * @param  {string} cat  The category we'll base the link on
      * @param  {Object} to   The target Object for linking
      * @param  {string} con  The container to collect the linked Object in
+     * Runthrough: Game.resources.entries, 'category', Game.resourceCategoryData, 'items'
      */
     instance.combineGameObjects = function(from, cat, to, con) {
+        // Obj keys: [metal, energy] -> metal
         Object.keys(from).map(function(item) {
+            // if Game.resources.entries.metal doesn't contain 'category', then complain
             if (!contains(Object.keys(from[item]), cat)) {
                 console.log("Object 'from'->"+item+" doesn't contain attribute: "+cat);
-                //console.log(from);
                 return false;
             }
+            // value = Game.resources.entries.metal.category = earth
             var value = from[item][cat];
+            // if 'con' is set
             if (con) {
+                // If earth not in Game.resourceCategoryData, create Game.resourceCategoryData.earth
                 if (!(value in to)) {to[value] = {};}
+                // If 'items' not in to.earth, create to.earth.items
                 if (!(con in to[value])) {to[value][con] = {};}
+                // if 'metal' not in to.earth.items, create to.earth.items.metal
                 if (!(item in to[value][con])) {to[value][con][item] = {};}
+                // set Game.resourceCategoryData.earth.items.metal to Game.resources.entries.metal
                 to[value][con][item] = from[item]    
             } else {
                 if (!(value in to)) {to[value] = {};}
                 if (!(item in to[value])) {to[value][item] = {};}
                 to[value][item] = from[item]        
             }
-    })
-  }
+        })
+    }
 
     /**
      * Creates a hierarchical Object with data per page -> category -> subcategory
@@ -262,15 +260,25 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
-        // Link Game.solar.entries category to Game.solarCategoryData
-        this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
-        console.log(Game.machinesCategoryData)
+        this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
+        this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
+        // Link Game.solar.entries category to Game.resourceCategoryData
+        //this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
+        // Link it again, a level deeper and link on id
+        //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
+
+
         // Link Game.machinescategoryData page to Game.pages
-        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        //this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
+        // Link Game.solar.entries category to Game.solarCategoryData
+        //this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
+        //console.log(Game.machinesCategoryData)
+
         // Link Game.resources.entries category to Game.machinesCategoryData
-        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+        //this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
 
         console.log(Game.pages)
+
 
     }
 
@@ -306,8 +314,8 @@ var Game = (function() {
 
         self.deleteInterval("Loading");
 
-        registerLegacyBindings();
-        self.ui.updateAutoDataBindings();
+        //registerLegacyBindings();
+        //self.ui.updateAutoDataBindings();
 
 
         // Initialise data first
@@ -332,15 +340,14 @@ var Game = (function() {
         self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
-        self.machinesUI.initialise();
+        //self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        //self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
-        Game.ui.updateAutoDataBindings();
-        // Show the resource tab:
-        Templates.uiFunctions.unlock(Game.buildings.entries.metalT1.htmlIdContainer);
-        Templates.uiFunctions.unlock(Game.buildings.entries.gemT1.htmlIdContainer);
-        Templates.uiFunctions.unlock(Game.buildings.entries.woodT1.htmlIdContainer);
+        // Refresh all actions
+
+        //Game.ui.updateAutoDataBindings();
+        
 
         console.log("test from start");
         console.log("storage");
@@ -386,6 +393,11 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.log("Initialisation Complete");
+        Templates.uiFunctions.refreshElements('all', 'all');
+        Templates.uiFunctions.unlock('metalT1');
+        Templates.uiFunctions.unlock('woodT1');
+        Templates.uiFunctions.unlock('gemT1');
+        document.getElementById('resourcesTab').click();
 
     };
 
