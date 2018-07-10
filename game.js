@@ -51,7 +51,6 @@ var Game = (function() {
 
     instance.fastUpdate = function(self, delta) {
         refreshWonderBars();
-        checkRedCost();
 
         Game.tech.updateEfficiencies();
 
@@ -393,7 +392,7 @@ var Game = (function() {
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
         console.log("Initialisation Complete");
-        Templates.uiFunctions.refreshElements('all', 'all');
+        //Templates.uiFunctions.refreshElements('all', 'all');
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
         Templates.uiFunctions.unlock('gemT1');

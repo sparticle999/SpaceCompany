@@ -14,17 +14,18 @@ Game.tech = (function(){
     }
 
     function UpdateCost(id) {
-        var previous = -1;
+        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.tech.entries[id];
-            if (obj.cost == previous) {return;}
+            if (new Date() - previous < 250) {return;}
             var value = Game.settings.doFormat('cost', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
-            previous = obj.cost;
+            previous = new Date();
             return true;
         }
     }
+
 
 
     var instance = {};
@@ -117,6 +118,14 @@ Game.tech = (function(){
                 Game.tech.tabUnlocked = true; 
             }
         }
+        // Update the cost of techs
+        Object.keys(Game.tech.entries).forEach(function(tech) {
+            let cost = Game.tech.entries[tech].cost;
+            let amount = Game.tech.entries[tech].current;
+            let newCost = {};
+            Object.keys(cost).forEach(c => newCost[c] = Math.floor(cost[c]*Math.pow(1.1, amount)));
+            Game.tech.entries[tech].cost = newCost;
+        })
     };
 
     // handle loading a save with dataVersion 1
@@ -152,6 +161,8 @@ Game.tech = (function(){
                     this.gainTech(id, data.tech.i[id].current);
                     // we can assume that the tech is unlocked if it has been purchased
                     this.entries[id].unlocked = true;
+                    // unlock the tech that this tech unlocks
+                    this.unlockNewTechs(id);
                 } else if (typeof data.tech.i[id].unlocked !== 'undefined') {
                     this.entries[id].unlocked = data.tech.i[id].unlocked;
                 }
@@ -172,9 +183,20 @@ Game.tech = (function(){
 
 
 
+
+    instance.unlockNewTechs = function(id) {
+        var tech = this.getTechData(id);
+        if (typeof tech !== 'undefined') { tech.unlocked = true; }
+        // newTechs: ['unlockOil'],
+        if ('newTechs' in tech) {
+            var newTechs = tech.newTechs;
+            // .unlockOil_Container => unlock('unlockOil')
+            newTechs.forEach(t => Templates.uiFunctions.unlock(t));
+        }
+    };
     instance.doPurchase = function(Obj) {
         // Loop over the costs and subtract them from .current
-        Object.keys(Obj.cost).forEach(c => Game.resources.entries[c].current += this.getCost(Obj.cost[c], Obj.current))
+        Object.keys(Obj.cost).forEach(c => Game.resources.entries[c].current -= this.getCost(Obj.cost[c], Obj.current))
         // increase its current
         Obj.current++
         // Update the UI - Let's recalculate everything in case of efficiency research
@@ -196,9 +218,6 @@ Game.tech = (function(){
         return false;
     }
 
-
-
-
     // return true if the tech is purchased successfully, false otherwise
     instance.buyTech = function(id, count) {
         if (!(id in this.entries)) {return false;}
@@ -212,13 +231,11 @@ Game.tech = (function(){
             this.doPurchase(this.entries[id]);
             // Perform onBought
             this.applyTechEffect(id);
+            // Unlock new techs.
+            this.unlockNewTechs(id);
             // decrease count
             count--;
         }
-
-        
-
-
     };
 
     instance.gainTech = function(id, count) {
@@ -276,7 +293,7 @@ Game.tech = (function(){
 
     instance.applyTechEffect = function(id) {
         var data = this.entries[id];
-        if(typeof data.onApply !== 'undefined') {
+        if('onApply' in data) {
             data.onApply(data);
         }
     };

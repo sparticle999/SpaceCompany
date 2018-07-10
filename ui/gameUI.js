@@ -135,8 +135,14 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		   '<td colspan="2" style="border:none;">',
 		   '<h2 class="default btn-link">{{name}}</h2>',
 		   '<span>{{{desc}}}</span>',
+		     '{{#if storUpgrades}}',
 		     '<br>',
 		     '<br>',
+		     '&#8227; Remaining time until&nbsp;&nbsp;<select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>&nbsp;&nbsp;',
+ 			 'storage: <b><span id="'+this.page+'_{{htmlId}}_SelectStorage_time">N/A</span></b>',
+		     '<br>',
+		     '<br>',
+		     '{{/if}}',
 		     '{{#if manualgain}}',
 		     '<div class="gainButton">',
 		       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
@@ -145,7 +151,6 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		       '<br>',
 				//Creating 1 Meteorite Costs 3 Plasma.
 			   '<span class="{{htmlId}}gainbutton_cost"></span>',
-		       '<br>',
 		     '</div>',
 		     '{{/if}}',
 		   '</td>',
@@ -154,14 +159,10 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		 '<tr class="storageUpgrade hidden">',
 		   '<td>',
 		     '<h3 class="default btn-link">Storage Upgrade</h3>',
-		     '<span>',
-		       'Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.',
-		       '<br>',
-		     'Time remaining until&nbsp;&nbsp;<select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>&nbsp;&nbsp;',
- 			 'storage: <b><span id="'+this.page+'_{{htmlId}}_SelectStorage_time">N/A</span></b>',
- 			 '<br>',
-		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
+		     '<span>Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.</span>',
 		     '<br>',
+		     '<br>',
+		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
 		     '<button id="'+this.page+'_{{htmlId}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
 		   '</td>',
 		 '</tr>',
@@ -183,7 +184,8 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p class="{{htmlId}}cost"></p>',
+		       '<br>',
+		       '<div class="{{htmlId}}cost">Please enable javascript.</div>',
 		     '</span>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 			 '<span class="multiBuy hidden">',
@@ -271,7 +273,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 				console.warn("Called with action: 'perClick' from 'createPane', while looping over:");
 				console.warn(data)
 			}
-		}
+		}		
 		// 	-> List storBuildings?
 		if ('storBuildings' in data) {
 			// Attach the storage buildings to the title

@@ -310,7 +310,7 @@ Game.resourceData = (function () {
      ******************************/
 
     instance.science = {
-        name: 'Science Production',
+        name: 'Science',
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
         category: 'science',

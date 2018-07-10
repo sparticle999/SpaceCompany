@@ -170,25 +170,43 @@ Game.settings = (function(){
             switch(key) {
                 default:
                     var cost = object.cost;
-                    var input = [];
-                    Object.keys(cost).forEach(c => input.push(Game.settings.format(cost[c], 0).toString()+" "+c));
-                    if (input.length > 1) {
-                        input = "Cost: "+input.slice(0, input.length-1).join(', ')+" and "+input[input.length-1];
-                    } else {
-                        input = "Cost: "+input[0];
-                    }
-                    return input;
+                    var result = '<dl><dt>Cost:</dt>';
+                    Object.keys(cost).forEach (function(c) {
+                        if (cost[c] > Game.resources.entries[c].capacity) {
+                            time = "Insufficient storage".bold();
+                        } else {
+                            var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
+                            time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                        }
+                        result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
 
-                
+                    });
+                    cost = object.resourcePerSecond;
+                    if (!('resourcePerSecond' in object)) {return result+'<dl>';}
+                    var input = '';
+                    var output = '';
+                    console.log(object);
+                    Object.keys(cost).forEach (function(c) {
+                        if (cost[c] > 0) {
+                            output += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+Game.settings.format(cost[c], 2).toString()+"</dd>";
+                        } else {
+                            var tmp = Game.settings.format(Math.abs(cost[c]), 0).toString();
+                            if (Math.abs(cost[c] > Game.resources.entries[c].perSecond)) {
+                                if (Game.settings.entries.boldEnabled) {tmp = tmp.bold();}
+                                tmp = tmp.fontcolor('red');
+                            } else {tmp = tmp.fontcolor('green');}
+                            input += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+tmp+"</dd>";
+                        }
+                    });
+                    if (output == "") {output += "<dd>&#8227; None</dd>"}
+                    if (input == "") {input += "<dd>&#8227; None</dd>"}
+                    output = '<dl><dt>Output:</dt>'+output;
+                    input = '<dl><dt>Input:</dt>'+input;
+                    result += input+output+'</dl>';
+                    return result;
+
             }
-        ///////////////////////////////////////////
-        // Display of any input, similar to cost //
-        ///////////////////////////////////////////
-        } else if (action == 'input') {
-            switch(key) {
-                default:
-                
-            }
+
         /////////////////////////////////////////
         // perClick gain number of gainButtons //
         /////////////////////////////////////////
@@ -208,88 +226,6 @@ Game.settings = (function(){
     instance.format = function(value, digit) {
         var format = this.entries.formatter || 'shortName';
         return Game.utils.formatters[format](value.toFixed(digit || 0));
-    };
-
-    instance.turnRedOnNegative = function(value, id) {
-        // have the elementhandler take care of this.
-/*
-        var element = $('#'+id+'_display');
-        if(element.length === 0) {
-            console.error("Element not found: " + id);
-            return;
-        }
-
-        if(value < 0){
-            element.addClass('red');
-            if(this.entries.boldEnabled === true){
-                element.addClass('bold');
-            } else {
-                element.removeClass('bold');
-            }
-
-            return true;
-        }
-        else{
-            element.removeClass('red');
-            element.removeClass('bold');
-            return false;
-        }
-*/
-        return true;
-    };
-
-    instance.turnRed = function(value, target, id) {
-        // var element = $('#' + id);
-        // if(element.length === 0) {
-        //     console.error("Element not found: " + id);
-        //     return;
-        // }
-
-        // if(value < target){
-        //     element.addClass('red');
-        //     if(this.entries.boldEnabled === true){
-        //         element.addClass('bold');
-        //     } else {
-        //         element.removeClass('bold');
-        //     }
-        // }
-        // else{
-        //     element.removeClass('red');
-        //     element.removeClass('bold');
-        // }
-    };
-
-    instance.turnRedOrGreen = function(value, target, id) {
-        // have the elementhandler take care of this.
-/*
-        console.log(value)
-        console.log(target)
-        console.log(id)
-        var element = $('#'+id+'_current');
-        if(element.length === 0) {
-            console.error("Element not found: " + id);
-            return;
-        }
-
-        if(value === 0){
-            element.addClass('red');
-            if(this.entries.boldEnabled === true){
-                element.addClass('bold');
-            } else {
-                element.removeClass('bold');
-            }
-        }
-        else{
-            element.removeClass('red');
-            element.removeClass('bold');
-        }
-
-        if(value >= target && target >= 0) {
-            element.addClass('green');
-        } else {
-            element.removeClass('green');
-        }
-*/
     };
 
     instance.save = function(data) {
@@ -312,14 +248,10 @@ Game.settings = (function(){
 
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);
-        $('#boldEnabled').prop('checked', this.entries.boldEnabled);
-        $('#sidebarCompressed').prop('checked', this.entries.sidebarCompressed);
-        $('#notificationsEnabled').prop('checked', this.entries.notificationsEnabled);
-        $('#saveNotifsEnabled').prop('checked', this.entries.saveNotifsEnabled);
-        $('#gainButtonsHidden').prop('checked', this.entries.gainButtonsHidden);
-        $('#redDestroyButtons').prop('checked', this.entries.redDestroyButtons);
-        $('#hideCompleted').prop('checked', this.entries.hideCompleted);
 
+
+        // Bold enabled
+        document.getElementById('boldEnabled').checked = Game.settings.entries.boldEnabled;
 
         // (un)Compress the sidebar
         if (Game.settings.entries.sidebarCompressed) {
@@ -327,24 +259,34 @@ Game.settings = (function(){
         } else {
             Templates.uiFunctions.addStyle('sideTab', 'height', '60px');
         }
-        // (un)Red the destroy buttons
-        if (Game.settings.entries.redDestroyButtons) {
-            Templates.uiFunctions.addStyle('destroy', 'backgroundColor', 'red');
-        } else {
-            Templates.uiFunctions.removeStyle('destroy', 'backgroundColor');
-        }
+        document.getElementById('sidebarCompressed').checked = Game.settings.entries.sidebarCompressed;
+
+        // Notifications Enabled
+        document.getElementById('notificationsEnabled').checked = Game.settings.entries.notificationsEnabled;
+
         // (un)Hide the gain button
         if (Game.settings.entries.gainButtonsHidden) {
             Templates.uiFunctions.addClass('hidden', 'gainButton');
         } else {
             Templates.uiFunctions.removeClass('hidden', 'gainButton');
         }
+        document.getElementById('gainButtonsHidden').checked = Game.settings.entries.gainButtonsHidden;
+
+        // (un)Red the destroy buttons
+        if (Game.settings.entries.redDestroyButtons) {
+            Templates.uiFunctions.addStyle('destroy', 'backgroundColor', 'red');
+        } else {
+            Templates.uiFunctions.removeStyle('destroy', 'backgroundColor');
+        }
+        document.getElementById('redDestroyButtons').checked = Game.settings.entries.redDestroyButtons;
+
         // (un)Hide completed tabs - This needs to be called again after a tab is actually completed
         if (Game.settings.entries.hideCompleted) {
             Templates.uiFunctions.addClass('hidden', 'completed');
         } else {
             Templates.uiFunctions.removeClass('hidden', 'completed');
         }
+        document.getElementById('hideCompleted').checked = Game.settings.entries.hideCompleted;
 
         
         for(var id in autoSaveMapping) {

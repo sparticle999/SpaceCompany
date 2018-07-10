@@ -259,7 +259,7 @@ function adjustCost(resource, cost, gain) {
 	return {g: gainAbs, c: costAbs};
 }
 }
-
+/*
 function checkRedCost() {
 	for (var id in RESOURCE) {
 		if(id.indexOf("RocketFuel") == -1){
@@ -471,7 +471,7 @@ function checkRedCost() {
 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.aero.count, 15, "roc_tier1Rocket_aero_c");
 	}
 }
-
+*/
 function refreshResources(){
 	if(contains(resourcesUnlocked, "meteoriteWonderNav")){
 		document.getElementById("wonderFloor2Nav").className = "sideTab";

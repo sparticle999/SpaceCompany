@@ -451,12 +451,12 @@ Game.prestigeData = (function(){
 		category: "kitrinos",
 		opinion: 17,
 		onApply: function(){
-			document.getElementById("sto_energyT5").className = "";
+			Templates.uiFunctions.unlock('energyStorageT5')
 		},
 		remove: function(){
-	    	document.getElementById("sto_energyT5").className = "hidden";
-	    	batteryT5 = 0;
-	    	updateCost();
+			Templates.uiFunctions.hide('energyStorageT5')
+	    	Game.storageBuildingData.energyStorageT5.current = 0;
+	    	//updateCost();
 	    },
 		achieved: false
 	};
@@ -468,10 +468,10 @@ Game.prestigeData = (function(){
 		category: "kitrinos",
 		opinion: 20,
 		onApply: function(){
-			document.getElementsByClassName("multiBuy").className = "multiBuy";
+			Templates.uiFunctions.unlock('multiBuy')
 		},
 		remove: function(){
-	    	document.getElementsByClassName("multiBuy").className = "multiBuy hidden";
+			Templates.uiFunctions.hide('multiBuy')
 	    },
 		achieved: false
 	};
@@ -485,15 +485,20 @@ Game.prestigeData = (function(){
 		onApply: function(){
 			for(var id in Game.resources.entries){
 				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
-					Game.buildings.entries[id + "T5"].unlocked = true;
-			}
-		},
+					if (id+'T5' in Game.buildings.entries) {
+						Game.buildings.entries[id + "T5"].unlocked = true;
+					}
+					
+				}
+			},
 		remove: function(){
 			for(var id in Game.resources.entries){
 				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
-					Game.buildings.entries[id + "T5"].unlocked = false;
-			}
-	    },
+					if (id+'T5' in Game.buildings.entries) {
+						Game.buildings.entries[id + "T5"].unlocked = false;
+					}
+				}
+		    },
 		achieved: false
 	};
 
