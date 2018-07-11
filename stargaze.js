@@ -93,10 +93,11 @@ Game.stargaze = (function(){
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
+      Game.statistics.add("rebirthCount", 1);
 
 			this.resetVars();
 			this.hideMachines();
-
+      
 			updateCost();
 			updateDysonCost();
 			updateFuelProductionCost();
