@@ -207,7 +207,7 @@ var Game = (function() {
      * @param  {string} con  The container to collect the linked Object in
      * Runthrough: Game.resources.entries, 'category', Game.resourceCategoryData, 'items'
      */
-    instance.combineGameObjects = function(from, cat, to, con) {
+     instance.combineGameObjects = function(from, cat, to, con) {
         // Obj keys: [metal, energy] -> metal
         Object.keys(from).map(function(item) {
             // if Game.resources.entries.metal doesn't contain 'category', then complain
@@ -238,7 +238,7 @@ var Game = (function() {
     /**
      * Creates a hierarchical Object with data per page -> category -> subcategory
      */
-    instance.combineAllGameObjects = function() {
+     instance.combineAllGameObjects = function() {
         Game.pages = {};
         // link Game.resourceDataCategories page to Game.pages
         // This creates the Game.pages.resources.earth
@@ -382,6 +382,7 @@ var Game = (function() {
 
         // Display what has changed since last time
         self.updates.initialise();
+        self.addCredits(self.donatorData);
 
         // Then start the main loops
         self.createInterval("Fast Update", self.fastUpdate, 100);
@@ -398,6 +399,15 @@ var Game = (function() {
         Templates.uiFunctions.unlock('gemT1');
         document.getElementById('resourcesTab').click();
 
+    };
+
+    instance.addCredits = function(data){
+        var lists = ["patreon", "discordMod", "contributor"];
+        for(var i = 0; i < lists.length; i++){
+            for(var j = 0; j < data[lists[i]].length; j++){
+                $("#" + lists[i]).append("<li>" + data[lists[i]][j] + "</li>");
+            }
+        }
     };
 
     instance.loadAnimation = function(self, delta) {
