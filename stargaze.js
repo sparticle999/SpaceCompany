@@ -11,6 +11,7 @@ Game.stargaze = (function(){
 	instance.rebirthStart = [];				// Things you start with
 	instance.rebirthUnlocked = [];			// Things that start unhidden
 	instance.rebirthChildUnlocked = [];		// Things that have children that start unhidden
+  instance.rebirthCount = 0;
 
 	instance.respecCount = 3;				// Respecs available
 
@@ -93,10 +94,11 @@ Game.stargaze = (function(){
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
+      Game.statistics.add("rebirthCount", 1);
 
 			this.resetVars();
 			this.hideMachines();
-
+      
 			updateCost();
 			updateDysonCost();
 			updateFuelProductionCost();

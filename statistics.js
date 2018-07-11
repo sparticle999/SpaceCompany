@@ -24,10 +24,11 @@ Game.statistics = (function(){
         this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places Explored", 10);
         this.createStatistic("wondersBuilt", Game.constants.statisticCategoryUnlockable, "Wonders Built", 4);
         this.createStatistic("wondersActivated", Game.constants.statisticCategoryUnlockable, "Wonders Activated", 9);
+        this.createStatistic("rebirthCount", Game.constants.statisticCategoryUnlockable, "Times rebirthed", 0);  
 
         this.createStatistic("sessionTime", Game.constants.statisticCategoryTiming, "Session time", 0, STATISTIC_TYPE.TIME);
         this.createStatistic("timePlayed", Game.constants.statisticCategoryTiming, "Time Played", 0, STATISTIC_TYPE.TIME);
-
+        
         // Set some defaults
         this.add('resourcesUnlocked', 3);
 
