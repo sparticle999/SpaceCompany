@@ -185,7 +185,6 @@ Game.settings = (function(){
                     if (!('resourcePerSecond' in object)) {return result+'<dl>';}
                     var input = '';
                     var output = '';
-                    console.log(object);
                     Object.keys(cost).forEach (function(c) {
                         if (cost[c] > 0) {
                             output += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+Game.settings.format(cost[c], 2).toString()+"</dd>";

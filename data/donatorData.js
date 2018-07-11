@@ -3,12 +3,12 @@ Game.donatorData = (function(){
 	var instance = {};
 
 	instance.planets = [
-	"Alexander Blair",
-	"Jordan Taylor",
-	"Sup Dude",
-	"Austerror",
-	"Idgo",
-	"Katorone",
+	"Alexander Blair's Planet",
+	"Jordan Taylor's Planet",
+	"Cybertron", // Sup Dude
+	"Austerror's Planet", // Austerror
+	"Idgo's Planet", // Idgo
+	"Katorone's Planet", // Katorone
 	];
 
 	instance.patreon = [

@@ -275,10 +275,6 @@ var Game = (function() {
 
         // Link Game.resources.entries category to Game.machinesCategoryData
         //this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
-
-        console.log(Game.pages)
-
-
     }
 
     instance.handleOfflineGains = function(offlineTime) {

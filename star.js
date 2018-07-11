@@ -40,7 +40,7 @@ Game.interstellar.stars = (function(){
 
             for(var i = 0; i < data.planets; i++){
                 if(Game.donatorData.planets[nameCount]){
-                    var name = Game.donatorData.planets[nameCount] + "'s Planet";
+                    var name = Game.donatorData.planets[nameCount];
                     nameCount += 1;
                 } else {
                     var name = this.entries[starId].name + " " + String.fromCharCode(97 + i);
@@ -49,6 +49,7 @@ Game.interstellar.stars = (function(){
                     id: starId + "_" + i,
                     buildings: buildings,
                 }
+                console.log(name)
             }
             
         }
