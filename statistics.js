@@ -17,6 +17,7 @@ Game.statistics = (function(){
         for(var i = 1; i <= Game.constants.maxTier; i++) {
             this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines Owned");
         }
+        this.createStatistic("rebirthCount", Game.constants.statisticCategoryGeneral, "Rebirth Count", 0, STATISTIC_TYPE.NUMBER);
 
         this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 7);
         this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);

@@ -57,6 +57,7 @@ Game.stargaze = (function(){
 		if(check){
 			this.entries.darkMatter.current += this.entries.darkMatter.potential;
 			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.potential + " Dark Matter from rebirthing into your new life!");
+			Game.statistics.add("rebirthCount", 1);
 
 			Game.tech.tabUnlocked = false;
 			Game.solar.tabUnlocked = false;
