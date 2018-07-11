@@ -335,8 +335,8 @@ var Game = (function() {
         self.techUI.initialise();
         self.solarUI = new Templates.createPage('solar', 'Solar System BETA', Game.pages.solar);
         self.solarUI.initialise();
-        self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
-        self.solCenter.initialise();
+        // self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
+        // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
         //self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
@@ -397,7 +397,7 @@ var Game = (function() {
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
         Templates.uiFunctions.unlock('gemT1');
-        document.getElementById('resourcesTab').click();
+        document.getElementById('resourcesTab_link').click();
 
     };
 
