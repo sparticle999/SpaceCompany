@@ -121,7 +121,7 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.factionStarTemplate = Handlebars.compile(
-            ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="1">',
+            ['<tr id="{{htmlId}}_conquer" class="hidden"><td colspan="1" id="{{htmlId}}_info">',
                 '<h3 class="default btn-link" id="{{htmlId}}_name">{{name}}: <span id="{{htmlId}}_owned">Protected</span></h3>',
                 '<h5>',
                     'Distance: {{distance}}<br>',
@@ -250,6 +250,11 @@ Game.interstellarUI = (function(){
                 '<h4>{{resource2}}:</h4>',
                 '<span class="star_{{resource2}}_prod">0</span> / Second',
                 '</td></tr>'].join('\n'));
+
+        instance.planetTemplate = Handlebars.compile(
+            ['',
+            '',
+            '',].join('\n'));
 
         instance.invadeShipsTemplate = Handlebars.compile(
             ['<h5>{{name}}: <span class="{{entryName}}Active">0</span>/<span class="{{entryName}}Count">0</span></h5>',
@@ -413,7 +418,11 @@ Game.interstellarUI = (function(){
                 if(data.owned){
                     $('#star_' + id + '_owned').text("Conquered");
                     document.getElementById('star_' + id + '_conquerButtons').className = "hidden";
+                    for(var planet in data.items){
+                        console.log(planet);
+                    }
                 } else {
+                    console.log("unlock");
                     $('#star_' + id + '_owned').text("Protected");
                     document.getElementById('star_' + id + '_conquerButtons').className = "";
 

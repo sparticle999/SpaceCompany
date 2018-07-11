@@ -9,19 +9,47 @@ Game.interstellar.stars = (function(){
     instance.systemsConquered = 0;
     
     instance.initialise = function() {
-        for (var id in Game.starData) {
-            var data = Game.starData[id];
+        var nameCount = 0;
+        for (var starId in Game.starData) {
+            var data = Game.starData[starId];
             
             this.starCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                htmlId: 'star_' + id,
+            this.entries[starId] = $.extend({}, data, {
+                id: starId,
+                htmlId: 'star_' + starId,
                 current: 0,
                 spy: 0,
                 explored: false,
                 owned: false,
+                items: {},
                 displayNeedsUpdate: false,
             });
+
+            var buildings = {
+                repair: {
+                    id: "repair",
+                    name: "Repair War Damages",
+                    current: 0,
+                },
+                test: {
+                    id: "test",
+                    name: "Test",
+                    current: 0,
+                }
+            }
+
+            for(var i = 0; i < data.planets; i++){
+                if(Game.donatorData.planets[nameCount]){
+                    var name = Game.donatorData.planets[nameCount] + "'s Planet";
+                    nameCount += 1;
+                } else {
+                    var name = this.entries[starId].name + " " + String.fromCharCode(97 + i);
+                }
+                this.entries[starId].items[name] = {
+                    id: starId + "_" + i,
+                    buildings: buildings,
+                }
+            }
             
         }
 
@@ -49,6 +77,10 @@ Game.interstellar.stars = (function(){
                 data.displayNeedsUpdate = true;
             }
         }
+    };
+
+    instance.terraformPlanet = function(id, planet){
+
     };
 
     instance.getStarData = function(id) {
