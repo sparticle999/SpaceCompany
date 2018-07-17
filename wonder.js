@@ -72,19 +72,23 @@ Game.wonder = (function(){
     	}
     };
 
+    instance.calcCost = function(data, resource){
+        return Math.floor(data.cost[resource.toString()] * Math.pow(1.1,(data.current || 0)));
+    };
+
     instance.checkCost = function(data){
-    	if (typeof data === 'undefined') {return false;}
+        if (typeof data === 'undefined') {return false;}
         var resourcePass = 0;
         for(var resource in data.cost){
             var res = Game.resources.getResourceData(resource);
-            if(res.current >= this.calcCost(data, resource, "buildingData")){
+            if(res.current >= this.calcCost(data, resource)){
                 resourcePass += 1;
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
             for(var resource in data.cost){
                 var res = Game.resources.getResourceData(resource);
-                res.current -= this.calcCost(data, resource, "buildingData");
+                res.current -= this.calcCost(data, resource);
             }
             return true;
         } else {

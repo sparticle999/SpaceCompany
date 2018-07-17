@@ -13,18 +13,14 @@ Game.solCenter = (function(){
 				id: id,
 				htmlId: 'solCtr' + id,
 				unlocked: false,
+				researched: false,
 				displayNeedsUpdate: true,
 			});
     	}
     };
 
     instance.update = function(delta){
-    	for(var id in this.entries){
-    		var data = this.entries[id];
-    		if(data.displayNeedsUpdate){
-    			//updateUI();
-    		}
-    	}
+    	
     };
 
     instance.save = function(data){
@@ -33,6 +29,7 @@ Game.solCenter = (function(){
     		var ent = this.entries[id]
     		data.solCenter.e[id] = {};
     		data.solCenter.e[id].unlocked = ent.unlocked;
+    		data.solCenter.e[id].researched = ent.researched;
     		if(id == "nanoswarm"){
     			data.solCenter.e[id].current = ent.current;
     			data.solCenter.e[id].resource = ent.resource;
@@ -54,16 +51,41 @@ Game.solCenter = (function(){
     	}
     };
 
-    instance.unlockEMC = function(){
-
+    instance.research = function(id){
+    	var data = this.entries[id];
+    	if(this.checkCost(data.cost)){
+    		data.researched = true;
+    		this.entries[id].onApply();
+    		data.displayNeedsUpdate = true;
+    	}
     };
 
-    instance.unlockDyson = function(){
-
+    instance.calcCost = function(data, resource, power){
+        return Math.floor(data.cost[resource.toString()] * Math.pow((power || 1.1),(data.current || 0)));
     };
 
-    instance.unlockNano = function(){
-
+    instance.checkCost = function(data){
+        var power = 1.1;
+        if(data.id == "dyson"){
+            power = 1.02;
+        }
+    	if (typeof data === 'undefined') {return false;}
+        var resourcePass = 0;
+        for(var resource in data.cost){
+            var res = Game.resources.getResourceData(resource);
+            if(res.current >= this.calcCost(data, resource, power)){
+                resourcePass += 1;
+            }
+        }
+        if(resourcePass === Object.keys(data.cost).length){
+            for(var resource in data.cost){
+                var res = Game.resources.getResourceData(resource);
+                res.current -= this.calcCost(data, resource, power);
+            }
+            return true;
+        } else {
+            return false;
+        }
     };
 
     instance.switchNano = function(resource){
@@ -71,6 +93,11 @@ Game.solCenter = (function(){
     	data.resource = resource;
     	console.log(Game.resources.entries[resource].htmlId);
     	data.displayNeedsUpdate = true;
+    };
+
+    instance.unlock = function(id){
+    	this.entries[id].unlocked = true;
+    	this.entries[id].displayNeedsUpdate = true;
     };
 
     return instance;

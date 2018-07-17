@@ -63,6 +63,7 @@ var Game = (function() {
         self.tech.update(delta);
         self.solar.update(delta);
         self.wonder.update(delta);
+        self.solCenter.update(delta);
         self.interstellar.update(delta);
         self.stargaze.update(delta);
         self.settings.update(delta);
@@ -144,6 +145,7 @@ var Game = (function() {
         this.tech.save(data);
         this.solar.save(data);
         this.wonder.save(data);
+        this.solCenter.save(data);
         this.settings.save(data);
         this.interstellar.save(data);
         this.stargaze.save(data);
@@ -170,6 +172,7 @@ var Game = (function() {
             this.tech.load(data);
             this.solar.load(data);
             this.wonder.load(data);
+            this.solCenter.load(data);
             this.interstellar.load(data); 
             this.updates.load(data);
 
@@ -323,6 +326,7 @@ var Game = (function() {
         self.tech.initialise();
         self.solar.initialise();
         self.wonder.initialise();
+        self.solCenter.initialise();
         self.interstellar.initialise();
         self.stargaze.initialise();
         // Create the collector Object; page -> categories -> items
@@ -350,7 +354,6 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "test from start");
         console.log("%c", "background: green;padding: 5px", "storage");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
-        console.log("%c", "background: green;padding: 5px", "turn red")
         console.log("%c", "background: green;padding: 5px", "0 energy, turn resources off")
         console.log("%c", "background: green;padding: 5px", "all tech upgrades")
         console.log("%c", "background: green;padding: 5px", "saving")
@@ -366,7 +369,6 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "notify storage")
         console.log("%c", "background: green;padding: 5px", "Research tab notification")
         console.log("%c", "background: green;padding: 5px", "redo solar system")
-        console.log("%c", "background: green;padding: 5px", "redo wonder station")
         console.log("%c", "background: green;padding: 5px", "implement new resources into interstellar and stargaze")
         console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
         // Now load
