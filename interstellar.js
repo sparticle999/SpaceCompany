@@ -19,7 +19,6 @@ Game.interstellar = (function(){
                 current: 0,
                 displayNeedsUpdate: true
             });
-            
         }
 
         console.debug("Loaded " + this.navCount + " Interstellar Navs");
@@ -147,6 +146,11 @@ Game.interstellar = (function(){
         if(sphere != 0){
             Game.stargaze.unlocked = true;
         }
+    };
+
+    instance.unlock = function(id) {
+        this.entries[id].unlocked = true;
+        this.entries[id].displayNeedsUpdate = true;
     };
 
 	return instance;
