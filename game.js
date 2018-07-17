@@ -50,8 +50,6 @@ var Game = (function() {
     };
 
     instance.fastUpdate = function(self, delta) {
-        refreshWonderBars();
-
         Game.tech.updateEfficiencies();
 
         legacyRefreshUI();
