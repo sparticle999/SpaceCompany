@@ -62,6 +62,7 @@ var Game = (function() {
         self.buildings.update(delta);
         self.tech.update(delta);
         self.solar.update(delta);
+        self.wonder.update(delta);
         self.interstellar.update(delta);
         self.stargaze.update(delta);
         self.settings.update(delta);
@@ -142,6 +143,7 @@ var Game = (function() {
         this.buildings.save(data);
         this.tech.save(data);
         this.solar.save(data);
+        this.wonder.save(data);
         this.settings.save(data);
         this.interstellar.save(data);
         this.stargaze.save(data);
@@ -167,6 +169,7 @@ var Game = (function() {
             this.stargaze.load(data);
             this.tech.load(data);
             this.solar.load(data);
+            this.wonder.load(data);
             this.interstellar.load(data); 
             this.updates.load(data);
 
@@ -319,6 +322,7 @@ var Game = (function() {
         self.buildings.initialise();
         self.tech.initialise();
         self.solar.initialise();
+        self.wonder.initialise();
         self.interstellar.initialise();
         self.stargaze.initialise();
         // Create the collector Object; page -> categories -> items

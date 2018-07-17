@@ -19,7 +19,7 @@ Game.solData = (function () {
     instance.emc = {
     	name: "Energy-Mass Conversion",
     	desc: "EMC is a technology only dreamt about back on Earth. Here, it's a reality. You can turn energy and plasma into regular resources, or, with large amounts, you can turn it into rare ones, which you are unable to find and have to make to acquire.",
-    	useDesc: "This is where you can convert your energy and plasma into resources. (Right click to go back X10).<br>With Auto Emc (unlocked with rebirth), when you can automate multiple, the order will be top to bottom (always Max)."
+    	useDesc: "This is where you can convert your energy and plasma into resources. (Right click to go back X10).<br>With Auto Emc (unlocked with rebirth), when you can automate multiple, the order will be top to bottom (always Max).",
     	cost: {
     		'energy': 75000,
     		'plasma': 100,
@@ -54,19 +54,19 @@ Game.solData = (function () {
     		},
     		"ring": {
     			name: "Ring",
-    			desc: "The ring is a solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires 50,000 rocket fuel in total to put the sections in place."
+    			desc: "The ring is a solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires 50,000 rocket fuel in total to put the sections in place.",
     			cost: 50,
     			current: 0,
     		},
     		"swarm": {
     			name: "Swarm",
-    			desc: "The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place."
+    			desc: "The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place.",
     			cost: 100,
     			current: 0,
     		},
     		"sphere": {
     			name: "Sphere",
-    			desc: "The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.<br>Costs: 1.000M Rocket Fuel to assemble the pieces."
+    			desc: "The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.<br>Costs: 1.000M Rocket Fuel to assemble the pieces.",
     			cost: 250,
     			current: 0,
     			max: 1,

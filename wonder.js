@@ -27,6 +27,33 @@ Game.wonder = (function(){
 
     };
 
+    instance.save = function(data){
+        data.wonder = { v: this.dataVersion, i: {}};
+        for(var key in this.entries) {
+            data.wonder.i[key] = {};
+            if(typeof this.entries[key].built !== 'undefined'){
+                data.wonder.i[key].built = this.entries[key].built;
+            }
+            data.wonder.i[key].activated = this.entries[key].activated;
+            data.wonder.i[key].unlocked = this.entries[key].unlocked;
+        }
+    };
+
+    instance.load = function(data){
+        if(typeof data.wonder == 'undefined'){
+            return;
+        }
+        for (var id in data.wonder.i) {
+            if (typeof this.entries[id] !== 'undefined') {
+                if (typeof data.wonder.i[id].built !== 'undefined') {
+                    this.entries[id].built = data.wonder.i[id].built;
+                }
+                this.entries[id].activated = data.wonder.i[id].activated;
+                this.entries[id].unlocked = data.wonder.i[id].unlocked;
+            }
+        }
+    };
+
     instance.build = function(id){
     	var data = this.entries[id];
     	if(this.checkCost(data.buildCost)){
