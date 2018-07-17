@@ -6,9 +6,9 @@ Game.donatorData = (function(){
 	"Alexander Blair's Planet",
 	"Jordan Taylor's Planet",
 	"Cybertron", // Sup Dude
-	"Austerror's Planet", // Austerror
-	"Idgo's Planet", // Idgo
-	"Katorone's Planet", // Katorone
+	"Niflhel", // Austerror
+	"Jotunheim", // Idgo
+	"Pegasus Epsilon", // Katorone
 	];
 
 	instance.patreon = [

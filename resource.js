@@ -57,7 +57,7 @@ Game.resources = (function(){
                 value = obj.capacity/value ; var newcost = {};
                 // object with inflated costs
                 Object.keys(cost).forEach(c => newcost[c] = cost[c]*value);
-                value = Game.settings.doFormat('cost', {cost: newcost})
+                value = Game.settings.doFormat('cost', {cost: newcost});
                 Templates.uiFunctions.setClassText(value, obj.htmlId+'storageUpgrade_cost')
             }
             previous = new Date();

@@ -25,19 +25,6 @@ Game.interstellar.stars = (function(){
                 displayNeedsUpdate: false,
             });
 
-            var buildings = {
-                repair: {
-                    id: "repair",
-                    name: "Repair War Damages",
-                    current: 0,
-                },
-                test: {
-                    id: "test",
-                    name: "Test",
-                    current: 0,
-                }
-            }
-
             for(var i = 0; i < data.planets; i++){
                 if(Game.donatorData.planets[nameCount]){
                     var name = Game.donatorData.planets[nameCount];
@@ -45,11 +32,22 @@ Game.interstellar.stars = (function(){
                 } else {
                     var name = this.entries[starId].name + " " + String.fromCharCode(97 + i);
                 }
-                this.entries[starId].items[name] = {
-                    id: starId + "_" + i,
-                    buildings: buildings,
+                this.entries[starId].items[String.fromCharCode(97 + i)] = {
+                    name: name,
+                    id: starId + "_" + String.fromCharCode(97 + i),
+                    happiness: 0,
+                    level: 0,
+                } 
+                var buildings = {};
+                for(var id in Game.starData.buildings){
+                    var planetBuilding = Game.starData.buildings[id];
+                    buildings[id] = $.extend({}, planetBuilding, {
+                        id: id,
+                        htmlId: starId + "_" + String.fromCharCode(97 + i) + "_" + id,
+                        current: 0,
+                    });
                 }
-                console.log(name)
+                this.entries[starId].items[String.fromCharCode(97 + i)].buildings = buildings;
             }
             
         }

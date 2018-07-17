@@ -29,7 +29,11 @@ Game.interstellar = (function(){
         this.antimatter.initialise();
         this.military.initialise();
         this.stars.initialise();
-	}
+	};
+
+    instance.update = function(delta){
+
+    };
 
 	instance.getInterstellarData = function(id) {
         return this.entries[id];
@@ -94,6 +98,17 @@ Game.interstellar = (function(){
         }
         this.military.updateShips();
         this.military.updateFleetStats();
+        // Delete
+        // document.getElementById("interstellarTab_link").className = "";
+        // var data = this.entries["moviton"];
+        // data.unlocked = data.displayNeedsUpdate = true;
+        // antimatter = 100000;
+        // this.rocket.entries.tier1Rocket.built = true;
+        // this.comms.entries.IRS.count = 100;
+        // Game.interstellar.stars.entries._501.explored = true;
+        // Game.interstellar.stars.entries._501.owned = true;
+        // console.error("only for testing");
+        // Delete
     };
 
     instance.redundantChecking = function(){

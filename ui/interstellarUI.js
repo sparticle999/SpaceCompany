@@ -28,7 +28,8 @@ Game.interstellarUI = (function(){
 
     instance.initialise = function() {
 
-        console.log("sort out interstellar.update(). too many cycles")
+        console.log("%c", "background: green;padding: 5px", "sort out interstellar.update(). too many cycles");
+        console.log("%c", "background: green;padding: 5px", "move more of this.update() into interstellar.update(). this should only be UI, not calculation");
 
         this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
@@ -241,8 +242,11 @@ Game.interstellarUI = (function(){
                             '</div>',
                         '</div>',
                     '</div>',
-
-
+                '</hide>',
+                '<hide id="{{htmlId}}_planets" class="hidden">',
+                    '<h4 class="btn-link">Planets:</h4>',
+                    '<div id="{{htmlId}}_planetsContainer"></div>',
+                    //Planet Templates
                 '</hide></td><td colspan="1">',
                 '<h3 class="btn-link">Resource Production:</h3>',
                 '<h4>{{resource1}}:</h4>',
@@ -252,9 +256,15 @@ Game.interstellarUI = (function(){
                 '</td></tr>'].join('\n'));
 
         instance.planetTemplate = Handlebars.compile(
-            ['',
+            ['<h4>{{name}}:</h4>',
+            '<span>Happiness: <span id="{{id}}_happiness">0</span>%</span><br>',
+            '<span>Level: <span id="{{id}}_level">0</span></span>',
+            '<div id="{{id}}_planetContent"></div>',].join('\n'));
+
+        instance.planetBuildingTemplate = Handlebars.compile(
+            ['<h5>{{name}}:</h5>',
             '',
-            '',].join('\n'));
+            '<span id="{{htmlId}}_cost"></span>',].join('\n'));
 
         instance.invadeShipsTemplate = Handlebars.compile(
             ['<h5>{{name}}: <span class="{{entryName}}Active">0</span>/<span class="{{entryName}}Count">0</span></h5>',
@@ -323,8 +333,6 @@ Game.interstellarUI = (function(){
 
     instance.update = function(delta) {
         
-        
-
         for(var id in this.commEntries) {
             var data = Game.interstellar.comms.getMachineData(id);
             if(data.displayNeedsUpdate === true) {
@@ -344,7 +352,6 @@ Game.interstellarUI = (function(){
             }
         }
         
-
         for(var id in this.rocketPartEntries) {
             var data = Game.interstellar.rocketParts.getPartData(id);
             if(data.displayNeedsUpdate === true) {
@@ -378,7 +385,7 @@ Game.interstellarUI = (function(){
                     if(data.category == "faction"){
                         document.getElementById("interstellarTab_faction_collapse").className = "";
                     }
-                    document.getElementById("interstellarTab_link").className = "";
+                    document.getElementById("interstellarTab").className = "";
                     document.getElementById("interstellarTab_" + id + "_ne").className = "collapse_interstellarTab_" + data.category;
                 } else {
                     document.getElementById("interstellarTab_" + id + "_ne").className = "collapse_interstellarTab_" + data.category + " hidden";
@@ -418,8 +425,15 @@ Game.interstellarUI = (function(){
                 if(data.owned){
                     $('#star_' + id + '_owned').text("Conquered");
                     document.getElementById('star_' + id + '_conquerButtons').className = "hidden";
+                    document.getElementById('star_' + id + '_planets').className = "";
                     for(var planet in data.items){
-                        console.log(planet);
+                        var planetData = data.items[planet]
+                        var planetHtmlId = '#' + data.id + "_" + planet;
+                        $(planetHtmlId + "_happiness").text(planetData.happiness);
+                        var target = $(planetHtmlId + "_planetContent").text(planetData.buildings[planetData.level].name);
+                        var html = this.planetBuildingTemplate(planetData.buildings[planetData.level]);
+                        target.empty();
+                        target.append($(html));
                     }
                 } else {
                     console.log("unlock");
@@ -485,7 +499,7 @@ Game.interstellarUI = (function(){
                     }
                 }
             }
-            data.displayNeedsUpdate = false;
+            data.displayNeedsUpdate = false;          
         }
 
         // Updates Antimatter Nav
@@ -501,12 +515,14 @@ Game.interstellarUI = (function(){
         }
         
 
-        for(var i = 0; i < resources.length; i++){
-            var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
-            var perSec = Game.resources.entries[resource].perSecond;
-            for(var j = 0; j < updateList.length; j++){
-                updateList[j].innerHTML = Game.settings.format(perSec/4);
-            }            
+        for(var id in Game.resources.entries){
+            var data = Game.resources.entries[id];
+            if(data.manualGain){
+                var updateList = document.getElementsByClassName("star_" + data.name + "_prod");
+                for(var j = 0; j < updateList.length; j++){
+                    updateList[j].innerHTML = Game.settings.format(data.perSecond/4);
+                }
+            }
         }
         
     };
@@ -604,10 +620,17 @@ Game.interstellarUI = (function(){
         var factionTabContentRoot = $('#' + this.tab.getContentElementId(starData.factionId));
         factionTabContentRoot.append($(factionStar));
 
-        for(ship in Game.interstellar.military.entries){
+        for(var ship in Game.interstellar.military.entries){
             var shipData = Game.interstellar.military.getShipData(ship);
             var target = $('#' + starData.htmlId + '_invadeShips');
             var html = this.invadeShipsTemplate(shipData);
+            target.append($(html));
+        }
+
+        for(var planet in starData.items){
+            var planetData = starData.items[planet];
+            var target= $('#' + starData.htmlId + '_planetsContainer');
+            var html = this.planetTemplate(planetData);
             target.append($(html));
         }
     };

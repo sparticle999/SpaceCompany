@@ -47,6 +47,10 @@ Game.stargaze = (function(){
 		}
 	};
 
+	instance.update = function(){
+
+	};
+
 	instance.resetVars = function(){
 		explored=[],activated=[],techUnlocked=!1,meteoriteUnlocked=!1,autoResource=null,dyson=0,dysonTitaniumCost=3e5,dysonGoldCost=1e5,dysonSiliconCost=2e5,dysonMeteoriteCost=1e3,dysonIceCost=1e5,ring=0,ringOutput=5e3,swarm=0,swarmOutput=25e3,sphere=0,sphereOutput=1e6,antimatter=0,antimatterps=0,antimatterStorage=1e5,antimatterToggled=!0;
 	};

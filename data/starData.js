@@ -2,6 +2,29 @@ Game.starData = (function(){
 
 	var instance = {};
 
+	instance.buildings = {
+		0: {
+		    name: "Repair War Damages",
+		    happiness: 15,
+		},
+		1: {
+		    name: "Remove Military Presence",
+		    happiness: 20,
+		},
+		2: {
+		    name: "Introduce Overlord Religion",
+		    happiness: 20,
+		},
+		3: {
+		    name: "Indoctrinate the Youth",
+		    happiness: 20,
+		},
+		4: {
+		    name: "Build Overlord Monument",
+		    happiness: 10,
+		},
+	};
+
 	instance._201 = {
 		name: "Alpha Centauri",
 		distance: 4.3,
@@ -590,5 +613,3 @@ Game.starData = (function(){
 	return instance;
 
 }());
-
-
