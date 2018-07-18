@@ -24,6 +24,7 @@ Game.solData = (function () {
     		'energy': 75000,
     		'plasma': 100,
     	},
+        amount: 1,
     	onApply: function(){
     		Game.solCenter.unlock("emc");
     	},
@@ -55,27 +56,37 @@ Game.solData = (function () {
     		"ring": {
     			name: "Ring",
     			desc: "The ring is a solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires 50,000 rocket fuel in total to put the sections in place.",
-    			cost: 50,
+    			cost: {
+                    "segment": 50,
+                    "rocketFuel": 50000,
+                },
     			current: 0,
                 output: 5000,
     		},
     		"swarm": {
     			name: "Swarm",
     			desc: "The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place.",
-    			cost: 100,
+    			cost: {
+                    "segment": 100,
+                    "rocketFuel": 250000,
+                },
     			current: 0,
                 output: 25000,
     		},
     		"sphere": {
     			name: "Sphere",
     			desc: "The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.<br>Costs: 1.000M Rocket Fuel to assemble the pieces.",
-    			cost: 250,
+    			cost: {
+                    "segment": 250,
+                    "rocketFuel": 1000000,
+                },
     			current: 0,
                 output: 1000000,
     			max: 1,
     			onBuy: function(){
     				if(current < max){
     					Game.solCenter.build("sphere");
+                        Game.stargaze.tabUnlocked = true;
     				}
     			}
     		},

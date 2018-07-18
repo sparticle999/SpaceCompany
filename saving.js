@@ -1,15 +1,8 @@
-// temp fix
-if (typeof plasma_current == "undefined") {plasma_current = 0;}
-
-
-
-
 function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
 		versionNumber: versionNumber,
 		companyName: companyName,
-		plasma: plasma_current,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
@@ -17,7 +10,6 @@ function legacySave(data) {
 		oxidisation: oxidisation,
 		hydrazine: hydrazine,
 		rocketLaunched: rocketLaunched,
-		explored: explored,
 		antimatter: antimatter,
 		antimatterStorage: antimatterStorage,
 		antimatterToggled: antimatterToggled,

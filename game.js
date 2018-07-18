@@ -368,6 +368,8 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "redo solar system")
         console.log("%c", "background: green;padding: 5px", "implement new resources into interstellar and stargaze")
         console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
+        console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
+        console.log("%c", "background: green;padding: 5px", "charcoal not used by charcoalEngine <0")
         // Now load
         self.load();
 

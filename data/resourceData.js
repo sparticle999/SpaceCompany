@@ -100,7 +100,6 @@ Game.resourceData = (function () {
         icon: 'plasmaIcon',
         category: 'fabricated',
         baseCapacity: 100000,
-        gainNum: 1,
         manualgain: true,
         unlocked: false
     };
@@ -111,6 +110,7 @@ Game.resourceData = (function () {
         icon: 'meteoriteIcon',
         category: 'fabricated',
         baseCapacity: 50,
+        emc: 3,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -122,6 +122,7 @@ Game.resourceData = (function () {
         icon: 'charcoalIcon',
         category: 'fabricated',
         baseCapacity: 50,
+        emc: 2,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -137,6 +138,7 @@ Game.resourceData = (function () {
         icon: 'oilIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 3,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -148,6 +150,7 @@ Game.resourceData = (function () {
         icon: 'metalIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 1,
         gainNum: 1,
         manualgain: true,
         unlocked: true
@@ -159,6 +162,7 @@ Game.resourceData = (function () {
         icon: 'gemIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 3,
         gainNum: 1,
         manualgain: true,
         unlocked: true
@@ -170,6 +174,7 @@ Game.resourceData = (function () {
         icon: 'woodIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 1,
         gainNum: 1,
         manualgain: true,
         unlocked: true
@@ -181,6 +186,7 @@ Game.resourceData = (function () {
         icon: 'siliconIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 23,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -192,6 +198,7 @@ Game.resourceData = (function () {
         icon: 'uraniumIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 37,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -203,6 +210,7 @@ Game.resourceData = (function () {
         icon: 'lavaIcon',
         category: 'earth',
         baseCapacity: 50,
+        emc: 42,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -219,6 +227,7 @@ Game.resourceData = (function () {
         icon: 'lunariteIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        emc: 15,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -230,6 +239,7 @@ Game.resourceData = (function () {
         icon: 'methaneIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        emc: 12,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -241,6 +251,7 @@ Game.resourceData = (function () {
         icon: 'titaniumIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        emc: 17,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -252,6 +263,7 @@ Game.resourceData = (function () {
         icon: 'goldIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        emc: 14,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -263,6 +275,7 @@ Game.resourceData = (function () {
         icon: 'silverIcon',
         category: 'innerSol',
         baseCapacity: 50,
+        emc: 16,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -278,6 +291,7 @@ Game.resourceData = (function () {
         icon: 'hydrogenIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        emc: 33,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -289,6 +303,7 @@ Game.resourceData = (function () {
         icon: 'heliumIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        emc: 39,
         gainNum: 1,
         manualgain: true,
         unlocked: false
@@ -300,6 +315,7 @@ Game.resourceData = (function () {
         icon: 'iceIcon',
         category: 'outerSol',
         baseCapacity: 50,
+        emc: 44,
         gainNum: 1,
         manualgain: true,
         unlocked: false
