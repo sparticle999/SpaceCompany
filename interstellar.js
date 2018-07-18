@@ -111,22 +111,6 @@ Game.interstellar = (function(){
     };
 
     instance.redundantChecking = function(){
-        var objects = ["comms", "rocket", "antimatter", "stargate"];
-        for(var i = 0; i < objects.length; i++){
-            if(contains(activated, objects[i]) == true){
-                if(objects[i] == 'stargate'){
-                    this.entries['travel'].unlocked = true;
-                    this.entries['travel'].displayNeedsUpdate = true;
-                    this.entries['military'].unlocked = true;
-                    this.entries['military'].displayNeedsUpdate = true;
-                } else {
-                    this.entries[objects[i]].unlocked = true;
-                    this.entries[objects[i]].displayNeedsUpdate = true;
-                }
-                this.tabUnlocked = true;
-                document.getElementById("interstellarTab").className = "";
-            }
-        }
         for(var id in this.stars.entries){
             var data = this.stars.getStarData(id);
             if(data.explored == true){

@@ -188,11 +188,8 @@ var Game = (function() {
 
     instance.updateUI = function(self){
         Game.settings.updateCompanyName();
-        refreshResources();
 
-        updateDysonCost();
         updateFuelProductionCost();
-        updateWonderCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();

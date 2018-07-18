@@ -23,6 +23,8 @@ Game.wonderCategoryData = (function () {
 
 Game.wonderData = (function(){
 
+    console.log("%c", "background:green;padding:5px;", "Add desc")
+
 	var instance = {};
 
     instance.station = {
@@ -135,6 +137,7 @@ Game.wonderData = (function(){
             'ice': 6000000,
         },
         onActivate: function(){
+            Game.interstellar.tabUnlocked = true;
             Game.interstellar.unlock("comms");
         },
         unlocked: false,
@@ -150,6 +153,7 @@ Game.wonderData = (function(){
             'metal': 12000000,
         },
         onActivate: function(){
+            Game.interstellar.tabUnlocked = true;
             Game.interstellar.unlock("rocket");
         },
         unlocked: false,
@@ -165,6 +169,7 @@ Game.wonderData = (function(){
             'oil': 8000000,
         },
         onActivate: function(){
+            Game.interstellar.tabUnlocked = true;
             Game.interstellar.unlock("antimatter");
         },
         unlocked: false,
@@ -195,6 +200,7 @@ Game.wonderData = (function(){
             'meteorite': 17000000,
         },
         onActivate: function(){
+            Game.interstellar.tabUnlocked = true;
             Game.interstellar.unlock("travel");
             Game.interstellar.unlock("military");
         },

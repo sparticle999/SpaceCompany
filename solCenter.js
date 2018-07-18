@@ -20,7 +20,7 @@ Game.solCenter = (function(){
     };
 
     instance.update = function(delta){
-    	
+
     };
 
     instance.save = function(data){
@@ -46,6 +46,9 @@ Game.solCenter = (function(){
             			this.entries[id][prop] = ent.prop;
             			this.entries[id].displayNeedsUpdate = true;
             		}
+            	}
+            	if(this.entries[id].unlocked == true){
+            		this.entries[id].onApply();
             	}
         	}
     	}
@@ -285,34 +288,6 @@ function gainAutoEmc(){
 		convertEnergy(autoResource, false);
 	} else {
 		convertPlasma(autoResource, false);
-	}
-}
-
-var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
-
-function updateDysonCost(){
-	dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
-	dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
-	dysonSiliconCost = Math.floor(200000 * Math.pow(1.02,dyson));
-	dysonMeteoriteCost = Math.floor(1000 * Math.pow(1.02,dyson));
-	dysonIceCost = Math.floor(100000 * Math.pow(1.02,dyson));
-}
-
-function getDyson(){
-	if (getResource(RESOURCE.Titanium) >= dysonTitaniumCost && getResource(RESOURCE.Gold) >= dysonGoldCost && getResource(RESOURCE.Silicon) >= dysonSiliconCost && getResource(RESOURCE.Meteorite) >= dysonMeteoriteCost && getResource(RESOURCE.Ice) >= dysonIceCost) {
-		Game.resources.takeResource(RESOURCE.Titanium, dysonTitaniumCost);
-		Game.resources.takeResource(RESOURCE.Gold, dysonGoldCost);
-		Game.resources.takeResource(RESOURCE.Silicon, dysonSiliconCost);
-		Game.resources.takeResource(RESOURCE.Meteorite, dysonMeteoriteCost);
-		Game.resources.takeResource(RESOURCE.Ice, dysonIceCost);
-		dyson += 1;
-
-		updateDysonCost();
-
-		return true;
-	}
-	else{
-		return false;
 	}
 }
 

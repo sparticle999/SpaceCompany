@@ -154,6 +154,15 @@ function legacyLoad(savegame){
 		if(typeof savegame.uranium !== "undefined") Game.resources.entries.uranium.current = savegame.uranium;
 		if(typeof savegame.uraniumStorage !== "undefined") Game.resources.entries.uranium.capacity = savegame.uraniumStorage;
 
+		if(typeof savegame.resourcesUnlocked !== 'undefined'){
+			var res = resourcesUnlocked;
+			var arr = ["precious", "energetic", "technological", "meteorite", "comms", "rocket", "antimatter"]
+			for(var i = 0; i < arr.length; i++){
+				if(contains(res, arr[i] + "WonderNav"))Game.wonder.unlock(arr[i]);
+			}
+			if(contains(res, "portalRoomNav"))Game.wonder.unlock("portal");
+			if(contains(res, "stargateNav"))Game.wonder.unlock("stargate");
+		}
 		if(typeof savegame.activated !== "undefined"){
 			for(var i = 0; i < savegame.activated.length; i++){
 				Game.wonder.entries[savegame.activated[i]].activated = true;

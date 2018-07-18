@@ -365,6 +365,12 @@ Game.resources = (function(){
             }
             res.perSecond = ps;
         }
+        for(var id in Game.solCenter.entries.dyson.items){
+            var data = Game.solCenter.entries.dyson.items;
+            if(data.output){
+                this.entries.energy.perSecond += data.output;
+            }
+        }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('perSecond', 'all');
     };
