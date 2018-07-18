@@ -348,7 +348,7 @@ Game.resources = (function(){
                     if(value == resource){
                         var val = building.resourcePerSecond[value];
                         if(resource != "science" && resource != "rocketFuel" && resource != "energy"){
-                            if(energy.current > energy.perSecond*-1 && energy.perSecond < 0){
+                            if(energy.current > energy.perSecond*-1 && energy.perSecond > 0){
                                 ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
                             } else {
                                 if(id.indexOf("T1") != -1){
