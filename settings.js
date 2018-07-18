@@ -209,10 +209,10 @@ Game.settings = (function(){
         /////////////////////////////////////////
         // perClick gain number of gainButtons //
         /////////////////////////////////////////
-        } else if (action == 'perclick') {
+        } else if (action == 'gainNum') {
             switch(key) {
                 default:
-                    var input = object.perClick;
+                    var input = object.gainNum;
                     input = Game.settings.format(input, 0).toString();
                     return input;
             }

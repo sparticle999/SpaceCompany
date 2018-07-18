@@ -127,7 +127,7 @@ Game.interstellar = (function(){
         }
 
         // stargaze
-        if(sphere != 0){
+        if(Game.solCenter.entries.dyson.items.sphere.current != 0){
             Game.stargaze.unlocked = true;
         }
     };

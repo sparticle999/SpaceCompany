@@ -200,13 +200,13 @@ Game.prestigeData = (function(){
 		opinion: 3,
 		onApply: function(){
 			for(var id in Game.resources.entries){
-				Game.resources.entries[id].perClick = 20;
+				Game.resources.entries[id].gainNum = 20;
 				Game.resources.entries[id].displayNeedsUpdate = true;
 			}
 		},
 		remove: function(){
 	    	for(var id in Game.resources.entries){
-				Game.resources.entries[id].perClick = 1;
+				Game.resources.entries[id].gainNum = 1;
 				Game.resources.entries[id].displayNeedsUpdate = true;
 			}
 	    },

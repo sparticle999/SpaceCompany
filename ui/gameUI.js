@@ -269,8 +269,8 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		// Attach the title of the pane to the header
 		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', TemplatePaneTitle(data));
 		if (data.manualgain) {
-			if (!Templates.uiFunctions.registerElement(data, 'perClick')) {
-				console.warn("Called with action: 'perClick' from 'createPane', while looping over:");
+			if (!Templates.uiFunctions.registerElement(data, 'gainNum')) {
+				console.warn("Called with action: 'gainNum' from 'createPane', while looping over:");
 				console.warn(data)
 			}
 		}		

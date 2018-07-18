@@ -96,7 +96,6 @@ Game.resources = (function(){
                 current: 0,
                 perSecond: 0,
                 perSecondDisplay: 0,
-                perClick: 1,
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
