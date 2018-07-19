@@ -331,43 +331,44 @@ Game.resources = (function(){
     }
 
     instance.updateResourcesPerSecond = function(){
-        var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01)
+        var efficiencyMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01);
         var energyDiff = 0;
         var energy = Game.resources.entries.energy;
-        for(var resource in this.entries){
-            var res = this.entries[resource];
-            var ps = 0;
-            for(var id in Game.buildings.entries){
-                var building = Game.buildings.entries[id];
-                if(building.current == 0) {
-                    // Nothing to be done
-                    continue;
-                }
-                for(var value in building.resourcePerSecond){
-                    if(value == resource){
-                        var val = building.resourcePerSecond[value];
-                        if(resource != "science" && resource != "rocketFuel" && resource != "energy"){
-                            if(energy.current > energy.perSecond*-1 && energy.perSecond > 0){
-                                ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
-                            } else {
-                                if(id.indexOf("T1") != -1){
-                                    ps += val * building.current * perSecondMultiplier * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
-                                } else {
-                                    energyDiff += building.current * building.resourcePerSecond["energy"];
-                                }
-                            }
-                        } else {
-                            ps += val * building.current * (1 + Game.stargaze.entries.darkMatter.current * dmBoost);
-                        }
-                    }
-                }
-            }
-            res.perSecond = ps;
-        }
         for(var id in Game.solCenter.entries.dyson.items){
             var data = Game.solCenter.entries.dyson.items;
             if(data.output){
                 this.entries.energy.perSecond += data.output;
+            }
+        }
+        for(var resource in this.entries){
+            this.entries[resource].perSecond = 0;
+        }
+        for(var id in Game.buildings.entries){
+            var building = Game.buildings.entries[id];
+            if(building.current == 0){
+                // Nothing to be done
+                continue;
+            }
+            var use = [];
+            var prod = [];
+            for(var value in building.resourcePerSecond){
+                if(building.resourcePerSecond[value] < 0){
+                    use.push(value);
+                } else {
+                    prod.push(value);
+                }
+            }
+            var ok = true;
+            for(var i = 0; i < use.length; i++){
+                if(this.entries[use[i]].current < (-1)*building.resourcePerSecond[use[i]]){
+                    ok = false;
+                }
+            }
+            if(ok){
+                for(var value in building.resourcePerSecond){
+                    var val = building.resourcePerSecond[value];
+                    this.entries[value].perSecond += val * building.current * efficiencyMultiplier * (1+Game.stargaze.entries.darkMatter.current*dmBoost);
+                }
             }
         }
         energy.perSecond -= energyDiff;
