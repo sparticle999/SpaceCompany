@@ -132,7 +132,7 @@ Game.techData = (function () {
         newTechs: ['unlockSolarSystem', 'upgradeResourceTech', 'unlockDestruction'],
         tabAlerts: ['resources'],
         onApply: function(){
-            var blacklist = ['energy', 'plasma', 'science', 'rocketFuel', 'rocket', 'satellite'];
+            var blacklist = ['energy', 'plasma', 'science', 'rocketFuel', 'rocket', 'satellite', 'antimatter'];
             for(var id in Game.resources.entries){if (!contains(blacklist, id)) { Game.buildings.unlock(id + "T2", false); }}
         }
     });

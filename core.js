@@ -428,7 +428,7 @@ $(document).ready(function(){
 
 //Change Company Name
 $('input[name="companyName"]').change(function(){
-	companyName = ($('input[name="companyName"]').val());
+	Game.companyName = ($('input[name="companyName"]').val());
 	Game.settings.updateCompanyName();
 });
 

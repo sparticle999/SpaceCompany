@@ -435,7 +435,7 @@ Game.settings = (function(){
 
     instance.updateCompanyName = function(){
         document.getElementById("companyName").innerHTML = 
-            companyName //Escape unsafe HTML characters in companyName to prevent XXS
+            Game.companyName //Escape unsafe HTML characters in companyName to prevent XXS
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")

@@ -1,7 +1,3 @@
-// Variables in save function
-
-var versionNumber = "Perhaps V1.0 Release?"; var companyName = "Space";
-
 // unlocked & activated
 
 var rocketLaunched = false;

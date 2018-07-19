@@ -24,6 +24,7 @@ Game.interstellarData = (function(){
 		name: 'Communications',
 		desc: 'This is where you learn about other systems to travel to. <br><b>NB: The first star, Alpha Centauri is 4.3 LY away. 1 IRS will not get you there.</b>',
 		category: 'general',
+		order: 1,
 		unlocked: false
 	};
 
@@ -31,6 +32,7 @@ Game.interstellarData = (function(){
 		name: 'Rockets',
 		desc: 'This is where you can construct your transport to the stars.',
 		category: 'general',
+		order: 2,
 		built: 'Not Built',
 		unlocked: false
 	};
@@ -39,6 +41,10 @@ Game.interstellarData = (function(){
 		name: 'Antimatter',
 		desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.<br><br><button class="btn btn-default" onclick="toggleAntimatter()">Toggle Antimatter <span id="antimatterToggled">On</span></button>',
 		category: 'general',
+		order: 3,
+		current: 0,
+		storage: 100000,
+		toggled: true,
 		unlocked: false
 	};
 
@@ -46,6 +52,7 @@ Game.interstellarData = (function(){
 		name: 'Travel',
 		desc: 'Here, you can travel across the cosmos to your heart\'s desire. When you explore a star system, it will appear in the respective faction tab, where you can gain control of it for boosts in the resources present. The number in () after the distance is the antimatter needed to travel there.',
 		category: 'general',
+		order: 4,
 		unlocked: false
 	};
 
@@ -53,6 +60,7 @@ Game.interstellarData = (function(){
 		name: 'Military',
 		desc: 'This is where you can build up your fleet of ships to invade other systems. Your total fleet\'s attributes are based on which ships you own.',
 		category: 'general',
+		order: 5,
 		unlocked: false
 	};
 
@@ -60,6 +68,7 @@ Game.interstellarData = (function(){
 		name: "Carnelian Resistance",
 		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
 		category: "faction",
+		order: 1,
 		opinion: 0,
 		unlocked: false
 	};
@@ -68,6 +77,7 @@ Game.interstellarData = (function(){
 		name: "Prasnian Empire",
 		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
 		category: "faction",
+		order: 2,
 		opinion: 0,
 		unlocked: false
 	};
@@ -76,6 +86,7 @@ Game.interstellarData = (function(){
 		name: "Hyacinite Congregation",
 		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
 		category: "faction",
+		order: 3,
 		opinion: 0,
 		unlocked: false
 	};
@@ -84,6 +95,7 @@ Game.interstellarData = (function(){
 		name: "Kitrinos Corporation",
 		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
 		category: "faction",
+		order: 4,
 		opinion: 0,
 		unlocked: false
 	};
@@ -92,6 +104,7 @@ Game.interstellarData = (function(){
 		name: "Moviton Syndicate",
 		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
 		category: "faction",
+		order: 5,
 		opinion: 0,
 		unlocked: false
 	};
@@ -100,6 +113,7 @@ Game.interstellarData = (function(){
 		name: "Overlord Cult",
 		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
 		category: "faction",
+		order: 6,
 		opinion: 0,
 		unlocked: false
 	};

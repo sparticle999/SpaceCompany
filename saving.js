@@ -1,8 +1,6 @@
 function legacySave(data) {
 	"use strict";
 	var localSave = $.extend({
-		versionNumber: versionNumber,
-		companyName: companyName,
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
@@ -23,7 +21,7 @@ function legacyLoad(savegame){
 
 	if(savegame){
 		ga('send', 'event', 'Loading', 'Conversion to OOP');
-		if(typeof savegame.companyName !== "undefined") companyName = savegame.companyName;
+		if(typeof savegame.companyName !== "undefined") Game.companyName = savegame.companyName;
 
 		if(typeof savegame.plasma !== "undefined") Game.resources.entries.plasma.current = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") Game.buildings.storageEntries.plasmaT1.current = savegame.PSU;
@@ -190,9 +188,9 @@ function legacyLoad(savegame){
 		if(typeof savegame.swarm !== "undefined") Game.solCenter.entries.dyson.items["swarm"].current = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") Game.solCenter.entries.dyson.items["ring"].current = savegame.ring;
 
-		if(typeof savegame.antimatter !== "undefined") antimatter = savegame.antimatter;
-		if(typeof savegame.antimatterStorage !== "undefined") antimatterStorage = savegame.antimatterStorage;
-		if(typeof savegame.antimatterToggled !== "undefined") antimatterToggled = savegame.antimatterToggled;
+		if(typeof savegame.antimatter !== "undefined") Game.interstellar.entries.antimatter.current = savegame.antimatter;
+		if(typeof savegame.antimatterStorage !== "undefined") Game.interstellar.entries.antimatter.storage = savegame.antimatterStorage;
+		if(typeof savegame.antimatterToggled !== "undefined") Game.interstellar.entries.antimatter.toggled = savegame.antimatterToggled;
 
 		if(typeof savegame.planetNuke !== "undefined") Game.buildings.entries.uraniumT5.current = savegame.planetNuke;
 		if(typeof savegame.condensator !== "undefined") Game.buildings.entries.lavaT5.current = savegame.condensator;

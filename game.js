@@ -9,7 +9,9 @@ var Game = (function() {
         logoAnimating: true,
         timeSinceAutoSave: 0,
         activeNotifications: {},
-        lastFixedUpdate: new Date().getTime()
+        lastFixedUpdate: new Date().getTime(),
+        versionNumber: "V0.5.1",
+        companyName: "Space"
     };
 
     instance.update_frame = function(time) {
@@ -135,6 +137,7 @@ var Game = (function() {
 
     instance.save = function() {
         var data = {
+            companyName: this.companyName,
             lastFixedUpdate: this.lastFixedUpdate
         };
 
@@ -195,7 +198,7 @@ var Game = (function() {
             $('#machineTopTab').show();
         }
 
-        $('#versionLabel').text(versionNumber);
+        $('#versionLabel').text(Game.versionNumber);
 
         self.interstellar.redundantChecking();
     }
@@ -349,11 +352,8 @@ var Game = (function() {
         
 
         console.log("%c", "background: green;padding: 5px", "test from start");
-        console.log("%c", "background: green;padding: 5px", "storage");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
-        console.log("%c", "background: green;padding: 5px", "0 energy, turn resources off")
         console.log("%c", "background: green;padding: 5px", "all tech upgrades")
-        console.log("%c", "background: green;padding: 5px", "saving")
         console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
         console.log("%c", "background: green;padding: 5px", "stats")
         console.log("%c", "background: green;padding: 5px", "dmBoost")
@@ -366,10 +366,8 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "notify storage")
         console.log("%c", "background: green;padding: 5px", "Research tab notification")
         console.log("%c", "background: green;padding: 5px", "redo solar system")
-        console.log("%c", "background: green;padding: 5px", "implement new resources into interstellar and stargaze")
         console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
         console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
-        console.log("%c", "background: green;padding: 5px", "charcoal not used by charcoalEngine <0")
         // Now load
         self.load();
 
