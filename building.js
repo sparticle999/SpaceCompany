@@ -158,18 +158,21 @@ Game.buildings = (function(){
     instance.buyBuildings = function(id, count){
         if (typeof id === 'undefined' || !(id in Game.buildings.entries)) {return false;}
         var data = Game.buildings.getBuildingData(id);
+        if(data.id.indexOf("T1") != -1){
+            var multi = this.T1Price;
+        }
         for(var i = 0; i < (count || 1); i++){
             var resourcePass = 0;
             for(var resource in data.cost){
                 var res = Game.resources.getResourceData(resource);
-                if(res.current >= this.calcCost(data, resource, "buildingData")){
+                if(res.current >= this.calcCost(data, resource, "buildingData", multi)){
                     resourcePass += 1;
                 }
             }
             if(resourcePass === Object.keys(data.cost).length){
                 for(var resource in data.cost){
                     var res = Game.resources.getResourceData(resource);
-                    res.current -= this.calcCost(data, resource, "buildingData");
+                    res.current -= this.calcCost(data, resource, "buildingData", multi);
                 }
                 this.updatePerSecondProduction = true;
                 Templates.uiFunctions.refreshElements('persecond', 'all');
@@ -185,12 +188,8 @@ Game.buildings = (function(){
         
     };
 
-    instance.calcCost = function(self, resource, data){
-        var multi = 1;
-        if(data.id.indexOf("T1") != -1){
-            multi = this.T1Price;
-        }
-        return Math.floor(Game[data][self.id].cost[resource.toString()] * multi * Math.pow(1.1,self.current));
+    instance.calcCost = function(self, resource, data, multi){
+        return Math.floor(Game[data][self.id].cost[resource.toString()] * (multi||1) * Math.pow(1.1,self.current));
     };
 
     instance.constructBuildings = function(id, count) {
