@@ -36,6 +36,8 @@ Game.buildings = (function(){
     instance.researchBuildingTypeCount = 0;
     instance.storageTypeCount = 0;
 
+    instance.T1Price = 1;
+
     instance.initialise = function() {
         for (var id in Game.buildingData) {
             var data = Game.buildingData[id];
@@ -184,7 +186,11 @@ Game.buildings = (function(){
     };
 
     instance.calcCost = function(self, resource, data){
-        return Math.floor(Game[data][self.id].cost[resource.toString()] * Math.pow(1.1,self.current));
+        var multi = 1;
+        if(data.id.indexOf("T1") != -1){
+            multi = this.T1Price;
+        }
+        return Math.floor(Game[data][self.id].cost[resource.toString()] * multi * Math.pow(1.1,self.current));
     };
 
     instance.constructBuildings = function(id, count) {

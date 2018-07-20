@@ -8,6 +8,9 @@ Game.wonder = (function(){
     instance.navCount = 0;
     instance.tabUnlocked = false;
 
+    instance.floor1Price = 1;
+    instance.floor23Price = 1;
+
     instance.initialise = function(){
     	for (var id in Game.wonderData) {
             var data = Game.wonderData[id];
@@ -20,7 +23,7 @@ Game.wonder = (function(){
                 displayNeedsUpdate: true
             });
         }
-        console.debug("Loaded " + this.navCount + " Interstellar Navs");
+        console.debug("Loaded " + this.navCount + " Wonder Navs");
     };
     
     instance.update = function(delta){
@@ -76,6 +79,12 @@ Game.wonder = (function(){
     };
 
     instance.calcCost = function(data, resource){
+        var multi = 1;
+        if(data.category == "floor1"){
+            multi = this.floor1Price;
+        } else if(data.category == "floor2" || data.category == "floor3"){
+            multi = this.floor23Price;
+        }
         return Math.floor(data.cost[resource.toString()] * Math.pow(1.1,(data.current || 0)));
     };
 
@@ -165,7 +174,6 @@ Game.wonder = (function(){
 // }
 
 console.log("%c", "background: green;padding: 5px", "wonderUI");
-console.log("%c", "background: green;padding: 5px", "DM Discount");
 
 // function updateProgressBar(elementId, percentage) {
 //     if(percentage <= 100){

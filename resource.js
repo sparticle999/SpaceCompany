@@ -85,6 +85,8 @@ Game.resources = (function(){
     instance.resourceCategoryCount = 0;
     instance.storageUpgradeCount = 0;
 
+    instance.storagePrice = 1;
+
     instance.initialise = function() {
         for (var id in Game.resourceData) {
             var data = Game.resourceData[id];
@@ -257,15 +259,15 @@ Game.resources = (function(){
         var lunarite = this.getResourceData("lunarite");
         // Adjust what {{item}}StorageUpgrade_Cost contains after upgrading
         //  Costs 5.033B Oil, 2.013B Metal. 
-        if(res.current >= res.capacity*storagePrice){
+        if(res.current >= res.capacity*this.storagePrice){
             if(id == "metal"){
-                res.current -= res.capacity*storagePrice;
+                res.current -= res.capacity*this.storagePrice;
                 res.capacity *= 2;
                 res.displayNeedsUpdate = true;
             } else if(id == "lunarite"){
-                if(metal.current >= res.capacity*storagePrice*4){
-                    res.current -= res.capacity*storagePrice;
-                    metal.current -= res.capacity*storagePrice*4;
+                if(metal.current >= res.capacity*this.storagePrice*4){
+                    res.current -= res.capacity*this.storagePrice;
+                    metal.current -= res.capacity*this.storagePrice*4;
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;
@@ -274,9 +276,9 @@ Game.resources = (function(){
                     Templates.uiFunctions.refreshElements('current', 'metal');
                 }
             } else if(id == "meteorite"){
-                if(lunarite.current >= res.capacity*storagePrice*4){
-                    res.current -= res.capacity*storagePrice;
-                    lunarite.current -= res.capacity*storagePrice*4;
+                if(lunarite.current >= res.capacity*this.storagePrice*4){
+                    res.current -= res.capacity*this.storagePrice;
+                    lunarite.current -= res.capacity*this.storagePrice*4;
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
@@ -285,9 +287,9 @@ Game.resources = (function(){
                     Templates.uiFunctions.refreshElements('current', 'lunarite');
                 }
             } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
-                if(lunarite.current >= res.capacity*storagePrice*0.4){
-                    res.current -= res.capacity*storagePrice;
-                    lunarite.current -= res.capacity*storagePrice*0.4;
+                if(lunarite.current >= res.capacity*this.storagePrice*0.4){
+                    res.current -= res.capacity*this.storagePrice;
+                    lunarite.current -= res.capacity*this.storagePrice*0.4;
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     lunarite.displayNeedsUpdate = true;
@@ -296,9 +298,9 @@ Game.resources = (function(){
                     Templates.uiFunctions.refreshElements('current', 'lunarite');
                 }
             } else {
-                if(metal.current >= res.capacity*storagePrice*0.4){
-                    res.current -= res.capacity*storagePrice;
-                    metal.current -= res.capacity*storagePrice*0.4;
+                if(metal.current >= res.capacity*this.storagePrice*0.4){
+                    res.current -= res.capacity*this.storagePrice;
+                    metal.current -= res.capacity*this.storagePrice*0.4;
                     res.capacity *= 2;
                     res.displayNeedsUpdate = true;
                     metal.displayNeedsUpdate = true;

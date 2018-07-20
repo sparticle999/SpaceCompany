@@ -257,13 +257,16 @@ Game.stargaze = (function(){
 			if(typeof data.stargaze.entries !== 'undefined'){
                 for(id in data.stargaze.entries){
                     this.entries[id] = data.stargaze.entries[id];
+                    this.entries[id].unlocked = true;
                     this.entries[id].displayNeedsUpdate = true;
                 }
             }
             if(typeof data.stargaze.upgradeEntries !== 'undefined'){
                 for(id in data.stargaze.upgradeEntries){
-                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achiev;
-                    this.upgradeEntries[id].displayNeedsUpdate = true;
+                	if(typeof this.upgradeEntries[id] !== 'undefined'){
+	                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achieved;
+	                    this.upgradeEntries[id].displayNeedsUpdate = true;
+	                }
                 }
             }
             if(typeof data.stargaze.rebirthStart !== 'undefined'){
