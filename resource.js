@@ -326,6 +326,19 @@ Game.resources = (function(){
         res.displayNeedsUpdate = true;
     };
 
+    instance.checkStorages = function(){
+    if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
+        for(var id in this.entries){
+            var data = this.entries[id];
+            if(data.unlocked && data.id != "science" && data.id != "rocketFuel"){
+                if(data.current < data.capacity){
+                    return false;
+                }
+            }
+        }
+        Game.notifyStorage();
+    }
+}
 
     instance.calcAllBuildingProduction = function() {
         var energyBonus = 0;
@@ -334,12 +347,16 @@ Game.resources = (function(){
 
     instance.updateResourcesPerSecond = function(){
         var efficiencyMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01);
+        var dm = 1 + 0.01*Game.stargaze.entries.darkMatter.current;
+        if(!Game.stargaze.upgradeEntries.increaseProd1.achieved){
+            dm = 1;
+        }
         var energyDiff = 0;
         var energy = Game.resources.entries.energy;
         for(var id in Game.solCenter.entries.dyson.items){
             var data = Game.solCenter.entries.dyson.items;
             if(data.output){
-                this.entries.energy.perSecond += data.output;
+                this.entries.energy.perSecond += data.output * dm;
             }
         }
         for(var resource in this.entries){
@@ -369,7 +386,7 @@ Game.resources = (function(){
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
-                    this.entries[value].perSecond += val * building.current * efficiencyMultiplier * (1+Game.stargaze.entries.darkMatter.current*dmBoost);
+                    this.entries[value].perSecond += val * building.current * efficiencyMultiplier * dm;
                 }
             }
         }

@@ -66,7 +66,6 @@ Game.constants = (function(){
 
     instance.maxTier = 6;
 
-    instance.enableStorageNotifications = false;
     instance.enableMachineTab = true;
 
     return instance;

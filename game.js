@@ -84,7 +84,7 @@ var Game = (function() {
 
         self.buildings.updatePerSecondProduction = true;
 
-        checkStorages();
+        self.resources.checkStorages();
 
         self.updateTime(delta);
 
@@ -356,14 +356,12 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "all tech upgrades")
         console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
         console.log("%c", "background: green;padding: 5px", "stats")
-        console.log("%c", "background: green;padding: 5px", "dmBoost")
         console.log("%c", "background: green;padding: 5px", "efficiencyBoosts")
         console.log("%c", "background: green;padding: 5px", "energy toggle")
         console.log("%c", "background: green;padding: 5px", "plasma toggle core.js:180")
         console.log("%c", "background: green;padding: 5px", "charcoal toggle core.js:140")
         console.log("%c", "background: green;padding: 5px", "meteorite toggle core.js:172")
         console.log("%c", "background: green;padding: 5px", "toggles legacyUI.js:125")
-        console.log("%c", "background: green;padding: 5px", "notify storage")
         console.log("%c", "background: green;padding: 5px", "Research tab notification")
         console.log("%c", "background: green;padding: 5px", "redo solar system")
         console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
