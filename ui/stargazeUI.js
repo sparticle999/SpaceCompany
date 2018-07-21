@@ -73,7 +73,7 @@ Game.stargazeUI = (function(){
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1">',
-                    '<span id="{{htmlId}}_count">{{count}}</span> (<span id="{{htmlId}}_current">{{current}}</span>)',
+                    '<span id="{{htmlId}}_current">{{count}}</span> (<span id="{{htmlId}}_potential">{{current}}</span>)',
                 '</td>',].join('\n'));
 
         instance.dmInfoTemplate = Handlebars.compile(
@@ -278,8 +278,9 @@ Game.stargazeUI = (function(){
         }
         //Sphere
         var sphereDM = 0;
-        if(sphere != 0)sphereDM += 10
-        sphereDM += sphere*5;
+        var sol = Game.solCenter.entries.dyson.items;
+        if(sol.sphere.current != 0)sphereDM += 10
+        sphereDM += sol.sphere.current*5;
         //Research
         var researchDM = Math.floor((Game.tech.entries.resourceEfficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
         //Rank
@@ -287,7 +288,7 @@ Game.stargazeUI = (function(){
         //Swarms
         var swarmDM = 0;
         var x = 1;
-        while (swarm >= Game.utils.pascal(x)){
+        while (sol.swarm.current >= Game.utils.pascal(x)){
             x += 1;
             swarmDM += 1;
         }

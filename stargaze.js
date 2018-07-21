@@ -19,6 +19,7 @@ Game.stargaze = (function(){
 	instance.tabUnlocked = false;
 
 	instance.initialise = function(){
+		console.log("%c", "background: green;padding: 5px", "displayNeedsUpdate on upgradeEntries")
 		for (var id in Game.stargazeData) {
 			var data = Game.stargazeData[id];
 			
@@ -168,7 +169,7 @@ Game.stargaze = (function(){
 			console.log('"' + id + '" is not a recognised upgrade.');
 			return;
 		}
-		if(upgradeData.achieved == false){
+		if(upgradeData.achieved != true){
 			if(this.entries.darkMatter.current >= upgradeData.cost){
 				this.entries.darkMatter.current -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
@@ -239,6 +240,9 @@ Game.stargaze = (function(){
 			data.stargaze.entries[id] = this.entries[id];
 		}
 		for(var id in this.upgradeEntries){
+			if(typeof this.upgradeEntries[id].achieved == 'undefined'){
+				this.upgradeEntries[id].achieved = false;
+			}
 			data.stargaze.upgradeEntries[id] = {achiev: this.upgradeEntries[id].achieved};
 		}
 		for(var id in this.rebirthStart){
@@ -265,6 +269,9 @@ Game.stargaze = (function(){
                 for(id in data.stargaze.upgradeEntries){
                 	if(typeof this.upgradeEntries[id] !== 'undefined'){
 	                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achieved;
+	                    if(typeof this.upgradeEntries[id].achieved == 'undefined'){
+	                    	this.upgradeEntries[id].achieved = false;
+	                    }
 	                    this.upgradeEntries[id].displayNeedsUpdate = true;
 	                }
                 }
