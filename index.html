@@ -9,7 +9,7 @@
 	<link href="lib/pnotify.custom.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
-	<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+	<!-- <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script> -->
 	<!-- <script>
 		kongregateAPI.loadAPI(function(){
 			window.kongregate = kongregateAPI.getAPI();
@@ -84,7 +84,7 @@
 	<span id="updateBox"></span>
 
 <!-- Nav tabs -->
-	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">    	
+	<ul class="nav nav-tabs no-select" role="tablist" id="tabList">
     	<li role="presentation" id="solCenterTopTab" class="hidden"><a href="#solCenterPage" aria-control="solCenterPage" role="tab" data-toggle="tab"onclick="tabClicked('solCenter')"><div id="solCenterTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Sol Center</a></li>
     	<!-- <li role="presentation" id="machineTopTab" style="display: none;"><a href="#machineTab" aria-control="machineTab" role="tab" data-toggle="tab"onclick="tabClicked('machine')"><div id="machineTabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div> Machines</a></li> -->
     	<li role="presentation" class="pull-right"><a href="#help" aria-control="help" role="tab" data-toggle="tab"><div class="glyphicon glyphicon-info-sign"></div> Help / FAQ</a></li>
@@ -1048,7 +1048,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- More Tab -->
 		<div role="tabpanel" class="tab-pane fade" id="more">
 			<div class="container" style="width:250px; float:left">
@@ -1698,8 +1698,14 @@
 <script type="text/javascript" src="variable.js"></script>
 
 
+<script type="application/json" src="data/resources.json" id="resourceData"></script>
+
 <script type="text/javascript" src="game.js"></script>
 <script type="text/javascript" src="constants.js"></script>
+
+<script type="text/javascript" src="data/resourceData.data.js"></script>
+<script type="text/javascript" src="dataImporter.js"></script>
+
 <script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript" src="updates.js"></script>
 <script type="text/javascript" src="achievements.js"></script>

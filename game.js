@@ -3,6 +3,7 @@ var Game = (function() {
 
     var instance = {
         ui: {},
+        data: {},
         lastUpdateTime: 0,
         intervals: {},
         uiComponents: [],
@@ -176,7 +177,7 @@ var Game = (function() {
             this.solar.load(data);
             this.wonder.load(data);
             this.solCenter.load(data);
-            this.interstellar.load(data); 
+            this.interstellar.load(data);
             this.updates.load(data);
 
             this.settings.load(data);
@@ -231,11 +232,11 @@ var Game = (function() {
                 // if 'metal' not in to.earth.items, create to.earth.items.metal
                 if (!(item in to[value][con])) {to[value][con][item] = {};}
                 // set Game.resourceCategoryData.earth.items.metal to Game.resources.entries.metal
-                to[value][con][item] = from[item]    
+                to[value][con][item] = from[item]
             } else {
                 if (!(value in to)) {to[value] = {};}
                 if (!(item in to[value])) {to[value][item] = {};}
-                to[value][item] = from[item]        
+                to[value][item] = from[item]
             }
         })
     }
@@ -349,7 +350,7 @@ var Game = (function() {
         // Refresh all actions
 
         //Game.ui.updateAutoDataBindings();
-        
+
 
         console.log("%c", "background: green;padding: 5px", "test from start");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
@@ -534,7 +535,7 @@ var Game = (function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-        
+
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 

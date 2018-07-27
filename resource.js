@@ -81,13 +81,11 @@ Game.resources = (function(){
     instance.entries = {};
     instance.categoryEntries = {};
     instance.storageUpgrades = {};
-    instance.resourceTypeCount = 0;
-    instance.resourceCategoryCount = 0;
-    instance.storageUpgradeCount = 0;
 
     instance.storagePrice = 1;
 
     instance.initialise = function() {
+
         for (var id in Game.resourceData) {
             var data = Game.resourceData[id];
             this.resourceTypeCount++;
@@ -105,20 +103,20 @@ Game.resources = (function(){
                 ui_persecond: new UpdatePerSecond(id),
                 ui_current: new UpdateCurrent(id),
                 ui_capacity: new UpdateCapacity(id),
-
-            });
-            this.entries[id].capacity = data.baseCapacity;
-        }
-
-
-
-        for (var id in Game.resourceCategoryData) {
-            var data = Game.resourceCategoryData[id];
-            this.resourceCategoryCount++;
-            this.categoryEntries[id] = $.extend({}, data, {
-                id: id
+                capacity: data.baseCapacity,
             });
         }
+
+
+
+
+        // for (var id in Game.resourceCategoryData) {
+        //     var data = Game.resourceCategoryData[id];
+        //     this.resourceCategoryCount++;
+        //     this.categoryEntries[id] = $.extend({}, data, {
+        //         id: id
+        //     });
+        // }
 
         for (var id in Game.storageData) {
             var data = Game.storageData[id];
@@ -129,9 +127,16 @@ Game.resources = (function(){
             });
 
         }
+        console.log('Current upgrades');
 
-        console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
-        console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
+
+        console.log('Logging resources', Game.data.import.resources());
+        console.log(this.entries);
+
+        const resourceData = Game.data.import.resources();
+        // this.entries = resourceData.items;
+        this.categoryEntries = resourceData.categories;
+        // this.storageUpgrades = resourceData.storage;
     };
 
     instance.update = function(delta) {
@@ -258,7 +263,7 @@ Game.resources = (function(){
         var metal = this.getResourceData("metal");
         var lunarite = this.getResourceData("lunarite");
         // Adjust what {{item}}StorageUpgrade_Cost contains after upgrading
-        //  Costs 5.033B Oil, 2.013B Metal. 
+        //  Costs 5.033B Oil, 2.013B Metal.
         if(res.current >= res.capacity*this.storagePrice){
             if(id == "metal"){
                 res.current -= res.capacity*this.storagePrice;
