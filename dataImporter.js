@@ -1,4 +1,9 @@
 Game.data.import = (function () {
+    /**
+     * Merges data with the associated templates. Expects templates to be called `key` + `Template`. Will only check the first level of the objects
+     * For example, a template for the `storage` data would be called `storageTemplate` and would be applied to all object in `storage`
+     * @param {any} data Arbitrary data
+     */
     function mergeTemplates(data) {
         // Get the templates to modify
         let templates = Object.keys(data)
@@ -30,6 +35,11 @@ Game.data.import = (function () {
         }, nonTemplates);
     }
 
+    /**
+     * Applies a transformation to all values inside an object
+     * @param {*} target The object to transform
+     * @param {(object, string): void} transformer The anonymous function used to transform the data
+     */
     function mapObjects(target, transformer) {
         const keys = Object.keys(target);
         return keys.reduce((result, current) => {
@@ -38,16 +48,10 @@ Game.data.import = (function () {
         }, {});
     }
 
+    /**
+     * Imports all resource data
+     */
     function importResourceData() {
-        function applyStorage(self) {
-            if (typeof self.resource === "undefined") {
-                return;
-            }
-            var res = Game.resources.getResourceData(self.resource);
-            res.capacity *= 2;
-            res.displayNeedsUpdate = true;
-            self.displayNeedsUpdate = true;
-        }
 
         /** Import the data and merge static templates **/
         const data = mergeTemplates(Game.data.resources);
