@@ -55,7 +55,7 @@ Game.data.resources = {
             page: "solar",
             order: 2,
             unlocked: true
-        }
+        },
     },
     itemsTemplate: {
         current: 0,

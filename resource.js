@@ -85,7 +85,7 @@ Game.resources = (function(){
     instance.storagePrice = 1;
 
     instance.initialise = function() {
-        const resourceData = Game.data.import.resources();
+        const resourceData = Game.resourceCategoryData;
         // TODO: Refactor this if possible, logic shouldn't be tied to internal objects
         this.entries = Object.keys(resourceData.items).reduce((result, k) => {
             result[k] = $.extend({}, resourceData.items[k], {

@@ -248,9 +248,12 @@ var Game = (function() {
         Game.pages = {};
         // link Game.resourceDataCategories page to Game.pages
         // This creates the Game.pages.resources.earth
-        this.combineGameObjects(Game.resourceCategoryData, 'page', Game.pages, '');
+
+
+
+        this.combineGameObjects(Game.resourceCategoryData.categories, 'page', Game.pages, '');
         // link Game.resources.entries category to Game.resourceCategoryData
-        this.combineGameObjects(Game.resources.entries, 'category', Game.resourceCategoryData, 'items');
+        this.combineGameObjects(Game.resources.entries, 'category', Game.resourceCategoryData.categories, 'items');
         // link Game.resources.storageUpgrades resource to Game.resources.entries
         this.combineGameObjects(Game.resources.storageUpgrades.entries, 'resource', Game.resources.entries, 'storUpgrades')
         // link Game.buildings.entries to Game.resources.entries
@@ -318,6 +321,8 @@ var Game = (function() {
         //registerLegacyBindings();
         //self.ui.updateAutoDataBindings();
 
+        // Load static data
+        Game.resourceCategoryData = Game.data.import.resources();
 
         // Initialise data first
         self.achievements.initialise();
@@ -333,7 +338,9 @@ var Game = (function() {
         // Create the collector Object; page -> categories -> items
         self.combineAllGameObjects()
         // Initialise UI
+
         self.resourcesUI = new Templates.createPage('resources', 'Resources BETA', Game.pages.resources);
+
         self.resourcesUI.initialise();
         self.techUI = new Templates.createPage('tech', 'Research BETA', Game.pages.tech);
         self.techUI.initialise();
