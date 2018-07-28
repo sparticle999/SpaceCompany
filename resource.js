@@ -46,9 +46,10 @@ Game.resources = (function(){
             var value = Game.settings.doFormat('capacity', obj);
             Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
+
             // Storage cost
-            if (id in Game.storageData.entries) {
-                var cost = Game.storageData.entries[id].cost;
+            if (id in Game.resourceData.storage) {
+                var cost = Game.resourceData.storage[id].cost;
                 var value = 0;
                 // Find the inflation factor by comparing id's current cost with its base cost
                 // This is pretty much a hack and won't work when a material doesn't need itself
@@ -81,57 +82,22 @@ Game.resources = (function(){
     instance.entries = {};
     instance.categoryEntries = {};
     instance.storageUpgrades = {};
-    instance.resourceTypeCount = 0;
-    instance.resourceCategoryCount = 0;
-    instance.storageUpgradeCount = 0;
 
     instance.storagePrice = 1;
 
     instance.initialise = function() {
-        for (var id in Game.resourceData) {
-            var data = Game.resourceData[id];
-            this.resourceTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                resource: id,
-                htmlId: 'res_' + id,
-                current: 0,
-                perSecond: 0,
-                perSecondDisplay: 0,
-                iconPath: Game.constants.iconPath,
-                iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
-                hidden: false,
-                ui_persecond: new UpdatePerSecond(id),
-                ui_current: new UpdateCurrent(id),
-                ui_capacity: new UpdateCapacity(id),
-
+        const resourceData = Game.resourceData;
+        // TODO: Refactor this if possible, logic shouldn't be tied to internal objects
+        this.entries = Object.keys(resourceData.items).reduce((result, k) => {
+            result[k] = $.extend({}, resourceData.items[k], {
+                ui_persecond: new UpdatePerSecond(k),
+                ui_current: new UpdateCurrent(k),
+                ui_capacity: new UpdateCapacity(k),
             });
-            this.entries[id].capacity = data.baseCapacity;
-        }
-
-
-
-        for (var id in Game.resourceCategoryData) {
-            var data = Game.resourceCategoryData[id];
-            this.resourceCategoryCount++;
-            this.categoryEntries[id] = $.extend({}, data, {
-                id: id
-            });
-        }
-
-        for (var id in Game.storageData) {
-            var data = Game.storageData[id];
-            this.storageUpgradeCount++;
-            this.storageUpgrades[id] = $.extend({}, data, {
-                id: id,
-                htmlId: "store_" + id
-            });
-
-        }
-
-        console.debug("Loaded " + this.resourceCategoryCount + " Resource Categories");
-        console.debug("Loaded " + this.resourceTypeCount + " Resource Types");
+            return result;
+        }, {});
+        this.categoryEntries = resourceData.categories;
+        this.storageUpgrades.entries = resourceData.storage;
     };
 
     instance.update = function(delta) {
@@ -258,7 +224,7 @@ Game.resources = (function(){
         var metal = this.getResourceData("metal");
         var lunarite = this.getResourceData("lunarite");
         // Adjust what {{item}}StorageUpgrade_Cost contains after upgrading
-        //  Costs 5.033B Oil, 2.013B Metal. 
+        //  Costs 5.033B Oil, 2.013B Metal.
         if(res.current >= res.capacity*this.storagePrice){
             if(id == "metal"){
                 res.current -= res.capacity*this.storagePrice;

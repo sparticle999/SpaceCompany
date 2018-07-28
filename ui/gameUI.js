@@ -14,7 +14,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	this.title = cTitle;
 	this.data = cObj;
 
-	// Object containing the ID masks 
+	// Object containing the ID masks
 	var registeredEvents = {};
 
 
@@ -61,7 +61,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="hidden">',
 		   '<td colspan="4" style="border:{{border}};"><span>{{title}}</span><span class="caret"></span></td>',
 		 '</tr>',''].join('\n'));
-	
+
 	/**
 	 * Formats a menu row, hides storage
 	 * {{htmlId}} - energy, rocketFuel
@@ -273,7 +273,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 				console.warn("Called with action: 'gainNum' from 'createPane', while looping over:");
 				console.warn(data)
 			}
-		}		
+		}
 		// 	-> List storBuildings?
 		if ('storBuildings' in data) {
 			// Attach the storage buildings to the title
@@ -368,7 +368,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 					} else {
 						// create a temporary object to only pass the current subitem
 						var tempObj = {}; tempObj.items = data[cat].items[subitem];
-						createPane(tempObj);						
+						createPane(tempObj);
 					}
 				})
 			// No subitems in the main structure.
@@ -396,7 +396,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		Templates.uiFunctions.attachHTML(this.page, 'tabList', TemplateTopMenuNav());
 		// Link the page table to tabContent
 		Templates.uiFunctions.attachHTML(this.page, 'tabContent', TemplateBuildPage());
-		// Link the menu to '+this.page+'Tab_Nav
+        // Link the menu to '+this.page+'Tab_Nav
 		Templates.uiFunctions.attachHTML(this.page, this.page+'Tab_nav', createPage(this.data));
 		// The content panes are linked through createPage -> createPane
 	};

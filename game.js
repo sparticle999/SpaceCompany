@@ -3,6 +3,7 @@ var Game = (function() {
 
     var instance = {
         ui: {},
+        data: {},
         lastUpdateTime: 0,
         intervals: {},
         uiComponents: [],
@@ -176,7 +177,7 @@ var Game = (function() {
             this.solar.load(data);
             this.wonder.load(data);
             this.solCenter.load(data);
-            this.interstellar.load(data); 
+            this.interstellar.load(data);
             this.updates.load(data);
 
             this.settings.load(data);
@@ -210,7 +211,7 @@ var Game = (function() {
      * @param  {string} cat  The category we'll base the link on
      * @param  {Object} to   The target Object for linking
      * @param  {string} con  The container to collect the linked Object in
-     * Runthrough: Game.resources.entries, 'category', Game.resourceCategoryData, 'items'
+     * Runthrough: Game.resources.entries, 'category', Game.resourceData, 'items'
      */
      instance.combineGameObjects = function(from, cat, to, con) {
         // Obj keys: [metal, energy] -> metal
@@ -224,18 +225,18 @@ var Game = (function() {
             var value = from[item][cat];
             // if 'con' is set
             if (con) {
-                // If earth not in Game.resourceCategoryData, create Game.resourceCategoryData.earth
+                // If earth not in Game.resourceData, create Game.resourceData.earth
                 if (!(value in to)) {to[value] = {};}
                 // If 'items' not in to.earth, create to.earth.items
                 if (!(con in to[value])) {to[value][con] = {};}
                 // if 'metal' not in to.earth.items, create to.earth.items.metal
                 if (!(item in to[value][con])) {to[value][con][item] = {};}
-                // set Game.resourceCategoryData.earth.items.metal to Game.resources.entries.metal
-                to[value][con][item] = from[item]    
+                // set Game.resourceData.earth.items.metal to Game.resources.entries.metal
+                to[value][con][item] = from[item]
             } else {
                 if (!(value in to)) {to[value] = {};}
                 if (!(item in to[value])) {to[value][item] = {};}
-                to[value][item] = from[item]        
+                to[value][item] = from[item]
             }
         })
     }
@@ -247,9 +248,12 @@ var Game = (function() {
         Game.pages = {};
         // link Game.resourceDataCategories page to Game.pages
         // This creates the Game.pages.resources.earth
-        this.combineGameObjects(Game.resourceCategoryData, 'page', Game.pages, '');
-        // link Game.resources.entries category to Game.resourceCategoryData
-        this.combineGameObjects(Game.resources.entries, 'category', Game.resourceCategoryData, 'items');
+
+
+
+        this.combineGameObjects(Game.resourceData.categories, 'page', Game.pages, '');
+        // link Game.resources.entries category to Game.resourceData
+        this.combineGameObjects(Game.resources.entries, 'category', Game.resourceData.categories, 'items');
         // link Game.resources.storageUpgrades resource to Game.resources.entries
         this.combineGameObjects(Game.resources.storageUpgrades.entries, 'resource', Game.resources.entries, 'storUpgrades')
         // link Game.buildings.entries to Game.resources.entries
@@ -266,7 +270,7 @@ var Game = (function() {
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
         this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
         this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
-        // Link Game.solar.entries category to Game.resourceCategoryData
+        // Link Game.solar.entries category to Game.resourceData
         //this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
         // Link it again, a level deeper and link on id
         //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
@@ -317,6 +321,8 @@ var Game = (function() {
         //registerLegacyBindings();
         //self.ui.updateAutoDataBindings();
 
+        // Load static data
+        Game.resourceData = Game.data.import.resources();
 
         // Initialise data first
         self.achievements.initialise();
@@ -332,7 +338,9 @@ var Game = (function() {
         // Create the collector Object; page -> categories -> items
         self.combineAllGameObjects()
         // Initialise UI
+
         self.resourcesUI = new Templates.createPage('resources', 'Resources BETA', Game.pages.resources);
+
         self.resourcesUI.initialise();
         self.techUI = new Templates.createPage('tech', 'Research BETA', Game.pages.tech);
         self.techUI.initialise();
@@ -349,7 +357,7 @@ var Game = (function() {
         // Refresh all actions
 
         //Game.ui.updateAutoDataBindings();
-        
+
 
         console.log("%c", "background: green;padding: 5px", "test from start");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
@@ -534,7 +542,7 @@ var Game = (function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-        
+
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 
