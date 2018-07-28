@@ -53,10 +53,15 @@ var Game = (function() {
 
     instance.fastUpdate = function(self, delta) {
         Game.tech.updateEfficiencies();
-
-        legacyRefreshUI();
-        self.interstellarUI.update(delta);
-        self.stargazeUI.update(delta);
+        var tabs = ["resources", "tech", "solar", "wonder", "solCenter", "interstellar", "stargaze"];
+        for(var i = 0; i < tabs.length; i++){
+            if(document.getElementById(tabs[i]+"Tab")==null||typeof self[tabs[i]+"UI"].update == 'undefined'){
+                continue;
+            }
+            if(document.getElementById(tabs[i] + "Tab").className == "active"){
+                self[tabs[i]+"UI"].update(delta);
+            }
+        }
 
         //self.ui.updateBoundElements(delta);
         self.resources.update(delta);
@@ -80,11 +85,11 @@ var Game = (function() {
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
         refreshTimeUntilLimit();
-        gainAutoEmc();
 
         self.buildings.updatePerSecondProduction = true;
 
         self.resources.checkStorages();
+        self.solCenter.autoEmc();
 
         self.updateTime(delta);
 
@@ -357,14 +362,9 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
         console.log("%c", "background: green;padding: 5px", "stats")
         console.log("%c", "background: green;padding: 5px", "efficiencyBoosts")
-        console.log("%c", "background: green;padding: 5px", "energy toggle")
-        console.log("%c", "background: green;padding: 5px", "plasma toggle core.js:180")
-        console.log("%c", "background: green;padding: 5px", "charcoal toggle core.js:140")
-        console.log("%c", "background: green;padding: 5px", "meteorite toggle core.js:172")
-        console.log("%c", "background: green;padding: 5px", "toggles legacyUI.js:125")
-        console.log("%c", "background: green;padding: 5px", "Research tab notification")
+        console.log("%c", "background: green;padding: 5px", "dyson ui legacyUI.js:125")
+        console.log("%c", "background: green;padding: 5px", "Research tab notification upon load")
         console.log("%c", "background: green;padding: 5px", "redo solar system")
-        console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
         console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
         // Now load
         self.load();

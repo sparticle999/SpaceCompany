@@ -52,7 +52,7 @@ Game.resourceCategoryData = (function () {
 
     instance.spacecraft = {
         title: 'Spacecraft',
-        category: 'spacecrat',
+        category: 'spacecraft',
         page: 'solar',
         order: 1, // 1st category item on the solar page
         unlocked: true
@@ -86,6 +86,7 @@ Game.resourceData = (function () {
         category: 'energy',
         baseCapacity: 100000,
         gainNum: 1,
+        toggleable: true,
         manualgain: false,
         unlocked: false
     };
@@ -99,7 +100,10 @@ Game.resourceData = (function () {
         desc: 'Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.',
         icon: 'plasmaIcon',
         category: 'fabricated',
+        gainNum: 1,
+        gainCost: {'energy': 1000, 'hydrogen': 10,},
         baseCapacity: 100000,
+        toggleable: true,
         manualgain: true,
         unlocked: false
     };
@@ -112,6 +116,8 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 3,
         gainNum: 1,
+        gainCost: {'plasma': 3,},
+        toggleable: true,
         manualgain: true,
         unlocked: false
     };
@@ -124,6 +130,8 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 2,
         gainNum: 1,
+        gainCost: {'wood': 2,},
+        toggleable: true,
         manualgain: true,
         unlocked: false
     };
@@ -140,6 +148,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 3,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -152,6 +161,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 1,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: true
     };
@@ -164,6 +174,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 3,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: true
     };
@@ -176,6 +187,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 1,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: true
     };
@@ -188,6 +200,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 23,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -200,6 +213,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 37,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -212,6 +226,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 42,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -229,6 +244,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 15,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -241,6 +257,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 12,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -253,6 +270,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 17,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -265,6 +283,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 14,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -277,6 +296,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 16,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -293,6 +313,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 33,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -305,6 +326,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 39,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -317,6 +339,7 @@ Game.resourceData = (function () {
         baseCapacity: 50,
         emc: 44,
         gainNum: 1,
+        toggleable: false,
         manualgain: true,
         unlocked: false
     };
@@ -333,6 +356,7 @@ Game.resourceData = (function () {
         baseCapacity: 1000000,
         hideCapacity: true,
         gainNum: 1,
+        toggleable: false,
         manualgain: false,
         unlocked: false
     };
@@ -349,6 +373,7 @@ Game.resourceData = (function () {
         baseCapacity: 1000000,
         hideCapacity: true,
         gainNum: 1,
+        toggleable: true,
         manualgain: false,
         unlocked: true
     };
@@ -364,6 +389,7 @@ Game.resourceData = (function () {
         category: "spacecraft",
         baseCapacity: 0, // Important to hide the ps & storage
         order: 1,
+        toggleable: false,
         manualgain:  false,
         unlocked: true
     };
@@ -375,6 +401,7 @@ Game.resourceData = (function () {
         category: "spacecraft",
         baseCapacity: 0, // Important to hide the ps & storage
         order: 2,
+        toggleable: false,
         manualgain:  false,
         unlocked: true
     };
@@ -389,6 +416,7 @@ Game.resourceData = (function () {
         category: 'interstellar',
         baseCapacity: 100000,
         order: 3,
+        toggleable: true,
         manualgain: false,
         unlocked: false
     };

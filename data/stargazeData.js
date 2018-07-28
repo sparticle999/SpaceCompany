@@ -159,10 +159,10 @@ Game.prestigeData = (function(){
 		category: "darkMatter",
 		tier: "basic",
 		onApply: function(){
-	        dmBoost += 0.01;
+	        Game.stargaze.dmBoost += 0.01;
 	    },
 	    remove: function(){
-	    	dmBoost -= 0.01;
+	    	Game.stargaze.dmBoost -= 0.01;
 	    },
 		achieved: false,
 	};
@@ -204,9 +204,11 @@ Game.prestigeData = (function(){
 			var newStorage = 6400;
 			for(var id in Game.resources.entries){
 				var data = Game.resources.entries[id];
-				if(data.capacity < 6400){
-					data.capacity = 6400;
-					data.displayNeedsUpdate = true;
+				if(data.baseCapacity == 50){
+					if(data.capacity < 6400){
+						data.capacity = 6400;
+						data.displayNeedsUpdate = true;
+					}
 				}
 			}
 		},
@@ -214,7 +216,7 @@ Game.prestigeData = (function(){
 	    	var newStorage = 50;
 			for(var id in Game.resources.entries){
 				var data = Game.resources.entries[id];
-				if(data.id != "energy" && data.id != "plasma"){
+				if(data.baseCapacity == 50){
 					data.capacity = 50;
 					data.displayNeedsUpdate = true;
 				}
@@ -254,12 +256,11 @@ Game.prestigeData = (function(){
 		opinion: 4,
 		tier: "basic",
 		onApply: function(){
-			Game.buildings.entries.plasmaT3.unlocked = true;
+			Templates.uiFunctions.unlock("plasmaT3");
 		},
 		remove: function(){
-	    	Game.buildings.entries.plasmaT3.unlocked = false;
+			Templates.uiFunctions.hide("plasmaT3");
 	    	Game.buildings.entries.plasmaT3.current = 0;
-	    	Game.buildings.entries.plasmaT3.displayNeedsUpdate = true;
 	    },
 		achieved: false
 	};
@@ -366,12 +367,11 @@ Game.prestigeData = (function(){
 		opinion: 14,
 		tier: "basic",
 		onApply: function(){
-			Game.buildings.entries.scienceT5.unlocked = true;
+			Templates.uiFunctions.unlock("scienceT5");
 		},
 		remove: function(){
-	    	Game.buildings.entries.scienceT5.unlocked = false;
+	    	Templates.uiFunctions.hide("scienceT5");
 	    	Game.buildings.entries.scienceT5.current = 0;
-	    	Game.buildings.entries.scienceT5.displayNeedsUpdate = true;
 	    },
 		achieved: false
 	};
@@ -421,7 +421,7 @@ Game.prestigeData = (function(){
 		opinion: 17,
 		tier: "basic",
 		onApply: function(){
-			Templates.uiFunctions.unlock('energyStorageT5')
+			Templates.uiFunctions.unlock('energyStorageT5');
 		},
 		remove: function(){
 			Templates.uiFunctions.hide('energyStorageT5');
@@ -456,7 +456,7 @@ Game.prestigeData = (function(){
 		tier: "basic",
 		onApply: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter")
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = true;
 					}
@@ -464,7 +464,7 @@ Game.prestigeData = (function(){
 			},
 		remove: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel")
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter")
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = false;
 					}
@@ -525,12 +525,11 @@ Game.prestigeData = (function(){
 		opinion: 29,
 		tier: "basic",
 		onApply: function(){
-			Game.buildings.entries.meteoriteT3.unlocked = true;
+			Templates.uiFunctions.unlock("meteoriteT3");
 		},
 		remove: function(){
-			Game.buildings.entries.meteoriteT3.unlocked = true;
+			Templates.uiFunctions.hide("meteoriteT3");
 	    	Game.buildings.entries.meteoriteT3.current = 0;
-			updateCost();
 	    },
 		achieved: false
 	}
@@ -543,12 +542,11 @@ Game.prestigeData = (function(){
 		opinion: 36,
 		tier: "basic",
 		onApply: function(){
-			Game.buildings.entries.meteoriteT4.unlocked = true;
+			Templates.uiFunctions.unlock("meteoriteT4");
 		},
 		remove: function(){
-			Game.buildings.entries.meteoriteT4.unlocked = true;
+			Templates.uiFunctions.hide("meteoriteT4");
 	    	Game.buildings.entries.meteoriteT4.current = 0;
-			updateCost();
 	    },
 		achieved: false
 	}
@@ -564,6 +562,23 @@ Game.prestigeData = (function(){
 	/*************
 	** Overlord **
 	*************/
+
+	// instance.autoStorage = {
+	// 	name: "Automate Storage Upgrades",
+	// 	desc: "Storage Upgrades will automatically upgrade, according to a toggle button on the resources tab.",
+	// 	cost: 28,
+	// 	category: "overlord",
+	// 	opinion: 19,
+	// 	tier: "basic",
+	// 	onApply: function(){
+	// 		Game.resources.autoStorage = true;
+			
+	// 	},
+	// 	remove: function(){
+	// 		Game.resources.autoStorage = false;
+	//     },
+	// 	achieved: false
+	// }
 
 	return instance;
 

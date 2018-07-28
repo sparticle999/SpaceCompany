@@ -449,7 +449,7 @@ Game.techData = (function () {
         type: TECH_TYPE.UNLOCK,
         costType: COST_TYPE.FIXED,
         cost: {
-            'science': 75000
+            'science': 100000
         },
         tabAlerts: ['resources'],
         onApply: function(){

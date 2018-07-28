@@ -28,7 +28,7 @@ Game.buildings = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 1;
+    instance.dataVersion = 2;
     instance.entries = {};
     instance.storageEntries = {};
     instance.updatePerSecondProduction = true;
@@ -47,6 +47,7 @@ Game.buildings = (function(){
                 category: 'buildings',
                 htmlId: 'resbld_'+id,
                 current: 0,
+                active: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
@@ -87,16 +88,25 @@ Game.buildings = (function(){
     instance.save = function(data) {
         data.buildings = { v: this.dataVersion, i: {}};
         for(var key in this.entries) {
-            data.buildings.i[key] = this.entries[key].current;
+            data.buildings.i[key] = {current: 0, active: 0};
+            data.buildings.i[key].current = this.entries[key].current;
+            data.buildings.i[key].active = this.entries[key].active;
         }
     };
 
     instance.load = function(data) {
         if(data.buildings) {
-            if(data.buildings.v && data.buildings.v === this.dataVersion) {
+            if(data.buildings.v === 1) {
                 for(var id in data.buildings.i) {
                     if(this.entries[id]) {
                         this.constructBuildings(id, data.buildings.i[id]);
+                    }
+                }
+            } else if(data.buildings.v === 2){
+                for(var id in data.buildings.i) {
+                    if(this.entries[id]) {
+                        this.constructBuildings(id, data.buildings.i[id].current);
+                        this.entries[id].active = data.buildings.i[id].active;
                     }
                 }
             }
@@ -198,8 +208,11 @@ Game.buildings = (function(){
             return;
         count = count || 1;
         var newValue = Math.floor(this.entries[id].current + count);
+        var newActiveValue = Math.floor(this.entries[id].active + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
+        this.entries[id].active = Math.min(newActiveValue, this.entries[id].max);
         Templates.uiFunctions.refreshElements('current', 'all');
+        Templates.uiFunctions.refreshElements('active', 'all');
         Templates.uiFunctions.refreshElements('persecond', 'all');
     };
 

@@ -327,22 +327,21 @@ Game.resources = (function(){
     };
 
     instance.checkStorages = function(){
-    if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
+        var current = 0;
+        var total = 0;
         for(var id in this.entries){
             var data = this.entries[id];
             if(data.unlocked && data.id != "science" && data.id != "rocketFuel"){
-                if(data.current < data.capacity){
-                    return false;
-                }
+                current += data.current;
+                total += data.capacity;
             }
         }
-        Game.notifyStorage();
-    }
-}
-
-    instance.calcAllBuildingProduction = function() {
-        var energyBonus = 0;
-        var productionBonus = 0;
+        document.getElementById("storageBar").style.width = current*100/total + "%";
+        if(current == total){
+            document.getElementById("storageBar").style["background-color"] = "#c25e5e";
+        } else {
+            document.getElementById("storageBar").style["background-color"] = "#337ab7";
+        }
     }
 
     instance.updateResourcesPerSecond = function(){
@@ -359,13 +358,18 @@ Game.resources = (function(){
                 this.entries.energy.perSecond += data.output * dm;
             }
         }
+        var boost = {};
         for(var resource in this.entries){
             this.entries[resource].perSecond = 0;
+            boost[resource] = 0;
         }
         for(var id in Game.buildings.entries){
             var building = Game.buildings.entries[id];
-            if(building.current == 0){
+            if(building.active == 0){
                 // Nothing to be done
+                continue;
+            }
+            if(Game.resources.entries[building.resource].toggled == false){
                 continue;
             }
             var use = [];
@@ -379,20 +383,54 @@ Game.resources = (function(){
             }
             var ok = true;
             for(var i = 0; i < use.length; i++){
-                if(this.entries[use[i]].current < (-1)*building.resourcePerSecond[use[i]]){
+                if(this.entries[use[i]].active < (-1)*building.resourcePerSecond[use[i]]){
                     ok = false;
                 }
             }
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
-                    this.entries[value].perSecond += val * building.current * efficiencyMultiplier * dm;
+                    this.entries[value].perSecond += val * building.active * efficiencyMultiplier * dm;
                 }
             }
+        }
+        var nano = Game.solCenter.entries.nanoswarm;
+        if(nano.current > 0 && nano.resource != null){
+            this.entries[nano.resource].perSecond *= Math.pow(1.1,nano.current);
+        }
+        for (var id in Game.interstellar.stars.entries) {
+            var data = Game.interstellar.stars.getStarData(id);
+            if (data.owned === true) {
+                var happiness = 0;
+                for(var item in data.items){
+                    var planet = data.items[item];
+                    happiness += planet.happiness;
+                }
+                var prod = happiness/400;
+                boost[data.resource1.toLowerCase()] += prod;
+                boost[data.resource2.toLowerCase()] += prod;
+            }
+        }
+        for(var resource in this.entries){
+            this.entries[resource].perSecond += boost[resource]*this.entries[resource].perSecond;
         }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('perSecond', 'all');
     };
+
+    instance.toggle = function(id){
+        var data = this.entries[id];
+        if(data.items[id + "T1"].active == 0){
+            for(var item in data.items){
+                data.items[item].active = data.items[item].current;
+            }
+        } else {
+            for(var item in data.items){
+                data.items[item].active = 0;
+            }
+        }
+        return data.items[id + "T1"].active;
+    }
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;

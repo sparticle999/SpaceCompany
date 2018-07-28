@@ -6,8 +6,10 @@ Game.solCenter = (function(){
     instance.entries = {};
     instance.tabUnlocked = false;
     instance.autoResource = null;
+    instance.emcAmount = "Max";
 
     instance.initialise = function(){
+        console.log("%c", "background:red;padding:5px;", "Sol Center Saving does not work")
     	for(var id in Game.solData){
     		var data = Game.solData[id];
     		this.entries[id] = $.extend({}, data, {
@@ -21,15 +23,9 @@ Game.solCenter = (function(){
     };
 
     instance.update = function(delta){
-    	if(this.autoResource){
-    		emcAmount = "Max";
-			convert(autoResource, false);
-    	};
-    	var nanoswarm = this.entries.nanoswarm
-    	if(nanoswarm.current > 0){
-    		var data = Game.resources.entries[nanoswarm.resource];
-            var addValue = data.perSecond * Math.pow(1.1,nanoswarm.current) * delta;
-            this.addResource(nanoswarm.resource, addValue);
+    	if(this.autoResource != null){
+    		this.emcAmount = "Max";
+			this.convert(this.autoResource, false);
     	}
     };
 
@@ -115,7 +111,7 @@ Game.solCenter = (function(){
     	if(this.entries.emc.amount === "Max"){
     		amount = Math.floor(Math.min(Math.floor(getResource(input.current)/data.emc), capacity - current));
     	}else{
-    		amount = Math.floor(Math.min(emcAmount, capacity - current));
+    		amount = Math.floor(Math.min(this.emcAmount, capacity - current));
     	}
     	
     	var required = amount * data.emc;
@@ -129,6 +125,39 @@ Game.solCenter = (function(){
     	}
     	this.entries.emc.displayNeedsUpdate = true;
     };
+
+    instance.changeEmcAmount = function(event){
+        if (event.button === 2) {
+            this.emcAmount /= 10;
+            
+            if (this.emcAmount < 1) {
+                this.emcAmount = "Max";
+            }
+            if(this.emcAmount !== this.emcAmount){
+                this.emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
+            }
+            
+        } else {
+            this.emcAmount *= 10;
+            if(this.emcAmount > getMaxEnergy()){
+                this.emcAmount = "Max";
+            }
+            if(this.emcAmount !== this.emcAmount){
+                this.emcAmount = 1;
+            }
+            
+        }
+
+        refreshConversionDisplay();
+    };
+        console.log("%c", "background:green;padding:5px;", "Add offline (energy first, record left over, autoEmc, then add leftover energy");
+
+    instance.autoEmc = function(){
+        if(this.autoResource != null){
+            this.emcAmount = "Max";
+            this.convert(autoResource, false);
+        }
+    }
 
     instance.switchNano = function(resource){
     	var data = this.entries.nanoswarm;
@@ -149,89 +178,82 @@ Game.solCenter = (function(){
 
 function changeEmcAmount(event){
 	if (event.button === 2) {
-		emcAmount /= 10;
+		this.emcAmount /= 10;
 		
-		if (emcAmount < 1) {
-			emcAmount = "Max";
+		if (this.emcAmount < 1) {
+			this.emcAmount = "Max";
 		}
-		if(emcAmount !== emcAmount){
-			emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
+		if(this.emcAmount !== this.emcAmount){
+			this.emcAmount = Math.pow(10, Math.floor(Math.log10(getMaxEnergy())));
 		}
 		
 	} else {
-		emcAmount *= 10;
-		if(emcAmount > getMaxEnergy()){
-			emcAmount = "Max";
+		this.emcAmount *= 10;
+		if(this.emcAmount > getMaxEnergy()){
+			this.emcAmount = "Max";
 		}
-		if(emcAmount !== emcAmount){
-			emcAmount = 1;
+		if(this.emcAmount !== this.emcAmount){
+			this.emcAmount = 1;
 		}
 		
 	}
-
-    refreshConversionDisplay();
+    this.entries.emc.displayNeedsUpdate = true;
 }
 
 function refreshConversionDisplay() {
-	var maxEnergy = Game.resources.entries.energy.capacity;
-	var maxPlasma = Game.resources.entries.plasma.capacity;
-	for (var i = 0; i < resources.length; i++) {
-		var amountElement = $('#' + resources[i] + 'EmcAmount');
-		var costElement = $('#' + resources[i] + 'EmcVal');
-		var storageElement = $('#' + resources[i] + 'Conv');
+	// var maxEnergy = Game.resources.entries.energy.capacity;
+	// var maxPlasma = Game.resources.entries.plasma.capacity;
+	// for (var i = 0; i < resources.length; i++) {
+	// 	var amountElement = $('#' + resources[i] + 'EmcAmount');
+	// 	var costElement = $('#' + resources[i] + 'EmcVal');
+	// 	var storageElement = $('#' + resources[i] + 'Conv');
 
-		// meteorites are a special case because the conversion uses plasma
-		var emcCostResource;
-		var emcCostMax;
-		if (resources[i] === 'meteorite') {
-			emcCostResource = getResource(RESOURCE.Plasma);
-			emcCostMax = maxPlasma;
-		} else {
-			emcCostResource = getResource(RESOURCE.Energy);
-			emcCostMax = maxEnergy;
-		}
+	// 	// meteorites are a special case because the conversion uses plasma
+	// 	var emcCostResource;
+	// 	var emcCostMax;
+	// 	if (resources[i] === 'meteorite') {
+	// 		emcCostResource = getResource(RESOURCE.Plasma);
+	// 		emcCostMax = maxPlasma;
+	// 	} else {
+	// 		emcCostResource = getResource(RESOURCE.Energy);
+	// 		emcCostMax = maxEnergy;
+	// 	}
 
-		var value = window[resources[i] + 'EmcVal'];
-		var current = getResource(resources[i]);
-		var capacity = getStorage(resources[i]);
-		var emcValue;
-		if (emcAmount === 'Max') {
-			emcValue = Math.floor(emcCostResource / value);
-			costElement.text(Game.settings.format(Math.floor(emcValue * value)));
-			amountElement.text(Game.settings.format(emcValue));
-		} else {
-			emcValue = value * emcAmount;
-			costElement.text(Game.settings.format(emcValue));
-			amountElement.text(Game.settings.format(emcAmount));
-		}
+	// 	var value = window[resources[i] + 'EmcVal'];
+	// 	var current = getResource(resources[i]);
+	// 	var capacity = getStorage(resources[i]);
+	// 	var emcValue;
+	// 	if (this.emcAmount === 'Max') {
+	// 		emcValue = Math.floor(emcCostResource / value);
+	// 		costElement.text(Game.settings.format(Math.floor(emcValue * value)));
+	// 		amountElement.text(Game.settings.format(emcValue));
+	// 	} else {
+	// 		emcValue = value * this.emcAmount;
+	// 		costElement.text(Game.settings.format(emcValue));
+	// 		amountElement.text(Game.settings.format(this.emcAmount));
+	// 	}
 
-		storageElement.removeClass('green');
-		storageElement.removeClass('red');
-		if (emcAmount > capacity || current >= capacity) {
-			storageElement.addClass('green');
-		} else if (emcCostMax < emcValue) {
-			storageElement.addClass('red');
-		}
-	}
+	// 	storageElement.removeClass('green');
+	// 	storageElement.removeClass('red');
+	// 	if (this.emcAmount > capacity || current >= capacity) {
+	// 		storageElement.addClass('green');
+	// 	} else if (emcCostMax < emcValue) {
+	// 		storageElement.addClass('red');
+	// 	}
+	// }
 
-	var emcAmountBtn = $('#emcButton');
-	if (emcAmount === 'Max') {
-		emcAmountBtn.text('Max');
-	} else {
-		emcAmountBtn.text(Game.settings.format(emcAmount));
-	}
+	// var emcAmountBtn = $('#emcButton');
+	// if (this.emcAmount === 'Max') {
+	// 	emcAmountBtn.text('Max');
+	// } else {
+	// 	emcAmountBtn.text(Game.settings.format(this.emcAmount));
+	// }
 }
 
 $('input[type="checkbox"]').on('change', function() {
 	$('input[class="autoEmc"]').not(this).prop('checked', false);
-	autoResource = this.id.substring(0,this.id.indexOf("Auto"));
+	this.autoResource = this.id.substring(0,this.id.indexOf("Auto"));
 	if($(this).is(":checked") == false){
-		autoResource = null;
+		this.autoResource = null;
 	}
 });
-
-function gainAutoEmc(){
-	if(autoResource == null){
-		return;
-	}
-}

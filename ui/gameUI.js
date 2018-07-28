@@ -70,7 +70,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 * Merges into solarTab_nav
 	 */
 	var TemplateResourceMenuItem = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
 		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="1"><span>{{name}}</span></td>',
 		   '<td style="vertical-align:middle; text-align:center;"><span><span class="{{htmlId}}ps">0</span>/Sec</span></td>',
@@ -144,13 +144,29 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '<br>',
 		     '{{/if}}',
 		     '{{#if manualgain}}',
-		     '<div class="gainButton">',
-		       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
-		         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
+			    '{{#if gainCost}}',
+			    	'<span>Converting 1 {{name}} costs <span id="'+this.page+'_{{htmlId}}_gainCost"></span>',
+			     	'<div class="gainButton">',
+				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
+				         '<span class="{{htmlId}}gainNum">Convert: {{gainNum}}</span>',
+				       '</button>',
+				       '<br>',
+				     '</div>',
+			    '{{else}}',
+				     '<div class="gainButton">',
+				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
+				         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
+				       '</button>',
+				       '<br>',
+				     '</div>',
+				'{{/if}}',
+		     '{{/if}}',
+		     '{{#if toggleable}}',
+		     '<div>',
+		       '<button type="button" id="'+this.page+'_{{htmlId}}_toggle" class="btn btn-default">',
+		         'Toggle {{name}}',
 		       '</button>',
 		       '<br>',
-				//Creating 1 Meteorite Costs 3 Plasma.
-			   '<span class="{{htmlId}}gainbutton_cost"></span>',
 		     '</div>',
 		     '{{/if}}',
 		   '</td>',
@@ -160,7 +176,6 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		   '<td>',
 		     '<h3 class="default btn-link">Storage Upgrade</h3>',
 		     '<span>Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.</span>',
-		     '<br>',
 		     '<br>',
 		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
 		     '<button id="'+this.page+'_{{htmlId}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
@@ -183,8 +198,6 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
-		       '<br>',
-		       '<br>',
 		       '<div class="{{htmlId}}cost">Please enable javascript.</div>',
 		     '</span>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
@@ -260,6 +273,16 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	}
 
 	/**
+	 * Creates each cost item of the gain cost
+	 * @param  {string} res  Resource to be added into the cost html
+	 * @param  {Object} data Resource object containing gainCost data
+	 */
+
+	var createGainCostHtml = function(res, data, last){
+		Templates.uiFunctions.attachHTML(cPage, cPage+'_'+data.htmlId+'_gainCost', '<span class="text-capitalize">'+data.gainCost[res]+' '+res+last);
+	}
+
+	/**
 	 * Creates the content pane of a page
 	 * @param  {Object} data Resource object containing building data
 	 */
@@ -272,6 +295,14 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 			if (!Templates.uiFunctions.registerElement(data, 'gainNum')) {
 				console.warn("Called with action: 'gainNum' from 'createPane', while looping over:");
 				console.warn(data)
+			}
+			if(data.gainCost){
+				var i = 0;
+				for(var res in data.gainCost){
+					i += 1;
+					if(i == Object.keys(data.gainCost).length){var last = "";} else {var last = ", ";}
+					createGainCostHtml(res, data, last);
+				}
 			}
 		}		
 		// 	-> List storBuildings?

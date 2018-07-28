@@ -28,9 +28,6 @@ Game.interstellarUI = (function(){
 
     instance.initialise = function() {
 
-        console.log("%c", "background: green;padding: 5px", "sort out interstellar.update(). too many cycles");
-        console.log("%c", "background: green;padding: 5px", "move more of this.update() into interstellar.update(). this should only be UI, not calculation");
-
         this.tab = Game.ui.createTab({id: 'interstellar', title: 'Interstellar', hidden: 'hidden'});
         this.tab.initialise();
 
@@ -332,7 +329,6 @@ Game.interstellarUI = (function(){
     };
 
     instance.update = function(delta) {
-        
         for(var id in this.commEntries) {
             var data = Game.interstellar.comms.getMachineData(id);
             if(data.displayNeedsUpdate === true) {
@@ -343,7 +339,6 @@ Game.interstellarUI = (function(){
                 }                
             }
         }
-        
 
         for(var id in this.rocketEntries) {
             var data = Game.interstellar.rocket.getRocketData(id);
@@ -375,7 +370,6 @@ Game.interstellarUI = (function(){
             }
         }
         
-
         // Hides navs
         for(var id in Game.interstellar.entries){
             var data = Game.interstellar.getInterstellarData(id);

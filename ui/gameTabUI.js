@@ -143,7 +143,7 @@ Templates.objectConstructor.UiFunctions = function() {
                         createDownTopDOM(nav, header, item, pane, container);
     })  })  })  })   }
     /**
-     * Creates the an Object for each important element on the DOM.
+     * Creates an Object for each important element on the DOM.
      * and a path from each element to the bottom most element.
      * @param  {String}   navigation  DOM id of the page navigation element.
      * @param  {String}   header      DOM id of a menu header on this page.
@@ -228,6 +228,32 @@ Templates.objectConstructor.UiFunctions = function() {
         }
         return true;
     }
+
+    /**
+     * Hides a category and all nav elements inside it (adds class: hidden).
+     * @param  {String}   DOMid  The *id* of the DOM element to hide.
+     * @return {boolean}         True on success.
+     */
+    this.hideCategory = function(itemId, page) {
+        var node = document.querySelector('#'+page+'_'+itemId+'_collapse');
+        console.log()
+        if ((node == 'undefined')) {
+            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_collapse', but couldn't find it.")
+            return false;
+        }
+        if (!node.classList.contains("hidden")) {
+            node.classList.add("hidden");
+            unhidden = removeElement(unhidden, node.id);
+            hidden = addElement(hidden, node.id);
+            topDownDom[node.id].forEach
+
+        } else {
+            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Hides all elements with a given className.
      * @param  {string}   className  The class to hide.
@@ -307,13 +333,13 @@ Templates.objectConstructor.UiFunctions = function() {
     }
     /**
      * Shows all elements with a given className.
-     * @param  {string}   className  The class to hide.
+     * @param  {string}   className  The class to show.
      * @return {boolean}             True on success.
      */
     this.showClass = function(className) {
         var nodes = document.querySelectorAll('.'+className);
         if (nodes == 'undefined') {
-            console.warn("Trying to hide all classes with "+className+", but couldn't find any.")
+            console.warn("Trying to show all classes with "+className+", but couldn't find any.")
             return false;
         }
         nodes.forEach(function(node) {
@@ -388,8 +414,8 @@ Templates.objectConstructor.UiFunctions = function() {
         nodes.forEach(function(node) {
             // loop through the downTopDom array and unhide all elements
             if (propagate) {downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));}
-            Templates.uiFunctions.show(node.id);
-            // Setting the internal vars is done by the show-function.
+            //                 Templates.uiFunctions.hideNav(node.id);
+            // Setting the internal vars is done by the hideNav-function.
         })
         return true;
     }
@@ -411,9 +437,9 @@ Templates.objectConstructor.UiFunctions = function() {
         return true;
     }
     /**
-     * Sets a style on an element containing a certain class
-     * @param  {String}   cl     The clname to add if found. Defaults to 'IfYouSeeThisYouMessedUp'
-     * @param  {String}   style  The cl to match against
+     * Removes a style on an element containing a certain class
+     * @param  {String}   cl     The classname to remove a style from
+     * @param  {String}   style  The style name
      * @return {Boolean}         True on success.
      */
     this.removeStyle = function(cl, style) {
@@ -429,7 +455,7 @@ Templates.objectConstructor.UiFunctions = function() {
 
 
     // Do we need a function that hides a page and all of its elements?
-
+    console.log("%c", "background:green;padding:5px", "Yes, on rebirth");
 
     ////////////////
     // Menu Stuff //
@@ -501,15 +527,51 @@ Templates.objectConstructor.UiFunctions = function() {
         if (typeof resource === 'undefined') {resource = 'all'}
         // Loop through all registeredElements with refreshActions
         // and execute those which are requested
+        // but only if the current page is open
         refreshActions.forEach(function(act) {
             Object.keys(registeredElements[act]).forEach(function(res) {
-                if (res.toLowerCase() === resource.toLowerCase() || resource == 'all') {
+                if ((res.toLowerCase() === resource.toLowerCase() || resource == 'all')) {
                     var obj = registeredElements[act][res].object;
-                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                    if(obj.category == "buildings"){
+                        if(obj.resource == "science"){
+                            if("techTab_res_science_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "rocketFuel"){
+                            if("solarTab_res_rocketFuel_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "rocket"){
+                            if("solarTab_res_rocket_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "satellite"){
+                            if("solarTab_res_satellite_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else {
+                            if("resourcesTab_res_" + obj.resource + "_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        }
+                    } else if(obj.category == "technology"){
+                        if("techTab_technologies_ne" == lastItem){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    } else if(obj.category == "storageBuildings"){
+                        if("resourcesTab_res_" + obj.resource + "_ne" == lastItem){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    } else {
+                        if(obj.unlocked){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    }
+                    
                 }          
             })
         })
-    }
+    };
 
     /**
      * Called from gameUI.js
@@ -533,7 +595,7 @@ Templates.objectConstructor.UiFunctions = function() {
         if (!(id in registeredElements[action])) {registeredElements[action][id] = {};}
         registeredElements[action][id].object = object;
         return true;
-    }
+    };
     /**
      * Creates an event listener. An event can be: https://developer.mozilla.org/en-US/docs/Web/Events
      * @param {DOMnode}   target    The DOM node that's the target of the event
@@ -551,7 +613,6 @@ Templates.objectConstructor.UiFunctions = function() {
         }
         return true;
     };
-
 
     /**
      * This functions examines the entire game's DOM object and
@@ -627,6 +688,11 @@ Templates.objectConstructor.UiFunctions = function() {
                 // Match (resources)_(res)_(plasma)_gain
                 case (match = getCase(id, "^(.*)_(.*)_(.*)_gain$")).input:
                     funct = new Function("addManualResource('"+match[3]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (resources)_(res)_(plasma)_toggle
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_toggle$")).input:
+                    funct = new Function("Game.resources.toggle('"+match[3]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
                 // Match (resources)_(plasma)_StorageUpgrade
@@ -734,6 +800,7 @@ Templates.objectConstructor.UiFunctions = function() {
     // hidden, unhidden arrays and apply their changes.     //
     // Also click on lastNav and lastItem                   //
     //////////////////////////////////////////////////////////
+    console.log("%c", "background:green;padding:5px;", "UI: this ^");
 
 };
 Templates.uiFunctions = new Templates.objectConstructor.UiFunctions();

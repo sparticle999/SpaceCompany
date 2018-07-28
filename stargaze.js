@@ -18,6 +18,8 @@ Game.stargaze = (function(){
 
 	instance.tabUnlocked = false;
 
+	instance.dmBoost = 0;
+
 	instance.initialise = function(){
 		console.log("%c", "background: green;padding: 5px", "displayNeedsUpdate on upgradeEntries")
 		for (var id in Game.stargazeData) {
@@ -302,6 +304,9 @@ Game.stargaze = (function(){
 				if(data.onApply)data.onApply();
 			}
 		}
+		// if(Game.solCenter.entries.dyson.items.sphere.current == 1){
+		// 	document.getElementById("stargazeTab").className = "";
+		// }
 	};
 
 	instance.getStargazeData = function(id) {

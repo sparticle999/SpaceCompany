@@ -17,7 +17,6 @@ Game.settings = (function(){
             saveNotifsEnabled: true,
             gainButtonsHidden: false,
             redDestroyButtons: false,
-            hideCompleted: false,
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
@@ -39,6 +38,7 @@ Game.settings = (function(){
      * @param   {Object} object  The parent object of the method requesting formatting
      * @return  {String}         Returns the formatted string
      */
+    console.log("%c", "background:blue;padding:5px", "ln 173 could be prettied up (tables)");
     instance.doFormat = function(action, object) {
         var key = object.id;
         action = action.toString().toLowerCase();
@@ -170,7 +170,7 @@ Game.settings = (function(){
             switch(key) {
                 default:
                     var cost = object.cost;
-                    var result = '<dl><dt>Cost:</dt>';
+                    var result = '<dl style="margin-bottom:0px;"><table><tr><td><dt>Cost:</dt>';
                     Object.keys(cost).forEach (function(c) {
                         if (cost[c] > Game.resources.entries[c].capacity) {
                             time = "Insufficient storage".bold();
@@ -201,9 +201,9 @@ Game.settings = (function(){
                     if (input == "") {input += "<dd>&#8227; None</dd>"}
                     output = '<dl><dt>Output:</dt>'+output;
                     input = '<dl><dt>Input:</dt>'+input;
-                    result += input+output+'</dl>';
+                    result += '</td><td style="position:absolute;margin-left:100px">'
+                    result += input+output+'</td></tr></table></dl>';
                     return result;
-
             }
 
         /////////////////////////////////////////
@@ -218,9 +218,6 @@ Game.settings = (function(){
             }
         }
     }
-
-
-
 
     instance.format = function(value, digit) {
         var format = this.entries.formatter || 'shortName';
@@ -278,15 +275,6 @@ Game.settings = (function(){
             Templates.uiFunctions.removeStyle('destroy', 'backgroundColor');
         }
         document.getElementById('redDestroyButtons').checked = Game.settings.entries.redDestroyButtons;
-
-        // (un)Hide completed tabs - This needs to be called again after a tab is actually completed
-        if (Game.settings.entries.hideCompleted) {
-            Templates.uiFunctions.addClass('hidden', 'completed');
-        } else {
-            Templates.uiFunctions.removeClass('hidden', 'completed');
-        }
-        document.getElementById('hideCompleted').checked = Game.settings.entries.hideCompleted;
-
         
         for(var id in autoSaveMapping) {
             var element = $('#' + id);
@@ -388,20 +376,6 @@ Game.settings = (function(){
                 }
             }
         }
-
-        $('#hideCompleted').change(function(){
-            Game.settings.set('hideCompleted', $(this).is(':checked'));
-            if(Game.settings.entries.hideCompleted === true){
-                for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
-                    document.getElementsByClassName("completed")[i].className = "completed hidden";
-                }
-            }
-            else{
-                for(var i = 0; i < document.getElementsByClassName("completed").length; i ++){
-                    document.getElementsByClassName("completed")[i].className = "completed";
-                }
-            }
-        });
 
         for (var id in autoSaveMapping) {
             var element = $('#' + id);

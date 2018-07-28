@@ -1546,7 +1546,10 @@ Game.buildingData = (function () {
         desc: 'Chemical plants are used to make rocket fuel automatically.',
         resource: 'rocketFuel',
         resourcePerSecond: {
-            'rocketFuel': 0.2
+            'rocketFuel': 0.2,
+            'charcoal': -20,
+            'oil': -20,
+
         },
         cost: {
             'metal': 1000,
@@ -1560,7 +1563,9 @@ Game.buildingData = (function () {
         desc: 'Oxidisation Chambers make rocket fuel faster and more efficiently than chemical plants.',
         resource: 'rocketFuel',
         resourcePerSecond: {
-            'rocketFuel': 1.5
+            'rocketFuel': 1.5,
+            'charcoal': -100,
+            'oil': -100,
         },
         cost: {
             'metal': 12000,
@@ -1568,13 +1573,14 @@ Game.buildingData = (function () {
             'wood': 6800
         }
     });
-
+    console.log("%c", "background:red;padding:5px", "rocketfuel doesn't stop the inputs if empty");
     instance.rocketFuelT3 = $.extend({}, baseProducerBuilding, {
         name: 'Hydrazine Catalyst',
         desc: 'These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.',
         resource: 'rocketFuel',
         resourcePerSecond: {
-            'rocketFuel': 20
+            'rocketFuel': 20,
+            'methane': -520,
         },
         cost: {
             'titanium': 140000,
@@ -1596,26 +1602,27 @@ Game.buildingData = (function () {
         order: 2,
         unlocked: true,
         onApply: function() {
-            // unlock rocketT2
-            // lock rocketT1
-            console.log("Rocket bought Please fix me!");
+            Game.resources.entries.rocket.current += 1;
+            Templates.uiFunctions.unlock("rocketT2");
+            Templates.uiFunctions.hide("rocketT1");
         }
     });
 
     instance.rocketT2 = $.extend({}, baseProducerBuilding, {
         name: "Launch Rocket",
-        desc: "Launching the rocket into space will unlock space mining, exploration and other planets.",
+        desc: "Launching the rocket into space will unlock space mining, exploration and other planets. This requires a satellite for navigation.",
         category: "rocket",
         resource: "rocket",
         cost: {
             'rocket': 1,
+            'satellite': 1,
             'rocketFuel': 20
         },
         order: 3,
         unlocked: false,
         onApply: function() {
-            // lock rocketT2
-            // lock rocket category
+            Templates.uiFunctions.hide("rocketT2");
+            Templates.uiFunctions.hideCategory("spacecraft", "solarTab");
             // Unlock inner
             // Unlock moon
         }
@@ -1633,8 +1640,9 @@ Game.buildingData = (function () {
         order: 1,
         unlocked: true,
         onApply: function() {
-            // unlock rocketT2
-            // lock rocketT1
+            Game.resources.entries.satellite.current += 1;
+            Templates.uiFunctions.unlock("rocketT1");
+            Templates.uiFunctions.hide("satelliteT1");
         }
     });
 

@@ -116,7 +116,7 @@ Game.wonder = (function(){
     		current += Math.min(data[resource], res[resource].current);
     		total += data[resource];
     	}
-      	var progress = current/total;
+      	var progress = Math.floor(current/total);
     	if(progress > 100) {progress = 100;}
     	return progress;
     };
