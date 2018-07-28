@@ -403,7 +403,7 @@ Game.buildingData = (function () {
             if (!Game.tech.tabUnlocked) {
                 Game.buildings.unlock("scienceT1");
                 // Unlock the science resourceCategory
-                Game.resourceCategoryData.categories.science.unlocked = true
+                Game.resourceData.categories.science.unlocked = true
                 // Unlock the science resource
                 Game.resources.entries.science.unlocked = true;
                 // Unlock scienceT1

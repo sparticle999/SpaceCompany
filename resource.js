@@ -48,8 +48,8 @@ Game.resources = (function(){
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
 
             // Storage cost
-            if (id in Game.resourceCategoryData.storage) {
-                var cost = Game.resourceCategoryData.storage[id].cost;
+            if (id in Game.resourceData.storage) {
+                var cost = Game.resourceData.storage[id].cost;
                 var value = 0;
                 // Find the inflation factor by comparing id's current cost with its base cost
                 // This is pretty much a hack and won't work when a material doesn't need itself
@@ -86,7 +86,7 @@ Game.resources = (function(){
     instance.storagePrice = 1;
 
     instance.initialise = function() {
-        const resourceData = Game.resourceCategoryData;
+        const resourceData = Game.resourceData;
         // TODO: Refactor this if possible, logic shouldn't be tied to internal objects
         this.entries = Object.keys(resourceData.items).reduce((result, k) => {
             result[k] = $.extend({}, resourceData.items[k], {
