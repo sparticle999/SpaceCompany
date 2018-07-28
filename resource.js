@@ -47,7 +47,6 @@ Game.resources = (function(){
             Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
 
-
             // Storage cost
             if (id in Game.resourceCategoryData.storage) {
                 var cost = Game.resourceCategoryData.storage[id].cost;
