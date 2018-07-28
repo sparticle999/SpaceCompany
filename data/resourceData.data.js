@@ -324,6 +324,15 @@ Game.data.resources = {
                 unlocked: false
             }
         },
+        antimatter: {
+            name: 'Antimatter',
+            desc: 'Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.',
+            category: 'interstellar',
+            baseCapacity: 100000,
+            order: 3,
+            manualgain: false,
+            unlocked: false
+        }
     },
     storageTemplate: {
         name: "Storage Upgrade:",

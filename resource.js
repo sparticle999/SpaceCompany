@@ -85,58 +85,18 @@ Game.resources = (function(){
     instance.storagePrice = 1;
 
     instance.initialise = function() {
-
-        for (var id in Game.resourceData) {
-            var data = Game.resourceData[id];
-            this.resourceTypeCount++;
-            this.entries[id] = $.extend({}, data, {
-                id: id,
-                resource: id,
-                htmlId: 'res_' + id,
-                current: 0,
-                perSecond: 0,
-                perSecondDisplay: 0,
-                iconPath: Game.constants.iconPath,
-                iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
-                hidden: false,
-                ui_persecond: new UpdatePerSecond(id),
-                ui_current: new UpdateCurrent(id),
-                ui_capacity: new UpdateCapacity(id),
-                capacity: data.baseCapacity,
-            });
-        }
-
-
-
-
-        // for (var id in Game.resourceCategoryData) {
-        //     var data = Game.resourceCategoryData[id];
-        //     this.resourceCategoryCount++;
-        //     this.categoryEntries[id] = $.extend({}, data, {
-        //         id: id
-        //     });
-        // }
-
-        for (var id in Game.storageData) {
-            var data = Game.storageData[id];
-            this.storageUpgradeCount++;
-            this.storageUpgrades[id] = $.extend({}, data, {
-                id: id,
-                htmlId: "store_" + id
-            });
-
-        }
-        console.log('Current upgrades');
-
-
-        console.log('Logging resources', Game.data.import.resources());
-        console.log(this.entries);
-
         const resourceData = Game.data.import.resources();
-        // this.entries = resourceData.items;
+        // TODO: Refactor this if possible, logic shouldn't be tied to internal objects
+        this.entries = Object.keys(resourceData.items).reduce((result, k) => {
+            result[k] = $.extend({}, resourceData.items[k], {
+                ui_persecond: new UpdatePerSecond(k),
+                ui_current: new UpdateCurrent(k),
+                ui_capacity: new UpdateCapacity(k),
+            });
+            return result;
+        }, {});
         this.categoryEntries = resourceData.categories;
-        // this.storageUpgrades = resourceData.storage;
+        this.storageUpgrades.entries = resourceData.storage;
     };
 
     instance.update = function(delta) {
