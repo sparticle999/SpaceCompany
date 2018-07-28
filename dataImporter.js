@@ -45,7 +45,7 @@ Game.data.import = (function () {
             let originalEntries = result[target];
 
             result[target] = targetKeys.reduce((total, current) => {
-                total[current] = $.extend({}, originalEntries[current], template)
+                total[current] = $.extend({}, template, originalEntries[current])
                 return total;
             }, {})
 
