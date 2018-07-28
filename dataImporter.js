@@ -84,15 +84,6 @@ Game.data.import = (function () {
             return {
                 id: key,
                 htmlId: "store_" + key,
-                apply: function (self) {
-                    if (typeof self.resource === 'undefined') {
-                        return;
-                    }
-                    var res = Game.resources.getResourceData(self.resource);
-                    res.capacity *= 2;
-                    res.displayNeedsUpdate = true;
-                    self.displayNeedsUpdate = true;
-                },
             };
         })
 

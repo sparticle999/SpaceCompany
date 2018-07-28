@@ -87,7 +87,6 @@ Game.resources = (function(){
 
     instance.initialise = function() {
         const resourceData = Game.resourceData;
-        // TODO: Refactor this if possible, logic shouldn't be tied to internal objects
         this.entries = Object.keys(resourceData.items).reduce((result, k) => {
             result[k] = $.extend({}, resourceData.items[k], {
                 ui_persecond: new UpdatePerSecond(k),
@@ -96,8 +95,24 @@ Game.resources = (function(){
             });
             return result;
         }, {});
+
+        // Refactor this, it would consume less RAM if the function were stored as part of the .proto
+        this.storageUpgrades.entries = Object.keys(resourceData.storage).reduce((result, k) => {
+            result[k] = $.extend({}, resourceData.storage[k], {
+                apply: function (self) {
+                    if (typeof self.resource === 'undefined') {
+                        return;
+                    }
+                    var res = Game.resources.getResourceData(self.resource);
+                    res.capacity *= 2;
+                    res.displayNeedsUpdate = true;
+                    self.displayNeedsUpdate = true;
+                },
+            });
+            return result;
+        }, {});
+
         this.categoryEntries = resourceData.categories;
-        this.storageUpgrades.entries = resourceData.storage;
     };
 
     instance.update = function(delta) {
