@@ -46,9 +46,11 @@ Game.resources = (function(){
             var value = Game.settings.doFormat('capacity', obj);
             Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
+
+
             // Storage cost
-            if (id in Game.storageData.entries) {
-                var cost = Game.storageData.entries[id].cost;
+            if (id in Game.resourceCategoryData.storage) {
+                var cost = Game.resourceCategoryData.storage[id].cost;
                 var value = 0;
                 // Find the inflation factor by comparing id's current cost with its base cost
                 // This is pretty much a hack and won't work when a material doesn't need itself
