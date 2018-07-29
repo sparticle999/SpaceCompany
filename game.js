@@ -197,8 +197,6 @@ var Game = (function() {
     instance.updateUI = function(self){
         Game.settings.updateCompanyName();
 
-        updateFuelProductionCost();
-
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
         }
@@ -319,10 +317,6 @@ var Game = (function() {
 
         self.deleteInterval("Loading");
 
-        //registerLegacyBindings();
-        //self.ui.updateAutoDataBindings();
-
-
         // Initialise data first
         self.achievements.initialise();
         self.statistics.initialise();
@@ -362,9 +356,6 @@ var Game = (function() {
         console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
         console.log("%c", "background: green;padding: 5px", "stats")
         console.log("%c", "background: green;padding: 5px", "efficiencyBoosts")
-        console.log("%c", "background: green;padding: 5px", "dyson ui legacyUI.js:125")
-        console.log("%c", "background: green;padding: 5px", "Research tab notification upon load")
-        console.log("%c", "background: green;padding: 5px", "redo solar system")
         console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
         // Now load
         self.load();

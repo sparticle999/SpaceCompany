@@ -212,10 +212,10 @@ Templates.objectConstructor.UiFunctions = function() {
      * @param  {String}   DOMid  The *id* of the DOM element to hide.
      * @return {boolean}         True on success.
      */
-    this.hide = function(itemId) {
+    this.hide = function(itemId, page) {
         var node = document.querySelector('.'+itemId+'_Container');
         if ((node == 'undefined')) {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but couldn't find it.")
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_Container', but couldn't find it.")
             return false;
         }
         if (!node.classList.contains("hidden")) {
@@ -223,7 +223,31 @@ Templates.objectConstructor.UiFunctions = function() {
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
         } else {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but it's already hidden!")
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_Container', but it's already hidden!")
+            return false;
+        }
+        return true;
+    }
+
+    console.log("%c", "background:green;padding:5px;", "Combine these hide functions");
+
+    /**
+     * Hides a single nav element (adds class: hidden).
+     * @param  {String}   DOMid  The *id* of the DOM nav element to hide.
+     * @return {boolean}         True on success.
+     */
+    this.hideNav = function(itemId, page) {
+        var node = document.querySelector('#'+itemId);
+        if ((node == 'undefined')) {
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_ne', but couldn't find it.")
+            return false;
+        }
+        if (!node.classList.contains("hidden")) {
+            node.classList.add("hidden");
+            unhidden = removeElement(unhidden, node.id);
+            hidden = addElement(hidden, node.id);
+        } else {
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_ne', but it's already hidden!")
             return false;
         }
         return true;
@@ -236,19 +260,20 @@ Templates.objectConstructor.UiFunctions = function() {
      */
     this.hideCategory = function(itemId, page) {
         var node = document.querySelector('#'+page+'_'+itemId+'_collapse');
-        console.log()
         if ((node == 'undefined')) {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_collapse', but couldn't find it.")
+            console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but couldn't find it.")
             return false;
         }
         if (!node.classList.contains("hidden")) {
             node.classList.add("hidden");
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
-            topDownDom[node.id].forEach
+            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
+            // Hiding each nav inside the category
+            console.log("test");
 
         } else {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
+            console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
             return false;
         }
         return true;
@@ -413,9 +438,9 @@ Templates.objectConstructor.UiFunctions = function() {
         // Loop through the nodes and process each node's id.
         nodes.forEach(function(node) {
             // loop through the downTopDom array and unhide all elements
+            Templates.uiFunctions.show(node.id)
             if (propagate) {downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));}
-            //                 Templates.uiFunctions.hideNav(node.id);
-            // Setting the internal vars is done by the hideNav-function.
+            // Setting the internal vars is done by the show-function.
         })
         return true;
     }
@@ -715,11 +740,14 @@ Templates.objectConstructor.UiFunctions = function() {
                 // Match (resources)Tab_content
                 case (match = getCase(id, "^(.*)Tab_content$")).input:
                     break;
-                // Match (resources)_(plasma)_SelectStorage_Limit
+                // Match (resources)_(plasma)_SelectStorage_limit
                 case (match = getCase(id, "^(.*)_(.*)_SelectStorage_limit$")).input:
                     break;
-                // Match (resources)_(plasma)_SelectStorage_Limit
+                // Match (resources)_(plasma)_SelectStorage_time
                 case (match = getCase(id, "^(.*)_(.*)_SelectStorage_time$")).input:
+                    break;
+                // Match (resources)_(plasma)_gainCost
+                case (match = getCase(id, "^(.*)_(.*)_gainCost$")).input:
                     break;
 
                 default:

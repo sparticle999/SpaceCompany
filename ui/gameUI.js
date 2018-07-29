@@ -422,7 +422,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 * Composes the page and adds it to the game
 	 */
 	this.initialise = function() {
-		console.log("%c", "background:black;padding:5px","initialising: "+this.page)
+		console.log("%c", "background:black;padding:5px","initialising: "+this.page);
 		// Link this page to the main menu
 		Templates.uiFunctions.attachHTML(this.page, 'tabList', TemplateTopMenuNav());
 		// Link the page table to tabContent
