@@ -159,8 +159,6 @@ var Game = (function() {
         this.stargaze.save(data);
         this.updates.save(data);
 
-        data.legacy = legacySave(data);
-
         localStorage.setItem("save",JSON.stringify(data));
         Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
         console.log('Game Saved');
@@ -276,13 +274,10 @@ var Game = (function() {
 
 
         // Link Game.machinescategoryData page to Game.pages
-        //this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
-        // Link Game.solar.entries category to Game.solarCategoryData
-        //this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
-        //console.log(Game.machinesCategoryData)
-
+        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages, '');
+        this.combineGameObjects(Game.machinesData, 'category', Game.machinesCategoryData, 'items');
         // Link Game.resources.entries category to Game.machinesCategoryData
-        //this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesData, 'items');
     }
 
     instance.handleOfflineGains = function(offlineTime) {
@@ -341,15 +336,14 @@ var Game = (function() {
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-        //self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
-        //self.machinesUI.initialise();
+        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
         // Refresh all actions
 
         //Game.ui.updateAutoDataBindings();
         
-
         console.log("%c", "background: green;padding: 5px", "test from start");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
         console.log("%c", "background: green;padding: 5px", "all tech upgrades")

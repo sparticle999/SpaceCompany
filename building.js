@@ -262,19 +262,6 @@ Game.buildings = (function(){
         Templates.uiFunctions.unlock(id, propagate)
     }
 
-    instance.refreshUnlock = function(data){
-/* Handled by Templates.uiFunctions
-        if(data.id.indexOf("rocketFuel") == -1){
-            if(data.unlocked)
-                $('#' + data.htmlId)[0].className = "";
-            else
-                $('#' + data.htmlId)[0].className = "hidden";
-        } else {
-            //console.log("rocketFuel")
-        }
-*/
-    }
-
     instance.getBuildingData = function(id) {
         return this.entries[id];
     };

@@ -135,13 +135,15 @@ Templates.objectConstructor.UiFunctions = function() {
         Object.keys(menuTopDownDom).forEach(function(nav) {
             var menu = menuTopDownDom[nav];
             var page = pageTopDownDom[nav];
+            console.log(pageTopDownDom)
             Object.keys(menu).forEach(function(header) {
                 menu[header].forEach(function(item) {
                     var pane = item+'c';
-                    page[pane].forEach(function(container) {
-                        createTopDownDOM(nav, header, item, pane, container);
-                        createDownTopDOM(nav, header, item, pane, container);
-    })  })  })  })   }
+                    if(page){
+                        page[pane].forEach(function(container) {
+                            createTopDownDOM(nav, header, item, pane, container);
+                            createDownTopDOM(nav, header, item, pane, container);
+    })  }  })  })  })   }
     /**
      * Creates an Object for each important element on the DOM.
      * and a path from each element to the bottom most element.
@@ -268,10 +270,8 @@ Templates.objectConstructor.UiFunctions = function() {
             node.classList.add("hidden");
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
-            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
             // Hiding each nav inside the category
-            console.log("test");
-
+            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
         } else {
             console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
             return false;

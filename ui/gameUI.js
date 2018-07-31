@@ -13,6 +13,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	this.page = cPage;
 	this.title = cTitle;
 	this.data = cObj;
+	console.warn(cObj)
 
 	// Object containing the ID masks 
 	var registeredEvents = {};

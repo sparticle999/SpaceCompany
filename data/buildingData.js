@@ -1625,7 +1625,7 @@ Game.buildingData = (function () {
         onApply: function() {
             Templates.uiFunctions.hide("rocketT2");
             Templates.uiFunctions.hideCategory("spacecraft", "solarTab");
-            // Unlock inner
+            Templates.uiFunctions.unlockCategory("inner", "solarTab");
             // Unlock moon
         }
     });

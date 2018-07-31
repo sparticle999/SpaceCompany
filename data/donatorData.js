@@ -22,12 +22,13 @@ Game.donatorData = (function(){
 	"Idgo",
 	"Sup Dude",
 	"Austerror",
-	"Arken B. Arken"
+	"Arken B. Arken",
 	];
 
 	instance.contributor = [
+	"Migues",
 	"Katorone",
-	"Szera"
+	"Szera",
 	];
 
 	return instance;

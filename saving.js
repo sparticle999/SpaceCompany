@@ -1,14 +1,3 @@
-function legacySave(data) {
-	"use strict";
-	var localSave = $.extend({
-		antimatter: antimatter,
-		antimatterStorage: antimatterStorage,
-		antimatterToggled: antimatterToggled,
-	}, data);
-
-	return localSave;
-}
-
 function legacyLoad(savegame){
 	"use strict";
 
