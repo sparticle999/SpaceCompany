@@ -143,7 +143,6 @@ Game.resources = (function(){
     instance.update = function(delta) {
         for (var id in this.entries) {
             Templates.uiFunctions.refreshElements('current', id);
-            Templates.uiFunctions.refreshElements('machine', id);
         }
     };
 

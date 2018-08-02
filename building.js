@@ -208,7 +208,6 @@ Game.buildings = (function(){
                     res.current -= this.calcCost(data, resource, "buildingData", multi);
                 }
                 this.updatePerSecondProduction = true;
-                Templates.uiFunctions.refreshElements('persecond', 'all');
                 if(data.onApply) {data.onApply();}
                 this.constructBuildings(id, 1);
                 this.updateCosts(id);
@@ -226,17 +225,18 @@ Game.buildings = (function(){
     };
 
     instance.constructBuildings = function(id, count) {
+        var data = this.entries[id];
         // Add the buildings and clamp to the maximum
         if(count == 0)
             return;
         count = count || 1;
-        var newValue = Math.floor(this.entries[id].current + count);
-        var newActiveValue = Math.floor(this.entries[id].active + count);
-        this.entries[id].current = Math.min(newValue, this.entries[id].max);
-        this.entries[id].active = Math.min(newActiveValue, this.entries[id].max);
+        var newValue = Math.floor(data.current + count);
+        var newActiveValue = Math.floor(data.active + count);
+        data.current = Math.min(newValue, data.max);
+        data.active = Math.min(newActiveValue, this.entries[id].max);
         Templates.uiFunctions.refreshElements('current', id);
         Templates.uiFunctions.refreshElements('machine', id);
-        Templates.uiFunctions.refreshElements('persecond', id);
+        Templates.uiFunctions.refreshElements('persecond', data.resource);
     };
 
     instance.destroyBuildings = function(id, count) {
