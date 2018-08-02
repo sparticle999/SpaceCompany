@@ -150,6 +150,22 @@ Game.settings = (function(){
                     }
                     return input;
             }
+        ////////////////////////////
+        // Active amount of item //
+        ////////////////////////////
+        } else if (action == 'active') {
+            switch(key) {
+                default:
+                    var input = object.active;
+                    input = Game.settings.format(input, 0).toString();
+                    if (object.active >= object.capacity) {
+                        input = input.fontcolor('green');
+                    } else if (object.active < 1) {
+                        if (Game.settings.entries.boldEnabled) {input.bold();}
+                        input.fontcolor('red');
+                    }
+                    return input;
+            }
         ////////////////////////////////////
         // Max storage amount on the menu //
         ////////////////////////////////////

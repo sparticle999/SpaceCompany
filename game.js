@@ -79,7 +79,7 @@ var Game = (function() {
 
         self.updateAutoSave(delta);
 
-        if(delta > 1) {
+        if(delta > 5) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
         }
     };

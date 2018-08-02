@@ -6,6 +6,7 @@ Game.resources = (function(){
     // Alternatively, run Templates.uiFunctions.refreshElements('persecond', 'metal') for just one material.
     // !!! Update the objects perSecond before calling the update. !!!
     function UpdatePerSecond(id) {
+        console.log("only when actually needs update")
         var previous = -1;
         var id = id;
         this.update = function() {
@@ -13,6 +14,14 @@ Game.resources = (function(){
             if (obj.perSecond == previous) {return;}
             var value = Game.settings.doFormat('persecond', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'ps');
+
+            var use = 0;
+            for(var building in obj.items){
+                var data = obj.items[building];
+                use += data.active*(data.resourcePerSecond["energy"]||data.resourcePerSecond["plasma"]||0);
+            }
+            Templates.uiFunctions.setClassText(use, obj.htmlId+'use')
+
             previous = obj.perSecond;
             return true;
         }
@@ -134,7 +143,7 @@ Game.resources = (function(){
     instance.update = function(delta) {
         for (var id in this.entries) {
             Templates.uiFunctions.refreshElements('current', id);
-            Templates.uiFunctions.refreshElements('active', id);
+            Templates.uiFunctions.refreshElements('machine', id);
         }
     };
 
@@ -426,11 +435,13 @@ Game.resources = (function(){
 
     instance.setRelativeActive = function(id, count){
         var data = Game.buildings.entries[id];
+        count = parseInt(count);
         if(count > 0){
             data.active = Math.min(data.current, data.active + count);
         } else {
             data.active = Math.max(0, data.active + count);
         }
+        Templates.uiFunctions.refreshElements('machine', id);
     }
 
     instance.unlock = function(id) {

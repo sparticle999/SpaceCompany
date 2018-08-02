@@ -13,7 +13,7 @@ Game.buildings = (function(){
         }
     }
 
-    function UpdateActive(id) {
+    function UpdateMachine(id) {
         var previous = -1;
         var id = id;
         this.update = function() {
@@ -21,6 +21,14 @@ Game.buildings = (function(){
             if (obj.active == previous) {return;}
             var value = Game.settings.doFormat('active', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'active');
+
+            var prod = obj.active*obj.resourcePerSecond[obj.resource];
+            var use = obj.active*(obj.resourcePerSecond["energy"]||obj.resourcePerSecond["plasma"]||0);
+            var prodVal = Game.settings.format(prod);
+            var useVal = Game.settings.format(use);
+            Templates.uiFunctions.setClassText(prodVal, obj.htmlId+'prod');
+            Templates.uiFunctions.setClassText(useVal, obj.htmlId+'use');
+
             previous = obj.active;
             return true;
         }
@@ -67,7 +75,7 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true,
                 ui_current: new UpdateCurrent(id),
-                ui_active: new UpdateActive(id),
+                ui_active: new UpdateMachine(id),
                 ui_cost: new UpdateCost(id),
             });            
         }
@@ -166,7 +174,7 @@ Game.buildings = (function(){
             }
             data.displayNeedsUpdate = true;
             Templates.uiFunctions.refreshElements('current', id);
-            Templates.uiFunctions.refreshElements('active', id);
+            Templates.uiFunctions.refreshElements('machine', id);
             Templates.uiFunctions.refreshElements('capacity', resource);
         }
     }
@@ -227,7 +235,7 @@ Game.buildings = (function(){
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
         this.entries[id].active = Math.min(newActiveValue, this.entries[id].max);
         Templates.uiFunctions.refreshElements('current', id);
-        Templates.uiFunctions.refreshElements('active', id);
+        Templates.uiFunctions.refreshElements('machine', id);
         Templates.uiFunctions.refreshElements('persecond', id);
     };
 
@@ -239,7 +247,7 @@ Game.buildings = (function(){
         this.entries[id].current = Math.max(newValue, 0);
         this.entries[id].current = Math.max(newActiveValue, 0);
         Templates.uiFunctions.refreshElements('current', id);
-        Templates.uiFunctions.refreshElements('active', id);
+        Templates.uiFunctions.refreshElements('machine', id);
         Templates.uiFunctions.refreshElements('persecond', id);
     };
 

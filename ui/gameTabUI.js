@@ -135,7 +135,6 @@ Templates.objectConstructor.UiFunctions = function() {
         Object.keys(menuTopDownDom).forEach(function(nav) {
             var menu = menuTopDownDom[nav];
             var page = pageTopDownDom[nav];
-            console.log(pageTopDownDom)
             Object.keys(menu).forEach(function(header) {
                 menu[header].forEach(function(item) {
                     var pane = item+'c';
@@ -540,6 +539,7 @@ Templates.objectConstructor.UiFunctions = function() {
     //////////////////////
     // Page Interaction //
     //////////////////////
+    console.log("put a console.log into the act function, then see that it's triggered 25 times each update, should only be once");
     this.refreshElements = function(action, resource) {
         var refreshActions = [];
         // If an action is provided, only perform that one.
@@ -727,7 +727,7 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (machines)_(energyT1)(_de)activate_(1)
                 case (match = getCase(id, "^(.*)_(.*)_activate_(.*)")).input:
-                    funct = new Function("Game.resources.setRelativeActive('"+match[2]+"','"+match[3]+"')");
+                    funct = new Function("Game.resources.setRelativeActive('"+match[2]+"','"+parseInt(match[3])+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
 
