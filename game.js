@@ -15,8 +15,10 @@ var Game = (function() {
     };
 
     instance.update_frame = function(time) {
-        Game.update(time - Game.lastUpdateTime);
-        Game.lastUpdateTime = time;
+        if(time-Game.lastUpdateTime > 1000){
+            Game.update(time - Game.lastUpdateTime);
+            Game.lastUpdateTime = time;
+        }
 
         // This ensures that we wait for the browser to "catch up" to drawing and other events
         window.requestAnimationFrame(Game.update_frame);
@@ -336,7 +338,7 @@ var Game = (function() {
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
+        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines', Game.pages.machines);
         self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();

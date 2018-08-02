@@ -258,6 +258,12 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 			html += TemplatePaneBuilding(data);
 			// At this point we know the page, name of the object and its type.
 			// This is enough information for the UI to know which object this is.
+			if ('active' in data) {
+				if (!Templates.uiFunctions.registerElement(data, 'active')) {
+					console.warn("Called with action: 'active' from 'buildMachineCost', while looping over:");
+					console.warn(buildingData)
+				}
+			}
 			if ('current' in data) {
 				if (!Templates.uiFunctions.registerElement(data, 'current')) {
 					console.warn("Called with action: 'current' from 'buildMachineCost', while looping over:");

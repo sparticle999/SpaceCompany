@@ -13,6 +13,19 @@ Game.buildings = (function(){
         }
     }
 
+    function UpdateActive(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.entries[id];
+            if (obj.active == previous) {return;}
+            var value = Game.settings.doFormat('active', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'active');
+            previous = obj.active;
+            return true;
+        }
+    }
+
     function UpdateCost(id) {
         var previous = new Date();
         var id = id;
@@ -54,6 +67,7 @@ Game.buildings = (function(){
                 max: data.maxCount,
                 displayNeedsUpdate: true,
                 ui_current: new UpdateCurrent(id),
+                ui_active: new UpdateActive(id),
                 ui_cost: new UpdateCost(id),
             });            
         }
@@ -151,7 +165,8 @@ Game.buildings = (function(){
                 Game.resources.entries[resource].capacity += data.storage[resource];
             }
             data.displayNeedsUpdate = true;
-            Templates.uiFunctions.refreshElements('current', 'all');
+            Templates.uiFunctions.refreshElements('current', id);
+            Templates.uiFunctions.refreshElements('active', id);
             Templates.uiFunctions.refreshElements('capacity', resource);
         }
     }
@@ -211,19 +226,20 @@ Game.buildings = (function(){
         var newActiveValue = Math.floor(this.entries[id].active + count);
         this.entries[id].current = Math.min(newValue, this.entries[id].max);
         this.entries[id].active = Math.min(newActiveValue, this.entries[id].max);
-        Templates.uiFunctions.refreshElements('current', 'all');
-        Templates.uiFunctions.refreshElements('active', 'all');
-        Templates.uiFunctions.refreshElements('persecond', 'all');
+        Templates.uiFunctions.refreshElements('current', id);
+        Templates.uiFunctions.refreshElements('active', id);
+        Templates.uiFunctions.refreshElements('persecond', id);
     };
 
     instance.destroyBuildings = function(id, count) {
         // Remove the buildings and ensure we can not go below 0
         count = count || 1;
         var newValue = Math.floor(this.entries[id].current - count);
+        var newActiveValue = Math.floor(this.entries[id].active - count);
         this.entries[id].current = Math.max(newValue, 0);
-        this.entries[id].displayNeedsUpdate = true;
-        this.updatePerSecondProduction = true;
+        this.entries[id].current = Math.max(newActiveValue, 0);
         Templates.uiFunctions.refreshElements('current', id);
+        Templates.uiFunctions.refreshElements('active', id);
         Templates.uiFunctions.refreshElements('persecond', id);
     };
 

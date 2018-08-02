@@ -575,7 +575,7 @@ Templates.objectConstructor.UiFunctions = function() {
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else {
-                            if("resourcesTab_res_" + obj.resource + "_ne" == lastItem){
+                            if("resourcesTab_res_" + obj.resource + "_ne" == lastItem || "machinesTab" == lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         }
@@ -645,10 +645,10 @@ Templates.objectConstructor.UiFunctions = function() {
      */
     this.linkEvents = function() {
         var allIds = [];
+        function getCase(text, key) {
+            return text.match(new RegExp(key)) || {};
+        }
         Object.keys(Game.pages).forEach(function(page) {
-            function getCase(text, key) {
-                return text.match(new RegExp(key)) || {};
-            }
             // Loop through all the ids of the menu and register its events
             var parentNode = document.getElementById(page+'Tab_pane');
             var nodes = parentNode.querySelectorAll('[id]');
@@ -725,7 +725,11 @@ Templates.objectConstructor.UiFunctions = function() {
                     funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
-                // Match (resources)_energyT1_Container
+                // Match (machines)_(energyT1)(_de)activate_(1)
+                case (match = getCase(id, "^(.*)_(.*)_activate_(.*)")).input:
+                    funct = new Function("Game.resources.setRelativeActive('"+match[2]+"','"+match[3]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
 
                 ////////////
                 // Unused //

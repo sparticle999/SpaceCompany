@@ -18,14 +18,11 @@ Game.resources = (function(){
         }
     }
     var UpdateCurrent = function(id) {
-        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.resources.entries[id];
-            if (new Date() - previous < 200) {return;}
             var value = Game.settings.doFormat('current', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
-            previous = new Date();
             // Update the storage full timer
             var node = document.getElementById('resources_res_'+id+'_SelectStorage_limit');
             if (node) {
@@ -136,10 +133,8 @@ Game.resources = (function(){
 
     instance.update = function(delta) {
         for (var id in this.entries) {
-            var data = this.entries[id];
-            var addValue = data.perSecond * delta;
-            this.addResource(id, addValue);
             Templates.uiFunctions.refreshElements('current', id);
+            Templates.uiFunctions.refreshElements('active', id);
         }
     };
 
@@ -369,9 +364,6 @@ Game.resources = (function(){
                 // Nothing to be done
                 continue;
             }
-            if(Game.resources.entries[building.resource].toggled == false){
-                continue;
-            }
             var use = [];
             var prod = [];
             for(var value in building.resourcePerSecond){
@@ -422,14 +414,23 @@ Game.resources = (function(){
         var data = this.entries[id];
         if(data.items[id + "T1"].active == 0){
             for(var item in data.items){
-                data.items[item].active = data.items[item].current;
+                this.setRelativeActive(item,10000);
             }
         } else {
             for(var item in data.items){
-                data.items[item].active = 0;
+                this.setRelativeActive(item,-10000);
             }
         }
         return data.items[id + "T1"].active;
+    }
+
+    instance.setRelativeActive = function(id, count){
+        var data = Game.buildings.entries[id];
+        if(count > 0){
+            data.active = Math.min(data.current, data.active + count);
+        } else {
+            data.active = Math.max(0, data.active + count);
+        }
     }
 
     instance.unlock = function(id) {
