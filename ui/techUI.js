@@ -25,7 +25,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 */
 	var TemplateTopMenuNav = Handlebars.compile(
         ['<li role="presentation" id="'+this.page+'Tab" class="hidden">',
-           '<a href="#'+this.page+'Tab_pane" id="'+this.page+'Tab_link" class="-" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
+           '<a href="#'+this.page+'Tab_pane" id="'+this.page+'Tab_link" class="" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
              '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign"></div>',
                this.title,
            '</a>',

@@ -26,7 +26,7 @@ Game.stargazeUI = (function(){
         this.tab = Game.ui.createTab({id: 'stargaze', title: 'Stargaze'});
         this.tab.initialise();
 
-        if(sphere == 0) {
+        if(Game.solCenter.entries.dyson.items.sphere.current == 0) {
             document.getElementById("stargazeTab").className = "hidden";
         }
 
@@ -130,7 +130,6 @@ Game.stargazeUI = (function(){
     };
 
     instance.update = function(delta) {
-
         if(Game.stargaze.unlocked == true){
             document.getElementById("stargazeTab").className = "";
         }
@@ -286,12 +285,7 @@ Game.stargazeUI = (function(){
         //Rank
         var rankDM = Game.achievements.rank * 2;
         //Swarms
-        var swarmDM = 0;
-        var x = 1;
-        while (sol.swarm.current >= Game.utils.pascal(x)){
-            x += 1;
-            swarmDM += 1;
-        }
+        var swarmDM = Math.floor(Math.pow(2*sol.swarm.current+0.25,0.5)-0.5);
 
         $('#wonder_dmGain').text(wonderDM);
         $('#sphere_dmGain').text(sphereDM);

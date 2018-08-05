@@ -1122,8 +1122,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Chemical Plants',
-		evaluator: function(x) { return chemicalPlant >= x },
-		progressEvaluator: function(x) { return chemicalPlant/x }
+		evaluator: function(x) { return Game.buildings.entries["rocketFuelT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["rocketFuelT1"].current/x }
 	};
 
 	instance.prodRocketFuel2 = {
@@ -1131,8 +1131,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Oxidisation Chambers',
-		evaluator: function(x) { return oxidisation >= x },
-		progressEvaluator: function(x) { return oxidisation/x }
+		evaluator: function(x) { return Game.buildings.entries["rocketFuelT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["rocketFuelT2"].current/x }
 	};
 
 	instance.prodRocketFuel3 = {
@@ -1140,8 +1140,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'rocketFuelIcon',
 		title: 'Own %s Hydrazine Catalysts',
-		evaluator: function(x) { return hydrazine >= x },
-		progressEvaluator: function(x) { return hydrazine/x }
+		evaluator: function(x) { return Game.buildings.entries["rocketFuelT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["rocketFuelT3"].current/x }
 	};
 
 	instance.prodDyson1 = {
@@ -1149,8 +1149,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
 		title: 'Own %s Dyson Rings',
-		evaluator: function(x) { return ring >= x },
-		progressEvaluator: function(x) { return ring/x }
+		evaluator: function(x) { return Game.solCenter.entries.dyson.items.ring.current >= x },
+		progressEvaluator: function(x) { return Game.solCenter.entries.dyson.items.ring.current/x }
 	};
 
 	instance.prodDyson2 = {
@@ -1158,8 +1158,8 @@ Game.achievementsData = (function(){
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
 		title: 'Own %s Dyson Swarms',
-		evaluator: function(x) { return swarm >= x },
-		progressEvaluator: function(x) { return swarm/x }
+		evaluator: function(x) { return Game.solCenter.entries.dyson.items.swarm.current >= x },
+		progressEvaluator: function(x) { return Game.solCenter.entries.dyson.items.swarm.current/x }
 	};
 
 	/*****************

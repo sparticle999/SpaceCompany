@@ -1,37 +1,15 @@
-function legacySave(data) {
-	"use strict";
-	var localSave = $.extend({
-		rocket: rocket,
-		rocketFuel: rocketFuel,
-		rocketFuelToggled: rocketFuelToggled,
-		chemicalPlant: chemicalPlant,
-		oxidisation: oxidisation,
-		hydrazine: hydrazine,
-		rocketLaunched: rocketLaunched,
-		antimatter: antimatter,
-		antimatterStorage: antimatterStorage,
-		antimatterToggled: antimatterToggled,
-	}, data);
-
-	return localSave;
-}
-
 function legacyLoad(savegame){
 	"use strict";
 
 	if(savegame){
 		ga('send', 'event', 'Loading', 'Conversion to OOP');
 		if(typeof savegame.companyName !== "undefined") Game.companyName = savegame.companyName;
-
 		if(typeof savegame.plasma !== "undefined") Game.resources.entries.plasma.current = savegame.plasma;
 		if(typeof savegame.PSU !== "undefined") Game.buildings.storageEntries.plasmaT1.current = savegame.PSU;
 		if(typeof savegame.PSUT2 !== "undefined") Game.buildings.storageEntries.plasmaT2.current = savegame.PSUT2;
 		if(typeof savegame.heater !== "undefined") Game.buildings.entries.plasmaT1.current = savegame.heater;
-		// if(typeof savegame.heaterToggled !== "undefined") heaterToggled = savegame.heaterToggled;
 		if(typeof savegame.plasmatic !== "undefined") Game.buildings.entries.plasmaT2.current = savegame.plasmatic;
-		// if(typeof savegame.plasmaticToggled !== "undefined") plasmaticToggled = savegame.plasmaticToggled;
 		if(typeof savegame.bath !== "undefined") Game.buildings.entries.plasmaT3.current = savegame.bath;
-		// if(typeof savegame.bathToggled !== "undefined") bathToggled = savegame.bathToggled;
 		if(typeof savegame.energy !== "undefined") Game.resources.entries.energy.current = savegame.energy;
 		if(typeof savegame.battery !== "undefined")  Game.buildings.storageEntries.energyT1.current = savegame.battery;
 		if(typeof savegame.batteryT2 !== "undefined") Game.buildings.storageEntries.energyT2.current = savegame.batteryT2;
@@ -64,7 +42,6 @@ function legacyLoad(savegame){
 		if(typeof savegame.carbyneDrill !== "undefined") Game.buildings.entries.gemT4.current = savegame.carbyneDrill;
 		if(typeof savegame.charcoal !== "undefined") Game.resources.entries.charcoal.current = savegame.charcoal;
 		if(typeof savegame.charcoalStorage !== "undefined") Game.resources.entries.charcoal.capacity = savegame.charcoalStorage;
-		// if(typeof savegame.charcoalToggled !== "undefined") charcoalToggled = savegame.charcoalToggled;
 		if(typeof savegame.woodburner !== "undefined") Game.buildings.entries.charcoalT1.current = savegame.woodburner;
 		if(typeof savegame.furnace !== "undefined") Game.buildings.entries.charcoalT2.current = savegame.furnace;
 		if(typeof savegame.kiln !== "undefined") Game.buildings.entries.charcoalT3.current = savegame.kiln;
@@ -81,14 +58,11 @@ function legacyLoad(savegame){
 		if(typeof savegame.labT3 !== "undefined") Game.buildings.entries.scienceT3.current = savegame.labT3;
 		if(typeof savegame.labT4 !== "undefined") Game.buildings.entries.scienceT4.current = savegame.labT4;
 		if(typeof savegame.labT5 !== "undefined") Game.buildings.entries.scienceT5.current = savegame.labT5;
-
-		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
-		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
-		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
-		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
-		if(typeof savegame.oxidisation !== "undefined") oxidisation = savegame.oxidisation;
-		if(typeof savegame.hydrazine !== "undefined") hydrazine = savegame.hydrazine;
-
+		if(typeof savegame.rocket !== "undefined") rocket = Game.resources.entries.rocket.current;
+		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = Game.resources.entries.rocketFuel.current;
+		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = Game.buildings.entries.meteoriteT1.current;
+		if(typeof savegame.oxidisation !== "undefined") oxidisation = Game.buildings.entries.meteoriteT2.current;
+		if(typeof savegame.hydrazine !== "undefined") hydrazine = Game.buildings.entries.meteoriteT3.current;
 		if(typeof savegame.lunarite !== "undefined") Game.resources.entries.lunarite.current = savegame.lunarite;
 		if(typeof savegame.lunariteStorage !== "undefined") Game.resources.entries.lunarite.capacity = savegame.lunariteStorage;
 		if(typeof savegame.methane !== "undefined") Game.resources.entries.methane.current = savegame.methane;
@@ -143,7 +117,6 @@ function legacyLoad(savegame){
 		}
 		if(typeof savegame.uranium !== "undefined") Game.resources.entries.uranium.current = savegame.uranium;
 		if(typeof savegame.uraniumStorage !== "undefined") Game.resources.entries.uranium.capacity = savegame.uraniumStorage;
-
 		if(typeof savegame.resourcesUnlocked !== 'undefined'){
 			var res = resourcesUnlocked;
 			var arr = ["precious", "energetic", "technological", "meteorite", "comms", "rocket", "antimatter"]
@@ -158,7 +131,6 @@ function legacyLoad(savegame){
 				Game.wonder.entries[savegame.activated[i]].activated = true;
 			}
 		}
-
 		if(typeof savegame.grinder !== "undefined") Game.buildings.entries.uraniumT1.current = savegame.grinder;
 		if(typeof savegame.cubic !== "undefined") Game.buildings.entries.uraniumT2.current = savegame.cubic;
 		if(typeof savegame.enricher !== "undefined") Game.buildings.entries.uraniumT3.current = savegame.enricher;
@@ -187,11 +159,9 @@ function legacyLoad(savegame){
 		if(typeof savegame.sphere !== "undefined") Game.solCenter.entries.dyson.items["sphere"].current = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") Game.solCenter.entries.dyson.items["swarm"].current = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") Game.solCenter.entries.dyson.items["ring"].current = savegame.ring;
-
 		if(typeof savegame.antimatter !== "undefined") Game.interstellar.entries.antimatter.current = savegame.antimatter;
 		if(typeof savegame.antimatterStorage !== "undefined") Game.interstellar.entries.antimatter.storage = savegame.antimatterStorage;
 		if(typeof savegame.antimatterToggled !== "undefined") Game.interstellar.entries.antimatter.toggled = savegame.antimatterToggled;
-
 		if(typeof savegame.planetNuke !== "undefined") Game.buildings.entries.uraniumT5.current = savegame.planetNuke;
 		if(typeof savegame.condensator !== "undefined") Game.buildings.entries.lavaT5.current = savegame.condensator;
 		if(typeof savegame.fossilator !== "undefined") Game.buildings.entries.oilT5.current = savegame.fossilator;

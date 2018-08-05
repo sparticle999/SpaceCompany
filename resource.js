@@ -6,6 +6,7 @@ Game.resources = (function(){
     // Alternatively, run Templates.uiFunctions.refreshElements('persecond', 'metal') for just one material.
     // !!! Update the objects perSecond before calling the update. !!!
     function UpdatePerSecond(id) {
+        console.log("only when actually needs update")
         var previous = -1;
         var id = id;
         this.update = function() {
@@ -13,19 +14,24 @@ Game.resources = (function(){
             if (obj.perSecond == previous) {return;}
             var value = Game.settings.doFormat('persecond', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'ps');
+
+            var use = 0;
+            for(var building in obj.items){
+                var data = obj.items[building];
+                use += data.active*(data.resourcePerSecond["energy"]||data.resourcePerSecond["plasma"]||0);
+            }
+            Templates.uiFunctions.setClassText(use, obj.htmlId+'use')
+
             previous = obj.perSecond;
             return true;
         }
     }
     var UpdateCurrent = function(id) {
-        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.resources.entries[id];
-            if (new Date() - previous < 200) {return;}
             var value = Game.settings.doFormat('current', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
-            previous = new Date();
             // Update the storage full timer
             var node = document.getElementById('resources_res_'+id+'_SelectStorage_limit');
             if (node) {
@@ -136,9 +142,6 @@ Game.resources = (function(){
 
     instance.update = function(delta) {
         for (var id in this.entries) {
-            var data = this.entries[id];
-            var addValue = data.perSecond * delta;
-            this.addResource(id, addValue);
             Templates.uiFunctions.refreshElements('current', id);
         }
     };
@@ -327,22 +330,21 @@ Game.resources = (function(){
     };
 
     instance.checkStorages = function(){
-    if(!Game.activeNotifications.storage || Game.activeNotifications.storage.state == "closed"){
+        var current = 0;
+        var total = 0;
         for(var id in this.entries){
             var data = this.entries[id];
             if(data.unlocked && data.id != "science" && data.id != "rocketFuel"){
-                if(data.current < data.capacity){
-                    return false;
-                }
+                current += data.current;
+                total += data.capacity;
             }
         }
-        Game.notifyStorage();
-    }
-}
-
-    instance.calcAllBuildingProduction = function() {
-        var energyBonus = 0;
-        var productionBonus = 0;
+        document.getElementById("storageBar").style.width = current*100/total + "%";
+        if(current == total){
+            document.getElementById("storageBar").style["background-color"] = "#c25e5e";
+        } else {
+            document.getElementById("storageBar").style["background-color"] = "#337ab7";
+        }
     }
 
     instance.updateResourcesPerSecond = function(){
@@ -359,12 +361,14 @@ Game.resources = (function(){
                 this.entries.energy.perSecond += data.output * dm;
             }
         }
+        var boost = {};
         for(var resource in this.entries){
             this.entries[resource].perSecond = 0;
+            boost[resource] = 0;
         }
         for(var id in Game.buildings.entries){
             var building = Game.buildings.entries[id];
-            if(building.current == 0){
+            if(building.active == 0){
                 // Nothing to be done
                 continue;
             }
@@ -379,20 +383,65 @@ Game.resources = (function(){
             }
             var ok = true;
             for(var i = 0; i < use.length; i++){
-                if(this.entries[use[i]].current < (-1)*building.resourcePerSecond[use[i]]){
+                if(this.entries[use[i]].active < (-1)*building.resourcePerSecond[use[i]]){
                     ok = false;
                 }
             }
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
-                    this.entries[value].perSecond += val * building.current * efficiencyMultiplier * dm;
+                    this.entries[value].perSecond += val * building.active * efficiencyMultiplier * dm;
                 }
             }
+        }
+        var nano = Game.solCenter.entries.nanoswarm;
+        if(nano.current > 0 && nano.resource != null){
+            this.entries[nano.resource].perSecond *= Math.pow(1.1,nano.current);
+        }
+        for (var id in Game.interstellar.stars.entries) {
+            var data = Game.interstellar.stars.getStarData(id);
+            if (data.owned === true) {
+                var happiness = 0;
+                for(var item in data.items){
+                    var planet = data.items[item];
+                    happiness += planet.happiness;
+                }
+                var prod = happiness/400;
+                boost[data.resource1.toLowerCase()] += prod;
+                boost[data.resource2.toLowerCase()] += prod;
+            }
+        }
+        for(var resource in this.entries){
+            this.entries[resource].perSecond += boost[resource]*this.entries[resource].perSecond;
         }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('perSecond', 'all');
     };
+
+    instance.toggle = function(id){
+        var data = this.entries[id];
+        if(data.items[id + "T1"].active == 0){
+            for(var item in data.items){
+                this.setRelativeActive(item,10000);
+            }
+        } else {
+            for(var item in data.items){
+                this.setRelativeActive(item,-10000);
+            }
+        }
+        return data.items[id + "T1"].active;
+    }
+
+    instance.setRelativeActive = function(id, count){
+        var data = Game.buildings.entries[id];
+        count = parseInt(count);
+        if(count > 0){
+            data.active = Math.min(data.current, data.active + count);
+        } else {
+            data.active = Math.max(0, data.active + count);
+        }
+        Templates.uiFunctions.refreshElements('machine', id);
+    }
 
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;

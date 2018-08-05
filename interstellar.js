@@ -99,13 +99,13 @@ Game.interstellar = (function(){
         this.military.updateFleetStats();
         // Delete
         // document.getElementById("interstellarTab_link").className = "";
-        // var data = this.entries["moviton"];
-        // data.unlocked = data.displayNeedsUpdate = true;
         // antimatter = 100000;
-        // this.rocket.entries.tier1Rocket.built = true;
-        // this.comms.entries.IRS.count = 100;
-        // Game.interstellar.stars.entries._501.explored = true;
-        // Game.interstellar.stars.entries._501.owned = true;
+        // Game.interstellar.rocket.entries.tier1Rocket.built = true;
+        // Game.interstellar.comms.entries.IRS.count = 100;
+        // Game.interstellar.stars.entries._601.explored = true;
+        // Game.interstellar.stars.entries._601.owned = true;
+        // var data = Game.interstellar.entries["moviton"];
+        // data.unlocked = data.displayNeedsUpdate = true;
         // console.error("only for testing");
         // Delete
     };

@@ -138,12 +138,13 @@ Templates.objectConstructor.UiFunctions = function() {
             Object.keys(menu).forEach(function(header) {
                 menu[header].forEach(function(item) {
                     var pane = item+'c';
-                    page[pane].forEach(function(container) {
-                        createTopDownDOM(nav, header, item, pane, container);
-                        createDownTopDOM(nav, header, item, pane, container);
-    })  })  })  })   }
+                    if(page){
+                        page[pane].forEach(function(container) {
+                            createTopDownDOM(nav, header, item, pane, container);
+                            createDownTopDOM(nav, header, item, pane, container);
+    })  }  })  })  })   }
     /**
-     * Creates the an Object for each important element on the DOM.
+     * Creates an Object for each important element on the DOM.
      * and a path from each element to the bottom most element.
      * @param  {String}   navigation  DOM id of the page navigation element.
      * @param  {String}   header      DOM id of a menu header on this page.
@@ -212,10 +213,10 @@ Templates.objectConstructor.UiFunctions = function() {
      * @param  {String}   DOMid  The *id* of the DOM element to hide.
      * @return {boolean}         True on success.
      */
-    this.hide = function(itemId) {
+    this.hide = function(itemId, page) {
         var node = document.querySelector('.'+itemId+'_Container');
         if ((node == 'undefined')) {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but couldn't find it.")
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_Container', but couldn't find it.")
             return false;
         }
         if (!node.classList.contains("hidden")) {
@@ -223,11 +224,60 @@ Templates.objectConstructor.UiFunctions = function() {
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
         } else {
-            console.warn("Trying to hide the element with id='"+page+"_"+itemId+"_Container', but it's already hidden!")
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_Container', but it's already hidden!")
             return false;
         }
         return true;
     }
+
+    console.log("%c", "background:green;padding:5px;", "Combine these hide functions");
+
+    /**
+     * Hides a single nav element (adds class: hidden).
+     * @param  {String}   DOMid  The *id* of the DOM nav element to hide.
+     * @return {boolean}         True on success.
+     */
+    this.hideNav = function(itemId, page) {
+        var node = document.querySelector('#'+itemId);
+        if ((node == 'undefined')) {
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_ne', but couldn't find it.")
+            return false;
+        }
+        if (!node.classList.contains("hidden")) {
+            node.classList.add("hidden");
+            unhidden = removeElement(unhidden, node.id);
+            hidden = addElement(hidden, node.id);
+        } else {
+            console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_ne', but it's already hidden!")
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Hides a category and all nav elements inside it (adds class: hidden).
+     * @param  {String}   DOMid  The *id* of the DOM element to hide.
+     * @return {boolean}         True on success.
+     */
+    this.hideCategory = function(itemId, page) {
+        var node = document.querySelector('#'+page+'_'+itemId+'_collapse');
+        if ((node == 'undefined')) {
+            console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but couldn't find it.")
+            return false;
+        }
+        if (!node.classList.contains("hidden")) {
+            node.classList.add("hidden");
+            unhidden = removeElement(unhidden, node.id);
+            hidden = addElement(hidden, node.id);
+            // Hiding each nav inside the category
+            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
+        } else {
+            console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Hides all elements with a given className.
      * @param  {string}   className  The class to hide.
@@ -307,13 +357,13 @@ Templates.objectConstructor.UiFunctions = function() {
     }
     /**
      * Shows all elements with a given className.
-     * @param  {string}   className  The class to hide.
+     * @param  {string}   className  The class to show.
      * @return {boolean}             True on success.
      */
     this.showClass = function(className) {
         var nodes = document.querySelectorAll('.'+className);
         if (nodes == 'undefined') {
-            console.warn("Trying to hide all classes with "+className+", but couldn't find any.")
+            console.warn("Trying to show all classes with "+className+", but couldn't find any.")
             return false;
         }
         nodes.forEach(function(node) {
@@ -387,8 +437,8 @@ Templates.objectConstructor.UiFunctions = function() {
         // Loop through the nodes and process each node's id.
         nodes.forEach(function(node) {
             // loop through the downTopDom array and unhide all elements
+            Templates.uiFunctions.show(node.id)
             if (propagate) {downTopDom[node.id].forEach(i => Templates.uiFunctions.show(i));}
-            Templates.uiFunctions.show(node.id);
             // Setting the internal vars is done by the show-function.
         })
         return true;
@@ -411,9 +461,9 @@ Templates.objectConstructor.UiFunctions = function() {
         return true;
     }
     /**
-     * Sets a style on an element containing a certain class
-     * @param  {String}   cl     The clname to add if found. Defaults to 'IfYouSeeThisYouMessedUp'
-     * @param  {String}   style  The cl to match against
+     * Removes a style on an element containing a certain class
+     * @param  {String}   cl     The classname to remove a style from
+     * @param  {String}   style  The style name
      * @return {Boolean}         True on success.
      */
     this.removeStyle = function(cl, style) {
@@ -429,7 +479,7 @@ Templates.objectConstructor.UiFunctions = function() {
 
 
     // Do we need a function that hides a page and all of its elements?
-
+    console.log("%c", "background:green;padding:5px", "Yes, on rebirth");
 
     ////////////////
     // Menu Stuff //
@@ -489,6 +539,7 @@ Templates.objectConstructor.UiFunctions = function() {
     //////////////////////
     // Page Interaction //
     //////////////////////
+    console.log("put a console.log into the act function, then see that it's triggered 25 times each update, should only be once");
     this.refreshElements = function(action, resource) {
         var refreshActions = [];
         // If an action is provided, only perform that one.
@@ -501,15 +552,51 @@ Templates.objectConstructor.UiFunctions = function() {
         if (typeof resource === 'undefined') {resource = 'all'}
         // Loop through all registeredElements with refreshActions
         // and execute those which are requested
+        // but only if the current page is open
         refreshActions.forEach(function(act) {
             Object.keys(registeredElements[act]).forEach(function(res) {
-                if (res.toLowerCase() === resource.toLowerCase() || resource == 'all') {
+                if ((res.toLowerCase() === resource.toLowerCase() || resource == 'all')) {
                     var obj = registeredElements[act][res].object;
-                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                    if(obj.category == "buildings"){
+                        if(obj.resource == "science"){
+                            if("techTab_res_science_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "rocketFuel"){
+                            if("solarTab_res_rocketFuel_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "rocket"){
+                            if("solarTab_res_rocket_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.resource == "satellite"){
+                            if("solarTab_res_satellite_ne" == lastItem){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else {
+                            if("resourcesTab_res_" + obj.resource + "_ne" == lastItem || "machinesTab" == lastNav){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        }
+                    } else if(obj.category == "technology"){
+                        if("techTab_technologies_ne" == lastItem){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    } else if(obj.category == "storageBuildings"){
+                        if("resourcesTab_res_" + obj.resource + "_ne" == lastItem){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    } else {
+                        if(obj.unlocked){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    }
+                    
                 }          
             })
         })
-    }
+    };
 
     /**
      * Called from gameUI.js
@@ -533,7 +620,7 @@ Templates.objectConstructor.UiFunctions = function() {
         if (!(id in registeredElements[action])) {registeredElements[action][id] = {};}
         registeredElements[action][id].object = object;
         return true;
-    }
+    };
     /**
      * Creates an event listener. An event can be: https://developer.mozilla.org/en-US/docs/Web/Events
      * @param {DOMnode}   target    The DOM node that's the target of the event
@@ -552,17 +639,16 @@ Templates.objectConstructor.UiFunctions = function() {
         return true;
     };
 
-
     /**
      * This functions examines the entire game's DOM object and
      * creates eventlisteners. It also collects data needed for the UI to work.
      */
     this.linkEvents = function() {
         var allIds = [];
+        function getCase(text, key) {
+            return text.match(new RegExp(key)) || {};
+        }
         Object.keys(Game.pages).forEach(function(page) {
-            function getCase(text, key) {
-                return text.match(new RegExp(key)) || {};
-            }
             // Loop through all the ids of the menu and register its events
             var parentNode = document.getElementById(page+'Tab_pane');
             var nodes = parentNode.querySelectorAll('[id]');
@@ -629,12 +715,21 @@ Templates.objectConstructor.UiFunctions = function() {
                     funct = new Function("addManualResource('"+match[3]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
+                // Match (resources)_(res)_(plasma)_toggle
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_toggle$")).input:
+                    funct = new Function("Game.resources.toggle('"+match[3]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
                 // Match (resources)_(plasma)_StorageUpgrade
                 case (match = getCase(id, "^(.*)_(.*)_StorageUpgrade$")).input:
                     funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
-                // Match (resources)_energyT1_Container
+                // Match (machines)_(energyT1)(_de)activate_(1)
+                case (match = getCase(id, "^(.*)_(.*)_activate_(.*)")).input:
+                    funct = new Function("Game.resources.setRelativeActive('"+match[2]+"','"+parseInt(match[3])+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
 
                 ////////////
                 // Unused //
@@ -649,11 +744,14 @@ Templates.objectConstructor.UiFunctions = function() {
                 // Match (resources)Tab_content
                 case (match = getCase(id, "^(.*)Tab_content$")).input:
                     break;
-                // Match (resources)_(plasma)_SelectStorage_Limit
+                // Match (resources)_(plasma)_SelectStorage_limit
                 case (match = getCase(id, "^(.*)_(.*)_SelectStorage_limit$")).input:
                     break;
-                // Match (resources)_(plasma)_SelectStorage_Limit
+                // Match (resources)_(plasma)_SelectStorage_time
                 case (match = getCase(id, "^(.*)_(.*)_SelectStorage_time$")).input:
+                    break;
+                // Match (resources)_(plasma)_gainCost
+                case (match = getCase(id, "^(.*)_(.*)_gainCost$")).input:
                     break;
 
                 default:
@@ -734,6 +832,7 @@ Templates.objectConstructor.UiFunctions = function() {
     // hidden, unhidden arrays and apply their changes.     //
     // Also click on lastNav and lastItem                   //
     //////////////////////////////////////////////////////////
+    console.log("%c", "background:green;padding:5px;", "UI: this ^");
 
 };
 Templates.uiFunctions = new Templates.objectConstructor.UiFunctions();

@@ -242,6 +242,11 @@ Game.updatesData = (function(){
 		read: false
 	}
 
+	instance.storageBar = {
+		desc: 'Added a storage bar to the top of the screen',
+		read: false
+	}
+
 	return instance;
 
 }());

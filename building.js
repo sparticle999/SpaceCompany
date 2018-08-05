@@ -13,6 +13,27 @@ Game.buildings = (function(){
         }
     }
 
+    function UpdateMachine(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.entries[id];
+            if (obj.active == previous) {return;}
+            var value = Game.settings.doFormat('active', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'active');
+
+            var prod = obj.active*obj.resourcePerSecond[obj.resource];
+            var use = obj.active*(obj.resourcePerSecond["energy"]||obj.resourcePerSecond["plasma"]||0);
+            var prodVal = Game.settings.format(prod);
+            var useVal = Game.settings.format(use);
+            Templates.uiFunctions.setClassText(prodVal, obj.htmlId+'prod');
+            Templates.uiFunctions.setClassText(useVal, obj.htmlId+'use');
+
+            previous = obj.active;
+            return true;
+        }
+    }
+
     function UpdateCost(id) {
         var previous = new Date();
         var id = id;
@@ -28,7 +49,7 @@ Game.buildings = (function(){
 
     var instance = {};
 
-    instance.dataVersion = 1;
+    instance.dataVersion = 2;
     instance.entries = {};
     instance.storageEntries = {};
     instance.updatePerSecondProduction = true;
@@ -47,12 +68,14 @@ Game.buildings = (function(){
                 category: 'buildings',
                 htmlId: 'resbld_'+id,
                 current: 0,
+                active: 0,
                 iconPath: Game.constants.iconPath,
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
                 max: data.maxCount,
                 displayNeedsUpdate: true,
                 ui_current: new UpdateCurrent(id),
+                ui_active: new UpdateMachine(id),
                 ui_cost: new UpdateCost(id),
             });            
         }
@@ -87,16 +110,25 @@ Game.buildings = (function(){
     instance.save = function(data) {
         data.buildings = { v: this.dataVersion, i: {}};
         for(var key in this.entries) {
-            data.buildings.i[key] = this.entries[key].current;
+            data.buildings.i[key] = {current: 0, active: 0};
+            data.buildings.i[key].current = this.entries[key].current;
+            data.buildings.i[key].active = this.entries[key].active;
         }
     };
 
     instance.load = function(data) {
         if(data.buildings) {
-            if(data.buildings.v && data.buildings.v === this.dataVersion) {
+            if(data.buildings.v === 1) {
                 for(var id in data.buildings.i) {
                     if(this.entries[id]) {
                         this.constructBuildings(id, data.buildings.i[id]);
+                    }
+                }
+            } else if(data.buildings.v === 2){
+                for(var id in data.buildings.i) {
+                    if(this.entries[id]) {
+                        this.constructBuildings(id, data.buildings.i[id].current);
+                        this.entries[id].active = data.buildings.i[id].active;
                     }
                 }
             }
@@ -141,7 +173,8 @@ Game.buildings = (function(){
                 Game.resources.entries[resource].capacity += data.storage[resource];
             }
             data.displayNeedsUpdate = true;
-            Templates.uiFunctions.refreshElements('current', 'all');
+            Templates.uiFunctions.refreshElements('current', id);
+            Templates.uiFunctions.refreshElements('machine', id);
             Templates.uiFunctions.refreshElements('capacity', resource);
         }
     }
@@ -175,7 +208,6 @@ Game.buildings = (function(){
                     res.current -= this.calcCost(data, resource, "buildingData", multi);
                 }
                 this.updatePerSecondProduction = true;
-                Templates.uiFunctions.refreshElements('persecond', 'all');
                 if(data.onApply) {data.onApply();}
                 this.constructBuildings(id, 1);
                 this.updateCosts(id);
@@ -193,24 +225,29 @@ Game.buildings = (function(){
     };
 
     instance.constructBuildings = function(id, count) {
+        var data = this.entries[id];
         // Add the buildings and clamp to the maximum
         if(count == 0)
             return;
         count = count || 1;
-        var newValue = Math.floor(this.entries[id].current + count);
-        this.entries[id].current = Math.min(newValue, this.entries[id].max);
-        Templates.uiFunctions.refreshElements('current', 'all');
-        Templates.uiFunctions.refreshElements('persecond', 'all');
+        var newValue = Math.floor(data.current + count);
+        var newActiveValue = Math.floor(data.active + count);
+        data.current = Math.min(newValue, data.max);
+        data.active = Math.min(newActiveValue, this.entries[id].max);
+        Templates.uiFunctions.refreshElements('current', id);
+        Templates.uiFunctions.refreshElements('machine', id);
+        Templates.uiFunctions.refreshElements('persecond', data.resource);
     };
 
     instance.destroyBuildings = function(id, count) {
         // Remove the buildings and ensure we can not go below 0
         count = count || 1;
         var newValue = Math.floor(this.entries[id].current - count);
+        var newActiveValue = Math.floor(this.entries[id].active - count);
         this.entries[id].current = Math.max(newValue, 0);
-        this.entries[id].displayNeedsUpdate = true;
-        this.updatePerSecondProduction = true;
+        this.entries[id].current = Math.max(newActiveValue, 0);
         Templates.uiFunctions.refreshElements('current', id);
+        Templates.uiFunctions.refreshElements('machine', id);
         Templates.uiFunctions.refreshElements('persecond', id);
     };
 
@@ -247,19 +284,6 @@ Game.buildings = (function(){
         this.storageEntries[id].unlocked = true;
         this.storageEntries[id].displayNeedsUpdate = true;
         Templates.uiFunctions.unlock(id, propagate)
-    }
-
-    instance.refreshUnlock = function(data){
-/* Handled by Templates.uiFunctions
-        if(data.id.indexOf("rocketFuel") == -1){
-            if(data.unlocked)
-                $('#' + data.htmlId)[0].className = "";
-            else
-                $('#' + data.htmlId)[0].className = "hidden";
-        } else {
-            //console.log("rocketFuel")
-        }
-*/
     }
 
     instance.getBuildingData = function(id) {

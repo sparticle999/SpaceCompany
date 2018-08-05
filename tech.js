@@ -61,18 +61,7 @@ Game.tech = (function(){
     };
 
     instance.update = function(delta) {
-        if(this.tabUnlocked) {
-            document.getElementById('techTab').classList.remove("hidden");
-        }
-        for (var id in this.entries) {
-            var data = this.entries[id];
-            if (data.unlocked) {
-                Templates.uiFunctions.unlock(data.id);
-            }
-            if (data.current >= data.maxLevel && data.maxLevel > 0) {
-                Templates.uiFunctions.hide(data.id)
-            }
-        }
+        
     };
 
     instance.save = function(data) {
@@ -174,6 +163,7 @@ Game.tech = (function(){
         var tech = this.getTechData(id);
         if (typeof tech !== 'undefined') {
             tech.unlocked = true;
+            Templates.uiFunctions.unlock(id);
         }
     };
 
@@ -182,8 +172,13 @@ Game.tech = (function(){
 // var materials = Object.keys(Obj).reduce((o, key) => Object.assign(o, {[key]: 0}), {});
 
 
-
-
+    instance.hideIfMax = function(id){
+        var data = this.entries[id];
+        if (data.current >= data.maxLevel && data.maxLevel > 0) {
+            Templates.uiFunctions.hide(data.id);
+        }
+    }
+    
     instance.unlockNewTechs = function(id) {
         var tech = this.getTechData(id);
         if (typeof tech !== 'undefined') { tech.unlocked = true; }
@@ -194,6 +189,7 @@ Game.tech = (function(){
             newTechs.forEach(t => Templates.uiFunctions.unlock(t));
         }
     };
+
     instance.doPurchase = function(Obj) {
         // Loop over the costs and subtract them from .current
         Object.keys(Obj.cost).forEach(c => Game.resources.entries[c].current -= this.getCost(Obj.cost[c], Obj.current))
@@ -234,6 +230,7 @@ Game.tech = (function(){
             // Unlock new techs.
             this.unlockNewTechs(id);
             // decrease count
+            this.hideIfMax(id);
             count--;
         }
     };

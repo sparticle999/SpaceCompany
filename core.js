@@ -1,7 +1,3 @@
-function toggleEnergy() {
-	globalEnergyLock = !globalEnergyLock;
-}
-
 function fixStorageRounding() {
 	var precision = 100;
 	if (Math.round(getResource(RESOURCE.Meteorite) * precision) / precision === getStorage(RESOURCE.Meteorite)) {
@@ -14,12 +10,12 @@ function fixStorageRounding() {
 }
 
 function refreshTimeUntilLimit() {
-	for (var id in RESOURCE) {
-		var limitType = RESOURCE[id] + 'LimitType';
-		var limitTime = RESOURCE[id] + 'LimitTime';
-		var amount = getResource(RESOURCE[id]);
-		var storage = getStorage(RESOURCE[id]);
-		var production = getProduction(RESOURCE[id]);
+	for (var id in Game.resources.entries) {
+		var limitType = id + 'LimitType';
+		var limitTime = id + 'LimitTime';
+		var amount = getResource(id);
+		var storage = getStorage(id);
+		var production = getProduction(id);
 		setTimeUntilDisplayTest(limitType, limitTime, amount, storage, production);
 	}
 }
@@ -55,81 +51,9 @@ function setTimeUntilDisplayTest(targetLimitType, targetLimitTime, current, max,
 
 function refreshPerSec(delta){
 
-	var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.count * 0.01) + (Game.stargaze.entries.darkMatter.current * dmBoost);
+	var perSecondMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.count * 0.01) + (Game.stargaze.entries.darkMatter.current * Game.stargaze.dmBoost);
 
-	rocketFuelps = 0;
 	antimatterps = 0;
-	
-
-	// if (charcoalToggled) {
-	// 	var woodCost = woodburner * woodburnerWoodInput;
-	// 	if (!energyLow && globalEnergyLock === false) {
-	// 		woodCost += (furnace*furnaceWoodInput) + (kiln*kilnWoodInput) + (fryer*fryerWoodInput) + (microPollutor*microPollutorWoodInput);
-	// 	}
-
-	// 	if (getResource(RESOURCE.Wood) + getProduction(RESOURCE.Wood) >= woodCost) {
-	// 		woodps -= woodCost;
-	// 		charcoalps += woodburner * perSecondMultiplier;
-
-	// 		if (!energyLow && globalEnergyLock === false) {
-	// 			charcoalps += ((furnace*furnaceOutput) + (kiln*kilnOutput) + (fryer*fryerOutput) + (microPollutor*microPollutorOutput)) * perSecondMultiplier
-	// 		}
-	// 	}
-	// }
-
-	var oilps = Game.resources.entries.oil.perSecond;
-	var charcoalps = Game.resources.entries.charcoal.perSecond;
-	var methaneps = Game.resources.entries.methane.perSecond;
-
-
-	if (rocketFuelToggled === true) {
-		var oilCost = (chemicalPlant*chemicalPlantOilInput) + (oxidisation*oxidisationOilInput);
-		var charcoalCost = (chemicalPlant*chemicalPlantCharcoalInput) + (oxidisation*oxidisationCharcoalInput);
-		if (getResource(RESOURCE.Oil) + getProduction(RESOURCE.Oil) >= oilCost &&
-			getResource(RESOURCE.Charcoal) + getProduction(RESOURCE.Charcoal) >= charcoalCost) {
-			oilps -= oilCost;
-		charcoalps -= charcoalCost;
-		rocketFuelps += ((chemicalPlant*chemicalPlantOutput*chemicalBoost) + (oxidisation*oxidisationOutput)) * perSecondMultiplier;
-	}
-	var methaneCost = hydrazine*hydrazineMethaneInput;
-	if (getResource(RESOURCE.Methane) + getProduction(RESOURCE.Methane) >= methaneCost) {
-		methaneps -= methaneCost;
-		rocketFuelps += (hydrazine*hydrazineOutput) * perSecondMultiplier;
-	}
-}
-
-	// if (meteoriteToggled === true) {
-	// 	adjustment = adjustCost(RESOURCE.Meteorite, (printer * printerPlasmaInput) + (web * webPlasmaInput) + (smasher * smasherPlasmaInput) + (nebulous * nebulousPlasmaInput), ((printer * printerOutput) + (web * webOutput) + (smasher * smasherOutput) + (nebulous * nebulousOutput)) * perSecondMultiplier);
-	// 	if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Plasma, delta) >= adjustment.c) {
-	// 		plasmaps -= adjustment.c;
-	// 		meteoriteps += adjustment.g;
-	// 	}
-	// }
-
-	// if (heaterToggled === true && !energyLow && globalEnergyLock === false) {
-	// 	var adjustment = adjustCost(RESOURCE.Plasma, heater * heaterHydrogenInput, heater * heaterOutput * perSecondMultiplier);
-	// 	if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c) {
-	// 		hydrogenps -= adjustment.c;
-	// 		plasmaps += adjustment.g;
-	// 	}
-	// }
-
-	// if (plasmaticToggled === true && !energyLow && globalEnergyLock === false) {
-	// 	var adjustment = adjustCost(RESOURCE.Plasma, plasmatic * plasmaticHeliumInput, (plasmatic * plasmaticOutput) * perSecondMultiplier);
-	// 	if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
-	// 		heliumps -= adjustment.c;
-	// 		plasmaps += adjustment.g;
-	// 	}
-	// }
-
-	// if (bathToggled === true && !energyLow && globalEnergyLock === false) {
-	// 	var adjustment = adjustCost(RESOURCE.Plasma, bath * bathHydrogenInput, (bath * bathOutput) * perSecondMultiplier);
-	// 	if (adjustment.g > 0 && getResourceAfterTick(RESOURCE.Hydrogen, delta) >= adjustment.c && getResourceAfterTick(RESOURCE.Helium, delta) >= adjustment.c) {
-	// 		hydrogenps -= adjustment.c;
-	// 		heliumps -= adjustment.c;
-	// 		plasmaps += adjustment.g;
-	// 	}
-	// }
 
 	var plasmaps = Game.resources.entries.plasma.perSecond;
 	var iceps = Game.resources.entries.ice.perSecond;
@@ -141,26 +65,14 @@ function refreshPerSec(delta){
 			if (getResource(RESOURCE.Plasma) + getProduction(RESOURCE.Plasma) >= plasmaCost &&
 				getResource(RESOURCE.Ice) + getProduction(RESOURCE.Ice) >= iceCost) {
 				plasmaps -= plasmaCost;
-			iceps -= iceCost;
+				iceps -= iceCost;
+				antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
+			}
+		}
+		else {
+			antimatter = antimatterStorage;
 			antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 		}
-	}
-	else {
-		antimatter = antimatterStorage;
-		antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
-	}
-}
-var boosts = {};
-
-for(var i = 0; i < resources.length; i++){
-	boosts[resources[i]] = getProduction(resources[i]) / 4;
-}
-
-for (var id in Game.interstellar.stars.entries) {
-	var data = Game.interstellar.stars.getStarData(id);
-	if (data.owned === true) {
-		window[data.resource1.toLowerCase() + "ps"] += boosts[data.resource1.toLowerCase()];
-		window[data.resource2.toLowerCase() + "ps"] += boosts[data.resource2.toLowerCase()];
 	}
 }
 
@@ -179,7 +91,6 @@ function adjustCost(resource, cost, gain) {
 	var costAbs = cost * gainRatio;
 
 	return {g: gainAbs, c: costAbs};
-}
 }
 /*
 function checkRedCost() {

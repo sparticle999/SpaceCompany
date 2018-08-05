@@ -53,31 +53,3 @@ function addManualResource(id) {
         		Game.resources.takeResource(res, Math.abs(transaction[res]*gainNum))
     )
 };
-
-function toggleCharcoal(){
-	charcoalToggled = !charcoalToggled;
-}
-
-function toggleHeater(){
-	heaterToggled = !heaterToggled;
-}
-
-function togglePlasmatic(){
-	plasmaticToggled = !plasmaticToggled;
-}
-
-function toggleBath(){
-	bathToggled = !bathToggled;
-}
-
-function toggleRocketFuel(){
-	rocketFuelToggled = !rocketFuelToggled;
-}
-
-function toggleMeteorite(){
-	meteoriteToggled = !meteoriteToggled;
-}
-
-function toggleAntimatter(){
-	antimatterToggled = !antimatterToggled;
-}

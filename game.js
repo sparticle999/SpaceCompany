@@ -15,8 +15,10 @@ var Game = (function() {
     };
 
     instance.update_frame = function(time) {
-        Game.update(time - Game.lastUpdateTime);
-        Game.lastUpdateTime = time;
+        if(time-Game.lastUpdateTime > 1000){
+            Game.update(time - Game.lastUpdateTime);
+            Game.lastUpdateTime = time;
+        }
 
         // This ensures that we wait for the browser to "catch up" to drawing and other events
         window.requestAnimationFrame(Game.update_frame);
@@ -53,10 +55,15 @@ var Game = (function() {
 
     instance.fastUpdate = function(self, delta) {
         Game.tech.updateEfficiencies();
-
-        legacyRefreshUI();
-        self.interstellarUI.update(delta);
-        self.stargazeUI.update(delta);
+        var tabs = ["resources", "tech", "solar", "wonder", "solCenter", "interstellar", "stargaze"];
+        for(var i = 0; i < tabs.length; i++){
+            if(document.getElementById(tabs[i]+"Tab")==null||typeof self[tabs[i]+"UI"].update == 'undefined'){
+                continue;
+            }
+            if(document.getElementById(tabs[i] + "Tab").className == "active"){
+                self[tabs[i]+"UI"].update(delta);
+            }
+        }
 
         //self.ui.updateBoundElements(delta);
         self.resources.update(delta);
@@ -72,7 +79,7 @@ var Game = (function() {
 
         self.updateAutoSave(delta);
 
-        if(delta > 1) {
+        if(delta > 5) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
         }
     };
@@ -80,11 +87,11 @@ var Game = (function() {
     instance.slowUpdate = function(self, delta) {
         refreshConversionDisplay();
         refreshTimeUntilLimit();
-        gainAutoEmc();
 
         self.buildings.updatePerSecondProduction = true;
 
         self.resources.checkStorages();
+        self.solCenter.autoEmc();
 
         self.updateTime(delta);
 
@@ -154,8 +161,6 @@ var Game = (function() {
         this.stargaze.save(data);
         this.updates.save(data);
 
-        data.legacy = legacySave(data);
-
         localStorage.setItem("save",JSON.stringify(data));
         Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
         console.log('Game Saved');
@@ -191,8 +196,6 @@ var Game = (function() {
 
     instance.updateUI = function(self){
         Game.settings.updateCompanyName();
-
-        updateFuelProductionCost();
 
         if(Game.constants.enableMachineTab === true){
             $('#machineTopTab').show();
@@ -273,13 +276,10 @@ var Game = (function() {
 
 
         // Link Game.machinescategoryData page to Game.pages
-        //this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages);
-        // Link Game.solar.entries category to Game.solarCategoryData
-        //this.combineGameObjects(Game.solar.entries, 'category', Game.solarCategoryData, 'items');
-        //console.log(Game.machinesCategoryData)
-
+        this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages, '');
+        this.combineGameObjects(Game.machinesData, 'category', Game.machinesCategoryData, 'items');
         // Link Game.resources.entries category to Game.machinesCategoryData
-        //this.combineGameObjects(Game.resources.entries, 'category', Game.machinesCategoryData, 'items');
+        this.combineGameObjects(Game.resources.entries, 'category', Game.machinesData, 'items');
     }
 
     instance.handleOfflineGains = function(offlineTime) {
@@ -314,10 +314,6 @@ var Game = (function() {
 
         self.deleteInterval("Loading");
 
-        //registerLegacyBindings();
-        //self.ui.updateAutoDataBindings();
-
-
         // Initialise data first
         self.achievements.initialise();
         self.statistics.initialise();
@@ -342,29 +338,20 @@ var Game = (function() {
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
-        //self.machinesUI = new Templates.machinesUI('machines', '', 'Machines BETA', Game.pages.machines);
-        //self.machinesUI.initialise();
+        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines', Game.pages.machines);
+        self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
         // Refresh all actions
 
         //Game.ui.updateAutoDataBindings();
         
-
         console.log("%c", "background: green;padding: 5px", "test from start");
         console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
         console.log("%c", "background: green;padding: 5px", "all tech upgrades")
         console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
         console.log("%c", "background: green;padding: 5px", "stats")
         console.log("%c", "background: green;padding: 5px", "efficiencyBoosts")
-        console.log("%c", "background: green;padding: 5px", "energy toggle")
-        console.log("%c", "background: green;padding: 5px", "plasma toggle core.js:180")
-        console.log("%c", "background: green;padding: 5px", "charcoal toggle core.js:140")
-        console.log("%c", "background: green;padding: 5px", "meteorite toggle core.js:172")
-        console.log("%c", "background: green;padding: 5px", "toggles legacyUI.js:125")
-        console.log("%c", "background: green;padding: 5px", "Research tab notification")
-        console.log("%c", "background: green;padding: 5px", "redo solar system")
-        console.log("%c", "background: green;padding: 5px", "dm boosts antimatter and rocketFuel")
         console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
         // Now load
         self.load();
