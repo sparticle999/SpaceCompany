@@ -72,22 +72,6 @@ Game.stargaze = (function(){
 				if(id != "metal" && id != "gem" && id != "wood")
 					Game.resources.entries[id].unlocked = false;
 			}
-			for(var i = 0; i < explored.length; i++){
-				document.getElementById(explored[i]).className = "inner sideTab hidden";
-				if(explored[i] != "moon", explored[i] != "venus", explored[i] != "mars", explored[i] != "asteroidBelt")document.getElementById(explored[i]).className = "outer sideTab hidden";
-			}
-			document.getElementById("rocket").innerHTML = "Not Built";
-			document.getElementById("rocketRocketCost").className = "red";
-			document.getElementById("solarRocket").className = "";
-			document.getElementById("spaceRocket").className = "sideTab";
-			document.getElementById("mercury").className = "sideTab hidden";
-			document.getElementById("collapseInner").className = "collapseInner sideTab hidden";
-			document.getElementById("collapseOuter").className = "collapseOuter sideTab hidden";
-
-			for(var i = 0; i < activated.length; i++){
-				$(document.getElementById(activated[i] + "Activation")).text("Dormant");
-				document.getElementById(activated[i] + "Activation").className = "red";
-			}
 
 			Game.resources.initialise();
 			Game.buildings.initialise();
@@ -148,7 +132,9 @@ Game.stargaze = (function(){
 					window[object] += this.rebirthStart[i][object];
 				}
 			}
+			return true;
 		}
+		return false;
 	};
 
 	instance.upgrade = function(id){

@@ -15,7 +15,7 @@ var Game = (function() {
     };
 
     instance.update_frame = function(time) {
-        if(time-Game.lastUpdateTime > 1000){
+        if(time-Game.lastUpdateTime > 100){
             Game.update(time - Game.lastUpdateTime);
             Game.lastUpdateTime = time;
         }

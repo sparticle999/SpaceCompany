@@ -6,7 +6,6 @@ Game.resources = (function(){
     // Alternatively, run Templates.uiFunctions.refreshElements('persecond', 'metal') for just one material.
     // !!! Update the objects perSecond before calling the update. !!!
     function UpdatePerSecond(id) {
-        console.log("only when actually needs update")
         var previous = -1;
         var id = id;
         this.update = function() {
@@ -141,9 +140,7 @@ Game.resources = (function(){
     };
 
     instance.update = function(delta) {
-        for (var id in this.entries) {
-            Templates.uiFunctions.refreshElements('current', id);
-        }
+        Templates.uiFunctions.refreshElements('current', 'all');
     };
 
     instance.save = function(data) {

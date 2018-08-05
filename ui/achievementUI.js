@@ -74,7 +74,6 @@ Game.achievementsUI = (function(){
             var id = this.categoryElements[category].id;
             $('#' + id + '_unlocked').text(categoryCounts[category].unlocked);
             $('#' + id + '_total').text(categoryCounts[category].total);
-            
           }
         }
 

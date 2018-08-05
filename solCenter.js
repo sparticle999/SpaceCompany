@@ -145,7 +145,6 @@ Game.solCenter = (function(){
             if(this.emcAmount !== this.emcAmount){
                 this.emcAmount = 1;
             }
-            
         }
 
         refreshConversionDisplay();

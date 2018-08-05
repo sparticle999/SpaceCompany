@@ -541,6 +541,7 @@ Templates.objectConstructor.UiFunctions = function() {
     //////////////////////
     console.log("put a console.log into the act function, then see that it's triggered 25 times each update, should only be once");
     this.refreshElements = function(action, resource) {
+        console.log(action);
         var refreshActions = [];
         // If an action is provided, only perform that one.
         if (typeof action !== 'undefined' && (action in registeredElements)) {

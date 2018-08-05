@@ -34,6 +34,17 @@ Game.enlightenment = (function(){
 
 	};
 
+	instance.enlighten = function(){
+		if(Game.stargaze.rebirth()){
+			
+		}
+		return false;
+	};
+
+	instance.titan = function(){
+
+	};
+
 	return instance;
 
 }());
