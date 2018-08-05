@@ -262,8 +262,7 @@ Game.interstellarUI = (function(){
             '<div id="{{id}}_planetContent"></div>',].join('\n'));
 
         instance.planetBuildingTemplate = Handlebars.compile(
-            ['<h5>{{name}}:</h5>',
-            '',
+            ['<h5>{{name}}:<img src="Icons/{{icon}}.png" style="width:70px; height:auto"></h5>',
             '<span id="{{htmlId}}_cost"></span>',].join('\n'));
 
         instance.invadeShipsTemplate = Handlebars.compile(

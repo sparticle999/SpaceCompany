@@ -5,22 +5,27 @@ Game.starData = (function(){
 	instance.buildings = {
 		0: {
 			name: "Repair War Damages",
+			icon: "repair",
 			happiness: 15,
 		},
 		1: {
 			name: "Remove Military Presence",
+			icon: "military",
 			happiness: 20,
 		},
 		2: {
 			name: "Introduce Overlord Religion",
+			icon: "religion",
 			happiness: 20,
 		},
 		3: {
 			name: "Indoctrinate the Youth",
+			icon: "indoctrinate",
 			happiness: 20,
 		},
 		4: {
 			name: "Build Overlord Monument",
+			icon: "monument",
 			happiness: 10,
 		},
 	};

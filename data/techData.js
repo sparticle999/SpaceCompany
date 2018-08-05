@@ -336,11 +336,11 @@ Game.techData = (function () {
         cost: {
             'science': 40000
         },
-        newTechs: ['unlockPlasmaTier2'],
+        newTechs: ['unlockPlasmaTier2', 'unlockPSU'],
         tabAlerts: ['resources'],
         onApply: function() {
             Game.resources.unlock("plasma");
-            Game.buildings.unlock("plasmaT1")
+            Game.buildings.unlock("plasmaT1");
         }
     });
 

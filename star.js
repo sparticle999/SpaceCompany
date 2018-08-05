@@ -78,8 +78,11 @@ Game.interstellar.stars = (function(){
         }
     };
 
-    instance.terraformPlanet = function(id, planet){
-
+    instance.upgradePlanet = function(starId, planet){
+        var data = this.entries[starId].items[planet];
+        //Cost
+        data.happiness += data.buildings[data.level].happiness;
+        data.level += 1;
     };
 
     instance.getStarData = function(id) {

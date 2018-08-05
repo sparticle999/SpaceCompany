@@ -548,6 +548,9 @@ Game.interstellar.military = (function(){
                 var faction = Game.stargaze.getStargazeData(star.factionId);
                 faction.opinion -= 10;
                 faction.displayNeedsUpdate = true;
+                for(var planet in star.items){
+                    star.items[planet].happiness = 0;
+                };
             } else {
                 for(var ship in this.entries){
                     var shipData = this.getShipData(ship);

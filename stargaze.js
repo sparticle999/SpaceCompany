@@ -7,10 +7,6 @@ Game.stargaze = (function(){
 	instance.navCount = 0;
 
 	instance.upgradeEntries = {};
-	
-	instance.rebirthStart = [];				// Things you start with
-	instance.rebirthUnlocked = [];			// Things that start unhidden
-	instance.rebirthChildUnlocked = [];		// Things that have children that start unhidden
 
 	instance.respecCount = 3;				// Respecs available
 
@@ -26,7 +22,7 @@ Game.stargaze = (function(){
 			this.navCount++;
 			this.entries[id] = $.extend({}, data, {
 				id: id,
-				htmlId: 'stargazeNav' + id,
+				htmlId: 'stg_' + id,
 				displayNeedsUpdate: true
 			});
 		}

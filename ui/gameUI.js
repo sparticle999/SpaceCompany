@@ -71,7 +71,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 */
 	var TemplateResourceMenuItem = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
-		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{icon}}.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="1"><span>{{name}}</span></td>',
 		   '<td style="vertical-align:middle; text-align:center;"><span><span class="{{htmlId}}ps">0</span>/Sec</span></td>',
 		   // If storBuildings is in data, hide the capacity - claasList.remove("hidden") from all classes 'energyCapacityHidden'
@@ -97,7 +97,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 */
 	var TemplateNonResourceMenuItem = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
-		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{icon}}.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="3"><span>{{name}}</span></td>',
 		 '</tr>',''].join('\n'));
 

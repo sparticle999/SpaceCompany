@@ -141,8 +141,8 @@ Game.stargazeUI = (function(){
             var data = Game.stargaze.getStargazeData(id);
             if(data.displayNeedsUpdate == true){
                 if(data.category == "faction"){
-                    $('#stargazeNav' + id + '_opinion').text(data.opinion);
-                    $('#stargazeNav' + id + '_pageOpinion').text(data.opinion);
+                    $('#stg_' + id + '_opinion').text(data.opinion);
+                    $('#stg_' + id + '_pageOpinion').text(data.opinion);
                     $('#intnav_' + id + '_opinion').text(data.opinion);
                     if(data.unlocked == true){
                         document.getElementById('stargazeTab_' + id + '_ne').className = "collapse_stargazeTab_faction";
@@ -302,10 +302,10 @@ Game.stargazeUI = (function(){
         DM += wonderDM + sphereDM + researchDM + rankDM + swarmDM;
         if(Game.stargaze.entries.darkMatter){
             Game.stargaze.entries.darkMatter.potential = DM;
-            $('#stargazeNavdarkMatter_potential').text(DM);
+            $('#stg_darkMatter_potential').text(DM);
         }
 
-        $('#stargazeNavdarkMatter_current').text(Game.stargaze.entries.darkMatter.current);
+        $('#stg_darkMatter_current').text(Game.stargaze.entries.darkMatter.current);
     }
 
     instance.buildCostDisplay = function(observerArray, data) {
