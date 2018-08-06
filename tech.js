@@ -147,7 +147,7 @@ Game.tech = (function(){
             if (typeof this.entries[id] !== 'undefined') {
                 if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
                     this.entries[id].current = 0;
-                    this.gainTech(id, data.tech.i[id].current);
+                    this.gainTech(id, data.tech.i[id].current, false);
                     // we can assume that the tech is unlocked if it has been purchased
                     this.entries[id].unlocked = true;
                     // unlock the tech that this tech unlocks
@@ -157,6 +157,7 @@ Game.tech = (function(){
                 }
             }
         }
+        Templates.uiFunctions.refreshElements('all', 'all');
     };
 
     instance.unlockTech = function(id) {
@@ -235,7 +236,7 @@ Game.tech = (function(){
         }
     };
 
-    instance.gainTech = function(id, count) {
+    instance.gainTech = function(id, count, refresh) {
         this.removeTechEffect(id);
 
         if(isNaN(count) || count === undefined) {
@@ -252,6 +253,9 @@ Game.tech = (function(){
         this.entries[id].current = finalValue;
 
         this.applyTechEffect(id);
+        if(refresh == false){
+            return false;
+        }
         Templates.uiFunctions.refreshElements('all', 'all');
     };
 

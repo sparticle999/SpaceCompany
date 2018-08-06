@@ -375,12 +375,13 @@ Game.interstellar.military = (function(){
         }
         if(number != 0){
             stats.speed = Math.floor(stats.speed/number);
-            for(var stat in stats){
-                var updateList = document.getElementsByClassName("fleet" + Game.utils.capitaliseFirst(stat));
-                for(var j = 0; j < updateList.length; j++){
-                    updateList[j].innerHTML = stats[stat];
-                }
-            }
+            console.log("disabled until can be optimised with new new system")
+            // for(var stat in stats){
+            //     var updateList = document.getElementsByClassName("fleet" + Game.utils.capitaliseFirst(stat));
+            //     for(var j = 0; j < updateList.length; j++){
+            //         updateList[j].innerHTML = stats[stat];
+            //     }
+            // }
             this.power = stats.power;
             this.defense = stats.defense;
             this.speed = stats.speed;
@@ -399,30 +400,32 @@ Game.interstellar.military = (function(){
         }
         stats.speed = Math.floor(stats.speed/number);
         if(number == 0)stats.speed = 0;
-        for(var stat in stats){
-            var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
-            for(var j = 0; j < updateList.length; j++){
-                updateList[j].innerHTML = stats[stat];
-            }
-        }
+        console.log("disabled until can be optimised with new new system")
+        // for(var stat in stats){
+        //     var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
+        //     for(var j = 0; j < updateList.length; j++){
+        //         updateList[j].innerHTML = stats[stat];
+        //     }
+        // }
         this.activePower = stats.power;
         this.activeDefense = stats.defense;
         this.activeSpeed = stats.speed;
     };
 
     instance.updateShips = function(){
-        for(var ship in this.entries){
-            if(this.entries[ship].displayNeedsUpdate == true){
-                var updateList = document.getElementsByClassName(ship + "Count");
-                for(var i = 0; i < updateList.length; i++){
-                    updateList[i].innerHTML = this.entries[ship].count;
-                }
-                var activeUpdateList = document.getElementsByClassName(ship + "Active");
-                for(var i = 0; i < activeUpdateList.length; i++){
-                    activeUpdateList[i].innerHTML = this.entries[ship].active;
-                }
-            }
-        }
+        console.log("disabled until can be optimised with new new system")
+        // for(var ship in this.entries){
+        //     if(this.entries[ship].displayNeedsUpdate == true){
+        //         var updateList = document.getElementsByClassName(ship + "Count");
+        //         for(var i = 0; i < updateList.length; i++){
+        //             updateList[i].innerHTML = this.entries[ship].count;
+        //         }
+        //         var activeUpdateList = document.getElementsByClassName(ship + "Active");
+        //         for(var i = 0; i < activeUpdateList.length; i++){
+        //             activeUpdateList[i].innerHTML = this.entries[ship].active;
+        //         }
+        //     }
+        // }
     };
 
     instance.addShip = function(shipName, num){

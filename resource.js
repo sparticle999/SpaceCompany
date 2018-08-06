@@ -43,11 +43,9 @@ Game.resources = (function(){
         }
     }
     var UpdateCapacity = function(id) {
-        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.resources.entries[id];
-            if (new Date() - previous < 1000) {return;}
             var value = Game.settings.doFormat('capacity', obj);
             Templates.uiFunctions.setClassText(value[0], obj.htmlId+'capacity');
             Templates.uiFunctions.setClassText(value[1], obj.htmlId+'nextStorage');
@@ -412,7 +410,7 @@ Game.resources = (function(){
             this.entries[resource].perSecond += boost[resource]*this.entries[resource].perSecond;
         }
         energy.perSecond -= energyDiff;
-        Templates.uiFunctions.refreshElements('perSecond', 'all');
+        Templates.uiFunctions.refreshElements('persecond', 'all');
     };
 
     instance.toggle = function(id){

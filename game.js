@@ -10,7 +10,7 @@ var Game = (function() {
         timeSinceAutoSave: 0,
         activeNotifications: {},
         lastFixedUpdate: new Date().getTime(),
-        versionNumber: "V0.5.1",
+        versionNumber: "V1.0",
         companyName: "Space"
     };
 

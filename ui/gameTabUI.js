@@ -270,7 +270,7 @@ Templates.objectConstructor.UiFunctions = function() {
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
             // Hiding each nav inside the category
-            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
+            topDownDom[node.id].forEach(i => Templates.acFunctions.hideNav(i, page));
         } else {
             console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
             return false;

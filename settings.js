@@ -327,20 +327,6 @@ Game.settings = (function(){
             Game.settings.set('boldEnabled', $(this).is(':checked'));
         });
 
-        $('#sidebarCompressed').change(function(){
-            Game.settings.set('sidebarCompressed', $(this).is(':checked'));
-            if(Game.settings.entries.sidebarCompressed === true){
-                for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
-                    document.getElementsByClassName("sideTab")[i].style.height = "30px";
-                }
-            }
-            else{
-                for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
-                    document.getElementsByClassName("sideTab")[i].style.height = "60px";
-                }
-            }
-        });
-
         $('#notificationsEnabled').change(function(){
             Game.settings.set('notificationsEnabled', $(this).is(':checked'));
         });
@@ -355,8 +341,7 @@ Game.settings = (function(){
                 for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
                     document.getElementsByClassName("gainButton")[i].className = "gainButton hidden";
                 }
-            }
-            else{
+            }else{
                 for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
                     document.getElementsByClassName("gainButton")[i].className = "gainButton";
                 }
@@ -385,11 +370,6 @@ Game.settings = (function(){
                     document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
                 }
                 
-            }
-            else{
-                for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
-                    document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
-                }
             }
         }
 
