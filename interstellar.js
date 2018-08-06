@@ -89,6 +89,10 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.stars !== 'undefined'){
                 for(id in data.interstellar.stars){
+                    if(id == "buildings"){
+                        data.interstellar.stars[id] = undefined;
+                        continue;
+                    }
                     this.stars.entries[id].explored = data.interstellar.stars[id].explored;
                     this.stars.entries[id].owned = data.interstellar.stars[id].owned;
                     this.stars.entries[id].spy = data.interstellar.stars[id].spy;

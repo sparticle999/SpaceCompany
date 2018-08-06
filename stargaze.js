@@ -127,11 +127,6 @@ Game.stargaze = (function(){
 				}
 				upgradeData.displayNeedsUpdate = true;
 			}
-			for(var i = 0; i < this.rebirthStart.length; i++){
-    			for(var object in this.rebirthStart[i]){
-					window[object] += this.rebirthStart[i][object];
-				}
-			}
 			return true;
 		}
 		return false;

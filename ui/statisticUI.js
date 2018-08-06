@@ -10,8 +10,6 @@
 
     instance.initialise = function() {
 
-        console.log("%c", "background: green;padding: 5px", "save allTime, don't reset on rebirth")
-
         this.categoryTemplate = Handlebars.compile(
             ['<table class="table" id="{{id}}">',
             '<th class="default btn-link theader" style="border:none;">{{name}}</th>',

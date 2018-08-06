@@ -1575,7 +1575,7 @@ Game.buildingData = (function () {
             'wood': 6800
         }
     });
-    console.log("%c", "background:red;padding:5px", "rocketfuel doesn't stop the inputs if empty");
+    
     instance.rocketFuelT3 = $.extend({}, baseProducerBuilding, {
         name: 'Hydrazine Catalyst',
         desc: 'These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.',

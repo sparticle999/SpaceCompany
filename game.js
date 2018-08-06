@@ -346,13 +346,6 @@ var Game = (function() {
 
         //Game.ui.updateAutoDataBindings();
         
-        console.log("%c", "background: green;padding: 5px", "test from start");
-        console.log("%c", "background: green;padding: 5px", "add all techData tabAlerts")
-        console.log("%c", "background: green;padding: 5px", "all tech upgrades")
-        console.log("%c", "background: green;padding: 5px", "combine construct and destroy +/-")
-        console.log("%c", "background: green;padding: 5px", "stats")
-        console.log("%c", "background: green;padding: 5px", "efficiencyBoosts")
-        console.log("%c", "background: green;padding: 5px", "science format 1dp until 100")
         // Now load
         self.load();
 

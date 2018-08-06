@@ -7,6 +7,34 @@ Game.interstellar.stars = (function(){
     instance.starCount = 0;
 
     instance.systemsConquered = 0;
+
+    var buildings = {
+        0: {
+            name: "Repair War Damages",
+            icon: "repair",
+            happiness: 15,
+        },
+        1: {
+            name: "Remove Military Presence",
+            icon: "military",
+            happiness: 20,
+        },
+        2: {
+            name: "Introduce Overlord Religion",
+            icon: "religion",
+            happiness: 20,
+        },
+        3: {
+            name: "Indoctrinate the Youth",
+            icon: "indoctrinate",
+            happiness: 20,
+        },
+        4: {
+            name: "Build Overlord Monument",
+            icon: "monument",
+            happiness: 10,
+        },
+    };
     
     instance.initialise = function() {
         var nameCount = 0;
@@ -38,7 +66,6 @@ Game.interstellar.stars = (function(){
                     happiness: 0,
                     level: 0,
                 } 
-                var buildings = {};
                 for(var id in Game.starData.buildings){
                     var planetBuilding = Game.starData.buildings[id];
                     buildings[id] = $.extend({}, planetBuilding, {

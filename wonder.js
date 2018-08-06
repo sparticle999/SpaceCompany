@@ -129,9 +129,6 @@ Game.wonder = (function(){
     return instance;
 }());
 
-console.log("%c", "background: green;padding: 5px", "wonderUI");
-console.log("%c", "background: green;padding: 5px", "wonder dm discount");
-
 // function updateProgressBar(elementId, percentage) {
 //     if(percentage <= 100){
 //         document.getElementById(elementId).innerHTML = Game.settings.format(percentage,2) + "%";

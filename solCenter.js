@@ -9,7 +9,6 @@ Game.solCenter = (function(){
     instance.emcAmount = "Max";
 
     instance.initialise = function(){
-        console.log("%c", "background:red;padding:5px;", "Sol Center Saving does not work")
     	for(var id in Game.solData){
     		var data = Game.solData[id];
     		this.entries[id] = $.extend({}, data, {
@@ -149,7 +148,6 @@ Game.solCenter = (function(){
 
         refreshConversionDisplay();
     };
-        console.log("%c", "background:green;padding:5px;", "Add offline (energy first, record left over, autoEmc, then add leftover energy");
 
     instance.autoEmc = function(){
         if(this.autoResource != null){
