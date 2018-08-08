@@ -39,9 +39,6 @@ Game.stargaze = (function(){
 				htmlId: 'stargazeUpg' + id,
 				displayNeedsUpdate: true,
 				onApply: null,
-				rebirthUnlocked: [],
-				rebirthChildUnlocked: [],
-				rebirthStart: {}
 			}, data);
 		}
 	};
@@ -158,15 +155,6 @@ Game.stargaze = (function(){
 
 	instance.applyUpgradeEffect = function(id) {
 		var data = this.upgradeEntries[id];
-		for(var i = 0; i < data.rebirthUnlocked.length; i++){
-			this.rebirthUnlocked.push(data.rebirthUnlocked[i]);
-		}
-		for(var i = 0; i < data.rebirthChildUnlocked.length; i++){
-			this.rebirthChildUnlocked.push(data.rebirthChildUnlocked[i]);
-		}
-		for(var object in data.rebirthStart){
-			this.rebirthStart.push(data.rebirthStart);
-		}
 		if(data.onApply !== null) {
 			data.onApply();
 		}
@@ -194,24 +182,10 @@ Game.stargaze = (function(){
 			}
 			this.rebirthNeedsUpdate = true;
 		}
-		for(var i = 0; i < this.rebirthUnlocked.length; i++){
-			// Unused So Far
-		}
-		for(var i = 0; i < this.rebirthChildUnlocked.length; i++){
-			// Unused So Far
-		}
-		for(var i = 0; i < this.rebirthStart; i++){
-			for(var object in this.rebirthStart[i]){
-				window[object] -= this.rebirthStart[i][object];
-			}
-		}
-		this.rebirthUnlocked = {};
-		this.rebirthChildUnlocked = {};
-		this.rebirthStart = {};
 	}
 
 	instance.save = function(data){
-		data.stargaze = {entries: {}, upgradeEntries: {}, rebirthStart: {}, rebirthUnlocked: {}, rebirthChildUnlocked: {}, tabUnlocked: this.tabUnlocked};
+		data.stargaze = {entries: {}, upgradeEntries: {}, tabUnlocked: this.tabUnlocked};
 		for(var id in this.entries){
 			data.stargaze.entries[id] = this.entries[id];
 		}
@@ -220,15 +194,6 @@ Game.stargaze = (function(){
 				this.upgradeEntries[id].achieved = false;
 			}
 			data.stargaze.upgradeEntries[id] = {achiev: this.upgradeEntries[id].achieved};
-		}
-		for(var id in this.rebirthStart){
-			data.stargaze.rebirthStart[id] = this.rebirthStart[id];
-		}
-		for(var id in this.rebirthUnlocked){
-			data.stargaze.rebirthUnlocked[id] = this.rebirthUnlocked[id];
-		}
-		for(var id in this.rebirthChildUnlocked){
-			data.stargaze.rebirthChildUnlocked[id] = this.rebirthChildUnlocked[id];
 		}
 	};
 
@@ -250,21 +215,6 @@ Game.stargaze = (function(){
 	                    }
 	                    this.upgradeEntries[id].displayNeedsUpdate = true;
 	                }
-                }
-            }
-            if(typeof data.stargaze.rebirthStart !== 'undefined'){
-                for(id in data.stargaze.rebirthStart){
-                    this.rebirthStart[id] = data.stargaze.rebirthStart[id];
-                }
-            }
-            if(typeof data.stargaze.rebirthUnlocked !== 'undefined'){
-                for(id in data.stargaze.rebirthUnlocked){
-                    this.rebirthUnlocked[id] = data.stargaze.rebirthUnlocked[id];
-                }
-            }
-            if(typeof data.stargaze.rebirthChildUnlocked !== 'undefined'){
-                for(id in data.stargaze.rebirthChildUnlocked){
-                    this.rebirthChildUnlocked[id] = data.stargaze.rebirthChildUnlocked[id];
                 }
             }
             if(data.stargaze.unlocked)

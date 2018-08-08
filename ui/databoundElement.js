@@ -1,3 +1,5 @@
+// THIS FILE IS ONLY USED FOR OLD INTERSTELLAR
+
 (function(){
 
     var elementRegister = {};

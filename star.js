@@ -7,6 +7,7 @@ Game.interstellar.stars = (function(){
     instance.starCount = 0;
 
     instance.systemsConquered = 0;
+    instance.distanceMultiplier = 10000;
 
     var buildings = {
         0: {
@@ -93,7 +94,7 @@ Game.interstellar.stars = (function(){
     instance.exploreSystem = function(id){
         if(Game.interstellar.rocket.entries.tier1Rocket.built == true){
             var data = this.entries[id];
-            var exploreCost = data.distance * 10000;
+            var exploreCost = data.distance * this.distanceMultiplier;
             if(antimatter >= exploreCost){
                 antimatter -= exploreCost;
                 data.explored = true;

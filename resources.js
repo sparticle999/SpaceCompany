@@ -36,7 +36,7 @@ function addManualResource(id) {
     if (current >= capacity) {return false;}
     // Find the input for this resource.
     if (!contains(Object.keys(Obj[id].items), id+'T1')) {
-        console.log("Couldn't find the building '"+id+"T1'.") ; return false;
+        console.log("Couldn't find the building '"+id+"T1'."); return false;
     }
     var gainNum = Obj[id].gainNum;
     var transaction = Obj[id].items[id+'T1'].resourcePerSecond
@@ -51,5 +51,5 @@ function addManualResource(id) {
         res => (transaction[res] > 0) ? 
         		Game.resources.addResource(res, gainNum, true) : 
         		Game.resources.takeResource(res, Math.abs(transaction[res]*gainNum))
-    )
+    );
 };

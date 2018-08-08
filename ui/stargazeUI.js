@@ -155,24 +155,6 @@ Game.stargazeUI = (function(){
 
         if(Game.stargaze.rebirthNeedsUpdate === true){
             var stargaze = Game.stargaze;
-            // Unhides relevant elements
-            for(var i = 0; i < stargaze.rebirthUnlocked.length; i++){
-                var string = document.getElementById(stargaze.rebirthUnlocked[i]).className;
-                document.getElementById(stargaze.rebirthUnlocked[i]).className = string.substring(0, string.indexOf("hidden"));
-            }
-            for(var i = 0; i < stargaze.rebirthChildUnlocked.length; i++){
-                var children = $('#'+ stargaze.rebirthChildUnlocked[i]).children();
-                for(var j = 0; j < children.length; j++){
-                    children[j].className = "";
-                }
-            }
-            // Hides achieved upgrades // (for later)
-            // for(var id in Game.stargaze.upgradeEntries){
-            //     var data = Game.stargaze.upgradeEntries[id];
-            //     if(data.achieved == true){
-            //         document.getElementById("stargazeUpg" + id).className = "hidden";
-            //     }
-            // }
 
             // Marks achieved upgrades as 'Activated'
             for(var id in Game.stargaze.upgradeEntries){

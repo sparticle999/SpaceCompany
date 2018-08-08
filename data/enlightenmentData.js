@@ -15,13 +15,29 @@ Game.enlightenmentData = (function(){
 
 	var instance = {};
 
-	instance.XXX = {
-		name: 'XXX',
+	instance.enlighten = {
+		name: 'Enlightenment',
 		desc: 'XXX',
 		category: 'general',
 		order: 1,
 		unlocked: false
 	};
+
+    instance.titan = {
+        name: 'Titans',
+        desc: 'XXX',
+        category: 'general',
+        order: 1,
+        unlocked: false
+    };
+
+    instance.ultrite = {
+        name: 'Ultrite',
+        desc: 'XXX',
+        category: 'general',
+        order: 1,
+        unlocked: false
+    };
 
     return instance;
 

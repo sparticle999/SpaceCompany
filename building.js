@@ -181,7 +181,7 @@ Game.buildings = (function(){
 
     instance.updateCosts = function(id) {
         var cost = {};
-        var obj = Game.buildingData[id].cost
+        var obj = Game.buildingData[id].cost;
         Object.keys(obj).forEach(function(c) {
             cost[c] = Math.floor(obj[c] * Math.pow(1.1, Game.buildings.entries[id].current))
         })
