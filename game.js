@@ -15,7 +15,7 @@ var Game = (function() {
     };
 
     instance.update_frame = function(time) {
-        if(time-Game.lastUpdateTime > 100){
+        if(time-Game.lastUpdateTime > 1000/(Game.settings.entries.fps||10)){
             Game.update(time - Game.lastUpdateTime);
             Game.lastUpdateTime = time;
         }
@@ -344,12 +344,11 @@ var Game = (function() {
         Templates.uiFunctions.linkEvents();
         // Refresh all actions
 
-        //Game.ui.updateAutoDataBindings();
-        
+        self.settings.initialise();
         // Now load
         self.load();
 
-        self.settings.initialise();
+        
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();

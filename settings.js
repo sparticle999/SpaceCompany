@@ -11,6 +11,7 @@ Game.settings = (function(){
         dataVersion: 1,
         entries: {
             formatter: 'shortName',
+            fps: 10,
             boldEnabled: false,
             sidebarCompressed: false,
             notificationsEnabled: true,
@@ -260,7 +261,15 @@ Game.settings = (function(){
 
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);
-
+        if(Game.settings.entries.fps){
+            var slider = document.getElementById("fpsSlider");
+            var output = document.getElementById("fpsVal");
+            slider.value = Game.settings.entries.fps;
+            slider.setAttribute("value", Game.settings.entries.fps);
+            output.innerHTML = slider.value/2;
+            this.fps = slider.value/2;
+            slider.oninput()
+        }
 
         // Bold enabled
         document.getElementById('boldEnabled').checked = Game.settings.entries.boldEnabled;
@@ -314,14 +323,31 @@ Game.settings = (function(){
     };
 
     instance.initialise = function() {
-        $('#formatSelector').change(function(){
-            Game.settings.set('formatter', $(this).val());
-        });
+        for (var id in autoSaveMapping) {
+            var element = $('#' + id);
+            element.change({val: autoSaveMapping[id]}, function(args){
+                Game.settings.set('autoSaveInterval', args.data.val);
+            });
+        }
 
         $('#themeSelector').change(function(){
             Game.settings.set('theme', $(this).val());
             Game.settings.reapplyTheme = true;
         });
+
+        $('#formatSelector').change(function(){
+            Game.settings.set('formatter', $(this).val());
+        });
+
+        var slider = document.getElementById("fpsSlider");
+        var output = document.getElementById("fpsVal");
+        output.innerHTML = slider.value;
+        this.fps = parseInt(slider.value);
+
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+          Game.settings.entries.fps = parseInt(this.value);
+        }
 
         $('#boldEnabled').change(function(){
             Game.settings.set('boldEnabled', $(this).is(':checked'));
@@ -371,13 +397,6 @@ Game.settings = (function(){
                 }
                 
             }
-        }
-
-        for (var id in autoSaveMapping) {
-            var element = $('#' + id);
-            element.change({val: autoSaveMapping[id]}, function(args){
-                Game.settings.set('autoSaveInterval', args.data.val);
-            });
         }
     };
 
