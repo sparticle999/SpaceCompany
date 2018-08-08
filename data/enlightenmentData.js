@@ -15,9 +15,10 @@ Game.enlightenmentData = (function(){
 
 	var instance = {};
 
-	instance.enlighten = {
-		name: 'Enlightenment',
+	instance.ultrite = {
+		name: 'Ultrite',
 		desc: 'XXX',
+        current: 0,
 		category: 'general',
 		order: 1,
 		unlocked: false
@@ -31,8 +32,8 @@ Game.enlightenmentData = (function(){
         unlocked: false
     };
 
-    instance.ultrite = {
-        name: 'Ultrite',
+    instance.upgrades = {
+        name: 'Upgrades',
         desc: 'XXX',
         category: 'general',
         order: 1,

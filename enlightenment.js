@@ -38,6 +38,7 @@ Game.enlightenment = (function(){
 
 	// Titan (boolean) determines which enlightenment option the user receives
 	instance.enlighten = function(titan){
+		var ultrite = this.calcUltrite();
 		if(Game.stargaze.rebirth()){
 			Game.stargaze.entries.darkMatter.current = 0;
 			if(titan == true){
@@ -45,7 +46,7 @@ Game.enlightenment = (function(){
 				// this will be a dropdown
 				this.gainTitan(resource);
 			} else {
-				this.gainUltrite();
+				this.entries.ultrite.current += ultrite;
 			}
 			this.applyEnlighten();
 			return true;
@@ -55,13 +56,29 @@ Game.enlightenment = (function(){
 
 	instance.calcUltrite = function(){
 		var ultrite = 0;
+		for(var star in Game.interstellar.stars.entries){
+			var data = Game.interstellar.stars.entries[star];
+			if(data.owned){
+				ultrite += 1;
+			}
+			if(data.absorbed){
+				ultrite += 1;
+			}
+			for(var id in data.items){
+				var planet = data.items[id];
+				if(planet.level >= 5){
+					ultrite += 3;
+				}
+			}
+		}
+		for(var id in Game.stargaze.upgradeEntries){
+			if(Game.stargaze.upgradeEntries[id].achieved){
+				ultrite += 2;
+			}
+		}
+		console.log("Overlord Appreciation Research");
 		return ultrite;
 	}
-
-	// Calculate Ultrite gain and give to player
-	instance.gainUltrite = function(){
-		var potential = this.calcUltrite();
-	};
 
 	// Give player specified titan
 	instance.gainTitan = function(resource){
