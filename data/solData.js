@@ -87,6 +87,7 @@ Game.solData = (function () {
     				if(current < max){
     					Game.solCenter.build("sphere");
                         Game.stargaze.tabUnlocked = true;
+                        document.getElementById("stargazeTab").className = "";
     				}
     			}
     		},

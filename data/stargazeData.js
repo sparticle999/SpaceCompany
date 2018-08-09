@@ -532,7 +532,7 @@ Game.rebirthData = (function(){
 	    	Game.buildings.entries.meteoriteT3.current = 0;
 	    },
 		achieved: false
-	}
+	};
 
 	instance.meteoriteTier4 = {
 		name: "Meteorite Tier 4",
@@ -549,7 +549,7 @@ Game.rebirthData = (function(){
 	    	Game.buildings.entries.meteoriteT4.current = 0;
 	    },
 		achieved: false
-	}
+	};
 
 	// instance.spaceElevator = {
 	// 	name: "Space Elevator",
@@ -562,6 +562,28 @@ Game.rebirthData = (function(){
 	/*************
 	** Overlord **
 	*************/
+
+	instance.bribery = {
+		name: "Bribery",
+		desc: "Increases All Factions' Relationship by 20",
+		cost: 49,
+		category: "overlord",
+		opinion: 20,
+		tier: "basic",
+		onApply: function(){
+			for(var id in Game.stargaze.entries){
+				var data = Game.stargaze.entries[id];
+				if(data.category == "faction" && data.id != "overlord"){
+					data.opinion += 20;
+				}
+			}
+		},
+		remove: function(){
+			Templates.uiFunctions.hide("meteoriteT4");
+	    	Game.buildings.entries.meteoriteT4.current = 0;
+	    },
+		achieved: false
+	};
 
 	// instance.autoStorage = {
 	// 	name: "Automate Storage Upgrades",

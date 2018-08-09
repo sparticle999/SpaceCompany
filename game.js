@@ -55,7 +55,7 @@ var Game = (function() {
 
     instance.fastUpdate = function(self, delta) {
         Game.tech.updateEfficiencies();
-        var tabs = ["resources", "tech", "solar", "wonder", "solCenter", "interstellar", "stargaze"];
+        var tabs = ["resources", "tech", "solar", "wonder", "solCenter", "interstellar", "stargaze", "enlightenment"];
         for(var i = 0; i < tabs.length; i++){
             if(document.getElementById(tabs[i]+"Tab")==null||typeof self[tabs[i]+"UI"].update == 'undefined'){
                 continue;
@@ -75,6 +75,7 @@ var Game = (function() {
         self.solCenter.update(delta);
         self.interstellar.update(delta);
         self.stargaze.update(delta);
+        self.enlightenment.update(delta);
         self.settings.update(delta);
 
         self.updateAutoSave(delta);
@@ -159,6 +160,7 @@ var Game = (function() {
         this.settings.save(data);
         this.interstellar.save(data);
         this.stargaze.save(data);
+        this.enlightenment.save(data);
         this.updates.save(data);
 
         localStorage.setItem("save",JSON.stringify(data));
@@ -177,6 +179,7 @@ var Game = (function() {
             this.resources.load(data);
             this.buildings.load(data);
             this.stargaze.load(data);
+            this.enlightenment.load(data);
             this.tech.load(data);
             this.solar.load(data);
             this.wonder.load(data);
@@ -325,6 +328,7 @@ var Game = (function() {
         self.solCenter.initialise();
         self.interstellar.initialise();
         self.stargaze.initialise();
+        self.enlightenment.initialise();
         // Create the collector Object; page -> categories -> items
         self.combineAllGameObjects()
         // Initialise UI

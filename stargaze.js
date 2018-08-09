@@ -32,11 +32,9 @@ Game.stargaze = (function(){
 
 		for (var id in Game.rebirthData) {
 			var data = Game.rebirthData[id];
-			
-			this.navCount++;
 			this.upgradeEntries[id] = $.extend({}, {
 				id: id,
-				htmlId: 'stargazeUpg' + id,
+				htmlId: 'stgUpg_' + id,
 				displayNeedsUpdate: true,
 				onApply: null,
 			}, data);

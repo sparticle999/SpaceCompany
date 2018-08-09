@@ -130,10 +130,6 @@ Game.stargazeUI = (function(){
     };
 
     instance.update = function(delta) {
-        if(Game.stargaze.unlocked == true){
-            document.getElementById("stargazeTab").className = "";
-        }
-
         this.updateDM();
 
         for(var id in Game.stargaze.entries){
@@ -152,7 +148,6 @@ Game.stargazeUI = (function(){
                 data.displayNeedsUpdate = false;
             }
         }
-
         if(Game.stargaze.rebirthNeedsUpdate === true){
             var stargaze = Game.stargaze;
 
@@ -161,14 +156,14 @@ Game.stargazeUI = (function(){
                 var data = Game.stargaze.upgradeEntries[id];
                 if(id != 'rebirth' && id != 'respec'){
                     if(data.achieved == true){
-                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
-                        document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
+                        document.getElementById("stgUpg_" + id + 'Achieved').innerHTML = "Activated";
+                        document.getElementById("stgUpg_" + id + '_buy').className = "btn btn-default disabled";
                     } else{
-                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Dormant";
-                        document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default";
+                        document.getElementById("stgUpg_" + id + 'Achieved').innerHTML = "Dormant";
+                        document.getElementById("stgUpg_" + id + '_buy').className = "btn btn-default";
                     }
                 }
-                if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "stargazeUpgrebirth" && data.htmlId != "stargazeUpgrespec")){
+                if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "stgUpg_rebirth" && data.htmlId != "stgUpg_respec")){
                     document.getElementById(data.htmlId + "_opinion").className = "hidden";
                 }
             }

@@ -21,6 +21,17 @@ Game.enlightenment = (function(){
 				displayNeedsUpdate: true
 			});
 		}
+		console.debug("Loaded " + this.navCount + " Enlightenment Navs");
+
+		for (var id in Game.enlightenData) {
+			var data = Game.enlightenData[id];
+			this.upgradeEntries[id] = $.extend({}, {
+				id: id,
+				htmlId: 'enlUpg_' + id,
+				displayNeedsUpdate: true,
+				onApply: null,
+			}, data);
+		}
 	};
 
 	instance.update = function(){
