@@ -164,6 +164,7 @@ Game.rebirthData = (function(){
 	    remove: function(){
 	    	Game.stargaze.dmBoost -= 0.01;
 	    },
+		unlocked: true,
 		achieved: false,
 	};
 
@@ -190,6 +191,7 @@ Game.rebirthData = (function(){
 				Game.resources.entries[id].displayNeedsUpdate = true;
 			}
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -222,6 +224,7 @@ Game.rebirthData = (function(){
 				}
 			}
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -241,6 +244,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.resources.storagePrice += 0.25;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -262,6 +266,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("plasmaT3");
 	    	Game.buildings.entries.plasmaT3.current = 0;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -278,6 +283,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.wonder.floor1Price += 0.15;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -294,6 +300,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.wonder.floor23Price += 0.2;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -317,6 +324,7 @@ Game.rebirthData = (function(){
 				updateList[i].className = "autoEmcHide hidden";
 			}
 	    },
+		unlocked: true,
 		achieved: false
 	}
 
@@ -337,6 +345,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.buildings.entries.scienceT1.current -= 20;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -356,6 +365,7 @@ Game.rebirthData = (function(){
 		remove: function(){
             labT2PlusMulti += 0.2;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -373,6 +383,7 @@ Game.rebirthData = (function(){
 	    	Templates.uiFunctions.hide("scienceT5");
 	    	Game.buildings.entries.scienceT5.current = 0;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -389,6 +400,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.tech.entries["energyEfficiencyResearch"].maxLevel -= 25;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -410,6 +422,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	Game.buidings.T1Price += 0.1;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -428,6 +441,7 @@ Game.rebirthData = (function(){
 	    	Game.storageBuildingData.energyStorageT5.current = 0;
 	    	Game.storageBuildingData.energyStorageT5.displayNeedsUpdate = true;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -444,6 +458,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 			Templates.uiFunctions.hide('multiBuy');
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -470,6 +485,7 @@ Game.rebirthData = (function(){
 					}
 				}
 		    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -478,7 +494,7 @@ Game.rebirthData = (function(){
 	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
 	// 	cost: 29,
 	// 	category: "hyacinite",
-	// 	achieved: false
+	//	achieved: false
 	// };
 
 	/************
@@ -498,6 +514,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	chemicalBoost -= 1;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -514,6 +531,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 	    	rocketPrice += 0.35;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -531,6 +549,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("meteoriteT3");
 	    	Game.buildings.entries.meteoriteT3.current = 0;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -548,6 +567,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("meteoriteT4");
 	    	Game.buildings.entries.meteoriteT4.current = 0;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 
@@ -582,6 +602,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("meteoriteT4");
 	    	Game.buildings.entries.meteoriteT4.current = 0;
 	    },
+		unlocked: true,
 		achieved: false
 	};
 

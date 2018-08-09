@@ -148,7 +148,7 @@ Game.stargazeUI = (function(){
                 data.displayNeedsUpdate = false;
             }
         }
-        if(Game.stargaze.rebirthNeedsUpdate === true){
+        if(Game.stargaze.rebirthNeedsUpdate == true){
             var stargaze = Game.stargaze;
 
             // Marks achieved upgrades as 'Activated'
@@ -165,6 +165,12 @@ Game.stargazeUI = (function(){
                 }
                 if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "stgUpg_rebirth" && data.htmlId != "stgUpg_respec")){
                     document.getElementById(data.htmlId + "_opinion").className = "hidden";
+                }
+
+                if(data.unlocked){
+                    document.getElementById("stgUpg_" + id).className = "";
+                } else {
+                    document.getElementById("stgUpg_" + id).className = "hidden";
                 }
             }
             stargaze.rebirthNeedsUpdate = false;
