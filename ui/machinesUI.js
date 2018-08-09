@@ -16,7 +16,7 @@ Templates.machinesUI = function(cPage, cCategory, cTitle, cObj) {
 	 * Attaches to tabList
 	 */
 	var TemplateTopMenuNav = Handlebars.compile(
-        ['<li role="presentation" id="'+this.page+'Tab" class="">',
+        ['<li role="presentation" id="'+this.page+'Tab" class="hidden">',
            '<a href="#'+this.page+'Tab_pane" id="{{htmlId}}_link" class="-" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
              '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign"></div>',
                this.title,
@@ -50,9 +50,8 @@ Templates.machinesUI = function(cPage, cCategory, cTitle, cObj) {
 	 * {{title}} - Science, Energy
 	 * Merges into solarTab_nav
 	 */
-	 console.log("add hidden")
 	var TemplateMenuHeader = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="">',//Add "hidden" to this class
+		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="">',
 		   '<td colspan="4" style="border:{{border}};"><span>{{title}}</span><span class="caret"></span></td>',
 		 '</tr>',''].join('\n'));
 

@@ -48,7 +48,7 @@ Game.enlightenment = (function(){
 			} else {
 				this.entries.ultrite.current += ultrite;
 			}
-			this.applyEnlighten();
+			this.applyTitan();
 			return true;
 		}
 		return false;
@@ -86,7 +86,7 @@ Game.enlightenment = (function(){
 		return true;
 	};
 
-	instance.applyEnlighten = function(){
+	instance.applyTitan = function(){
 		for(var id in Game.buildings.entries){
 			var data = Game.buildings.entries[id];
 			for(var res in data.cost){
@@ -140,6 +140,29 @@ Game.enlightenment = (function(){
 			}
 		}
 		if(this.titans.antimatter){Game.interstellar.stars.distanceMultiplier *= 0.1;}
+	};
+
+	instance.upgrade = function(id){
+		if(id == 'enlighten'){
+			this.enlighten(false);
+		}
+		if(id == 'titan'){
+			this.enlighten(true);
+			return;
+		}
+		var upgradeData = this.upgradeEntries[id];
+		if(!upgradeData) {
+			console.log('"' + id + '" is not a recognised upgrade.');
+			return;
+		}
+		if(upgradeData.achieved != true){
+			if(this.entries.ultrite.current >= upgradeData.cost){
+				this.entries.ultrite.current -= upgradeData.cost;
+				this.applyUpgradeEffect(id);
+				this.entries[upgradeData.category].displayNeedsUpdate = true;
+				upgradeData.achieved = true;
+			}
+		}
 	};
 
 	return instance;

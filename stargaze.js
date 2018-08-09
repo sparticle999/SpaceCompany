@@ -30,8 +30,8 @@ Game.stargaze = (function(){
 		}
 		console.debug("Loaded " + this.navCount + " Stargaze Navs");
 
-		for (var id in Game.prestigeData) {
-			var data = Game.prestigeData[id];
+		for (var id in Game.rebirthData) {
+			var data = Game.rebirthData[id];
 			
 			this.navCount++;
 			this.upgradeEntries[id] = $.extend({}, {

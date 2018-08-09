@@ -130,7 +130,7 @@ Game.darkMatter = (function(){
 
 }());
 
-Game.prestigeData = (function(){
+Game.rebirthData = (function(){
 
 	var instance = {};
 

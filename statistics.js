@@ -48,7 +48,11 @@ Game.statistics = (function(){
         tabCount += Game.solCenter.tabUnlocked;
         tabCount += Game.interstellar.tabUnlocked;
         tabCount += Game.stargaze.tabUnlocked;
-
+        tabCount += Game.enlightenment.tabUnlocked;
+        if(Game.enlightenment.upgradeEntries.machines.achieved){
+            tabCount += 1;
+        }
+        
         this.setValue('tabsUnlocked', tabCount, tabCount);
     };
 
