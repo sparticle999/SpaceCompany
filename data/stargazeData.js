@@ -499,20 +499,22 @@ Game.rebirthData = (function(){
 		tier: "basic",
 		onApply: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter")
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter"){
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = true;
 					}
 				}
-			},
+			}
+		},
 		remove: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter")
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter"){
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = false;
 					}
 				}
-		    },
+			}
+	    },
 		unlocked: true,
 		achieved: false
 	};
@@ -524,6 +526,20 @@ Game.rebirthData = (function(){
 	// 	category: "hyacinite",
 	//	achieved: false
 	// };
+
+	instance.capitalInvestment = {
+		name: "Capital Investment",
+		desc: "For every resource at max storage, every other resource gets a 5% production boost.",
+		cost: 29,
+		category: "kitrinos",
+		opinion: 18,
+		tier: "advanced",
+		onApply: function(){},
+		remove: function(){},
+		unlocked: false,
+		achieved: false
+	};
+
 
 	/************
 	** Moviton **

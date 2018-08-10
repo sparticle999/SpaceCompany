@@ -407,7 +407,17 @@ Game.resources = (function(){
             }
         }
         for(var resource in this.entries){
+            if(!this.entries[resource].manualgain){continue;}
             this.entries[resource].perSecond += boost[resource]*this.entries[resource].perSecond;
+
+            if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
+                for(var res in this.entries){
+                    if(!this.entries[res].manualgain){continue;}
+                    if(res != resource && this.entries[res].current >= this.entries[res].capacity){
+                        this.entries[resource].perSecond *= 1.05;
+                    }
+                }
+            }
         }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('persecond', 'all');
