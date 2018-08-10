@@ -304,6 +304,7 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
+	console.log("autoEMC");
 	instance.autoEmc = {
 		name: "Automated EMC",
 		desc: "Check a box on an EMC resource and have that resource be 'EMCed' to the max every second.",
@@ -312,7 +313,7 @@ Game.rebirthData = (function(){
 		opinion: 17,
 		tier: "basic",
 		onApply: function(){
-			console.log("autoEMC");
+			
 			var updateList = document.getElementsByClassName("autoEmcHide");
 			for(var i = updateList.length-1; i >= 0; i--){
 				updateList[i].className = "autoEmcHide";
@@ -326,7 +327,34 @@ Game.rebirthData = (function(){
 	    },
 		unlocked: true,
 		achieved: false
-	}
+	};
+
+	instance.freeWonder = {
+		name: "Mystery Wonder Construction",
+		desc: "First floor wonders are myusteriously pre-built for you every run. They still need to be activated.",
+		cost: 13,
+		category: "prasnian",
+		opinion: 11,
+		tier: "advanced",
+		onApply: function(){
+			for(var id in Game.wonder.entries){
+				var data = Game.wonder.entries[id];
+				if(data.built == false){
+					data.built = true;
+				}
+			}
+		},
+		remove: function(){
+			for(var id in Game.wonder.entries){
+				var data = Game.wonder.entries[id];
+				if(data.built == true){
+					data.built = false;
+				}
+			}
+	    },
+		unlocked: false,
+		achieved: false
+	};
 
 	/**************
 	** Hyacinite **
