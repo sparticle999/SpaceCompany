@@ -236,14 +236,24 @@ Game.rebirthData = (function(){
 		opinion: 14,
 		tier: "basic",
 		onApply: function(){
-			// old
 			Game.resources.storagePrice -= 0.25;
-
-			// new
 		},
 		remove: function(){
 	    	Game.resources.storagePrice += 0.25;
 	    },
+		unlocked: true,
+		achieved: false
+	};
+
+	instance.dimensionalRift = {
+		name: "Dimensional Rift",
+		desc: "Opens a rift in the fabric of the multiverse, allowing you to store your resources in another dimension past your default capacity, up to 10x, at a 95% decrease in production after filling up.",
+		cost: 37,
+		category: "carnelian",
+		opinion: 26,
+		tier: "advanced",
+		onApply: function(){},
+		remove: function(){},
 		unlocked: true,
 		achieved: false
 	};

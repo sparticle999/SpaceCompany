@@ -21,7 +21,6 @@ Game.settings = (function(){
             theme: 'base',
             autoSaveInterval: 30 * 1000
         },
-        reapplyTheme: true
     };
 
     // After a setting is changed, call: refreshElements() to force a all updateable elements to update.
@@ -310,7 +309,7 @@ Game.settings = (function(){
             }
         }
 
-        this.reapplyTheme = true;
+        this.updateTheme();
     };
 
     // backwards compatibility with the old stats
@@ -332,7 +331,7 @@ Game.settings = (function(){
 
         $('#themeSelector').change(function(){
             Game.settings.set('theme', $(this).val());
-            Game.settings.reapplyTheme = true;
+            Game.settings.updateTheme();
         });
 
         $('#formatSelector').change(function(){
@@ -401,10 +400,6 @@ Game.settings = (function(){
     };
 
     instance.update = function(delta) {
-        if(this.reapplyTheme === true) {
-            this.reapplyTheme = false;
-            this.updateTheme();
-        }
     };
 
     instance.updateTheme = function() {

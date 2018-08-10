@@ -11,6 +11,7 @@ Game.techCategoryData = (function () {
             technology: {
                 title: 'Technologies',
                 id: 'technologies',
+                icon: 'technologiesIcon',
                 name: 'Technologies',
                 htmlId: 'technologies',
                 desc: 'Research new technologies to unlock more mechanics and advance through the game.',

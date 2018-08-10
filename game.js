@@ -207,6 +207,8 @@ var Game = (function() {
         $('#versionLabel').text(Game.versionNumber);
 
         self.interstellar.redundantChecking();
+
+        Templates.uiFunctions.refreshElements('all', 'all');
     }
 
 
@@ -352,7 +354,7 @@ var Game = (function() {
         // Now load
         self.load();
 
-        
+        Game.settings.updateTheme();
 
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();
