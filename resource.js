@@ -281,6 +281,7 @@ Game.resources = (function(){
 		} else {
 			curr = Math.max(0, newValue);
 		}
+        this.entries[id].current = curr;
 	};
 
 	instance.takeResource = function(id, count) {
