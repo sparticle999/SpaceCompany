@@ -11,10 +11,6 @@ Templates.objectConstructor.UiFunctions = function() {
     /////////////////////////
     // NEEDS SAVING EXPORT //
     //vvvvvvvvvvvvvvvvvvvvv//
-
-    // Storage of the last nav & menu item clicked
-    var lastNav = "";
-    var lastItem = "";
     // Storage of hidden and unhidden elements
     var unhidden = [];
     var hidden = [];
@@ -515,7 +511,7 @@ Templates.objectConstructor.UiFunctions = function() {
         var node = document.getElementById(DOMid+'Glyph');
         if (node) {node.classList.add('hidden');}
         // Record the last clicked menu item
-        lastItem = DOMid;
+        Game.lastNav = DOMid;
     }
     /**
      * Whenever the player clicks a page tab, this function runs.
@@ -526,7 +522,7 @@ Templates.objectConstructor.UiFunctions = function() {
         var node = document.getElementById(DOMid+'Glyph');
         if (node) {node.classList.add('hidden');}
         // Store the click
-        lastNav = DOMid;
+        Game.lastTab = DOMid;
         // remove the active class from all Navs
         Object.keys(topDownDom).forEach(
             id => document.getElementById(id).classList.remove("active")
@@ -558,32 +554,32 @@ Templates.objectConstructor.UiFunctions = function() {
                     var obj = registeredElements[act][res].object;
                     if(obj.category == "buildings"){
                         if(obj.resource == "science"){
-                            if("techTab_res_science_ne" == lastItem){
+                            if("techTab_res_science_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else if(obj.resource == "rocketFuel"){
-                            if("solarTab_res_rocketFuel_ne" == lastItem){
+                            if("solarTab_res_rocketFuel_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else if(obj.resource == "rocket"){
-                            if("solarTab_res_rocket_ne" == lastItem){
+                            if("solarTab_res_rocket_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else if(obj.resource == "satellite"){
-                            if("solarTab_res_satellite_ne" == lastItem){
+                            if("solarTab_res_satellite_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else {
-                            if("resourcesTab_res_" + obj.resource + "_ne" == lastItem || "machinesTab" == lastNav){
+                            if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav || "machinesTab" == Game.lastTab){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         }
                     } else if(obj.category == "technology"){
-                        if("techTab_technologies_ne" == lastItem){
+                        if("techTab_technologies_ne" == Game.lastNav){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
                     } else if(obj.category == "storageBuildings"){
-                        if("resourcesTab_res_" + obj.resource + "_ne" == lastItem){
+                        if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
                     } else {
@@ -829,7 +825,7 @@ Templates.objectConstructor.UiFunctions = function() {
     //////////////////////////////////////////////////////////
     // After loading, run over the collapsed, noncollapsed, //
     // hidden, unhidden arrays and apply their changes.     //
-    // Also click on lastNav and lastItem                   //
+    // Also click on Game.lastTab and Game.lastNav         //
     //////////////////////////////////////////////////////////
     console.log("%c", "background:green;padding:5px;", "UI: this ^");
 

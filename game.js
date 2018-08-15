@@ -11,7 +11,10 @@ var Game = (function() {
         activeNotifications: {},
         lastFixedUpdate: new Date().getTime(),
         versionNumber: "V1.0",
-        companyName: "Space"
+        companyName: "Space",
+        // Storage of the last nav & menu item clicked
+        lastTab: "resourcesTab",
+        lastNav: "resourcesTab_res_metal_ne"
     };
 
     instance.update_frame = function(time) {
@@ -146,7 +149,9 @@ var Game = (function() {
     instance.save = function() {
         var data = {
             companyName: this.companyName,
-            lastFixedUpdate: this.lastFixedUpdate
+            lastFixedUpdate: this.lastFixedUpdate,
+            lastTab: this.lastTab,
+            lastNav: this.lastNav,
         };
 
         this.achievements.save(data);
@@ -192,6 +197,8 @@ var Game = (function() {
             if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
                 this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
             }
+            this.lastTab = data.lastTab || "resourcesTab";
+            this.lastNav = data.lastNav || "resourcesTab_res_metal_ne";
         }
 
         console.log("Data Loaded");
@@ -378,8 +385,9 @@ var Game = (function() {
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
         Templates.uiFunctions.unlock('gemT1');
-        document.getElementById('resourcesTab').className = "active";
-        document.getElementById('resourcesTab_pane').className = "tab-pane fade in active";
+        document.getElementById(self.lastTab).className = "active";
+        document.getElementById(self.lastTab + '_pane').className = "tab-pane fade in active";
+        document.getElementById(self.lastNav + 'c').className = "tab-pane fade active in";
     };
 
     instance.addCredits = function(data){
