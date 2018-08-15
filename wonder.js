@@ -62,7 +62,7 @@ Game.wonder = (function(){
 
     instance.build = function(id){
     	var data = this.entries[id];
-    	if(this.checkCost(data.buildCost)){
+    	if(this.checkCost(data, data.buildCost)){
     		data.built = true;
     		this.unlock(data.id)
     		data.displayNeedsUpdate = true;
@@ -71,36 +71,36 @@ Game.wonder = (function(){
 
     instance.activate = function(id){
     	var data = this.entries[id];
-    	if(this.checkCost(data.activateCost)){
+    	if(this.checkCost(data, data.activateCost)){
     		data.activated = true;
     		data.onActivate();
     		data.displayNeedsUpdate = true;
     	}
     };
 
-    instance.calcCost = function(data, resource){
+    instance.calcCost = function(data, costData, resource){
         var multi = 1;
         if(data.category == "floor1"){
             multi = this.floor1Price;
         } else if(data.category == "floor2" || data.category == "floor3"){
             multi = this.floor23Price;
         }
-        return Math.floor(data.cost[resource.toString()] * Math.pow(1.1,(data.current || 0)));
+        return Math.floor(data[resource.toString()]*multi);
     };
 
-    instance.checkCost = function(data){
+    instance.checkCost = function(data, costData){
         if (typeof data === 'undefined') {return false;}
         var resourcePass = 0;
-        for(var resource in data.cost){
+        for(var resource in costData){
             var res = Game.resources.getResourceData(resource);
-            if(res.current >= this.calcCost(data, resource)){
+            if(res.current >= this.calcCost(data, costData, resource)){
                 resourcePass += 1;
             }
         }
-        if(resourcePass === Object.keys(data.cost).length){
-            for(var resource in data.cost){
+        if(resourcePass === Object.keys(costData).length){
+            for(var resource in costData){
                 var res = Game.resources.getResourceData(resource);
-                res.current -= this.calcCost(data, resource);
+                res.current -= this.calcCost(data, costData, resource);
             }
             return true;
         } else {

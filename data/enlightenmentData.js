@@ -56,8 +56,8 @@ Game.enlightenData = (function(){
     };
 
     instance.titan = {
-        name: "Titan",
-        desc: "",
+        name: "Resource Titans",
+        desc: "Rather than Enlightening yourself for Ultrite gains, you may instead choose a resource titan to aid you on your future journeys. For each titan that you gain the favour of, you will recieve a 90% discount on all costs containing that resource.",
         cost: 0,
         category: "titan",
     };

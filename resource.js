@@ -195,6 +195,7 @@ Game.resources = (function(){
 
     instance.update = function(delta) {
         Templates.uiFunctions.refreshElements('current', 'all');
+        Templates.uiFunctions.refreshElements('cost', 'all');
     };
 
     instance.save = function(data) {

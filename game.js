@@ -344,6 +344,7 @@ var Game = (function() {
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
+        self.enlightenmentUI.initialise();
         self.machinesUI = new Templates.machinesUI('machines', '', 'Machines', Game.pages.machines);
         self.machinesUI.initialise();
         // All pages are created, now do the bindings
