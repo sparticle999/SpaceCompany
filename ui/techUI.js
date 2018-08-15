@@ -26,7 +26,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	var TemplateTopMenuNav = Handlebars.compile(
         ['<li role="presentation" id="'+this.page+'Tab" class="hidden">',
            '<a href="#'+this.page+'Tab_pane" id="'+this.page+'Tab_link" class="" aria-controls="'+this.page+'" role="tab" data-toggle="tab">',
-             '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign"></div>',
+             '<div id="'+this.page+'TabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
                this.title,
            '</a>',
          '</li>',''].join('\n'));
@@ -175,15 +175,6 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 			   '<button type="button" id="'+this.page+'{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
 			   '<button type="button" id="'+this.page+'{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
 			 '</span>',
-			 '<div style="height:5px"></div>',
-			 '<span id="'+this.page+'{{htmlId}}_destroy" class="hidden">',
-			   '<button type="button" id="'+this.page+'{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
-			   '<span class="multiBuy hidden">',
-			     '<button type="button" id="'+this.page+'{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
-			     '<button type="button" id="'+this.page+'{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
-			     '<button type="button" id="'+this.page+'{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
-			   '</span>',
-			 '</span>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -197,7 +188,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	var TemplatePaneNonMachine = Handlebars.compile(
 		['<tr id="'+this.page+'{{htmlId}}" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
 		   '<td>',
-		     '<h3 id="'+this.page+'_{{htmlIdTitle}}" class="default btn-link">{{name}}: <span id="{{htmlId}}_Count">0</span></h3>',
+		     '<h3 id="'+this.page+'_{{htmlIdTitle}}" class="default btn-link">{{name}}</h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',

@@ -355,8 +355,6 @@ var Game = (function() {
         // Now load
         self.load();
 
-        Game.settings.updateTheme();
-
         for(var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();
         }
@@ -380,8 +378,8 @@ var Game = (function() {
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
         Templates.uiFunctions.unlock('gemT1');
-        document.getElementById('resourcesTab_link').click();
-
+        document.getElementById('resourcesTab').className = "active";
+        document.getElementById('resourcesTab_pane').className = "tab-pane fade in active";
     };
 
     instance.addCredits = function(data){

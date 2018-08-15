@@ -231,11 +231,14 @@ Game.buildings = (function(){
             return;
         count = count || 1;
         var newValue = Math.floor(data.current + count);
-        var newActiveValue = Math.floor(data.active + count);
+        if(data.active != 0){
+            var newActiveValue = Math.floor(data.active + count);
+            data.active = Math.min(newActiveValue, this.entries[id].max);
+        }
         data.current = Math.min(newValue, data.max);
-        data.active = Math.min(newActiveValue, this.entries[id].max);
         Templates.uiFunctions.refreshElements('current', id);
         Templates.uiFunctions.refreshElements('machine', id);
+        Templates.uiFunctions.refreshElements('cost', id);
         Templates.uiFunctions.refreshElements('persecond', data.resource);
     };
 
@@ -248,6 +251,7 @@ Game.buildings = (function(){
         this.entries[id].current = Math.max(newActiveValue, 0);
         Templates.uiFunctions.refreshElements('current', id);
         Templates.uiFunctions.refreshElements('machine', id);
+        Templates.uiFunctions.refreshElements('cost', id);
         Templates.uiFunctions.refreshElements('persecond', id);
     };
 
