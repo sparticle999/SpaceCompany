@@ -231,7 +231,7 @@ Game.buildings = (function(){
             return;
         count = count || 1;
         var newValue = Math.floor(data.current + count);
-        if(data.active != 0){
+        if(data.active != 0 || data.current == 0){
             var newActiveValue = Math.floor(data.active + count);
             data.active = Math.min(newActiveValue, this.entries[id].max);
         }

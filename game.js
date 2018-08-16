@@ -379,9 +379,8 @@ var Game = (function() {
 
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
-
+        self.logoAnimating = false;
         console.log("Initialisation Complete");
-        //Templates.uiFunctions.refreshElements('all', 'all');
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
         Templates.uiFunctions.unlock('gemT1');
@@ -407,11 +406,9 @@ var Game = (function() {
         var logoElement = $('#loadLogo');
         var opacity = logoElement.css('opacity');
         if(opacity >= 0.9) {
-            logoElement.fadeTo(1000, .25, function() { Game.logoAnimating = false; });
-            self.logoAnimating = true;
+            logoElement.fadeTo(1000, .25, function() {Game.loadAnimation(Game, 100); console.error("out")});
         } else if (opacity <= 0.3) {
-            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
-            self.logoAnimating = true;
+            logoElement.fadeTo(1000, .95, function() {Game.loadAnimation(Game, 100); console.error("in")});
         }
     };
 
@@ -526,8 +523,7 @@ var Game = (function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-        
-        this.createInterval("Loading Animation", this.loadAnimation, 10);
+        this.loadAnimation(Game, 100);
         this.createInterval("Loading", this.loadDelay, 1000);
 
         this.update_frame(0);
