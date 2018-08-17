@@ -171,7 +171,7 @@ Game.tech = (function(){
         if (typeof tech !== 'undefined') {
             tech.unlocked = true;
             if(tech.current < tech.maxLevel && tech.maxLevel > 0){
-                Templates.uiFunctions.unlock('tec_' + id);
+                Templates.uiFunctions.unlock(id);
             }
         }
     };

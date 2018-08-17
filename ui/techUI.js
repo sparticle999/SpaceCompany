@@ -217,7 +217,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
 	var TemplatePaneTech = Handlebars.compile(
-		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{htmlId}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
 		     '<h3 class="default btn-link">{{name}}</span></h3>',
 		     '<span>',

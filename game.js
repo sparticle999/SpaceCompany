@@ -281,13 +281,8 @@ var Game = (function() {
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
-        this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
-        this.combineGameObjects(Game.solarData, 'id', Game.solarDestinationData, 'items')
-        // Link Game.solar.entries category to Game.resourceCategoryData
-        //this.combineGameObjects(Game.solarDestinationData, 'category', Game.solarCategoryData, 'items');
-        // Link it again, a level deeper and link on id
-        //this.combineGameObjects(Game.solar.entries, 'id', Game.solarDestinationData, 'items');
-
+        this.combineGameObjects(Game.solarData, 'category', Game.solarCategoryData, 'items');
+        this.combineGameObjects(Game.solar.entries, 'id', Game.solarData, 'items')
 
         // Link Game.machinescategoryData page to Game.pages
         this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages, '');

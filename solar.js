@@ -1,5 +1,18 @@
 Game.solar = (function(){
 
+	function UpdateCost(id) {
+        var previous = new Date();
+        var id = id;
+        this.update = function() {
+            var obj = Game.solar.entries[id];
+            if (new Date() - previous < 250) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = new Date();
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.entries = {};
@@ -13,13 +26,14 @@ Game.solar = (function(){
             this.solarTypeCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
-                htmlId: 'solar_' + id,
+                htmlId: 'loc_' + id,
                 current: 0,
                 perSecond: 0,
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
                 displayNeedsUpdate: true,
-                hidden: false
+                hidden: false,
+                ui_cost: new UpdateCost(id),
             });
         }
     };

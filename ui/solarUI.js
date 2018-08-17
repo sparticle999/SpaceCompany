@@ -164,27 +164,30 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 		       '<br>',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
+		     '<br>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
 	/**
-	 * Adds a non-building to the content pane
+	 * Adds a location to the content pane
 	 * {{name}} - Full name of the item
 	 * {{desc}} - Description of the item
 	 * {{htmlId}} 	- moon
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
-	var TemplatePaneNonBuilding = Handlebars.compile(
-		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{htmlId}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
+	var TemplatePaneLocation = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current"></span></h3>',
+		   	'{{#if cost}}',
+		     '<h3 class="default btn-link">Exploration</h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
 		       '<span class="{{htmlId}}cost"></span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_explore" class="btn btn-default">Explore {{name}}</button>',
+		   	'{{/if}}',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -202,7 +205,11 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 		var html = ""
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
-			html += TemplatePaneBuilding(data);
+			if(data.category == "inner" || data.category == "outer"){
+				html += TemplatePaneLocation(data);
+			} else {
+				html += TemplatePaneBuilding(data);
+			}
 			// At this point we know the page, name of the object and its type.
 			// This is enough information for the UI to know which object this is.
 			if ('active' in data) {
@@ -258,20 +265,10 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 					createGainCostHtml(res, data, last);
 				}
 			}
-		}		
-		// 	-> List storBuildings?
-		if ('storBuildings' in data) {
-			// Attach the storage buildings to the title
-			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(data.storBuildings));
-		} else if ('storUpgrades' in data) {
-			// Add an information element describing the upgraded storage capacity
-			if (!Templates.uiFunctions.registerElement(data, "capacity")) {
-				console.warn("Called with action: 'capacity' from 'createPane', while looping over:");
-				console.warn(data)
-			}
 		}
 		// 	-> List machines?
 		if ('items' in data) {
+			console.log(data.items)
 			// Attach the buildings to the title
 			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(data.items));
 		} else {

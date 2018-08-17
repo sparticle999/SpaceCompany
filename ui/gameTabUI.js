@@ -579,6 +579,10 @@ Templates.objectConstructor.UiFunctions = function() {
                         if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
+                    } else if(obj.category == "inner" || obj.category == "outer"){
+                        if("solarTab_solar_" + obj.id + "_ne" == Game.lastNav){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
                     } else {
                         if(obj.unlocked){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
@@ -715,6 +719,11 @@ Templates.objectConstructor.UiFunctions = function() {
                 // Match (resources)_(plasma)_StorageUpgrade
                 case (match = getCase(id, "^(.*)_(.*)_StorageUpgrade$")).input:
                     funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                 // Match (solar)_(moon)_explore
+                case (match = getCase(id, "^(.*)_loc_(.*)_explore")).input:
+                    funct = new Function("Game.solar.explore('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
                 // Match (machines)_(energyT1)(_de)activate_(1)
