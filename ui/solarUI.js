@@ -268,7 +268,6 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 		}
 		// 	-> List machines?
 		if ('items' in data) {
-			console.log(data.items)
 			// Attach the buildings to the title
 			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(data.items));
 		} else {

@@ -15,6 +15,8 @@ Game.solar = (function(){
 
     var instance = {};
 
+    instance.dataVersion = 1;
+
     instance.entries = {};
     instance.categoryEntries = {};
     instance.solarTypeCount = 0;
@@ -31,7 +33,6 @@ Game.solar = (function(){
                 perSecond: 0,
                 iconPath: Game.constants.iconPath,
                 iconExtension: Game.constants.iconExtension,
-                displayNeedsUpdate: true,
                 hidden: false,
                 ui_cost: new UpdateCost(id),
             });
@@ -42,45 +43,68 @@ Game.solar = (function(){
 
     };
 
-    instance.save = function(){
-
+    instance.save = function(data){
+    	data.solar = { v: this.dataVersion, i: {}};
+        for(var key in this.entries) {
+            data.solar.i[key] = {};
+            data.solar.i[key].unlocked = this.entries[key].unlocked;
+            data.solar.i[key].explored = this.entries[key].explored;
+        }
     };
 
-    instance.load = function(){
-    	
-    };
-
-    instance.explore = function(location){
-    	var data = this.entries[location];
-    	if(Game.resources.entries.rocketFuel.current >= data.cost.rocketFuel && !data.explored){
-    		Game.resources.entries.rocketFuel.current -= data.cost.rocketFuel;
-    		data.explored = true;
-    		if(data.resource){
-    			for(var i = 0; i < data.resource.length; i++){
-    				Game.resources.unlock(data.resource[i]);
-    			}
-    		}
-    		if(data.location){
-    			for(var i = 0; i < data.location.length; i++){
-    				this.unlock(data.location[i]);
-    			}
-    		}
-    		if(location == "wonderStation"){
-    			Game.wonder.tabUnlocked = true;
-    			newUnlock("wonder");
-				Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
-    		}
-    		if(location == "solCenter"){
-    			Game.solCenter.tabUnlocked = true;
-    			newUnlock("solCenter");
-				Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
-    		}
+    instance.load = function(data){
+    	if(typeof data.solar !== 'undefined'){
+			for (var id in data.solar.i) {
+		        if (typeof this.entries[id] !== 'undefined') {
+		            if (typeof data.solar.i[id].explored !== 'undefined' && data.solar.i[id].explored == true) {
+		                this.applyExplore(id);
+		                // we can assume that the location is unlocked if it has been explored
+		                this.entries[id].unlocked = true;
+		            } else if (typeof data.solar.i[id].unlocked !== 'undefined') {
+		                this.entries[id].unlocked = data.solar.i[id].unlocked;
+		            }
+		        }
+		    }
     	}
     };
 
+    instance.explore = function(id){
+    	var data = this.entries[id];
+    	if(Game.resources.entries.rocketFuel.current >= data.cost.rocketFuel && !data.explored){
+    		Game.resources.entries.rocketFuel.current -= data.cost.rocketFuel;
+    		data.explored = true;
+    		this.applyExplore(id);
+    	}
+    };
+
+    instance.applyExplore = function(id){
+    	var data = this.entries[id];
+    	if(data.resource){
+			for(var i = 0; i < data.resource.length; i++){
+				Game.buildings.unlock(data.resource[i] + "T1");
+			}
+		}
+		if(data.location){
+			for(var i = 0; i < data.location.length; i++){
+				this.unlock(data.location[i]);
+			}
+		}
+		if(location == "wonderStation"){
+			Game.wonder.tabUnlocked = true;
+			newUnlock("wonder");
+			Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
+		}
+		if(location == "solCenter"){
+			Game.solCenter.tabUnlocked = true;
+			newUnlock("solCenter");
+			Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
+		}
+		Templates.uiFunctions.hide(data.id);
+    }
+
     instance.unlock = function(location){
     	this.entries[location].unlocked = true;
-    	this.entries[location].displayNeedsUpdate = true;
+    	Templates.uiFunctions.unlock(location)
     }
 
     return instance;
