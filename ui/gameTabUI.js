@@ -345,9 +345,6 @@ Templates.objectConstructor.UiFunctions = function() {
             }
             node.classList.remove("hidden");
             hidden = removeElement(hidden, node.id);
-
-            
-            
         }
         return true;
     }
@@ -509,7 +506,11 @@ Templates.objectConstructor.UiFunctions = function() {
     this.clickItem = function(DOMid) {
         // Remove the glyph if it's visible
         var node = document.getElementById(DOMid+'Glyph');
-        if (node) {node.classList.add('hidden');}
+        if (node) {
+            node.classList.add('hidden');
+        }
+        document.getElementById(Game.lastNav).classList.remove('info');
+        document.getElementById(DOMid).classList.add('info');
         // Record the last clicked menu item
         Game.lastNav = DOMid;
     }
@@ -563,10 +564,6 @@ Templates.objectConstructor.UiFunctions = function() {
                             }
                         } else if(obj.resource == "rocket"){
                             if("solarTab_res_rocket_ne" == Game.lastNav){
-                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                            }
-                        } else if(obj.resource == "satellite"){
-                            if("solarTab_res_satellite_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else {

@@ -133,7 +133,7 @@ Game.techData = (function () {
         newTechs: ['unlockSolarSystem', 'upgradeResourceTech', 'unlockDestruction'],
         tabAlerts: ['resources'],
         onApply: function(){
-            var blacklist = ['energy', 'plasma', 'science', 'rocketFuel', 'rocket', 'satellite', 'antimatter'];
+            var blacklist = ['energy', 'plasma', 'science', 'rocketFuel', 'rocket', 'antimatter'];
             for(var id in Game.resources.entries){if (!contains(blacklist, id)) { Game.buildings.unlock(id + "T2", false); }}
         }
     });
@@ -150,13 +150,6 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Templates.uiFunctions.showClass('destroyContainer');
-            console.log("rocketFuel")
-            for(var id in Game.buildings.entries){
-                if(id.indexOf("rocketFuel") == -1){
-                    var data = Game.buildings.entries[id];
-                    //$('#' + data.id + "_destroy")[0].className = "";
-                }
-            }
         }
     });
 
@@ -175,8 +168,6 @@ Game.techData = (function () {
         tabAlerts: ['solarSystem'],
         onApply: function(){
             Game.solar.tabUnlocked = true;
-            Game.buildings.entries.rocketFuelT1.unlocked = true;
-            Game.buildings.unlock('satelliteT1');
             Game.buildings.unlock('rocketT1');
             Game.buildings.unlock('rocketFuelT1');
         }
@@ -195,7 +186,6 @@ Game.techData = (function () {
         newTechs: ['unlockRocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
-            Game.buildings.entries.rocketFuelT2.unlocked = true;
             Game.buildings.unlock('rocketFuelT2');
         }
     });

@@ -1617,7 +1617,6 @@ Game.buildingData = (function () {
         resource: "rocket",
         cost: {
             'rocket': 1,
-            'satellite': 1,
             'rocketFuel': 20
         },
         order: 3,
@@ -1625,26 +1624,12 @@ Game.buildingData = (function () {
         onApply: function() {
             Templates.uiFunctions.hide("rocketT2");
             Templates.uiFunctions.hideCategory("spacecraft", "solarTab");
-            Templates.uiFunctions.unlockCategory("inner", "solarTab");
+            Templates.uiFunctions.unlock("moon");
+            Templates.uiFunctions.unlock("mercury");
+            Templates.uiFunctions.unlock("venus");
+            Templates.uiFunctions.unlock("mars");
+            Templates.uiFunctions.unlock("asteroidBelt");
             // Unlock moon
-        }
-    });
-
-    instance.satelliteT1 = $.extend({}, baseProducerBuilding, {
-        name: "Satellite",
-        desc: "Before we can travel anywhere, we'll need to explore. Satellites are a great tool for this.",
-        category: "satellite",
-        resource: "satellite",
-        cost: {
-            'metal': 50,
-            'gem': 100
-        },
-        order: 1,
-        unlocked: true,
-        onApply: function() {
-            Game.resources.entries.satellite.current += 1;
-            Templates.uiFunctions.unlock("rocketT1");
-            Templates.uiFunctions.hide("satelliteT1");
         }
     });
 

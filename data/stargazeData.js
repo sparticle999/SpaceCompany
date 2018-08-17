@@ -509,7 +509,7 @@ Game.rebirthData = (function(){
 		tier: "basic",
 		onApply: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter"){
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "rocket" && id != "antimatter"){
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = true;
 					}
@@ -518,7 +518,7 @@ Game.rebirthData = (function(){
 		},
 		remove: function(){
 			for(var id in Game.resources.entries){
-				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "satellite" && id != "rocket" && id != "antimatter"){
+				if(id != "energy" && id != "plasma" && id != "meteorite" && id != "science" && id != "rocketFuel" && id != "rocket" && id != "antimatter"){
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = false;
 					}

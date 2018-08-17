@@ -353,7 +353,7 @@ Game.resourceData = (function () {
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
         category: 'science',
-        baseCapacity: 1000000,
+        baseCapacity: -1,
         hideCapacity: true,
         gainNum: 1,
         toggleable: false,
@@ -370,7 +370,7 @@ Game.resourceData = (function () {
         desc: 'Rocket fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.',
         icon: 'rocketFuelIcon',
         category: 'rocketFuel',
-        baseCapacity: 1000000,
+        baseCapacity: -1,
         hideCapacity: true,
         gainNum: 1,
         toggleable: true,
@@ -381,18 +381,6 @@ Game.resourceData = (function () {
     /********************
      * Rocket           *
      ********************/
-
-    instance.satellite = {
-        name: "Satellite",
-        desc: "We'll need to build satellites to begin exploring the solar system.  We will also need a rocket to launch them.  Don't forget about rocket fuel!</b>",
-        icon: 'satelliteIcon',
-        category: "spacecraft",
-        baseCapacity: 0, // Important to hide the ps & storage
-        order: 1,
-        toggleable: false,
-        manualgain:  false,
-        unlocked: true
-    };
 
     instance.rocket = {
         name: "Rocket",

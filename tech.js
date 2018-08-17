@@ -89,23 +89,21 @@ Game.tech = (function(){
             }
         }
         if(Game.buildings.entries.metalT1.current >= 1){
-            if (!Game.tech.tabUnlocked) {
-                Templates.uiFunctions.unlock('scienceT1');
-                // Unlock the science resourceCategory
-                Game.resourceCategoryData.science.unlocked = true;
-                // Unlock the science resource
-                Game.resources.entries.science.unlocked = true;
-                // Unlock scienceT1
-                Game.buildings.entries.scienceT1.unlocked = true;
-                // Unlock the research category
-                Game.techCategoryData.unlocked = true;
-                Game.techCategoryData.research.unlocked = true;
-                // Unlock the technology type of research items
-                Game.techCategoryData.research.items.technology.unlocked = true;
-                newUnlock('tech');
-                Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
-                Game.tech.tabUnlocked = true; 
-            }
+            Templates.uiFunctions.unlock('scienceT1');
+            Game.tech.unlockTech("unlockStorage");
+            Game.tech.unlockTech("unlockBasicEnergy");
+            // Unlock the science resourceCategory
+            Game.resourceCategoryData.science.unlocked = true;
+            // Unlock the science resource
+            Game.resources.entries.science.unlocked = true;
+            // Unlock scienceT1
+            Game.buildings.entries.scienceT1.unlocked = true;
+            // Unlock the research category
+            Game.techCategoryData.unlocked = true;
+            Game.techCategoryData.research.unlocked = true;
+            // Unlock the technology type of research items
+            Game.techCategoryData.research.items.technology.unlocked = true;
+            Game.tech.tabUnlocked = true; 
         }
         // Update the cost of techs
         Object.keys(Game.tech.entries).forEach(function(tech) {
@@ -151,12 +149,20 @@ Game.tech = (function(){
                     // we can assume that the tech is unlocked if it has been purchased
                     this.entries[id].unlocked = true;
                     // unlock the tech that this tech unlocks
-                    this.unlockNewTechs(id);
                 } else if (typeof data.tech.i[id].unlocked !== 'undefined') {
                     this.entries[id].unlocked = data.tech.i[id].unlocked;
                 }
             }
         }
+        for (var id in data.tech.i) {
+            if (typeof this.entries[id] !== 'undefined') {
+                if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
+                    // unlock the tech that this tech unlocks
+                    this.unlockNewTechs(id);
+                }
+            }
+        }
+        
         Templates.uiFunctions.refreshElements('all', 'all');
     };
 
@@ -164,7 +170,9 @@ Game.tech = (function(){
         var tech = this.getTechData(id);
         if (typeof tech !== 'undefined') {
             tech.unlocked = true;
-            Templates.uiFunctions.unlock(id);
+            if(tech.current < tech.maxLevel && tech.maxLevel > 0){
+                Templates.uiFunctions.unlock('tec_' + id);
+            }
         }
     };
 
@@ -187,7 +195,7 @@ Game.tech = (function(){
         if ('newTechs' in tech) {
             var newTechs = tech.newTechs;
             // .unlockOil_Container => unlock('unlockOil')
-            newTechs.forEach(t => Templates.uiFunctions.unlock(t));
+            newTechs.forEach(t => Game.tech.unlockTech(t));
         }
     };
 
@@ -230,7 +238,7 @@ Game.tech = (function(){
             this.applyTechEffect(id);
             // Unlock new techs.
             this.unlockNewTechs(id);
-            // decrease count
+            // Hide if max level
             this.hideIfMax(id);
             count--;
         }
@@ -270,7 +278,6 @@ Game.tech = (function(){
         var newValue = Math.floor(this.entries[id].current - count);
         this.entries[id].current = Math.max(newValue, 0);
 
-        this.applyTechEffect(id);
         Templates.uiFunctions.refreshElements('all', 'all');
     };
 

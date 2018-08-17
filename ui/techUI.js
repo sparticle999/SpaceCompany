@@ -2,14 +2,13 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.techUI = function(cPage, cTitle, cObj) {
 
-	// solarUI('solar', 'solarSystem', 'Solar System BETA', Game.pages.solar)
+	// createPage('solar', 'Solar System BETA', Game.pages.solar)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'
 	// This is to make sure they're unique regardless of the content
-	// Preferably use the format page_{{item}}_Action, page_{{item}}_CategoryContainer and page_{{item}}_value
-	// For instance: page_metalT1_buy_1, page_metal_StorBuildingContainer and page_metalT1_Cost
-	// Use a class for global unlockables, like in a div around a mechanic that unlocks with research (destroy buttons, upgrade storage, etc)
+	// Use a class for global information like hidden info, resource counts, machine costs, etc
+
 
 	this.page = cPage;
 	this.title = cTitle;
@@ -60,35 +59,48 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 */
 	var TemplateMenuHeader = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="hidden">',
-		   '<td colspan="4" style="border:{{border}};"><span>{{title}}</span> <span class="caret"></span></td>',
+		   '<td colspan="4" style="border:{{border}};"><span>{{title}}</span><span class="caret"></span></td>',
 		 '</tr>',''].join('\n'));
 	
 	/**
 	 * Formats a menu row, hides storage
-	 * {{id}} - energy, rocketFuel
+	 * {{htmlId}} - energy, rocketFuel
 	 * {{name}} - Energy, Rocket Fuel
 	 * {{category}} - category of this item - earth, inner
 	 * Merges into solarTab_nav
 	 */
 	var TemplateResourceMenuItem = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{id}}_ne" href="#'+this.page+'Tab_{{id}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden aria-controls="'+this.page+'Tab_{{id}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
 		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="1"><span>{{name}}</span></td>',
-		   '<td style="vertical-align:middle; text-align:center;"><span><span id="'+this.page+'_{{id}}ps_display">0</span>/Sec</span></td>',
-		   '<td style="vertical-align:middle; text-align:right;"><span id="'+this.page+'_{{id}}_current">0</span><span id="'+this.page+'_{{id}}StorageBox" class="{{Storagehidden}}">/<span id="'+this.page+'_{{id}}Storage">0</span></span></td>',
+		   '<td style="vertical-align:middle; text-align:center;"><span><span class="{{htmlId}}ps">0</span>/Sec</span></td>',
+		   // If storBuildings is in data, hide the capacity - claasList.remove("hidden") from all classes 'energyCapacityHidden'
+		   '{{#if storBuildings}}',
+		     '<td style="vertical-align:middle; text-align:right;">',
+		       '<span class="{{htmlId}}current">{{current}}</span>',
+		       '<span class="{{htmlId}}CapacityHidden hidden">',
+		         ',/<span class="{{htmlId}}capacity">{{capacity}}</span>',
+		       '</span>',
+		     '</td>',
+		   '{{else}}',
+		     '<td style="vertical-align:middle; text-align:right;">',
+		       '<span class="{{htmlId}}current">{{current}}</span>{{#if hideCapacity}}{{else}}/<span class="{{htmlId}}capacity"></span>{{/if}}',
+		     '</td>',
+		   '{{/if}}',
 		 '</tr>',''].join('\n'));
 
 	/**
 	 * Formats a menu row of an item that has no ps or storage
-	 * {{id}} - moon, rocket
+	 * {{htmlId}} - moon, rocket
 	 * {{name}} - The Moon, Space Rocket
 	 * Merges into solarTab_nav
 	 */
 	var TemplateNonResourceMenuItem = Handlebars.compile(
-		['<tr id="'+this.page+'Tab_{{id}}_ne" href="#'+this.page+'Tab_{{id}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{id}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
-		   '<td style="vertical-align:middle;"><img src="Icons/{{id}}Icon.png" style="width:30px; height:auto"></td>',
+		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
+		   '<td style="vertical-align:middle;"><img src="Icons/{{icon}}.png" style="width:30px; height:auto"></td>',
 		   '<td style="vertical-align:middle;" colspan="3"><span>{{name}}</span></td>',
 		 '</tr>',''].join('\n'));
+
 
 	////////////////////////////
 	// Content Pane Templates //
@@ -96,14 +108,14 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 
 	/**
 	 * Creates the table for the content pane
-	 * {{id}} - helium, moon
+	 * {{htmlId}} - helium, moon
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
 	var TemplatePaneHeader = Handlebars.compile(
-		['<div id="'+this.page+'Tab_{{id}}_nec" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">',
+		['<div id="'+this.page+'Tab_{{htmlId}}_nec" class="tab-pane fade in" style="margin-left:10px; width:100px; float:left;">',
 		   '<div class="container" style="max-width:800px;">',
 		     '<table class="table">',
-		       '<tbody id="'+this.page+'Tab_{{id}}_netc">',
+		       '<tbody id="'+this.page+'Tab_{{htmlId}}_netc">',
 		       // Content comes here
 		       '</tbody>',
 		     '</table>',
@@ -112,8 +124,8 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 
 	/**
 	 * Creates a row on the content pane with the info and sometimes a gain button
-	 * {{id}} - helium, moon
-	 * {{title}} - Helium, The Moon
+	 * {{htmlId}} - helium, moon
+	 * {{name}} - Helium, The Moon
 	 * {{desc}} - A short text
 	 * {{storUpgrades}} - contains the storage upgrade costs.
 	 * Merges onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
@@ -121,14 +133,39 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	var TemplatePaneTitle = Handlebars.compile(
 		['<tr>',
 		   '<td colspan="2" style="border:none;">',
-		   '<h2 class="default btn-link">{{title}}</h2>',
+		   '<h2 class="default btn-link">{{name}}</h2>',
 		   '<span>{{{desc}}}</span>',
+		     '{{#if storUpgrades}}',
 		     '<br>',
 		     '<br>',
+		     '&#8227; Remaining time until&nbsp;&nbsp;<select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>&nbsp;&nbsp;',
+ 			 'storage: <b><span id="'+this.page+'_{{htmlId}}_SelectStorage_time">N/A</span></b>',
+		     '<br>',
+		     '<br>',
+		     '{{/if}}',
 		     '{{#if manualgain}}',
-		     '<div class="gainButton hidden">',
-		       '<button type="button" id="'+this.page+'_{{id}}_Gain" class="btn btn-default" value="Gain {{gainNum}}"></button>',
-		       '<br>',
+			    '{{#if gainCost}}',
+			    	'<span>Converting 1 {{name}} costs <span id="'+this.page+'_{{htmlId}}_gainCost"></span>',
+			     	'<div class="gainButton">',
+				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
+				         '<span class="{{htmlId}}gainNum">Convert: {{gainNum}}</span>',
+				       '</button>',
+				       '<br>',
+				     '</div>',
+			    '{{else}}',
+				     '<div class="gainButton">',
+				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
+				         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
+				       '</button>',
+				       '<br>',
+				     '</div>',
+				'{{/if}}',
+		     '{{/if}}',
+		     '{{#if toggleable}}',
+		     '<div>',
+		       '<button type="button" id="'+this.page+'_{{htmlId}}_toggle" class="btn btn-default">',
+		         'Toggle {{name}}',
+		       '</button>',
 		       '<br>',
 		     '</div>',
 		     '{{/if}}',
@@ -138,15 +175,10 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 		 '<tr class="storageUpgrade hidden">',
 		   '<td>',
 		     '<h3 class="default btn-link">Storage Upgrade</h3>',
-		     '<span>',
-		       'Upgrade your {{name}} storage size to <span id="{{id}}NextStorage">100</span>.',
-		       '<br>',
-		     'Time remaining until <select id="{{id}}SelectStorage_Limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>:',
- 			 'storage: <b><span id="{{id}}SelectStorage_Time>N/A</span></b>',
- 			 '<br>',
-		     '<span id="'+this.page+'_{{id}}StorageUpgrade_Cost"></span>',
+		     '<span>Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.</span>',
 		     '<br>',
-		     '<button id="'+this.page+'_{{id}}StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
+		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
+		     '<button id="'+this.page+'_{{htmlId}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
 		   '</td>',
 		 '</tr>',
 		 '{{/if}}',''].join('\n'));
@@ -155,25 +187,24 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 
 	/**
 	 * Adds a storBuilding or building to the content pane
-	 * {{htmlId}} - sto_plasmaT1, resbld_rocketFuelT3
+	 * {{htmlId}} 		- plasmaT1, rocketFuelT3
 	 * {{unlocked}} - true / false
-	 * {{name}} - full name of the building
-	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 * {{name}} 	- full name of the building
+	 * Attaches onto this.page+'Tab_{{htmlId}}_netc (resourceTab_energy_netc)
 	 */
 	var TemplatePaneBuilding = Handlebars.compile(
-		['<tr id="'+this.page+'{{htmlId}}" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 class="default btn-link">{{name}}: <span id="'+this.page+'{{htmlId}}_Count">0</span></h3>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
-		       '<br>',
-		       '<p id="'+this.page+'{{htmlId}}_Cost"></p>',
+		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 			 '<span class="multiBuy hidden">',
-			   '<button type="button" id="'+this.page+'{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
-			   '<button type="button" id="'+this.page+'{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
-			   '<button type="button" id="'+this.page+'{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
 			 '</span>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
@@ -182,19 +213,19 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 * Adds a non-building to the content pane
 	 * {{name}} - Full name of the item
 	 * {{desc}} - Description of the item
-	 * {{htmlId}} - solar_moon
+	 * {{htmlId}} 	- moon
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
-	var TemplatePaneNonMachine = Handlebars.compile(
-		['<tr id="'+this.page+'{{htmlId}}" {{#if unlocked}}class=""{{else}}class="hidden"{{/if}}>',
+	var TemplatePaneTech = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{htmlId}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 id="'+this.page+'_{{htmlIdTitle}}" class="default btn-link">{{name}}</h3>',
+		     '<h3 class="default btn-link">{{name}}</span></h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p id="'+this.page+'_{{htmlIdCost}}"></p>',
+		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlIdButton}}" class="btn btn-default">{{buttonText}}</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -206,78 +237,121 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	/**
 	 * Collects all the building information under a resource and creates the html
 	 * @param  {Object} buildingData Resource object containing the building info
-	 * @param  {string} prefix       sto_ or resbld_
 	 * @return {string}              generated html containing all buildings producing a resource.
 	 */
 	var buildMachineCost = function(buildingData) {
 		var html = ""
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
-			html += TemplatePaneBuilding(data);
-			// ID of the span displaying the count
-			buildingData[build].htmlIdCount = buildingData[build].htmlId+'_Count';
-			// ID of the div displaying the cost
-			buildingData[build].htmlIdCost = buildingData[build].htmlId+'_Cost';
-			// ID of the div displaying the destroy button(s)
- 			buildingData[build].htmlIdDestroy = buildingData[build].htmlId+'_Destroy';
+			if(data.category == "technology"){
+				html += TemplatePaneTech(data);
+			} else {
+				html += TemplatePaneBuilding(data);
+			}
+			// At this point we know the page, name of the object and its type.
+			// This is enough information for the UI to know which object this is.
+			if ('active' in data) {
+				if (!Templates.uiFunctions.registerElement(data, 'active')) {
+					console.warn("Called with action: 'active' from 'buildMachineCost', while looping over:");
+					console.warn(buildingData)
+				}
+			}
+			if ('current' in data) {
+				if (!Templates.uiFunctions.registerElement(data, 'current')) {
+					console.warn("Called with action: 'current' from 'buildMachineCost', while looping over:");
+					console.warn(buildingData)
+				}
+			}
+			if ('cost' in data) {
+				if (!Templates.uiFunctions.registerElement(data, 'cost')) {
+					console.warn("Called with action: 'cost' from 'buildMachineCost', while looping over:");
+					console.warn(buildingData)
+				}
+			}
 		}); return html;
 	}
 
 	/**
-	 * Collects all the building information under a resource and creates the html
-	 * @param  {Object} buildingData Resource object containing the building info
-	 * @param  {string} prefix       sto_ or resbld_
-	 * @return {string}              generated html containing all buildings producing a resource.
+	 * Creates each cost item of the gain cost
+	 * @param  {string} res  Resource to be added into the cost html
+	 * @param  {Object} data Resource object containing gainCost data
 	 */
-	var buildNonMachineCost = function(buildingData) {
-		var html = ""
-		Object.keys(buildingData).forEach(function(build) {
-			var data = buildingData[build];
-			html += TemplatePaneNonMachine(buildingData[build]);
-		}); return html;
+
+	var createGainCostHtml = function(res, data, last){
+		Templates.uiFunctions.attachHTML(cPage, cPage+'_'+data.htmlId+'_gainCost', '<span class="text-capitalize">'+data.gainCost[res]+' '+res+last);
 	}
 
 	/**
 	 * Creates the content pane of a page
 	 * @param  {Object} data Resource object containing building data
 	 */
-	var createPane = function(data, navigation, menuHeader, menuItem) {
+	var createPane = function(data) {
 		// Attach the content pane table
 		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_content', TemplatePaneHeader(data));
-		var pane = 'Tab_'+data.id+'_nec';
-		Templates.uiFunctions.registerPane(navigation, menuHeader, menuItem, pane);
-		// Is the item a resource?
 		// Attach the title of the pane to the header
-		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', TemplatePaneTitle(data));
-		if (data.id in Game.resources.entries) {
-			// 	-> List storBuildings?
-			if ('storBuildings' in data) {
-				// Attach the storage buildings to the title
-				Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildMachineCost(data.storBuildings));
+		Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', TemplatePaneTitle(data));
+		if (data.manualgain) {
+			if (!Templates.uiFunctions.registerElement(data, 'gainNum')) {
+				console.warn("Called with action: 'gainNum' from 'createPane', while looping over:");
+				console.warn(data)
 			}
-			// 	-> List machines?
-			if ('items' in data) {
-				// Attach the buildings to the title
-				Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildMachineCost(data.items));
+			if(data.gainCost){
+				var i = 0;
+				for(var res in data.gainCost){
+					i += 1;
+					if(i == Object.keys(data.gainCost).length){var last = "";} else {var last = ", ";}
+					createGainCostHtml(res, data, last);
+				}
 			}
-			// ID of the button containing gainNum
-			data.htmlIdGainButton = data.htmlId+'_'+data.id+'_Gain';
-			// ID of the div displaying the size of the upcoming storage
-			data.htmlIdNextStorage = data.htmlId+'NextStorage';
-			// ID of the select to calculate the storage limit timer against
-			data.htmlIdStorageLimit = data.htmlId+'SelectStorage_Limit';
-			// ID of the span displaying the time until the selected level is reached
-			data.htmlIdStorageTime = data.htmlId+'SelectStorage_Time';
-			// ID of the span displaying the storage cost: Costs <span id="oilStorageCost">5.033B</span> Oil, <span id="oilStorageMetalCost">2.013B</span> Metal
-			data.htmlIdStorageCost = data.htmlId+'_{{id}}StorageUpgrade_Cost';
-		// The item is something else.
-		} else {
-			var parse = data;
-			// Does this object contain 'items'?
-			if ('items' in data) {parse = data.items}
-			console.log(data.items);
-			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.id+'_netc', buildNonMachineCost(parse))
 		}
+		// 	-> List machines?
+		if ('items' in data) {
+			// Attach the buildings to the title
+			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(data.items));
+		} else {
+			console.warn("Malformed object passed to createPane:");
+			console.warn(data);
+			//Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(tempObj))
+		}
+	}
+
+	var createMenuHeader = function(data) {
+		var html = TemplateMenuHeader(data);
+		// Stuff the UI needs to register
+		return html
+	}
+
+	var createResourceMenuItem = function(data) {
+		var html = TemplateResourceMenuItem(data);
+		if (!Templates.uiFunctions.registerElement(data, 'perSecond')) {
+			console.warn("Called with action: 'perSecond' from 'createResourceMenuItem', while looping over:");
+			console.warn(data)
+		}
+		if (!Templates.uiFunctions.registerElement(data, 'current')) {
+			console.warn("Called with action: 'current' from 'createResourceMenuItem', while looping over:");
+			console.warn(data)
+		}
+		if (!Templates.uiFunctions.registerElement(data, 'capacity')) {
+			console.warn("Called with action: 'capacity' from 'createResourceMenuItem', while looping over:");
+			console.warn(data)
+		}
+		return html;
+	}
+
+	var createNonResourceMenuItem = function(data) {
+		var html = TemplateNonResourceMenuItem(data);
+		return html;
+	}
+
+	var createMenuItem = function(data) {
+		// Is this item a resource?  Add the applicable template to the menu
+		var html = "";
+		if (data.id in Game.resources.entries && data.capacity) {
+			html = createResourceMenuItem(data);
+		} else {
+			html = createNonResourceMenuItem(data);
+		}
+		return html;
 	}
 
 	/**
@@ -289,41 +363,44 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 * @param 	{string} subcategory 	A string representing the name of the subcategory.
 	 * @return 	{string}      			Returns a string containing all menu rows
 	 */
-	var createPage = function(data, navigation) {
+	var createPage = function(data) {
+		
 		// Get the categories and their order
-		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order})
+		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order});
 		// Loop through the catagories
-		var menuHtml = "";
+		var html = "";
 		categories.forEach(function(cat) {
 			// Append this row to the menu
-			menuHtml += TemplateMenuHeader(data[cat]);
-			var menuHeader = cPage+'Tab_'+data[cat].category+'_collapse';
-			Templates.uiFunctions.registerMenuHeader(navigation, menuHeader);
-			// Store the general htmlId in this object
-			data[cat].htmlId = "Tab_"+data[cat].category+"_collapse"
-			// Get the items and their order
-			var subitems = Object.keys(data[cat].items).sort(function(a, b) {
-				return data[cat].items[a].order > data[cat].items[b].order
-			})
-			// Loop through the items
-			subitems.forEach(function(subitem) {
-				// Is this item a resource?  Add the applicable template to the menu
-				if (data[cat].items[subitem].id in Game.resources.entries &&
-				    data[cat].items[subitem].baseCapacity) {
-					menuHtml += TemplateResourceMenuItem(data[cat].items[subitem]);
-				} else {
-					menuHtml += TemplateNonResourceMenuItem(data[cat].items[subitem]);
-				}
-				var menuItem = cPage+'Tab_'+data[cat].items[subitem].id+'_ne';
-				Templates.uiFunctions.registerMenuItem(navigation, menuHeader, menuItem);
-				// Store the general htmlId in this object
-				data[cat].items[subitem].htmlId = "Tab_"+data[cat].items[subitem].id+"_ne";
-				// Dispatch this item to the function creating the pane
-				createPane(data[cat].items[subitem], navigation, menuHeader, menuItem);
-			})
+			html += createMenuHeader(data[cat]);
+			// Does data[cat] have .items ?
+			if ('items' in data[cat]) {
+				// Get the items and their order
+				var subitems = Object.keys(data[cat].items).sort(function(a, b) {
+					return data[cat].items[a].order > data[cat].items[b].order
+				})
+				// Loop through the items
+				subitems.forEach(function(subitem) {
+					html += createMenuItem(data[cat].items[subitem])
+					if ('items' in data[cat].items[subitem]) {
+						// Dispatch this item to the function creating the pane
+						createPane(data[cat].items[subitem]);
+					// No .items in data[cat].items[subitems]
+					} else {
+						// create a temporary object to only pass the current subitem
+						var tempObj = {}; tempObj.items = data[cat].items[subitem];
+						createPane(tempObj);						
+					}
+				})
+			// No subitems in the main structure.
+			} else {
+				// Create a single menu item
+				html += createMenuItem(data[cat])
+				// No subitems, treat data[cat] as the source for the content pane
+				createPane(data[cat]);
+			}
 		})
-		// return an array of menuHtml & pageHtml to initialise
-		return menuHtml;
+		// return html
+		return html;
 	}
 
 	///////////////////////////
@@ -334,14 +411,13 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	 * Composes the page and adds it to the game
 	 */
 	this.initialise = function() {
-		console.log("initialising: "+this.page)
+		console.log("%c", "background:black;padding:5px","initialising: "+this.page);
 		// Link this page to the main menu
 		Templates.uiFunctions.attachHTML(this.page, 'tabList', TemplateTopMenuNav());
-		Templates.uiFunctions.registerNavigation(cPage+'Nav');
 		// Link the page table to tabContent
 		Templates.uiFunctions.attachHTML(this.page, 'tabContent', TemplateBuildPage());
-		// Link the menu to '+this.page+'Tab_pane
-		Templates.uiFunctions.attachHTML(this.page, this.page+'Tab_nav', createPage(this.data, this.page+'Tab_nav'));
+		// Link the menu to '+this.page+'Tab_Nav
+		Templates.uiFunctions.attachHTML(this.page, this.page+'Tab_nav', createPage(this.data));
 		// The content panes are linked through createPage -> createPane
 	};
 };

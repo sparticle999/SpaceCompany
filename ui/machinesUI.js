@@ -1,11 +1,10 @@
 'use strict';
 if (typeof Templates == "undefined") { var Templates = {}; }
-Templates.machinesUI = function(cPage, cCategory, cTitle, cObj) {
+Templates.machinesUI = function(cPage, cTitle, cObj) {
 
 	// machinesUI('machines', '', 'Machines', Game.pages.machines);
 
 	this.page = cPage;
-	this.category = cCategory;
 	this.title = cTitle;
 	this.data = cObj;
 

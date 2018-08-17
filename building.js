@@ -22,12 +22,14 @@ Game.buildings = (function(){
             var value = Game.settings.doFormat('active', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'active');
 
-            var prod = obj.active*obj.resourcePerSecond[obj.resource];
-            var use = obj.active*(obj.resourcePerSecond["energy"]||obj.resourcePerSecond["plasma"]||0);
-            var prodVal = Game.settings.format(prod);
-            var useVal = Game.settings.format(use);
-            Templates.uiFunctions.setClassText(prodVal, obj.htmlId+'prod');
-            Templates.uiFunctions.setClassText(useVal, obj.htmlId+'use');
+            if(obj.resourcePerSecond){
+                var prod = obj.active*obj.resourcePerSecond[obj.resource];
+                var use = obj.active*(obj.resourcePerSecond["energy"]||obj.resourcePerSecond["plasma"]||0);
+                var prodVal = Game.settings.format(prod);
+                var useVal = Game.settings.format(use);
+                Templates.uiFunctions.setClassText(prodVal, obj.htmlId+'prod');
+                Templates.uiFunctions.setClassText(useVal, obj.htmlId+'use');
+            }
 
             previous = obj.active;
             return true;

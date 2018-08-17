@@ -193,21 +193,9 @@ Game.solarData = (function () {
 
 	instance = {
 
-	    exploreMoon: {
-			name: "Explore the Moon",
-			desc: "The Moon is our largest satellite, revolving around the Earth once every 27 days. Let's give it a companion",
-			category: "inner",
-			htmlId: 'expl_moon',
-			order: 1,
-			id: 'moon',
-			cost: {satellite: 1, rocket: 1, rocketFuel: 5},
-			unlocked: false,
-			explored: false
-		},
-
 	    coloniseMoon: {
-			name: "Colonise the Moon",
-			desc: "Our satellite has discovered a large quantity of Lunarite, left over from when the moon separated from the Earth billions of years ago. Lunarite is much stronger than regular metal and can be used to build more advanced machines.",
+			name: "The Moon",
+			desc: "The Moon is our largest satellite, revolving around the Earth once every 27 days. It contains a large quantity of Lunarite, left over from when it separated from the Earth billions of years ago. It is much stronger than regular metal and used to build more advanced machines.",
 			resource: ["lunarite"],
 			category: "inner",
 			htmlId: 'col_moon',
@@ -218,21 +206,9 @@ Game.solarData = (function () {
 			explored: false
 		},
 
-		exploreMercury: {
-			name: "Explore Mercury",
-			desc: "A small planet very close to the sun. Our scientists theorise that it might have a solid metal core.",
-			category: "inner",
-			htmlId: 'expl_mercury',
-			order: 1,
-			id: 'mercury',
-			cost: {satellite: 1, rocket: 1, rocketFuel: 10},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseMercury: {
-			name: "Explore Mercury",
-			desc: "Mercury seems to be a lifeless rock with little to no value. It is not worth colonising as the deep scan by our satellite proves that there are no valuable resources present.",
+			name: "Mercury",
+			desc: "Mercury is a lifeless rock with little to no value. It is not worth exploring on the ground as there are no valuable materials present.",
 			category: "inner",
 			htmlId: 'col_mercury',
 			order: 2,
@@ -241,21 +217,9 @@ Game.solarData = (function () {
 			explored: true
 		},
 
-		exploreVenus: {
-			name: "Venus",
-			desc: "Venus is the hottest planet in the solar system and the closest one to Earth. Scans reveal an athmosphere of greenhouse gases.  Let's send a satellite to see if we can exploit these gases.",
-			category: "inner",
-			htmlId: 'expl_venus',
-			order: 1,
-			id: 'venus',
-			cost: {satellite: 1, rocket: 1, rocketFuel: 20},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseVenus: {
 			name: "Venus",
-			desc: "We can extract methane from Venus, which allows you to build up a new form of power generation. There are even signs of lifeforms in the athmosphere, very exciting!",
+			desc: "Venus is the hottest planet in the solar system and the closest one to Earth. It is rich in greenhouse gases, contributing to its extreme heat. You can extract methane from Venus, which allows you to build up a new form of power generation.",
 			resource: ["methane"],
 			category: "inner",
 			htmlId: 'col_venus',
@@ -266,22 +230,10 @@ Game.solarData = (function () {
 			explored: false
 		},
 
-		exploreMars: {
-			name: "Mars",
-			desc: "Mars is the second closest planet to Earth and is covered in red iron oxide, also called rust. Where there's rust, there's metal, right?  Let's find out!",
-			category: "inner",
-			htmlId: 'expl_mars',
-			order: 1,
-			id: 'mars',
-			cost: {satellite: 1, rocket: 1, rocketFuel: 15},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseMars: {
 			name: "Mars",
-			desc: "You can find Titanium on the surface, but it is more common inside the crust. Titanium will finally allow us to build strong machines to process methane and silicon.",
-			resource: ["titanium"],
+			desc: "Mars is the second closest planet to Earth and is covered in red iron oxide, also called rust. You can find Titanium on the surface, but it is more common inside the crust. Titanium will allow for Methane power plants and Silicon production.",
+			resource: ["titanium", "silicon"],
 			category: "inner",
 			htmlId: 'col_mars',
 			order: 2,
@@ -291,39 +243,15 @@ Game.solarData = (function () {
 			explored: false
 		},
 
-		exploreAsteroidBelt: {
-			name: "Asteroid Belt",
-			desc: "The asteroid belt is a vast space with nearly 2 million asteroids. Out scientists hope to find rare earth metals here in a more pure form.",
-			category: "inner",
-			htmlId: 'expl_asteroidBelt',
-			order: 1,
-			id: 'asteroidBelt',
-			cost: {satellite: 6, rocket: 2, rocketFuel: 100},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseAsteroidBelt: {
 			name: "Asteroid Belt",
-			desc: "Our scientists were right! We have found pure veins of gold and silver. Due to how large the Asteroid Belt is, we'll need a few colonies to make any headway.",
+			desc: "The asteroid belt is a vast space with nearly 2 million asteroids. There you can harvest rare metals on Earth more easily, such as Gold and Silver.",
 			resource: ["gold", "silver"],
 			category: "inner",
 			htmlId: 'col_asteroidBelt',
 			order: 2,
 			id: 'asteroidBelt',
 			cost: {rocket: 4, rocketFuel: 400},
-			unlocked: false,
-			explored: false
-		},
-	
-		exploreWonderStation: {
-			name: "Wonder Station",
-			desc: "We've discovered a strange structure floating in the Asteroid Belt, it seems to be of artificial origin.  You know what to do!",
-			category: "inner",
-			htmlId: 'expl_wonderStation',
-			order: 1,
-			id: 'wonderStation',
-			cost: {satellite: 3, rocket: 1, rocketFuel: 50},
 			unlocked: false,
 			explored: false
 		},
@@ -336,18 +264,6 @@ Game.solarData = (function () {
 			order: 2,
 			id: 'wonderStation',
 			cost: {rocket: 1, rocketFuel: 500},
-			unlocked: false,
-			explored: false
-		},
-
-		exploreJupiter: {
-			name: "Jupiter",
-			desc: "The largest planet in the solar system, one of four gas giants, houses tons of tonnes of hydrogen in its surface atmosphere.",
-			category: "outer",
-			htmlId: 'expl_jupiter',
-			order: 1,
-			id: 'jupiter',
-			cost: {satellite: 3, rocket: 1, rocketFuel: 200},
 			unlocked: false,
 			explored: false
 		},
@@ -365,21 +281,9 @@ Game.solarData = (function () {
 			explored: false
 		},
 
-		exploreSaturn: {
-			name: "Saturn",
-			desc: "The second largest planet in the solar system, next to Jupiter. It is one of the few celestial bodies in our solar system to have rings and is the least dense planet in the solar system. I wonder what riches it holds.",
-			category: "outer",
-			htmlId: 'expl_saturn',
-			order: 1,
-			id: 'saturn',
-			cost: {satellite: 3, rocket: 1, rocketFuel: 400},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseSaturn: {
 			name: "Saturn",
-			desc: "We struck gold!  Figuratively at least.  We are able to harvest helium from Saturn's athmosphere.",
+			desc: "We struck gold!  Figuratively at least. The second largest planet in the solar system, next to Jupiter. It is one of the few celestial bodies in our solar system to have rings and is the least dense planet in the solar system. You can find Helium here.",
 			resource: ["helium"],
 			category: "outer",
 			htmlId: 'col_saturn',
@@ -390,21 +294,9 @@ Game.solarData = (function () {
 			explored: false
 		},
 
-		exploreUranus: {
-			name: "Uranus",
-			desc: "The planet that rotates differently from everyone else has winds up to 300 miles per hour (483kph). Its composition is much like that of the other gas giants. Exploring Uranus will let us find out if there are any useful resources to gain.",
-			category: "outer",
-			htmlId: 'expl_uranus',
-			order: 1,
-			id: 'uranus',
-			cost: {satellite: 3, rocket: 1, rocketFuel: 300},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseUranus: {
 			name: "Uranus",
-			desc: "Uranus' athmosphere is mainly composed of Hydrogen and Helium. It is not worth colonising just to get the same resources as at Saturn and Jupiter.",
+			desc: "The planet that rotates differently from everyone else has winds up to 300 miles per hour (483kph). Its composition is much like that of the other gas giants, mainly composed of Hydrogen and Helium. Because of this, it is not worth exploring to get the same resources as in Saturn and Jupiter.",
 			category: "outer",
 			htmlId: 'col_uranus',
 			order: 2,
@@ -413,21 +305,9 @@ Game.solarData = (function () {
 			explored: true
 		},
 
-		exploreNeptune: {
-			name: "Neptune",
-			desc: "Neptune has the strangest weather in the solar system. There are huge storms and winds that are more violent than any other in the solar system. These winds smell like free energy through wind power.",
-			category: "outer",
-			htmlId: 'expl_neptune',
-			order: 1,
-			id: 'neptune',
-			cost: {satellite: 6, rocket: 2, rocketFuel: 600},
-			unlocked: false,
-			explored: false
-		},
-
 		coloniseNeptune: {
 			name: "Neptune",
-			desc: "Too bad!  The only smell found on Neptune is that of rotten eggs. We already have better sources of Methane, Hydrogen and Helium.",
+			desc: "Neptune has the strangest weather in the solar system. There are huge storms and winds that are more violent than any other in the solar system. There is not much there but Methane, Hydrogen and Helium.",
 			category: "outer",
 			htmlId: 'col_neptune',
 			order: 2,
@@ -436,40 +316,15 @@ Game.solarData = (function () {
 			explored: true
 		},
 
-		explorePluto: {
-			name: "Pluto",
-			desc: "Pluto is the smallest of the widely known celestial bodies, being smaller than the moon. Classed as a dwarf planet, it orbits in the far reaches of the solar system. However, there may be more of interest on the surface than humans think.",
-			category: "outer",
-			htmlId: 'expl_pluto',
-			order: 1,
-			id: 'pluto',
-			cost: {satellite: 2, rocket: 1, rocketFuel: 1000},
-			unlocked: false,
-			explored: false
-		},
-
 		colonisePluto: {
 			name: "Pluto",
-			desc: "Ice, ice, baby!  With large quantities of ice being extremely expensive to create on Earth, it's actually cheaper to harvest it from Pluto.",
+			desc: "Ice, ice, baby!  With large quantities of ice being extremely expensive to create on Earth, it's actually cheaper to harvest it from Pluto!",
 			resource: ["ice"],
 			category: "outer",
 			htmlId: 'col_pluto',
 			order: 2,
 			id: 'pluto',
 			cost: {rocket: 1, rocketFuel: 4000},
-			unlocked: false,
-			explored: false
-		},
-
-		// Maybe onlock this after the first science T3 has been built?
-		exploreKuiperBelt: {
-			name: "Kuiper Belt",
-			desc: "If not for the strange signal our observatories are picking up, it wouldn't be worth it to explore the Kuiper Belt.",
-			category: "outer",
-			htmlId: 'expl_kuiperBelt',
-			order: 1,
-			id: 'kuiperBelt',
-			cost: {satellite: 12, rocket: 4, rocketFuel: 6000},
 			unlocked: false,
 			explored: false
 		},
@@ -483,18 +338,6 @@ Game.solarData = (function () {
 			id: 'kuiperBelt',
 			unlocked: false,
 			explored: true
-		},
-
-		exploreSolCenter: {
-			name: "Sol Scientific Center",
-			desc: "In the large asteroid belt extending beyond Pluto, you see a large purple structure with a huge glass dome on one of the asteroids. This seems worth checking out. There could be something interesting there.",
-			category: "outer",
-			htmlId: 'expl_solCenter',
-			order: 1,
-			id: 'solCenter',
-			cost: {satellite: 3, rocket: 1, rocketFuel: 1000},
-			unlocked: false,
-			explored: false
 		},
 
 		coloniseSolCenter: {

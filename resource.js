@@ -433,7 +433,6 @@ Game.resources = (function(){
                 // Nothing to be done
                 continue;
             }
-            console.log(id)
             var use = [];
             var prod = [];
             for(var value in building.resourcePerSecond){

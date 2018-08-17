@@ -1,8 +1,8 @@
 'use strict';
 if (typeof Templates == "undefined") { var Templates = {}; }
-Templates.createPage = function(cPage, cTitle, cObj) {
+Templates.solarUI = function(cPage, cTitle, cObj) {
 
-	// createPage('solar', 'Solar System BETA', Game.pages.solar)
+	// solarUI					('solar', 'Solar System BETA', Game.pages.solar)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'
@@ -135,32 +135,6 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		   '<td colspan="2" style="border:none;">',
 		   '<h2 class="default btn-link">{{name}}</h2>',
 		   '<span>{{{desc}}}</span>',
-		     '{{#if storUpgrades}}',
-		     '<br>',
-		     '<br>',
-		     '&#8227; Remaining time until&nbsp;&nbsp;<select id="'+this.page+'_{{htmlId}}_SelectStorage_limit"><option value="10">10%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="60">60%</option><option value="70">70%</option><option value="75">75%</option><option value="80">80%</option><option value="90">90%</option><option value="100" selected="selected">full</option></select>&nbsp;&nbsp;',
- 			 'storage: <b><span id="'+this.page+'_{{htmlId}}_SelectStorage_time">N/A</span></b>',
-		     '<br>',
-		     '<br>',
-		     '{{/if}}',
-		     '{{#if manualgain}}',
-			    '{{#if gainCost}}',
-			    	'<span>Converting 1 {{name}} costs <span id="'+this.page+'_{{htmlId}}_gainCost"></span>',
-			     	'<div class="gainButton">',
-				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
-				         '<span class="{{htmlId}}gainNum">Convert: {{gainNum}}</span>',
-				       '</button>',
-				       '<br>',
-				     '</div>',
-			    '{{else}}',
-				     '<div class="gainButton">',
-				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
-				         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
-				       '</button>',
-				       '<br>',
-				     '</div>',
-				'{{/if}}',
-		     '{{/if}}',
 		     '{{#if toggleable}}',
 		     '<div>',
 		       '<button type="button" id="'+this.page+'_{{htmlId}}_toggle" class="btn btn-default">',
@@ -170,18 +144,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '</div>',
 		     '{{/if}}',
 		   '</td>',
-		 '</tr>',
-		 '{{#if storUpgrades}}',
-		 '<tr class="storageUpgrade hidden">',
-		   '<td>',
-		     '<h3 class="default btn-link">Storage Upgrade</h3>',
-		     '<span>Upgrade your {{name}} storage size to <span class="{{htmlId}}nextStorage">100</span>.</span>',
-		     '<br>',
-		     '<span class="{{htmlId}}storageUpgrade_cost"></span>',
-		     '<button id="'+this.page+'_{{htmlId}}_StorageUpgrade" class="btn btn-default">Upgrade Storage</button>',
-		   '</td>',
-		 '</tr>',
-		 '{{/if}}',''].join('\n'));
+		 '</tr>',''].join('\n'));
 
 
 
@@ -198,26 +161,10 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
+		       '<br>',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-		     '<br>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
-			 '<span class="multiBuy hidden">',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
-			 '</span>',
-			 '{{#if destroyable}}',
-			 '<div style="height:5px"></div>',
-			 '<span class="destroyContainer hidden">',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_1" class="btn btn-default destroy">Destroy 1</button>',
-			   '<span class="multiBuy hidden">',
-			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_10" class="btn btn-default destroy">Destroy 10</button>',
-			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_100" class="btn btn-default destroy">Destroy 100</button>',
-			     '<button type="button" id="'+this.page+'_{{htmlId}}_destroy_10000" class="btn btn-default destroy">Nuke All</button>',
-			   '</span>',
-			 '</span>',
-			 '{{/if}}',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -235,7 +182,7 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<p class="{{htmlId}}cost"></p>',
+		       '<span class="{{htmlId}}cost"></span>',
 		     '</span>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
 		   '</td>',

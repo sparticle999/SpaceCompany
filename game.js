@@ -83,6 +83,8 @@ var Game = (function() {
 
         self.updateAutoSave(delta);
 
+        Templates.uiFunctions.refreshElements('cost', 'all');
+
         if(delta > 5) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
         }
@@ -343,16 +345,16 @@ var Game = (function() {
         // Initialise UI
         self.resourcesUI = new Templates.createPage('resources', 'Resources BETA', Game.pages.resources);
         self.resourcesUI.initialise();
-        self.techUI = new Templates.createPage('tech', 'Research BETA', Game.pages.tech);
+        self.techUI = new Templates.techUI('tech', 'Research BETA', Game.pages.tech);
         self.techUI.initialise();
-        self.solarUI = new Templates.createPage('solar', 'Solar System BETA', Game.pages.solar);
+        self.solarUI = new Templates.solarUI('solar', 'Solar System BETA', Game.pages.solar);
         self.solarUI.initialise();
         // self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
         self.enlightenmentUI.initialise();
-        self.machinesUI = new Templates.machinesUI('machines', '', 'Machines', Game.pages.machines);
+        self.machinesUI = new Templates.machinesUI('machines', 'Machines', Game.pages.machines);
         self.machinesUI.initialise();
         // All pages are created, now do the bindings
         Templates.uiFunctions.linkEvents();
