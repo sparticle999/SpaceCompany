@@ -78,7 +78,8 @@ Game.wonder = (function(){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.buildCost)){
     		data.built = true;
-    		this.unlock(data.id)
+            data.onApply();
+            Templates.uiFunctions.hide(data.id);
     		data.displayNeedsUpdate = true;
     	}
     };
@@ -87,7 +88,8 @@ Game.wonder = (function(){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.activateCost)){
     		data.activated = true;
-    		data.onActivate();
+    		data.onApply();
+            Templates.uiFunctions.hide(data.id);
     		data.displayNeedsUpdate = true;
     	}
     };
