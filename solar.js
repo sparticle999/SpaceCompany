@@ -89,7 +89,7 @@ Game.solar = (function(){
 				this.unlock(data.location[i]);
 			}
 		}
-		if(location == "wonderStation"){
+		if(data.location == "wonderStation"){
 			Game.wonder.tabUnlocked = true;
 			Templates.uiFunctions.unlock("buildPrecious");
 			Templates.uiFunctions.unlock("buildEnergetic");
@@ -98,7 +98,7 @@ Game.solar = (function(){
 			newUnlock("wonder");
 			Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 		}
-		if(location == "solCenter"){
+		if(data.location == "solCenter"){
 			Game.solCenter.tabUnlocked = true;
 			Templates.uiFunctions.show("solCenterTab");
 			newUnlock("solCenter");

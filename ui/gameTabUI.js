@@ -748,9 +748,19 @@ Templates.objectConstructor.UiFunctions = function() {
                     funct = new Function("Game.resources.upgradeStorage('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
-                 // Match (solar)_(moon)_explore
+                // Match (solar)_loc_(moon)_explore
                 case (match = getCase(id, "^(.*)_loc_(.*)_explore")).input:
                     funct = new Function("Game.solar.explore('"+match[2]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (wonder)_wonnav_(precious)_buildWonder
+                case (match = getCase(id, "^(.*)_wonnav_(.*)_buildWonder")).input:
+                    funct = new Function("Game.wonder.build('"+match[2]+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
+                // Match (wonder)_wonnav_(precious)_activateWonder
+                case (match = getCase(id, "^(.*)_wonnav_(.*)_activateWonder")).input:
+                    funct = new Function("Game.wonder.activate('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
                 // Match (machines)_(energyT1)(_de)activate_(1)
