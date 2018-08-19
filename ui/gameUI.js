@@ -383,7 +383,6 @@ Templates.createPage = function(cPage, cTitle, cObj) {
 	 * @return 	{string}      			Returns a string containing all menu rows
 	 */
 	var createPage = function(data) {
-		console.error(data)
 		// Get the categories and their order
 		var categories = Object.keys(data).sort(function(a, b) {return data[a].order > data[b].order});
 		// Loop through the catagories

@@ -394,13 +394,12 @@ Templates.objectConstructor.UiFunctions = function() {
         return true;
     }
     /**
-     * Adds a class to an element containing another class
+     * Sets a text to all elements containing a class
      * @param  {String}   setText  The text (or formatted html) to add.
      * @param  {String}   target   The class to match against
      * @return {Boolean}           True on success.
      */
     this.setClassText = function(setText, target) {
-        //console.log(setText+" - "+target)
         if (typeof setText == 'undefined') {
             console.warn("The text set to be added to '"+target+"' is undefined.")
             return false;
@@ -411,6 +410,30 @@ Templates.objectConstructor.UiFunctions = function() {
             return false;
         }
         nodes.forEach(function(node) { node.innerHTML = setText; })
+        return true;
+    }
+
+    /**
+     * Sets a style to all elements containing a class
+     * @param  {String}   setText  The text (or formatted html) to add.
+     * @param  {String}   target   The class to match against
+     * @return {Boolean}           True on success.
+     */
+    this.setClassStyle = function(value, property, target) {
+        if (typeof value == 'undefined') {
+            console.warn("The text set to be added to '"+target+"' is undefined.")
+            return false;
+        }
+        if (typeof property == 'undefined') {
+            console.warn("The text set to be added to '"+target+"' is undefined.")
+            return false;
+        }
+        var nodes = document.querySelectorAll('.'+target);
+        if (nodes == 'undefined') {
+            console.warn("Trying to add '"+add+"' to all elements with the class: '"+to+"', but couldn't find any.")
+            return false;
+        }
+        nodes.forEach(function(node) { node.style[property] = value; })
         return true;
     }
     /**
@@ -581,6 +604,11 @@ Templates.objectConstructor.UiFunctions = function() {
                         }
                     } else if(obj.category == "inner" || obj.category == "outer"){
                         if("solarTab_solar_" + obj.id + "_ne" == Game.lastNav){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
+                    } else if(typeof obj.activated != "undefined"){
+                        if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
+                            if(act != "cost")
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
                     } else {

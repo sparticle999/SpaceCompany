@@ -75,6 +75,7 @@ Game.settings = (function(){
                     // Do general formatting
                     var input = object.perSecond;
                     input = Game.settings.format(input, 1).toString();
+                    
                     // If the storage is full, don't colour persecond green or red
                     if (object.current >= object.capacity) { return input; }
                     // input is lower than 0, apply red and maybe bold
@@ -139,6 +140,20 @@ Game.settings = (function(){
         ////////////////////////////
         } else if (action == 'current') {
             switch(key) {
+                case 'science':
+                    var input = object.current;
+                    if(object.current < 100){
+                        input = Game.settings.format(input, 1).toString();
+                    } else {
+                        input = Game.settings.format(input, 0).toString();
+                    }
+                    if (object.current >= object.capacity) {
+                        input = input.fontcolor('green');
+                    } else if (object.current < 1) {
+                        if (Game.settings.entries.boldEnabled) {input.bold();}
+                        input.fontcolor('red');
+                    }
+                    return input;
                 default:
                     var input = object.current;
                     input = Game.settings.format(input, 0).toString();
@@ -230,6 +245,17 @@ Game.settings = (function(){
                 default:
                     var input = object.gainNum;
                     input = Game.settings.format(input, 0).toString();
+                    return input;
+            }
+
+        /////////////////////////////////////
+        // Progress Bar Percent of Wonders //
+        /////////////////////////////////////
+        } else if (action == 'progress') {
+            switch(key) {
+                default:
+                    var input = Game.wonder.getProgress(object.id);
+                    input = Game.settings.format(input, 2).toString();
                     return input;
             }
         }

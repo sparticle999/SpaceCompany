@@ -1,8 +1,8 @@
 'use strict';
 if (typeof Templates == "undefined") { var Templates = {}; }
-Templates.solarUI = function(cPage, cTitle, cObj) {
+Templates.wonderUI = function(cPage, cTitle, cObj) {
 
-	// solarUI					('solar', 'Solar System BETA', Game.pages.solar)
+	// wonderUI					('wonder', 'Solar System BETA', Game.pages.wonder)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'
@@ -55,7 +55,7 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 	 * Formats a header menu row
 	 * {{category}} - category: energy, rocketFuel
 	 * {{title}} - Science, Energy
-	 * Merges into solarTab_nav
+	 * Merges into wonderTab_nav
 	 */
 	var TemplateMenuHeader = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{category}}_collapse" class="hidden">',
@@ -67,7 +67,7 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 	 * {{htmlId}} - energy, rocketFuel
 	 * {{name}} - Energy, Rocket Fuel
 	 * {{category}} - category of this item - earth, inner
-	 * Merges into solarTab_nav
+	 * Merges into wonderTab_nav
 	 */
 	var TemplateResourceMenuItem = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
@@ -93,7 +93,7 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 	 * Formats a menu row of an item that has no ps or storage
 	 * {{htmlId}} - moon, rocket
 	 * {{name}} - The Moon, Space Rocket
-	 * Merges into solarTab_nav
+	 * Merges into wonderTab_nav
 	 */
 	var TemplateNonResourceMenuItem = Handlebars.compile(
 		['<tr id="'+this.page+'Tab_{{htmlId}}_ne" href="#'+this.page+'Tab_{{htmlId}}_nec" class="'+this.page+'Tab_{{category}}_collapse hidden" aria-controls="'+this.page+'Tab_{{htmlId}}_nec" role="tab" data-toggle="tab" style="height: 60px;" aria-expanded="true">',
@@ -155,7 +155,7 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 	 * {{name}} 	- full name of the building
 	 * Attaches onto this.page+'Tab_{{htmlId}}_netc (resourceTab_energy_netc)
 	 */
-	var TemplatePaneBuilding = Handlebars.compile(
+	var TemplatePaneBuild = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
 		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
@@ -165,7 +165,12 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
 		     '<br>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buildWonder" class="btn btn-default">Build {{name}}</button>',
+		   	 '<br><br><div class="progress">',
+				'<div class="{{htmlId}}progress progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">',
+					'0%',
+				'</div>',
+			 '</div>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -176,18 +181,22 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 	 * {{htmlId}} 	- moon
 	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
 	 */
-	var TemplatePaneLocation = Handlebars.compile(
+	var TemplatePaneActivate = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		   	'{{#if cost}}',
-		     '<h3 class="default btn-link">Exploration</h3>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
-		       '<span class="{{htmlId}}cost"></span>',
+		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_explore" class="btn btn-default">Explore {{name}}</button>',
-		   	'{{/if}}',
+		     '<br>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_activateWonder" class="btn btn-default">Activate {{name}}</button>',
+		   	 '<br><br><div class="progress">',
+				'<div class="{{htmlId}}progress progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">',
+					'0%',
+				'</div>',
+			 '</div>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -205,22 +214,16 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 		var html = ""
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
-			if(data.category == "inner" || data.category == "outer"){
-				html += TemplatePaneLocation(data);
+			if(data.category == "wonderStation"){
+				html += TemplatePaneBuild(data);
 			} else {
-				html += TemplatePaneBuilding(data);
+				html += TemplatePaneActivate(data);
 			}
 			// At this point we know the page, name of the object and its type.
 			// This is enough information for the UI to know which object this is.
-			if ('active' in data) {
-				if (!Templates.uiFunctions.registerElement(data, 'active')) {
+			if ('progress' in data) {
+				if (!Templates.uiFunctions.registerElement(data, 'progress')) {
 					console.warn("Called with action: 'active' from 'buildMachineCost', while looping over:");
-					console.warn(buildingData)
-				}
-			}
-			if ('current' in data) {
-				if (!Templates.uiFunctions.registerElement(data, 'current')) {
-					console.warn("Called with action: 'current' from 'buildMachineCost', while looping over:");
 					console.warn(buildingData)
 				}
 			}
@@ -344,6 +347,7 @@ Templates.solarUI = function(cPage, cTitle, cObj) {
 					html += createMenuItem(data[cat].items[subitem])
 					if ('items' in data[cat].items[subitem]) {
 						// Dispatch this item to the function creating the pane
+
 						createPane(data[cat].items[subitem]);
 					// No .items in data[cat].items[subitems]
 					} else {

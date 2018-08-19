@@ -84,6 +84,7 @@ var Game = (function() {
         self.updateAutoSave(delta);
 
         Templates.uiFunctions.refreshElements('cost', 'all');
+        Templates.uiFunctions.refreshElements('progress', 'all');
 
         if(delta > 5) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
@@ -282,7 +283,12 @@ var Game = (function() {
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
         this.combineGameObjects(Game.solarData, 'category', Game.solarCategoryData, 'items');
-        this.combineGameObjects(Game.solar.entries, 'id', Game.solarData, 'items')
+        this.combineGameObjects(Game.solar.entries, 'id', Game.solarData, 'items');
+
+        // Link Game.wonderCategoryData page to Game.pages
+        this.combineGameObjects(Game.wonderCategoryData, 'page', Game.pages);
+        this.combineGameObjects(Game.wonderNavData, 'category', Game.wonderCategoryData, 'items');
+        this.combineGameObjects(Game.wonder.entries, 'nav', Game.wonderNavData, 'items');
 
         // Link Game.machinescategoryData page to Game.pages
         this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages, '');
@@ -338,12 +344,14 @@ var Game = (function() {
         // Create the collector Object; page -> categories -> items
         self.combineAllGameObjects()
         // Initialise UI
-        self.resourcesUI = new Templates.createPage('resources', 'Resources BETA', Game.pages.resources);
+        self.resourcesUI = new Templates.createPage('resources', 'Resources', Game.pages.resources);
         self.resourcesUI.initialise();
-        self.techUI = new Templates.techUI('tech', 'Research BETA', Game.pages.tech);
+        self.techUI = new Templates.techUI('tech', 'Research', Game.pages.tech);
         self.techUI.initialise();
-        self.solarUI = new Templates.solarUI('solar', 'Solar System BETA', Game.pages.solar);
+        self.solarUI = new Templates.solarUI('solar', 'Solar System', Game.pages.solar);
         self.solarUI.initialise();
+        self.wonderUI = new Templates.wonderUI('wonder', 'Wonders BETA', Game.pages.wonder);
+        self.wonderUI.initialise();
         // self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
         // self.solCenter.initialise();
         self.interstellarUI.initialise();
@@ -403,9 +411,9 @@ var Game = (function() {
         var logoElement = $('#loadLogo');
         var opacity = logoElement.css('opacity');
         if(opacity >= 0.9) {
-            logoElement.fadeTo(1000, .25, function() {Game.loadAnimation(Game, 100); console.error("out")});
+            logoElement.fadeTo(1000, .25, function() {Game.loadAnimation(Game, 100);});
         } else if (opacity <= 0.3) {
-            logoElement.fadeTo(1000, .95, function() {Game.loadAnimation(Game, 100); console.error("in")});
+            logoElement.fadeTo(1000, .95, function() {Game.loadAnimation(Game, 100);});
         }
     };
 

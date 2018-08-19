@@ -1,5 +1,17 @@
 Game.wonder = (function(){
 
+    function UpdateProgress(id) {
+        var id = id;
+        this.update = function() {
+            var obj = Game.wonder.entries[id];
+            var value = Game.settings.doFormat('progress', obj);
+            Templates.uiFunctions.setClassText(value + "%", obj.htmlId+'progress');
+            Templates.uiFunctions.setClassStyle(value + "%", "width", obj.htmlId+'progress');
+            obj.progress = value;
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.dataVersion = 1;
@@ -19,8 +31,10 @@ Game.wonder = (function(){
             this.entries[id] = $.extend({}, data, {
                 id: id,
                 htmlId: 'wonnav_' + id,
+                progress: 0,
                 activated: false,
-                displayNeedsUpdate: true
+                displayNeedsUpdate: true,
+                ui_progress: new UpdateProgress(id),
             });
         }
         console.debug("Loaded " + this.navCount + " Wonder Navs");
@@ -108,7 +122,8 @@ Game.wonder = (function(){
         }
     };
 
-    instance.getProgress = function(data){
+    instance.getProgress = function(id){
+        var data = this.entries[id].cost;
     	var current = 0;
     	var total = 0;
     	var res = Game.resources.entries;
@@ -116,7 +131,7 @@ Game.wonder = (function(){
     		current += Math.min(data[resource], res[resource].current);
     		total += data[resource];
     	}
-      	var progress = Math.floor(current/total);
+      	var progress = Math.floor(100*current/total);
     	if(progress > 100) {progress = 100;}
     	return progress;
     };
@@ -128,14 +143,3 @@ Game.wonder = (function(){
 
     return instance;
 }());
-
-// function updateProgressBar(elementId, percentage) {
-//     if(percentage <= 100){
-//         document.getElementById(elementId).innerHTML = Game.settings.format(percentage,2) + "%";
-//         document.getElementById(elementId).style.width = percentage + "%";
-//     }
-//     else{
-//         document.getElementById(elementId).innerHTML = "100%";
-//         document.getElementById(elementId).style.width = 100 + "%";
-//     }
-// }
