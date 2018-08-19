@@ -90,7 +90,7 @@ Game.wonder = (function(){
 
     instance.build = function(id){
     	var data = this.entries[id];
-    	if(this.checkCost(data, data.buildCost)){
+    	if(this.checkCost(data, data.cost)){
     		data.built = true;
             data.onApply();
             Templates.uiFunctions.hide(data.id);
@@ -100,7 +100,7 @@ Game.wonder = (function(){
 
     instance.activate = function(id){
     	var data = this.entries[id];
-    	if(this.checkCost(data, data.activateCost)){
+    	if(this.checkCost(data, data.cost)){
     		data.activated = true;
     		data.onApply();
             Templates.uiFunctions.hide(data.id);
