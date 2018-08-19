@@ -154,6 +154,20 @@ Game.settings = (function(){
                         input.fontcolor('red');
                     }
                     return input;
+                case 'rocketFuel':
+                    var input = object.current;
+                    if(object.current < 100){
+                        input = Game.settings.format(input, 1).toString();
+                    } else {
+                        input = Game.settings.format(input, 0).toString();
+                    }
+                    if (object.current >= object.capacity) {
+                        input = input.fontcolor('green');
+                    } else if (object.current < 1) {
+                        if (Game.settings.entries.boldEnabled) {input.bold();}
+                        input.fontcolor('red');
+                    }
+                    return input;
                 default:
                     var input = object.current;
                     input = Game.settings.format(input, 0).toString();

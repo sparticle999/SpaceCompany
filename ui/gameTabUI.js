@@ -608,7 +608,6 @@ Templates.objectConstructor.UiFunctions = function() {
                         }
                     } else if(typeof obj.activated != "undefined"){
                         if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
-                            if(act != "cost")
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
                     } else {

@@ -12,6 +12,19 @@ Game.wonder = (function(){
         }
     }
 
+    function UpdateCost(id) {
+        var previous = new Date();
+        var id = id;
+        this.update = function() {
+            var obj = Game.wonder.entries[id];
+            if (new Date() - previous < 250) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = new Date();
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.dataVersion = 1;
@@ -35,6 +48,7 @@ Game.wonder = (function(){
                 activated: false,
                 displayNeedsUpdate: true,
                 ui_progress: new UpdateProgress(id),
+                ui_cost: new UpdateCost(id),
             });
         }
         console.debug("Loaded " + this.navCount + " Wonder Navs");
