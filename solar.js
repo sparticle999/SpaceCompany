@@ -47,7 +47,6 @@ Game.solar = (function(){
     	data.solar = { v: this.dataVersion, i: {}};
         for(var key in this.entries) {
             data.solar.i[key] = {};
-            data.solar.i[key].unlocked = this.entries[key].unlocked;
             data.solar.i[key].explored = this.entries[key].explored;
         }
     };
@@ -72,13 +71,13 @@ Game.solar = (function(){
     	var data = this.entries[id];
     	if(Game.resources.entries.rocketFuel.current >= data.cost.rocketFuel && !data.explored){
     		Game.resources.entries.rocketFuel.current -= data.cost.rocketFuel;
-    		data.explored = true;
     		this.applyExplore(id);
     	}
     };
 
     instance.applyExplore = function(id){
     	var data = this.entries[id];
+    	data.explored = true;
     	if(data.resource){
 			for(var i = 0; i < data.resource.length; i++){
 				Game.buildings.unlock(data.resource[i] + "T1");
@@ -100,7 +99,7 @@ Game.solar = (function(){
 		}
 		if(data.location == "solCenter"){
 			Game.solCenter.tabUnlocked = true;
-			Templates.uiFunctions.show("solCenterTab");
+			//Templates.uiFunctions.show("solCenterTab");
 			newUnlock("solCenter");
 			Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 		}

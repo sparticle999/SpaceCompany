@@ -124,16 +124,36 @@ Game.buildings = (function(){
                 for(var id in data.buildings.i) {
                     if(this.entries[id]) {
                         this.constructBuildings(id, data.buildings.i[id]);
+                        this.entries[id].active = data.buildings.i[id];
+                        if(this.entries[id].current > 0){
+                            if(id == "rocketT1"){
+                                Game.buildings.entries.rocketT1.onApply();
+                            } else if(id == "rocketT2"){
+                                Game.buildings.entries.rocketT2.onApply();
+                            } else {
+                                Templates.uiFunctions.unlock(id);
+                            }
+                        }
                     }
                 }
             } else if(data.buildings.v === 2){
                 for(var id in data.buildings.i) {
                     if(this.entries[id]) {
                         this.constructBuildings(id, data.buildings.i[id].current);
-                        this.entries[id].active = data.buildings.i[id].active;
+                        this.entries[id].active = data.buildings.i[id].active || data.buildings.i[id].current;
+                        if(this.entries[id].current > 0){
+                            if(id == "rocketT1"){
+                                Game.buildings.entries.rocketT1.onApply();
+                            } else if(id == "rocketT2"){
+                                Game.buildings.entries.rocketT2.onApply();
+                            } else {
+                                Templates.uiFunctions.unlock(id);
+                            }
+                        }
                     }
                 }
             }
+            console.error("We don't need any .unlock(), as everything is unlocked by a tech or wonder")
         }
         // Update the cost of buildings
         Object.keys(Game.buildings.entries).forEach(function(building) {

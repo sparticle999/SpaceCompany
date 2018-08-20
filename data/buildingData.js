@@ -1604,7 +1604,8 @@ Game.buildingData = (function () {
         order: 2,
         unlocked: true,
         onApply: function() {
-            Game.resources.entries.rocket.current += 1;
+            Game.resources.entries.rocket.current = 1;
+            Game.buildings.entries.rocketT1.current = 1;
             Templates.uiFunctions.unlock("rocketT2");
             Templates.uiFunctions.hide("rocketT1");
         }
@@ -1622,6 +1623,7 @@ Game.buildingData = (function () {
         order: 3,
         unlocked: false,
         onApply: function() {
+            Game.buildings.entries.rocketT2.current = 1;
             Templates.uiFunctions.hide("rocketT2");
             Templates.uiFunctions.hideCategory("spacecraft", "solarTab");
             Templates.uiFunctions.unlock("moon");

@@ -217,7 +217,7 @@ Game.settings = (function(){
                     var cost = object.cost;
                     var result = '<dl style="margin-bottom:0px;"><table><tr><td><dt>Cost:</dt>';
                     Object.keys(cost).forEach (function(c) {
-                        if (cost[c] > Game.resources.entries[c].capacity) {
+                        if (cost[c] > Game.resources.entries[c].capacity && c != "science") {
                             time = "Insufficient storage".bold();
                         } else {
                             var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
