@@ -524,6 +524,7 @@ Game.resources = (function(){
     instance.unlock = function(id) {
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
+        Templates.uiFunctions.unlock(id + "T1");
         newUnlock('resources');
     };
 

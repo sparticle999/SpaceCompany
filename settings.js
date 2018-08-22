@@ -217,14 +217,22 @@ Game.settings = (function(){
                     var cost = object.cost;
                     var result = '<dl style="margin-bottom:0px;"><table><tr><td><dt>Cost:</dt>';
                     Object.keys(cost).forEach (function(c) {
-                        if (cost[c] > Game.resources.entries[c].capacity && c != "science") {
-                            time = "Insufficient storage".bold();
+                        if(c == "segment"){
+                            if(Game.solCenter.entries.dyson.items.segment.current >= cost[c]){
+                                var time = "Done!".bold()
+                            } else {
+                                var time = "~~";
+                            }
+                            result += "<dd>&#8227; Dyson Segments: "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"
                         } else {
-                            var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
-                            time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                            if (cost[c] > Game.resources.entries[c].capacity && c != "science" && c != "rocketFuel") {
+                                var time = "Insufficient storage".bold();
+                            } else {
+                                var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
+                                time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                            }
+                            result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
                         }
-                        result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
-
                     });
                     cost = object.resourcePerSecond;
                     if (!('resourcePerSecond' in object)) {return result+'<dl>';}

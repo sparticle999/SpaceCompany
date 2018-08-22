@@ -1,5 +1,33 @@
 Game.solCenter = (function(){
 
+    function UpdateCost(id) {
+        var previous = new Date();
+        var id = id;
+        this.update = function() {
+            var obj = Game.solCenter.entries[id];
+            if (new Date() - previous < 250) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = new Date();
+            return true;
+        }
+    }
+
+    function UpdateDysonCost(id) {
+        var previous = new Date();
+        var id = id;
+        this.update = function() {
+            var obj = Game.solCenter.entries.dyson.items[id];
+            if (new Date() - previous < 250) {return;}
+            var costVal = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(costVal, obj.htmlId+'cost');
+            var currentVal = Game.settings.doFormat('current', obj);
+            Templates.uiFunctions.setClassText(currentVal, obj.htmlId+'current');
+            previous = new Date();
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.dataVersion = 1;
@@ -9,16 +37,28 @@ Game.solCenter = (function(){
     instance.emcAmount = "Max";
 
     instance.initialise = function(){
-    	for(var id in Game.solData){
-    		var data = Game.solData[id];
+    	for(var id in Game.solCenterData){
+    		var data = Game.solCenterData[id];
     		this.entries[id] = $.extend({}, data, {
 				id: id,
-				htmlId: 'solCtr' + id,
+				htmlId: 'solCtr_' + id,
 				unlocked: false,
 				researched: false,
 				displayNeedsUpdate: true,
+                ui_cost: new UpdateCost(id),
 			});
     	}
+        for(var id in Game.dysonData){
+            var data = Game.dysonData[id];
+            this.entries.dyson.items[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'solCtr_' + id,
+                current: 0,
+                max: -1,
+                displayNeedsUpdate: true,
+                ui_cost: new UpdateDysonCost(id),
+            });
+        }
     };
 
     instance.update = function(delta){
@@ -61,35 +101,74 @@ Game.solCenter = (function(){
 
     instance.research = function(id){
     	var data = this.entries[id];
-    	if(this.checkCost(data.cost)){
+    	if(this.checkCost(data)){
     		data.researched = true;
     		this.entries[id].onApply();
+            Templates.uiFunctions.hide(data.id)
     		data.displayNeedsUpdate = true;
     	}
     };
+
+    instance.buyDyson = function(id, count){
+        var data = this.entries.dyson.items[id];
+        if(data.id != "segment"){
+            var loopNum = count - data.current;
+        } else {
+            loopNum = count;
+        }
+        //console.error(id, count, data.current, this.checkCost(data), loopNum);
+        for(var i = 0; i < loopNum; i++){
+            if(this.checkCost(data)){
+                for(var resource in data.cost){
+                    if(resource == "segment"){
+                        if(this.entries.dyson.items[resource].current >= data.cost[resource]){
+                            this.entries.dyson.items[resource].current -= data.cost[resource]
+                        }
+                    } else if(resource == "rocketFuel"){
+                        var res = Game.resources.getResourceData(resource);
+                        res.current -= data.cost[resource];
+                    } else {
+                        var res = Game.resources.getResourceData(resource);
+                        res.current -= this.calcCost(data, resource, 1.02)
+                    }
+                }
+                data.current += 1;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 
     instance.calcCost = function(data, resource, power){
         return Math.floor(data.cost[resource.toString()] * Math.pow((power || 1.1),(data.current || 0)));
     };
 
     instance.checkCost = function(data){
+        if (typeof data === 'undefined') {return false;}
         var power = 1.1;
-        if(data.id == "dyson"){
+        if(data.id == "segment"){
             power = 1.02;
         }
-    	if (typeof data === 'undefined') {return false;}
         var resourcePass = 0;
         for(var resource in data.cost){
-            var res = Game.resources.getResourceData(resource);
-            if(res.current >= this.calcCost(data, resource, power)){
-                resourcePass += 1;
+            if(resource == "segment"){
+                if(this.entries.dyson.items[resource].current >= data.cost[resource]){
+                    resourcePass += 1;
+                }
+            } else if(resource == "rocketFuel"){
+                var res = Game.resources.getResourceData(resource);
+                if(res.current >= data.cost[resource]){
+                    resourcePass += 1;
+                }
+            } else {
+                var res = Game.resources.getResourceData(resource);
+                if(res.current >= this.calcCost(data, resource, power)){
+                    resourcePass += 1;
+                }
             }
         }
         if(resourcePass === Object.keys(data.cost).length){
-            for(var resource in data.cost){
-                var res = Game.resources.getResourceData(resource);
-                res.current -= this.calcCost(data, resource, power);
-            }
             return true;
         } else {
             return false;
@@ -165,6 +244,7 @@ Game.solCenter = (function(){
 
     instance.unlock = function(id){
     	this.entries[id].unlocked = true;
+        Templates.uiFunctions.unlock(id);
     	this.entries[id].displayNeedsUpdate = true;
     };
 

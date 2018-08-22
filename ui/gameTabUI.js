@@ -610,6 +610,10 @@ Templates.objectConstructor.UiFunctions = function() {
                         if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                         }
+                    } else if(obj.category == "alienTechnology"){
+                        if("solCenterTab_solCtr_" + obj.id + "_ne" == Game.lastNav || "solCenterTab_solCtr_" + obj.nav + "_ne" == Game.lastNav){
+                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                        }
                     } else {
                         if(obj.unlocked){
                             if ('ui_'+act in obj) { obj['ui_'+act].update(); }
@@ -633,7 +637,7 @@ Templates.objectConstructor.UiFunctions = function() {
             typeof object[action] == 'undefined' || 
             typeof object.id == 'undefined') {
             console.warn("An invalid object, or object with undefined id/htmlId/action was trying to get registered to perform: "+action+".")
-            console.warn(object);
+            console.warn(object, object.htmlId, object.id, object[action]);
             return false;
         }
         action = action.toLowerCase();
@@ -721,7 +725,13 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(resbld)_(energyT1)_buy_(1)
                 case (match = getCase(id, "^(.*)_(.*)_(.*)_buy_(.*)$")).input:
-                    if (match[1]=='tech' && match[2]=='tec') {
+                    if (match[1]=='solCenter' && match[2]=='solCtr') {
+                        if(match[4] == "tech"){
+                            funct = new Function("Game.solCenter.research('"+match[3]+"')");
+                        } else {
+                            funct = new Function("Game.solCenter.buyDyson('"+match[3]+"', "+parseInt(match[4])+")");
+                        }
+                    } else if (match[1]=='tech' && match[2]=='tec') {
                         funct = new Function("Game.tech.buyTech('"+match[3]+"', "+parseInt(match[4])+")");
                     } else {
                         funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");

@@ -290,6 +290,11 @@ var Game = (function() {
         this.combineGameObjects(Game.wonderNavData, 'category', Game.wonderCategoryData, 'items');
         this.combineGameObjects(Game.wonder.entries, 'nav', Game.wonderNavData, 'items');
 
+        // Link Game.solCenterCategoryData page to Game.pages
+        this.combineGameObjects(Game.solCenterCategoryData, 'page', Game.pages);
+        this.combineGameObjects(Game.solCenterData, 'category', Game.solCenterCategoryData, 'items');
+        this.combineGameObjects(Game.solCenter.entries, 'id', Game.solCenterData, 'items');
+
         // Link Game.machinescategoryData page to Game.pages
         this.combineGameObjects(Game.machinesCategoryData, 'page', Game.pages, '');
         this.combineGameObjects(Game.machinesData, 'category', Game.machinesCategoryData, 'items');
@@ -352,8 +357,8 @@ var Game = (function() {
         self.solarUI.initialise();
         self.wonderUI = new Templates.wonderUI('wonder', 'Wonders BETA', Game.pages.wonder);
         self.wonderUI.initialise();
-        // self.solCenter = new Templates.createPage('solCenter', 'Sol Center', Game.pages.solCenter);
-        // self.solCenter.initialise();
+        self.solCenterUI = new Templates.solCenterUI('solCenter', 'Sol Center BETA', Game.pages.solCenter);
+        self.solCenterUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();
         self.enlightenmentUI.initialise();
