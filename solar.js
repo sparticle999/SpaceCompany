@@ -99,7 +99,10 @@ Game.solar = (function(){
 		}
 		if(id == "solCenter"){
 			Game.solCenter.tabUnlocked = true;
-			Templates.uiFunctions.show("solCenterTab");
+			Templates.uiFunctions.unlock("plasmaTech");
+			Templates.uiFunctions.unlock("dyson");
+			Templates.uiFunctions.unlock("emc");
+			Templates.uiFunctions.unlock("nanoswarm");
 			newUnlock("solCenter");
 			Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 		}
