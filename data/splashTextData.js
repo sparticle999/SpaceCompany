@@ -121,4 +121,4 @@ if(currentDate.indexOf("Sep 12") !== -1){
 if(currentDate.indexOf("Dec 25") !== -1){
 	splashText = "Merry Christmas!";
 }
-document.getElementById("splashText").innerHTML = splashText;
+document.getElementById("splashText").textContent = splashText;

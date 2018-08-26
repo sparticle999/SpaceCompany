@@ -753,14 +753,14 @@ Game.interstellarUI = (function(){
         if(data.built == true){
             var status = document.getElementById('roc_' + data.id + 'Built');
             document.getElementById("interRocketBuilt").className = "green";
-            document.getElementById("interRocketBuilt").innerHTML = "Built";
+            document.getElementById("interRocketBuilt").textContent = "Built";
             for(var id in this.rocketPartEntries){
                 var partData = Game.interstellar.rocketParts.entries[id];
                 if(partData.entryName == "shield" || "engine" || "aero"){
                     document.getElementById("rocpart_" + partData.entryName).className = "hidden";
                 }
             }
-            status.innerHTML = "Built";
+            status.textContent = "Built";
             status.className = "green";
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();

@@ -312,13 +312,7 @@ Game.settings = (function(){
     };
 
     instance.updateCompanyName = function(){
-        document.getElementById("companyName").innerHTML = 
-            companyName //Escape unsafe HTML characters in companyName to prevent XXS
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#x27;");
+      document.getElementById("companyName").textContent = companyName;
     }
 
     return instance;

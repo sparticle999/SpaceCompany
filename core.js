@@ -1001,7 +1001,7 @@ function refreshResources(){
 		}
 	}
 	for(var i=0; i<activated.length; i++){
-		document.getElementById(activated[i] + "Activation").innerHTML = "Activated";
+		document.getElementById(activated[i] + "Activation").textContent = "Activated";
 		document.getElementById(activated[i] + "Activation").className += " green";
 	}
 	if(techUnlocked === true){
