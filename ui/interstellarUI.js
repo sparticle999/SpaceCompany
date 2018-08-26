@@ -490,11 +490,23 @@ Game.interstellarUI = (function(){
         }
         
 
+        if (this._starProducers == null) {
+            this._starProducers = {};
+            for(var i = 0; i < resources.length; i++){
+                var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
+                var elems = [];
+                for(var j = 0; j < updateList.length; j++){
+                    elems.push(updateList[j]);
+                }
+                this._starProducers[resources[i]] = elems;
+            }
+        }
         for(var i = 0; i < resources.length; i++){
-            var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
             var perSec = window[resources[i] + "ps"];
-            for(var j = 0; j < updateList.length; j++){
-                updateList[j].innerHTML = Game.settings.format(perSec/4);
+            var perSecText = Game.settings.format(perSec/4);
+            var elems = this._starProducers[resources[i]];
+            for(var j = 0; j < elems.length; j++){
+                elems[j].textContent = perSecText;
             }            
         }
         
