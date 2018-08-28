@@ -150,18 +150,18 @@ function setTimeUntilDisplayTest(targetLimitType, targetLimitTime, current, max,
 
 	if(value > 0) {
 		var formattedTimeTest = Game.utils.getFullTimeDisplay(value);
-		targetTimeElement.text(formattedTimeTest);
+		targetTimeElement.setText(formattedTimeTest);
 
 		if(isDraining){
-			targetTypeElement.text('empty');
+			targetTypeElement.setText('empty');
 			targetTimeElement.addClass('red');
 		} else {
-			targetTypeElement.text('full');
+			targetTypeElement.setText('full');
 			targetTimeElement.removeClass('red');
 		}
 	} else {
-		targetTypeElement.text('full');
-		targetTimeElement.text('N/A');
+		targetTypeElement.setText('full');
+		targetTimeElement.setText('N/A');
 	}
 }
 

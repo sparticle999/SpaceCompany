@@ -29,6 +29,18 @@ $.fn.textWidth = function(text, font) {
     return $.fn.textWidth.fakeEl.width();
 };
 
+$.fn.setText = function(text) {
+    if (this.length != 1 || this[0].nodeType != 1) {
+        return this.text(text);
+    }
+    var children = this[0].childNodes;
+    if (children.length != 1 || children[0].nodeType != 3) {
+        return this.text(text);
+    }
+    children[0].nodeValue = text;
+    return this;
+}
+
 Game.utils = (function(){
 
     var instance = {};

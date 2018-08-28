@@ -392,7 +392,7 @@ Game.interstellarUI = (function(){
                 if(Game.interstellar.comms.entries.IRS.count + Game.interstellar.comms.entries.astroBreakthrough.count*5 >= data.distance){
                     document.getElementById('star_' + id).className = "";
                 }
-                $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
+                $('#star_' + id + 'Cost').setText(Game.settings.format(data.distance*10000));
                 continue;
             }
             if(data.displayNeedsUpdate == false){
