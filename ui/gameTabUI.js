@@ -623,8 +623,6 @@ Templates.objectConstructor.UiFunctions = function() {
                     } else {
                         if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                     }
-                    
-                    
                 }          
             })
         })

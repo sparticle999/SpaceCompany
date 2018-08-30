@@ -278,7 +278,7 @@ var Game = (function() {
         // Link Game.techCategoryData page to Game.pages
         this.combineGameObjects(Game.techCategoryData, 'page', Game.pages)
         // Link Game.techData catgory to Game.techCatgoryData.technology items
-        this.combineGameObjects(Game.techData, 'category', Game.techCategoryData.research.items, 'items')
+        this.combineGameObjects(Game.tech.entries, 'category', Game.techCategoryData.research.items, 'items')
 
         // Link Game.solarCategoryData page to Game.pages
         this.combineGameObjects(Game.solarCategoryData, 'page', Game.pages);
@@ -389,7 +389,6 @@ var Game = (function() {
 
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
-        self.logoAnimating = false;
         console.log("Initialisation Complete");
         Templates.uiFunctions.unlock('metalT1');
         Templates.uiFunctions.unlock('woodT1');
@@ -397,6 +396,7 @@ var Game = (function() {
         document.getElementById(self.lastTab).className = "active";
         document.getElementById(self.lastTab + '_pane').className = "tab-pane fade in active";
         document.getElementById(self.lastNav + 'c').className = "tab-pane fade active in";
+        self.logoAnimating = false;
     };
 
     instance.addCredits = function(data){

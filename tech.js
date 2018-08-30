@@ -18,15 +18,13 @@ Game.tech = (function(){
         var id = id;
         this.update = function() {
             var obj = Game.tech.entries[id];
-            if (new Date() - previous < 250) {return;}
+            if (new Date() - previous < 250 || obj.current == obj.maxLevel || !obj.unlocked) {return;}
             var value = Game.settings.doFormat('cost', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
             previous = new Date();
             return true;
         }
     }
-
-
 
     var instance = {};
 
@@ -37,26 +35,15 @@ Game.tech = (function(){
 
     instance.initialise = function() {
         for(var id in Game.techData) {
-            this.entries[id] = Game.techData[id];
+            var data = Game.techData[id];
+            this.entries[id]  = $.extend({}, data, {
+                id: id,
+                htmlId: 'tec_'+id,
+                ui_current: new UpdateCurrent(id),
+                ui_cost: new UpdateCost(id),
+            });
             this.techTypeCount++;
-            Game.techData[id].htmlId = 'tec_'+id;
-            Game.techData[id].id = id;
-            this.entries[id].ui_current = new UpdateCurrent(id);
-            this.entries[id].ui_cost = new UpdateCost(id);
         }
-        console.debug("Loaded " + this.techTypeCount + " Tech Types");
-    };
-
-
-
-    instance.reset = function() {
-        for (var id in Game.techData) {
-            var data = this.initTech(id);
-            this.entries[id] = data;
-
-            Game.techUI.replaceTech(data);
-        }
-        refreshResearches();
         console.debug("Loaded " + this.techTypeCount + " Tech Types");
     };
 
@@ -159,6 +146,7 @@ Game.tech = (function(){
                 if (typeof data.tech.i[id].current !== 'undefined' && data.tech.i[id].current > 0) {
                     // unlock the tech that this tech unlocks
                     this.unlockNewTechs(id);
+                    this.hideIfMax(id);
                 }
             }
         }
