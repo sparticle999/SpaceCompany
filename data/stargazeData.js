@@ -374,6 +374,24 @@ Game.rebirthData = (function(){
 		opinion: 17,
 		tier: "advanced",
 		onApply: function(){
+			Game.buildings.unlockStorage("plasmaStorageT3");
+		},
+		remove: function(){
+			Templates.uiFunctions.hide("plasmaStorageT3");
+	    	Game.buildings.storageEntries.plasmaStorageT3.current = 0;
+	    },
+		unlocked: true,
+		achieved: false
+	};
+
+	instance.T3PSU = {
+		name: "Tier 3 Plasma Storage",
+		desc: "Unlock the Localised Vacuum Caster PSU",
+		cost: 15,
+		category: "prasnian",
+		opinion: 12,
+		tier: "advanced",
+		onApply: function(){
 			Templates.uiFunctions.unlock("plasmaT4");
 		},
 		remove: function(){

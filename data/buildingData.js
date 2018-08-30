@@ -1683,8 +1683,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.plasmaStorageT2 = $.extend({}, baseStorage, {
-        name: 'Plasma Storage Unit Tier 2',
-        desc: 'Tier 2 PSUs increase your plasma storage by 500,000 per PSU built.',
+        name: 'CY-B3RI4 Heat Sinker PSU',
+        desc: 'A Specially designed PSU which utilises ice and ventilation technology to allow more plasma to be condensed into the storage unit before it starts being damaged by the plasma. Increases your plasma storage by 500,000 per PSU built.',
         resource: 'plasma',
         storage: {
             'plasma': 500000
@@ -1696,19 +1696,19 @@ Game.storageBuildingData = (function(){
         }
     });
 
-    // instance.plasmaStorageT3 = $.extend({}, baseStorage, {
-    //     name: 'University Laboratory',
-    //     desc: 'Build an even better version of the old laboratory to further your exploration of the realm of science. Each one produces 10 science per second.',
-    //     resource: 'science',
-    //     resourcePerSecond: {
-    //         'science': 10
-    //     },
-    //     cost: {
-    //         'metal': 17000,
-    //         'gem': 4700,
-    //         'wood': 9600
-    //     }
-    // });
+    instance.plasmaStorageT3 = $.extend({}, baseStorage, {
+        name: 'L.V.C PSU',
+        desc: 'The Localised Vacuum Caster separates the container itself from the inserted plasma, allowing for even more condensation of plasma due to the isolating strength of the vacuum. Increases your plasma storage by 5,000,000 per PSU built.',
+        resource: 'plasma',
+        storage: {
+            'plasma': 5000000
+        },
+        cost: {
+            'silver': 111600000,
+            'gold': 111600000,
+            'uranium': 81600000
+        }
+    });
 
     instance.energyStorageT1 = $.extend({}, baseStorage, {
         name: 'Batteries',
