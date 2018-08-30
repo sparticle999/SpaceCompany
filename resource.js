@@ -195,7 +195,6 @@ Game.resources = (function(){
 
     instance.update = function(delta) {
         Templates.uiFunctions.refreshElements('current', 'all');
-        Templates.uiFunctions.refreshElements('cost', 'all');
     };
 
     instance.save = function(data) {
@@ -525,6 +524,7 @@ Game.resources = (function(){
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
         Templates.uiFunctions.unlock(id + "T1");
+        Templates.uiFunctions.refreshElements("capacity", id);
         newUnlock('resources');
     };
 

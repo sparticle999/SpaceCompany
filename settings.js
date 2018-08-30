@@ -277,7 +277,7 @@ Game.settings = (function(){
             switch(key) {
                 default:
                     var input = Game.wonder.getProgress(object.id);
-                    input = Game.settings.format(input, 2).toString();
+                    input = Game.settings.format(input, 1).toString();
                     return input;
             }
         }

@@ -1,9 +1,12 @@
 Game.wonder = (function(){
 
     function UpdateProgress(id) {
+        var previous = new Date();
         var id = id;
         this.update = function() {
             var obj = Game.wonder.entries[id];
+            if (new Date() - previous < 250) {return;}
+            previous = new Date();
             var value = Game.settings.doFormat('progress', obj);
             Templates.uiFunctions.setClassText(value + "%", obj.htmlId+'progress');
             Templates.uiFunctions.setClassStyle(value + "%", "width", obj.htmlId+'progress');
@@ -17,7 +20,7 @@ Game.wonder = (function(){
         var id = id;
         this.update = function() {
             var obj = Game.wonder.entries[id];
-            if (new Date() - previous < 250) {return;}
+            if (new Date() - previous < 1000) {return;}
             var value = Game.settings.doFormat('cost', obj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
             previous = new Date();
@@ -147,7 +150,7 @@ Game.wonder = (function(){
     		current += Math.min(data[resource], res[resource].current);
     		total += data[resource];
     	}
-      	var progress = Math.floor(100*current/total);
+      	var progress = Math.floor(1000*current/total)/10;
     	if(progress > 100) {progress = 100;}
     	return progress;
     };

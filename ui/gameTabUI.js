@@ -576,49 +576,54 @@ Templates.objectConstructor.UiFunctions = function() {
             Object.keys(registeredElements[act]).forEach(function(res) {
                 if ((res.toLowerCase() === resource.toLowerCase() || resource == 'all')) {
                     var obj = registeredElements[act][res].object;
-                    if(obj.category == "buildings"){
-                        if(obj.resource == "science"){
-                            if("techTab_res_science_ne" == Game.lastNav){
+                    if(act == "current" || act == "persecond" || act == "cost" || act == "progress"){
+                        if(obj.category == "buildings"){
+                            if(obj.resource == "science"){
+                                if("techTab_res_science_ne" == Game.lastNav){
+                                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                                }
+                            } else if(obj.resource == "rocketFuel"){
+                                if("solarTab_res_rocketFuel_ne" == Game.lastNav){
+                                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                                }
+                            } else if(obj.resource == "rocket"){
+                                if("solarTab_res_rocket_ne" == Game.lastNav){
+                                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                                }
+                            } else {
+                                if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav || "machinesTab" == Game.lastTab){
+                                    if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                                }
+                            }
+                        } else if(obj.category == "technology"){
+                            if("techTab_technologies_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
-                        } else if(obj.resource == "rocketFuel"){
-                            if("solarTab_res_rocketFuel_ne" == Game.lastNav){
+                        } else if(obj.category == "storageBuildings"){
+                            if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
-                        } else if(obj.resource == "rocket"){
-                            if("solarTab_res_rocket_ne" == Game.lastNav){
+                        } else if(obj.category == "inner" || obj.category == "outer"){
+                            if("solarTab_solar_" + obj.id + "_ne" == Game.lastNav){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(typeof obj.activated != "undefined"){
+                            if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        } else if(obj.category == "alienTechnology"){
+                            if("solCenterTab_solCtr_" + obj.id + "_ne" == Game.lastNav || "solCenterTab_solCtr_" + obj.nav + "_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else {
-                            if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav || "machinesTab" == Game.lastTab){
+                            if(obj.unlocked && obj.page + "Tab" == Game.lastTab){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         }
-                    } else if(obj.category == "technology"){
-                        if("techTab_technologies_ne" == Game.lastNav){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
-                    } else if(obj.category == "storageBuildings"){
-                        if("resourcesTab_res_" + obj.resource + "_ne" == Game.lastNav){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
-                    } else if(obj.category == "inner" || obj.category == "outer"){
-                        if("solarTab_solar_" + obj.id + "_ne" == Game.lastNav){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
-                    } else if(typeof obj.activated != "undefined"){
-                        if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
-                    } else if(obj.category == "alienTechnology"){
-                        if("solCenterTab_solCtr_" + obj.id + "_ne" == Game.lastNav || "solCenterTab_solCtr_" + obj.nav + "_ne" == Game.lastNav){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
                     } else {
-                        if(obj.unlocked){
-                            if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                        }
+                        if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                     }
+                    
                     
                 }          
             })
