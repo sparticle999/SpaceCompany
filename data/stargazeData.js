@@ -366,6 +366,24 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
+	instance.T4Plasma = {
+		name: "Tier 4 Plasma",
+		desc: "Unlock the Quasar Redirection System",
+		cost: 25,
+		category: "prasnian",
+		opinion: 17,
+		tier: "advanced",
+		onApply: function(){
+			Templates.uiFunctions.unlock("plasmaT4");
+		},
+		remove: function(){
+			Templates.uiFunctions.hide("plasmaT4");
+	    	Game.buildings.entries.plasmaT4.current = 0;
+	    },
+		unlocked: true,
+		achieved: false
+	};
+
 	/**************
 	** Hyacinite **
 	**************/
@@ -529,14 +547,6 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
-	// instance.recycling = {
-	// 	name: "Recycling",
-	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
-	// 	cost: 29,
-	// 	category: "hyacinite",
-	//	achieved: false
-	// };
-
 	instance.capitalInvestment = {
 		name: "Capital Investment",
 		desc: "For every resource at max storage, every other resource gets a 5% production boost.",
@@ -673,9 +683,17 @@ Game.rebirthData = (function(){
 	// 	},
 	// 	remove: function(){
 	// 		Game.resources.autoStorage = false;
-	//     },
+	//  },
 	// 	achieved: false
 	// }
+
+	// instance.recycling = {
+	// 	name: "Recycling",
+	// 	desc: "Instead of destroying machines, recycle them for 50% of the cost!",
+	// 	cost: 29,
+	// 	category: "hyacinite",
+	//	achieved: false
+	// };
 
 	return instance;
 

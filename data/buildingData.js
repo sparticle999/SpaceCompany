@@ -151,6 +151,23 @@ Game.buildingData = (function () {
         }
     });
 
+    instance.plasmaT4 = $.extend({}, baseProducerBuilding, {
+        name: 'Q.R.S.',
+        desc: 'The Quasar Redirection System is a colossal space station, built from graphene, to redirect quasar activity towards gas giants, to instantaneously convert the gases into plasma for collection.',
+        resource: 'plasma',
+        resourcePerSecond: {
+            'energy': -0,
+            'helium': -0,
+            'hydrogen': -0,
+            'plasma': 0
+        },
+        cost: {
+            'charcoal': 0,
+            'silicon': 0,
+            'meteorite': 0
+        }
+    });
+
     /////////////
     // Uranium //
     /////////////
