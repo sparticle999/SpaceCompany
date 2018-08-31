@@ -14,12 +14,12 @@ Game.buildingData = (function () {
     // Energy //
     ////////////
     instance.energyT1 = $.extend({}, baseProducerBuilding, {
-        name: 'Charcoal Engine',
-        desc: 'Burns Charcoal to produce a steady source of Energy.',
+        name: 'Carbon Engine',
+        desc: 'Burns Carbon to produce a steady source of Energy.',
         resource: 'energy',
         resourcePerSecond: {
             'energy': 2,
-            'charcoal': -1
+            'carbon': -1
         },
         cost: {
             'metal': 50,
@@ -162,7 +162,7 @@ Game.buildingData = (function () {
             'plasma': 0
         },
         cost: {
-            'charcoal': 0,
+            'carbon': 0,
             'silicon': 0,
             'meteorite': 0
         }
@@ -396,7 +396,7 @@ Game.buildingData = (function () {
         },
         cost: {
             'uranium': 110000,
-            'charcoal': 96000,
+            'carbon': 96000,
             'lava': 167000
         }
     });
@@ -571,21 +571,21 @@ Game.buildingData = (function () {
         },
         cost: {
             'uranium': 181000,
-            'charcoal': 185000,
+            'carbon': 185000,
             'meteorite': 12500
         }
     });
 
     //////////////
-    // Charcoal //
+    // Carbon //
     //////////////
-    instance.charcoalT1 = $.extend({}, baseProducerBuilding, {
-        name: 'Woodburner',
-        desc: 'Build a shovel for your woodburner.',
-        resource: 'charcoal',
+    instance.carbonT1 = $.extend({}, baseProducerBuilding, {
+        name: 'Charred Wood Plant',
+        desc: 'All the wood that has been put to use is brought here to be cleaned of carbon traces and then repurposed',
+        resource: 'carbon',
         resourcePerSecond: {
             'wood': -2,
-            'charcoal': 1
+            'carbon': 1
         },
         cost: {
             'metal': 10,
@@ -593,14 +593,14 @@ Game.buildingData = (function () {
         }
     });
 
-    instance.charcoalT2 = $.extend({}, baseProducerBuilding, {
-        name: 'Furnace',
-        desc: 'Furnaces use electric heaters to produce heat to turn Wood into Charcoal. Because of the increased heat, the process is more efficient.',
-        resource: 'charcoal',
+    instance.carbonT2 = $.extend({}, baseProducerBuilding, {
+        name: 'Blast Furnace',
+        desc: 'Burns wood at very high temperatures to turn it into a finer type of carbon than Charred Wood Plants.',
+        resource: 'carbon',
         resourcePerSecond: {
             'energy': -3,
             'wood': -6,
-            'charcoal': 4
+            'carbon': 4
         },
         cost: {
             'metal': 80,
@@ -609,14 +609,15 @@ Game.buildingData = (function () {
         }
     });
 
-    instance.charcoalT3 = $.extend({}, baseProducerBuilding, {
-        name: 'Industrial Kiln',
-        desc: 'These large kilns are much for effective than previous methods of creating charcoal and use less wood to make the same amount as a furnace.',
-        resource: 'charcoal',
+    instance.carbonT3 = $.extend({}, baseProducerBuilding, {
+        name: 'Magmatic Incinerator',
+        desc: 'Uses lava to melt wood and then the mixture is cooled off, resulting in moderately pure carbon. The leftovers are re-used in the process',
+        resource: 'carbon',
         resourcePerSecond: {
             'energy': -13,
             'wood': -56,
-            'charcoal': 53
+            'lava': -2,
+            'carbon': 53
         },
         cost: {
             'lunarite': 3500,
@@ -625,14 +626,15 @@ Game.buildingData = (function () {
         }
     });
 
-    instance.charcoalT4 = $.extend({}, baseProducerBuilding, {
-        name: 'Forest Fryer',
-        desc: 'Forests? What forests?',
-        resource: 'charcoal',
+    instance.carbonT4 = $.extend({}, baseProducerBuilding, {
+        name: 'Plasma Furnace',
+        desc: 'This plasma-fueled furnace burns so hot it turns wood into almost perfectly pure carbon, ready to be turned into high-purity carbon materials such as graphene.',
+        resource: 'carbon',
         resourcePerSecond: {
             'energy': -34,
             'wood': -148,
-            'charcoal': 210
+            'plasma': -1,
+            'carbon': 210
         },
         cost: {
             'lunarite': 15800,
@@ -641,14 +643,14 @@ Game.buildingData = (function () {
         }
     });
 
-    instance.charcoalT5 = $.extend({}, baseProducerBuilding, {
-        name: 'Microverse Pollutor',
-        desc: 'Using Nano-technology, tiny universes can be created, filled with toxic gases from charcoal production and then simply deleted. Cross-dimensional pollution at a completely new level!',
-        resource: 'charcoal',
+    instance.carbonT5 = $.extend({}, baseProducerBuilding, {
+        name: 'Super Massive Pencil Sharpener',
+        desc: 'Who knew broken pencil tips would yield this much carbon?',
+        resource: 'carbon',
         resourcePerSecond: {
             'energy': -187,
             'wood': -950,
-            'charcoal': 2267
+            'carbon': 2267
         },
         cost: {
             'metal': 133000,
@@ -1566,7 +1568,7 @@ Game.buildingData = (function () {
         resource: 'rocketFuel',
         resourcePerSecond: {
             'rocketFuel': 0.2,
-            'charcoal': -20,
+            'carbon': -20,
             'oil': -20,
 
         },
@@ -1583,7 +1585,7 @@ Game.buildingData = (function () {
         resource: 'rocketFuel',
         resourcePerSecond: {
             'rocketFuel': 1.5,
-            'charcoal': -100,
+            'carbon': -100,
             'oil': -100,
         },
         cost: {

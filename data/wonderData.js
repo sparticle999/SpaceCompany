@@ -214,7 +214,7 @@ Game.wonderData = (function(){
         category: 'wonderStation',
         cost: {
             'wood': 10000,
-            'charcoal': 5000,
+            'carbon': 5000,
             'uranium': 200,
         },
         onApply: function(){
@@ -232,7 +232,7 @@ Game.wonderData = (function(){
         category: 'floor1',
         cost: {
             'wood': 30000,
-            'charcoal': 15000,
+            'carbon': 15000,
             'uranium': 500,
         },
         onApply: function(){

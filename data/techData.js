@@ -71,7 +71,7 @@ Game.techData = (function () {
     
     instance.unlockBasicEnergy = $.extend({}, techBase, {
         name: 'Basic Energy Production',
-        desc: 'You will be able to produce power from steam engines using Charcoal made from wood in a furnace.',
+        desc: 'You will be able to produce power from steam engines using Carbon made from wood in a furnace.',
         buttonText: 'Unlock Basic Energy Production',
         type: TECH_TYPE.UNLOCK,
         unlocked: true,
@@ -83,9 +83,9 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.resources.unlock("energy");
-            Game.resources.unlock("charcoal");
+            Game.resources.unlock("carbon");
             Game.buildings.unlock("energyT1");
-            Game.buildings.unlock("charcoalT1")
+            Game.buildings.unlock("carbonT1")
         }
     });
 
@@ -495,18 +495,18 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function() {
             var data = Game.buildings.entries;
-            var resourceList = ["oil", "metal", "gem", "charcoal", "wood"];
+            var resourceList = ["oil", "metal", "gem", "carbon", "wood"];
             for(var i = 0; i < resourceList.length; i++){
                 data[resourceList[i] + "T2"].resourcePerSecond[resourceList[i]] *= 2;
             }
-            data["charcoalT2"].resourcePerSecond.wood *= 2;
+            data["carbonT2"].resourcePerSecond.wood *= 2;
         }
     });
 
     instance.upgradeEngineTech = $.extend({}, techBase, {
         name: 'Upgrade Engine Technology',
-        desc: 'Upgrading Engine Technology will make Charcoal engines produce 4 Energy per second instead of 2.',
-        buttonText: 'Upgrade Charcoal Engines',
+        desc: 'Upgrading Engine Technology will make Carbon engines produce 4 Energy per second instead of 2.',
+        buttonText: 'Upgrade Carbon Engines',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.FIXED,
         cost: {

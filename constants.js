@@ -26,7 +26,7 @@ RESOURCE = {
 	Oil: 'oil',
 	Metal: 'metal',
 	Gem: 'gem',
-	Charcoal: 'charcoal',
+	Carbon: 'carbon',
 	Wood: 'wood',
 	Silicon: 'silicon',
 	Lunarite: 'lunarite',

@@ -5,7 +5,7 @@ var antimatter = 0; var antimatterps = 0; var antimatterStorage = 100000; var an
 
 var timer = 0; var timer2 = 0; var statsTimer = 0; var saveTimer = 10; var secondsLeft = 0; var saved = false; var loaded = false;
 
-var resources = ["uranium", "lava", "oil", "metal", "gem", "charcoal", "wood", "lunarite", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice", "meteorite"]
+var resources = ["uranium", "lava", "oil", "metal", "gem", "carbon", "wood", "lunarite", "methane", "titanium", "gold", "silver", "silicon", "hydrogen", "helium", "ice", "meteorite"]
 
 var windowLoaded = false;
 

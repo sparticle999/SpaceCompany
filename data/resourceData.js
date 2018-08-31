@@ -125,10 +125,10 @@ Game.resourceData = (function () {
         unlocked: false
     };
 
-    instance.charcoal = {
+    instance.carbon = {
         name: 'Carbon',
-        desc: 'Carbon is a secondary tier resource and is used by Engines to produce power for your company. 1 Charcoal is created by burning wood',
-        icon: 'charcoalIcon',
+        desc: 'Carbon is a secondary tier resource and is used by Engines to produce power for your company. Carbon is created by burning wood',
+        icon: 'carbonIcon',
         category: 'fabricated',
         page: 'resources',
         baseCapacity: 50,
@@ -524,11 +524,11 @@ Game.storageData = (function(){
         }
     });
 
-    instance.entries.charcoal = $.extend({}, baseUpgradeData, {
-        desc: 'Upgrade your Charcoal storage size to ',
-        resource: 'charcoal',
+    instance.entries.carbon = $.extend({}, baseUpgradeData, {
+        desc: 'Upgrade your Carbon storage size to ',
+        resource: 'carbon',
         cost: {
-            'charcoal': 50,
+            'carbon': 50,
             'metal': 20
         }
     });

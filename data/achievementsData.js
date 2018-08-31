@@ -7,7 +7,7 @@ Game.achievementsCategoryData = (function () {
 		brackets: Game.constants.achievementResourceBrackets,
 		entries: [
 		'resUranium', 'resLava',
-		'resOil', 'resMetal', 'resGems', 'resCharcoal', 'resWood', 'resSilicon',
+		'resOil', 'resMetal', 'resGems', 'resCarbon', 'resWood', 'resSilicon',
 		'resLunarite', 'resMethane', 'resTitanium', 'resGold', 'resSilver',
 		'resHydrogen', 'resHelium', 'resIce', 'resMeteorite',
 		'resScience', 'resRocketFuel' ]
@@ -25,7 +25,7 @@ Game.achievementsCategoryData = (function () {
 		'prodOilT1', 'prodOilT2', 'prodOilT3', 'prodOilT4',
 		'prodMetalT1', 'prodMetalT2', 'prodMetalT3', 'prodMetalT4',
 		'prodGemsT1', 'prodGemsT2', 'prodGemsT3', 'prodGemsT4',
-		'prodCharcoalT1', 'prodCharcoalT2', 'prodCharcoalT3', 'prodCharcoalT4',
+		'prodCarbonT1', 'prodCarbonT2', 'prodCarbonT3', 'prodCarbonT4',
 		'prodWoodT1', 'prodWoodT2', 'prodWoodT3', 'prodWoodT4',
 		'prodSiliconT1', 'prodSiliconT2', 'prodSiliconT3', 'prodSiliconT4',
 
@@ -106,13 +106,13 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return getResource(RESOURCE.Gem) / x }
 	};
 
-	instance.resCharcoal = {
+	instance.resCarbon = {
 		id_v4: 'ach_5',
 		categoryInstance: Game.achievementsCategoryData.resources,
-		iconName: 'charcoalIcon',
-		title: 'Collect %s Charcoal',
-		evaluator: function(x) { return getResource(RESOURCE.Charcoal) >= x },
-		progressEvaluator: function(x) { return getResource(RESOURCE.Charcoal) / x }
+		iconName: 'carbonIcon',
+		title: 'Collect %s Carbon',
+		evaluator: function(x) { return getResource(RESOURCE.Carbon) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Carbon) / x }
 	};
 
 	instance.resWood = {
@@ -239,7 +239,7 @@ Game.achievementsData = (function(){
 		id_v4: "ach_18",
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'energyIcon',
-		title: "Own %s Charcoal Engine",
+		title: "Own %s Carbon Engine",
 		evaluator: function(x) { return Game.buildings.entries["energyT1"].current >= x },
 		progressEvaluator: function(x) { return Game.buildings.entries["energyT1"].current/x }
 	};
@@ -541,49 +541,49 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return Game.buildings.entries["gemT5"].current/x }
 	};
 
-	instance._prodCharcoalT1 = {
+	instance._prodCarbonT1 = {
 		id_v4: "ach_52",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'charcoalIcon',
+		iconName: 'carbonIcon',
 		title: "Own %s Woodburner",
-		evaluator: function(x) { return Game.buildings.entries["charcoalT1"].current >= x },
-		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT1"].current/x }
+		evaluator: function(x) { return Game.buildings.entries["carbonT1"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["carbonT1"].current/x }
 	};
 
-	instance._prodCharcoalT2 = {
+	instance._prodCarbonT2 = {
 		id_v4: "ach_53",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'charcoalIcon',
+		iconName: 'carbonIcon',
 		title: "Own %s Furnace",
-		evaluator: function(x) { return Game.buildings.entries["charcoalT2"].current >= x },
-		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT2"].current/x }
+		evaluator: function(x) { return Game.buildings.entries["carbonT2"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["carbonT2"].current/x }
 	};
 
-	instance._prodCharcoalT3 = {
+	instance._prodCarbonT3 = {
 		id_v4: "ach_54",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'charcoalIcon',
+		iconName: 'carbonIcon',
 		title: "Own %s Industrial Kiln",
-		evaluator: function(x) { return Game.buildings.entries["charcoalT3"].current >= x },
-		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT3"].current/x }
+		evaluator: function(x) { return Game.buildings.entries["carbonT3"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["carbonT3"].current/x }
 	};
 
-	instance._prodCharcoalT4 = {
+	instance._prodCarbonT4 = {
 		id_v4: "ach_55",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'charcoalIcon',
+		iconName: 'carbonIcon',
 		title: "Own %s Forest Fryer",
-		evaluator: function(x) { return Game.buildings.entries["charcoalT4"].current >= x },
-		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT4"].current/x }
+		evaluator: function(x) { return Game.buildings.entries["carbonT4"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["carbonT4"].current/x }
 	};
 
-	instance._prodCharcoalT5 = {
+	instance._prodCarbonT5 = {
 		id_v4: "ach_56",
 		categoryInstance: Game.achievementsCategoryData.producers,
-		iconName: 'charcoalIcon',
+		iconName: 'carbonIcon',
 		title: "Own %s Microverse Pollutor",
-		evaluator: function(x) { return Game.buildings.entries["charcoalT5"].current >= x },
-		progressEvaluator: function(x) { return Game.buildings.entries["charcoalT5"].current/x }
+		evaluator: function(x) { return Game.buildings.entries["carbonT5"].current >= x },
+		progressEvaluator: function(x) { return Game.buildings.entries["carbonT5"].current/x }
 	};
 
 	instance._prodWoodT1 = {

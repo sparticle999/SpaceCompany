@@ -40,12 +40,12 @@ function legacyLoad(savegame){
 		if(typeof savegame.advancedDrill !== "undefined") Game.buildings.entries.gemT2.current = savegame.advancedDrill;
 		if(typeof savegame.diamondDrill !== "undefined") Game.buildings.entries.gemT3.current = savegame.diamondDrill;
 		if(typeof savegame.carbyneDrill !== "undefined") Game.buildings.entries.gemT4.current = savegame.carbyneDrill;
-		if(typeof savegame.charcoal !== "undefined") Game.resources.entries.charcoal.current = savegame.charcoal;
-		if(typeof savegame.charcoalStorage !== "undefined") Game.resources.entries.charcoal.capacity = savegame.charcoalStorage;
-		if(typeof savegame.woodburner !== "undefined") Game.buildings.entries.charcoalT1.current = savegame.woodburner;
-		if(typeof savegame.furnace !== "undefined") Game.buildings.entries.charcoalT2.current = savegame.furnace;
-		if(typeof savegame.kiln !== "undefined") Game.buildings.entries.charcoalT3.current = savegame.kiln;
-		if(typeof savegame.fryer !== "undefined") Game.buildings.entries.charcoalT4.current = savegame.fryer;
+		if(typeof savegame.charcoal !== "undefined") Game.resources.entries.carbon.current = savegame.charcoal;
+		if(typeof savegame.charcoalStorage !== "undefined") Game.resources.entries.carbon.capacity = savegame.charcoalStorage;
+		if(typeof savegame.woodburner !== "undefined") Game.buildings.entries.carbonT1.current = savegame.woodburner;
+		if(typeof savegame.furnace !== "undefined") Game.buildings.entries.carbonT2.current = savegame.furnace;
+		if(typeof savegame.kiln !== "undefined") Game.buildings.entries.carbonT3.current = savegame.kiln;
+		if(typeof savegame.fryer !== "undefined") Game.buildings.entries.carbonT4.current = savegame.fryer;
 		if(typeof savegame.wood !== "undefined") Game.resources.entries.wood.current = savegame.wood;
 		if(typeof savegame.woodStorage !== "undefined") Game.resources.entries.wood.capacity = savegame.woodStorage;
 		if(typeof savegame.woodcutter !== "undefined") Game.buildings.entries.woodT1.current = savegame.woodcutter;
@@ -167,7 +167,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.fossilator !== "undefined") Game.buildings.entries.oilT5.current = savegame.fossilator;
 		if(typeof savegame.multiDrill !== "undefined") Game.buildings.entries.metalT5.current = savegame.multiDrill;
 		if(typeof savegame.diamondChamber !== "undefined") Game.buildings.entries.gemT5.current = savegame.diamondChamber;
-		if(typeof savegame.microPollutor !== "undefined") Game.buildings.entries.charcoalT5.current = savegame.microPollutor;
+		if(typeof savegame.microPollutor !== "undefined") Game.buildings.entries.carbonT5.current = savegame.microPollutor;
 		if(typeof savegame.forest !== "undefined") Game.buildings.entries.woodT5.current = savegame.forest;
 		if(typeof savegame.cloner !== "undefined") Game.buildings.entries.lunariteT5.current = savegame.cloner;
 		if(typeof savegame.interCow !== "undefined") Game.buildings.entries.methaneT5.current = savegame.interCow;

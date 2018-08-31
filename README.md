@@ -9,7 +9,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # Changelog:
 
-### v0.5.1 (includes all V0.5.0.X)
+### v0.5.0.6 (includes all V0.5.0.X)
 ##### Features
 
 - Storage Upgrade Discounts

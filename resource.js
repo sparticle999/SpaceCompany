@@ -349,7 +349,7 @@ Game.resources = (function(){
                     Templates.uiFunctions.refreshElements('current', id);
                     Templates.uiFunctions.refreshElements('current', 'lunarite');
                 }
-            } else if(id != "oil" && id != "gem" && id != "charcoal" && id != "wood"){
+            } else if(id != "oil" && id != "gem" && id != "carbon" && id != "wood"){
                 if(lunarite.current >= res.capacity*this.storagePrice*0.4){
                     res.current -= res.capacity*this.storagePrice;
                     lunarite.current -= res.capacity*this.storagePrice*0.4;
