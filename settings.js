@@ -133,7 +133,7 @@ Game.settings = (function(){
                     } else {
                         var ret = (object.amountCurrent+" / "+object.amountMax).bold();
                     }
-                    return ret;               
+                    return ret;
             }
         ////////////////////////////
         // Current amount of item //
@@ -234,29 +234,41 @@ Game.settings = (function(){
                             result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
                         }
                     });
-                    cost = object.resourcePerSecond;
-                    if (!('resourcePerSecond' in object)) {return result+'<dl>';}
-                    var input = '';
-                    var output = '';
-                    Object.keys(cost).forEach (function(c) {
-                        if (cost[c] > 0) {
-                            output += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+Game.settings.format(cost[c], 2).toString()+"</dd>";
-                        } else {
-                            var tmp = Game.settings.format(Math.abs(cost[c]), 0).toString();
-                            if (Math.abs(cost[c] > Game.resources.entries[c].perSecond)) {
-                                if (Game.settings.entries.boldEnabled) {tmp = tmp.bold();}
-                                tmp = tmp.fontcolor('red');
-                            } else {tmp = tmp.fontcolor('green');}
-                            input += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+tmp+"</dd>";
-                        }
+                    result += '</td><td style="position:absolute;margin-left:100px">';
+                    if ('storage' in object) {
+                        var storage = object.storage;
+                        var capacity = '';
+                        Object.keys(storage).forEach (function(c) {
+                        capacity += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+Game.settings.format(storage[c], 0).toString()+"</dd>";
+                        capacity = '<dl><dt>Storage:</dt>'+capacity;
+                        result += capacity;
                     });
-                    if (output == "") {output += "<dd>&#8227; None</dd>"}
-                    if (input == "") {input += "<dd>&#8227; None</dd>"}
-                    output = '<dl><dt>Output:</dt>'+output;
-                    input = '<dl><dt>Input:</dt>'+input;
-                    result += '</td><td style="position:absolute;margin-left:100px">'
-                    result += input+output+'</td></tr></table></dl>';
-                    return result;
+
+                    }
+                    if ('resourcePerSecond' in object) {
+                        var ps = object.resourcePerSecond;
+                        var input = '';
+                        var output = '';
+                        Object.keys(ps).forEach (function(c) {
+                            if (ps[c] > 0) {
+                                output += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+Game.settings.format(ps[c], 2).toString()+"</dd>";
+                            } else {
+                                var txt = Game.settings.format(Math.abs(ps[c]), 0).toString();
+                                if (Math.abs(ps[c]) > Game.resources.entries[c].perSecond) {
+                                    if (Game.settings.entries.boldEnabled) {txt = txt.bold();}
+                                    txt = txt.fontcolor('red');
+                                } else {txt = txt.fontcolor('green');}
+                                input += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+txt+"</dd>";
+                            }
+                        });
+                        if (output == "") {output += "<dd>&#8227; None</dd>"}
+                        if (input == "") {input += "<dd>&#8227; None</dd>"}
+                        output = '<dl><dt>Output:</dt>'+output;
+                        input = '<dl><dt>Input:</dt>'+input;
+                        result += input+output;
+                    }
+                    
+                    return result + '</td></tr></table></dl>';
             }
 
         /////////////////////////////////////////

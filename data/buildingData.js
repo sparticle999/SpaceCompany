@@ -152,8 +152,8 @@ Game.buildingData = (function () {
     });
 
     instance.plasmaT4 = $.extend({}, baseProducerBuilding, {
-        name: 'Q.R.S.',
-        desc: 'The Quasar Redirection System is a colossal space station, built from graphene, to redirect quasar activity towards gas giants, to instantaneously convert the gases into plasma for collection.',
+        name: 'Q.R.S',
+        desc: 'The Quasar Redirection System is a colossal space station built from graphene, used to redirect quasar activity towards gas giants, to instantaneously convert the gases into plasma for collection.',
         resource: 'plasma',
         resourcePerSecond: {
             'energy': -0,
@@ -1670,7 +1670,7 @@ Game.storageBuildingData = (function(){
     // Research
     instance.plasmaStorageT1 = $.extend({}, baseStorage, {
         name: 'Plasma Storage Unit',
-        desc: 'PSUs increase your plasma storage by 50,000 per PSU built.',
+        desc: 'PSUs can hold plasma in a specially controlled casing that retains its intense heat.',
         resource: 'plasma',
         storage: {
             'plasma': 50000
@@ -1684,7 +1684,7 @@ Game.storageBuildingData = (function(){
 
     instance.plasmaStorageT2 = $.extend({}, baseStorage, {
         name: 'CY-B3RI4 Heat Sinker PSU',
-        desc: 'A Specially designed PSU which utilises ice and ventilation technology to allow more plasma to be condensed into the storage unit before it starts being damaged by the plasma. Increases your plasma storage by 500,000 per PSU built.',
+        desc: 'A Specially designed PSU which utilises ice and ventilation technology to allow more plasma to be condensed into the storage unit before it starts being damaged by the plasma.',
         resource: 'plasma',
         storage: {
             'plasma': 500000
@@ -1697,8 +1697,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.plasmaStorageT3 = $.extend({}, baseStorage, {
-        name: 'L.V.C PSU',
-        desc: 'The Localised Vacuum Caster separates the container itself from the inserted plasma, allowing for even more condensation of plasma due to the isolating strength of the vacuum. Increases your plasma storage by 5,000,000 per PSU built.',
+        name: 'L.V.C. PSU',
+        desc: 'The Localised Vacuum Caster separates the container itself from the inserted plasma, allowing for even more condensation of plasma due to the isolating strength of the vacuum.',
         resource: 'plasma',
         storage: {
             'plasma': 5000000
@@ -1712,7 +1712,7 @@ Game.storageBuildingData = (function(){
 
     instance.energyStorageT1 = $.extend({}, baseStorage, {
         name: 'Batteries',
-        desc: 'Batteries increase your energy storage by 50,000 per battery built.',
+        desc: 'And the Overlord said, \'let there be energy storage!\', so these lousy batteries fell out of the sky. ¯\\_(ツ)_/¯',
         resource: 'energy',
         storage: {
             'energy': 50000
@@ -1725,8 +1725,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.energyStorageT2 = $.extend({}, baseStorage, {
-        name: 'Batteries T2',
-        desc: 'Tier 2 Batteries increase your energy storage by 500,000 per battery built.',
+        name: 'Mirrored Batteries',
+        desc: 'The mirrored structure of the batteries allows for storing energy in an electric field around the battery, storing more energy.',
         resource: 'energy',
         storage: {
             'energy': 500000
@@ -1739,8 +1739,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.energyStorageT3 = $.extend({}, baseStorage, {
-        name: 'Batteries T3',
-        desc: 'Tier 3 Batteries increase your energy storage by 5,000,000 per battery built.',
+        name: 'Clustered Batteries',
+        desc: 'Improved structure allows for better electric field storage and for structural deposits to occur, allowing more energy to be stored.',
         resource: 'energy',
         storage: {
             'energy': 5000000
@@ -1753,8 +1753,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.energyStorageT4 = $.extend({}, baseStorage, {
-        name: 'Batteries T4',
-        desc: 'Tier 4 Batteries increase your energy storage by 50,000,000 per battery built.',
+        name: 'Syphon Battery',
+        desc: 'This battery uses magnetism to syphon and maintain electrons from objets surrounding it so that energy can be stored outside of it and tapped into when the battery itself empties, prioritising the strongest energetic supply, thus fitting much more energy than previous tiers.',
         resource: 'energy',
         storage: {
             'energy': 50000000
@@ -1767,8 +1767,8 @@ Game.storageBuildingData = (function(){
     });
 
     instance.energyStorageT5 = $.extend({}, baseStorage, {
-        name: 'Batteries T5',
-        desc: 'Tier 5 Batteries increase your energy storage by 500,000,000 per battery built.',
+        name: 'NanoCluster Battery',
+        desc: 'Using nanotechnology, the Clustered Battery model has been improved at near-atomic scales to allow for overlapping Electric Fields to occur, exponentially increasing the amount of energy it can hold.',
         resource: 'energy',
         storage: {
             'energy': 500000000
@@ -1777,6 +1777,20 @@ Game.storageBuildingData = (function(){
             'metal': 550000000,
             'gem': 550000000,
             'lunarite': 330000000
+        }
+    });
+
+    instance.energyStorageT6 = $.extend({}, baseStorage, {
+        name: 'VoidTech Batteries',
+        desc: 'Using Vacuum Casting, the battery traps electrons within a vacuum inside itself, allowing never-before-seen levels of energy storage.',
+        resource: 'energy',
+        storage: {
+            'energy': 5000000000
+        },
+        cost: {
+            'metal': 5500000000,
+            'gem': 5500000000,
+            'lunarite': 3300000000
         }
     });
 

@@ -258,6 +258,24 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
+	instance.T6Plasma = {
+		name: "Tier 6 Batteries",
+		desc: "Unlock Void Batteries",
+		cost: 26,
+		category: "carnelian",
+		opinion: 15,
+		tier: "advanced",
+		onApply: function(){
+			Templates.uiFunctions.unlock("energyStorageT6");
+		},
+		remove: function(){
+			Templates.uiFunctions.hide("energyStorageT6");
+	    	Game.buildings.entries.plasmaT3.current = 0;
+	    },
+		unlocked: true,
+		achieved: false
+	};
+
 	/*************
 	** Prasnian **
 	*************/

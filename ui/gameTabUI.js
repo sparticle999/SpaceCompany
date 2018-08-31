@@ -327,7 +327,7 @@ Templates.objectConstructor.UiFunctions = function() {
      */
     this.show = function(DOMid) {
         var node = document.getElementById(DOMid);
-        if (node == 'undefined') {
+        if (node == 'undefined' || node == null) {
             console.warn("Trying to show the element with id='"+DOMid+"', but couldn't find it.")
             return false;
         }
@@ -736,6 +736,8 @@ Templates.objectConstructor.UiFunctions = function() {
                         }
                     } else if (match[1]=='tech' && match[2]=='tec') {
                         funct = new Function("Game.tech.buyTech('"+match[3]+"', "+parseInt(match[4])+")");
+                    } else if (match[1]=='resources' && match[2]=='sto') {
+                        funct = new Function("Game.buildings.buyStorageBuilding('"+match[3]+"', "+parseInt(match[4])+")");
                     } else {
                         funct = new Function("Game.buildings.buyBuildings('"+match[3]+"', "+parseInt(match[4])+")");
                     }
@@ -803,6 +805,9 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(plasma)_gainCost
                 case (match = getCase(id, "^(.*)_(.*)_gainCost$")).input:
+                    break;
+                // Match (resources)_(plasma)_gainCost
+                case (match = getCase(id, "^(.*)_(.*)Hidden$")).input:
                     break;
 
                 default:

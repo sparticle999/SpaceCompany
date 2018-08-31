@@ -49,6 +49,32 @@ Game.buildings = (function(){
         }
     }
 
+    function UpdateStorageBuildingCurrent(id) {
+        var previous = -1;
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.storageEntries[id];
+            if (obj.current == previous) {return;}
+            var value = Game.settings.doFormat('current', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'current');
+            previous = obj.current;
+            return true;
+        }
+    }
+
+    function UpdateStorageBuildingCost(id) {
+        var previous = new Date();
+        var id = id;
+        this.update = function() {
+            var obj = Game.buildings.storageEntries[id];
+            if (new Date() - previous < 250) {return;}
+            var value = Game.settings.doFormat('cost', obj);
+            Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
+            previous = new Date();
+            return true;
+        }
+    }
+
     var instance = {};
 
     instance.dataVersion = 2;
@@ -94,7 +120,9 @@ Game.buildings = (function(){
                 iconName: data.icon,
                 iconExtension: Game.constants.iconExtension,
                 max: data.maxCount,
-                displayNeedsUpdate: true
+                displayNeedsUpdate: true,
+                ui_current: new UpdateStorageBuildingCurrent(id),
+                ui_cost: new UpdateStorageBuildingCost(id),
             });
         }
 
@@ -177,27 +205,33 @@ Game.buildings = (function(){
         Templates.uiFunctions.refreshElements('cost', 'all');
     };
 
-    instance.buyStorageBuilding = function(id){
+    instance.buyStorageBuilding = function(id, count){
         var data = this.storageEntries[id];
         var resourcePass = 0;
-        for(var resource in data.cost){
-            var res = Game.resources.getResourceData(resource);
-            if(res.current >= this.calcCost(data, resource, "storageBuildingData")){
-                resourcePass += 1;
-            }
-        }
-        if(resourcePass === Object.keys(data.cost).length){
+        for(var i = 0; i < (count || 1); i++){
             for(var resource in data.cost){
                 var res = Game.resources.getResourceData(resource);
-                res.current -= this.calcCost(data, resource, "storageBuildingData");
+                if(res.current >= this.calcCost(data, resource, "storageBuildingData")){
+                    resourcePass += 1;
+                }
             }
-            for(var resource in data.storage){
-                Game.resources.entries[resource].capacity += data.storage[resource];
+            if(resourcePass === Object.keys(data.cost).length){
+                for(var resource in data.cost){
+                    var res = Game.resources.getResourceData(resource);
+                    res.current -= this.calcCost(data, resource, "storageBuildingData");
+                }
+                for(var resource in data.storage){
+                    Game.resources.entries[resource].capacity += data.storage[resource];
+                }
+                data.current += 1;
+                data.displayNeedsUpdate = true;
+                Templates.uiFunctions.show('res_' + data.resource + 'CapacityHidden');
+                Templates.uiFunctions.refreshElements('current', id);
+                Templates.uiFunctions.refreshElements('machine', id);
+                Templates.uiFunctions.refreshElements('capacity', resource);
+            } else {
+                return;
             }
-            data.displayNeedsUpdate = true;
-            Templates.uiFunctions.refreshElements('current', id);
-            Templates.uiFunctions.refreshElements('machine', id);
-            Templates.uiFunctions.refreshElements('capacity', resource);
         }
     }
 
@@ -234,7 +268,6 @@ Game.buildings = (function(){
                 this.constructBuildings(id, 1);
                 this.updateCosts(id);
             } else {
-
                 return;
             }
         }
