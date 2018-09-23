@@ -180,10 +180,10 @@ Game.stargazeUI = (function(){
                 var data = Game.stargaze.upgradeEntries[id];
                 if(id != 'rebirth' && id != 'respec'){
                     if(data.achieved == true){
-                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Activated";
+                        document.getElementById("stargazeUpg" + id + 'Achieved').textContent = "Activated";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default disabled";
                     } else{
-                        document.getElementById("stargazeUpg" + id + 'Achieved').innerHTML = "Dormant";
+                        document.getElementById("stargazeUpg" + id + 'Achieved').textContent = "Dormant";
                         document.getElementById("stargazeUpg" + id + '_buy').className = "btn btn-default";
                     }
                 }

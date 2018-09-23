@@ -392,7 +392,7 @@ Game.interstellarUI = (function(){
                 if(Game.interstellar.comms.entries.IRS.count + Game.interstellar.comms.entries.astroBreakthrough.count*5 >= data.distance){
                     document.getElementById('star_' + id).className = "";
                 }
-                $('#star_' + id + 'Cost').text(Game.settings.format(data.distance*10000));
+                $('#star_' + id + 'Cost').setText(Game.settings.format(data.distance*10000));
                 continue;
             }
             if(data.displayNeedsUpdate == false){
@@ -490,11 +490,23 @@ Game.interstellarUI = (function(){
         }
         
 
+        if (this._starProducers == null) {
+            this._starProducers = {};
+            for(var i = 0; i < resources.length; i++){
+                var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
+                var elems = [];
+                for(var j = 0; j < updateList.length; j++){
+                    elems.push(updateList[j]);
+                }
+                this._starProducers[resources[i]] = elems;
+            }
+        }
         for(var i = 0; i < resources.length; i++){
-            var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");
             var perSec = window[resources[i] + "ps"];
-            for(var j = 0; j < updateList.length; j++){
-                updateList[j].innerHTML = Game.settings.format(perSec/4);
+            var perSecText = Game.settings.format(perSec/4);
+            var elems = this._starProducers[resources[i]];
+            for(var j = 0; j < elems.length; j++){
+                elems[j].textContent = perSecText;
             }            
         }
         
@@ -753,14 +765,14 @@ Game.interstellarUI = (function(){
         if(data.built == true){
             var status = document.getElementById('roc_' + data.id + 'Built');
             document.getElementById("interRocketBuilt").className = "green";
-            document.getElementById("interRocketBuilt").innerHTML = "Built";
+            document.getElementById("interRocketBuilt").textContent = "Built";
             for(var id in this.rocketPartEntries){
                 var partData = Game.interstellar.rocketParts.entries[id];
                 if(partData.entryName == "shield" || "engine" || "aero"){
                     document.getElementById("rocpart_" + partData.entryName).className = "hidden";
                 }
             }
-            status.innerHTML = "Built";
+            status.textContent = "Built";
             status.className = "green";
             var costElement = $('#' + data.htmlId + '_cost');
             costElement.empty();

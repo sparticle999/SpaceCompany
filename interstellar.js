@@ -369,7 +369,7 @@ Game.interstellar.military = (function(){
             for(var stat in stats){
                 var updateList = document.getElementsByClassName("fleet" + Game.utils.capitaliseFirst(stat));
                 for(var j = 0; j < updateList.length; j++){
-                    updateList[j].innerHTML = stats[stat];
+                    updateList[j].textContent = stats[stat];
                 }
             }
             this.power = stats.power;
@@ -393,7 +393,7 @@ Game.interstellar.military = (function(){
         for(var stat in stats){
             var updateList = document.getElementsByClassName("activeFleet" + Game.utils.capitaliseFirst(stat));
             for(var j = 0; j < updateList.length; j++){
-                updateList[j].innerHTML = stats[stat];
+                updateList[j].textContent = stats[stat];
             }
         }
         this.activePower = stats.power;
@@ -406,11 +406,11 @@ Game.interstellar.military = (function(){
             if(this.entries[ship].displayNeedsUpdate == true){
                 var updateList = document.getElementsByClassName(ship + "Count");
                 for(var i = 0; i < updateList.length; i++){
-                    updateList[i].innerHTML = this.entries[ship].count;
+                    updateList[i].textContent = this.entries[ship].count;
                 }
                 var activeUpdateList = document.getElementsByClassName(ship + "Active");
                 for(var i = 0; i < activeUpdateList.length; i++){
-                    activeUpdateList[i].innerHTML = this.entries[ship].active;
+                    activeUpdateList[i].textContent = this.entries[ship].active;
                 }
             }
         }

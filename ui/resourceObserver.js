@@ -38,7 +38,7 @@
         }
         switch (this.type) {
             case RESOURCE_OBSERVER_TYPE.CURRENT_VALUE: {
-                element.text(Game.settings.format(resourceData.current));
+                element.setText(Game.settings.format(resourceData.current));
 
                 if(this.enableColoring) {
                     this.colorElementZero(element, resourceData.current);
@@ -50,9 +50,9 @@
 
             case RESOURCE_OBSERVER_TYPE.SPECIFIC_VALUE: {
                 if(this.percentage === true) {
-                    element.text(Game.settings.format(resourceData.current * this.value || 0));
+                    element.setText(Game.settings.format(resourceData.current * this.value || 0));
                 } else {
-                    element.text(Game.settings.format(this.value || 0));
+                    element.setText(Game.settings.format(this.value || 0));
                 }
                 if(this.enableColoring) {
                     this.colorElementZero(element, this.value);
@@ -63,7 +63,7 @@
             }
 
             case RESOURCE_OBSERVER_TYPE.CAPACITY: {
-                element.text(Game.settings.format(resourceData.capacity));
+                element.setText(Game.settings.format(resourceData.capacity));
 
                 if(this.enableColoring) {
                     this.colorElementZero(element, resourceData.capacity);
@@ -73,7 +73,7 @@
             }
 
             case RESOURCE_OBSERVER_TYPE.PER_SECOND: {
-                element.text(Game.settings.format(resourceData.perSecond));
+                element.setText(Game.settings.format(resourceData.perSecond));
 
                 if(this.enableColoring) {
                     this.colorElementZero(element, resourceData.perSecond);
