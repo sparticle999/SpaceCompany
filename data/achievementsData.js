@@ -6,7 +6,7 @@ Game.achievementsCategoryData = (function () {
 		title: 'Resources',
 		brackets: [50, 5000, 500000, 50000000, 5000000000],
 		entries: [
-			'resUranium', 'resLava',
+			'resPlasma', 'resUranium', 'resLava',
 			'resOil', 'resMetal', 'resGems', 'resCharcoal', 'resWood', 'resSilicon',
 			'resLunarite', 'resMethane', 'resTitanium', 'resGold', 'resSilver',
 			'resHydrogen', 'resHelium', 'resIce', 'resMeteorite',
@@ -59,6 +59,15 @@ Game.achievementsData = (function(){
 	** Resources **
 	**************/
 
+	instance.resPlasma = {
+		id_v4: 'ach_121',
+		categoryInstance: Game.achievementsCategoryData.resources,
+		iconName: 'plasmaIcon',
+		title: 'Collect %s Plasma',
+		evaluator: function(x) { return getResource(RESOURCE.Plasma) >= x },
+		progressEvaluator: function(x) { return getResource(RESOURCE.Plasma) / x }
+	};
+	
 	instance.resUranium = {
 		id_v4: 'ach_12',
 		categoryInstance: Game.achievementsCategoryData.resources,
