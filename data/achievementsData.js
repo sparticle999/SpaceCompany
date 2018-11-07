@@ -1031,7 +1031,7 @@ Game.achievementsData = (function(){
 		iconName: 'iceIcon',
 		title: 'Build %s Overexchange Condensors',
 		evaluator: function(x) { return overexchange >= x },
-		progressEvaluator: function(x) { return everexchange/x }
+		progressEvaluator: function(x) { return overexchange/x }
 	};
 
 	instance.prodMeteorite1 = {
