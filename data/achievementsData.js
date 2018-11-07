@@ -19,28 +19,28 @@ Game.achievementsCategoryData = (function () {
 		entries: [
 			'prodPlasma1', 'prodPlasma2',
 			'prodEnergy1', 'prodEnergy2', 'prodEnergy3', 'prodEnergy4', 'prodEnergy5', 'prodEnergy6',
-			'prodUranium1', 'prodUranium2', 'prodUranium3', 'prodUranium4',
-			'prodLava1', 'prodLava2', 'prodLava3', 'prodLava4',
+			'prodUranium1', 'prodUranium2', 'prodUranium3', 'prodUranium4', 'prodUranium5',
+			'prodLava1', 'prodLava2', 'prodLava3', 'prodLava4', 'prodUranium5',
 			
-			'prodOil1', 'prodOil2', 'prodOil3', 'prodOil4',
-			'prodMetal1', 'prodMetal2', 'prodMetal3', 'prodMetal4',
-			'prodGems1', 'prodGems2', 'prodGems3', 'prodGems4',
-			'prodCharcoal1', 'prodCharcoal2', 'prodCharcoal3', 'prodCharcoal4',
-			'prodWood1', 'prodWood2', 'prodWood3', 'prodWood4',
-			'prodSilicon1', 'prodSilicon2', 'prodSilicon3', 'prodSilicon4',
+			'prodOil1', 'prodOil2', 'prodOil3', 'prodOil4', 'prodUranium5',
+			'prodMetal1', 'prodMetal2', 'prodMetal3', 'prodMetal4', 'prodUranium5',
+			'prodGems1', 'prodGems2', 'prodGems3', 'prodGems4', 'prodUranium5',
+			'prodCharcoal1', 'prodCharcoal2', 'prodCharcoal3', 'prodCharcoal4', 'prodUranium5',
+			'prodWood1', 'prodWood2', 'prodWood3', 'prodWood4', 'prodUranium5',
+			'prodSilicon1', 'prodSilicon2', 'prodSilicon3', 'prodSilicon4', 'prodUranium5',
 			
-			'prodLunarite1', 'prodLunarite2', 'prodLunarite3', 'prodLunarite4',
-			'prodMethane1', 'prodMethane2', 'prodMethane3', 'prodMethane4',
-			'prodTitanium1', 'prodTitanium2', 'prodTitanium3', 'prodTitanium4',
-			'prodGold1', 'prodGold2', 'prodGold3', 'prodGold4',
-			'prodSilver1', 'prodSilver2', 'prodSilver3', 'prodSilver4',
+			'prodLunarite1', 'prodLunarite2', 'prodLunarite3', 'prodLunarite4', 'prodUranium5',
+			'prodMethane1', 'prodMethane2', 'prodMethane3', 'prodMethane4', 'prodUranium5',
+			'prodTitanium1', 'prodTitanium2', 'prodTitanium3', 'prodTitanium4', 'prodUranium5',
+			'prodGold1', 'prodGold2', 'prodGold3', 'prodGold4', 'prodUranium5',
+			'prodSilver1', 'prodSilver2', 'prodSilver3', 'prodSilver4', 'prodUranium5',
 			
-			'prodHydrogen1', 'prodHydrogen2', 'prodHydrogen3', 'prodHydrogen4',
-			'prodHelium1', 'prodHelium2', 'prodHelium3', 'prodHelium4',
-			'prodIce1', 'prodIce2', 'prodIce3', 'prodIce4',
+			'prodHydrogen1', 'prodHydrogen2', 'prodHydrogen3', 'prodHydrogen4', 'prodUranium5',
+			'prodHelium1', 'prodHelium2', 'prodHelium3', 'prodHelium4', 'prodUranium5',
+			'prodIce1', 'prodIce2', 'prodIce3', 'prodIce4', 'prodUranium5',
 			'prodMeteorite1', 'prodMeteorite2', 'prodMeteorite3', 'prodMeteorite4',
 			
-			'prodScience1', 'prodScience2', 'prodScience3', 'prodScience4',
+			'prodScience1', 'prodScience2', 'prodScience3', 'prodScience4', 'prodUranium5',
 			'prodRocketFuel1', 'prodRocketFuel2', 'prodRocketFuel3',
 			'prodDyson1', 'prodDyson2' ]
 			
@@ -350,6 +350,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return recycler/x }
 	};
 
+	instance.prodUranium5 = {
+		id_v4: 'ach_105',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'uraniumIcon',
+		title: 'Build %s Planetary Nuclear Plants',
+		evaluator: function(x) { return planetNuke >= x },
+		progressEvaluator: function(x) { return planetNuke/x }
+	};
+
 	instance.prodLava1 = {
 		id_v4: 'ach_74',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -384,6 +393,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Volcanic Veluptuators',
 		evaluator: function(x) { return veluptuator >= x },
 		progressEvaluator: function(x) { return veluptuator/x }
+	};
+
+	instance.prodLava5 = {
+		id_v4: 'ach_106',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'lavaIcon',
+		title: 'Build %s Jupitonian Condensators',
+		evaluator: function(x) { return condensator >= x },
+		progressEvaluator: function(x) { return condensator/x }
 	};
 
 	instance.prodOil1 = {
@@ -422,6 +440,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return oilRig/x }
 	};
 
+	instance.prodOil5 = {
+		id_v4: 'ach_107',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'oilIcon',
+		title: 'Build %s Fossilator 9000s',
+		evaluator: function(x) { return fossilator >= x },
+		progressEvaluator: function(x) { return fossilator/x }
+	};
+
 	instance.prodMetal1 = {
 		id_v4: 'ach_34',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -456,6 +483,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Quantum Drills',
 		evaluator: function(x) { return quantumDrill >= x },
 		progressEvaluator: function(x) { return quantumDrill/x }
+	};
+
+	instance.prodMetal5 = {
+		id_v4: 'ach_108',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'metalIcon',
+		title: 'Build %s Multiverse Drills',
+		evaluator: function(x) { return multiDrill >= x },
+		progressEvaluator: function(x) { return multiDrill/x }
 	};
 
 	instance.prodGems1 = {
@@ -494,6 +530,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return carbyneDrill/x }
 	};
 
+	instance.prodGems5 = {
+		id_v4: 'ach_109',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'gemIcon',
+		title: 'Build %s Diamond Accretion Chambers',
+		evaluator: function(x) { return diamondChamber >= x },
+		progressEvaluator: function(x) { return diamondChamber/x }
+	};
+
 	instance.prodCharcoal1 = {
 		id_v4: 'ach_26',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -528,6 +573,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Forest Fryers',
 		evaluator: function(x) { return fryer >= x },
 		progressEvaluator: function(x) { return fryer/x }
+	};
+
+	instance.prodCharcoal5 = {
+		id_v4: 'ach_110',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'charcoalIcon',
+		title: 'Build %s Microverse Pollutors',
+		evaluator: function(x) { return microPollutor >= x },
+		progressEvaluator: function(x) { return microPollutor/x }
 	};
 
 	instance.prodWood1 = {
@@ -566,6 +620,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return infuser/x }
 	};
 
+	instance.prodWood5 = {
+		id_v4: 'ach_111',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'woodIcon',
+		title: 'Build %s Russian Forests',
+		evaluator: function(x) { return forest >= x },
+		progressEvaluator: function(x) { return forest/x }
+	};
+
 	instance.prodSilicon1 = {
 		id_v4: 'ach_54',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -600,6 +663,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Desert Destroyers',
 		evaluator: function(x) { return desert >= x },
 		progressEvaluator: function(x) { return desert/x }
+	};
+
+	instance.prodSilicon5 = {
+		id_v4: 'ach_112',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'siliconIcon',
+		title: "Build %s TARDISes (TARDISs? TARDIS'? TARDIS'S? Should I just write the whole thing out?)",
+		evaluator: function(x) { return tardis >= x },
+		progressEvaluator: function(x) { return tardis/x }
 	};
 
 	instance.prodLunarite1 = {
@@ -638,6 +710,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return planetExcavator/x }
 	};
 
+	instance.prodLunarite5 = {
+		id_v4: 'ach_113',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'lunariteIcon',
+		title: 'Build %s Moon Cloners',
+		evaluator: function(x) { return cloner >= x },
+		progressEvaluator: function(x) { return cloner/x }
+	};
+
 	instance.prodMethane1 = {
 		id_v4: 'ach_58',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -672,6 +753,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Hydrothermal Vents',
 		evaluator: function(x) { return vent >= x },
 		progressEvaluator: function(x) { return vent/x }
+	};
+
+	instance.prodMethane5 = {
+		id_v4: 'ach_114',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'methaneIcon',
+		title: 'Build %s Interstellar Cows',
+		evaluator: function(x) { return interCow >= x },
+		progressEvaluator: function(x) { return interCow/x }
 	};
 
 	instance.prodTitanium1 = {
@@ -710,6 +800,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return titanDrill/x }
 	};
 
+	instance.prodTitanium5 = {
+		id_v4: 'ach_115',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'titaniumIcon',
+		title: "Build %s David Guetta's Clubs",
+		evaluator: function(x) { return club >= x },
+		progressEvaluator: function(x) { return club/x }
+	};
+
 	instance.prodGold1 = {
 		id_v4: 'ach_62',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -744,6 +843,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Chronal Actuators',
 		evaluator: function(x) { return actuator >= x },
 		progressEvaluator: function(x) { return actuator/x }
+	};
+
+	instance.prodGold5 = {
+		id_v4: 'ach_116',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'goldIcon',
+		title: "Build %s Philosopher's Stones",
+		evaluator: function(x) { return philosopher >= x },
+		progressEvaluator: function(x) { return philosopher/x }
 	};
 
 	instance.prodSilver1 = {
@@ -782,6 +890,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return cannon/x }
 	};
 
+	instance.prodSilver5 = {
+		id_v4: 'ach_117',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'silverIcon',
+		title: 'Build %s Dead Werewolf Finders',
+		evaluator: function(x) { return werewolf >= x },
+		progressEvaluator: function(x) { return werewolf/x }
+	};
+
 	instance.prodHydrogen1 = {
 		id_v4: 'ach_78',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -816,6 +933,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Hindenburg Excavations',
 		evaluator: function(x) { return hindenburg >= x },
 		progressEvaluator: function(x) { return hindenburg/x }
+	};
+
+	instance.prodHydrogen5 = {
+		id_v4: 'ach_118',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'hydrogenIcon',
+		title: 'Build %s Star Harvesters',
+		evaluator: function(x) { return harvester >= x },
+		progressEvaluator: function(x) { return harvester/x }
 	};
 
 	instance.prodHelium1 = {
@@ -854,6 +980,15 @@ Game.achievementsData = (function(){
 		progressEvaluator: function(x) { return skimmer/x }
 	};
 
+	instance.prodHelium5 = {
+		id_v4: 'ach_119',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'heliumIcon',
+		title: 'Build %s Caged Stars',
+		evaluator: function(x) { return cage >= x },
+		progressEvaluator: function(x) { return cage/x }
+	};
+
 	instance.prodIce1 = {
 		id_v4: 'ach_86',
 		categoryInstance: Game.achievementsCategoryData.producers,
@@ -888,6 +1023,15 @@ Game.achievementsData = (function(){
 		title: 'Build %s Mr Freezes',
 		evaluator: function(x) { return mrFreeze >= x },
 		progressEvaluator: function(x) { return mrFreeze/x }
+	};
+
+	instance.prodIca5 = {
+		id_v4: 'ach_120',
+		categoryInstance: Game.achievementsCategoryData.producers,
+		iconName: 'iceIcon',
+		title: 'Build %s Overexchange Condensors',
+		evaluator: function(x) { return overexchange >= x },
+		progressEvaluator: function(x) { return everexchange/x }
 	};
 
 	instance.prodMeteorite1 = {
