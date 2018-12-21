@@ -577,7 +577,12 @@ Templates.objectConstructor.UiFunctions = function() {
                 if ((res.toLowerCase() === resource.toLowerCase() || resource == 'all')) {
                     var obj = registeredElements[act][res].object;
                     if(act == "current" || act == "persecond" || act == "cost" || act == "progress"){
-                        if(obj.category == "buildings"){
+                        if(obj.page == "resources" || obj.id == "science" || obj.id == "rocketFuel"){
+                            if(obj.unlocked && obj.page + "Tab" == Game.lastTab){
+                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
+                            }
+                        }
+                        else if(obj.category == "buildings"){
                             if(obj.resource == "science"){
                                 if("techTab_res_science_ne" == Game.lastNav){
                                     if ('ui_'+act in obj) { obj['ui_'+act].update(); }
@@ -616,11 +621,13 @@ Templates.objectConstructor.UiFunctions = function() {
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         } else {
+                            console.error(obj);
                             if(obj.unlocked && obj.page + "Tab" == Game.lastTab){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         }
                     } else {
+                        //console.error(act);
                         if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                     }
                 }          

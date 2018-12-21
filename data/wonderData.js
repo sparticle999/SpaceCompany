@@ -52,7 +52,7 @@ Game.wonderNavData = (function(){
 
     instance.wonderStation = {
         name: 'Wonder Station',
-        desc: 'As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.<br><b>NB: You must activate the wonders after building them to receive their effects.</b>',
+        desc: 'As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room.\n<b>NB: You must activate the wonders after building them to receive their effects.</b>',
         id: 'wonderStation',
         icon: 'wonderStationIcon',
         order: 1,
@@ -107,7 +107,7 @@ Game.wonderNavData = (function(){
 
     instance.comms = {
         name: 'Comms Wonder',
-        desc: 'In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says "Original Comms Relay between my first two star systems". A loud voice booms again from the speakers at the far corners of the floor: <br>"This is one of my most prized memorabilia, reminding me of the first message I sent between star systems. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars."',
+        desc: 'In the center of the room, you see a smouldered antenna dish, lying on the floor. A plaque next to it says "Original Comms Relay between my first two star systems". A loud voice booms again from the speakers at the far corners of the floor: \n "This is one of my most prized memorabilia, reminding me of the first message I sent between star systems. I will be elated if you repair this for me, and in return, I will help you on your mission to colonise the stars."',
         id: 'comms',
         icon: 'commsIcon',
         order: 6,
@@ -118,7 +118,7 @@ Game.wonderNavData = (function(){
 
     instance.rocket = {
         name: 'Rocket Wonder',
-        desc: 'Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can reassemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room:<br>"Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I\'m not sure where the pieces are. You may need additional research to build this once more, but I\'m sure you will figure it out just fine."',
+        desc: 'Up on the second floor, you find a disarray of broken machines and scattered parts on the floor. You can reassemble what seems to be a rocket engine lying next to you. The booming voice of the Overlord comes over the speakers in the room:\n"Greetings, friend. As you can see, this floor has largely fallen into disorder. If you fix it for me, you will be handsomely rewarded. Your first task is to repair the wonder to your right. It used to be a rocket engine, but I\'m not sure where the pieces are. You may need additional research to build this once more, but I\'m sure you will figure it out just fine."',
         id: 'rocket',
         icon: 'rocketIcon',
         order: 7,
@@ -129,7 +129,7 @@ Game.wonderNavData = (function(){
 
     instance.antimatter = {
         name: 'Antimatter Wonder',
-        desc: 'In the corner of the floor, you see a faintly glowing, large canister, propped up against the walls. The announcing message plays after pressing a red button next to it: <br>"This was my first antimatter tank for the maiden voyage of \"The Interstellar\", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe."',
+        desc: 'In the corner of the floor, you see a faintly glowing, large canister, propped up against the walls. The announcing message plays after pressing a red button next to it: \n"This was my first antimatter tank for the maiden voyage of \"The Interstellar\", on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe."',
         id: 'antimatter',
         icon: 'antimatterIcon',
         order: 8,
@@ -140,7 +140,7 @@ Game.wonderNavData = (function(){
 
     instance.portal = {
         name: 'Portal Room',
-        desc: 'An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It\'s plaque reads: <br>"This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos."',
+        desc: 'An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It\'s plaque reads: \n"This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos."',
         id: 'portal',
         icon: 'portalIcon',
         order: 9,
@@ -151,7 +151,7 @@ Game.wonderNavData = (function(){
 
     instance.stargate = {
         name: 'Stargate',
-        desc: 'The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table.<br><b>NB: The Wonder Tab will disappear after completing this wonder. Make sure all others are completed first.</b>',
+        desc: 'The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table.\n<b>NB: The Wonder Tab will disappear after completing this wonder. Make sure all others are completed first.</b>',
         id: 'stargate',
         icon: 'stargateIcon',
         order: 10,
@@ -170,7 +170,7 @@ Game.wonderData = (function(){
 
 	instance.buildPrecious = {
 		name: 'Precious Wonder',
-		desc: 'The first painting depicts a large, shiny structure and the plaque reads:<br>"While I am rich beyond comparison, I still value adding precious resources to my collection. In return for your Gems, Silver, and Gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."',
+		desc: 'The first painting depicts a large, shiny structure and the plaque reads:\n"While I am rich beyond comparison, I still value adding precious resources to my collection. In return for your Gems, Silver, and Gold, I will teach you about something that lies inside your own planet, allowing you to find a rare resource and dangerous element previously unfound."',
 		nav: 'wonderStation',
         order: 2,
         htmlId: 'won_precious',
@@ -181,7 +181,7 @@ Game.wonderData = (function(){
             'gold': 5000,
         },
         onApply: function(){
-            Templates.uiFunctions.unlock("activatePrecious");
+            Game.wonder.unlock("activatePrecious");
         },
 		unlocked: false,
 	};
@@ -207,7 +207,7 @@ Game.wonderData = (function(){
 
     instance.buildEnergetic = {
         name: 'Energetic Wonder',
-        desc: 'A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?<br>"Having drained many stars of their energy, I want a structure built in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."',
+        desc: 'A pulsating image depicts a huge pyramid, with sparks of lightning. What could the Overlord want now?\n"Having drained many stars of their energy, I want a structure built in honor of the energy I have taken from the galaxy with my mighty power. In return for building this, I will grant you ways to generate a form of power no man has been able to harness before."',
         nav: 'wonderStation',
         order: 3,
         htmlId: 'won_energetic',
@@ -218,7 +218,7 @@ Game.wonderData = (function(){
             'uranium': 200,
         },
         onApply: function(){
-            Templates.uiFunctions.unlock("activateEnergetic");
+            Game.wonder.unlock("activateEnergetic");
         },
         unlocked: false,
     };
@@ -244,7 +244,7 @@ Game.wonderData = (function(){
 
     instance.buildTechnological = {
         name: 'Technological Wonder',
-        desc: 'A green-tinted picture shows the inside of some computer system.<br>"With my technological superiority over anyone in the cosmos, I want a monument dedicated to the advanced computer systems I control. As a reward, I will teach you about computerized machines and give you the ability to make more advanced resource gatherers."',
+        desc: 'A green-tinted picture shows the inside of some computer system.\n"With my technological superiority over anyone in the cosmos, I want a monument dedicated to the advanced computer systems I control. As a reward, I will teach you about computerized machines and give you the ability to make more advanced resource gatherers."',
         nav: 'wonderStation',
         order: 4,
         htmlId: 'won_technological',
@@ -255,7 +255,7 @@ Game.wonderData = (function(){
             'gem': 40000,
         },
         onApply: function(){
-            Templates.uiFunctions.unlock("activateTechnological");
+            Game.wonder.unlock("activateTechnological");
         },
         unlocked: false,
     };
@@ -274,7 +274,9 @@ Game.wonderData = (function(){
         },
         onApply: function(){
             for(var id in Game.resources.entries){
-                Game.buildings.unlock(id + "T3");
+                if(checkRegResource(id)){
+                    Game.buildings.unlock(id + "T3");
+                }
             }
         },
         unlocked: false,
@@ -282,7 +284,7 @@ Game.wonderData = (function(){
 
     instance.buildMeteorite = {
         name: 'Meteorite Wonder',
-        desc: 'A blazing red portrait depicts a futuristic set of machines.<br>"You have accomplished much so far, but now you face building a great structure to last generations. For my next monument, I will gift you with a new type of machine only seen in science-fiction. Meteorite machines use the energy installed in them to convert plasma into raw power useful in extracting resources."',
+        desc: 'A blazing red portrait depicts a futuristic set of machines.\n"You have accomplished much so far, but now you face building a great structure to last generations. For my next monument, I will gift you with a new type of machine only seen in science-fiction. Meteorite machines use the energy installed in them to convert plasma into raw power useful in extracting resources."',
         nav: 'wonderStation',
         order: 5,
         htmlId: 'won_meteorite',
@@ -293,7 +295,7 @@ Game.wonderData = (function(){
             'silicon': 1200000,
         },
         onApply: function(){
-            Templates.uiFunctions.unlock("activateMeteorite");
+            Game.wonder.unlock("activateMeteorite");
         },
         unlocked: false,
     };
@@ -311,11 +313,16 @@ Game.wonderData = (function(){
             'silicon': 4000000,
         },
         onApply: function(){
+            for(var id in Game.resources.entries){
+                if(checkRegResource(id)){
+                    Game.buildings.unlock(id + "T4");
+                }
+            }
             Game.resources.unlock("meteorite");
-            Game.wonder.unlock("comms");
-            Game.wonder.unlock("rocket");
-            Game.wonder.unlock("antimatter");
-            Game.wonder.unlock("portal");
+            Game.wonder.unlock("activateComms");
+            Game.wonder.unlock("activateRocket");
+            Game.wonder.unlock("activateAntimatter");
+            Game.wonder.unlock("activatePortal");
         },
         unlocked: false,
     };
@@ -394,7 +401,7 @@ Game.wonderData = (function(){
             'silicon': 6000000,
         },
         onApply: function(){
-            Game.wonder.unlock("stargate");
+            Game.wonder.unlock("activateStargate");
         },
         unlocked: false,
     };

@@ -81,11 +81,14 @@ Game.wonder = (function(){
             if (typeof this.entries[id] !== 'undefined') {
                 if (typeof data.wonder.i[id].built !== 'undefined') {
                     this.entries[id].built = data.wonder.i[id].built;
+                    if(this.entries[id].built){
+                        this.gainWonder(this.entries[id]);
+                    }
                 }
                 this.entries[id].activated = data.wonder.i[id].activated;
                 this.entries[id].unlocked = data.wonder.i[id].unlocked;
                 if(this.entries[id].activated){
-                    this.entries[id].onActivate();
+                    this.gainWonder(this.entries[id]);
                 }
             }
         }
@@ -94,20 +97,22 @@ Game.wonder = (function(){
     instance.build = function(id){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.cost)){
-    		data.built = true;
-            data.onApply();
-            Templates.uiFunctions.hide(data.id);
-    		data.displayNeedsUpdate = true;
+            data.built = true;
+    		this.gainBuild(data);
     	}
     };
+
+    instance.gainWonder = function(data){
+        data.onApply();
+        Templates.uiFunctions.hide(data.id);
+        data.displayNeedsUpdate = true;
+    }
 
     instance.activate = function(id){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.cost)){
     		data.activated = true;
-    		data.onApply();
-            Templates.uiFunctions.hide(data.id);
-    		data.displayNeedsUpdate = true;
+    		this.gainWonder(data);
     	}
     };
 
@@ -118,7 +123,7 @@ Game.wonder = (function(){
         } else if(data.category == "floor2" || data.category == "floor3"){
             multi = this.floor23Price;
         }
-        return Math.floor(data[resource.toString()]*multi);
+        return Math.floor(costData[resource]*multi);
     };
 
     instance.checkCost = function(data, costData){
@@ -156,6 +161,7 @@ Game.wonder = (function(){
     };
 
     instance.unlock = function(id){
+        Templates.uiFunctions.unlock(id);
     	this.entries[id].unlocked = true;
     	this.entries[id].displayNeedsUpdate = true;
     }

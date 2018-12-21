@@ -133,11 +133,21 @@ Game.solCenter = (function(){
                     }
                 }
                 data.current += 1;
+                this.updateCosts(id);
             } else {
                 return false;
             }
         }
         return true;
+    }
+
+    instance.updateCosts = function(id) {
+        var cost = {};
+        var obj = Game.dysonData[id].cost;
+        Object.keys(obj).forEach(function(c) {
+            cost[c] = Math.floor(obj[c] * Math.pow(1.1, Game.solCenter.entries.dyson.items[id].current))
+        })
+        Game.solCenter.entries.dyson.items[id].cost = cost;
     }
 
     instance.calcCost = function(data, resource, power){

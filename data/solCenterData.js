@@ -34,7 +34,7 @@ Game.solCenterData = (function () {
     		'wood': 1500,
     	},
     	onApply: function(){
-    		Game.resources.unlock("plasma");
+    		Game.tech.unlockTech("unlockPlasma");
     	},
     };
 
@@ -52,7 +52,7 @@ Game.solCenterData = (function () {
     	},
         amount: 1,
     	onApply: function(){
-    		Game.solCenter.unlock("emc");
+    		Game.tech.unlockTech("unlockEmc");
     	},
     };
 

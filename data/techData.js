@@ -395,7 +395,7 @@ Game.techData = (function () {
         newTechs: ['unlockMeteorite'],
         tabAlerts: ['solCenter'],
         onApply: function(){
-            console.log("EMC")
+            console.error("EMC")
         }
     });
 

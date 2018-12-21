@@ -54,6 +54,14 @@ function addManualResource(id) {
     );
 };
 
+// check if id is a regular resource
+function checkRegResource(id){
+    if(id != "energy" && id != "plasma" && id != "meteorite" && id != "rocketFuel" && id != "rocket" && id != "antimatter"){
+        return true;
+    }
+    return false;
+}
+
 Game.resources = (function(){
 
     // Every time perSecond of a material is impacted, run
@@ -408,23 +416,27 @@ Game.resources = (function(){
     }
 
     instance.updateResourcesPerSecond = function(){
+        // Setup efficiency variables
         var efficiencyMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01);
         var dm = 1 + 0.01*Game.stargaze.entries.darkMatter.current;
         if(!Game.stargaze.upgradeEntries.increaseProd1.achieved){
             dm = 1;
         }
-        var energyDiff = 0;
-        var energy = Game.resources.entries.energy;
-        for(var id in Game.solCenter.entries.dyson.items){
-            var data = Game.solCenter.entries.dyson.items;
-            if(data.output){
-                this.entries.energy.perSecond += data.output * dm;
-            }
-        }
+        // stellar production bonuses
         var boost = {};
+        // initialising vars
         for(var resource in this.entries){
             this.entries[resource].perSecond = 0;
             boost[resource] = 0;
+        }
+
+        var energyDiff = 0;
+        var energy = Game.resources.entries.energy;
+        for(var id in Game.solCenter.entries.dyson.items){
+            var data = Game.solCenter.entries.dyson.items[id];
+            if(data.output){
+                energy.perSecond += data.output * data.current * dm;
+            }
         }
         for(var id in Game.buildings.entries){
             var building = Game.buildings.entries[id];
