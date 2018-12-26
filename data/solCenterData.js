@@ -50,7 +50,7 @@ Game.solCenterData = (function () {
     		'plasma': 100,
     	},
     	onApply: function(){
-    		Game.tech.unlockTech("unlockEMC");
+    		Game.tech.unlockTech("unlockEmc");
     	},
     };
 
