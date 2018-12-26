@@ -87,18 +87,22 @@ Game.solCenter = (function(){
 
     instance.load = function(data){
     	if(data.solCenter){
+            console.error(data.solCenter)
     		for (var id in data.solCenter.e) {
             	if (typeof this.entries[id] !== 'undefined') {
             		var ent = data.solCenter.e[id];
-            		for(var prop in ent){
-                        if(prop == "items"){
-                            for(var struc in ent[prop]){
-                                this.entries[id][prop][struc].current = ent[prop][struc]
-                            }
-                        } else {
+                    if(id == "dyson"){
+                        this.entries[id].researched = ent.researched;
+                        for(var struc in ent.items){
+                            this.entries[id].items[struc].current = ent.items[struc];
+                        }
+                    } else {
+                        for(var prop in ent){
+                            console.error(id, prop, ent[prop])
+                            console.error(JSON.parse(JSON.stringify(this.entries[id])))
                             this.entries[id][prop] = ent.prop;
                         }
-            		}
+                    }
             	}
             	if(this.entries[id].researched == true){
             		this.gainTech(id);

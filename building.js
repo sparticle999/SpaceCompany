@@ -303,7 +303,7 @@ Game.buildings = (function(){
         var newValue = Math.floor(this.entries[id].current - count);
         var newActiveValue = Math.floor(this.entries[id].active - count);
         this.entries[id].current = Math.max(newValue, 0);
-        this.entries[id].current = Math.max(newActiveValue, 0);
+        this.entries[id].active = Math.max(newActiveValue, 0);
         Templates.uiFunctions.refreshElements('current', id);
         Templates.uiFunctions.refreshElements('machine', id);
         Templates.uiFunctions.refreshElements('cost', id);

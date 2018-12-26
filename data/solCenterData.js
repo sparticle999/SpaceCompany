@@ -58,7 +58,7 @@ Game.solCenterData = (function () {
     	name: "Dyson Segments",
     	id: "dyson",
         htmlId: "solCtr_dyson",
-        desc: "This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost?<br><br><b>NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.</b>",
+        desc: "This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost? NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.</b>",
     	category: "alienTechnology",
         icon: "dysonIcon",
         cost: {

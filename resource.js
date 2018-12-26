@@ -414,7 +414,7 @@ Game.resources = (function(){
             document.getElementById("storageBar").style["background-color"] = "#337ab7";
         }
     }
-
+    
     instance.updateResourcesPerSecond = function(){
         // Setup efficiency variables
         var efficiencyMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01);
@@ -455,7 +455,7 @@ Game.resources = (function(){
             }
             var ok = true;
             for(var i = 0; i < use.length; i++){
-                if(this.entries[use[i]].active < (-1)*building.resourcePerSecond[use[i]]){
+                if(this.entries[use[i]].current < building.active*(-1)*building.resourcePerSecond[use[i]]){
                     ok = false;
                 }
             }
@@ -496,7 +496,6 @@ Game.resources = (function(){
                     }
                 }
             }
-
             if(Game.stargaze.upgradeEntries.dimensionalRift.achieved){
                 if(data.current >= data.storage){
                     data.perSecond *= 0.05;
