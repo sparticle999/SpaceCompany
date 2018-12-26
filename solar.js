@@ -81,6 +81,7 @@ Game.solar = (function(){
     	if(data.resource){
 			for(var i = 0; i < data.resource.length; i++){
 				Game.buildings.unlock(data.resource[i] + "T1");
+				Game.resources.unlock(data.resource[i]);
 				Templates.uiFunctions.refreshElements("capacity", data.resource[i]);
 			}
 		}
