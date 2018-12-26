@@ -98,7 +98,7 @@ Game.wonder = (function(){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.cost)){
             data.built = true;
-    		this.gainBuild(data);
+    		this.gainWonder(data);
     	}
     };
 

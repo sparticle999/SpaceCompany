@@ -56,7 +56,7 @@ function addManualResource(id) {
 
 // check if id is a regular resource
 function checkRegResource(id){
-    if(id != "energy" && id != "plasma" && id != "meteorite" && id != "rocketFuel" && id != "rocket" && id != "antimatter"){
+    if(id != "energy" && id != "plasma" && id != "meteorite" && id != "rocketFuel" && id != "rocket" && id != "antimatter" && id != "science"){
         return true;
     }
     return false;

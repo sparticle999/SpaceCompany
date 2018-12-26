@@ -92,7 +92,6 @@ var Game = (function() {
     };
 
     instance.slowUpdate = function(self, delta) {
-        refreshConversionDisplay();
         refreshTimeUntilLimit();
 
         self.buildings.updatePerSecondProduction = true;
@@ -231,13 +230,16 @@ var Game = (function() {
      * Runthrough: Game.resources.entries, 'category', Game.resourceCategoryData, 'items'
      */
      instance.combineGameObjects = function(from, cat, to, con) {
+        
         // Obj keys: [metal, energy] -> metal
         Object.keys(from).map(function(item) {
+            
             // if Game.resources.entries.metal doesn't contain 'category', then complain
             if (!contains(Object.keys(from[item]), cat)) {
                 console.log("Object 'from'->"+item+" doesn't contain attribute: "+cat);
                 return false;
             }
+            
             // value = Game.resources.entries.metal.category = earth
             var value = from[item][cat];
             // if 'con' is set
@@ -249,12 +251,13 @@ var Game = (function() {
                 // if 'metal' not in to.earth.items, create to.earth.items.metal
                 if (!(item in to[value][con])) {to[value][con][item] = {};}
                 // set Game.resourceCategoryData.earth.items.metal to Game.resources.entries.metal
-                to[value][con][item] = from[item]    
+                to[value][con][item] = from[item];
             } else {
                 if (!(value in to)) {to[value] = {};}
                 if (!(item in to[value])) {to[value][item] = {};}
                 to[value][item] = from[item]        
             }
+            
         })
     }
 

@@ -506,7 +506,7 @@ Templates.objectConstructor.UiFunctions = function() {
      * @param  {String} DOMid The id of the node that was clicked
      */
     this.toggleHeader = function(DOMid) {
-        console.log(DOMid);
+        //console.log(DOMid);
         // BUG only unhide/rehide unlocked menu items
         var node = document.getElementById(DOMid);
         var expand = node.classList.contains('collapsed');
@@ -555,11 +555,15 @@ Templates.objectConstructor.UiFunctions = function() {
         node.classList.add("active");
     }
 
-
+    var test = false;
     //////////////////////
     // Page Interaction //
     //////////////////////
     this.refreshElements = function(action, resource) {
+        // if(!test){
+        //     test = true;
+        //     console.error(registeredElements)
+        // }
         var refreshActions = [];
         // If an action is provided, only perform that one.
         if (typeof action !== 'undefined' && (action in registeredElements)) {
@@ -578,7 +582,7 @@ Templates.objectConstructor.UiFunctions = function() {
                     var obj = registeredElements[act][res].object;
                     if(act == "current" || act == "persecond" || act == "cost" || act == "progress"){
                         if(obj.page == "resources" || obj.id == "science" || obj.id == "rocketFuel"){
-                            if(obj.unlocked && obj.page + "Tab" == Game.lastTab){
+                            if(obj.unlocked && obj.page + "Tab" == Game.lastTab || Game.lastNav == "solCenterTab_solCtr_emc_ne"){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
                         }
@@ -620,14 +624,14 @@ Templates.objectConstructor.UiFunctions = function() {
                             if("solCenterTab_solCtr_" + obj.id + "_ne" == Game.lastNav || "solCenterTab_solCtr_" + obj.nav + "_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
-                        } else {
-                            console.error(obj);
-                            if(obj.unlocked && obj.page + "Tab" == Game.lastTab){
-                                if ('ui_'+act in obj) { obj['ui_'+act].update(); }
-                            }
+                        }
+                    } else if(act == "ui_emc"){
+                        if("solCenterTab_solCtr_emc_ne" == Game.lastNav){
+                            console.error(obj, act, obj[act]);
+                            if (act in obj) { obj[act].update();}
                         }
                     } else {
-                        //console.error(act);
+                        //console.error(act, obj.id);
                         if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                     }
                 }          
@@ -785,11 +789,17 @@ Templates.objectConstructor.UiFunctions = function() {
                     funct = new Function("Game.wonder.activate('"+match[2]+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
+                // Match (solCenter)_convert_(metal)
+                case (match = getCase(id, "^(.*)_convert_(.*)")).input:
+                    funct = new Function("Game.solCenter.convert('"+match[2]+"','"+Game.settings.entries.notificationsEnabled+"')");
+                    Templates.uiFunctions.addUIEventListener(node, "click", funct);
+                    break;
                 // Match (machines)_(energyT1)(_de)activate_(1)
                 case (match = getCase(id, "^(.*)_(.*)_activate_(.*)")).input:
                     funct = new Function("Game.resources.setRelativeActive('"+match[2]+"','"+parseInt(match[3])+"')");
                     Templates.uiFunctions.addUIEventListener(node, "click", funct);
                     break;
+                // Match
 
                 ////////////
                 // Unused //
@@ -815,6 +825,9 @@ Templates.objectConstructor.UiFunctions = function() {
                     break;
                 // Match (resources)_(plasma)_gainCost
                 case (match = getCase(id, "^(.*)_(.*)Hidden$")).input:
+                    break;
+                // Match changeEmcAmount [It's handled onmousedown="" as rightclicks are hard to distinguish in this]
+                case (match = getCase(id, "changeEmcAmount")).input:
                     break;
 
                 default:

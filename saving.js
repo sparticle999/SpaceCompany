@@ -155,7 +155,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.web !== "undefined") Game.buildings.entries.meteoriteT2.current = savegame.web;
 		if(typeof savegame.smasher !== "undefined") Game.buildings.entries.meteoriteT3.current = savegame.smasher;
 		if(typeof savegame.nebulous !== "undefined") Game.buildings.entries.meteoriteT4.current = savegame.nebulous;
-		if(typeof savegame.dyson !== "undefined") Game.solCenter.entries.dyson.current = savegame.dyson;
+		if(typeof savegame.dyson !== "undefined") Game.solCenter.entries.dyson.items["segment"].current = savegame.dyson;
 		if(typeof savegame.sphere !== "undefined") Game.solCenter.entries.dyson.items["sphere"].current = savegame.sphere;
 		if(typeof savegame.swarm !== "undefined") Game.solCenter.entries.dyson.items["swarm"].current = savegame.swarm;
 		if(typeof savegame.ring !== "undefined") Game.solCenter.entries.dyson.items["ring"].current = savegame.ring;

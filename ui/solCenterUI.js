@@ -5,7 +5,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 	// solarUI					('solar', 'Solar System BETA', Game.pages.solar)
 
 
-	// When creating or adjusting a template, make sure all ids start with'+this.page+'
+	// When creating or adjusting a template, make sure all ids start with'+this.page+',
 	// This is to make sure they're unique regardless of the content
 	// Use a class for global information like hidden info, resource counts, machine costs, etc
 
@@ -194,6 +194,62 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
+	var TemplatePaneEmc = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}Conv_Container" class="{{id}}Conv_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
+			'<td>',
+				'<h3 class="default btn-link">Uses</h3>',
+				'<p>',
+					'This is where you can convert your energy and plasma into resources. <b>(Right click to go back X10)</b>',
+					'<hide class="autoEmcHide hidden"><br>With Auto Emc (unlocked with rebirth), when you can automate multiple, the order will be top to bottom (always Max).</hide>',
+				'</p>',
+				'<div class="row">',
+					'<div class="col-md-12">',
+						'<label>Remaining energy: <span class="res_energycurrent">N/A</span></label>',
+						'<br>',
+						'<label>Remaining plasma: <span class="res_plasmacurrent">N/A</span></label>',
+						'<button id="changeEmcAmount" onmousedown="Game.solCenter.changeEmcAmount(event)" class="btn btn-default pull-right" oncontextmenu="return false;">Converting <span class="emcAmountVal">Max</span></button>',
+					'</div>',
+				'</div>',
+				'<div class="row">',
+					'<div class="col-md-12">',
+						'<div class="table-responsive">',
+						'<table class="table table-striped">',
+							'<thead>',
+								'<th>Cost (Energy)</th>',
+								'<th>Material</th>',
+								'<th>Current amount / Storage</th>',
+								'<th></th>',
+								'<th class="autoEmcHide hidden">Auto Emc</th>',
+							'</thead>',
+							'<tbody>',''].join('\n'));
+
+	var TemplatePaneEmc2 = Handlebars.compile(
+		['</tbody>',
+						'</table>',
+						'</div>',
+					'</div>',
+				'</div>',
+			'</td>',
+		'</tr>',''].join('\n'));
+
+	var TemplatePaneEnergyEmc = Handlebars.compile(
+		['<tr>',	
+			'<td><span class="emcCost_{{id}}">37</span> Energy</td>',
+			'<td><span class="emcAmount_{{id}}">1</span> {{name}}</td>',
+			'<td><span class="res_{{id}}current">N/A</span> / <span class="res_{{id}}capacity">N/A</span></td>',
+			'<td><button id="solCenter_convert_{{id}}" class="btn btn-default pull-right" role="button">Convert</button></td>',
+			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="{{id}}AutoEmc" class="autoEmc" />',
+		'</tr>',''].join('\n'));
+
+	var TemplatePanePlasmaEmc = Handlebars.compile(
+		['<tr>',	
+			'<td><span class="emcCost_{{id}}">37</span> Plasma</td>',
+			'<td><span class="emcAmount_{{id}}">1</span> {{name}}</td>',
+			'<td><span class="res_{{id}}current">N/A</span> / <span class="res_{{id}}capacity">N/A</span></td>',
+			'<td><button id="solCenter_convert_{{id}}" class="btn btn-default pull-right" role="button">Convert</button></td>',
+			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="{{id}}AutoEmc" class="autoEmc" />',
+		'</tr>',''].join('\n'));
+
 
 	////////////////////////////
 	// Page content functions //
@@ -236,6 +292,26 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		}); return html;
 	}
 
+	var buildEMCPane = function(){
+		var html = "";
+		html += TemplatePaneEmc(Game.solCenter.entries.emc);
+		Object.keys(Game.resources.entries).forEach(function(build) {
+			
+			if(checkRegResource(build)){
+			var data = Game.resources.entries[build];
+			html += TemplatePaneEnergyEmc(data);
+			} else {
+				if(build == "meteorite"){
+					var data = Game.resources.entries[build];
+					html += TemplatePanePlasmaEmc(data);
+				}
+			}
+		});
+		html += TemplatePaneEmc2(Game.solCenter.entries.emc);
+		Templates.uiFunctions.registerElement(Game.solCenter.entries.emc, 'ui_emc')
+		return html;
+	}
+
 	/**
 	 * Creates each cost item of the gain cost
 	 * @param  {string} res  Resource to be added into the cost html
@@ -273,6 +349,9 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		if ('items' in data) {
 			// Attach the buildings to the title
 			Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildMachineCost(data.items));
+			if(data.id == "emc"){
+				Templates.uiFunctions.attachHTML(cPage, cPage+'Tab_'+data.htmlId+'_netc', buildEMCPane());
+			}
 		} else {
 			console.warn("Malformed object passed to createPane:");
 			console.warn(data);

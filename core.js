@@ -93,15 +93,6 @@ function adjustCost(resource, cost, gain) {
 	return {g: gainAbs, c: costAbs};
 }
 
-// function checkRedCost() {
-// 	if(document.getElementById("roc_tier1Rocket_shield_c") != null){
-// 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.shield.count, 50, "roc_tier1Rocket_shield_c");
-// 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.engine.count, 25, "roc_tier1Rocket_engine_c");
-// 		Game.settings.turnRed(Game.interstellar.rocketParts.entries.aero.count, 15, "roc_tier1Rocket_aero_c");
-// 	}
-// }
-
-
 function contains(array, obj) {
 	for (var i = 0; i < array.length; i++) {
 		if (array[i] === obj) {

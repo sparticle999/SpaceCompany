@@ -9,7 +9,6 @@ Game.solCenterCategoryData = (function () {
         htmlId: 'soc_alienTechnology',
         page: 'solCenter',
         order: 1,
-        unlocked: false
     };
 
     return instance;
@@ -50,9 +49,8 @@ Game.solCenterData = (function () {
     		'energy': 75000,
     		'plasma': 100,
     	},
-        amount: 1,
     	onApply: function(){
-    		Game.tech.unlockTech("unlockEmc");
+    		Game.tech.unlockTech("unlockEMC");
     	},
     };
 
@@ -159,8 +157,7 @@ Game.dysonData = (function(){
             output: 1000000,
             max: 1,
             onBuy: function(){
-                if(current < max){
-                    Game.solCenter.build("sphere");
+                if(this.current >= 1){
                     Game.stargaze.tabUnlocked = true;
                     document.getElementById("stargazeTab").className = "";
                 }
