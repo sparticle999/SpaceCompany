@@ -137,6 +137,7 @@ Game.interstellar = (function(){
     };
 
     instance.unlock = function(id) {
+        document.getElementById("interstellarTab_link").className = "";
         this.entries[id].unlocked = true;
         this.entries[id].displayNeedsUpdate = true;
     };

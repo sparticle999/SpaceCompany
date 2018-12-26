@@ -249,13 +249,13 @@ Game.stargazeUI = (function(){
         //Wonders
         var wonderDM = 0;
         var wonder = Game.wonder.entries;
-        if(wonder.precious.activated&&wonder.energetic.activated&&wonder.technological.activated&&wonder.meteorite.activated){
+        if(wonder.activatePrecious.activated&&wonder.activateEnergetic.activated&&wonder.activateTechnological.activated&&wonder.activateMeteorite.activated){
             wonderDM += 4;
         }
-        if(wonder.comms.activated&&wonder.rocket.activated&&wonder.antimatter.activated&&wonder.portal.activated){
+        if(wonder.activateComms.activated&&wonder.activateRocket.activated&&wonder.activateAntimatter.activated&&wonder.activatePortal.activated){
             wonderDM += 4;
         }
-        if(wonder.stargate.activated){
+        if(wonder.activateStargate.activated){
             wonderDM += 2;
         }
         //Sphere

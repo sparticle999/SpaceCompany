@@ -77,26 +77,21 @@ Game.solCenter = (function(){
     			data.solCenter.e[id].resource = ent.resource;
     		}
             if(id == "dyson"){
-                console.log("might want to reduce redunancy");
                 data.solCenter.e[id].items = {};
                 for(var prop in ent.items){
-                    //if(prop == "dyson")continue;
                     data.solCenter.e[id].items[prop] = ent.items[prop].current;
                 }
-                console.error(data.solCenter.e["dyson"])
             }
     	}
     };
 
     instance.load = function(data){
     	if(data.solCenter){
-            console.error(data.solCenter.e["dyson"])
     		for (var id in data.solCenter.e) {
             	if (typeof this.entries[id] !== 'undefined') {
             		var ent = data.solCenter.e[id];
             		for(var prop in ent){
                         if(prop == "items"){
-                            console.error(ent[prop])
                             for(var struc in ent[prop]){
                                 this.entries[id][prop][struc].current = ent[prop][struc]
                             }
