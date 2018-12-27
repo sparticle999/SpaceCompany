@@ -413,6 +413,7 @@ Game.resources = (function(){
         } else {
             document.getElementById("storageBar").style["background-color"] = "#337ab7";
         }
+        document.getElementById("resourceLow").className = "text-muted small ng-binding red hidden"; // reset the notification every second unless reapplied
     }
     
     instance.updateResourcesPerSecond = function(){
@@ -457,6 +458,7 @@ Game.resources = (function(){
             for(var i = 0; i < use.length; i++){
                 if(this.entries[use[i]].current < building.active*(-1)*building.resourcePerSecond[use[i]]){
                     ok = false;
+                    document.getElementById("resourceLow").className = "text-muted small ng-binding red";
                 }
             }
             if(ok){
