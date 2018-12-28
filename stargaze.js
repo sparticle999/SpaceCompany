@@ -79,6 +79,7 @@ Game.stargaze = (function(){
 
 			this.resetVars();
 			this.resetUI();
+			Game.combineAllGameObjects()
 
 			Game.settings.entries.gainButtonsHidden = false;
 			for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
