@@ -228,8 +228,8 @@ Game.settings = (function(){
                             if (cost[c] > Game.resources.entries[c].capacity && c != "science" && c != "rocketFuel") {
                                 var time = "Insufficient storage".bold();
                             } else {
-                                var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0)
-                                time = ((time > 0) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
+                                var time = Math.max((cost[c]-Game.resources.entries[c].current)/Game.resources.entries[c].perSecond, 0);
+                                time = ((cost[c] > Game.resources.entries[c].current) ? Game.utils.getTimeDisplay(time, true) : "Done!".bold());
                             }
                             result += "<dd>&#8227; "+Game.resources.entries[c].name+": "+Game.settings.format(cost[c], 0).toString()+" ( "+time+" )</dd>"                            
                         }
