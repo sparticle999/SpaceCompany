@@ -2,7 +2,7 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.solarUI = function(cPage, cTitle, cObj) {
 
-	// solarUI					('solar', 'Solar System BETA', Game.pages.solar)
+	// solarUI					('solar', 'Solar System', Game.pages.solar)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'

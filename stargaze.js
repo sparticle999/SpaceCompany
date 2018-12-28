@@ -56,6 +56,7 @@ Game.stargaze = (function(){
 			this.entries.darkMatter.current += this.entries.darkMatter.potential;
 			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.potential + " Dark Matter from rebirthing into your new life!");
 			Game.statistics.add("rebirthCount", 1);
+			Game.statistics.setValue("lastRebirth", new Date());
 
 			Game.tech.tabUnlocked = false;
 			Game.solar.tabUnlocked = false;
@@ -77,6 +78,7 @@ Game.stargaze = (function(){
 			Game.interstellar.initialise();
 
 			this.resetVars();
+			this.resetUI();
 
 			Game.settings.entries.gainButtonsHidden = false;
 			for(var i = 0; i < document.getElementsByClassName("gainButton").length; i ++){
@@ -126,6 +128,57 @@ Game.stargaze = (function(){
 		}
 		return false;
 	};
+
+	instance.resetUI = function(){
+		// Resources
+		for(var id in Game.resources.entries){
+			var data = Game.resources.entries[id];
+			for(var building in data.items){
+				if(building.indexOf("T1") == -1){
+					Templates.uiFunctions.hide(building);
+				}
+			}
+			if(id != "metal" && id != "gem" && id != "wood" && id != "science" && id != "rocket" && id != "rocketFuel" && id != "antimatter"){
+				Templates.uiFunctions.hideId('resourcesTab_res_' + id + '_ne');
+			}
+		}
+		for(var id in Game.resources.categoryEntries){
+			if(id != "earth" && id != "science" && id != "spacecraft" && id != "rocketFuel" && id != "interstellar"){
+				Templates.uiFunctions.hideCategory(id, "resourcesTab");
+			}
+		}
+		// Tech
+        // Solar
+        for(var id in Game.solar.entries){
+			Templates.uiFunctions.hideId('solarTab_solar_' + id + '_ne');
+		}
+		for(var id in Game.solarCategoryData){
+			Templates.uiFunctions.hideCategory(id, "solarTab");
+		}
+		// Wonders
+		Templates.uiFunctions.hideId('wonderTab_won_wonderStation_ne');
+		for(var id in Game.wonder.entries){
+			if(id.indexOf("build") == -1){
+				Templates.uiFunctions.hideId('wonderTab_won_' + id.substr(8).toLowerCase() + '_ne');
+			}
+		}
+		for(var id in Game.wonderCategoryData){
+			Templates.uiFunctions.hideCategory(id, "wonderTab");
+		}
+		// Sol Center
+		for(var id in Game.solCenter.entries){
+			Templates.uiFunctions.hideId('solCenterTab_solCtr_' + id + '_ne');
+		}
+		for(var id in Game.solCenterCategoryData){
+			Templates.uiFunctions.hideCategory(id, "solCenterTab");
+		}
+		// Tabs
+		Templates.uiFunctions.hideId('techTab');
+		Templates.uiFunctions.hideId('solarTab');
+		Templates.uiFunctions.hideId('wonderTab');
+		Templates.uiFunctions.hideId('solCenterTab');
+		Templates.uiFunctions.hideId('interstellarTab');
+	}
 
 	instance.upgrade = function(id){
 		if(id == 'rebirth'){

@@ -24,9 +24,9 @@ Game.stargazeData = (function(){
 		name: "Introduction",
 		para1: '"So here we are, at what seems like the end of your journey, but what you don\'t realise... is that this is just the beginning. Gazing up at the stars, you wonder what you could do with all of your newfound wealth and your empire in the solar system.',
 		para2: 'Suddenly, the Overlord reaches out to you and says: "You have come far in your time, and I feel that your life is slowing to an end after a long life of empire building. However, you have not met the expectations I thought you would."',
-		para3: '"Despite disappointing me and not achieving as much greatness as I would have liked, because of your loyalty and your dedication to me, I am prepared to give you another chance at Rebirth."',
+		para3: '"Despite disappointing me and not achieving as much greatness as I would have liked, because of your loyalty and your dedication to me, I am prepared to give you another chance at life."',
 		para4: '"You will have many chances to impress me, as I will give you the ability of redemption when you feel the time has come and sacrifice is necessary. Your empire will grow even greater than before every time you rebirth, and as long as your allegiance lies with me, I will show you the way to galactic domination."',
-		para5: '"You will start over, a new life, but in exchange for your soul, I will reward your next self with the knowledge you have gained during your time in this universe and one of the most valuable material in this side of the multiverse: Dark Matter."',
+		para5: '"You will start over, a new life, but in exchange for your soul, I will reward your next self with the knowledge you have gained during your time in this universe and one of the most valuable materials in this side of the multiverse: Dark Matter."',
 		category: "general",
 		unlocked: true
 	};
@@ -140,7 +140,7 @@ Game.rebirthData = (function(){
 
 	instance.rebirth = {
 		name: "Rebirth",
-		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you habe gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades. Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.<br><b>NB: You cannot rebirth without a sphere, even on second runs.<br> NB: You will keep all upgrades purchased in your previous life  </b>",
+		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you have gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades. Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.<br><b>NB: You cannot rebirth without a sphere, even on second runs.<br> NB: You will keep all upgrades purchased in your previous life  </b>",
 		cost: 0,
 		unlocked: true,
 		category: "intro",
@@ -150,6 +150,7 @@ Game.rebirthData = (function(){
 		name: "Respec",
 		desc: "When you have made a mistake or want to change your upgrades, you can respec and refund every upgrade for dark matter. Unfortunately, this huge amount of power can only be unleashed a finite number of times. The Overlord graciously gives you 3 free chances at redemption, but the rest will have to be earned through rebirth (1 extra every 3 times). <br><b>NB: You will lose machines gained with these ugprades, including all T5 machines. You will also divide your storage by 128 if you have the starting storage. (6400/50 = 128).</b>",
 		cost: 0,
+		unlocked: true,
 		category: "intro",
 	};
 
@@ -510,10 +511,10 @@ Game.rebirthData = (function(){
 		opinion: 4,
 		tier: "basic",
 		onApply: function(){
-			Game.buidings.T1Price -= 0.1;
+			Game.buildings.T1Price -= 0.1;
 		},
 		remove: function(){
-	    	Game.buidings.T1Price += 0.1;
+	    	Game.buildings.T1Price += 0.1;
 	    },
 		unlocked: true,
 		achieved: false
@@ -566,7 +567,7 @@ Game.rebirthData = (function(){
 			for(var id in Game.resources.entries){
 				if(checkRegResource(id)){
 					if (id+'T5' in Game.buildings.entries) {
-						Game.buildings.entries[id + "T5"].unlocked = true;
+						Game.buildings.unlock(id + "T5")
 					}
 				}
 			}
@@ -576,6 +577,7 @@ Game.rebirthData = (function(){
 				if(checkRegResource(id)){
 					if (id+'T5' in Game.buildings.entries) {
 						Game.buildings.entries[id + "T5"].unlocked = false;
+						Templates.uiFunctions.hide(id + "T5");
 					}
 				}
 			}

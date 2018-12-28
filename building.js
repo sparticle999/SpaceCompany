@@ -330,18 +330,15 @@ Game.buildings = (function(){
         var target = $('#' + data.htmlId + '_cost');
         target.empty()
         target.append(costHtml);
-        data.displayNeedsUpdate = false;
     }
 
     instance.unlock = function(id, propagate) {
         this.entries[id].unlocked = true;
-        this.entries[id].displayNeedsUpdate = true;
         Templates.uiFunctions.unlock(id, propagate)
     };
 
     instance.unlockStorage = function(id, propagate){
         this.storageEntries[id].unlocked = true;
-        this.storageEntries[id].displayNeedsUpdate = true;
         Templates.uiFunctions.unlock(id, propagate)
     }
 

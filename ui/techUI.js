@@ -2,7 +2,7 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.techUI = function(cPage, cTitle, cObj) {
 
-	// createPage('solar', 'Solar System BETA', Game.pages.solar)
+	// createPage('solar', 'Solar System', Game.pages.solar)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'

@@ -358,9 +358,9 @@ var Game = (function() {
         self.techUI.initialise();
         self.solarUI = new Templates.solarUI('solar', 'Solar System', Game.pages.solar);
         self.solarUI.initialise();
-        self.wonderUI = new Templates.wonderUI('wonder', 'Wonders BETA', Game.pages.wonder);
+        self.wonderUI = new Templates.wonderUI('wonder', 'Wonders', Game.pages.wonder);
         self.wonderUI.initialise();
-        self.solCenterUI = new Templates.solCenterUI('solCenter', 'Sol Center BETA', Game.pages.solCenter);
+        self.solCenterUI = new Templates.solCenterUI('solCenter', 'Sol Center', Game.pages.solCenter);
         self.solCenterUI.initialise();
         self.interstellarUI.initialise();
         self.stargazeUI.initialise();

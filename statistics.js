@@ -1,6 +1,7 @@
 STATISTIC_TYPE = {
     NUMBER: 1,
-    TIME: 2
+    TIME: 2,
+    DATE: 3,
 };
 
 Game.statistics = (function(){
@@ -18,6 +19,7 @@ Game.statistics = (function(){
             this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines Owned");
         }
         this.createStatistic("rebirthCount", Game.constants.statisticCategoryGeneral, "Rebirth Count", 0, STATISTIC_TYPE.NUMBER);
+        this.createStatistic("lastRebirth", Game.constants.statisticCategoryGeneral, "Last Rebirth", "none", STATISTIC_TYPE.DATE);
 
         this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 7);
         this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);

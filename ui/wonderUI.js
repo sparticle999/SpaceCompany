@@ -2,7 +2,7 @@
 if (typeof Templates == "undefined") { var Templates = {}; }
 Templates.wonderUI = function(cPage, cTitle, cObj) {
 
-	// wonderUI					('wonder', 'Solar System BETA', Game.pages.wonder)
+	// wonderUI					('wonder', 'Solar System', Game.pages.wonder)
 
 
 	// When creating or adjusting a template, make sure all ids start with'+this.page+'

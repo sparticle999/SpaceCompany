@@ -229,11 +229,11 @@ Templates.objectConstructor.UiFunctions = function() {
     console.log("%c", "background:green;padding:5px;", "Combine these hide functions");
 
     /**
-     * Hides a single nav element (adds class: hidden).
+     * Hides a single element (adds class: hidden).
      * @param  {String}   DOMid  The *id* of the DOM nav element to hide.
      * @return {boolean}         True on success.
      */
-    this.hideNav = function(itemId, page) {
+    this.hideId = function(itemId, page) {
         var node = document.querySelector('#'+itemId);
         if ((node == 'undefined')) {
             console.warn("Trying to hide the element with id='"+(page||"pageUnknown")+"_"+itemId+"_ne', but couldn't find it.")
@@ -266,7 +266,7 @@ Templates.objectConstructor.UiFunctions = function() {
             unhidden = removeElement(unhidden, node.id);
             hidden = addElement(hidden, node.id);
             // Hiding each nav inside the category
-            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideNav(i, page));
+            topDownDom[node.id].forEach(i => Templates.uiFunctions.hideId(i, page));
         } else {
             console.warn("Trying to hide the category with id='"+page+"_"+itemId+"_collapse', but it's already hidden!")
             return false;
