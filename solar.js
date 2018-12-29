@@ -104,7 +104,6 @@ Game.solar = (function(){
 			Templates.uiFunctions.unlock("plasmaTech");
 			Templates.uiFunctions.unlock("dyson");
 			Templates.uiFunctions.unlock("emc");
-			Templates.uiFunctions.unlock("nanoswarm");
 			newUnlock("solCenter");
 			Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 		}

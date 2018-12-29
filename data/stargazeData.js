@@ -144,6 +144,12 @@ Game.rebirthData = (function(){
 		cost: 0,
 		unlocked: true,
 		category: "intro",
+		onApply: function(){
+
+		},
+		remove: function(){
+
+		},
 	};
 
 	instance.respec = {
@@ -152,6 +158,12 @@ Game.rebirthData = (function(){
 		cost: 0,
 		unlocked: true,
 		category: "intro",
+		onApply: function(){
+
+		},
+		remove: function(){
+
+		},
 	};
 
 	instance.increaseProd1 = {

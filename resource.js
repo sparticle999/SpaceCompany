@@ -468,7 +468,7 @@ Game.resources = (function(){
                 }
             }
         }
-        var nano = Game.solCenter.entries.nanoswarm;
+        var nano = Game.solCenter.entries.nanoswarmTech;
         if(nano.current > 0 && nano.resource != null){
             this.entries[nano.resource].perSecond *= Math.pow(1.1,nano.current);
         }

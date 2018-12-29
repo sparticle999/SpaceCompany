@@ -184,6 +184,7 @@ Game.stargaze = (function(){
 	instance.upgrade = function(id){
 		if(id == 'rebirth'){
 			this.rebirth();
+			return;
 		}
 		if(id == 'respec'){
 			this.respec();

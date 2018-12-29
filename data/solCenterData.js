@@ -75,13 +75,18 @@ Game.solCenterData = (function () {
     	},
     };
 
-    instance.nanoswarm = {
-    	name: "Nanoswarm",
-    	id: "nanoswarm",
+    instance.nanoswarmTech = {
+    	name: "Nanoswarms",
+    	id: "nanoswarmTech",
         htmlId: "solCtr_nanoswarm",
-        desc: "",
+        desc: "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! In return for some of your rare carbon-based materials, we would be happy to give you the blueprints to our fine technology.",
     	category: "alienTechnology",
         icon: "nanoswarmIcon",
+        cost: {
+            'wood': 1,
+            'carbon': 1,
+            'oil': 1,
+        },
         resource: null,
     	current: 0,
     	onApply: function(){
@@ -163,6 +168,29 @@ Game.dysonData = (function(){
                 }
             },
             order: 4,
+        },
+    }
+
+    return instance;
+}());
+
+Game.nanoswarmData = (function(){
+
+    var instance = {
+
+        segment: {
+            name: "Construction",
+            id: "segment",
+            htmlId: "solCtr_segment",
+            desc: "These mega-structures cannot possibly be built in one piece. They must be created from small sections and forged together around the sun.",
+            category: "alienTechnology",
+            nav: "nanoswarm",
+            cost: {
+                "carbon": 3e6,
+                "gem": 2e6,
+                "silver": 2e6,
+            },
+            order: 1,
         },
     }
 
