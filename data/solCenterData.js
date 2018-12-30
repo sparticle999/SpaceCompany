@@ -20,7 +20,7 @@ Game.solCenterData = (function () {
     var instance = {};
 
     instance.plasmaTech = {
-    	name: "Plasma",
+    	name: "Plasma Technology",
     	id: "plasmaTech",
         htmlId: "solCtr_plasmaTech",
         desc: "Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutations.",
@@ -55,7 +55,7 @@ Game.solCenterData = (function () {
     };
 
     instance.dyson = {
-    	name: "Dyson Segments",
+    	name: "Dyson Technology",
     	id: "dyson",
         htmlId: "solCtr_dyson",
         desc: "This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost? NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.</b>",
@@ -68,29 +68,27 @@ Game.solCenterData = (function () {
         items:{},
     	current: 0,
     	onApply: function(){
-    		Templates.uiFunctions.unlock("segment");
-            Templates.uiFunctions.unlock("ring");
-            Templates.uiFunctions.unlock("swarm");
-            Templates.uiFunctions.unlock("sphere");
+    		Game.tech.unlockTech("unlockDyson");
     	},
     };
 
     instance.nanoswarmTech = {
-    	name: "Nanoswarms",
+    	name: "Nanoswarm Technology",
     	id: "nanoswarmTech",
-        htmlId: "solCtr_nanoswarm",
-        desc: "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! In return for some of your rare carbon-based materials, we would be happy to give you the blueprints to our fine technology.",
+        htmlId: "solCtr_nanoswarmTech",
+        desc: "Imagine bedbugs, but worse. These critters amplify the production of one material by double every ten nanoswarms! In return for some of your rare carbon-based materials, we would be happy to give you the blueprints to our fine technology.",
     	category: "alienTechnology",
         icon: "nanoswarmIcon",
         cost: {
-            'wood': 1,
-            'carbon': 1,
-            'oil': 1,
+            'wood': 1e6,
+            'carbon': 1e6,
+            'oil': 1e6,
         },
-        resource: null,
+        items:{},
+        resource: "metal",
     	current: 0,
     	onApply: function(){
-    		Game.solCenter.unlock("nanoswarm");
+    		Game.tech.unlockTech("unlockNanoswarm");
     	},
     }
 
@@ -178,18 +176,21 @@ Game.nanoswarmData = (function(){
 
     var instance = {
 
-        segment: {
-            name: "Construction",
-            id: "segment",
+        nanoswarm: {
+            name: "Nanoswarm",
+            id: "nanoswarm",
             htmlId: "solCtr_segment",
-            desc: "These mega-structures cannot possibly be built in one piece. They must be created from small sections and forged together around the sun.",
+            desc: "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! They are capable of copying other machines\' forms and taking up their role in resource production. You can select one resource to be amplified, and change it at any time.",
             category: "alienTechnology",
-            nav: "nanoswarm",
+            nav: "nanoswarmTech",
             cost: {
                 "carbon": 3e6,
                 "gem": 2e6,
                 "silver": 2e6,
             },
+            boost: 1.0718,
+            resource: "energy",
+            resources: [],
             order: 1,
         },
     }

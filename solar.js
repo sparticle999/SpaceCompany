@@ -104,6 +104,9 @@ Game.solar = (function(){
 			Templates.uiFunctions.unlock("plasmaTech");
 			Templates.uiFunctions.unlock("dyson");
 			Templates.uiFunctions.unlock("emc");
+			if(Game.stargaze.upgradeEntries.nanoswarm.achieved){
+				Templates.uiFunctions.unlock("nanoswarmTech");
+			}
 			newUnlock("solCenter");
 			Game.notifySuccess("New Tab!", "You've unlocked the Sol Center Tab!");
 		}

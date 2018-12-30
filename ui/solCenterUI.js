@@ -147,7 +147,15 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		 '</tr>',''].join('\n'));
 
 
+	Handlebars.registerHelper('list', function(context, options) {
+	 	var ret = "";
 
+	 	for(var i=0, j=context.length; i<j; i++) {
+	   		ret = ret + options.fn(context[i]);
+	  	}
+
+	  	return ret;
+	});
 	/**
 	 * Adds a storBuilding or building to the content pane
 	 * {{htmlId}} 		- plasmaT1, rocketFuelT3
@@ -161,6 +169,10 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
 		     '<span>',
 		       '{{desc}}',
+		       '{{#if resources}}<br><div class="form-group"><label for="'+this.page+'_{{htmlId}}_changeResource">Select Resource:</label><select id="'+this.page+'_{{htmlId}}_changeResource" class="form-control">',
+
+        			'{{#list resources}}<option>{{name}}</option>{{/list}}',
+            	'</select>{{/if}}',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
 		     '<br>',
@@ -224,7 +236,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 							'<tbody>',''].join('\n'));
 
 	var TemplatePaneEmc2 = Handlebars.compile(
-		['</tbody>',
+							['</tbody>',
 						'</table>',
 						'</div>',
 					'</div>',
@@ -264,7 +276,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		var html = ""
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
-			if(data.nav == "dyson"){
+			if(data.nav == "dyson" || data.nav == "nanoswarmTech"){
 				html += TemplatePaneBuilding(data);
 			} else {
 				html += TemplatePaneTech(data);

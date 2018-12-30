@@ -742,6 +742,8 @@ Templates.objectConstructor.UiFunctions = function() {
                     if (match[1]=='solCenter' && match[2]=='solCtr') {
                         if(match[4] == "tech"){
                             funct = new Function("Game.solCenter.research('"+match[3]+"')");
+                        } else if(match[3] == "nanoswarm"){
+                            funct = new Function("Game.solCenter.buyMachine('"+match[3]+"', "+parseInt(match[4])+")");
                         } else {
                             funct = new Function("Game.solCenter.buyDyson('"+match[3]+"', "+parseInt(match[4])+")");
                         }

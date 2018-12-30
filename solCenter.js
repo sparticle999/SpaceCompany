@@ -13,11 +13,11 @@ Game.solCenter = (function(){
         }
     }
 
-    function UpdateDysonCost(id) {
+    function UpdateItemCost(id, entry) {
         var previous = new Date();
         var id = id;
         this.update = function() {
-            var obj = Game.solCenter.entries.dyson.items[id];
+            var obj = Game.solCenter.entries[entry].items[id];
             if (new Date() - previous < 250) {return;}
             var costVal = Game.settings.doFormat('cost', obj);
             Templates.uiFunctions.setClassText(costVal, obj.htmlId+'cost');
@@ -53,8 +53,24 @@ Game.solCenter = (function(){
                 htmlId: 'solCtr_' + id,
                 current: 0,
                 max: -1,
-                ui_cost: new UpdateDysonCost(id),
+                ui_cost: new UpdateItemCost(id, "dyson"),
             });
+        }
+        for(var id in Game.nanoswarmData){
+            var data = Game.nanoswarmData[id];
+            this.entries.nanoswarmTech.items[id] = $.extend({}, data, {
+                id: id,
+                htmlId: 'solCtr_' + id,
+                current: 0,
+                max: -1,
+                ui_cost: new UpdateItemCost(id, "nanoswarmTech"),
+            });
+        }
+        for(var id in Game.resources.entries){
+            if(id != "rocket"){
+                var name = Game.resources.entries[id].name;
+                this.entries.nanoswarmTech.items.nanoswarm.resources.push({name: name, id: id,});
+            }
         }
     };
 
@@ -72,7 +88,7 @@ Game.solCenter = (function(){
     		var ent = this.entries[id]
     		data.solCenter.e[id] = {};
     		data.solCenter.e[id].researched = ent.researched;
-    		if(id == "nanoswarm"){
+    		if(id == "nanoswarmTech"){
     			data.solCenter.e[id].current = ent.current;
     			data.solCenter.e[id].resource = ent.resource;
     		}
@@ -91,15 +107,13 @@ Game.solCenter = (function(){
     		for (var id in data.solCenter.e) {
             	if (typeof this.entries[id] !== 'undefined') {
             		var ent = data.solCenter.e[id];
-                    if(id == "dyson"){
+                    if(id == "dyson" || id == "nanoswarmTech"){
                         this.entries[id].researched = ent.researched;
                         for(var struc in ent.items){
                             this.entries[id].items[struc].current = ent.items[struc];
                         }
                     } else {
                         for(var prop in ent){
-                            console.error(id, prop, ent[prop])
-                            console.error(JSON.parse(JSON.stringify(this.entries[id])))
                             this.entries[id][prop] = ent.prop;
                         }
                     }
@@ -109,6 +123,7 @@ Game.solCenter = (function(){
             	}
         	}
     	}
+        $('#solCenter_solCtr_nanoswarm_changeResource').change(function(){Game.solCenter.switchNano($('#solCenter_solCtr_nanoswarm_changeResource').val())});
     };
 
     instance.research = function(id){
@@ -123,7 +138,6 @@ Game.solCenter = (function(){
         data.researched = true;
         this.entries[id].onApply();
         Templates.uiFunctions.hide(data.id);
-        data.displayNeedsUpdate = true;
     };
 
     instance.buyDyson = function(id, count){
@@ -152,7 +166,27 @@ Game.solCenter = (function(){
                 if(data.onBuy){
                     data.onBuy();
                 }
-                this.updateCosts(id);
+                //this.updateCosts(id);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    instance.buyMachine = function(id, count){
+        var data = this.entries.nanoswarmTech.items[id];
+        for(var i = 0; i < count; i++){
+            if(this.checkCost(data)){
+                for(var resource in data.cost){
+                    var res = Game.resources.getResourceData(resource);
+                    res.current -= this.calcCost(data, resource, 1.02)
+                }
+                data.current += 1;
+                if(data.onBuy){
+                    data.onBuy();
+                }
+                //this.updateCosts(id);
             } else {
                 return false;
             }
@@ -230,7 +264,6 @@ Game.solCenter = (function(){
     			Game.notifyInfo('Energy Conversion', 'Gained ' + Game.settings.format(amount) + ' ' + Game.utils.capitaliseFirst(resource));
     		}
     	}
-    	this.entries.emc.displayNeedsUpdate = true;
     };
 
     instance.changeEmcAmount = function(event){
@@ -270,16 +303,13 @@ Game.solCenter = (function(){
     }
 
     instance.switchNano = function(resource){
-    	var data = this.entries.nanoswarm;
-    	data.resource = resource;
-    	console.log(Game.resources.entries[resource].htmlId);
-    	data.displayNeedsUpdate = true;
+    	var data = this.entries.nanoswarmTech.items.nanoswarm;
+    	data.resource = resource.toLowerCase();
     };
 
     instance.unlock = function(id){
     	this.entries[id].unlocked = true;
         Templates.uiFunctions.unlock(id);
-    	this.entries[id].displayNeedsUpdate = true;
     };
 
     // UI exception

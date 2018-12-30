@@ -721,6 +721,26 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
+	instance.nanoswarm = {
+		name: "Nanoswarms",
+		desc: "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! They are capable of copying other machines\' forms and taking up their role in resource production. You can select one resource to be amplified, and change it at any time. <br><b>NB: Shows up in the Sol Center when unlocked.</b>",
+		cost: 32,
+		category: "overlord",
+		opinion: 17,
+		tier: "basic",
+		onApply: function(){
+			if(Game.solar.entries.solCenter.explored){
+				Templates.uiFunctions.unlock("nanoswarmTech");
+			}
+		},
+		remove: function(){
+			Templates.uiFunctions.hideId("solCenterTab_solCtr_nanoswarmTech_ne");
+	    	Game.solCenter.entries.nanoswarmTech.items.nanoswarm.current = 0;
+	    },
+		unlocked: true,
+		achieved: false
+	};
+
 	// instance.autoStorage = {
 	// 	name: "Automate Storage Upgrades",
 	// 	desc: "Storage Upgrades will automatically upgrade, according to a toggle button on the resources tab.",

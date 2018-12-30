@@ -468,9 +468,9 @@ Game.resources = (function(){
                 }
             }
         }
-        var nano = Game.solCenter.entries.nanoswarmTech;
+        var nano = Game.solCenter.entries.nanoswarmTech.items.nanoswarm;
         if(nano.current > 0 && nano.resource != null){
-            this.entries[nano.resource].perSecond *= Math.pow(1.1,nano.current);
+            this.entries[nano.resource].perSecond *= Math.pow(1.0718,nano.current);
         }
         for (var id in Game.interstellar.stars.entries) {
             var data = Game.interstellar.stars.getStarData(id);

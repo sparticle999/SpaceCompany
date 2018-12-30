@@ -182,7 +182,6 @@ Game.techData = (function () {
         cost: {
             'science': 450000
         },
-        newResources: ['rocketFuelT2'],
         newTechs: ['unlockRocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
@@ -199,7 +198,6 @@ Game.techData = (function () {
         cost: {
             'science': 3200000
         },
-        newResources: ['rocketFuelT3'],
         tabAlerts: ['solarSystem'],
         onApply: function(){
             Game.buildings.unlock('rocketFuelT3');
@@ -391,7 +389,6 @@ Game.techData = (function () {
         cost: {
             'science': 60000
         },
-        newResources: ['emcPage'],
         newTechs: ['unlockMeteorite'],
         tabAlerts: ['solCenter'],
         onApply: function(){
@@ -408,14 +405,14 @@ Game.techData = (function () {
         cost: {
             'science': 100000
         },
-        newResources: ['meteoriteNav', 'meteoriteEMC'],
         newTechs: ['unlockMeteoriteTier1'],
         tabAlerts: ['resources', 'wonder'],
         onApply: function(){
             Game.resources.unlock("meteorite");
-            console.log("meteorietEMC")
+            
         }
     });
+    console.error("meteorite_EMC");
 
     instance.unlockMeteoriteTier1 = $.extend({}, techBase, {
         name: 'Meteorite Tier 1',
@@ -426,7 +423,6 @@ Game.techData = (function () {
         cost: {
             'science': 75000
         },
-        newTechs: ['unlockMeteoriteTier2'],
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlock("meteoriteT1")
@@ -457,11 +453,13 @@ Game.techData = (function () {
         cost: {
             'science': 100000
         },
-        newResources: ['dysonPage'],
         newTechs: ['unlockDysonSphere'],
         tabAlerts: ['solCenter'],
         onApply: function(){
-            console.log("unlockDyson")
+            Templates.uiFunctions.unlock("segment");
+            Templates.uiFunctions.unlock("ring");
+            Templates.uiFunctions.unlock("swarm");
+            Templates.uiFunctions.unlock("sphere");
         }
     });
 
@@ -474,10 +472,24 @@ Game.techData = (function () {
         cost: {
             'science': 500000
         },
-        newResources: ['dysonSphere'],
         tabAlerts: ['solCenter'],
         onApply: function(){
-            console.log("unlockDyson")
+            Templates.uiFunctions.unlock("nanoswarm");
+        }
+    });
+
+    instance.unlockNanoswarm = $.extend({}, techBase, {
+        name: 'Nanoswarms',
+        desc: 'The nanoswarm is an interesting creation, capable of copying other machines\' forms and taking up their role in resource production. Each boosts a single resource but can change at the flick of a button.',
+        buttonText: 'Unlock Nanoswarms',
+        type: TECH_TYPE.UNLOCK,
+        costType: COST_TYPE.FIXED,
+        cost: {
+            'science': 1.5e7,
+        },
+        tabAlerts: ['solCenter'],
+        onApply: function(){
+            Templates.uiFunctions.unlock("nanoswarm");
         }
     });
 
