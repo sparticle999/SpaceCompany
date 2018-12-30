@@ -710,6 +710,7 @@ Game.rebirthData = (function(){
 				var data = Game.stargaze.entries[id];
 				if(data.category == "faction" && data.id != "overlord"){
 					data.opinion += 20;
+					data.displayNeedsUpdate = true;
 				}
 			}
 		},
