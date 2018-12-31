@@ -430,7 +430,12 @@ Game.resources = (function(){
             this.entries[resource].perSecond = 0;
             boost[resource] = 0;
         }
-
+        // var positive = {};
+        // var negative = {};
+        // for(var id in Game.resources.entries){
+        //     positive[id] = 0;
+        //     negative[id] = 0;
+        // }
         var energyDiff = 0;
         var energy = Game.resources.entries.energy;
         for(var id in Game.solCenter.entries.dyson.items){
@@ -464,7 +469,7 @@ Game.resources = (function(){
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
-                    this.entries[value].perSecond += val * building.active * efficiencyMultiplier * dm;
+                    this.entries[value].perSecond += val * building.active;
                 }
             }
         }
@@ -488,7 +493,7 @@ Game.resources = (function(){
         for(var resource in this.entries){
             var data = this.entries[resource];
             if(!data.manualgain){continue;}
-            data.perSecond += boost[resource]*data.perSecond;
+            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm;;
 
             if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
                 for(var res in this.entries){

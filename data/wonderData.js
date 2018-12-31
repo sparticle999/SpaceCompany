@@ -58,6 +58,7 @@ Game.wonderNavData = (function(){
         order: 1,
         htmlId: 'won_wonderStation',
         category: 'wonderStation',
+        page: 'wonder',
         unlocked: true,
     };
 
@@ -69,6 +70,7 @@ Game.wonderNavData = (function(){
         order: 2,
         htmlId: 'won_precious',
         category: 'floor1',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -80,6 +82,7 @@ Game.wonderNavData = (function(){
         order: 3,
         htmlId: 'won_energetic',
         category: 'floor1',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -91,6 +94,7 @@ Game.wonderNavData = (function(){
         order: 4,
         htmlId: 'won_technological',
         category: 'floor1',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -102,6 +106,7 @@ Game.wonderNavData = (function(){
         order: 5,
         htmlId: 'won_meteorite',
         category: 'floor1',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -113,6 +118,7 @@ Game.wonderNavData = (function(){
         order: 6,
         htmlId: 'won_comms',
         category: 'floor2',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -124,6 +130,7 @@ Game.wonderNavData = (function(){
         order: 7,
         htmlId: 'won_rocket',
         category: 'floor2',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -135,6 +142,7 @@ Game.wonderNavData = (function(){
         order: 8,
         htmlId: 'won_antimatter',
         category: 'floor2',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -146,6 +154,7 @@ Game.wonderNavData = (function(){
         order: 9,
         htmlId: 'won_portal',
         category: 'floor2',
+        page: 'wonder',
         unlocked: false,
     };
 
@@ -157,6 +166,7 @@ Game.wonderNavData = (function(){
         order: 10,
         htmlId: 'won_stargate',
         category: 'floor3',
+        page: 'wonder',
         unlocked: false,
     };
 

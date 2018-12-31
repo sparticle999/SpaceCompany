@@ -47,6 +47,7 @@ Game.wonder = (function(){
             this.entries[id] = $.extend({}, data, {
                 id: id,
                 htmlId: 'wonnav_' + id,
+                page: 'wonder',
                 progress: 0,
                 activated: false,
                 displayNeedsUpdate: true,

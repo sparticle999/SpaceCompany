@@ -39,6 +39,7 @@ Game.tech = (function(){
             this.entries[id]  = $.extend({}, data, {
                 id: id,
                 htmlId: 'tec_'+id,
+                page: 'research',
                 ui_current: new UpdateCurrent(id),
                 ui_cost: new UpdateCost(id),
             });

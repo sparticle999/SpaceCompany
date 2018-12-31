@@ -581,6 +581,9 @@ Templates.objectConstructor.UiFunctions = function() {
                 if ((res.toLowerCase() === resource.toLowerCase() || resource == 'all')) {
                     var obj = registeredElements[act][res].object;
                     if(act == "current" || act == "persecond" || act == "cost" || act == "progress"){
+                        // if(act == "current" && obj.page == undefined){
+                        //     console.error(obj.id)
+                        // }
                         if(obj.page == "resources" || obj.id == "science" || obj.id == "rocketFuel"){
                             if(obj.unlocked && obj.page + "Tab" == Game.lastTab || Game.lastNav == "solCenterTab_solCtr_emc_ne"){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
@@ -616,7 +619,7 @@ Templates.objectConstructor.UiFunctions = function() {
                             if("solarTab_solar_" + obj.id + "_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }
-                        } else if(typeof obj.activated != "undefined"){
+                        } else if(obj.page == "wonder"){
                             if("wonderTab_won_"+ obj.nav + "_ne" == Game.lastNav){
                                 if ('ui_'+act in obj) { obj['ui_'+act].update(); }
                             }

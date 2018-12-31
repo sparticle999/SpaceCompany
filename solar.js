@@ -29,6 +29,7 @@ Game.solar = (function(){
             this.entries[id] = $.extend({}, data, {
                 id: id,
                 htmlId: 'loc_' + id,
+                page: 'solar',
                 current: 0,
                 perSecond: 0,
                 iconPath: Game.constants.iconPath,
@@ -83,6 +84,11 @@ Game.solar = (function(){
 				Game.buildings.unlock(data.resource[i] + "T1");
 				Game.resources.unlock(data.resource[i]);
 				Templates.uiFunctions.refreshElements("capacity", data.resource[i]);
+			}
+		}
+		if(data.building){
+			for(var i = 0; i < data.building.length; i++){
+				Game.buildings.unlock(data.building[i]);
 			}
 		}
 		if(data.location){
