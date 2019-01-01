@@ -1,5 +1,6 @@
 COST_TYPE = {
-    FIXED: 0
+    FIXED: 0,
+    EXP: 1
 };
 
 TECH_TYPE = {

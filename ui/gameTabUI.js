@@ -630,7 +630,6 @@ Templates.objectConstructor.UiFunctions = function() {
                         }
                     } else if(act == "ui_emc"){
                         if("solCenterTab_solCtr_emc_ne" == Game.lastNav){
-                            console.error(obj, act, obj[act]);
                             if (act in obj) { obj[act].update();}
                         }
                     } else {

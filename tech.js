@@ -19,7 +19,8 @@ Game.tech = (function(){
         this.update = function() {
             var obj = Game.tech.entries[id];
             if (new Date() - previous < 250 || obj.current == obj.maxLevel || !obj.unlocked) {return;}
-            var value = Game.settings.doFormat('cost', obj);
+            var costObj = {cost:{"science":Game.tech.getCost(obj.cost.science, obj.current)}};
+            var value = Game.settings.doFormat('cost', costObj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
             previous = new Date();
             return true;
@@ -49,7 +50,15 @@ Game.tech = (function(){
     };
 
     instance.update = function(delta) {
-        
+        var science = Game.resources.entries.science.current;
+        for(var id in this.entries){
+            if(this.entries[id].costType == 1 && !this.entries[id].unlocked){
+                if(science >= this.entries[id].cost["science"]){
+                    this.entries[id].unlocked = true;
+                    Templates.uiFunctions.unlock(id);
+                }
+            }
+        }
     };
 
     instance.save = function(data) {
@@ -148,6 +157,9 @@ Game.tech = (function(){
                     // unlock the tech that this tech unlocks
                     this.unlockNewTechs(id);
                     this.hideIfMax(id);
+                }
+                if(this.entries[id].costType == 1 && this.entries[id].unlocked){
+                    Templates.uiFunctions.unlock(id);
                 }
             }
         }

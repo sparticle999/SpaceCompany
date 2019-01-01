@@ -550,7 +550,7 @@ Game.techData = (function () {
         name: 'Resource Efficiency',
         desc: 'Resource Efficiency increases the income of resources by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,
-        costType: COST_TYPE.FIXED,
+        costType: COST_TYPE.EXP,
         maxLevel: -1,
         cost: {
             'science': 100000
@@ -561,7 +561,7 @@ Game.techData = (function () {
         name: 'Science Efficiency',
         desc: 'Science Efficiency increases the science production by 2% per purchase.',
         type: TECH_TYPE.UPGRADE,
-        costType: COST_TYPE.FIXED,
+        costType: COST_TYPE.EXP,
         maxLevel: -1,
         cost: {
             'science': 10000000
@@ -572,7 +572,7 @@ Game.techData = (function () {
         name: 'Energy Efficiency',
         desc: 'Energy Efficiency decreases the energy consumption of all machines by 1%/s per purchase.',
         type: TECH_TYPE.UPGRADE,
-        costType: COST_TYPE.FIXED,
+        costType: COST_TYPE.EXP,
         maxLevel: 25,
         cost: {
             'science': 10000000
@@ -583,7 +583,7 @@ Game.techData = (function () {
         name: 'Battery Efficiency',
         desc: 'Battery Efficiency improves the storage capabilities of your batteries by 1% per upgrade.',
         type: TECH_TYPE.UPGRADE,
-        costType: COST_TYPE.FIXED,
+        costType: COST_TYPE.EXP,
         maxLevel: 200,
         cost: {
             'science': 100000000

@@ -493,7 +493,7 @@ Game.resources = (function(){
         for(var resource in this.entries){
             var data = this.entries[resource];
             if(!data.manualgain){continue;}
-            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm;;
+            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm;
 
             if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
                 for(var res in this.entries){
