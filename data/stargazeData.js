@@ -237,10 +237,10 @@ Game.rebirthData = (function(){
 				if(data.baseCapacity == 50){
 					if(data.capacity < 6400){
 						data.capacity = 6400;
-						data.displayNeedsUpdate = true;
 					}
 				}
 			}
+			Templates.uiFunctions.refreshElements("capacity", "all");
 		},
 		remove: function(){
 	    	var newStorage = 50;
@@ -248,9 +248,9 @@ Game.rebirthData = (function(){
 				var data = Game.resources.entries[id];
 				if(data.baseCapacity == 50){
 					data.capacity = 50;
-					data.displayNeedsUpdate = true;
 				}
 			}
+			Templates.uiFunctions.refreshElements("capacity", "all");
 	    },
 		unlocked: true,
 		achieved: false
