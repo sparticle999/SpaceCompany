@@ -549,6 +549,7 @@ Game.techData = (function () {
     instance.resourceEfficiencyResearch = $.extend({}, techBase, {
         name: 'Resource Efficiency',
         desc: 'Resource Efficiency increases the income of resources by 1%/s per purchase.',
+        buttonText: 'Upgrade Resource Efficiency',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.EXP,
         maxLevel: -1,
@@ -560,6 +561,7 @@ Game.techData = (function () {
     instance.scienceEfficiencyResearch = $.extend({}, techBase, {
         name: 'Science Efficiency',
         desc: 'Science Efficiency increases the science production by 2% per purchase.',
+        buttonText: 'Upgrade Science Efficiency',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.EXP,
         maxLevel: -1,
@@ -571,6 +573,7 @@ Game.techData = (function () {
     instance.energyEfficiencyResearch = $.extend({}, techBase, {
         name: 'Energy Efficiency',
         desc: 'Energy Efficiency decreases the energy consumption of all machines by 1%/s per purchase.',
+        buttonText: 'Upgrade Energy Efficiency',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.EXP,
         maxLevel: 25,
@@ -582,6 +585,7 @@ Game.techData = (function () {
     instance.batteryEfficiencyResearch = $.extend({}, techBase, {
         name: 'Battery Efficiency',
         desc: 'Battery Efficiency improves the storage capabilities of your batteries by 1% per upgrade.',
+        buttonText: 'Upgrade Battery Efficiency',
         type: TECH_TYPE.UPGRADE,
         costType: COST_TYPE.EXP,
         maxLevel: 200,

@@ -229,6 +229,26 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
+	/**
+	 * Adds a non-building to the content pane
+	 * {{name}} - Full name of the item
+	 * {{desc}} - Description of the item
+	 * {{htmlId}} 	- moon
+	 * Attaches onto this.page+'Tab_{{item}}_netc (resourceTab_energy_netc)
+	 */
+	var TemplatePaneEfficiency = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
+		   '<td>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
+		     '<span>',
+		       '{{desc}}',
+		       '<br>',
+		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
+		     '</span>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
+		   '</td>',
+		 '</tr>',''].join('\n'));
+
 
 	////////////////////////////
 	// Page content functions //
@@ -244,7 +264,11 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
 			if(data.category == "technology"){
-				html += TemplatePaneTech(data);
+				if(data.maxLevel == -1){
+					html += TemplatePaneEfficiency(data);
+				} else {
+					html += TemplatePaneTech(data);
+				}
 			} else {
 				html += TemplatePaneBuilding(data);
 			}

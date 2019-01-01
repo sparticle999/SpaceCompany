@@ -490,19 +490,18 @@ Game.resources = (function(){
                 boost[data.resource2.toLowerCase()] += prod;
             }
         }
-        for(var resource in this.entries){
-            var data = this.entries[resource];
-            if(!data.manualgain){continue;}
-            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm;
-
-            if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
-                for(var res in this.entries){
-                    if(!this.entries[res].manualgain){continue;}
-                    if(res != resource && this.entries[res].current >= this.entries[res].capacity){
-                        data.perSecond *= 1.05;
-                    }
+        var capitalBoost = 1;
+        if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
+            for(var res in this.entries){
+                if(res != resource && this.entries[res].current >= this.entries[res].capacity){
+                    capitalBoost += 1.05;
                 }
             }
+        }
+        for(var resource in this.entries){
+            var data = this.entries[resource];
+            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm * capitalBoost;
+
             if(Game.stargaze.upgradeEntries.dimensionalRift.achieved){
                 if(data.current >= data.storage){
                     data.perSecond *= 0.05;
