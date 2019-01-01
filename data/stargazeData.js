@@ -195,14 +195,28 @@ Game.rebirthData = (function(){
 		tier: "basic",
 		onApply: function(){
 			for(var id in Game.resources.entries){
-				Game.resources.entries[id].gainNum = 20;
-				Game.resources.entries[id].displayNeedsUpdate = true;
+				var data = Game.resources.entries[id];
+				if(data.manualgain){
+					data.gainNum = 20;
+					if(data.gainCost){
+						Templates.uiFunctions.setClassText("Convert " + data.gainNum, "res_"+id+"gainNum");
+					} else {
+						Templates.uiFunctions.setClassText("Gain " + data.gainNum, "res_"+id+"gainNum");
+					}
+				}
 			}
 		},
 		remove: function(){
 	    	for(var id in Game.resources.entries){
-				Game.resources.entries[id].gainNum = 1;
-				Game.resources.entries[id].displayNeedsUpdate = true;
+				var data = Game.resources.entries[id];
+				if(data.manualgain){
+					data.gainNum = 1;
+					if(data.gainCost){
+						Templates.uiFunctions.setClassText("Convert " + data.gainNum, "res_"+id+"gainNum");
+					} else {
+						Templates.uiFunctions.setClassText("Gain " + data.gainNum, "res_"+id+"gainNum");
+					}
+				}
 			}
 	    },
 		unlocked: true,

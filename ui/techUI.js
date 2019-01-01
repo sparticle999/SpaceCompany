@@ -155,7 +155,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 			    '{{else}}',
 				     '<div class="gainButton">',
 				       '<button type="button" id="'+this.page+'_{{htmlId}}_gain" class="btn btn-default">',
-				         '<span class="{{htmlId}}gainNum">Gain: {{gainNum}}</span>',
+				         '<span class="{{htmlId}}gainNum">Gain {{gainNum}}</span>',
 				       '</button>',
 				       '<br>',
 				     '</div>',
