@@ -265,9 +265,11 @@ Game.rebirthData = (function(){
 		tier: "basic",
 		onApply: function(){
 			Game.resources.storagePrice -= 0.25;
+			Templates.uiFunctions.refreshElements("capacity", "all");
 		},
 		remove: function(){
 	    	Game.resources.storagePrice += 0.25;
+	    	Templates.uiFunctions.refreshElements("capacity", "all");
 	    },
 		unlocked: true,
 		achieved: false

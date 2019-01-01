@@ -117,15 +117,15 @@ Game.resources = (function(){
             if (id in Game.storageData.entries) {
                 var cost = Game.storageData.entries[id].cost;
                 var value = 0;
-                // Find the inflation factor by comparing id's current cost with its base cost
+                // Find the inflation factor by comparing it's current cost with its base cost
                 // This is pretty much a hack and won't work when a material doesn't need itself
                 // to upgrade its storage.
                 Object.keys(cost).forEach(c => {if (c == id) {value = cost[c]}});
                 value = obj.capacity/value ; var newcost = {};
                 // object with inflated costs
-                Object.keys(cost).forEach(c => newcost[c] = cost[c]*value);
+                Object.keys(cost).forEach(c => newcost[c] = cost[c]*value*Game.resources.storagePrice);
                 value = Game.settings.doFormat('cost', {cost: newcost});
-                Templates.uiFunctions.setClassText(value, obj.htmlId+'storageUpgrade_cost')
+                Templates.uiFunctions.setClassText(value, obj.htmlId+'storageUpgrade_cost');
             }
             previous = new Date();
             return true;
@@ -133,13 +133,12 @@ Game.resources = (function(){
     }
 
 /*
-    Templates.uiFunctions.refreshElements('gain', 'all');   // can get away with only calling after rebirth
-    Templates.uiFunctions.refreshElements('nextStorage', 'all');// Can get away with only calling manually after storage bought
-    Templates.uiFunctions.refreshElements('stoCount', 'all');   // Can get away with only calling manually after stobld bought
-    Templates.uiFunctions.refreshElements('resbldCost', 'all'); // Can get away with only calling manually after building bought
+    Templates.uiFunctions.refreshElements('nextStorage', 'all'); // Can get away with only calling manually after storage bought
+    Templates.uiFunctions.refreshElements('stoCount', 'all');    // Can get away with only calling manually after stobld bought
+    Templates.uiFunctions.refreshElements('resbldCost', 'all');  // Can get away with only calling manually after building bought
     Templates.uiFunctions.refreshElements('stoCost', 'all');     // Can get away with only calling manually after stobld bought
     Templates.uiFunctions.refreshElements('storageTime', 'all');
-    Templates.uiFunctions.refreshElements('storageCost', 'all');  // Can get away with only calling manually after storage bought
+    Templates.uiFunctions.refreshElements('storageCost', 'all'); // Can get away with only calling manually after storage bought
 */
 
     var instance = {};
