@@ -21,7 +21,11 @@ Game.wonder = (function(){
         this.update = function() {
             var obj = Game.wonder.entries[id];
             if (new Date() - previous < 1000) {return;}
-            var value = Game.settings.doFormat('cost', obj);
+            var costObj = {cost:{}};
+            for(var res in obj.cost){
+                costObj.cost[res] = Game.wonder.calcCost(obj, obj.cost, res);
+            }
+            var value = Game.settings.doFormat('cost', costObj);
             Templates.uiFunctions.setClassText(value, obj.htmlId+'cost');
             previous = new Date();
             return true;
@@ -151,13 +155,20 @@ Game.wonder = (function(){
     };
 
     instance.getProgress = function(id){
-        var data = this.entries[id].cost;
+        var data = this.entries[id];
+        var cost = data.cost
     	var current = 0;
     	var total = 0;
     	var res = Game.resources.entries;
-    	for(var resource in data){
-    		current += Math.min(data[resource], res[resource].current);
-    		total += data[resource];
+        var multi = 1;
+        if(data.category == "floor1"){
+            multi = this.floor1Price;
+        } else if(data.category == "floor2" || data.category == "floor3"){
+            multi = this.floor23Price;
+        }
+    	for(var resource in cost){
+    		current += Math.min(cost[resource]*multi, res[resource].current);
+    		total += cost[resource]*multi;
     	}
       	var progress = Math.floor(1000*current/total)/10;
     	if(progress > 100) {progress = 100;}

@@ -334,7 +334,7 @@ Game.rebirthData = (function(){
 
 	instance.floor1Discount = {
 		name: "Floor 1 Discount",
-		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
+		desc: "All Wonders on the First Floor recieve a 15% price reduction for activation.",
 		cost: 16,
 		category: "prasnian",
 		opinion: 10,
@@ -351,7 +351,7 @@ Game.rebirthData = (function(){
 
 	instance.floor23Discount = {
 		name: "Floor 2 & 3 Discount",
-		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
+		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction for activation.",
 		cost: 19,
 		category: "prasnian",
 		opinion: 15,
