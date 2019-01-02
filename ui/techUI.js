@@ -239,13 +239,13 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 	var TemplatePaneEfficiency = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
-		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span>{{#if posMax}}/<span class="{{htmlId}}maxLevel">{{maxLevel}}</span>{{/if}}</h3>',
 		     '<span>',
 		       '{{desc}}',
 		       '<br>',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">/{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 
@@ -264,8 +264,12 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
 			if(data.category == "technology"){
-				if(data.maxLevel == -1){
-					html += TemplatePaneEfficiency(data);
+				if(data.maxLevel != 1){
+					if(data.maxLevel > 1){
+						html += TemplatePaneEfficiency($.extend({}, data, {posMax:true}));
+					} else {
+						html += TemplatePaneEfficiency(data);
+					}
 				} else {
 					html += TemplatePaneTech(data);
 				}
