@@ -529,10 +529,20 @@ Game.rebirthData = (function(){
 		opinion: 4,
 		tier: "basic",
 		onApply: function(){
-			Game.buildings.T1Price -= 0.1;
+			for(var id in Game.resources.entries){
+				var data = Game.resources.entries[id].items[id + "T1"].cost;
+				for(var res in data){
+					data[res] *= 0.9;
+				}
+			}
 		},
 		remove: function(){
-	    	Game.buildings.T1Price += 0.1;
+	    	for(var id in Game.resources.entries){
+				var data = Game.resources.entries[id].items[id + "T1"].cost;
+				for(var res in data){
+					data[res] /= 0.9;
+				}
+			}
 	    },
 		unlocked: true,
 		achieved: false
@@ -624,21 +634,22 @@ Game.rebirthData = (function(){
 
 	instance.chemicalBoost = {
 		name: "Chemical Plant Boost",
-		desc: "Produce 100% more rocket fuel per chemical plant.",
+		desc: "Produce 100% more rocket fuel in chemical plants (T1).",
 		cost: 11,
 		category: "moviton",
 		opinion: 7,
 		tier: "basic",
 		onApply: function(){
-			chemicalBoost += 1;
+			Game.buildings.entries.rocketFuelT1.resourcePerSecond.rocketFuel *= 2;
 		},
 		remove: function(){
-	    	chemicalBoost -= 1;
-	    },
+			Game.buildings.entries.rocketFuelT1.resourcePerSecond.rocketFuel /= 2;
+		},
 		unlocked: true,
 		achieved: false
 	};
 
+	console.error("interstellar")
 	instance.rocketDiscount = {
 		name: "Rocket Discount",
 		desc: "Rocket Parts Cost 35% less.",
