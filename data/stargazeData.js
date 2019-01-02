@@ -578,10 +578,10 @@ Game.rebirthData = (function(){
 		opinion: 20,
 		tier: "basic",
 		onApply: function(){
-			Templates.uiFunctions.unlock('multiBuy');
+			Templates.uiFunctions.showClass('multiBuy');
 		},
 		remove: function(){
-			Templates.uiFunctions.hide('multiBuy');
+			Templates.uiFunctions.hideClass('multiBuy');
 	    },
 		unlocked: true,
 		achieved: false

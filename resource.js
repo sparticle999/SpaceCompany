@@ -271,7 +271,7 @@ Game.resources = (function(){
 
 		// Add the resource and clamp
         var curr = this.entries[id].current;
-        if(curr > this.getStorage(id)){
+        if(curr > this.getStorage(id) && storage >= 0){
             count *= 0.05;
         }
 		var newValue = curr + count;

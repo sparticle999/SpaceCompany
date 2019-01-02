@@ -175,7 +175,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
             	'</select>{{/if}}',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-		     '<br>',
+		     '<br><br>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 			 '<span class="multiBuy hidden">',
 			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get up to 50 (Ring)</button>',
