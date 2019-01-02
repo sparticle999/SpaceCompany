@@ -304,6 +304,11 @@ Game.tech = (function(){
         var data = this.entries[id];
         if('onApply' in data) {
             data.onApply(data);
+        };
+        if('tabAlerts' in data){
+            for(var a in data.tabAlerts){
+                newUnlock(data.tabAlerts[a]);
+            }
         }
     };
 

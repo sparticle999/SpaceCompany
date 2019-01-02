@@ -193,6 +193,10 @@ Game.wonderData = (function(){
         onApply: function(){
             Game.wonder.unlock("activatePrecious");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("wonderTab_won_precious_ne");
+        },
+        built: false,
 		unlocked: false,
 	};
 
@@ -212,6 +216,12 @@ Game.wonderData = (function(){
             Game.resources.unlock("uranium");
             Game.buildings.unlock("energyT4");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("resourcesTab_res_uranium_ne");
+            Game.buildings.entries.uraniumT1.current = 0;
+            Templates.uiFunctions.hide("energyT4");
+            Game.buildings.entries.energyT4.current = 0;
+        },
         unlocked: false,
     };
 
@@ -230,6 +240,10 @@ Game.wonderData = (function(){
         onApply: function(){
             Game.wonder.unlock("activateEnergetic");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("wonderTab_won_energetic_ne");
+        },
+        built: false,
         unlocked: false,
     };
 
@@ -249,6 +263,12 @@ Game.wonderData = (function(){
             Game.resources.unlock("lava");
             Game.buildings.unlock("energyT5");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("resourcesTab_res_lava_ne");
+            Game.buildings.entries.lavaT1.current = 0;
+            Templates.uiFunctions.hide("energyT5");
+            Game.buildings.entries.energyT5.current = 0;
+        },
         unlocked: false,
     };
 
@@ -267,6 +287,10 @@ Game.wonderData = (function(){
         onApply: function(){
             Game.wonder.unlock("activateTechnological");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("wonderTab_won_technological_ne");
+        },
+        built: false,
         unlocked: false,
     };
 
@@ -289,6 +313,14 @@ Game.wonderData = (function(){
                 }
             }
         },
+        onRemove: function(){
+            for(var id in Game.resources.entries){
+                if(checkRegResource(id)){
+                    Game.buildings.entries[id + "T3"].unlocked = false;
+                    Templates.uiFunctions.hide(id + "T3");
+                }
+            }
+        },
         unlocked: false,
     };
 
@@ -307,6 +339,10 @@ Game.wonderData = (function(){
         onApply: function(){
             Game.wonder.unlock("activateMeteorite");
         },
+        onRemove: function(){
+            Templates.uiFunctions.hideId("wonderTab_won_meteorite_ne");
+        },
+        built: false,
         unlocked: false,
     };
 
@@ -333,6 +369,18 @@ Game.wonderData = (function(){
             Game.wonder.unlock("activateRocket");
             Game.wonder.unlock("activateAntimatter");
             Game.wonder.unlock("activatePortal");
+        },
+        onRemove: function(){
+            for(var id in Game.resources.entries){
+                if(checkRegResource(id)){
+                    Game.buildings.entries[id + "T3"].unlocked = false;
+                    Templates.uiFunctions.hide(id + "T3");
+                }
+            }
+            Templates.uiFunctions.hideId("wonderTab_won_comms_ne");
+            Templates.uiFunctions.hideId("wonderTab_won_rocket_ne");
+            Templates.uiFunctions.hideId("wonderTab_won_antimatter_ne");
+            Templates.uiFunctions.hideId("wonderTab_won_portal_ne");
         },
         unlocked: false,
     };

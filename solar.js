@@ -99,10 +99,14 @@ Game.solar = (function(){
 		if(id == "wonderStation"){
 			Game.wonder.tabUnlocked = true;
 			Templates.uiFunctions.unlock("buildPrecious");
-			Templates.uiFunctions.unlock("buildEnergetic");
-			Templates.uiFunctions.unlock("buildTechnological");
-			Templates.uiFunctions.unlock("buildMeteorite");
-			newUnlock("wonder");
+			if(Game.stargaze.upgradeEntries.freeWonder.achieved){
+				Templates.uiFunctions.hide("buildPrecious");
+			} else {
+				Templates.uiFunctions.unlock("buildEnergetic");
+				Templates.uiFunctions.unlock("buildTechnological");
+				Templates.uiFunctions.unlock("buildMeteorite");
+				newUnlock("wonder");
+			}
 			Game.notifySuccess("New Tab!", "You've unlocked the Wonders Tab!");
 		}
 		if(id == "solCenter"){

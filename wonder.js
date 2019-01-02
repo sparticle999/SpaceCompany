@@ -50,7 +50,6 @@ Game.wonder = (function(){
                 page: 'wonder',
                 progress: 0,
                 activated: false,
-                displayNeedsUpdate: true,
                 ui_progress: new UpdateProgress(id),
                 ui_cost: new UpdateCost(id),
             });
@@ -106,7 +105,11 @@ Game.wonder = (function(){
     instance.gainWonder = function(data){
         data.onApply();
         Templates.uiFunctions.hide(data.id);
-        data.displayNeedsUpdate = true;
+    }
+
+    instance.removeWonder = function(data){
+        data.onRemove();
+        Templates.uiFunctions.show(data.id);
     }
 
     instance.activate = function(id){
@@ -164,7 +167,6 @@ Game.wonder = (function(){
     instance.unlock = function(id){
         Templates.uiFunctions.unlock(id);
     	this.entries[id].unlocked = true;
-    	this.entries[id].displayNeedsUpdate = true;
     }
 
     return instance;

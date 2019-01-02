@@ -375,7 +375,6 @@ Game.rebirthData = (function(){
 		opinion: 17,
 		tier: "basic",
 		onApply: function(){
-			
 			var updateList = document.getElementsByClassName("autoEmcHide");
 			for(var i = updateList.length-1; i >= 0; i--){
 				updateList[i].className = "autoEmcHide";
@@ -403,14 +402,17 @@ Game.rebirthData = (function(){
 				var data = Game.wonder.entries[id];
 				if(data.built == false){
 					data.built = true;
+					Game.wonder.gainWonder(data);
 				}
 			}
+			Templates.uiFunctions.hideId('wonderTab');
 		},
 		remove: function(){
 			for(var id in Game.wonder.entries){
 				var data = Game.wonder.entries[id];
 				if(data.built == true){
 					data.built = false;
+					Game.wonder.removeWonder(data);
 				}
 			}
 	    },

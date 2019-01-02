@@ -34,6 +34,7 @@ Game.solCenterData = (function () {
     	},
     	onApply: function(){
     		Game.tech.unlockTech("unlockPlasma");
+            newUnlock("tech");
     	},
     };
 
@@ -51,6 +52,7 @@ Game.solCenterData = (function () {
     	},
     	onApply: function(){
     		Game.tech.unlockTech("unlockEmc");
+            newUnlock("tech");
     	},
     };
 
@@ -69,6 +71,7 @@ Game.solCenterData = (function () {
     	current: 0,
     	onApply: function(){
     		Game.tech.unlockTech("unlockDyson");
+            newUnlock("tech");
     	},
     };
 
@@ -89,6 +92,7 @@ Game.solCenterData = (function () {
     	current: 0,
     	onApply: function(){
     		Game.tech.unlockTech("unlockNanoswarm");
+            newUnlock("tech");
     	},
     }
 
