@@ -312,22 +312,6 @@ Game.tech = (function(){
         }
     };
 
-    instance.hasResources = function (resources) {
-        for (var resource in resources) {
-            if (Game.resources.entries[resource].current < resources[resource]) {
-                return false;
-            }
-        }
-        return true;
-    };
-
-    instance.spendResources = function(resources) {
-        for (var resource in resources) {
-            Game.resources.entries[resource].current -= resources[resource];
-            Templates.uiFunctions.refreshElements('current', resource);
-        }
-    };
-
     instance.isUnlocked = function(id) {
         var tech = this.getTechData(id);
         if (typeof tech !== 'undefined') {

@@ -240,22 +240,21 @@ Game.stargaze = (function(){
 	instance.save = function(data){
 		data.stargaze = {entries: {}, upgradeEntries: {}, tabUnlocked: this.tabUnlocked};
 		for(var id in this.entries){
-			data.stargaze.entries[id] = this.entries[id];
+			if(typeof this.entries[id].opinion !== 'undefined'){
+				data.stargaze.entries[id] = this.entries[id].opinion;
+			}
 		}
 		for(var id in this.upgradeEntries){
-			if(typeof this.upgradeEntries[id].achieved == 'undefined'){
-				this.upgradeEntries[id].achieved = false;
-			}
-			data.stargaze.upgradeEntries[id] = {achiev: this.upgradeEntries[id].achieved};
+			data.stargaze.upgradeEntries[id] = {achieved: this.upgradeEntries[id].achieved};
 		}
+		console.error(data.stargaze)
 	};
 
 	instance.load = function(data){
 		if(data.stargaze){
 			if(typeof data.stargaze.entries !== 'undefined'){
                 for(id in data.stargaze.entries){
-                    this.entries[id] = data.stargaze.entries[id];
-                    this.entries[id].unlocked = true;
+                    this.entries[id].opinion = data.stargaze.entries[id];
                     this.entries[id].displayNeedsUpdate = true;
                 }
             }
