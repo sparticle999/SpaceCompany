@@ -410,8 +410,8 @@ Game.resources = (function(){
     
     instance.updateResourcesPerSecond = function(){
         // Setup efficiency variables
-        var efficiencyMultiplier = 1 + (Game.tech.entries.resourceEfficiencyResearch.current * 0.01);
-        var dm = 1 + 0.01*Game.stargaze.entries.darkMatter.current;
+        var efficiencyMultiplier = 0.01*Game.tech.entries.resourceEfficiencyResearch.current;
+        var dm = 0.01*Game.stargaze.entries.darkMatter.current;
         if(!Game.stargaze.upgradeEntries.increaseProd1.achieved){
             dm = 1;
         }
@@ -482,11 +482,11 @@ Game.resources = (function(){
                 boost[data.resource2.toLowerCase()] += prod;
             }
         }
-        var capitalBoost = 1;
+        var capitalBoost = 0;
         if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
             for(var res in this.entries){
                 if(res != resource && this.entries[res].current >= this.entries[res].capacity){
-                    capitalBoost += 1.05;
+                    capitalBoost += 0.05;
                 }
             }
         }
