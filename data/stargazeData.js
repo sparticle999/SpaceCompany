@@ -166,22 +166,6 @@ Game.rebirthData = (function(){
 		},
 	};
 
-	instance.increaseProd1 = {
-		name: "Dark Matter Boost",
-		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
-		cost: 30,
-		category: "darkMatter",
-		tier: "basic",
-		onApply: function(){
-	        Game.stargaze.dmBoost += 0.01;
-	    },
-	    remove: function(){
-	    	Game.stargaze.dmBoost -= 0.01;
-	    },
-		unlocked: true,
-		achieved: false,
-	};
-
 	/**************
 	** Carnelian **
 	**************/
@@ -366,7 +350,7 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
-	console.log("autoEMC");
+	console.error("autoEMC");
 	instance.autoEmc = {
 		name: "Automated EMC",
 		desc: "Check a box on an EMC resource and have that resource be 'EMCed' to the max every second.",
@@ -428,11 +412,11 @@ Game.rebirthData = (function(){
 		opinion: 17,
 		tier: "advanced",
 		onApply: function(){
-			Game.buildings.unlockStorage("plasmaStorageT3");
+			Templates.uiFunctions.unlock("plasmaT4");
 		},
 		remove: function(){
-			Templates.uiFunctions.hide("plasmaStorageT3");
-	    	Game.buildings.storageEntries.plasmaStorageT3.current = 0;
+			Templates.uiFunctions.hide("plasmaT4");
+	    	Game.buildings.entries.plasmaT4.current = 0;
 	    },
 		unlocked: true,
 		achieved: false
@@ -446,11 +430,11 @@ Game.rebirthData = (function(){
 		opinion: 12,
 		tier: "advanced",
 		onApply: function(){
-			Templates.uiFunctions.unlock("plasmaT4");
+			Game.buildings.unlockStorage("plasmaStorageT3");
 		},
 		remove: function(){
-			Templates.uiFunctions.hide("plasmaT4");
-	    	Game.buildings.entries.plasmaT4.current = 0;
+			Templates.uiFunctions.hide("plasmaStorageT3");
+	    	Game.buildings.storageEntries.plasmaStorageT3.current = 0;
 	    },
 		unlocked: true,
 		achieved: false
@@ -719,6 +703,23 @@ Game.rebirthData = (function(){
 	/*************
 	** Overlord **
 	*************/
+
+	instance.increaseProd1 = {
+		name: "Dark Matter Boost",
+		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
+		cost: 30,
+		opinion: 20,
+		category: "overlord",
+		tier: "basic",
+		onApply: function(){
+	        Game.stargaze.dmBoost += 0.01;
+	    },
+	    remove: function(){
+	    	Game.stargaze.dmBoost -= 0.01;
+	    },
+		unlocked: true,
+		achieved: false,
+	};
 
 	instance.bribery = {
 		name: "Bribery",

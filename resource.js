@@ -492,7 +492,10 @@ Game.resources = (function(){
         }
         for(var resource in this.entries){
             var data = this.entries[resource];
-            data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm * capitalBoost;
+            data.perSecond += data.perSecond * boost[resource];
+            data.perSecond += data.perSecond * efficiencyMultiplier;
+            data.perSecond += data.perSecond * dm;
+            data.perSecond += data.perSecond * capitalBoost;
         }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('persecond', 'all');

@@ -121,7 +121,7 @@ Game.stargaze = (function(){
 				if(upgradeData.achieved == true){
 					upgradeData.remove();
 					upgradeData.onApply();
-					if(upgradeData.category != "intro" && upgradeData.category != "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
+					if(upgradeData.category != "intro")this.entries[upgradeData.category].opinion += upgradeData.opinion;
 				}
 				upgradeData.displayNeedsUpdate = true;
 			}
@@ -199,7 +199,7 @@ Game.stargaze = (function(){
 			if(this.entries.darkMatter.current >= upgradeData.cost){
 				this.entries.darkMatter.current -= upgradeData.cost;
 				this.applyUpgradeEffect(id);
-				if(upgradeData.category != "intro" || "darkMatter")this.entries[upgradeData.category].opinion += upgradeData.opinion;
+				if(upgradeData.category != "intro")this.entries[upgradeData.category].opinion += upgradeData.opinion;
 				this.entries[upgradeData.category].displayNeedsUpdate = true;
 				upgradeData.achieved = true;
 			}
@@ -227,7 +227,7 @@ Game.stargaze = (function(){
 			var upgradeData = this.upgradeEntries[upgrade];
 			if(upgradeData.achieved == true){
 				this.entries.darkMatter.current += upgradeData.cost;
-				if(upgradeData.category != "intro" && upgradeData.category != "darkMatter"){
+				if(upgradeData.category != "intro"){
 					if(upgradeData.achieved == true)this.entries[upgradeData.category].opinion -= upgradeData.opinion;this.entries[upgradeData.category].displayNeedsUpdate = true;
 				}
 				upgradeData.remove();
