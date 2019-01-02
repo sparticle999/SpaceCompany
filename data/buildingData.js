@@ -124,8 +124,8 @@ Game.buildingData = (function () {
         resource: 'plasma',
         resourcePerSecond: {
             'energy': -8500,
-            'helium': -80,
-            'plasma': 10
+            'helium': -85,
+            'plasma': 13
         },
         cost: {
             'lunarite': 810000,
@@ -139,9 +139,9 @@ Game.buildingData = (function () {
         desc: 'Bathing in Electrons. What could go wrong?',
         resource: 'plasma',
         resourcePerSecond: {
-            'energy': -91000,
-            'helium': -500,
-            'hydrogen': -600,
+            'energy': -71000,
+            'helium': -750,
+            'hydrogen': -650,
             'plasma': 160
         },
         cost: {
@@ -156,15 +156,15 @@ Game.buildingData = (function () {
         desc: 'The Quasar Redirection System is a colossal space station built from graphene, used to redirect quasar activity towards gas giants, to instantaneously convert the gases into plasma for collection.',
         resource: 'plasma',
         resourcePerSecond: {
-            'energy': -0,
-            'helium': -0,
-            'hydrogen': -0,
-            'plasma': 0
+            'energy': -600000,
+            'helium': -5800,
+            'hydrogen': -6000,
+            'plasma': 2000
         },
         cost: {
-            'carbon': 0,
-            'silicon': 0,
-            'meteorite': 0
+            'carbon': 51000000,
+            'silicon': 44000000,
+            'meteorite': 147000
         }
     });
 
