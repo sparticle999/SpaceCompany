@@ -469,13 +469,16 @@ Game.rebirthData = (function(){
 		opinion: 12,
 		tier: "basic",
 		onApply: function(){
-			// old
-			labT2PlusMulti -= 0.2;
-
-			// new
+			var data = Game.buildings.entries.scienceT2.cost;
+			for(var res in data){
+				data[res] *= 0.8;
+			}
 		},
 		remove: function(){
-            labT2PlusMulti += 0.2;
+            var data = Game.buildings.entries.scienceT2.cost;
+			for(var res in data){
+				data[res] /= 0.8;
+			}
 	    },
 		unlocked: true,
 		achieved: false
