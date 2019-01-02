@@ -3,7 +3,7 @@ Game.updates = (function(){
 	var instance = {};
 	instance.entries = [];
 
-	instance.versionNumber = 1;
+	instance.versionNumber = 2;
 	instance.updateRead = false;
 
 	instance.updateTitleTemplate = Handlebars.compile(['<div id="updateAlert" class="alert alert-info alert-dismissible fade in">',
@@ -58,9 +58,9 @@ Game.updates = (function(){
 	}
 
 	instance.save = function(data){
-		data.updates = {versionNumber: 1, entries: {}};
+		data.updates = {versionNumber: 2, entries: {}};
 		for(var id in Game.updatesData){
-			data.updates.entries[id] = Game.updatesData[id];
+			data.updates.entries[id] = Game.updatesData[id].read;
 		}
 	}
 
@@ -70,6 +70,12 @@ Game.updates = (function(){
 				Game.updates.versionNumber = data.versionNumber;
 				for(var id in data.updates.entries){
 					Game.updatesData[id] = data.updates.entries[id];
+				}
+			}
+			if(data.updates.versionNumber && data.updates.versionNumber == 2){
+				Game.updates.versionNumber = data.versionNumber;
+				for(var id in data.updates.entries){
+					Game.updatesData[id].read = data.updates.entries[id];
 				}
 			}
 		}

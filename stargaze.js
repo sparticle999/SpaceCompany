@@ -247,7 +247,6 @@ Game.stargaze = (function(){
 		for(var id in this.upgradeEntries){
 			data.stargaze.upgradeEntries[id] = {achieved: this.upgradeEntries[id].achieved};
 		}
-		console.error(data.stargaze)
 	};
 
 	instance.load = function(data){

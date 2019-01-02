@@ -217,7 +217,7 @@ Game.resources = (function(){
             if(data.resources.v && data.resources.v === this.dataVersion) {
                 for(var id in data.resources.r) {
                     if(this.entries[id]) {
-                        this.addResource(id, data.resources.r[id].n);
+                        this.entries[id].current = data.resources.r[id].n;
                         this.entries[id].unlocked = data.resources.r[id].u;
                         this.entries[id].capacity = data.resources.r[id].s;
                     }
