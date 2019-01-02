@@ -282,8 +282,12 @@ Game.rebirthData = (function(){
 		category: "carnelian",
 		opinion: 26,
 		tier: "advanced",
-		onApply: function(){},
-		remove: function(){},
+		onApply: function(){
+			Game.resources.capacityExcess = 10;
+		},
+		remove: function(){
+			Game.resources.capacityExcess = 1;
+		},
 		unlocked: true,
 		achieved: false
 	};

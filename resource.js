@@ -30,16 +30,12 @@ function addManualResource(id) {
     if (!contains(Object.keys(Obj), id)) { return false; }
     // Resource doesn't allow manual gain, or is hidden.
     if (!Obj[id].manualgain ||Obj[id].hidden) { return false; }
-    // Resource has full storage
-    var current = Obj[id].current;
-    var capacity = Obj[id].capacity;
-    if (current >= capacity) {return false;}
     // Find the input for this resource.
     if (!contains(Object.keys(Obj[id].items), id+'T1')) {
         console.log("Couldn't find the building '"+id+"T1'."); return false;
     }
     var gainNum = Obj[id].gainNum;
-    var transaction = Obj[id].items[id+'T1'].resourcePerSecond
+    var transaction = Obj[id].items[id+'T1'].resourcePerSecond;
     // Can we afford the cost?
     var affordable = Object.keys(transaction).every(
         res => transaction[res] > 0 || Obj[res].current+(transaction[res]*gainNum) >= 0
@@ -152,6 +148,7 @@ Game.resources = (function(){
     instance.storageUpgradeCount = 0;
 
     instance.storagePrice = 1;
+    instance.capacityExcess = 1;
 
     instance.initialise = function() {
         for (var id in Game.resourceData) {
@@ -274,17 +271,13 @@ Game.resources = (function(){
 
 		// Add the resource and clamp
         var curr = this.entries[id].current;
+        if(curr > this.getStorage(id)){
+            count *= 0.05;
+        }
 		var newValue = curr + count;
-		var storage = this.getStorage(id);
+		var storage = this.getStorage(id) * Game.resources.capacityExcess;
 		if (storage >= 0) {
-            if(Game.stargaze.upgradeEntries.dimensionalRift.achieved){
-                curr = Math.max(0, Math.min(newValue, storage));
-                if(newValue > storage){
-                    curr += Math.min(newValue*0.05, storage*9);
-                }
-            } else {
-                curr = Math.max(0, Math.min(newValue, storage));
-            }
+            curr = Math.max(0, Math.min(newValue, storage));
 		} else {
 			curr = Math.max(0, newValue);
 		}
@@ -500,12 +493,6 @@ Game.resources = (function(){
         for(var resource in this.entries){
             var data = this.entries[resource];
             data.perSecond += data.perSecond * boost[resource] * efficiencyMultiplier * dm * capitalBoost;
-
-            if(Game.stargaze.upgradeEntries.dimensionalRift.achieved){
-                if(data.current >= data.storage){
-                    data.perSecond *= 0.05;
-                }
-            }
         }
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('persecond', 'all');
