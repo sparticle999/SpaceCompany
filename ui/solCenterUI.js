@@ -163,6 +163,24 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 	 * {{name}} 	- full name of the building
 	 * Attaches onto this.page+'Tab_{{htmlId}}_netc (resourceTab_energy_netc)
 	 */
+	var TemplatePaneDyson = Handlebars.compile(
+		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
+		   '<td>',
+		     '<h3 class="default btn-link">{{name}}: <span class="{{htmlId}}current">0</span></h3>',
+		     '<span>',
+		       '{{desc}}',
+		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
+		     '</span>',
+		     '<br><br>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
+			 '<span class="multiBuy hidden">',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_50" class="btn btn-default">Get up to 50 (Ring)</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get up to 100 (Swarm)</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_250" class="btn btn-default">Get  up to 250 (Sphere)</button>',
+			 '</span>',
+		   '</td>',
+		 '</tr>',''].join('\n'));
+
 	var TemplatePaneBuilding = Handlebars.compile(
 		['<tr id="'+this.page+'_{{htmlId}}_Container" class="{{id}}_Container {{#if unlocked}}{{else}}hidden{{/if}}">',
 		   '<td>',
@@ -178,9 +196,9 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		     '<br><br>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
 			 '<span class="multiBuy hidden">',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get up to 50 (Ring)</button>',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get up to 100 (Swarm)</button>',
-			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10000" class="btn btn-default">Get  up to 250 (Sphere)</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10" class="btn btn-default">Get 10</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get 100</button>',
+			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_10000" class="btn btn-default">Get Max</button>',
 			 '</span>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
@@ -276,7 +294,9 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		var html = ""
 		Object.keys(buildingData).forEach(function(build) {
 			var data = buildingData[build];
-			if(data.nav == "dyson" || data.nav == "nanoswarmTech"){
+			if(data.nav == "dyson"){
+				html += TemplatePaneDyson(data);
+			} else if(data.nav == "nanoswarmTech"){
 				html += TemplatePaneBuilding(data);
 			} else {
 				html += TemplatePaneTech(data);
