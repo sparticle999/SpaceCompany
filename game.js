@@ -83,7 +83,6 @@ var Game = (function() {
         self.updateAutoSave(delta);
 
         Templates.uiFunctions.refreshElements('cost', 'all');
-        Templates.uiFunctions.refreshElements('progress', 'all');
 
         if(delta > 5) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
@@ -100,6 +99,9 @@ var Game = (function() {
 
         self.updateTime(delta);
 
+        Templates.uiFunctions.refreshElements('progress', 'all');
+        Templates.uiFunctions.refreshElements("capacity", "all");
+        
         self.achievements.update(delta);
         self.statistics.update(delta);
     };
