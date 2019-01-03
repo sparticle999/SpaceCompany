@@ -57,8 +57,9 @@
         var data = Game.statistics.entries[id];
         if(data.displayNeedsUpdate){
 
-            if(data.id = "tabsUnlocked")
+            if(data.id = "tabsUnlocked"){
                 Game.statistics.update();
+            }
 
             var valueSpan = $('#' + id + "_val");
             var valueAlltimeSpan = $('#' + id + "_valAlltime");

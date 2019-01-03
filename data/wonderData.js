@@ -214,10 +214,12 @@ Game.wonderData = (function(){
         },
         onApply: function(){
             Game.resources.unlock("uranium");
+            Game.statistics.add('resourcesUnlocked');
             Game.buildings.unlock("energyT4");
         },
         onRemove: function(){
             Templates.uiFunctions.hideId("resourcesTab_res_uranium_ne");
+            Game.statistics.add('resourcesUnlocked', -1);
             Game.buildings.entries.uraniumT1.current = 0;
             Templates.uiFunctions.hide("energyT4");
             Game.buildings.entries.energyT4.current = 0;
@@ -261,10 +263,12 @@ Game.wonderData = (function(){
         },
         onApply: function(){
             Game.resources.unlock("lava");
+            Game.statistics.add('resourcesUnlocked');
             Game.buildings.unlock("energyT5");
         },
         onRemove: function(){
             Templates.uiFunctions.hideId("resourcesTab_res_lava_ne");
+            Game.statistics.add('resourcesUnlocked', -1);
             Game.buildings.entries.lavaT1.current = 0;
             Templates.uiFunctions.hide("energyT5");
             Game.buildings.entries.energyT5.current = 0;
@@ -364,7 +368,6 @@ Game.wonderData = (function(){
                     Game.buildings.unlock(id + "T4");
                 }
             }
-            Game.resources.unlock("meteorite");
             Game.wonder.unlock("activateComms");
             Game.wonder.unlock("activateRocket");
             Game.wonder.unlock("activateAntimatter");

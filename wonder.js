@@ -102,6 +102,7 @@ Game.wonder = (function(){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.cost)){
             data.built = true;
+            Game.statistics.add("wondersBuilt");
     		this.gainWonder(data);
     	}
     };
@@ -120,6 +121,7 @@ Game.wonder = (function(){
     	var data = this.entries[id];
     	if(this.checkCost(data, data.cost)){
     		data.activated = true;
+            Game.statistics.add("wondersActivated");
     		this.gainWonder(data);
     	}
     };

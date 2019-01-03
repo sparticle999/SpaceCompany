@@ -110,6 +110,7 @@ Game.dysonData = (function(){
             desc: "These mega-structures cannot possibly be built in one piece. They must be created from small sections and forged together around the sun.",
             category: "alienTechnology",
             nav: "dyson",
+            max: -1,
             cost: {
                 "titanium": 300000,
                 "gold": 100000,
@@ -126,6 +127,7 @@ Game.dysonData = (function(){
             desc: "The ring is a solar strip orbiting and circling the sun that can produce 5,000 energy per second. It requires 50,000 rocket fuel in total to put the sections in place.",
             category: "alienTechnology",
             nav: "dyson",
+            max: -1,
             cost: {
                 "segment": 50,
                 "rocketFuel": 50000,
@@ -141,6 +143,7 @@ Game.dysonData = (function(){
             desc: "The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place.",
             category: "alienTechnology",
             nav: "dyson",
+            max: -1,
             cost: {
                 "segment": 100,
                 "rocketFuel": 250000,
@@ -156,13 +159,13 @@ Game.dysonData = (function(){
             desc: "The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.<br>Costs: 1.000M Rocket Fuel to assemble the pieces.",
             category: "alienTechnology",
             nav: "dyson",
+            max: 1,
             cost: {
                 "segment": 250,
                 "rocketFuel": 1000000,
             },
             current: 0,
             output: 1000000,
-            max: 1,
             onBuy: function(){
                 if(this.current >= 1){
                     Game.stargaze.tabUnlocked = true;

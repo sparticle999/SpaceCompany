@@ -114,6 +114,7 @@ var Game = (function() {
     instance.updateTime = function(delta) {
         Game.statistics.add('sessionTime', delta);
         Game.statistics.add('timePlayed', delta);
+        Game.statistics.setValue('lastRebirth', (new Date().getTime() - Game.statistics.lastRebirthTime)/1000, 0);
     };
 
     instance.import = function() {

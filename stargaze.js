@@ -15,6 +15,7 @@ Game.stargaze = (function(){
 	instance.tabUnlocked = false;
 
 	instance.dmBoost = 0;
+	instance.lastRebirthTime = new Date();
 
 	instance.initialise = function(){
 		console.log("%c", "background: green;padding: 5px", "displayNeedsUpdate on upgradeEntries")
@@ -53,6 +54,7 @@ Game.stargaze = (function(){
 		if(Game.solCenter.entries.dyson.items.sphere.current < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
+			Game.statistics.lastRebirthTime = new Date();
 			this.entries.darkMatter.current += this.entries.darkMatter.potential;
 			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.potential + " Dark Matter from rebirthing into your new life!");
 			Game.statistics.add("rebirthCount", 1);

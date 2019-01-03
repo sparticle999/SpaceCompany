@@ -329,6 +329,7 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function() {
             Game.resources.unlock("plasma");
+            Game.statistics.add('resourcesUnlocked');
             Game.buildings.unlock("plasmaT1");
         }
     });
@@ -409,6 +410,7 @@ Game.techData = (function () {
         tabAlerts: ['resources', 'wonder'],
         onApply: function(){
             Game.resources.unlock("meteorite");
+            Game.statistics.add('resourcesUnlocked');
             
         }
     });

@@ -52,7 +52,6 @@ Game.solCenter = (function(){
                 id: id,
                 htmlId: 'solCtr_' + id,
                 current: 0,
-                max: -1,
                 ui_cost: new UpdateItemCost(id, "dyson"),
             });
         }

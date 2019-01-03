@@ -185,6 +185,7 @@ Game.tech = (function(){
     instance.hideIfMax = function(id){
         var data = this.entries[id];
         if (data.current >= data.maxLevel && data.maxLevel > 0) {
+            Game.statistics.add('techResearched');
             Templates.uiFunctions.hide(data.id);
         }
     }

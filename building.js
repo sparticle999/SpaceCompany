@@ -266,6 +266,7 @@ Game.buildings = (function(){
                 this.updatePerSecondProduction = true;
                 if(data.onApply) {data.onApply();}
                 this.constructBuildings(id, 1);
+                Game.statistics.add("tierOwned" + data.id.substring(data.id.indexOf("T")+1));
                 this.updateCosts(id);
             } else {
                 return;
