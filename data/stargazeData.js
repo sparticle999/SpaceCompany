@@ -350,7 +350,6 @@ Game.rebirthData = (function(){
 		achieved: false
 	};
 
-	console.error("autoEMC");
 	instance.autoEmc = {
 		name: "Automated EMC",
 		desc: "Check a box on an EMC resource and have that resource be 'EMCed' to the max every second.",
@@ -359,16 +358,10 @@ Game.rebirthData = (function(){
 		opinion: 17,
 		tier: "basic",
 		onApply: function(){
-			var updateList = document.getElementsByClassName("autoEmcHide");
-			for(var i = updateList.length-1; i >= 0; i--){
-				updateList[i].className = "autoEmcHide";
-			}
+			Templates.uiFunctions.showClass("autoEmcHide");
 		},
 		remove: function(){
-	    	var updateList = document.getElementsByClassName("autoEmcHide");
-			for(var i = updateList.length-1; i >= 0; i--){
-				updateList[i].className = "autoEmcHide hidden";
-			}
+	    	Templates.uiFunctions.hideClass("autoEmcHide");
 	    },
 		unlocked: true,
 		achieved: false

@@ -102,7 +102,6 @@ Game.solCenter = (function(){
 
     instance.load = function(data){
     	if(data.solCenter){
-            console.error(data.solCenter)
     		for (var id in data.solCenter.e) {
             	if (typeof this.entries[id] !== 'undefined') {
             		var ent = data.solCenter.e[id];
@@ -123,6 +122,23 @@ Game.solCenter = (function(){
         	}
     	}
         $('#solCenter_solCtr_nanoswarm_changeResource').change(function(){Game.solCenter.switchNano($('#solCenter_solCtr_nanoswarm_changeResource').val())});
+        for(var id in Game.resources.entries){
+            if(checkRegResource(id) || id == "meteorite"){
+                $('#solCenter_autoEmc_'+id+'_checkbox')[0].onchange = (function(){
+                    var name = this.id.split("_")[2]
+                    if(!$('#solCenter_autoEmc_'+name+'_checkbox')[0].checked){
+                        Game.solCenter.autoResource = null;
+                        return;
+                    }
+                    Game.solCenter.autoResource = name;
+                    for(var res in Game.resources.entries){
+                        if((checkRegResource(res) || res == "meteorite" ) && res != name){
+                            $('#solCenter_autoEmc_'+res+'_checkbox')[0].checked = false;
+                        }
+                    }
+                });
+            }
+        }
     };
 
     instance.research = function(id){
@@ -297,7 +313,7 @@ Game.solCenter = (function(){
     instance.autoEmc = function(){
         if(this.autoResource != null){
             this.emcAmount = "Max";
-            this.convert(autoResource, false);
+            this.convert(this.autoResource, false);
         }
     }
 
@@ -341,14 +357,3 @@ Game.solCenter = (function(){
 
     return instance;
 }());
-
-// Sol Center Tab
-
-console.log("autoemc");
-$('input[type="checkbox"]').on('change', function() {
-	$('input[class="autoEmc"]').not(this).prop('checked', false);
-	this.autoResource = this.id.substring(0,this.id.indexOf("Auto"));
-	if($(this).is(":checked") == false){
-		this.autoResource = null;
-	}
-});

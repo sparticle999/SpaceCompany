@@ -250,7 +250,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 			'<td><span class="emcAmount_{{id}}">1</span> {{name}}</td>',
 			'<td><span class="res_{{id}}current">N/A</span> / <span class="res_{{id}}capacity">N/A</span></td>',
 			'<td><button id="solCenter_convert_{{id}}" class="btn btn-default pull-right" role="button">Convert</button></td>',
-			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="{{id}}AutoEmc" class="autoEmc" />',
+			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="solCenter_autoEmc_{{id}}_checkbox" class="autoEmc" />',
 		'</tr>',''].join('\n'));
 
 	var TemplatePanePlasmaEmc = Handlebars.compile(
@@ -259,7 +259,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 			'<td><span class="emcAmount_{{id}}">1</span> {{name}}</td>',
 			'<td><span class="res_{{id}}current">N/A</span> / <span class="res_{{id}}capacity">N/A</span></td>',
 			'<td><button id="solCenter_convert_{{id}}" class="btn btn-default pull-right" role="button">Convert</button></td>',
-			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="{{id}}AutoEmc" class="autoEmc" />',
+			'<td class="autoEmcHide hidden" style="text-align:center;"><input type="checkbox" id="solCenter_autoEmc_{{id}}_checkbox" class="autoEmc" />',
 		'</tr>',''].join('\n'));
 
 
