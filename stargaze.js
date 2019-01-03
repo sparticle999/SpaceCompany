@@ -54,7 +54,6 @@ Game.stargaze = (function(){
 		if(Game.solCenter.entries.dyson.items.sphere.current < 1)return;
 		var check = confirm("Are you sure? This is non-reversible after you reset and save.");
 		if(check){
-			Game.statistics.lastRebirthTime = new Date();
 			this.entries.darkMatter.current += this.entries.darkMatter.potential;
 			Game.notifySuccess("Dark Matter!", "You have gained " + this.entries.darkMatter.potential + " Dark Matter from rebirthing into your new life!");
 			Game.statistics.add("rebirthCount", 1);
@@ -116,6 +115,11 @@ Game.stargaze = (function(){
 					this.entries[nav].displayNeedsUpdate = true;
 				}
 			}
+			// Statistics
+			for(var id in Game.statistics.entries){
+				Game.statistics.entries[id].value = 0;
+			}
+			Game.statistics.lastRebirthTime = new Date();
 
 			// Adding starting things
 			for(var upgrade in this.upgradeEntries){
