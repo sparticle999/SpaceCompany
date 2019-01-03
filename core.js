@@ -1,14 +1,3 @@
-function fixStorageRounding() {
-	var precision = 100;
-	if (Math.round(getResource(RESOURCE.Meteorite) * precision) / precision === getStorage(RESOURCE.Meteorite)) {
-		Game.resources.maxResource(RESOURCE.Meteorite);
-	}
-
-	if (Math.round(getResource(RESOURCE.Plasma) * precision) / precision === getStorage(RESOURCE.Plasma)) {
-		Game.resources.maxResource(RESOURCE.Plasma);
-	}
-}
-
 function refreshTimeUntilLimit() {
 	for (var id in Game.resources.entries) {
 		var limitType = id + 'LimitType';
@@ -74,23 +63,6 @@ function refreshPerSec(delta){
 			antimatterps += Game.interstellar.antimatter.entries.drive.count/2;
 		}
 	}
-}
-
-function adjustCost(resource, cost, gain) {
-	var targetStorage = getStorage(resource);
-	var targetCurrent = getResource(resource);
-	var targetPs = getProduction(resource);
-
-	var maxGain = targetStorage - targetCurrent;
-	if(targetPs < 0) {
-		maxGain -= targetPs;
-	}
-
-	var gainAbs = Math.min(gain, maxGain);
-	var gainRatio = gainAbs / gain;
-	var costAbs = cost * gainRatio;
-
-	return {g: gainAbs, c: costAbs};
 }
 
 function contains(array, obj) {

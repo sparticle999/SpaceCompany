@@ -53,7 +53,6 @@ var Game = (function() {
 
         refreshPerSec(delta);
         gainResources(delta);
-        fixStorageRounding();
     };
 
     instance.fastUpdate = function(self, delta) {
@@ -311,9 +310,15 @@ var Game = (function() {
             return;
         }
 
-        refreshPerSec(1);
+        refreshPerSec();
         gainResources(offlineTime);
-        fixStorageRounding();
+        if(Game.solCenter.autoResource != null){
+            var energy = Game.resources.entries.energy;
+            var energyGain = energy.perSecond * offlineTime;
+            Game.solCenter.convert(Game.solCenter.autoResource, false);
+            var space = energy.capacity - energy.current;
+            Game.resources.addResource("energy", energyGain - space);
+        }
 
         this.notifyOffline(offlineTime);
     };
