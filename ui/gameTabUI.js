@@ -929,7 +929,7 @@ Templates.uiFunctions.addUIEventListener(window, "load", function() {Game.start(
 
     var tabTemplate = Handlebars.compile(
         ['<li role="presentation" id="{{htmlId}}" class="{{active}}">',
-            '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" class="{{hidden}}" aria-controls="{{id}}" role="tab" data-toggle="tab">',
+            '<a href="#{{htmlId}}_pane" id="{{htmlId}}_link" class="{{hidden}}" onclick="Game.lastTab=`{{htmlId}}`"aria-controls="{{id}}" role="tab" data-toggle="tab">',
             '<div id="{{id}}TabGlyph" class="glyphicon glyphicon-exclamation-sign hidden"></div>',
             '{{title}}</a></li>'].join('\n'));
 
@@ -949,7 +949,7 @@ Templates.uiFunctions.addUIEventListener(window, "load", function() {Game.start(
             '</tr>'].join('\n'));
 
     var navEntryTemplate = Handlebars.compile(
-        ['<tr id="{{htmlId}}_{{id}}_ne" href="#{{htmlId}}_{{id}}_nec" class="collapse_{{htmlId}}_{{category}}" aria-controls="{{htmlId}}_{{id}}_nec" role="tab" data-toggle="tab" style="height:60px;" aria-expanded="true">',
+        ['<tr id="{{htmlId}}_{{id}}_ne" href="#{{htmlId}}_{{id}}_nec" class="collapse_{{htmlId}}_{{category}}" onclick="Game.lastNav=`{{htmlId}}_{{id}}_ne`;" aria-controls="{{htmlId}}_{{id}}_nec" role="tab" data-toggle="tab" style="height:60px;" aria-expanded="true">',
          '</tr>'].join('\n'));
 
     var navEntryContentTemplate = Handlebars.compile(

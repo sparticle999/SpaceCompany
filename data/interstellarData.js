@@ -206,14 +206,14 @@ Game.rocketPartsData = (function(){
 		unlocked: true,
 		displayNeedsUpdate: true,
 		cost: {
-			'lunarite': 100000,
-			'titanium': 100000,
-			'metal': 100000
+			'lunarite': 10000000,
+			'titanium': 10000000,
+			'metal': 10000000
 		},
 		defaultCost: {
-			'lunarite': 100000,
-			'titanium': 100000,
-			'metal': 100000
+			'lunarite': 10000000,
+			'titanium': 10000000,
+			'metal': 10000000
 		}
 	};
 
@@ -226,14 +226,14 @@ Game.rocketPartsData = (function(){
 		unlocked: true,
 		displayNeedsUpdate: true,
 		cost: {
-			'silicon': 500000,
-			'meteorite': 10000,
-			'hydrogen': 250000
+			'silicon': 50000000,
+			'meteorite': 1000000,
+			'hydrogen': 25000000
 		},
 		defaultCost: {
-			'silicon': 500000,
-			'meteorite': 10000,
-			'hydrogen': 250000
+			'silicon': 50000000,
+			'meteorite': 1000000,
+			'hydrogen': 25000000
 		}
 	};
 
@@ -246,14 +246,14 @@ Game.rocketPartsData = (function(){
 		unlocked: true,
 		displayNeedsUpdate: true,
 		cost: {
-			'silver': 200000,
-			'ice': 300000,
-			'gem': 250000
+			'silver': 20000000,
+			'ice': 30000000,
+			'gem': 25000000
 		},
 		defaultCost: {
-			'silver': 200000,
-			'ice': 300000,
-			'gem': 250000
+			'silver': 20000000,
+			'ice': 30000000,
+			'gem': 25000000
 		}
 	};
 
