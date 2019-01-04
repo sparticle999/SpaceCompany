@@ -265,6 +265,7 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("energyStorageT1");
+            Templates.uiFunctions.show("res_energyCapacityHidden")
             console.log("energyStorageBox, in energy storage displayNeedsUpdate")
         }
     });
@@ -362,7 +363,7 @@ Game.techData = (function () {
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlockStorage("plasmaStorageT1");
-            console.log("plasmaStorageBox")
+            Templates.uiFunctions.show("res_plasmaCapacityHidden")
         }
     });
 

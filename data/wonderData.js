@@ -368,6 +368,15 @@ Game.wonderData = (function(){
                     Game.buildings.unlock(id + "T4");
                 }
             }
+            if(Game.stargaze.upgradeEntries.T5Machines.achieved){
+                for(var id in Game.resources.entries){
+                    if(checkRegResource(id)){
+                        if (id+'T5' in Game.buildings.entries) {
+                            Game.buildings.unlock(id + "T5")
+                        }
+                    }
+                }
+            }
             Game.wonder.unlock("activateComms");
             Game.wonder.unlock("activateRocket");
             Game.wonder.unlock("activateAntimatter");

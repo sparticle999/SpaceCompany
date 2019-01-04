@@ -581,17 +581,19 @@ Game.rebirthData = (function(){
 	};
 
 	instance.T5Machines = {
-		name: "Tier 5 Machines",
-		desc: "Gain access to a fifth tier of machines to produce resources.",
+		name: "Tier 5 Machine Research",
+		desc: "Gain access to the research for fifth tier of resource machines. These are unlocked after activating the T4 Meteorite Wonder.",
 		cost: 35,
 		category: "kitrinos",
 		opinion: 20,
 		tier: "basic",
 		onApply: function(){
-			for(var id in Game.resources.entries){
-				if(checkRegResource(id)){
-					if (id+'T5' in Game.buildings.entries) {
-						Game.buildings.unlock(id + "T5")
+			if(Game.wonder.entries.activateMeteorite.activated){
+				for(var id in Game.resources.entries){
+					if(checkRegResource(id)){
+						if (id+'T5' in Game.buildings.entries) {
+							Game.buildings.unlock(id + "T5")
+						}
 					}
 				}
 			}

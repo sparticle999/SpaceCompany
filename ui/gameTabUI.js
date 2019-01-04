@@ -226,8 +226,6 @@ Templates.objectConstructor.UiFunctions = function() {
         return true;
     }
 
-    console.log("%c", "background:green;padding:5px;", "Combine these hide functions");
-
     /**
      * Hides a single element (adds class: hidden).
      * @param  {String}   DOMid  The *id* of the DOM nav element to hide.
@@ -492,10 +490,6 @@ Templates.objectConstructor.UiFunctions = function() {
         nodes.forEach(node => node.style.removeProperty(style));
         return true;
     }
-
-
-    // Do we need a function that hides a page and all of its elements?
-    console.log("%c", "background:green;padding:5px", "Yes, on rebirth");
 
     ////////////////
     // Menu Stuff //

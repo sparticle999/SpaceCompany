@@ -38,7 +38,6 @@ Game.settings = (function(){
      * @param   {Object} object  The parent object of the method requesting formatting
      * @return  {String}         Returns the formatted string
      */
-    console.log("%c", "background:blue;padding:5px", "ln 173 could be prettied up (tables)");
     instance.doFormat = function(action, object) {
         var key = object.id;
         action = action.toString().toLowerCase();
