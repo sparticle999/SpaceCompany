@@ -827,6 +827,12 @@ Templates.objectConstructor.UiFunctions = function() {
                 // Match changeEmcAmount [It's handled onmousedown="" as rightclicks are hard to distinguish in this]
                 case (match = getCase(id, "changeEmcAmount")).input:
                     break;
+                // Match (solCenter)_autoEmc_(metal)_checkbox
+                case (match = getCase(id, "^(.*)_autoEmc_(.*)_checkbox$")).input:
+                    break;
+                // Match (solCenter)_(solCtr)_(metal)_changeResource
+                case (match = getCase(id, "^(.*)_(.*)_(.*)_changeResource$")).input:
+                    break;
 
                 default:
                     unmatched.push(id);

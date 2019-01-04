@@ -413,7 +413,7 @@ Game.resources = (function(){
         var efficiencyMultiplier = 0.01*Game.tech.entries.resourceEfficiencyResearch.current;
         var dm = 0.01*Game.stargaze.entries.darkMatter.current;
         if(!Game.stargaze.upgradeEntries.increaseProd1.achieved){
-            dm = 1;
+            dm = 0;
         }
         // stellar production bonuses
         var boost = {};

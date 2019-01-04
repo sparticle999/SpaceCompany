@@ -9,6 +9,8 @@ Game.donatorData = (function(){
 	"Niflhel", // Austerror
 	"Jotunheim", // Idgo
 	"Pegasus Epsilon", // Katorone
+	"Arcanum", // Arken B. Arken
+	
 	];
 
 	instance.patreon = [
@@ -16,6 +18,7 @@ Game.donatorData = (function(){
 	"Jordan Taylor",
 	"Brian Freeman",
 	"Tompaine",
+	"Graham Freeman",
 	];
 
 	instance.discordMod = [
