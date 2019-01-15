@@ -33,7 +33,7 @@ Game.stargazeData = (function(){
 
 	instance.darkMatter = {
 		name: "Dark Matter",
-		desc: "Here, you can see how much Dark Matter you have acquired and the earnings you will recieve upon reset (in brackets). You can find out how DM is gained and can spend it on Dark-Matter-specific upgrades.",
+		desc: "Here, you can see how much Dark Matter you have acquired and the earnings you will recieve upon reset (in brackets).",
 		potential: 0,
 		current: 0,
 		category: "general",
@@ -123,7 +123,7 @@ Game.darkMatter = (function(){
 
 	instance.swarm = {
 		name: "Swarms",
-		desc: "One of the more complex systems, your Dark Matter gained from swarms is judged on an old mathematical sequence: Pascal's Triangle. You will get 1 dark matter for passing each triangular number of swarms necessary. For example: 1,3,6,10,15,21...",
+		desc: "One of the more complex systems, your Dark Matter gained from swarms is judged on an old mathematical sequence: The triangle numbers. You will get 1 dark matter for passing each triangular number of swarms. For example: 1,3,6,10,15,21...",
 	};
 
 	return instance;

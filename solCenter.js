@@ -120,6 +120,9 @@ Game.solCenter = (function(){
             		this.gainTech(id);
             	}
         	}
+            if(this.entries.dyson.items.sphere.current >= 1){
+                document.getElementById("stargazeTab").className = "";
+            }
     	}
         $('#solCenter_solCtr_nanoswarm_changeResource').change(function(){Game.solCenter.switchNano($('#solCenter_solCtr_nanoswarm_changeResource').val())});
         for(var id in Game.resources.entries){
