@@ -461,7 +461,12 @@ Game.resources = (function(){
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
-                    this.entries[value].perSecond += val * building.active;
+                    if(value == "energy" && val < 0){
+                        var multi = 1 - 0.01*Game.tech.entries.energyEfficiencyResearch.current;
+                    } else {
+                        var multi = 1;
+                    }
+                    this.entries[value].perSecond += val * building.active * multi;
                 }
             }
         }
