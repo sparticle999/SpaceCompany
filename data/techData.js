@@ -594,6 +594,10 @@ Game.techData = (function () {
         maxLevel: 200,
         cost: {
             'science': 100000000
+        },
+        onApply: function() {
+            Game.resources.refreshStorage("energy");
+            Game.resources.refreshStorage("plasma");
         }
     });
 

@@ -379,9 +379,13 @@ Game.resources = (function(){
         var cap = res.baseCapacity
         for(var id in Game.buildings.storageEntries){
             var data = Game.buildings.storageEntries[id];
+            var multi = 1;
+            if(data.resource == "energy"){
+                multi += Game.tech.entries.batteryEfficiencyResearch.current;
+            }
             for(var storageResource in data.storage){
                 if(storageResource == resource){
-                    cap += data.storage[resource] * data.current;
+                    cap += data.storage[resource] * data.current * multi;
                 }
             }
         }
@@ -502,6 +506,7 @@ Game.resources = (function(){
             data.perSecond += data.perSecond * dm;
             data.perSecond += data.perSecond * capitalBoost;
         }
+        this.entries.science.perSecond += data.perSecond * 2 * Game.tech.entries.scienceEfficiencyResearch.current;
         energy.perSecond -= energyDiff;
         Templates.uiFunctions.refreshElements('persecond', 'all');
     };
