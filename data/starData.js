@@ -583,7 +583,7 @@ Game.starData = (function(){
 		stats: {
 			"power": 675,
 			"defense": 565,
-			"speed": 8,
+			"speed": 13,
 		},
 	};
 
@@ -598,7 +598,7 @@ Game.starData = (function(){
 		stats: {
 			"power": 410,
 			"defense": 321,
-			"speed": 6,
+			"speed": 12,
 		},
 	};
 

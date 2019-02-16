@@ -15,29 +15,33 @@ Game.enlightenmentData = (function(){
 
 	var instance = {};
 
+    instance.intro = {
+        name: 'Introduction',
+        para1: 'With your vast amounts of dark matter, you find you have fulfilled your company to great success. Watching your interstellar empire, commanded by you, yourself, you feel the Overlord\'s presence come upon you. This is to be the next stage in your long journey for galactic supremacy.',
+        para2: '"You have come far in your many lives, my loyal subject, but I know you can do more. Do not worry, you have not failed me yet. I will start you in a new dimension, almost identical to this one, where you may start afresh."',
+        para3: '"In this new dimension, you will travel further, and conquer more than ever before, as you will have my precious Ultrite, and my faithful resource titans by your side at each step."',
+        para4: '"With this heightened power, I truly believe you are capable of greatness, spreading our empire over the galaxy. Go forth into this new dimension and come out stronger for it!"',
+        para5: 'The Overlord\'s aura leaves you astounded, before promptly transporting you into a foreign world, devoid of industrialisation, yet familiar. You gaze up at the stars as you have done many times before, and set off to build a space company, bigger and better than ever before.',
+        category: 'general',
+        order: 1,
+        unlocked: true
+    }
+
 	instance.ultrite = {
 		name: 'Ultrite',
-		desc: 'XXX',
+		desc: 'There are 5 ways of gaining Ultrite in this galaxy. Here, you can see how much Ultrite you have acquired and the earnings you will recieve upon reset (in brackets).',
         current: 0,
 		category: 'general',
-		order: 1,
-		unlocked: false
+		order: 2,
+		unlocked: true
 	};
-
-    instance.titan = {
-        name: 'Titans',
-        desc: 'XXX',
-        category: 'general',
-        order: 2,
-        unlocked: false
-    };
 
     instance.upgrades = {
         name: 'Upgrades',
-        desc: 'XXX',
+        desc: 'Here, you can spend your well earned Ultrite on powerful upgrades, worthy of the overlord himself. These have the capability to completely change the course of your rebirths, and allow to you reach soaring heights, significantly further than before.',
         category: 'general',
         order: 3,
-        unlocked: false
+        unlocked: true
     };
 
     return instance;
@@ -50,16 +54,16 @@ Game.enlightenData = (function(){
 
     instance.enlighten = {
         name: "Enlighten",
-        desc: "",
+        desc: "Leaving your dimension leaves a lot of uncertainty. You will leave behind all that you have created, for a world familiar, yet different, as if waiting to be colonised, just for you. The galaxy lies just as it did here, unknowing of the power that will enter their dimension. The brave jump you must take to achieve true greatness is a calculated one, and only the ready will thrive. Are you ready?",
         cost: 0,
-        category: "ultrite",
+        category: "intro",
     };
 
     instance.titan = {
         name: "Resource Titans",
-        desc: "Rather than Enlightening yourself for Ultrite gains, you may instead choose a resource titan to aid you on your future journeys. For each titan that you gain the favour of, you will recieve a 90% discount on all costs containing that resource.",
+        desc: "Resource Titans are wonderous beings, who smile fortunately on those who idolise them. By sacrificing your life to a specific resource titan, they will grant you a permanent 90% reduction in all costs consisting of that resource. (Costs:100 metal -> Costs:10 metal). Sacrificing multiple times is smiled upon greatly, and multiplies this discount.",
         cost: 0,
-        category: "titan",
+        category: "intro",
     };
 
     instance.machines = {
@@ -88,6 +92,39 @@ Game.enlightenData = (function(){
             Game.stargaze.rebirthNeedsUpdate === true;
         },
         achieved: false,
+    };
+
+    return instance;
+
+}());
+
+Game.ultrite = (function () {
+
+    var instance = {};
+
+    instance.conquer = {
+        name: "Conquered Stars",
+        desc: "For each conquered star system, one ultrite will be rewarded upon enlightenment as a reward for spreading the Overlord's influence over the galaxy.",
+    };
+
+    instance.absorb = {
+        name: "Sphere",
+        desc: "By expanding your sphere of influence peacefully, an additional ultrite per star will be granted in efforts of maintaining a prosperous empire."
+    };
+
+    instance.rebirth = {
+        name: "Rebirth Upgrades",
+        desc: "For every rebirth upgrade you purchase with dark matter, one ultrite will be awarded on enlightenment.",
+    };
+
+    instance.planet = {
+        name: "Overlord Statues",
+        desc: "Smiliar to rebirth, for each triangluar number of Overlord Statues built on planets, you will recieve one Ultrite when you enlighten.",
+    };
+
+    instance.research = {
+        name: "Overlord Appreciation Research",
+        desc: "For every 25 research points of the overlord appreciation research, one Ultrite will be given to you.",
     };
 
     return instance;

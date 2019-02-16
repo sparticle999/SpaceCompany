@@ -101,16 +101,16 @@ Game.interstellar = (function(){
         }
         this.military.updateShips();
         this.military.updateFleetStats();
-        // Delete
-        // document.getElementById("interstellarTab_link").className = "";
-        // antimatter = 100000;
-        // Game.interstellar.rocket.entries.tier1Rocket.built = true;
-        // Game.interstellar.comms.entries.IRS.count = 100;
-        // Game.interstellar.stars.entries._601.explored = true;
-        // Game.interstellar.stars.entries._601.owned = true;
-        // var data = Game.interstellar.entries["moviton"];
-        // data.unlocked = data.displayNeedsUpdate = true;
-        // console.error("only for testing");
+        //Delete
+        document.getElementById("interstellarTab_link").className = "";
+        antimatter = 100000;
+        Game.interstellar.rocket.entries.tier1Rocket.built = true;
+        Game.interstellar.comms.entries.IRS.count = 100;
+        Game.interstellar.stars.entries._601.explored = true;
+        Game.interstellar.stars.entries._601.owned = true;
+        var data = Game.interstellar.entries["moviton"];
+        data.unlocked = data.displayNeedsUpdate = true;
+        console.error("only for testing");
         // Delete
     };
 
@@ -509,17 +509,13 @@ Game.interstellar.military = (function(){
 
     instance.getChance = function(star){
         if(this.power!=0){
-            var multi = this.getMultiplier(star.factionId);
-            if(multi == 0){
+            var aggression = this.getMultiplier(star.factionId);
+            if(aggression == 0){
                 return "peace";
             }
-            var damage = (this.activePower/star.stats.defense*multi)*this.activeSpeed;
-            var starDamage = (star.stats.power*multi/Math.max(this.activeDefense,1))*star.stats.speed;
-            if(damage > starDamage){
-                return (damage/starDamage)-0.5;
-            } else {
-                if(damage != 0)return Math.max(0, 1.5-(starDamage/damage));
-            }
+            var damage = (this.activePower/star.stats.defense*aggression)*this.activeSpeed;
+            var starDamage = (star.stats.power*aggression/Math.max(this.activeDefense,1))*star.stats.speed;
+            return Math.max(0,(damage/starDamage)-0.5);
         }
     }
 
@@ -535,24 +531,7 @@ Game.interstellar.military = (function(){
             if(chance >= roll){
                 star.owned = true;
                 newUnlock('solCenter');
-                var randomShips = Game.utils.randArb(0,chance);
-                if(randomShips < 1){
-                    for(var ship in this.entries){
-                        var shipData = this.getShipData(ship);
-                        for(var i = 0; i < shipData.active; i++){
-                            // Chance to keep the ship
-                            var destroyChance = Math.random();
-                            if(destroyChance > chance){
-                                shipData.active -= 1;
-                                shipData.count -= 1;
-                            }
-                        }
-                        shipData.displayNeedsUpdate = true;
-                    }
-                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
-                } else {
-                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    
-                }
+                Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    
                 var faction = Game.stargaze.getStargazeData(star.factionId);
                 faction.opinion -= 10;
                 faction.displayNeedsUpdate = true;
@@ -562,14 +541,17 @@ Game.interstellar.military = (function(){
             } else {
                 for(var ship in this.entries){
                     var shipData = this.getShipData(ship);
-                    for(var i = shipData.active; i > 0; i--){
-                        // Destroy all active ships
-                        shipData.active -= 1;
-                        shipData.count -= 1;
+                    for(var i = 0; i < shipData.active; i++){
+                        // Chance to keep the ship
+                        var destroyChance = Math.random();
+                        if(destroyChance > chance){
+                            shipData.active -= 1;
+                            shipData.count -= 1;
+                        }
                     }
                     shipData.displayNeedsUpdate = true;
                 }
-                Game.notifyInfo("Failed Invasion!", "Unfortunately, the enemy forces were too strong for you. They have destroyed all of your active ships.");
+                Game.notifyInfo("Failed Invasion!", "Unfortunately, the enemy forces were too strong for you. You have lost some ships in the battle, but were able to retreat back to safety.");
             }
             star.displayNeedsUpdate = true;
             this.updateFleetStats();

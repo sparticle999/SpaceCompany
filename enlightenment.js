@@ -10,6 +10,7 @@ Game.enlightenment = (function(){
 	instance.upgradeEntries = {};
 
 	instance.tabUnlocked = false;
+	instance.enlightenmentNeedsUpdate = true;
 
 	instance.initialise = function(){
 		for(var id in Game.enlightenmentData){
@@ -67,6 +68,7 @@ Game.enlightenment = (function(){
 
 	instance.calcUltrite = function(){
 		var ultrite = 0;
+		var completedPlanets = 0;
 		for(var star in Game.interstellar.stars.entries){
 			var data = Game.interstellar.stars.entries[star];
 			if(data.owned){
@@ -78,16 +80,17 @@ Game.enlightenment = (function(){
 			for(var id in data.items){
 				var planet = data.items[id];
 				if(planet.level >= 5){
-					ultrite += 3;
+					completedPlanets += 1;
 				}
 			}
 		}
+		ultrite += Math.floor(Math.pow(2*completedPlanets+0.25,0.5)-0.5);
 		for(var id in Game.stargaze.upgradeEntries){
 			if(Game.stargaze.upgradeEntries[id].achieved){
-				ultrite += 2;
+				ultrite += 1;
 			}
 		}
-		console.log("Overlord Appreciation Research");
+		console.error("Overlord Appreciation Research");
 		return ultrite;
 	}
 
@@ -151,6 +154,14 @@ Game.enlightenment = (function(){
 			}
 		}
 		if(this.titans.antimatter){Game.interstellar.stars.distanceMultiplier *= 0.1;}
+	};
+
+	instance.applyUpgradeEffect = function(id) {
+		var data = this.upgradeEntries[id];
+		if(data.onApply !== null) {
+			data.onApply();
+			this.enlightenmentNeedsUpdate = true;
+		}
 	};
 
 	instance.upgrade = function(id){

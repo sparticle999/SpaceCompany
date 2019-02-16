@@ -47,13 +47,6 @@ Game.enlightenmentUI = (function(){
                 '<br><br>',
                 '</td></tr>'].join('\n'));
 
-        instance.titanTitleTemplate = Handlebars.compile(
-            ['<tr><td style="border:none;">',
-                '<h2 class="default btn-link">{{name}}</h2>',
-                '<span>{{desc}}</span>',
-                '<br><br>',
-                '</td></tr>'].join('\n'));
-
         instance.titleTemplate = Handlebars.compile(
             ['<tr><td style="border:none;">',
                 '<h2 class="default btn-link">{{name}}</h2>',
@@ -64,13 +57,10 @@ Game.enlightenmentUI = (function(){
         instance.navTemplate = Handlebars.compile(
             ['<td style="vertical-align:middle;" colspan="2">',
                     '<span>{{name}}</span>',
-                '</td>',
-                '<td style="vertical-align:middle; text-align:right;" colspan="1">',
-                    '<span id="{{htmlId}}_opinion">{{opinion}}</span>',
                 '</td>',].join('\n'));
 
         instance.ultriteNavTemplate = Handlebars.compile(
-            ['<td style="vertical-align:middle;" colspan="2">',
+            ['<td style="vertical-align:middle;" colspan="1">',
                     '<span>{{name}}</span>',
                 '</td>',
                 '<td style="vertical-align:middle; text-align:right;" colspan="1">',
@@ -86,6 +76,8 @@ Game.enlightenmentUI = (function(){
         instance.enlightenTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}</h3>',
+                '<span>{{{desc}}}</span>',
+                '<br>',
                 '<div id="{{htmlId}}_buy" onclick="Game.enlightenment.upgrade(\'{{id}}\')" class="btn btn-warning">Enlighten</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
@@ -93,6 +85,8 @@ Game.enlightenmentUI = (function(){
         instance.titanTemplate = Handlebars.compile(
             ['<tr id="{{htmlId}}"><td>',
                 '<h3 class="default btn-link">{{name}}</h3>',
+                '<span>{{{desc}}}</span>',
+                '<br>',
                 '<div id="{{htmlId}}_buy" onclick="Game.enlightenment.upgrade(\'{{id}}\')" class="btn btn-warning">Gain Titan</div>',
                 '<br><br>',
                 '</td></tr>'].join('\n'));
@@ -139,9 +133,6 @@ Game.enlightenmentUI = (function(){
                         document.getElementById("enlUpg_" + id + '_buy').className = "btn btn-default";
                     }
                 }
-                if((data.category == "intro" || data.category == "darkMatter") && (data.htmlId != "enlUpg_rebirth" && data.htmlId != "enlUpg_respec")){
-                    document.getElementById(data.htmlId + "_opinion").className = "hidden";
-                }
 
                 if(data.unlocked){
                     document.getElementById("enlUpg_" + id).className = "";
@@ -153,10 +144,10 @@ Game.enlightenmentUI = (function(){
         }
     };
 
-    instance.createDMInfo = function(data, dmInfoData){
+    instance.createUltriteInfo = function(data, ultriteInfoData){
         var tabContentRoot = $('#' + this.tab.getContentElementId(data.id));
-        var dmInfo = this.dmInfoTemplate(dmInfoData);
-        tabContentRoot.append($(dmInfo));
+        var ultriteInfo = this.ultriteInfoTemplate(ultriteInfoData);
+        tabContentRoot.append($(ultriteInfo));
     };
 
     instance.createUpgrade = function(data, upgradeData) {
@@ -176,17 +167,17 @@ Game.enlightenmentUI = (function(){
         var target = $('#' + this.tab.getContentElementId(data.id));
         if(data.id == "intro"){
             var tabTitle = this.introTitleTemplate(data);
-        } else if (data.id == "darkMatter"){
-            var tabTitle = this.dmTitleTemplate(data);
+        } else if (data.id == "ultrite"){
+            var tabTitle = this.ultriteTitleTemplate(data);
         }
         else{
             var tabTitle = this.titleTemplate(data);
         }
         target.append(tabTitle);
-        if(data.id == "darkMatter"){
-            for (var id in Game.darkMatter) {
-                var infoData = Game.darkMatter[id];
-                this.createDMInfo(data, $.extend({}, {id: id}, infoData));
+        if(data.id == "ultrite"){
+            for (var id in Game.ultrite) {
+                var infoData = Game.ultrite[id];
+                this.createUltriteInfo(data, $.extend({}, {id: id}, infoData));
             }
         }
         for (var id in Game.enlightenment.upgradeEntries) {
@@ -200,8 +191,8 @@ Game.enlightenmentUI = (function(){
     instance.createEnlightenmentNav = function(data) {
         var target = $('#' + this.tab.getNavElementId(data.id));
         this.createContent(data);
-        if(data.id == "darkMatter"){
-            var html = this.dmNavTemplate(data);
+        if(data.id == "ultrite"){
+            var html = this.ultriteNavTemplate(data);
         }
         else{
             var html = this.navTemplate(data);
@@ -220,44 +211,7 @@ Game.enlightenmentUI = (function(){
     };
 
     instance.updateUltrite = function(){
-        var DM = 0;
-        //Wonders
-        var wonderDM = 0;
-        var wonder = Game.wonder.entries;
-        if(wonder.precious.activated&&wonder.energetic.activated&&wonder.technological.activated&&wonder.meteorite.activated){
-            wonderDM += 4;
-        }
-        if(wonder.comms.activated&&wonder.rocket.activated&&wonder.antimatter.activated&&wonder.portal.activated){
-            wonderDM += 4;
-        }
-        if(wonder.stargate.activated){
-            wonderDM += 2;
-        }
-        //Sphere
-        var sphereDM = 0;
-        var sol = Game.solCenter.entries.dyson.items;
-        if(sol.sphere.current != 0)sphereDM += 10
-        sphereDM += sol.sphere.current*5;
-        //Research
-        var researchDM = Math.floor((Game.tech.entries.resourceEfficiencyResearch.current + Game.tech.entries.energyEfficiencyResearch.current + Game.tech.entries.scienceEfficiencyResearch.current + Game.tech.entries.batteryEfficiencyResearch.current)/25)*2; //25 = 2;
-        //Rank
-        var rankDM = Game.achievements.rank * 2;
-        //Swarms
-        var swarmDM = Math.floor(Math.pow(2*sol.swarm.current+0.25,0.5)-0.5);
-
-        $('#wonder_dmGain').text(wonderDM);
-        $('#sphere_dmGain').text(sphereDM);
-        $('#research_dmGain').text(researchDM);
-        $('#rank_dmGain').text(rankDM);
-        $('#swarm_dmGain').text(swarmDM);
-
-        DM += wonderDM + sphereDM + researchDM + rankDM + swarmDM;
-        if(Game.enlightenment.entries.darkMatter){
-            Game.enlightenment.entries.darkMatter.potential = DM;
-            $('#stg_darkMatter_potential').text(DM);
-        }
-
-        $('#stg_darkMatter_current').text(Game.enlightenment.entries.darkMatter.current);
+        
     }
 
     instance.buildCostDisplay = function(observerArray, data) {
