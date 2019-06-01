@@ -246,7 +246,7 @@ Templates.techUI = function(cPage, cTitle, cObj) {
 		       '<br>',
 		       '<span class="{{htmlId}}cost">Please enable javascript.</span>',
 		     '</span>',
-			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">/{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
+			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">{{#if buttonText}}{{buttonText}}{{else}}Get 1{{/if}}</button>',
 		   '</td>',
 		 '</tr>',''].join('\n'));
 

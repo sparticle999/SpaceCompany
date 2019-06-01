@@ -65,7 +65,7 @@ Game.settings = (function(){
                         input.fontcolor('red');
                     // turn persecond green
                     } else {
-                        input.fontcolor('green');
+                        input.fontcolor('00b200');
                     }
                     return input;
 
@@ -83,7 +83,7 @@ Game.settings = (function(){
                         input.fontcolor('red');
                     // turn persecond green
                     } else {
-                        input.fontcolor('green');
+                        input.fontcolor('00b200');
                     }
                     return input; 
 
@@ -100,7 +100,7 @@ Game.settings = (function(){
                         input.fontcolor('red');
                     // turn persecond green
                     } else {
-                        input.fontcolor('green');
+                        input.fontcolor('00b200');
                     }
                     return input;
 
@@ -117,7 +117,7 @@ Game.settings = (function(){
                         input.fontcolor('red');
                     // turn persecond green
                     } else {
-                        input.fontcolor('green');
+                        input.fontcolor('00b200');
                     }
                     return input;
             }
@@ -147,7 +147,7 @@ Game.settings = (function(){
                         input = Game.settings.format(input, 0).toString();
                     }
                     if (object.current >= object.capacity) {
-                        input = input.fontcolor('green');
+                        input = input.fontcolor('00b200');
                     } else if (object.current < 1) {
                         if (Game.settings.entries.boldEnabled) {input.bold();}
                         input.fontcolor('red');
@@ -161,7 +161,7 @@ Game.settings = (function(){
                         input = Game.settings.format(input, 0).toString();
                     }
                     if (object.current >= object.capacity) {
-                        input = input.fontcolor('green');
+                        input = input.fontcolor('00b200');
                     } else if (object.current < 1) {
                         if (Game.settings.entries.boldEnabled) {input.bold();}
                         input.fontcolor('red');
@@ -171,7 +171,7 @@ Game.settings = (function(){
                     var input = object.current;
                     input = Game.settings.format(input, 0).toString();
                     if (object.current >= object.capacity) {
-                        input = input.fontcolor('green');
+                        input = input.fontcolor('00b200');
                     } else if (object.current < 1) {
                         if (Game.settings.entries.boldEnabled) {input.bold();}
                         input.fontcolor('red');
@@ -187,7 +187,7 @@ Game.settings = (function(){
                     var input = object.active;
                     input = Game.settings.format(input, 0).toString();
                     if (object.active >= object.capacity) {
-                        input = input.fontcolor('green');
+                        input = input.fontcolor('00b200');
                     } else if (object.active < 1) {
                         if (Game.settings.entries.boldEnabled) {input.bold();}
                         input.fontcolor('red');
@@ -256,7 +256,7 @@ Game.settings = (function(){
                                 if (Math.abs(ps[c]) > Game.resources.entries[c].perSecond) {
                                     if (Game.settings.entries.boldEnabled) {txt = txt.bold();}
                                     txt = txt.fontcolor('red');
-                                } else {txt = txt.fontcolor('green');}
+                                } else {txt = txt.fontcolor('00b200');}
                                 input += "<dd>&#8227; "+Game.resources.entries[c].name+":&nbsp;&nbsp;"+txt+"</dd>";
                             }
                         });
