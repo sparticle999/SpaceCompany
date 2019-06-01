@@ -915,7 +915,7 @@ Game.buildingData = (function () {
             'methane': 8
         },
         cost: {
-            'lunarite': 10000,
+            'lunarite': 100,
             'gem': 800,
             'oil': 600
         }
