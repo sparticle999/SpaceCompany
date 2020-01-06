@@ -177,7 +177,7 @@ function refreshPerSec(delta){
 
 	// calculate multipliers (add prestige etc here)
 	var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
-	var perSecondMultiplier = 1 + (resourceEfficiencyTech.current * 0.01) + (Game.stargaze.entries.darkMatter.count * dmBoost);
+	var perSecondMultiplier = (1 + (resourceEfficiencyTech.current * 0.01)) * (1 + (Game.stargaze.entries.darkMatter.count * dmBoost));
 
 	// Now we calculate the base per second
 	uraniumps = grinder * grinderOutput * perSecondMultiplier;
@@ -203,7 +203,7 @@ function refreshPerSec(delta){
 
 	// Science
 	var scienceEfficiencyTech = Game.tech.getTechData('scienceEfficiencyResearch');
-	var scienceMultiplier = 1 + (scienceEfficiencyTech.current * 0.02) + (Game.stargaze.entries.darkMatter.count * dmBoost);
+	var scienceMultiplier = (1 + (scienceEfficiencyTech.current * 0.02)) * (1 + (Game.stargaze.entries.darkMatter.count * dmBoost));
 	scienceps = ((lab*labOutput) + (labT2*labT2Output) + (labT3*labT3Output) + (labT4*labT4Output) + labT5*labT5Output) * scienceMultiplier;
 
 	if (!energyLow && globalEnergyLock === false) {
