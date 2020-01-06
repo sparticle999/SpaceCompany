@@ -303,7 +303,7 @@ Game.buildingData = (function () {
         desc: 'Oil Fields are large open spaces, usually found in deserts where vast oil wells can be found under the ground.',
         resource: 'oil',
         resourcePerSecond: {
-            'energy': -17,
+            'energy': -12,
             'oil': 63
         },
         cost: {
