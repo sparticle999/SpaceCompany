@@ -52,7 +52,7 @@ var condensator = 0; var condensatorLunariteCost = 288000; var condensatorGemCos
 var oil = 0; var oilStorage = 50; var oilNextStorage = 100; var oilps = 0;
 var pump = 0; var pumpMetalCost = 60; var pumpGemCost = 20; var pumpOutput = 1;
 var pumpjack = 0; var pumpjackMetalCost = 250; var pumpjackGemCost = 80; var pumpjackOilCost = 50; var pumpjackEnergyInput = 4; var pumpjackOutput = 10;
-var oilField = 0; var oilFieldLunariteCost = 2400; var oilFieldTitaniumCost = 2700; var oilFieldSiliconCost = 3900; var oilFieldEnergyInput = 17; var oilFieldOutput = 63;
+var oilField = 0; var oilFieldLunariteCost = 2400; var oilFieldTitaniumCost = 2700; var oilFieldSiliconCost = 3900; var oilFieldEnergyInput = 12; var oilFieldOutput = 63;
 var oilRig = 0; var oilRigLunariteCost = 19400; var oilRigTitaniumCost = 16800; var oilRigMeteoriteCost = 760; var oilRigEnergyInput = 44; var oilRigOutput = 246;
 var fossilator = 0; var fossilatorUraniumCost = 110000; var fossilatorCharcoalCost = 96000; var fossilatorLavaCost = 167000; var fossilatorEnergyInput = 258; var fossilatorOutput = 2627;
 
