@@ -107,16 +107,16 @@ var splashTextArray = ["Reticulating Splines...",
 "Autoclickers strictly discouraged!",
 "Even more in-depth than Kerbal Space Program!",
 ];
-var splashText = splashTextArray[Math.floor(Math.random()*splashTextArray.length)];
 
 var currentDate = (new Date()).toString();
 if(currentDate.indexOf("Jan 01") !== -1){
-	splashText = "Happy New Year!";
+	var splashText = "Happy New Year!";
+} else if(currentDate.indexOf("Feb 14") !== -1){
+	var splashText = "Happy Valentines!";
+} else if(currentDate.indexOf("Dec 25") !== -1){
+	var splashText = "Merry Christmas!";
+} else {
+	var splashText = splashTextArray[Math.floor(Math.random()*splashTextArray.length)];
 }
-if(currentDate.indexOf("Feb 14") !== -1){
-	splashText = "Happy Valentines!";
-}
-if(currentDate.indexOf("Dec 25") !== -1){
-	splashText = "Merry Christmas!";
-}
+
 document.getElementById("splashText").innerHTML = splashText;
