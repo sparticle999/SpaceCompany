@@ -260,7 +260,7 @@ function buildSwarm(){
 }
 
 function buildQuickSwarm(){
-	if (getResource(RESOURCE.Titanium) >= swarmTitaniumCost && getResource(RESOURCE.Gold) >= swarmGoldCost && getResource(RESOURCE.Silicon) >= swarmSiliconCost && getResource(RESOURCE.Meteorite) >= swarmMeteoriteCost && getResource(RESOURCE.Ice) >= swarmringIceCost) {
+	if (getResource(RESOURCE.Titanium) >= swarmTitaniumCost && getResource(RESOURCE.Gold) >= swarmGoldCost && getResource(RESOURCE.Silicon) >= swarmSiliconCost && getResource(RESOURCE.Meteorite) >= swarmMeteoriteCost && getResource(RESOURCE.Ice) >= swarmIceCost) {
 		if(getResource(RESOURCE.RocketFuel) >= swarmRocketFuelCost){
 			Game.resources.takeResource(RESOURCE.Titanim, swarmTitaniumCost);
 			Game.resources.takeResource(RESOURCE.Gold, swarmGoldCost);
@@ -294,7 +294,7 @@ function buildSphere(){
 }
 
 function buildQuickSphere(){
-	if (getResource(RESOURCE.Titanium) >= sphereTitaniumCost && getResource(RESOURCE.Gold) >= sphereGoldCost && getResource(RESOURCE.Silicon) >= sphereSiliconCost && getResource(RESOURCE.Meteorite) >= sphereMeteoriteCost && getResource(RESOURCE.Ice) >= sphereringIceCost && sphere <= Game.interstellar.stars.systemsConquered) {
+	if (getResource(RESOURCE.Titanium) >= sphereTitaniumCost && getResource(RESOURCE.Gold) >= sphereGoldCost && getResource(RESOURCE.Silicon) >= sphereSiliconCost && getResource(RESOURCE.Meteorite) >= sphereMeteoriteCost && getResource(RESOURCE.Ice) >= sphereIceCost && sphere <= Game.interstellar.stars.systemsConquered) {
 		if(getResource(RESOURCE.RocketFuel) >= sphereRocketFuelCost){
 			Game.resources.takeResource(RESOURCE.Titanim, sphereTitaniumCost);
 			Game.resources.takeResource(RESOURCE.Gold, sphereGoldCost);
