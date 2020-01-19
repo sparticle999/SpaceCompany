@@ -185,6 +185,12 @@ function gainAutoEmc(){
 
 var dyson = 0; var dysonTitaniumCost = 300000; var dysonGoldCost = 100000; var dysonSiliconCost = 200000; var dysonMeteoriteCost = 1000; var dysonIceCost = 100000;
 
+const ringTitaniumCost = 25373795; const ringGoldCost = 8457916; const ringSiliconCost = 16915856; const ringMeteoriteCost = 84555; const ringIceCost = 8457916; const ringSegmentCost = 50; const ringRocketFuelCost = 50000;
+
+const swarmTitaniumCost = 93669640; const swarmGoldCost = 31223182; const swarmSiliconCost = 62446413; const swarmMeteoriteCost = 312182; const swarmIceCost = 31223182; const swarmSegmentCost = 100; const swarmRocketFuelCost = 250000;
+
+const sphereTitaniumCost = 2104015696; const sphereGoldCost = 701338478; const sphereSiliconCost = 1402677088; const sphereMeteoriteCost = 7013258; const sphereIceCost = 701338478; const sphereSegmentCost = 250; const sphereRocketFuelCost = 1000000;
+
 function updateDysonCost(){
 	dysonTitaniumCost = Math.floor(300000 * Math.pow(1.02,dyson));
 	dysonGoldCost = Math.floor(100000 * Math.pow(1.02,dyson));
@@ -216,34 +222,66 @@ function buildDysonTo(n) {
 }
 
 function buildRing(){
-	if(dyson >= 50 && getResource(RESOURCE.RocketFuel) >= 50000){
-		dyson -= 50;
-		Game.resources.takeResource(RESOURCE.RocketFuel, 50000);
-		ring += 1;
+	if(dyson >= ringSegmentCost && getResource(RESOURCE.RocketFuel) >= ringRocketFuelCost){
+		dyson -= ringSegmentCost;
+		Game.resources.takeResource(RESOURCE.RocketFuel, ringRocketFuelCost);
+		ring++;
 
 		updateDysonCost();
 	}
 }
 
+function buildQuickRing(){
+	if (getResource(RESOURCE.Titanium) >= ringTitaniumCost && getResource(RESOURCE.Gold) >= ringGoldCost && getResource(RESOURCE.Silicon) >= ringSiliconCost && getResource(RESOURCE.Meteorite) >= ringMeteoriteCost && getResource(RESOURCE.Ice) >= ringIceCost) {
+		if(getResource(RESOURCE.RocketFuel) >= ringRocketFuelCost){
+			Game.resources.takeResource(RESOURCE.Titanim, ringTitaniumCost);
+			Game.resources.takeResource(RESOURCE.Gold, ringGoldCost);
+			Game.resources.takeResource(RESOURCE.Silicon, ringSiliconCost);
+			Game.resources.takeResource(RESOURCE.Meteorite, ringMeteoriteCost);
+			Game.resources.takeResource(RESOURCE.Ice, ringIceCost);
+			Game.resources.takeResource(RESOURCE.RocketFuel, ringRocketFuelCost);
+			ring++;
+		}
+	}
+	else{
+		buildDysonTo(ringSegmentCost);
+		buildRing();
+	}
+}		
+
 function buildSwarm(){
-	if(dyson >= 100 && getResource(RESOURCE.RocketFuel) >= 250000){
-		dyson -= 100;
-		Game.resources.takeResource(RESOURCE.RocketFuel, 250000);
-		swarm += 1;
+	if(dyson >= swarmSegmentCost && getResource(RESOURCE.RocketFuel) >= swarmRocketFuelCost){
+		dyson -= swarmSegmentCost;
+		Game.resources.takeResource(RESOURCE.RocketFuel, swarmRocketFuelCost);
+		swarm++;
 
 		updateDysonCost();
+	}
+}
+
+function buildQuickSwarm(){
+	if (getResource(RESOURCE.Titanium) >= swarmTitaniumCost && getResource(RESOURCE.Gold) >= swarmGoldCost && getResource(RESOURCE.Silicon) >= swarmSiliconCost && getResource(RESOURCE.Meteorite) >= swarmMeteoriteCost && getResource(RESOURCE.Ice) >= swarmringIceCost) {
+		if(getResource(RESOURCE.RocketFuel) >= swarmRocketFuelCost){
+			Game.resources.takeResource(RESOURCE.Titanim, swarmTitaniumCost);
+			Game.resources.takeResource(RESOURCE.Gold, swarmGoldCost);
+			Game.resources.takeResource(RESOURCE.Silicon, swarmSiliconCost);
+			Game.resources.takeResource(RESOURCE.Meteorite, swarmMeteoriteCost);
+			Game.resources.takeResource(RESOURCE.Ice, swarmIceCost);
+			Game.resources.takeResource(RESOURCE.RocketFuel, swarmRocketFuelCost);
+			swarm++;
+		}
+	}
+	else{
+		buildDysonTo(swarmSegmentCost);
+		buildSwarm();
 	}
 }
 
 function buildSphere(){
-	if(sphere > Game.interstellar.stars.systemsConquered){
-		return;
-	}
-
-	if(dyson >= 250 && getResource(RESOURCE.RocketFuel) >= 1000000){
-		dyson -= 250;
-		Game.resources.takeResource(RESOURCE.RocketFuel, 1000000);
-		sphere += 1;
+	if(dyson >= sphereSegmentCost && getResource(RESOURCE.RocketFuel) >= sphereRocketFuelCost && sphere <= Game.interstellar.stars.systemsConquered){
+		dyson -= sphereSegmentCost;
+		Game.resources.takeResource(RESOURCE.RocketFuel, sphereRocketFuelCost);
+		sphere++;
 
 		updateDysonCost();
 
@@ -252,5 +290,28 @@ function buildSphere(){
 			Game.stargaze.unlocked = true;
 			newUnlock('stargaze');
 		}
+	}
+}
+
+function buildQuickSphere(){
+	if (getResource(RESOURCE.Titanium) >= sphereTitaniumCost && getResource(RESOURCE.Gold) >= sphereGoldCost && getResource(RESOURCE.Silicon) >= sphereSiliconCost && getResource(RESOURCE.Meteorite) >= sphereMeteoriteCost && getResource(RESOURCE.Ice) >= sphereringIceCost && sphere <= Game.interstellar.stars.systemsConquered) {
+		if(getResource(RESOURCE.RocketFuel) >= sphereRocketFuelCost){
+			Game.resources.takeResource(RESOURCE.Titanim, sphereTitaniumCost);
+			Game.resources.takeResource(RESOURCE.Gold, sphereGoldCost);
+			Game.resources.takeResource(RESOURCE.Silicon, sphereSiliconCost);
+			Game.resources.takeResource(RESOURCE.Meteorite, sphereMeteoriteCost);
+			Game.resources.takeResource(RESOURCE.Ice, sphereIceCost);
+			Game.resources.takeResource(RESOURCE.RocketFuel, sphereRocketFuelCost);
+			sphere++;
+			if(Game.stargaze.unlocked != true){
+				document.getElementById("stargazeTab").className = "";
+				Game.stargaze.unlocked = true;
+				newUnlock('stargaze');
+			}
+		}
+	}
+	else{
+		buildDysonTo(sphereSegmentCost);
+		buildSphere();
 	}
 }
