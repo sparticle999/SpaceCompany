@@ -437,7 +437,7 @@ Game.resources = (function(){
         for(var id in Game.solCenter.entries.dyson.items){
             var data = Game.solCenter.entries.dyson.items[id];
             if(data.output){
-                energy.perSecond += data.output * data.current * dm;
+                energy.perSecond += data.output * data.current * (1+dm);
             }
         }
         for(var id in Game.buildings.entries){

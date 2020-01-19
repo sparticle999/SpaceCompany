@@ -8,7 +8,7 @@ Game.updates = (function(){
 
 	instance.updateTitleTemplate = Handlebars.compile(['<div id="updateAlert" class="alert alert-info alert-dismissible fade in">',
 	    '<button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>',
-	    '<strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>',
+	    '<strong>New Update!</strong> These are the features since you last played (V1 onwards):<br>',
 	    '<ul id="updateLog"></ul>',
 	'</div>'].join('\n'));
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');
@@ -58,7 +58,7 @@ Game.updates = (function(){
 	}
 
 	instance.save = function(data){
-		data.updates = {versionNumber: 2, entries: {}};
+		data.updates = {versionNumber: 3, entries: {}};
 		for(var id in Game.updatesData){
 			data.updates.entries[id] = Game.updatesData[id].read;
 		}
@@ -66,13 +66,7 @@ Game.updates = (function(){
 
 	instance.load = function(data){
 		if(data.updates) {
-			if(data.updates.versionNumber && data.updates.versionNumber == 1){
-				Game.updates.versionNumber = data.versionNumber;
-				for(var id in data.updates.entries){
-					Game.updatesData[id] = data.updates.entries[id];
-				}
-			}
-			if(data.updates.versionNumber && data.updates.versionNumber == 2){
+			if(data.updates.versionNumber && data.updates.versionNumber == 3){
 				Game.updates.versionNumber = data.versionNumber;
 				for(var id in data.updates.entries){
 					Game.updatesData[id].read = data.updates.entries[id];
@@ -93,165 +87,10 @@ Game.updatesData = (function(){
 
 	var instance = {};
 
-	instance.nerfEnergyEff = {
-		desc: 'Nerfed Energy Efficiency to be 100x cheaper, but only go up to 25%',
+	instance.revamp = {
+		desc: 'Completely Revamped the entire game, changing the entire codebase, most UI, added a bunch of endgame features, changed rebirth, massively increased interstellar complexity',
 		read: false
 	};
-
-	instance.batteryEff = {
-		desc: 'Battery Efficiency Upgrade increases your battery storage by 1% (max 50)',
-		read: false
-	};
-
-	instance.effResearchLevel = {
-		desc: 'Changed Efficiency researches to show current level instead of next level',
-		read: false
-	};
-
-	instance.buffBattEff = {
-		desc: 'Buffed Battery Efficiency to go up to 200 levels instead of 50.',
-		read: false
-	};
-
-	instance.redDestroy = {
-		desc: 'More -> Graphics Options. Added option to turn destroy buttons red.',
-		read: false
-	};
-
-	instance.nerfRocketFuelResearch = {
-		desc: 'Increased the Science cost of Rocket Fuel researches',
-		read: false
-	};
-
-	instance.rocketFuelT3 = {
-		desc: 'Added Hydrazine Catalyst - T3 Rocket Fuel',
-		read: false
-	};
-
-	instance.achievFormat = {
-		desc: 'Added Achievement Number Formatting',
-		read: false
-	};
-
-	instance.splash = {
-		desc: 'There are now 100 Loading Messages!',
-		read: false
-	};
-
-	instance.stargazeIntro = {
-		desc: 'Barebones + Intro added for Stargaze tab',
-		read: false
-	};
-
-	instance.irs = {
-		desc: 'Added Interstellar Radar Scanner (Interstellar -> Comms)',
-		read: false
-	};
-
-	instance.ranks = {
-		desc: 'Added Achievement Ranks',
-		read: false
-	};
-
-	instance.lunarite = {
-		desc: 'Changed Space Metal to Lunarite',
-		read: false
-	};
-
-	instance.hideWonder = {
-		desc: 'The Wonder Tab hides itself when completed (makes space for more tabs)',
-		read: false
-	};
-
-	instance.dmCounter = {
-		desc: 'Dark Matter is now calculated and shown.',
-		read: false
-	};
-
-	instance.hideButton = {
-		desc: 'You can unhide completed tabs if wanted. More -> Graphics Options.',
-		read: false
-	};
-
-	instance.achivementsReset = {
-		desc: 'Achievements have been reset, you will get back any you are currently over the level needed for.',
-		read: false
-	};
-
-	instance.relationUpgrades = {
-		desc: 'Rebirth Upgrades now give relationship for upgrading them.',
-		read: false
-	};
-
-	instance.fixSecondRebirth = {
-		desc: 'Fixed Subsequent Rebirths. You can now rebirth more than once without fear of save corruption!',
-		read: false
-	};
-
-	instance.T5Batteries = {
-		desc: 'Added Tier 5 Batteries: Stargaze -> Kitrinos Corporation',
-		read: false
-	};
-
-	instance.memoryLeak = {
-		desc: 'Fixed Huge Memory Leak. The Game should run much smoother now and use much less CPU' ,
-		read: false
-	};
-
-	instance.multiSpheres = {
-		desc: 'Each Star System Conquered allows you to build a sphere.',
-		read: false
-	};
-
-	instance.autoEmc = {
-		desc: 'Added Auto Emc! Stargaze -> Prasnian Empire',
-		read: false
-	};
-
-	instance.respec = {
-		desc: 'Keep your DM upgrades and have the ability to respec.',
-		read: false
-	};
-
-	instance.segmentAndSphere = {
-		desc: 'Build 250 Segments and Dyson Sphere Button',
-		read: false
-	};
-
-	instance.meteoriteTier34 = {
-		desc: 'Meteorite Tiers 3 and 4. Stargaze -> Moviton Syndicate',
-		read: false
-	};
-
-	instance.buffCapitalShip = {
-		desc: 'Buffed Capital Ship\' power and defense.',
-		read: false
-	};
-
-	instance.dmStats = {
-		desc: 'Live counter showing how much DM you will get from each section',
-		read: false
-	};
-
-	instance.energyEffBug = {
-		desc: 'Fixed the 25/50 max Energy Efficiency Bug',
-		read: false
-	};
-
-	instance.oopResource = {
-		desc: 'Completely reworked the whole code of the resources tab to make features significantly easier to add and edit',
-		read: false
-	}
-
-	instance.changeResourceOrder = {
-		desc: 'Moved around the resources to a more logical order',
-		read: false
-	}
-
-	instance.storageBar = {
-		desc: 'Added a storage bar to the top of the screen',
-		read: false
-	}
 
 	return instance;
 

@@ -434,7 +434,7 @@ Game.buildingData = (function () {
                 Game.techCategoryData.research.items.technology.unlocked = true;
                 newUnlock('tech');
                 Game.notifySuccess('New Tab!', 'You\'ve unlocked the Research Tab!');
-                Game.tech.tabUnlocked = true; 
+                Game.tech.tabUnlocked = true;
             }
         }
     });

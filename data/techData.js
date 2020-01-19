@@ -426,6 +426,7 @@ Game.techData = (function () {
         cost: {
             'science': 75000
         },
+        newTechs: ['unlockMeteoriteTier2'],
         tabAlerts: ['resources'],
         onApply: function(){
             Game.buildings.unlock("meteoriteT1")
@@ -478,6 +479,7 @@ Game.techData = (function () {
         tabAlerts: ['solCenter'],
         onApply: function(){
             Templates.uiFunctions.unlock("nanoswarm");
+            Game.enlightenment.tabUnlocked = true; 
         }
     });
 
