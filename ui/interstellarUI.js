@@ -482,7 +482,9 @@ Game.interstellarUI = (function(){
         $('#sphereMax').text(systemsConquered+1)
         antimatterStorage = 100000*(systemsConquered+1);
         $('#intnav_antimatter_current').text(Game.settings.format(antimatter));
-        $('#intnav_antimatter_perSecond').text(antimatterps);
+	var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
+	var perSecondMultiplier = (1 + (resourceEfficiencyTech.current * 0.01)) * (1 + (Game.stargaze.entries.darkMatter.count * dmBoost));
+        $('#intnav_antimatter_perSecond').text(antimatterps*perSecondMultiplier);
         if(antimatter >= antimatterStorage){
             document.getElementById("intnav_antimatter_current").className = "green";
         } else {
