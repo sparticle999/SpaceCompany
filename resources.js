@@ -41,6 +41,7 @@ function gainResources(delta) {
 	for (var id in RESOURCE) {
 		Game.resources.addResource(RESOURCE[id], getProduction(RESOURCE[id]) * delta);
 	}
+	var resourceEfficiencyTech = Game.tech.getTechData('efficiencyResearch');
 	var perSecondMultiplier = (1 + (resourceEfficiencyTech.current * 0.01)) * (1 + (Game.stargaze.entries.darkMatter.count * dmBoost));
 	antimatter += perSecondMultiplier*antimatterps * delta;
 }
