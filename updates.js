@@ -232,6 +232,21 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance.buffOilT3 = {
+		desc: 'Reduced Oil T3 energy cost',
+		read: false
+	};
+
+	instance.dmBoostMultiplicative = {
+		desc: 'Made Science and Resource Efficiency multiplicative with dark matter boost',
+		read: false
+	};
+
+	instance.antimatterDMBoost = {
+		desc: 'Fixed Antimatter not being affected by DM Boost',
+		read: false
+	};
+
 	return instance;
 
 }());

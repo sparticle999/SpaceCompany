@@ -72,6 +72,7 @@ v0.5.1
 - Fixed Fusion Reactor not using enough Hydrogen
 - Fixed Invasion Chance being NaN when reputation is above 60
 - Fixed Absorb not working
+- Fixed Antimatter not being affected by DM Boost
 
 ### v0.5.0 The Interstellar Update
 ##### Features
