@@ -272,7 +272,7 @@ Game.rebirthData = (function(){
 		remove: function(){
 			Game.resources.capacityExcess = 1;
 		},
-		unlocked: true,
+		unlocked: false,
 		achieved: false
 	};
 
@@ -290,7 +290,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("energyStorageT6");
 	    	Game.buildings.entries.plasmaT3.current = 0;
 	    },
-		unlocked: true,
+		unlocked: false,
 		achieved: false
 	};
 
@@ -411,7 +411,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("plasmaT4");
 	    	Game.buildings.entries.plasmaT4.current = 0;
 	    },
-		unlocked: true,
+		unlocked: false,
 		achieved: false
 	};
 
@@ -429,7 +429,7 @@ Game.rebirthData = (function(){
 			Templates.uiFunctions.hide("plasmaStorageT3");
 	    	Game.buildings.storageEntries.plasmaStorageT3.current = 0;
 	    },
-		unlocked: true,
+		unlocked: false,
 		achieved: false
 	};
 

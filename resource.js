@@ -419,32 +419,26 @@ Game.resources = (function(){
         if(!Game.stargaze.upgradeEntries.increaseProd1.achieved){
             dm = 0;
         }
-        // stellar production bonuses
-        var boost = {};
-        // initialising vars
+        // initialising vars for interstellar boost
+        var starBoost = {};
         for(var resource in this.entries){
             this.entries[resource].perSecond = 0;
-            boost[resource] = 0;
+            starBoost[resource] = 0;
         }
-        // var positive = {};
-        // var negative = {};
-        // for(var id in Game.resources.entries){
-        //     positive[id] = 0;
-        //     negative[id] = 0;
-        // }
-        var energyDiff = 0;
+        
         var energy = Game.resources.entries.energy;
+        // Dyson energy in
         for(var id in Game.solCenter.entries.dyson.items){
             var data = Game.solCenter.entries.dyson.items[id];
             if(data.output){
                 energy.perSecond += data.output * data.current * (1+dm);
             }
         }
+        // Buildings resources use and prod
         for(var id in Game.buildings.entries){
             var building = Game.buildings.entries[id];
             if(building.active == 0){
-                // Nothing to be done
-                continue;
+                continue; // Nothing to be done
             }
             var use = [];
             var prod = [];
@@ -455,6 +449,7 @@ Game.resources = (function(){
                     prod.push(value);
                 }
             }
+            // Check if we have enough use materials to run the building
             var ok = true;
             for(var i = 0; i < use.length; i++){
                 if(this.entries[use[i]].current < building.active*(-1)*building.resourcePerSecond[use[i]]){
@@ -465,6 +460,7 @@ Game.resources = (function(){
             if(ok){
                 for(var value in building.resourcePerSecond){
                     var val = building.resourcePerSecond[value];
+                    // If using energy, apply energy efficiency
                     if(value == "energy" && val < 0){
                         var multi = 1 - 0.01*Game.tech.entries.energyEfficiencyResearch.current;
                     } else {
@@ -474,10 +470,7 @@ Game.resources = (function(){
                 }
             }
         }
-        var nano = Game.solCenter.entries.nanoswarmTech.items.nanoswarm;
-        if(nano.current > 0 && nano.resource != null){
-            this.entries[nano.resource].perSecond *= Math.pow(1.0718,nano.current);
-        }
+        // Applying additional stellar production
         for (var id in Game.interstellar.stars.entries) {
             var data = Game.interstellar.stars.getStarData(id);
             if (data.owned === true) {
@@ -487,10 +480,11 @@ Game.resources = (function(){
                     happiness += planet.happiness;
                 }
                 var prod = happiness/400;
-                boost[data.resource1.toLowerCase()] += prod;
-                boost[data.resource2.toLowerCase()] += prod;
+                starBoost[data.resource1.toLowerCase()] += prod;
+                starBoost[data.resource2.toLowerCase()] += prod;
             }
         }
+        // Capital Boost - For every resource at max storage, every other resource gets a 5% production boost.
         var capitalBoost = 0;
         if(Game.stargaze.upgradeEntries.capitalInvestment.achieved){
             for(var res in this.entries){
@@ -499,15 +493,25 @@ Game.resources = (function(){
                 }
             }
         }
+        // Adding multipliers
         for(var resource in this.entries){
             var data = this.entries[resource];
-            data.perSecond += data.perSecond * boost[resource];
-            data.perSecond += data.perSecond * efficiencyMultiplier;
+            data.perSecond += data.perSecond * starBoost[resource];
             data.perSecond += data.perSecond * dm;
-            data.perSecond += data.perSecond * capitalBoost;
+            if(resource == "science"){
+                data.perSecond += data.perSecond * 0.02 * Game.tech.entries.scienceEfficiencyResearch.current;
+            } else {
+                console.error("this affects negatives as well. It shouldn't");
+                data.perSecond += data.perSecond * efficiencyMultiplier;
+                data.perSecond += data.perSecond * capitalBoost;
+            }
         }
-        this.entries.science.perSecond += data.perSecond * 2 * Game.tech.entries.scienceEfficiencyResearch.current;
-        energy.perSecond -= energyDiff;
+        // Nanoswarm multiplier
+        var nano = Game.solCenter.entries.nanoswarmTech.items.nanoswarm;
+        if(nano.current > 0 && nano.resource != null){
+            this.entries[nano.resource].perSecond *= Math.pow(1.0718,nano.current);
+        }
+        // Refresh UI
         Templates.uiFunctions.refreshElements('persecond', 'all');
     };
 
