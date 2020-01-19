@@ -507,6 +507,7 @@ function rebuildStargate(){
 		document.getElementById("stargateActivation").textContent = "Activated";
 		document.getElementById("stargateActivation").className = "green";
 		document.getElementById("interstellarTab_travel_ne").className = "collapse_interstellarTab_general";
+		document.getElementById("interstellarTab_military_ne").className = "collapse_interstellarTab_general";
 		buttonsHidden.push("rebuildStargate");
 		activated.push("stargate");
 		Game.statistics.add('wondersActivated');
