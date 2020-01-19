@@ -294,8 +294,8 @@ function buildSphere(){
 }
 
 function buildQuickSphere(){
-	if (getResource(RESOURCE.Titanium) >= sphereTitaniumCost && getResource(RESOURCE.Gold) >= sphereGoldCost && getResource(RESOURCE.Silicon) >= sphereSiliconCost && getResource(RESOURCE.Meteorite) >= sphereMeteoriteCost && getResource(RESOURCE.Ice) >= sphereIceCost && sphere <= Game.interstellar.stars.systemsConquered) {
-		if(getResource(RESOURCE.RocketFuel) >= sphereRocketFuelCost){
+	if (getResource(RESOURCE.Titanium) >= sphereTitaniumCost && getResource(RESOURCE.Gold) >= sphereGoldCost && getResource(RESOURCE.Silicon) >= sphereSiliconCost && getResource(RESOURCE.Meteorite) >= sphereMeteoriteCost && getResource(RESOURCE.Ice) >= sphereIceCost) {
+		if(getResource(RESOURCE.RocketFuel) >= sphereRocketFuelCost && sphere <= Game.interstellar.stars.systemsConquered){
 			Game.resources.takeResource(RESOURCE.Titanim, sphereTitaniumCost);
 			Game.resources.takeResource(RESOURCE.Gold, sphereGoldCost);
 			Game.resources.takeResource(RESOURCE.Silicon, sphereSiliconCost);
