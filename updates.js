@@ -246,11 +246,6 @@ Game.updatesData = (function(){
 		desc: 'Fixed Antimatter not being affected by DM Boost',
 		read: false
 	};
-	
-	instance.starListExpansion = {
-		desc: 'Massively expanded the list of star systems that can be traveled to and conquered in the interstellar tab',
-		read: false
-	};
 
 	return instance;
 
