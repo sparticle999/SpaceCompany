@@ -51,6 +51,7 @@ Game.solCenterData = (function () {
     		'plasma': 100,
     	},
     	onApply: function(){
+            console.error("V0.5 auto-emc doesn't save resource");
     		Game.tech.unlockTech("unlockEmc");
             newUnlock("tech");
     	},
