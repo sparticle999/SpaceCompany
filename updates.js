@@ -8,7 +8,7 @@ Game.updates = (function(){
 
 	instance.updateTitleTemplate = Handlebars.compile(['<div id="updateAlert" class="alert alert-info alert-dismissible fade in">',
 	    '<button href="#" class="close btn.btn-info" data-dismiss="alert" aria-label="close">Close</button>',
-	    '<strong>New Update!</strong> These are the features since you last played (V0.4.4.8 onwards):<br>',
+	    '<strong>New Update!</strong> These are the features since you last played:<br>',
 	    '<ul id="updateLog"></ul>',
 	'</div>'].join('\n'));
 	instance.updateTemplate = Handlebars.compile('<li><span>{{desc}}</span></li>');

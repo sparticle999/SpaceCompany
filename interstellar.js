@@ -85,17 +85,19 @@ Game.interstellar = (function(){
             }
             if(typeof data.interstellar.stars !== 'undefined'){
                 for(id in data.interstellar.stars){
-                    this.stars.entries[id].explored = data.interstellar.stars[id].explored;
-                    this.stars.entries[id].owned = data.interstellar.stars[id].owned;
-                    this.stars.entries[id].spy = data.interstellar.stars[id].spy;
+                    if(this.stars.entries[id]){
+                        this.stars.entries[id].explored = data.interstellar.stars[id].explored;
+                        this.stars.entries[id].owned = data.interstellar.stars[id].owned;
+                        this.stars.entries[id].spy = data.interstellar.stars[id].spy;
+                    }
                 }
             }
         }
-        this.military.updateShips();
-        this.military.updateFleetStats();
     };
 
     instance.redundantChecking = function(){
+        this.military.updateShips();
+        this.military.updateFleetStats();
         var objects = ["comms", "rocket", "antimatter", "stargate"];
         for(var i = 0; i < objects.length; i++){
             if(contains(activated, objects[i]) == true){
@@ -412,9 +414,22 @@ Game.interstellar.military = (function(){
                 for(var i = 0; i < activeUpdateList.length; i++){
                     activeUpdateList[i].textContent = this.entries[ship].active;
                 }
+                ship.displayNeedsUpdate = false;
             }
         }
     };
+
+    instance.updateActiveShips = function(){
+        for(var ship in this.entries){
+            if(this.entries[ship].displayNeedsUpdate == true){
+                var activeUpdateList = document.getElementsByClassName(ship + "Active");
+                for(var i = 0; i < activeUpdateList.length; i++){
+                    activeUpdateList[i].textContent = this.entries[ship].active;
+                }
+                ship.displayNeedsUpdate = false;
+            }
+        }
+    }
 
     instance.addShip = function(shipName, num){
         var ship = this.entries[shipName];
@@ -427,7 +442,7 @@ Game.interstellar.military = (function(){
         }
         ship.displayNeedsUpdate = true;
         this.updateFleetStats();
-        this.updateShips();
+        this.updateActiveShips();
         for(var star in Game.interstellar.stars.entries){
             var data = Game.interstellar.stars.entries[star];
             if(data.explored == true && data.owned == false){

@@ -382,7 +382,6 @@ Game.interstellarUI = (function(){
         
 
         var systemsConquered = 0;
-
         for(var id in this.starEntries){
             var data = Game.interstellar.stars.getStarData(id);
             if(data.owned){
