@@ -501,7 +501,7 @@ Game.resources = (function(){
             if(resource == "science"){
                 data.perSecond += data.perSecond * 0.02 * Game.tech.entries.scienceEfficiencyResearch.current;
             } else {
-                console.error("this affects negatives as well. It shouldn't");
+                ////////////////////////////////////////////////////////////////////////////console.error("this affects negatives as well. It shouldn't");
                 data.perSecond += data.perSecond * efficiencyMultiplier;
                 data.perSecond += data.perSecond * capitalBoost;
             }
@@ -514,6 +514,7 @@ Game.resources = (function(){
         // Refresh UI
         Templates.uiFunctions.refreshElements('persecond', 'all');
     };
+    console.error("this affects negatives as well. It shouldn't");
 
     instance.toggle = function(id){
         var data = this.entries[id];
