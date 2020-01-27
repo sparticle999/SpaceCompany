@@ -161,8 +161,8 @@ Game.rocketData = (function(){
 	var instance = {};
 
 	instance.tier1Rocket = {
-		name: 'Tier 1 Rocket',
-		desc: 'The Tier 1 Rocket can travel to Stars in the Milky Way, but cannot land on objects within the systems.',
+		name: 'Rocket Ship',
+		desc: 'The Rocket Ship can travel to Stars in the Milky Way, but cannot land on objects within the systems.',
 		category: 'rocket',
 		max: 1,
 		unlocked: true,
