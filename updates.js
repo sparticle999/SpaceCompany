@@ -252,6 +252,12 @@ Game.updatesData = (function(){
 		read: false
 	};
 
+	instance["0511"] = {
+		desc: 'Fixed several UI issues after rebirth with the interstellar tab',
+		read: false
+	};
+
+
 	return instance;
 
 }());

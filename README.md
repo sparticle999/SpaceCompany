@@ -57,6 +57,7 @@ v0.5.1
 - Buffed Capital Ship\' power and defense
 - Reduced Oil T3 energy cost
 - Made Science and Resource Efficiency multiplicative with dark matter boost
+- Forces Swarms to use ShortName formatting for accuracy with DM scaling
 
 ##### Bug Fixed
 
@@ -74,6 +75,7 @@ v0.5.1
 - Fixed Invasion Chance being NaN when reputation is above 60
 - Fixed Absorb not working
 - Fixed Antimatter not being affected by DM Boost
+- Fixed several UI issues after rebirth with the interstellar tab
 
 ### v0.5.0 The Interstellar Update
 ##### Features
