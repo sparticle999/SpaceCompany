@@ -94,7 +94,8 @@ Game.stargaze = (function(){
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
-      Game.statistics.add("rebirthCount", 1);
+			Game.interstellar.comms.entries.astroBreakthrough.completed = false;
+      		Game.statistics.add("rebirthCount", 1);
 
 			this.resetVars();
 			this.hideMachines();
