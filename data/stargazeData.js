@@ -45,7 +45,7 @@ Game.stargazeData = (function(){
 		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 	instance.prasnian = {
@@ -53,7 +53,7 @@ Game.stargazeData = (function(){
 		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 	instance.hyacinite = {
@@ -61,7 +61,7 @@ Game.stargazeData = (function(){
 		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 	instance.kitrinos = {
@@ -69,7 +69,7 @@ Game.stargazeData = (function(){
 		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 	instance.moviton = {
@@ -77,7 +77,7 @@ Game.stargazeData = (function(){
 		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 	instance.overlord = {
@@ -85,7 +85,7 @@ Game.stargazeData = (function(){
 		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
 		category: "faction",
 		opinion: 0,
-		unlocked: false
+		unlocked: true
 	};
 
 
@@ -143,28 +143,6 @@ Game.prestigeData = (function(){
 		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades. <br><b>NB: You cannot rebirth without a sphere, even on second runs.<br> NB: You will keep all upgrades purchased in your previous life  </b>",
 		cost: 0,
 		category: "intro",
-	};
-
-	instance.unlockStargaze = {
-		name: "Rebirth Upgrades",
-		desc: "Taking this step is a huge leap in not just this life, but every single rebirth you ever have. Once activated, you will never feel this powerless again.",
-		cost: 1,
-		category: "intro",
-		onApply: function(){
-			for(var id in Game.stargaze.entries){
-	            var data = Game.stargaze.getStargazeData(id);
-	            data.unlocked = true;
-	            data.displayNeedsUpdate = true;
-	        }
-	    },
-	    remove: function(){
-	    	for(var id in Game.stargaze.entries){
-	            var data = Game.stargaze.getStargazeData(id);
-	            data.unlocked = false;
-	            data.displayNeedsUpdate = true;
-	        }
-	    },
-		achieved: false,
 	};
 
 	instance.respec = {
