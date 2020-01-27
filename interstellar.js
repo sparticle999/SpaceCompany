@@ -537,20 +537,21 @@ Game.interstellar.military = (function(){
             if(chance >= roll){
                 star.owned = true;
                 newUnlock('solCenter');
-                var randomShips = Game.utils.randArb(0,chance);
-                if(randomShips < 1){
-                    for(var ship in this.entries){
-                        var shipData = this.getShipData(ship);
-                        for(var i = 0; i < shipData.active; i++){
-                            // Chance to keep the ship
-                            var destroyChance = Math.random();
-                            if(destroyChance > chance){
-                                shipData.active -= 1;
-                                shipData.count -= 1;
-                            }
+                var losses = false;
+                for(var ship in this.entries){
+                    var shipData = this.getShipData(ship);
+                    for(var i = 0; i < shipData.active; i++){
+                        // Chance to keep the ship
+                        var destroyChance = Math.random();
+                        if(destroyChance > chance){
+                            losses = true;
+                            shipData.active -= 1;
+                            shipData.count -= 1;
                         }
-                        shipData.displayNeedsUpdate = true;
                     }
+                    shipData.displayNeedsUpdate = true;
+                }
+                if(losses){
                     Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
                 } else {
                     Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    

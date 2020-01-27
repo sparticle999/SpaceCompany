@@ -76,6 +76,7 @@ v0.5.1
 - Fixed Absorb not working
 - Fixed Antimatter not being affected by DM Boost
 - Fixed several UI issues after rebirth with the interstellar tab
+- Fixed Interstellar notifications of lost ships without actual losses
 
 ### v0.5.0 The Interstellar Update
 ##### Features
