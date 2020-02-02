@@ -9,7 +9,7 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 
 # Changelog:
 
-### v0.5.0.6 (includes all V0.5.0.X)
+### v0.5.1
 ##### Features
 
 - Storage Upgrade Discounts
@@ -33,7 +33,8 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 - Build 250 Segments and Dyson Sphere Button
 - Balanced Ice T5 to have cost just below storage level rather than above it
 - AutoEmc keeps a 10K bank of plasma to avoid meteorite production depletion due to 0 plasma stored
-Buffed Capital Ship\' power and defense
+- Buffed Capital Ship\' power and defense
+- Renamed some generic stars (thanks /u/Misacek01)
 
 ##### Bug Fixed
 
