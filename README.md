@@ -58,6 +58,7 @@ v0.5.1
 - Reduced Oil T3 energy cost
 - Made Science and Resource Efficiency multiplicative with dark matter boost
 - Forces Swarms to use ShortName formatting for accuracy with DM scaling
+- Renamed some generic stars (thanks /u/Misacek01)
 
 ##### Bug Fixed
 
