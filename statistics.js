@@ -12,22 +12,22 @@ Game.statistics = (function(){
     instance.statisticTypeCount = 0;
 
     instance.initialise = function() {
-        this.createStatistic("manualResources", Game.constants.statisticCategoryGeneral, "Resources Mined By Hand");
+        this.createStatistic("manualResources", Game.constants.statisticCategoryGeneral, "Resources mined by hand");
 
         for(var i = 1; i <= Game.constants.maxTier; i++) {
-            this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines Owned");
+            this.createStatistic("tierOwned" + i, Game.constants.statisticCategoryGeneral, "Tier " + i + " Machines owned");
         }
 
-        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs Unlocked", 7);
-        this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources Unlocked", 16);
-        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies Researched", 26);
-        this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places Explored", 10);
-        this.createStatistic("wondersBuilt", Game.constants.statisticCategoryUnlockable, "Wonders Built", 4);
-        this.createStatistic("wondersActivated", Game.constants.statisticCategoryUnlockable, "Wonders Activated", 9);
+        this.createStatistic("tabsUnlocked", Game.constants.statisticCategoryUnlockable, "Tabs unlocked", 7);
+        this.createStatistic("resourcesUnlocked", Game.constants.statisticCategoryUnlockable, "Resources unlocked", 16);
+        this.createStatistic("techResearched", Game.constants.statisticCategoryUnlockable, "Technologies researched", 26);
+        this.createStatistic("placesExplored", Game.constants.statisticCategoryUnlockable, "Places explored", 10);
+        this.createStatistic("wondersBuilt", Game.constants.statisticCategoryUnlockable, "Wonders built", 4);
+        this.createStatistic("wondersActivated", Game.constants.statisticCategoryUnlockable, "Wonders activated", 9);
         this.createStatistic("rebirthCount", Game.constants.statisticCategoryUnlockable, "Times rebirthed", 0);  
 
         this.createStatistic("sessionTime", Game.constants.statisticCategoryTiming, "Session time", 0, STATISTIC_TYPE.TIME);
-        this.createStatistic("timePlayed", Game.constants.statisticCategoryTiming, "Time Played", 0, STATISTIC_TYPE.TIME);
+        this.createStatistic("timePlayed", Game.constants.statisticCategoryTiming, "Time played", 0, STATISTIC_TYPE.TIME);
         
         // Set some defaults
         this.add('resourcesUnlocked', 3);
