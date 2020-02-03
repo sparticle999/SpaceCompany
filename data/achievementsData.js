@@ -14,8 +14,8 @@ Game.achievementsCategoryData = (function () {
 	};
 		
 	instance.producers = {
-		title: 'Producers',
-		brackets: [10, 50, 100, 500, 1000],
+		title: 'Buildings',
+		brackets: [10, 50, 100, 150, 200],
 		entries: [
 			'prodPlasma1', 'prodPlasma2',
 			'prodEnergy1', 'prodEnergy2', 'prodEnergy3', 'prodEnergy4', 'prodEnergy5', 'prodEnergy6',
@@ -399,7 +399,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_77',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Build %s Volcanic Veluptuators',
+		title: 'Build %s Volcanic Voluptuators',
 		evaluator: function(x) { return veluptuator >= x },
 		progressEvaluator: function(x) { return veluptuator/x }
 	};
@@ -408,7 +408,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_106',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'lavaIcon',
-		title: 'Build %s Jupitonian Condensators',
+		title: 'Build %s Jovian Condensators',
 		evaluator: function(x) { return condensator >= x },
 		progressEvaluator: function(x) { return condensator/x }
 	};
@@ -525,7 +525,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_40',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'gemIcon',
-		title: 'Build %s Diamond Encrusted Drills',
+		title: 'Build %s Diamond-Encrusted Drills',
 		evaluator: function(x) { return diamondDrill >= x },
 		progressEvaluator: function(x) { return diamondDrill/x }
 	};
@@ -588,7 +588,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_110',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'charcoalIcon',
-		title: 'Build %s Microverse Pollutors',
+		title: 'Build %s Microverse Polluters',
 		evaluator: function(x) { return microPollutor >= x },
 		progressEvaluator: function(x) { return microPollutor/x }
 	};
@@ -840,7 +840,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_64',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'goldIcon',
-		title: 'Build %s Death Stars Jr',
+		title: 'Build %s Death Stars Jr.',
 		evaluator: function(x) { return deathStar >= x },
 		progressEvaluator: function(x) { return deathStar/x }
 	};
@@ -1029,7 +1029,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_89',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Build %s Mr Freezes',
+		title: 'Build %s Mr. Freezes',
 		evaluator: function(x) { return mrFreeze >= x },
 		progressEvaluator: function(x) { return mrFreeze/x }
 	};
@@ -1038,7 +1038,7 @@ Game.achievementsData = (function(){
 		id_v4: 'ach_120',
 		categoryInstance: Game.achievementsCategoryData.producers,
 		iconName: 'iceIcon',
-		title: 'Build %s Overexchange Condensors',
+		title: 'Build %s Overexchange Condensers',
 		evaluator: function(x) { return overexchange >= x },
 		progressEvaluator: function(x) { return overexchange/x }
 	};

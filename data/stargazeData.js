@@ -22,18 +22,18 @@ Game.stargazeData = (function(){
 
 	instance.intro = {
 		name: "Introduction",
-		para1: '"So here we are, at what seems like the end of your journey, but what you don\'t realise... is that this is just the beginning. Gazing up at the stars, you wonder what you could do with all of your newfound wealth and your empire in the solar system.',
-		para2: 'Suddenly, the Overlord reaches out to you and says: "You have come far in your time, and I feel that your life is slowing to an end after a long life of empire building. However, you have not met the expectations I thought you would."',
+		para1: '"So here we are, at what seems like the end of your journey, but what you don\'t realise... is that this is just the beginning." Gazing up at the stars, you wonder what you could do with all of your newfound wealth and your empire in the Solar System.',
+		para2: 'Suddenly, the Overlord reaches out to you: "You have come far in your time, and I feel that your life is slowing down after long years of empire building. However, you have not met the expectations I thought you would."',
 		para3: '"Despite disapointing me and not achieving as much greatness as I would have liked, because of your loyalty and your dedication to me, I am prepared to give you another chance at Rebirth."',
-		para4: '"You will have many chances to impress me, as I will give you the ability of redemption when you feel the time has come and sacrifice is necessary. Your empire will grow even greater than before every time you rebirth, and as long as your alliegence lies with me, I will show you the way to galactic domination."',
-		para5: '"You will start over, a new life, but in exchange for your soul, I will reward your next self with the knowledge you have gained during your time in this universe and some of the most valuble material in this side of the multiverse: Dark Matter."',
+		para4: '"You will have many chances to impress me, as I will give you the ability of reincarnation when you feel the time has come and sacrifice is necessary. Your empire will grow even greater than before every time you Rebirth, and as long as your alliegence lies with me, I will show you the way to galactic domination."',
+		para5: '"You will start over, a new life, but in exchange for your soul, I will reward your next self with the knowledge you have gained during your time, and with some of the most valuble material this side of the multiverse: Dark Matter."',
 		category: "general",
 		unlocked: true
 	};
 
 	instance.darkMatter = {
 		name: "Dark Matter",
-		desc: "Here, you can see how much Dark Matter you have acquired and the earnings you will recieve upon reset (in brackets). You can find out how DM is gained and can spend it on Dark-Matter-specific upgrades.",
+		desc: "Here, you can see how much Dark Matter you have acquired and the earnings you will recieve upon Rebirth (in brackets). You can find out how Dark Matter is gained and can spend it on powerful upgrades.",
 		current: 0,
 		count: 0,
 		category: "general",
@@ -42,7 +42,7 @@ Game.stargazeData = (function(){
 
 	instance.carnelian = {
 		name: "Carnelian Resistance",
-		desc: "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
+		desc: "A ruthless faction with a fierce hatred of those in power, particularly the Prasnian Empire. They are intransigent in their opposition and focus all their energy on attacking their enemies. Because of this, what they offer consists mostly of upgrades tending towards a more active gameplay.",
 		category: "faction",
 		opinion: 0,
 		unlocked: true
@@ -50,7 +50,7 @@ Game.stargazeData = (function(){
 
 	instance.prasnian = {
 		name: "Prasnian Empire",
-		desc: "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
+		desc: "The current leader in the galaxy and the faction most interested in maintaining the status quo. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders.",
 		category: "faction",
 		opinion: 0,
 		unlocked: true
@@ -58,7 +58,7 @@ Game.stargazeData = (function(){
 
 	instance.hyacinite = {
 		name: "Hyacinite Congregation",
-		desc: "The Hyacinite Congregationg is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
+		desc: "The Hyacinite Congregation is a science-loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
 		category: "faction",
 		opinion: 0,
 		unlocked: true
@@ -66,7 +66,7 @@ Game.stargazeData = (function(){
 
 	instance.kitrinos = {
 		name: "Kitrinos Corporation",
-		desc: "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
+		desc: "This private company has grown powerful across the galaxy and is motivated by profits, allying with those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
 		category: "faction",
 		opinion: 0,
 		unlocked: true
@@ -74,7 +74,7 @@ Game.stargazeData = (function(){
 
 	instance.moviton = {
 		name: "Moviton Syndicate",
-		desc: "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
+		desc: "The Moviton Syndicate is an expansionist faction bent on galactic conquest. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rockets and interstellar travel.",
 		category: "faction",
 		opinion: 0,
 		unlocked: true
@@ -82,10 +82,10 @@ Game.stargazeData = (function(){
 
 	instance.overlord = {
 		name: "Overlord Cult",
-		desc: "This faction is shrowded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squables. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
+		desc: "This faction is shrouded in mystery. Not much is known except that a great power holds sway over the whole galaxy, seemingly above the other five factions and their 'petty' squabbles. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
 		category: "faction",
 		opinion: 0,
-		unlocked: true
+		unlocked: false
 	};
 
 
@@ -103,27 +103,27 @@ Game.darkMatter = (function(){
 
 	instance.wonder = {
 		name: "Wonders",
-		desc: "You get Dark Matter for the floors of the Wonder Station that you complete. It is likely you will have achieved all of these in your first run before resetting. You get 4 Dark Matter for every floor completed, but 2 for the last floor (only one wonder).",
+		desc: "You get Dark Matter for the floors of the Wonder Station that you complete. You get 4 Dark Matter for every floor completed, but 2 for the last floor (only one Wonder).",
 	};
 
 	instance.sphere = {
 		name: "Sphere",
-		desc: "For building a sphere in your home system and thus completing it, you get 15 dark matter. For every sphere built in another system, you gain 5 dark matter."
+		desc: "For building a Dyson Sphere in your home system and thus completing it, you gain 15 Dark Matter. For every Sphere built in another system, you gain 5 Dark Matter."
 	};
 
 	instance.research = {
-		name: "Research Efficiency",
-		desc: "For every 25 Research Efficiencies in any of the repurchaseable researches, you will get 2 Dark Matter.",
+		name: "Efficiency Research",
+		desc: "For every 25 levels in any of the repurchaseable researches, you get 2 Dark Matter. Levels are summed across all repurchaseable research topics before this is calculated.",
 	};
 
 	instance.rank = {
 		name: "Achievement Rank",
-		desc: "For every achievement rank attained, you will get 2 dark matter. Due to the easy difficulty in the first few achievement ranks, this will be your primary source of dark matter early in a run.",
+		desc: "For every achievement rank attained, you get 2 Dark Matter. Due to the easy difficulty in the first few achievement ranks, this will be your primary source of Dark Matter early in a run.",
 	};
 
 	instance.swarm = {
 		name: "Swarms",
-		desc: "One of the more complex systems, your Dark Matter gained from swarms is judged on an old mathematical sequence: Pascal's Triangle. You will get 1 dark matter for passing each triangular number of swarms necessary. For example: 1,3,6,10,15,21...",
+		desc: "Dark Matter gained from Dyson Swarms is based on the running sum of the whole numbers (1, 3, 6, 10, 15, 21, ... ). You get 1 Dark Matter for reaching each number in the sequence.",
 	};
 
 	return instance;
@@ -140,21 +140,21 @@ Game.prestigeData = (function(){
 
 	instance.rebirth = {
 		name: "Rebirth",
-		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, maintaining the knowledge and experience you gave gained from your previous life and renew yourself, achieving greater and faster than before. You will keep any unspent dark matter, as well as your upgrades. <br><b>NB: You cannot rebirth without a sphere, even on second runs.<br> NB: You will keep all upgrades purchased in your previous life  </b>",
+		desc: "Stepping forth into a new life is a great undertaking and not something to be done on a whim. Once certain, you may start afresh, retaining the knowledge and experience you gave gained in your previous life, allowing you to go farther and faster than before. You will keep any unspent Dark Matter and all Dark Matter upgrades you have already purchased. <br><b>NB: You cannot Rebirth without a Dyson Sphere, even on second runs.</b>",
 		cost: 0,
 		category: "intro",
 	};
 
 	instance.respec = {
 		name: "Respec",
-		desc: "When you have made a mistake or want to change your upgrades, you can respec and refund every upgrade for dark matter. Unfortunately, this huge amount of power can only be unleashed a finite number of times. The Overlord graciously gives you 3 free chances at redemption, but the rest will have to be earned through rebirth (1 extra every 3 times). <br><b>NB: You will lose machines gained with these ugprades, including all T5 machines. You will also divide your storage by 128 if you have the starting storage. (6400/50 = 128).</b>",
+		desc: "When you have made a mistake or want to change your upgrades, you can Respec, which fully refunds the Dark Matter spent on upgrades so far. Unfortunately, this huge amount of power can only be unleashed a finite number of times. The Overlord graciously gives you 3 free chances at redemption, but the rest will have to be earned through Rebirth (1 extra every 3 times). <br><b>NB: You will lose machines gained from ugprades, including all T5 machines. You will also divide your storage by 128 if you purchased the Starting Storage upgrade. (6400/50 = 128).</b>",
 		cost: 0,
 		category: "intro",
 	};
 
 	instance.increaseProd1 = {
 		name: "Dark Matter Boost",
-		desc: "This adds a 1% boost to all resources (including science) for each Dark Matter you have not spent.",
+		desc: "This adds a 1% boost to all resources (including Science) for each Dark Matter point you have not spent.",
 		cost: 30,
 		category: "darkMatter",
 		onApply: function(){
@@ -200,7 +200,7 @@ Game.prestigeData = (function(){
 
 	instance.startingStorage = {
 		name: "Starting Storage",
-		desc: "Start with 6,400 max-storage on everything on rebirth. (Does not affect if over 6,400)",
+		desc: "Start with 6,400 storage capacity for all resources on Rebirth. (Does not affect storage upgrades over 6,400.)",
 		cost: 8,
 		category: "carnelian",
 		opinion: 6,
@@ -232,7 +232,7 @@ Game.prestigeData = (function(){
 
 	instance.storageDiscount = {
 		name: "Storage Discount",
-		desc: "All Storages no longer cost 100% of the main resource, but instead, 75%.",
+		desc: "Storage upgrade cost in both the resource being upgraded and Metal / Lunarite is reduced by 25%.",
 		cost: 21,
 		category: "carnelian",
 		opinion: 14,
@@ -254,7 +254,7 @@ Game.prestigeData = (function(){
 
 	instance.T3Plasma = {
 		name: "Tier 3 Plasma",
-		desc: "Unlock the Electron Bath",
+		desc: "Unlock the Electron Bath building.",
 		cost: 11,
 		category: "prasnian",
 		opinion: 4,
@@ -271,7 +271,7 @@ Game.prestigeData = (function(){
 
 	instance.floor1Discount = {
 		name: "Floor 1 Discount",
-		desc: "All Wonders on the First Floor recieve a 15% price reduction.",
+		desc: "All Wonders on the Wonder Station first floor recieve a 15% price reduction.",
 		cost: 16,
 		category: "prasnian",
 		opinion: 10,
@@ -288,7 +288,7 @@ Game.prestigeData = (function(){
 
 	instance.floor23Discount = {
 		name: "Floor 2 & 3 Discount",
-		desc: "All Wonders on the Second and Third Floor recieve a 20% price reduction.",
+		desc: "All Wonders on the second and third floors of the Wonder Station recieve a 20% price reduction.",
 		cost: 19,
 		category: "prasnian",
 		opinion: 15,
@@ -305,7 +305,7 @@ Game.prestigeData = (function(){
 
 	instance.autoEmc = {
 		name: "Automated EMC",
-		desc: "Check a box on an EMC resource and have that resource be 'EMCed' to the max every second.",
+		desc: "Check a box on any one EMC resource to automatically convert the maximum available amount every second.",
 		cost: 24,
 		category: "prasnian",
 		opinion: 17,
@@ -330,7 +330,7 @@ Game.prestigeData = (function(){
 
 	instance.startingLabs = {
 		name: "Starting Labs",
-		desc: "Start with 20 T1 Labs on rebirth.",
+		desc: "Start with 20 Tier 1 Labs on Rebirth.",
 		cost: 7,
 		category: "hyacinite",
 		opinion: 3,
@@ -346,7 +346,7 @@ Game.prestigeData = (function(){
 
 	instance.labDiscount = {
 		name: "Lab Discount",
-		desc: "T2+ Labs are 20% cheaper with this upgrade.",
+		desc: "Tier 2 and higher Labs are 20% cheaper with this upgrade.",
 		cost: 16,
 		category: "hyacinite",
 		opinion: 12,
@@ -365,8 +365,8 @@ Game.prestigeData = (function(){
 	};
 
 	instance.T5Labs = {
-		name: "Tier 5 Laboratories",
-		desc: "Unlock the Space Scientific Satellite Station",
+		name: "Tier 5 Labs",
+		desc: "Unlock the Space Scientific Satellite Station.",
 		cost: 24,
 		category: "hyacinite",
 		opinion: 14,
@@ -402,8 +402,8 @@ Game.prestigeData = (function(){
 	*************/
 
 	instance.T1Discount = {
-		name: "Tier 1 Machine Discount",
-		desc: "All Tier 1 machines on every resource (in resources tab) are 10% cheaper.",
+		name: "Tier 1 Resource Producer Discount",
+		desc: "Tier 1 producers of every resource in the Resources tab are 10% cheaper.",
 		cost: 8,
 		category: "kitrinos",
 		opinion: 4,
@@ -418,7 +418,7 @@ Game.prestigeData = (function(){
 
 	instance.T5Batteries = {
 		name: "Tier 5 Batteries",
-		desc: "Unlock the fifth tier of batteries for all your energy storage needs.",
+		desc: "Unlock the fifth tier of Batteries for all your Energy storage needs.",
 		cost: 14,
 		category: "kitrinos",
 		opinion: 17,
@@ -461,8 +461,8 @@ Game.prestigeData = (function(){
 	************/
 
 	instance.chemicalBoost = {
-		name: "Chemical Plant Boost",
-		desc: "Produce 100% more rocket fuel per chemical plant.",
+		name: "Rocket Fuel Boost",
+		desc: "Doubles the output of all Rocket Fuel producers.",
 		cost: 11,
 		category: "moviton",
 		opinion: 7,
@@ -476,8 +476,8 @@ Game.prestigeData = (function(){
 	};
 
 	instance.rocketDiscount = {
-		name: "Rocket Discount",
-		desc: "Rocket Parts Cost 35% less.",
+		name: "Rocket Ship Discount",
+		desc: "Parts for the interstellar Rocket Ship cost 35% less.",
 		cost: 23,
 		category: "moviton",
 		opinion: 28,

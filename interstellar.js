@@ -453,7 +453,7 @@ Game.interstellar.military = (function(){
 
     instance.getThreat = function(power, speed, num){
         var threatLevels = ["•", "••", "•••", "I", "II", "III", "X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"];
-        var threshholds = [320,800,1440,2240,3200,4320,5600,7040,8640,10400,12320,14400];
+        var threshholds = [320,800,1440,2240,3200,4320,5600,7040,8640,10400,12320];
         var level = 0;
         for(var i = 0; i < threshholds.length; i++){
             if(power*speed >= threshholds[i]){
@@ -486,7 +486,7 @@ Game.interstellar.military = (function(){
             var scout = this.entries.scout;
             scout.count -= scout.active;
             scout.active = 0;
-            Game.notifyInfo("Espionage Failed!", "You lost all of your active scouts.");
+            Game.notifyInfo("Espionage Failed!", "You lost all of your active Scouts.");
         }
         star.displayNeedsUpdate = true;
         this.updateFleetStats();
@@ -552,9 +552,9 @@ Game.interstellar.military = (function(){
                     shipData.displayNeedsUpdate = true;
                 }
                 if(losses){
-                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " and now gain production boosts from it to " + star.resource1 + " and " + star.resource2 + ". Despite your victory, you may have lost some ships in battle.");
                 } else {
-                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it in " + star.resource1 + " and " + star.resource2 + "!");                    
+                    Game.notifyInfo("Successful Invasion!", "You have conquered " + star.name + " without any losses and now gain production boosts from it to " + star.resource1 + " and " + star.resource2 + "!");                    
                 }
                 var faction = Game.stargaze.getStargazeData(star.factionId);
                 faction.opinion -= 10;
@@ -585,7 +585,7 @@ Game.interstellar.military = (function(){
             data.owned = true;
             data.displayNeedsUpdate = true;
             faction.displayNeedsUpdate = true;
-            Game.notifyInfo("Successful Absorbtion!", "You have conquered " + data.name + " peacefully and now gain production boosts from it in " + data.resource1 + " and " + data.resource2 + ". Congratulations!");
+            Game.notifyInfo("Successful Absorbtion!", "You have taken over " + data.name + " peacefully and now gain production boosts from it to " + data.resource1 + " and " + data.resource2 + ". Congratulations!");
         }
     };
 
