@@ -256,6 +256,11 @@ Game.updatesData = (function(){
 		desc: 'Fixed several UI issues after rebirth with the interstellar tab',
 		read: false
 	};
+	
+	instance.loadScreenInvert = {
+		desc: 'Inverted the loading screen colours to help night-time players retain their eyesight',
+		read: false
+	}
 
 
 	return instance;
