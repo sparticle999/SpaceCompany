@@ -227,7 +227,6 @@ var Game = (function() {
     };
 
     instance.loadDelay = function (self, delta) {
-        document.getElementById("loadScreen").className = "hidden";
         document.getElementById("game").className = "container";
 
         self.deleteInterval("Loading");
@@ -266,6 +265,7 @@ var Game = (function() {
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
+        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 50)
         console.debug("Load Complete");
 
     };
