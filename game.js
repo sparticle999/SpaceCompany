@@ -265,7 +265,7 @@ var Game = (function() {
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
-        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 50)
+        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 100)
         console.debug("Load Complete");
 
     };
