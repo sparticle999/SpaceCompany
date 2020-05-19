@@ -59,6 +59,7 @@ v0.5.1
 - Made Science and Resource Efficiency multiplicative with dark matter boost
 - Forces Swarms to use ShortName formatting for accuracy with DM scaling
 - Renamed some generic stars (thanks /u/Misacek01)
+- Inverted the loading screen colours
 
 ##### Bug Fixed
 
