@@ -113,7 +113,7 @@ Game.settings = (function(){
     instance.save = function(data) {
         data.settings = {version: this.dataVersion, entries: {}};
         for(var id in this.entries) {
-            data.statistics.entries[id] = this.entries[id];
+            data.settings.entries[id] = this.entries[id];
         }
     };
 
@@ -122,10 +122,10 @@ Game.settings = (function(){
 
         console.log(this.entries.hideCompleted)
 
-        if(data.statistics) {
-            if(data.statistics.version && data.statistics.version === this.dataVersion) {
-                for(var id in data.statistics.entries) {
-                    this.entries[id] = data.statistics.entries[id];
+        if(data.settings) {
+            if(data.settings.version && data.settings.version === this.dataVersion) {
+                for(var id in data.settings.entries) {
+                    this.entries[id] = data.settings.entries[id];
                 }
             }
         }
