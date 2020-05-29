@@ -477,7 +477,7 @@ Game.techData = (function () {
         },
         tabAlerts: ['solCenter'],
         onApply: function(){
-            Templates.uiFunctions.unlock("nanoswarm");
+            Templates.uiFunctions.unlock("unlockDyson");
         }
     });
 
