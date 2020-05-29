@@ -156,6 +156,15 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 
 	  	return ret;
 	});
+
+	Handlebars.registerHelper('if_eq', function(a, b, opts) {
+		if (a == b) {
+			return opts.fn(this);
+		} else {
+			return opts.inverse(this);
+		}
+	});
+
 	/**
 	 * Adds a storBuilding or building to the content pane
 	 * {{htmlId}} 		- plasmaT1, rocketFuelT3
@@ -173,7 +182,7 @@ Templates.solCenterUI = function(cPage, cTitle, cObj) {
 		     '</span>',
 		     '<br><br>',
 			 '<button type="button" id="'+this.page+'_{{htmlId}}_buy_1" class="btn btn-default">Get 1</button>',
-			 '<span class="multiBuy hidden">',
+			 '<span {{#if_eq id \'segment\'}}{{else}}class="multiBuy hidden"{{/if_eq}}>',
 			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_50" class="btn btn-default">Get up to 50 (Ring)</button>',
 			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_100" class="btn btn-default">Get up to 100 (Swarm)</button>',
 			   '<button type="button" id="'+this.page+'_{{htmlId}}_buy_250" class="btn btn-default">Get  up to 250 (Sphere)</button>',
