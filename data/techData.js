@@ -461,8 +461,6 @@ Game.techData = (function () {
         onApply: function(){
             Templates.uiFunctions.unlock("segment");
             Templates.uiFunctions.unlock("ring");
-            Templates.uiFunctions.unlock("swarm");
-            Templates.uiFunctions.unlock("sphere");
         }
     });
 
@@ -477,7 +475,9 @@ Game.techData = (function () {
         },
         tabAlerts: ['solCenter'],
         onApply: function(){
-            Templates.uiFunctions.unlock("nanoswarm");
+            Templates.uiFunctions.unlock("swarm");
+            Templates.uiFunctions.unlock("sphere");
+            Templates.uiFunctions.unlock("sphere");
         }
     });
 
