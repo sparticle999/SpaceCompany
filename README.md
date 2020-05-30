@@ -9,6 +9,10 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 - Random Events
 - [Change UI from bootstrap to my own]
 
+# Derived projects from members in the community
+- https://github.com/migue1s/SpaceCompanyNative Mobile Port by migue1s
+- https://github.com/SpiderGamin/SpaceCompany-Desktop Desktop Application by SpiderGamin
+
 # RoadMap
 
 v1.0 The Overlord Update
