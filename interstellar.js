@@ -515,7 +515,7 @@ Game.interstellar.military = (function(){
             if(multi == 0){
                 return "peace";
             }
-            var damage = (this.activePower/star.stats.defense*multi)*this.activeSpeed;
+            var damage = (this.activePower/(star.stats.defense*multi))*this.activeSpeed;
             var starDamage = (star.stats.power*multi/Math.max(this.activeDefense,1))*star.stats.speed;
             if(damage > starDamage){
                 return (damage/starDamage)-0.5;
