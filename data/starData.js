@@ -63,7 +63,7 @@ Game.starData = (function(){
 	};
 
 	instance._701 = {
-		name: "BL Ceti",
+		name: "Gliese 65",
 		distance: 8.55,
 		planets: 1,
 		faction: "Moviton Syndicate",
@@ -138,7 +138,7 @@ Game.starData = (function(){
 	};
 
 	instance._158101 = {
-		name: "Lac 9352",
+		name: "Lacaille 9352",
 		distance: 10.73,
 		planets: 5,
 		factionId: "kitrinos",
@@ -213,7 +213,7 @@ Game.starData = (function(){
 	};
 
 	instance._207601 = {
-		name: "A",
+		name: "Struve 2398",
 		distance: 11.64,
 		planets: 1,
 		factionId: "prasnian",
@@ -228,7 +228,7 @@ Game.starData = (function(){
 	};
 
 	instance._166701 = {
-		name: "GX Andromedae",
+		name: "Groombridge 34",
 		distance: 11.64,
 		planets: 5,
 		factionId: "hyacinite",
@@ -243,7 +243,7 @@ Game.starData = (function(){
 	};
 
 	instance._224601 = {
-		name: "SIPS 1259-",
+		name: "SIPS 1259-4336",
 		distance: 11.8,
 		planets: 1,
 		factionId: "kitrinos",
@@ -303,7 +303,7 @@ Game.starData = (function(){
 	};
 
 	instance._25401 = {
-		name: "A",
+		name: "Gliese 1061",
 		distance: 11.94,
 		planets: 4,
 		factionId: "carnelian",
@@ -348,7 +348,7 @@ Game.starData = (function(){
 	};
 
 	instance._223901 = {
-		name: "SO25300.5+165258",
+		name: "Teegarden's Star",
 		distance: 12.4,
 		planets: 4,
 		factionId: "prasnian",
@@ -408,7 +408,7 @@ Game.starData = (function(){
 	};
 
 	instance._224101 = {
-		name: "DENIS 1048",
+		name: "DENIS 1048-3956",
 		distance: 13.16,
 		planets: 1,
 		factionId: "moviton",
@@ -423,7 +423,7 @@ Game.starData = (function(){
 	};
 
 	instance._179501 = {
-		name: "V577 Monoceri",
+		name: "V577 Monocerotis",
 		distance: 13.47,
 		planets: 1,
 		factionId: "hyacinite",
@@ -453,7 +453,7 @@ Game.starData = (function(){
 	};
 
 	instance._194201 = {
-		name: "A",
+		name: "Gliese 473",
 		distance: 14.05,
 		planets: 1,
 		factionId: "kitrinos",
@@ -483,7 +483,7 @@ Game.starData = (function(){
 	};
 
 	instance._1101 = {
-		name: "-37°15492",
+		name: "Gliese 1",
 		distance: 14.22,
 		planets: 3,
 		factionId: "kitrinos",
@@ -498,7 +498,7 @@ Game.starData = (function(){
 	};
 
 	instance._15301 = {
-		name: "A",
+		name: "WISE 1639-6847",
 		distance: 14.57,
 		planets: 2,
 		factionId: "moviton",
@@ -513,7 +513,7 @@ Game.starData = (function(){
 	};
 
 	instance._222401 = {
-		name: "L 143-23",
+		name: "Luyten 143-23",
 		distance: 14.65,
 		planets: 1,
 		factionId: "hyacinite",
@@ -543,7 +543,7 @@ Game.starData = (function(){
 	};
 
 	instance._122601 = {
-		name: "AOe 17415-",
+		name: "Gliese 687",
 		distance: 14.77,
 		planets: 2,
 		factionId: "carnelian",
@@ -588,7 +588,7 @@ Game.starData = (function(){
 	};
 
 	instance._1501 = {
-		name: "G 158-27",
+		name: "Gliese 1002",
 		distance: 15.33,
 		planets: 1,
 		factionId: "carnelian",
@@ -618,7 +618,7 @@ Game.starData = (function(){
 	};
 
 	instance._189701 = {
-		name: "A",
+		name: "Gliese 1245",
 		distance: 15.76,
 		planets: 1,
 		factionId: "kitrinos",
@@ -648,7 +648,7 @@ Game.starData = (function(){
 	};
 
 	instance._148501 = {
-		name: "CD -49°135",
+		name: "Gliese 832",
 		distance: 16.1,
 		planets: 2,
 		factionId: "moviton",
@@ -723,7 +723,7 @@ Game.starData = (function(){
 	};
 
 	instance._166402 = {
-		name: "B",
+		name: "Gliese 1005",
 		distance: 17,
 		planets: 3,
 		factionId: "prasnian",
@@ -738,7 +738,7 @@ Game.starData = (function(){
 	};
 
 	instance._185101 = {
-		name: "A",
+		name: "Gliese 1116",
 		distance: 17.05,
 		planets: 1,
 		factionId: "moviton",
@@ -753,7 +753,7 @@ Game.starData = (function(){
 	};
 
 	instance._79901 = {
-		name: "AC +79°388",
+		name: "Gliese 445",
 		distance: 17.58,
 		planets: 1,
 		factionId: "carnelian",
@@ -783,7 +783,7 @@ Game.starData = (function(){
 	};
 
 	instance._175901 = {
-		name: "A",
+		name: "LP 816-60",
 		distance: 17.98,
 		planets: 1,
 		factionId: "moviton",
@@ -798,7 +798,7 @@ Game.starData = (function(){
 	};
 
 	instance._175902 = {
-		name: "B",
+		name: "Stein 2051",
 		distance: 17.98,
 		planets: 1,
 		factionId: "prasnian",
@@ -813,7 +813,7 @@ Game.starData = (function(){
 	};
 
 	instance._37601 = {
-		name: "BD -3°1123",
+		name: "Gliese 205",
 		distance: 18.56,
 		planets: 1,
 		factionId: "carnelian",
@@ -828,7 +828,7 @@ Game.starData = (function(){
 	};
 
 	instance._133601 = {
-		name: "L 347-14",
+		name: "Luyten 347-14",
 		distance: 18.56,
 		planets: 3,
 		factionId: "kitrinos",
@@ -843,7 +843,7 @@ Game.starData = (function(){
 	};
 
 	instance._203902 = {
-		name: "B",
+		name: "V1054 Ophiuchi",
 		distance: 18.72,
 		planets: 5,
 		factionId: "moviton",
@@ -888,7 +888,7 @@ Game.starData = (function(){
 	};
 
 	instance._123401 = {
-		name: "L 205-128",
+		name: "Luyten 205-128",
 		distance: 18.95,
 		planets: 5,
 		factionId: "carnelian",
@@ -903,7 +903,7 @@ Game.starData = (function(){
 	};
 
 	instance._56501 = {
-		name: "L 674-15",
+		name: "Luyten 674-15",
 		distance: 19.19,
 		planets: 1,
 		factionId: "prasnian",
@@ -918,7 +918,7 @@ Game.starData = (function(){
 	};
 
 	instance._200001 = {
-		name: "A",
+		name: "Gliese 570",
 		distance: 19.26,
 		planets: 4,
 		factionId: "hyacinite",
@@ -993,7 +993,7 @@ Game.starData = (function(){
 	};
 
 	instance._211202 = {
-		name: "B",
+		name: "HR 7703",
 		distance: 19.74,
 		planets: 3,
 		factionId: "moviton",
@@ -1053,7 +1053,7 @@ Game.starData = (function(){
 	};
 
 	instance._139701 = {
-		name: "CD -45°136",
+		name: "Gliese 784",
 		distance: 20.24,
 		planets: 1,
 		factionId: "moviton",
@@ -1068,7 +1068,7 @@ Game.starData = (function(){
 	};
 
 	instance._103201 = {
-		name: "LP 914-54",
+		name: "Gliese 581",
 		distance: 20.26,
 		planets: 1,
 		factionId: "prasnian",
@@ -1098,7 +1098,7 @@ Game.starData = (function(){
 	};
 
 	instance._105801 = {
-		name: "HO Librae",
+		name: "HN Librae",
 		distance: 20.45,
 		planets: 3,
 		factionId: "kitrinos",
@@ -1113,7 +1113,7 @@ Game.starData = (function(){
 	};
 
 	instance._204702 = {
-		name: "B",
+		name: "Gliese 3877",
 		distance: 20.62,
 		planets: 1,
 		factionId: "carnelian",
@@ -1158,7 +1158,7 @@ Game.starData = (function(){
 	};
 
 	instance._159101 = {
-		name: "BD +56°296",
+		name: "Gliese 1128",
 		distance: 21.28,
 		planets: 4,
 		factionId: "moviton",
@@ -1173,7 +1173,7 @@ Game.starData = (function(){
 	};
 
 	instance._113301 = {
-		name: "Gl 625",
+		name: "Gliese 625",
 		distance: 21.47,
 		planets: 2,
 		factionId: "prasnian",

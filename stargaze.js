@@ -38,6 +38,7 @@ Game.stargaze = (function(){
 			this.upgradeEntries[id] = $.extend({}, {
 				id: id,
 				htmlId: 'stargazeUpg' + id,
+				unlocked: true,
 				displayNeedsUpdate: true,
 				onApply: null,
 				rebirthUnlocked: [],
@@ -93,7 +94,8 @@ Game.stargaze = (function(){
 			}
 			Game.tech.reset();
 			Game.interstellar.initialise();
-      Game.statistics.add("rebirthCount", 1);
+			Game.interstellar.comms.entries.astroBreakthrough.completed = false;
+      		Game.statistics.add("rebirthCount", 1);
 
 			this.resetVars();
 			this.hideMachines();
@@ -258,13 +260,16 @@ Game.stargaze = (function(){
 			if(typeof data.stargaze.entries !== 'undefined'){
                 for(id in data.stargaze.entries){
                     this.entries[id] = data.stargaze.entries[id];
+                    this.entries[id].unlocked = true;
                     this.entries[id].displayNeedsUpdate = true;
                 }
             }
             if(typeof data.stargaze.upgradeEntries !== 'undefined'){
                 for(id in data.stargaze.upgradeEntries){
-                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achiev;
-                    this.upgradeEntries[id].displayNeedsUpdate = true;
+                	if(this.upgradeEntries[id]){
+	                    this.upgradeEntries[id].achieved = data.stargaze.upgradeEntries[id].achiev;
+	                    this.upgradeEntries[id].displayNeedsUpdate = true;
+	                }
                 }
             }
             if(typeof data.stargaze.rebirthStart !== 'undefined'){

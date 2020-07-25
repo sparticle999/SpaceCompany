@@ -398,7 +398,7 @@ function registerLegacyBindings() {
     Game.ui.bindElement('dysonMeteoriteCost', function(){ return Game.settings.format(dysonMeteoriteCost); });
     Game.ui.bindElement('dysonIceCost', function(){ return Game.settings.format(dysonIceCost); });
     Game.ui.bindElement('ring', function(){ return Game.settings.format(ring); });
-    Game.ui.bindElement('swarm', function(){ return Game.settings.format(swarm); });
+    Game.ui.bindElement('swarm', function(){ return Game.utils.formatters["shortName"](swarm.toFixed(0)); });
     Game.ui.bindElement('sphere', function(){ return Game.settings.format(sphere); });
 
     //T5 machines

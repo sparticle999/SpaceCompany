@@ -227,7 +227,6 @@ var Game = (function() {
     };
 
     instance.loadDelay = function (self, delta) {
-        document.getElementById("loadScreen").className = "hidden";
         document.getElementById("game").className = "container";
 
         self.deleteInterval("Loading");
@@ -266,6 +265,7 @@ var Game = (function() {
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
+        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 100)
         console.debug("Load Complete");
 
     };
@@ -278,7 +278,7 @@ var Game = (function() {
         var logoElement = $('#loadLogo');
         var opacity = logoElement.css('opacity');
         if(opacity >= 0.9) {
-            logoElement.fadeTo(1000, .25, function() { Game.logoAnimating = false; });
+            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
             self.logoAnimating = true;
         } else if (opacity <= 0.3) {
             logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });

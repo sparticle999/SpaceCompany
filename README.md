@@ -9,6 +9,10 @@ Currently, the game is in Beta, which means there is frequent, active developmen
 - Random Events
 - [Change UI from bootstrap to my own]
 
+# Derived projects from members in the community
+- https://github.com/migue1s/SpaceCompanyNative Mobile Port by migue1s
+- https://github.com/SpiderGamin/SpaceCompany-Desktop Desktop Application by SpiderGamin
+
 # RoadMap
 
 v1.0 The Overlord Update
@@ -57,6 +61,9 @@ v0.5.1
 - Buffed Capital Ship\' power and defense
 - Reduced Oil T3 energy cost
 - Made Science and Resource Efficiency multiplicative with dark matter boost
+- Forces Swarms to use ShortName formatting for accuracy with DM scaling
+- Renamed some generic stars (thanks /u/Misacek01)
+- Inverted the loading screen colours
 
 ##### Bug Fixed
 
@@ -74,6 +81,8 @@ v0.5.1
 - Fixed Invasion Chance being NaN when reputation is above 60
 - Fixed Absorb not working
 - Fixed Antimatter not being affected by DM Boost
+- Fixed several UI issues after rebirth with the interstellar tab
+- Fixed Interstellar notifications of lost ships without actual losses
 
 ### v0.5.0 The Interstellar Update
 ##### Features

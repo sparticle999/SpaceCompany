@@ -14,6 +14,7 @@ Game.interstellar.rocket = (function(){
                 id: id,
                 htmlId: 'roc_' + id,
                 count: 0,
+                built: false,
                 displayNeedsUpdate: true
             });
         }
