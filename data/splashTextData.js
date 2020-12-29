@@ -101,6 +101,7 @@ var splashTextArray = ["Venturing Into The Unknown...",
 "Fat Free!",
 "0% Sugar!",
 "0% Organic!",
+"Happy Birthday!",
 "JavaScript!",
 "Recruiting Robot Hamsters...",
 "Autoclickers strictly discouraged!",
@@ -121,5 +122,8 @@ if(currentDate.indexOf("Sep 12") !== -1){
 }
 if(currentDate.indexOf("Dec 25") !== -1){
 	splashText = "Merry Christmas!";
+}
+if(currentDate.indexOf("Apr 01") !== -1){
+	splashText = "April Fools!";
 }
 document.getElementById("splashText").textContent = splashText;
