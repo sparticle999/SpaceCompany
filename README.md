@@ -1,17 +1,21 @@
 # Overview:
 Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonising the entire galaxy(ies?)
 
-Currently, the game is in Beta, which means there is frequent, active development on the game and most bugs from existing features will have been fixed. You should not have to worry about your saves being wiped. However, there will be the occasional bug and I will endeavour to amend these.
+Development has stopped, however, several projects have been created based on this you may wish to try.
 
-# Plans for the Future
+# Derived projects from members in the community
+- https://play.google.com/store/apps/details?id=com.freddecgames.ngsc Mobile Port by Freddec
+- https://ngspacecompany.freddecgames.com/ V1 Web uptaken by Freddec
+- https://ngsc.freddecgames.com/ V2 Web Freddec
+- https://github.com/migue1s/SpaceCompanyNative Mobile Port by migue1s
+- https://github.com/SpiderGamin/SpaceCompany-Desktop Desktop Application by SpiderGamin
+- 
+# Former Plans for the Future
 - Check https://www.reddit.com/r/SpaceCompany/wiki/futureplans
 - When loading game, the tab you left on is the tab you now start on
 - Random Events
 - [Change UI from bootstrap to my own]
 
-# Derived projects from members in the community
-- https://github.com/migue1s/SpaceCompanyNative Mobile Port by migue1s
-- https://github.com/SpiderGamin/SpaceCompany-Desktop Desktop Application by SpiderGamin
 
 # RoadMap
 
@@ -23,7 +27,7 @@ https://www.reddit.com/r/SpaceCompany/wiki/futureplans#wiki_v0.6
 - Loading screen flavour text changes as you progress
 - Machine Overview Tab
 
-v0.5.1
+v0.5.1 in progress
 
 - (Mass to Energy Conversion)
 - Buy X buttons
