@@ -44,7 +44,7 @@ Game.resourceData = (function () {
         icon: 'energyIcon',
         category: 'energy',
         baseCapacity: 50000,
-        unlocked: false
+        unlocked: true
     };
 
     instance.plasma = {
@@ -53,7 +53,7 @@ Game.resourceData = (function () {
         icon: 'plasmaIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.uranium = {
@@ -62,7 +62,7 @@ Game.resourceData = (function () {
         icon: 'uraniumIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.lava = {
@@ -71,7 +71,7 @@ Game.resourceData = (function () {
         icon: 'lavaIcon',
         category: 'energy',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     /********************
@@ -84,7 +84,7 @@ Game.resourceData = (function () {
         icon: 'oilIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.metal = {
@@ -111,7 +111,7 @@ Game.resourceData = (function () {
         icon: 'charcoalIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.wood = {
@@ -129,7 +129,7 @@ Game.resourceData = (function () {
         icon: 'siliconIcon',
         category: 'earth',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
 
@@ -143,7 +143,7 @@ Game.resourceData = (function () {
         icon: 'lunariteIcon',
         category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.methane = {
@@ -152,7 +152,7 @@ Game.resourceData = (function () {
         icon: 'methaneIcon',
         category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.titanium = {
@@ -161,7 +161,7 @@ Game.resourceData = (function () {
         icon: 'titaniumIcon',
         category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.gold = {
@@ -170,7 +170,7 @@ Game.resourceData = (function () {
         icon: 'goldIcon',
         category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.silver = {
@@ -179,7 +179,7 @@ Game.resourceData = (function () {
         icon: 'silverIcon',
         category: 'innerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     /******************************
@@ -192,7 +192,7 @@ Game.resourceData = (function () {
         icon: 'hydrogenIcon',
         category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.helium = {
@@ -201,7 +201,7 @@ Game.resourceData = (function () {
         icon: 'heliumIcon',
         category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.ice = {
@@ -210,7 +210,7 @@ Game.resourceData = (function () {
         icon: 'iceIcon',
         category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.meteorite = {
@@ -219,7 +219,7 @@ Game.resourceData = (function () {
         icon: 'meteoriteIcon',
         category: 'outerSol',
         baseCapacity: 50,
-        unlocked: false
+        unlocked: true
     };
 
     instance.science = {
@@ -227,7 +227,7 @@ Game.resourceData = (function () {
         desc: 'Science is used for researching new technologies to further your progress in the game.',
         icon: 'scienceIcon',
         baseCapacity: 1000000,
-        unlocked: false
+        unlocked: true
     };
 
     return instance;
@@ -269,7 +269,7 @@ Game.storageData = (function(){
         desc: 'Upgrade your Plasma storage size to ',
         resource: 'plasma',
         cost: {
-            'plasma': 50
+            'plasma': 0
         }
     });
 
@@ -277,8 +277,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Uranium storage size to ',
         resource: 'uranium',
         cost: {
-            'uranium': 50,
-            'lunarite': 20
+            'uranium': 0,
+            'lunarite': 0
         }
     });
 
@@ -286,8 +286,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Lava storage size to ',
         resource: 'lava',
         cost: {
-            'lava': 50,
-            'lunarite': 20
+            'lava': 0,
+            'lunarite': 0
         }
     });
 
@@ -299,8 +299,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Oil storage size to ',
         resource: 'oil',
         cost: {
-            'oil': 50,
-            'metal': 20
+            'oil': 0,
+            'metal': 0
         }
     });
 
@@ -308,7 +308,7 @@ Game.storageData = (function(){
         desc: 'Upgrade your Metal storage size to ',
         resource: 'metal',
         cost: {
-            'metal': 50
+            'metal': 0
         }
     });
 
@@ -316,8 +316,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Gem storage size to ',
         resource: 'gem',
         cost: {
-            'gem': 50,
-            'metal': 20
+            'gem': 0,
+            'metal': 0
         }
     });
 
@@ -325,8 +325,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Charcoal storage size to ',
         resource: 'charcoal',
         cost: {
-            'charcoal': 50,
-            'metal': 20
+            'charcoal': 0,
+            'metal': 0
         }
     });
 
@@ -334,8 +334,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Wood storage size to ',
         resource: 'wood',
         cost: {
-            'wood': 50,
-            'metal': 20
+            'wood': 0,
+            'metal': 0
         }
     });
 
@@ -343,8 +343,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Silicon storage size to ',
         resource: 'silicon',
         cost: {
-            'silicon': 50,
-            'lunarite': 20
+            'silicon': 0,
+            'lunarite': 0
         }
     });
 
@@ -356,8 +356,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Lunarite storage size to ',
         resource: 'lunarite',
         cost: {
-            'lunarite': 50,
-            'metal': 400
+            'lunarite': 0,
+            'metal': 0
         }
     });
 
@@ -365,8 +365,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Methane storage size to ',
         resource: 'methane',
         cost: {
-            'methane': 50,
-            'lunarite': 20
+            'methane': 0,
+            'lunarite': 0
         }
     });
 
@@ -374,8 +374,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Titanium storage size to ',
         resource: 'titanium',
         cost: {
-            'titanium': 50,
-            'lunarite': 20
+            'titanium': 0,
+            'lunarite': 0
         }
     });
 
@@ -383,8 +383,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Gold storage size to ',
         resource: 'gold',
         cost: {
-            'gold': 50,
-            'lunarite': 20
+            'gold': 0,
+            'lunarite': 0
         }
     });
 
@@ -392,8 +392,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Silver storage size to ',
         resource: 'silver',
         cost: {
-            'silver': 50,
-            'lunarite': 20
+            'silver': 0,
+            'lunarite': 0
         }
     });
 
@@ -405,8 +405,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Hydrogen storage size to ',
         resource: 'hydrogen',
         cost: {
-            'hydrogen': 50,
-            'lunarite': 20
+            'hydrogen': 0,
+            'lunarite': 0
         }
     });
 
@@ -414,8 +414,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Helium storage size to ',
         resource: 'helium',
         cost: {
-            'helium': 50,
-            'lunarite': 20
+            'helium': 0,
+            'lunarite': 0
         }
     });
 
@@ -423,8 +423,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Ice storage size to ',
         resource: 'ice',
         cost: {
-            'ice': 50,
-            'lunarite': 20
+            'ice': 0,
+            'lunarite': 0
         }
     });
 
@@ -432,8 +432,8 @@ Game.storageData = (function(){
         desc: 'Upgrade your Meteorite storage size to ',
         resource: 'meteorite',
         cost: {
-            'meteorite': 50,
-            'lunarite': 4
+            'meteorite': 0,
+            'lunarite': 0
         }
     });
 
