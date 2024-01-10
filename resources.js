@@ -2,6 +2,7 @@
 function getResource(id) {
 	return Game.resources.getResource(id);
 }
+get 999999999metals
 
 // globally accessible convenience wrapper for Game.resources.getStorage()
 function getStorage(id) {
