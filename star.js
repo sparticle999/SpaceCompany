@@ -7,11 +7,11 @@ Game.interstellar.stars = (function(){
     instance.starCount = 0;
 
     instance.systemsConquered = 0;
-    
+
     instance.initialise = function() {
         for (var id in Game.starData) {
             var data = Game.starData[id];
-            
+
             this.starCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
@@ -22,7 +22,6 @@ Game.interstellar.stars = (function(){
                 owned: false,
                 displayNeedsUpdate: false,
             });
-            
         }
 
         console.debug("Loaded " + this.starCount + " Stars");
@@ -54,7 +53,6 @@ Game.interstellar.stars = (function(){
     instance.getStarData = function(id) {
         return this.entries[id];
     };
-    
 
     return instance;
 }());
