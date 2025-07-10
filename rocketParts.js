@@ -8,7 +8,7 @@ Game.interstellar.rocketParts = (function(){
 	instance.initialise = function(){
 		for (var id in Game.rocketPartsData) {
             var data = Game.rocketPartsData[id];
-            
+
             this.navCount++;
             this.entries[id] = $.extend({}, data, {
                 id: id,
@@ -49,7 +49,7 @@ Game.interstellar.rocketParts = (function(){
                 this.entries[entryName].count = Math.min(newValue, this.entries[entryName].max);
                 for(var resource in this.entries[entryName].cost){
                     window[resource.toString()] -= this.entries[entryName].cost[resource.toString()];
-                }            
+                }
                 this.entries[entryName].displayNeedsUpdate = true;
             }
         }

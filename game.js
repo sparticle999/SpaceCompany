@@ -397,7 +397,7 @@ var Game = (function() {
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-        
+
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 

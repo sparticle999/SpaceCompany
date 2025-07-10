@@ -1307,7 +1307,7 @@ copyTextareaBtn.addEventListener('click', function(event) {
 
 //ToolTips
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'}); 
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 
 //Change Company Name
