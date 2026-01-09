@@ -88,8 +88,8 @@ Game.resourceData = (function () {
     };
 
     instance.metal = {
-        name: 'Metal',
-        desc: 'Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.',
+        name: "Jordan's Metal",
+        desc: "Jordan's Metal is one of the primary resources. It is used for many things, including storage upgrades, machinery and most things in space.",
         icon: 'metalIcon',
         category: 'earth',
         baseCapacity: 50,
