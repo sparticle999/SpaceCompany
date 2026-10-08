@@ -181,6 +181,7 @@ var Game = (function() {
 
     instance.updateUI = function(self){
         Game.settings.updateCompanyName();
+        Game.settings.applyDestroyButtonStyle();
         refreshResources();
         refreshResearches();
         refreshTabs();

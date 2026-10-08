@@ -70,6 +70,7 @@ function legacySave(data) {
 		rocket: rocket,
 		rocketFuel: rocketFuel,
 		rocketFuelToggled: rocketFuelToggled,
+		autoResource: autoResource,
 		chemicalPlant: chemicalPlant,
 		oxidisation: oxidisation,
 		hydrazine: hydrazine,
@@ -270,6 +271,7 @@ function legacyLoad(savegame){
 		if(typeof savegame.rocket !== "undefined") rocket = savegame.rocket;
 		if(typeof savegame.rocketFuel !== "undefined") rocketFuel = savegame.rocketFuel;
 		if(typeof savegame.rocketFuelToggled !== "undefined") rocketFuelToggled = savegame.rocketFuelToggled;
+		if(typeof savegame.autoResource !== "undefined") autoResource = savegame.autoResource;
 		if(typeof savegame.chemicalPlant !== "undefined") chemicalPlant = savegame.chemicalPlant;
 		if(typeof savegame.oxidisation !== "undefined") oxidisation = savegame.oxidisation;
 		if(typeof savegame.hydrazine !== "undefined") hydrazine = savegame.hydrazine;

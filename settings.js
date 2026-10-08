@@ -142,6 +142,10 @@ Game.settings = (function(){
         $('#redDestroyButtons').prop('checked', this.entries.redDestroyButtons);
         $('#hideCompleted').prop('checked', this.entries.hideCompleted);
 
+        if(typeof autoResource === 'string' && autoResource !== null) {
+            $('#' + autoResource + 'Auto').prop('checked', true);
+        }
+
         if(Game.settings.entries.sidebarCompressed === true){
             for(var i = 0; i < document.getElementsByClassName("sideTab").length; i ++){
                 document.getElementsByClassName("sideTab")[i].style.height = "30px";
@@ -196,6 +200,17 @@ Game.settings = (function(){
         this.entries[key] = value;
     };
 
+    instance.applyDestroyButtonStyle = function() {
+        if (!Game.tech.isPurchased('unlockDestruction')) {
+            return;
+        }
+        var target = this.entries.redDestroyButtons === true ? "btn btn-danger destroy" : "btn btn-default destroy";
+        var elements = document.getElementsByClassName("destroy");
+        for(var i = 0; i < elements.length; i ++){
+            elements[i].className = target;
+        }
+    };
+
     instance.initialise = function() {
         $('#formatSelector').change(function(){
             Game.settings.set('formatter', $(this).val());
@@ -248,33 +263,10 @@ Game.settings = (function(){
 
         $('#redDestroyButtons').change(function(){
             Game.settings.set('redDestroyButtons', $(this).is(':checked'));
-            if (Game.tech.isPurchased('unlockDestruction')) {
-                if(Game.settings.entries.redDestroyButtons === true){
-                    for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
-                        document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
-                    }
-                }
-                else{
-                    for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
-                        document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
-                    }
-                }
-            }
+            Game.settings.applyDestroyButtonStyle();
         });
 
-        if (Game.tech.isUnlocked('unlockDestruction')) {
-            if(Game.settings.entries.redDestroyButtons === true){
-                for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
-                    document.getElementsByClassName("destroy")[i].className = "btn btn-danger destroy";
-                }
-                
-            }
-            else{
-                for(var i = 0; i < document.getElementsByClassName("destroy").length; i ++){
-                    document.getElementsByClassName("destroy")[i].className = "btn btn-default destroy";
-                }
-            }
-        }
+        this.applyDestroyButtonStyle();
 
         $('#hideCompleted').change(function(){
             Game.settings.set('hideCompleted', $(this).is(':checked'));
