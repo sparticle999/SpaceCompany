@@ -205,8 +205,27 @@ var Game = (function() {
             return;
         }
 
-        refreshPerSec(1);
-        gainResources(offlineTime);
+        // Simulate offline time in steps instead of extrapolating the
+        // load-instant production snapshot over the whole absence: chained
+        // production (hydrogen -> plasma, charcoal -> energy, ...) only
+        // behaves like the live 100ms tick loop when resource feedback
+        // (inputs depleting, storage filling, energyLow latching) is
+        // re-evaluated periodically. 1s steps match the online tick
+        // granularity; beyond the 1s-step budget, fall back to 60s steps so
+        // very long absences stay bounded in load time.
+        var budgeted = Math.min(offlineTime, 100000);
+        var step = 1;
+        for(var t = 0; t < budgeted; t += step) {
+            refreshPerSec(step);
+            gainResources(step);
+        }
+        var remainder = offlineTime - budgeted;
+        while(remainder > 0) {
+            step = Math.min(60, remainder);
+            refreshPerSec(step);
+            gainResources(step);
+            remainder -= step;
+        }
         fixStorageRounding();
 
         this.notifyOffline(offlineTime);
