@@ -518,7 +518,9 @@ function rebuildStargate(){
 		}
 		newUnlock("interstellar");
 
-		Game.interstellar.getInterstellarData('stargate').unlocked = true;
-		Game.interstellar.getInterstellarData('stargate').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('travel').unlocked = true;
+		Game.interstellar.getInterstellarData('travel').displayNeedsUpdate = true;
+		Game.interstellar.getInterstellarData('military').unlocked = true;
+		Game.interstellar.getInterstellarData('military').displayNeedsUpdate = true;
 	}
 }

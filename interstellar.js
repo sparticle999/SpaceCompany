@@ -120,11 +120,12 @@ Game.interstellar = (function(){
                 document.getElementById('star_' + id + '_conquer').className = "";
             }
         }
-        for(var id in this.entries){
-            if(id == "rocket" || "travel")continue;
-            console.log(id)
-            for(var entry in Game.interstellar[id].entries){
-                Game.interstellar[id].updateCost[entry];
+        var costModules = ["comms", "rocketParts", "rocket", "antimatter", "military"];
+        for(var i = 0; i < costModules.length; i++){
+            var module = Game.interstellar[costModules[i]];
+            if(typeof module === 'undefined' || typeof module.updateCost !== 'function' || typeof module.entries === 'undefined'){ continue; }
+            for(var entry in module.entries){
+                module.updateCost(entry);
             }
         }
 
